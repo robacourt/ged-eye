@@ -234,7 +234,7 @@ export class FamilyTreeView {
         label: this.formatLabel(selectedPerson),
         type: 'selected',
         sex: selectedPerson.sex,
-        avatar: selectedPerson.avatar ? `/${selectedPerson.avatar}` : null
+        avatar: selectedPerson.avatar ? `${import.meta.env.BASE_URL}${selectedPerson.avatar}` : null
       }
     });
 
@@ -247,7 +247,7 @@ export class FamilyTreeView {
           label: this.formatLabel(member),
           type: 'family',
           sex: member.sex,
-          avatar: member.avatar ? `/${member.avatar}` : null
+          avatar: member.avatar ? `${import.meta.env.BASE_URL}${member.avatar}` : null
         }
       });
     }
