@@ -77,10 +77,16 @@ export class FamilyTreeView {
           style: {
             'width': 12,
             'height': 12,
-            'background-color': '#aaa',
+            'background-color': 'data(partnershipColor)',
             'border-width': 2,
             'border-color': '#666',
             'label': ''
+          }
+        },
+        {
+          selector: 'node[type="partnership"][!partnershipColor]',
+          style: {
+            'background-color': '#aaa'
           }
         },
         // Edge styles
@@ -99,9 +105,9 @@ export class FamilyTreeView {
         {
           selector: 'edge[type="spouse"]',
           style: {
-            'line-color': '#ff6b9d',
-            'width': 4,
-            'opacity': 0.9,
+            'line-color': 'data(partnershipColor)',
+            'width': 3,
+            'opacity': 0.85,
             'curve-style': 'round-taxi',
             'taxi-direction': 'horizontal',
             'taxi-turn': 20,
@@ -109,17 +115,46 @@ export class FamilyTreeView {
           }
         },
         {
+          selector: 'edge[type="spouse"][!partnershipColor]',
+          style: {
+            'line-color': '#ff6b9d'
+          }
+        },
+        {
           selector: 'edge[type="parent"]',
           style: {
-            'line-color': '#8ab4f8',
+            'line-color': 'data(partnershipColor)',
             'target-arrow-shape': 'triangle',
-            'target-arrow-color': '#8ab4f8',
-            'width': 3,
-            'opacity': 0.9,
+            'target-arrow-color': 'data(partnershipColor)',
+            'width': 2.5,
+            'opacity': 0.85,
             'curve-style': 'round-taxi',
             'taxi-direction': 'vertical',
             'taxi-turn': 20,
             'taxi-turn-min-distance': 5
+          }
+        },
+        {
+          selector: 'edge[type="parent"][!partnershipColor]',
+          style: {
+            'line-color': '#8ab4f8',
+            'target-arrow-color': '#8ab4f8'
+          }
+        },
+        // Hover effects
+        {
+          selector: 'edge:active',
+          style: {
+            'opacity': 1,
+            'width': 4,
+            'z-index': 999
+          }
+        },
+        {
+          selector: 'node:active',
+          style: {
+            'overlay-opacity': 0.2,
+            'overlay-color': '#fff'
           }
         }
       ],
@@ -196,16 +231,29 @@ export class FamilyTreeView {
       });
     }
 
+    // Partnership colors for multiple relationships
+    const partnershipColors = [
+      '#ff6b9d', // Pink
+      '#9d6bff', // Purple
+      '#6bffa8', // Green
+      '#ffb36b', // Orange
+      '#6bb3ff', // Light blue
+      '#ff6b6b'  // Red
+    ];
+
     // Add partnership nodes and edges for spouses
     selectedPerson.spouseIds.forEach((spouseId, index) => {
       const partnershipId = `partnership-${selectedPerson.id}-${spouseId}`;
+      const color = partnershipColors[index % partnershipColors.length];
 
-      // Add partnership node
+      // Add partnership node with color and index
       elements.push({
         group: 'nodes',
         data: {
           id: partnershipId,
-          type: 'partnership'
+          type: 'partnership',
+          partnershipIndex: index,
+          partnershipColor: color
         }
       });
 
@@ -216,7 +264,8 @@ export class FamilyTreeView {
           id: `${selectedPerson.id}-${partnershipId}`,
           source: selectedPerson.id,
           target: partnershipId,
-          type: 'spouse'
+          type: 'spouse',
+          partnershipColor: color
         }
       });
 
@@ -227,7 +276,8 @@ export class FamilyTreeView {
           id: `${spouseId}-${partnershipId}`,
           source: spouseId,
           target: partnershipId,
-          type: 'spouse'
+          type: 'spouse',
+          partnershipColor: color
         }
       });
     });
@@ -292,6 +342,40 @@ export class FamilyTreeView {
     // Track children whose partnerships were skipped
     const childrenWithSkippedPartnerships = [];
 
+    // Track partnership colors and indices
+    const partnershipColorMap = new Map();
+    const partnershipIndexMap = new Map();
+
+    // Group partnerships by each parent to assign indices
+    const partnershipsByParent = new Map(); // parent ID -> array of partnership keys
+
+    // Collect all partnerships and group by parent
+    for (const [parentKey] of parentPartnerships.entries()) {
+      const [parent1Id, parent2Id] = parentKey.split('-');
+
+      if (!partnershipsByParent.has(parent1Id)) {
+        partnershipsByParent.set(parent1Id, []);
+      }
+      partnershipsByParent.get(parent1Id).push(parentKey);
+
+      if (!partnershipsByParent.has(parent2Id)) {
+        partnershipsByParent.set(parent2Id, []);
+      }
+      partnershipsByParent.get(parent2Id).push(parentKey);
+    }
+
+    // Assign indices and colors for each person's partnerships
+    partnershipsByParent.forEach((partnerships, parentId) => {
+      partnerships.forEach((partnershipKey, index) => {
+        // Only set if not already set (avoid overwriting)
+        if (!partnershipIndexMap.has(partnershipKey)) {
+          partnershipIndexMap.set(partnershipKey, index);
+          const color = partnershipColors[index % partnershipColors.length];
+          partnershipColorMap.set(partnershipKey, color);
+        }
+      });
+    });
+
     // Create partnership nodes and connections for each parent pair
     for (const [parentKey, children] of parentPartnerships.entries()) {
       const [parent1Id, parent2Id] = parentKey.split('-');
@@ -310,13 +394,17 @@ export class FamilyTreeView {
       }
 
       const partnershipId = `partnership-${parent1Id}-${parent2Id}`;
+      const partnershipColor = partnershipColorMap.get(parentKey) || '#aaa';
+      const partnershipIndex = partnershipIndexMap.get(parentKey) || 0;
 
       // Add partnership node
       elements.push({
         group: 'nodes',
         data: {
           id: partnershipId,
-          type: 'partnership'
+          type: 'partnership',
+          partnershipColor: partnershipColor,
+          partnershipIndex: partnershipIndex
         }
       });
 
@@ -327,7 +415,8 @@ export class FamilyTreeView {
           id: `${parent1Id}-${partnershipId}`,
           source: parent1Id,
           target: partnershipId,
-          type: 'spouse'
+          type: 'spouse',
+          partnershipColor: partnershipColor
         }
       });
 
@@ -337,7 +426,8 @@ export class FamilyTreeView {
           id: `${parent2Id}-${partnershipId}`,
           source: parent2Id,
           target: partnershipId,
-          type: 'spouse'
+          type: 'spouse',
+          partnershipColor: partnershipColor
         }
       });
 
@@ -349,7 +439,8 @@ export class FamilyTreeView {
             id: `${partnershipId}-${child.id}`,
             source: partnershipId,
             target: child.id,
-            type: 'parent'
+            type: 'parent',
+            partnershipColor: partnershipColor
           }
         });
       }
@@ -470,13 +561,29 @@ export class FamilyTreeView {
       rankDir: 'TB', // Top to bottom
       nodeSep: 100,  // Horizontal spacing between nodes
       rankSep: 150,  // Vertical spacing between ranks
-      padding: 50
+      padding: 50,
+      ranker: 'network-simplex' // Better ranking algorithm
     });
 
     layout.run();
 
-    // Fit to viewport after layout completes
+    // After layout, adjust partnership node positions to spread them vertically
     setTimeout(() => {
+      const partnershipNodes = this.cy.nodes('[type="partnership"]');
+
+      // Offset each partnership based on its index
+      partnershipNodes.forEach(node => {
+        const index = node.data('partnershipIndex');
+        if (index !== undefined && index > 0) {
+          const currentPos = node.position();
+          const verticalOffset = index * 50; // 50px per additional partnership
+          node.position({
+            x: currentPos.x,
+            y: currentPos.y + verticalOffset
+          });
+        }
+      });
+
       this.cy.fit(50);
     }, 100);
   }
