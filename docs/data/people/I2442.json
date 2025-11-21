@@ -1,0 +1,18 @@
+{
+  "id": "I2442",
+  "name": "Anthony Slaymaker",
+  "givenName": "Anthony",
+  "surname": "Slaymaker",
+  "sex": "M",
+  "birthDate": "1960",
+  "birthPlace": "Marsh Gibbon, Buckinghamshire",
+  "deathDate": "1978",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2438",
+    "I2437"
+  ]
+}

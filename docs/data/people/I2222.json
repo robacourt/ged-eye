@@ -1,0 +1,29 @@
+{
+  "id": "I2222",
+  "name": "Louisa Haycourt",
+  "givenName": "Louisa",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "FEB 1851",
+  "birthPlace": "Bristol, Saints Philip & Jacob",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Bristol/HO107 1954 139 12 50.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "baptismDate": "23 MAY 1852",
+  "baptismPlace": "Bristol, Holy Trinity",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Clifton, Nible House Court, 3 West St"
+    }
+  ],
+  "avatar": "avatars/I2222_0.jpg"
+}

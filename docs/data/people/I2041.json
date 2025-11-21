@@ -1,0 +1,25 @@
+{
+  "id": "I2041",
+  "name": "Murray Collins",
+  "givenName": "Murray",
+  "surname": "Collins",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2040"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2040",
+      "familyId": "F736",
+      "marriageDate": "MAY 1983",
+      "marriagePlace": "Christchurch, New Zealand"
+    }
+  ]
+}

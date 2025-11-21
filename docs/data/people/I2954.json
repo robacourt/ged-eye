@@ -1,0 +1,31 @@
+{
+  "id": "I2954",
+  "name": "Liffey Elizabeth Stokes",
+  "givenName": "Liffey Elizabeth",
+  "surname": "Stokes",
+  "sex": "F",
+  "birthDate": "26 NOV 1887",
+  "birthPlace": "Berkshire, Bradfield",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I457",
+    "I2955"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I457",
+      "familyId": "F1012"
+    },
+    {
+      "spouseId": "I2955",
+      "familyId": "F1013",
+      "marriageDate": "JAN 1911",
+      "marriagePlace": "Hampshire, Portsmouth",
+      "divorceDate": "1914"
+    }
+  ]
+}

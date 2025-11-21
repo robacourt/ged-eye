@@ -1,0 +1,18 @@
+{
+  "id": "I961",
+  "name": "Mary A. L. A'Court",
+  "givenName": "Mary A. L.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1886",
+  "birthPlace": "Mudgee, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I955",
+    "I959"
+  ]
+}

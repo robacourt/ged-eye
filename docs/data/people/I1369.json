@@ -1,0 +1,27 @@
+{
+  "id": "I1369",
+  "name": "Priscilla Cundy",
+  "givenName": "Priscilla",
+  "surname": "Cundy",
+  "sex": "F",
+  "birthDate": "1847",
+  "birthPlace": "Wellington, New Zealand",
+  "deathDate": "1931",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1344"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1347",
+    "I1348"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1344",
+      "familyId": "F531",
+      "marriageDate": "1873"
+    }
+  ]
+}

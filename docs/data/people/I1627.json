@@ -1,0 +1,30 @@
+{
+  "id": "I1627",
+  "name": "Herbert Ford",
+  "givenName": "Herbert",
+  "surname": "Ford",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Jean Joan  Freddy Ford.jpg"
+  ],
+  "spouseIds": [
+    "I1033"
+  ],
+  "childIds": [
+    "I1993",
+    "I1994",
+    "I1995"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1033",
+      "familyId": "F713"
+    }
+  ],
+  "avatar": "avatars/I1627_0.jpg"
+}

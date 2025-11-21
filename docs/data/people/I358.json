@@ -1,0 +1,44 @@
+{
+  "id": "I358",
+  "name": "Jane Toogood",
+  "givenName": "Jane",
+  "surname": "Toogood",
+  "sex": "F",
+  "birthDate": "Abt 1859",
+  "birthPlace": "Wiltshire, Donhead St Mary",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Dorset/Bourton/RG14 12188 29.jpg"
+  ],
+  "spouseIds": [
+    "I221"
+  ],
+  "childIds": [
+    "I2873",
+    "I2535",
+    "I2536"
+  ],
+  "parentIds": [
+    "I359"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Chapel Hill, Vezey's Hole"
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Bourton, Marvin's House"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I221",
+      "familyId": "F120",
+      "marriageDate": "12.2.1877",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "avatar": "avatars/I358_0.jpg"
+}

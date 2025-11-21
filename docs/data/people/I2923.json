@@ -1,0 +1,38 @@
+{
+  "id": "I2923",
+  "name": "Eliza Jane Love",
+  "givenName": "Eliza Jane",
+  "surname": "Love",
+  "sex": "F",
+  "birthDate": "1881",
+  "birthPlace": "Wiltshire, Mere",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2922"
+  ],
+  "childIds": [
+    "I2924"
+  ],
+  "parentIds": [
+    "I2925",
+    "I2926"
+  ],
+  "baptismDate": "20 JAN 1883",
+  "baptismPlace": "Wiltshire, Mere",
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Dilton Marsh"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2922",
+      "familyId": "F997",
+      "marriageDate": "13 MAR 1904",
+      "marriagePlace": "Wiltshire, Mere"
+    }
+  ]
+}

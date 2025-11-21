@@ -1,0 +1,28 @@
+{
+  "id": "I255",
+  "name": "John Wiles",
+  "givenName": "John",
+  "surname": "Wiles",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I256"
+  ],
+  "childIds": [
+    "I254"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I256",
+      "familyId": "F131"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I337",
+  "name": "Clara Ellen",
+  "givenName": "Clara",
+  "surname": "Ellen",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I332"
+  ],
+  "childIds": [
+    "I338",
+    "I339",
+    "I340"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I332",
+      "familyId": "F160"
+    }
+  ]
+}

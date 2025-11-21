@@ -1,0 +1,38 @@
+{
+  "id": "I2414",
+  "name": "Elsie Rosina A'Court",
+  "givenName": "Elsie Rosina",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1892",
+  "birthPlace": "Box, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg",
+    "Data/Media/1911 census/Wiltshire/Corsham/RG14 11868 22.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "occupations": [
+    "Scullery maid domestic"
+  ],
+  "notes": [
+    "First name(s) Last name Relationship to head Marital status Sex Age Birth year Occupation Birth place"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Corsham, Neston Park"
+    }
+  ],
+  "avatar": "avatars/I2414_0.jpg"
+}

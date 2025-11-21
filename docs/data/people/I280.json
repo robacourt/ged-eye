@@ -1,0 +1,25 @@
+{
+  "id": "I280",
+  "name": "Andrew Curtis",
+  "givenName": "Andrew",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I281"
+  ],
+  "childIds": [
+    "I183"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I281",
+      "familyId": "F102"
+    }
+  ]
+}

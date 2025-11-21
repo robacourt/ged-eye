@@ -1,0 +1,45 @@
+{
+  "id": "I1191",
+  "name": "Ethel Elfrida A'Court",
+  "givenName": "Ethel Elfrida",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1885",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "AFT 1891",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Wiltshire/Box/RG12 1592 75 30.jpg",
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 19.jpg"
+  ],
+  "spouseIds": [
+    "I2410"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "occupations": [
+    "Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Wadswick Village, Box, Wiltshire, Cottages"
+    },
+    {
+      "date": "1901",
+      "place": "Wadswick Farm, Box, Wiltshire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2410",
+      "familyId": "F854",
+      "marriageDate": "3RD QTR  1904",
+      "marriagePlace": "Chippenham, Wiltshire"
+    }
+  ],
+  "avatar": "avatars/I1191_0.jpg"
+}

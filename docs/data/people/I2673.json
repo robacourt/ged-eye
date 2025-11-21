@@ -1,0 +1,18 @@
+{
+  "id": "I2673",
+  "name": "Kenneth J. Acreman",
+  "givenName": "Kenneth J.",
+  "surname": "Acreman",
+  "sex": "M",
+  "birthDate": "2QTR 1941",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1265",
+    "I1093"
+  ]
+}

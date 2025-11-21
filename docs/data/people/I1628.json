@@ -1,0 +1,27 @@
+{
+  "id": "I1628",
+  "name": "Nellie M A'Court",
+  "givenName": "Nellie M",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1890",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I284",
+    "I287"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    }
+  ],
+  "avatar": "avatars/I1628_0.jpg"
+}

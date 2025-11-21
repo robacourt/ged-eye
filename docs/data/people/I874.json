@@ -1,0 +1,59 @@
+{
+  "id": "I874",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1841",
+  "birthPlace": "Bath, Somerset",
+  "deathDate": "ABT 1917",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I926"
+  ],
+  "childIds": [
+    "I2468",
+    "I2469",
+    "I2470",
+    "I2471"
+  ],
+  "parentIds": [
+    "I763",
+    "I871"
+  ],
+  "occupations": [
+    "Coachman",
+    "Coachman",
+    "Coachman",
+    "Church Clerk"
+  ],
+  "notes": [
+    "But the William you mention, I have from the 1881 census living in West"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Hertfordshire, Ware, Gilston, Lolings Cottage"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
+    },
+    {
+      "date": "1891",
+      "place": "West Derby, Lancashire, 2 Quarry Rd."
+    },
+    {
+      "date": "1911",
+      "place": "West Derby, Lancashire, 147 Eaton Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I926",
+      "familyId": "F375",
+      "marriageDate": "ABT 1868"
+    }
+  ]
+}

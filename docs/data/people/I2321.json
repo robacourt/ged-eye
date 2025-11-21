@@ -1,0 +1,38 @@
+{
+  "id": "I2321",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1831",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2322"
+  ],
+  "childIds": [
+    "I2323"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Castle Cary, Somerset, Mill Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Castle Cary, Bridgewater Buildings, Mill Lane."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2322",
+      "familyId": "F824"
+    }
+  ]
+}

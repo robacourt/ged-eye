@@ -1,0 +1,48 @@
+{
+  "id": "I455",
+  "name": "Herbert James Lent",
+  "givenName": "Herbert James",
+  "surname": "Lent",
+  "sex": "M",
+  "birthDate": "28 MAY1885",
+  "birthPlace": "Hounslow Middlesex",
+  "deathDate": "18 FEB 1972",
+  "deathPlace": "Kent, Bridge",
+  "photos": [
+    "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg"
+  ],
+  "spouseIds": [
+    "I459"
+  ],
+  "childIds": [
+    "I460",
+    "I461"
+  ],
+  "parentIds": [
+    "I452",
+    "I453"
+  ],
+  "occupations": [
+    "Cycle agent assistant",
+    "Auctioneers Clerk"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Scarborough, Yorkshire, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Dover, Kent 1 Harveyan Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I459",
+      "familyId": "F204",
+      "marriageDate": "APR 1909",
+      "marriagePlace": "Kent, Faversham"
+    }
+  ],
+  "avatar": "avatars/I455_0.jpg"
+}

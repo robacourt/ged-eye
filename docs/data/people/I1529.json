@@ -1,0 +1,27 @@
+{
+  "id": "I1529",
+  "name": "Lena Alice Carolyn Morgan",
+  "givenName": "Lena Alice Carolyn",
+  "surname": "Morgan",
+  "sex": "F",
+  "birthDate": "31 MAR 1962",
+  "birthPlace": "Leamington Spa, Warwickshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1530"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1524",
+    "I1525"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1530",
+      "familyId": "F584",
+      "marriageDate": "1 NOV 1986"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1662",
+  "name": "Daniel Barber Baker",
+  "givenName": "Daniel Barber",
+  "surname": "Baker",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1290"
+  ],
+  "childIds": [
+    "I1663"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1290",
+      "familyId": "F519"
+    }
+  ]
+}

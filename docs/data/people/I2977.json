@@ -1,0 +1,31 @@
+{
+  "id": "I2977",
+  "name": "Elizabeth Kelly",
+  "givenName": "Elizabeth",
+  "surname": "Kelly",
+  "sex": "F",
+  "birthDate": "ABT 1870",
+  "birthPlace": "Ireland, County Antrim",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I452"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Kent, Canterbury, 24 Havelock St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I452",
+      "familyId": "F1021",
+      "marriageDate": "3QTR 1916",
+      "marriagePlace": "Kent, Canterbury"
+    }
+  ]
+}

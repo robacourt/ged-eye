@@ -1,0 +1,28 @@
+{
+  "id": "I1391",
+  "name": "Alle Douwe Mulder",
+  "givenName": "Alle Douwe",
+  "surname": "Mulder",
+  "sex": "M",
+  "birthDate": "14JUL 1943",
+  "birthPlace": "Warffum, Provinsie Groningen, Holland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1392"
+  ],
+  "childIds": [
+    "I1393",
+    "I1390",
+    "I1394",
+    "I1395"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1392",
+      "familyId": "F552"
+    }
+  ]
+}

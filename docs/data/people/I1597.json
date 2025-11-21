@@ -1,0 +1,26 @@
+{
+  "id": "I1597",
+  "name": "Gordon Charles A'Court",
+  "givenName": "Gordon Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1600"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1595",
+    "I1599"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1600",
+      "familyId": "F600"
+    }
+  ]
+}

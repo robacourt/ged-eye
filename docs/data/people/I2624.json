@@ -1,0 +1,18 @@
+{
+  "id": "I2624",
+  "name": "Samantha Lee Kostic",
+  "givenName": "Samantha Lee",
+  "surname": "Kostic",
+  "sex": "F",
+  "birthDate": "27 MAY 1977",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2622",
+    "I2617"
+  ]
+}

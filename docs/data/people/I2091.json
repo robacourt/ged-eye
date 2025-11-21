@@ -1,0 +1,23 @@
+{
+  "id": "I2091",
+  "name": "Katie Fletcher",
+  "givenName": "Katie",
+  "surname": "Fletcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2090"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2090",
+      "familyId": "F747"
+    }
+  ]
+}

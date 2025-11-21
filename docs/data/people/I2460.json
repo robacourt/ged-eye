@@ -1,0 +1,35 @@
+{
+  "id": "I2460",
+  "name": "Frederick A'Court",
+  "givenName": "Frederick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1884",
+  "birthPlace": "Hoxton, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Holborn/RG12 233 83 9.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 220 113 47.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I520",
+    "I521"
+  ],
+  "occupations": [
+    "Drapers Packer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
+    },
+    {
+      "date": "1901",
+      "place": "Hackney, London,  39 Gilpin Road."
+    }
+  ],
+  "avatar": "avatars/I2460_0.jpg"
+}

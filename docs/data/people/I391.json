@@ -1,0 +1,31 @@
+{
+  "id": "I391",
+  "name": "Ruth Risher",
+  "givenName": "Ruth",
+  "surname": "Risher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I384"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1777",
+    "I1925"
+  ],
+  "notes": [
+    "of Virginia USA"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I384",
+      "familyId": "F177",
+      "marriageDate": "26 MAR 1945",
+      "marriagePlace": "USA, Virginia, Charlottesville"
+    }
+  ]
+}

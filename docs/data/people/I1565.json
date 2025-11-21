@@ -1,0 +1,40 @@
+{
+  "id": "I1565",
+  "name": "Nellie A'Court",
+  "givenName": "Nellie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1889",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 92 29.jpg",
+    "Data/Media/1901 census/Dorset/Poole/RG13 1979 134 37.jpg",
+    "Data/Media/1911 census/Dorset/Poole/RG14 12279 69.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I298",
+    "I1562"
+  ],
+  "occupations": [
+    "Shop Assistant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Poole, Dorset, 30 South Rd."
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Poole, Russell Place."
+    },
+    {
+      "date": "1911",
+      "place": "Poole, Dorset, 30 South Rd."
+    }
+  ],
+  "avatar": "avatars/I1565_0.jpg"
+}

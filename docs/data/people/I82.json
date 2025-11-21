@@ -1,0 +1,61 @@
+{
+  "id": "I82",
+  "name": "Martin A'Court",
+  "givenName": "Martin",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "8 FEB 1811",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": "1891",
+  "deathPlace": "Wincanton, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I215"
+  ],
+  "childIds": [
+    "I216",
+    "I217",
+    "I218",
+    "I219",
+    "I220",
+    "I221"
+  ],
+  "parentIds": [
+    "I25",
+    "I80"
+  ],
+  "baptismDate": "14 APR 1811",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "41-1841  55-1861  62-1871  71-1881 of Poor House Corner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1861",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1871",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I215",
+      "familyId": "F53",
+      "marriageDate": "6 MAY 1835",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

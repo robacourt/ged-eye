@@ -1,0 +1,37 @@
+{
+  "id": "I1643",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1854",
+  "birthPlace": "Rochester, Kent",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1642"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Middlesex, Willesdon, 37 Tennyson Rd"
+    },
+    {
+      "date": "1901",
+      "place": "Willesden, Middlesex, 94 Charteris Rd"
+    },
+    {
+      "date": "1911",
+      "place": "London, Paddington, 49 Carlton Vale"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1642",
+      "familyId": "F609"
+    }
+  ]
+}

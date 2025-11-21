@@ -1,0 +1,30 @@
+{
+  "id": "I89",
+  "name": "Frederick A'Court Hatcher",
+  "givenName": "Frederick A'Court",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I236"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I88",
+    "I28"
+  ],
+  "baptismDate": "17 FEB 1805",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I236",
+      "familyId": "F57",
+      "marriageDate": "1 JAN 1831",
+      "marriagePlace": "Henstridge, Somerset"
+    }
+  ]
+}

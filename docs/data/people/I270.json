@@ -1,0 +1,31 @@
+{
+  "id": "I270",
+  "name": "Ellen Amelia Shute",
+  "givenName": "Ellen Amelia",
+  "surname": "Shute",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Shaftesbury, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I98"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I273",
+    "I274"
+  ],
+  "notes": [
+    "14-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I98",
+      "familyId": "F60",
+      "marriageDate": "5.11.1857",
+      "marriagePlace": "Shaftesbury, Dorset, St. James"
+    }
+  ]
+}

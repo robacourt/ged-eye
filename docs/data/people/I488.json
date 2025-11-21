@@ -1,0 +1,26 @@
+{
+  "id": "I488",
+  "name": "Alex Garnett",
+  "givenName": "Alex",
+  "surname": "Garnett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I489"
+  ],
+  "parentIds": [
+    "I2012",
+    "I2011"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F180"
+    }
+  ]
+}

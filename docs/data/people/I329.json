@@ -1,0 +1,23 @@
+{
+  "id": "I329",
+  "name": "George Wilkins",
+  "givenName": "George",
+  "surname": "Wilkins",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I328"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F158"
+    }
+  ]
+}

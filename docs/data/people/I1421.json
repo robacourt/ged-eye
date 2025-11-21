@@ -1,0 +1,30 @@
+{
+  "id": "I1421",
+  "name": "Cecil A'Court",
+  "givenName": "Cecil",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1901",
+  "birthPlace": "Queen Camel, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1110",
+    "I1106"
+  ],
+  "notes": [
+    "possible illigitmate son of Beatrice father may not have been Ernest Elford"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    }
+  ],
+  "avatar": "avatars/I1421_0.jpg"
+}

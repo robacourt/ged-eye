@@ -1,0 +1,29 @@
+{
+  "id": "I2092",
+  "name": "Leila Holmes A'Court",
+  "givenName": "Leila Holmes",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2093"
+  ],
+  "childIds": [
+    "I2094",
+    "I2095"
+  ],
+  "parentIds": [
+    "I524",
+    "I525"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2093",
+      "familyId": "F748"
+    }
+  ]
+}

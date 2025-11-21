@@ -1,0 +1,27 @@
+{
+  "id": "I2201",
+  "name": "Demelza Elizabeth Rowe",
+  "givenName": "Demelza Elizabeth",
+  "surname": "Rowe",
+  "sex": "F",
+  "birthDate": "1976",
+  "birthPlace": "Derby",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2223"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2198",
+    "I2200"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2223",
+      "familyId": "F790",
+      "marriageDate": "SEP 2003"
+    }
+  ]
+}

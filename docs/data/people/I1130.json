@@ -1,0 +1,38 @@
+{
+  "id": "I1130",
+  "name": "Charles West",
+  "givenName": "Charles",
+  "surname": "West",
+  "sex": "M",
+  "birthDate": "ABT 1890",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1129"
+  ],
+  "childIds": [
+    "I1132"
+  ],
+  "parentIds": [
+    "I1131"
+  ],
+  "occupations": [
+    "Groom"
+  ],
+  "residences": [
+    {
+      "date": "1926",
+      "place": "Fordington"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1129",
+      "familyId": "F458",
+      "marriageDate": "21 SEP 1926",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

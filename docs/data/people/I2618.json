@@ -1,0 +1,29 @@
+{
+  "id": "I2618",
+  "name": "Helen Elizabeth A'Court",
+  "givenName": "Helen Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "6 NOV 1946",
+  "birthPlace": "Dubbo NSW Australia",
+  "deathDate": "18 SEP 1984",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2619"
+  ],
+  "childIds": [
+    "I2620",
+    "I2621"
+  ],
+  "parentIds": [
+    "I989",
+    "I990"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2619",
+      "familyId": "F912"
+    }
+  ]
+}

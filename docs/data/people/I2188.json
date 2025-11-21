@@ -1,0 +1,30 @@
+{
+  "id": "I2188",
+  "name": "John Rowe",
+  "givenName": "John",
+  "surname": "Rowe",
+  "sex": "M",
+  "birthDate": "ABT 1823",
+  "birthPlace": "St Philip's, Bristol",
+  "deathDate": "ABT 1907",
+  "deathPlace": "Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2189"
+  ],
+  "childIds": [
+    "I2154"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Forgeman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2189",
+      "familyId": "F773",
+      "marriageDate": "28 DEC 1845",
+      "marriagePlace": "St Paul's, Bristol"
+    }
+  ]
+}

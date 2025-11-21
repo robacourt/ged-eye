@@ -1,0 +1,75 @@
+{
+  "id": "I115",
+  "name": "Clement John A'Court",
+  "givenName": "Clement John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "14 JUL1882",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": "14 JAN 1916",
+  "deathPlace": "Bosham W. Sussex, 19 Williams Rd.",
+  "photos": [
+    "Data/Picture/C.J.A'C 1908.jpg",
+    "Data/Picture/Clement John A'Court (2).jpg",
+    "Data/Media/1891 census/Hampshire/Portsmouth/RG12 872 56 8.jpg",
+    "Data/Media/1901 census/Hampshire/Portsmouth/RG13 2493 71 15.jpg",
+    "Data/Media/1911 census/Sussex/RG14 5241 18.jpg",
+    "Data/Media/Baptisms/s2_gbprs_portsmouth_103772299_00073.jpg",
+    "Data/Media/Newspaper Reports/Portsmouth_Evening_News_20_January_1916_0003.jpg"
+  ],
+  "spouseIds": [
+    "I118"
+  ],
+  "childIds": [
+    "I119"
+  ],
+  "parentIds": [
+    "I106",
+    "I113"
+  ],
+  "baptismDate": "17 DEC 1896",
+  "baptismPlace": "Hampshire, Southsea, Victoria Rd Wesleyan Chapel",
+  "burialDate": "19 JAN 1916",
+  "burialPlace": "Portsmouth, Highland Rd Cemetery",
+  "occupations": [
+    "2nd Lt RFA",
+    "Lt. R.F.A. Retired"
+  ],
+  "notes": [
+    "Sent: Monday, January 27, 2003 9:33 AM"
+  ],
+  "education": "Portsmouth Grammar School",
+  "censusRecords": [
+    {
+      "date": "1891 AGE 8",
+      "place": "Landport, Portsmouth, Hampshire, 29 St. David's Rd"
+    },
+    {
+      "date": "1901",
+      "place": "Cosham Hampshire, Hilsea Barracks"
+    },
+    {
+      "date": "1911",
+      "place": "Copsale, Southwater, Sussex, The Whim Broadwater Lane. RH13 6QW"
+    }
+  ],
+  "residences": [
+    {
+      "date": "?",
+      "place": "Nordrach House, Charterhouse on Mendip, Bristol."
+    },
+    {
+      "date": "?",
+      "place": "Victoria Barracks, ClonMell, Tipper"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I118",
+      "familyId": "F69",
+      "marriageDate": "JUN QR. 1914",
+      "marriagePlace": ",Hampshire, Portsmouth"
+    }
+  ],
+  "avatar": "avatars/I115_0.jpg"
+}

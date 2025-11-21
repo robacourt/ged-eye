@@ -1,0 +1,66 @@
+{
+  "id": "I452",
+  "name": "William Alfred Lent",
+  "givenName": "William Alfred",
+  "surname": "Lent",
+  "sex": "M",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Scotland, Edinburgh",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I453",
+    "I2977"
+  ],
+  "childIds": [
+    "I454",
+    "I455",
+    "I456",
+    "I457",
+    "I118",
+    "I458"
+  ],
+  "parentIds": [
+    "I2980",
+    "I2979"
+  ],
+  "occupations": [
+    "Clerk Commission Agent",
+    "Newsagent",
+    "War Office, Clerk Record Office"
+  ],
+  "notes": [
+    "First name(s) William Alfred",
+    "First name(s) Wm Alfd",
+    "First name(s) William"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Scarborough, Yorkshire, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Kent, Dover,1 Harveyan Place"
+    },
+    {
+      "date": "1921",
+      "place": "Kent, Canterbury, 24 Havelock St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I453",
+      "familyId": "F72",
+      "marriageDate": "29 MAY 1882",
+      "marriagePlace": "Canterbury, Kent"
+    },
+    {
+      "spouseId": "I2977",
+      "familyId": "F1021",
+      "marriageDate": "3QTR 1916",
+      "marriagePlace": "Kent, Canterbury"
+    }
+  ]
+}

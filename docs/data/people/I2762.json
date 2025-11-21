@@ -1,0 +1,25 @@
+{
+  "id": "I2762",
+  "name": "Alma Unknown",
+  "givenName": "Alma",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1449"
+  ],
+  "childIds": [
+    "I2763"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1449",
+      "familyId": "F961"
+    }
+  ]
+}

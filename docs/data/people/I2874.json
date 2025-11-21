@@ -1,0 +1,27 @@
+{
+  "id": "I2874",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1838",
+  "birthPlace": "Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Kinson/RG12 1637 71 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Carter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Kinson, Old Wareham Rd, Vine Cottage"
+    }
+  ],
+  "avatar": "avatars/I2874_0.jpg"
+}

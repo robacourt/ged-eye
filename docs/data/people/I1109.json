@@ -1,0 +1,67 @@
+{
+  "id": "I1109",
+  "name": "Hannah Jane Crew",
+  "givenName": "Hannah Jane",
+  "surname": "Crew",
+  "sex": "F",
+  "birthDate": "ABT 1864",
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Hannah Crew.jpg"
+  ],
+  "spouseIds": [
+    "I1100"
+  ],
+  "childIds": [
+    "I1105",
+    "I1106",
+    "I1107",
+    "I1338",
+    "I1108",
+    "I1090",
+    "I1419",
+    "I1420",
+    "I2530"
+  ],
+  "parentIds": [
+    "I2406",
+    "I2407"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stalbridge, Dorset, Landshire Lane"
+    },
+    {
+      "date": "1881",
+      "place": "East Stower, Dorset, Highgrove Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Mells, Frome,  Somerset"
+    },
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1911",
+      "place": "Queen Camel, Somerset, Camel Hill"
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1912",
+      "place": "South Barrow"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1100",
+      "familyId": "F438"
+    }
+  ],
+  "avatar": "avatars/I1109_0.jpg"
+}

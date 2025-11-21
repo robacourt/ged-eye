@@ -1,0 +1,27 @@
+{
+  "id": "I2189",
+  "name": "Caroline Batho",
+  "givenName": "Caroline",
+  "surname": "Batho",
+  "sex": "F",
+  "birthDate": "ABT 1822",
+  "birthPlace": "Bristol",
+  "deathDate": "13 JUL 1875",
+  "deathPlace": "St Philip's & Jacob, Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2188"
+  ],
+  "childIds": [
+    "I2154"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2188",
+      "familyId": "F773",
+      "marriageDate": "28 DEC 1845",
+      "marriagePlace": "St Paul's, Bristol"
+    }
+  ]
+}

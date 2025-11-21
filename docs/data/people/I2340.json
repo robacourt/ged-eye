@@ -1,0 +1,26 @@
+{
+  "id": "I2340",
+  "name": "Unknown Leach",
+  "givenName": "Unknown",
+  "surname": "Leach",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2341"
+  ],
+  "childIds": [
+    "I1428",
+    "I2339"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2341",
+      "familyId": "F831"
+    }
+  ]
+}

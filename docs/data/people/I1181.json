@@ -1,0 +1,46 @@
+{
+  "id": "I1181",
+  "name": "Sidney Haskett",
+  "givenName": "Sidney",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1861",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1182"
+  ],
+  "childIds": [
+    "I1196",
+    "I1199",
+    "I1204",
+    "I1210",
+    "I1211",
+    "I1212",
+    "I1215",
+    "I1242"
+  ],
+  "parentIds": [
+    "I1175",
+    "I181"
+  ],
+  "baptismDate": "1862",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Engine Driver"
+  ],
+  "residences": [
+    {
+      "date": "1881",
+      "place": "Caraway Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1182",
+      "familyId": "F482"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I922",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I916"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Date Unknown: Lived at Buller Street, Swindon, Wiltshire, England"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I916",
+      "familyId": "F383"
+    }
+  ]
+}

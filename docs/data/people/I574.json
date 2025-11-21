@@ -1,0 +1,25 @@
+{
+  "id": "I574",
+  "name": "Sarah Jeffries",
+  "givenName": "Sarah",
+  "surname": "Jeffries",
+  "sex": "F",
+  "birthDate": "1831",
+  "birthPlace": null,
+  "deathDate": "1877",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I575"
+  ],
+  "childIds": [
+    "I453"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I575",
+      "familyId": "F316"
+    }
+  ]
+}

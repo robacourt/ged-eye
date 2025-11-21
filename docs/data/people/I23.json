@@ -1,0 +1,73 @@
+{
+  "id": "I23",
+  "name": "Robert A'Court",
+  "givenName": "Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1776",
+  "birthPlace": null,
+  "deathDate": "5 MAY 1844",
+  "deathPlace": "Somerset, Henstridge",
+  "photos": [],
+  "spouseIds": [
+    "I69",
+    "I71"
+  ],
+  "childIds": [
+    "I70",
+    "I2186",
+    "I73",
+    "I75",
+    "I74",
+    "I76",
+    "I77",
+    "I78",
+    "I79"
+  ],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "17 NOV 1776",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "11 MAY 1844",
+  "burialPlace": "Henstridge, Somerset",
+  "occupations": [
+    "Master Butcher",
+    "Butcher",
+    "Labourer"
+  ],
+  "notes": [
+    "Parish of Marnhull"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "residences": [
+    {
+      "date": "30JAN.-30APR 1832",
+      "place": "Prison, Poaching"
+    },
+    {
+      "date": "10SEP-9NOV 1834",
+      "place": "Prison, Poaching"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I69",
+      "familyId": "F17",
+      "marriageDate": "8 OCT 1798",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "spouseId": "I71",
+      "familyId": "F18",
+      "marriageDate": "20 MAR 1815",
+      "marriagePlace": "Henstridge Ash, Somerset"
+    }
+  ]
+}

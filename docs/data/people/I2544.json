@@ -1,0 +1,31 @@
+{
+  "id": "I2544",
+  "name": "Grace Louise A'Court",
+  "givenName": "Grace Louise",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1898",
+  "birthPlace": "Winchester, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Camden Town/RG14 718 92.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I296",
+    "I2543"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Camden Town, 82 St. Augustines Rd."
+    },
+    {
+      "date": "1901",
+      "place": "Hampshire, Winchester, 15 Elm Rd."
+    }
+  ],
+  "avatar": "avatars/I2544_0.jpg"
+}

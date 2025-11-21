@@ -1,0 +1,18 @@
+{
+  "id": "I2983",
+  "name": "Adelaide Emmeline Catherine Frentzel",
+  "givenName": "Adelaide Emmeline Catherine",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": "25 JUNE 1840",
+  "birthPlace": null,
+  "deathDate": "1 FEB 1917",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I441",
+    "I442"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I1401",
+  "name": "Albert Acourt",
+  "givenName": "Albert",
+  "surname": "Acourt",
+  "sex": "M",
+  "birthDate": "1 JAN 1894",
+  "birthPlace": "St Heliers, Jersey, Chanel Islands",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "residences": [
+    {
+      "date": null,
+      "place": "Bottineau,ND,USA"
+    }
+  ]
+}

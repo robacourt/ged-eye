@@ -1,0 +1,45 @@
+{
+  "id": "I2854",
+  "name": "Hannah Unknown",
+  "givenName": "Hannah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1856",
+  "birthPlace": "London, Lambeth",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2853"
+  ],
+  "childIds": [
+    "I2606",
+    "I2855",
+    "I2856",
+    "I2885",
+    "I2886",
+    "I2897",
+    "I2898"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Bromley, 195 Grundy St."
+    },
+    {
+      "date": "1891",
+      "place": "London, West Ham, Sussex St"
+    },
+    {
+      "date": "1911",
+      "place": "London, West Ham, 4 Cave Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2853",
+      "familyId": "F976"
+    }
+  ]
+}

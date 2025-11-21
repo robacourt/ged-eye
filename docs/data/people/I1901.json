@@ -1,0 +1,27 @@
+{
+  "id": "I1901",
+  "name": "Emma Maria Dobbs",
+  "givenName": "Emma Maria",
+  "surname": "Dobbs",
+  "sex": "F",
+  "birthDate": "1842",
+  "birthPlace": "Maryborough, Queens County, Ireland",
+  "deathDate": "30 MAR 1882",
+  "deathPlace": "Sydenham, Christchurch, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I1900"
+  ],
+  "childIds": [
+    "I797"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1900",
+      "familyId": "F673",
+      "marriageDate": "12 MAY 1859",
+      "marriagePlace": "Christchurch, NZ"
+    }
+  ]
+}

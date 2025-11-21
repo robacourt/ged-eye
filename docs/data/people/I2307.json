@@ -1,0 +1,23 @@
+{
+  "id": "I2307",
+  "name": "Kenneth Lister Bethune",
+  "givenName": "Kenneth Lister",
+  "surname": "Bethune",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I941"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I941",
+      "familyId": "F817"
+    }
+  ]
+}

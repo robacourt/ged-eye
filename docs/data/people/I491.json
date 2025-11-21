@@ -1,0 +1,45 @@
+{
+  "id": "I491",
+  "name": "Jane Haines",
+  "givenName": "Jane",
+  "surname": "Haines",
+  "sex": "F",
+  "birthDate": "ABT 1863",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": "1926",
+  "deathPlace": "Somerset, Wincanton",
+  "photos": [],
+  "spouseIds": [
+    "I490"
+  ],
+  "childIds": [
+    "I492",
+    "I494",
+    "I495",
+    "I493",
+    "I371"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Sherborne, Over Compton, Lodge"
+    },
+    {
+      "date": "1901",
+      "place": "Nether Compton, Dorset, Halfway House"
+    },
+    {
+      "date": "1911",
+      "place": "Nether Compton, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I490",
+      "familyId": "F169",
+      "marriageDate": "DEC 1882",
+      "marriagePlace": "Dorset, Sherborne"
+    }
+  ]
+}

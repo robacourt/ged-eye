@@ -1,0 +1,29 @@
+{
+  "id": "I45",
+  "name": "Jemima Unknown",
+  "givenName": "Jemima",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Galhampton, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I34"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Housekeeper"
+  ],
+  "notes": [
+    "47-1851 60-1861 70-1871"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I34",
+      "familyId": "F24"
+    }
+  ]
+}

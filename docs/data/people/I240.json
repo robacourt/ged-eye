@@ -1,0 +1,60 @@
+{
+  "id": "I240",
+  "name": "Ann Curtis",
+  "givenName": "Ann",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1819",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 38 8.jpg"
+  ],
+  "spouseIds": [
+    "I39"
+  ],
+  "childIds": [
+    "I241",
+    "I242",
+    "I243",
+    "I244",
+    "I245"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Glover",
+    "Glove Maker",
+    "Caretaker of Hall"
+  ],
+  "notes": [
+    "32-1851  52-1871  62-1881  72-1891"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Sackmen Lane"
+    },
+    {
+      "date": "1891",
+      "place": null
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I39",
+      "familyId": "F27",
+      "marriageDate": "22.2.1842",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ],
+  "avatar": "avatars/I240_0.jpg"
+}

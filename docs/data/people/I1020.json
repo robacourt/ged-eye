@@ -1,0 +1,25 @@
+{
+  "id": "I1020",
+  "name": "Basil Cantem",
+  "givenName": "Basil",
+  "surname": "Cantem",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1021"
+  ],
+  "childIds": [
+    "I1019"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1021",
+      "familyId": "F420"
+    }
+  ]
+}

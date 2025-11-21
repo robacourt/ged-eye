@@ -1,0 +1,18 @@
+{
+  "id": "I2642",
+  "name": "Elsie May A'Court",
+  "givenName": "Elsie May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1914",
+  "birthPlace": "London, Camberwell",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2571",
+    "I2572"
+  ]
+}

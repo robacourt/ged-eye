@@ -1,0 +1,28 @@
+{
+  "id": "I842",
+  "name": "Nellie Gwendoline A'Court",
+  "givenName": "Nellie Gwendoline",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "27 DEC 1904",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I855"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I855",
+      "familyId": "F367",
+      "marriageDate": "1931",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

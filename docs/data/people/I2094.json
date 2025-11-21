@@ -1,0 +1,18 @@
+{
+  "id": "I2094",
+  "name": "Janet Fletcher",
+  "givenName": "Janet",
+  "surname": "Fletcher",
+  "sex": "F",
+  "birthDate": "1955",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2093",
+    "I2092"
+  ]
+}

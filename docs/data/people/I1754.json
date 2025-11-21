@@ -1,0 +1,23 @@
+{
+  "id": "I1754",
+  "name": "Edwin Durrant",
+  "givenName": "Edwin",
+  "surname": "Durrant",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "baptismDate": "28 JUL 1826",
+  "baptismPlace": "Folke, Dorset",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    }
+  ]
+}

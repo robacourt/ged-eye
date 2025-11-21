@@ -1,0 +1,27 @@
+{
+  "id": "I2986",
+  "name": "Douglas Lewis Saunders",
+  "givenName": "Douglas Lewis",
+  "surname": "Saunders",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/London/RG15 06619 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2988",
+    "I2731"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "London, Stoke Newington, 4 Leswin Place."
+    }
+  ],
+  "avatar": "avatars/I2986_0.jpg"
+}

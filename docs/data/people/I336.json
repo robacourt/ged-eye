@@ -1,0 +1,25 @@
+{
+  "id": "I336",
+  "name": "Jane Parsons ??????",
+  "givenName": "Jane Parsons",
+  "surname": "??????",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I335"
+  ],
+  "childIds": [
+    "I330"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I335",
+      "familyId": "F159"
+    }
+  ]
+}

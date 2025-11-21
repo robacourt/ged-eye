@@ -1,0 +1,39 @@
+{
+  "id": "I2",
+  "name": "Susannah Rowland",
+  "givenName": "Susannah",
+  "surname": "Rowland",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "ANTE1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1"
+  ],
+  "childIds": [
+    "I3",
+    "I4",
+    "I5",
+    "I6",
+    "I7",
+    "I8",
+    "I9",
+    "I10",
+    "I11"
+  ],
+  "parentIds": [
+    "I133",
+    "I134"
+  ],
+  "baptismDate": "3 FEB 1793",
+  "marriages": [
+    {
+      "spouseId": "I1",
+      "familyId": "F1",
+      "marriageDate": "21 MAR1813",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ]
+}

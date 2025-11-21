@@ -1,0 +1,46 @@
+{
+  "id": "I456",
+  "name": "Lilian Julia Lent",
+  "givenName": "Lilian Julia",
+  "surname": "Lent",
+  "sex": "F",
+  "birthDate": "8 APR 1887",
+  "birthPlace": "Leeds Yorkshire",
+  "deathDate": "24 DEC 1948",
+  "deathPlace": "Kent, Canterbury",
+  "photos": [
+    "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg"
+  ],
+  "spouseIds": [
+    "I2952"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I452",
+    "I453"
+  ],
+  "baptismDate": "4 MAY 1887",
+  "baptismPlace": "Yorkshire, Leeds, Sheepscar, St Clement",
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Scarborough, Yorkshire, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Kent, Canterbury,"
+    },
+    {
+      "date": "1921",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2952",
+      "familyId": "F1010",
+      "marriageDate": "OCT 1910"
+    }
+  ],
+  "avatar": "avatars/I456_0.jpg"
+}

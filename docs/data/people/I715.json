@@ -1,0 +1,23 @@
+{
+  "id": "I715",
+  "name": "Melior Hill",
+  "givenName": "Melior",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": "BEF 1694",
+  "birthPlace": null,
+  "deathDate": "AFT 1707",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I552"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I552",
+      "familyId": "F233"
+    }
+  ]
+}

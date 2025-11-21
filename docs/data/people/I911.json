@@ -1,0 +1,32 @@
+{
+  "id": "I911",
+  "name": "Rose Ann Couling",
+  "givenName": "Rose Ann",
+  "surname": "Couling",
+  "sex": "F",
+  "birthDate": "ABT 1859",
+  "birthPlace": "Kempsford, Gloucestershire, England",
+  "deathDate": "AFT 1897",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I231"
+  ],
+  "childIds": [
+    "I912",
+    "I913",
+    "I914"
+  ],
+  "parentIds": [],
+  "notes": [
+    "1881"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I231",
+      "familyId": "F126",
+      "marriageDate": "12 MAY 1892",
+      "marriagePlace": "Kempsford,  Gloucestershire"
+    }
+  ]
+}

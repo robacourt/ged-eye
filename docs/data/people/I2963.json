@@ -1,0 +1,19 @@
+{
+  "id": "I2963",
+  "name": "Betty A'Court",
+  "givenName": "Betty",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2961"
+  ],
+  "baptismDate": "20 NOV 1743",
+  "baptismPlace": "Dorset, Warham, Lady St Mary"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I1390",
+  "name": "Rachel Mascha Mulder",
+  "givenName": "Rachel Mascha",
+  "surname": "Mulder",
+  "sex": "F",
+  "birthDate": "1 FEB 1973",
+  "birthPlace": "Wagening, Provinsie Gelderland, Holland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I125"
+  ],
+  "childIds": [
+    "I1396",
+    "I1397"
+  ],
+  "parentIds": [
+    "I1391",
+    "I1392"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I125",
+      "familyId": "F79"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I294",
+  "name": "Fanny Unknown",
+  "givenName": "Fanny",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I293"
+  ],
+  "childIds": [
+    "I292"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I293",
+      "familyId": "F145"
+    }
+  ]
+}

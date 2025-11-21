@@ -1,0 +1,23 @@
+{
+  "id": "I2690",
+  "name": "John Robbins",
+  "givenName": "John",
+  "surname": "Robbins",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2594"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2594",
+      "familyId": "F935"
+    }
+  ]
+}

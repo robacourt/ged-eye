@@ -1,0 +1,32 @@
+{
+  "id": "I1979",
+  "name": "John Anthony Gumbrell",
+  "givenName": "John Anthony",
+  "surname": "Gumbrell",
+  "sex": "M",
+  "birthDate": "23 MAR 1924",
+  "birthPlace": "Isle of Wight",
+  "deathDate": "1 AUG 1995",
+  "deathPlace": "Cerne Abbas, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I1980"
+  ],
+  "childIds": [
+    "I1981",
+    "I1982",
+    "I1983"
+  ],
+  "parentIds": [
+    "I1977",
+    "I1978"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1980",
+      "familyId": "F709",
+      "marriageDate": "26 DEC 1963",
+      "marriagePlace": "Malvern, Worcestshire"
+    }
+  ]
+}

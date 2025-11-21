@@ -1,0 +1,32 @@
+{
+  "id": "I202",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1791",
+  "birthPlace": null,
+  "deathDate": "AFT 1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I65"
+  ],
+  "childIds": [
+    "I203",
+    "I204",
+    "I205",
+    "I206"
+  ],
+  "parentIds": [],
+  "notes": [
+    "59-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I65",
+      "familyId": "F43",
+      "marriagePlace": "Martock, Somerset"
+    }
+  ]
+}

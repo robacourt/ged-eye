@@ -1,0 +1,28 @@
+{
+  "id": "I965",
+  "name": "William C. Williams",
+  "givenName": "William C.",
+  "surname": "Williams",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I956"
+  ],
+  "childIds": [
+    "I969",
+    "I970"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I956",
+      "familyId": "F399",
+      "marriageDate": "1889",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

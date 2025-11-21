@@ -1,0 +1,25 @@
+{
+  "id": "I1957",
+  "name": "Brenda Wallis",
+  "givenName": "Brenda",
+  "surname": "Wallis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1956"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1956",
+      "familyId": "F699",
+      "marriageDate": "1960",
+      "marriagePlace": "London"
+    }
+  ]
+}

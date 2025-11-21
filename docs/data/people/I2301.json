@@ -1,0 +1,36 @@
+{
+  "id": "I2301",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1787",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2302"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Castle Cary, Somerset, Cockhill Lane"
+    },
+    {
+      "date": "1851",
+      "place": "Castle Cary"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2302",
+      "familyId": "F815"
+    }
+  ]
+}

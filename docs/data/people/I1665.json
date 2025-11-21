@@ -1,0 +1,30 @@
+{
+  "id": "I1665",
+  "name": "Lesley Taylor",
+  "givenName": "Lesley",
+  "surname": "Taylor",
+  "sex": "F",
+  "birthDate": "1950",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1666"
+  ],
+  "childIds": [
+    "I1667",
+    "I1668"
+  ],
+  "parentIds": [
+    "I1664",
+    "I1663"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1666",
+      "familyId": "F613",
+      "marriageDate": "1977"
+    }
+  ]
+}

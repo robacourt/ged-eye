@@ -1,0 +1,18 @@
+{
+  "id": "I1508",
+  "name": "Mary Jane Chamberlain",
+  "givenName": "Mary Jane",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "15 APR 1872",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I864",
+    "I777"
+  ]
+}

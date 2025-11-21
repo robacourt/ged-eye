@@ -1,0 +1,29 @@
+{
+  "id": "I2617",
+  "name": "Linda A'Court",
+  "givenName": "Linda",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "30 MAR 1951",
+  "birthPlace": "Dubbo NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2622"
+  ],
+  "childIds": [
+    "I2623",
+    "I2624"
+  ],
+  "parentIds": [
+    "I989",
+    "I990"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2622",
+      "familyId": "F913"
+    }
+  ]
+}

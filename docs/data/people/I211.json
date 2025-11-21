@@ -1,0 +1,35 @@
+{
+  "id": "I211",
+  "name": "John Maidment",
+  "givenName": "John",
+  "surname": "Maidment",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "East Stour, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I81"
+  ],
+  "childIds": [
+    "I212",
+    "I213",
+    "I214"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "44-1851  56-1861  64-1871 deaf"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I81",
+      "familyId": "F52",
+      "marriageDate": "25 DEC  1835",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

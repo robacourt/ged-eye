@@ -1,0 +1,59 @@
+{
+  "id": "I183",
+  "name": "Elizabeth Curtis",
+  "givenName": "Elizabeth",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1804",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I53"
+  ],
+  "childIds": [
+    "I184",
+    "I185",
+    "I186",
+    "I187",
+    "I188",
+    "I189"
+  ],
+  "parentIds": [
+    "I280",
+    "I281"
+  ],
+  "baptismDate": "5 APR 1804",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "15 OCT 1871",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "35-1841  46-1851  57-1861  blind"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, Marnhull Common"
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, Pleck, Muds Plot"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I53",
+      "familyId": "F35",
+      "marriageDate": "2 JUN 1825",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

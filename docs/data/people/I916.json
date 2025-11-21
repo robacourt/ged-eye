@@ -1,0 +1,29 @@
+{
+  "id": "I916",
+  "name": "Bill Godwin",
+  "givenName": "Bill",
+  "surname": "Godwin",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I922"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I231",
+    "I915"
+  ],
+  "notes": [
+    "Date Unknown: Lived at Buller Street, Swindon, Wiltshire, England"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I922",
+      "familyId": "F383"
+    }
+  ]
+}

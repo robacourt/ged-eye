@@ -1,0 +1,27 @@
+{
+  "id": "I511",
+  "name": "Richard George A'Court",
+  "givenName": "Richard George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1921",
+  "birthPlace": "Glamorgan",
+  "deathDate": "20.3.1945",
+  "deathPlace": "Burma",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I523",
+    "I522"
+  ],
+  "notes": [
+    "In Memory of"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Middlesex"
+    }
+  ]
+}

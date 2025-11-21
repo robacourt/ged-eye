@@ -1,0 +1,46 @@
+{
+  "id": "I494",
+  "name": "Arthur A'Court",
+  "givenName": "Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg",
+    "Data/Media/1901 census/Dorset/Nether Compton/RG13 2007 17 3.jpg",
+    "Data/Media/1911 census/Dorset/Nether Compton/RG14 12439 36.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I490",
+    "I491"
+  ],
+  "burialDate": "31 MAR 1962",
+  "burialPlace": "Over Compton, Dorset, St Michaels",
+  "occupations": [
+    "Under Cowman",
+    "Carter on Farm"
+  ],
+  "notes": [
+    "No issue"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Sherborne, Over Compton, Lodge"
+    },
+    {
+      "date": "1901",
+      "place": "Nether Compton, Dorset, Halfway House"
+    },
+    {
+      "date": "1911",
+      "place": "Nether Compton, Dorset"
+    }
+  ],
+  "avatar": "avatars/I494_0.jpg"
+}

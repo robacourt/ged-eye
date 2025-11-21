@@ -1,0 +1,20 @@
+{
+  "id": "I1080",
+  "name": "Herbert Curtis",
+  "givenName": "Herbert",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "4 APRIL 1852",
+  "baptismPlace": "Marnhull, Dorset"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I2021",
+  "name": "John Lines",
+  "givenName": "John",
+  "surname": "Lines",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I904"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F729"
+    }
+  ]
+}

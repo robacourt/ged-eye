@@ -1,0 +1,19 @@
+{
+  "id": "I606",
+  "name": "Denys Henry Damen",
+  "givenName": "Denys Henry",
+  "surname": "Damen",
+  "sex": "M",
+  "birthDate": "8.5.1930",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I605",
+    "I596"
+  ],
+  "baptismDate": "8.6.1930"
+}

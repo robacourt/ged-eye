@@ -1,0 +1,26 @@
+{
+  "id": "I2659",
+  "name": "Unknown Mitchell",
+  "givenName": "Unknown",
+  "surname": "Mitchell",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2660"
+  ],
+  "childIds": [
+    "I2658",
+    "I2677"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2660",
+      "familyId": "F926"
+    }
+  ]
+}

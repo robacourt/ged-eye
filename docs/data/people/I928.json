@@ -1,0 +1,57 @@
+{
+  "id": "I928",
+  "name": "Mary Anne Clarke",
+  "givenName": "Mary Anne",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": "ABT 1851",
+  "birthPlace": "Thurmaston, Leicestershire, England",
+  "deathDate": "ABT 1916",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I878"
+  ],
+  "childIds": [
+    "I1335",
+    "I528",
+    "I517",
+    "I2087",
+    "I2042",
+    "I1337",
+    "I524",
+    "I2090"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Dressmaker",
+    "News Agent",
+    "Shopkeeper Newsagent at home"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1891",
+      "place": "London,Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1901",
+      "place": "London, Putney, 12 Rotherwood Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "London, Putney, 72 Lower Richmond Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I878",
+      "familyId": "F226",
+      "marriageDate": "1871",
+      "marriagePlace": "Somerset"
+    }
+  ]
+}

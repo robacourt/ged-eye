@@ -1,0 +1,34 @@
+{
+  "id": "I1176",
+  "name": "Stephen Haskett",
+  "givenName": "Stephen",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1177"
+  ],
+  "childIds": [
+    "I1175"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": "1858",
+      "place": "Stapleford, Wiltshire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1177",
+      "familyId": "F480"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I811",
+  "name": "Elsie A'Court",
+  "givenName": "Elsie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "8 APR 1897",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "21 NOV 1985",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I816"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I794",
+    "I810"
+  ],
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I816",
+      "familyId": "F345",
+      "marriageDate": "28 JUN 1917",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

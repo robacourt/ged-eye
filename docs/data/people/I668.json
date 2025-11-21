@@ -1,0 +1,32 @@
+{
+  "id": "I668",
+  "name": "Arthur Joseph Warren",
+  "givenName": "Arthur Joseph",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I674"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I654",
+    "I666"
+  ],
+  "occupations": [
+    "Lorry Driver"
+  ],
+  "notes": [
+    "26 in 1934,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I674",
+      "familyId": "F281"
+    }
+  ]
+}

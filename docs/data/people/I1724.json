@@ -1,0 +1,17 @@
+{
+  "id": "I1724",
+  "name": "Daniel John A'Court",
+  "givenName": "Daniel John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4TH QTR 1975",
+  "birthPlace": "Southampton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1725"
+  ]
+}

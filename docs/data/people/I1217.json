@@ -1,0 +1,26 @@
+{
+  "id": "I1217",
+  "name": "Arthur William Worman",
+  "givenName": "Arthur William",
+  "surname": "Worman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1216"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Butler"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F492"
+    }
+  ]
+}

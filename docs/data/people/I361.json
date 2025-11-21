@@ -1,0 +1,51 @@
+{
+  "id": "I361",
+  "name": "Albert Charles M A'Court",
+  "givenName": "Albert Charles M",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1874",
+  "birthPlace": "Amesbury, Wiltshire, England",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Wiltshire/Calne/RG11 2035 125 25.jpg",
+    "Data/Media/1891 census/Wiltshire/Swindon/RG12 1584 123 40.jpg"
+  ],
+  "spouseIds": [
+    "I2934"
+  ],
+  "childIds": [
+    "I2935"
+  ],
+  "parentIds": [
+    "I229",
+    "I360"
+  ],
+  "occupations": [
+    "Apprentice Pattern Maker",
+    "Engineer's pattern maker, Goverment Dockyard."
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Wiltshire, Calne, Quemerford"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Swindon, Highworth, Shaftesbury Terrace, Dixon St."
+    },
+    {
+      "date": "1911",
+      "place": "Kent, Gillingham, 53 Windsor Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2934",
+      "familyId": "F1001",
+      "marriageDate": "Abt 1891"
+    }
+  ],
+  "avatar": "avatars/I361_0.jpg"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "I608",
+  "name": "Vincent Bastable",
+  "givenName": "Vincent",
+  "surname": "Bastable",
+  "sex": "M",
+  "birthDate": "14.12.1906",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I599"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I609",
+    "I610"
+  ],
+  "baptismDate": "13.1.1907",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carpenter"
+  ],
+  "notes": [
+    "27-1934,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I599",
+      "familyId": "F247",
+      "marriageDate": "2.6.1934",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
+}

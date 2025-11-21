@@ -1,0 +1,35 @@
+{
+  "id": "I2082",
+  "name": "Albert Frederick A'Court",
+  "givenName": "Albert Frederick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1899",
+  "birthPlace": "Camberwell, Peckham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
+  ],
+  "spouseIds": [
+    "I2278"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2065",
+    "I2066"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2278",
+      "familyId": "F805"
+    }
+  ],
+  "avatar": "avatars/I2082_0.jpg"
+}

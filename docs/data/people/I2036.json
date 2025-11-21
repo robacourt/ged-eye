@@ -1,0 +1,18 @@
+{
+  "id": "I2036",
+  "name": "Casey Helen A'Court",
+  "givenName": "Casey Helen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "20 OCT 1983",
+  "birthPlace": "Clyde, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2024",
+    "I2025"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I251",
+  "name": "Mary Jane Fudge",
+  "givenName": "Mary Jane",
+  "surname": "Fudge",
+  "sex": "F",
+  "birthDate": "24 JAN 1853",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I246",
+    "I40"
+  ],
+  "notes": [
+    "Please advise any errors/send additions to:"
+  ]
+}

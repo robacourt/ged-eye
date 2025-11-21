@@ -1,0 +1,35 @@
+{
+  "id": "I2085",
+  "name": "Samuel A'Court",
+  "givenName": "Samuel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1831",
+  "birthPlace": "Salford, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2086"
+  ],
+  "childIds": [
+    "I2065",
+    "I1904"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Journeyman Watch Jobber"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Chelsea, 3 Whitelands Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2086",
+      "familyId": "F745"
+    }
+  ]
+}

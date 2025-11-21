@@ -1,0 +1,23 @@
+{
+  "id": "I903",
+  "name": "Unknown Theobald",
+  "givenName": "Unknown",
+  "surname": "Theobald",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I889"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I889",
+      "familyId": "F379"
+    }
+  ]
+}

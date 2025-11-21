@@ -1,0 +1,21 @@
+{
+  "id": "I2238",
+  "name": "Nicholas Paul Davis",
+  "givenName": "Nicholas Paul",
+  "surname": "Davis",
+  "sex": "M",
+  "birthDate": "18 FEB 1964",
+  "birthPlace": "Hanham, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2151",
+    "I2152"
+  ],
+  "occupations": [
+    "Actuary"
+  ]
+}

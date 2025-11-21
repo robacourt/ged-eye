@@ -1,0 +1,29 @@
+{
+  "id": "I2049",
+  "name": "Tina Joyce A'Court",
+  "givenName": "Tina Joyce",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "14 MAR 1964",
+  "birthPlace": "Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2050"
+  ],
+  "childIds": [
+    "I2051",
+    "I2052"
+  ],
+  "parentIds": [
+    "I2053",
+    "I1857"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2050",
+      "familyId": "F739"
+    }
+  ]
+}

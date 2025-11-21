@@ -1,0 +1,18 @@
+{
+  "id": "I1393",
+  "name": "Gerard Simon Egge Emme Mulder",
+  "givenName": "Gerard Simon Egge Emme",
+  "surname": "Mulder",
+  "sex": "M",
+  "birthDate": "14JUN 1969",
+  "birthPlace": "Wagening, Provinsie Gelderland, Holland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1391",
+    "I1392"
+  ]
+}

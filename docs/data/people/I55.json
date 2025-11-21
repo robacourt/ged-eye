@@ -1,0 +1,36 @@
+{
+  "id": "I55",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1861",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I190"
+  ],
+  "childIds": [
+    "I191",
+    "I192",
+    "I193"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "15 FEB 1804",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Gentleman's Servant"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I190",
+      "familyId": "F36",
+      "marriageDate": "5 NOV 1827"
+    }
+  ]
+}

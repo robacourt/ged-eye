@@ -1,0 +1,17 @@
+{
+  "id": "I489",
+  "name": "Ruby Garnett",
+  "givenName": "Ruby",
+  "surname": "Garnett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I488"
+  ]
+}

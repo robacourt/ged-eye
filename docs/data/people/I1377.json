@@ -1,0 +1,26 @@
+{
+  "id": "I1377",
+  "name": "Vera A'Court",
+  "givenName": "Vera",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1383"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I947",
+    "I1370"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1383",
+      "familyId": "F547"
+    }
+  ]
+}

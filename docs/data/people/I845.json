@@ -1,0 +1,30 @@
+{
+  "id": "I845",
+  "name": "Ada Blanche A'Court",
+  "givenName": "Ada Blanche",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "8 MAY 1910",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I859"
+  ],
+  "childIds": [
+    "I2739"
+  ],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I859",
+      "familyId": "F371",
+      "marriageDate": "1931",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

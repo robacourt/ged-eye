@@ -1,0 +1,44 @@
+{
+  "id": "I30",
+  "name": "Sarah Unknown",
+  "givenName": "Sarah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "C.1765",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I17"
+  ],
+  "childIds": [
+    "I31",
+    "I32",
+    "I1",
+    "I33",
+    "I34",
+    "I35",
+    "I36"
+  ],
+  "parentIds": [],
+  "burialDate": "23 DEC 1841",
+  "burialPlace": "Henstridge, Somerset",
+  "notes": [
+    "relative of Ann Ford"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I17",
+      "familyId": "F2",
+      "marriageDate": "13 MAY 1788",
+      "marriagePlace": "Henstridge, Somerset"
+    }
+  ]
+}

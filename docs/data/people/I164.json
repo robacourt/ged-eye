@@ -1,0 +1,25 @@
+{
+  "id": "I164",
+  "name": "Sarah King",
+  "givenName": "Sarah",
+  "surname": "King",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I163"
+  ],
+  "childIds": [
+    "I152"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I163",
+      "familyId": "F86"
+    }
+  ]
+}

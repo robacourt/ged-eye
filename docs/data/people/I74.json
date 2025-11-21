@@ -1,0 +1,46 @@
+{
+  "id": "I74",
+  "name": "Zachariah A'Court",
+  "givenName": "Zachariah",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "JAN. 1826",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": "27 AUG 1868",
+  "deathPlace": "Ross, Westland, New Zealand,Totara River mouth",
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg"
+  ],
+  "spouseIds": [
+    "I1905"
+  ],
+  "childIds": [
+    "I2481",
+    "I1906"
+  ],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "baptismDate": "4 FEB 1826",
+  "baptismPlace": "Henstridge, Somerset",
+  "notes": [
+    "There is a possibility that there where TWO Zachariah one bap  1826 and dieing before c 1831and the other born c 1831/3 see 1841 census and marriage cert.",
+    "Known as Zaccheus"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1905",
+      "familyId": "F675",
+      "marriageDate": "1 MAR 1860",
+      "marriagePlace": "Melbourne, Australia, St James Cathedral"
+    }
+  ],
+  "avatar": "avatars/I74_0.jpg"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I200",
+  "name": "Martha Tanner",
+  "givenName": "Martha",
+  "surname": "Tanner",
+  "sex": "F",
+  "birthDate": "BEF 1818",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I62"
+  ],
+  "childIds": [
+    "I201"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I62",
+      "familyId": "F42",
+      "marriageDate": "10 JUL 1832",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

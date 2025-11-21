@@ -1,0 +1,32 @@
+{
+  "id": "I1632",
+  "name": "Henry Elliott",
+  "givenName": "Henry",
+  "surname": "Elliott",
+  "sex": "M",
+  "birthDate": "ABT 1879",
+  "birthPlace": "Totnes, Devon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1462"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Bricklayer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Ealing, Middlesex, 13 Norfolk Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1462",
+      "familyId": "F563"
+    }
+  ]
+}

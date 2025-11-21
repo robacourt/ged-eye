@@ -1,0 +1,39 @@
+{
+  "id": "I1260",
+  "name": "William Seymour",
+  "givenName": "William",
+  "surname": "Seymour",
+  "sex": "M",
+  "birthDate": "ABT 1832",
+  "birthPlace": "Bagber, Hinton St Mary, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I283"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1261",
+    "I1262"
+  ],
+  "baptismDate": "18 JUL 1831",
+  "baptismPlace": "Sturminster Newton, Dorset",
+  "burialDate": "24 MAY 1904",
+  "burialPlace": "Hinton St. Mary, Dorset",
+  "occupations": [
+    "Yeoman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I283",
+      "familyId": "F139"
+    }
+  ]
+}

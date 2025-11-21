@@ -1,0 +1,26 @@
+{
+  "id": "I2200",
+  "name": "Sally Pritchard",
+  "givenName": "Sally",
+  "surname": "Pritchard",
+  "sex": "F",
+  "birthDate": "ABT 1954",
+  "birthPlace": "England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2198"
+  ],
+  "childIds": [
+    "I2201",
+    "I2199"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2198",
+      "familyId": "F789"
+    }
+  ]
+}

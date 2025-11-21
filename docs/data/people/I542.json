@@ -1,0 +1,39 @@
+{
+  "id": "I542",
+  "name": "Ann Unknown",
+  "givenName": "Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "BEF 1650",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I541"
+  ],
+  "childIds": [
+    "I543",
+    "I544",
+    "I545",
+    "I546",
+    "I547",
+    "I534",
+    "I548",
+    "I549",
+    "I550",
+    "I551",
+    "I552",
+    "I553",
+    "I554"
+  ],
+  "parentIds": [],
+  "burialDate": "29.01.1713/14",
+  "burialPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I541",
+      "familyId": "F227"
+    }
+  ]
+}

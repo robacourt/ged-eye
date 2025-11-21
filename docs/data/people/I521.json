@@ -1,0 +1,49 @@
+{
+  "id": "I521",
+  "name": "Mary Ann Unknown",
+  "givenName": "Mary Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1853",
+  "birthPlace": "Paddington, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I520"
+  ],
+  "childIds": [
+    "I2459",
+    "I2460",
+    "I2461",
+    "I2462",
+    "I508",
+    "I2463"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 84 New North Rd.,"
+    },
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
+    },
+    {
+      "date": "1901",
+      "place": "Hackney, London,  39 Gilpin Road."
+    },
+    {
+      "date": "1911",
+      "place": "Edmonton, Middlesex, 84 Haselbury Rd. Upper Edmonton"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I520",
+      "familyId": "F215",
+      "marriageDate": "ABT 1880"
+    }
+  ]
+}

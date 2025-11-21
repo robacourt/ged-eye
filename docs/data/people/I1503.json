@@ -1,0 +1,23 @@
+{
+  "id": "I1503",
+  "name": "Henry Randall",
+  "givenName": "Henry",
+  "surname": "Randall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1905",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1502"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F574"
+    }
+  ]
+}

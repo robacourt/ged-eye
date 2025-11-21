@@ -1,0 +1,27 @@
+{
+  "id": "I2551",
+  "name": "Florence Phoebe A'Court",
+  "givenName": "Florence Phoebe",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1901",
+  "birthPlace": "London, Chelsea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Chelsea/RG14 399 462.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2555",
+    "I2548"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Chelsea, 29 Shawfield St."
+    }
+  ],
+  "avatar": "avatars/I2551_0.jpg"
+}

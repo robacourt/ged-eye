@@ -1,0 +1,27 @@
+{
+  "id": "I2561",
+  "name": "Ada Lousie A'Court",
+  "givenName": "Ada Lousie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1909",
+  "birthPlace": "London, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Mile End/RG14 1646 142.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2557",
+    "I2558"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Mile End Old Town, 23 Bloomfield Rd."
+    }
+  ],
+  "avatar": "avatars/I2561_0.jpg"
+}

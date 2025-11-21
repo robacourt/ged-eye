@@ -1,0 +1,29 @@
+{
+  "id": "I2366",
+  "name": "Jane Unknown",
+  "givenName": "Jane",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1762",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I578"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F837"
+    }
+  ]
+}

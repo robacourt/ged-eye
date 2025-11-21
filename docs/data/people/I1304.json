@@ -1,0 +1,29 @@
+{
+  "id": "I1304",
+  "name": "Gillian Arthur",
+  "givenName": "Gillian",
+  "surname": "Arthur",
+  "sex": "F",
+  "birthDate": "25 SEP 1948",
+  "birthPlace": "Leicester, Leicestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1086"
+  ],
+  "childIds": [
+    "I1097",
+    "I1098",
+    "I1099"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1086",
+      "familyId": "F433",
+      "marriageDate": "17 SEP 1965",
+      "marriagePlace": "Perth, Western Australia"
+    }
+  ]
+}

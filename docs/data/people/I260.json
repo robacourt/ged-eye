@@ -1,0 +1,53 @@
+{
+  "id": "I260",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Blandford Forum/RG 10 1978 61 26.jpg",
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg",
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 67 19.jpg",
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 67 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I44",
+    "I2827"
+  ],
+  "occupations": [
+    "Dressmaker",
+    "Living On Own Means"
+  ],
+  "notes": [
+    "On 1891 as Step daughter of Frances"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 20 White Cliff Mill St"
+    }
+  ],
+  "avatar": "avatars/I260_0.jpg"
+}

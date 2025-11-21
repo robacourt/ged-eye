@@ -1,0 +1,27 @@
+{
+  "id": "I2145",
+  "name": "Douglas Shakesheff",
+  "givenName": "Douglas",
+  "surname": "Shakesheff",
+  "sex": "M",
+  "birthDate": "1917",
+  "birthPlace": "Ledbury, Herefordshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2144"
+  ],
+  "childIds": [
+    "I2147",
+    "I2146",
+    "I2148"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2144",
+      "familyId": "F765"
+    }
+  ]
+}

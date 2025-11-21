@@ -1,0 +1,25 @@
+{
+  "id": "I1858",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1859"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1859",
+      "familyId": "F670",
+      "marriageDate": "25 DEC 1831",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+    }
+  ]
+}

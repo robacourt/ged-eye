@@ -1,0 +1,35 @@
+{
+  "id": "I2208",
+  "name": "Rose A'Court",
+  "givenName": "Rose",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1886",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Bristol/RG12 1981 112 3.jpg",
+    "Data/Media/1911 census/Bristol/RG14 15058 9999.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2190",
+    "I2192"
+  ],
+  "occupations": [
+    "Inmate-Imbecile"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Bristol, Gloucestershire, 7, Eugene Street, St Philip & St Jacob without"
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, Fishponds, Stapleton Workhouse"
+    }
+  ],
+  "avatar": "avatars/I2208_0.jpg"
+}

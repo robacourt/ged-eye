@@ -1,0 +1,26 @@
+{
+  "id": "I1244",
+  "name": "Mark Tom Seaviour Kendall",
+  "givenName": "Mark Tom Seaviour",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1243"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Dealer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F500"
+    }
+  ]
+}

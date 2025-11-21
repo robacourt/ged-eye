@@ -1,0 +1,25 @@
+{
+  "id": "I372",
+  "name": "Edna M A'Court",
+  "givenName": "Edna M",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1926",
+  "birthPlace": "Fleet Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I500"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I371"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I500",
+      "familyId": "F170"
+    }
+  ]
+}

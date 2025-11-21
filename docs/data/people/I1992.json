@@ -1,0 +1,30 @@
+{
+  "id": "I1992",
+  "name": "Joann A'Court",
+  "givenName": "Joann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1996"
+  ],
+  "childIds": [
+    "I1997",
+    "I1998",
+    "I1999",
+    "I2000"
+  ],
+  "parentIds": [
+    "I1991"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1996",
+      "familyId": "F714"
+    }
+  ]
+}

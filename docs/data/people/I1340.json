@@ -1,0 +1,28 @@
+{
+  "id": "I1340",
+  "name": "Thomas Todrick",
+  "givenName": "Thomas",
+  "surname": "Todrick",
+  "sex": "M",
+  "birthDate": "1787",
+  "birthPlace": null,
+  "deathDate": "1832",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1341"
+  ],
+  "childIds": [
+    "I936"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Baker"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1341",
+      "familyId": "F391"
+    }
+  ]
+}

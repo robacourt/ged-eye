@@ -1,0 +1,18 @@
+{
+  "id": "I774",
+  "name": "Rhoda A'Court",
+  "givenName": "Rhoda",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1839",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I761",
+    "I769"
+  ]
+}

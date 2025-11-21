@@ -1,0 +1,25 @@
+{
+  "id": "I274",
+  "name": "Christian",
+  "givenName": "Christian",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I273"
+  ],
+  "childIds": [
+    "I270"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I273",
+      "familyId": "F134"
+    }
+  ]
+}

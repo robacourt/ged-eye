@@ -1,0 +1,21 @@
+{
+  "id": "I539",
+  "name": "Jas a'Court",
+  "givenName": "Jas",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "2 APR 1702",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I534",
+    "I535"
+  ],
+  "notes": [
+    "Assume to be child of Jn because of place."
+  ]
+}

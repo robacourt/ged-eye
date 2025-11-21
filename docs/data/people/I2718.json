@@ -1,0 +1,24 @@
+{
+  "id": "I2718",
+  "name": "Fred A'Court",
+  "givenName": "Fred",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1872",
+  "birthPlace": "Marnhull, Dorset, Yenston",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    ""
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Henstridge, Somerset"
+    }
+  ]
+}

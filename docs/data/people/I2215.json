@@ -1,0 +1,37 @@
+{
+  "id": "I2215",
+  "name": "Annie Eliza A'Court",
+  "givenName": "Annie Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2 MAY1890",
+  "birthPlace": "Bristol, Gloucestershire, St Judes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2381 122 3.jpg",
+    "Data/Media/1911 census/Bristol/RG14 15010 14.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ],
+  "baptismDate": "25 MAY 1890",
+  "baptismPlace": "Bristol, Saints Philip and Jacob",
+  "occupations": [
+    "Chocolate Machinist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Gloucestershire, Bristol, Barrow Court, 1 Wade St"
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, 36 Wade St."
+    }
+  ],
+  "avatar": "avatars/I2215_0.jpg"
+}

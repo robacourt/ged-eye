@@ -1,0 +1,25 @@
+{
+  "id": "I1069",
+  "name": "William George Hough",
+  "givenName": "William George",
+  "surname": "Hough",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I954"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I954",
+      "familyId": "F397",
+      "marriageDate": "1880",
+      "marriagePlace": "Mudgee, NSW"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I772",
+  "name": "Anna A'Court",
+  "givenName": "Anna",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1836",
+  "birthPlace": "Bradford Abbas, Dorset, England",
+  "deathDate": "1863",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "notes": [
+    "1851 Census"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
+  "avatar": "avatars/I772_0.jpg"
+}

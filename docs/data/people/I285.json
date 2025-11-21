@@ -1,0 +1,46 @@
+{
+  "id": "I285",
+  "name": "Susanna Maria A'Court",
+  "givenName": "Susanna Maria",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1870",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG10 1972 33 4.jpg"
+  ],
+  "spouseIds": [
+    "I292"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I185",
+    "I283"
+  ],
+  "baptismDate": "1- JUN 1870",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "19-1889"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Dorset, Marnhull, New St"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St Beer House"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I292",
+      "familyId": "F142",
+      "marriageDate": "20 FEB1889",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ],
+  "avatar": "avatars/I285_0.jpg"
+}

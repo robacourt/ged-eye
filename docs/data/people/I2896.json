@@ -1,0 +1,27 @@
+{
+  "id": "I2896",
+  "name": "Kathleen A'Court",
+  "givenName": "Kathleen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1910",
+  "birthPlace": "Dorset, Fifehead Magdalen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Dorset/Fifehead Magdalen/RG14 12201 28.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1581",
+    "I531"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Dorset, Fifehead Magdalen"
+    }
+  ],
+  "avatar": "avatars/I2896_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1664",
+  "name": "Jack Taylor",
+  "givenName": "Jack",
+  "surname": "Taylor",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1663"
+  ],
+  "childIds": [
+    "I1665"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1663",
+      "familyId": "F612"
+    }
+  ]
+}

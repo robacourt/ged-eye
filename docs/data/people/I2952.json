@@ -1,0 +1,33 @@
+{
+  "id": "I2952",
+  "name": "Arthur Frank Lock",
+  "givenName": "Arthur Frank",
+  "surname": "Lock",
+  "sex": "M",
+  "birthDate": "14 DEC 1886",
+  "birthPlace": "Kent, Canterbury",
+  "deathDate": "20 SEP 1960",
+  "deathPlace": "Kent, Canterbury",
+  "photos": [],
+  "spouseIds": [
+    "I456"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Tanners unhairer, Williamson & Sons Tanners"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I456",
+      "familyId": "F1010",
+      "marriageDate": "OCT 1910"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I33",
+  "name": "Amelia A'Court",
+  "givenName": "Amelia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I95"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I17",
+    "I30"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I95",
+      "familyId": "F22",
+      "marriageDate": "20 FEB 1817",
+      "marriagePlace": "Folke, Dorset"
+    }
+  ]
+}

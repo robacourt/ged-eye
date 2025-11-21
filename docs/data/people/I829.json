@@ -1,0 +1,30 @@
+{
+  "id": "I829",
+  "name": "Richard Hayward",
+  "givenName": "Richard",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I821"
+  ],
+  "childIds": [
+    "I830"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I821",
+      "familyId": "F351",
+      "marriageDate": "1905",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

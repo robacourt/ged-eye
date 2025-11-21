@@ -1,0 +1,33 @@
+{
+  "id": "I213",
+  "name": "George Maidment",
+  "givenName": "George",
+  "surname": "Maidment",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "East Stour, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I349"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I211",
+    "I81"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "10-1851  22-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I349",
+      "familyId": "F115",
+      "marriageDate": "1851/61"
+    }
+  ]
+}

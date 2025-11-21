@@ -1,0 +1,18 @@
+{
+  "id": "I111",
+  "name": "Alfred Terrell",
+  "givenName": "Alfred",
+  "surname": "Terrell",
+  "sex": "M",
+  "birthDate": "ABT 1867",
+  "birthPlace": "Henstridge Ash, Somerset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I109",
+    "I78"
+  ]
+}

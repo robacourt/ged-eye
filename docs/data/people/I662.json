@@ -1,0 +1,36 @@
+{
+  "id": "I662",
+  "name": "Arthur William Hayward",
+  "givenName": "Arthur William",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": "23.3.1874",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I652"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I663",
+    "I664"
+  ],
+  "baptismDate": "14.6.1874",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Mason"
+  ],
+  "notes": [
+    "7 in 1881, 17 in 1891, 32 in 1906,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I652",
+      "familyId": "F273",
+      "marriageDate": "25.12.1906",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

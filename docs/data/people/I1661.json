@@ -1,0 +1,24 @@
+{
+  "id": "I1661",
+  "name": "Debrah Hayward",
+  "givenName": "Debrah",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": "ABT 1863",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1658",
+    "I309"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Flanders"
+    }
+  ]
+}

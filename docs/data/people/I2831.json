@@ -1,0 +1,35 @@
+{
+  "id": "I2831",
+  "name": "Harriet A'Court",
+  "givenName": "Harriet",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1876",
+  "birthPlace": "London, St Pancras",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/St Pancras/RG11 199 89 2.jpg",
+    "Data/Media/1891 census/London/St Pancras/RG12 127 223 48.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I877",
+    "I927"
+  ],
+  "occupations": [
+    "Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, St Pancras, 19 Church Way"
+    },
+    {
+      "date": "1891",
+      "place": null
+    }
+  ],
+  "avatar": "avatars/I2831_0.jpg"
+}

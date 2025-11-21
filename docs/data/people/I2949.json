@@ -1,0 +1,41 @@
+{
+  "id": "I2949",
+  "name": "Ada Florence Marsh",
+  "givenName": "Ada Florence",
+  "surname": "Marsh",
+  "sex": "F",
+  "birthDate": "5 AUG 1883",
+  "birthPlace": "Hampshire, Stoneham",
+  "deathDate": "2 JAN 1965",
+  "deathPlace": "Hampshire, Basingstoke",
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Southampton/RG14 6013 153.jpg"
+  ],
+  "spouseIds": [
+    "I454",
+    "I2950"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Southampton, Hampshire, 9 Commercial Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I454",
+      "familyId": "F1007",
+      "marriageDate": "12 DEC 1904",
+      "marriagePlace": "Kent, Thanet"
+    },
+    {
+      "spouseId": "I2950",
+      "familyId": "F1008",
+      "marriageDate": "1935",
+      "marriagePlace": "Wiltshire, Pewsey"
+    }
+  ],
+  "avatar": "avatars/I2949_0.jpg"
+}

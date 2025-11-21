@@ -1,0 +1,33 @@
+{
+  "id": "I324",
+  "name": "Charles Clarke",
+  "givenName": "Charles",
+  "surname": "Clarke",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I194"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I363",
+    "I364"
+  ],
+  "baptismDate": "20.11.1808",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "25-1841  39-1851 with issue"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I194",
+      "familyId": "F110",
+      "marriageDate": "25 SEP 1834",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
+}

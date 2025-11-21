@@ -1,0 +1,35 @@
+{
+  "id": "I633",
+  "name": "Joyce Cecelia Frampton",
+  "givenName": "Joyce Cecelia",
+  "surname": "Frampton",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I623"
+  ],
+  "childIds": [
+    "I634"
+  ],
+  "parentIds": [
+    "I635"
+  ],
+  "occupations": [
+    "Landworker"
+  ],
+  "notes": [
+    "22-1948"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I623",
+      "familyId": "F261",
+      "marriageDate": "28.8.1948",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

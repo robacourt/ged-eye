@@ -1,0 +1,30 @@
+{
+  "id": "I2757",
+  "name": "Eliza Keniston",
+  "givenName": "Eliza",
+  "surname": "Keniston",
+  "sex": "F",
+  "birthDate": "ABT 1839",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Henstridge/Piece 1931 folio 370 page 17.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2755",
+    "I2753"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "avatar": "avatars/I2757_0.jpg"
+}

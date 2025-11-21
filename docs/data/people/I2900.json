@@ -1,0 +1,27 @@
+{
+  "id": "I2900",
+  "name": "Charles John A'Court",
+  "givenName": "Charles John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1910",
+  "birthPlace": "London, Plaistow",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Plaistow/RG14 9442 51.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2856",
+    "I2893"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Plaistow, 20 Hollybush St."
+    }
+  ],
+  "avatar": "avatars/I2900_0.jpg"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I320",
+  "name": "Hannah Lewis",
+  "givenName": "Hannah",
+  "surname": "Lewis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I321"
+  ],
+  "childIds": [
+    "I195",
+    "I190"
+  ],
+  "parentIds": [
+    "I322"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I321",
+      "familyId": "F108"
+    }
+  ]
+}

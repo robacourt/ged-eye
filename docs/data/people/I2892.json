@@ -1,0 +1,32 @@
+{
+  "id": "I2892",
+  "name": "Henry Clifford A'Court",
+  "givenName": "Henry Clifford",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1901",
+  "birthPlace": "Jersey C.I. St Helier.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St Heliers/RG13 5314 94 5.jpg",
+    "Data/Media/1911 census/Jersey C.I/St Clements/RG14 34868 37.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2813",
+    "I2534"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St Helier, Norman House, St Aubins Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Clements, East View"
+    }
+  ],
+  "avatar": "avatars/I2892_0.jpg"
+}

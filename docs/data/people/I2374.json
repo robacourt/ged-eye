@@ -1,0 +1,34 @@
+{
+  "id": "I2374",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2373",
+    "I2376"
+  ],
+  "childIds": [
+    "I2377"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2373",
+      "familyId": "F841",
+      "marriageDate": "1870 4TH QTR",
+      "marriagePlace": "Axbridge, District, Somerset"
+    },
+    {
+      "spouseId": "I2376",
+      "familyId": "F843",
+      "marriageDate": "9 JUN 1878",
+      "marriagePlace": "Bridgewater, Somerset"
+    }
+  ]
+}

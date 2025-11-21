@@ -1,0 +1,28 @@
+{
+  "id": "I2370",
+  "name": "George Pasmore Cosway",
+  "givenName": "George Pasmore",
+  "surname": "Cosway",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/George Passmore Cosway.png"
+  ],
+  "spouseIds": [
+    "I2371"
+  ],
+  "childIds": [
+    "I2369"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2371",
+      "familyId": "F840"
+    }
+  ],
+  "avatar": "avatars/I2370_0.jpg"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "I1611",
+  "name": "Clara A'Court",
+  "givenName": "Clara",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1891",
+  "birthPlace": "Lancashire, Orford",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Lancashire/RG12 3080 105 12.jpg",
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg"
+  ],
+  "spouseIds": [
+    "I2609"
+  ],
+  "childIds": [
+    "I2612"
+  ],
+  "parentIds": [
+    "I1608",
+    "I1609"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Lancashire, Warrington, Sandy Lane, Cherry House"
+    },
+    {
+      "date": "1901",
+      "place": "Lancashire, Warrington, 104 Bridge St"
+    },
+    {
+      "date": "1911",
+      "place": "Lancashire, Warrington, 104 Bridge St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2609",
+      "familyId": "F909",
+      "marriageDate": "ABT 1910"
+    }
+  ],
+  "avatar": "avatars/I1611_0.jpg"
+}

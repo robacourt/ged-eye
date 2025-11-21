@@ -1,0 +1,54 @@
+{
+  "id": "I775",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1841",
+  "birthPlace": "Wincanton, Somerset",
+  "deathDate": "27 FEB 1917",
+  "deathPlace": "Christchurch Hospital, Christchurch, NZ",
+  "photos": [
+    "Data/Picture/George A'Court.jpg",
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
+  ],
+  "spouseIds": [
+    "I784"
+  ],
+  "childIds": [
+    "I785",
+    "I786",
+    "I787",
+    "I788",
+    "I789",
+    "I790",
+    "I791",
+    "I792",
+    "I793",
+    "I794",
+    "I795",
+    "I796"
+  ],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "notes": [
+    "George spent several years in Brisbane, Australia before emigrating to Canterbury, New Zealand, between 1876 and 1878  [Ron and Eleanor Moir]."
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I784",
+      "familyId": "F323",
+      "marriageDate": "9 OCT 1860",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset"
+    }
+  ],
+  "avatar": "avatars/I775_0.jpg"
+}

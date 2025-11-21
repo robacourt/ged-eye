@@ -1,0 +1,24 @@
+{
+  "id": "I887",
+  "name": "Edith Mary A'Court",
+  "givenName": "Edith Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BEF 1852",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I767",
+    "I886"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F378"
+    }
+  ]
+}

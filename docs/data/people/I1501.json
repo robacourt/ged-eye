@@ -1,0 +1,24 @@
+{
+  "id": "I1501",
+  "name": "Victor James Collis",
+  "givenName": "Victor James",
+  "surname": "Collis",
+  "sex": "M",
+  "birthDate": "25 JUL 1899",
+  "birthPlace": "Abbas, Templecombe, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1498",
+    "I1507"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Templecombe, Somerset"
+    }
+  ]
+}

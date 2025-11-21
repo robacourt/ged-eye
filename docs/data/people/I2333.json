@@ -1,0 +1,25 @@
+{
+  "id": "I2333",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2332"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2332",
+      "familyId": "F828",
+      "marriageDate": "2ND QTR 1902",
+      "marriagePlace": "Dover, Kent"
+    }
+  ]
+}

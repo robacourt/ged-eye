@@ -1,0 +1,26 @@
+{
+  "id": "I2748",
+  "name": "Sue unknown",
+  "givenName": "Sue",
+  "surname": "unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2745"
+  ],
+  "childIds": [
+    "I2746",
+    "I2747"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2745",
+      "familyId": "F955"
+    }
+  ]
+}

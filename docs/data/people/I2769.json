@@ -1,0 +1,28 @@
+{
+  "id": "I2769",
+  "name": "Margaret Hillocks",
+  "givenName": "Margaret",
+  "surname": "Hillocks",
+  "sex": "F",
+  "birthDate": "1857",
+  "birthPlace": "Scotland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I443",
+    "I444"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Lambeth, 12 Hanover Place"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, Sandringham Road"
+    }
+  ]
+}

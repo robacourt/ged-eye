@@ -1,0 +1,28 @@
+{
+  "id": "I1319",
+  "name": "Thomas Palmer",
+  "givenName": "Thomas",
+  "surname": "Palmer",
+  "sex": "M",
+  "birthDate": "1799",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": "AFT 1861",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I762"
+  ],
+  "childIds": [
+    "I1320",
+    "I1321"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I762",
+      "familyId": "F314",
+      "marriageDate": "16 SEP 1832",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+    }
+  ]
+}

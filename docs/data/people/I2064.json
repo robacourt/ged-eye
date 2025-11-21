@@ -1,0 +1,23 @@
+{
+  "id": "I2064",
+  "name": "Grace Preston",
+  "givenName": "Grace",
+  "surname": "Preston",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "2002",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2056"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2056",
+      "familyId": "F741"
+    }
+  ]
+}

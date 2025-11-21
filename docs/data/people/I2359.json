@@ -1,0 +1,50 @@
+{
+  "id": "I2359",
+  "name": "Elizabeth Cave",
+  "givenName": "Elizabeth",
+  "surname": "Cave",
+  "sex": "F",
+  "birthDate": "ABT 1828",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
+  ],
+  "spouseIds": [
+    "I571"
+  ],
+  "childIds": [
+    "I2361",
+    "I490",
+    "I2364",
+    "I2362",
+    "I532",
+    "I2363",
+    "I2823",
+    "I2824"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Annuitant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Over Compton, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I571",
+      "familyId": "F209",
+      "marriageDate": "16 MAY 1853",
+      "marriagePlace": "Somerset, Horsington"
+    }
+  ],
+  "avatar": "avatars/I2359_0.jpg"
+}

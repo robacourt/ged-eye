@@ -1,0 +1,38 @@
+{
+  "id": "I332",
+  "name": "Edward Kendall",
+  "givenName": "Edward",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I337"
+  ],
+  "childIds": [
+    "I338",
+    "I339",
+    "I340"
+  ],
+  "parentIds": [
+    "I197",
+    "I330"
+  ],
+  "baptismDate": "11.4.1858",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carpenter"
+  ],
+  "notes": [
+    "3-1861  13-1871  23-1881  33-1891"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I337",
+      "familyId": "F160"
+    }
+  ]
+}

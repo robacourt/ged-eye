@@ -1,0 +1,26 @@
+{
+  "id": "I1348",
+  "name": "Annie Fisher",
+  "givenName": "Annie",
+  "surname": "Fisher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1347"
+  ],
+  "childIds": [
+    "I1346",
+    "I1369"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1347",
+      "familyId": "F533"
+    }
+  ]
+}

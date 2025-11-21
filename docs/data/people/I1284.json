@@ -1,0 +1,18 @@
+{
+  "id": "I1284",
+  "name": "Lesley Cross",
+  "givenName": "Lesley",
+  "surname": "Cross",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1282",
+    "I1278"
+  ]
+}

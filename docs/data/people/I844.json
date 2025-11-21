@@ -1,0 +1,42 @@
+{
+  "id": "I844",
+  "name": "Raymond Britton A'Court",
+  "givenName": "Raymond Britton",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "21 MAR 1908",
+  "birthPlace": "Rangiora, NZ",
+  "deathDate": "6 JAN 1971",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I857",
+    "I858"
+  ],
+  "childIds": [
+    "I1932",
+    "I1934",
+    "I1936",
+    "I1937"
+  ],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "notes": [
+    "Note marriages"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I857",
+      "familyId": "F369",
+      "marriageDate": "BET. 1924 - 1939"
+    },
+    {
+      "spouseId": "I858",
+      "familyId": "F370",
+      "marriageDate": "1939",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

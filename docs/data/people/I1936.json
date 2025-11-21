@@ -1,0 +1,26 @@
+{
+  "id": "I1936",
+  "name": "Adrienne A'Court",
+  "givenName": "Adrienne",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1939"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I844",
+    "I858"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1939",
+      "familyId": "F689"
+    }
+  ]
+}

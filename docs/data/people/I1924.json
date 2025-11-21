@@ -1,0 +1,26 @@
+{
+  "id": "I1924",
+  "name": "Harry James Nicol A'Court",
+  "givenName": "Harry James Nicol",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "23 MAY 1916",
+  "birthPlace": "Wellington, New Zealand",
+  "deathDate": "9 MAR 1983",
+  "deathPlace": "Wellington, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I2312"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I942",
+    "I2308"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2312",
+      "familyId": "F683"
+    }
+  ]
+}

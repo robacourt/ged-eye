@@ -1,0 +1,18 @@
+{
+  "id": "I1297",
+  "name": "Angela A'Court",
+  "givenName": "Angela",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1266",
+    "I1295"
+  ]
+}

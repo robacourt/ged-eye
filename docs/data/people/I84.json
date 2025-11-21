@@ -1,0 +1,42 @@
+{
+  "id": "I84",
+  "name": "Mary Ann A'Court",
+  "givenName": "Mary Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Fifehead Mag/Mill and Factory.jpg"
+  ],
+  "spouseIds": [
+    "I225"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I25",
+    "I80"
+  ],
+  "baptismDate": "6 SEP1816",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "notes": [
+    "37-1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Factory Farm, Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I225",
+      "familyId": "F54",
+      "marriageDate": "7 JUN1846",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "avatar": "avatars/I84_0.jpg"
+}

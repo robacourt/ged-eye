@@ -1,0 +1,18 @@
+{
+  "id": "I2628",
+  "name": "Alyssia Bethany Rose Giudice",
+  "givenName": "Alyssia Bethany Rose",
+  "surname": "Giudice",
+  "sex": "F",
+  "birthDate": "15 JUNE 2001",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2627",
+    "I2626"
+  ]
+}

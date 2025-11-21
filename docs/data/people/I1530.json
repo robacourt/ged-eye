@@ -1,0 +1,24 @@
+{
+  "id": "I1530",
+  "name": "Gary Evans",
+  "givenName": "Gary",
+  "surname": "Evans",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1529"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1529",
+      "familyId": "F584",
+      "marriageDate": "1 NOV 1986"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I649",
+  "name": "Elizabeth Ann Warren",
+  "givenName": "Elizabeth Ann",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "26.8.1870",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I646",
+    "I241"
+  ],
+  "baptismDate": "27.3.1871",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Servant"
+  ],
+  "notes": [
+    "6 months in 1871,20 in 1891,"
+  ]
+}

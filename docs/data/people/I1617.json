@@ -1,0 +1,43 @@
+{
+  "id": "I1617",
+  "name": "Thomas A'Court",
+  "givenName": "Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1839",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "1866",
+  "deathPlace": "Marnhull, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I1616"
+  ],
+  "childIds": [
+    "I1626",
+    "I1625",
+    "I1618",
+    "I1622",
+    "I1619",
+    "I1620"
+  ],
+  "parentIds": [
+    "I177",
+    "I1195"
+  ],
+  "burialDate": "11 FEB",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1616",
+      "familyId": "F604"
+    }
+  ]
+}

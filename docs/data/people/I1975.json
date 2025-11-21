@@ -1,0 +1,30 @@
+{
+  "id": "I1975",
+  "name": "Elizabeth Daniels",
+  "givenName": "Elizabeth",
+  "surname": "Daniels",
+  "sex": "F",
+  "birthDate": "27 MAR 1852",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1976"
+  ],
+  "childIds": [
+    "I1977"
+  ],
+  "parentIds": [
+    "I1726",
+    "I77"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1976",
+      "familyId": "F707",
+      "marriageDate": "2 OCT 1870",
+      "marriagePlace": "Portsea Island, Hampshire"
+    }
+  ]
+}

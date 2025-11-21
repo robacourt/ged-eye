@@ -1,0 +1,32 @@
+{
+  "id": "I2636",
+  "name": "Gail Chant",
+  "givenName": "Gail",
+  "surname": "Chant",
+  "sex": "F",
+  "birthDate": "1961",
+  "birthPlace": "Yeovil",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2639",
+    "I2633"
+  ],
+  "childIds": [
+    "I2640",
+    "I2637",
+    "I2638"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2639",
+      "familyId": "F919"
+    },
+    {
+      "spouseId": "I2633",
+      "familyId": "F920"
+    }
+  ]
+}

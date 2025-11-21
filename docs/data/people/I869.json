@@ -1,0 +1,24 @@
+{
+  "id": "I869",
+  "name": "James Baker",
+  "givenName": "James",
+  "surname": "Baker",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I781"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I781",
+      "familyId": "F331",
+      "marriageDate": "1885"
+    }
+  ]
+}

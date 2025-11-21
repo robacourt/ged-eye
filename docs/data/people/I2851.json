@@ -1,0 +1,29 @@
+{
+  "id": "I2851",
+  "name": "Mary B Unknown",
+  "givenName": "Mary B",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1840",
+  "birthPlace": "Jersey C.I.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2850"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Hackney, 2 Crozier Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2850",
+      "familyId": "F975"
+    }
+  ]
+}

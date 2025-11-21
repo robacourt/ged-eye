@@ -1,0 +1,25 @@
+{
+  "id": "I1372",
+  "name": "Helen Nichol Cockburn",
+  "givenName": "Helen Nichol",
+  "surname": "Cockburn",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1371"
+  ],
+  "childIds": [
+    "I938"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1371",
+      "familyId": "F393"
+    }
+  ]
+}

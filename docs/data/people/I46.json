@@ -1,0 +1,41 @@
+{
+  "id": "I46",
+  "name": "Francis Cooke",
+  "givenName": "Francis",
+  "surname": "Cooke",
+  "sex": "F",
+  "birthDate": "ABT 1768",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I18"
+  ],
+  "childIds": [
+    "I47",
+    "I48",
+    "I49",
+    "I50",
+    "I51",
+    "I52",
+    "I53",
+    "I54",
+    "I55",
+    "I56",
+    "I57",
+    "I58",
+    "I59"
+  ],
+  "parentIds": [],
+  "burialDate": "14 FEB 1835",
+  "burialPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I18",
+      "familyId": "F13",
+      "marriageDate": "17 MAY 1791",
+      "marriagePlace": "Evercreech, Somerset"
+    }
+  ]
+}

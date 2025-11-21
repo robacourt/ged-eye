@@ -1,0 +1,26 @@
+{
+  "id": "I2168",
+  "name": "Catrina Hoy",
+  "givenName": "Catrina",
+  "surname": "Hoy",
+  "sex": "F",
+  "birthDate": "1969",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2167"
+  ],
+  "childIds": [
+    "I2169",
+    "I2170"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2167",
+      "familyId": "F780"
+    }
+  ]
+}

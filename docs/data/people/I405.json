@@ -1,0 +1,43 @@
+{
+  "id": "I405",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1848",
+  "birthPlace": "Hertfordshire, Barnet",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Greenwich/RG10 760 4 2.jpg"
+  ],
+  "spouseIds": [
+    "I2866"
+  ],
+  "childIds": [
+    "I2870"
+  ],
+  "parentIds": [
+    "I404",
+    "I2796"
+  ],
+  "occupations": [
+    "Coachsmith"
+  ],
+  "notes": [
+    "Could be 2887 but different wife - check deaths and marriages"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Greenwich, Marlborough St. Pound Cottage."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2866",
+      "familyId": "F186"
+    }
+  ],
+  "avatar": "avatars/I405_0.jpg"
+}

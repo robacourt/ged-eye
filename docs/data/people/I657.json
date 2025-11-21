@@ -1,0 +1,28 @@
+{
+  "id": "I657",
+  "name": "William Warren",
+  "givenName": "William",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I658"
+  ],
+  "childIds": [
+    "I646"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Shoemaker"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I658",
+      "familyId": "F271"
+    }
+  ]
+}

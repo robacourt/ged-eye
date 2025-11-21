@@ -1,0 +1,40 @@
+{
+  "id": "I1574",
+  "name": "Ella May A'Court",
+  "givenName": "Ella May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1888",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 68 22.jpg",
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
+    "Data/Media/1911 census/Somerset/Glastonbury/RG14 14538 238.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1571",
+    "I1572"
+  ],
+  "occupations": [
+    "Hotel Assistant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, 42 East St. White Hart Inn"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 33 Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Glastonbury, Somerset, The Crown Hotel, 4 Market Place"
+    }
+  ],
+  "avatar": "avatars/I1574_0.jpg"
+}

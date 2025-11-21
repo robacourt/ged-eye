@@ -1,0 +1,29 @@
+{
+  "id": "I442",
+  "name": "Catherina Sophia Tornquess",
+  "givenName": "Catherina Sophia",
+  "surname": "Tornquess",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Germany",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I441"
+  ],
+  "childIds": [
+    "I423",
+    "I2983"
+  ],
+  "parentIds": [],
+  "notes": [
+    "of Danish extraction"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I441",
+      "familyId": "F194"
+    }
+  ]
+}

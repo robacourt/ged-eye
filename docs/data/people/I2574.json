@@ -1,0 +1,27 @@
+{
+  "id": "I2574",
+  "name": "Lettie Winnifred A'Court",
+  "givenName": "Lettie Winnifred",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1902",
+  "birthPlace": "Cheltenham, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Peckham/RG14 2525 266.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2571",
+    "I2572"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Peckham, 2 Hazlemere Rd."
+    }
+  ],
+  "avatar": "avatars/I2574_0.jpg"
+}

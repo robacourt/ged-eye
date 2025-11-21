@@ -1,0 +1,54 @@
+{
+  "id": "I824",
+  "name": "Austin Frank (Frank) A'Court",
+  "givenName": "Austin Frank (Frank)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "13 JUL 1869",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1 JUL 1941",
+  "deathPlace": "Christchurch Hospital, Christchurch, NZ",
+  "photos": [
+    "Data/Picture/Nina, Lucy, Frank A'Court.jpg",
+    "Data/Picture/Francis A'Court Bicycle Workshop.jpg"
+  ],
+  "spouseIds": [
+    "I834",
+    "I836"
+  ],
+  "childIds": [
+    "I835",
+    "I837",
+    "I838",
+    "I839",
+    "I840",
+    "I841",
+    "I842",
+    "I843",
+    "I844",
+    "I845",
+    "I846"
+  ],
+  "parentIds": [
+    "I776",
+    "I820"
+  ],
+  "burialDate": "4 JUL 1941",
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "Information provided by Carole Stewart:"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I834",
+      "familyId": "F354"
+    },
+    {
+      "spouseId": "I836",
+      "familyId": "F355",
+      "marriageDate": "17 JUL 1897",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+    }
+  ],
+  "avatar": "avatars/I824_0.jpg"
+}

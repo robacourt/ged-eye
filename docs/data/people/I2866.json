@@ -1,0 +1,40 @@
+{
+  "id": "I2866",
+  "name": "Mary Ann Coutts",
+  "givenName": "Mary Ann",
+  "surname": "Coutts",
+  "sex": "F",
+  "birthDate": "Abt 1853",
+  "birthPlace": "London, Lewisham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Lewisham/RG11 729 123 43.jpg"
+  ],
+  "spouseIds": [
+    "I405"
+  ],
+  "childIds": [
+    "I2870"
+  ],
+  "parentIds": [
+    "I2867",
+    "I2868"
+  ],
+  "occupations": [
+    "Laundress, wife of a blacksmith"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Lewisham, 6 Merton Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I405",
+      "familyId": "F186"
+    }
+  ],
+  "avatar": "avatars/I2866_0.jpg"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "I1185",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1863",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 17.jpg",
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg"
+  ],
+  "spouseIds": [
+    "I1190"
+  ],
+  "childIds": [
+    "I1191",
+    "I1192",
+    "I1193",
+    "I1194",
+    "I2414",
+    "I2415",
+    "I2416",
+    "I2418",
+    "I2420",
+    "I2422",
+    "I2423",
+    "I2920",
+    "I2921"
+  ],
+  "parentIds": [
+    "I1183",
+    "I1184"
+  ],
+  "occupations": [
+    "Ag Lab",
+    "Ag Lab",
+    "Cowman on farm"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Barton"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Near Antills Farm"
+    },
+    {
+      "date": "1891",
+      "place": "Wadswick Village, Box, Wiltshire, Cottages"
+    },
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1190",
+      "familyId": "F484",
+      "marriageDate": "1883"
+    }
+  ],
+  "avatar": "avatars/I1185_0.jpg"
+}

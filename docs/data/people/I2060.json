@@ -1,0 +1,18 @@
+{
+  "id": "I2060",
+  "name": "Dennis A'Court",
+  "givenName": "Dennis",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1925",
+  "birthPlace": "Tooting",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2054",
+    "I2055"
+  ]
+}

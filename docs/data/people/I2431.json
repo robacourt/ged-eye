@@ -1,0 +1,18 @@
+{
+  "id": "I2431",
+  "name": "Linda Unknown",
+  "givenName": "Linda",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1958",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2430",
+    "I2429"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I2196",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1873",
+  "birthPlace": "Bristol",
+  "deathDate": "BEF 1888",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2498 33 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2190",
+    "I2192"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 33 Little George St, Ss Philip And Jacob"
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, 3 Arnolds Court"
+    }
+  ],
+  "avatar": "avatars/I2196_0.jpg"
+}

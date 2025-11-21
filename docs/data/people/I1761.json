@@ -1,0 +1,20 @@
+{
+  "id": "I1761",
+  "name": "Lily Wildgoose",
+  "givenName": "Lily",
+  "surname": "Wildgoose",
+  "sex": "F",
+  "birthDate": "2ND QT 1875",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1760",
+    "I1759"
+  ],
+  "baptismDate": "27 JUNE 1875",
+  "baptismPlace": "Bristol, St Mary Redcliff"
+}

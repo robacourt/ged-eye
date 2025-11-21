@@ -1,0 +1,29 @@
+{
+  "id": "I2716",
+  "name": "Kate Kynvin",
+  "givenName": "Kate",
+  "surname": "Kynvin",
+  "sex": "F",
+  "birthDate": "1 JUN 1865",
+  "birthPlace": "Chichester, Sussex",
+  "deathDate": "2 JUNE 1937",
+  "deathPlace": "Teddington, Middlesex",
+  "photos": [],
+  "spouseIds": [
+    "I2715"
+  ],
+  "childIds": [
+    "I2710"
+  ],
+  "parentIds": [],
+  "baptismDate": "15 JUN 1865",
+  "baptismPlace": "Chichester, Sussex, St Paul's",
+  "marriages": [
+    {
+      "spouseId": "I2715",
+      "familyId": "F946",
+      "marriageDate": "23 APR 1886",
+      "marriagePlace": "Portsmouth, Hampshire, St Mary's"
+    }
+  ]
+}

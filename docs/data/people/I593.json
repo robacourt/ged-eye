@@ -1,0 +1,40 @@
+{
+  "id": "I593",
+  "name": "Ernest Hatcher",
+  "givenName": "Ernest",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "10.4.1883",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I621"
+  ],
+  "childIds": [
+    "I622",
+    "I623",
+    "I624"
+  ],
+  "parentIds": [
+    "I157",
+    "I317"
+  ],
+  "baptismDate": "26.4.1883",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Builders Lab."
+  ],
+  "notes": [
+    "8-1891, 37-1920"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I621",
+      "familyId": "F244",
+      "marriageDate": "28.9.1920",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

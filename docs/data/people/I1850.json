@@ -1,0 +1,23 @@
+{
+  "id": "I1850",
+  "name": "Unknown Coles",
+  "givenName": "Unknown",
+  "surname": "Coles",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1849"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F666"
+    }
+  ]
+}

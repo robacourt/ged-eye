@@ -1,0 +1,27 @@
+{
+  "id": "I1349",
+  "name": "Eva Ellen Cundy",
+  "givenName": "Eva Ellen",
+  "surname": "Cundy",
+  "sex": "F",
+  "birthDate": "1866",
+  "birthPlace": "Greytown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1350"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1346",
+    "I1345"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1350",
+      "familyId": "F534",
+      "marriageDate": "1887"
+    }
+  ]
+}

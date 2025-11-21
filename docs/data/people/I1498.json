@@ -1,0 +1,30 @@
+{
+  "id": "I1498",
+  "name": "Edwin Eli Collis",
+  "givenName": "Edwin Eli",
+  "surname": "Collis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "18 DEC 1903",
+  "deathPlace": "Abbas, Templecombe, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I1507"
+  ],
+  "childIds": [
+    "I1500",
+    "I1501"
+  ],
+  "parentIds": [
+    "I1499"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1507",
+      "familyId": "F571",
+      "marriageDate": "3 MAR 1892",
+      "marriagePlace": "Yarlington, Somerset"
+    }
+  ]
+}

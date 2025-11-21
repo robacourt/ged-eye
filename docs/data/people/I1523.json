@@ -1,0 +1,27 @@
+{
+  "id": "I1523",
+  "name": "Hugh Morgan",
+  "givenName": "Hugh",
+  "surname": "Morgan",
+  "sex": "M",
+  "birthDate": "1948",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1521",
+    "I1522"
+  ],
+  "notes": [
+    "Hugh married Doreen and they had three children , Jane (b 1969) who married Andrew and they have a daughter Abigail (b 1994) Lynne (b 1971) married Peter in 1999 they now have a little boy born last year and David (b1974) he had a partner and the"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F581"
+    }
+  ]
+}

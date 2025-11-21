@@ -1,0 +1,35 @@
+{
+  "id": "I2887",
+  "name": "Charles E A'Court",
+  "givenName": "Charles E",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1846",
+  "birthPlace": "Hertfordshire, Barnet",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2888"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Blacksmith & Farrier"
+  ],
+  "notes": [
+    "Could be 405 but different wife check deaths and marriages"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Kent. Bexley, Albert Rd, 3 Albert Cottages"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2888",
+      "familyId": "F988"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I838",
+  "name": "Samuel Oakley A'Court",
+  "givenName": "Samuel Oakley",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3 SEP 1898",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "13 JAN 1899",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I851"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I851",
+      "familyId": "F363"
+    }
+  ]
+}

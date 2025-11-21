@@ -1,0 +1,34 @@
+{
+  "id": "I1073",
+  "name": "Rhonda Pryor",
+  "givenName": "Rhonda",
+  "surname": "Pryor",
+  "sex": "F",
+  "birthDate": "8 AUG 1937",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Rhonda Pryor.jpg"
+  ],
+  "spouseIds": [
+    "I1315"
+  ],
+  "childIds": [
+    "I2745"
+  ],
+  "parentIds": [
+    "I982",
+    "I981"
+  ],
+  "notes": [
+    "You should write to an elderly aunt of his:"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1315",
+      "familyId": "F429"
+    }
+  ],
+  "avatar": "avatars/I1073_0.jpg"
+}

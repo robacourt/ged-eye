@@ -1,0 +1,35 @@
+{
+  "id": "I105",
+  "name": "Sarah Elizabeth White",
+  "givenName": "Sarah Elizabeth",
+  "surname": "White",
+  "sex": "F",
+  "birthDate": "MAY 1824",
+  "birthPlace": null,
+  "deathDate": "10 DEC 1848",
+  "deathPlace": "Portsmouth, Kingston, Hampshire, Church Path",
+  "photos": [],
+  "spouseIds": [
+    "I76"
+  ],
+  "childIds": [
+    "I106"
+  ],
+  "parentIds": [
+    "I2287",
+    "I2985"
+  ],
+  "baptismDate": "16 MAY 1824",
+  "baptismPlace": "Hampshire, Portsea, St Marys",
+  "notes": [
+    "Resident at the time of marriage"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I76",
+      "familyId": "F47",
+      "marriageDate": "15 SEP 1847",
+      "marriagePlace": "Wesley Chapel, Landport, Portsmouth"
+    }
+  ]
+}

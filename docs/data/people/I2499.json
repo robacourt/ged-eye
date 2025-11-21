@@ -1,0 +1,26 @@
+{
+  "id": "I2499",
+  "name": "Victor Lee",
+  "givenName": "Victor",
+  "surname": "Lee",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2500"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1909",
+    "I1908"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2500",
+      "familyId": "F884"
+    }
+  ]
+}

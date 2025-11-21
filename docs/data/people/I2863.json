@@ -1,0 +1,27 @@
+{
+  "id": "I2863",
+  "name": "Alfred J Hyam",
+  "givenName": "Alfred J",
+  "surname": "Hyam",
+  "sex": "M",
+  "birthDate": "Abt 1877",
+  "birthPlace": "London, City of London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Shoreditch/RG11 384 70 18.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2862",
+    "I2808"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 13 Clifton St."
+    }
+  ],
+  "avatar": "avatars/I2863_0.jpg"
+}

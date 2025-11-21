@@ -1,0 +1,26 @@
+{
+  "id": "I2625",
+  "name": "Christopher Thomas Wordsworth",
+  "givenName": "Christopher Thomas",
+  "surname": "Wordsworth",
+  "sex": "M",
+  "birthDate": "23 NOV 1955",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2616"
+  ],
+  "childIds": [
+    "I2626",
+    "I2631"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2616",
+      "familyId": "F914"
+    }
+  ]
+}

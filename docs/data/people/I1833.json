@@ -1,0 +1,17 @@
+{
+  "id": "I1833",
+  "name": "Steven A A'Court",
+  "givenName": "Steven A",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3RD QRT 1955",
+  "birthPlace": "Surrey NE",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1834"
+  ]
+}

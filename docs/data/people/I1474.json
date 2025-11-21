@@ -1,0 +1,39 @@
+{
+  "id": "I1474",
+  "name": "Ann Unknown",
+  "givenName": "Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1791",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1473"
+  ],
+  "childIds": [
+    "I1475",
+    "I1476"
+  ],
+  "parentIds": [],
+  "notes": [
+    "on census as Ann A'Court assuming this is James wife"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Baslands Hill farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1473",
+      "familyId": "F564"
+    }
+  ]
+}

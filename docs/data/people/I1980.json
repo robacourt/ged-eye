@@ -1,0 +1,29 @@
+{
+  "id": "I1980",
+  "name": "Carolyn May Drury",
+  "givenName": "Carolyn May",
+  "surname": "Drury",
+  "sex": "F",
+  "birthDate": "25 OCT 1942",
+  "birthPlace": null,
+  "deathDate": "JUN 1997",
+  "deathPlace": "Cerne Abbas, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I1979"
+  ],
+  "childIds": [
+    "I1981",
+    "I1982",
+    "I1983"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1979",
+      "familyId": "F709",
+      "marriageDate": "26 DEC 1963",
+      "marriagePlace": "Malvern, Worcestshire"
+    }
+  ]
+}

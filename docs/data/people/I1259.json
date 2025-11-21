@@ -1,0 +1,26 @@
+{
+  "id": "I1259",
+  "name": "Samuel Bench",
+  "givenName": "Samuel",
+  "surname": "Bench",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I283"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Shepherd"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F140"
+    }
+  ]
+}

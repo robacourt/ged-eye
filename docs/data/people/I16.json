@@ -1,0 +1,58 @@
+{
+  "id": "I16",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1791",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I15"
+  ],
+  "childIds": [
+    "I18",
+    "I17",
+    "I19",
+    "I20",
+    "I21",
+    "I22",
+    "I23",
+    "I24",
+    "I25",
+    "I26",
+    "I27",
+    "I28",
+    "I29"
+  ],
+  "parentIds": [
+    "I469",
+    "I470"
+  ],
+  "baptismDate": "19 JUN 1737",
+  "baptismPlace": "Horsington, Somerset",
+  "burialDate": "20 AUG 1791",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Miller"
+  ],
+  "notes": [
+    "of A'Courts Mill Fifehead Magdalen also known as Factory farm"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Fifehead Magdalen, Dorset, A'Court's Mill"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I15",
+      "familyId": "F10",
+      "marriageDate": "14 NOV 1762",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

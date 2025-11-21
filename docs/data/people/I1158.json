@@ -1,0 +1,25 @@
+{
+  "id": "I1158",
+  "name": "Elizabeth Barns",
+  "givenName": "Elizabeth",
+  "surname": "Barns",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1157"
+  ],
+  "childIds": [
+    "I1156"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1157",
+      "familyId": "F471"
+    }
+  ]
+}

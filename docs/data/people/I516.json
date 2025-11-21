@@ -1,0 +1,21 @@
+{
+  "id": "I516",
+  "name": "Nigel Felix Daniel A'Court",
+  "givenName": "Nigel Felix Daniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1918",
+  "birthPlace": "New Zealand",
+  "deathDate": "27 APR 1941",
+  "deathPlace": "Greece",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I526",
+    "I527"
+  ],
+  "notes": [
+    "In Memory of"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I1534",
+  "name": "Frederick Pedder",
+  "givenName": "Frederick",
+  "surname": "Pedder",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1966",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1532"
+  ],
+  "childIds": [
+    "I1535"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1532",
+      "familyId": "F585",
+      "marriageDate": "1916"
+    }
+  ]
+}

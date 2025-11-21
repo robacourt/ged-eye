@@ -1,0 +1,26 @@
+{
+  "id": "I2292",
+  "name": "Martha White",
+  "givenName": "Martha",
+  "surname": "White",
+  "sex": "F",
+  "birthDate": "ABT 1844",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2288"
+  ],
+  "occupations": [
+    "Stone Mason"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Portsea, Hampshire, 345 Commercial Rd."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I1528",
+  "name": "Philip John Sandell",
+  "givenName": "Philip John",
+  "surname": "Sandell",
+  "sex": "M",
+  "birthDate": "8 JAN 1954",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1527"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1527",
+      "familyId": "F583",
+      "marriageDate": "15 SEP 1979"
+    }
+  ]
+}

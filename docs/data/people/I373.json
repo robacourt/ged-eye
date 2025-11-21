@@ -1,0 +1,25 @@
+{
+  "id": "I373",
+  "name": "Alan A'Court",
+  "givenName": "Alan",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1930",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I501"
+  ],
+  "parentIds": [
+    "I371"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F171"
+    }
+  ]
+}

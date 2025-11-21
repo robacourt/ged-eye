@@ -1,0 +1,25 @@
+{
+  "id": "I1139",
+  "name": "Silas Dean",
+  "givenName": "Silas",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1140"
+  ],
+  "childIds": [
+    "I1138"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1140",
+      "familyId": "F463"
+    }
+  ]
+}

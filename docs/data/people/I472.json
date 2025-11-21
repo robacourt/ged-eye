@@ -1,0 +1,18 @@
+{
+  "id": "I472",
+  "name": "Elisha a'Court",
+  "givenName": "Elisha",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "BEF 24 MARCH  172",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I469",
+    "I470"
+  ]
+}

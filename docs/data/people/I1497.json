@@ -1,0 +1,29 @@
+{
+  "id": "I1497",
+  "name": "Ernest Edward Chamberlain (Collis)",
+  "givenName": "Ernest Edward Chamberlain",
+  "surname": "(Collis)",
+  "sex": "M",
+  "birthDate": "17 MAY 1890",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1504"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1506",
+    "I1507"
+  ],
+  "notes": [
+    "Ernest Edward Collis was asked by his best friend in the WWI to look after his wife Winnie when he died.  He did - he married her Winifred Violet Louisa Inwood formerly Frier on 14th July 1920 by licence at Lewisham Register Office.  They wen"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1504",
+      "familyId": "F569"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "I458",
+  "name": "Ella Mary Lent",
+  "givenName": "Ella Mary",
+  "surname": "Lent",
+  "sex": "F",
+  "birthDate": "30 SEP 1894",
+  "birthPlace": "Leeds, Yorkshire",
+  "deathDate": "6 DEC 1971",
+  "deathPlace": "Kent, Herne Bay, Kimberley, 40 Mickleburgh Hill,",
+  "photos": [
+    "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg",
+    "Data/Media/1921 Census/London/30 Thomas St Woolwich.jpg"
+  ],
+  "spouseIds": [
+    "I2109"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I452",
+    "I453"
+  ],
+  "baptismDate": "19 DEC 1894",
+  "baptismPlace": "Yorkshire, Leeds, Sheepscar, St Clement",
+  "occupations": [
+    "Cashier"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Scarborough, Yorkshire, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Dover, Kent 1 Harveyan Place"
+    },
+    {
+      "date": "1921",
+      "place": "London, Woolwich, Cambridge Cottages, 30 Thomas St. SE18"
+    }
+  ],
+  "residences": [
+    {
+      "date": "Bef 1971",
+      "place": "Gloucester, Barnwood, 66 Barnwood Avenue."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2109",
+      "familyId": "F752",
+      "marriageDate": "JUL 1919",
+      "marriagePlace": "Kent,   Dover,"
+    }
+  ],
+  "avatar": "avatars/I458_0.jpg"
+}

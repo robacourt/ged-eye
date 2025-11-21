@@ -1,0 +1,27 @@
+{
+  "id": "I2433",
+  "name": "Fred Carter",
+  "givenName": "Fred",
+  "surname": "Carter",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2432"
+  ],
+  "childIds": [
+    "I2434",
+    "I2435",
+    "I2436"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2432",
+      "familyId": "F864"
+    }
+  ]
+}

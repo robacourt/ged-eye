@@ -1,0 +1,47 @@
+{
+  "id": "I2212",
+  "name": "Sarah Nelson",
+  "givenName": "Sarah",
+  "surname": "Nelson",
+  "sex": "F",
+  "birthDate": "ABT 1866",
+  "birthPlace": "Bristol, Gloucestershire, St Judes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2210"
+  ],
+  "childIds": [
+    "I2211",
+    "I2213",
+    "I2214",
+    "I2215",
+    "I2216",
+    "I2217",
+    "I2689",
+    "I2594",
+    "I2595"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, 36 Wade St."
+    }
+  ],
+  "residences": [
+    {
+      "date": "BEF 16 APR 1883",
+      "place": "47 Great Ann St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2210",
+      "familyId": "F792",
+      "marriageDate": "16 APR 1883",
+      "marriagePlace": "Bristol Registry Office"
+    }
+  ]
+}

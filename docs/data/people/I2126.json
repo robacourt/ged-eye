@@ -1,0 +1,41 @@
+{
+  "id": "I2126",
+  "name": "Francis John A'Court",
+  "givenName": "Francis John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1891",
+  "birthPlace": "Jersey, C.I. St. Ouens",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Jersey C.I/RG12 4699 133 6.jpg",
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 44 6.jpg",
+    "Data/Media/1911 census/Jersey C.I/St Ouen/RG14 34872 76.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2121",
+    "I2122"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I. St Ouen, Vinchelez"
+    },
+    {
+      "date": "1911",
+      "place": "Carpenter"
+    }
+  ],
+  "avatar": "avatars/I2126_0.jpg"
+}

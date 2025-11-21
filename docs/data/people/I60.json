@@ -1,0 +1,34 @@
+{
+  "id": "I60",
+  "name": "Edward Dowding",
+  "givenName": "Edward",
+  "surname": "Dowding",
+  "sex": "M",
+  "birthDate": "ABT 1768",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I19"
+  ],
+  "childIds": [
+    "I61",
+    "I62",
+    "I63",
+    "I64",
+    "I65",
+    "I66"
+  ],
+  "parentIds": [],
+  "burialDate": "15 APR 1798",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I19",
+      "familyId": "F14",
+      "marriageDate": "5 NOV 1788",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

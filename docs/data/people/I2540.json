@@ -1,0 +1,23 @@
+{
+  "id": "I2540",
+  "name": "Mary Ann Unknown",
+  "givenName": "Mary Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2541"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2541",
+      "familyId": "F897"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I1969",
+  "name": "Roland Grant Drost",
+  "givenName": "Roland Grant",
+  "surname": "Drost",
+  "sex": "M",
+  "birthDate": "Abt 1896",
+  "birthPlace": "Hartney, Manitoba, Canada",
+  "deathDate": "23 JUL 1978",
+  "deathPlace": "Vancover, B.C, Canada",
+  "photos": [],
+  "spouseIds": [
+    "I1408"
+  ],
+  "childIds": [
+    "I1970"
+  ],
+  "parentIds": [
+    "I1972",
+    "I1973"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1408",
+      "familyId": "F845",
+      "marriageDate": "8 JUL 1925"
+    }
+  ]
+}

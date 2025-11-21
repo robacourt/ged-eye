@@ -1,0 +1,32 @@
+{
+  "id": "I219",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I82",
+    "I215"
+  ],
+  "baptismDate": "18.4.1847",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "4-1851  25-1871"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

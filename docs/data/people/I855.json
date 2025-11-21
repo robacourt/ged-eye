@@ -1,0 +1,28 @@
+{
+  "id": "I855",
+  "name": "Robert McSTAY",
+  "givenName": "Robert",
+  "surname": "McSTAY",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I842"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I842",
+      "familyId": "F367",
+      "marriageDate": "1931",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

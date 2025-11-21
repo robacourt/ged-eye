@@ -1,0 +1,18 @@
+{
+  "id": "I1526",
+  "name": "Doreen Lilian Joycelyn Morgan",
+  "givenName": "Doreen Lilian Joycelyn",
+  "surname": "Morgan",
+  "sex": "F",
+  "birthDate": "5 MAY 1956",
+  "birthPlace": "Northern Island, Aldergrove",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1524",
+    "I1525"
+  ]
+}

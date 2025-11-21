@@ -1,0 +1,39 @@
+{
+  "id": "I2288",
+  "name": "James White",
+  "givenName": "James",
+  "surname": "White",
+  "sex": "M",
+  "birthDate": "ABT 1813",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2289",
+    "I2290",
+    "I2291",
+    "I2292",
+    "I2293"
+  ],
+  "parentIds": [
+    "I2287",
+    "I2985"
+  ],
+  "occupations": [
+    "Stone Mason"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Portsea, Hampshire, 345 Commercial Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F810"
+    }
+  ]
+}

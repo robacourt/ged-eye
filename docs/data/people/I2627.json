@@ -1,0 +1,27 @@
+{
+  "id": "I2627",
+  "name": "Adam Brent Giudice",
+  "givenName": "Adam Brent",
+  "surname": "Giudice",
+  "sex": "M",
+  "birthDate": "28 SEP 1978",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2626"
+  ],
+  "childIds": [
+    "I2628",
+    "I2629",
+    "I2630"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2626",
+      "familyId": "F915"
+    }
+  ]
+}

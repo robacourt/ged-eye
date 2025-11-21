@@ -1,0 +1,52 @@
+{
+  "id": "I220",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1850",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I355"
+  ],
+  "childIds": [
+    "I356",
+    "I357",
+    "I1581",
+    "I1582"
+  ],
+  "parentIds": [
+    "I82",
+    "I215"
+  ],
+  "baptismDate": "11 SEP 1853",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Ag Lab",
+    "Farm Labourer",
+    "Agricultural labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Fifehead Magdalen, Dorset, Poor House"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Higher Hill"
+    },
+    {
+      "date": "1901",
+      "place": "Buckhorn Weston, Dorset, 1 Tunnel Head"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I355",
+      "familyId": "F119"
+    }
+  ]
+}

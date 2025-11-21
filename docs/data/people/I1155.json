@@ -1,0 +1,42 @@
+{
+  "id": "I1155",
+  "name": "Albert Curtis",
+  "givenName": "Albert",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": "7 APR 1861",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1156"
+  ],
+  "childIds": [
+    "I1159",
+    "I1162"
+  ],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "14 JUL 1861",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Farmer"
+  ],
+  "residences": [
+    {
+      "date": "1902",
+      "place": "Antells Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1156",
+      "familyId": "F470",
+      "marriageDate": "15 JAN 1902",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

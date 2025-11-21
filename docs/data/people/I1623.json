@@ -1,0 +1,25 @@
+{
+  "id": "I1623",
+  "name": "Unknown Warren",
+  "givenName": "Unknown",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1622"
+  ],
+  "childIds": [
+    "I1621"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1622",
+      "familyId": "F606"
+    }
+  ]
+}

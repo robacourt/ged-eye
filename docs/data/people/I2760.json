@@ -1,0 +1,24 @@
+{
+  "id": "I2760",
+  "name": "Joseph Keniston",
+  "givenName": "Joseph",
+  "surname": "Keniston",
+  "sex": "M",
+  "birthDate": "ABT 1833",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2755",
+    "I2753"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Frog Moor"
+    }
+  ]
+}

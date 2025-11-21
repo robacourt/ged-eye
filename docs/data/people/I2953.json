@@ -1,0 +1,27 @@
+{
+  "id": "I2953",
+  "name": "Gertrude Ellen Kirby",
+  "givenName": "Gertrude Ellen",
+  "surname": "Kirby",
+  "sex": "F",
+  "birthDate": "JAN 1891",
+  "birthPlace": "Kent, Maidstone.",
+  "deathDate": "MAR 1915",
+  "deathPlace": "Kent, Blean",
+  "photos": [],
+  "spouseIds": [
+    "I457"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "burialDate": "6 MAR 1915",
+  "burialPlace": "Kent, Westbere.",
+  "marriages": [
+    {
+      "spouseId": "I457",
+      "familyId": "F1011",
+      "marriageDate": "JUL 1913",
+      "marriagePlace": "Kent, Blean"
+    }
+  ]
+}

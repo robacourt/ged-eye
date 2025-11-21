@@ -1,0 +1,27 @@
+{
+  "id": "I2935",
+  "name": "Charles Leslie A'Court",
+  "givenName": "Charles Leslie",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1903",
+  "birthPlace": "Wiltshire, Swindon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Kent/RG14 3957 345.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I361",
+    "I2934"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Kent, Gillingham, 53 Windsor Rd."
+    }
+  ],
+  "avatar": "avatars/I2935_0.jpg"
+}

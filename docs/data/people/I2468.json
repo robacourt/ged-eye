@@ -1,0 +1,61 @@
+{
+  "id": "I2468",
+  "name": "Alice A'Court",
+  "givenName": "Alice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": "Ingatestone, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Ware/RG10 1350 12 5.jpg",
+    "Data/Media/1881 census/Lancs/West Derby/RG11 3714 7 12.jpg",
+    "Data/Media/1891 census/Lancashire/RG12 3000 55 14.jpg"
+  ],
+  "spouseIds": [
+    "I2472"
+  ],
+  "childIds": [
+    "I2473",
+    "I2598",
+    "I2599"
+  ],
+  "parentIds": [
+    "I874",
+    "I926"
+  ],
+  "occupations": [
+    "Photographers Apprentice"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Hertfordshire, Ware, Gilston, Lolings Cottage"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
+    },
+    {
+      "date": "1891",
+      "place": "West Derby, Lancashire, 2 Quarry Road"
+    },
+    {
+      "date": "1901",
+      "place": "London, Westminster, St. James, 179 Regent Street"
+    },
+    {
+      "date": "1911",
+      "place": "Chiswick, Middlesex, 80 Grove Park Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2472",
+      "familyId": "F873",
+      "marriageDate": "ABT 1895"
+    }
+  ],
+  "avatar": "avatars/I2468_0.jpg"
+}

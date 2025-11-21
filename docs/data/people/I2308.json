@@ -1,0 +1,26 @@
+{
+  "id": "I2308",
+  "name": "Isabella Pringle Lamb",
+  "givenName": "Isabella Pringle",
+  "surname": "Lamb",
+  "sex": "F",
+  "birthDate": "1889",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I942"
+  ],
+  "childIds": [
+    "I1924"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I942",
+      "familyId": "F682",
+      "marriageDate": "1914"
+    }
+  ]
+}

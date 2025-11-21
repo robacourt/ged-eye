@@ -1,0 +1,35 @@
+{
+  "id": "I2609",
+  "name": "Robert Thornley Clinston",
+  "givenName": "Robert Thornley",
+  "surname": "Clinston",
+  "sex": "M",
+  "birthDate": "ABT 1890",
+  "birthPlace": "Warrington, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1611"
+  ],
+  "childIds": [
+    "I2612"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Pork Butcher"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1611",
+      "familyId": "F909",
+      "marriageDate": "ABT 1910"
+    }
+  ]
+}

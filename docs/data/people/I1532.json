@@ -1,0 +1,29 @@
+{
+  "id": "I1532",
+  "name": "Ceilia Minnie White",
+  "givenName": "Ceilia Minnie",
+  "surname": "White",
+  "sex": "F",
+  "birthDate": "28 SEP 1887",
+  "birthPlace": "Galhampton, Somerset",
+  "deathDate": "1970",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1534"
+  ],
+  "childIds": [
+    "I1535"
+  ],
+  "parentIds": [
+    "I865",
+    "I777"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1534",
+      "familyId": "F585",
+      "marriageDate": "1916"
+    }
+  ]
+}

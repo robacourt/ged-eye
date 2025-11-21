@@ -1,0 +1,26 @@
+{
+  "id": "I590",
+  "name": "Alice Lewis Hatcher",
+  "givenName": "Alice Lewis",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "22.3.1875",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I157",
+    "I317"
+  ],
+  "baptismDate": "11.7.1875",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "6-1881, 16-1891,"
+  ]
+}

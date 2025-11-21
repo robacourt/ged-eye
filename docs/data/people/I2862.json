@@ -1,0 +1,35 @@
+{
+  "id": "I2862",
+  "name": "Alfred A Hyam",
+  "givenName": "Alfred A",
+  "surname": "Hyam",
+  "sex": "M",
+  "birthDate": "Abt 1851",
+  "birthPlace": "Essex, Colchester",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2808"
+  ],
+  "childIds": [
+    "I2863",
+    "I2864"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Horse collar maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 13 Clifton St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2808",
+      "familyId": "F869"
+    }
+  ]
+}

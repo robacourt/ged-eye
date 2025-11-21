@@ -1,0 +1,44 @@
+{
+  "id": "I444",
+  "name": "Margaret Gordon Macher",
+  "givenName": "Margaret Gordon",
+  "surname": "Macher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I443"
+  ],
+  "childIds": [
+    "I2768",
+    "I424",
+    "I2769",
+    "I2770"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Lambeth, 12 Hanover Place"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, Sandringham Road"
+    },
+    {
+      "date": "1891",
+      "place": "London, Hornsey, 127 Stoke Newington Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I443",
+      "familyId": "F195",
+      "marriageDate": "24 NOV 1851",
+      "marriagePlace": "Dundee"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1310",
+  "name": "Jofi Serah A'Court",
+  "givenName": "Jofi Serah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "14 MAY 1999",
+  "birthPlace": "Perth, Western Australia",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1097",
+    "I1306"
+  ]
+}

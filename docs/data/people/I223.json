@@ -1,0 +1,27 @@
+{
+  "id": "I223",
+  "name": "Elizabeth Barnes",
+  "givenName": "Elizabeth",
+  "surname": "Barnes",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I222"
+  ],
+  "childIds": [
+    "I215"
+  ],
+  "parentIds": [
+    "I224"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I222",
+      "familyId": "F116"
+    }
+  ]
+}

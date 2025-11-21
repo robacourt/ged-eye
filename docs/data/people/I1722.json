@@ -1,0 +1,17 @@
+{
+  "id": "I1722",
+  "name": "Karen Rebecca A'Court",
+  "givenName": "Karen Rebecca",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2ND QTR 1975",
+  "birthPlace": "Canterbury, Kent",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1723"
+  ]
+}

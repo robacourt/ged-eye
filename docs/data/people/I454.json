@@ -1,0 +1,63 @@
+{
+  "id": "I454",
+  "name": "William Frederick Lent",
+  "givenName": "William Frederick",
+  "surname": "Lent",
+  "sex": "M",
+  "birthDate": "14 JUN 1883",
+  "birthPlace": "Aldershot, Hampshire",
+  "deathDate": "4 JUN 1926",
+  "deathPlace": "Surrey, Epsom",
+  "photos": [
+    "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg",
+    "Data/Media/1911 census/Hampshire/Southampton/RG14 6013 153.jpg",
+    "Data/Media/Service Records/William Frederick Lent -Tribunal.jpg",
+    "Data/Media/Service Records/William Frederick Lent Attestation doc.jpg",
+    "Data/Media/Burial Records/William Frederick Lent.jpg"
+  ],
+  "spouseIds": [
+    "I2949"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I452",
+    "I453"
+  ],
+  "burialDate": "7 JUNE 1926",
+  "burialPlace": "Surrey, Cobham, St Andrews",
+  "occupations": [
+    "Clerk Salesman",
+    "Wine Merchant, Manager, 83 Kings Rd Southsea",
+    "Licensed victualler"
+  ],
+  "notes": [
+    "First name(s) William Frederick",
+    "First name(s) William Frederick",
+    "lived sometime in Southsea and Chobham Surrey Thought to have commited suicide"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Yorkshire, Scarborough, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Southampton, Hampshire, 9 Commercial Rd."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1916",
+      "place": "Hampshire, Southsea, 39 St Simonds Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2949",
+      "familyId": "F1007",
+      "marriageDate": "12 DEC 1904",
+      "marriagePlace": "Kent, Thanet"
+    }
+  ],
+  "avatar": "avatars/I454_0.jpg"
+}

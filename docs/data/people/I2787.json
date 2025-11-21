@@ -1,0 +1,27 @@
+{
+  "id": "I2787",
+  "name": "Samuel Markwell",
+  "givenName": "Samuel",
+  "surname": "Markwell",
+  "sex": "M",
+  "birthDate": "ABT 1874",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2786",
+    "I2784"
+  ],
+  "occupations": [
+    "Wool warehouseman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 6 Perth St"
+    }
+  ]
+}

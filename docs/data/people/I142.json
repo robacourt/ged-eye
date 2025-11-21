@@ -1,0 +1,53 @@
+{
+  "id": "I142",
+  "name": "Maria Dunford",
+  "givenName": "Maria",
+  "surname": "Dunford",
+  "sex": "F",
+  "birthDate": "1796",
+  "birthPlace": "Templecombe, Somerset",
+  "deathDate": "1863",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Marnhull/RG09 1329 33 36.jpg"
+  ],
+  "spouseIds": [
+    "I49",
+    "I56"
+  ],
+  "childIds": [
+    "I144",
+    "I143",
+    "I145",
+    "I138"
+  ],
+  "parentIds": [],
+  "burialDate": "18 SEP 1863",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glover",
+    "Glove Carrier"
+  ],
+  "notes": [
+    "of Templecombe  .45-1841  56-1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, Pleck"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I49",
+      "familyId": "F32",
+      "marriageDate": "18 SEP 1818",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I56",
+      "familyId": "F37"
+    }
+  ],
+  "avatar": "avatars/I142_0.jpg"
+}

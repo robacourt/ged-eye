@@ -1,0 +1,28 @@
+{
+  "id": "I2619",
+  "name": "Michael Kostic",
+  "givenName": "Michael",
+  "surname": "Kostic",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2618"
+  ],
+  "childIds": [
+    "I2620",
+    "I2621"
+  ],
+  "parentIds": [
+    "I2632"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2618",
+      "familyId": "F912"
+    }
+  ]
+}

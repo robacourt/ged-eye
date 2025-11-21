@@ -1,0 +1,22 @@
+{
+  "id": "I515",
+  "name": "Leonard A'Court",
+  "givenName": "Leonard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1886",
+  "birthPlace": null,
+  "deathDate": "11 JAN 1918",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I780",
+    "I868"
+  ],
+  "burialPlace": "Lijssenthoek Military Cemetery, Belgium",
+  "notes": [
+    "In Memory of"
+  ]
+}

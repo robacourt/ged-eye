@@ -1,0 +1,45 @@
+{
+  "id": "I2298",
+  "name": "Stephen A'Court",
+  "givenName": "Stephen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1782",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2299",
+    "I2300"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Formerly, Shoe Maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": null
+    },
+    {
+      "date": "1841",
+      "place": "Castle Cary, Somerset, Cockhill Lane"
+    },
+    {
+      "date": "1851",
+      "place": "Castle Cary, Somerset, Hounslow"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2299",
+      "familyId": "F813"
+    },
+    {
+      "spouseId": "I2300",
+      "familyId": "F814"
+    }
+  ]
+}

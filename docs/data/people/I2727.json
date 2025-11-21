@@ -1,0 +1,25 @@
+{
+  "id": "I2727",
+  "name": "Meyer Cooke",
+  "givenName": "Meyer",
+  "surname": "Cooke",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2723"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2723",
+      "familyId": "F952",
+      "marriageDate": "1864",
+      "marriagePlace": "London, Whitechapel"
+    }
+  ]
+}

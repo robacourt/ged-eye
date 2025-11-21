@@ -1,0 +1,23 @@
+{
+  "id": "I1381",
+  "name": "Kay Unknown",
+  "givenName": "Kay",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1375"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1375",
+      "familyId": "F545"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I587",
+  "name": "Sarah Unknown",
+  "givenName": "Sarah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I586"
+  ],
+  "childIds": [
+    "I585"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I586",
+      "familyId": "F241"
+    }
+  ]
+}

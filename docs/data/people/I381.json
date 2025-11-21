@@ -1,0 +1,27 @@
+{
+  "id": "I381",
+  "name": "Jamie Wheeler Bennett",
+  "givenName": "Jamie Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "1885",
+  "birthPlace": "Kent, Bromley",
+  "deathDate": "1894",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/Bromley & West Kent Telegraph Jan 7 1899.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I377",
+    "I380"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Kent, Bromley, Carisbrook"
+    }
+  ],
+  "avatar": "avatars/I381_0.jpg"
+}

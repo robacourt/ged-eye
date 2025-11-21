@@ -1,0 +1,25 @@
+{
+  "id": "I1334",
+  "name": "Ivy Jones",
+  "givenName": "Ivy",
+  "surname": "Jones",
+  "sex": "F",
+  "birthDate": "ABT 1905",
+  "birthPlace": null,
+  "deathDate": "AFT 1928",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1333"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1333",
+      "familyId": "F527",
+      "marriageDate": "23 JUL 1928",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
+    }
+  ]
+}

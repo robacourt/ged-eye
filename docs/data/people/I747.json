@@ -1,0 +1,26 @@
+{
+  "id": "I747",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BEF 1 APR 1761",
+  "birthPlace": null,
+  "deathDate": "JUN 1761",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I900"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I741",
+    "I742"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I900",
+      "familyId": "F307"
+    }
+  ]
+}

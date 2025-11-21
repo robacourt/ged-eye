@@ -1,0 +1,26 @@
+{
+  "id": "I120",
+  "name": "Charles Albert Smith",
+  "givenName": "Charles Albert",
+  "surname": "Smith",
+  "sex": "M",
+  "birthDate": "1901",
+  "birthPlace": "Nottinghamshire, Bashford",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I118"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I118",
+      "familyId": "F71",
+      "marriageDate": "19 AUG 1922",
+      "marriagePlace": "London, Hackney",
+      "divorceDate": "Abt 1936"
+    }
+  ]
+}

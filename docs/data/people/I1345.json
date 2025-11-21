@@ -1,0 +1,34 @@
+{
+  "id": "I1345",
+  "name": "Alice Jane A'Court",
+  "givenName": "Alice Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1842",
+  "birthPlace": null,
+  "deathDate": "22 DEC 1898",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1346"
+  ],
+  "childIds": [
+    "I1349",
+    "I1351",
+    "I1353",
+    "I1355",
+    "I1357",
+    "I1359",
+    "I1363"
+  ],
+  "parentIds": [
+    "I935",
+    "I936"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1346",
+      "familyId": "F532"
+    }
+  ]
+}

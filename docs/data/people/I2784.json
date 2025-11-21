@@ -1,0 +1,45 @@
+{
+  "id": "I2784",
+  "name": "Alice Unknown",
+  "givenName": "Alice",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1848",
+  "birthPlace": "London, Shadwell",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2786"
+  ],
+  "childIds": [
+    "I2787",
+    "I2788",
+    "I2789",
+    "I2783",
+    "I2785"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Charwoman"
+  ],
+  "notes": [
+    "1911 census transcription details for:  9 Perth Street Stepney E  National Archive Reference:  RG14PN1593 RG78PN56 RD21 SD1 ED22 SN159"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London Stepney, 9 Perth St."
+    },
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 9 Perth St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2786",
+      "familyId": "F968"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "I2221",
+  "name": "Caroline Haycourt",
+  "givenName": "Caroline",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "ABT 1846",
+  "birthPlace": "Bristol St Philip And Jacob",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Bristol/HO107 1954 139 12 50.jpg",
+    "Data/Media/1891 census/Bristol/RG12 1983 136 2.jpg"
+  ],
+  "spouseIds": [
+    "I2229"
+  ],
+  "childIds": [
+    "I2230",
+    "I2231",
+    "I2235",
+    "I2232",
+    "I2233",
+    "I2234",
+    "I2236",
+    "I2237"
+  ],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "occupations": [
+    "Flax spinner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Clifton, Nible House Court, 3 West St"
+    },
+    {
+      "date": "1891",
+      "place": "Gloucestershire, Barton Regis, Brick St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2229",
+      "familyId": "F793",
+      "marriageDate": "FEB  1868"
+    }
+  ],
+  "avatar": "avatars/I2221_0.jpg"
+}

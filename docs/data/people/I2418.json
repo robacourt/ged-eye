@@ -1,0 +1,46 @@
+{
+  "id": "I2418",
+  "name": "Reginald George A'Court",
+  "givenName": "Reginald George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1898",
+  "birthPlace": "Box, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg",
+    "Data/Media/1911 census/Wiltshire/Box/RG14 11864 213.jpg"
+  ],
+  "spouseIds": [
+    "I2419"
+  ],
+  "childIds": [
+    "I2429",
+    "I2432",
+    "I2426",
+    "I2437"
+  ],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2419",
+      "familyId": "F859",
+      "marriageDate": "1920"
+    }
+  ],
+  "avatar": "avatars/I2418_0.jpg"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2806",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1854",
+  "birthPlace": "London, Paddington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Clerkenwell/RG10 389 49 8.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Nurse"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Clerkenwell, 25 Penton St"
+    }
+  ],
+  "avatar": "avatars/I2806_0.jpg"
+}

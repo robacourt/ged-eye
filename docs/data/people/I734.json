@@ -1,0 +1,45 @@
+{
+  "id": "I734",
+  "name": "John (Jack)Felix Reuben Daniel A'Court",
+  "givenName": "John (Jack)Felix Reuben Daniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "10 FEB 1898",
+  "birthPlace": "Ballimore, NSW",
+  "deathDate": "3 NOV 1972",
+  "deathPlace": "Dubbo, NSW",
+  "photos": [],
+  "spouseIds": [
+    "I735"
+  ],
+  "childIds": [
+    "I989",
+    "I991",
+    "I736",
+    "I993",
+    "I994",
+    "I996",
+    "I997"
+  ],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "notes": [
+    "ACOURT JOHN : Service Number - N108725 : Date of birth - 10 Feb 1889 : Place of birth - DUBBO NSW : Place of enlistment - PADDINGTON NSW : Next of Kin - ACOURT ADA"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Wongarbin near Guerie"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I735",
+      "familyId": "F299",
+      "marriageDate": "1919",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

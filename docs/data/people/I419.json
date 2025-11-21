@@ -1,0 +1,18 @@
+{
+  "id": "I419",
+  "name": "June Heather Fraser",
+  "givenName": "June Heather",
+  "surname": "Fraser",
+  "sex": "F",
+  "birthDate": "4 JUN 1924",
+  "birthPlace": "London",
+  "deathDate": "26 FEB 2013",
+  "deathPlace": "London, Temple Fortune",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I417",
+    "I418"
+  ]
+}

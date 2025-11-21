@@ -1,0 +1,29 @@
+{
+  "id": "I795",
+  "name": "Gertrude Alice A'Court",
+  "givenName": "Gertrude Alice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1881",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1929",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I819"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I819",
+      "familyId": "F340"
+    }
+  ]
+}

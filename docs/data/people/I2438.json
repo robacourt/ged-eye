@@ -1,0 +1,28 @@
+{
+  "id": "I2438",
+  "name": "David Slaymaker",
+  "givenName": "David",
+  "surname": "Slaymaker",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2437"
+  ],
+  "childIds": [
+    "I2439",
+    "I2440",
+    "I2441",
+    "I2442"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2437",
+      "familyId": "F865"
+    }
+  ]
+}

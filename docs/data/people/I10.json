@@ -1,0 +1,27 @@
+{
+  "id": "I10",
+  "name": "Edwin A'Court",
+  "givenName": "Edwin",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1833",
+  "birthPlace": "Okeford Fitzpaine, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1",
+    "I2"
+  ],
+  "notes": [
+    "18 in 1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset"
+    }
+  ]
+}

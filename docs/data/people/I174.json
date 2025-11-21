@@ -1,0 +1,43 @@
+{
+  "id": "I174",
+  "name": "Elizabeth Hardy",
+  "givenName": "Elizabeth",
+  "surname": "Hardy",
+  "sex": "F",
+  "birthDate": "ABT 1823",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I143"
+  ],
+  "childIds": [
+    "I175",
+    "I176",
+    "I1450",
+    "I1648",
+    "I2405"
+  ],
+  "parentIds": [
+    "I2978"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Dorset, Melcombe Regis, 6 Terrace Court"
+    },
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, Hotel Yard"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I143",
+      "familyId": "F83",
+      "marriageDate": "1841",
+      "marriagePlace": "Dorset, Wyke Regis."
+    }
+  ]
+}

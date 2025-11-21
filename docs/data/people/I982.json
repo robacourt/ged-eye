@@ -1,0 +1,29 @@
+{
+  "id": "I982",
+  "name": "Thomas Pryor",
+  "givenName": "Thomas",
+  "surname": "Pryor",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I981"
+  ],
+  "childIds": [
+    "I1073",
+    "I1316",
+    "I1317"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I981",
+      "familyId": "F407",
+      "marriageDate": "13 MAR 1937",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

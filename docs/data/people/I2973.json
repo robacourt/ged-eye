@@ -1,0 +1,27 @@
+{
+  "id": "I2973",
+  "name": "Dennis William Topper",
+  "givenName": "Dennis William",
+  "surname": "Topper",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/Surrey/RG15 03152 88.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2971",
+    "I2972"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921 CENSUS",
+      "place": "Surrey, West Byleet, 72 Station Rd"
+    }
+  ],
+  "avatar": "avatars/I2973_0.jpg"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I1358",
+  "name": "William Boyle",
+  "givenName": "William",
+  "surname": "Boyle",
+  "sex": "M",
+  "birthDate": "ABT 1874",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1357"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1357",
+      "familyId": "F538"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I638",
+  "name": "Frederick George Green",
+  "givenName": "Frederick George",
+  "surname": "Green",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I637"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Plumber"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F268"
+    }
+  ]
+}

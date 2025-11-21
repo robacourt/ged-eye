@@ -1,0 +1,65 @@
+{
+  "id": "I1760",
+  "name": "William Shorland Wildgoose",
+  "givenName": "William Shorland",
+  "surname": "Wildgoose",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1759"
+  ],
+  "childIds": [
+    "I1761",
+    "I1762"
+  ],
+  "parentIds": [],
+  "burialDate": "20 MAY 1911",
+  "burialPlace": "Warrington, Lancashire",
+  "occupations": [
+    "Plumber",
+    "Unemployed Plumber",
+    "Working at Telegraph Depot",
+    "Telegraph Wire Man",
+    "Telegraph Foreman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, 47 Temple St."
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, 32 Broad St."
+    },
+    {
+      "date": "1881",
+      "place": "Warrington, Lancashire,7 Heaton St.,"
+    },
+    {
+      "date": "1891",
+      "place": "Warrington, Lancashire, 7 Heaton St."
+    },
+    {
+      "date": "1901",
+      "place": "Warrington, Lancashire, 7 Heaton St."
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1874",
+      "place": "Bristol, Gloucestershire, St Mary Redcliff, 3 Arch Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1759",
+      "familyId": "F638",
+      "marriageDate": "13 DEC 1874",
+      "marriagePlace": "Bristol, Gloucestershire, St. Mary's Redcliffe"
+    }
+  ]
+}

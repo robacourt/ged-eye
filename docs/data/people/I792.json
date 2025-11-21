@@ -1,0 +1,31 @@
+{
+  "id": "I792",
+  "name": "Ada Elizabeth A'Court",
+  "givenName": "Ada Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "21 DEC 1874",
+  "birthPlace": "Brisbane,Queensland, Australia",
+  "deathDate": "1953",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I808"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "notes": [
+    "NZ Probates Christchurch Court 3131"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I808",
+      "familyId": "F337",
+      "marriageDate": "12 MAY 1897",
+      "marriagePlace": "Christchurch, NZ, Madras St"
+    }
+  ]
+}

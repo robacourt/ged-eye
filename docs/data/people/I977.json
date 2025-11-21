@@ -1,0 +1,26 @@
+{
+  "id": "I977",
+  "name": "Nathaniel Robert (Bob) A'Court",
+  "givenName": "Nathaniel Robert (Bob)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1904",
+  "birthPlace": null,
+  "deathDate": "BET 1980-1990",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I978"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I978",
+      "familyId": "F406"
+    }
+  ]
+}

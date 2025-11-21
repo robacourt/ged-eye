@@ -1,0 +1,26 @@
+{
+  "id": "I2050",
+  "name": "Richard Phillips",
+  "givenName": "Richard",
+  "surname": "Phillips",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2049"
+  ],
+  "childIds": [
+    "I2051",
+    "I2052"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2049",
+      "familyId": "F739"
+    }
+  ]
+}

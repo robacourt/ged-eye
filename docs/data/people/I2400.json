@@ -1,0 +1,26 @@
+{
+  "id": "I2400",
+  "name": "Timothy Goble",
+  "givenName": "Timothy",
+  "surname": "Goble",
+  "sex": "M",
+  "birthDate": "4 JUNE 1970",
+  "birthPlace": "South Africa, Pietermaritzburg,",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2399"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Banksman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2399",
+      "familyId": "F852"
+    }
+  ]
+}

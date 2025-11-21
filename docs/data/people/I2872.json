@@ -1,0 +1,27 @@
+{
+  "id": "I2872",
+  "name": "Georgina A'Court",
+  "givenName": "Georgina",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1863",
+  "birthPlace": "Dorset, Marnhull",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Surrey/RG11 843 68 29.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "General servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Surrey, Richmond, The Cricketers, 25 Greenside"
+    }
+  ],
+  "avatar": "avatars/I2872_0.jpg"
+}

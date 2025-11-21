@@ -1,0 +1,32 @@
+{
+  "id": "I2868",
+  "name": "Frances M Unknown",
+  "givenName": "Frances M",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1821",
+  "birthPlace": "London, Greenwich",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2867"
+  ],
+  "childIds": [
+    "I2866",
+    "I2869"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Lewisham, 6 Merton Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2867",
+      "familyId": "F980"
+    }
+  ]
+}

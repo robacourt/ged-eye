@@ -1,0 +1,17 @@
+{
+  "id": "I1789",
+  "name": "Christine M A'Court",
+  "givenName": "Christine M",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "4TH QRT 1951",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1790"
+  ]
+}

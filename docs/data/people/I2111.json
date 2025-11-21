@@ -1,0 +1,33 @@
+{
+  "id": "I2111",
+  "name": "John J A'Court",
+  "givenName": "John J",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "17 AUG 1933",
+  "deathPlace": "Sri Lanka ( Ceylon) Haputale",
+  "photos": [
+    "Data/Picture/John J A'Court grave.jpg"
+  ],
+  "spouseIds": [
+    "I2938"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "HMS HAWKINS",
+    "First name(s) John Joseph",
+    "Possible son of John F A'Court and Ester Jersey CI #2839 & #2876 see 1901 census"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2938",
+      "familyId": "F1003",
+      "marriageDate": "1921",
+      "marriagePlace": "Hampshire, Portsmouth"
+    }
+  ],
+  "avatar": "avatars/I2111_0.jpg"
+}

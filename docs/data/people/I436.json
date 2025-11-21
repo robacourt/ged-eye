@@ -1,0 +1,30 @@
+{
+  "id": "I436",
+  "name": "Mouchka Madelaine Witchard",
+  "givenName": "Mouchka Madelaine",
+  "surname": "Witchard",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I430",
+    "I2794"
+  ],
+  "childIds": [
+    "I437"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I430",
+      "familyId": "F198"
+    },
+    {
+      "spouseId": "I2794",
+      "familyId": "F972"
+    }
+  ]
+}

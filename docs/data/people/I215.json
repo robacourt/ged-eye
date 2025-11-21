@@ -1,0 +1,64 @@
+{
+  "id": "I215",
+  "name": "Harriett Trew",
+  "givenName": "Harriett",
+  "surname": "Trew",
+  "sex": "F",
+  "birthDate": "1810",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I82"
+  ],
+  "childIds": [
+    "I216",
+    "I217",
+    "I218",
+    "I219",
+    "I220",
+    "I221"
+  ],
+  "parentIds": [
+    "I222",
+    "I223"
+  ],
+  "baptismDate": "8 MAY 1810",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "27-3-1887",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "1861 - RG9/1329",
+    "40-1851  49-1861  57-1871 68-1881"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1861",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1871",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I82",
+      "familyId": "F53",
+      "marriageDate": "6 MAY 1835",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

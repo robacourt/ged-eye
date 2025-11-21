@@ -1,0 +1,25 @@
+{
+  "id": "I952",
+  "name": "Ellen Unknown",
+  "givenName": "Ellen",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I951"
+  ],
+  "childIds": [
+    "I103"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I951",
+      "familyId": "F61"
+    }
+  ]
+}

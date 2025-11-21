@@ -1,0 +1,35 @@
+{
+  "id": "I1030",
+  "name": "Nettie A'Court",
+  "givenName": "Nettie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1896",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "occupations": [
+    "Domestic servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Martock, Somerset, East St."
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
+  "avatar": "avatars/I1030_0.jpg"
+}

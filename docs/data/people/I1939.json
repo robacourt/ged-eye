@@ -1,0 +1,23 @@
+{
+  "id": "I1939",
+  "name": "Wally Reid",
+  "givenName": "Wally",
+  "surname": "Reid",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1936"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1936",
+      "familyId": "F689"
+    }
+  ]
+}

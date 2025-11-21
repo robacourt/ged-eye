@@ -1,0 +1,24 @@
+{
+  "id": "I2882",
+  "name": "Unknown Chapman",
+  "givenName": "Unknown",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2807",
+    "I2883"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F987"
+    }
+  ]
+}

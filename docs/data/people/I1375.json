@@ -1,0 +1,36 @@
+{
+  "id": "I1375",
+  "name": "Frank Clifford A'Court",
+  "givenName": "Frank Clifford",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1380",
+    "I1381"
+  ],
+  "childIds": [
+    "I2309",
+    "I2310"
+  ],
+  "parentIds": [
+    "I947",
+    "I1370"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1380",
+      "familyId": "F544",
+      "marriageDate": "1912",
+      "marriagePlace": "New Zealand"
+    },
+    {
+      "spouseId": "I1381",
+      "familyId": "F545"
+    }
+  ]
+}

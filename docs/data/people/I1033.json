@@ -1,0 +1,39 @@
+{
+  "id": "I1033",
+  "name": "Eva A'Court",
+  "givenName": "Eva",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1903",
+  "birthPlace": "Martock, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
+  "spouseIds": [
+    "I1627"
+  ],
+  "childIds": [
+    "I1993",
+    "I1994",
+    "I1995"
+  ],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1627",
+      "familyId": "F713"
+    }
+  ],
+  "avatar": "avatars/I1033_0.jpg"
+}

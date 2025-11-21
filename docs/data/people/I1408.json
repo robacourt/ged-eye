@@ -1,0 +1,41 @@
+{
+  "id": "I1408",
+  "name": "Lilian Doris A'Court",
+  "givenName": "Lilian Doris",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1902",
+  "birthPlace": "Bristol, 3 St John's Rd.",
+  "deathDate": "1986",
+  "deathPlace": "Santa Rosa, California, USA",
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 14916 116.jpg"
+  ],
+  "spouseIds": [
+    "I1969"
+  ],
+  "childIds": [
+    "I1970"
+  ],
+  "parentIds": [
+    "I1387",
+    "I1388"
+  ],
+  "notes": [
+    "To Ian A'Court."
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1969",
+      "familyId": "F845",
+      "marriageDate": "8 JUL 1925"
+    }
+  ],
+  "avatar": "avatars/I1408_0.jpg"
+}

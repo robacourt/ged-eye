@@ -1,0 +1,39 @@
+{
+  "id": "I127",
+  "name": "Denise Moira Sherborne",
+  "givenName": "Denise Moira",
+  "surname": "Sherborne",
+  "sex": "F",
+  "birthDate": "25TH MAY1944",
+  "birthPlace": "Woking, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I122",
+    "I530",
+    "I530"
+  ],
+  "childIds": [
+    "I128"
+  ],
+  "parentIds": [
+    "I403",
+    "I402"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I122",
+      "familyId": "F76"
+    },
+    {
+      "spouseId": "I530",
+      "familyId": "F311",
+      "marriageDate": "3RD QTR 1967"
+    },
+    {
+      "spouseId": "I530",
+      "familyId": "F672"
+    }
+  ]
+}

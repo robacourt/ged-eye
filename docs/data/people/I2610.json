@@ -1,0 +1,37 @@
+{
+  "id": "I2610",
+  "name": "Arthur A'Court",
+  "givenName": "Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1902",
+  "birthPlace": "Warrington, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Lancashire/Warrington/RG14 23171 5 .jpg"
+  ],
+  "spouseIds": [
+    "I2615"
+  ],
+  "childIds": [
+    "I1449"
+  ],
+  "parentIds": [
+    "I1608",
+    "I1609"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2615",
+      "familyId": "F911"
+    }
+  ],
+  "avatar": "avatars/I2610_0.jpg"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "I346",
+  "name": "Fred Kendall",
+  "givenName": "Fred",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": "2.10.1865",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I198",
+    "I344"
+  ],
+  "baptismDate": "12.11.1865",
+  "baptismPlace": "Marnhull, Dorset"
+}

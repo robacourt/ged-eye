@@ -1,0 +1,48 @@
+{
+  "id": "I422",
+  "name": "Edna Eunice Idaline Frentzel",
+  "givenName": "Edna Eunice Idaline",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": "24 SEP 1913",
+  "birthPlace": "London, Palmers Green",
+  "deathDate": "19 FEB 2014",
+  "deathPlace": "London, Paddington, St. Marys Hospital",
+  "photos": [
+    "Data/Picture/Edna Fraser.jpg",
+    "Data/Media/1921 Census/London/RG15 01129 79.jpg"
+  ],
+  "spouseIds": [
+    "I2008"
+  ],
+  "childIds": [
+    "I2009",
+    "I2010",
+    "I2011"
+  ],
+  "parentIds": [
+    "I417",
+    "I418"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "London, Hackney, 40 London Road"
+    }
+  ],
+  "residences": [
+    {
+      "date": "FEB 2014",
+      "place": "London, 9 James Collins Close, Harrow Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2008",
+      "familyId": "F718",
+      "marriageDate": "1939",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I422_0.jpg"
+}

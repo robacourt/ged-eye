@@ -1,0 +1,27 @@
+{
+  "id": "I2873",
+  "name": "Mary Jane A'Court",
+  "givenName": "Mary Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1879",
+  "birthPlace": "Dorset, Buckhorn Weston",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Buckhorn Weston/RG12 1902 147 6.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I221",
+    "I358"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Chapel Hill, Vezey's Hole"
+    }
+  ],
+  "avatar": "avatars/I2873_0.jpg"
+}

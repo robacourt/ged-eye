@@ -1,0 +1,48 @@
+{
+  "id": "I2335",
+  "name": "Abraham Isaac Barnett",
+  "givenName": "Abraham Isaac",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "ABT 1874",
+  "birthPlace": "London, St lukes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg"
+  ],
+  "spouseIds": [
+    "I2708"
+  ],
+  "childIds": [
+    "I2709"
+  ],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "occupations": [
+    "Cigar maker"
+  ],
+  "notes": [
+    "Hi Ian"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    },
+    {
+      "date": "1901",
+      "place": "London, Bethnal Green, 216 Cambridge Road."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2708",
+      "familyId": "F942",
+      "marriageDate": "6 DEC 1901"
+    }
+  ],
+  "avatar": "avatars/I2335_0.jpg"
+}

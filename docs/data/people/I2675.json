@@ -1,0 +1,25 @@
+{
+  "id": "I2675",
+  "name": "Unknown Kerby",
+  "givenName": "Unknown",
+  "surname": "Kerby",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2676"
+  ],
+  "childIds": [
+    "I2674"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2676",
+      "familyId": "F931"
+    }
+  ]
+}

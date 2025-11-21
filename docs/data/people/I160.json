@@ -1,0 +1,23 @@
+{
+  "id": "I160",
+  "name": "Samual Hatcher",
+  "givenName": "Samual",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "2.5.1856",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I152",
+    "I38"
+  ],
+  "baptismDate": "15.6.1856",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "4 in 1861, 14 in 1871"
+  ]
+}

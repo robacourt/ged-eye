@@ -1,0 +1,44 @@
+{
+  "id": "I1928",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1820",
+  "birthPlace": "Bratton, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Shepton Mallet/RG12 1910 69 23.jpg"
+  ],
+  "spouseIds": [
+    "I51"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Printers Wife",
+    "Annuitant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Shepton Mallet, Somerset, Town St."
+    },
+    {
+      "date": "1871",
+      "place": "Somerset, Shepton Mallet, Paul St."
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Shepton Mallet, Paul St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I51",
+      "familyId": "F685"
+    }
+  ],
+  "avatar": "avatars/I1928_0.jpg"
+}

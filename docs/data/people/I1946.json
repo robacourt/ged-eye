@@ -1,0 +1,25 @@
+{
+  "id": "I1946",
+  "name": "Eleanor Amelia Dwight",
+  "givenName": "Eleanor Amelia",
+  "surname": "Dwight",
+  "sex": "F",
+  "birthDate": "30 OCT 1884",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1945"
+  ],
+  "childIds": [
+    "I1944"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1945",
+      "familyId": "F693"
+    }
+  ]
+}

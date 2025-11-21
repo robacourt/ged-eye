@@ -1,0 +1,28 @@
+{
+  "id": "I347",
+  "name": "Henry Yeatman",
+  "givenName": "Henry",
+  "surname": "Yeatman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I348"
+  ],
+  "childIds": [
+    "I344"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I348",
+      "familyId": "F163"
+    }
+  ]
+}

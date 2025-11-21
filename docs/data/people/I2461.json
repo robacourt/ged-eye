@@ -1,0 +1,41 @@
+{
+  "id": "I2461",
+  "name": "Walter A'Court",
+  "givenName": "Walter",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1887",
+  "birthPlace": "St. Lukes, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Holborn/RG12 233 83 9.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 220 113 47.jpg",
+    "Data/Media/1911 census/London/Edmonton/RG14 7361 42.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I520",
+    "I521"
+  ],
+  "occupations": [
+    "Office Lad",
+    "Warehouseman Textile Industry"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
+    },
+    {
+      "date": "1901",
+      "place": "Hackney, London,  39 Gilpin Road."
+    },
+    {
+      "date": "1911",
+      "place": "Edmonton, Middlesex, 84 Haselbury Rd. Upper Edmonton"
+    }
+  ],
+  "avatar": "avatars/I2461_0.jpg"
+}

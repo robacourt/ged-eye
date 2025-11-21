@@ -1,0 +1,39 @@
+{
+  "id": "I1579",
+  "name": "Maud Unknown",
+  "givenName": "Maud",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1871",
+  "birthPlace": "Falmouth, Cornwall",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 17 25.jpg"
+  ],
+  "spouseIds": [
+    "I266"
+  ],
+  "childIds": [
+    "I1580"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 7 Charles St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, 7 Charles St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I266",
+      "familyId": "F132",
+      "marriageDate": "ABT 1897"
+    }
+  ],
+  "avatar": "avatars/I1579_0.jpg"
+}

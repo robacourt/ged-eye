@@ -1,0 +1,18 @@
+{
+  "id": "I1308",
+  "name": "Kaya Laura A'Court",
+  "givenName": "Kaya Laura",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "13 MAR 1994",
+  "birthPlace": "Perth, Western Australia",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1097",
+    "I1306"
+  ]
+}

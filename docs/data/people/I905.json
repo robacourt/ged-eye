@@ -1,0 +1,18 @@
+{
+  "id": "I905",
+  "name": "Lilian E Lines",
+  "givenName": "Lilian E",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "ABT 1872",
+  "birthPlace": "Wiltshire, England",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I904",
+    "I230"
+  ]
+}

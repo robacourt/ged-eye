@@ -1,0 +1,34 @@
+{
+  "id": "I2185",
+  "name": "Charles Frederick Rowe",
+  "givenName": "Charles Frederick",
+  "surname": "Rowe",
+  "sex": "M",
+  "birthDate": "ABT 1917",
+  "birthPlace": "Unknown",
+  "deathDate": "1968",
+  "deathPlace": "North Africa",
+  "photos": [],
+  "spouseIds": [
+    "I2253"
+  ],
+  "childIds": [
+    "I2197",
+    "I2198"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Air Pilot"
+  ],
+  "notes": [
+    "Died December 1968"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2253",
+      "familyId": "F785",
+      "marriageDate": "23 MAR 1946",
+      "marriagePlace": "Eastville Methodist Church, Bristol"
+    }
+  ]
+}

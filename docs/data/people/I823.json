@@ -1,0 +1,35 @@
+{
+  "id": "I823",
+  "name": "Frances Nina A'Court",
+  "givenName": "Frances Nina",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "14 JAN 1868",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1939",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Nina, Lucy, Frank A'Court.jpg"
+  ],
+  "spouseIds": [
+    "I833"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I776",
+    "I820"
+  ],
+  "notes": [
+    "NZ Probates Christchurch Court 20438",
+    "SARAH'S WILL"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I833",
+      "familyId": "F353",
+      "marriageDate": "28 NOV 1900",
+      "marriagePlace": "St Lukes, Christchurch, NZ"
+    }
+  ],
+  "avatar": "avatars/I823_0.jpg"
+}

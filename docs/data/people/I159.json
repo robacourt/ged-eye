@@ -1,0 +1,37 @@
+{
+  "id": "I159",
+  "name": "Nathaniel Hatcher",
+  "givenName": "Nathaniel",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I643"
+  ],
+  "childIds": [
+    "I644",
+    "I645"
+  ],
+  "parentIds": [
+    "I152",
+    "I38"
+  ],
+  "baptismDate": "27.6.1852",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    ""
+  ],
+  "notes": [
+    "8 in 1861, 29 in 1881"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I643",
+      "familyId": "F92"
+    }
+  ]
+}

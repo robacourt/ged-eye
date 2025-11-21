@@ -1,0 +1,30 @@
+{
+  "id": "I2626",
+  "name": "Laura Beth Wordsworth",
+  "givenName": "Laura Beth",
+  "surname": "Wordsworth",
+  "sex": "F",
+  "birthDate": "19 SEP 1979",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2627"
+  ],
+  "childIds": [
+    "I2628",
+    "I2629",
+    "I2630"
+  ],
+  "parentIds": [
+    "I2625",
+    "I2616"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2627",
+      "familyId": "F915"
+    }
+  ]
+}

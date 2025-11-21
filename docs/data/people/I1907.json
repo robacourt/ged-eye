@@ -1,0 +1,34 @@
+{
+  "id": "I1907",
+  "name": "Adeline Eliza Ann Jeanes",
+  "givenName": "Adeline Eliza Ann",
+  "surname": "Jeanes",
+  "sex": "F",
+  "birthDate": "1866",
+  "birthPlace": "Smith's Creek, Daylesford, Victoria, Australia",
+  "deathDate": "1937",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1906"
+  ],
+  "childIds": [
+    "I1908",
+    "I2503",
+    "I2506",
+    "I2505",
+    "I2480",
+    "I2507",
+    "I2508"
+  ],
+  "parentIds": [],
+  "burialPlace": "Christchurch, Bromley Cemetery",
+  "marriages": [
+    {
+      "spouseId": "I1906",
+      "familyId": "F676",
+      "marriageDate": "7 DEC 1887",
+      "marriagePlace": "Stafford, Westland, New Zealand"
+    }
+  ]
+}

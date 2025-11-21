@@ -1,0 +1,23 @@
+{
+  "id": "I1827",
+  "name": "Unknown Pratt",
+  "givenName": "Unknown",
+  "surname": "Pratt",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1826"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F658"
+    }
+  ]
+}

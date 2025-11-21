@@ -1,0 +1,21 @@
+{
+  "id": "I1413",
+  "name": "Eileen A'Court",
+  "givenName": "Eileen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1921",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1411",
+    "I1412"
+  ],
+  "notes": [
+    "a twin to victor"
+  ]
+}

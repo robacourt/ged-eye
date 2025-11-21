@@ -1,0 +1,30 @@
+{
+  "id": "I2102",
+  "name": "Phyllis May A'Court",
+  "givenName": "Phyllis May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1920",
+  "birthPlace": null,
+  "deathDate": "1984",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2103"
+  ],
+  "childIds": [
+    "I2104",
+    "I2105"
+  ],
+  "parentIds": [
+    "I2042",
+    "I2043"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2103",
+      "familyId": "F751",
+      "marriageDate": "1948"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I655",
+  "name": "Ernest Warren",
+  "givenName": "Ernest",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": "Abt 1883",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I646",
+    "I241"
+  ],
+  "notes": [
+    "8 in 1891"
+  ]
+}

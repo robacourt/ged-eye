@@ -1,0 +1,21 @@
+{
+  "id": "I2707",
+  "name": "Lionel Charles Barnett",
+  "givenName": "Lionel Charles",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "1936",
+  "birthPlace": "London",
+  "deathDate": "7 JUL 1916",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2705",
+    "I2706"
+  ],
+  "notes": [
+    "Possible marriage ?"
+  ]
+}

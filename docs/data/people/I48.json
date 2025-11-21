@@ -1,0 +1,40 @@
+{
+  "id": "I48",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1793",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I167"
+  ],
+  "childIds": [
+    "I2483"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "20 MAY 1793",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "9 NOV 1864",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Proprietor of houses"
+  ],
+  "notes": [
+    "of Burton Sreet 40-1841  58-1851  68-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I167",
+      "familyId": "F31",
+      "marriageDate": "20 MAY 1810",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I2550",
+  "name": "Walter Charles A'Court",
+  "givenName": "Walter Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1900",
+  "birthPlace": "London, Putney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Chelsea/RG14 399 462.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2555",
+    "I2548"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 47 Shawfield St"
+    },
+    {
+      "date": "1911",
+      "place": "London, Chelsea, 29 Shawfield St."
+    }
+  ],
+  "avatar": "avatars/I2550_0.jpg"
+}

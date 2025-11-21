@@ -1,0 +1,31 @@
+{
+  "id": "I1930",
+  "name": "Sydney John A'Court",
+  "givenName": "Sydney John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "22 SEP 1907",
+  "birthPlace": "Christchurch, New Zealand, Springfield Rd.",
+  "deathDate": "JAN 1965",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I1944"
+  ],
+  "childIds": [
+    "I1947",
+    "I2030",
+    "I2032"
+  ],
+  "parentIds": [
+    "I794",
+    "I810"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1944",
+      "familyId": "F692",
+      "marriageDate": "1927"
+    }
+  ]
+}

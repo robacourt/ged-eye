@@ -1,0 +1,25 @@
+{
+  "id": "I1686",
+  "name": "Unknown Webb",
+  "givenName": "Unknown",
+  "surname": "Webb",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1687"
+  ],
+  "childIds": [
+    "I1688"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1687",
+      "familyId": "F617"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2990",
+  "name": "Renee Marie Barnett",
+  "givenName": "Renee Marie",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "1920",
+  "birthPlace": "London, East Finchley",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/London/RG15 06670 382.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2733",
+    "I2989"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "London, East Finchley, 49 Bedford Rd."
+    }
+  ],
+  "avatar": "avatars/I2990_0.jpg"
+}

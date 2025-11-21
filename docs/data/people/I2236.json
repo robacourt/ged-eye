@@ -1,0 +1,21 @@
+{
+  "id": "I2236",
+  "name": "Charles Clements",
+  "givenName": "Charles",
+  "surname": "Clements",
+  "sex": "M",
+  "birthDate": "ABT 1884",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2229",
+    "I2221"
+  ],
+  "occupations": [
+    "Boot Riveter"
+  ]
+}

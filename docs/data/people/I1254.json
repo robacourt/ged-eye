@@ -1,0 +1,30 @@
+{
+  "id": "I1254",
+  "name": "Elizabeth Ann",
+  "givenName": "Elizabeth",
+  "surname": "Ann",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1255"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I182",
+    "I279"
+  ],
+  "baptismDate": "14 APRIL 1867",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1255",
+      "familyId": "F506",
+      "marriageDate": "22 JAN 1890",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "I882",
+  "name": "Matilda unknown",
+  "givenName": "Matilda",
+  "surname": "unknown",
+  "sex": "F",
+  "birthDate": "Abt 1816",
+  "birthPlace": "Yeovilton, Somerset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I766"
+  ],
+  "childIds": [
+    "I883",
+    "I884",
+    "I885",
+    "I2805"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Rickleford Hill, Frome, Somerset"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hamstead, William Terrace."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I766",
+      "familyId": "F318",
+      "marriageDate": "1840",
+      "marriagePlace": "England"
+    }
+  ]
+}

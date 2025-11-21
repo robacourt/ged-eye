@@ -1,0 +1,23 @@
+{
+  "id": "I2490",
+  "name": "Joyce Mitchell",
+  "givenName": "Joyce",
+  "surname": "Mitchell",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2489"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2489",
+      "familyId": "F879"
+    }
+  ]
+}

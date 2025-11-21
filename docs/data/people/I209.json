@@ -1,0 +1,26 @@
+{
+  "id": "I209",
+  "name": "Sophia Unknown",
+  "givenName": "Sophia",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I208"
+  ],
+  "childIds": [
+    "I117",
+    "I210"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I208",
+      "familyId": "F70"
+    }
+  ]
+}

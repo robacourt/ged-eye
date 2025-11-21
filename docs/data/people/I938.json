@@ -1,0 +1,36 @@
+{
+  "id": "I938",
+  "name": "Isabella Robinson Hammond",
+  "givenName": "Isabella Robinson",
+  "surname": "Hammond",
+  "sex": "F",
+  "birthDate": "1862",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I937"
+  ],
+  "childIds": [
+    "I939",
+    "I941",
+    "I942",
+    "I943",
+    "I944",
+    "I945",
+    "I946"
+  ],
+  "parentIds": [
+    "I1371",
+    "I1372"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I937",
+      "familyId": "F392",
+      "marriageDate": "19 DEC 1883",
+      "marriagePlace": "Waitoi, Sanson,Wellington, New Zealand"
+    }
+  ]
+}

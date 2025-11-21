@@ -1,0 +1,27 @@
+{
+  "id": "I2738",
+  "name": "Edward Henry Barnett",
+  "givenName": "Edward Henry",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "1907",
+  "birthPlace": "London, Stoke Newington",
+  "deathDate": "25 SEP 1939",
+  "deathPlace": "Kent, Maidstone",
+  "photos": [
+    "Data/Media/1911 census/London/Tottenham/RG14 132 7278.png"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2282",
+    "I2693"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Finsbury Park, 10 Vale Road"
+    }
+  ],
+  "avatar": "avatars/I2738_0.jpg"
+}

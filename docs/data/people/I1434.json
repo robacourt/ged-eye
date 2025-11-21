@@ -1,0 +1,26 @@
+{
+  "id": "I1434",
+  "name": "Michael V A'Court",
+  "givenName": "Michael V",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "18 JUN 1933",
+  "birthPlace": "St Heliers, Jersey, Chanel Islands",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1435",
+    "I1436"
+  ],
+  "parentIds": [
+    "I2114"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F557"
+    }
+  ]
+}

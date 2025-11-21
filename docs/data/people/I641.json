@@ -1,0 +1,27 @@
+{
+  "id": "I641",
+  "name": "Sarah Chinn",
+  "givenName": "Sarah",
+  "surname": "Chinn",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I640"
+  ],
+  "childIds": [
+    "I639"
+  ],
+  "parentIds": [
+    "I642"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I640",
+      "familyId": "F269"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "I533",
+  "name": "Cecilia Mary Hann",
+  "givenName": "Cecilia Mary",
+  "surname": "Hann",
+  "sex": "F",
+  "birthDate": "ABT 1861",
+  "birthPlace": "Milborne Port, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I532"
+  ],
+  "childIds": [
+    "I2141",
+    "I2142",
+    "I519"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "New Haw, Addlestone, Surrey, 10 Australian  Cottages"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I532",
+      "familyId": "F225",
+      "marriageDate": "ABT 1881/1894"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2967",
+  "name": "Francis Edward Wilkinson",
+  "givenName": "Francis Edward",
+  "surname": "Wilkinson",
+  "sex": "M",
+  "birthDate": "1859",
+  "birthPlace": "Dorset, Wyke Regis",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2968"
+  ],
+  "childIds": [
+    "I429",
+    "I2969",
+    "I2970"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2968",
+      "familyId": "F1019"
+    }
+  ]
+}

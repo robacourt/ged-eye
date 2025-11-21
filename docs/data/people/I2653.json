@@ -1,0 +1,25 @@
+{
+  "id": "I2653",
+  "name": "Unknown Holton",
+  "givenName": "Unknown",
+  "surname": "Holton",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2654"
+  ],
+  "childIds": [
+    "I2652"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2654",
+      "familyId": "F924"
+    }
+  ]
+}

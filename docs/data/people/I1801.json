@@ -1,0 +1,23 @@
+{
+  "id": "I1801",
+  "name": "Unknown Brown",
+  "givenName": "Unknown",
+  "surname": "Brown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1800"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F649"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1395",
+  "name": "Marie Antoinette Mulder",
+  "givenName": "Marie Antoinette",
+  "surname": "Mulder",
+  "sex": "F",
+  "birthDate": "2JUL 1978",
+  "birthPlace": "Hoorn, Holland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1391",
+    "I1392"
+  ]
+}

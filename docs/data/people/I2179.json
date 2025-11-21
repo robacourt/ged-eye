@@ -1,0 +1,26 @@
+{
+  "id": "I2179",
+  "name": "Mary Elizabeth Turner",
+  "givenName": "Mary Elizabeth",
+  "surname": "Turner",
+  "sex": "F",
+  "birthDate": "21 APR 1949",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2183"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2178",
+    "I2254"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2183",
+      "familyId": "F783"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "I1593",
+  "name": "Amy Preece",
+  "givenName": "Amy",
+  "surname": "Preece",
+  "sex": "F",
+  "birthDate": "Abt 1877",
+  "birthPlace": "Hereford, Preston on Wye",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1591"
+  ],
+  "childIds": [
+    "I1594",
+    "I1595",
+    "I1596"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Cardiff, 15 Rennie St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1591",
+      "familyId": "F598"
+    }
+  ]
+}

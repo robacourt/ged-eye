@@ -1,0 +1,46 @@
+{
+  "id": "I2186",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1815",
+  "birthPlace": "Henstridge, Somerset, Bowden",
+  "deathDate": "12 MAR 1874",
+  "deathPlace": "Bristol, Newtown, 8 Clarence Rd.",
+  "photos": [],
+  "spouseIds": [
+    "I2187"
+  ],
+  "childIds": [
+    "I2190",
+    "I2153",
+    "I2221",
+    "I2222",
+    "I2224",
+    "I2225",
+    "I2226",
+    "I2210"
+  ],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "occupations": [
+    "Pork Butcher"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Clifton, Nible House Court, 3 West St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2187",
+      "familyId": "F772",
+      "marriageDate": "8 NOV 1842",
+      "marriagePlace": "Bitton, Gloucestershire"
+    }
+  ]
+}

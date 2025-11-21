@@ -1,0 +1,43 @@
+{
+  "id": "I295",
+  "name": "Elizabeth Cook",
+  "givenName": "Elizabeth",
+  "surname": "Cook",
+  "sex": "F",
+  "birthDate": "BET 1830-1840",
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/St Pancras/RG12 131 144 16.jpg",
+    "Data/Media/1911 census/London/Camden Town/RG14 718 92.jpg"
+  ],
+  "spouseIds": [
+    "I187"
+  ],
+  "childIds": [
+    "I296"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": null
+    },
+    {
+      "date": "1891",
+      "place": "London, St Pancras, York Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Camden Town, 82 St. Augustines Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I187",
+      "familyId": "F104"
+    }
+  ],
+  "avatar": "avatars/I295_0.jpg"
+}

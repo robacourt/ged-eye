@@ -1,0 +1,25 @@
+{
+  "id": "I1197",
+  "name": "Maud Unknown",
+  "givenName": "Maud",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1196"
+  ],
+  "childIds": [
+    "I1198"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1196",
+      "familyId": "F485"
+    }
+  ]
+}

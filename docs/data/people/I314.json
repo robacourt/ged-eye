@@ -1,0 +1,26 @@
+{
+  "id": "I314",
+  "name": "Harriet",
+  "givenName": "Harriet",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I313"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "27-1881 With Issue"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I313",
+      "familyId": "F154"
+    }
+  ]
+}

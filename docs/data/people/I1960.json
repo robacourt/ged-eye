@@ -1,0 +1,31 @@
+{
+  "id": "I1960",
+  "name": "Corinne A'Court",
+  "givenName": "Corinne",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1961"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1430",
+    "I1431"
+  ],
+  "occupations": [
+    "Teacher"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1961",
+      "familyId": "F700",
+      "marriageDate": "8 DEC 2004",
+      "marriagePlace": "Oakhill College Chapel, Castle Hill,"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I2686",
+  "name": "Unknown Knight",
+  "givenName": "Unknown",
+  "surname": "Knight",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2687"
+  ],
+  "childIds": [
+    "I2685"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2687",
+      "familyId": "F934"
+    }
+  ]
+}

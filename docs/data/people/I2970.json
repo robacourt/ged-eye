@@ -1,0 +1,18 @@
+{
+  "id": "I2970",
+  "name": "May Emma Garnett",
+  "givenName": "May Emma",
+  "surname": "Garnett",
+  "sex": "F",
+  "birthDate": "1887",
+  "birthPlace": "Dorset. Pankstone",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2967",
+    "I2968"
+  ]
+}

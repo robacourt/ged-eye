@@ -1,0 +1,49 @@
+{
+  "id": "I1572",
+  "name": "Mary Julia Tuley",
+  "givenName": "Mary Julia",
+  "surname": "Tuley",
+  "sex": "F",
+  "birthDate": "Abt 1865",
+  "birthPlace": "Rugby, Warwickshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1571"
+  ],
+  "childIds": [
+    "I1573",
+    "I1574",
+    "I1575",
+    "I1576",
+    "I2962",
+    "I1577",
+    "I1578"
+  ],
+  "parentIds": [
+    "I2829",
+    "I2828"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, 42 East St. White Hart Inn"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 33 Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Orchard St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1571",
+      "familyId": "F594",
+      "marriageDate": "ABT 1886"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I570",
+  "name": "Grace Williams",
+  "givenName": "Grace",
+  "surname": "Williams",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I569"
+  ],
+  "childIds": [
+    "I502"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I569",
+      "familyId": "F213"
+    }
+  ]
+}

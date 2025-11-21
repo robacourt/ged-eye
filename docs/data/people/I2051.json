@@ -1,0 +1,18 @@
+{
+  "id": "I2051",
+  "name": "Natasha Louise Phillips",
+  "givenName": "Natasha Louise",
+  "surname": "Phillips",
+  "sex": "F",
+  "birthDate": "12 NOV 1993",
+  "birthPlace": "Norfolk",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2050",
+    "I2049"
+  ]
+}

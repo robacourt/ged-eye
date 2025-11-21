@@ -1,0 +1,17 @@
+{
+  "id": "I2318",
+  "name": "Luke Unknown",
+  "givenName": "Luke",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": "Abt 1975",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2315"
+  ]
+}

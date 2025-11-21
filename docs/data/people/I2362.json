@@ -1,0 +1,37 @@
+{
+  "id": "I2362",
+  "name": "Alice Lucy A'Court",
+  "givenName": "Alice Lucy",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Over Compton/RG 10 2021 81 19.jpg",
+    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I571",
+    "I2359"
+  ],
+  "baptismDate": "27 AUG 1865",
+  "baptismPlace": "Over Compton",
+  "occupations": [
+    "Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Over Compton, Dorset"
+    },
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
+    }
+  ],
+  "avatar": "avatars/I2362_0.jpg"
+}

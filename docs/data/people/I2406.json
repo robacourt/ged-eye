@@ -1,0 +1,34 @@
+{
+  "id": "I2406",
+  "name": "Thomas Crew",
+  "givenName": "Thomas",
+  "surname": "Crew",
+  "sex": "M",
+  "birthDate": "ABT 1836",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2407"
+  ],
+  "childIds": [
+    "I2408",
+    "I1109",
+    "I1190",
+    "I2409"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stalbridge, Dorset, Landshire Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2407",
+      "familyId": "F853"
+    }
+  ]
+}

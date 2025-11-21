@@ -1,0 +1,25 @@
+{
+  "id": "I1727",
+  "name": "Jane Horsley",
+  "givenName": "Jane",
+  "surname": "Horsley",
+  "sex": "M",
+  "birthDate": "1919",
+  "birthPlace": null,
+  "deathDate": "16 SEP 2004",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1629"
+  ],
+  "childIds": [
+    "I1728"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1629",
+      "familyId": "F631"
+    }
+  ]
+}

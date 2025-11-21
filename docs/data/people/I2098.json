@@ -1,0 +1,30 @@
+{
+  "id": "I2098",
+  "name": "Margaret Mary A'Court",
+  "givenName": "Margaret Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1913",
+  "birthPlace": null,
+  "deathDate": "1996",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2099"
+  ],
+  "childIds": [
+    "I2100",
+    "I2101"
+  ],
+  "parentIds": [
+    "I2042",
+    "I2043"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2099",
+      "familyId": "F750",
+      "marriageDate": "1939"
+    }
+  ]
+}

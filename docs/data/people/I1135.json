@@ -1,0 +1,41 @@
+{
+  "id": "I1135",
+  "name": "John Pike",
+  "givenName": "John",
+  "surname": "Pike",
+  "sex": "M",
+  "birthDate": "ABT 1857",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1134"
+  ],
+  "childIds": [
+    "I1137",
+    "I1141",
+    "I1142",
+    "I1143"
+  ],
+  "parentIds": [
+    "I1136"
+  ],
+  "occupations": [
+    "Stone Quarryman"
+  ],
+  "residences": [
+    {
+      "date": "1879",
+      "place": "Antills Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1134",
+      "familyId": "F460",
+      "marriageDate": "27 OCT 1879",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

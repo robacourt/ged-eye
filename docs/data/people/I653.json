@@ -1,0 +1,20 @@
+{
+  "id": "I653",
+  "name": "William Warren",
+  "givenName": "William",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I646",
+    "I241"
+  ],
+  "baptismDate": "10.11.1878",
+  "baptismPlace": "Marnhull, Dorset"
+}

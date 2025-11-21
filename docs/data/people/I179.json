@@ -1,0 +1,45 @@
+{
+  "id": "I179",
+  "name": "Charles Curtis",
+  "givenName": "Charles",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": "6.6.1823",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I275"
+  ],
+  "childIds": [
+    "I1078",
+    "I1079",
+    "I1080",
+    "I1081",
+    "I1133",
+    "I1134",
+    "I1155",
+    "I1165"
+  ],
+  "parentIds": [
+    "I178",
+    "I50"
+  ],
+  "baptismDate": "15.6.1823",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carter"
+  ],
+  "notes": [
+    "28-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I275",
+      "familyId": "F98",
+      "marriageDate": "25.10.1846",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I2012",
+  "name": "Willie Garnett",
+  "givenName": "Willie",
+  "surname": "Garnett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "15 OCT 2021",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2011"
+  ],
+  "childIds": [
+    "I488"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2011",
+      "familyId": "F719"
+    }
+  ]
+}

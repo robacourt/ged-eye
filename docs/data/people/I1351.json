@@ -1,0 +1,27 @@
+{
+  "id": "I1351",
+  "name": "Beatrice Alice Cundy",
+  "givenName": "Beatrice Alice",
+  "surname": "Cundy",
+  "sex": "F",
+  "birthDate": "1868",
+  "birthPlace": "Greytown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1352"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1346",
+    "I1345"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1352",
+      "familyId": "F535",
+      "marriageDate": "1887"
+    }
+  ]
+}

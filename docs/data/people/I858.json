@@ -1,0 +1,32 @@
+{
+  "id": "I858",
+  "name": "Marcia Ethel Hermione Beach",
+  "givenName": "Marcia Ethel Hermione",
+  "surname": "Beach",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I844"
+  ],
+  "childIds": [
+    "I1934",
+    "I1936",
+    "I1937"
+  ],
+  "parentIds": [],
+  "notes": [
+    "By the way I think you have my mothers maiden name mispelt. (but that could be wrong this end also) we have always had it spelt Beach and all the documents from her step father Henry Beach is spelt Beach. We don�t know her biological fathers nam"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I844",
+      "familyId": "F370",
+      "marriageDate": "1939",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I1653",
+  "name": "Edward Drew",
+  "givenName": "Edward",
+  "surname": "Drew",
+  "sex": "M",
+  "birthDate": "ABT 1816",
+  "birthPlace": "West Stour",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1654"
+  ],
+  "childIds": [
+    "I1651",
+    "I1655"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Gardener"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1654",
+      "familyId": "F611"
+    }
+  ]
+}

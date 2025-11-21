@@ -1,0 +1,29 @@
+{
+  "id": "I2958",
+  "name": "Sidney A'Court",
+  "givenName": "Sidney",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1863",
+  "birthPlace": "London, St Georges, Hanover Square",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2959"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Surrey, Guildford, The Manor House Sutton Park"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2959",
+      "familyId": "F1015"
+    }
+  ]
+}

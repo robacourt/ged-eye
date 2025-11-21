@@ -1,0 +1,39 @@
+{
+  "id": "I1906",
+  "name": "Stephen John A'Court",
+  "givenName": "Stephen John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1862",
+  "birthPlace": "Victoria, Australia, Schnapper Point",
+  "deathDate": "1948",
+  "deathPlace": "Kumara West Coast S.I. N.Z",
+  "photos": [],
+  "spouseIds": [
+    "I1907"
+  ],
+  "childIds": [
+    "I1908",
+    "I2503",
+    "I2506",
+    "I2505",
+    "I2480",
+    "I2507",
+    "I2508"
+  ],
+  "parentIds": [
+    "I74",
+    "I1905"
+  ],
+  "notes": [
+    "Hello Ian"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1907",
+      "familyId": "F676",
+      "marriageDate": "7 DEC 1887",
+      "marriagePlace": "Stafford, Westland, New Zealand"
+    }
+  ]
+}

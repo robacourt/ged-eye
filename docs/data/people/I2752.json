@@ -1,0 +1,35 @@
+{
+  "id": "I2752",
+  "name": "Sarah A'Court",
+  "givenName": "Sarah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1771",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1734"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Pauper"
+  ],
+  "notes": [
+    "On 1841 census with Jemima suggesting her as unmarried mother and grandmother of John ??"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F958"
+    }
+  ]
+}

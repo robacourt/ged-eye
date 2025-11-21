@@ -1,0 +1,24 @@
+{
+  "id": "I573",
+  "name": "Louisa Ann A'Court",
+  "givenName": "Louisa Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "23 JUN 1919",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "A'Court Louisa Ann of 28 King edwards Mansions Fulham Middlesex spinster died 23 June 1919 Administration (with will) to Oscar Louis Wood Moore stockbroketr. effects �169 7s 2d"
+  ],
+  "residences": [
+    {
+      "date": "1919",
+      "place": "London, Fulham, 28 King Edwards Mansions"
+    }
+  ]
+}

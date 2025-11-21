@@ -1,0 +1,29 @@
+{
+  "id": "I2596",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1855",
+  "birthPlace": "Bristol, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2597"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, 1 South Place, Redcliffe."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2597",
+      "familyId": "F907"
+    }
+  ]
+}

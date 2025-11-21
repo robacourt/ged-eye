@@ -1,0 +1,47 @@
+{
+  "id": "I432",
+  "name": "Ian Garnet Wilkinson",
+  "givenName": "Ian Garnet",
+  "surname": "Wilkinson",
+  "sex": "M",
+  "birthDate": "26 FEB1925",
+  "birthPlace": "Middlesex, Edmonton",
+  "deathDate": "21 MAY 1992",
+  "deathPlace": "London, Hammersmith",
+  "photos": [
+    "Data/Media/Wills & Probate/gbor_govprobate_1992_w009367-wilkinson-1992-2.jpg",
+    "Data/Media/1939 Register/Bucks/TNA_R39_2110_2110I_018.jpg"
+  ],
+  "spouseIds": [
+    "I438"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I429",
+    "I428"
+  ],
+  "notes": [
+    "ID 146764211"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Nashleigh Farm Ashley Green Road, Chesham, Buckinhamshire"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1992",
+      "place": "Bucks, Chesham, 17 St Germains Close"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I438",
+      "familyId": "F199",
+      "marriageDate": "3RD QTR 1951",
+      "marriagePlace": "London, Stoke Newington"
+    }
+  ],
+  "avatar": "avatars/I432_0.jpg"
+}

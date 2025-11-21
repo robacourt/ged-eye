@@ -1,0 +1,38 @@
+{
+  "id": "I470",
+  "name": "Hanna Hobbs",
+  "givenName": "Hanna",
+  "surname": "Hobbs",
+  "sex": "F",
+  "birthDate": "BEF 1710",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I469"
+  ],
+  "childIds": [
+    "I16",
+    "I471",
+    "I472",
+    "I473",
+    "I474",
+    "I475",
+    "I479",
+    "I477",
+    "I478",
+    "I476"
+  ],
+  "parentIds": [],
+  "burialDate": "24 OCT 1744",
+  "burialPlace": "Horsington, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I469",
+      "familyId": "F12",
+      "marriageDate": "23 JUN  1723",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

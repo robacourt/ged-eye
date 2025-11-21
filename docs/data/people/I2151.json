@@ -1,0 +1,32 @@
+{
+  "id": "I2151",
+  "name": "Mervyn George Davis",
+  "givenName": "Mervyn George",
+  "surname": "Davis",
+  "sex": "M",
+  "birthDate": "2 OCT 1929",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2152"
+  ],
+  "childIds": [
+    "I2239",
+    "I2240",
+    "I2238"
+  ],
+  "parentIds": [
+    "I2242",
+    "I2243"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2152",
+      "familyId": "F768",
+      "marriageDate": "11 JUN 1955",
+      "marriagePlace": "Stapleton, Bristol"
+    }
+  ]
+}

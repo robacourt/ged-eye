@@ -1,0 +1,33 @@
+{
+  "id": "I2225",
+  "name": "Matilda Haycourt",
+  "givenName": "Matilda",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "ABT 1854",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2228"
+  ],
+  "childIds": [
+    "I2227"
+  ],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "baptismDate": "2 NOV 1856",
+  "baptismPlace": "Holy Trinity, Bristol",
+  "occupations": [
+    "Tailoress"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2228",
+      "familyId": "F794"
+    }
+  ]
+}

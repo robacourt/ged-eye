@@ -1,0 +1,26 @@
+{
+  "id": "I2315",
+  "name": "Sandra A'Court",
+  "givenName": "Sandra",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1948",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2318"
+  ],
+  "parentIds": [
+    "I2313",
+    "I2314"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F821"
+    }
+  ]
+}

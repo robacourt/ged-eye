@@ -1,0 +1,18 @@
+{
+  "id": "I2747",
+  "name": "Tarli Gilliam",
+  "givenName": "Tarli",
+  "surname": "Gilliam",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2745",
+    "I2748"
+  ]
+}

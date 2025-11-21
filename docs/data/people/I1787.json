@@ -1,0 +1,24 @@
+{
+  "id": "I1787",
+  "name": "Unknown Peters",
+  "givenName": "Unknown",
+  "surname": "Peters",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1786",
+    "I1788"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F644"
+    }
+  ]
+}

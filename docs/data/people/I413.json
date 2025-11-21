@@ -1,0 +1,17 @@
+{
+  "id": "I413",
+  "name": "Nicholas John A'Court",
+  "givenName": "Nicholas John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "10-2-1965",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I410"
+  ]
+}

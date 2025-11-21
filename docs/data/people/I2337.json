@@ -1,0 +1,71 @@
+{
+  "id": "I2337",
+  "name": "Lewis Barnett",
+  "givenName": "Lewis",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "ABT 1868",
+  "birthPlace": "London, Dalston.",
+  "deathDate": "28 FEB 1938",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Shoreditch/RG10 422 16 26.jpg",
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg"
+  ],
+  "spouseIds": [
+    "I2730"
+  ],
+  "childIds": [
+    "I2731",
+    "I2732",
+    "I2733",
+    "I2735",
+    "I2736",
+    "I2737"
+  ],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "occupations": [
+    "Cigar manufacturer",
+    "Tobacco Rebate Agent own account",
+    "Tobacco Manufacturer, Stoke Newington, 4 Leswin Place"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Shoreditch, London,"
+    },
+    {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    },
+    {
+      "date": "1891",
+      "place": "London, Southwark, 370 Walworth Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Clapton, 14 Thistlewaite Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Golders Green, 21 Rodborough Rd."
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1905",
+      "place": "London, Clapton, 14 Thistlewaite Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2730",
+      "familyId": "F953",
+      "marriageDate": "1890"
+    }
+  ],
+  "avatar": "avatars/I2337_0.jpg"
+}

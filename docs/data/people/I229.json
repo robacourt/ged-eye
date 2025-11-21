@@ -1,0 +1,60 @@
+{
+  "id": "I229",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Bef 1911",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Amesbury/RG10 1946 55 17.jpg"
+  ],
+  "spouseIds": [
+    "I360"
+  ],
+  "childIds": [
+    "I361",
+    "I362"
+  ],
+  "parentIds": [
+    "I86",
+    "I227"
+  ],
+  "baptismDate": "27 FEB1850",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Carpenter & Joiner",
+    "Carpenter",
+    "Pattern Maker",
+    "Pattern maker, engineers"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Wiltshire, Amesbury, Idmiston, Wesleyan Chapel"
+    },
+    {
+      "date": "1881",
+      "place": "Wiltshire, Calne, Quemerford"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Swindon, Highworth, Shaftesbury Terrace, Dixon St."
+    },
+    {
+      "date": "1901",
+      "place": "Wiltshire, Swindon, 186 Rodbourne Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I360",
+      "familyId": "F124",
+      "marriageDate": "1872",
+      "marriagePlace": "Wiltshire, Idmiston."
+    }
+  ],
+  "avatar": "avatars/I229_0.jpg"
+}

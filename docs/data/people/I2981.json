@@ -1,0 +1,27 @@
+{
+  "id": "I2981",
+  "name": "Rita Hull",
+  "givenName": "Rita",
+  "surname": "Hull",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2009"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2982"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2009",
+      "familyId": "F1024",
+      "marriageDate": "1968",
+      "marriagePlace": "London Westminster"
+    }
+  ]
+}

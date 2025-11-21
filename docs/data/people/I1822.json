@@ -1,0 +1,26 @@
+{
+  "id": "I1822",
+  "name": "Unknown Spackman",
+  "givenName": "Unknown",
+  "surname": "Spackman",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I411"
+  ],
+  "childIds": [
+    "I415",
+    "I416"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I411",
+      "familyId": "F190"
+    }
+  ]
+}

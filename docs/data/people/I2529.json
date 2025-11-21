@@ -1,0 +1,27 @@
+{
+  "id": "I2529",
+  "name": "Freda Winnifred A'Court",
+  "givenName": "Freda Winnifred",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1911",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Somerset/Yeovil/RG14 14416 86 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1638",
+    "I2528"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 29 Great Western Terrace"
+    }
+  ],
+  "avatar": "avatars/I2529_0.jpg"
+}

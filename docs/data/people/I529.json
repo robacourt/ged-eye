@@ -1,0 +1,23 @@
+{
+  "id": "I529",
+  "name": "Leslie Jones",
+  "givenName": "Leslie",
+  "surname": "Jones",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I402"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I402",
+      "familyId": "F220"
+    }
+  ]
+}

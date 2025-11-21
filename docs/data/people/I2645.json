@@ -1,0 +1,25 @@
+{
+  "id": "I2645",
+  "name": "Unknown Hibbert",
+  "givenName": "Unknown",
+  "surname": "Hibbert",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2644"
+  ],
+  "childIds": [
+    "I2643"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2644",
+      "familyId": "F921"
+    }
+  ]
+}

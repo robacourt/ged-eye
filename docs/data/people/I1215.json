@@ -1,0 +1,43 @@
+{
+  "id": "I1215",
+  "name": "Montague Leonard Haskett",
+  "givenName": "Montague Leonard",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1889",
+  "birthPlace": null,
+  "deathDate": "1950",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1216"
+  ],
+  "childIds": [
+    "I1218",
+    "I1222",
+    "I1221",
+    "I1224",
+    "I1229",
+    "I1232",
+    "I1238"
+  ],
+  "parentIds": [
+    "I1181",
+    "I1182"
+  ],
+  "occupations": [
+    "Chauffeur"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Ilsington House, Puddletown, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1216",
+      "familyId": "F491"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I2417",
+  "name": "Sarah Harrison",
+  "givenName": "Sarah",
+  "surname": "Harrison",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2416"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2416",
+      "familyId": "F858"
+    }
+  ]
+}

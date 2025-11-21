@@ -1,0 +1,53 @@
+{
+  "id": "I2263",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1819",
+  "birthPlace": "Somerset, England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2264"
+  ],
+  "childIds": [
+    "I2121",
+    "I2265",
+    "I2266",
+    "I2267",
+    "I2268",
+    "I2269",
+    "I2270",
+    "I2271",
+    "I2814",
+    "I2815"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Labourer",
+    "Farmer of 4 acres",
+    "Farmer of 3 acres"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    },
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Ouen, La Porte"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey, C.I. St Ouen, 3 La Pointe Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2264",
+      "familyId": "F801"
+    }
+  ]
+}

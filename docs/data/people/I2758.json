@@ -1,0 +1,35 @@
+{
+  "id": "I2758",
+  "name": "Letitia Keniston",
+  "givenName": "Letitia",
+  "surname": "Keniston",
+  "sex": "F",
+  "birthDate": "ABT 1841",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Piece 945 folio 29  page 21.jpg",
+    "Data/Media/1851 census/Henstridge/Piece 1931 folio 370 page 17.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2755",
+    "I2753"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset, Frog Moor"
+    },
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Frog Moor"
+    }
+  ],
+  "avatar": "avatars/I2758_0.jpg"
+}

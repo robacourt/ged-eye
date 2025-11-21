@@ -1,0 +1,18 @@
+{
+  "id": "I1025",
+  "name": "Alison Louise O'Conner",
+  "givenName": "Alison Louise",
+  "surname": "O'Conner",
+  "sex": "F",
+  "birthDate": "3 DECEMBER 1990",
+  "birthPlace": "Blacktown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1004",
+    "I1019"
+  ]
+}

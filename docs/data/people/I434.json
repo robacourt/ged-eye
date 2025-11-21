@@ -1,0 +1,30 @@
+{
+  "id": "I434",
+  "name": "Derek Walter Sydney Frentzel",
+  "givenName": "Derek Walter Sydney",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "SEP 1919",
+  "birthPlace": "Edmonton",
+  "deathDate": "1996",
+  "deathPlace": "Hastings Sussex",
+  "photos": [
+    "Data/Media/1939 Register/Middlesex/TNA_R39_0756_0756H_011.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I426",
+    "I433"
+  ],
+  "occupations": [
+    "Wages Clerk, Clothiers"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Middlesex, Enfield, Hadley Wood, Mayfield Beech Hill Avenue"
+    }
+  ],
+  "avatar": "avatars/I434_0.jpg"
+}

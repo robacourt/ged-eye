@@ -1,0 +1,26 @@
+{
+  "id": "I1222",
+  "name": "Jean Haskett",
+  "givenName": "Jean",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "ABT 1923",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1223"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1215",
+    "I1216"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1223",
+      "familyId": "F494"
+    }
+  ]
+}

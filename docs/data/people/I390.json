@@ -1,0 +1,28 @@
+{
+  "id": "I390",
+  "name": "David Heaton",
+  "givenName": "David",
+  "surname": "Heaton",
+  "sex": "M",
+  "birthDate": "1923",
+  "birthPlace": "Oxford,",
+  "deathDate": "2017",
+  "deathPlace": "London, Wimbledon.",
+  "photos": [
+    "Data/Picture/David Heaton.jpg",
+    "Data/Media/Correspondence/David Heaton to C.B A'Court May 1998.pdf"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I389",
+    "I383"
+  ],
+  "residences": [
+    {
+      "date": "MAY 1998",
+      "place": "London, 53 Murray Rd. SW19 4PF"
+    }
+  ],
+  "avatar": "avatars/I390_0.jpg"
+}

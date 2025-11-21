@@ -1,0 +1,34 @@
+{
+  "id": "I2018",
+  "name": "Elizabeth Edith A'Court",
+  "givenName": "Elizabeth Edith",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1854",
+  "birthPlace": "Devon, Exeter, St Davids",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Exeter/RG09 1397 44 10.png",
+    "Data/Media/1881 census/Devon/Exeter/RG11 2153 51 10.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2013"
+  ],
+  "occupations": [
+    "Housekeeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Devon, Exeter, St Davids, 3 St Davids Hill"
+    },
+    {
+      "date": "1881",
+      "place": "evon, Exeter, 36 Lower North St."
+    }
+  ],
+  "avatar": "avatars/I2018_0.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I910",
+  "name": "Christana Lines",
+  "givenName": "Christana",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "ABT 1880",
+  "birthPlace": "Shirley, Hampshire, England",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I904",
+    "I230"
+  ]
+}

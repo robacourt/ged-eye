@@ -1,0 +1,29 @@
+{
+  "id": "I2167",
+  "name": "Jonathan Willis",
+  "givenName": "Jonathan",
+  "surname": "Willis",
+  "sex": "M",
+  "birthDate": "2 MAY 1962",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2168"
+  ],
+  "childIds": [
+    "I2169",
+    "I2170"
+  ],
+  "parentIds": [
+    "I2165",
+    "I2163"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2168",
+      "familyId": "F780"
+    }
+  ]
+}

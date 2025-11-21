@@ -1,0 +1,31 @@
+{
+  "id": "I1249",
+  "name": "Charlotte Fudge",
+  "givenName": "Charlotte",
+  "surname": "Fudge",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1248"
+  ],
+  "childIds": [
+    "I1247",
+    "I1253"
+  ],
+  "parentIds": [
+    "I1250"
+  ],
+  "occupations": [
+    "Laundress"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1248",
+      "familyId": "F502"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I2877",
+  "name": "Thomas Le Marquand",
+  "givenName": "Thomas",
+  "surname": "Le Marquand",
+  "sex": "M",
+  "birthDate": "Abt 1862",
+  "birthPlace": null,
+  "deathDate": "Bef OR 1911",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2812"
+  ],
+  "childIds": [
+    "I2909",
+    "I2910",
+    "I2911"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2812",
+      "familyId": "F983",
+      "marriageDate": "13 JAN 1889",
+      "marriagePlace": "St Simon"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2294",
+  "name": "Martha A'Court",
+  "givenName": "Martha",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1794",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": "1869",
+  "deathPlace": "Barton St. David, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I2295"
+  ],
+  "childIds": [
+    "I2296"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2295",
+      "familyId": "F811",
+      "marriageDate": "FEB 1817",
+      "marriagePlace": "Barton St. David, Somerset"
+    }
+  ]
+}

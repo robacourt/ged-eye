@@ -1,0 +1,25 @@
+{
+  "id": "I2792",
+  "name": "Laurie W C Green",
+  "givenName": "Laurie W C",
+  "surname": "Green",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2791"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2791",
+      "familyId": "F970",
+      "marriageDate": "SEP 1946",
+      "marriagePlace": "London, Hackney"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1052",
+  "name": "Cheryl Sue Diehm",
+  "givenName": "Cheryl Sue",
+  "surname": "Diehm",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1049",
+    "I1050"
+  ]
+}

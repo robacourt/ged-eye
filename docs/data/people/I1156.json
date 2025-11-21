@@ -1,0 +1,33 @@
+{
+  "id": "I1156",
+  "name": "Alice Mary Wylds",
+  "givenName": "Alice Mary",
+  "surname": "Wylds",
+  "sex": "F",
+  "birthDate": "12 APRIL 1869",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1155"
+  ],
+  "childIds": [
+    "I1159",
+    "I1162"
+  ],
+  "parentIds": [
+    "I1157",
+    "I1158"
+  ],
+  "baptismDate": "13 JUN 1869",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1155",
+      "familyId": "F470",
+      "marriageDate": "15 JAN 1902",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

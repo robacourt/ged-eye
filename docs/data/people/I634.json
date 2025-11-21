@@ -1,0 +1,30 @@
+{
+  "id": "I634",
+  "name": "Judith Cecelia Hatcher",
+  "givenName": "Judith Cecelia",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "20.12.1952",
+  "birthPlace": "Marnhull, Dorset, 11 Fellowsmead",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I637"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I623",
+    "I633"
+  ],
+  "baptismDate": "12.7.1953",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I637",
+      "familyId": "F267",
+      "marriageDate": "20.4.1974",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

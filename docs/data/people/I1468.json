@@ -1,0 +1,20 @@
+{
+  "id": "I1468",
+  "name": "Marjorie Lucy Skedgel Hill",
+  "givenName": "Marjorie Lucy Skedgel",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": "4 AUG 1912",
+  "birthPlace": "Stoke Gabriel, Devon",
+  "deathDate": "FEB 2000",
+  "deathPlace": "Devon, Teignbridge",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1457",
+    "I1456"
+  ],
+  "baptismDate": "8 SEP 1912",
+  "baptismPlace": "Stoke Gabriel, Devon"
+}

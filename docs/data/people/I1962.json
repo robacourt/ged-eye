@@ -1,0 +1,35 @@
+{
+  "id": "I1962",
+  "name": "Richard John A'Court",
+  "givenName": "Richard John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1912",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1975",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Richard A'Court.jpg"
+  ],
+  "spouseIds": [
+    "I2392"
+  ],
+  "childIds": [
+    "I2393",
+    "I2394"
+  ],
+  "parentIds": [
+    "I1026",
+    "I2391"
+  ],
+  "occupations": [
+    "Carpenter"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2392",
+      "familyId": "F848"
+    }
+  ],
+  "avatar": "avatars/I1962_0.jpg"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I1612",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1892",
+  "birthPlace": "Orford, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg",
+    "Data/Media/1911 census/Lancashire/Warrington/RG14 23171 5 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1608",
+    "I1609"
+  ],
+  "occupations": [
+    "Milliner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    },
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "avatar": "avatars/I1612_0.jpg"
+}

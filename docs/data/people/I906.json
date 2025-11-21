@@ -1,0 +1,18 @@
+{
+  "id": "I906",
+  "name": "Beatrice E Lines",
+  "givenName": "Beatrice E",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "ABT 1875",
+  "birthPlace": "Wiltshire, England",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I904",
+    "I230"
+  ]
+}

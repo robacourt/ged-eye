@@ -1,0 +1,26 @@
+{
+  "id": "I1119",
+  "name": "Job Legg",
+  "givenName": "Job",
+  "surname": "Legg",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1118"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Carter"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F452"
+    }
+  ]
+}

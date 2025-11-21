@@ -1,0 +1,26 @@
+{
+  "id": "I2382",
+  "name": "Robert Wilson MacDonald",
+  "givenName": "Robert Wilson",
+  "surname": "MacDonald",
+  "sex": "M",
+  "birthDate": "SEP 1920",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2381"
+  ],
+  "childIds": [
+    "I2383",
+    "I2384"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2381",
+      "familyId": "F847"
+    }
+  ]
+}

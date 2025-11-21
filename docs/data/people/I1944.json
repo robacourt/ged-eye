@@ -1,0 +1,31 @@
+{
+  "id": "I1944",
+  "name": "Gladys Amy Bertha Martin",
+  "givenName": "Gladys Amy Bertha",
+  "surname": "Martin",
+  "sex": "F",
+  "birthDate": "10 JUL 1908",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "10 OCT 1970",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1930"
+  ],
+  "childIds": [
+    "I1947",
+    "I2030",
+    "I2032"
+  ],
+  "parentIds": [
+    "I1945",
+    "I1946"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1930",
+      "familyId": "F692",
+      "marriageDate": "1927"
+    }
+  ]
+}

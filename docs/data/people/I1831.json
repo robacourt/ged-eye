@@ -1,0 +1,17 @@
+{
+  "id": "I1831",
+  "name": "Jacqueline A'Court",
+  "givenName": "Jacqueline",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3RD QRT 1955",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1832"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I2320",
+  "name": "Emma A'Court",
+  "givenName": "Emma",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1857",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Yeovil/RG10 2418 13 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1766",
+    "I1864"
+  ],
+  "occupations": [
+    "Glove Sewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Yeovil, Somerset, 41 Larkhill"
+    }
+  ],
+  "avatar": "avatars/I2320_0.jpg"
+}

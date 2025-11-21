@@ -1,0 +1,45 @@
+{
+  "id": "I755",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1787",
+  "birthPlace": "Bratton Seymour, Somerset",
+  "deathDate": "1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I760"
+  ],
+  "childIds": [
+    "I761",
+    "I762",
+    "I763",
+    "I764",
+    "I1733",
+    "I766",
+    "I767",
+    "I768"
+  ],
+  "parentIds": [
+    "I744",
+    "I751"
+  ],
+  "burialDate": "18 OCT 1851",
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Lower Woolston"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I760",
+      "familyId": "F310",
+      "marriageDate": "3 FEB 1808",
+      "marriagePlace": "Blackford, Somerset, England"
+    }
+  ]
+}

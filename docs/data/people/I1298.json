@@ -1,0 +1,26 @@
+{
+  "id": "I1298",
+  "name": "Joan Hewlitt",
+  "givenName": "Joan",
+  "surname": "Hewlitt",
+  "sex": "F",
+  "birthDate": "1926",
+  "birthPlace": null,
+  "deathDate": "20 DEC 2003",
+  "deathPlace": "Owen Sound, Canada",
+  "photos": [],
+  "spouseIds": [
+    "I1266"
+  ],
+  "childIds": [
+    "I1299",
+    "I1300"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1266",
+      "familyId": "F511"
+    }
+  ]
+}

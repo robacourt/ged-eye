@@ -1,0 +1,25 @@
+{
+  "id": "I506",
+  "name": "Alice Buskill",
+  "givenName": "Alice",
+  "surname": "Buskill",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I505"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I505",
+      "familyId": "F214",
+      "marriageDate": "4 OCT 1562",
+      "marriagePlace": "Frome, Somerset"
+    }
+  ]
+}

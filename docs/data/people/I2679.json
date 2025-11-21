@@ -1,0 +1,25 @@
+{
+  "id": "I2679",
+  "name": "Unknown Finch",
+  "givenName": "Unknown",
+  "surname": "Finch",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2680"
+  ],
+  "childIds": [
+    "I2678"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2680",
+      "familyId": "F932"
+    }
+  ]
+}

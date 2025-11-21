@@ -1,0 +1,56 @@
+{
+  "id": "I2476",
+  "name": "Henry J A'Court",
+  "givenName": "Henry J",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1878",
+  "birthPlace": "Warrington, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Lancs/Warrington/RG11 3797 61 30.jpg",
+    "Data/Media/1891 census/Lancashire/RG12 3002 35 63.jpg",
+    "Data/Media/1901 census/Lancashire/RG13 350330 51.jpg",
+    "Data/Media/1911 census/Lancashire/Lancaster/RG14 25552 81.jpg"
+  ],
+  "spouseIds": [
+    "I2614"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2259",
+    "I2475"
+  ],
+  "occupations": [
+    "Bakers Errand Boy",
+    "Railway Porter",
+    "General Labourer, Unemployed"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Warrington, Lancashire, 20 Norman St."
+    },
+    {
+      "date": "1891",
+      "place": "Wavertree, Lancashire, 21 Upper Cross St."
+    },
+    {
+      "date": "1901",
+      "place": "Wavertree, Lancashire, 14 Cambridge St."
+    },
+    {
+      "date": "1911",
+      "place": "Lancaster, Lancashire, 24 Broadway"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2614",
+      "familyId": "F910",
+      "marriageDate": "ABT 1909"
+    }
+  ],
+  "avatar": "avatars/I2476_0.jpg"
+}

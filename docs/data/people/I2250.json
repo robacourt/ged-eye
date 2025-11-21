@@ -1,0 +1,47 @@
+{
+  "id": "I2250",
+  "name": "Hilda Florence Haycourt",
+  "givenName": "Hilda Florence",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "8 DEC 1906",
+  "birthPlace": "Bristol, Easton, 2 Peel Street",
+  "deathDate": "14 JUL 1987",
+  "deathPlace": "West Chiltington, Sussex",
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 15016 216.jpg"
+  ],
+  "spouseIds": [
+    "I2184",
+    "I2249"
+  ],
+  "childIds": [
+    "I2152",
+    "I2163"
+  ],
+  "parentIds": [
+    "I2251",
+    "I2252"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911 AS HAYCOURT",
+      "place": "Bristol, Easton, 2 Peel Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2184",
+      "familyId": "F784",
+      "marriageDate": "28 OCT 1967",
+      "marriagePlace": "Bristol, Eastville Park Methodist"
+    },
+    {
+      "spouseId": "I2249",
+      "familyId": "F770",
+      "marriageDate": "4 JUL 1931",
+      "marriagePlace": "St Agnes Church, Bristol"
+    }
+  ],
+  "avatar": "avatars/I2250_0.jpg"
+}

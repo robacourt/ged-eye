@@ -1,0 +1,18 @@
+{
+  "id": "I2652",
+  "name": "Charles W. A'Court",
+  "givenName": "Charles W.",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1939",
+  "birthPlace": "Blandford, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2654",
+    "I2653"
+  ]
+}

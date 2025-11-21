@@ -1,0 +1,30 @@
+{
+  "id": "I2163",
+  "name": "Diane Margaret Hill",
+  "givenName": "Diane Margaret",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": "1936",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2165"
+  ],
+  "childIds": [
+    "I2167",
+    "I2166",
+    "I2164"
+  ],
+  "parentIds": [
+    "I2249",
+    "I2250"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2165",
+      "familyId": "F777"
+    }
+  ]
+}

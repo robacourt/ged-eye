@@ -1,0 +1,34 @@
+{
+  "id": "I742",
+  "name": "Diana Penny",
+  "givenName": "Diana",
+  "surname": "Penny",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1767",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I741"
+  ],
+  "childIds": [
+    "I743",
+    "I744",
+    "I2939",
+    "I745",
+    "I746",
+    "I747",
+    "I748",
+    "I749"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I741",
+      "familyId": "F303",
+      "marriageDate": "18 DEC 1851",
+      "marriagePlace": "Mapperton, Dorset"
+    }
+  ]
+}

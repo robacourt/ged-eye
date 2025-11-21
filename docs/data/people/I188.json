@@ -1,0 +1,67 @@
+{
+  "id": "I188",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1910",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Marnhull/1852 foli 13 page 19.jpg",
+    "Data/Media/1901 census/Dorset/Poole/RG13 1978 23 38.jpg"
+  ],
+  "spouseIds": [
+    "I297"
+  ],
+  "childIds": [
+    "I298",
+    "I299",
+    "I300",
+    "I301",
+    "I302",
+    "I303"
+  ],
+  "parentIds": [
+    "I53",
+    "I183"
+  ],
+  "baptismDate": "5 DEC1837",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab",
+    "Ag Lab",
+    "Tranters Carter"
+  ],
+  "notes": [
+    "3-1841  13-1851  24-1861"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": null
+    },
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, Marnhull Common"
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1901",
+      "place": "Branksome, Poole, Dorset. Old Wareham Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I297",
+      "familyId": "F105",
+      "marriageDate": "1SEP1857",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ],
+  "avatar": "avatars/I188_0.jpg"
+}

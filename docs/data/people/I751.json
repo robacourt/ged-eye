@@ -1,0 +1,32 @@
+{
+  "id": "I751",
+  "name": "Susannah PENNY",
+  "givenName": "Susannah",
+  "surname": "PENNY",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1807",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I744"
+  ],
+  "childIds": [
+    "I752",
+    "I753",
+    "I754",
+    "I755",
+    "I757",
+    "I758"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I744",
+      "familyId": "F305",
+      "marriageDate": "1782",
+      "marriagePlace": "Yarlington, Somerset"
+    }
+  ]
+}

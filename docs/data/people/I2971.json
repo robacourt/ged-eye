@@ -1,0 +1,42 @@
+{
+  "id": "I2971",
+  "name": "William Rudge Topper",
+  "givenName": "William Rudge",
+  "surname": "Topper",
+  "sex": "M",
+  "birthDate": "1885",
+  "birthPlace": "London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2972"
+  ],
+  "childIds": [
+    "I402",
+    "I2973"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Private Chaffuer, Woodlands Corner, West Byfleet, Surrey"
+  ],
+  "notes": [
+    "First name(s) Arthur Edward"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Surrey, West Byfleet, 72 Station Rd"
+    },
+    {
+      "date": "1939",
+      "place": "Surrey, Woodham, 47 Scotland Bridge Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2972",
+      "familyId": "F1020"
+    }
+  ]
+}

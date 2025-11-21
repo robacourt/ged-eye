@@ -1,0 +1,24 @@
+{
+  "id": "I2632",
+  "name": "Unknown Kostic",
+  "givenName": "Unknown",
+  "surname": "Kostic",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2619",
+    "I2622"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F916"
+    }
+  ]
+}

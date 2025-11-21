@@ -1,0 +1,30 @@
+{
+  "id": "I276",
+  "name": "Issac Fudge",
+  "givenName": "Issac",
+  "surname": "Fudge",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I275"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I278"
+  ],
+  "occupations": [
+    "Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I275",
+      "familyId": "F135",
+      "marriageDate": "25.8.1884",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

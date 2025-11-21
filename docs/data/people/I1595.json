@@ -1,0 +1,38 @@
+{
+  "id": "I1595",
+  "name": "Charles Samuel A'Court",
+  "givenName": "Charles Samuel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1905",
+  "birthPlace": "Glamorganshire, Cardiff",
+  "deathDate": "1957",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Glamorganshire/RG14 32138 268.jpg"
+  ],
+  "spouseIds": [
+    "I1599"
+  ],
+  "childIds": [
+    "I1597",
+    "I1598"
+  ],
+  "parentIds": [
+    "I1591",
+    "I1593"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Cardiff, 15 Rennie St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1599",
+      "familyId": "F599"
+    }
+  ],
+  "avatar": "avatars/I1595_0.jpg"
+}

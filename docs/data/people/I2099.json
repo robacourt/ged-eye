@@ -1,0 +1,27 @@
+{
+  "id": "I2099",
+  "name": "Sydney Thomas",
+  "givenName": "Sydney",
+  "surname": "Thomas",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2098"
+  ],
+  "childIds": [
+    "I2100",
+    "I2101"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2098",
+      "familyId": "F750",
+      "marriageDate": "1939"
+    }
+  ]
+}

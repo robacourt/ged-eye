@@ -1,0 +1,18 @@
+{
+  "id": "I1024",
+  "name": "Lauren Kate O'Connor",
+  "givenName": "Lauren Kate",
+  "surname": "O'Connor",
+  "sex": "F",
+  "birthDate": "27 JULY 1987",
+  "birthPlace": "Blacktown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1004",
+    "I1019"
+  ]
+}

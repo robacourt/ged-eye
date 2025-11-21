@@ -1,0 +1,25 @@
+{
+  "id": "I1692",
+  "name": "Unknown Grabauskas",
+  "givenName": "Unknown",
+  "surname": "Grabauskas",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1693"
+  ],
+  "childIds": [
+    "I1694"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1693",
+      "familyId": "F619"
+    }
+  ]
+}

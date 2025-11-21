@@ -1,0 +1,43 @@
+{
+  "id": "I433",
+  "name": "Ethel Mary Lines",
+  "givenName": "Ethel Mary",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "4 MAY 1889",
+  "birthPlace": null,
+  "deathDate": "8 NOV 1971",
+  "deathPlace": "Battle, Sussex",
+  "photos": [
+    "Data/Media/1939 Register/Middlesex/TNA_R39_0756_0756H_011.jpg",
+    "Data/Media/Wills & Probate/Ethel Mary Frentzel ( Lines).jpg"
+  ],
+  "spouseIds": [
+    "I426"
+  ],
+  "childIds": [
+    "I434",
+    "I435"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Middlesex, Enfield, Hadley Wood, Mayfield Beech Hil"
+    }
+  ],
+  "residences": [
+    {
+      "date": "NOV 1971",
+      "place": "Sussex, Bexhill on Sea, 51 De La Warr Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I426",
+      "familyId": "F196",
+      "marriageDate": "1918"
+    }
+  ],
+  "avatar": "avatars/I433_0.jpg"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I2850",
+  "name": "Bengefield A'Court",
+  "givenName": "Bengefield",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1836",
+  "birthPlace": "London, Poplar",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2851"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Seaman Ships Engineer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Hackney, 2 Crozier Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2851",
+      "familyId": "F975"
+    }
+  ]
+}

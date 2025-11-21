@@ -1,0 +1,19 @@
+{
+  "id": "I1673",
+  "name": "Robert Dean",
+  "givenName": "Robert",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": "ABT 1732",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "61 MAR 1732"
+}

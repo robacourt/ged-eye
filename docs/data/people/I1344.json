@@ -1,0 +1,27 @@
+{
+  "id": "I1344",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1850",
+  "birthPlace": "New Zealand",
+  "deathDate": "1934",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1369"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I935",
+    "I936"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1369",
+      "familyId": "F531",
+      "marriageDate": "1873"
+    }
+  ]
+}

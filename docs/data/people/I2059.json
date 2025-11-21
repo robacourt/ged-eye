@@ -1,0 +1,18 @@
+{
+  "id": "I2059",
+  "name": "Leonard A'Court",
+  "givenName": "Leonard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1923",
+  "birthPlace": "Tooting",
+  "deathDate": "1991",
+  "deathPlace": "Cheltenham",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2054",
+    "I2055"
+  ]
+}

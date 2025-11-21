@@ -1,0 +1,33 @@
+{
+  "id": "I2159",
+  "name": "Christopher James Hill",
+  "givenName": "Christopher James",
+  "surname": "Hill",
+  "sex": "M",
+  "birthDate": "22 SEP 1875",
+  "birthPlace": "Bristol",
+  "deathDate": "17 AUG 1939",
+  "deathPlace": "St Paul's, Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2160"
+  ],
+  "childIds": [
+    "I2249"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Cigar Box Maker"
+  ],
+  "notes": [
+    "Buried in Greenbank Cemetry Plot: Blue H, Grave: 772"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2160",
+      "familyId": "F775",
+      "marriageDate": "25 DEC 1902",
+      "marriagePlace": "St Agnes Parish Church, Bristol"
+    }
+  ]
+}

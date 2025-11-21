@@ -1,0 +1,27 @@
+{
+  "id": "I2582",
+  "name": "Violet Lilian A'Court",
+  "givenName": "Violet Lilian",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1906",
+  "birthPlace": "Eastleigh, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Eastleigh/RG14 6061 110.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2580",
+    "I2581"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Eastleigh, Hampshire, 72 Chamberlayne Rd."
+    }
+  ],
+  "avatar": "avatars/I2582_0.jpg"
+}

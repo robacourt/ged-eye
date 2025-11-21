@@ -1,0 +1,29 @@
+{
+  "id": "I2350",
+  "name": "Kenneth A'Court",
+  "givenName": "Kenneth",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1705"
+  ],
+  "childIds": [
+    "I1704",
+    "I2351"
+  ],
+  "parentIds": [
+    "I1701",
+    "I1702"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1705",
+      "familyId": "F834"
+    }
+  ]
+}

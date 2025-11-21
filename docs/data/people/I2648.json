@@ -1,0 +1,25 @@
+{
+  "id": "I2648",
+  "name": "Unknown Clarke",
+  "givenName": "Unknown",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2647"
+  ],
+  "childIds": [
+    "I2646"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2647",
+      "familyId": "F922"
+    }
+  ]
+}

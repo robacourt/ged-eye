@@ -1,0 +1,27 @@
+{
+  "id": "I2372",
+  "name": "Ellen A'Court",
+  "givenName": "Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1839",
+  "birthPlace": "St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Jersey/RG09 4394 65 14.png"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Lodging House Keeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "St Helier, Jersey, 11 Grenville St"
+    }
+  ],
+  "avatar": "avatars/I2372_0.jpg"
+}

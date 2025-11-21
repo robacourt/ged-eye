@@ -1,0 +1,48 @@
+{
+  "id": "I453",
+  "name": "Mary Ann Martha Ridler",
+  "givenName": "Mary Ann Martha",
+  "surname": "Ridler",
+  "sex": "F",
+  "birthDate": "29 DEC 1857",
+  "birthPlace": null,
+  "deathDate": "10 OCT 1910",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Mary Ann Martha Ridler.jpg",
+    "Data/Media/BDM/London/Mary A M Ridler.jpg"
+  ],
+  "spouseIds": [
+    "I452"
+  ],
+  "childIds": [
+    "I454",
+    "I455",
+    "I456",
+    "I457",
+    "I118",
+    "I458"
+  ],
+  "parentIds": [
+    "I575",
+    "I574"
+  ],
+  "baptismDate": "7 FEB 1858",
+  "baptismPlace": "London, Lewisham, St Pauls",
+  "burialPlace": "Canterbury, Kent",
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Scarborough, Yorkshire, 202 Prospect Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I452",
+      "familyId": "F72",
+      "marriageDate": "29 MAY 1882",
+      "marriagePlace": "Canterbury, Kent"
+    }
+  ],
+  "avatar": "avatars/I453_0.jpg"
+}

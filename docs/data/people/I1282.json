@@ -1,0 +1,26 @@
+{
+  "id": "I1282",
+  "name": "Len Cross",
+  "givenName": "Len",
+  "surname": "Cross",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1278"
+  ],
+  "childIds": [
+    "I1283",
+    "I1284"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1278",
+      "familyId": "F518"
+    }
+  ]
+}

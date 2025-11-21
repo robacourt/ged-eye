@@ -1,0 +1,23 @@
+{
+  "id": "I723",
+  "name": "William P. A'Court",
+  "givenName": "William P.",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I724"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I724",
+      "familyId": "F295"
+    }
+  ]
+}

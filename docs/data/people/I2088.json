@@ -1,0 +1,32 @@
+{
+  "id": "I2088",
+  "name": "Emily A'Court",
+  "givenName": "Emily",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Middlesex, St Lukes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/London/St Luke/RG09 203 17 41.jpg",
+    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2020",
+    "I2807"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, St Lukes, 17 George Yard"
+    },
+    {
+      "date": "1871",
+      "place": "London, Holborn, 15 Peerless St."
+    }
+  ],
+  "avatar": "avatars/I2088_0.jpg"
+}

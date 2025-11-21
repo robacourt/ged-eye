@@ -1,0 +1,23 @@
+{
+  "id": "I1400",
+  "name": "Norman Greig",
+  "givenName": "Norman",
+  "surname": "Greig",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I720"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I720",
+      "familyId": "F294"
+    }
+  ]
+}

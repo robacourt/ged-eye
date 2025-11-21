@@ -1,0 +1,18 @@
+{
+  "id": "I943",
+  "name": "Helen Maud Cumming A'Court",
+  "givenName": "Helen Maud Cumming",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "27 AUG 1891",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": "1969",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I937",
+    "I938"
+  ]
+}

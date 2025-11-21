@@ -1,0 +1,18 @@
+{
+  "id": "I948",
+  "name": "Frank Howden A'Court",
+  "givenName": "Frank Howden",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "9 JUL 1864",
+  "birthPlace": "Hutt, Wellington, New Zealand",
+  "deathDate": "1889",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I935",
+    "I936"
+  ]
+}

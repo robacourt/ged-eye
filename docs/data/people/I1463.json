@@ -1,0 +1,42 @@
+{
+  "id": "I1463",
+  "name": "Ada Mary A'Court",
+  "givenName": "Ada Mary",
+  "surname": "A'Court",
+  "sex": "U",
+  "birthDate": "ABT 1882",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg",
+    "Data/Media/1901 census/London/Ealing/RG13 1192 52 16.jpg",
+    "Data/Media/1911 census/Devon/Stoke Gabriel/RG14 12799 78.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1459",
+    "I1460"
+  ],
+  "baptismDate": "13 AUG 1882",
+  "baptismPlace": "Dorset, Marnhull",
+  "notes": [
+    "Lucy's father was James, but cannot tie him in, too many loose connections, she had a sister called Emily, Ada possible born after 1881 otherwise no information."
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
+    },
+    {
+      "date": "1901",
+      "place": "Middlesex, Ealing,13 Norfolk Terrace, Northfield Lane."
+    },
+    {
+      "date": "1911",
+      "place": "Devon, Stoke Gabriel, Post Office"
+    }
+  ],
+  "avatar": "avatars/I1463_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I809",
+  "name": "Amelia Julia Anna KETTENBURG",
+  "givenName": "Amelia Julia Anna",
+  "surname": "KETTENBURG",
+  "sex": "F",
+  "birthDate": "1885",
+  "birthPlace": "Ellesmere, NZ",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I793"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I793",
+      "familyId": "F338",
+      "marriageDate": "12 MAY 1904",
+      "marriagePlace": "Stanley St. Christchurch, NZ"
+    }
+  ]
+}

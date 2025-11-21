@@ -1,0 +1,46 @@
+{
+  "id": "I1602",
+  "name": "Emma Unknown",
+  "givenName": "Emma",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1863",
+  "birthPlace": "Warrington, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1601"
+  ],
+  "childIds": [
+    "I1603",
+    "I1615",
+    "I1604",
+    "I1605",
+    "I1606",
+    "I1607",
+    "I2613"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "St. Helens, Lancs, 10 South John St"
+    },
+    {
+      "date": "1911",
+      "place": "St. Helens, Lancs, 9 South John St"
+    },
+    {
+      "date": "1891",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1601",
+      "familyId": "F601",
+      "marriageDate": "ABT 1883"
+    }
+  ]
+}

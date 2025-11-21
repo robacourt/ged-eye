@@ -1,0 +1,25 @@
+{
+  "id": "I2329",
+  "name": "Friedrich Frentzel",
+  "givenName": "Friedrich",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2330"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2330",
+      "familyId": "F826",
+      "marriageDate": "DEC 1904",
+      "marriagePlace": "London, Paddington"
+    }
+  ]
+}

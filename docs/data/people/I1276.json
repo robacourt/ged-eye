@@ -1,0 +1,31 @@
+{
+  "id": "I1276",
+  "name": "Frederick George Stacey",
+  "givenName": "Frederick George",
+  "surname": "Stacey",
+  "sex": "M",
+  "birthDate": "15 DEC 1893",
+  "birthPlace": "Shortheath, Farnham, Surrey",
+  "deathDate": "24 AUG 1973",
+  "deathPlace": "Thames Ditton, Surrey",
+  "photos": [],
+  "spouseIds": [
+    "I1263"
+  ],
+  "childIds": [
+    "I1277",
+    "I1278"
+  ],
+  "parentIds": [
+    "I1288",
+    "I1289"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1263",
+      "familyId": "F509",
+      "marriageDate": "19 JUN 1916",
+      "marriagePlace": "Selborne, Hampshire"
+    }
+  ]
+}

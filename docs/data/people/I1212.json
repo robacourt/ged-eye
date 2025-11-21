@@ -1,0 +1,37 @@
+{
+  "id": "I1212",
+  "name": "Elsie Muriel Mary Haskett",
+  "givenName": "Elsie Muriel Mary",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1213"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1181",
+    "I1182"
+  ],
+  "occupations": [
+    "Nurse"
+  ],
+  "residences": [
+    {
+      "date": "1914",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1213",
+      "familyId": "F489",
+      "marriageDate": "22 AUG 1914",
+      "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
+    }
+  ]
+}

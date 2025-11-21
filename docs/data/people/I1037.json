@@ -1,0 +1,30 @@
+{
+  "id": "I1037",
+  "name": "Irene (Ciss) A'Court",
+  "givenName": "Irene (Ciss)",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1923",
+  "birthPlace": null,
+  "deathDate": "2000",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Irene Ricketts (A'Court).jpg",
+    "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
+  ],
+  "spouseIds": [
+    "I2319"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1027",
+    "I1034"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2319",
+      "familyId": "F822"
+    }
+  ],
+  "avatar": "avatars/I1037_0.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1921",
+  "name": "Richard Cassan",
+  "givenName": "Richard",
+  "surname": "Cassan",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1920",
+    "I1300"
+  ]
+}

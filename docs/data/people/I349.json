@@ -1,0 +1,30 @@
+{
+  "id": "I349",
+  "name": "Mary Ann",
+  "givenName": "Mary",
+  "surname": "Ann",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "East Stour, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I213"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "45-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I213",
+      "familyId": "F115",
+      "marriageDate": "1851/61"
+    }
+  ]
+}

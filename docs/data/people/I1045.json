@@ -1,0 +1,28 @@
+{
+  "id": "I1045",
+  "name": "Ronald William Moir",
+  "givenName": "Ronald William",
+  "surname": "Moir",
+  "sex": "M",
+  "birthDate": "1929",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1046"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I817",
+    "I812"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1046",
+      "familyId": "F424",
+      "marriageDate": "1951",
+      "marriagePlace": "Christchurch, New Zealand"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I917",
+  "name": "May Godwin",
+  "givenName": "May",
+  "surname": "Godwin",
+  "sex": "F",
+  "birthDate": "1895",
+  "birthPlace": null,
+  "deathDate": "12 APR 1975",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I923"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I231",
+    "I915"
+  ],
+  "notes": [
+    "Date Unknown: Lived in Ashton Keynes, Wiltshire, England."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I923",
+      "familyId": "F384"
+    }
+  ]
+}

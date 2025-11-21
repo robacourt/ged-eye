@@ -1,0 +1,44 @@
+{
+  "id": "I2521",
+  "name": "John Cecil A'Court",
+  "givenName": "John Cecil",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1899",
+  "birthPlace": "Blandford, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 46 35.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12216 139.jpg"
+  ],
+  "spouseIds": [
+    "I2522"
+  ],
+  "childIds": [
+    "I2523"
+  ],
+  "parentIds": [
+    "I265",
+    "I2519"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 20 Dorset St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Damory Court Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2522",
+      "familyId": "F891",
+      "marriageDate": "1932",
+      "marriagePlace": "Bournemouth"
+    }
+  ],
+  "avatar": "avatars/I2521_0.jpg"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "I1708",
+  "name": "Tina Ann A'Court",
+  "givenName": "Tina Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3RD QTR 1974",
+  "birthPlace": "Huntingdon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1709"
+  ]
+}

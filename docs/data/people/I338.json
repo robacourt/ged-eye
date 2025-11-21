@@ -1,0 +1,21 @@
+{
+  "id": "I338",
+  "name": "Ada Caroline Kendall",
+  "givenName": "Ada Caroline",
+  "surname": "Kendall",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I332",
+    "I337"
+  ],
+  "notes": [
+    "8-1891"
+  ]
+}

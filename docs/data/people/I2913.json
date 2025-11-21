@@ -1,0 +1,27 @@
+{
+  "id": "I2913",
+  "name": "Ethel Gertrude A'Court",
+  "givenName": "Ethel Gertrude",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1909",
+  "birthPlace": "Jersey C.I St Clements",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Jersey C.I/St Clements/RG14 34868 37.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2813",
+    "I2534"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Clements, East View"
+    }
+  ],
+  "avatar": "avatars/I2913_0.jpg"
+}

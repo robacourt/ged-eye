@@ -1,0 +1,53 @@
+{
+  "id": "I384",
+  "name": "Sir John Arthur Wheeler Bennett",
+  "givenName": "Sir John Arthur Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "13 OCT 1902",
+  "birthPlace": "Kent, Keston, Westerham Rd. Ravensbourne",
+  "deathDate": "1975",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/John Wheeler Bennett.jpeg",
+    "Data/Media/1921 Census/Kent/GBC_1921_RG15_03844_0391.jpg"
+  ],
+  "spouseIds": [
+    "I391"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I377",
+    "I380"
+  ],
+  "occupations": [
+    "Historian"
+  ],
+  "notes": [
+    "Early career",
+    "Jan 1, 2011",
+    "Sir John Wheeler-Bennett (1902-1975), eminent English historian of German and diplomatic affairs, was also the official biographer of King George VI. Well-known for a number of standard works on Nazi Germany (perhaps most notably 'The Nemesi"
+  ],
+  "education": "Westgate on Sea and Malvern College",
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    }
+  ],
+  "residences": [
+    {
+      "date": "AFT 1945",
+      "place": "Garsington, Oxfordshire, Garsington manor, 28 Southend"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I391",
+      "familyId": "F177",
+      "marriageDate": "26 MAR 1945",
+      "marriagePlace": "USA, Virginia, Charlottesville"
+    }
+  ],
+  "avatar": "avatars/I384_0.jpg"
+}

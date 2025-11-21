@@ -1,0 +1,30 @@
+{
+  "id": "I538",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1705",
+  "birthPlace": null,
+  "deathDate": "1766",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I740"
+  ],
+  "childIds": [
+    "I741"
+  ],
+  "parentIds": [
+    "I534",
+    "I535"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I740",
+      "familyId": "F230",
+      "marriageDate": "21 APR 1726",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

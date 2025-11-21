@@ -1,0 +1,75 @@
+{
+  "id": "I2282",
+  "name": "Charles Alfred Barnett",
+  "givenName": "Charles Alfred",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "1877",
+  "birthPlace": "London, Shoreditch",
+  "deathDate": "19 OCT 1935",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Charles Barnett.png",
+    "Data/Picture/Charles Barnett.2png.png",
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg",
+    "Data/Media/1891 census/London/Shoreditch/RG12 243 53 8 54.jpg",
+    "Data/Media/Wills & Probate/gbor_govprobate_1935_b000203-barnet-1935.jpg"
+  ],
+  "spouseIds": [
+    "I2693"
+  ],
+  "childIds": [
+    "I2705",
+    "I2694",
+    "I2738"
+  ],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "occupations": [
+    "Tobacco Cutter",
+    "Confectioner"
+  ],
+  "notes": [
+    "See media file",
+    "1901 census transcription details for:  5, Powerscroft Road, Hackney"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    },
+    {
+      "date": "1891",
+      "place": "Shoreditch, London, 341 Old St."
+    },
+    {
+      "date": "1901",
+      "place": "London, Hackney, 5 Powerscroft Road"
+    },
+    {
+      "date": "1911",
+      "place": "London, Finsbury Park, 10 Vale Road"
+    }
+  ],
+  "residences": [
+    {
+      "date": "JUN 1918",
+      "place": "Berkshire, Reading, 22 Field Rd"
+    },
+    {
+      "date": "1935",
+      "place": "London, Stoke Newington, 33 Jenner Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2693",
+      "familyId": "F937",
+      "marriageDate": "5 JUL 1898",
+      "marriagePlace": "London, Bishopsgate, The New Synagoge"
+    }
+  ],
+  "avatar": "avatars/I2282_0.jpg"
+}

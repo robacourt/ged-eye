@@ -1,0 +1,39 @@
+{
+  "id": "I2820",
+  "name": "Phillipa Unknown",
+  "givenName": "Phillipa",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1806",
+  "birthPlace": "Cornwall",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Devon/Buckland Monchorum/RG11 2218 63 21.jpg"
+  ],
+  "spouseIds": [
+    "I2819"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "evon, Plympton, Bickleigh, Shaugh Bridge"
+    },
+    {
+      "date": "1881",
+      "place": "Devon, Tavistock, Buckland Monachorum, Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2819",
+      "familyId": "F756"
+    }
+  ],
+  "avatar": "avatars/I2820_0.jpg"
+}

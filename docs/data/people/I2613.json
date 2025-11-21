@@ -1,0 +1,27 @@
+{
+  "id": "I2613",
+  "name": "Arthur A'Court",
+  "givenName": "Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1904",
+  "birthPlace": "St. Helens, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Lancashire/St Helens/RG14 22777 305.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1601",
+    "I1602"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "St. Helens, Lancs, 9 South John St"
+    }
+  ],
+  "avatar": "avatars/I2613_0.jpg"
+}

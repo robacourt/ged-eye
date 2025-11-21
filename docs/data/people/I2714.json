@@ -1,0 +1,25 @@
+{
+  "id": "I2714",
+  "name": "Dora Rosendale",
+  "givenName": "Dora",
+  "surname": "Rosendale",
+  "sex": "F",
+  "birthDate": "1911",
+  "birthPlace": "Lewisham, Kent",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2713"
+  ],
+  "childIds": [
+    "I2712"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2713",
+      "familyId": "F945"
+    }
+  ]
+}

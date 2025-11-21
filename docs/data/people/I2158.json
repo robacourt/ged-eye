@@ -1,0 +1,27 @@
+{
+  "id": "I2158",
+  "name": "Charles Henry A'Court",
+  "givenName": "Charles Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1873",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2497 134 28.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2153",
+    "I2154"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 68 Regent St., Ss Philip and Jacob"
+    }
+  ],
+  "avatar": "avatars/I2158_0.jpg"
+}

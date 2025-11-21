@@ -1,0 +1,27 @@
+{
+  "id": "I366",
+  "name": "Maria A'Court",
+  "givenName": "Maria",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1836",
+  "birthPlace": "Middlesex, Islington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/London/HO107 1502 30 53.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2007",
+    "I2005"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Middlesex, Islington"
+    }
+  ],
+  "avatar": "avatars/I366_0.jpg"
+}

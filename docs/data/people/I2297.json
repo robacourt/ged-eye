@@ -1,0 +1,23 @@
+{
+  "id": "I2297",
+  "name": "Amy Cary",
+  "givenName": "Amy",
+  "surname": "Cary",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2296"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2296",
+      "familyId": "F812"
+    }
+  ]
+}

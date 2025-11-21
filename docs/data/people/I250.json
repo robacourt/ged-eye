@@ -1,0 +1,18 @@
+{
+  "id": "I250",
+  "name": "Nathaniel Fudge",
+  "givenName": "Nathaniel",
+  "surname": "Fudge",
+  "sex": "M",
+  "birthDate": "ABT 1850",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I246",
+    "I40"
+  ]
+}

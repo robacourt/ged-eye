@@ -1,0 +1,52 @@
+{
+  "id": "I935",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1816",
+  "birthPlace": "Somerset",
+  "deathDate": "7 APR 1880",
+  "deathPlace": "Sandon, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I936"
+  ],
+  "childIds": [
+    "I1345",
+    "I1342",
+    "I1343",
+    "I1344",
+    "I937",
+    "I949",
+    "I947",
+    "I948"
+  ],
+  "parentIds": [
+    "I1339"
+  ],
+  "burialDate": "9 APR 1880",
+  "burialPlace": "Sandon Cemetery,",
+  "occupations": [
+    "Servant",
+    "Farmer"
+  ],
+  "notes": [
+    "They left Gravesend on the  'London' on the second",
+    "London"
+  ],
+  "residences": [
+    {
+      "date": "10 AUG 1840",
+      "place": "Chelsea, Middlesex, 116 Sloane Street,"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I936",
+      "familyId": "F389",
+      "marriageDate": "10 AUG 1840",
+      "marriagePlace": "Chelsea & Kensington, London"
+    }
+  ]
+}

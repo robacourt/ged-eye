@@ -1,0 +1,18 @@
+{
+  "id": "I2649",
+  "name": "Stephen A'Court",
+  "givenName": "Stephen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1QRT 1939",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2650",
+    "I2651"
+  ]
+}

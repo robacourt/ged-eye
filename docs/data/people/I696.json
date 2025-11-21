@@ -1,0 +1,18 @@
+{
+  "id": "I696",
+  "name": "Grace a'Court",
+  "givenName": "Grace",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "1 OCT 1657",
+  "birthPlace": null,
+  "deathDate": "1666",
+  "deathPlace": "South Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I563",
+    "I686"
+  ]
+}

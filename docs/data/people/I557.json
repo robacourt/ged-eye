@@ -1,0 +1,20 @@
+{
+  "id": "I557",
+  "name": "John a'Court",
+  "givenName": "John",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "ABT 1646",
+  "birthPlace": null,
+  "deathDate": "1669",
+  "deathPlace": "South Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I555",
+    "I556"
+  ],
+  "burialDate": "15 APR 1669",
+  "burialPlace": "South Cadbury, Somerset"
+}

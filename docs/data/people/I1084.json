@@ -1,0 +1,29 @@
+{
+  "id": "I1084",
+  "name": "Lavina Tulk",
+  "givenName": "Lavina",
+  "surname": "Tulk",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1083"
+  ],
+  "childIds": [
+    "I1082",
+    "I1140",
+    "I1252"
+  ],
+  "parentIds": [
+    "I1085"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1083",
+      "familyId": "F431"
+    }
+  ]
+}

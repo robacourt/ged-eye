@@ -1,0 +1,25 @@
+{
+  "id": "I1792",
+  "name": "Unknown Rooney",
+  "givenName": "Unknown",
+  "surname": "Rooney",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1791",
+    "I1794",
+    "I1793"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F646"
+    }
+  ]
+}

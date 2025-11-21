@@ -1,0 +1,28 @@
+{
+  "id": "I87",
+  "name": "Thomas Wills",
+  "givenName": "Thomas",
+  "surname": "Wills",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I26"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "of Marnhull"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I26",
+      "familyId": "F20",
+      "marriageDate": "5 AUG 1803",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

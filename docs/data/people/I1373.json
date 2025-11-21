@@ -1,0 +1,25 @@
+{
+  "id": "I1373",
+  "name": "Beryl A'Court",
+  "givenName": "Beryl",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1374"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2480"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1374",
+      "familyId": "F543"
+    }
+  ]
+}

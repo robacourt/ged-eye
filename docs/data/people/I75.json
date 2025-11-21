@@ -1,0 +1,63 @@
+{
+  "id": "I75",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1822",
+  "birthPlace": null,
+  "deathDate": "1904",
+  "deathPlace": "Dubbo or Ballimore ,NSW",
+  "photos": [
+    "Data/Media/John Ticket of leave.jpg"
+  ],
+  "spouseIds": [
+    "I103"
+  ],
+  "childIds": [
+    "I954",
+    "I953",
+    "I955",
+    "I956",
+    "I957",
+    "I958",
+    "I526",
+    "I104",
+    "I1070",
+    "I1071"
+  ],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "baptismDate": "4 FEB 1826",
+  "baptismPlace": "Henstridge, Somerset",
+  "occupations": [
+    "Bullock Driver"
+  ],
+  "notes": [
+    "Transported 6 Nov 1837 Emma Eugenia ,Captain Giles Wade, Surgeon R. Wylie",
+    "Height: 5�",
+    "Some information on John; He was sent to the Bathurst district after landing in Sydney and was a bullock driver, taking cargo over the Blue Mountains to Sydney and return. He received his Ticket of Leave on March 7th 1846 after being recommende"
+  ],
+  "religion": "Protestant",
+  "residences": [
+    {
+      "date": "1837",
+      "place": "Henstridge Ridge, Somerset"
+    },
+    {
+      "date": "17 AUG 1837",
+      "place": "Prison Hulk \"Leviathan\", Portsmouth"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I103",
+      "familyId": "F46",
+      "marriageDate": "1851",
+      "marriagePlace": "Kelso, NSW"
+    }
+  ],
+  "avatar": "avatars/I75_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I2034",
+  "name": "Unknown Harvey",
+  "givenName": "Unknown",
+  "surname": "Harvey",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2025"
+  ],
+  "childIds": [
+    "I2035"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2025",
+      "familyId": "F734"
+    }
+  ]
+}

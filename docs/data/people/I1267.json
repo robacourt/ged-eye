@@ -1,0 +1,27 @@
+{
+  "id": "I1267",
+  "name": "Kathleen D A'Court",
+  "givenName": "Kathleen D",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1916",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1268"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1268",
+      "familyId": "F512",
+      "marriageDate": "1937"
+    }
+  ]
+}

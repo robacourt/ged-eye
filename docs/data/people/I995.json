@@ -1,0 +1,23 @@
+{
+  "id": "I995",
+  "name": "Bertram Keith Williams",
+  "givenName": "Bertram Keith",
+  "surname": "Williams",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I994"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I994",
+      "familyId": "F414"
+    }
+  ]
+}

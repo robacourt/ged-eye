@@ -1,0 +1,26 @@
+{
+  "id": "I1502",
+  "name": "Frederick Randall",
+  "givenName": "Frederick",
+  "surname": "Randall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1507"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1503"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1507",
+      "familyId": "F573",
+      "marriageDate": "25 SEP 1905"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "I296",
+  "name": "Charles Windem A'Court",
+  "givenName": "Charles Windem",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1859",
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Sherborne/RG11 2117 78 26.jpg",
+    "Data/Media/1891 census/London/St Pancras/RG12 131 144 16.jpg"
+  ],
+  "spouseIds": [
+    "I2543"
+  ],
+  "childIds": [
+    "I2544"
+  ],
+  "parentIds": [
+    "I187",
+    "I295"
+  ],
+  "occupations": [
+    "Tailor",
+    "Tailor",
+    "Tailor"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Sherborne, Dorset, Acreman Street"
+    },
+    {
+      "date": "1891",
+      "place": "London, St Pancras, York Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Camden Town, 82 St. Augustines Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2543",
+      "familyId": "F898",
+      "marriageDate": "ABT 1897"
+    }
+  ],
+  "avatar": "avatars/I296_0.jpg"
+}

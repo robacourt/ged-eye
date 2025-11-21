@@ -1,0 +1,20 @@
+{
+  "id": "I64",
+  "name": "Charles A'Court Dowding",
+  "givenName": "Charles A'Court",
+  "surname": "Dowding",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I60",
+    "I19"
+  ],
+  "baptismDate": "16 SEP 1793",
+  "baptismPlace": "Fifehead Magdalen, Dorset"
+}

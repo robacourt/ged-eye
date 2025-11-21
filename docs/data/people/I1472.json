@@ -1,0 +1,22 @@
+{
+  "id": "I1472",
+  "name": "Hannah Coffin",
+  "givenName": "Hannah",
+  "surname": "Coffin",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I467",
+    "I468"
+  ],
+  "baptismDate": "1 FEB 1795",
+  "baptismPlace": "Henstridge, Somerset",
+  "burialDate": "27 AUG 1796",
+  "burialPlace": "Henstridge, Somerset"
+}

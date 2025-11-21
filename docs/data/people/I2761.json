@@ -1,0 +1,24 @@
+{
+  "id": "I2761",
+  "name": "Allgera Keniston",
+  "givenName": "Allgera",
+  "surname": "Keniston",
+  "sex": "M",
+  "birthDate": "ABT 1838",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2755",
+    "I2753"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Frog Moor"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "I2412",
+  "name": "Mary Hannah Unknown",
+  "givenName": "Mary Hannah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Wiltshire, Hodson",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1193"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Parlour maid"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Glamorganshire, Porthcawl, Newton, Arosfa"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1193",
+      "familyId": "F856",
+      "marriageDate": "Abt 1911"
+    }
+  ]
+}

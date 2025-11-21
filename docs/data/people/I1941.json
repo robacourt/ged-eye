@@ -1,0 +1,23 @@
+{
+  "id": "I1941",
+  "name": "Allison Gunn",
+  "givenName": "Allison",
+  "surname": "Gunn",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1942"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1942",
+      "familyId": "F690"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "I92",
+  "name": "Charles Hatcher",
+  "givenName": "Charles",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I88",
+    "I28"
+  ],
+  "baptismDate": "4.3.1814",
+  "baptismPlace": "Henstridge, Somerset"
+}

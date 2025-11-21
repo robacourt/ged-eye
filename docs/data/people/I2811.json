@@ -1,0 +1,27 @@
+{
+  "id": "I2811",
+  "name": "Katy A'Court",
+  "givenName": "Katy",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1866",
+  "birthPlace": "Jesey, St Lawrence",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Jersey/RG10 5763 101 2.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2089",
+    "I2810"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey,St Peter, Ruette a la Vioge"
+    }
+  ],
+  "avatar": "avatars/I2811_0.jpg"
+}

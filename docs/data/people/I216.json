@@ -1,0 +1,42 @@
+{
+  "id": "I216",
+  "name": "Mary Anne A'Court",
+  "givenName": "Mary Anne",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I350"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I82",
+    "I215"
+  ],
+  "baptismDate": "1MAY1836",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "15-1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I350",
+      "familyId": "F117",
+      "marriageDate": "28 MAY1857",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

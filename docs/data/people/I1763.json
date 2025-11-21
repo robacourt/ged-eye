@@ -1,0 +1,24 @@
+{
+  "id": "I1763",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1831",
+  "birthPlace": "Brockley, Bedminster, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1386",
+    "I1405"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Brockley, Bedminster, Somerset, Court Farm House"
+    }
+  ]
+}

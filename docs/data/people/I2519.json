@@ -1,0 +1,40 @@
+{
+  "id": "I2519",
+  "name": "Lavinia Willey",
+  "givenName": "Lavinia",
+  "surname": "Willey",
+  "sex": "F",
+  "birthDate": "ABT 1869",
+  "birthPlace": "Helston, Cornwall",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I265"
+  ],
+  "childIds": [
+    "I2520",
+    "I2521",
+    "I2531",
+    "I2532",
+    "I392"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 20 Dorset St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Damory Court Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I265",
+      "familyId": "F890",
+      "marriageDate": "ABT 1896"
+    }
+  ]
+}

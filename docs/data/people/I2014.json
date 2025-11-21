@@ -1,0 +1,40 @@
+{
+  "id": "I2014",
+  "name": "Mary Ann A'Court",
+  "givenName": "Mary Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1847",
+  "birthPlace": "Devon, Stoke Canon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Exeter/RG09 1397 44 10.png",
+    "Data/Media/1871 census/Aberdare/RG10 5407 19 31.jpg",
+    "Data/Media/1881 census/Wales/RG11 5322 83 39.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2013"
+  ],
+  "occupations": [
+    "Schoolmistress",
+    "Schoolmistress"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Devon, Exeter, St Davids, 3 St Davids Hill"
+    },
+    {
+      "date": "1871",
+      "place": "Wales, Glamorganshire, Aberdare, Wetherall Place, Wetherall St."
+    },
+    {
+      "date": "1881",
+      "place": "Wales, Glamorganshire, Aberdare, 9 Jenkin Place"
+    }
+  ],
+  "avatar": "avatars/I2014_0.jpg"
+}

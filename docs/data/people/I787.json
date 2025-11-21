@@ -1,0 +1,24 @@
+{
+  "id": "I787",
+  "name": "Emily A'Court",
+  "givenName": "Emily",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "22 AUG 1867",
+  "birthPlace": "Queensland, Australia",
+  "deathDate": "3 FEB 1868",
+  "deathPlace": "Queensland, Australia",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F334"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I796",
+  "name": "Stanley Wilton A'Court",
+  "givenName": "Stanley Wilton",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1884",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F341"
+    }
+  ]
+}

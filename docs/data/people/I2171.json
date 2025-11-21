@@ -1,0 +1,26 @@
+{
+  "id": "I2171",
+  "name": "Robert Hoy",
+  "givenName": "Robert",
+  "surname": "Hoy",
+  "sex": "M",
+  "birthDate": "1962",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2164"
+  ],
+  "childIds": [
+    "I2172",
+    "I2173"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2164",
+      "familyId": "F778"
+    }
+  ]
+}

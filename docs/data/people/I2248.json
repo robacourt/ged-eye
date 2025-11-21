@@ -1,0 +1,18 @@
+{
+  "id": "I2248",
+  "name": "Claire Rebecca Summers",
+  "givenName": "Claire Rebecca",
+  "surname": "Summers",
+  "sex": "F",
+  "birthDate": "29 JUN 1985",
+  "birthPlace": "Bath",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2241",
+    "I2239"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I1103",
+  "name": "Phyllis Rosa May A'Court",
+  "givenName": "Phyllis Rosa May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1270"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ],
+  "baptismDate": "1 JUNE 1924",
+  "baptismPlace": "West Camel, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I1270",
+      "familyId": "F445",
+      "marriageDate": "1945"
+    }
+  ]
+}

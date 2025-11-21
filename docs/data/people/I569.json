@@ -1,0 +1,25 @@
+{
+  "id": "I569",
+  "name": "John Richard Jones",
+  "givenName": "John Richard",
+  "surname": "Jones",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I570"
+  ],
+  "childIds": [
+    "I502"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I570",
+      "familyId": "F213"
+    }
+  ]
+}

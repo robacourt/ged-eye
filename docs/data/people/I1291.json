@@ -1,0 +1,31 @@
+{
+  "id": "I1291",
+  "name": "William Alfred Edward A'Court Hunt",
+  "givenName": "William Alfred Edward A'Court",
+  "surname": "Hunt",
+  "sex": "M",
+  "birthDate": "15 JAN 1879",
+  "birthPlace": "Landport, Hampshire.",
+  "deathDate": "MAR 1897",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Service Records/William Alfred Edward A'Court Hunt.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I117",
+    "I108"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881 AGE 2",
+      "place": "Portsea, Hampshire, 48 Fleet Street"
+    },
+    {
+      "date": "1901",
+      "place": "To be checked"
+    }
+  ],
+  "avatar": "avatars/I1291_0.jpg"
+}

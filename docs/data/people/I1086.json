@@ -1,0 +1,35 @@
+{
+  "id": "I1086",
+  "name": "Robert Frank A'Court",
+  "givenName": "Robert Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "25 JULY 1946",
+  "birthPlace": "Podimore, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Bob-A'Court.jpg"
+  ],
+  "spouseIds": [
+    "I1304"
+  ],
+  "childIds": [
+    "I1097",
+    "I1098",
+    "I1099"
+  ],
+  "parentIds": [
+    "I1087",
+    "I1088"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1304",
+      "familyId": "F433",
+      "marriageDate": "17 SEP 1965",
+      "marriagePlace": "Perth, Western Australia"
+    }
+  ],
+  "avatar": "avatars/I1086_0.jpg"
+}

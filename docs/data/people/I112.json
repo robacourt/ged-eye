@@ -1,0 +1,18 @@
+{
+  "id": "I112",
+  "name": "Joseph Terrell",
+  "givenName": "Joseph",
+  "surname": "Terrell",
+  "sex": "M",
+  "birthDate": "ABT 1873",
+  "birthPlace": "Henstridge Ash, Somerset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I109",
+    "I78"
+  ]
+}

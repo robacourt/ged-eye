@@ -1,0 +1,35 @@
+{
+  "id": "I2445",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1870",
+  "birthPlace": "London, Kilburn",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/St Pancras/RG11 199 89 2.jpg",
+    "Data/Media/1901 census/London/St Pancras/RG13 143 54 43.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I877",
+    "I927"
+  ],
+  "occupations": [
+    "General Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, St Pancras, 19 Church Way"
+    },
+    {
+      "date": "1901",
+      "place": "London, St Pancras\t1, Ossulston Place"
+    }
+  ],
+  "avatar": "avatars/I2445_0.jpg"
+}

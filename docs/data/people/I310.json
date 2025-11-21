@@ -1,0 +1,29 @@
+{
+  "id": "I310",
+  "name": "George Hatcher",
+  "givenName": "George",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1871",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I311"
+  ],
+  "childIds": [
+    "I307",
+    "I1656"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I311",
+      "familyId": "F149"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I674",
+  "name": "Nora Ellen Foote",
+  "givenName": "Nora Ellen",
+  "surname": "Foote",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I668"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I675"
+  ],
+  "notes": [
+    "22 in 1934"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I668",
+      "familyId": "F281"
+    }
+  ]
+}

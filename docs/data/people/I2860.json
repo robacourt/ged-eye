@@ -1,0 +1,27 @@
+{
+  "id": "I2860",
+  "name": "Henrietta Steele",
+  "givenName": "Henrietta",
+  "surname": "Steele",
+  "sex": "F",
+  "birthDate": "Abt 1873",
+  "birthPlace": "London, Chelsea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Chelsea/RG11 75 138 56.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2857",
+    "I2453"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Chelsea, 11 Strewan Square"
+    }
+  ],
+  "avatar": "avatars/I2860_0.jpg"
+}

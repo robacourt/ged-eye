@@ -1,0 +1,27 @@
+{
+  "id": "I1655",
+  "name": "Henry Drew",
+  "givenName": "Henry",
+  "surname": "Drew",
+  "sex": "M",
+  "birthDate": "ABT 1854",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1653",
+    "I1654"
+  ],
+  "occupations": [
+    "Butchers Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ]
+}

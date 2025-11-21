@@ -1,0 +1,43 @@
+{
+  "id": "I767",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1823",
+  "birthPlace": "Somerset",
+  "deathDate": "ABT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I886"
+  ],
+  "childIds": [
+    "I887",
+    "I888",
+    "I889",
+    "I890"
+  ],
+  "parentIds": [
+    "I755",
+    "I760"
+  ],
+  "baptismDate": "19 JAN 1823",
+  "occupations": [
+    "Carpenter, employing 2 men"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Hackney, 64 Graham Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I886",
+      "familyId": "F319",
+      "marriageDate": "1843",
+      "marriagePlace": "Somerset"
+    }
+  ]
+}

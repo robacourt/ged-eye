@@ -1,0 +1,28 @@
+{
+  "id": "I1261",
+  "name": "Ambrose Seymour",
+  "givenName": "Ambrose",
+  "surname": "Seymour",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1262"
+  ],
+  "childIds": [
+    "I1260"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Yeoman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1262",
+      "familyId": "F508"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I1272",
+  "name": "Barbara J A'Court",
+  "givenName": "Barbara J",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1932",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1273"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1273",
+      "familyId": "F513",
+      "marriageDate": "1950"
+    }
+  ]
+}

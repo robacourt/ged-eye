@@ -1,0 +1,24 @@
+{
+  "id": "I732",
+  "name": "William Winstanley",
+  "givenName": "William",
+  "surname": "Winstanley",
+  "sex": "M",
+  "birthDate": "1889",
+  "birthPlace": null,
+  "deathDate": "1962",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I731"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I731",
+      "familyId": "F297",
+      "marriageDate": "23 OCT 1915"
+    }
+  ]
+}

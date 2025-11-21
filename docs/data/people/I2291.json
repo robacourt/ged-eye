@@ -1,0 +1,26 @@
+{
+  "id": "I2291",
+  "name": "Benjamin White",
+  "givenName": "Benjamin",
+  "surname": "White",
+  "sex": "M",
+  "birthDate": "ABT 1841",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2288"
+  ],
+  "occupations": [
+    "Stone Mason"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Portsea, Hampshire, 345 Commercial Rd."
+    }
+  ]
+}

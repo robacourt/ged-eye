@@ -1,0 +1,18 @@
+{
+  "id": "I2234",
+  "name": "Louisa Clements",
+  "givenName": "Louisa",
+  "surname": "Clements",
+  "sex": "F",
+  "birthDate": "ABT 1878",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2229",
+    "I2221"
+  ]
+}

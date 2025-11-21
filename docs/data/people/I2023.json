@@ -1,0 +1,28 @@
+{
+  "id": "I2023",
+  "name": "Sydney (John) A'Court",
+  "givenName": "Sydney (John)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "25 JUL 1969",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2039"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1947",
+    "I1948"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2039",
+      "familyId": "F735",
+      "marriageDate": "2 MAR 2002",
+      "marriagePlace": "Nelson, New Zealand"
+    }
+  ]
+}

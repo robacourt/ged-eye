@@ -1,0 +1,18 @@
+{
+  "id": "I2684",
+  "name": "Julia G. A'Court",
+  "givenName": "Julia G.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "4QTR 1941",
+  "birthPlace": "Aldershot, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1783",
+    "I1782"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I2260",
+  "name": "Theresa A'Court",
+  "givenName": "Theresa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1858",
+  "birthPlace": "Bedminster, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1704 58 9.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1764",
+    "I2258"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Bedminster, Bristol, 11 Richmond Terrace."
+    },
+    {
+      "date": "1871",
+      "place": "Bedminster, Bristol, 18 Clarence Place"
+    }
+  ],
+  "avatar": "avatars/I2260_0.jpg"
+}

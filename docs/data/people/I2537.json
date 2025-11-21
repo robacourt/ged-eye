@@ -1,0 +1,41 @@
+{
+  "id": "I2537",
+  "name": "Jane Unknown",
+  "givenName": "Jane",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1847",
+  "birthPlace": "Gillingham, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Dorset/East Stour/RG14 12182 127.jpg"
+  ],
+  "spouseIds": [
+    "I2927"
+  ],
+  "childIds": [
+    "I2922"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Servant- Housekeeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "East Stour, Gillingham, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F895"
+    },
+    {
+      "spouseId": "I2927",
+      "familyId": "F999"
+    }
+  ],
+  "avatar": "avatars/I2537_0.jpg"
+}

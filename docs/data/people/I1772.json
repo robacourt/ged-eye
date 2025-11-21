@@ -1,0 +1,18 @@
+{
+  "id": "I1772",
+  "name": "Michael K A'Court",
+  "givenName": "Michael K",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1ST QRT 1955",
+  "birthPlace": "King's L",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1768",
+    "I1767"
+  ]
+}

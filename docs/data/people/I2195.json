@@ -1,0 +1,21 @@
+{
+  "id": "I2195",
+  "name": "Laura A'Court",
+  "givenName": "Laura",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1859",
+  "birthPlace": "Somerset, Somerton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": null
+    }
+  ]
+}

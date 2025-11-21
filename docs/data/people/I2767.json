@@ -1,0 +1,25 @@
+{
+  "id": "I2767",
+  "name": "Margaret Inches",
+  "givenName": "Margaret",
+  "surname": "Inches",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2766"
+  ],
+  "childIds": [
+    "I443"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2766",
+      "familyId": "F963"
+    }
+  ]
+}

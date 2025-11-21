@@ -1,0 +1,35 @@
+{
+  "id": "I1042",
+  "name": "Frederick William A'Court",
+  "givenName": "Frederick William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1953",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/FredACourt[1].jpg"
+  ],
+  "spouseIds": [
+    "I1043"
+  ],
+  "childIds": [
+    "I1044"
+  ],
+  "parentIds": [
+    "I1040",
+    "I1041"
+  ],
+  "occupations": [
+    "Editor of \"Meat Trades Journal\""
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1043",
+      "familyId": "F423",
+      "marriageDate": "1985"
+    }
+  ],
+  "avatar": "avatars/I1042_0.jpg"
+}

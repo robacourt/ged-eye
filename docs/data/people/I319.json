@@ -1,0 +1,28 @@
+{
+  "id": "I319",
+  "name": "Eliza Cressy",
+  "givenName": "Eliza",
+  "surname": "Cressy",
+  "sex": "F",
+  "birthDate": "ABT 1807",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I318"
+  ],
+  "childIds": [
+    "I309"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Spinner"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I318",
+      "familyId": "F152"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2180",
+  "name": "Lynne V Devrell",
+  "givenName": "Lynne V",
+  "surname": "Devrell",
+  "sex": "F",
+  "birthDate": "1947",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2177"
+  ],
+  "childIds": [
+    "I2181",
+    "I2182"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2177",
+      "familyId": "F781",
+      "marriageDate": "1971"
+    }
+  ]
+}

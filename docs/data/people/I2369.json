@@ -1,0 +1,30 @@
+{
+  "id": "I2369",
+  "name": "Aylwynne Cosway",
+  "givenName": "Aylwynne",
+  "surname": "Cosway",
+  "sex": "F",
+  "birthDate": "8 MAY 1915",
+  "birthPlace": "Nuneaton, Warwickshire, The Garth, Earls Rd.,",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I421"
+  ],
+  "childIds": [
+    "I2966"
+  ],
+  "parentIds": [
+    "I2370",
+    "I2371"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I421",
+      "familyId": "F839",
+      "marriageDate": "14 JUNE 1947",
+      "marriagePlace": "Broxbourne, Hertfordshire"
+    }
+  ]
+}

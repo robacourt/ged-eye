@@ -1,0 +1,23 @@
+{
+  "id": "I1964",
+  "name": "Frederick A'Court",
+  "givenName": "Frederick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1841",
+  "birthPlace": "Shepton Mallet, Somerset, Paul St",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1965"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Shepton Mallet, Somerset, Paul St"
+    }
+  ]
+}

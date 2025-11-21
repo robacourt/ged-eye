@@ -1,0 +1,23 @@
+{
+  "id": "I1512",
+  "name": "John Ridout",
+  "givenName": "John",
+  "surname": "Ridout",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1511"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F577"
+    }
+  ]
+}

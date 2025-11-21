@@ -1,0 +1,28 @@
+{
+  "id": "I895",
+  "name": "Emily Mary Louise Wheeler Bennett",
+  "givenName": "Emily Mary Louise Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "ABT 1880",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1417"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I378",
+    "I894"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1417",
+      "familyId": "F602",
+      "marriageDate": "17TH JULY 1902",
+      "marriagePlace": "London, Streatham"
+    }
+  ]
+}

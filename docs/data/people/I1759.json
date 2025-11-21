@@ -1,0 +1,70 @@
+{
+  "id": "I1759",
+  "name": "Louisa A'Court",
+  "givenName": "Louisa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1847",
+  "birthPlace": "Bristol, Bedminster, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Bristol/RG09 1723 122 21.jpg"
+  ],
+  "spouseIds": [
+    "I1760"
+  ],
+  "childIds": [
+    "I1761",
+    "I1762"
+  ],
+  "parentIds": [
+    "I1386",
+    "I1405"
+  ],
+  "occupations": [
+    "General Servant",
+    "Paper bag maker and Cotton weaver",
+    "Calico Weaver"
+  ],
+  "notes": [
+    "Hi Ian Mon 10/03/2008 17:42"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Bedminster, Charlotte St."
+    },
+    {
+      "date": "1861",
+      "place": "Bristol,14 Trinity Street, St Augustine."
+    },
+    {
+      "date": "1881",
+      "place": "Warrington, Lancashire, 7 Heaton St."
+    },
+    {
+      "date": "1891",
+      "place": "Warrington, Lancashire, 7 Heaton St."
+    },
+    {
+      "date": "1901",
+      "place": "Warrington, Lancashire, 7 Heaton St."
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1874",
+      "place": "Bristol, Gloucestershire, St Mary Redcliff, 3 Arch Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1760",
+      "familyId": "F638",
+      "marriageDate": "13 DEC 1874",
+      "marriagePlace": "Bristol, Gloucestershire, St. Mary's Redcliffe"
+    }
+  ],
+  "avatar": "avatars/I1759_0.jpg"
+}

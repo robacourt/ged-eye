@@ -1,0 +1,38 @@
+{
+  "id": "I2940",
+  "name": "Anne Gristock",
+  "givenName": "Anne",
+  "surname": "Gristock",
+  "sex": "F",
+  "birthDate": "Abt 1757",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2939",
+    "I2941"
+  ],
+  "childIds": [
+    "I2942",
+    "I577",
+    "I2943",
+    "I2944",
+    "I2945",
+    "I1860",
+    "I2946"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2939",
+      "familyId": "F1004"
+    },
+    {
+      "spouseId": "I2941",
+      "familyId": "F1005",
+      "marriageDate": "1792",
+      "marriagePlace": "Somerset, Horsington"
+    }
+  ]
+}

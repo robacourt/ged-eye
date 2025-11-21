@@ -1,0 +1,30 @@
+{
+  "id": "I580",
+  "name": "Robert William Foot",
+  "givenName": "Robert William",
+  "surname": "Foot",
+  "sex": "M",
+  "birthDate": "1859",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I582"
+  ],
+  "childIds": [
+    "I718"
+  ],
+  "parentIds": [
+    "I579",
+    "I154"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I582",
+      "familyId": "F239",
+      "marriageDate": "20 MAY 1890",
+      "marriagePlace": "Manston, Dorset"
+    }
+  ]
+}

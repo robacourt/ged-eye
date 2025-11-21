@@ -1,0 +1,41 @@
+{
+  "id": "I2936",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1869",
+  "birthPlace": "London, Chelsea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2797"
+  ],
+  "childIds": [
+    "I2937",
+    "I2545"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Sussex, Hove, Livingstone Rd."
+    },
+    {
+      "date": "1901",
+      "place": "Sussex, Hove, 12 Byron St."
+    },
+    {
+      "date": "1911",
+      "place": "Sussex, Hove, 45 Shirley St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2797",
+      "familyId": "F1002",
+      "marriageDate": "Abt 1890"
+    }
+  ]
+}

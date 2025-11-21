@@ -1,0 +1,25 @@
+{
+  "id": "I1819",
+  "name": "Unknown Self",
+  "givenName": "Unknown",
+  "surname": "Self",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1818",
+    "I1820",
+    "I1821"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F656"
+    }
+  ]
+}

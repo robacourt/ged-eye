@@ -1,0 +1,33 @@
+{
+  "id": "I2162",
+  "name": "Mark Witcombe",
+  "givenName": "Mark",
+  "surname": "Witcombe",
+  "sex": "M",
+  "birthDate": "2 FEB 1843",
+  "birthPlace": "Kilmersdon, Somerset",
+  "deathDate": "22 NOV 1899",
+  "deathPlace": "Wells Lunatic Asylum",
+  "photos": [],
+  "spouseIds": [
+    "I2161"
+  ],
+  "childIds": [
+    "I2252"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Coal Miner"
+  ],
+  "notes": [
+    "Died after 13 months' general paralysis"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2161",
+      "familyId": "F776",
+      "marriageDate": "10 SEP 1874",
+      "marriagePlace": "St Jude's, Bristol"
+    }
+  ]
+}

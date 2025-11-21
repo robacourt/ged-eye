@@ -1,0 +1,29 @@
+{
+  "id": "I847",
+  "name": "John Percy (Claude) McEWAN",
+  "givenName": "John Percy (Claude)",
+  "surname": "McEWAN",
+  "sex": "M",
+  "birthDate": "1 NOV 1881",
+  "birthPlace": "Auckland, New Zealand, Grafton, 43 Seafield View Road,",
+  "deathDate": "8 FEB 1964",
+  "deathPlace": "Napier, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I835"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "ashes scattered at Waikamuku Cemetery, Auckland",
+    "Information provided by Carole Stewart:"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I835",
+      "familyId": "F359",
+      "marriageDate": "11 DEC 1920",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+    }
+  ]
+}

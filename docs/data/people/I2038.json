@@ -1,0 +1,18 @@
+{
+  "id": "I2038",
+  "name": "Nigel Bryce A'Court",
+  "givenName": "Nigel Bryce",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "31 MAY 1986",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1949",
+    "I1950"
+  ]
+}

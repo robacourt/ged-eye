@@ -1,0 +1,18 @@
+{
+  "id": "I1771",
+  "name": "Susan J A'Court",
+  "givenName": "Susan J",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2ND QRT 1953",
+  "birthPlace": "Downham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1768",
+    "I1767"
+  ]
+}

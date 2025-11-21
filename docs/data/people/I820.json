@@ -1,0 +1,46 @@
+{
+  "id": "I820",
+  "name": "Sarah Ann BRITTON",
+  "givenName": "Sarah Ann",
+  "surname": "BRITTON",
+  "sex": "F",
+  "birthDate": "1843",
+  "birthPlace": "Butleigh, Somerset, England",
+  "deathDate": "16 JAN 1932",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [
+    "Data/Picture/Sarah Ann Britton.jpg",
+    "Data/Picture/Sarah Ann Britton2.jpg",
+    "Data/Picture/Sarah Britton.jpg",
+    "Data/Picture/Sam A'Court Sarah Britton.jpg"
+  ],
+  "spouseIds": [
+    "I776"
+  ],
+  "childIds": [
+    "I821",
+    "I822",
+    "I823",
+    "I824",
+    "I825",
+    "I826",
+    "I827"
+  ],
+  "parentIds": [],
+  "baptismDate": "14 APR 1843",
+  "baptismPlace": "Butleigh, Somerset, England",
+  "burialDate": "1932",
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
+  "notes": [
+    "Information provided by Carole Stewart - much of this comes from \"Smithy Tales - events in the life of Samuel A'Court (1842-1913)\", which were recounted by his daughter Lucy & published in The Star newspaper in 1924 (ref. Family History Section"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I776",
+      "familyId": "F324",
+      "marriageDate": "21 MAY 1863",
+      "marriagePlace": "Butleigh, Somerset, England"
+    }
+  ],
+  "avatar": "avatars/I820_0.jpg"
+}

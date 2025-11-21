@@ -1,0 +1,40 @@
+{
+  "id": "I194",
+  "name": "Mary Ann Andrews",
+  "givenName": "Mary Ann",
+  "surname": "Andrews",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Stour Provost, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I324",
+    "I56"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I325",
+    "I326"
+  ],
+  "baptismDate": "9 MAR 1817",
+  "baptismPlace": "Todber, Dorset",
+  "notes": [
+    "25-1841  34-1851  48-1864  55-1871"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I324",
+      "familyId": "F110",
+      "marriageDate": "25 SEP 1834",
+      "marriagePlace": "Todber, Dorset"
+    },
+    {
+      "spouseId": "I56",
+      "familyId": "F38",
+      "marriageDate": "24 MAR 1864",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

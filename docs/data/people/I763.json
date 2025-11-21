@@ -1,0 +1,56 @@
+{
+  "id": "I763",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1813",
+  "birthPlace": "Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I871",
+    "I2262"
+  ],
+  "childIds": [
+    "I872",
+    "I874",
+    "I873",
+    "I875",
+    "I876",
+    "I877",
+    "I878",
+    "I2107",
+    "I2108"
+  ],
+  "parentIds": [
+    "I755",
+    "I760"
+  ],
+  "baptismDate": "24 OCT 1813",
+  "occupations": [
+    "Ostler",
+    "Cab Driver"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, St Pancras, 3 Brill Cottages."
+    },
+    {
+      "date": "1881",
+      "place": "London, St Pancras, 27 Stanmore St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I871",
+      "familyId": "F315"
+    },
+    {
+      "spouseId": "I2262",
+      "familyId": "F800"
+    }
+  ]
+}

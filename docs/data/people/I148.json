@@ -1,0 +1,28 @@
+{
+  "id": "I148",
+  "name": "Robert Castleman",
+  "givenName": "Robert",
+  "surname": "Castleman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I149"
+  ],
+  "childIds": [
+    "I67"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "yeoman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I149",
+      "familyId": "F44"
+    }
+  ]
+}

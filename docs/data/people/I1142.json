@@ -1,0 +1,20 @@
+{
+  "id": "I1142",
+  "name": "Frances May Pike",
+  "givenName": "Frances May",
+  "surname": "Pike",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1135",
+    "I1134"
+  ],
+  "baptismDate": "8 SEP 1889",
+  "baptismPlace": "Marnhull, Dorset"
+}

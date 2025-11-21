@@ -1,0 +1,18 @@
+{
+  "id": "I2630",
+  "name": "Luke Christophar Johnathan Giudice",
+  "givenName": "Luke Christophar Johnathan",
+  "surname": "Giudice",
+  "sex": "M",
+  "birthDate": "4 MAR 2008",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2627",
+    "I2626"
+  ]
+}

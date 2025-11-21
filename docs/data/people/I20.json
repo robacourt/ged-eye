@@ -1,0 +1,42 @@
+{
+  "id": "I20",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1835",
+  "deathPlace": "Motcombe, Dorset, Cowards (Cowherd) Shoot Farm",
+  "photos": [],
+  "spouseIds": [
+    "I67",
+    "I68"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "4 JUN 1770",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "4 MAY 1835",
+  "burialPlace": "Fifehead Magdalen, Dorset, St Mary",
+  "occupations": [
+    "Senior yeoman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I67",
+      "familyId": "F15",
+      "marriageDate": "9 DEC 1794",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    },
+    {
+      "spouseId": "I68",
+      "familyId": "F16",
+      "marriageDate": "13 NOV 1815",
+      "marriagePlace": "Motcombe, Dorset By licence"
+    }
+  ]
+}

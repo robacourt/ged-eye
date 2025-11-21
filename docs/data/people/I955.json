@@ -1,0 +1,34 @@
+{
+  "id": "I955",
+  "name": "John ( Jack ) Robert A'Court",
+  "givenName": "John ( Jack ) Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1859",
+  "birthPlace": "Mudgee, NSW",
+  "deathDate": "1934",
+  "deathPlace": "Dubbo, NSW",
+  "photos": [],
+  "spouseIds": [
+    "I959"
+  ],
+  "childIds": [
+    "I960",
+    "I961",
+    "I962",
+    "I963",
+    "I964"
+  ],
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I959",
+      "familyId": "F398",
+      "marriageDate": "1879",
+      "marriagePlace": "Mudgee, NSW"
+    }
+  ]
+}

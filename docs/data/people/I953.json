@@ -1,0 +1,24 @@
+{
+  "id": "I953",
+  "name": "Anastasia A'Court",
+  "givenName": "Anastasia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1866",
+  "deathPlace": "Mudgee, NSW",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F396"
+    }
+  ]
+}

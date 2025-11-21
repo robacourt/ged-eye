@@ -1,0 +1,50 @@
+{
+  "id": "I2475",
+  "name": "Elizabeth Mary Unknown",
+  "givenName": "Elizabeth Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1855",
+  "birthPlace": "Temple, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Lancashire/RG13 350330 51.jpg"
+  ],
+  "spouseIds": [
+    "I2259"
+  ],
+  "childIds": [
+    "I2509",
+    "I2476"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Warrington, Lancashire, 20 Norman St."
+    },
+    {
+      "date": "1891",
+      "place": "Wavertree, Lancashire, 21 Upper Cross St."
+    },
+    {
+      "date": "1901",
+      "place": "Wavertree, Lancashire, 14 Cambridge St."
+    },
+    {
+      "date": "1911",
+      "place": "Lancaster, Lancashire, 24 Broadway"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2259",
+      "familyId": "F887"
+    }
+  ],
+  "avatar": "avatars/I2475_0.jpg"
+}

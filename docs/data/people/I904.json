@@ -1,0 +1,36 @@
+{
+  "id": "I904",
+  "name": "Martin Luther Lines",
+  "givenName": "Martin Luther",
+  "surname": "Lines",
+  "sex": "M",
+  "birthDate": "6 SEP 1846",
+  "birthPlace": "Sutton Veny, Wiltshire, England",
+  "deathDate": "18 MAY 1910",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I230"
+  ],
+  "childIds": [
+    "I905",
+    "I906",
+    "I907",
+    "I908",
+    "I909",
+    "I910",
+    "I2587",
+    "I2588"
+  ],
+  "parentIds": [
+    "I2021"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I230",
+      "familyId": "F125",
+      "marriageDate": "3 NOV 1870",
+      "marriagePlace": "Idmiston, Wiltshire"
+    }
+  ]
+}

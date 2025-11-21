@@ -1,0 +1,27 @@
+{
+  "id": "I2586",
+  "name": "Charles Stanley A'Court",
+  "givenName": "Charles Stanley",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "Hemerdon, Plympton, Devon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Gosport/RG14 5638 394.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I492",
+    "I1990"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Gosport, Hampshire, 105 Parham Rd."
+    }
+  ],
+  "avatar": "avatars/I2586_0.jpg"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "I1255",
+  "name": "Edgar Bennett Haskett",
+  "givenName": "Edgar Bennett",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "29 MAY 1867",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1254"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1256",
+    "I1257"
+  ],
+  "baptismDate": "10 JULY 1867",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1254",
+      "familyId": "F506",
+      "marriageDate": "22 JAN 1890",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

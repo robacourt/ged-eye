@@ -1,0 +1,29 @@
+{
+  "id": "I1496",
+  "name": "Frank Chamberlain",
+  "givenName": "Frank",
+  "surname": "Chamberlain",
+  "sex": "M",
+  "birthDate": "1869",
+  "birthPlace": null,
+  "deathDate": "9 FEB 1932",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Galhampton/RG10 2421 61 23.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I864",
+    "I777"
+  ],
+  "burialDate": "FEB 1932",
+  "burialPlace": "Bruton, Somerset",
+  "censusRecords": [
+    {
+      "date": "1871 CENSUS",
+      "place": "Galhampton, North Cadbury, Cottage"
+    }
+  ],
+  "avatar": "avatars/I1496_0.jpg"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I2833",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1876",
+  "birthPlace": "Jersey C.I. St Peter",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Jersey/St Laurence/RG11 5623 24 1.jpg",
+    "Data/Media/1891 census/Jersey C.I/RG12 4700 156 4.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2089",
+    "I2810"
+  ],
+  "occupations": [
+    "Carpenters apprentice"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Laurence, Mill Rd."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Laurence, Mid Bay Cottages"
+    }
+  ],
+  "avatar": "avatars/I2833_0.jpg"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "I2705",
+  "name": "Herbert (Boy) Lewis Barnett",
+  "givenName": "Herbert (Boy) Lewis",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "24 DEC 1902",
+  "birthPlace": "London, Clapton",
+  "deathDate": "1971",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Herbert Barnett.png",
+    "Data/Picture/Evelyn McCann, Ester Barnett, Herbert Barnett.png",
+    "Data/Media/1911 census/London/Tottenham/RG14 132 7278.png",
+    "Data/Media/1921 Census/London/RG15 01346 32.jpg",
+    "Data/Media/Wills & Probate/gbor_govprobate_1935_b000203-barnet-1935.jpg",
+    "Data/Media/1939 Register/London/RG101 0444A 10 15.jpg"
+  ],
+  "spouseIds": [
+    "I2706"
+  ],
+  "childIds": [
+    "I2707"
+  ],
+  "parentIds": [
+    "I2282",
+    "I2693"
+  ],
+  "occupations": [
+    "Confectioner",
+    "taxi cab proprietor",
+    "taxi cab proprietor"
+  ],
+  "notes": [
+    "See media file"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Finsbury Park, 10 Vale Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Shoreditch, 26 Earl St."
+    },
+    {
+      "date": "1939",
+      "place": "London, Bow, 28 Campbell Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2706",
+      "familyId": "F941"
+    }
+  ],
+  "avatar": "avatars/I2705_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I2634",
+  "name": "Maria Claire Waldron",
+  "givenName": "Maria Claire",
+  "surname": "Waldron",
+  "sex": "F",
+  "birthDate": "1959",
+  "birthPlace": "Heywood, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2633"
+  ],
+  "childIds": [
+    "I2635"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2633",
+      "familyId": "F917"
+    }
+  ]
+}

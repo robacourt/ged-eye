@@ -1,0 +1,45 @@
+{
+  "id": "I1544",
+  "name": "Margaret Clarke",
+  "givenName": "Margaret",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": "14 DEC 1920",
+  "birthPlace": null,
+  "deathDate": "25 MAR 1999",
+  "deathPlace": "Truro, Nova Scotia, Canada",
+  "photos": [],
+  "spouseIds": [
+    "I1541"
+  ],
+  "childIds": [
+    "I1545",
+    "I1546",
+    "I1547",
+    "I1548"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Brush Finishing & packing"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 69 Pearl St"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1939",
+      "place": "Middlesex, Harrow"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1541",
+      "familyId": "F588",
+      "marriageDate": "14 DEC 1939",
+      "marriagePlace": "Bristol Register Office, by special licence"
+    }
+  ]
+}

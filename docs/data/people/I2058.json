@@ -1,0 +1,18 @@
+{
+  "id": "I2058",
+  "name": "Eileen A'Court",
+  "givenName": "Eileen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1921",
+  "birthPlace": "Tooting",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2054",
+    "I2055"
+  ]
+}

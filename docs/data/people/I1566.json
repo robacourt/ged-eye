@@ -1,0 +1,35 @@
+{
+  "id": "I1566",
+  "name": "Frank A'Court",
+  "givenName": "Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1893",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Poole/RG13 1979 134 37.jpg",
+    "Data/Media/1911 census/Dorset/Poole/RG14 12279 69.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I298",
+    "I1562"
+  ],
+  "occupations": [
+    "Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Poole, Dorset, 30 South Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Poole, Dorset, 30 South Rd."
+    }
+  ],
+  "avatar": "avatars/I1566_0.jpg"
+}

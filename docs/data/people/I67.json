@@ -1,0 +1,35 @@
+{
+  "id": "I67",
+  "name": "Mary Castleman",
+  "givenName": "Mary",
+  "surname": "Castleman",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1815",
+  "deathPlace": "Marnhull, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I20"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I148",
+    "I149"
+  ],
+  "baptismDate": "12 JUL 1772",
+  "baptismPlace": "West Orchard Dorset",
+  "burialDate": "29 MAY 1815",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "notes": [
+    "21-1783     Buried Age 42"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I20",
+      "familyId": "F15",
+      "marriageDate": "9 DEC 1794",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "I81",
+  "name": "Deborah A'Court",
+  "givenName": "Deborah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I211"
+  ],
+  "childIds": [
+    "I212",
+    "I213",
+    "I214"
+  ],
+  "parentIds": [
+    "I25",
+    "I80"
+  ],
+  "baptismDate": "1 NOV 1807",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "43-1851  55-1861  63-1871"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I211",
+      "familyId": "F52",
+      "marriageDate": "25 DEC  1835",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I353",
+  "name": "William Hayter",
+  "givenName": "William",
+  "surname": "Hayter",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I217"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I354"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I217",
+      "familyId": "F118"
+    }
+  ]
+}

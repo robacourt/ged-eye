@@ -1,0 +1,31 @@
+{
+  "id": "I956",
+  "name": "Mary T. J. A'Court",
+  "givenName": "Mary T. J.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1861",
+  "birthPlace": "Mudgee, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I965"
+  ],
+  "childIds": [
+    "I969",
+    "I970"
+  ],
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I965",
+      "familyId": "F399",
+      "marriageDate": "1889",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

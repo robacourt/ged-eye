@@ -1,0 +1,39 @@
+{
+  "id": "I435",
+  "name": "Barry James Frentzel",
+  "givenName": "Barry James",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "1922",
+  "birthPlace": "Middlesex, Edmonton",
+  "deathDate": "14 MAY 1974",
+  "deathPlace": "Surrey, Reigate",
+  "photos": [
+    "Data/Media/1939 Register/Middlesex/TNA_R39_0756_0756H_011.jpg"
+  ],
+  "spouseIds": [
+    "I439"
+  ],
+  "childIds": [
+    "I440"
+  ],
+  "parentIds": [
+    "I426",
+    "I433"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Middlesex, Enfield, Hadley Wood, Mayfield Beech Hil"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I439",
+      "familyId": "F200",
+      "marriageDate": "5 JUN1948",
+      "marriagePlace": "Surrey, Redhill"
+    }
+  ],
+  "avatar": "avatars/I435_0.jpg"
+}

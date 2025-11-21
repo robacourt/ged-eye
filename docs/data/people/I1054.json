@@ -1,0 +1,28 @@
+{
+  "id": "I1054",
+  "name": "Lindsay Malone",
+  "givenName": "Lindsay",
+  "surname": "Malone",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1053"
+  ],
+  "childIds": [
+    "I1055",
+    "I1056",
+    "I1057"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1053",
+      "familyId": "F426",
+      "marriageDate": "5 MARCH 1941"
+    }
+  ]
+}

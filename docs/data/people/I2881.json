@@ -1,0 +1,25 @@
+{
+  "id": "I2881",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2880"
+  ],
+  "childIds": [
+    "I2385"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2880",
+      "familyId": "F986"
+    }
+  ]
+}

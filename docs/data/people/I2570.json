@@ -1,0 +1,27 @@
+{
+  "id": "I2570",
+  "name": "Alice Florence A'Court",
+  "givenName": "Alice Florence",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1910",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hackney/RG14 1095 270.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2459",
+    "I2567"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hackney, 23 Colne Rd."
+    }
+  ],
+  "avatar": "avatars/I2570_0.jpg"
+}

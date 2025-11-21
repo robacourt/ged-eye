@@ -1,0 +1,23 @@
+{
+  "id": "I2289",
+  "name": "Sarah White",
+  "givenName": "Sarah",
+  "surname": "White",
+  "sex": "F",
+  "birthDate": "ABT 1835",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2288"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Portsea, Hampshire, 345 Commercial Rd."
+    }
+  ]
+}

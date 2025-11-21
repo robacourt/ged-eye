@@ -1,0 +1,32 @@
+{
+  "id": "I1914",
+  "name": "Alfred M A'Court",
+  "givenName": "Alfred M",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1875",
+  "birthPlace": "Glamors Tonder",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1915"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Engineers Pattern Maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Swindon, Wiltshire, 23  Ford St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1915",
+      "familyId": "F678"
+    }
+  ]
+}

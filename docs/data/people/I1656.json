@@ -1,0 +1,30 @@
+{
+  "id": "I1656",
+  "name": "George Hatcher",
+  "givenName": "George",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "ABT 1847",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 54 17.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I310",
+    "I311"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "avatar": "avatars/I1656_0.jpg"
+}

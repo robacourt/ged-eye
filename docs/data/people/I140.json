@@ -1,0 +1,74 @@
+{
+  "id": "I140",
+  "name": "Mary Ann Warren",
+  "givenName": "Mary Ann",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "ABT 1835",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 23 5.jpg",
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 25 5.jpg"
+  ],
+  "spouseIds": [
+    "I8",
+    "I2721"
+  ],
+  "childIds": [
+    "I2722"
+  ],
+  "parentIds": [
+    "I146",
+    "I147"
+  ],
+  "occupations": [
+    "Glover",
+    "Glover",
+    "On Parish Relief",
+    "On Parish Relief"
+  ],
+  "notes": [
+    "25 in 1851 36 in 1861 56 in1881 of New St. ill. dau Robert Warren , Ag Lab , and Elizabeth Young"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, Marnhull Common"
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St Beer House"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Marnhull, New St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I8",
+      "familyId": "F7",
+      "marriageDate": "27 MAR 1851",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I2721",
+      "familyId": "F948"
+    }
+  ],
+  "avatar": "avatars/I140_0.jpg"
+}

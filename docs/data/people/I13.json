@@ -1,0 +1,20 @@
+{
+  "id": "I13",
+  "name": "Alfred Dean",
+  "givenName": "Alfred",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": "14 OCT 1843",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I12",
+    "I6"
+  ],
+  "baptismDate": "19 NOV 1843",
+  "baptismPlace": "Marnhull, Dorset"
+}

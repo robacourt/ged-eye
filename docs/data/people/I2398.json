@@ -1,0 +1,25 @@
+{
+  "id": "I2398",
+  "name": "Peter Charles Brand",
+  "givenName": "Peter Charles",
+  "surname": "Brand",
+  "sex": "M",
+  "birthDate": "13 JULY 1967",
+  "birthPlace": "Rhodesia, Salisbury,",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2397"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2397",
+      "familyId": "F851",
+      "marriageDate": "30 MAY 1988",
+      "marriagePlace": "South Africa, Port Shepstone"
+    }
+  ]
+}

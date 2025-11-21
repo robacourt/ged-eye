@@ -1,0 +1,69 @@
+{
+  "id": "I2153",
+  "name": "Charles A'Court (Haycourt)",
+  "givenName": "Charles A'Court",
+  "surname": "(Haycourt)",
+  "sex": "M",
+  "birthDate": "ABT 1844/7",
+  "birthPlace": "Bristol",
+  "deathDate": "23 OCT 1919",
+  "deathPlace": "Bristol, New Town, 11 Clarence St.",
+  "photos": [
+    "Data/Media/1851 census/Bristol/HO107 1954 139 12 50.jpg",
+    "Data/Media/1881 census/Bristol/RG11 2497 134 28.jpg",
+    "Data/Media/1901 census/Bristol/RG13 2381 24 2.jpg",
+    "Data/Media/1911 census/Bristol/RG14 15023 250.jpg"
+  ],
+  "spouseIds": [
+    "I2154"
+  ],
+  "childIds": [
+    "I2155",
+    "I2156",
+    "I2158",
+    "I2251",
+    "I2157"
+  ],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "burialPlace": "Bristol, Greenbank Cemetery plot AA Grave No. 230",
+  "occupations": [
+    "Boot Maker",
+    "Boot Finisher",
+    "Boot Finisher",
+    "Labourer Distillery worker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Clifton, Nible House Court, 3 West St"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, Gloucestershire, 68 Regent Street, St Philip & Jacob Without."
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 68 Regent St., Ss Philip and Jacob"
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, 18 Regent Street"
+    },
+    {
+      "date": "1911 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, Kenilworth Cottage, Albany Place, Saints Philip & Jacob"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2154",
+      "familyId": "F771",
+      "marriageDate": "26 JUN 1869",
+      "marriagePlace": "St Paul's, Bristol"
+    }
+  ],
+  "avatar": "avatars/I2153_0.jpg"
+}

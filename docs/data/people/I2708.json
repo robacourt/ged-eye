@@ -1,0 +1,26 @@
+{
+  "id": "I2708",
+  "name": "Hannah Woolf",
+  "givenName": "Hannah",
+  "surname": "Woolf",
+  "sex": "F",
+  "birthDate": "10 AUG 1879",
+  "birthPlace": "London, Spitafields, London",
+  "deathDate": "27 OCT 1966",
+  "deathPlace": "Brighton, Sussex",
+  "photos": [],
+  "spouseIds": [
+    "I2335"
+  ],
+  "childIds": [
+    "I2709"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2335",
+      "familyId": "F942",
+      "marriageDate": "6 DEC 1901"
+    }
+  ]
+}

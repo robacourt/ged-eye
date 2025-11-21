@@ -1,0 +1,26 @@
+{
+  "id": "I408",
+  "name": "Walter James A'Court",
+  "givenName": "Walter James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1939",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I409",
+    "I410"
+  ],
+  "parentIds": [
+    "I407"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F188"
+    }
+  ]
+}

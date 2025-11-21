@@ -1,0 +1,27 @@
+{
+  "id": "I2562",
+  "name": "Alfred A'Court",
+  "givenName": "Alfred",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1904",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Islington/RG14 841 1.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Inmate"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Tollington, Andover Row, Hornsey Rd. Islington Guardians Schools"
+    }
+  ],
+  "avatar": "avatars/I2562_0.jpg"
+}

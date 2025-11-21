@@ -1,0 +1,34 @@
+{
+  "id": "I2331",
+  "name": "George Reith",
+  "givenName": "George",
+  "surname": "Reith",
+  "sex": "M",
+  "birthDate": "1845",
+  "birthPlace": "Scotland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2327"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Manager in Steel Works"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Yorkshire, Sheffield, Ecclesall Bierlow, Priory Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2327",
+      "familyId": "F827",
+      "marriageDate": "SEP 5 1883",
+      "marriagePlace": "London, Friern Barnet, All Saints"
+    }
+  ]
+}

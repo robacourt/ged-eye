@@ -1,0 +1,48 @@
+{
+  "id": "I49",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1861",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I142"
+  ],
+  "childIds": [
+    "I144",
+    "I143",
+    "I145"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "28 DEC 1794",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "burialDate": "24 JUN 1821",
+  "burialPlace": "Marnhull, Dorset, Gregory The Great",
+  "occupations": [
+    "Junior Carpenter"
+  ],
+  "notes": [
+    "From son Charles' entry in Parish Register"
+  ],
+  "censusRecords": [
+    {
+      "date": "1821",
+      "place": "Marnhull, Dorset, Lemons Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I142",
+      "familyId": "F32",
+      "marriageDate": "18 SEP 1818",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

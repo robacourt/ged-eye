@@ -1,0 +1,18 @@
+{
+  "id": "I2781",
+  "name": "Mabel Clementine A'Court Mond",
+  "givenName": "Mabel Clementine A'Court",
+  "surname": "Mond",
+  "sex": "F",
+  "birthDate": "15 JUL 2011",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2744",
+    "I128"
+  ]
+}

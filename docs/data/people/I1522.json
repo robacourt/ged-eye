@@ -1,0 +1,25 @@
+{
+  "id": "I1522",
+  "name": "Maruerite Emily Unknown",
+  "givenName": "Maruerite Emily",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "11 MAY 1957",
+  "deathPlace": "Chestnut Cemetery",
+  "photos": [],
+  "spouseIds": [
+    "I1521"
+  ],
+  "childIds": [
+    "I1523"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1521",
+      "familyId": "F580"
+    }
+  ]
+}

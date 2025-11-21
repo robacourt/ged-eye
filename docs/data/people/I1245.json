@@ -1,0 +1,20 @@
+{
+  "id": "I1245",
+  "name": "Albert Haskett",
+  "givenName": "Albert",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1863",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1175",
+    "I181"
+  ],
+  "baptismDate": "1864",
+  "baptismPlace": "Marnhull, Dorset"
+}

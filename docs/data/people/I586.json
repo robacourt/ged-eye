@@ -1,0 +1,28 @@
+{
+  "id": "I586",
+  "name": "George Maidment",
+  "givenName": "George",
+  "surname": "Maidment",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I587"
+  ],
+  "childIds": [
+    "I585"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I587",
+      "familyId": "F241"
+    }
+  ]
+}

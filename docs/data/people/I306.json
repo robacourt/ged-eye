@@ -1,0 +1,23 @@
+{
+  "id": "I306",
+  "name": "John Chant",
+  "givenName": "John",
+  "surname": "Chant",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I305"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F148"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I2581",
+  "name": "Annie Unknown",
+  "givenName": "Annie",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Asbrook, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2580"
+  ],
+  "childIds": [
+    "I2582",
+    "I2583",
+    "I2584",
+    "I2585"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Eastleigh, Hampshire, 72 Chamberlayne Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2580",
+      "familyId": "F904",
+      "marriageDate": "ABT 1906"
+    }
+  ]
+}

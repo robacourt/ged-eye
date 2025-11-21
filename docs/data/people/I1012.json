@@ -1,0 +1,18 @@
+{
+  "id": "I1012",
+  "name": "Jenny Farrelly",
+  "givenName": "Jenny",
+  "surname": "Farrelly",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1009",
+    "I996"
+  ]
+}

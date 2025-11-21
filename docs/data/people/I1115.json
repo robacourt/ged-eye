@@ -1,0 +1,26 @@
+{
+  "id": "I1115",
+  "name": "George Hyde",
+  "givenName": "George",
+  "surname": "Hyde",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1113"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F450"
+    }
+  ]
+}

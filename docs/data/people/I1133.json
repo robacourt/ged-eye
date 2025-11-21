@@ -1,0 +1,20 @@
+{
+  "id": "I1133",
+  "name": "Mary Jane Curtis",
+  "givenName": "Mary Jane",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "11 JUL 1858",
+  "baptismPlace": "Marnhull, Dorset"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I804",
+  "name": "\\-\\",
+  "givenName": "\\-\\",
+  "surname": "",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I803"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I803",
+      "familyId": "F344",
+      "marriageDate": "1937",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "I2785",
+  "name": "Mary Ann Markwell",
+  "givenName": "Mary Ann",
+  "surname": "Markwell",
+  "sex": "F",
+  "birthDate": "ABT 1891",
+  "birthPlace": "London, Shadwell",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2786",
+    "I2784"
+  ],
+  "occupations": [
+    "Forwarding Clerk"
+  ],
+  "notes": [
+    "1911 census transcription details for:  9 Perth Street Stepney E  National Archive Reference:  RG14PN1593 RG78PN56 RD21 SD1 ED22 SN159"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Stepney, London, 9 Perth St."
+    },
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 6 Perth St"
+    }
+  ]
+}

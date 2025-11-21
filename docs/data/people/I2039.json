@@ -1,0 +1,25 @@
+{
+  "id": "I2039",
+  "name": "Tania Witty",
+  "givenName": "Tania",
+  "surname": "Witty",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2023"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2023",
+      "familyId": "F735",
+      "marriageDate": "2 MAR 2002",
+      "marriagePlace": "Nelson, New Zealand"
+    }
+  ]
+}

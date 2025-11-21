@@ -1,0 +1,25 @@
+{
+  "id": "I967",
+  "name": "John Chapman",
+  "givenName": "John",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I968"
+  ],
+  "childIds": [
+    "I959"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I968",
+      "familyId": "F400"
+    }
+  ]
+}

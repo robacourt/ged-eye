@@ -1,0 +1,29 @@
+{
+  "id": "I395",
+  "name": "Marilyn A'Court",
+  "givenName": "Marilyn",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I399"
+  ],
+  "childIds": [
+    "I400",
+    "I401"
+  ],
+  "parentIds": [
+    "I392",
+    "I393"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I399",
+      "familyId": "F182"
+    }
+  ]
+}

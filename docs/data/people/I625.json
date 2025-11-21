@@ -1,0 +1,33 @@
+{
+  "id": "I625",
+  "name": "Herbert Foot",
+  "givenName": "Herbert",
+  "surname": "Foot",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I621"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I629"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "21-1903,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I621",
+      "familyId": "F257",
+      "marriageDate": "7.5.1903",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "I2192",
+  "name": "Sarah Macey",
+  "givenName": "Sarah",
+  "surname": "Macey",
+  "sex": "F",
+  "birthDate": "ABT 1846",
+  "birthPlace": "Westbury, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2380 51 4.jpg"
+  ],
+  "spouseIds": [
+    "I2190"
+  ],
+  "childIds": [
+    "I2194",
+    "I2196",
+    "I2191",
+    "I2688",
+    "I2207",
+    "I2208",
+    "I2193",
+    "I2209",
+    "I2840"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 33 Little George St, Ss Philip And Jacob"
+    },
+    {
+      "date": "1891",
+      "place": "Bristol, Gloucestershire, 7, Eugene Street, St Philip & St Jacob without"
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, 3 Arnolds Court"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2190",
+      "familyId": "F787",
+      "marriageDate": "FEB 1890"
+    }
+  ],
+  "avatar": "avatars/I2192_0.jpg"
+}

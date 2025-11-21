@@ -1,0 +1,21 @@
+{
+  "id": "I1402",
+  "name": "Charles Acourt",
+  "givenName": "Charles",
+  "surname": "Acourt",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "residences": [
+    {
+      "date": null,
+      "place": "San Francisco, California, USA"
+    }
+  ]
+}

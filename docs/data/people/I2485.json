@@ -1,0 +1,21 @@
+{
+  "id": "I2485",
+  "name": "Henry Thorne",
+  "givenName": "Henry",
+  "surname": "Thorne",
+  "sex": "M",
+  "birthDate": "1851",
+  "birthPlace": null,
+  "deathDate": "1851",
+  "deathPlace": "Marnhull, Dorset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2484",
+    "I2483"
+  ],
+  "baptismDate": "12 JAN 1851",
+  "burialDate": "17 JAN 1851",
+  "burialPlace": "Marnhull, Dorset"
+}

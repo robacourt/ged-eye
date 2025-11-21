@@ -1,0 +1,27 @@
+{
+  "id": "I2979",
+  "name": "Maria Roberts",
+  "givenName": "Maria",
+  "surname": "Roberts",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2980"
+  ],
+  "childIds": [
+    "I452"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2980",
+      "familyId": "F1023",
+      "marriageDate": "18 AUG 1858",
+      "marriagePlace": "Northumberland, Berwick"
+    }
+  ]
+}

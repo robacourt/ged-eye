@@ -1,0 +1,28 @@
+{
+  "id": "I1171",
+  "name": "Elizabeth Humphries",
+  "givenName": "Elizabeth",
+  "surname": "Humphries",
+  "sex": "F",
+  "birthDate": "ABT 1851",
+  "birthPlace": "Cerne Abbas, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1168",
+    "I180"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Mill Bank, Cerne Abbas, Dorset"
+    },
+    {
+      "date": "1861",
+      "place": "Piddle Lane, Cerne Abbas, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "I1031",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1898",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/William A'Court.jpg",
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Martock, Somerset, East St."
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
+  "avatar": "avatars/I1031_0.jpg"
+}

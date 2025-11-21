@@ -1,0 +1,24 @@
+{
+  "id": "I1072",
+  "name": "Walter H. Christie",
+  "givenName": "Walter H.",
+  "surname": "Christie",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I976"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I976",
+      "familyId": "F405",
+      "marriageDate": "1921"
+    }
+  ]
+}

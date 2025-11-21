@@ -1,0 +1,35 @@
+{
+  "id": "I2456",
+  "name": "George Reginald A'Court",
+  "givenName": "George Reginald",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1897",
+  "birthPlace": "London, Chelsea, Walton St. Marlboro Buildings",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Chelsea/RG13 73 54 21.jpg",
+    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 344 266.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2454",
+    "I2455"
+  ],
+  "occupations": [
+    "Boot warehouse"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 136 Marlboro Buildings."
+    },
+    {
+      "date": "1911",
+      "place": "London, Fulham, 32 Bearcroft Buildings"
+    }
+  ],
+  "avatar": "avatars/I2456_0.jpg"
+}

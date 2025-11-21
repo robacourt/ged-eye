@@ -1,0 +1,31 @@
+{
+  "id": "I628",
+  "name": "Henry Warren",
+  "givenName": "Henry",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I627",
+    "I627"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F264"
+    },
+    {
+      "spouseId": null,
+      "familyId": "F263"
+    }
+  ]
+}

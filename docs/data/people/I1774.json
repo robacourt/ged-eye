@@ -1,0 +1,18 @@
+{
+  "id": "I1774",
+  "name": "Denise Y A'Court",
+  "givenName": "Denise Y",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "4TH QRT 1959",
+  "birthPlace": "King's L",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1768",
+    "I1767"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I876",
+  "name": "James a'Court",
+  "givenName": "James",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "ABT 1846",
+  "birthPlace": "Bath, Somerset",
+  "deathDate": "AFT 1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I763",
+    "I871"
+  ]
+}

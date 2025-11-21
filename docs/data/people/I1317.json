@@ -1,0 +1,31 @@
+{
+  "id": "I1317",
+  "name": "Meryl Pryor",
+  "givenName": "Meryl",
+  "surname": "Pryor",
+  "sex": "F",
+  "birthDate": "29 APR 1941",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Meryl Pryor.jpg"
+  ],
+  "spouseIds": [
+    "I1318"
+  ],
+  "childIds": [
+    "I1440"
+  ],
+  "parentIds": [
+    "I982",
+    "I981"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1318",
+      "familyId": "F521"
+    }
+  ],
+  "avatar": "avatars/I1317_0.jpg"
+}

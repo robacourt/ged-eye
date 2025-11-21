@@ -1,0 +1,28 @@
+{
+  "id": "I552",
+  "name": "Elias A'Court",
+  "givenName": "Elias",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1682",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I715"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I541",
+    "I542"
+  ],
+  "baptismDate": "11APR 1682",
+  "baptismPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I715",
+      "familyId": "F233"
+    }
+  ]
+}

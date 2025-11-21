@@ -1,0 +1,29 @@
+{
+  "id": "I833",
+  "name": "James Frederick THOMAS",
+  "givenName": "James Frederick",
+  "surname": "THOMAS",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I823"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
+  "notes": [
+    "Headstone"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I823",
+      "familyId": "F353",
+      "marriageDate": "28 NOV 1900",
+      "marriagePlace": "St Lukes, Christchurch, NZ"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "I2081",
+  "name": "Horace Victor A'Court",
+  "givenName": "Horace Victor",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1898",
+  "birthPlace": "Peckham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
+  ],
+  "spouseIds": [
+    "I2277"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2065",
+    "I2066"
+  ],
+  "occupations": [
+    "Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2277",
+      "familyId": "F804"
+    }
+  ],
+  "avatar": "avatars/I2081_0.jpg"
+}

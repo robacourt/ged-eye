@@ -1,0 +1,49 @@
+{
+  "id": "I181",
+  "name": "Emily Curtis",
+  "givenName": "Emily",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1829",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1175"
+  ],
+  "childIds": [
+    "I1173",
+    "I1174",
+    "I1179",
+    "I1181",
+    "I1245",
+    "I1246"
+  ],
+  "parentIds": [
+    "I178",
+    "I50"
+  ],
+  "baptismDate": "8 MAR 1829",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Charwoman"
+  ],
+  "notes": [
+    "17-1851  28-1858  32-1861"
+  ],
+  "residences": [
+    {
+      "date": "1858",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1175",
+      "familyId": "F100",
+      "marriageDate": "6 NOV 1858",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I431",
+  "name": "Rosemary June Wilkinson",
+  "givenName": "Rosemary June",
+  "surname": "Wilkinson",
+  "sex": "F",
+  "birthDate": "10 FEB 1923",
+  "birthPlace": "Edmonton, Middlesex",
+  "deathDate": "JAN 1996",
+  "deathPlace": "Enfield, Middlesex",
+  "photos": [
+    "Data/Media/1939 Register/Middlesex/TNA_R39_0885_0885I_007.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I429",
+    "I428"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "London, Southgate, 13 Mayfield Avenue"
+    }
+  ],
+  "avatar": "avatars/I431_0.jpg"
+}

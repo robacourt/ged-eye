@@ -1,0 +1,25 @@
+{
+  "id": "I1954",
+  "name": "Doreen Constance Stewart",
+  "givenName": "Doreen Constance",
+  "surname": "Stewart",
+  "sex": "F",
+  "birthDate": "1919",
+  "birthPlace": "London",
+  "deathDate": "2004",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1953"
+  ],
+  "childIds": [
+    "I1955"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1953",
+      "familyId": "F697"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I968",
+  "name": "Catherine Unknown",
+  "givenName": "Catherine",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I967"
+  ],
+  "childIds": [
+    "I959"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I967",
+      "familyId": "F400"
+    }
+  ]
+}

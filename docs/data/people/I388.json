@@ -1,0 +1,26 @@
+{
+  "id": "I388",
+  "name": "Richard Clement Wheeler Bennett",
+  "givenName": "Richard Clement Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "1926",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1438"
+  ],
+  "parentIds": [
+    "I382",
+    "I387"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F178"
+    }
+  ]
+}

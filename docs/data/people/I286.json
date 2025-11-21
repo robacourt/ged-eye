@@ -1,0 +1,28 @@
+{
+  "id": "I286",
+  "name": "Henry David A'Court",
+  "givenName": "Henry David",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1873",
+  "birthPlace": null,
+  "deathDate": "10 JUN 1882",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I185",
+    "I283"
+  ],
+  "baptismDate": "12.10.1873",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "1882",
+  "burialPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St Beer House"
+    }
+  ]
+}

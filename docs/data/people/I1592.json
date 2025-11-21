@@ -1,0 +1,35 @@
+{
+  "id": "I1592",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1880",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Wiltshire/Swindon/RG11 2020 30 51.jpg",
+    "Data/Media/1901 census/Glamorganshire/Glamorganshire/RG13 4985 52 29.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1589",
+    "I2871"
+  ],
+  "notes": [
+    "Twin ?"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Wiltshire, Swindon, Highworth, 8 Gooch St."
+    },
+    {
+      "date": "1901",
+      "place": "Cardiff, Canton, 45 Wells St"
+    }
+  ],
+  "avatar": "avatars/I1592_0.jpg"
+}

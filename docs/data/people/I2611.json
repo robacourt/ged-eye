@@ -1,0 +1,27 @@
+{
+  "id": "I2611",
+  "name": "Elsie A'Court",
+  "givenName": "Elsie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1908",
+  "birthPlace": "Warrington, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Lancashire/Warrington/RG14 23171 5 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1608",
+    "I1609"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "avatar": "avatars/I2611_0.jpg"
+}

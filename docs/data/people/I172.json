@@ -1,0 +1,28 @@
+{
+  "id": "I172",
+  "name": "Ann Hatcher",
+  "givenName": "Ann",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I171"
+  ],
+  "childIds": [
+    "I170"
+  ],
+  "parentIds": [
+    "I173"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I171",
+      "familyId": "F95",
+      "marriageDate": "yes"
+    }
+  ]
+}

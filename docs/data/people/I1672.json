@@ -1,0 +1,23 @@
+{
+  "id": "I1672",
+  "name": "John Dean",
+  "givenName": "John",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": "ABT 1731",
+  "birthPlace": null,
+  "deathDate": "1803",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "30 AUG 1731",
+  "burialDate": "27 MAY 1803",
+  "notes": [
+    "MARNHULL RATEPAYERS 1750"
+  ]
+}

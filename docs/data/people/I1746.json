@@ -1,0 +1,24 @@
+{
+  "id": "I1746",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1825",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/North Cadbury/HO 107 1931 69 5 21.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
+  "avatar": "avatars/I1746_0.jpg"
+}

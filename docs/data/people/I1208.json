@@ -1,0 +1,26 @@
+{
+  "id": "I1208",
+  "name": "Gladys Sharp",
+  "givenName": "Gladys",
+  "surname": "Sharp",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1209"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1205",
+    "I1204"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1209",
+      "familyId": "F488"
+    }
+  ]
+}

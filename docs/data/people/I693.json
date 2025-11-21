@@ -1,0 +1,18 @@
+{
+  "id": "I693",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1653",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "1717",
+  "deathPlace": "North Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I563",
+    "I686"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "I1712",
+  "name": "Grany A'Court",
+  "givenName": "Grany",
+  "surname": "A'Court",
+  "sex": "U",
+  "birthDate": "3RD QTR 1973",
+  "birthPlace": "Greenwich",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1713"
+  ]
+}

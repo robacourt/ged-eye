@@ -1,0 +1,18 @@
+{
+  "id": "I1286",
+  "name": "Nellie Stacey",
+  "givenName": "Nellie",
+  "surname": "Stacey",
+  "sex": "U",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1288",
+    "I1289"
+  ]
+}

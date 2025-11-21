@@ -1,0 +1,35 @@
+{
+  "id": "I2469",
+  "name": "Emily A'Court",
+  "givenName": "Emily",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1873",
+  "birthPlace": "Seacombe, Cheshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Lancs/West Derby/RG11 3714 7 12.jpg",
+    "Data/Media/1891 census/Lancashire/RG12 3000 55 14.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I874",
+    "I926"
+  ],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
+    },
+    {
+      "date": "1891",
+      "place": "West Derby, Lancashire, 2 Quarry Road"
+    }
+  ],
+  "avatar": "avatars/I2469_0.jpg"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I2341",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2340"
+  ],
+  "childIds": [
+    "I1428",
+    "I2339"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2340",
+      "familyId": "F831"
+    }
+  ]
+}

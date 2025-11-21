@@ -1,0 +1,27 @@
+{
+  "id": "I1758",
+  "name": "Nar Chamberlain",
+  "givenName": "Nar",
+  "surname": "Chamberlain",
+  "sex": "M",
+  "birthDate": "ABT 1853",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I891",
+    "I768"
+  ],
+  "occupations": [
+    "Stonemason"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Pendleton-in-Salford, 13 Lytham St, Lancashire"
+    }
+  ]
+}

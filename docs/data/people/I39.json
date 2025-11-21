@@ -1,0 +1,54 @@
+{
+  "id": "I39",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "18.2.1819",
+  "birthPlace": null,
+  "deathDate": "ANTE 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I240"
+  ],
+  "childIds": [
+    "I241",
+    "I242",
+    "I243",
+    "I244",
+    "I245"
+  ],
+  "parentIds": [
+    "I34",
+    "I37"
+  ],
+  "baptismDate": "2.5.1819",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab",
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Sackmen Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I240",
+      "familyId": "F27",
+      "marriageDate": "22.2.1842",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

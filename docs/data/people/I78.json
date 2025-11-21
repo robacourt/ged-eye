@@ -1,0 +1,55 @@
+{
+  "id": "I78",
+  "name": "Phillis A'Court",
+  "givenName": "Phillis",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1834/5",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg",
+    "Data/Media/1851 census/Henstridge/Piece 1931 folio 374 page 25.jpg"
+  ],
+  "spouseIds": [
+    "I109"
+  ],
+  "childIds": [
+    "I110",
+    "I111",
+    "I112"
+  ],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "6-1841  19-1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1881",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I109",
+      "familyId": "F50",
+      "marriageDate": "16 OCT. 1854"
+    }
+  ],
+  "avatar": "avatars/I78_0.jpg"
+}

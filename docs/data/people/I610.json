@@ -1,0 +1,27 @@
+{
+  "id": "I610",
+  "name": "Ellen Street",
+  "givenName": "Ellen",
+  "surname": "Street",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I609"
+  ],
+  "childIds": [
+    "I608"
+  ],
+  "parentIds": [
+    "I611"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I609",
+      "familyId": "F251"
+    }
+  ]
+}

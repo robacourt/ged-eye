@@ -1,0 +1,36 @@
+{
+  "id": "I138",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1828",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I7"
+  ],
+  "childIds": [
+    "I139"
+  ],
+  "parentIds": [
+    "I56",
+    "I142"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "21 in 1847  22in 1851 illegitimate so Maria Dunford , Farther   -------- A,Court ?? Very Possible Charles A'Court  #108"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I7",
+      "familyId": "F6",
+      "marriageDate": "10 DEC 1847",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

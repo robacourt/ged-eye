@@ -1,0 +1,32 @@
+{
+  "id": "I495",
+  "name": "Beatrice A'Court",
+  "givenName": "Beatrice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1889",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg",
+    "Data/Media/1901 census/Dorset/Nether Compton/RG13 2007 17 3.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I490",
+    "I491"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Sherborne, Over Compton, Lodge"
+    },
+    {
+      "date": "1901",
+      "place": "Nether Compton, Dorset, Halfway House"
+    }
+  ],
+  "avatar": "avatars/I495_0.jpg"
+}

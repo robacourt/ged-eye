@@ -1,0 +1,34 @@
+{
+  "id": "I2449",
+  "name": "Caroline Unknown",
+  "givenName": "Caroline",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1824",
+  "birthPlace": "London, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Bethnal Green/RG13 284 135 39.jpg"
+  ],
+  "spouseIds": [
+    "I2450"
+  ],
+  "childIds": [
+    "I2446"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Bethnal Green, 8 Pollards Row."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2450",
+      "familyId": "F868"
+    }
+  ],
+  "avatar": "avatars/I2449_0.jpg"
+}

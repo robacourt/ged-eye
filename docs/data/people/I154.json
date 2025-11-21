@@ -1,0 +1,34 @@
+{
+  "id": "I154",
+  "name": "Ellen Hatcher",
+  "givenName": "Ellen",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I579"
+  ],
+  "childIds": [
+    "I580"
+  ],
+  "parentIds": [
+    "I152",
+    "I38"
+  ],
+  "baptismDate": "7.3.1841",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "4 mths 1841, 10in1851,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I579",
+      "familyId": "F87",
+      "marriageDate": "1859"
+    }
+  ]
+}

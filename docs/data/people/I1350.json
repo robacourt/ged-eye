@@ -1,0 +1,24 @@
+{
+  "id": "I1350",
+  "name": "John Fairly Fenwick",
+  "givenName": "John Fairly",
+  "surname": "Fenwick",
+  "sex": "M",
+  "birthDate": "ABT 1866",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1349"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1349",
+      "familyId": "F534",
+      "marriageDate": "1887"
+    }
+  ]
+}

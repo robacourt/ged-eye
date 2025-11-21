@@ -1,0 +1,31 @@
+{
+  "id": "I843",
+  "name": "William Douglas A'Court",
+  "givenName": "William Douglas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3 JAN 1907",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1957",
+  "deathPlace": "Nelson Hospital, Nelson, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I856"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I856",
+      "familyId": "F368",
+      "marriageDate": "1936",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

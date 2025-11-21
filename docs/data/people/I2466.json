@@ -1,0 +1,32 @@
+{
+  "id": "I2466",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1837",
+  "birthPlace": "London, Marylebone",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2467"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Shoemaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, St Pancras, 17, Crogsland Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2467",
+      "familyId": "F872"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "I2828",
+  "name": "Mary A Unknown",
+  "givenName": "Mary A",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1828",
+  "birthPlace": "Surrey, Beddington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 68 22.jpg"
+  ],
+  "spouseIds": [
+    "I2829"
+  ],
+  "childIds": [
+    "I1572"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, 42 East St. White Hart Inn"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2829",
+      "familyId": "F874"
+    }
+  ],
+  "avatar": "avatars/I2828_0.jpg"
+}

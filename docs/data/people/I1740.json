@@ -1,0 +1,24 @@
+{
+  "id": "I1740",
+  "name": "Mary Davis",
+  "givenName": "Mary",
+  "surname": "Davis",
+  "sex": "F",
+  "birthDate": "Abt 1850",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1738",
+    "I764"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Yeovil, Somerset, Kiddles Lane"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I2678",
+  "name": "Jill R. A'Court",
+  "givenName": "Jill R.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3QTR 1941",
+  "birthPlace": "Romford, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2680",
+    "I2679"
+  ]
+}

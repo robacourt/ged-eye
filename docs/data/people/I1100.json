@@ -1,0 +1,68 @@
+{
+  "id": "I1100",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1861",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/James A'Court.jpg",
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 17.jpg"
+  ],
+  "spouseIds": [
+    "I1109"
+  ],
+  "childIds": [
+    "I1105",
+    "I1106",
+    "I1107",
+    "I1338",
+    "I1108",
+    "I1090",
+    "I1419",
+    "I1420",
+    "I2530"
+  ],
+  "parentIds": [
+    "I1183",
+    "I1184"
+  ],
+  "occupations": [
+    "Labourer",
+    "Ag Lab",
+    "Carter on Farm",
+    "Farm Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Barton"
+    },
+    {
+      "date": "1881",
+      "place": "East Stour, Dorset, Highgrove Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Mells, Frome, Somerset, Rectory Cottage"
+    },
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1911",
+      "place": "Queen Camel, Somerset, Camel Hill"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1109",
+      "familyId": "F438"
+    }
+  ],
+  "avatar": "avatars/I1100_0.jpg"
+}

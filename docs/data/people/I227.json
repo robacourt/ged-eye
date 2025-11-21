@@ -1,0 +1,58 @@
+{
+  "id": "I227",
+  "name": "Eliza Encott",
+  "givenName": "Eliza",
+  "surname": "Encott",
+  "sex": "F",
+  "birthDate": "Abt 1821",
+  "birthPlace": "Sutton Veny,  Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Boscombe/RG14 5851 144.jpg"
+  ],
+  "spouseIds": [
+    "I86"
+  ],
+  "childIds": [
+    "I228",
+    "I229",
+    "I230",
+    "I232",
+    "I231"
+  ],
+  "parentIds": [
+    "I233"
+  ],
+  "baptismDate": "21 DEC 1821",
+  "occupations": [
+    "Private Means"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    },
+    {
+      "date": "1871",
+      "place": "Wiltshire, Amesbury, Idmiston, Wesleyan Chapel"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Cricklade, Marston Maisey, Baker & Grocer Shop"
+    },
+    {
+      "date": "1911",
+      "place": "Boscombe, Hampshire, 75 Palmerston Rd.,"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I86",
+      "familyId": "F55",
+      "marriageDate": "2 MAR 1845",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "avatar": "avatars/I227_0.jpg"
+}

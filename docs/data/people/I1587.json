@@ -1,0 +1,43 @@
+{
+  "id": "I1587",
+  "name": "Ernest Edward A'Court",
+  "givenName": "Ernest Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1888",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2376 40 19.jpg"
+  ],
+  "spouseIds": [
+    "I2590"
+  ],
+  "childIds": [
+    "I2591",
+    "I1701"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Postman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Bristol, Redcliff, 13 Rowley Place"
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Southville, 10 Allington Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2590",
+      "familyId": "F906",
+      "marriageDate": "ABT 1908"
+    }
+  ],
+  "avatar": "avatars/I1587_0.jpg"
+}

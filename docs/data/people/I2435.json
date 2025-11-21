@@ -1,0 +1,18 @@
+{
+  "id": "I2435",
+  "name": "John Carter",
+  "givenName": "John",
+  "surname": "Carter",
+  "sex": "M",
+  "birthDate": "1950",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2433",
+    "I2432"
+  ]
+}

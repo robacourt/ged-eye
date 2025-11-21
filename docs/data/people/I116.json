@@ -1,0 +1,31 @@
+{
+  "id": "I116",
+  "name": "Edward Stubington",
+  "givenName": "Edward",
+  "surname": "Stubington",
+  "sex": "M",
+  "birthDate": "1834",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": "1879",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I107"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Railway Porter"
+  ],
+  "notes": [
+    "Witness to marriage of his step daughter Clara Ann A'Court to Alfred Hunt  6 Feb 1878"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I107",
+      "familyId": "F64",
+      "marriageDate": "26 AUG 1860",
+      "marriagePlace": "Portsea, Hampshire, All Saints"
+    }
+  ]
+}

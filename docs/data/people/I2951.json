@@ -1,0 +1,25 @@
+{
+  "id": "I2951",
+  "name": "Harold Sydney Miles",
+  "givenName": "Harold Sydney",
+  "surname": "Miles",
+  "sex": "M",
+  "birthDate": "1910",
+  "birthPlace": null,
+  "deathDate": "1988",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I461"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I461",
+      "familyId": "F1009",
+      "marriageDate": "JUL 1939",
+      "marriagePlace": "London, Woolwich"
+    }
+  ]
+}

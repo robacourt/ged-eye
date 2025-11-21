@@ -1,0 +1,30 @@
+{
+  "id": "I1121",
+  "name": "Herbert Alfred Kent",
+  "givenName": "Herbert Alfred",
+  "surname": "Kent",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Abt 1939",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1120"
+  ],
+  "childIds": [
+    "I1122",
+    "I1125",
+    "I1126"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Roadman Soldier"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1120",
+      "familyId": "F453"
+    }
+  ]
+}

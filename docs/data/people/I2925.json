@@ -1,0 +1,28 @@
+{
+  "id": "I2925",
+  "name": "Levi Love",
+  "givenName": "Levi",
+  "surname": "Love",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2926"
+  ],
+  "childIds": [
+    "I2923"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Labourer"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2926",
+      "familyId": "F998"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "I1605",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1891",
+  "birthPlace": "Liverpool, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Lancashire/RG12 3002 35 63.jpg",
+    "Data/Media/1901 census/Lancashire/RG13 3524 92 1.jpg",
+    "Data/Media/1911 census/Lancashire/St Helens/RG14 22777 305.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1601",
+    "I1602"
+  ],
+  "occupations": [
+    "Dressmaker, Own account"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Lancashire, Wavertree, 13 Upper cross St."
+    },
+    {
+      "date": "1901",
+      "place": "St. Helens, Lancs, 10 South John St"
+    },
+    {
+      "date": "1911",
+      "place": "St. Helens, Lancs, 9 South John St"
+    }
+  ],
+  "avatar": "avatars/I1605_0.jpg"
+}

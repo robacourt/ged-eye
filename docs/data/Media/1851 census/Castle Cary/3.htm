@@ -1,0 +1,823 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>1851 England Census - Ancestry.co.uk</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="geo.placename" content="UK"/>
+<meta name="geo.position" content="55.378051;-3.435973"/>
+<meta name="geo.region" content=""/>
+<meta name="ICBM" content="55.378051, -3.435973"/>
+<link rel="stylesheet" type="text/css" href="http://c.ancestry.com/s/0/css/global.css" />
+<script type="text/javascript" src="http://c.ancestry.com/s/0/js/globalheader.js"></script>
+
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="http://c.ancestry.com/css/search/newglobal.css" />
+<link rel="stylesheet" type="text/css" href="http://c.ancestry.com/css/search/searchIndiv.css?v=2" />
+<script type="text/javascript" src="http://c.ancestry.com/js/global.js"></script> 
+<style type="text/css">
+
+</style>
+
+	<link rel="stylesheet" type="text/css" href="http://c.ancestry.com/css/search/printerFriendlyIndiv.css" media="print" />
+	
+
+<script language="JavaScript" type="text/javascript" src="http://c.ancestry.com/js/search/DHTMLUtils.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://c.ancestry.com/js/search/jpopup.js"></script>
+<script type="text/javascript" src="http://c.ancestry.com/js/AJAX.js"></script>
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+	var cacheLocation = "http://c.ancestry.com";
+	var ancestryDomain = "www.ancestry.co.uk";
+	var partnerId = "5538";
+	function go() {  }
+
+	function saveToShoebox()
+	{
+	
+		var ajaxObj = new AJAXObject();
+		ajaxObj.OnComplete=OnCompleteAddToShoebox;
+		ajaxObj.InitiateAsyncRequest("/mercury/pages/ajax/ShoeboxHdlr.ashx?op=save&dbid=8860&rpid=7303615&unq=633408399650798878");
+	
+	}
+	function OnCompleteAddToShoebox(responseText, responseXML) {
+		var str;
+		doc = responseXML.documentElement;
+		if (doc){
+			obj = doc.getElementsByTagName('shoebox')[0];
+			if(obj) {
+				str = obj.getAttribute('ret');
+				if(str == "true") {
+					showBlock('addedToBoxMsg');
+				}
+			}
+		}
+	}
+	function detachRecord(url)
+	{
+		if(confirm("Are you sure you want to remove this record?  Note:  Removing this record also removes source citations created from this record but does not remove events associated with this record."))
+		{
+			var ajaxObj = new AJAXObject();
+			ajaxObj.OnComplete=OnCompleteRecordDetached;
+			ajaxObj.InitiateAsyncRequest(url);
+		}
+	}
+	function OnCompleteRecordDetached(responseText, responseXML) {
+		var str;
+		doc = responseXML.documentElement;
+		if (doc){
+			obj = doc.getElementsByTagName('detachrec')[0];
+			if(obj) {
+				str = obj.getAttribute('ret');
+				strElem = obj.getAttribute('userdata');
+				if(str == "true") { // display if ADD succeeded
+					document.getElementById(strElem).className = 'hidden';
+				}
+			}
+		}
+	}
+//]]>
+</script>
+<script language="JavaScript" type="text/javascript" src="http://c.mfcreative.com/st/db.aspx?dbid=8860&ver=16&tlcid=2057&ti=5538&ti.si=0"></script>
+<script language="JavaScript" type="text/javascript" src="http://c.ancestry.com/js/search/searchFormater.js"></script>
+
+</head>
+<body>
+
+
+ 
+
+
+
+
+
+<div id="north-header" class='north-header-loggedin'>
+
+			<div class="g_masthead" style="position: relative; width: 100%; ">
+			<div id="g_logo" style="float: left; position: relative;">
+			<div class="g_leaf" style="position: absolute; " ><img id="ctl20_ctl00_SiteImage3" src="http://c.ancestry.com/s/0/p/5538/i/leaf.gif" style="border-width:0px;" /></div>
+			<div style="float:left"><a href="http://www.ancestry.co.uk/" OnClick="s_objectID='logo_head'">
+			<img id="ctl20_ctl00_m_logo" src="http://c.ancestry.com/s/0/p/5538/i/logo.gif" style="height:38px;width:175px;border-width:0px;" /></a>
+			</div>
+			
+			</div>
+		 
+	<div class="g_status">
+		<table border="0" cellpadding="0" cellspacing="0">
+			
+			<tr>
+				<td>
+				<div class="g_btnUpgrade"><a id="ctl20_ctl00_m_upgrade" OnClick="s_objectID='upgrade_head'" href="http://www.ancestry.co.uk/myancestry/myaccount/default.aspx">Upgrade</a> ></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="right">
+				 
+				<div class="g_customerinfo" style="float: none; margin-top: 5px;">
+				Welcome, <strong>IanACourt</strong> <a id="ctl20_ctl00_m_logout" OnClick="s_objectID='logout_head'" href="http://www.ancestry.co.uk/security/loginredir.aspx?logout=true&amp;home=true">Log Out</a><a id="ctl20_ctl00_m_myAccount" OnClick="s_objectID='myaccount_head'" href="http://www.ancestry.co.uk/myancestry/myaccount/default.aspx">My Account</a><a id="ctl20_ctl00_m_help" OnClick="s_objectID='help_head'" href="http://www.ancestry.co.uk/rx/help.asp">Help</a>
+				</div>
+				 
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+		<div id="div_dbugger" style="float:right"></div>
+
+		
+		<div class=g_tools></div>
+
+		
+		<div style="clear: both;"><img src="http://c.ancestry.com/i/pixel.gif" style="height:1px;width:1px;border-width:0px;" /></div>
+		</div><!-- End MastHead -->
+	
+		<div class="g_nav">
+		<a href="http://www.ancestry.co.uk/" id="c_home" title="Ancestry Home Page" style="display:none" OnClick="s_objectID='home_head'">Home</a>
+		<a href="http://www.ancestry.co.uk/myancestry/" id="c_myancestry" title="My Ancestry - Store personal information" style="display:none" OnClick="s_objectID='myancestry_head'">My Ancestry</a>
+		<a href="http://www.ancestry.co.uk/search/" id="c_search" title="Genealogy Search - Find Birth Records, Death Records, Marriage Records and US Census Records." style="display:none" OnClick="s_objectID='search_head'">Search</a>
+		<a href="http://ancestrypress.ancestry.co.uk/" id="c_publish" title="Ancestry Press Home Page" style="display:none" OnClick="s_objectID='publish_head'">Publish</a>
+		<a href="http://www.ancestry.co.uk/charts/ancchart.aspx" id="c_tabChartForm" title="Record the ancestors from whom you directly descend." style="display:none" OnClick="s_objectID='chart_head'">Charts and Forms</a>
+		<a href="http://www.ancestry.co.uk/community/" id="c_boards" title="Ancestry Community - Find others who are researching your ancestors." style="display:none" OnClick="s_objectID='community_head'">Community</a> 
+		
+		<a href="http://landing.ancestry.co.uk/offers/uk/dna.aspx" id="c_dna" title="DNA Project" style="display:none" OnClick="s_objectID='dna_head'">DNA </a>
+		
+		<a href="http://www.ancestry.co.uk/learn/" id="c_learn" title="Resources to help you research your family history, including books, articles, and genealogy archives." style="display:none" OnClick="s_objectID='learn_head'">Learning Centre</a>
+		
+		<a href="http://www.ancestry.co.uk/shop/" id="c_shops" title="Discover, preserve, and celebrate your heritage with unique products." style="display:none" OnClick="s_objectID='shops_head'">Shop</a>
+		
+		</div>
+		<script type="text/javascript" language="javascript">
+		//<![CDATA[ 
+		currentNav = "c_search";
+		
+		tabArray = new Array("c_home", "c_myancestry", "c_search", "c_publish", "c_boards", "c_dna", "c_learn", "c_shops",  "empty");
+		g_showTabs();
+		//]]>
+		</script>
+	
+</div>
+
+
+<div class="g_container">
+
+
+
+<script type="text/javascript"><!--
+function setPromo(adName)
+{
+	var d=new Date();
+	var e=new Date();
+	with (e) setDate(getDate()+2);
+	var theDomain = ".ancestry.co.uk";
+	document.cookie="PROMO="+ d.getFullYear() + ':' + (d.getUTCMonth()+1).toString() + ':' + d.getUTCDate() + ':' + d.getUTCHours() + ':' + d.getUTCMinutes() + "&ad=" + adName + "; path=/; expires="+e.toUTCString() + ((theDomain == "") ? "" : "; domain=" + theDomain);
+}
+function SubmitForm()
+{
+	if (document.all)
+	{
+		if (document.all('password'))
+		{
+			document.all('password').value = escapeHTML(document.all('password').value);
+		}
+		if (document.all('username'))
+		{
+			document.all('username').value = escapeHTML(document.all('username').value);
+			}
+	}
+	else
+	{
+		if (document.getElementById('password'))
+		{
+			document.getElementById('password').value = escapeHTML(document.getElementById('password').value);
+		}
+		else
+		{
+			if (document.forms["login"].password)
+				document.forms["login"].password.value = escapeHTML(document.forms["login"].password.value);
+		}
+		if (document.getElementById('username'))
+		{
+			document.getElementById('username').value = escapeHTML(document.getElementById('username').value);
+		}
+		else
+		{
+			if (document.forms["login"].username)
+				document.forms["login"].username.value = escapeHTML(document.forms["login"].username.value);
+		}
+	}
+	return true;
+}
+function escapeHTML (str)
+{
+   var div = document.createElement('div');
+   var text = document.createTextNode(str);
+   div.appendChild(text);
+   return div.innerHTML;
+}; 
+//-->
+</script>
+
+
+
+
+
+<div id="page">
+    <div id="content" >
+        <div class="container">
+
+		
+		
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td valign="top">
+					
+					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="2">
+						<tr> 
+							<td valign="top">
+							<span class="gSm">You searched  for </span><span class="gSmB">A Court</span><span class="gSm"></span>
+							
+							</td>
+						</tr>
+					</table>
+					
+				</td>
+				<script>
+				if('undefined' != typeof DbInfoOrgCreditHorizontal)
+				{
+					DbInfoOrgCreditHorizontal(5538, '<td width="300" valign="top" align=right><div style="float:right">', '</div></td>');
+				}
+				</script>
+			</tr>
+		</table>
+		<div class="p_navLine"><a href='/cgi-bin/sse.dll?gsfn=A&gsln=COURT&sx=&f1=Somerset&f2=&f4=&f18=&f12__n=&rg_81004011__date=&rs_81004011__date=0&f27=&f14=&f15=&_8000C002=&_80008002=&_80018002=&f7=&f8=&f9=&gskw=&prox=1&db=uki1851&ti=5538&ti.si=0&gss=angs-i&fh=10&fsk=CIAAIpwANM1R&bsk=&rank=0&pgoff='><img src='http://c.ancestry.com/i/search/back16_ico.gif'></a>&nbsp;<a href='/cgi-bin/sse.dll?gsfn=A&gsln=COURT&sx=&f1=Somerset&f2=&f4=&f18=&f12__n=&rg_81004011__date=&rs_81004011__date=0&f27=&f14=&f15=&_8000C002=&_80008002=&_80018002=&f7=&f8=&f9=&gskw=&prox=1&db=uki1851&ti=5538&ti.si=0&gss=angs-i&fh=10&fsk=CIAAIpwANM1R&bsk=&rank=0&pgoff='>All 1851 England Census Results</a></div>
+
+			<div id="main">
+				
+<div class="g_main" id="record">
+		<div style="display: none;" class="g_confirm" id="savedToPTNodesMsg"></div>
+		<div style="display: none;" class="g_confirm" id="savedToNodesMsg"></div>
+		<div style="display: none;" class="g_confirm" id="savedToBoxMsg">You have saved this record to <a href='http://www.ancestry.co.uk/myancestry/shoeboxpage.aspx?db=8860&pid=7303615'>My Ancestry (Shoebox).</a></div>
+		<div style="display: none;" class="g_confirm" id="savedToPILFMsg">You have saved this record to <a href='http://www.ancestry.co.uk/myancestry/default.aspx?db=8860&pid=7303615'>My Ancestry (People I'm Looking For).</a></div>
+		<div style="display: none;" class="g_confirm" id="addedToBoxMsg">This record has been added to <a href='http://www.ancestry.co.uk/myancestry/shoeboxpage.aspx?db=8860&pid=7303615'>your shoebox.</a></div>
+		<div id="record-header">
+			<h2><a style='text-decoration: none' title="Learn more about the 1851 England Census" href="http://www.ancestry.co.uk/search/db.aspx?dbid=8860&enc=1" >1851 England Census</a>
+				<br><span style="font-weight: normal;"><span class="about">about</span> Sarah A Court</span>
+			</h2>
+		</div>
+		<div id="record-main">
+
+				<table border="0" cellspacing="0" cellpadding="0" class="p_recTable">
+				<tr><td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="p_resultTable">
+
+					<tr>
+						<th>Name:</th>
+						<td><span class="srchHit">Sarah <hlt>A</hlt> <hlt>Court</hlt></span></td>
+					</tr>
+
+
+					<tr>
+						<th>Age:</th>
+						<td>10 </td>
+					</tr>
+
+
+					<tr>
+						<th>Estimated Birth Year:</th>
+						<td> abt 1841</td>
+					</tr>
+
+
+					<tr>
+						<th>Relation:</th>
+						<td>Servant </td>
+					</tr>
+
+
+					<tr>
+						<th>Gender:</th>
+						<td>Female</td>
+					</tr>
+
+
+					<tr>
+						<th>Where born:</th>
+						<td>Castle Cary, Somerset, England</td>
+					</tr>
+
+					<tr>
+						<th></th>
+						<td></td>
+					</tr>
+
+					<tr>
+						<th>Civil Parish:</th>
+						<td>Castle Cary </td>
+					</tr>
+
+
+					<tr>
+						<th>Town:</th>
+						<td>Castle Cary </td>
+					</tr>
+
+
+					<tr>
+						<th>County/Island:</th>
+						<td><hlt>Somerset</hlt> </td>
+					</tr>
+
+
+					<tr>
+						<th>Country:</th>
+						<td>England </td>
+					</tr>
+
+					<tr>
+						<th></th>
+						<td></td>
+					</tr>
+
+					<tr>
+						<th><div style='line-height:10px'>Street address:<br><br>Occupation:<br><br>Condition as to marriage:<br><br>Disability:</th>
+						<td><div style="float:left"><img width=12 height=86 src='http://c.ancestry.com/i/search/bracket.png'></div><div style='padding-top:40px'><a class="img_txt" href="http://content.ancestry.co.uk/iexec?htx=view&r=5538&dbid=8860&iid=SOMHO107_1931_1931-0301&fn=Sarah+A&ln=Court&st=r&ssrc=&pid=7303615"><span>View Image</span></a></div></td>
+					</tr>
+
+					<tr>
+						<th></th>
+						<td></td>
+					</tr>
+
+					<tr>
+						<th>Registration district:</th>
+						<td>Wincanton </td>
+					</tr>
+
+
+					<tr>
+						<th>Sub-registration district:</th>
+						<td>Castle Cary </td>
+					</tr>
+
+
+					<tr>
+						<th>ED, institution, or vessel:</th>
+						<td>14b </td>
+					</tr>
+
+
+					<tr>
+						<th>Neighbors:</th>
+						<td><A HREF="/cgi-bin/sse.dll?viewrecord=1&ti=5538&r=5538&db=uki1851&F0=SOMHO107_1931_1931-0301">View others on page</a> <span style="font-weight: normal "></span></td>
+					</tr>
+
+
+					<tr>
+						<th>Household schedule number:</th>
+						<td>56</td>
+					</tr>
+
+
+					<tr>
+						<th>Household Members:</th>
+						<td class="p_embedTableTd">
+<table width=100% border=0 align=center cellpadding=2 cellspacing=0 class="p_embedTable">
+	<tr>
+		<th valign="top" style="padding-right:7px" class="p_embedTableHead" align="left" width = "90%">Name</th>
+		<th valign="top" style="padding-right:7px" class="p_embedTableHead" align="left" width = "9%">Age</th>
+	</tr>
+
+	<tr valign=top class="p_embedTableRow">
+		<td style="padding-right:7px" align="left" width = "90%"><a title="View Record" href="http://search.ancestry.co.uk/cgi-bin/sse.dll?db=uki1851&indiv=try&h=7303615">Sarah A Court</a></td>
+		<td style="padding-right:7px" align="left" width = "9%">10 </td>
+	</tr>
+
+	<tr valign=top class="p_embedTableRow">
+		<td style="padding-right:7px" align="left" width = "90%"><a title="View Record" href="http://search.ancestry.co.uk/cgi-bin/sse.dll?db=uki1851&indiv=try&h=7303612">Edward O Francis</a></td>
+		<td style="padding-right:7px" align="left" width = "9%">26 </td>
+	</tr>
+
+	<tr valign=top class="p_embedTableRow">
+		<td style="padding-right:7px" align="left" width = "90%"><a title="View Record" href="http://search.ancestry.co.uk/cgi-bin/sse.dll?db=uki1851&indiv=try&h=7303613">Jane Francis</a></td>
+		<td style="padding-right:7px" align="left" width = "9%">24 </td>
+	</tr>
+
+	<tr valign=top class="p_embedTableRow">
+		<td style="padding-right:7px" align="left" width = "90%"><a title="View Record" href="http://search.ancestry.co.uk/cgi-bin/sse.dll?db=uki1851&indiv=try&h=7303614">John H Francis</a></td>
+		<td style="padding-right:7px" align="left" width = "9%">1 </td>
+	</tr>
+
+</table>
+</td>
+					</tr>
+
+
+					<tr><th height="12"></th></tr>
+				</table></td>
+					
+						<td width="130" rowspan="50" valign="top" class="recordTN" >
+<a href="http://content.ancestry.co.uk/iexec?htx=view&r=5538&dbid=8860&iid=SOMHO107_1931_1931-0301&fn=Sarah+A&ln=Court&st=r&ssrc=&pid=7303615"><div class=burstOut><div class=burstIn>View<br>Original<br>Record</div><img class=burstImg src='http://c.ancestry.com/i/search/burst.png'><img src="http://c.ancestry.com/i/search/sample.jpg" border=0></div></a>
+<br /><a class="img_txt" href="http://content.ancestry.co.uk/iexec?htx=view&r=5538&dbid=8860&iid=SOMHO107_1931_1931-0301&fn=Sarah+A&ln=Court&st=r&ssrc=&pid=7303615"><img src="http://c.ancestry.com/i/search/mag_m.gif" width="16" height="16" border=0 align="absmiddle"><span>View original image</span></a>
+<br /><a href="javascript:censuspdf('http://c.ancestry.com/pdf/trees/charts/UKCensus1851.pdf')"><img src="http://c.ancestry.com/i/search/pdficon_small.gif" width="16" height="16" border=0 align="absmiddle"><span style='text-decoration: none'> </span>View blank form</a>
+						</td>
+					
+				</tr></table>
+				
+				<div style="position: relative;">
+					<img src="http://c.ancestry.com/i/search/box_arrow.gif" alt="up arrow" width="27" height="15" style="position: absolute; top: -13px; margin-left: 20px;" />
+					<table class="p_recordActions" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							
+								<td style="padding-right: 12px; width: 100%;" id="saveToAnyButton" >
+								<h5>Save This Record</h5>
+								Attach this record to a person in your tree as a source record, or save for later evaluation.
+								<div align="center" style="padding-top: 10px;">
+									<a id="saveButton" class="g_btn" onclick="showPopRelative(this,'saveBox')">Save&nbsp;<img src="http://c.ancestry.com/i/search/buttonarrow.gif" width="11" height="11" /></a>
+								</div>
+								</td>
+							
+						</tr>
+					</table>
+				</div>
+				
+			<p class="p_sourceTxt"><b>Source Citation:</b> Class:&nbsp;<i>HO107</i>; Piece:&nbsp;<i>1931</i>; Folio:&nbsp;<i>161</i>; Page:&nbsp;<i>13</i>; GSU roll:&nbsp;<i>221088-221089</i>.</p>
+
+			<script language="JavaScript" type="text/javascript">
+			//<![CDATA[
+			if(DbInfoHasSourceInfo())
+			{
+				document.write('<p class="p_sourceTxt"><b>Source Information:</b>');
+				DbInfoSourceInfo();
+				document.write('</p>');
+			}
+			if(DbInfoHasMiniDescription()||DbInfoHasDescription())
+			{
+				document.write('<p class="p_sourceTxt"><b>Description:</b><br/>');
+				DbInfoMiniDescription(); 
+				
+				document.write(' <a href=\"http://www.ancestry.co.uk/search/db.aspx?dbid=8860&enc=1\">Learn more...</a>');
+				
+				document.write('</p>');
+			}
+			//]]></script>
+		
+	</div>
+</div>
+<div id="controls">
+	
+	<div class="bl"></div>
+	<div class="br"></div>
+	<div id="tools" class="facets">
+		<h3>Page Tools</h3>
+		<div class="mod">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td height="5"></td>
+				</tr>
+
+		<tr class="sIndiv" style="padding-bottom:5px;">
+			<td height="20" align="left">
+				<a class="img_txt" href='http://trees.ancestry.co.uk/pt/newtree.aspx?ssrc=&dbid=8860&rpid=7303615'>
+					<img src='http://c.ancestry.com/i/search/start_a_tree_16.gif' border='0' width='16' height='16' align='absmiddle' /><span>Start a Tree with this person</span>
+				</a>
+			</td>
+		</tr>
+	
+	<tr class="sIndiv" id="saveToBoxLink" style="padding-bottom:5px;">
+		<td height="20" align="left">
+			<a class="img_txt" href="javascript:saveToShoebox()">
+				<img src="http://c.ancestry.com/i/search/save_16.gif" border="0" width="16" height="16" align="absmiddle"><span>Save record to my shoebox</span>
+			</a>
+		</td>
+	</tr>
+
+
+				<tr class="sIndiv" style="padding-bottom:5px;">
+					<td height="20" align="left"><a class="img_txt" href="http://www.ancestry.co.uk/orem/choose.aspx?dbid=8860&pid=7303615&iid=SOMHO107_1931_1931-0301&fn=Sarah+A&ln=Court"><img src="http://c.ancestry.com/i/search/edit_16.gif" border="0" align="absmiddle" width="16" height="16"><span>Comments and Corrections</span></a></td>
+				</tr>
+
+				<tr class="sIndiv" style="padding-bottom:5px;">
+					<td height="20" align="left">
+<SCRIPT language="javascript">function EmailFriend() {	
+var value = "&fn=Sarah+A&ln=Court";
+if (screen){ leftPos = screen.width-425}
+reportWin = window.open('http://www.ancestry.co.uk/email/emailafriend.aspx?type=image&dbid=8860&iid=SOMHO107_1931_1931-0301'+value,'send_err','toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=1,top=5,left=10,width=400,height=425');
+if (reportWin){reportWin.focus()}}</script>
+					<a class="img_txt" href="javascript:EmailFriend()"><img border="0" src="http://c.ancestry.com/i/search/mail_16.gif" width="16" height="16" align="absmiddle"><span>E-mail image to a friend</span></a></td>
+				</tr>
+
+				<tr class="sIndiv" style="padding-bottom:5px;">
+					<td height="20" align="left"><a class="img_txt" href="/cgi-bin/sse.dll?gsfn=A&gsln=COURT&sx=&f1=Somerset&f2=&f4=&f18=&f12__n=&rg_81004011__date=&rs_81004011__date=0&f27=&f14=&f15=&_8000C002=&_80008002=&_80018002=&f7=&f8=&f9=&gskw=&prox=1&db=uki1851&ti=5538&ti.si=0&gss=angs-i&rank=0&indiv=1&pf=1&recid=3461237&h=&fh=15&ct=&fsk=CIAAIpwANM1R&bsk="><img border="0" src="http://c.ancestry.com/i/search/print_16.gif" width="16" height="16" align="absmiddle"><span>View printer-friendly</span></a></td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+	
+<div class="facets" id="connect">
+
+<div class="g_box">
+	<h4>Make a Connection</h4>
+	Not sure where to start? Often it's helpful to contact others who share your research interests:
+
+	<p><a href="http://www.ancestry.co.uk/community/researchers.aspx?&fn=Sarah+A&ln=Court&by=abt+1841&ry=1851&rcntry=England&rcnty=Somerset&rcty=Castle+Cary&dbid=8860&recordid=7303615">Find others searching for 
+	Sarah A Court
+	</a></p>
+</div>
+
+<div>
+    
+    
+    <script type="text/javascript" language="javascript">
+var RN = new String(Math.random()); var RNS= RN.substring(2,11);
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/tgn.ancestry.co.uk/search;pos=right;sz=120x240;db=8860;dbcat=35;db=8860;dbcat=35;lang=en;lin=t;g=;a=;z=;ht=;ownership=trialothercountrysub;duration=days_14;promo=notused;hptestcell=none;ord=' + RNS + '?" type="text/javascript"></scr' + 'ipt>');
+	</script>
+	<noscript>
+		<a href="http://ad.doubleclick.net/jump/tgn.ancestry.co.uk/search;pos=right;sz=120x240;db=8860;dbcat=35;db=8860;dbcat=35;lang=en;lin=t;g=;a=;z=;ht=;ownership=trialothercountrysub;duration=days_14;promo=notused;hptestcell=none;ord=123456789?" target="_top">
+		<img src="http://ad.doubleclick.net/adj/tgn.ancestry.co.uk/search;pos=right;sz=120x240;db=8860;dbcat=35;db=8860;dbcat=35;lang=en;lin=t;g=;a=;z=;ht=;ownership=trialothercountrysub;duration=days_14;promo=notused;hptestcell=none;ord=123456789?" border="0" width="120" height="240" alt="" /></a>
+	</noscript>
+</div>
+
+</div>
+
+
+</div>
+
+<!-- save box -->
+<div id="saveBox" class="s_savePop">
+	<table cellpadding="5" cellspacing="0" border="0" id="saveTable">
+		
+			<tr>
+			<td valign="top"><input name="save" type="radio" value="4" id="rdSave4" checked /></td>
+			<td><label for="rdSave4" class="savePrimaryOption"><strong>Start a Tree with This Person:&nbsp;Sarah A Court</strong><br />
+				Begin your tree with:&nbsp;Sarah A Court</label></td>
+			</tr>
+		
+		<tr id="saveToBoxRadio">
+		<td valign="top"><input name="save" type="radio" value="3" id="rdSave3" /></td>
+		<td><label for="rdSave3"><strong>Save to my shoebox</strong><br />
+			Save this record for later evaluation and organization</label></td>
+		</tr>
+		<tr>
+		<td colspan="2">
+		<input type="button" value="Continue" class="g_btn" onclick="javascript:GotoSaveLocation()" />
+			or&nbsp;<a href="javascript:hidePop('saveBox')">Cancel</a></td>
+		</tr>
+	</table>
+		<script language="JavaScript" type="text/javascript">
+			function GotoSaveLocation() {
+				var btn;
+				hidePop('saveBox');
+				btn = document.getElementById('rdSaveOWT');
+				if(null != btn && btn.checked)
+					window.location = "http://trees.ancestry.co.uk/owt/AttachRecord.aspx?dbid=8860&rpid=7303615&pid=";
+				btn = document.getElementById('rdSave1');
+				if(null != btn && btn.checked)
+					window.location = "http://trees.ancestry.co.uk/pt/mergerecord.aspx?ssrc=&dbid=8860&rpid=7303615";
+				btn = document.getElementById('rdSave2');
+				if(null != btn && btn.checked)
+					window.location = "http://trees.ancestry.co.uk/pt/AttachStree.aspx?ssrc=&dbid=8860&rpid=7303615"; 
+				btn = document.getElementById('rdSave3');
+				if(null != btn && btn.checked)
+					saveToShoebox();
+				btn = document.getElementById('rdSave4');
+				if(null != btn && btn.checked)
+					window.location = "http://trees.ancestry.co.uk/pt/newtree.aspx?ssrc=&dbid=8860&rpid=7303615"; 
+			}</script>
+</div>
+<!-- end save box -->
+
+
+
+			</div><!-- main -->
+			<script language="javascript" type="text/javascript">
+//<![CDATA[
+// Code generated by MFN.AncestrySearch.Mercury.Controls.AJAX.RecordLinking
+function OnCompleteRecordLinking(responseText, responseXML) {
+  var str;
+  doc = responseXML.documentElement;
+  if (doc){
+    var obj = doc.getElementsByTagName('savedtoowt')[0];
+    if(obj) { 
+      displayAjaxCtlHtml(doc, 'savedtoowt', 'savedToNodesMsg', '');
+      str = obj.getAttribute('includes_mrv');
+      if(str == "t") {
+        hideBlock('attachToOwtNameRadio');
+        hideBlock('attachToOwtNameLink');
+      }
+    }
+    obj = doc.getElementsByTagName('savedtopt')[0];
+    if(obj) { 
+      displayAjaxCtlHtml(doc, 'savedtopt', 'savedToPTNodesMsg', '');
+      str = obj.getAttribute('includes_mrv');
+      if(str == "t") {
+        hideBlock('attachToPTNameRadio');
+        hideBlock('attachToPTNameLink');
+      }
+    }
+    obj = doc.getElementsByTagName('shoebox')[0];
+    if(obj) {
+      str = obj.getAttribute('saved');
+      if(str == "t") {
+        showBlock('savedToBoxMsg');
+        hideBlock('saveToBoxRadio');
+        hideBlock('saveToBoxLink');
+      }
+    }
+    obj = doc.getElementsByTagName('pylf')[0];
+    if(obj) {
+      displayAjaxCtlHtml(doc, 'pylf', 'savedToPILFMsg', '');
+    }
+  }}
+//]]>
+</script>
+<script type="text/javascript" src="http://c.ancestry.com/js/AJAX.js"></script><script type="text/javascript">
+//<![CDATA[
+var ajaxObj = new AJAXObject();
+ajaxObj.OnComplete=OnCompleteRecordLinking;
+ajaxObj.InitiateAsyncRequest("/mercury/pages/ajax/RecordLinkingHdlr.ashx?op=tree-pylf-pttree-sbox&db=8860&rpid=7303615&unq=633408399650642632");
+//]]>
+</script>
+
+			<div id="extra">
+			<script type="text/javascript" language="javascript">
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/tgn.ancestry.co.uk/database;pos=right;sz=160x600;db=8860;dbcat=35;lang=en;lin=t;g=;a=;z=;ht=;ownership=trialothercountrysub;duration=days_14;promo=notused;hptestcell=none;ord=' + RNS + '?" type="text/javascript"></scr' + 'ipt>');
+	</script>
+	<noscript>
+		<a href="http://ad.doubleclick.net/jump/tgn.ancestry.co.uk/database;pos=right;sz=160x600;db=8860;dbcat=35;lang=en;lin=t;g=;a=;z=;ht=;ownership=trialothercountrysub;duration=days_14;promo=notused;hptestcell=none;ord=123456789?" target="_top">
+		<img src="http://ad.doubleclick.net/adj/tgn.ancestry.co.uk/database;pos=right;sz=160x600;db=8860;dbcat=35;lang=en;lin=t;g=;a=;z=;ht=;ownership=trialothercountrysub;duration=days_14;promo=notused;hptestcell=none;ord=123456789?" border="0" width="160" height="600" alt="" /></a>
+	</noscript>
+			
+			</div><!-- extra -->
+		</div><!-- container -->
+
+		<div class="container">
+			<div class=s_crumbBdr><div class='g_crumbs'>You are here:  Historical Records&nbsp;&gt;&nbsp;Census & Voter Lists&nbsp;&gt;&nbsp;<b>1851 England Census</b></div></div>
+		</div>
+
+	</div><!-- content -->
+</div><!-- page -->
+
+
+<link rel="stylesheet" type="text/css" href="http://c.ancestry.com/s/0/css/global_footer.css" />
+
+
+
+
+</div> <!-- End g_container Div -->
+
+
+<div style="clear:both"></div>
+
+	<div id="g_footer" class="g_container">
+		<div id="sites" class="acom">
+		
+			<h5>Visit Other Generations Network sites</h5>
+			<ul>
+				<li><a href="#nogo" id="droplink"><em>Ancestry.co.uk</em></a>
+					<!--[if lte IE 6]><table><tr><td><![endif]-->
+					<div id="droplist">
+						<dl id="sites-int">
+							<dt>Ancestry International</dt>
+							<dd class="site-us">
+								
+									<a href="http://www.ancestry.com/HomeRedirect.aspx?ref=5538"><em>United States</em></a>
+								
+							</dd>
+							<dd class="site-uk">
+								
+										<a href=http://www.ancestry.co.uk onclick="s_objectID='UK_foot'" ><em>United Kingdom</em></a>
+								
+							</dd>
+							<dd class="site-ca">
+								
+										<a href=http://www.ancestry.ca onclick="s_objectID='CA_foot'" ><em>Canada</em></a>
+								
+							</dd>
+							<dd class="site-au">
+								
+										<a href=http://www.Ancestry.com.au onclick="s_objectID='AU_foot'" ><em>Australia</em></a>
+								
+							</dd>
+							<dd class="site-de">
+								
+										<a href=http://www.Ancestry.de onclick="s_objectID='DE_foot'" ><em>Deutschland</em></a>
+								
+							</dd>
+							<dd class="site-it">
+								
+										<a href=http://www.ancestry.it onclick="s_objectID='IT_foot'" ><em>Italia</em></a>
+								
+							</dd>
+							<dd class="site-fr">
+								
+										<a href=http://www.ancestry.fr onclick="s_objectID='FR_foot'" ><em>France</em></a>
+								
+							</dd>
+							<dd class="site-se">
+								
+										<a href=http://www.ancestry.se onclick="s_objectID='SE_foot'" ><em>Sverige</em></a>
+								
+							</dd>
+						</dl>
+						<dl id="sites-tgn">
+							<dt>Other Generations Network Sites</dt>
+							<dd class="site-acom">
+								
+									<a href="http://www.ancestry.com/HomeRedirect.aspx?ref=5538"><em>Ancestry.com</em></a>
+								
+							</dd>
+							<dd class="site-mfam"><a href="http://www.myfamily.com/"><em>Myfamily.com</em></a></dd>
+							<dd class="site-gcom"><a href="http://www.genealogy.com/"><em>Genealogy.com</em></a></dd>                                      
+							<dd class="site-rweb"><a href="http://www.rootsweb.com/"><em>Rootsweb.com</em></a></dd>                                      
+							<dd class="site-tgn"><a href="http://www.tgn.com/"><em>TGN.com</em></a></dd>
+							<dd class="site-ftm"><a href="http://www.familytreemaker.com/"><em>FamilyTreeMaker.com</em></a></dd>
+							<dd class="site-amag"><a href="http://www.ancestrymagazine.com/"><em>Ancestrymagazine.com</em></a></dd>
+						</dl>
+					</div>
+					<!--[if lte IE 6]></td></tr></table><![endif]-->
+				</li>
+			</ul>
+		
+			<div class="logo">
+				<a href="http://www.tgn.com" title="The Generations Network"><span>The Generations Network</span></a>
+			</div><!-- end .logo -->
+		</div><!-- #sites -->
+		
+
+		<div class="links">
+			
+			<dl>
+				<dd class="firstlink">
+					
+					<a href="http://ancestry.co.uk.mediaroom.com/" onclick="s_objectID='corp_foot'">About Us</a>
+					
+				</dd>
+				<dd>
+					
+					<a href="http://www.ancestry.co.uk/home/partner/uk/uk_affiliate_home.aspx" onclick="s_objectID='affiliate_foot'" >Affiliate Programme</a>
+					
+				</dd>
+				
+				<dd>
+					
+					<a href="http://ancestryuk.custhelp.com/cgi-bin/ancestryuk.cfg/php/enduser/ask.php" onclick="s_objectID='contact_foot'" >Contact Us</a>
+					
+				</dd>
+			</dl>
+			<p>
+				&copy;&nbsp;2008,&nbsp;The&nbsp;Generations&nbsp;Network,&nbsp;Inc.&nbsp;&ndash;
+				<a id="ctl21_ctl00_m_privacy" onclick="s_objectID='privacy_foot'" href="http://www.ancestry.co.uk/legal/Privacy.aspx">PRIVACY STATEMENT</a> | <a id="ctl21_ctl00_m_terms" onclick="s_objectID='terms_foot'" href="http://www.ancestry.co.uk/legal/Terms.aspx">Terms and Conditions</a>
+			</p>
+			
+		</div><!-- end .links -->
+	</div><!-- end #g_footer -->
+<script type="text/javascript" src="http://c.ancestry.com/s/0/js/global_footer.js"></script>
+
+
+
+
+
+</body>
+</html>
+
+
+<!-- Gecko:  T: 0.140621 | 0.569256 D: 0.078123 | 0.390615 DS: 0.062498 | 0.105206 C: 0.000000 | 0.229682 E: 0.91% DSP: 0.000000 FT: 0.000000 UC: 0.000000 -->
+<script type='text/javascript'>
+if(typeof(s_pageName)!='undefined')s_pageName+=" - Search:Bool:Indiv - //search/mercury/pages/indivrank.aspx";
+else var s_pageName = "Search:Bool:Indiv - //search/mercury/pages/indivrank.aspx";
+var s_events = "event31,event1";
+var s_eVar14 = "SGiv:SSur:Subs:Bool:ImpS:Indiv";
+var s_prop9 = "Indiv:2097152:";
+var s_prop1 = "1851 England Census";
+var s_eVar11 = "cs:view:uki1851:Text:Indiv:";
+var s_prop2 = "No Locality (1)";
+var s_prop4 = "Search:Results:Indiv";
+var s_account = "ancestryuki";
+var s_channel = "5538";
+var s_prop5 = "yp6iKuP-npUhF6emjhRYx";
+var s_eVar15 = "2097152:";
+var s_prop10 = "2097152:";
+var s_prop11 = "004cb74e-0001-0000-0000-000000000000";
+var s_prop12 = "";
+var s_prop8 = "1c0e7b6f7d3551711s1a5s";
+var s_prop3 = "BotBlocker=0-.1s,SearchDocStore=0-.1s,SearchDocStore1=0-.1s";
+</script>
+<script type='text/javascript' src='http://c.ancestry.com/js/omniture003.js'></script>
+<script type='text/javascript'><!--
+var s_code=s.t();if(s_code)document.write(s_code);
+//--></script>
+<script>document.write('<s'+'cript language="JavaScript" src="http://switch.atdmt.com/jaction/aveanc_ancestrycomnonsecureuniversal_1/v3/ato.%%2fcgi-bin%2fsse.dll%"></s'+'cript>')</script><noscript>
+<iframe src="http://switch.atdmt.com/iaction/aveanc_ancestrycomnonsecureuniversal_1/v3/ato.%%2fcgi-bin%2fsse.dll%" width="1" height="1" frameborder="0" scrolling="No" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0"></iframe></noscript>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct='UA-2601357-4';
+_udn='ancestry.co.uk';
+urchinTracker();
+</script>
+
+<!-- SN:SAS115 -->

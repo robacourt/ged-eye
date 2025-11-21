@@ -1,0 +1,26 @@
+{
+  "id": "I1209",
+  "name": "William ( Bill ) King",
+  "givenName": "William ( Bill )",
+  "surname": "King",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1208"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Army Officer"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1208",
+      "familyId": "F488"
+    }
+  ]
+}

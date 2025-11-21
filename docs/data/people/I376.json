@@ -1,0 +1,30 @@
+{
+  "id": "I376",
+  "name": "James Wheeler Bennett",
+  "givenName": "James Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "ABT 1849",
+  "birthPlace": "Hampshire, Portsmouth, Portsea",
+  "deathDate": "ABT 1880",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Hampshire/RG09 641 39 30 2.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I374",
+    "I375"
+  ],
+  "occupations": [
+    "Architect"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    }
+  ],
+  "avatar": "avatars/I376_0.jpg"
+}

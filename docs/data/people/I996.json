@@ -1,0 +1,31 @@
+{
+  "id": "I996",
+  "name": "Pamela Mae A'Court",
+  "givenName": "Pamela Mae",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "MAY 1938",
+  "birthPlace": null,
+  "deathDate": "AFT 1970",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1009"
+  ],
+  "childIds": [
+    "I1010",
+    "I1011",
+    "I1012",
+    "I1013"
+  ],
+  "parentIds": [
+    "I734",
+    "I735"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1009",
+      "familyId": "F415"
+    }
+  ]
+}

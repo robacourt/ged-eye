@@ -1,0 +1,46 @@
+{
+  "id": "I2127",
+  "name": "Philip A'Court",
+  "givenName": "Philip",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1893",
+  "birthPlace": "Jersey, C.I. St. Ouens",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 44 6.jpg",
+    "Data/Media/1911 census/Jersey C.I/St Ouen/RG14 34872 76.jpg"
+  ],
+  "spouseIds": [
+    "I2879"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2121",
+    "I2122"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I. St Ouen, Vinchelez"
+    },
+    {
+      "date": "1911",
+      "place": "Carpenter"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2879",
+      "familyId": "F985",
+      "marriageDate": "9 SEP 1916",
+      "marriagePlace": "St Ouen"
+    }
+  ],
+  "avatar": "avatars/I2127_0.jpg"
+}

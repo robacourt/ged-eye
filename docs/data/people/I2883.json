@@ -1,0 +1,29 @@
+{
+  "id": "I2883",
+  "name": "Agnes Chapman",
+  "givenName": "Agnes",
+  "surname": "Chapman",
+  "sex": "F",
+  "birthDate": "1832",
+  "birthPlace": "London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Holborn/RG12 233 84 11.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2882"
+  ],
+  "occupations": [
+    "Artificial florist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block J"
+    }
+  ],
+  "avatar": "avatars/I2883_0.jpg"
+}

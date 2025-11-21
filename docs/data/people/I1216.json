@@ -1,0 +1,39 @@
+{
+  "id": "I1216",
+  "name": "Hermina Teresa Worman",
+  "givenName": "Hermina Teresa",
+  "surname": "Worman",
+  "sex": "F",
+  "birthDate": "1898",
+  "birthPlace": null,
+  "deathDate": "1973",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1215"
+  ],
+  "childIds": [
+    "I1218",
+    "I1222",
+    "I1221",
+    "I1224",
+    "I1229",
+    "I1232",
+    "I1238"
+  ],
+  "parentIds": [
+    "I1217"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Ferndown, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1215",
+      "familyId": "F491"
+    }
+  ]
+}

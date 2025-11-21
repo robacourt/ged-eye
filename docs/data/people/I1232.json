@@ -1,0 +1,31 @@
+{
+  "id": "I1232",
+  "name": "Pamela Haskett",
+  "givenName": "Pamela",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "1936",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1233"
+  ],
+  "childIds": [
+    "I1234",
+    "I1235",
+    "I1236",
+    "I1237"
+  ],
+  "parentIds": [
+    "I1215",
+    "I1216"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1233",
+      "familyId": "F497"
+    }
+  ]
+}

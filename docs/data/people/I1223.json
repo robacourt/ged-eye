@@ -1,0 +1,23 @@
+{
+  "id": "I1223",
+  "name": "Ronald Roberts",
+  "givenName": "Ronald",
+  "surname": "Roberts",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1222"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1222",
+      "familyId": "F494"
+    }
+  ]
+}

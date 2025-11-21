@@ -1,0 +1,25 @@
+{
+  "id": "I951",
+  "name": "John Lawler",
+  "givenName": "John",
+  "surname": "Lawler",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I952"
+  ],
+  "childIds": [
+    "I103"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I952",
+      "familyId": "F61"
+    }
+  ]
+}

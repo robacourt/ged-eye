@@ -1,0 +1,23 @@
+{
+  "id": "I2504",
+  "name": "Lynda Florence Isabel Jephcoate",
+  "givenName": "Lynda Florence Isabel",
+  "surname": "Jephcoate",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2503"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2503",
+      "familyId": "F886"
+    }
+  ]
+}

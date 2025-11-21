@@ -1,0 +1,41 @@
+{
+  "id": "I2922",
+  "name": "John Thomas A'Court",
+  "givenName": "John Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1882",
+  "birthPlace": "Wiltshire, Stowerton ?",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2923"
+  ],
+  "childIds": [
+    "I2924"
+  ],
+  "parentIds": [
+    "I2927",
+    "I2537"
+  ],
+  "baptismDate": "19 OCT 1884",
+  "baptismPlace": "Dorset, East Stour",
+  "occupations": [
+    "Farm labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Dilton Marsh"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2923",
+      "familyId": "F997",
+      "marriageDate": "13 MAR 1904",
+      "marriagePlace": "Wiltshire, Mere"
+    }
+  ]
+}

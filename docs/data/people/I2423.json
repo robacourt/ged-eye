@@ -1,0 +1,37 @@
+{
+  "id": "I2423",
+  "name": "Thomas Henry A'Court",
+  "givenName": "Thomas Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1904",
+  "birthPlace": "Box, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Box/RG14 11864 213.jpg"
+  ],
+  "spouseIds": [
+    "I2424"
+  ],
+  "childIds": [
+    "I2425"
+  ],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2424",
+      "familyId": "F861"
+    }
+  ],
+  "avatar": "avatars/I2423_0.jpg"
+}

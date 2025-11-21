@@ -1,0 +1,27 @@
+{
+  "id": "I2826",
+  "name": "Blanch N A'Court",
+  "givenName": "Blanch N",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1874",
+  "birthPlace": "Wyke Regis, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 55 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2405",
+    "I2474"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, 16 West Parade"
+    }
+  ],
+  "avatar": "avatars/I2826_0.jpg"
+}

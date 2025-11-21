@@ -1,0 +1,55 @@
+{
+  "id": "I283",
+  "name": "Susannah Bench",
+  "givenName": "Susannah",
+  "surname": "Bench",
+  "sex": "F",
+  "birthDate": "ABT 1835",
+  "birthPlace": "Tollard Royal,  Wiltshire",
+  "deathDate": "1 AUG 1885",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I185",
+    "I1260"
+  ],
+  "childIds": [
+    "I284",
+    "I285",
+    "I286"
+  ],
+  "parentIds": [
+    "I1259"
+  ],
+  "burialDate": "AUG 1885",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Leather Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, Pleck, Muds Plot"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St Beer House"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I185",
+      "familyId": "F103",
+      "marriageDate": "4 APR 1859",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I1260",
+      "familyId": "F139"
+    }
+  ]
+}

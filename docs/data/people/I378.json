@@ -1,0 +1,46 @@
+{
+  "id": "I378",
+  "name": "Robert Wheeler Bennett",
+  "givenName": "Robert Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "ABT 1843",
+  "birthPlace": "Hampshire, Portsmouth, Portsea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Hampshire/RG09 641 39 30.jpg"
+  ],
+  "spouseIds": [
+    "I894"
+  ],
+  "childIds": [
+    "I1453",
+    "I895",
+    "I385"
+  ],
+  "parentIds": [
+    "I374",
+    "I375"
+  ],
+  "occupations": [
+    "Shipwright Apprentice",
+    "Civil Servant",
+    "Government Clerk Customs"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I894",
+      "familyId": "F173",
+      "marriageDate": "15TH JUL 1871",
+      "marriagePlace": "London, Islington, Mildmay Park Chapel"
+    }
+  ],
+  "avatar": "avatars/I378_0.jpg"
+}

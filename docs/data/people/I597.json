@@ -1,0 +1,20 @@
+{
+  "id": "I597",
+  "name": "Robert Hatcher",
+  "givenName": "Robert",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I589",
+    "I595"
+  ],
+  "baptismDate": "24.4.1904",
+  "baptismPlace": "Todber, Dorset"
+}

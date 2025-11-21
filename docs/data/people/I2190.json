@@ -1,0 +1,75 @@
+{
+  "id": "I2190",
+  "name": "Robert (Haycourt) A'Court",
+  "givenName": "Robert (Haycourt)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "8 JAN 1843",
+  "birthPlace": "Bristol, Gloucestershire, Saints Philip & Jacob",
+  "deathDate": "22 JUL 1916",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Bristol/HO107 1954 139 12 50.jpg"
+  ],
+  "spouseIds": [
+    "I2192"
+  ],
+  "childIds": [
+    "I2194",
+    "I2196",
+    "I2191",
+    "I2688",
+    "I2207",
+    "I2208",
+    "I2193",
+    "I2209",
+    "I2840"
+  ],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "baptismDate": "29 OCT 1843",
+  "baptismPlace": "Bristol, Gloucestershire, Saints Philip & Jacob",
+  "occupations": [
+    "Butcher",
+    "Pork Butcher",
+    "Port Butcher Journeyman",
+    "Butcher"
+  ],
+  "notes": [
+    "1891 census transcription details for:  7, Eugene Street, St Philip & St Jacob Out, Bristol"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Clifton, Nible House Court, 3 West St"
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 33 Little George St, Ss Philip And Jacob"
+    },
+    {
+      "date": "1891",
+      "place": "Bristol, Gloucestershire, 7, Eugene Street, St Philip & St Jacob without"
+    },
+    {
+      "date": "1901",
+      "place": "Bristol, Horfield Prison, Inmate"
+    }
+  ],
+  "residences": [
+    {
+      "date": "22 JUL 1916",
+      "place": "Bristol, Gloucestershire, 3 Arnolds Court"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2192",
+      "familyId": "F787",
+      "marriageDate": "FEB 1890"
+    }
+  ],
+  "avatar": "avatars/I2190_0.jpg"
+}

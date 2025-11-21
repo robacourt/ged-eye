@@ -1,0 +1,29 @@
+{
+  "id": "I168",
+  "name": "Peter Harding",
+  "givenName": "Peter",
+  "surname": "Harding",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I169"
+  ],
+  "childIds": [
+    "I167"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Carpentor"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I169",
+      "familyId": "F94",
+      "marriageDate": "NO"
+    }
+  ]
+}

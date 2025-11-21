@@ -1,0 +1,20 @@
+{
+  "id": "I91",
+  "name": "Fanny Petteredge Hatcher",
+  "givenName": "Fanny Petteredge",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Poole, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I88",
+    "I28"
+  ],
+  "baptismDate": "18.10.1812",
+  "baptismPlace": "Shillingstone Dorset"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I857",
+  "name": "Gladys Vera WILSON",
+  "givenName": "Gladys Vera",
+  "surname": "WILSON",
+  "sex": "F",
+  "birthDate": "1910",
+  "birthPlace": "Dunedin, NZ",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I844"
+  ],
+  "childIds": [
+    "I1932"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I844",
+      "familyId": "F369",
+      "marriageDate": "BET. 1924 - 1939"
+    }
+  ]
+}

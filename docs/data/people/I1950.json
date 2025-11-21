@@ -1,0 +1,28 @@
+{
+  "id": "I1950",
+  "name": "Eleanor May Spiers",
+  "givenName": "Eleanor May",
+  "surname": "Spiers",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1949"
+  ],
+  "childIds": [
+    "I1951",
+    "I2038"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1949",
+      "familyId": "F695",
+      "marriageDate": "26 AUG 1978",
+      "marriagePlace": "Ranfurly, Otago, New Zealand"
+    }
+  ]
+}

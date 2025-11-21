@@ -1,0 +1,35 @@
+{
+  "id": "I2832",
+  "name": "Alfred I A'Court",
+  "givenName": "Alfred I",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1878",
+  "birthPlace": "London, St Pancras",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/St Pancras/RG11 199 89 2.jpg",
+    "Data/Media/1891 census/London/St Pancras/RG12 127 223 48.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I877",
+    "I927"
+  ],
+  "occupations": [
+    "Factory Boy"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, St Pancras, 19 Church Way"
+    },
+    {
+      "date": "1891",
+      "place": "London St Pancras, Church Way"
+    }
+  ],
+  "avatar": "avatars/I2832_0.jpg"
+}

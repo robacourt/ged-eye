@@ -1,0 +1,53 @@
+{
+  "id": "I2825",
+  "name": "Charles A A'Court",
+  "givenName": "Charles A",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1872",
+  "birthPlace": "Wyke Regis, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 55 12.jpg",
+    "Data/Media/1891 census/Bristol/RG12 1971 50 13.jpg"
+  ],
+  "spouseIds": [
+    "I2891"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2405",
+    "I2474"
+  ],
+  "occupations": [
+    "Hairdressers assistant",
+    "Hairdresser",
+    "Hairdresser"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, 16 West Parade"
+    },
+    {
+      "date": "1891",
+      "place": "Bristol,  22 Banner Road"
+    },
+    {
+      "date": "1901",
+      "place": "Devon, Bideford, 1 Mill St"
+    },
+    {
+      "date": "1911",
+      "place": "Devon, Bideford, 7 South View Terrace, Northdown Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2891",
+      "familyId": "F990"
+    }
+  ],
+  "avatar": "avatars/I2825_0.jpg"
+}

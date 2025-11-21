@@ -1,0 +1,26 @@
+{
+  "id": "I2491",
+  "name": "Lorna Lee",
+  "givenName": "Lorna",
+  "surname": "Lee",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2492"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1909",
+    "I1908"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2492",
+      "familyId": "F880"
+    }
+  ]
+}

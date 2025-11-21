@@ -1,0 +1,27 @@
+{
+  "id": "I2889",
+  "name": "E Mary Jane A'Court",
+  "givenName": "E Mary Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1881",
+  "birthPlace": "Dorset, Weymouth",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Weymouth/RG12 1647 24 42.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1589",
+    "I1590"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Weymouth, Penny Lane"
+    }
+  ],
+  "avatar": "avatars/I2889_0.jpg"
+}

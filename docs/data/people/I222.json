@@ -1,0 +1,25 @@
+{
+  "id": "I222",
+  "name": "Roger Trew",
+  "givenName": "Roger",
+  "surname": "Trew",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I223"
+  ],
+  "childIds": [
+    "I215"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I223",
+      "familyId": "F116"
+    }
+  ]
+}

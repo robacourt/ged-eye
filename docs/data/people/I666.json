@@ -1,0 +1,39 @@
+{
+  "id": "I666",
+  "name": "Clara Charlotte Drew",
+  "givenName": "Clara Charlotte",
+  "surname": "Drew",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I654"
+  ],
+  "childIds": [
+    "I667",
+    "I668"
+  ],
+  "parentIds": [
+    "I669",
+    "I670"
+  ],
+  "baptismDate": "11.2.1883",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glovemaker"
+  ],
+  "notes": [
+    "8 in 1891, 22 in 1905,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I654",
+      "familyId": "F274",
+      "marriageDate": "7.8.1905",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

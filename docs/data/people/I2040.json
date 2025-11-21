@@ -1,0 +1,28 @@
+{
+  "id": "I2040",
+  "name": "Jacqueline Mackey",
+  "givenName": "Jacqueline",
+  "surname": "Mackey",
+  "sex": "F",
+  "birthDate": "MAY 1956",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2041"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2031",
+    "I2030"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2041",
+      "familyId": "F736",
+      "marriageDate": "MAY 1983",
+      "marriagePlace": "Christchurch, New Zealand"
+    }
+  ]
+}

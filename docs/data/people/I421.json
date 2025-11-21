@@ -1,0 +1,48 @@
+{
+  "id": "I421",
+  "name": "Alec Walter Lovat Fraser",
+  "givenName": "Alec Walter Lovat",
+  "surname": "Fraser",
+  "sex": "M",
+  "birthDate": "23 JUNE 1919",
+  "birthPlace": "London, Lower Clapton, 40 London Rd",
+  "deathDate": "12 OCT 2007",
+  "deathPlace": "Epsom, Surrey",
+  "photos": [
+    "Data/Picture/Alec W L Fraser.jpg",
+    "Data/Media/1939 Register/London/22 Mildenhall Rd.jpg",
+    "Data/Media/1921 Census/London/RG15 01129 79.jpg"
+  ],
+  "spouseIds": [
+    "I2369"
+  ],
+  "childIds": [
+    "I2966"
+  ],
+  "parentIds": [
+    "I417",
+    "I418"
+  ],
+  "occupations": [
+    "Timber Merchants Sales"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "London, Lower Clapton, 22 Mildenhall Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Hackney, 40 London Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2369",
+      "familyId": "F839",
+      "marriageDate": "14 JUNE 1947",
+      "marriagePlace": "Broxbourne, Hertfordshire"
+    }
+  ],
+  "avatar": "avatars/I421_0.jpg"
+}

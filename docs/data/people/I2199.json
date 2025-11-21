@@ -1,0 +1,18 @@
+{
+  "id": "I2199",
+  "name": "Camilla Duecie Rowe",
+  "givenName": "Camilla Duecie",
+  "surname": "Rowe",
+  "sex": "F",
+  "birthDate": "1978",
+  "birthPlace": "Derby",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2198",
+    "I2200"
+  ]
+}

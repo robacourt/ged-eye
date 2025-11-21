@@ -1,0 +1,27 @@
+{
+  "id": "I2924",
+  "name": "Reginald A'Court",
+  "givenName": "Reginald",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1905",
+  "birthPlace": "Somerset, Frome",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Diltons Marsh/RG14 11996 8.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2922",
+    "I2923"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Dilton Marsh"
+    }
+  ],
+  "avatar": "avatars/I2924_0.jpg"
+}

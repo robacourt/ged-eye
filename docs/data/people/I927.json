@@ -1,0 +1,42 @@
+{
+  "id": "I927",
+  "name": "Agnes Ann Unknown",
+  "givenName": "Agnes Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1854",
+  "birthPlace": "Paddington, Middlesex, England",
+  "deathDate": "1901",
+  "deathPlace": "London, St Pancras.",
+  "photos": [],
+  "spouseIds": [
+    "I877"
+  ],
+  "childIds": [
+    "I2445",
+    "I2830",
+    "I2831",
+    "I2832"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, St Pancras, 19 Church Way"
+    },
+    {
+      "date": "1891",
+      "place": null
+    },
+    {
+      "date": "1901",
+      "place": "London, St Pancras\t1, Ossulston Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I877",
+      "familyId": "F376"
+    }
+  ]
+}

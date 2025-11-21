@@ -1,0 +1,25 @@
+{
+  "id": "I2713",
+  "name": "Leonard William Wood",
+  "givenName": "Leonard William",
+  "surname": "Wood",
+  "sex": "M",
+  "birthDate": "1909",
+  "birthPlace": "London, Deptford",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2714"
+  ],
+  "childIds": [
+    "I2712"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2714",
+      "familyId": "F945"
+    }
+  ]
+}

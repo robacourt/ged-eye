@@ -1,0 +1,77 @@
+{
+  "id": "I417",
+  "name": "Franz Rudolph Emil Frentzel",
+  "givenName": "Franz Rudolph Emil",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "14  APR 1888",
+  "birthPlace": "London, Stamford Hill, 96 Osbaldeston Road",
+  "deathDate": "18 OCT 1978",
+  "deathPlace": "London, Ealing",
+  "photos": [
+    "Data/Media/Newspaper Reports/R E Fraser.jpg",
+    "Data/Media/1891 census/London/Hackney/RG12 182 38.jpg",
+    "Data/Media/1911 census/London/Stamford Hill/RG14 1049 215.jpg",
+    "Data/Media/Service Records/RE Frentzel Enlistment 1914.jpg",
+    "Data/Media/Service Records/RE Frentzel Medical 1915.jpg",
+    "Data/Media/1939 Register/London/22 Mildenhall Rd.jpg"
+  ],
+  "spouseIds": [
+    "I418"
+  ],
+  "childIds": [
+    "I422",
+    "I121",
+    "I2728",
+    "I421",
+    "I420",
+    "I419",
+    "I2729"
+  ],
+  "parentIds": [
+    "I423",
+    "I424"
+  ],
+  "occupations": [
+    "Tobacconist",
+    "Theatrical Agent",
+    "Sergeant in Army, Victoria Park Camp",
+    "Civil Servant"
+  ],
+  "notes": [
+    "name change by deed poll 2.1.1917 to Ralph Eric Fraser Commonly know as Ru"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Stamford Hill, 96 Osbaldeston Road"
+    },
+    {
+      "date": "1901",
+      "place": "London, Stamford Hill, 96 Osbaldeston Road"
+    },
+    {
+      "date": "1911",
+      "place": "London, Stamford Hill, 46 Northfield Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Hackney, 40 London Road"
+    }
+  ],
+  "residences": [
+    {
+      "date": "BEF 1978",
+      "place": "Edgware, Middlesex, 13 Alders Close"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I418",
+      "familyId": "F74",
+      "marriageDate": "18 OCT 1912",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I417_0.jpg"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "I50",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "JUN  1831",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I178"
+  ],
+  "childIds": [
+    "I179",
+    "I180",
+    "I181",
+    "I182",
+    "I177"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "3 JAN 1797",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "11 JUN 1831",
+  "burialPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I178",
+      "familyId": "F33",
+      "marriageDate": "22 OCT 1822",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": null,
+      "familyId": "F34"
+    }
+  ]
+}

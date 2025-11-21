@@ -1,0 +1,30 @@
+{
+  "id": "I1965",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1806",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1966",
+    "I1964"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Shepton Mallet, Somerset, Paul St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F702"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "I1144",
+  "name": "Lional Thomas George Horlock",
+  "givenName": "Lional Thomas George",
+  "surname": "Horlock",
+  "sex": "M",
+  "birthDate": "ABT 1891",
+  "birthPlace": null,
+  "deathDate": "1945",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1143"
+  ],
+  "childIds": [
+    "I1146",
+    "I1148",
+    "I1147",
+    "I1152"
+  ],
+  "parentIds": [
+    "I1145"
+  ],
+  "occupations": [
+    "Cowman"
+  ],
+  "residences": [
+    {
+      "date": "1915",
+      "place": "Okeford Fitzpaine, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1143",
+      "familyId": "F464",
+      "marriageDate": "8 DEC 1915",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

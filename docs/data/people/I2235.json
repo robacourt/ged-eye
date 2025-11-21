@@ -1,0 +1,30 @@
+{
+  "id": "I2235",
+  "name": "William S Clements",
+  "givenName": "William S",
+  "surname": "Clements",
+  "sex": "M",
+  "birthDate": "ABT 1871",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Bristol/RG12 1983 136 2.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2229",
+    "I2221"
+  ],
+  "occupations": [
+    "Labourer At Iron works"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Gloucestershire, Barton Regis, Brick St"
+    }
+  ],
+  "avatar": "avatars/I2235_0.jpg"
+}

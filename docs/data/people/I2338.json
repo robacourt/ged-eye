@@ -1,0 +1,27 @@
+{
+  "id": "I2338",
+  "name": "Herbert Barnett",
+  "givenName": "Herbert",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "ABT 1881",
+  "birthPlace": "London, St lukes",
+  "deathDate": "4 QTR 1881",
+  "deathPlace": "Shoreditch",
+  "photos": [
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    }
+  ],
+  "avatar": "avatars/I2338_0.jpg"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I1229",
+  "name": "Ann Haskett",
+  "givenName": "Ann",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "1934",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1230"
+  ],
+  "childIds": [
+    "I1231"
+  ],
+  "parentIds": [
+    "I1215",
+    "I1216"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1230",
+      "familyId": "F496"
+    }
+  ]
+}

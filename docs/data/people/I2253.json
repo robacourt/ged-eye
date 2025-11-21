@@ -1,0 +1,43 @@
+{
+  "id": "I2253",
+  "name": "Gwyneth Rita Haycourt",
+  "givenName": "Gwyneth Rita",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "15 JAN 1925",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1939 Register/Bristol/RG101 4984C 9.jpg"
+  ],
+  "spouseIds": [
+    "I2185"
+  ],
+  "childIds": [
+    "I2197",
+    "I2198"
+  ],
+  "parentIds": [
+    "I2251",
+    "I2252"
+  ],
+  "occupations": [
+    "Tobacco stripper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 80 Wellington Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2185",
+      "familyId": "F785",
+      "marriageDate": "23 MAR 1946",
+      "marriagePlace": "Eastville Methodist Church, Bristol"
+    }
+  ],
+  "avatar": "avatars/I2253_0.jpg"
+}

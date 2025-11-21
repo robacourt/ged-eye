@@ -1,0 +1,18 @@
+{
+  "id": "I2101",
+  "name": "Julia Thomas",
+  "givenName": "Julia",
+  "surname": "Thomas",
+  "sex": "F",
+  "birthDate": "1945",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2099",
+    "I2098"
+  ]
+}

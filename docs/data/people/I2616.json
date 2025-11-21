@@ -1,0 +1,29 @@
+{
+  "id": "I2616",
+  "name": "Michele Robyn A'Court",
+  "givenName": "Michele Robyn",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2 FEB 1956",
+  "birthPlace": "Parramatta NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2625"
+  ],
+  "childIds": [
+    "I2626",
+    "I2631"
+  ],
+  "parentIds": [
+    "I989",
+    "I990"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2625",
+      "familyId": "F914"
+    }
+  ]
+}

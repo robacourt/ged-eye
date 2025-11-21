@@ -1,0 +1,24 @@
+{
+  "id": "I867",
+  "name": "Mary Ann WELLEY",
+  "givenName": "Mary Ann",
+  "surname": "WELLEY",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I779"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I779",
+      "familyId": "F330",
+      "marriageDate": "1871"
+    }
+  ]
+}

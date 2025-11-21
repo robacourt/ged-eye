@@ -1,0 +1,18 @@
+{
+  "id": "I1394",
+  "name": "Myrza Mulder",
+  "givenName": "Myrza",
+  "surname": "Mulder",
+  "sex": "F",
+  "birthDate": "27 JAN 1974",
+  "birthPlace": "Enkhuizen, Holland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1391",
+    "I1392"
+  ]
+}

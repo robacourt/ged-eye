@@ -1,0 +1,45 @@
+{
+  "id": "I646",
+  "name": "Emanuel Warren",
+  "givenName": "Emanuel",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I241"
+  ],
+  "childIds": [
+    "I647",
+    "I648",
+    "I649",
+    "I650",
+    "I651",
+    "I652",
+    "I653",
+    "I654",
+    "I655",
+    "I656"
+  ],
+  "parentIds": [
+    "I657",
+    "I658"
+  ],
+  "occupations": [
+    "Limeburner"
+  ],
+  "notes": [
+    "12 in 1851, 24 in 1865, 30 in 1871, 51 in 1891."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I241",
+      "familyId": "F128",
+      "marriageDate": "31 MAY 1865",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

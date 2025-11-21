@@ -1,0 +1,36 @@
+{
+  "id": "I2893",
+  "name": "Florence Louise Unknown",
+  "givenName": "Florence Louise",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1878",
+  "birthPlace": "London, Poplar",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2856"
+  ],
+  "childIds": [
+    "I2899",
+    "I2900"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, West Ham, 75 New City Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Plaistow, 20 Hollybush St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2856",
+      "familyId": "F894"
+    }
+  ]
+}

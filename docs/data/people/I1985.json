@@ -1,0 +1,18 @@
+{
+  "id": "I1985",
+  "name": "John Marks",
+  "givenName": "John",
+  "surname": "Marks",
+  "sex": "M",
+  "birthDate": "29 DEC 1946",
+  "birthPlace": null,
+  "deathDate": "MAR 2004",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1536",
+    "I1535"
+  ]
+}

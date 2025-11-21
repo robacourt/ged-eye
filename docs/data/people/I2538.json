@@ -1,0 +1,27 @@
+{
+  "id": "I2538",
+  "name": "Ellen A'Court",
+  "givenName": "Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1902",
+  "birthPlace": "Wiltshire, Wotton Bassett",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Chelworth/RG14 11824 184.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I231",
+    "I915"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Cricklade, Chelworth"
+    }
+  ],
+  "avatar": "avatars/I2538_0.jpg"
+}

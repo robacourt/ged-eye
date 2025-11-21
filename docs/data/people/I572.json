@@ -1,0 +1,24 @@
+{
+  "id": "I572",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "16 JUL 1909",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "A'Court Albert of Bourton Dorsetshire died 16th July 1909"
+  ],
+  "residences": [
+    {
+      "date": "1909",
+      "place": "Bourton, Dorsetshire"
+    }
+  ]
+}

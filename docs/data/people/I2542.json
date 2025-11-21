@@ -1,0 +1,27 @@
+{
+  "id": "I2542",
+  "name": "Willie A'Court",
+  "givenName": "Willie",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1906",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Dorset/Poole/RG14 12279 69.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I298",
+    "I1562"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Poole, Dorset, 30 South Rd."
+    }
+  ],
+  "avatar": "avatars/I2542_0.jpg"
+}

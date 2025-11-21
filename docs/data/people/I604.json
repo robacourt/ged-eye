@@ -1,0 +1,23 @@
+{
+  "id": "I604",
+  "name": "Matthew Hayward",
+  "givenName": "Matthew",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I603"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F249"
+    }
+  ]
+}

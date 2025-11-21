@@ -1,0 +1,29 @@
+{
+  "id": "I814",
+  "name": "Vera A'Court",
+  "givenName": "Vera",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1902",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1920",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I818"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I794",
+    "I810"
+  ],
+  "notes": [
+    "Headstone"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I818",
+      "familyId": "F348"
+    }
+  ]
+}

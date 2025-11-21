@@ -1,0 +1,28 @@
+{
+  "id": "I1380",
+  "name": "Evelyn Beatrice Robjohns",
+  "givenName": "Evelyn Beatrice",
+  "surname": "Robjohns",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1375"
+  ],
+  "childIds": [
+    "I2309",
+    "I2310"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1375",
+      "familyId": "F544",
+      "marriageDate": "1912",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

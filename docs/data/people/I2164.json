@@ -1,0 +1,32 @@
+{
+  "id": "I2164",
+  "name": "Sarah Jane Willis",
+  "givenName": "Sarah Jane",
+  "surname": "Willis",
+  "sex": "F",
+  "birthDate": "13 AUG 1965",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2171"
+  ],
+  "childIds": [
+    "I2172",
+    "I2173"
+  ],
+  "parentIds": [
+    "I2165",
+    "I2163"
+  ],
+  "occupations": [
+    "Hairdresser"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2171",
+      "familyId": "F778"
+    }
+  ]
+}

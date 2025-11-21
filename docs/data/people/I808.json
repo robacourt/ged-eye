@@ -1,0 +1,28 @@
+{
+  "id": "I808",
+  "name": "William Charles Leonard ROWSE",
+  "givenName": "William Charles Leonard",
+  "surname": "ROWSE",
+  "sex": "M",
+  "birthDate": "Abt 1875",
+  "birthPlace": "Cornwall, England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I792"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I792",
+      "familyId": "F337",
+      "marriageDate": "12 MAY 1897",
+      "marriagePlace": "Christchurch, NZ, Madras St"
+    }
+  ]
+}

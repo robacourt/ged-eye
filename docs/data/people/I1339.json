@@ -1,0 +1,26 @@
+{
+  "id": "I1339",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I935"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Labourer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F390"
+    }
+  ]
+}

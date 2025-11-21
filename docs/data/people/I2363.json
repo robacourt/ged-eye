@@ -1,0 +1,29 @@
+{
+  "id": "I2363",
+  "name": "Kate Elizabeth Cave A'Court",
+  "givenName": "Kate Elizabeth Cave",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1873",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I571",
+    "I2359"
+  ],
+  "baptismDate": "23 FEB 1873",
+  "baptismPlace": "Over Compton",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Over Compton, Dorset"
+    }
+  ],
+  "avatar": "avatars/I2363_0.jpg"
+}

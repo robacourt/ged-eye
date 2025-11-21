@@ -1,0 +1,40 @@
+{
+  "id": "I563",
+  "name": "James a'Court",
+  "givenName": "James",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "ABT 1609",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "ABT 1686",
+  "deathPlace": "South Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I686"
+  ],
+  "childIds": [
+    "I687",
+    "I688",
+    "I689",
+    "I690",
+    "I691",
+    "I692",
+    "I693",
+    "I694",
+    "I695",
+    "I696"
+  ],
+  "parentIds": [
+    "I558",
+    "I559"
+  ],
+  "notes": [
+    "Possibly died 1685/6 in South Cadbury - from Parish Register."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I686",
+      "familyId": "F235"
+    }
+  ]
+}

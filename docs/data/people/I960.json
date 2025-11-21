@@ -1,0 +1,29 @@
+{
+  "id": "I960",
+  "name": "Albert Perry A'Court",
+  "givenName": "Albert Perry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1879",
+  "birthPlace": "Mudgee, NSW",
+  "deathDate": "1942",
+  "deathPlace": "Newtown, NSW, Australia",
+  "photos": [],
+  "spouseIds": [
+    "I1442"
+  ],
+  "childIds": [
+    "I1443",
+    "I1444"
+  ],
+  "parentIds": [
+    "I955",
+    "I959"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1442",
+      "familyId": "F401"
+    }
+  ]
+}

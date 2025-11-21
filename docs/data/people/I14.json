@@ -1,0 +1,20 @@
+{
+  "id": "I14",
+  "name": "Henry Dean",
+  "givenName": "Henry",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": "3 JUN 1843",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I12",
+    "I6"
+  ],
+  "baptismDate": "14 APR 1843",
+  "baptismPlace": "Marnhull, Dorset"
+}

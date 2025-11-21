@@ -1,0 +1,29 @@
+{
+  "id": "I2262",
+  "name": "Lydia Unknown",
+  "givenName": "Lydia",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1823",
+  "birthPlace": "Suffolk, Aldham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I763"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Middlesex, 27 Stanmore St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I763",
+      "familyId": "F800"
+    }
+  ]
+}

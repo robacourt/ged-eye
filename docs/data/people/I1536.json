@@ -1,0 +1,27 @@
+{
+  "id": "I1536",
+  "name": "Lional Victor Marks",
+  "givenName": "Lional Victor",
+  "surname": "Marks",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "NOV 1999",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1535"
+  ],
+  "childIds": [
+    "I1985",
+    "I1986"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1535",
+      "familyId": "F586",
+      "marriageDate": "1945"
+    }
+  ]
+}

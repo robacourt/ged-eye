@@ -1,0 +1,18 @@
+{
+  "id": "I963",
+  "name": "Hannah S. A'Court",
+  "givenName": "Hannah S.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1892",
+  "birthPlace": "Dubbo, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I955",
+    "I959"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "I231",
+  "name": "Arthur A'Court",
+  "givenName": "Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1859",
+  "birthPlace": "East Stour, Dorset",
+  "deathDate": "1942",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Amesbury/RG10 1946 55 17.jpg",
+    "Data/Media/1891 census/Wiltshire/Cricklade/RG12 1588 42 2.jpg",
+    "Data/Media/1901 census/Wiltshire/Wotton Bassett/RG13 1911 105 18.jpg"
+  ],
+  "spouseIds": [
+    "I911",
+    "I915"
+  ],
+  "childIds": [
+    "I912",
+    "I913",
+    "I914",
+    "I916",
+    "I917",
+    "I918",
+    "I2538"
+  ],
+  "parentIds": [
+    "I86",
+    "I227"
+  ],
+  "baptismDate": "12 JUN 1859",
+  "baptismPlace": "East Stour, Dorset",
+  "occupations": [
+    "Baker",
+    "General Dealer",
+    "Brewery Drayman",
+    "General labourer, dairy farmer",
+    "Farmer"
+  ],
+  "notes": [
+    "1893"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Wiltshire, Amesbury, Idmiston, Wesleyan Chapel"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Cricklade, Marston Maisey, Baker & Grocer Shop"
+    },
+    {
+      "date": "1901",
+      "place": "Wiltshire, Wotton Bassett, Beamans Lane"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Cricklade, Chelworth"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I911",
+      "familyId": "F126",
+      "marriageDate": "12 MAY 1892",
+      "marriagePlace": "Kempsford,  Gloucestershire"
+    },
+    {
+      "spouseId": "I915",
+      "familyId": "F127",
+      "marriageDate": "ABT 1898"
+    }
+  ],
+  "avatar": "avatars/I231_0.jpg"
+}

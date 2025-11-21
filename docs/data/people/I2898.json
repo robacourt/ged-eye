@@ -1,0 +1,27 @@
+{
+  "id": "I2898",
+  "name": "Lillian A'Court",
+  "givenName": "Lillian",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1899",
+  "birthPlace": "London, Plaistow",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Plaistow/RG14 9442 198.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2853",
+    "I2854"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, West Ham, 4 Cave Rd."
+    }
+  ],
+  "avatar": "avatars/I2898_0.jpg"
+}

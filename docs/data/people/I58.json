@@ -1,0 +1,36 @@
+{
+  "id": "I58",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I195"
+  ],
+  "childIds": [
+    "I1178"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "23 AUG1807",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "30-1841  43-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I195",
+      "familyId": "F39"
+    }
+  ]
+}

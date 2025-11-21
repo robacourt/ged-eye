@@ -1,0 +1,23 @@
+{
+  "id": "I1389",
+  "name": "Norma Unknown",
+  "givenName": "Norma",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I988"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I988",
+      "familyId": "F410"
+    }
+  ]
+}

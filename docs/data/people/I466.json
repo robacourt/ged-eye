@@ -1,0 +1,25 @@
+{
+  "id": "I466",
+  "name": "Llewellyn Lewis Jones",
+  "givenName": "Llewellyn Lewis",
+  "surname": "Jones",
+  "sex": "M",
+  "birthDate": "17 MAY 1909",
+  "birthPlace": "South Africa, Pretoria",
+  "deathDate": "5 AUG 1987",
+  "deathPlace": "Kent, Whitstable",
+  "photos": [],
+  "spouseIds": [
+    "I460"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I460",
+      "familyId": "F205",
+      "marriageDate": "JUL 1937",
+      "marriagePlace": "London, Woolwich"
+    }
+  ]
+}

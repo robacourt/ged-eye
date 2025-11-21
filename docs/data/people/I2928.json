@@ -1,0 +1,38 @@
+{
+  "id": "I2928",
+  "name": "George F West",
+  "givenName": "George F",
+  "surname": "West",
+  "sex": "M",
+  "birthDate": "Abt 1876",
+  "birthPlace": "Wiltshire, Swindon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I362"
+  ],
+  "childIds": [
+    "I2929",
+    "I2930",
+    "I2931",
+    "I2932",
+    "I2933"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Railway engine fitter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Swindon, 7 Rose St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I362",
+      "familyId": "F1000"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I406",
+  "name": "Stephen A'Court",
+  "givenName": "Stephen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I404"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F185",
+      "marriageDate": "1807",
+      "marriagePlace": "Buildwas, Shropshire"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "I17",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I30"
+  ],
+  "childIds": [
+    "I31",
+    "I32",
+    "I1",
+    "I33",
+    "I34",
+    "I35",
+    "I36"
+  ],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "27 SEP 1763",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "16 SEP 1818",
+  "burialPlace": "Fifehead Magdalen, Dorset, St Mary",
+  "marriages": [
+    {
+      "spouseId": "I30",
+      "familyId": "F2",
+      "marriageDate": "13 MAY 1788",
+      "marriagePlace": "Henstridge, Somerset"
+    }
+  ]
+}

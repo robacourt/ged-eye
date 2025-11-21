@@ -1,0 +1,18 @@
+{
+  "id": "I958",
+  "name": "Emma A'Court",
+  "givenName": "Emma",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1865",
+  "birthPlace": "Mudgee, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I75",
+    "I103"
+  ]
+}

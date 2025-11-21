@@ -1,0 +1,45 @@
+{
+  "id": "I104",
+  "name": "Nathaniel A'Court",
+  "givenName": "Nathaniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "10 JAN 1870",
+  "birthPlace": "Gundanda Creek, Hargraves, NSW",
+  "deathDate": "1944",
+  "deathPlace": "Ballimore, NSW",
+  "photos": [
+    "Data/Picture/Nathaniel 1870 1944.jpg"
+  ],
+  "spouseIds": [
+    "I733"
+  ],
+  "childIds": [
+    "I734",
+    "I973",
+    "I976",
+    "I933",
+    "I977",
+    "I974",
+    "I979",
+    "I980",
+    "I981",
+    "I983",
+    "I985",
+    "I986",
+    "I988"
+  ],
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I733",
+      "familyId": "F62",
+      "marriageDate": "1897",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ],
+  "avatar": "avatars/I104_0.jpg"
+}

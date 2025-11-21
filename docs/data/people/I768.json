@@ -1,0 +1,45 @@
+{
+  "id": "I768",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1825",
+  "birthPlace": "North Cadbury, Somerset,",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I891"
+  ],
+  "childIds": [
+    "I892",
+    "I893",
+    "I1758",
+    "I1757",
+    "I1756"
+  ],
+  "parentIds": [
+    "I755",
+    "I760"
+  ],
+  "baptismDate": "11 DEC 1825",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Lower Woolston"
+    },
+    {
+      "date": "1881",
+      "place": "Pendleton-in-Salford, Lancashire, 13 Lytham St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I891",
+      "familyId": "F320",
+      "marriageDate": "1844",
+      "marriagePlace": "England"
+    }
+  ]
+}

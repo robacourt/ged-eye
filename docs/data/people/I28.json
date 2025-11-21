@@ -1,0 +1,37 @@
+{
+  "id": "I28",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "AFT 1807",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I88"
+  ],
+  "childIds": [
+    "I89",
+    "I90",
+    "I91",
+    "I92",
+    "I93",
+    "I94"
+  ],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "12 APR 1784",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I88",
+      "familyId": "F21",
+      "marriageDate": "4  APR 1804",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

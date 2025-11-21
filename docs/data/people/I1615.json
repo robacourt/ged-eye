@@ -1,0 +1,38 @@
+{
+  "id": "I1615",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1886",
+  "birthPlace": "Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Lancashire/RG12 3002 35 63.jpg",
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1601",
+    "I1602"
+  ],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "notes": [
+    "This a a presumtion from 1901 census only that she is Henrys daughter and that Henry and George are brothers"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Lancashire, Wavertree, 13 Upper cross St."
+    },
+    {
+      "date": "1901",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "avatar": "avatars/I1615_0.jpg"
+}

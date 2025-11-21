@@ -1,0 +1,23 @@
+{
+  "id": "I500",
+  "name": "????? Beale",
+  "givenName": "?????",
+  "surname": "Beale",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I372"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I372",
+      "familyId": "F170"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I2399",
+  "name": "Sylvia Margaret Beck",
+  "givenName": "Sylvia Margaret",
+  "surname": "Beck",
+  "sex": "F",
+  "birthDate": "1972",
+  "birthPlace": "South Africa, Pinetown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2400"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2395",
+    "I2394"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2400",
+      "familyId": "F852"
+    }
+  ]
+}

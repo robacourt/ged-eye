@@ -1,0 +1,25 @@
+{
+  "id": "I1925",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Bef OR 1945",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1777"
+  ],
+  "childIds": [
+    "I391"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1777",
+      "familyId": "F686"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "I1263",
+  "name": "Mildred Annie A'Court",
+  "givenName": "Mildred Annie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1890",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg",
+    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg"
+  ],
+  "spouseIds": [
+    "I1276"
+  ],
+  "childIds": [
+    "I1277",
+    "I1278"
+  ],
+  "parentIds": [
+    "I284",
+    "I287"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    },
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Gracious St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1276",
+      "familyId": "F509",
+      "marriageDate": "19 JUN 1916",
+      "marriagePlace": "Selborne, Hampshire"
+    }
+  ],
+  "avatar": "avatars/I1263_0.jpg"
+}

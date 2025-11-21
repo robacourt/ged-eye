@@ -1,0 +1,19 @@
+{
+  "id": "I2593",
+  "name": "Albertina A'Court",
+  "givenName": "Albertina",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2960"
+  ],
+  "baptismDate": "2 SEP 1859",
+  "baptismPlace": "Dorset, Marnhull"
+}

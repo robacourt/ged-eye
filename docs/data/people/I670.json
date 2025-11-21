@@ -1,0 +1,27 @@
+{
+  "id": "I670",
+  "name": "( Sarah ) Caroline Chant",
+  "givenName": "( Sarah ) Caroline",
+  "surname": "Chant",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I669"
+  ],
+  "childIds": [
+    "I666"
+  ],
+  "parentIds": [
+    "I671"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I669",
+      "familyId": "F279"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1683",
+  "name": "Unknown Knowles",
+  "givenName": "Unknown",
+  "surname": "Knowles",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1684"
+  ],
+  "childIds": [
+    "I1685"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1684",
+      "familyId": "F616"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I2365",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1830",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1734"
+  ],
+  "notes": [
+    "On 1841 census with Jemima suggesting her as unmarried mother and daughter of unmaaried Sarah ??"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    }
+  ]
+}

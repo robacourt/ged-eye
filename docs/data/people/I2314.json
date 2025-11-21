@@ -1,0 +1,26 @@
+{
+  "id": "I2314",
+  "name": "Rene Unknown",
+  "givenName": "Rene",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2313"
+  ],
+  "childIds": [
+    "I2315",
+    "I2316"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2313",
+      "familyId": "F819"
+    }
+  ]
+}

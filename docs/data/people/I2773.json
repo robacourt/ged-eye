@@ -1,0 +1,28 @@
+{
+  "id": "I2773",
+  "name": "Edward Hubbard",
+  "givenName": "Edward",
+  "surname": "Hubbard",
+  "sex": "M",
+  "birthDate": "ABT 1868",
+  "birthPlace": "Middlesex, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2771",
+    "I2772"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Middlesex, Bethnal Green, 28 West Street"
+    },
+    {
+      "date": "1881",
+      "place": "Middlesex, Bethnal Green, 28 West Street"
+    }
+  ]
+}

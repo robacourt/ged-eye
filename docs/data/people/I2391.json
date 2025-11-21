@@ -1,0 +1,25 @@
+{
+  "id": "I2391",
+  "name": "Edith Godden",
+  "givenName": "Edith",
+  "surname": "Godden",
+  "sex": "F",
+  "birthDate": "ABT 1890",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1026"
+  ],
+  "childIds": [
+    "I1962"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1026",
+      "familyId": "F701"
+    }
+  ]
+}

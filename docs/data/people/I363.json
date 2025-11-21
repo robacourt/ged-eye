@@ -1,0 +1,28 @@
+{
+  "id": "I363",
+  "name": "John Clarke",
+  "givenName": "John",
+  "surname": "Clarke",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I364"
+  ],
+  "childIds": [
+    "I324"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Of Stour Provost Dorset"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I364",
+      "familyId": "F157"
+    }
+  ]
+}

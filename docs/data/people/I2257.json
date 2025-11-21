@@ -1,0 +1,27 @@
+{
+  "id": "I2257",
+  "name": "Alfred Simmonds",
+  "givenName": "Alfred",
+  "surname": "Simmonds",
+  "sex": "M",
+  "birthDate": "ABT 1860",
+  "birthPlace": "Sherborne, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Sherborne/RG09 1360 52 40.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2255",
+    "I193"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Sherborne, Dorset, Hound St"
+    }
+  ],
+  "avatar": "avatars/I2257_0.jpg"
+}

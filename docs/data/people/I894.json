@@ -1,0 +1,29 @@
+{
+  "id": "I894",
+  "name": "Eliza Ray",
+  "givenName": "Eliza",
+  "surname": "Ray",
+  "sex": "F",
+  "birthDate": "ABT 1847",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I378"
+  ],
+  "childIds": [
+    "I1453",
+    "I895",
+    "I385"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I378",
+      "familyId": "F173",
+      "marriageDate": "15TH JUL 1871",
+      "marriagePlace": "London, Islington, Mildmay Park Chapel"
+    }
+  ]
+}

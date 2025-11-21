@@ -1,0 +1,27 @@
+{
+  "id": "I2895",
+  "name": "Helen M Emberson",
+  "givenName": "Helen M",
+  "surname": "Emberson",
+  "sex": "F",
+  "birthDate": "ABT 1889",
+  "birthPlace": "London, Mayfair",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1336",
+    "I1335"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Surrey, Walton on Thames, Station Rd"
+    }
+  ],
+  "avatar": "avatars/I2895_0.jpg"
+}

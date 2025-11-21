@@ -1,0 +1,32 @@
+{
+  "id": "I2871",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1850",
+  "birthPlace": "Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1589"
+  ],
+  "childIds": [
+    "I1591",
+    "I1592"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Wiltshire, Swindon, Highworth, 8 Gooch St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1589",
+      "familyId": "F981"
+    }
+  ]
+}

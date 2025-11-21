@@ -1,0 +1,36 @@
+{
+  "id": "I2157",
+  "name": "Rose Elizabeth A'Court",
+  "givenName": "Rose Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1877",
+  "birthPlace": "Bristol",
+  "deathDate": "NOV 1945",
+  "deathPlace": "Weston Super Mare, Somerset",
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2497 134 28.jpg"
+  ],
+  "spouseIds": [
+    "I2218"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2153",
+    "I2154"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 68 Regent St., Ss Philip and Jacob"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2218",
+      "familyId": "F774",
+      "marriageDate": "Q4 1899"
+    }
+  ],
+  "avatar": "avatars/I2157_0.jpg"
+}

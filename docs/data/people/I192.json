@@ -1,0 +1,21 @@
+{
+  "id": "I192",
+  "name": "Eli A'Court",
+  "givenName": "Eli",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I55",
+    "I190"
+  ],
+  "notes": [
+    "9-1841"
+  ]
+}

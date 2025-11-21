@@ -1,0 +1,33 @@
+{
+  "id": "I866",
+  "name": "William George Taylor Cave",
+  "givenName": "William George Taylor",
+  "surname": "Cave",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "23 DEC 1916",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I778"
+  ],
+  "childIds": [
+    "I2324",
+    "I1537"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I778",
+      "familyId": "F329",
+      "marriageDate": "1867"
+    }
+  ]
+}

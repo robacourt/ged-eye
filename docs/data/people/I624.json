@@ -1,0 +1,20 @@
+{
+  "id": "I624",
+  "name": "Harold Ernest Hatcher",
+  "givenName": "Harold Ernest",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "23.3.1928",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I593",
+    "I621"
+  ],
+  "baptismDate": "12.5.1923",
+  "baptismPlace": "Marnhull, Dorset"
+}

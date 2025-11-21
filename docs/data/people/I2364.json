@@ -1,0 +1,39 @@
+{
+  "id": "I2364",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1860",
+  "birthPlace": "Over Compton, Dorset",
+  "deathDate": "1899",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Sherborne/RG12 1658 69 34.jpg",
+    "Data/Media/1871 census/Over Compton/RG 10 2021 81 19.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I571",
+    "I2359"
+  ],
+  "baptismDate": "22 JAN 1860",
+  "baptismPlace": "Dorset, Nether Compton",
+  "burialDate": "20 MAY 1899",
+  "burialPlace": "Nether Compton",
+  "occupations": [
+    "Domestic servant housemaid"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Sherborne, Union St. Union House"
+    }
+  ],
+  "avatar": "avatars/I2364_0.jpg"
+}

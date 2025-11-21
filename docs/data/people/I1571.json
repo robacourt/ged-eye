@@ -1,0 +1,71 @@
+{
+  "id": "I1571",
+  "name": "Charles Edward A'Court",
+  "givenName": "Charles Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "21 MAY 1859",
+  "birthPlace": "Blandford, Dorset, Rose Close",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Blandford Forum/RG 10 1978 61 26.jpg",
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg"
+  ],
+  "spouseIds": [
+    "I1572"
+  ],
+  "childIds": [
+    "I1573",
+    "I1574",
+    "I1575",
+    "I1576",
+    "I2962",
+    "I1577",
+    "I1578"
+  ],
+  "parentIds": [
+    "I44",
+    "I259"
+  ],
+  "occupations": [
+    "Farmer",
+    "Inn Keeper",
+    "Labourer Railway Worker",
+    "House Painter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, 42 East St. White Hart Inn"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 33 Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Orchard St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1572",
+      "familyId": "F594",
+      "marriageDate": "ABT 1886"
+    }
+  ],
+  "avatar": "avatars/I1571_0.jpg"
+}

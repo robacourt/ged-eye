@@ -1,0 +1,36 @@
+{
+  "id": "I2156",
+  "name": "Florence Caroline A'Court",
+  "givenName": "Florence Caroline",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "25 JUL 1871",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2497 134 28.jpg",
+    "Data/Media/1901 census/Bristol/RG13 2381 24 2.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2153",
+    "I2154"
+  ],
+  "baptismDate": "15 OCT 1871",
+  "occupations": [
+    "Beater up in Tobacco Factory"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 68 Regent St., Ss Philip and Jacob"
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, 18 Regent Street"
+    }
+  ],
+  "avatar": "avatars/I2156_0.jpg"
+}

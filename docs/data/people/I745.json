@@ -1,0 +1,30 @@
+{
+  "id": "I745",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1756",
+  "birthPlace": null,
+  "deathDate": "1826",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I897"
+  ],
+  "childIds": [
+    "I898",
+    "I899"
+  ],
+  "parentIds": [
+    "I741",
+    "I742"
+  ],
+  "baptismDate": "20 DEC 1756",
+  "marriages": [
+    {
+      "spouseId": "I897",
+      "familyId": "F306"
+    }
+  ]
+}

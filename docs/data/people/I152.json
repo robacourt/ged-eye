@@ -1,0 +1,53 @@
+{
+  "id": "I152",
+  "name": "George Hatcher",
+  "givenName": "George",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I38",
+    "I162"
+  ],
+  "childIds": [
+    "I153",
+    "I154",
+    "I155",
+    "I156",
+    "I157",
+    "I158",
+    "I159",
+    "I160",
+    "I161"
+  ],
+  "parentIds": [
+    "I163",
+    "I164"
+  ],
+  "baptismDate": "6 APR 1817",
+  "baptismPlace": "Todber, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "of Ashby 20-1841 34-1851 44-1861 50-1867 53-1871 64-1881"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I38",
+      "familyId": "F26",
+      "marriageDate": "31MAY1839",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I162",
+      "familyId": "F85",
+      "marriageDate": "27 FEB 1867",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

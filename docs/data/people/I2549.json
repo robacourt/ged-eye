@@ -1,0 +1,34 @@
+{
+  "id": "I2549",
+  "name": "George Alfred A'Court",
+  "givenName": "George Alfred",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1899",
+  "birthPlace": "Manchester, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Chelsea/RG14 399 462.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2555",
+    "I2548"
+  ],
+  "notes": [
+    "Very possible #1912"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 47 Shawfield St"
+    },
+    {
+      "date": "1911",
+      "place": "London, Chelsea, 29 Shawfield St"
+    }
+  ],
+  "avatar": "avatars/I2549_0.jpg"
+}

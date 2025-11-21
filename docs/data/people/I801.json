@@ -1,0 +1,31 @@
+{
+  "id": "I801",
+  "name": "Charles Samuel ALLAWAY",
+  "givenName": "Charles Samuel",
+  "surname": "ALLAWAY",
+  "sex": "M",
+  "birthDate": "15 MAR 1884",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "29 APR 1971",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I799"
+  ],
+  "childIds": [
+    "I1927"
+  ],
+  "parentIds": [],
+  "burialPlace": "Wellington, NZ, Karori Cemetery,",
+  "notes": [
+    "School Inspectors Returns"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I799",
+      "familyId": "F343",
+      "marriageDate": "3 DEC 1920",
+      "marriagePlace": "Wellington, New Zealand"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I605",
+  "name": "Henry Giles Damen",
+  "givenName": "Henry Giles",
+  "surname": "Damen",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I596"
+  ],
+  "childIds": [
+    "I606"
+  ],
+  "parentIds": [
+    "I607"
+  ],
+  "occupations": [
+    "Chauffeur"
+  ],
+  "notes": [
+    "25-1927"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I596",
+      "familyId": "F246",
+      "marriageDate": "1.9.1927",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
+}

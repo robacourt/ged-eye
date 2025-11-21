@@ -1,0 +1,29 @@
+{
+  "id": "I1546",
+  "name": "Roderick A'Court",
+  "givenName": "Roderick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1554"
+  ],
+  "childIds": [
+    "I1555",
+    "I1556"
+  ],
+  "parentIds": [
+    "I1541",
+    "I1544"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1554",
+      "familyId": "F591"
+    }
+  ]
+}

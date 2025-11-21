@@ -1,0 +1,1226 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><meta http-equiv="X-UA-Compatible" content="IE=edge" /><title>
+	Ancestry.co.uk - 1901 England Census
+</title><link rel="stylesheet" type="text/css" href="http://c.mfcreative.com/lib/tgn/ancestry/ancglobal.css?v=17" /><link rel="stylesheet" type="text/css" href="http://c.mfcreative.com/lib/tgn/ancestry/community/community.css?v=17" /><link rel="stylesheet" type="text/css" href="http://c.mfcreative.com/lib/tgn/combo.ashx?7/lib/tgn/ancestry/search/dialog.css&9/lib/tgn/ancestry/search/contentviewer.css" />
+        
+                
+    <script type="text/javascript" src="http://yui.yahooapis.com/combo?2.7.0/build/yuiloader-dom-event/yuiloader-dom-event.js&2.7.0/build/dragdrop/dragdrop-min.js&2.7.0/build/stylesheet/stylesheet-min.js&2.7.0/build/container/container-min.js&2.7.0/build/cookie/cookie-min.js&2.7.0/build/connection/connection-min.js&2.7.0/build/animation/animation-min.js&2.7.0/build/json/json-min.js&2.7.0/build/get/get-min.js"></script></head>
+<body id="cv_body" onload="TGN.Ancestry.Search.CV.OnLoad()">
+<div class="myMask" id="info_modal_mask" style="visibility:hidden;display:none;"></div>
+<form>
+
+<script type="text/javascript" src="http://c.mfcreative.com/st/db.aspx?dbid=7814&ver=19&tlcid=2057&ti=5538&ti.si=0"></script>
+
+
+
+
+<div id="overlayBrowse" style="visibility:hidden;display:none;">
+
+    <span id="overlayBrowseDialog"><div class="dialog DiaPanel">
+	<div class="rhshdw thshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+	<div class="hd">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content">
+			<div class="DiaHeader">Browse</div>
+			<div class="CloseDia" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(6);TGN.Ancestry.Search.CV.Overlay.Browse.toggle(2);"><div class="flat_icon close_white"></div></div>
+		</div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="bd">
+		<div class="vshdw vshdw-l">
+			<div class="vshdw vshdw-r">
+				<div class="content"><div id="overlayBrowseDivHolder"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="ft">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content"></div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="rhshdw bhshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+</div></span>
+    
+    <div id="browseInformation"></div>
+	
+</div>
+
+
+<div id="overlayPartner" style="visibility:hidden;display:none;" onmouseout="TGN.Ancestry.Search.CV.Overlay.checkMousePosition(event, 'overlayPartner')">
+
+    <span id="overlayPartnerDialog"><div class="dialog DiaPanel">
+	<div class="rhshdw thshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+	<div class="hd">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content">
+			<div class="DiaHeader">Partner Information</div>
+			<div class="CloseDia" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(5);TGN.Ancestry.Search.CV.Overlay.Partner.toggle(2);"><div class="flat_icon close_white"></div></div>
+		</div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="bd">
+		<div class="vshdw vshdw-l">
+			<div class="vshdw vshdw-r">
+				<div class="content"><div id="overlayPartnerDivHolder"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="ft">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content"></div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="rhshdw bhshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+</div></span>
+    
+    <div id="divPartnerInformation">
+        <script language="javascript" type="text/javascript">
+            if ('undefined' != typeof DbInfoOrgCreditHorizontal)
+            {
+                DbInfoOrgCreditHorizontal(5538,'','');
+            }
+            if ('undefined' != typeof DbInfoOrgCreditImage)
+            {
+                if ('undefined' != typeof DbInfoOrgCreditHorizontal)
+                {
+                    document.write('<br class="partnerBreak" />');
+                }
+                DbInfoOrgCreditImage(5538);
+            }
+        </script>
+    </div>
+</div>
+
+
+<div id="overlaySave" style="visibility:hidden;display:none;">
+
+    <span id="overlaySaveDialog"><div class="dialog DiaPanel">
+	<div class="rhshdw thshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+	<div class="hd">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content">
+			<div class="DiaHeader">Save</div>
+			<div class="CloseDia" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(2);TGN.Ancestry.Search.CV.Overlay.Save.toggle(2);"><div class="flat_icon close_white"></div></div>
+		</div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="bd">
+		<div class="vshdw vshdw-l">
+			<div class="vshdw vshdw-r">
+				<div class="content"><div id="overlaySaveDivHolder"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="ft">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content"></div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="rhshdw bhshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+</div></span>
+    
+    
+    <div id="saveBox" class="s_savePop">
+        <table cellpadding="0" cellspacing="0" border="0" id="saveTable">
+    	
+            <tr><td colspan="2"><div id="saveHeading1">Save this record about<br /><i><span id="saveBoxName1"></span></i></div></td></tr>
+    		
+            <tr><td colspan="2"><div>Your Family Tree</div></td></tr>
+    		
+            
+            <tr id="attachToPTNameRadio"> 
+                <td valign="top"><input name="rdoSaveGroup" type="radio" value="1" id="rdoSave1" /></td>
+                <td><label for="rdoSave1" class="savePrimaryOption"><strong>Attach this record to <span id="treeFlowName1"> </span></strong><br /> 
+	                Add this record as a source for <span id="treeFlowName2"> </span></label></td>
+            </tr>
+            
+    	
+            
+            <tr id="attachToSomeoneInTree">
+	            <td valign="top"><input name="rdoSaveGroup" type="radio" value="2" id="rdoSave2"  /></td>
+	            <td>
+	                <label for="rdoSave2">
+			            <strong>Attach this record to your tree</strong><br />
+			            Add this record as a source for an existing person or a new person in your tree
+		            </label>
+	            </td>
+            </tr>
+            <tr id="attachToSomeoneElseInTree">
+	            <td valign="top"><input name="rdoSaveGroup" type="radio" value="2" id="rdoSave3"  /></td>
+	            <td>
+	                <label for="rdoSave3">
+			            <strong>Attach this record to someone else in my tree</strong><br /> 
+			            Add this record as a source for someone else in your tree (or add as a new person)
+		            </label>
+	            </td>
+            </tr>
+            
+            
+            
+    		
+            
+            <tr id="startNewTreeReadio">
+                <td valign="top"><input name="rdoSaveGroup" type="radio" value="1" id="rdoSave4" /></td> 
+                <td><label for="rdoSave4" class="saveStartNewTree"><strong>Start a member tree with <span id="saveBoxName2"></span></strong><br />
+	                Begin your tree with <span id="saveBoxName3"></span></label></td>
+            </tr>
+            
+            
+            
+    		
+            <tr id="trSaveShoebox"><td colspan="2"><div>Your Shoebox</div></td></tr>
+    		
+            
+            <tr id="saveToBoxRadio"> 
+            <td valign="top"><input name="rdoSaveGroup" type="radio" value="3" id="rdoSave5" /></td> 
+                <td><label for="rdoSave5"><strong>Save to your shoebox</strong><br />
+	                Save this record about <span id="saveBoxName4"></span>&nbsp;for later evaluation and organization</label></td>
+            </tr>
+            
+    		
+            <tr id="trSaveYourComputer"><td colspan="2"><div>Your Computer</div></td></tr>
+    		
+            		
+            <tr id="saveToHardDriveRadio">
+                <td valign="top"><input name="rdoSaveGroup" type="radio" value="3" id="rdoSave6" /></td> 
+                <td><label for="rdoSave6"><strong>Save this image</strong><br /> 
+	                Save this image to your hard drive or removable disk</label></td> 
+            </tr>
+            
+    		
+            <tr>
+                <td colspan="2" align="left">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <a id="btnSaveContinue" href="javascript:;" onclick="TGN.Ancestry.Search.CV.SaveOptions.GotoSaveLocation()" class="gbtn med-orange">
+                                    <em>Continue</em>
+                                </a>
+                            </td>
+                            <td class="dlgCancel">
+                                or 
+                                <a id="btnSaveCancel" href="javascript:;" onclick="TGN.Ancestry.Search.CV.Overlay.Save.toggle(2);">
+                                    Cancel
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    
+</div>
+
+
+<div id="overlayReportImageProblem" style="visibility:hidden;display:none;">    
+</div>
+
+
+<div id="overlayImageOptions" style="visibility:hidden;display:none;width:370px;">
+
+    <span id="overlayImageOptionsDialog"><div class="dialog DiaPanel">
+	<div class="rhshdw thshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+	<div class="hd">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content">
+			<div class="DiaHeader">Image Options</div>
+			<div class="CloseDia" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(1);TGN.Ancestry.Search.CV.Overlay.ImageOptions.toggle(2);"><div class="flat_icon close_white"></div></div>
+		</div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="bd">
+		<div class="vshdw vshdw-l">
+			<div class="vshdw vshdw-r">
+				<div class="content"><div id="overlayImageOptionsDivHolder"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="ft">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content"></div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="rhshdw bhshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+</div></span>
+    
+    <table id="OptionsTable" cellpadding="0" cellspacing="0">
+        <tr id="trUseAdvancedViewer" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('viewer')" onmouseover="this.className='hover'" onmouseout="this.className='nohover'">
+            <td class="OptionsCheckTD"><div id="imgviewer" class="CheckMark"></div><input type="checkbox" id="viewer" name="viewer" class="OptionsCheckBox" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('viewer')" /></td>
+            <td class="OptionsTextTD"><b>Use the Advanced Viewer</b><br />Faster viewing and downloads</td>
+        </tr>
+        <tr id="trUseEnhancedImages" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('contrast')" onmouseover="this.className='hover'" onmouseout="this.className='nohover'">
+            <td class="OptionsCheckTD"><div id="imgcontrast" class="CheckMark"></div><input type="checkbox" id="contrast" name="contrast" class="OptionsCheckBox" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('contrast')" /></td>
+            <td class="OptionsTextTD"><b>Use Enhanced Images</b><br />Display images that have been adjusted for light levels</td>
+        </tr>
+        <tr id="trUseCompressedImages" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('quality')" onmouseover="this.className='hover'" onmouseout="this.className='nohover'">
+            <td class="OptionsCheckTD"><div id="imgquality" class="CheckMark"></div><input type="checkbox" id="quality" name="quality" class="OptionsCheckBox" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('quality')" /></td>
+            <td class="OptionsTextTD"><b>Use Compressed Images</b><br />Compressed images will download faster but may be harder to read</td>
+        </tr>
+        <tr id="trShowImageThumbnail" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('thumbCheck')" onmouseover="this.className='hover'" onmouseout="this.className='nohover'">
+            <td class="OptionsCheckTD"><div id="imgthumbCheck" class="CheckMark"></div><input type="checkbox" id="thumbCheck" name="thumbCheck" class="OptionsCheckBox" onclick="TGN.Ancestry.Search.CV.Overlay.ImageOptions.selectOption('thumbCheck')" /></td>
+            <td class="OptionsTextTD"><b>Show Image Thumbnail</b><br />Allows you to quickly move to other areas of the image</td>
+        </tr>
+    </table>
+    
+</div>
+
+
+<div id="overlayPrint" style="visibility:hidden;display:none;">
+    <span id="overlayPrintDialog"><div class="dialog DiaPanel">
+	<div class="rhshdw thshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+	<div class="hd">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content">
+			<div class="DiaHeader">Print</div>
+			<div class="CloseDia" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(7);TGN.Ancestry.Search.CV.Overlay.Print.toggle(2);"><div class="flat_icon close_white"></div></div>
+		</div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="bd">
+		<div class="vshdw vshdw-l">
+			<div class="vshdw vshdw-r">
+				<div class="content"><div id="overlayPrintDivHolder"></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="ft">
+		<div class="vshdw vshdw-l"></div>
+		<div class="content"></div>
+		<div class="vshdw vshdw-r"></div>
+	</div>
+	<div class="rhshdw bhshdw">
+		<div class="hshdw hshdw-l"></div>
+		<div class="hshdw hshdw-r"></div>
+	</div>
+</div></span>
+    
+    <div id="divPrintInformation">
+        <div id="VistaIEPrintHelp" style="visibility:hidden;display:none;">
+            <a id="btnPrintHelp" href="javascript:;" onclick="TGN.Ancestry.Search.CV.NewWindow('/Content/Pages/VistaIEPrintHelp.aspx', 'VistaIEPrintHelp')">
+                Having problems printing? Update your settings.
+            </a>
+        </div>
+        <table id="printTable" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="printImg">
+                    <div id="SiteImage1"></div>
+                </td>
+                <td>
+                    <h2>Print only the image</h2><br />
+                    
+                    <a id="btnPrintImageOnly" href="javascript:;" onclick="printDialogPrint();TGN.Ancestry.Search.CV.Overlay.Print.toggle(0);" class="gbtn med-darkgreen">
+                        <em>Image-only print</em>
+                    </a>
+                </td>
+            </tr>
+            <tr id="trImageAndSourcePrint">
+                <td class="printImg">
+                    <div id="SiteImage2"></div>
+                </td>
+                <td>
+                    <h2>Print image with source and record information</h2><br />
+                    <span class="printText">
+                    
+                    <input type="checkbox" id="chkPrintImageSourceSeparatePages" name="chkPrintImageSourceSeparatePages" /> 
+                    <label for="chkPrintImageSourceSeparatePages">Image & source on separate pages</label>
+                    </span><br /><br />
+                    <a id="btnPrintFriendly" href="javascript:;" onclick="TGN.Ancestry.Search.CV.PrinterFriendlyRecord();TGN.Ancestry.Search.CV.Overlay.Print.toggle(0);" class="gbtn med-darkgreen">
+                        <em>Image & source print</em>
+                    </a>
+                </td>
+            </tr>
+            <tr id="trMyCanvasPrint">
+                <td class="printImg">
+                    <div id="SiteImage3"></div>
+                </td>
+                <td>
+                    <h2>Enhanced custom print</h2><br />
+                    <span class="printText">Use MyCanvas to customize the printing of the image, source, title and index. You can crop, resize, highlight, and add photos, maps and captions.</span><br /><br />
+                    <a id="btnPrintEnhanced" href="javascript:;" onclick="TGN.Ancestry.Search.CV.OpenEnhancedPrintLink();TGN.Ancestry.Search.CV.Overlay.Print.toggle(0);" class="gbtn med-darkgreen">
+                        <em>Customized print</em>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+<div id="overlayOrder" style="visibility:hidden;display:none;"></div>
+
+
+
+<div id="divContentViewer">
+    <div id="pageHeader">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="pageHeaderTable">
+            <tr>
+                <td>
+                    <table id="leftHeaderTable" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td id="con_header">
+                                <table id="tableConHeader" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td id="tdImgLogo">
+                                            <a href="http://www.ancestry.co.uk/" id="link-logo">
+                                                <img id="imgLogo" class="SiteHeaderImage" src="http://c.mfcreative.com/s/0/p/5538/i/miniLogo.gif" style="border-width:0px;" />
+                                            </a>
+                                        </td>
+                                        <td id="tdLnkPartner" style="text-align: left;">
+                                            <a style="visibility:hidden;display:none;" id="lnkPartner" href="javascript:;" onmouseover="TGN.Ancestry.Search.CV.Overlay.hideAll(5);TGN.Ancestry.Search.CV.Overlay.Partner.toggle(2);">
+                                                <script language="javascript" type="text/javascript">
+                                                    var defaultPartner = "Partner Information";
+                                                    document.write(GetDbInfoHorzLinkText(defaultPartner));
+                                                </script>
+                                            </a>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <span id="recordInfoHeader">
+											    <span id="pageTitleWName" style="display:none;">1901 England Census Record for <span id="pageTitleName"></span></span>
+						                        <span id="pageTitleWOName">1901 England Census</span>
+	                                        </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="pageToolbar">
+                                <table id="tableCrumbs" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="returnLink">
+                                            <a id="lnkReturn" href="http://search.ancestry.co.uk/cgi-bin/sse.dll?rank=1&new=1&MSAV=1&msT=1&gss=angs-i&gsfn=Fred&gsln=A'Court&db=uki1901&hovR=1&indiv=1&pf=1&h=12439340"><span class="cv_icon returnArrow"></span><span id="lnkReturnText">Return to Record</span></a>
+                                        </td>
+                                        <td id="cvBreadCrumbs">
+                                            <a id="browseLink_0" href="javascript:;" onclick="TGN.Ancestry.Search.CV.Browse.SetBrowseLinkClicked(this, 0);">Somerset</a> > <a id="browseLink_1" href="javascript:;" onclick="TGN.Ancestry.Search.CV.Browse.SetBrowseLinkClicked(this, 1);">Henstridge</a> > <a id="browseLink_2" href="javascript:;" onclick="TGN.Ancestry.Search.CV.Browse.SetBrowseLinkClicked(this, 2);">District 5</a> > <span class="browseNoLink">Image 13</span>
+                                        </td>
+                                        <td class="help">
+                                            <a href="javascript:TGN.Ancestry.Search.CV.HelpPage();" title="Open a help window">Help</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+	            </td>
+	            <td class="vDivide"></td>
+	            <td id="tdSidePanel" align="right">
+	            
+                    <div id="tdSaveOptions">
+                        <div id="con_saveRecord" class="saveInfo clearfix">
+                            <div class="tl"></div>
+                            <div class="tr"></div>
+                            <div id="btnSaveWrapper2" class="btnWrp" style="vertical-align:middle;">
+                                <a id="lnkSave" href="javascript:;" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(2);TGN.Ancestry.Search.CV.Overlay.Save.toggle(2);" class="gbtn med-orange">
+                                    <em id="btnSave">Save</em>
+                                </a>
+                            </div>
+                            <div id="saveRecordMsgHolder" class="text">
+                                <span id="saveRecordMsg"></span>
+                            </div>
+                        </div>
+                    </div>
+	                
+                </td>
+	        </tr>
+	   </table>
+    </div>
+    
+    <div class="hDivide"></div>
+    
+    <div id="con_body">
+        <table style="width:100%;" cellpadding="0" cellspacing="0">
+            <tr>
+                <td id="imgContainer" valign="top">
+                    <table style="width:100%;height:100%;" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <div class="rcContent">
+                                    <div class="tlcg imgcl"></div>
+                                    <div class="trcg imgcr"></div>
+                                    <div class="activeHeading">
+                                        <div id="divImageOptions" class="divImageOptions">
+                                            <div id="lnkFullScreenMain">
+                                                <a id="lnkFullScreen" href="javascript:;" onclick="TGN.Ancestry.Search.CV.toggleFullScreen()">
+                                                    <span class="iosprite fullscreenicon"></span>
+                                                    <span title="See only the image" id="fullScreenToggle" class="iotext" >
+                                                        Image Only
+                                                    </span>
+                                                    <span title="View the image, index panel and other information" id="fullScreenExit" class="iotext" style='visibility:hidden;display:none;'>
+                                                        View All
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div id="lnkPrint"><a href="javascript:;" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(7);TGN.Ancestry.Search.CV.Overlay.Print.toggle(2);" title="Printer friendly options for your printer"><span class="iosprite printer"></span><span class="iotext">Print</span></a></div>
+                                            <div id="lnkOrder"><a href="javascript:;" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(8);TGN.Ancestry.Search.CV.Overlay.Order.toggle(2);" title="Order prints from MyCanvas"><span class="iosprite ordercopy"></span><span class="iotext">Order</span></a></div>
+                                            <div id="lnkImageOptions"><a href="javascript:;" onclick="if('function'==typeof SetOptionsValues){SetOptionsValues();}TGN.Ancestry.Search.CV.Overlay.hideAll(1);TGN.Ancestry.Search.CV.Overlay.ImageOptions.toggle(2);" title="Enhance your image viewing experience"><span class="iosprite options"></span><span class="iotext">Options</span></a></div>
+                                            <div id="lnkShare"><div class="shareControl">
+<span onclick="ShareMenu.ShowHover('shareDropdown')" onmouseout="ShareMenu.HoverTimeout('shareDropdown')">
+    <table cellpadding="0" cellspacing="0">
+    <tr>
+        <td><span class="icon share">&nbsp;</span></td>
+        <td style="vertical-align: top; padding-left:3px;"><a href="javascript:;"><span class="iotext">Share</span></a>&nbsp;</td>
+        <td><span class="icon downArrow">&nbsp;</span>&nbsp</td>
+        <td>&nbsp;&nbsp;<span class="newText">New</span></td>
+    </tr>
+    </table>
+</span>   
+
+
+<div id="shareDropdown" onmouseout="ShareMenu.HoverTimeout('shareDropdown')" onmouseover="ShareMenu.ShowHover('shareDropdown')">
+<iframe id="iFrame" width="100%" height="100%" frameborder="0"></iframe>
+    <div id="innerDiv" style="position:relative; z-index: 2;">
+        <ul>
+            <li><span class="icon facebook"></span><a href="javascript:loadAndRun('Share.Facebook.Publish',626,436);">Facebook</a></li>
+            <li><span class="icon twitter"></span><a href="javascript:loadAndRun('Share.Twitter.Publish',800,425);">Twitter</a></li>
+            <li class="lastOne"><span class="icon email"></span><a href="javascript:loadAndRun('Share.Email.LoadForm');" id="lnkShare">Email</a></li>
+        </ul>
+    </div>    
+</div>
+</div>
+<div id="overlayEmailForm" style="visibility:hidden;"></div></div>
+                                        </div>
+                                        <div id="btnSaveWrapper1" style="visibility:hidden;display:none;">
+                                            <a id="lnkSave2" href="javascript:;" onclick="TGN.Ancestry.Search.CV.Overlay.hideAll(2);TGN.Ancestry.Search.CV.Overlay.Save.toggle(2);" class="gbtn sml-orange">
+                                                <em id="btnSave2">Save</em>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td valign="top" style="width:100%;height:100%;">
+                            <div id="con_viewer">
+                                <script type="text/javascript" src="http://c.mfcreative.com/lib/tgn/ancestry/search/viewerControl.js?v=5"></script>
+    <div id="viewer-image" style="min-width:500px;">
+        
+        <div class="cf" id="viewer-controls">
+            
+            <div id="vc_let" class="vc_left">
+                <span class="cvcSpanButton"><a id="zoomIn" class="btn zoomin" href="javascript:ZoomIn()" title="Click to make the image larger (Shift +)"></a>&nbsp;<a href="javascript:;" onclick="javascript:ZoomIn()" title="Click to make the image larger (Shift +)">Zoom In</a></span>
+                <span class="cvcSpanButton"><a id="zoomOut" class="btn zoomout" href="javascript:ZoomOut()" title="Click to make the image smaller (Shift -)"></a>&nbsp;<a href="javascript:;" onclick="javascript:ZoomOut()" title="Click to make the image smaller (Shift -)">Zoom Out</a></span>
+                <span class="cvcSpanControl">
+                    <select class="drop" id="zoom" onchange="javascript:SetZoom(this.options[this.selectedIndex].value)">
+                        <option value="25">50%</option>
+                        <option value="50" selected="selected">100%</option>
+                        <option value="75">150%</option>
+                        <option value="100">200%</option>
+                    </select>
+                </span>
+                <span class="cvcSpanImage" id="spanZoomOption">
+                    <a id="zoomQuick" href="javascript:ToggleMagnify();TGN.Ancestry.Search.CV.ToggleMagnify('zoomQuick')" title="Magnifiy - Press & hold mouse button to magnify area, <Ctrl> + click and drag to select an area to zoom in to">
+                        <span class="cvc magnify"></span>
+                        <span id="zoomQuickTextMagnify" class="spanNormal">Magnify</span>
+                        <span id="zoomQuickTextMagnifyOff" class="spanNormal" style="visibility:hidden;display:none;">Turn Magnify Off</span>
+                    </a>
+                </span>
+                <span class="cvcSpanImage"> </span>
+                <span class="cvcSpanImage"><a id="lnkReportImageProblem" href="javascript:;" onclick="AncDialog.Overlay_hideAll(4);AncDialog.ReportImageProblem_toggle(2);" title="Report Image Problem"><span class="cvc reportimageproblem"></span>Report Problem</a></span>
+            </div>
+            <div id="vc_right" class="vc_right">
+                <span class="iv_SpanText">Image:&nbsp;</span> 
+                <input onkeypress="return vc_CheckEnter(event)" onkeydown="vc_CheckGotoImage(event)" } type="text" id="imageno" value="13" maxlength="9" style="width:40px;" /> 
+                <span class="iv_SpanText">of 
+                19
+                
+                </span>
+                <a id="btnGoToImage" href="javascript:;" onclick="vc_ImageJump()" class="gbtn sml-gray" title=""><em>Go</em></a> 
+                <a href="javascript:PrevPage()" class="btn prevpage" title="Previous - View previous image in set"></a>
+                <a href="javascript:NextPage()" class="btn nextpage" title="Next - View next image in set"></a>
+            </div>
+            
+        </div>
+        
+        <div id="image-area">
+            <div id="image-inner">
+                <script type="text/javascript" src="http://c.mfcreative.com/js/utility.js"></script>
+<object classid="clsid:3E3C33EA-28BF-4d58-A0E9-1E478DC491D0" class="ImageControlPlugin" VIEWASTEXT>
+    <object type="application/x-imagecontrol-plugin" width="100%" height="100%" id="ImageControl" class="ImageControlPlugin" VIEWASTEXT>
+	    <param name="Image" value="http://imageservice.ancestry.co.uk/iexec/image.x?f=getfile&dbid=7814&iid=SOMRG13_2304_2306-0118&mac=00634016308173268008lF8G3TlygA8=">
+	    <param name="Title" value="1901 England Census">
+	    <param name="Mode" value="1">
+	    <param name="Zoom" value="25">
+	    <param name="Tiles" value="0">
+	    <param name="Direction" value="vert">
+	    <param name="ImageQuality" value="pq">
+	    <param name="HighlightRects" value="">
+	    <param name="ImageContrast" value="autolevel">
+	    <param name="Thumb" value="0">
+    </object>
+</object>
+<script LANGUAGE="JavaScript">
+var cacheDomain = "http://c.mfcreative.com/";
+var iq = "1";
+var dbid = "7814";
+var path = "Somerset.Henstridge.ALL.5.13";
+var imagePath = "Somerset.Henstridge.ALL.5";
+var iid = "SOMRG13_2304_2306-0118";
+var currentImageNo = "13";
+var cImages = 19;
+var prevUrl = "/Browse/view.aspx?dbid=7814&path=Somerset.Henstridge.ALL.5.12&sid=&gskw=Fred+Acourt";
+var nextUrl = "/Browse/view.aspx?dbid=7814&path=Somerset.Henstridge.ALL.5.14&sid=&gskw=Fred+Acourt";
+//var oPop = window.createPopup();
+var isBook = false;
+var ic = "0";
+var tn = "0";
+var installUrl="/Browse/InstallAdvancedImageViewer.aspx?onok=%2fiexec%2fDefault.aspx%3fhtx%3dview%26r%3d5538%26dbid%3d7814%26iid%3dSOMRG13_2304_2306-0118%26fn%3dFred%26ln%3dAcourt%26st%3dr%26ssrc%3d%26pid%3d12439340&detect=0";
+var sid = "&gskw=Fred+Acourt";
+// the following strings are used in viewer_x.js
+var fitImage="Fit Image";
+var fitWidth="Fit Width";
+var fitHeight="Fit Height";
+var numRange="Please enter a number between 1 and {0}";
+var startZoom=25;
+var printUrlParams="dbid=7814&iid=SOMRG13_2304_2306-0118";
+var ppv="93bf788a02207929802a7b2b4604930f000039a9d7aedc5c";
+</script>
+<script type="text/javascript" src="http://c.mfcreative.com/lib/tgn/ancestry/search/viewerEmb_p.js?v=6"></script>
+
+<script LANGUAGE="JavaScript">
+var ImageControl = document.getElementById("ImageControl");
+ImageControl.addEventListener("OnImageLoadFinish", ImageControl_OnImageLoadFinish, false);
+</script>
+<!--<form name=fNavigate action="" method=post><input id=x type=hidden></form>-->
+                
+            </div>
+        </div>
+    </div>
+
+<script language="javascript" type="text/javascript">
+    var ViewerControl_isPDF = false;
+    var ViewerControl_isTIF = false;
+    var ViewerControl_isSmartBrowser = true;
+    var ViewerControl_isPlugin = true;
+    var ViewerControl_isActiveX = false;
+    var imgViewerQueryString = "?htx=view&r=5538&dbid=7814&iid=SOMRG13_2304_2306-0118&fn=Fred&ln=Acourt&st=r&ssrc=&pid=12439340";
+    var imgViewerGoBtnTitle = "Go - go to any of {0} images";
+    imgViewerGoBtnTitle = imgViewerGoBtnTitle.replace("{0}", cImages);
+    YAHOO.util.Dom.get('btnGoToImage').setAttribute('title',imgViewerGoBtnTitle);
+    
+    var isShift;
+    var isCtrl;
+    
+    document.onkeyup = function(e)
+    {
+        var code;
+        
+        if (!e) e = window.event;
+        code = e.keyCode;
+        if (e.keyCode == 16) isShift = false;
+        if (e.keyCode == 17) isCtrl = false;
+    }
+    
+    document.onkeydown = function(e)
+    {
+        var code;
+  
+        if (!e) e = window.event;        
+        code = e.keyCode;
+        
+        if (code == 16) isShift = true;
+        if (code == 17) isCtrl = true;
+        
+        if (code == 107 && isShift) { isShift = false; ZoomIn(); } // Shift and +
+        if (code == 109 && isShift) { isShift = false; ZoomOut(); } // Shift and -
+        if (code == 80 && isCtrl) // Ctrl and P
+        {
+            isCtrl = false;
+            YAHOO.util.Dom.get('chkPrintImageSourceSeparatePages').checked = true;
+            TGN.Ancestry.Search.CV.PrinterFriendlyRecord();
+            return false;
+        }
+    }
+</script>
+                            </div>
+                        </td>
+                        </tr>
+                    </table>
+                </td>
+                
+                
+                <td valign="top">
+                    <table style="width:100%;height:100%;" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="height:100%;">
+                                <div id="con_tabClosed" onclick="TGN.Ancestry.Search.CV.toggleRPanel()">
+                                    <table cellpadding="0" cellspacing="0" style="height:100%;">
+                                        <tr>
+                                            <td>
+                                                <span id="toggleVIcon" class="togglespi vertShow"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td id="con_tabPanel" style="height:100%;visibility:hidden;display:none;" valign="top">
+                                <div id="tabFull">
+                                    
+                                    <div class="TabGroupLarge">
+                                        <div class="TabGroupLarge TabTopMargin">
+                                            <div class="TabGroupHeader">
+                                                <ul class="Tabs">
+                                                    <li id="tabCommunity" class="active"><a href="javascript:;" onclick="TGN.Ancestry.Search.CV.ClickTab(1,true)"><em>Member Connect</em></a></li>
+                                                    <li id="tabSource" class="lastTab inactive"><a href="javascript:;" onclick="TGN.Ancestry.Search.CV.ClickTab(2,true)"><em>Source</em></a></li>
+                                                </ul><!-- /.Tabs -->
+                                            </div><!-- /.TabGroupHeader -->
+                                            <div class="TabGroupBody">
+                                            </div><!-- /.TabGroupBody -->
+                                            <div class="TabGroupFooter">
+                                            </div><!-- /.TabGroupFooter -->
+                                        </div><!-- /.TabGroupLarge -->
+                                    </div>
+                                    
+                                    <div id="con_tabInfo">
+                                        
+                                        <div id="con_communityPanel" class="tabContent" style="visibility:visible">
+                                            <div class="mainHeading">
+                                                <div class="cv_tab_sub_hdr_cnt" id="mbrCnctTitle">Check out what other Ancestry members are doing with this record.</div>
+                                            </div>
+                                            <div class="cv_tab_cnt">
+										        <ul>
+											        <li id="cmtsContainer" class="cv_tab_cnt_sec">
+												        <h1 class="cv_tab_h1">
+													        <span><div class="cv_dropdown_down"></div><em>Comments</em></span>
+												        </h1>
+												        <div class="cv_tab_cnt_bdy">
+												            <div class="cnt_bdy_li" style="font-style:italic" id="cmtsNone">
+												                There are no comments for this record
+												            </div>
+												            <div id="cmtsContent">
+												                
+												            </div>		
+												            <div id="cmtsAdtlContent" style="display:none;">
+												                
+												            </div>										        
+													        <div class="cnt_bdy_li"><a id="cmtsMoreLink" style="display:none;" href="javascript:TGN.Ancestry.Search.CV.ToggleMore('cmtsMoreLink', 'cmtsAdtlContent', 'cmtsContent')">See More</a>
+													        <div class="leave_comment_btn">
+														        <a id="btnAddCmt" onclick="TGN.Ancestry.Search.CV.ShowComments()" class="gbtn med-gray"><em><div class="flat_icon comment_white"></div>Leave a comment</em></a>
+													        </div>
+													        </div>
+												        </div>
+												        <div id="cmtsTemplate" style="display:none;">
+												            <div class="cnt_bdy_li">__commentProfile__&nbsp;on&nbsp;__commentDate__&nbsp;said:</div>
+												            <div class="cnt_bdy_li">__commentTxt__</div>													            
+												        </div>
+												        <div id="cmtsDeletableTemplate" style="display:none;">
+												            <div class="cnt_bdy_li  userHighlight">__commentProfile__&nbsp;on&nbsp;__commentDate__&nbsp;said:<br />
+												            __commentTxt__<a href="javascript:TGN.Ancestry.Search.CV.DeleteComment(__cmtPid__, __cmtId__)"><span class="remove_user_brown"></span></a></div>													            
+												        </div>
+											        </li>
+											        <li id="lrContainer" style="display:none;" class="cv_tab_cnt_sec">
+												        <h1 class="cv_tab_h1">
+													        <span><div class="cv_dropdown_down"></div><em>People who saved this record</em></span>
+												        </h1>
+												        <div id="lrContent" class="cv_tab_cnt_bdy">
+													        
+													        <div id="stPubTreeTemplate" style="display:none;">
+													            <div class="cnt_bdy_li">
+													                <table>
+													                    <tr>
+													                        <td style="width:32px;">__stPubTreePersonaImg__</td>
+													                        <td valign="top"><a href="__stPubPersonaLink__">__stPubTreePersonaName__</a>&nbsp;in&nbsp;<a href="__stPubTreeTreeLink__">__stPubTreeTreeName__</a><br />
+														                        Saved by&nbsp;__stPubTreeUserProfile__&nbsp;on __stPubTreeDate__
+														                    </td>
+													                    </tr>
+													                </table>
+													            </div>
+													        </div>
+													        <div id="stPrivTreeTemplate" style="display:none;">
+													            <div class="cnt_bdy_li">__stPrivTreeProfile__ on __stPrivTreeDate__</div>
+													        </div>
+													        <div id="stsbTemplate" style="display:none;">
+													            <div class="cnt_bdy_li">__stsbProfile__ on __stsbDate__</div>
+													        </div>
+													        <div id="stPubTreeHdr" style="display:none;" class="cnt_bdy_li cv_tab_cnt_sub_hdr">Saved to Public Family Trees</div>
+													        <div id="stPubTreeContent">
+													            
+													        </div>
+													        <div id="stPubTreeAdtlContent" style="display:none;">
+												                
+												            </div>
+												            <div class="cnt_bdy_li"><a id="stPubTreeMoreLink" style="display:none;" href="javascript:TGN.Ancestry.Search.CV.ToggleMore('stPubTreeMoreLink', 'stPubTreeAdtlContent', 'lrContent')"></a></div>
+												            <div id="stPrivTreeHdr" style="display:none;" class="cnt_bdy_li cv_tab_cnt_sub_hdr">Saved to Private Family Trees</div>
+													        <div id="stPrivTreeContent">
+													            
+													        </div>
+													        <div id="stPrivTreeAdtlContent" style="display:none;">
+												                
+												            </div>
+    														<div class="cnt_bdy_li"><a id="stPrivTreeMoreLink" style="display:none;" href="javascript:TGN.Ancestry.Search.CV.ToggleMore('stPrivTreeMoreLink', 'stPrivTreeAdtlContent', 'lrContent')">See More</a></div>
+													        <div id="stsbHdr" style="display:none;" class="cnt_bdy_li cv_tab_cnt_sub_hdr">Saved to their Shoebox</div>
+													        <div id="stsbContent">
+													            
+													        </div>
+													        <div id="stsbAdtlContent" style="display:none;">
+												                
+												            </div>
+													        <div class="cnt_bdy_li"><a id="stsbMoreLink" style="display:none;" href="javascript:TGN.Ancestry.Search.CV.ToggleMore('stsbMoreLink', 'stsbAdtlContent', 'lrContent')">See More</a></div>
+												        </div>
+											        </li>
+											        <li id="chngContainer" style="display:none;" class="cv_tab_cnt_sec">
+												        <h1 class="cv_tab_h1">
+													        <span><div class="cv_dropdown_down"></div><em>People who added to this record</em></span>
+												        </h1>
+												        <div id="chngTemplate" style="display:none;">
+												            <div class="cnt_bdy_li">__chngProfileLink__&nbsp;on&nbsp;__chngDate__</div>
+												        </div>
+												        <div id="chngContent" class="cv_tab_cnt_bdy">
+												            <div id="chngNormContent">
+													            
+												            </div>
+												            <div id="chngAdtlContent" style="display:none;">
+												                
+												            </div>
+												            <div class="cnt_bdy_li"><a id="chngMoreLink" style="display:none;" href="javascript:TGN.Ancestry.Search.CV.ToggleMore('chngMoreLink', 'chngAdtlContent', 'chngContent')">See More</a></div>
+												            <div class="cnt_bdy_li"><a id="chngSeeChangesLink" href="#">See what's been added</a></div>
+												        </div>
+											        </li>
+											        <li id="mbContainer" style="display:none;" class="cv_tab_cnt_sec">
+												        <div id="mbTemplate" style="display:none;"><div class="cnt_bdy_li"><a href="__mbLink__">__mbLinkName__</a></div></div>
+												        <h1 class="cv_tab_h1">
+													        <span><div class="cv_dropdown_down"></div><em>Related Message Boards</em></span>
+												        </h1>
+												        <div id="mbContent" class="cv_tab_cnt_bdy">
+												        
+												        </div>
+											        </li>
+											        <li id="riContainer" style="display:none;" class="cv_tab_cnt_sec">
+													        <div id="riTemplate" style="display:none;"><div class="cnt_bdy_li"><div style="float:right;">__riResCount__</div> <a href="__riLink__">__riLinkName__</a></div></div>
+													        <h1 class="cv_tab_h1">
+														        <span><div class="cv_dropdown_down"></div><em>Research Interests</em></span>
+													        </h1>
+													        <div id="riContent" class="cv_tab_cnt_bdy">
+														        
+													        </div>
+												    </li>												        
+											        <li id="ecContainer" style="display:none;" class="cv_tab_cnt_sec">
+												        <h1 class="cv_tab_h1">
+													        <span><div class="cv_dropdown_down"></div><em>Expert Connect</em></span>
+												        </h1>
+												        <div class="cv_tab_cnt_bdy">
+												            <div class="cnt_bdy_li" id="ecTxt">													                
+												                Work with a professional near  who can look up records or do other research for you.	
+												            </div>
+												            <div class="cnt_bdy_li">
+												                <a href="#" id="exConnLink">Find a researcher</a>
+												            </div>
+												        </div>
+											        </li>
+										        </ul>
+									        </div>
+                                        </div>
+                                        
+
+                                        
+                                        <div id="con_sourcePanel" class="tabContent" style="visibility:hidden;display:none;">
+                                            <div class="cv_tab_cnt">
+									            <ul>
+										            <li id="con_source_sourceCitation" class="cv_tab_cnt_sec">
+											            <h1 class="cv_tab_h1">
+												            <span><div class="cv_dropdown_down"></div><em>Source Citation</em></span>
+											            </h1>
+											            <div class="cv_tab_cnt_bdy">
+												            <div class="cnt_bdy_li">
+												                <div id="recLevelSrc" style="display:none;"></div>
+												            </div>
+											            </div>
+										            </li>
+										            <li id="con_source_sourceInformation" class="cv_tab_cnt_sec">
+											            <h1 class="cv_tab_h1">
+												            <span><div class="cv_dropdown_down"></div><em>Source Information</em></span>
+											            </h1>
+											            <div class="cv_tab_cnt_bdy">
+												            <div class="cnt_bdy_li">
+												                <div id="divSourceInfo">
+												                    <script language="JavaScript" type="text/javascript">
+												                        //<![CDATA[
+												                        if (DbInfoHasSourceInfo())
+												                        {
+												                            document.write('<p class="p_sourceTxt">');
+												                            DbInfoSourceInfo();
+												                            document.write('</p>');
+												                        }
+												                        else
+												                        {
+												                            YAHOO.util.Dom.get('con_source_sourceInformation').style.display = 'none';
+												                            YAHOO.util.Dom.get('con_source_sourceInformation').style.visibility = 'hidden';
+												                        }
+												                        //]]>
+                                                                    </script>
+                                                                </div>
+												            </div>
+											            </div>
+										            </li>
+										            <li id="con_source_sourceDescription" class="cv_tab_cnt_sec">
+											            <h1 class="cv_tab_h1">
+												            <span><div class="cv_dropdown_down"></div><em>Source Description</em></span>
+											            </h1>
+											            <div class="cv_tab_cnt_bdy">
+												            <div class="cnt_bdy_li">
+												                <div id="divSourceDescription">
+												                    <script language="JavaScript" type="text/javascript">
+												                        //<![CDATA[
+												                        if (DbInfoHasMiniDescription() || DbInfoHasDescription())
+												                        {
+												                            document.write('<p class="p_sourceTxt">');
+												                            DbInfoMiniDescription();
+												                            document.write(' <a href=\"http://search.ancestry.co.uk/search/db.aspx?dbid=7814&enc=1\">Learn more...</a>');
+												                            document.write('</p>');
+												                        }
+												                        else
+												                        {
+												                            YAHOO.util.Dom.get('con_source_sourceDescription').style.display = 'none';
+												                            YAHOO.util.Dom.get('con_source_sourceDescription').style.visibility = 'hidden';
+												                        }
+												                        //]]>
+                                                                    </script>
+                                                                </div>
+												            </div>
+											            </div>
+										            </li>
+										        </ul>
+										    </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </td>
+                        </tr>                        
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <div id="con_footerClosed" onclick="TGN.Ancestry.Search.CV.toggleFooter()">
+            <table cellpadding="0" cellspacing="0" style="width:100%;">
+                <tr>
+                    <td align="center">
+                        <span id="toggleHIcon" class="togglespi horzHide"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="con_footer" >
+            <div class="rcContent">
+                <div class="tlcg"></div>
+                <div class="trcg"></div>
+                <div class="activeHeading" id="cvIdxTitle">
+                    Ancestry Index
+                </div>
+                <div id="cvIdxPaging" class="activeHeading"></div>
+                <div id="cvIdxTitleFiller" class="activeHeading"></div>
+            </div>
+            <div id="con_footer_index">
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+</form>
+
+</body>
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://c.mfcreative.com/lib/tgn/ancestry/Ancestry.jsx?v=1&ti=5538&ti.si=0&tlcid=2057"></script>
+<script type="text/javascript" src="http://c.mfcreative.com/lib/tgn/combo.ashx?5/lib/tgn/ancestry/search/dialog.js&14/js/search/searchResult.js&15/lib/tgn/ancestry/search/RecordSetDataModel.js&30/lib/tgn/ancestry/search/ContentViewer.js&14/lib/tgn/ancestry/search/orem.js&2/lib/tgn/ancestry/community/miniprofile.js&2/lib/tgn/ancestry/community/contact.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script id="cvwScripts" language="javascript" type="text/javascript">
+    
+    
+    var usingVista = false;    
+    var lcid = 2057;
+    
+     
+    var ppvHash = "7c61bded762ea98c4c7fbd66308b0810000039a9d7aedbef";
+    
+    
+    var noRecords = "No Member Connect information could be obtained for records in this image.";
+
+    var fn = "Fred";
+    var ln = "Acourt";
+    var pid = "12439340";
+    var currentDbName = "uki1901";
+    var currentDbid = "7814";
+    var currentImageId = "SOMRG13_2304_2306-0118";
+    
+    
+    var ancestryUrlBase = "http://www.ancestry.co.uk/";
+    var cacheUrlBase = "http://c.mfcreative.com/";
+    var searchDomain = "search.ancestry.co.uk";
+    var searchUrlBase = "http://search.ancestry.co.uk/cgi-bin/sse.dll?";
+    var myCanvasUrl = "mycanvas.ancestry.co.uk";
+    var treesUrlBase = "http://trees.ancestry.co.uk/pt/";
+    var communityUrlBase = "http://community.ancestry.co.uk/";
+    var msgBoardsUrlBase = "http://boards.ancestry.co.uk/";
+    var savedShoeboxUrl = "http://www.ancestry.co.uk/myancestry/shoeboxpage.aspx?db=7814&pid=";
+    var expertConnUrlBase = "http://www.ancestry.co.uk/s39999/t16905/rd.ashx";
+    var savedTreeUrl = treesUrlBase + "person.aspx?pid={0}&tid={1}";
+    
+    
+    var canSaveImageToDisk = true;
+
+    
+    var canSaveToShoebox = true;    
+    
+     
+    var ptNameAttachMsg = "Save to  in your tree";
+    var doesNotHaveFamilyTree = true;
+    var isInTreeFlow = false;
+    var shouldPTNameAttach = false;
+    var lastViewedTreeName = " ";
+    var lastViewedTreePID = "NA";
+    var lastViewedTreeTID = "";
+    var ssrc = "";
+    
+    
+    var isInstitutional = false;
+    
+     
+    var isCanada = false;
+    
+    
+    var showMyCanvas = true;
+
+    
+    var unsavedMessage = "Save this record about {0} to your family tree, your shoebox, or your computer.";
+    var unsavedInstMessage = "Save this record about {0}.";
+    var unsavedMessageNoName = "Save this record to your family tree, your shoebox, or your computer.";
+    var unsavedInstMessageNoName = "Save this record.";
+    var savedHeading = "&nbsp;<b>{0} is:</b>";
+    var savedHeadingNoName = "You\'ve saved this before:";
+    var savedShoeboxMsg = "Saved to your {0}Shoebox</a>";
+    var removeShoeboxLink="Remove";
+    var removeShoeboxTooltip="Remove this record from the Shoebox";
+    var detachRecMsg="Are you sure you want to remove this record?  Note:  Removing this record also removes source citations created from this record but does not remove events associated with this record.";
+    var detachRecFailedMsg="The record could not be removed from the tree.";
+    var removeShoeboxMsg="Are you sure you want to remove this record from the Shoebox?";
+    var savedTreeMsg = "Attached to {0} in your tree {1}";
+    var removeTreeLink = "Remove";
+    var removeTreeTooltip = "Remove this record from {0}";
+    var savedToShoeboxIIDMsg = "This image has been saved to your Shoebox.";
+    var someUsersEditLink = "This value was member-submitted. Click to see details.";
+    var yourUserEditLink = "This value was submitted by you. Click to see details.";
+    var saveDlgTitleNameSubstitute = "Your Ancestor";
+    var saveDlgStartTreeNameSubstitute = "this record";
+    var saveDlgStartTreeExplNameSubstitute = "this record";
+    var saveDlgSboxOptExplNameSubstitute = "your ancestor";
+    
+     
+    var addOUpdate = "Add Update"; 
+    var viewOUpdates = "View Updates";
+    var blankLabel = "add"; 
+    var blankLink = "Update";
+    
+    TGN.Ancestry.Search.CV.Browse.cvwBrowseType = 0; 
+TGN.Ancestry.Search.CV.Browse.cvwBrowseLevels = 3; 
+TGN.Ancestry.Search.CV.Browse.cvwBrowseTableValues = new Array("Somerset", "Henstridge", "District 5"); 
+TGN.Ancestry.Search.CV.Browse.cvwCurrentProcessingTimes = new Array(0, 0, 00); 
+
+    
+    
+    var mcTitle = "Check out what other Ancestry members are doing with this record for __name__.";
+    var mcTitleNoName = "Check out what other Ancestry members are doing with this record.";
+    var mcResearcher = "researcher";
+    var mcResearchers = "researchers";
+    var mcIn = "in";
+    var mcSurnames = "Surnames > ";
+    var mcLocations = "Locations > ";
+    var mcCnfmCmtDel = "Are you sure you want to delete your comment? ";
+    var mcIsEnglish = "true";
+    var mcSeeComments = "See all {0} comments ";
+    var mcSeePeople = "See all {0} people ";
+    var mcIsUsSite = "false";
+    var mcSeeAllCorrections = "See all {0} people ";
+    var mcAddCorrection = "See all {0} people ";
+    var mcExConnTxt1 = "Work with a professional near {0} who can look up records or do other research for you. ";
+    var mcExConnTxt2 = "Work with a professional researcher near places related to this record. ";    
+    var userDocDomain = "userdoc.ancestry.com";
+    
+	TGN.Ancestry.Search.CV.OnPageLoad();
+    
+    TGN.Ancestry.Search.CV.PartnerChecks();
+
+    
+    var indexHeaderPaging = "Records {0}-{1} of {2}";
+    var indexHeaderPagingNext = "Next {0}";
+    var indexHeaderPagingPrev = "Previous {0}";
+    
+    // Hide or load the index panel
+    var noIndexPanel = false;
+    
+        var indexPanelUrl = "/Content/Pages/AJAX/IndexPanel.aspx?dbid=7814&iid=SOMRG13_2304_2306-0118&pid=12439340&dt=&rthsh=14ec9dcd7dc2fab034e5c81636e1742f&recnum=";
+        var indexPanelUrlRecOff = -1;
+        TGN.Ancestry.Search.CV.LoadIdx();
+    
+</script>
+
+<!--[if IE 7]>
+<style type="text/css">
+#browse-main select { width: 330px; }
+
+</style>
+<![endif]-->
+
+
+<script type="text/javascript" charset="utf-8">
+TGN.Ancestry.Search.RSDM.RecordSetDataModel.Init({'dbid':'7814','imageid':'SOMRG13_2304_2306-0118','userId':'004CB74E-0001-0000-0000-000000000000','doOremPid':false,'doOremImgAll':true,'doShoeboxUser':true,'doTreesUser':true,'doUsernamesAll':true,'doMessageBoardsAll':true,'doResearchInterestsAll':true,'doExpertConnect':true,'doLinkedRecords':true});
+var SuccessType='Search';
+TGN.Ancestry.Search.Orem.I18N = {"addACorrection":"Add an update or more information","whyAddCorrection":"When you add more information or make a correction, you not only set the record straight, you help other researchers find this person.","yourCorrected":"Add an update for {0}","ancestryTrans":"Ancestry Transcription","addAlternate":"Add an update for {0} ","addAlternateNoName":"Add an alternate ","cancel":"Cancel","submitCorrection":"Submit Alternate","comments":"Comments","infoToAdd":"Provide alternate for","or":"or","r_transError":"Transcription error","r_incorrectOrig":"Incorrect in image","r_nickname":"Nick Name","r_maiden":"Maiden Name","r_nameChange":"Name Change","r_variation":"Variation","r_comment":"Comment","r_additionalInfo":"Information not transcribed","r_middle":"Middle Name","reason":"Reason","submittingCor":"Submitting...","viewMemberContribution":"View Member Contributions","memberContributionsfor":"Contributions for {0}","viewCorrectionDesc":"This is what other Ancestry members have added to this record. If you have something to add, click on Add your own and tell us what you know.","ratherThan":"{0} rather than {1}","addyourown":"Add your own","numContributions":"{0} Contributions","close":"Close","submittedBy":"Submitted by {0} on {1}","submittedOn":"Submitted on {0}","yourAddition":"Your Submissions","errNoCommentTxt":"You have not entered a comment.  Please type something in or press cancel.","errNoCorrTxt":"No update text entered.","areyouSureCorrection":"Are you sure you want to delete your correction?","areyouSureComment":"Are you sure you want to delete your comment?","addorViewCorrection":"View/Add Alternate Info","addorViewComm":"View/Add Comments","oremSourceComment":"Explain or Source your update","oremSourceCommentLink":"Explain or Source your update(optional)","noReasonText":"new transcription.","oremTM0":"Correction due to an error in transcription.","oremTM1":"The original data on the record is incorrect.","oremTM2":"Added a Nickname.","oremTM3":"Added a Maiden Name.","oremTM4":"Added an alternate name.","oremTM5":"Added a variation of the recorded data.","oremTM6":"Added a comment.","oremTM7":"Added additional data not found on the record.","oremTM8":"Added a middle name.","yourComment":"Your Comment","whyAddComment":"Share what you know about this record.","addAComment":"Add a Comment","addACommentFor":"Add a comment for {0}.","submit":"Submit","maxChar500":"(max 500 characters)","maxCharAlert":"The maximum length of a comment is 500 characters.","changesSaved":"Your alternate has been saved","applyToHH":"Apply {0} &quot;{1}&quot; to other members of this household?","selectAll":"Select All","submitHH":"Apply","Name":"Name","choose":"Choose...","requiredField":"Your update was missing, please provide update or hit \u0027Cancel\u0027","noReasonSelected":"Please choose a reason for your alternate.","pleaseIncludeYear":"Please include a year, such as 1899 or 1905","questionablecorr":"Submit {0} as a correction for {1}?"};
+TGN.Ancestry.Search.Orem.Init({"dbid":7814,"imageid":"SOMRG13_2304_2306-0118","doIframe":true,"gravityfunc":TGN.Ancestry.Search.CV.GetGravityValue});
+
+                var srWin = null;
+                function loadAndRun(functionName, width, height) {
+                    if (srWin != null) srWin.close();
+                    if (width && width > 0 && height && height > 0) {
+                        var left = (screen.width / 2) - (width / 2);
+                        var top = (screen.height / 2) - (height / 2);
+                        srWin = window.open('/ShareHandler.ashx?f=GetLoadingMsg', 'twitterWindow', 'toolbar=0,location=0,status=0,menubar=0,scrollbars=1,resizable=1,top=' + top + ',left=' + left + ',width=' + width + ',height=' + height);
+                    }
+
+                    if(window.IsShareControlLoadedYet)
+                    {
+                        eval(functionName).call();
+                    }
+                    else {
+                        YAHOO.util.Get.script('http://c.mfcreative.com/Lib/TGN/Shared/AncestryShare2.js?v=6', { onSuccess: function(o) {Share.Data='dbid=7814&medType=1&recName={0}&sePT=Image&seST=Search&seET=send&seNO=New&seSubT=Image';
+Share.TrackingId='183827ee-8f8a-4bd9-a63c-8440021ba46d';
+Share.TrackingOrigin='ImageViewer';
+Share.ReturnUrl='http://search.ancestry.co.uk/ShareHandler.ashx?retUrl=';
+Share.ReturnUrlParam='http://search.ancestry.co.uk/landing/facebook/facebookcallback.aspx?dbid=7814&db=uki1901&iid=SOMRG13_2304_2306-0118&pid={1}&ancestor={0}&from=Ian+A\'Court&emd=5d9d2236a900c68847f420b29eao689a8000039a9d7aedbef';
+Share.Email.Filler='[Name]';
+Share.Email.Type='3';
+Share.Email.LimitError='Please limit your message to 1000 characters.';
+Share.Email.PrivacyUrl='http://www.ancestry.co.uk/legal/Privacy.aspx?hideHeader=1';
+Share.Facebook.Type='1';
+Share.Facebook.ShareUrl='http://search.ancestry.co.uk/ShareHandler.ashx?f=GetPostingPage&title=View+this+record+on+Ancestry&desc=1901+England+Census&img=http%253a%252f%252fc.ancestry.com%252fi%252fsearch%252fsample.jpg';
+Share.Twitter.Error='Twitter posting service unavailable. Please try again later.';
+Share.Twitter.Type='2';
+Share.Twitter.Message='I just found an interesting historical document about {0}. Check it out at';
+Share.Twitter.MessageNoName='I just found an interesting historical document on Ancestry.  Check it out at';
+
+                        eval(functionName).call();
+                        } });
+                    }
+                }
+
+                var ShareMenu = {
+					
+					sharedFromContentViewer: 1,		                    
+
+					timerId: null,
+
+                    ShowHover: function()
+                    {
+						this._hoverTimeoutClear();
+                        document.getElementById('shareDropdown').style.display = 'block';
+                    },
+
+                    HoverTimeout: function()
+                    {
+                        this._hoverTimeoutClear();
+                        this.timerId = setTimeout('ShareMenu._closeHover()', 250, 'JAVASCRIPT');
+                    },
+
+                    _closeHover: function()
+                    {
+                       document.getElementById('shareDropdown').style.display = 'none';
+                       this._hoverTimeoutClear();
+                    },
+
+                    _hoverTimeoutClear: function()
+                    {
+                        if(this.timerId != null)
+                        {
+                            window.clearTimeout(this.timerId);
+							this.timerId = null;
+                        }
+                    }
+				
+                };
+
+</script>
+
+
+</html><script type='text/javascript'>
+if(typeof(s_pageName)!='undefined')s_pageName+=" - ContentViewer";
+else var s_pageName = "ContentViewer";
+var s_prop1 = "1901 England Census (Image)";
+var s_eVar11 = "cs:view:uki1901:Image:Indiv:";
+var s_events = "event1";
+var s_account = "ancestryuki";
+var s_prop5 = "Mu2BoJPyLLEhIKPL69C-wC";
+var s_eVar15 = "8589934592:";
+var s_prop10 = "8589934592:";
+var s_prop11 = "004cb74e-0001-0000-0000-000000000000";
+var s_prop12 = "";
+var s_prop8 = "1d0c7e1b2f7d1022701i9u4s";
+var s_prop3 = "BotBlocker=0-.1s,BrowseSR=0-.1s,Ucdm=.1-1s";
+</script>
+<script type='text/javascript' src='http://c.mfcreative.com/js/omniture.js?v=7'></script>
+<script type='text/javascript'><!--
+var s_code=s.t();if(s_code)document.write(s_code);
+//--></script>
+
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	try {
+		var pageTracker = _gat._getTracker("UA-2601357-4");
+		pageTracker._setDomainName("ancestry.co.uk");
+		pageTracker._trackPageview();
+	}catch(err) {}
+</script>
+<!-- SN:sui020 -->

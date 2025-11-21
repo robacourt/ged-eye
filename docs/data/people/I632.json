@@ -1,0 +1,28 @@
+{
+  "id": "I632",
+  "name": "Alice Maude Mary Voller",
+  "givenName": "Alice Maude Mary",
+  "surname": "Voller",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I631"
+  ],
+  "childIds": [
+    "I630"
+  ],
+  "parentIds": [],
+  "notes": [
+    "with issue"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I631",
+      "familyId": "F265"
+    }
+  ]
+}

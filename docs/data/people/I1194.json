@@ -1,0 +1,50 @@
+{
+  "id": "I1194",
+  "name": "Alfred Sydney A'Court",
+  "givenName": "Alfred Sydney",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1890",
+  "birthPlace": "Hinton St Mary, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Wiltshire/Box/RG12 1592 75 30.jpg",
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg",
+    "Data/Media/1911 census/Wiltshire/Box/RG14 11864 213.jpg"
+  ],
+  "spouseIds": [
+    "I2413"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "occupations": [
+    "Gardener domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Wadswick Village, Box, Wiltshire, Cottages"
+    },
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2413",
+      "familyId": "F857",
+      "marriageDate": "1912",
+      "marriagePlace": "Chippenham, Wiltshire"
+    }
+  ],
+  "avatar": "avatars/I1194_0.jpg"
+}

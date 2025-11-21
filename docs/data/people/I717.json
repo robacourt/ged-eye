@@ -1,0 +1,25 @@
+{
+  "id": "I717",
+  "name": "Mary Snook",
+  "givenName": "Mary",
+  "surname": "Snook",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I716"
+  ],
+  "childIds": [
+    "I579"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I716",
+      "familyId": "F238"
+    }
+  ]
+}

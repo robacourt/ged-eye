@@ -1,0 +1,37 @@
+{
+  "id": "I2790",
+  "name": "Kenneth Albert Wigglesworth",
+  "givenName": "Kenneth Albert",
+  "surname": "Wigglesworth",
+  "sex": "M",
+  "birthDate": "1920",
+  "birthPlace": "London, Hackney",
+  "deathDate": "13 SEP 1944",
+  "deathPlace": "Den Haag (The Hague) The Netherlands",
+  "photos": [
+    "Data/Media/1921 Census/Kent/RG15 04450 91.jpg"
+  ],
+  "spouseIds": [
+    "I2791"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2782",
+    "I2783"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Kent, Margate, Rosenburgh, Sweyn Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2791",
+      "familyId": "F969",
+      "marriageDate": "DEC 1942",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I2790_0.jpg"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2409",
+  "name": "Elizabeth Crew",
+  "givenName": "Elizabeth",
+  "surname": "Crew",
+  "sex": "F",
+  "birthDate": "ABT 1869",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2406",
+    "I2407"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stalbridge, Dorset, Landshire Lane"
+    }
+  ]
+}

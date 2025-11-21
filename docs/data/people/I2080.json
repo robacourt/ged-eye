@@ -1,0 +1,30 @@
+{
+  "id": "I2080",
+  "name": "Beatrice Maud A'Court",
+  "givenName": "Beatrice Maud",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1893",
+  "birthPlace": "Camberwell, Peckham, Victoria Place",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2065",
+    "I2066"
+  ],
+  "occupations": [
+    "Dress Making"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    }
+  ],
+  "avatar": "avatars/I2080_0.jpg"
+}

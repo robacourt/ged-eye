@@ -1,0 +1,58 @@
+{
+  "id": "I2797",
+  "name": "Thomas A'Court",
+  "givenName": "Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1864",
+  "birthPlace": "London, Barnsbury, Islington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Greenwich/RG10 760 4 2.jpg"
+  ],
+  "spouseIds": [
+    "I2936"
+  ],
+  "childIds": [
+    "I2937",
+    "I2545"
+  ],
+  "parentIds": [
+    "I2798"
+  ],
+  "occupations": [
+    "Coach painter",
+    "Coach painter",
+    "Coach painter"
+  ],
+  "notes": [
+    "Grandson of Thomas A'Court 404, parents  unknown"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Greenwich, Marlborough St. Pound Cottage."
+    },
+    {
+      "date": "1891",
+      "place": "Sussex, Hove, Livingstone Rd."
+    },
+    {
+      "date": "1901",
+      "place": "Sussex, Hove, 12 Byron St."
+    },
+    {
+      "date": "1911",
+      "place": "Sussex, Hove, 45 Shirley St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2936",
+      "familyId": "F1002",
+      "marriageDate": "Abt 1890"
+    }
+  ],
+  "avatar": "avatars/I2797_0.jpg"
+}

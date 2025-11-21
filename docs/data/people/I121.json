@@ -1,0 +1,56 @@
+{
+  "id": "I121",
+  "name": "Doreen Joan Frentzel",
+  "givenName": "Doreen Joan",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": "2 SEP 1914",
+  "birthPlace": "London, Clapton",
+  "deathDate": "14 AUG 2005",
+  "deathPlace": "Droxford, Hampshire",
+  "photos": [
+    "Data/Picture/Doreen Fraser 1935.jpg",
+    "Data/Picture/Doreen Fraser.jpg",
+    "Data/Picture/Doreen.jpg",
+    "Data/Media/1921 Census/London/RG15 01129 79.jpg"
+  ],
+  "spouseIds": [
+    "I119"
+  ],
+  "childIds": [
+    "I122",
+    "I123"
+  ],
+  "parentIds": [
+    "I417",
+    "I418"
+  ],
+  "occupations": [
+    "Florist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "London, Hackney, 40 London Road"
+    }
+  ],
+  "residences": [
+    {
+      "date": "C.1943",
+      "place": "18 Clapton Square, Lower Clapton, Hackney, London E5"
+    },
+    {
+      "date": "1946 ELECTORAL ROLL",
+      "place": "14 Queensdown Rd, Lower Clapton, Hackney, London E5"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I119",
+      "familyId": "F73",
+      "marriageDate": "4TH JUN 1938",
+      "marriagePlace": "Hackney, London"
+    }
+  ],
+  "avatar": "avatars/I121_0.jpg"
+}

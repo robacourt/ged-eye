@@ -1,0 +1,27 @@
+{
+  "id": "I2821",
+  "name": "Ellen A'Court",
+  "givenName": "Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1862",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Somerset/Marston Magna/RG11 2118 56 13.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Somerset, Marston Magna,  Marston Inn"
+    }
+  ],
+  "avatar": "avatars/I2821_0.jpg"
+}

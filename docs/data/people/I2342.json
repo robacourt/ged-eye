@@ -1,0 +1,40 @@
+{
+  "id": "I2342",
+  "name": "Mary A Carter",
+  "givenName": "Mary A",
+  "surname": "Carter",
+  "sex": "F",
+  "birthDate": "Abt 1825",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Weymouth/HO 107 1857.jpg"
+  ],
+  "spouseIds": [
+    "I2343"
+  ],
+  "childIds": [
+    "I1589"
+  ],
+  "parentIds": [
+    "I2344",
+    "I2345"
+  ],
+  "notes": [
+    "Alternative name on 1851 Mary A Hardy"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Weymouth, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2343",
+      "familyId": "F832"
+    }
+  ],
+  "avatar": "avatars/I2342_0.jpg"
+}

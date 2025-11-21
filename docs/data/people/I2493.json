@@ -1,0 +1,26 @@
+{
+  "id": "I2493",
+  "name": "Harold Lee",
+  "givenName": "Harold",
+  "surname": "Lee",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2494"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1909",
+    "I1908"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2494",
+      "familyId": "F881"
+    }
+  ]
+}

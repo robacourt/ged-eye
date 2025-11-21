@@ -1,0 +1,26 @@
+{
+  "id": "I2780",
+  "name": "Henry Hubbard",
+  "givenName": "Henry",
+  "surname": "Hubbard",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2771"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Carpenter & Builder"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F966"
+    }
+  ]
+}

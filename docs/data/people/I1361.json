@@ -1,0 +1,25 @@
+{
+  "id": "I1361",
+  "name": "Walter George Hodder",
+  "givenName": "Walter George",
+  "surname": "Hodder",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1362"
+  ],
+  "childIds": [
+    "I1360"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1362",
+      "familyId": "F540"
+    }
+  ]
+}

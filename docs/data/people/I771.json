@@ -1,0 +1,35 @@
+{
+  "id": "I771",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1835",
+  "birthPlace": "Bradford Abbas, Dorset, England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
+    "Data/Media/1861 Census/Martock/RG09 1642 8 9.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "notes": [
+    "1851 Census"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    },
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
+  "avatar": "avatars/I771_0.jpg"
+}

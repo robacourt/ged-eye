@@ -1,0 +1,18 @@
+{
+  "id": "I1732",
+  "name": "Camilla Jane Wheeler Bennett",
+  "givenName": "Camilla Jane Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1728",
+    "I1731"
+  ]
+}

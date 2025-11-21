@@ -1,0 +1,17 @@
+{
+  "id": "I1794",
+  "name": "Leslie G A'Court",
+  "givenName": "Leslie G",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1ST QRT 1953",
+  "birthPlace": "Winchester",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1792"
+  ]
+}

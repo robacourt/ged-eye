@@ -1,0 +1,26 @@
+{
+  "id": "I2093",
+  "name": "Charles Fletcher",
+  "givenName": "Charles",
+  "surname": "Fletcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2092"
+  ],
+  "childIds": [
+    "I2094",
+    "I2095"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2092",
+      "familyId": "F748"
+    }
+  ]
+}

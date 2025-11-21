@@ -1,0 +1,27 @@
+{
+  "id": "I731",
+  "name": "Jane Symes",
+  "givenName": "Jane",
+  "surname": "Symes",
+  "sex": "F",
+  "birthDate": "1890",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I732"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I730",
+    "I110"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I732",
+      "familyId": "F297",
+      "marriageDate": "23 OCT 1915"
+    }
+  ]
+}

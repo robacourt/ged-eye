@@ -1,0 +1,36 @@
+{
+  "id": "I2395",
+  "name": "Aubrey Augustas John Beck",
+  "givenName": "Aubrey Augustas John",
+  "surname": "Beck",
+  "sex": "M",
+  "birthDate": "14 JULY 1917",
+  "birthPlace": "Howick, South Africa",
+  "deathDate": "1992",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2394",
+    "I2396"
+  ],
+  "childIds": [
+    "I2397",
+    "I2399"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Contractor"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2394",
+      "familyId": "F849",
+      "marriageDate": "7 MAY 1967",
+      "marriagePlace": "Durban, South Africa"
+    },
+    {
+      "spouseId": "I2396",
+      "familyId": "F850"
+    }
+  ]
+}

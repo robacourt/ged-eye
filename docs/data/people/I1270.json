@@ -1,0 +1,24 @@
+{
+  "id": "I1270",
+  "name": "Unknown Greenhalgh",
+  "givenName": "Unknown",
+  "surname": "Greenhalgh",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1103"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1103",
+      "familyId": "F445",
+      "marriageDate": "1945"
+    }
+  ]
+}

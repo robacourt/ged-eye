@@ -1,0 +1,25 @@
+{
+  "id": "I352",
+  "name": "Hester",
+  "givenName": "Hester",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I351"
+  ],
+  "childIds": [
+    "I350"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I351",
+      "familyId": "F164"
+    }
+  ]
+}

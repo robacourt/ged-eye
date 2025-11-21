@@ -1,0 +1,26 @@
+{
+  "id": "I758",
+  "name": "Amelia A'Court",
+  "givenName": "Amelia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1792",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I896"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I744",
+    "I751"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I896",
+      "familyId": "F312"
+    }
+  ]
+}

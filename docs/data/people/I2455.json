@@ -1,0 +1,45 @@
+{
+  "id": "I2455",
+  "name": "Annie Elizabeth Unknown",
+  "givenName": "Annie Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": "Staffordshire, Burton -on Trent, Rangemore",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 344 266.jpg"
+  ],
+  "spouseIds": [
+    "I2454"
+  ],
+  "childIds": [
+    "I2456",
+    "I2457",
+    "I2546",
+    "I2547"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 136 Marlboro Buildings."
+    },
+    {
+      "date": "1911",
+      "place": "London, Fulham, 32 Bearcroft Buildings"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2454",
+      "familyId": "F870",
+      "marriageDate": "ABT 1894"
+    }
+  ],
+  "avatar": "avatars/I2455_0.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1302",
+  "name": "Nigel H A'Court",
+  "givenName": "Nigel H",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1949",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1102",
+    "I1301"
+  ]
+}

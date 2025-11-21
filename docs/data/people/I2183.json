@@ -1,0 +1,23 @@
+{
+  "id": "I2183",
+  "name": "Michael Franklin",
+  "givenName": "Michael",
+  "surname": "Franklin",
+  "sex": "M",
+  "birthDate": "ABT 1945",
+  "birthPlace": "England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2179"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2179",
+      "familyId": "F783"
+    }
+  ]
+}

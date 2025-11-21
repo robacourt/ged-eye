@@ -1,0 +1,34 @@
+{
+  "id": "I292",
+  "name": "William Seymour",
+  "givenName": "William",
+  "surname": "Seymour",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I285"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I293",
+    "I294"
+  ],
+  "occupations": [
+    "Farmer"
+  ],
+  "notes": [
+    "20-1889"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I285",
+      "familyId": "F142",
+      "marriageDate": "20 FEB1889",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "I177",
+  "name": "Edward A'Court",
+  "givenName": "Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "23 NOV 1813",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "1870",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1195"
+  ],
+  "childIds": [
+    "I1183",
+    "I1617",
+    "I1454",
+    "I1257",
+    "I1455",
+    "I1461"
+  ],
+  "parentIds": [
+    "I50"
+  ],
+  "baptismDate": "21 DEC 1813",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Agricultural Labourer"
+  ],
+  "notes": [
+    "illegitimate"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1851",
+      "place": null
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1195",
+      "familyId": "F97",
+      "marriageDate": "22 OCT 1835",
+      "marriagePlace": "Manston, Dorset"
+    }
+  ]
+}

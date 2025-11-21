@@ -1,0 +1,23 @@
+{
+  "id": "I1488",
+  "name": "Henry Cluett",
+  "givenName": "Henry",
+  "surname": "Cluett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1487"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F567"
+    }
+  ]
+}

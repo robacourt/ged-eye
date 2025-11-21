@@ -1,0 +1,49 @@
+{
+  "id": "I760",
+  "name": "Mary NEWMAN",
+  "givenName": "Mary",
+  "surname": "NEWMAN",
+  "sex": "F",
+  "birthDate": "1784",
+  "birthPlace": "Blackford, Somerset, England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Galhampton/RG10 2421 61 23.jpg"
+  ],
+  "spouseIds": [
+    "I755"
+  ],
+  "childIds": [
+    "I761",
+    "I762",
+    "I763",
+    "I764",
+    "I1733",
+    "I766",
+    "I767",
+    "I768"
+  ],
+  "parentIds": [],
+  "baptismDate": "2 MAY 1784",
+  "baptismPlace": "Blackford, Somerset, England",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Lower Woolston"
+    },
+    {
+      "date": "1871",
+      "place": "Galhampton, North Cadbury, Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I755",
+      "familyId": "F310",
+      "marriageDate": "3 FEB 1808",
+      "marriagePlace": "Blackford, Somerset, England"
+    }
+  ],
+  "avatar": "avatars/I760_0.jpg"
+}

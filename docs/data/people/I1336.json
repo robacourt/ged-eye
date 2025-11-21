@@ -1,0 +1,31 @@
+{
+  "id": "I1336",
+  "name": "George Emberson",
+  "givenName": "George",
+  "surname": "Emberson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1335"
+  ],
+  "childIds": [
+    "I2602",
+    "I2603",
+    "I2604",
+    "I2605",
+    "I2895"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1335",
+      "familyId": "F528",
+      "marriageDate": "4 DEC 1887",
+      "marriagePlace": "London, St Michael, Cornhill"
+    }
+  ]
+}

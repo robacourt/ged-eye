@@ -1,0 +1,34 @@
+{
+  "id": "I1624",
+  "name": "John Warren",
+  "givenName": "John",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": "Abt 1801",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1184",
+    "I1616",
+    "I1630"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F605"
+    }
+  ]
+}

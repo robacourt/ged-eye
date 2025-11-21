@@ -1,0 +1,29 @@
+{
+  "id": "I1104",
+  "name": "Elsie Mabel A'Court",
+  "givenName": "Elsie Mabel",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1926",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1271"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ],
+  "baptismDate": "18 JULY 1926",
+  "baptismPlace": "West Camel, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I1271",
+      "familyId": "F446",
+      "marriageDate": "1946"
+    }
+  ]
+}

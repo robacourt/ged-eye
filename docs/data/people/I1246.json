@@ -1,0 +1,30 @@
+{
+  "id": "I1246",
+  "name": "Mary Ann Haskett",
+  "givenName": "Mary Ann",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "23 OCT 1865",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1247"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1175",
+    "I181"
+  ],
+  "baptismDate": "10 DEC 1865",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1247",
+      "familyId": "F501",
+      "marriageDate": "28 APRIL 1886",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

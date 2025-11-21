@@ -1,0 +1,35 @@
+{
+  "id": "I596",
+  "name": "Lilian Bessie Hatcher",
+  "givenName": "Lilian Bessie",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "23.12.1901",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I605"
+  ],
+  "childIds": [
+    "I606"
+  ],
+  "parentIds": [
+    "I589",
+    "I595"
+  ],
+  "baptismDate": "2.2.1902",
+  "baptismPlace": "Todber, Dorset",
+  "notes": [
+    "25-1927,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I605",
+      "familyId": "F246",
+      "marriageDate": "1.9.1927",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
+}

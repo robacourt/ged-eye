@@ -1,0 +1,39 @@
+{
+  "id": "I2448",
+  "name": "Alfred Richard A'Court",
+  "givenName": "Alfred Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1884",
+  "birthPlace": "London, Dalston",
+  "deathDate": "1972",
+  "deathPlace": "Essex, Havering",
+  "photos": [
+    "Data/Media/1901 census/London/Bethnal Green/RG13 284 135 39.jpg",
+    "Data/Media/1911 census/London/Bethnal Green/RG14 1422 191.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2451",
+    "I2446"
+  ],
+  "occupations": [
+    "Wood machinist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Bethnal Green, 8 Pollards Row."
+    },
+    {
+      "date": "1911",
+      "place": "London, Bethnal Green, 8 Pollards Row."
+    },
+    {
+      "date": "1911",
+      "place": "Wood machinist"
+    }
+  ],
+  "avatar": "avatars/I2448_0.jpg"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I1515",
+  "name": "Walter Rossiter",
+  "givenName": "Walter",
+  "surname": "Rossiter",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1514"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1514",
+      "familyId": "F578"
+    }
+  ]
+}

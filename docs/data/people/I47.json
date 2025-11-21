@@ -1,0 +1,23 @@
+{
+  "id": "I47",
+  "name": "Mary Ann A'Court",
+  "givenName": "Mary Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "12 JAN 1792",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "Died as a baby ??"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I637",
+  "name": "Brian Richard Green",
+  "givenName": "Brian Richard",
+  "surname": "Green",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I634"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I638"
+  ],
+  "baptismDate": "12.7.1953",
+  "occupations": [
+    "Petty Officer R.N."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I634",
+      "familyId": "F267",
+      "marriageDate": "20.4.1974",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "I571",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "20 FEB1831",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": "BEF 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Horsington/Folio 22 page 23.jpg"
+  ],
+  "spouseIds": [
+    "I2359"
+  ],
+  "childIds": [
+    "I2361",
+    "I490",
+    "I2364",
+    "I2362",
+    "I532",
+    "I2363",
+    "I2823",
+    "I2824"
+  ],
+  "parentIds": [
+    "I577",
+    "I578"
+  ],
+  "occupations": [
+    "Shepherd"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Horsington St."
+    },
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2359",
+      "familyId": "F209",
+      "marriageDate": "16 MAY 1853",
+      "marriagePlace": "Somerset, Horsington"
+    }
+  ],
+  "avatar": "avatars/I571_0.jpg"
+}

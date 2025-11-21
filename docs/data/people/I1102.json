@@ -1,0 +1,32 @@
+{
+  "id": "I1102",
+  "name": "Thomas Albert A'Court",
+  "givenName": "Thomas Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1922",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1301"
+  ],
+  "childIds": [
+    "I1302",
+    "I1303"
+  ],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ],
+  "baptismDate": "22 OCTOBER 1922",
+  "baptismPlace": "West Camel, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I1301",
+      "familyId": "F444",
+      "marriageDate": "1947"
+    }
+  ]
+}

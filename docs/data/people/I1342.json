@@ -1,0 +1,29 @@
+{
+  "id": "I1342",
+  "name": "Kate A'Court",
+  "givenName": "Kate",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1845",
+  "birthPlace": null,
+  "deathDate": "1904",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1365"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I935",
+    "I936"
+  ],
+  "notes": [
+    "Possible parents of C. A'Court Opie a member of the New Zeal;and 1907 Sub-Antarctic Islands Scientific Expedition. see web link"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1365",
+      "familyId": "F529"
+    }
+  ]
+}

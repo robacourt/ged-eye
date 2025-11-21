@@ -1,0 +1,25 @@
+{
+  "id": "I2430",
+  "name": "Michael Unknown",
+  "givenName": "Michael",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2429"
+  ],
+  "childIds": [
+    "I2431"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2429",
+      "familyId": "F863"
+    }
+  ]
+}

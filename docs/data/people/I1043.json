@@ -1,0 +1,26 @@
+{
+  "id": "I1043",
+  "name": "Susan Mary Moon",
+  "givenName": "Susan Mary",
+  "surname": "Moon",
+  "sex": "F",
+  "birthDate": "1949",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1042"
+  ],
+  "childIds": [
+    "I1044"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1042",
+      "familyId": "F423",
+      "marriageDate": "1985"
+    }
+  ]
+}

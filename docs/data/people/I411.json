@@ -1,0 +1,34 @@
+{
+  "id": "I411",
+  "name": "Stephen James A'Court",
+  "givenName": "Stephen James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "6 MAY 1950",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1822",
+    "I1418"
+  ],
+  "childIds": [
+    "I415",
+    "I416",
+    "I414"
+  ],
+  "parentIds": [
+    "I410"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1822",
+      "familyId": "F190"
+    },
+    {
+      "spouseId": "I1418",
+      "familyId": "F191"
+    }
+  ]
+}

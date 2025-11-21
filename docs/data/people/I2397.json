@@ -1,0 +1,31 @@
+{
+  "id": "I2397",
+  "name": "Monica Ruth Beck",
+  "givenName": "Monica Ruth",
+  "surname": "Beck",
+  "sex": "F",
+  "birthDate": "2 NOV 1969",
+  "birthPlace": "South Africa, Umzinto,",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2398"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2395",
+    "I2394"
+  ],
+  "occupations": [
+    "Supervisor"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2398",
+      "familyId": "F851",
+      "marriageDate": "30 MAY 1988",
+      "marriagePlace": "South Africa, Port Shepstone"
+    }
+  ]
+}

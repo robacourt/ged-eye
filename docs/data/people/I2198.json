@@ -1,0 +1,29 @@
+{
+  "id": "I2198",
+  "name": "John H A Rowe",
+  "givenName": "John H A",
+  "surname": "Rowe",
+  "sex": "M",
+  "birthDate": "1952",
+  "birthPlace": "Bournemouth",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2200"
+  ],
+  "childIds": [
+    "I2201",
+    "I2199"
+  ],
+  "parentIds": [
+    "I2185",
+    "I2253"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2200",
+      "familyId": "F789"
+    }
+  ]
+}

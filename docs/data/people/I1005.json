@@ -1,0 +1,18 @@
+{
+  "id": "I1005",
+  "name": "Michael O'Connor",
+  "givenName": "Michael",
+  "surname": "O'Connor",
+  "sex": "M",
+  "birthDate": "11 APRIL 1954",
+  "birthPlace": null,
+  "deathDate": "11 APRIL 1954",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I737",
+    "I736"
+  ]
+}

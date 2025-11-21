@@ -1,0 +1,38 @@
+{
+  "id": "I2255",
+  "name": "John William Simmonds",
+  "givenName": "John William",
+  "surname": "Simmonds",
+  "sex": "M",
+  "birthDate": "ABT 1838",
+  "birthPlace": "Castleton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I193"
+  ],
+  "childIds": [
+    "I2256",
+    "I2257"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Grocer"
+  ],
+  "notes": [
+    "Name Relationship to"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Sherborne, Dorset, Hound St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I193",
+      "familyId": "F797"
+    }
+  ]
+}

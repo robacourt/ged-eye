@@ -1,0 +1,18 @@
+{
+  "id": "I1500",
+  "name": "Wilfred John Collis",
+  "givenName": "Wilfred John",
+  "surname": "Collis",
+  "sex": "M",
+  "birthDate": "5 JUL 1894",
+  "birthPlace": "Noahs Ark, Ditcheat, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1498",
+    "I1507"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I303",
+  "name": "Lilly A'Court",
+  "givenName": "Lilly",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1873",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 138 35.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I188",
+    "I297"
+  ],
+  "occupations": [
+    "Packer in paper bag factory"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Poole, Stanley Rd, Grocer Shop"
+    }
+  ],
+  "avatar": "avatars/I303_0.jpg"
+}

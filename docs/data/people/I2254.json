@@ -1,0 +1,48 @@
+{
+  "id": "I2254",
+  "name": "Doris Ivy Haycourt",
+  "givenName": "Doris Ivy",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "4 DEC 1910",
+  "birthPlace": "Bristol, Easton, 2 Peel Street",
+  "deathDate": "1998",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 15016 216.jpg",
+    "Data/Media/1939 Register/Bristol/RG101 4984C 9.jpg"
+  ],
+  "spouseIds": [
+    "I2178"
+  ],
+  "childIds": [
+    "I2177",
+    "I2179"
+  ],
+  "parentIds": [
+    "I2251",
+    "I2252"
+  ],
+  "occupations": [
+    "Punching machine"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911 AS HAYCOURT",
+      "place": "Bristol, Easton, 2 Peel Street"
+    },
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 80 Wellington Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2178",
+      "familyId": "F782",
+      "marriageDate": "7 JUN 1941",
+      "marriagePlace": "Stapleton Church, Bristol"
+    }
+  ],
+  "avatar": "avatars/I2254_0.jpg"
+}

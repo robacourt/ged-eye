@@ -1,0 +1,27 @@
+{
+  "id": "I2245",
+  "name": "Susan Mary Smith",
+  "givenName": "Susan Mary",
+  "surname": "Smith",
+  "sex": "F",
+  "birthDate": "31 AUG 1959",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2240"
+  ],
+  "childIds": [
+    "I2246",
+    "I2244"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2240",
+      "familyId": "F796",
+      "marriagePlace": "Bristol Registry Office"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2749",
+  "name": "Mary Wheeler Bennett",
+  "givenName": "Mary Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "ABT 1851",
+  "birthPlace": "Hampshire, Portsmouth, Portsea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Hampshire/RG09 641 39 30 2.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I374",
+    "I375"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    }
+  ],
+  "avatar": "avatars/I2749_0.jpg"
+}

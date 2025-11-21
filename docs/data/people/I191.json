@@ -1,0 +1,40 @@
+{
+  "id": "I191",
+  "name": "Lavinia A'Court",
+  "givenName": "Lavinia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1828",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Sherborne/RG11 2117 83 36.jpg"
+  ],
+  "spouseIds": [
+    "I2691"
+  ],
+  "childIds": [
+    "I323"
+  ],
+  "parentIds": [
+    "I55",
+    "I190"
+  ],
+  "notes": [
+    "13-1841"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Sherborne, Dorset,169 Horsecastles"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2691",
+      "familyId": "F109"
+    }
+  ],
+  "avatar": "avatars/I191_0.jpg"
+}

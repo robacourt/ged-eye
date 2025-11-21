@@ -1,0 +1,44 @@
+{
+  "id": "I1603",
+  "name": "George T A'Court",
+  "givenName": "George T",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1884",
+  "birthPlace": "Warrington, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Lancashire/RG12 3002 35 63.jpg",
+    "Data/Media/1901 census/Lancashire/RG13 3524 92 1.jpg",
+    "Data/Media/1911 census/Lancashire/St Helens/RG14 22777 305.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1601",
+    "I1602"
+  ],
+  "occupations": [
+    "Glass Maker",
+    "Flagman, LNW Railway"
+  ],
+  "notes": [
+    "ACOURT, HENRY   HEAD   MARRIED     M   45   CHARGEMAN SIGNALS   BEDMINSTER SOMERSET"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Lancashire, Wavertree, 13 Upper cross St."
+    },
+    {
+      "date": "1901",
+      "place": "St. Helens, Lancs, 10 South John St"
+    },
+    {
+      "date": "1911",
+      "place": "St. Helens, Lancs, 9 South John St"
+    }
+  ],
+  "avatar": "avatars/I1603_0.jpg"
+}

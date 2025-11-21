@@ -1,0 +1,43 @@
+{
+  "id": "I2782",
+  "name": "Albert Ernest Wigglesworth",
+  "givenName": "Albert Ernest",
+  "surname": "Wigglesworth",
+  "sex": "M",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Clapton, London",
+  "deathDate": "JUN 1950",
+  "deathPlace": "Essex, Romford",
+  "photos": [],
+  "spouseIds": [
+    "I2783"
+  ],
+  "childIds": [
+    "I2008",
+    "I2790"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Forwarding Clerk",
+    "Manager, glass bottle manufacture, Barrett Ltd., Cambridge Heath, London"
+  ],
+  "notes": [
+    "First name(s) Last name Relationship to head Sex Birth year Age in years Birth place Occupation Employer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Stepney, London, 9 Perth St. ( visitor )"
+    },
+    {
+      "date": "1921",
+      "place": "Kent, Margate, Rosenburgh, Sweyn Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2783",
+      "familyId": "F967"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "I2755",
+  "name": "James Keniston",
+  "givenName": "James",
+  "surname": "Keniston",
+  "sex": "M",
+  "birthDate": "ABT 1811",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2753"
+  ],
+  "childIds": [
+    "I2759",
+    "I2760",
+    "I2756",
+    "I2761",
+    "I2757",
+    "I2758"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Thatcher"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Frog Moor"
+    },
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2753",
+      "familyId": "F960",
+      "marriageDate": "24 MAY 1831",
+      "marriagePlace": "Henstridge, Somerset"
+    }
+  ]
+}

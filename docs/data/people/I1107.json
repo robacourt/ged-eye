@@ -1,0 +1,34 @@
+{
+  "id": "I1107",
+  "name": "Eveline A'Court",
+  "givenName": "Eveline",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1886",
+  "birthPlace": "Dorset, Kingston St Mary",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 108 1.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1100",
+    "I1109"
+  ],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Frome, Mells, Rectory Cottage"
+    },
+    {
+      "date": "1901",
+      "place": "Somerset, Queen Camel, Church Lane"
+    }
+  ],
+  "avatar": "avatars/I1107_0.jpg"
+}

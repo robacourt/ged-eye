@@ -1,0 +1,25 @@
+{
+  "id": "I134",
+  "name": "Elizabeth Mullens",
+  "givenName": "Elizabeth",
+  "surname": "Mullens",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I133"
+  ],
+  "childIds": [
+    "I2"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I133",
+      "familyId": "F3"
+    }
+  ]
+}

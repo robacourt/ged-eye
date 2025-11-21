@@ -1,0 +1,51 @@
+{
+  "id": "I912",
+  "name": "Arthur Charles a'Court",
+  "givenName": "Arthur Charles",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "9 FEB 1893",
+  "birthPlace": "Castle Eaton, Highworth, Wiltshire",
+  "deathDate": "3 SEP 1953",
+  "deathPlace": "East Lodge, Braydon, Wiltshire",
+  "photos": [
+    "Data/Media/1901 census/Wiltshire/Wotton Bassett/RG13 1911 105 18.jpg",
+    "Data/Media/1911 census/Wiltshire/Chelworth/RG14 11824 184.jpg"
+  ],
+  "spouseIds": [
+    "I919"
+  ],
+  "childIds": [
+    "I2001"
+  ],
+  "parentIds": [
+    "I231",
+    "I911"
+  ],
+  "burialPlace": "Purton, Wiltshire, St Mary's",
+  "occupations": [
+    "General labourer, dairy farmer"
+  ],
+  "notes": [
+    "Farmer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wiltshire, Wotton Bassett, Beamans Lane"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Cricklade, Chelworth"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I919",
+      "familyId": "F380",
+      "marriageDate": "14 DEC 1929",
+      "marriagePlace": "Purton, Wiltshire, St. Mary's"
+    }
+  ],
+  "avatar": "avatars/I912_0.jpg"
+}

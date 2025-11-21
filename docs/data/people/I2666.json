@@ -1,0 +1,25 @@
+{
+  "id": "I2666",
+  "name": "Unknown Derrick",
+  "givenName": "Unknown",
+  "surname": "Derrick",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2665"
+  ],
+  "childIds": [
+    "I2664"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2665",
+      "familyId": "F928"
+    }
+  ]
+}

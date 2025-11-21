@@ -1,0 +1,18 @@
+{
+  "id": "I2696",
+  "name": "William (Bill) Eiles",
+  "givenName": "William (Bill)",
+  "surname": "Eiles",
+  "sex": "M",
+  "birthDate": "ABT 1924",
+  "birthPlace": "Southend-On-Sea, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2695",
+    "I2694"
+  ]
+}

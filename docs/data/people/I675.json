@@ -1,0 +1,26 @@
+{
+  "id": "I675",
+  "name": "Herbert Foote",
+  "givenName": "Herbert",
+  "surname": "Foote",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I674"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F284"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1237",
+  "name": "Mark Lissenburgh",
+  "givenName": "Mark",
+  "surname": "Lissenburgh",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1233",
+    "I1232"
+  ]
+}

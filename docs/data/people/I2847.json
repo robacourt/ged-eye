@@ -1,0 +1,38 @@
+{
+  "id": "I2847",
+  "name": "Harriett A'Court",
+  "givenName": "Harriett",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1863",
+  "birthPlace": "Somerset, Yeovil",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Somerset/Yeovil/RG11 2393 73 26.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I2848"
+  ],
+  "parentIds": [
+    "I2846",
+    "I2845"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Somerset, Yeovil, 11 Wellington St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F974"
+    }
+  ],
+  "avatar": "avatars/I2847_0.jpg"
+}

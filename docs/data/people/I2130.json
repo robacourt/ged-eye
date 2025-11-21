@@ -1,0 +1,24 @@
+{
+  "id": "I2130",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Miller"
+  ],
+  "censusRecords": [
+    {
+      "date": "1821",
+      "place": "Marnhull, Dorset, Coxhill"
+    }
+  ]
+}

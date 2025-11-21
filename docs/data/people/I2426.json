@@ -1,0 +1,33 @@
+{
+  "id": "I2426",
+  "name": "Betty A'Court",
+  "givenName": "Betty",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2 JULY 1930",
+  "birthPlace": "Buckinhamshire",
+  "deathDate": "1978",
+  "deathPlace": "Withinton Hospital",
+  "photos": [],
+  "spouseIds": [
+    "I2427"
+  ],
+  "childIds": [
+    "I2428"
+  ],
+  "parentIds": [
+    "I2418",
+    "I2419"
+  ],
+  "occupations": [
+    "Laboratory Technician"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2427",
+      "familyId": "F862",
+      "marriageDate": "1950",
+      "marriagePlace": "Marsh Gibbon, Buckinghamshire"
+    }
+  ]
+}

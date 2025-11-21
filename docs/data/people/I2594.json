@@ -1,0 +1,35 @@
+{
+  "id": "I2594",
+  "name": "Lillian (Lil) Grace A'Court",
+  "givenName": "Lillian (Lil) Grace",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "6 AUG 1904",
+  "birthPlace": "Bristol, Gloucestershire, St Judes",
+  "deathDate": "FEB 1984",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 15010 14.jpg"
+  ],
+  "spouseIds": [
+    "I2690"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, 36 Wade St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2690",
+      "familyId": "F935"
+    }
+  ],
+  "avatar": "avatars/I2594_0.jpg"
+}

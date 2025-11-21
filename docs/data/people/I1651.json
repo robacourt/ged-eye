@@ -1,0 +1,37 @@
+{
+  "id": "I1651",
+  "name": "Emma Drew",
+  "givenName": "Emma",
+  "surname": "Drew",
+  "sex": "F",
+  "birthDate": "ABT 1846",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1650"
+  ],
+  "childIds": [
+    "I1652"
+  ],
+  "parentIds": [
+    "I1653",
+    "I1654"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1650",
+      "familyId": "F610"
+    }
+  ]
+}

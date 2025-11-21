@@ -1,0 +1,32 @@
+{
+  "id": "I2770",
+  "name": "Jane Royds Hillocks",
+  "givenName": "Jane Royds",
+  "surname": "Hillocks",
+  "sex": "F",
+  "birthDate": "1860",
+  "birthPlace": "Scotland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I443",
+    "I444"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Lambeth, 12 Hanover Place"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, Sandringham Road"
+    },
+    {
+      "date": "1891",
+      "place": "London, Hornsey, 127 Stoke Newington Road"
+    }
+  ]
+}

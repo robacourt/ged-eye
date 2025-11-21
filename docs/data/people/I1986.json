@@ -1,0 +1,18 @@
+{
+  "id": "I1986",
+  "name": "Peter Marks",
+  "givenName": "Peter",
+  "surname": "Marks",
+  "sex": "M",
+  "birthDate": "1949",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1536",
+    "I1535"
+  ]
+}

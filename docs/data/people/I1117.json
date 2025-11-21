@@ -1,0 +1,30 @@
+{
+  "id": "I1117",
+  "name": "Bessie Curtis",
+  "givenName": "Bessie",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1888",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1118"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1081",
+    "I1082"
+  ],
+  "baptismDate": "9 OCT 1887",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1118",
+      "familyId": "F451",
+      "marriageDate": "6 JUN 1923",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

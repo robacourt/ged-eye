@@ -1,0 +1,44 @@
+{
+  "id": "I784",
+  "name": "Emily Priscilla Wines",
+  "givenName": "Emily Priscilla",
+  "surname": "Wines",
+  "sex": "F",
+  "birthDate": "ABT 1842",
+  "birthPlace": null,
+  "deathDate": "20 FEB 1908",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [
+    "Data/Picture/Emily Wines.jpg"
+  ],
+  "spouseIds": [
+    "I775"
+  ],
+  "childIds": [
+    "I785",
+    "I786",
+    "I787",
+    "I788",
+    "I789",
+    "I790",
+    "I791",
+    "I792",
+    "I793",
+    "I794",
+    "I795",
+    "I796"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I775",
+      "familyId": "F323",
+      "marriageDate": "9 OCT 1860",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset"
+    }
+  ],
+  "avatar": "avatars/I784_0.jpg"
+}

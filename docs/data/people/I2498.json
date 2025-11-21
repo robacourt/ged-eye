@@ -1,0 +1,23 @@
+{
+  "id": "I2498",
+  "name": "Harry Bowkett",
+  "givenName": "Harry",
+  "surname": "Bowkett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2497"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2497",
+      "familyId": "F883"
+    }
+  ]
+}

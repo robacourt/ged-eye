@@ -1,0 +1,56 @@
+{
+  "id": "I80",
+  "name": "Jane Yeatman",
+  "givenName": "Jane",
+  "surname": "Yeatman",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "AGE 72",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I25"
+  ],
+  "childIds": [
+    "I81",
+    "I82",
+    "I83",
+    "I84",
+    "I85",
+    "I86"
+  ],
+  "parentIds": [
+    "I150",
+    "I151"
+  ],
+  "baptismDate": "20-7-1783",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "10-4-1853",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "1851 Census",
+    "69 in 1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Factory Farm, Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1851",
+      "place": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I25",
+      "familyId": "F19",
+      "marriageDate": "25 DEC  1805",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

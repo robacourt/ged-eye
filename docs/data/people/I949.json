@@ -1,0 +1,18 @@
+{
+  "id": "I949",
+  "name": "John Medlyn A'Court",
+  "givenName": "John Medlyn",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "18 MAY 1854",
+  "birthPlace": "Waiwhetu, Wellington, New Zealand",
+  "deathDate": "1921",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I935",
+    "I936"
+  ]
+}

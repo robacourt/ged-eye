@@ -1,0 +1,44 @@
+{
+  "id": "I180",
+  "name": "Amelia Curtis",
+  "givenName": "Amelia",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "4  MAY 1826",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1168"
+  ],
+  "childIds": [
+    "I1171",
+    "I1172"
+  ],
+  "parentIds": [
+    "I178",
+    "I50"
+  ],
+  "baptismDate": "14.5.1826",
+  "occupations": [
+    "Laundress"
+  ],
+  "notes": [
+    "15-1841  25-1851  34-1861  45-1871"
+  ],
+  "residences": [
+    {
+      "date": "1850",
+      "place": "Marnhull, Dorset, Church Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1168",
+      "familyId": "F99",
+      "marriageDate": "25 JUL 1850",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

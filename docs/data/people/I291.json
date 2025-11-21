@@ -1,0 +1,32 @@
+{
+  "id": "I291",
+  "name": "James Hayward",
+  "givenName": "James",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I290"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F144"
+    }
+  ]
+}

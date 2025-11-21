@@ -1,0 +1,21 @@
+{
+  "id": "I549",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1679",
+  "birthPlace": null,
+  "deathDate": "1681",
+  "deathPlace": "South Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I541",
+    "I542"
+  ],
+  "notes": [
+    "Twin of Elias ?"
+  ]
+}

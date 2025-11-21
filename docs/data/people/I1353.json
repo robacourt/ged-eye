@@ -1,0 +1,26 @@
+{
+  "id": "I1353",
+  "name": "Katherine Howden Cundy",
+  "givenName": "Katherine Howden",
+  "surname": "Cundy",
+  "sex": "F",
+  "birthDate": "1870",
+  "birthPlace": "Greytown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1354"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1346",
+    "I1345"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1354",
+      "familyId": "F536"
+    }
+  ]
+}

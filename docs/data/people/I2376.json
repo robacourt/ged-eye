@@ -1,0 +1,28 @@
+{
+  "id": "I2376",
+  "name": "Henry Charles Marchant Rowe",
+  "givenName": "Henry Charles Marchant",
+  "surname": "Rowe",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2374"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Raiway Engine Fitter"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2374",
+      "familyId": "F843",
+      "marriageDate": "9 JUN 1878",
+      "marriagePlace": "Bridgewater, Somerset"
+    }
+  ]
+}

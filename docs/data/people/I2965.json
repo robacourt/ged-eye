@@ -1,0 +1,24 @@
+{
+  "id": "I2965",
+  "name": "Mildred Mary Eleanor Parsons",
+  "givenName": "Mildred Mary Eleanor",
+  "surname": "Parsons",
+  "sex": "F",
+  "birthDate": "8TH APR 1904",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1467"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1467",
+      "familyId": "F1018",
+      "marriageDate": "4 QT 1924"
+    }
+  ]
+}

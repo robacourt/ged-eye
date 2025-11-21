@@ -1,0 +1,25 @@
+{
+  "id": "I1230",
+  "name": "Peter Myatt",
+  "givenName": "Peter",
+  "surname": "Myatt",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1229"
+  ],
+  "childIds": [
+    "I1231"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1229",
+      "familyId": "F496"
+    }
+  ]
+}

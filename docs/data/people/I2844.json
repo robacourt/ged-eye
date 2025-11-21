@@ -1,0 +1,36 @@
+{
+  "id": "I2844",
+  "name": "Amelia A'Court",
+  "givenName": "Amelia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1858",
+  "birthPlace": "Somerset, Yeovil",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Somerset/Yeovil/RG11 2392 16 137.jpg",
+    "Data/Media/1891 census/London/Battersea/RG12 423 37 4.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Machinist",
+    "Machinist"
+  ],
+  "notes": [
+    "First name(s) Last name Relationship Marital status Sex Age Birth year Occupation Birth place"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Somerset, Yeovil, 74 Huish"
+    },
+    {
+      "date": "1891",
+      "place": "London, Battersea, Gladstone Terrace"
+    }
+  ],
+  "avatar": "avatars/I2844_0.jpg"
+}

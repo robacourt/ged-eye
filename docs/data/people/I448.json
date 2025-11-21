@@ -1,0 +1,52 @@
+{
+  "id": "I448",
+  "name": "Lewis Barnett",
+  "givenName": "Lewis",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "27 JUL 1898",
+  "birthPlace": "Stoke Newington, London",
+  "deathDate": "1989",
+  "deathPlace": "Hove, Sussex",
+  "photos": [
+    "Data/Media/1901 census/London/Hackney/RG13 212 71.jpg",
+    "Data/Media/1911 census/London/Hackney/RG14 1034 13.jpg",
+    "Data/Media/1921 Census/London/RG15 01101 303.jpg"
+  ],
+  "spouseIds": [
+    "I451"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I445",
+    "I446"
+  ],
+  "occupations": [
+    "Diamond Setter, Davids & Iraivin, Diamond Mounters"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Hackney, London, 51 Ickburgh Rd"
+    },
+    {
+      "date": "1911",
+      "place": "London, Lower Clapton,164 Lower Clapton Road E5"
+    },
+    {
+      "date": "1921",
+      "place": "London, Lower Clapton,164 Lower Clapton Road E5"
+    },
+    {
+      "date": "1939",
+      "place": "Hertfordshire, Letchworth, 125 Wilbury Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I451",
+      "familyId": "F203"
+    }
+  ],
+  "avatar": "avatars/I448_0.jpg"
+}

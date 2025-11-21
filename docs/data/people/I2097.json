@@ -1,0 +1,23 @@
+{
+  "id": "I2097",
+  "name": "Frank St??????",
+  "givenName": "Frank",
+  "surname": "St??????",
+  "sex": "M",
+  "birthDate": "1905",
+  "birthPlace": null,
+  "deathDate": "1981",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2096"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2096",
+      "familyId": "F749"
+    }
+  ]
+}

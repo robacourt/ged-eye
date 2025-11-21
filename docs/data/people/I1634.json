@@ -1,0 +1,38 @@
+{
+  "id": "I1634",
+  "name": "Ellen Hayward",
+  "givenName": "Ellen",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": "Abt 1864",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1633"
+  ],
+  "childIds": [
+    "I1635"
+  ],
+  "parentIds": [
+    "I2539"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Church Lane"
+    },
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Old Workhouse."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1633",
+      "familyId": "F607",
+      "marriageDate": "ABT 1897"
+    }
+  ]
+}

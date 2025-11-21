@@ -1,0 +1,42 @@
+{
+  "id": "I733",
+  "name": "Mary Maud Whitton",
+  "givenName": "Mary Maud",
+  "surname": "Whitton",
+  "sex": "F",
+  "birthDate": "1881",
+  "birthPlace": "Dubbo, NSW",
+  "deathDate": "1952",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I104"
+  ],
+  "childIds": [
+    "I734",
+    "I973",
+    "I976",
+    "I933",
+    "I977",
+    "I974",
+    "I979",
+    "I980",
+    "I981",
+    "I983",
+    "I985",
+    "I986",
+    "I988"
+  ],
+  "parentIds": [
+    "I971",
+    "I972"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I104",
+      "familyId": "F62",
+      "marriageDate": "1897",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I2128",
+  "name": "Unknown du Heaume",
+  "givenName": "Unknown du",
+  "surname": "Heaume",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2124"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2124",
+      "familyId": "F761"
+    }
+  ]
+}

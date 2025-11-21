@@ -1,0 +1,30 @@
+{
+  "id": "I2150",
+  "name": "Joan Marjory Morris",
+  "givenName": "Joan Marjory",
+  "surname": "Morris",
+  "sex": "F",
+  "birthDate": "2 MAY 1919",
+  "birthPlace": "Acton, Gunnesbury Lane",
+  "deathDate": "24 OCT 2005",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2149",
+    "I119"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2149",
+      "familyId": "F766"
+    },
+    {
+      "spouseId": "I119",
+      "familyId": "F767",
+      "marriageDate": "JUL 1969",
+      "marriagePlace": "Berkshire,Easthampstead"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I530",
+  "name": "David Chapman",
+  "givenName": "David",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I127",
+    "I127"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I127",
+      "familyId": "F311",
+      "marriageDate": "3RD QTR 1967"
+    },
+    {
+      "spouseId": "I127",
+      "familyId": "F672"
+    }
+  ]
+}

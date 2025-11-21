@@ -1,0 +1,36 @@
+{
+  "id": "I2229",
+  "name": "William Stephen Clements",
+  "givenName": "William Stephen",
+  "surname": "Clements",
+  "sex": "M",
+  "birthDate": "ABT 1845",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2221"
+  ],
+  "childIds": [
+    "I2230",
+    "I2231",
+    "I2235",
+    "I2232",
+    "I2233",
+    "I2234",
+    "I2236",
+    "I2237"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Fishmonger"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2221",
+      "familyId": "F793",
+      "marriageDate": "FEB  1868"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I1564",
+  "name": "Lilly A'Court",
+  "givenName": "Lilly",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1886",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 92 29.jpg",
+    "Data/Media/1901 census/Dorset/Poole/RG13 1979 134 37.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I298",
+    "I1562"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Poole, Russell Place."
+    },
+    {
+      "date": "1901",
+      "place": "Poole, Dorset, 30 South Rd."
+    }
+  ],
+  "avatar": "avatars/I1564_0.jpg"
+}

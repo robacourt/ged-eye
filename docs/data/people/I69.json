@@ -1,0 +1,29 @@
+{
+  "id": "I69",
+  "name": "Hannah Morgan",
+  "givenName": "Hannah",
+  "surname": "Morgan",
+  "sex": "F",
+  "birthDate": "ABT 1779",
+  "birthPlace": "Stourton Caundle, Dorset",
+  "deathDate": "AGE 34",
+  "deathPlace": "Stourton Caundle, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I23"
+  ],
+  "childIds": [
+    "I70"
+  ],
+  "parentIds": [],
+  "burialDate": "9 DEC 1813",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I23",
+      "familyId": "F17",
+      "marriageDate": "8 OCT 1798",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

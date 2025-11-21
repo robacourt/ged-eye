@@ -1,0 +1,27 @@
+{
+  "id": "I2203",
+  "name": "Carol A Battle",
+  "givenName": "Carol A",
+  "surname": "Battle",
+  "sex": "F",
+  "birthDate": "1949",
+  "birthPlace": "Durham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2197"
+  ],
+  "childIds": [
+    "I2202",
+    "I2204",
+    "I2205"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2197",
+      "familyId": "F788"
+    }
+  ]
+}

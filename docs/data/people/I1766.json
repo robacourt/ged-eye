@@ -1,0 +1,55 @@
+{
+  "id": "I1766",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1829",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Horsington/Folio 22 page 23.jpg"
+  ],
+  "spouseIds": [
+    "I1864"
+  ],
+  "childIds": [
+    "I2320",
+    "I1636",
+    "I1314"
+  ],
+  "parentIds": [
+    "I577",
+    "I578"
+  ],
+  "occupations": [
+    "Ag Laborer",
+    "Ag labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Poor Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Yeovil, Somerset, 41 Larkhill"
+    },
+    {
+      "date": "1891",
+      "place": "Sussex, Birdham"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1864",
+      "familyId": "F823"
+    }
+  ],
+  "avatar": "avatars/I1766_0.jpg"
+}

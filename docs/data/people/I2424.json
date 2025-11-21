@@ -1,0 +1,25 @@
+{
+  "id": "I2424",
+  "name": "Sarah Sheppard",
+  "givenName": "Sarah",
+  "surname": "Sheppard",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2423"
+  ],
+  "childIds": [
+    "I2425"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2423",
+      "familyId": "F861"
+    }
+  ]
+}

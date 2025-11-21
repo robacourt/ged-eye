@@ -1,0 +1,24 @@
+{
+  "id": "I1739",
+  "name": "William Davis",
+  "givenName": "William",
+  "surname": "Davis",
+  "sex": "M",
+  "birthDate": "Abt 1838",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1738",
+    "I764"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Yeovil, Somerset, Kiddles Lane"
+    }
+  ]
+}

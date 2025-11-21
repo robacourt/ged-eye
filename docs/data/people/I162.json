@@ -1,0 +1,34 @@
+{
+  "id": "I162",
+  "name": "Louisa Senior",
+  "givenName": "Louisa",
+  "surname": "Senior",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I152"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I165",
+    "I166"
+  ],
+  "occupations": [
+    "Glove Maker"
+  ],
+  "notes": [
+    "43-1867 47-1871 57-1881 of Moorside"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I152",
+      "familyId": "F85",
+      "marriageDate": "27 FEB 1867",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

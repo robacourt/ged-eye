@@ -1,0 +1,20 @@
+{
+  "id": "I2943",
+  "name": "Maria A'Court",
+  "givenName": "Maria",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1784",
+  "birthPlace": "Somerset, Horsington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2939",
+    "I2940"
+  ],
+  "baptismDate": "27 JAN 1784",
+  "baptismPlace": "Somerset, Horsington"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I554",
+  "name": "Edmunde A'Court",
+  "givenName": "Edmunde",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1687",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I541",
+    "I542"
+  ]
+}

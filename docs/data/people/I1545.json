@@ -1,0 +1,29 @@
+{
+  "id": "I1545",
+  "name": "Robert A'Court",
+  "givenName": "Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF APR 1993",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1549"
+  ],
+  "childIds": [
+    "I1552",
+    "I1553"
+  ],
+  "parentIds": [
+    "I1541",
+    "I1544"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1549",
+      "familyId": "F590"
+    }
+  ]
+}

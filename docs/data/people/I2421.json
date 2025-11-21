@@ -1,0 +1,25 @@
+{
+  "id": "I2421",
+  "name": "William Riley",
+  "givenName": "William",
+  "surname": "Riley",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2420"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2420",
+      "familyId": "F860",
+      "marriageDate": "1921",
+      "marriagePlace": "Brixworth, Northamptonshire"
+    }
+  ]
+}

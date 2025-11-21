@@ -1,0 +1,32 @@
+{
+  "id": "I2304",
+  "name": "Joseph A'Court",
+  "givenName": "Joseph",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1838",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Castle Cary/HO 107 1931 199 13 40.jpg",
+    "Data/Media/1861 Census/Castle Cary/RG09 1647 42 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Castle Cary, Somerset, Cockhill Lane"
+    },
+    {
+      "date": "1851",
+      "place": "Castle Cary"
+    }
+  ],
+  "avatar": "avatars/I2304_0.jpg"
+}

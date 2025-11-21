@@ -1,0 +1,45 @@
+{
+  "id": "I773",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1838",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1859",
+  "deathPlace": "Wincanton, Somerset",
+  "photos": [
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
+    "Data/Media/1861 Census/Martock/RG09 1642 8 9.jpg"
+  ],
+  "spouseIds": [
+    "I783"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "notes": [
+    "1851 Census"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I783",
+      "familyId": "F322",
+      "marriageDate": "1859",
+      "marriagePlace": "Wincanton, Somerset"
+    }
+  ],
+  "avatar": "avatars/I773_0.jpg"
+}

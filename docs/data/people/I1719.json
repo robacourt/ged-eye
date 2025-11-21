@@ -1,0 +1,17 @@
+{
+  "id": "I1719",
+  "name": "Niel Charles A'Court",
+  "givenName": "Niel Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3RD QTR 1975",
+  "birthPlace": "Greenwich",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1718"
+  ]
+}

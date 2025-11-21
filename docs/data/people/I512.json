@@ -1,0 +1,23 @@
+{
+  "id": "I512",
+  "name": "Gladstone Arthur A'Court",
+  "givenName": "Gladstone Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1920",
+  "birthPlace": "Collingwood, Victoria",
+  "deathDate": "22.6.1944",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I524",
+    "I525"
+  ],
+  "burialPlace": "Germany, Reichswald Forest Cemetery",
+  "notes": [
+    "Name: A'COURT, GLADSTONE ARTHUR",
+    "In Memory of"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I480",
+  "name": "Grantham Enos Sherborne",
+  "givenName": "Grantham Enos",
+  "surname": "Sherborne",
+  "sex": "M",
+  "birthDate": "25 NOV 1875",
+  "birthPlace": null,
+  "deathDate": "C. 1946",
+  "deathPlace": "Byfleet Surrey",
+  "photos": [],
+  "spouseIds": [
+    "I481"
+  ],
+  "childIds": [
+    "I403"
+  ],
+  "parentIds": [],
+  "residences": [
+    {
+      "date": "1939",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I481",
+      "familyId": "F183",
+      "marriageDate": "C.1911"
+    }
+  ]
+}

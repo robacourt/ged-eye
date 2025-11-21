@@ -1,0 +1,17 @@
+{
+  "id": "I2317",
+  "name": "Lee A'Court",
+  "givenName": "Lee",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1974",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2316"
+  ]
+}

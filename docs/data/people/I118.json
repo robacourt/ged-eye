@@ -1,0 +1,80 @@
+{
+  "id": "I118",
+  "name": "Dorothy Mabel Lent",
+  "givenName": "Dorothy Mabel",
+  "surname": "Lent",
+  "sex": "F",
+  "birthDate": "17 NOV 1890",
+  "birthPlace": "Cahir Tipperary Ireland",
+  "deathDate": "6 FEB 1963",
+  "deathPlace": "Malden, Surrey, Burwood Nursing Home,",
+  "photos": [
+    "Data/Picture/Dorothy Mabel Lent.JPG",
+    "Data/Picture/Dorothy Mabel Lent2.jpg",
+    "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg",
+    "Data/Media/1911 census/Hampshire/Southampton/RG14 6013 153.jpg",
+    "Data/Media/1921 Census/London/30 Thomas St Woolwich.jpg",
+    "Data/Media/1939 Register/Bristol/3 Rockleaze Rd., Sneyd Park.jpg"
+  ],
+  "spouseIds": [
+    "I115",
+    "I120"
+  ],
+  "childIds": [
+    "I119"
+  ],
+  "parentIds": [
+    "I452",
+    "I453"
+  ],
+  "occupations": [
+    "Shop Assistant"
+  ],
+  "notes": [
+    "LENT, WILLIAM FREDERICK   HEAD   SINGLE     M   27   CLERK SALESMAN   HAMPSHIRE ALDERHOLT"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Yorkshire, Scarborough, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Hampshire, Southampton, 9 Commercial Rd."
+    },
+    {
+      "date": "1921",
+      "place": "London, Woolwich, Cambridge Cottages, 30 Thomas St. SE18"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "London, Hackney, 158 Sandringham Road"
+    },
+    {
+      "date": "1946",
+      "place": "Bristol, Sneyd Park, 3 Rockleaze Road."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I115",
+      "familyId": "F69",
+      "marriageDate": "JUN QR. 1914",
+      "marriagePlace": ",Hampshire, Portsmouth"
+    },
+    {
+      "spouseId": "I120",
+      "familyId": "F71",
+      "marriageDate": "19 AUG 1922",
+      "marriagePlace": "London, Hackney",
+      "divorceDate": "Abt 1936"
+    },
+    {
+      "spouseId": null,
+      "familyId": "F973"
+    }
+  ],
+  "avatar": "avatars/I118_0.jpg"
+}

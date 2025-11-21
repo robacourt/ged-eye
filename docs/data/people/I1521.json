@@ -1,0 +1,29 @@
+{
+  "id": "I1521",
+  "name": "Ernest George Morgan",
+  "givenName": "Ernest George",
+  "surname": "Morgan",
+  "sex": "M",
+  "birthDate": "12 MAR 1915",
+  "birthPlace": "Waltham Cross, Hertfordshire, 83 Queens Road",
+  "deathDate": "6 DEC 1986",
+  "deathPlace": "Enfield, Middlesex, Chase Farm",
+  "photos": [],
+  "spouseIds": [
+    "I1522"
+  ],
+  "childIds": [
+    "I1523"
+  ],
+  "parentIds": [
+    "I1516",
+    "I1486"
+  ],
+  "burialPlace": "Enfield, Middlesex, Lavander Hill",
+  "marriages": [
+    {
+      "spouseId": "I1522",
+      "familyId": "F580"
+    }
+  ]
+}

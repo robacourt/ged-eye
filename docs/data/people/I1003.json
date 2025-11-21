@@ -1,0 +1,33 @@
+{
+  "id": "I1003",
+  "name": "Pauline Fay O'Connor",
+  "givenName": "Pauline Fay",
+  "surname": "O'Connor",
+  "sex": "F",
+  "birthDate": "23 JULY 1951",
+  "birthPlace": "Sydney, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1015",
+    "I1016"
+  ],
+  "childIds": [
+    "I1017"
+  ],
+  "parentIds": [
+    "I737",
+    "I736"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1015",
+      "familyId": "F416"
+    },
+    {
+      "spouseId": "I1016",
+      "familyId": "F417"
+    }
+  ]
+}

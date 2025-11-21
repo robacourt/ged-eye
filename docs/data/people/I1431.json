@@ -1,0 +1,29 @@
+{
+  "id": "I1431",
+  "name": "Vivian Unknown",
+  "givenName": "Vivian",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Vivian.jpg"
+  ],
+  "spouseIds": [
+    "I1430"
+  ],
+  "childIds": [
+    "I1432",
+    "I1960"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1430",
+      "familyId": "F555"
+    }
+  ],
+  "avatar": "avatars/I1431_0.jpg"
+}

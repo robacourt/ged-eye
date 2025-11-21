@@ -1,0 +1,18 @@
+{
+  "id": "I2095",
+  "name": "Susan Fletcher",
+  "givenName": "Susan",
+  "surname": "Fletcher",
+  "sex": "F",
+  "birthDate": "1957",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2093",
+    "I2092"
+  ]
+}

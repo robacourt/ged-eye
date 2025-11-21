@@ -1,0 +1,25 @@
+{
+  "id": "I2332",
+  "name": "Anna Caroline Frentzel",
+  "givenName": "Anna Caroline",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2333"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2333",
+      "familyId": "F828",
+      "marriageDate": "2ND QTR 1902",
+      "marriagePlace": "Dover, Kent"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "I445",
+  "name": "Samuel (Lewis) Lawrence Barnett",
+  "givenName": "Samuel (Lewis) Lawrence",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "JAN 1871",
+  "birthPlace": "London, St. Lukes, Shoreditch",
+  "deathDate": "JUN 1951",
+  "deathPlace": "Hackney, London",
+  "photos": [
+    "Data/Picture/Samuel Lewis Barnett.jpg",
+    "Data/Media/1871 census/London/Shoreditch/RG10 422 16 26.jpg",
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg",
+    "Data/Media/1891 census/London/Shoreditch/RG12 243 53 8 54.jpg"
+  ],
+  "spouseIds": [
+    "I446"
+  ],
+  "childIds": [
+    "I418",
+    "I448",
+    "I447"
+  ],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "occupations": [
+    "Cigar Maker",
+    "Snuff Manufacturer",
+    "Tobacco Rebate Agent",
+    "Snuff Manufacturer",
+    "Tobacco Manufacture, Leswin Place, Stoke Newington.",
+    "Retired Tobacco Manufacturer"
+  ],
+  "notes": [
+    "From marriage cert of daughter Birdie"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Shoreditch, ,"
+    },
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 161 High St"
+    },
+    {
+      "date": "1891",
+      "place": "London, Shoreditch, 341 Old St."
+    },
+    {
+      "date": "1901",
+      "place": "London, Hackney,64 Kenninghall Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Lower Clapton, 164 Lower Clapton Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Lower Clapton, 164 Lower Clapton Road"
+    },
+    {
+      "date": "1939 REGISTER",
+      "place": "Buckinghamshire, Chesham, Brucecot, Chartridge Lane."
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1905",
+      "place": "London, Clapton, 5 Mount Pleasant Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I446",
+      "familyId": "F193",
+      "marriageDate": "DEC 1893",
+      "marriagePlace": "London, Shorditch,"
+    }
+  ],
+  "avatar": "avatars/I445_0.jpg"
+}

@@ -1,0 +1,43 @@
+{
+  "id": "I744",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1754",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I750",
+    "I751"
+  ],
+  "childIds": [
+    "I752",
+    "I753",
+    "I754",
+    "I755",
+    "I757",
+    "I758"
+  ],
+  "parentIds": [
+    "I741",
+    "I742"
+  ],
+  "burialDate": "30 MAR 1815",
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "marriages": [
+    {
+      "spouseId": "I750",
+      "familyId": "F304",
+      "marriageDate": "1775"
+    },
+    {
+      "spouseId": "I751",
+      "familyId": "F305",
+      "marriageDate": "1782",
+      "marriagePlace": "Yarlington, Somerset"
+    }
+  ]
+}

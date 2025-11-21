@@ -1,0 +1,25 @@
+{
+  "id": "I1859",
+  "name": "Martha Randall",
+  "givenName": "Martha",
+  "surname": "Randall",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1858"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1858",
+      "familyId": "F670",
+      "marriageDate": "25 DEC 1831",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+    }
+  ]
+}

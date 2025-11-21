@@ -1,0 +1,18 @@
+{
+  "id": "I1039",
+  "name": "Winifred A'Court",
+  "givenName": "Winifred",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1926",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1027",
+    "I1034"
+  ]
+}

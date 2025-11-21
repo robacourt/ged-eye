@@ -1,0 +1,34 @@
+{
+  "id": "I947",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "6 APR 1856",
+  "birthPlace": "Waiwhetu, Wellington, New Zealand",
+  "deathDate": "AFT 1904",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1370"
+  ],
+  "childIds": [
+    "I1375",
+    "I1376",
+    "I1377",
+    "I1378",
+    "I1379"
+  ],
+  "parentIds": [
+    "I935",
+    "I936"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1370",
+      "familyId": "F395",
+      "marriageDate": "1883",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

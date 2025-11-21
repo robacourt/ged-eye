@@ -1,0 +1,26 @@
+{
+  "id": "I2702",
+  "name": "Terry Patrick Tarff",
+  "givenName": "Terry Patrick",
+  "surname": "Tarff",
+  "sex": "M",
+  "birthDate": "1949",
+  "birthPlace": "London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2701"
+  ],
+  "childIds": [
+    "I2703",
+    "I2704"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2701",
+      "familyId": "F940"
+    }
+  ]
+}

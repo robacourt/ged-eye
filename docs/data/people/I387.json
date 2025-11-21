@@ -1,0 +1,36 @@
+{
+  "id": "I387",
+  "name": "Enid Boosey",
+  "givenName": "Enid",
+  "surname": "Boosey",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I382"
+  ],
+  "childIds": [
+    "I388",
+    "I1629"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Sussex, Steyning, Glen Ofen"
+    },
+    {
+      "date": "1939",
+      "place": "Sussex, Steyning, Goring Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I382",
+      "familyId": "F175"
+    }
+  ]
+}

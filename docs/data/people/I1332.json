@@ -1,0 +1,27 @@
+{
+  "id": "I1332",
+  "name": "Minnie Unknown",
+  "givenName": "Minnie",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1875",
+  "birthPlace": null,
+  "deathDate": "1943",
+  "deathPlace": "Stoke Sub Hamdon, Somerset, Summerlands",
+  "photos": [],
+  "spouseIds": [
+    "I1331"
+  ],
+  "childIds": [
+    "I1333"
+  ],
+  "parentIds": [],
+  "burialDate": "13 OCT 1943",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "marriages": [
+    {
+      "spouseId": "I1331",
+      "familyId": "F526"
+    }
+  ]
+}

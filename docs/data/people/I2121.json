@@ -1,0 +1,66 @@
+{
+  "id": "I2121",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1844",
+  "birthPlace": "Jersey, C.I. Les Landes",
+  "deathDate": "22 NOV 1926",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/John A'Court Jersey Evening Post 241269.jpg",
+    "Data/Media/1861 Census/Jersey/RG09 4405 6 6.png"
+  ],
+  "spouseIds": [
+    "I2122"
+  ],
+  "childIds": [
+    "I2123",
+    "I2124",
+    "I2125",
+    "I2126",
+    "I2127"
+  ],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "occupations": [
+    "Master of The Cutty Sark",
+    "Sea Captain",
+    "Farmer",
+    "Farmer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I. St Ouen, Vinchelez"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Jersey, C.I. L'Etacq, St Ouen, Le Menage Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2122",
+      "familyId": "F760"
+    }
+  ],
+  "avatar": "avatars/I2121_0.jpg"
+}

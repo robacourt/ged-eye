@@ -1,0 +1,46 @@
+{
+  "id": "I2726",
+  "name": "Morris Martin",
+  "givenName": "Morris",
+  "surname": "Martin",
+  "sex": "M",
+  "birthDate": "7 FEB 1876",
+  "birthPlace": "London, Bethnal Green",
+  "deathDate": "1939 4TH QTR",
+  "deathPlace": "London, Kensington",
+  "photos": [],
+  "spouseIds": [
+    "I1429"
+  ],
+  "childIds": [
+    "I2974",
+    "I2975"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Upholsterer",
+    "Licenced Victualler",
+    "Incapacitated"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Upper Clapton, 34 Ickburgh Rd."
+    },
+    {
+      "date": "1921",
+      "place": "London, Westminster, 1 Derby St"
+    },
+    {
+      "date": "1939",
+      "place": "Surrey, Guilford, 9 Wherwell Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1429",
+      "familyId": "F951",
+      "marriageDate": "3 RD QTR 1902"
+    }
+  ]
+}

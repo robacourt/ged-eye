@@ -1,0 +1,40 @@
+{
+  "id": "I1186",
+  "name": "Frederick A'Court",
+  "givenName": "Frederick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1865",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg",
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
+    "Data/Media/1911 census/Somerset/Henstridge/RG14 14432 71.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1183",
+    "I1184"
+  ],
+  "occupations": [
+    "Labourer on Farm"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Barton"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Near Antills Farm"
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Henstridge, Yenston"
+    }
+  ],
+  "avatar": "avatars/I1186_0.jpg"
+}

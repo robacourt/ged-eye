@@ -1,0 +1,23 @@
+{
+  "id": "I1294",
+  "name": "Leah Hussey",
+  "givenName": "Leah",
+  "surname": "Hussey",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1088"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F436"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I614",
+  "name": "William Groves",
+  "givenName": "William",
+  "surname": "Groves",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I612"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Foreman Powder Factory"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F253"
+    }
+  ]
+}

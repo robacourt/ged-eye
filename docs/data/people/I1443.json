@@ -1,0 +1,18 @@
+{
+  "id": "I1443",
+  "name": "Sybil A'Court",
+  "givenName": "Sybil",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1917",
+  "birthPlace": "Dubbo, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I960",
+    "I1442"
+  ]
+}

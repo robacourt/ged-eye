@@ -1,0 +1,21 @@
+{
+  "id": "I1509",
+  "name": "Herbert John Chamberlain",
+  "givenName": "Herbert John",
+  "surname": "Chamberlain",
+  "sex": "M",
+  "birthDate": "1874",
+  "birthPlace": null,
+  "deathDate": "6 FEB 1955",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I864",
+    "I777"
+  ],
+  "notes": [
+    "had three children Winnie, Florrie & Jack."
+  ]
+}

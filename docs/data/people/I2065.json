@@ -1,0 +1,59 @@
+{
+  "id": "I2065",
+  "name": "Francis Quarry A'Court",
+  "givenName": "Francis Quarry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1861",
+  "birthPlace": "London, Chelsea, Malbrow Rd.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Woodford/RG11 1734 34 24.jpg"
+  ],
+  "spouseIds": [
+    "I2066"
+  ],
+  "childIds": [
+    "I2067",
+    "I2068",
+    "I2070",
+    "I2080",
+    "I2054",
+    "I2081",
+    "I2082",
+    "I2083",
+    "I2084"
+  ],
+  "parentIds": [
+    "I2085",
+    "I2086"
+  ],
+  "occupations": [
+    "Milkman",
+    "Horse keeper",
+    "LCC tramway motorman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Woodford, Essex, Snakes Lane"
+    },
+    {
+      "date": "1891",
+      "place": "London, Deptford, Windmill Lane"
+    },
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2066",
+      "familyId": "F742",
+      "marriageDate": "ABT 1884"
+    }
+  ],
+  "avatar": "avatars/I2065_0.jpg"
+}

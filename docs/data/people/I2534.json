@@ -1,0 +1,38 @@
+{
+  "id": "I2534",
+  "name": "Gertrude Unknown",
+  "givenName": "Gertrude",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1874",
+  "birthPlace": "Jersey C.I. St Helier.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2813"
+  ],
+  "childIds": [
+    "I2533",
+    "I2892",
+    "I2913"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St Helier, Norman House, St Aubins Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Clements, East View"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2813",
+      "familyId": "F989",
+      "marriageDate": "Abt 1897"
+    }
+  ]
+}

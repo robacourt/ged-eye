@@ -1,0 +1,58 @@
+{
+  "id": "I374",
+  "name": "John Bennett",
+  "givenName": "John",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "ABT 1816",
+  "birthPlace": "Hampshire, Portsmouth",
+  "deathDate": "1896",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I375"
+  ],
+  "childIds": [
+    "I378",
+    "I377",
+    "I376",
+    "I2749",
+    "I113",
+    "I379"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Shipwright",
+    "Leading Shipwright",
+    "Portsmouth Dockyard offical",
+    "Retired shipwright"
+  ],
+  "notes": [
+    "First name(s) John"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1871",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1881",
+      "place": "Hampshire, Portsmouth, Portsea, 1 Chichester Terrace"
+    },
+    {
+      "date": "1891",
+      "place": "Hampshire, Portsmouth, Portsea, I Chichester Terrace, Victoria Rd North."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I375",
+      "familyId": "F68",
+      "marriageDate": "ABT 1842"
+    }
+  ]
+}

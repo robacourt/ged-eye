@@ -1,0 +1,27 @@
+{
+  "id": "I1753",
+  "name": "Mary Ann Davis",
+  "givenName": "Mary Ann",
+  "surname": "Davis",
+  "sex": "F",
+  "birthDate": "1800",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I51"
+  ],
+  "childIds": [
+    "I1929"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I51",
+      "familyId": "F684",
+      "marriageDate": "1 FEB 1821",
+      "marriagePlace": "Shepton Mallet, Somerset"
+    }
+  ]
+}

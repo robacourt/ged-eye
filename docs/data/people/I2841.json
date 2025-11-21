@@ -1,0 +1,32 @@
+{
+  "id": "I2841",
+  "name": "Charlotte A'Court",
+  "givenName": "Charlotte",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1857",
+  "birthPlace": "Somerset, Corston",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Clevedon/RG12 1954 37 56.jpg",
+    "Data/Media/1881 census/Somerset/Clevedon/RG11 2461 47 72.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Assistant Lodging House Keeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Somerset, Clevedon, Cambridge House"
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Clevedon, Anglesea Hose, Elton Rd."
+    }
+  ],
+  "avatar": "avatars/I2841_0.jpg"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I1995",
+  "name": "Frederick Ford",
+  "givenName": "Frederick",
+  "surname": "Ford",
+  "sex": "M",
+  "birthDate": "Abt 1934",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Jean Joan  Freddy Ford.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1627",
+    "I1033"
+  ],
+  "avatar": "avatars/I1995_0.jpg"
+}

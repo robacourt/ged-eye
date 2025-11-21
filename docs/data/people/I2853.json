@@ -1,0 +1,50 @@
+{
+  "id": "I2853",
+  "name": "Charles John A'Court",
+  "givenName": "Charles John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1853",
+  "birthPlace": "London, Bromley-by-Bow",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2854"
+  ],
+  "childIds": [
+    "I2606",
+    "I2855",
+    "I2856",
+    "I2885",
+    "I2886",
+    "I2897",
+    "I2898"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "House painter",
+    "Painter",
+    "Ship painter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Poplar, 195 Grundy St."
+    },
+    {
+      "date": "1891",
+      "place": "London, West Ham, Sussex St"
+    },
+    {
+      "date": "1911",
+      "place": "London, West Ham, 4 Cave Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2854",
+      "familyId": "F976"
+    }
+  ]
+}

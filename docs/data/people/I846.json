@@ -1,0 +1,28 @@
+{
+  "id": "I846",
+  "name": "Mabel Winifred A'Court",
+  "givenName": "Mabel Winifred",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "28 AUG 1911",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I860"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I860",
+      "familyId": "F372",
+      "marriageDate": "1938",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

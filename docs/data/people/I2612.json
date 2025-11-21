@@ -1,0 +1,27 @@
+{
+  "id": "I2612",
+  "name": "George Edward Clinston",
+  "givenName": "George Edward",
+  "surname": "Clinston",
+  "sex": "M",
+  "birthDate": "Abt 1910",
+  "birthPlace": "Warrington, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Lancashire/Warrington/RG14 23171 5 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2609",
+    "I1611"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "avatar": "avatars/I2612_0.jpg"
+}

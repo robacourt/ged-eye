@@ -1,0 +1,23 @@
+{
+  "id": "I2027",
+  "name": "Wendy Unknown",
+  "givenName": "Wendy",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2026"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2026",
+      "familyId": "F728"
+    }
+  ]
+}

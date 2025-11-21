@@ -1,0 +1,29 @@
+{
+  "id": "I1189",
+  "name": "Rose A'Court",
+  "givenName": "Rose",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BET 1872/3",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1183",
+    "I1184"
+  ],
+  "baptismDate": "2 JUL 1873",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Near Antills Farm"
+    }
+  ],
+  "avatar": "avatars/I1189_0.jpg"
+}

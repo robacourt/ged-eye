@@ -1,0 +1,27 @@
+{
+  "id": "I974",
+  "name": "Anastasia ( Hannah ) A'Court",
+  "givenName": "Anastasia ( Hannah )",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1906",
+  "birthPlace": "Dubbo, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I975"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I975",
+      "familyId": "F404",
+      "marriageDate": "1926"
+    }
+  ]
+}

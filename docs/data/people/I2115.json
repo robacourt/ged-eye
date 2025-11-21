@@ -1,0 +1,27 @@
+{
+  "id": "I2115",
+  "name": "John Augustus A'Court",
+  "givenName": "John Augustus",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2741"
+  ],
+  "childIds": [
+    "I2116"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2741",
+      "familyId": "F755",
+      "marriageDate": "1925",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

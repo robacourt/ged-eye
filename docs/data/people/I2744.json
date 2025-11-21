@@ -1,0 +1,28 @@
+{
+  "id": "I2744",
+  "name": "Samuel Joseph Mond",
+  "givenName": "Samuel Joseph",
+  "surname": "Mond",
+  "sex": "M",
+  "birthDate": "23 MAY 1981",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I128"
+  ],
+  "childIds": [
+    "I2781",
+    "I72"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I128",
+      "familyId": "F954",
+      "marriageDate": "23 APR 2011",
+      "marriagePlace": "Bristol Registary Office"
+    }
+  ]
+}

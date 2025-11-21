@@ -1,0 +1,74 @@
+{
+  "id": "I2816",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1825",
+  "birthPlace": "Somerset, Castle Cary.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 63 6.jpg"
+  ],
+  "spouseIds": [
+    "I2817",
+    "I2272"
+  ],
+  "childIds": [
+    "I2273",
+    "I2894"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Labourer",
+    "Road Minder Labourer",
+    "Foreman Labourer on Public Rds",
+    "Employed on roads"
+  ],
+  "notes": [
+    "Has niece on 1871 #2818 who are parents?"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey C.I. St Ouen, Grosner Rd."
+    },
+    {
+      "date": "1871",
+      "place": "Jersey C.I. St Ouen, Green Rd."
+    },
+    {
+      "date": "1871",
+      "place": "Labourer"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Ouen, 6 Le Coin Rd."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Ouen, Le Coin Rd"
+    },
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St Ouen, Oxford Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I. St Ouen, Telephone Exchange"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2817",
+      "familyId": "F746"
+    },
+    {
+      "spouseId": "I2272",
+      "familyId": "F802",
+      "marriageDate": "Abt 1891"
+    }
+  ],
+  "avatar": "avatars/I2816_0.jpg"
+}

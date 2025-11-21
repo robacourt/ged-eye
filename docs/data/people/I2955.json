@@ -1,0 +1,26 @@
+{
+  "id": "I2955",
+  "name": "Thomas Albert Farr",
+  "givenName": "Thomas Albert",
+  "surname": "Farr",
+  "sex": "M",
+  "birthDate": "JAN 1911",
+  "birthPlace": "Hampshire, Portsmouth, Portsea Island",
+  "deathDate": "17 APR 1918",
+  "deathPlace": "France",
+  "photos": [],
+  "spouseIds": [
+    "I2954"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2954",
+      "familyId": "F1013",
+      "marriageDate": "JAN 1911",
+      "marriagePlace": "Hampshire, Portsmouth",
+      "divorceDate": "1914"
+    }
+  ]
+}

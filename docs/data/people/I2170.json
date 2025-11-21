@@ -1,0 +1,18 @@
+{
+  "id": "I2170",
+  "name": "Alexander William Willis",
+  "givenName": "Alexander William",
+  "surname": "Willis",
+  "sex": "M",
+  "birthDate": "1995",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2167",
+    "I2168"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "I616",
+  "name": "Kerry Dawn Clarkson",
+  "givenName": "Kerry Dawn",
+  "surname": "Clarkson",
+  "sex": "F",
+  "birthDate": "8.12.1978",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I615",
+    "I613"
+  ],
+  "baptismDate": "15.4.1979",
+  "baptismPlace": "Stalbridge, Dorset"
+}

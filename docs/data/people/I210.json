@@ -1,0 +1,20 @@
+{
+  "id": "I210",
+  "name": "Amelia Alice Hunt",
+  "givenName": "Amelia Alice",
+  "surname": "Hunt",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I208",
+    "I209"
+  ],
+  "baptismDate": "2 MAY 1880",
+  "baptismPlace": "Portsea, Hampshire, All Saints"
+}

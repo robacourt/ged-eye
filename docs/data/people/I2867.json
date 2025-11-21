@@ -1,0 +1,35 @@
+{
+  "id": "I2867",
+  "name": "William Coutts",
+  "givenName": "William",
+  "surname": "Coutts",
+  "sex": "M",
+  "birthDate": "Abt 1821",
+  "birthPlace": "London, Lewisham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2868"
+  ],
+  "childIds": [
+    "I2866",
+    "I2869"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Shoemaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Lewisham, 6 Merton Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2868",
+      "familyId": "F980"
+    }
+  ]
+}

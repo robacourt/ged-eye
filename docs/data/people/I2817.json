@@ -1,0 +1,40 @@
+{
+  "id": "I2817",
+  "name": "Mary Ann Unknown",
+  "givenName": "Mary Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1824",
+  "birthPlace": "Jersey C.I. St Ouen",
+  "deathDate": "BEF 1891 ?",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2816"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey C.I. St Ouen, Grosner Rd."
+    },
+    {
+      "date": "1871",
+      "place": "Jersey C.I. St Ouen, Green Rd."
+    },
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Ouen, 6 Le Coin Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2816",
+      "familyId": "F746"
+    }
+  ]
+}

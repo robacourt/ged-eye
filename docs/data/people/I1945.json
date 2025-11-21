@@ -1,0 +1,25 @@
+{
+  "id": "I1945",
+  "name": "William Martin",
+  "givenName": "William",
+  "surname": "Martin",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1946"
+  ],
+  "childIds": [
+    "I1944"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1946",
+      "familyId": "F693"
+    }
+  ]
+}

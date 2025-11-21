@@ -1,0 +1,23 @@
+{
+  "id": "I724",
+  "name": "Katherine Unknown",
+  "givenName": "Katherine",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1744",
+  "birthPlace": null,
+  "deathDate": "23 SEP. 1776",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I723"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I723",
+      "familyId": "F295"
+    }
+  ]
+}

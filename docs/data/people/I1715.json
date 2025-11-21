@@ -1,0 +1,18 @@
+{
+  "id": "I1715",
+  "name": "Nery Christine A'Court",
+  "givenName": "Nery Christine",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Bath, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1700",
+    "I1714"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "I1182",
+  "name": "Harriet Jones",
+  "givenName": "Harriet",
+  "surname": "Jones",
+  "sex": "F",
+  "birthDate": "ABT 1852",
+  "birthPlace": "Teffont Magna, Wiltshire",
+  "deathDate": "1932",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1181"
+  ],
+  "childIds": [
+    "I1196",
+    "I1199",
+    "I1204",
+    "I1210",
+    "I1211",
+    "I1212",
+    "I1215",
+    "I1242"
+  ],
+  "parentIds": [],
+  "burialDate": "1932",
+  "burialPlace": "Charminster, Dorset",
+  "censusRecords": [
+    {
+      "date": "1881 AGE 26",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1181",
+      "familyId": "F482"
+    }
+  ]
+}

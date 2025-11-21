@@ -1,0 +1,28 @@
+{
+  "id": "I964",
+  "name": "Lavinia C.R. A'Court",
+  "givenName": "Lavinia C.R.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1895",
+  "birthPlace": "Wellington, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I966"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I955",
+    "I959"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I966",
+      "familyId": "F402",
+      "marriageDate": "1924",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

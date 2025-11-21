@@ -1,0 +1,29 @@
+{
+  "id": "I643",
+  "name": "Maria Moore",
+  "givenName": "Maria",
+  "surname": "Moore",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Newfoundland, Canada",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I159"
+  ],
+  "childIds": [
+    "I644",
+    "I645"
+  ],
+  "parentIds": [],
+  "notes": [
+    "24 in 1881"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I159",
+      "familyId": "F92"
+    }
+  ]
+}

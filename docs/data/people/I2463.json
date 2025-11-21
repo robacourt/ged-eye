@@ -1,0 +1,32 @@
+{
+  "id": "I2463",
+  "name": "Lily Agnes A'Court",
+  "givenName": "Lily Agnes",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1899",
+  "birthPlace": "Clapton Park, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Hackney/RG13 220 113 47.jpg",
+    "Data/Media/1911 census/London/Edmonton/RG14 7361 42.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I520",
+    "I521"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Hackney, London,  39 Gilpin Road."
+    },
+    {
+      "date": "1911",
+      "place": "Edmonton, Middlesex, 84 Haselbury Rd. Upper Edmonton"
+    }
+  ],
+  "avatar": "avatars/I2463_0.jpg"
+}

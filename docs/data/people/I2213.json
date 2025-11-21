@@ -1,0 +1,32 @@
+{
+  "id": "I2213",
+  "name": "Matilda (Tilly) A'Court",
+  "givenName": "Matilda (Tilly)",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "30 NOV 1885",
+  "birthPlace": "Bristol, St Judes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2381 122 3.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ],
+  "baptismDate": "3 JAN 1886",
+  "baptismPlace": "Saints Philip and Jacob",
+  "occupations": [
+    "Packer (confr's)"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Gloucestershire, Bristol, Barrow Court, 1 Wade St"
+    }
+  ],
+  "avatar": "avatars/I2213_0.jpg"
+}

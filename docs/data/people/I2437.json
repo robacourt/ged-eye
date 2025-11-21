@@ -1,0 +1,31 @@
+{
+  "id": "I2437",
+  "name": "Valla A'Court",
+  "givenName": "Valla",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1932",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2438"
+  ],
+  "childIds": [
+    "I2439",
+    "I2440",
+    "I2441",
+    "I2442"
+  ],
+  "parentIds": [
+    "I2418",
+    "I2419"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2438",
+      "familyId": "F865"
+    }
+  ]
+}

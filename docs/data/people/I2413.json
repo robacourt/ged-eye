@@ -1,0 +1,25 @@
+{
+  "id": "I2413",
+  "name": "Ethel Pearce",
+  "givenName": "Ethel",
+  "surname": "Pearce",
+  "sex": "F",
+  "birthDate": "ABT 1893",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1194"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1194",
+      "familyId": "F857",
+      "marriageDate": "1912",
+      "marriagePlace": "Chippenham, Wiltshire"
+    }
+  ]
+}

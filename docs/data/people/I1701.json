@@ -1,0 +1,35 @@
+{
+  "id": "I1701",
+  "name": "Kenneth Pearce A'Court",
+  "givenName": "Kenneth Pearce",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "16 FEB 1923",
+  "birthPlace": "Gloucestershire, Bristol",
+  "deathDate": "28 DEC 2009",
+  "deathPlace": "Hampshire, Bournemouth",
+  "photos": [],
+  "spouseIds": [
+    "I1702"
+  ],
+  "childIds": [
+    "I1700",
+    "I1703",
+    "I2349",
+    "I2350"
+  ],
+  "parentIds": [
+    "I1587",
+    "I2590"
+  ],
+  "occupations": [
+    "Imperial Tobacco"
+  ],
+  "education": "Bristol Grammar",
+  "marriages": [
+    {
+      "spouseId": "I1702",
+      "familyId": "F622"
+    }
+  ]
+}

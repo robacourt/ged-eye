@@ -1,0 +1,46 @@
+{
+  "id": "I2471",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1880",
+  "birthPlace": "Liverpool, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Lancs/West Derby/RG11 3714 7 12.jpg",
+    "Data/Media/1891 census/Lancashire/RG12 3000 55 14.jpg",
+    "Data/Media/1901 census/London/St James/RG13 97 111 1.jpg",
+    "Data/Media/1911 census/London/Chiswick/RG14 6944 308.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I874",
+    "I926"
+  ],
+  "occupations": [
+    "Receptionist Photographer",
+    "Photographer's assistant-retoucher"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
+    },
+    {
+      "date": "1891",
+      "place": "Lancashire, West Derby, 2 Quarry Rd"
+    },
+    {
+      "date": "1901",
+      "place": "London, Westminster, St. James, 179 Regent Street"
+    },
+    {
+      "date": "1911",
+      "place": "Chiswick, Middlesex, 80 Grove Park Terrace"
+    }
+  ],
+  "avatar": "avatars/I2471_0.jpg"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I1410",
+  "name": "Louise A'Court",
+  "givenName": "Louise",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1884",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg"
+  ],
+  "spouseIds": [
+    "I1984"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1387",
+    "I1388"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1984",
+      "familyId": "F710"
+    }
+  ],
+  "avatar": "avatars/I1410_0.jpg"
+}

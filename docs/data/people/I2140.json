@@ -1,0 +1,23 @@
+{
+  "id": "I2140",
+  "name": "Kathleen De Caen",
+  "givenName": "Kathleen",
+  "surname": "De Caen",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2132"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2132",
+      "familyId": "F763"
+    }
+  ]
+}

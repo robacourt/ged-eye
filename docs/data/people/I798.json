@@ -1,0 +1,33 @@
+{
+  "id": "I798",
+  "name": "George Stanley A'Court",
+  "givenName": "George Stanley",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1886",
+  "birthPlace": "Wellington, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I800"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I785",
+    "I797"
+  ],
+  "baptismDate": "17 SEP 1886",
+  "baptismPlace": "Francis Place, Wellington, NZ",
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I800",
+      "familyId": "F342",
+      "marriageDate": "4 DEC 1907",
+      "marriagePlace": "St James's Church, Wellington, NZ"
+    }
+  ]
+}

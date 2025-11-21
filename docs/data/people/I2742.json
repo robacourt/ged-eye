@@ -1,0 +1,24 @@
+{
+  "id": "I2742",
+  "name": "Gladys Sorage",
+  "givenName": "Gladys",
+  "surname": "Sorage",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I815"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I815",
+      "familyId": "F349",
+      "marriageDate": "1928"
+    }
+  ]
+}

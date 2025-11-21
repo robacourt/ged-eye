@@ -1,0 +1,33 @@
+{
+  "id": "I2891",
+  "name": "Annie A Unknown",
+  "givenName": "Annie A",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": "Devon, Northam",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2825"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Devon, Bideford, 1Mill St."
+    },
+    {
+      "date": "1911",
+      "place": "Devon, Bideford, 7 South View Terrace, Northdown Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2825",
+      "familyId": "F990"
+    }
+  ]
+}

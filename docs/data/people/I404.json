@@ -1,0 +1,38 @@
+{
+  "id": "I404",
+  "name": "Thomas Sales A'Court",
+  "givenName": "Thomas Sales",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1809",
+  "birthPlace": "Shrewsbury, Shropshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2796"
+  ],
+  "childIds": [
+    "I405",
+    "I2798"
+  ],
+  "parentIds": [
+    "I406"
+  ],
+  "occupations": [
+    "Master coachbuilder",
+    "Wheelwright"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Greenwich, Marlborough St. Pound Cottage."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2796",
+      "familyId": "F184"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I909",
+  "name": "Elizabeth Lines",
+  "givenName": "Elizabeth",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "ABT 1879",
+  "birthPlace": null,
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I904",
+    "I230"
+  ]
+}

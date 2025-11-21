@@ -1,0 +1,46 @@
+{
+  "id": "I307",
+  "name": "Elizabeth Hatcher",
+  "givenName": "Elizabeth",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "ABT 1837",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "ABT 1885",
+  "deathPlace": "Sturminster Newton, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I189"
+  ],
+  "childIds": [
+    "I308"
+  ],
+  "parentIds": [
+    "I310",
+    "I311"
+  ],
+  "occupations": [
+    "Glove Maker"
+  ],
+  "notes": [
+    "4-1841  14-1851  23-1860  24-1861  25-1861  34-1871  43-1881"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I189",
+      "familyId": "F106",
+      "marriageDate": "29 MAR 1860",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

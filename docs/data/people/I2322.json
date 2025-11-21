@@ -1,0 +1,47 @@
+{
+  "id": "I2322",
+  "name": "Sarah Unknown",
+  "givenName": "Sarah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1830",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Wincanton/RG13 2306 22 36.jpg"
+  ],
+  "spouseIds": [
+    "I2321"
+  ],
+  "childIds": [
+    "I2323"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Factory Worker",
+    "Chain Warper",
+    "Patient"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Castle Cary, Somerset, Mill Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Castle Cary, Bridgewater Buildings, Mill Lane."
+    },
+    {
+      "date": "1901",
+      "place": "Wincanton, Somerset, Union Workhouse"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2321",
+      "familyId": "F824"
+    }
+  ],
+  "avatar": "avatars/I2322_0.jpg"
+}

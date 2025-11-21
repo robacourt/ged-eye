@@ -1,0 +1,53 @@
+{
+  "id": "I1428",
+  "name": "Harriet Leah Leach",
+  "givenName": "Harriet Leah",
+  "surname": "Leach",
+  "sex": "F",
+  "birthDate": "Abt 1846",
+  "birthPlace": "Whitechapel, London",
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1422"
+  ],
+  "childIds": [
+    "I2337",
+    "I2336",
+    "I445",
+    "I2335",
+    "I1423",
+    "I1424",
+    "I2283",
+    "I2282",
+    "I1429",
+    "I2338"
+  ],
+  "parentIds": [
+    "I2340",
+    "I2341"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Shoreditch, London,"
+    },
+    {
+      "date": "1891",
+      "place": "Shoreditch, London, 341 Old St."
+    },
+    {
+      "date": "1881",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1422",
+      "familyId": "F201",
+      "marriageDate": "2ND QTR 1867",
+      "marriagePlace": "City of London"
+    }
+  ]
+}

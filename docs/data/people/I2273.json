@@ -1,0 +1,28 @@
+{
+  "id": "I2273",
+  "name": "Kate Dora A'Court",
+  "givenName": "Kate Dora",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3 APR 1891",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Jersey C.I/RG12 4699 133 6.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2816",
+    "I2272"
+  ],
+  "baptismDate": "13 APR 1891",
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Ouen, Le Coin Rd"
+    }
+  ],
+  "avatar": "avatars/I2273_0.jpg"
+}

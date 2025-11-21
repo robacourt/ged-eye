@@ -1,0 +1,18 @@
+{
+  "id": "I2681",
+  "name": "Janet G. A'Court",
+  "givenName": "Janet G.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "4QTR 1941",
+  "birthPlace": "Greenwich, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2683",
+    "I2682"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I1347",
+  "name": "Charles Cundy",
+  "givenName": "Charles",
+  "surname": "Cundy",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1348"
+  ],
+  "childIds": [
+    "I1346",
+    "I1369"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1348",
+      "familyId": "F533"
+    }
+  ]
+}

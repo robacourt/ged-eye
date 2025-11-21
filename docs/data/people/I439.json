@@ -1,0 +1,27 @@
+{
+  "id": "I439",
+  "name": "Jean M Eyre",
+  "givenName": "Jean M",
+  "surname": "Eyre",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I435"
+  ],
+  "childIds": [
+    "I440"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I435",
+      "familyId": "F200",
+      "marriageDate": "5 JUN1948",
+      "marriagePlace": "Surrey, Redhill"
+    }
+  ]
+}

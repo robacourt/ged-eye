@@ -1,0 +1,28 @@
+{
+  "id": "I129",
+  "name": "Jennifer Oliver",
+  "givenName": "Jennifer",
+  "surname": "Oliver",
+  "sex": "F",
+  "birthDate": "21.4.1940",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Jennifer Oliver.jpg"
+  ],
+  "spouseIds": [
+    "I123"
+  ],
+  "childIds": [
+    "I130"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I123",
+      "familyId": "F77"
+    }
+  ],
+  "avatar": "avatars/I129_0.jpg"
+}

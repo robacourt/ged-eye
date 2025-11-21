@@ -1,0 +1,25 @@
+{
+  "id": "I1943",
+  "name": "Christian Solberg",
+  "givenName": "Christian",
+  "surname": "Solberg",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1887",
+  "deathPlace": "Ross, Westland, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I1905"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1905",
+      "familyId": "F691",
+      "marriageDate": "1872",
+      "marriagePlace": "Kumara, Westland, New Zealand"
+    }
+  ]
+}

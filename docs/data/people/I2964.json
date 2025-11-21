@@ -1,0 +1,20 @@
+{
+  "id": "I2964",
+  "name": "James Skedgell-Hill",
+  "givenName": "James",
+  "surname": "Skedgell-Hill",
+  "sex": "M",
+  "birthDate": "1910",
+  "birthPlace": null,
+  "deathDate": "1910",
+  "deathPlace": "Devon, Stoke Gabriel",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1457",
+    "I1456"
+  ],
+  "burialDate": "1910",
+  "burialPlace": "Devon, Stoke Gabriel"
+}

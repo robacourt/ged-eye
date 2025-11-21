@@ -1,0 +1,25 @@
+{
+  "id": "I1177",
+  "name": "Mary Merridew",
+  "givenName": "Mary",
+  "surname": "Merridew",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1176"
+  ],
+  "childIds": [
+    "I1175"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1176",
+      "familyId": "F480"
+    }
+  ]
+}

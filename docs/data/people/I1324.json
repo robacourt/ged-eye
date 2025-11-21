@@ -1,0 +1,24 @@
+{
+  "id": "I1324",
+  "name": "Henry Chant",
+  "givenName": "Henry",
+  "surname": "Chant",
+  "sex": "M",
+  "birthDate": "1862",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": "AFT 1891",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1323"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1323",
+      "familyId": "F523",
+      "marriageDate": "AFT 1882"
+    }
+  ]
+}

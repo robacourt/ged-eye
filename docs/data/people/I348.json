@@ -1,0 +1,25 @@
+{
+  "id": "I348",
+  "name": "Leah",
+  "givenName": "Leah",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I347"
+  ],
+  "childIds": [
+    "I344"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I347",
+      "familyId": "F163"
+    }
+  ]
+}

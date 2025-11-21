@@ -1,0 +1,34 @@
+{
+  "id": "I1162",
+  "name": "Vera Jane Curtis",
+  "givenName": "Vera Jane",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1904",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1163"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1155",
+    "I1156"
+  ],
+  "residences": [
+    {
+      "date": "1926",
+      "place": "Wearwell Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1163",
+      "familyId": "F474",
+      "marriageDate": "22 MAR 1926",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

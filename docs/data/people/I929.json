@@ -1,0 +1,30 @@
+{
+  "id": "I929",
+  "name": "Thomas Cooke",
+  "givenName": "Thomas",
+  "surname": "Cooke",
+  "sex": "M",
+  "birthDate": "BEF 1725",
+  "birthPlace": null,
+  "deathDate": "AFT 1747",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I540"
+  ],
+  "childIds": [
+    "I930"
+  ],
+  "parentIds": [],
+  "notes": [
+    "1738"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I540",
+      "familyId": "F231",
+      "marriageDate": "3 APR 1738",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

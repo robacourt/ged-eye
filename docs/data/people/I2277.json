@@ -1,0 +1,23 @@
+{
+  "id": "I2277",
+  "name": "Alice Unknown",
+  "givenName": "Alice",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2081"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2081",
+      "familyId": "F804"
+    }
+  ]
+}

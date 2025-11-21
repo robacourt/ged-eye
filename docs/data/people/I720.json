@@ -1,0 +1,26 @@
+{
+  "id": "I720",
+  "name": "Sandra Peters",
+  "givenName": "Sandra",
+  "surname": "Peters",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1400"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I719",
+    "I1399"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1400",
+      "familyId": "F294"
+    }
+  ]
+}

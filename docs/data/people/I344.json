@@ -1,0 +1,34 @@
+{
+  "id": "I344",
+  "name": "Louisa Yeatman",
+  "givenName": "Louisa",
+  "surname": "Yeatman",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Hazelbury Bryan Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I198"
+  ],
+  "childIds": [
+    "I345",
+    "I346"
+  ],
+  "parentIds": [
+    "I347",
+    "I348"
+  ],
+  "notes": [
+    "13-1851  23-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I198",
+      "familyId": "F114",
+      "marriageDate": "16.12.1861",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

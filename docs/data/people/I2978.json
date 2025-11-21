@@ -1,0 +1,23 @@
+{
+  "id": "I2978",
+  "name": "John Hardy",
+  "givenName": "John",
+  "surname": "Hardy",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I174"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F1022"
+    }
+  ]
+}

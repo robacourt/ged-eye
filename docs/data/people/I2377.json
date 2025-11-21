@@ -1,0 +1,30 @@
+{
+  "id": "I2377",
+  "name": "Laura A'Court",
+  "givenName": "Laura",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1874",
+  "birthPlace": "High Bridge, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Chelsea/RG13 74 10 11.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2373",
+    "I2374"
+  ],
+  "occupations": [
+    "House Maid Domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Chelsea, London, 38 Pont Street"
+    }
+  ],
+  "avatar": "avatars/I2377_0.jpg"
+}

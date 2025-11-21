@@ -1,0 +1,18 @@
+{
+  "id": "I2246",
+  "name": "Alice Mary Davis",
+  "givenName": "Alice Mary",
+  "surname": "Davis",
+  "sex": "F",
+  "birthDate": "29 APR 1992",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2240",
+    "I2245"
+  ]
+}

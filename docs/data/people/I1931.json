@@ -1,0 +1,26 @@
+{
+  "id": "I1931",
+  "name": "Marjorie Todrick A'Court",
+  "givenName": "Marjorie Todrick",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3 SEP 1912",
+  "birthPlace": "Sanson, New Zealand",
+  "deathDate": "5 JUN 1985",
+  "deathPlace": "New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I2311"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I939",
+    "I940"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2311",
+      "familyId": "F818"
+    }
+  ]
+}

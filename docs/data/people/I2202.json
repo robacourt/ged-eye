@@ -1,0 +1,18 @@
+{
+  "id": "I2202",
+  "name": "Laura Jane Rowe",
+  "givenName": "Laura Jane",
+  "surname": "Rowe",
+  "sex": "F",
+  "birthDate": "1975",
+  "birthPlace": "Sussex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2197",
+    "I2203"
+  ]
+}

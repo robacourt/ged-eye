@@ -1,0 +1,28 @@
+{
+  "id": "I133",
+  "name": "Matthew Rowlands",
+  "givenName": "Matthew",
+  "surname": "Rowlands",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I134"
+  ],
+  "childIds": [
+    "I2"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Parish Clerk"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I134",
+      "familyId": "F3"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I1714",
+  "name": "Glenys Tucker",
+  "givenName": "Glenys",
+  "surname": "Tucker",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1700"
+  ],
+  "childIds": [
+    "I1699",
+    "I1715"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1700",
+      "familyId": "F621"
+    }
+  ]
+}

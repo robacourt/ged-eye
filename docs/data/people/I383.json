@@ -1,0 +1,41 @@
+{
+  "id": "I383",
+  "name": "Constance Irene Wheeler Bennett",
+  "givenName": "Constance Irene Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "1895",
+  "birthPlace": "Kent, Bromley Common",
+  "deathDate": "1980",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Kent/RG13 686 39 5a.jpg"
+  ],
+  "spouseIds": [
+    "I389"
+  ],
+  "childIds": [
+    "I390",
+    "I576",
+    "I756"
+  ],
+  "parentIds": [
+    "I377",
+    "I380"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I389",
+      "familyId": "F176",
+      "marriageDate": "19 DEC 1921",
+      "marriagePlace": "Oxford"
+    }
+  ],
+  "avatar": "avatars/I383_0.jpg"
+}

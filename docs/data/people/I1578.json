@@ -1,0 +1,32 @@
+{
+  "id": "I1578",
+  "name": "Eva Nellie A'Court",
+  "givenName": "Eva Nellie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT FEB 1901",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG12226 90.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1571",
+    "I1572"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 33 Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Dorset, Pimperne Isolation Hospital- patient"
+    }
+  ],
+  "avatar": "avatars/I1578_0.jpg"
+}

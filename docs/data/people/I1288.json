@@ -1,0 +1,30 @@
+{
+  "id": "I1288",
+  "name": "John Stacey",
+  "givenName": "John",
+  "surname": "Stacey",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1289"
+  ],
+  "childIds": [
+    "I1276",
+    "I1286",
+    "I1287"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Gardener"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1289",
+      "familyId": "F515"
+    }
+  ]
+}

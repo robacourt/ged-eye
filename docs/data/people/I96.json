@@ -1,0 +1,34 @@
+{
+  "id": "I96",
+  "name": "Mathew Hunt",
+  "givenName": "Mathew",
+  "surname": "Hunt",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "Colnbrook Buckinghamshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I36"
+  ],
+  "childIds": [
+    "I97",
+    "I98",
+    "I99",
+    "I100",
+    "I101",
+    "I102"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Yeoman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I36",
+      "familyId": "F25",
+      "marriageDate": "yes"
+    }
+  ]
+}

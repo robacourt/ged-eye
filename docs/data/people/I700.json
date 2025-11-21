@@ -1,0 +1,28 @@
+{
+  "id": "I700",
+  "name": "Abraham a'Court",
+  "givenName": "Abraham",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "BEF 23 APRIL 1738",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "AFT 1759",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I702"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I537",
+    "I698"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I702",
+      "familyId": "F289",
+      "marriageDate": "5 NOV 1759",
+      "marriagePlace": "Somerton, Somerset"
+    }
+  ]
+}

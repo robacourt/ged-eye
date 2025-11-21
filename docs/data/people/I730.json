@@ -1,0 +1,26 @@
+{
+  "id": "I730",
+  "name": "William Symes",
+  "givenName": "William",
+  "surname": "Symes",
+  "sex": "M",
+  "birthDate": "1855",
+  "birthPlace": null,
+  "deathDate": "1907",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I110"
+  ],
+  "childIds": [
+    "I731"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I110",
+      "familyId": "F67",
+      "marriageDate": "2 JUN 1884"
+    }
+  ]
+}

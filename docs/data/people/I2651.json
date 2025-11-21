@@ -1,0 +1,25 @@
+{
+  "id": "I2651",
+  "name": "Unknown Farley",
+  "givenName": "Unknown",
+  "surname": "Farley",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2650"
+  ],
+  "childIds": [
+    "I2649"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2650",
+      "familyId": "F923"
+    }
+  ]
+}

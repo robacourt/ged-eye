@@ -1,0 +1,27 @@
+{
+  "id": "I2595",
+  "name": "Charles Henry A'Court",
+  "givenName": "Charles Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "Bristol, Gloucestershire, St Judes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 15010 14.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, 36 Wade St."
+    }
+  ],
+  "avatar": "avatars/I2595_0.jpg"
+}

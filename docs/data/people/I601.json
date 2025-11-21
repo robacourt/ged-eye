@@ -1,0 +1,22 @@
+{
+  "id": "I601",
+  "name": "Ernest John Hatcher",
+  "givenName": "Ernest John",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I589",
+    "I595"
+  ],
+  "baptismDate": "26.8.1917",
+  "notes": [
+    "alive 1999"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "I594",
+  "name": "( Edward ) George Hatcher",
+  "givenName": "( Edward ) George",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "27.12.1886",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I157",
+    "I317"
+  ],
+  "baptismDate": "13.3.1887",
+  "baptismPlace": "Marnhull, Dorset"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "I311",
+  "name": "Anne Kendall",
+  "givenName": "Anne",
+  "surname": "Kendall",
+  "sex": "F",
+  "birthDate": "ABT 1808",
+  "birthPlace": "Child Okeford, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 54 17.jpg"
+  ],
+  "spouseIds": [
+    "I310"
+  ],
+  "childIds": [
+    "I307",
+    "I1656"
+  ],
+  "parentIds": [
+    "I312"
+  ],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I310",
+      "familyId": "F149"
+    }
+  ],
+  "avatar": "avatars/I311_0.jpg"
+}

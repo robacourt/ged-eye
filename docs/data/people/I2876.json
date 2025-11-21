@@ -1,0 +1,27 @@
+{
+  "id": "I2876",
+  "name": "Annie A'Court",
+  "givenName": "Annie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1869",
+  "birthPlace": "Dorset, Marnhull",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Christchurch/RG12 901 117 21.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Hampshire, Christchurch, Holdenhurst, Exeter Rd, Grocers Shop"
+    }
+  ],
+  "avatar": "avatars/I2876_0.jpg"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I825",
+  "name": "Sydney Charles A'Court",
+  "givenName": "Sydney Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "5 SEP 1870",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "15 AUG 1902",
+  "deathPlace": "on board SS Montrose",
+  "photos": [],
+  "spouseIds": [
+    "I861"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I776",
+    "I820"
+  ],
+  "burialPlace": "Three Kings Islands, at sea",
+  "notes": [
+    "First name(s) Sidney C"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I861",
+      "familyId": "F356"
+    }
+  ]
+}

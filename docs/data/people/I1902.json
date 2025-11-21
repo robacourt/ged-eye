@@ -1,0 +1,25 @@
+{
+  "id": "I1902",
+  "name": "Edward A'Court",
+  "givenName": "Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1903"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1903",
+      "familyId": "F674",
+      "marriageDate": "1889",
+      "marriagePlace": "Sydney, NSW"
+    }
+  ]
+}

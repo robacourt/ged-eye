@@ -1,0 +1,29 @@
+{
+  "id": "I169",
+  "name": "Susanna Cull",
+  "givenName": "Susanna",
+  "surname": "Cull",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I168"
+  ],
+  "childIds": [
+    "I167"
+  ],
+  "parentIds": [],
+  "notes": [
+    "With Issue"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I168",
+      "familyId": "F94",
+      "marriageDate": "NO"
+    }
+  ]
+}

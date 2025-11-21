@@ -1,0 +1,43 @@
+{
+  "id": "I1633",
+  "name": "Tom A'Court",
+  "givenName": "Tom",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1866",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1634"
+  ],
+  "childIds": [
+    "I1635"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Masons Labourer",
+    "Farm Labourer"
+  ],
+  "notes": [
+    "Very likely son of Ann Warren on bk#1632"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Church Lane"
+    },
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Old Workhouse."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1634",
+      "familyId": "F607",
+      "marriageDate": "ABT 1897"
+    }
+  ]
+}

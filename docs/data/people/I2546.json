@@ -1,0 +1,27 @@
+{
+  "id": "I2546",
+  "name": "Marjoire Dorothy A'Court",
+  "givenName": "Marjoire Dorothy",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1904",
+  "birthPlace": "London, Chelsea, Walton St. Marlboro: Buildings",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 344 266.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2454",
+    "I2455"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Fulham, 32 Bearcroft Buildings"
+    }
+  ],
+  "avatar": "avatars/I2546_0.jpg"
+}

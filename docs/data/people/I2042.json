@@ -1,0 +1,52 @@
+{
+  "id": "I2042",
+  "name": "Ernest Richard A'Court",
+  "givenName": "Ernest Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1881",
+  "birthPlace": "London, Kensington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg"
+  ],
+  "spouseIds": [
+    "I2043"
+  ],
+  "childIds": [
+    "I2096",
+    "I513",
+    "I2098",
+    "I2102"
+  ],
+  "parentIds": [
+    "I878",
+    "I928"
+  ],
+  "occupations": [
+    "Dancing Instructor"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1891",
+      "place": "London, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1911",
+      "place": "London, Hammersmith, 1 Aylmer Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2043",
+      "familyId": "F737",
+      "marriageDate": "ABT 1907"
+    }
+  ],
+  "avatar": "avatars/I2042_0.jpg"
+}

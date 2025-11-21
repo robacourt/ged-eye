@@ -1,0 +1,26 @@
+{
+  "id": "I2822",
+  "name": "William Thomas",
+  "givenName": "William",
+  "surname": "Thomas",
+  "sex": "M",
+  "birthDate": "1872",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG 1947 152 21.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1409"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    }
+  ],
+  "avatar": "avatars/I2822_0.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I2010",
+  "name": "Peter Wigglesworth",
+  "givenName": "Peter",
+  "surname": "Wigglesworth",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2008",
+    "I422"
+  ]
+}

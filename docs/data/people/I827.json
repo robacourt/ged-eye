@@ -1,0 +1,18 @@
+{
+  "id": "I827",
+  "name": "Nellie Maud A'Court",
+  "givenName": "Nellie Maud",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "14 AUG 1874",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I776",
+    "I820"
+  ]
+}

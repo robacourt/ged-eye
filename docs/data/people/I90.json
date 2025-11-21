@@ -1,0 +1,33 @@
+{
+  "id": "I90",
+  "name": "Stephen Hatcher",
+  "givenName": "Stephen",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "Poole, Dorset",
+  "deathDate": "Aft 1832",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I237"
+  ],
+  "childIds": [
+    "I238",
+    "I239"
+  ],
+  "parentIds": [
+    "I88",
+    "I28"
+  ],
+  "baptismDate": "16 AUG 1807",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I237",
+      "familyId": "F58",
+      "marriageDate": "22 OCT 1832",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2788",
+  "name": "Eliza Markwell",
+  "givenName": "Eliza",
+  "surname": "Markwell",
+  "sex": "F",
+  "birthDate": "ABT 1877",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2786",
+    "I2784"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 6 Perth St"
+    }
+  ]
+}

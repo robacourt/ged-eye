@@ -1,0 +1,36 @@
+{
+  "id": "I1083",
+  "name": "Samuel Hatcher",
+  "givenName": "Samuel",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1084"
+  ],
+  "childIds": [
+    "I1082",
+    "I1140",
+    "I1252"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab,"
+  ],
+  "residences": [
+    {
+      "date": "1885",
+      "place": "Tober"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1084",
+      "familyId": "F431"
+    }
+  ]
+}

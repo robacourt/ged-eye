@@ -1,0 +1,20 @@
+{
+  "id": "I1929",
+  "name": "Thomas Frederic Cooke A'Court",
+  "givenName": "Thomas Frederic Cooke",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "17 AUG 1835",
+  "birthPlace": "Shepton Mallet, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I51",
+    "I1753"
+  ],
+  "baptismDate": "6 JAN 1836",
+  "baptismPlace": "Shepton Mallet, Somerset"
+}

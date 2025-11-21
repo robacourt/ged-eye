@@ -1,0 +1,42 @@
+{
+  "id": "I762",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1811",
+  "birthPlace": null,
+  "deathDate": "AFT 1871",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1319"
+  ],
+  "childIds": [
+    "I1320",
+    "I1321"
+  ],
+  "parentIds": [
+    "I755",
+    "I760"
+  ],
+  "baptismDate": "1 APR 1812",
+  "baptismPlace": "North Cadbury, Somerset",
+  "occupations": [
+    "Nurse"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1319",
+      "familyId": "F314",
+      "marriageDate": "16 SEP 1832",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+    }
+  ]
+}

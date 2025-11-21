@@ -1,0 +1,55 @@
+{
+  "id": "I2474",
+  "name": "Mary Ann Brown",
+  "givenName": "Mary Ann",
+  "surname": "Brown",
+  "sex": "F",
+  "birthDate": "ABT 1847",
+  "birthPlace": "Dorset, Kimmeridge",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Devon/RG13 2160 97 13.jpg",
+    "Data/Media/1911 census/Dorset/Weymouth/RG14 12343 132.jpg"
+  ],
+  "spouseIds": [
+    "I2405"
+  ],
+  "childIds": [
+    "I806",
+    "I2825",
+    "I2826"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Melcombe Regis, Dorset, 10 Alexandra Terrace"
+    },
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, 16 West Parade"
+    },
+    {
+      "date": "1901",
+      "place": "Devon, Bideford, 1 Mill St."
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Melcombe Regis, 14 Commercial Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Dorset, Melcombe Regis, 12 Derby St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2405",
+      "familyId": "F721",
+      "marriageDate": "3 DEC 1867",
+      "marriagePlace": "Dorset, Weymouth"
+    }
+  ],
+  "avatar": "avatars/I2474_0.jpg"
+}

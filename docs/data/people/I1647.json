@@ -1,0 +1,39 @@
+{
+  "id": "I1647",
+  "name": "Alice Maud A'Court",
+  "givenName": "Alice Maud",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1876",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 101 58.jpg",
+    "Data/Media/1891 census/Dorset/Melcombe Regis/RG12 1646 96 6.jpg",
+    "Data/Media/1901 census/Dorset/Weymouth/RG13 1993 89 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1450",
+    "I1451"
+  ],
+  "baptismDate": "12 MAR 1876",
+  "baptismPlace": "Weymouth, Dorset, St Mary's",
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Weymouth, Dorset, Melcombe Regis, 3 Gloster Row"
+    },
+    {
+      "date": "1881",
+      "place": "Weymouth, Dorset. Melcombe Regis, 4 Alexandra Terrace"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Melcombe Regis, Gloucester Row"
+    }
+  ],
+  "avatar": "avatars/I1647_0.jpg"
+}

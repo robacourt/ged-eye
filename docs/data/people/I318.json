@@ -1,0 +1,34 @@
+{
+  "id": "I318",
+  "name": "Matthew Hayward",
+  "givenName": "Matthew",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": "ABT 1807",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I319"
+  ],
+  "childIds": [
+    "I309"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I319",
+      "familyId": "F152"
+    }
+  ]
+}

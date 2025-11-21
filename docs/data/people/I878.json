@@ -1,0 +1,74 @@
+{
+  "id": "I878",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1851",
+  "birthPlace": "Chew Magna, Somerset, England",
+  "deathDate": "ABT 1931",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/London/Pancras/RG09 110 111 50.jpg"
+  ],
+  "spouseIds": [
+    "I928"
+  ],
+  "childIds": [
+    "I1335",
+    "I528",
+    "I517",
+    "I2087",
+    "I2042",
+    "I1337",
+    "I524",
+    "I2090"
+  ],
+  "parentIds": [
+    "I763",
+    "I871"
+  ],
+  "occupations": [
+    "Coachman Domestic",
+    "Coachman, Domestic Servant",
+    "Coachman, not domestic",
+    "Coachman, Domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Middx. St Pancras 3, Brill Cottages."
+    },
+    {
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1891",
+      "place": "London,Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1901",
+      "place": "London, Putney, 12 Rotherwood Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "London, Putney, 72 Lower Richmond Rd"
+    }
+  ],
+  "residences": [
+    {
+      "date": "MAY 1918",
+      "place": "Chertsey, Surrey, 91 Guildford St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I928",
+      "familyId": "F226",
+      "marriageDate": "1871",
+      "marriagePlace": "Somerset"
+    }
+  ],
+  "avatar": "avatars/I878_0.jpg"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I2734",
+  "name": "Michael Barnett",
+  "givenName": "Michael",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "1800",
+  "birthPlace": "London, Aldgate",
+  "deathDate": "BEF 1867",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2334"
+  ],
+  "childIds": [
+    "I1422",
+    "I2723"
+  ],
+  "parentIds": [
+    "I2947",
+    "I2948"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2334",
+      "familyId": "F830"
+    }
+  ]
+}

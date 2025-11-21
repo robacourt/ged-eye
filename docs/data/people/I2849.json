@@ -1,0 +1,32 @@
+{
+  "id": "I2849",
+  "name": "Ann S A'Court",
+  "givenName": "Ann S",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1862",
+  "birthPlace": "London, Chelsea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Chelsea/RG11 85 89 19 819.jpg",
+    "Data/Media/1891 census/London/Chelsea/RG12 64 84 29.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Chelsea, 62 Sloane St."
+    },
+    {
+      "date": "1891",
+      "place": "London, Chelsea, Upper Cheyne Row"
+    }
+  ],
+  "avatar": "avatars/I2849_0.jpg"
+}

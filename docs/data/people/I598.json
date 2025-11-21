@@ -1,0 +1,20 @@
+{
+  "id": "I598",
+  "name": "John Hatcher",
+  "givenName": "John",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I589",
+    "I595"
+  ],
+  "baptismDate": "28.10.1906",
+  "baptismPlace": "Todber, Dorset"
+}

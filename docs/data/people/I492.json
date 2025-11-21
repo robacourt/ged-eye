@@ -1,0 +1,51 @@
+{
+  "id": "I492",
+  "name": "Frederick Charles A'Court",
+  "givenName": "Frederick Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1884",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg"
+  ],
+  "spouseIds": [
+    "I1990"
+  ],
+  "childIds": [
+    "I2586",
+    "I1991"
+  ],
+  "parentIds": [
+    "I490",
+    "I491"
+  ],
+  "occupations": [
+    "Royal Marine",
+    "Private Royal Marine Light Infantry"
+  ],
+  "notes": [
+    "four sons, one daughter",
+    "Wife from Devon 5 Children .Ref; source"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Sherborne, Over Compton, Lodge"
+    },
+    {
+      "date": "1911",
+      "place": "Gosport, Hampshire, 105 Parham Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1990",
+      "familyId": "F711",
+      "marriageDate": "1910"
+    }
+  ],
+  "avatar": "avatars/I492_0.jpg"
+}

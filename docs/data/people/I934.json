@@ -1,0 +1,30 @@
+{
+  "id": "I934",
+  "name": "John Edward (Jack)Diehm",
+  "givenName": "John Edward",
+  "surname": "(Jack)Diehm",
+  "sex": "M",
+  "birthDate": "5 DECEMBER 1898",
+  "birthPlace": "Wellington, NSW",
+  "deathDate": "27 DECEMBER 1966",
+  "deathPlace": "Forbes",
+  "photos": [],
+  "spouseIds": [
+    "I933"
+  ],
+  "childIds": [
+    "I1049",
+    "I1053",
+    "I1058",
+    "I1062"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I933",
+      "familyId": "F388",
+      "marriageDate": "18 NOVEMBER 1920",
+      "marriagePlace": "Gulgong, NSW"
+    }
+  ]
+}

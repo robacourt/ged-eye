@@ -1,0 +1,30 @@
+{
+  "id": "I603",
+  "name": "Charlotte Louisa Hayward",
+  "givenName": "Charlotte Louisa",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I602"
+  ],
+  "childIds": [
+    "I595"
+  ],
+  "parentIds": [
+    "I604"
+  ],
+  "occupations": [
+    "Glovemaker"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I602",
+      "familyId": "F245"
+    }
+  ]
+}

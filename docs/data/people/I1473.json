@@ -1,0 +1,43 @@
+{
+  "id": "I1473",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1791",
+  "birthPlace": "Somerset, Horsington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1474"
+  ],
+  "childIds": [
+    "I1475",
+    "I1476"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Farmer",
+    "Farmer of 70 acres"
+  ],
+  "notes": [
+    "Do you know if this reference from Churchwardens Accounts 1842 is the same"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Bazeland Hill farm. BA8 0TD"
+    },
+    {
+      "date": "1861",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1474",
+      "familyId": "F564"
+    }
+  ]
+}

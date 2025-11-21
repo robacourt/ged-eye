@@ -1,0 +1,43 @@
+{
+  "id": "I2416",
+  "name": "Victor Richard A'Court",
+  "givenName": "Victor Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1896",
+  "birthPlace": "Box, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg",
+    "Data/Media/1911 census/Wiltshire/Box/RG14 11864 213.jpg"
+  ],
+  "spouseIds": [
+    "I2417"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "occupations": [
+    "Farm labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2417",
+      "familyId": "F858"
+    }
+  ],
+  "avatar": "avatars/I2416_0.jpg"
+}

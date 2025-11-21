@@ -1,0 +1,17 @@
+{
+  "id": "I1784",
+  "name": "Lynda R A'Court",
+  "givenName": "Lynda R",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3RD QRT 1951",
+  "birthPlace": "Gosport, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1785"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I1916",
+  "name": "Heather Unknown",
+  "givenName": "Heather",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1299"
+  ],
+  "childIds": [
+    "I1917",
+    "I1918",
+    "I1919"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1299",
+      "familyId": "F679"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I635",
+  "name": "Alfred Frampton",
+  "givenName": "Alfred",
+  "surname": "Frampton",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I633"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Farmer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F266"
+    }
+  ]
+}

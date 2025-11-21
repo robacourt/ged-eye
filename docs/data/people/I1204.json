@@ -1,0 +1,30 @@
+{
+  "id": "I1204",
+  "name": "Freda Haskett",
+  "givenName": "Freda",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1205"
+  ],
+  "childIds": [
+    "I1206",
+    "I1207",
+    "I1208"
+  ],
+  "parentIds": [
+    "I1181",
+    "I1182"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1205",
+      "familyId": "F487"
+    }
+  ]
+}

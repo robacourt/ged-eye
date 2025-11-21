@@ -1,0 +1,23 @@
+{
+  "id": "I1356",
+  "name": "Alfred Charles Bicknell",
+  "givenName": "Alfred Charles",
+  "surname": "Bicknell",
+  "sex": "M",
+  "birthDate": "1872",
+  "birthPlace": "New Zealand",
+  "deathDate": "1946",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1355"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1355",
+      "familyId": "F537"
+    }
+  ]
+}

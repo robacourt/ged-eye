@@ -1,0 +1,27 @@
+{
+  "id": "I1976",
+  "name": "Charles Gumbrell",
+  "givenName": "Charles",
+  "surname": "Gumbrell",
+  "sex": "M",
+  "birthDate": "Abt 1848",
+  "birthPlace": "Bognor, Sussex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1975"
+  ],
+  "childIds": [
+    "I1977"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1975",
+      "familyId": "F707",
+      "marriageDate": "2 OCT 1870",
+      "marriagePlace": "Portsea Island, Hampshire"
+    }
+  ]
+}

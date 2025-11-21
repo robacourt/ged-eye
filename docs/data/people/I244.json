@@ -1,0 +1,54 @@
+{
+  "id": "I244",
+  "name": "Louisa A'Court",
+  "givenName": "Louisa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1853",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 52 14.jpg",
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 38 8.jpg",
+    "Data/Media/1911 census/Dorset/Marnhull/RG14 12201 85.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I39",
+    "I240"
+  ],
+  "baptismDate": "12.9.1858",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glover",
+    "Glove Maker",
+    "Dress and Glovemaker",
+    "Dressmaker on  own account",
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Sackmen Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Lecture Hall"
+    }
+  ],
+  "avatar": "avatars/I244_0.jpg"
+}

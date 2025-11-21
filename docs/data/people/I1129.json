@@ -1,0 +1,32 @@
+{
+  "id": "I1129",
+  "name": "Lilian Blanche Curtis",
+  "givenName": "Lilian Blanche",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "18 MAR 1893",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1130"
+  ],
+  "childIds": [
+    "I1132"
+  ],
+  "parentIds": [
+    "I1081",
+    "I1082"
+  ],
+  "baptismDate": "11 JUN 1893",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1130",
+      "familyId": "F458",
+      "marriageDate": "21 SEP 1926",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

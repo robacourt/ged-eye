@@ -1,0 +1,61 @@
+{
+  "id": "I107",
+  "name": "Jane Dober",
+  "givenName": "Jane",
+  "surname": "Dober",
+  "sex": "F",
+  "birthDate": "1831",
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
+  "deathPlace": "Southampton, Hampshire",
+  "photos": [],
+  "spouseIds": [
+    "I76",
+    "I116"
+  ],
+  "childIds": [
+    "I108"
+  ],
+  "parentIds": [
+    "I207",
+    "I1293"
+  ],
+  "occupations": [
+    "Widow",
+    "Charwoman"
+  ],
+  "notes": [
+    "1891 Census 15 Omega Street",
+    "22-1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "48 Fleet St. Portsea, Hampshire"
+    },
+    {
+      "date": "1891",
+      "place": "15 Omega St."
+    }
+  ],
+  "residences": [
+    {
+      "date": "3 NOV 1851",
+      "place": "Elm Grok"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I76",
+      "familyId": "F48",
+      "marriageDate": "3 NOV 1851",
+      "marriagePlace": "Portsmouth, Portsea, All Saints, Parish Church"
+    },
+    {
+      "spouseId": "I116",
+      "familyId": "F64",
+      "marriageDate": "26 AUG 1860",
+      "marriagePlace": "Portsea, Hampshire, All Saints"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I2173",
+  "name": "Clarissa Grace Hoy",
+  "givenName": "Clarissa Grace",
+  "surname": "Hoy",
+  "sex": "F",
+  "birthDate": "1994",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2171",
+    "I2164"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1318",
+  "name": "Neil Wholagan",
+  "givenName": "Neil",
+  "surname": "Wholagan",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1317"
+  ],
+  "childIds": [
+    "I1440"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1317",
+      "familyId": "F521"
+    }
+  ]
+}

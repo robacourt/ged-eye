@@ -1,0 +1,32 @@
+{
+  "id": "I171",
+  "name": "Thomas Bastable",
+  "givenName": "Thomas",
+  "surname": "Bastable",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I172"
+  ],
+  "childIds": [
+    "I170"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Blacksmith And Farrier"
+  ],
+  "notes": [
+    "of Burton Street"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I172",
+      "familyId": "F95",
+      "marriageDate": "yes"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I711",
+  "name": "Josiah Brodribb",
+  "givenName": "Josiah",
+  "surname": "Brodribb",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Aft 1766",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I710"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I710",
+      "familyId": "F290"
+    }
+  ]
+}

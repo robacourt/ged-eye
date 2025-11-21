@@ -1,0 +1,28 @@
+{
+  "id": "I1360",
+  "name": "Ethel Hodder",
+  "givenName": "Ethel",
+  "surname": "Hodder",
+  "sex": "F",
+  "birthDate": "1880",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1359"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1361",
+    "I1362"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1359",
+      "familyId": "F539",
+      "marriageDate": "1901",
+      "marriagePlace": "Sydney, NSW"
+    }
+  ]
+}

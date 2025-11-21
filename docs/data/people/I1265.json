@@ -1,0 +1,26 @@
+{
+  "id": "I1265",
+  "name": "Gerald J. Acreman",
+  "givenName": "Gerald J.",
+  "surname": "Acreman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1093"
+  ],
+  "childIds": [
+    "I2673"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1093",
+      "familyId": "F440",
+      "marriageDate": "1931"
+    }
+  ]
+}

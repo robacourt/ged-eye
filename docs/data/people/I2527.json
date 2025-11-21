@@ -1,0 +1,30 @@
+{
+  "id": "I2527",
+  "name": "Walter A'Court",
+  "givenName": "Walter",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1895",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Somerset/Yeovil/RG14 14412 290.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1636",
+    "I1637"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 11 Woodland Grove, Mill Rd."
+    }
+  ],
+  "avatar": "avatars/I2527_0.jpg"
+}

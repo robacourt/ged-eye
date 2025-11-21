@@ -1,0 +1,43 @@
+{
+  "id": "I193",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2255"
+  ],
+  "childIds": [
+    "I2256",
+    "I2257"
+  ],
+  "parentIds": [
+    "I55",
+    "I190"
+  ],
+  "baptismDate": "4 SEP 1836",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Milliner"
+  ],
+  "notes": [
+    "Name Relationship to"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Sherborne, Dorset, Hound St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2255",
+      "familyId": "F797"
+    }
+  ]
+}

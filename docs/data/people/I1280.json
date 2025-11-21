@@ -1,0 +1,25 @@
+{
+  "id": "I1280",
+  "name": "George Cummings",
+  "givenName": "George",
+  "surname": "Cummings",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1277"
+  ],
+  "childIds": [
+    "I1281"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1277",
+      "familyId": "F517"
+    }
+  ]
+}

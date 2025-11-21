@@ -1,0 +1,25 @@
+{
+  "id": "I1689",
+  "name": "Unknown Bobl",
+  "givenName": "Unknown",
+  "surname": "Bobl",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1690"
+  ],
+  "childIds": [
+    "I1691"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1690",
+      "familyId": "F618"
+    }
+  ]
+}

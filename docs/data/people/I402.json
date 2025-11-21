@@ -1,0 +1,60 @@
+{
+  "id": "I402",
+  "name": "Joan Lillian Mary Topper",
+  "givenName": "Joan Lillian Mary",
+  "surname": "Topper",
+  "sex": "F",
+  "birthDate": "22 MAR 1921",
+  "birthPlace": "Surrey, Chertsey",
+  "deathDate": "23 JUN 2008",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/Surrey/RG15 03152 88.jpg",
+    "Data/Media/Newspaper Reports/Surrey_Advertiser_24_December_1932_0004_Clip.jpg"
+  ],
+  "spouseIds": [
+    "I403",
+    "I529"
+  ],
+  "childIds": [
+    "I127"
+  ],
+  "parentIds": [
+    "I2971",
+    "I2972"
+  ],
+  "burialDate": "30 JUN 2008",
+  "burialPlace": "Cornwall, Wadebridge, Trebetherick, St.  Enodoc Church.",
+  "censusRecords": [
+    {
+      "date": "1921 CENSUS",
+      "place": "Surrey, West Byleet, 72 Station Rd"
+    },
+    {
+      "date": "1939 REGISTER",
+      "place": "Surrey, Woodham, 47 Scotland Bridge Rd."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1949",
+      "place": "Surrey, New Haw, 9 Pine Close."
+    },
+    {
+      "date": "1959",
+      "place": "Surrey, New Haw, 9 Pine Close"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I403",
+      "familyId": "F80",
+      "marriageDate": "1ST QTR 1944"
+    },
+    {
+      "spouseId": "I529",
+      "familyId": "F220"
+    }
+  ],
+  "avatar": "avatars/I402_0.jpg"
+}

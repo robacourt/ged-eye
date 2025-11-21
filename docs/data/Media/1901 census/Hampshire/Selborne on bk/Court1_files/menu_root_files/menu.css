@@ -1,0 +1,45 @@
+A:visited {
+	COLOR: #ffffff
+}
+A:link {
+	COLOR: #ffffff
+}
+A:hover {
+	COLOR: #000000
+}
+A:active {
+	COLOR: #ff0000
+}
+A.sub:visited {
+	COLOR: #9c0000
+}
+A.sub:link {
+	COLOR: #9c0000
+}
+A.sub:hover {
+	COLOR: #ff0000
+}
+A.sub:active {
+	COLOR: #ff0000
+}
+.tabletextgray {
+	FONT-SIZE: 10pt; BACKGROUND: #dddddd; COLOR: #ff0000; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.tabletextgrayselected {
+	FONT-SIZE: 8pt; BACKGROUND: #ffffff; COLOR: #9c0000; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.menutopunselected {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.menutopselected {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; BACKGROUND: #99cccc; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.sub {
+	FONT-SIZE: 8pt; COLOR: #9c0000; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.datetext {
+	FONT-SIZE: 8pt; COLOR: #ccffff; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.menuheading {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #cccccc; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I2589",
+  "name": "Emily Unknown",
+  "givenName": "Emily",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1884",
+  "birthPlace": "Bristol, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1586"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Bedminster, 7 Kensal Rd. Victoria Park"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1586",
+      "familyId": "F905",
+      "marriageDate": "ABT 1911"
+    }
+  ]
+}

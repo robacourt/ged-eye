@@ -1,0 +1,44 @@
+{
+  "id": "I1590",
+  "name": "Augusta Derrick",
+  "givenName": "Augusta",
+  "surname": "Derrick",
+  "sex": "F",
+  "birthDate": "Abt 1850",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Weymouth/RG12 1647 24 42.jpg"
+  ],
+  "spouseIds": [
+    "I1589"
+  ],
+  "childIds": [
+    "I2889"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Weymouth, Dorset, Penny St."
+    },
+    {
+      "date": "1901",
+      "place": "Glamorganshire, Cardiff, 45 Wells St"
+    },
+    {
+      "date": "1911",
+      "place": "Glamorganshire, Cardiff, 45 Wells St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1589",
+      "familyId": "F597",
+      "marriageDate": "4TH QTR 1877",
+      "marriagePlace": "Weymouth, Dorset"
+    }
+  ],
+  "avatar": "avatars/I1590_0.jpg"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "I83",
+  "name": "Mary Ann A'Court",
+  "givenName": "Mary Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "INFANT",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I25",
+    "I80"
+  ],
+  "burialDate": "26.5.1814",
+  "burialPlace": "Fifehead Magdalen, Dorset"
+}

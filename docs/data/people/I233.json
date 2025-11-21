@@ -1,0 +1,26 @@
+{
+  "id": "I233",
+  "name": "Adam Encott",
+  "givenName": "Adam",
+  "surname": "Encott",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I227"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Shoemaker"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F123"
+    }
+  ]
+}

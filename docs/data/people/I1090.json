@@ -1,0 +1,55 @@
+{
+  "id": "I1090",
+  "name": "Emmanuel Odessa A'Court",
+  "givenName": "Emmanuel Odessa",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1893",
+  "birthPlace": "Coleford, Somerset",
+  "deathDate": "1970",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [
+    "Data/Picture/EMMANUEL-ODESSA.JPG",
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg",
+    "Data/Media/1911 census/Somerset/Holton/RG14 14430 91.jpg"
+  ],
+  "spouseIds": [
+    "I1091"
+  ],
+  "childIds": [
+    "I1101",
+    "I1267",
+    "I1269",
+    "I1102",
+    "I1103",
+    "I1104",
+    "I1272"
+  ],
+  "parentIds": [
+    "I1100",
+    "I1109"
+  ],
+  "occupations": [
+    "Labourer on Farm",
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1911",
+      "place": "Holton, Wincanton, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1091",
+      "familyId": "F437",
+      "marriageDate": "1913",
+      "marriagePlace": "Yeovil, Somerset"
+    }
+  ],
+  "avatar": "avatars/I1090_0.jpg"
+}

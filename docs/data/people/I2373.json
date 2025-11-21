@@ -1,0 +1,38 @@
+{
+  "id": "I2373",
+  "name": "Edwin A'Court",
+  "givenName": "Edwin",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1849   1ST QTR",
+  "birthPlace": "Langport, District, Somerset",
+  "deathDate": "1876 4TH QTR",
+  "deathPlace": "Axbridge, District, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I2374"
+  ],
+  "childIds": [
+    "I2377"
+  ],
+  "parentIds": [
+    "I2375",
+    "I2516"
+  ],
+  "burialDate": "18 NOV 1876",
+  "burialPlace": "Burnham on Sea, Somerset, St Andrew's",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2374",
+      "familyId": "F841",
+      "marriageDate": "1870 4TH QTR",
+      "marriagePlace": "Axbridge, District, Somerset"
+    }
+  ]
+}

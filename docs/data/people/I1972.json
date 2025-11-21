@@ -1,0 +1,25 @@
+{
+  "id": "I1972",
+  "name": "Peter Grant Drost",
+  "givenName": "Peter Grant",
+  "surname": "Drost",
+  "sex": "M",
+  "birthDate": "Abt 1876",
+  "birthPlace": "Wingham, Ontario, Canada",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1973"
+  ],
+  "childIds": [
+    "I1969"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1973",
+      "familyId": "F705"
+    }
+  ]
+}

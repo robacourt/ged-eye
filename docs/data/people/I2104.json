@@ -1,0 +1,18 @@
+{
+  "id": "I2104",
+  "name": "John McSweeney",
+  "givenName": "John",
+  "surname": "McSweeney",
+  "sex": "M",
+  "birthDate": "1950",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2103",
+    "I2102"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I2330",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2329"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2329",
+      "familyId": "F826",
+      "marriageDate": "DEC 1904",
+      "marriagePlace": "London, Paddington"
+    }
+  ]
+}

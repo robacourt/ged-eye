@@ -1,0 +1,37 @@
+{
+  "id": "I2249",
+  "name": "Christopher James Charles Hill",
+  "givenName": "Christopher James Charles",
+  "surname": "Hill",
+  "sex": "M",
+  "birthDate": "25 OCT 1903",
+  "birthPlace": "Bristol",
+  "deathDate": "28 DEC 1943",
+  "deathPlace": "Ballyhalbert, Northern Ireland",
+  "photos": [],
+  "spouseIds": [
+    "I2250"
+  ],
+  "childIds": [
+    "I2152",
+    "I2163"
+  ],
+  "parentIds": [
+    "I2159",
+    "I2160"
+  ],
+  "occupations": [
+    "Tobacco Factory Worker"
+  ],
+  "notes": [
+    "1650825 Aircraftman 2nd Class - Buried in Greenbank Cemetry (Screen Wall) Plot: Green SS Grave: 233"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2250",
+      "familyId": "F770",
+      "marriageDate": "4 JUL 1931",
+      "marriagePlace": "St Agnes Church, Bristol"
+    }
+  ]
+}

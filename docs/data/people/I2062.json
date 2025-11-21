@@ -1,0 +1,18 @@
+{
+  "id": "I2062",
+  "name": "Victor James A'Court",
+  "givenName": "Victor James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "19 APR1929",
+  "birthPlace": "Tooting",
+  "deathDate": "1993",
+  "deathPlace": "Sutton, Surrey",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2054",
+    "I2055"
+  ]
+}

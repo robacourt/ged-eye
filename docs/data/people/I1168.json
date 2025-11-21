@@ -1,0 +1,34 @@
+{
+  "id": "I1168",
+  "name": "Aaron Humphries",
+  "givenName": "Aaron",
+  "surname": "Humphries",
+  "sex": "M",
+  "birthDate": "ABT 1829",
+  "birthPlace": "Bruton, Somerset",
+  "deathDate": "ABT 1861",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I180"
+  ],
+  "childIds": [
+    "I1171",
+    "I1172"
+  ],
+  "parentIds": [
+    "I1169",
+    "I1170"
+  ],
+  "occupations": [
+    "Bellhanger"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I180",
+      "familyId": "F99",
+      "marriageDate": "25 JUL 1850",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

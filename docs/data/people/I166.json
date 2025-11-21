@@ -1,0 +1,25 @@
+{
+  "id": "I166",
+  "name": "Charlotte Not Known",
+  "givenName": "Charlotte Not",
+  "surname": "Known",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I165"
+  ],
+  "childIds": [
+    "I162"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I165",
+      "familyId": "F93"
+    }
+  ]
+}

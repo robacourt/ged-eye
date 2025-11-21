@@ -1,0 +1,42 @@
+{
+  "id": "I2472",
+  "name": "Thomas Emberson",
+  "givenName": "Thomas",
+  "surname": "Emberson",
+  "sex": "M",
+  "birthDate": "1876",
+  "birthPlace": "Chertsey, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2468"
+  ],
+  "childIds": [
+    "I2473",
+    "I2598",
+    "I2599"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Photographer",
+    "Photographer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Westminster, St. James, 179 Regent Street"
+    },
+    {
+      "date": "1911",
+      "place": "Chiswick, Middlesex, 80 Grove Park Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2468",
+      "familyId": "F873",
+      "marriageDate": "ABT 1895"
+    }
+  ]
+}

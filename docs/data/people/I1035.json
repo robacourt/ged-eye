@@ -1,0 +1,29 @@
+{
+  "id": "I1035",
+  "name": "Alfred Leon A'Court",
+  "givenName": "Alfred Leon",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1921",
+  "birthPlace": null,
+  "deathDate": "1979",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I2026"
+  ],
+  "parentIds": [
+    "I1027",
+    "I1034"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F727"
+    }
+  ],
+  "avatar": "avatars/I1035_0.jpg"
+}

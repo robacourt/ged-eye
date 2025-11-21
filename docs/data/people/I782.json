@@ -1,0 +1,59 @@
+{
+  "id": "I782",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1853",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1910",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [
+    "Data/Media/1861 Census/Martock/RG09 1642 8 10.jpg"
+  ],
+  "spouseIds": [
+    "I870"
+  ],
+  "childIds": [
+    "I1026",
+    "I518",
+    "I1027",
+    "I1028",
+    "I1029",
+    "I1030",
+    "I1031",
+    "I1032",
+    "I1033"
+  ],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "occupations": [
+    "Wheelwright",
+    "Wheelwright"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Somerset, Martock, East St."
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Martock, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Somerset, Martock, East St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I870",
+      "familyId": "F224",
+      "marriageDate": "1887",
+      "marriagePlace": "Somerset, Yeovil."
+    }
+  ],
+  "avatar": "avatars/I782_0.jpg"
+}

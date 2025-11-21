@@ -1,0 +1,18 @@
+{
+  "id": "I2698",
+  "name": "Yvonne Patricia Margaret Eiles",
+  "givenName": "Yvonne Patricia Margaret",
+  "surname": "Eiles",
+  "sex": "F",
+  "birthDate": "2 NOV 1937",
+  "birthPlace": "Southend-On-Sea, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2695",
+    "I2694"
+  ]
+}

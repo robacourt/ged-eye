@@ -1,0 +1,26 @@
+{
+  "id": "I2281",
+  "name": "Beatrice Ettle",
+  "givenName": "Beatrice",
+  "surname": "Ettle",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1542"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Hello again, I have found the name of the 2nd wife of William A'Court.  He married Beatrice Ettle after he and my great grandmother got divorced. Not sure if they had any children though, my grand does not think so."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1542",
+      "familyId": "F807"
+    }
+  ]
+}

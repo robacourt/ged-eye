@@ -1,0 +1,53 @@
+{
+  "id": "I230",
+  "name": "Sarah Ellen A'Court",
+  "givenName": "Sarah Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "31 JAN 1853",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": "10 AUG 1938",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Sarah Ellen A'Court.jpg",
+    "Data/Media/1911 census/Hampshire/Boscombe/RG14 5851 144.jpg"
+  ],
+  "spouseIds": [
+    "I904"
+  ],
+  "childIds": [
+    "I905",
+    "I906",
+    "I907",
+    "I908",
+    "I909",
+    "I910",
+    "I2587",
+    "I2588"
+  ],
+  "parentIds": [
+    "I86",
+    "I227"
+  ],
+  "baptismDate": "8 MAY 1853",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "burialPlace": "Boscombe, Bournemouth",
+  "occupations": [
+    "Wardrobe Dealer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Boscombe, Hampshire, 75 Palmerston Rd.,"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I904",
+      "familyId": "F125",
+      "marriageDate": "3 NOV 1870",
+      "marriagePlace": "Idmiston, Wiltshire"
+    }
+  ],
+  "avatar": "avatars/I230_0.jpg"
+}

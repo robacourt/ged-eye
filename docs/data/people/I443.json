@@ -1,0 +1,78 @@
+{
+  "id": "I443",
+  "name": "James Inches Hillocks",
+  "givenName": "James Inches",
+  "surname": "Hillocks",
+  "sex": "M",
+  "birthDate": "1829",
+  "birthPlace": "Forfarshire (Angus)",
+  "deathDate": "17 SEP 1904",
+  "deathPlace": "Essex, Rochford",
+  "photos": [],
+  "spouseIds": [
+    "I444"
+  ],
+  "childIds": [
+    "I2768",
+    "I424",
+    "I2769",
+    "I2770"
+  ],
+  "parentIds": [
+    "I2766",
+    "I2767"
+  ],
+  "occupations": [
+    "Druggist and Stationer",
+    "Hand Loom Weaver Linen",
+    "Hand Loom Weaver",
+    "Lecturer in Social Science",
+    "Congregational Minister ( No Charge)",
+    "Congregational Minister",
+    "Congregational Minister."
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Dundee, Lochee"
+    },
+    {
+      "date": "1851",
+      "place": "Forfarshire (Angus), Liff and Benvue, 10 Mid  Wynd. ( lodger)"
+    },
+    {
+      "date": "1861",
+      "place": "London, Lambeth, 12 Hanover Place"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, Sandringham Road"
+    },
+    {
+      "date": "1881",
+      "place": "Aberdeenshire, Fraserburgh, Salttown place, Uptown Church"
+    },
+    {
+      "date": "1891",
+      "place": "London, Hornsey, 127 Stoke Newington Road"
+    },
+    {
+      "date": "1901",
+      "place": "London, Hornsey, 34 Elder Avenue."
+    }
+  ],
+  "residences": [
+    {
+      "date": "SEP 1904",
+      "place": "Essex, Southend on Sea, 54 Baxter Avenue."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I444",
+      "familyId": "F195",
+      "marriageDate": "24 NOV 1851",
+      "marriagePlace": "Dundee"
+    }
+  ]
+}
