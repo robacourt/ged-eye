@@ -19,9 +19,9 @@ async function initApp() {
     // Create the family tree view
     const treeView = new FamilyTreeView(cyEl);
 
-    // Load the first person
+    // Load the default person (I122)
     loadingEl.textContent = 'Rendering...';
-    await treeView.loadPerson(index.firstPersonId);
+    await treeView.loadPerson('I122');
 
     // Hide loading
     loadingEl.classList.add('hidden');

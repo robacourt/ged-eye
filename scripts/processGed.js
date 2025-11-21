@@ -28,11 +28,24 @@ async function processGedcomFile() {
 
   // Process each individual
   let count = 0;
+  let missingPhotoCount = 0;
   const allIds = [];
 
   for (const [id] of parsed.individuals) {
     const personData = extractPersonData(parsed, id);
     if (!personData) continue;
+
+    // Filter out missing photos
+    const existingPhotos = personData.photos.filter(photoPath => {
+      const fullPath = path.join(rootDir, photoPath);
+      const exists = fs.existsSync(fullPath);
+      if (!exists) {
+        missingPhotoCount++;
+      }
+      return exists;
+    });
+
+    personData.photos = existingPhotos;
 
     allIds.push(id);
 
@@ -57,6 +70,7 @@ async function processGedcomFile() {
   console.log(`\n✓ Successfully processed ${count} people`);
   console.log(`✓ JSON files written to ${OUTPUT_DIR}`);
   console.log(`✓ First person ID: ${allIds[0]}`);
+  console.log(`✓ Excluded ${missingPhotoCount} missing photo references`);
 }
 
 // Run the script

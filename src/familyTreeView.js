@@ -1,6 +1,7 @@
 import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
 import { loadPersonWithFamily } from './dataLoader.js';
+import { PhotoViewer } from './photoViewer.js';
 
 // Register the dagre layout
 cytoscape.use(dagre);
@@ -11,6 +12,8 @@ export class FamilyTreeView {
     this.cy = null;
     this.selectedPersonId = null;
     this.onPersonSelectCallback = null;
+    this.photoViewer = new PhotoViewer();
+    this.personDataCache = new Map(); // Cache person data for photo viewer
 
     this.init();
   }
@@ -28,8 +31,12 @@ export class FamilyTreeView {
             'width': 90,
             'height': 90,
             'background-color': '#3a3a4a',
+            'background-fit': 'cover',
+            'background-clip': 'none',
+            'background-image': 'data(avatar)',
             'border-width': 3,
             'border-color': '#555',
+            'shape': 'ellipse',
             'label': 'data(label)',
             'text-valign': 'bottom',
             'text-halign': 'center',
@@ -173,9 +180,27 @@ export class FamilyTreeView {
       const node = event.target;
       const personId = node.data('id');
 
+      // Skip partnership nodes
+      if (node.data('type') === 'partnership') {
+        return;
+      }
+
       if (personId !== this.selectedPersonId) {
         this.selectPerson(personId);
       }
+    });
+
+    // Add double-click handler for photo viewer
+    this.cy.on('dbltap', 'node', (event) => {
+      const node = event.target;
+      const personId = node.data('id');
+
+      // Skip partnership nodes
+      if (node.data('type') === 'partnership') {
+        return;
+      }
+
+      this.openPhotoViewer(personId);
     });
   }
 
@@ -190,6 +215,12 @@ export class FamilyTreeView {
       console.log('Person data:', person);
       console.log('Relationships:', relationships);
 
+      // Cache person data for photo viewer
+      this.personDataCache.set(person.id, person);
+      family.forEach(member => {
+        this.personDataCache.set(member.id, member);
+      });
+
       // Build the graph
       this.buildGraph(person, family, relationships);
 
@@ -199,6 +230,30 @@ export class FamilyTreeView {
       console.error('Person ID:', personId);
       throw error;
     }
+  }
+
+  /**
+   * Open photo viewer for a person
+   */
+  async openPhotoViewer(personId) {
+    let personData = this.personDataCache.get(personId);
+
+    // If not in cache, load it
+    if (!personData) {
+      try {
+        const { person } = await loadPersonWithFamily(personId);
+        personData = person;
+        this.personDataCache.set(personId, personData);
+      } catch (error) {
+        console.error('Error loading person for photo viewer:', error);
+        return;
+      }
+    }
+
+    // Format photos for viewer
+    const photos = (personData.photos || []).map(path => ({ path }));
+
+    this.photoViewer.open(personData.name, photos);
   }
 
   /**
@@ -214,7 +269,8 @@ export class FamilyTreeView {
         id: selectedPerson.id,
         label: this.formatLabel(selectedPerson),
         type: 'selected',
-        sex: selectedPerson.sex
+        sex: selectedPerson.sex,
+        avatar: selectedPerson.avatar ? `/${selectedPerson.avatar}` : null
       }
     });
 
@@ -226,7 +282,8 @@ export class FamilyTreeView {
           id: member.id,
           label: this.formatLabel(member),
           type: 'family',
-          sex: member.sex
+          sex: member.sex,
+          avatar: member.avatar ? `/${member.avatar}` : null
         }
       });
     }

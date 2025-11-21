@@ -177,7 +177,8 @@ export function extractPersonData(parsedGed, personId) {
 
 function convertPath(windowsPath) {
   // Convert C:\Brother's Keeper 7\Data\Media\... to Data/Media/...
-  const match = windowsPath.match(/Data[\\\/]Media[\\\/].+$/i);
+  // Convert C:\Brother's Keeper 7\Data\Picture\... to Data/Picture/...
+  const match = windowsPath.match(/Data[\\\/](Media|Picture)[\\\/].+$/i);
   if (match) {
     return match[0].replace(/\\/g, '/');
   }
