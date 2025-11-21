@@ -90,7 +90,9 @@ export class FamilyTreeView {
             'width': 3,
             'line-color': '#666',
             'target-arrow-color': '#666',
-            'curve-style': 'bezier',
+            'curve-style': 'unbundled-bezier',
+            'control-point-distances': [40, -40],
+            'control-point-weights': [0.25, 0.75],
             'opacity': 0.8
           }
         },
@@ -99,7 +101,11 @@ export class FamilyTreeView {
           style: {
             'line-color': '#ff6b9d',
             'width': 4,
-            'opacity': 0.9
+            'opacity': 0.9,
+            'curve-style': 'round-taxi',
+            'taxi-direction': 'horizontal',
+            'taxi-turn': 20,
+            'taxi-turn-min-distance': 5
           }
         },
         {
@@ -109,7 +115,11 @@ export class FamilyTreeView {
             'target-arrow-shape': 'triangle',
             'target-arrow-color': '#8ab4f8',
             'width': 3,
-            'opacity': 0.9
+            'opacity': 0.9,
+            'curve-style': 'round-taxi',
+            'taxi-direction': 'vertical',
+            'taxi-turn': 20,
+            'taxi-turn-min-distance': 5
           }
         }
       ],
