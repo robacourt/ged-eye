@@ -2,6 +2,8 @@
 
 A modern, interactive family tree viewer for GEDCOM files. Because other family tree viewers look like they're stuck in 1999.
 
+See it live [here](https://robacourt.github.io/ged-eye) showing my family tree!
+
 ## What is this?
 
 GedEye takes GEDCOM genealogy files and turns them into a beautiful, interactive web-based family tree visualization. Click on any person to see their immediate family - parents, spouses, and children - all rendered as an animated graph.
