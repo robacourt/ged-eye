@@ -186,21 +186,12 @@ export class FamilyTreeView {
       }
 
       if (personId !== this.selectedPersonId) {
+        // Click on different person - select them
         this.selectPerson(personId);
+      } else {
+        // Click on already selected person - open photo viewer
+        this.openPhotoViewer(personId);
       }
-    });
-
-    // Add double-click handler for photo viewer
-    this.cy.on('dbltap', 'node', (event) => {
-      const node = event.target;
-      const personId = node.data('id');
-
-      // Skip partnership nodes
-      if (node.data('type') === 'partnership') {
-        return;
-      }
-
-      this.openPhotoViewer(personId);
     });
   }
 

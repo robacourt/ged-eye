@@ -30,8 +30,15 @@ export class PhotoViewer {
           <div class="photo-viewer-image-container">
             <img class="photo-viewer-image" alt="Person photo" />
             <div class="photo-viewer-loading">Loading...</div>
+            <div class="photo-viewer-download">
+              <p class="photo-viewer-download-message">This file cannot be displayed</p>
+              <a class="photo-viewer-download-button" download>Download File</a>
+            </div>
           </div>
           <button class="photo-viewer-nav photo-viewer-next" aria-label="Next photo">›</button>
+        </div>
+        <div class="photo-viewer-footer">
+          <p class="photo-viewer-filename"></p>
         </div>
       </div>
     `;
@@ -44,6 +51,9 @@ export class PhotoViewer {
     this.loading = modal.querySelector('.photo-viewer-loading');
     this.prevBtn = modal.querySelector('.photo-viewer-prev');
     this.nextBtn = modal.querySelector('.photo-viewer-next');
+    this.filename = modal.querySelector('.photo-viewer-filename');
+    this.downloadContainer = modal.querySelector('.photo-viewer-download');
+    this.downloadButton = modal.querySelector('.photo-viewer-download-button');
   }
 
   attachEventListeners() {
@@ -159,13 +169,36 @@ export class PhotoViewer {
       this.loading.textContent = currentPhoto?.message || 'No photo available';
       this.image.style.opacity = '0';
       this.image.src = '';
+      this.filename.textContent = '';
+      this.downloadContainer.style.display = 'none';
       return;
     }
 
-    // Load new image
-    this.loading.style.display = 'flex';
-    this.loading.textContent = 'Loading...';
-    this.image.style.opacity = '0';
-    this.image.src = `/${currentPhoto.path}`;
+    // Extract filename from path
+    const pathParts = currentPhoto.path.split('/');
+    const fileName = pathParts[pathParts.length - 1];
+    this.filename.textContent = fileName;
+
+    // Check if file is an image
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg'];
+    const fileExtension = fileName.toLowerCase().substring(fileName.lastIndexOf('.'));
+    const isImage = imageExtensions.includes(fileExtension);
+
+    if (isImage) {
+      // Load new image
+      this.loading.style.display = 'flex';
+      this.loading.textContent = 'Loading...';
+      this.image.style.opacity = '0';
+      this.image.src = `/${currentPhoto.path}`;
+      this.downloadContainer.style.display = 'none';
+    } else {
+      // Show download button for non-image files
+      this.image.style.opacity = '0';
+      this.image.src = '';
+      this.loading.style.display = 'none';
+      this.downloadContainer.style.display = 'flex';
+      this.downloadButton.href = `/${currentPhoto.path}`;
+      this.downloadButton.download = fileName;
+    }
   }
 }
