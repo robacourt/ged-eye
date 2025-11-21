@@ -1,0 +1,29 @@
+{
+  "id": "I830",
+  "name": "Hinemoa Hayward",
+  "givenName": "Hinemoa",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I831"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I829",
+    "I821"
+  ],
+  "notes": [
+    "SARAH'S WILL"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I831",
+      "familyId": "F358"
+    }
+  ]
+}

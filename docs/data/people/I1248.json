@@ -1,0 +1,35 @@
+{
+  "id": "I1248",
+  "name": "George Gillett",
+  "givenName": "George",
+  "surname": "Gillett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1249"
+  ],
+  "childIds": [
+    "I1247",
+    "I1253"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": "1878",
+      "place": "Marnhull, Dorset, Musbery Lane Cottages"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1249",
+      "familyId": "F502"
+    }
+  ]
+}

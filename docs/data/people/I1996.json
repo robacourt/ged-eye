@@ -1,0 +1,28 @@
+{
+  "id": "I1996",
+  "name": "Iain James Gooderson",
+  "givenName": "Iain James",
+  "surname": "Gooderson",
+  "sex": "M",
+  "birthDate": "12 AUG 1962",
+  "birthPlace": "Haverfordwest, Pembrokeshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1992"
+  ],
+  "childIds": [
+    "I1997",
+    "I1998",
+    "I1999",
+    "I2000"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1992",
+      "familyId": "F714"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I861",
+  "name": "\\-\\",
+  "givenName": "\\-\\",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I825"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I825",
+      "familyId": "F356"
+    }
+  ]
+}

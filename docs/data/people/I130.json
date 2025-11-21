@@ -1,0 +1,21 @@
+{
+  "id": "I130",
+  "name": "Robert A'Court",
+  "givenName": "Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "10.9.1978",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Rob-ACourt.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I123",
+    "I129"
+  ],
+  "avatar": "avatars/I130_0.jpg"
+}

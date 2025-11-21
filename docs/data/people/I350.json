@@ -1,0 +1,34 @@
+{
+  "id": "I350",
+  "name": "Jasper Kendall",
+  "givenName": "Jasper",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "Stour Provost, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I216"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I351",
+    "I352"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "16-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I216",
+      "familyId": "F117",
+      "marriageDate": "28 MAY1857",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

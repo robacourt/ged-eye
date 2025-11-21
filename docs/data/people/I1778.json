@@ -1,0 +1,18 @@
+{
+  "id": "I1778",
+  "name": "Jennifer A A'Court",
+  "givenName": "Jennifer A",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1ST QRT 1951",
+  "birthPlace": "Epping",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1780",
+    "I1779"
+  ]
+}

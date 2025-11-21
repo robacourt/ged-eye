@@ -1,0 +1,24 @@
+{
+  "id": "I1863",
+  "name": "Jeziah A'Court",
+  "givenName": "Jeziah",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt JAN 1850",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1765",
+    "I1862"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Poor Lane"
+    }
+  ]
+}

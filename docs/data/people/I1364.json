@@ -1,0 +1,24 @@
+{
+  "id": "I1364",
+  "name": "Margaret Helen Winchcomb",
+  "givenName": "Margaret Helen",
+  "surname": "Winchcomb",
+  "sex": "F",
+  "birthDate": "1881",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1363"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1363",
+      "familyId": "F541",
+      "marriageDate": "1945"
+    }
+  ]
+}

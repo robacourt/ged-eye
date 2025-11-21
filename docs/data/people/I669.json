@@ -1,0 +1,25 @@
+{
+  "id": "I669",
+  "name": "James Drew",
+  "givenName": "James",
+  "surname": "Drew",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I670"
+  ],
+  "childIds": [
+    "I666"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I670",
+      "familyId": "F279"
+    }
+  ]
+}

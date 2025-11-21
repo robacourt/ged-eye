@@ -1,0 +1,53 @@
+{
+  "id": "I34",
+  "name": "Nathaniel A'Court",
+  "givenName": "Nathaniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1868",
+  "deathPlace": "Sturminster Newton, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I37",
+    "I45"
+  ],
+  "childIds": [
+    "I38",
+    "I39",
+    "I40",
+    "I41",
+    "I42",
+    "I43",
+    "I44"
+  ],
+  "parentIds": [
+    "I17",
+    "I30"
+  ],
+  "baptismDate": "29-1-1795",
+  "baptismPlace": "Stour Provost, Dorset",
+  "occupations": [
+    "Miller [Linemaker]",
+    "Labourer",
+    "Miller"
+  ],
+  "notes": [
+    "Miller of Fifehead Magdalen",
+    "Marnhull, Dorset. (most probable A'Court's mill)",
+    "of Fifehead Magdalen 40-1841 62-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I37",
+      "familyId": "F23",
+      "marriageDate": "15-5-1817",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    },
+    {
+      "spouseId": "I45",
+      "familyId": "F24"
+    }
+  ]
+}

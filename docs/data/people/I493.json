@@ -1,0 +1,49 @@
+{
+  "id": "I493",
+  "name": "Alfred A'Court",
+  "givenName": "Alfred",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "26.5.1893",
+  "birthPlace": "Nether Compton, Dorset",
+  "deathDate": "MAR 1941",
+  "deathPlace": "Somerset, Wincanton",
+  "photos": [
+    "Data/Media/1901 census/Dorset/Nether Compton/RG13 2007 17 3.jpg",
+    "Data/Media/1911 census/Dorset/Nether Compton/RG14 12439 36.jpg"
+  ],
+  "spouseIds": [
+    "I496"
+  ],
+  "childIds": [
+    "I497"
+  ],
+  "parentIds": [
+    "I490",
+    "I491"
+  ],
+  "occupations": [
+    "Groom",
+    "Farm Labourer"
+  ],
+  "notes": [
+    "After his death in 1942,his widow and only son moved to Appledore, Devon"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Nether Compton, Dorset, Halfway House"
+    },
+    {
+      "date": "1911",
+      "place": "Nether Compton, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I496",
+      "familyId": "F210"
+    }
+  ],
+  "avatar": "avatars/I493_0.jpg"
+}

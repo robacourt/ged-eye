@@ -1,0 +1,28 @@
+{
+  "id": "I692",
+  "name": "Ann a'Court",
+  "givenName": "Ann",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1651",
+  "birthPlace": null,
+  "deathDate": "AFT 1672",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I697"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I563",
+    "I686"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I697",
+      "familyId": "F288",
+      "marriageDate": "11 FEB 1671/72",
+      "marriagePlace": "South Cadbury, Somerset"
+    }
+  ]
+}

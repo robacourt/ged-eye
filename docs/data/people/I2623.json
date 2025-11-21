@@ -1,0 +1,18 @@
+{
+  "id": "I2623",
+  "name": "Michael Justin Kostic",
+  "givenName": "Michael Justin",
+  "surname": "Kostic",
+  "sex": "M",
+  "birthDate": "11 APRIL 1974",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2622",
+    "I2617"
+  ]
+}

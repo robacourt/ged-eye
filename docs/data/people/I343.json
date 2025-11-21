@@ -1,0 +1,26 @@
+{
+  "id": "I343",
+  "name": "James Chapman",
+  "givenName": "James",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I341"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Farmer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F162"
+    }
+  ]
+}

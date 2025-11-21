@@ -1,0 +1,48 @@
+{
+  "id": "I1618",
+  "name": "Kate A'Court",
+  "givenName": "Kate",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1863",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 36 17 .jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 28 15.jpg",
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 30 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1617",
+    "I1616"
+  ],
+  "baptismDate": "7 JUL 1862",
+  "baptismPlace": "Dorset, Marnhull",
+  "occupations": [
+    "Glover",
+    "Glover",
+    "Kid Glove Maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    }
+  ],
+  "avatar": "avatars/I1618_0.jpg"
+}

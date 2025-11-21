@@ -1,0 +1,24 @@
+{
+  "id": "I2724",
+  "name": "Aaron Mendoza",
+  "givenName": "Aaron",
+  "surname": "Mendoza",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1423"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1423",
+      "familyId": "F949",
+      "marriageDate": "3 RD  QTR 1902"
+    }
+  ]
+}

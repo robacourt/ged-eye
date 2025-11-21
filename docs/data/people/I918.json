@@ -1,0 +1,32 @@
+{
+  "id": "I918",
+  "name": "Nellie a'Court",
+  "givenName": "Nellie",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "AFT 1897",
+  "birthPlace": null,
+  "deathDate": "17 OCT 1957",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I924",
+    "I925"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I231",
+    "I915"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I924",
+      "familyId": "F385"
+    },
+    {
+      "spouseId": "I925",
+      "familyId": "F386",
+      "divorceDate": "1947"
+    }
+  ]
+}

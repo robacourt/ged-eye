@@ -1,0 +1,34 @@
+{
+  "id": "I2483",
+  "name": "Mary Cull Harding",
+  "givenName": "Mary Cull",
+  "surname": "Harding",
+  "sex": "F",
+  "birthDate": "15 NOV 1823",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2484"
+  ],
+  "childIds": [
+    "I2485"
+  ],
+  "parentIds": [
+    "I167",
+    "I48"
+  ],
+  "baptismDate": "30 NOV 1823",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "22 JAN 1851",
+  "burialPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I2484",
+      "familyId": "F878",
+      "marriageDate": "25 SEP 1843",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

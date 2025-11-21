@@ -1,0 +1,28 @@
+{
+  "id": "I1046",
+  "name": "Eleanor King",
+  "givenName": "Eleanor",
+  "surname": "King",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1045"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "family history researcher contact of Sandra Gieg"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1045",
+      "familyId": "F424",
+      "marriageDate": "1951",
+      "marriagePlace": "Christchurch, New Zealand"
+    }
+  ]
+}

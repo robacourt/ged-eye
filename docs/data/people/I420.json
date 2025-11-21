@@ -1,0 +1,27 @@
+{
+  "id": "I420",
+  "name": "Iris Eidaleen Fraser",
+  "givenName": "Iris Eidaleen",
+  "surname": "Fraser",
+  "sex": "F",
+  "birthDate": "11 APR 1922",
+  "birthPlace": "Croydon",
+  "deathDate": "2019",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1939 Register/Bristol/26 Royal York Cresent.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I417",
+    "I418"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 26 Royal York Cresent"
+    }
+  ],
+  "avatar": "avatars/I420_0.jpg"
+}

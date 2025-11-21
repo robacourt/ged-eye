@@ -1,0 +1,31 @@
+{
+  "id": "I599",
+  "name": "Elizabeth Kate Hatcher",
+  "givenName": "Elizabeth Kate",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "1910",
+  "birthPlace": "Motcombe, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I608"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I589",
+    "I595"
+  ],
+  "notes": [
+    "24-1934, alive 1999"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I608",
+      "familyId": "F247",
+      "marriageDate": "2.6.1934",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "I266",
+  "name": "Fred A'Court",
+  "givenName": "Fred",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1871",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg",
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 67 19.jpg",
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 5 1.jpg"
+  ],
+  "spouseIds": [
+    "I1579"
+  ],
+  "childIds": [
+    "I1580"
+  ],
+  "parentIds": [
+    "I44",
+    "I259"
+  ],
+  "occupations": [
+    "Farmer",
+    "Contractor General Own Account",
+    "Haulier"
+  ],
+  "notes": [
+    "1911 In business with his brother John.  Charles Street backs on to Damory Court Street  North off East St."
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, Patient Cottage Hospital"
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, 7 Charles St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1579",
+      "familyId": "F132",
+      "marriageDate": "ABT 1897"
+    }
+  ],
+  "avatar": "avatars/I266_0.jpg"
+}

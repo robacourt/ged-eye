@@ -1,0 +1,31 @@
+{
+  "id": "I939",
+  "name": "Hammond Todrick A'Court",
+  "givenName": "Hammond Todrick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "16 OCT 1884",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I940"
+  ],
+  "childIds": [
+    "I1931",
+    "I1923"
+  ],
+  "parentIds": [
+    "I937",
+    "I938"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I940",
+      "familyId": "F394",
+      "marriageDate": "10 AUG 1910",
+      "marriagePlace": "Sanson, Wellington, New Zealand"
+    }
+  ]
+}

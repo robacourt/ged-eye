@@ -1,0 +1,85 @@
+{
+  "id": "I106",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4 DEC 1848",
+  "birthPlace": "Portsmouth, Kingston, Hampshire, Church Path",
+  "deathDate": "9 JAN 1929",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/John A'Court 1848-1929.jpg",
+    "Data/Picture/John A'Court c 1920.jpg",
+    "Data/Media/1851 census/Henstridge/Piece 1931 folio 374 page 25.jpg",
+    "Data/Media/1861 Census/Portsea/RG09 633 12 17.jpg",
+    "Data/Media/Rate books/John A'Court 1901 St Davids Rd.jpg",
+    "Data/Media/Service Records/John A'Court 1848-1929.jpg"
+  ],
+  "spouseIds": [
+    "I113"
+  ],
+  "childIds": [
+    "I114",
+    "I115"
+  ],
+  "parentIds": [
+    "I76",
+    "I105"
+  ],
+  "burialPlace": "Portsmouth, Hampshire, Highlands Road Cemetery",
+  "occupations": [
+    "Assistant Engineer RN",
+    "Engineer RN",
+    "Chief Engineer RN",
+    "Engineer R N Active List Officer",
+    "Staff Engineer, RN",
+    "Engineer RN (Active List Officer )",
+    "Retired Engineer Captain RN",
+    ""
+  ],
+  "notes": [
+    "Probate Calendar 1929",
+    "Retired 1903 with rank of Captain Engineer",
+    "Re John A'Court   HMS Warrior"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Portsea, Hampshire, 345 Commercial Rd."
+    },
+    {
+      "date": "1881",
+      "place": "Portsea, Hampshire, 8 Alsace Terrace, Brittania Rd"
+    },
+    {
+      "date": "1891",
+      "place": "Landport, Portsmouth, Hampshire, 29 St. David's Rd"
+    },
+    {
+      "date": "1901",
+      "place": "Hampshire, Portsmouth. Southsea, 16 Kings Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "Portsmouth, Hampshire, Southsea, 29 St. David's Rd.,"
+    },
+    {
+      "date": "1921",
+      "place": "Hampshire, Southsea, 29 St. David's Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I113",
+      "familyId": "F63",
+      "marriageDate": "4 JUL 1876",
+      "marriagePlace": "Portsea, Hampshire, St Peter's Weslyan Chapel"
+    }
+  ],
+  "avatar": "avatars/I106_0.jpg"
+}

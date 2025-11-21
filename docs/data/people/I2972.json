@@ -1,0 +1,32 @@
+{
+  "id": "I2972",
+  "name": "Lilian Spencer",
+  "givenName": "Lilian",
+  "surname": "Spencer",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2971"
+  ],
+  "childIds": [
+    "I402",
+    "I2973"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1921 CESUS",
+      "place": "Surrey, West Byleet, 72 Station Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2971",
+      "familyId": "F1020"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I2385",
+  "name": "Abel A'Court",
+  "givenName": "Abel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1751",
+  "birthPlace": null,
+  "deathDate": "1751",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2880",
+    "I2881"
+  ],
+  "baptismDate": "3 JUN 1751",
+  "burialDate": "4 SEP 1751",
+  "burialPlace": "West Lydford, Somerset, St Peters"
+}

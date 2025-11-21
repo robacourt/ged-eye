@@ -1,0 +1,18 @@
+{
+  "id": "I2704",
+  "name": "Sean Louis Jacob Tarff",
+  "givenName": "Sean Louis Jacob",
+  "surname": "Tarff",
+  "sex": "M",
+  "birthDate": "25 OCT 1985",
+  "birthPlace": "Southend-On-Sea, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2702",
+    "I2701"
+  ]
+}

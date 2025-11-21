@@ -1,0 +1,46 @@
+{
+  "id": "I98",
+  "name": "Mathew Hunt",
+  "givenName": "Mathew",
+  "surname": "Hunt",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I267",
+    "I270"
+  ],
+  "childIds": [
+    "I268",
+    "I269"
+  ],
+  "parentIds": [
+    "I96",
+    "I36"
+  ],
+  "baptismDate": "14.11.1824",
+  "baptismPlace": "East Stour, Dorset",
+  "occupations": [
+    "Yeoman"
+  ],
+  "notes": [
+    "26-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I267",
+      "familyId": "F59",
+      "marriageDate": "3.10.1844",
+      "marriagePlace": "Shaftesbury, Dorset, St. James"
+    },
+    {
+      "spouseId": "I270",
+      "familyId": "F60",
+      "marriageDate": "5.11.1857",
+      "marriagePlace": "Shaftesbury, Dorset, St. James"
+    }
+  ]
+}

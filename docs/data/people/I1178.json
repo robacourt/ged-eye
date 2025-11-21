@@ -1,0 +1,28 @@
+{
+  "id": "I1178",
+  "name": "Phoebe Clarke",
+  "givenName": "Phoebe",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": "ABT 1843",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1175"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I195",
+    "I58"
+  ],
+  "baptismDate": "16 SEP 1843",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1175",
+      "familyId": "F479"
+    }
+  ]
+}

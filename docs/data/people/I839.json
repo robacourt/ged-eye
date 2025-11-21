@@ -1,0 +1,27 @@
+{
+  "id": "I839",
+  "name": "Unita Adele A'Court",
+  "givenName": "Unita Adele",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "6 JAN 1900",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "2 MAR 1970",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I852"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I852",
+      "familyId": "F364",
+      "marriagePlace": "never married"
+    }
+  ]
+}

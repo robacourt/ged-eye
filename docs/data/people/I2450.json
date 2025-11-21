@@ -1,0 +1,25 @@
+{
+  "id": "I2450",
+  "name": "Unknown Mears",
+  "givenName": "Unknown",
+  "surname": "Mears",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2449"
+  ],
+  "childIds": [
+    "I2446"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2449",
+      "familyId": "F868"
+    }
+  ]
+}

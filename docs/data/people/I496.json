@@ -1,0 +1,25 @@
+{
+  "id": "I496",
+  "name": "Nellie Annie Draper",
+  "givenName": "Nellie Annie",
+  "surname": "Draper",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I493"
+  ],
+  "childIds": [
+    "I497"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I493",
+      "familyId": "F210"
+    }
+  ]
+}

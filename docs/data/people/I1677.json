@@ -1,0 +1,19 @@
+{
+  "id": "I1677",
+  "name": "Mary Dean",
+  "givenName": "Mary",
+  "surname": "Dean",
+  "sex": "F",
+  "birthDate": "ABT 1747",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "25 APR 1747"
+}

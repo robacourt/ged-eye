@@ -1,0 +1,51 @@
+{
+  "id": "I1026",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1888",
+  "birthPlace": "Martock, Somerset",
+  "deathDate": "1944",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/George A'Court 2.jpg",
+    "Data/Media/1891 census/Somerset/Martock/RG12 1897 6 5.jpg",
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Gloucestershire/RG14 15561 3.jpg"
+  ],
+  "spouseIds": [
+    "I2391"
+  ],
+  "childIds": [
+    "I1962"
+  ],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "occupations": [
+    "Hotel Waiter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Martock, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Martock, Somerset, East St."
+    },
+    {
+      "date": "1911",
+      "place": "Cheltenham, Gloucestershire, The Plough Hotel"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2391",
+      "familyId": "F701"
+    }
+  ],
+  "avatar": "avatars/I1026_0.jpg"
+}

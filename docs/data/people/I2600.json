@@ -1,0 +1,24 @@
+{
+  "id": "I2600",
+  "name": "Eileen Winifred A'Court",
+  "givenName": "Eileen Winifred",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1906",
+  "birthPlace": "Ealing, Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Ealing/RG14 6895 79.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Ealing, Middlesex, 55 Northfield Avenue"
+    }
+  ],
+  "avatar": "avatars/I2600_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1489",
+  "name": "Ambrose Chamberlain",
+  "givenName": "Ambrose",
+  "surname": "Chamberlain",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1490"
+  ],
+  "childIds": [
+    "I864"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1490",
+      "familyId": "F373"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I1674",
+  "name": "Elizabeth Dean",
+  "givenName": "Elizabeth",
+  "surname": "Dean",
+  "sex": "F",
+  "birthDate": "ABT 1735",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1678"
+  ],
+  "childIds": [
+    "I1679"
+  ],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "17 AUG 1735",
+  "marriages": [
+    {
+      "spouseId": "I1678",
+      "familyId": "F614"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "I1004",
+  "name": "John O'Connor",
+  "givenName": "John",
+  "surname": "O'Connor",
+  "sex": "M",
+  "birthDate": "11 APRIL 1954",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1018",
+    "I1019"
+  ],
+  "childIds": [
+    "I1022",
+    "I1023",
+    "I1024",
+    "I1025"
+  ],
+  "parentIds": [
+    "I737",
+    "I736"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1018",
+      "familyId": "F418"
+    },
+    {
+      "spouseId": "I1019",
+      "familyId": "F419",
+      "marriageDate": "31 OCTOBER 1980"
+    }
+  ]
+}

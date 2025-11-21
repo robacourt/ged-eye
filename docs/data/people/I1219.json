@@ -1,0 +1,17 @@
+{
+  "id": "I1219",
+  "name": "Sharon Haskett",
+  "givenName": "Sharon",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1218"
+  ]
+}

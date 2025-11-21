@@ -1,0 +1,30 @@
+{
+  "id": "I2339",
+  "name": "Ann Leach",
+  "givenName": "Ann",
+  "surname": "Leach",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Stepney, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2340",
+    "I2341"
+  ],
+  "occupations": [
+    "Cigar Maker"
+  ],
+  "notes": [
+    "On 1871 census as sister in law of Lewis Barnett and employed by him"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Shoreditch, London"
+    }
+  ]
+}

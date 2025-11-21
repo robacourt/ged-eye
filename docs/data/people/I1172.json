@@ -1,0 +1,24 @@
+{
+  "id": "I1172",
+  "name": "Letitia Humphries",
+  "givenName": "Letitia",
+  "surname": "Humphries",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Cerne Abbas, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1168",
+    "I180"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Piddle Lane, Cerne Abbas, Dorset"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I2174",
+  "name": "Jeremy Shopland",
+  "givenName": "Jeremy",
+  "surname": "Shopland",
+  "sex": "M",
+  "birthDate": "1962",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2166"
+  ],
+  "childIds": [
+    "I2175",
+    "I2176"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2166",
+      "familyId": "F779"
+    }
+  ]
+}

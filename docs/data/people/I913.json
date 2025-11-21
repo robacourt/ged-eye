@@ -1,0 +1,42 @@
+{
+  "id": "I913",
+  "name": "Emily Eliza a'Court",
+  "givenName": "Emily Eliza",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "12 OCT 1894",
+  "birthPlace": "Castle Eaton, Wiltshire",
+  "deathDate": "23 DEC 1980",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Gloucestershire/RG14 15355 102.jpg"
+  ],
+  "spouseIds": [
+    "I920"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I231",
+    "I911"
+  ],
+  "occupations": [
+    "General servant domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wiltshire, Wotton Bassett, Beamans Lane"
+    },
+    {
+      "date": "1911",
+      "place": "Gloucestershire, Painswick, Cheltenham Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I920",
+      "familyId": "F381"
+    }
+  ],
+  "avatar": "avatars/I913_0.jpg"
+}

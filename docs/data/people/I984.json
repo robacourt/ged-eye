@@ -1,0 +1,24 @@
+{
+  "id": "I984",
+  "name": "Martha Enid Lewis",
+  "givenName": "Martha Enid",
+  "surname": "Lewis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I983"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I983",
+      "familyId": "F408",
+      "marriageDate": "1943"
+    }
+  ]
+}

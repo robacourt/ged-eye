@@ -1,0 +1,29 @@
+{
+  "id": "I988",
+  "name": "Hilton (Dick) A'Court",
+  "givenName": "Hilton (Dick)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1924",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1389"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "notes": [
+    "Hilton (son?) made a fair bit of money importing parts and putting buses"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1389",
+      "familyId": "F410"
+    }
+  ]
+}

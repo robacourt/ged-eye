@@ -1,0 +1,24 @@
+{
+  "id": "I987",
+  "name": "Jean Hodges",
+  "givenName": "Jean",
+  "surname": "Hodges",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I986"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I986",
+      "familyId": "F409",
+      "marriageDate": "1944"
+    }
+  ]
+}

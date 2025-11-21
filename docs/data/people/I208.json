@@ -1,0 +1,33 @@
+{
+  "id": "I208",
+  "name": "William Valantine Hunt",
+  "givenName": "William Valantine",
+  "surname": "Hunt",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I209"
+  ],
+  "childIds": [
+    "I117",
+    "I210"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Blacksmith H.M.D.Y.P."
+  ],
+  "notes": [
+    "address as given at Baptism of daughter Amelia 2May 1880",
+    "Address at the time of daughter's baptism  2 May 1880 given as 54 Conway Street, Landport."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I209",
+      "familyId": "F70"
+    }
+  ]
+}

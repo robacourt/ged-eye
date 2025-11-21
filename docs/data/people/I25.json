@@ -1,0 +1,48 @@
+{
+  "id": "I25",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1778",
+  "birthPlace": null,
+  "deathDate": "1849",
+  "deathPlace": "Fifehead Magdalen, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I80"
+  ],
+  "childIds": [
+    "I81",
+    "I82",
+    "I83",
+    "I84",
+    "I85",
+    "I86"
+  ],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "28 DEC 1778",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "burialDate": "4 JUN 1849",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "AG lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Factory Farm, Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I80",
+      "familyId": "F19",
+      "marriageDate": "25 DEC  1805",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

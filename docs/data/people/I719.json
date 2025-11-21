@@ -1,0 +1,28 @@
+{
+  "id": "I719",
+  "name": "Ronald Vincent Peters",
+  "givenName": "Ronald Vincent",
+  "surname": "Peters",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1399"
+  ],
+  "childIds": [
+    "I720"
+  ],
+  "parentIds": [
+    "I1398",
+    "I718"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1399",
+      "familyId": "F293"
+    }
+  ]
+}

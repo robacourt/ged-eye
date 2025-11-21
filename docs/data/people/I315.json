@@ -1,0 +1,29 @@
+{
+  "id": "I315",
+  "name": "Edward Lewis",
+  "givenName": "Edward",
+  "surname": "Lewis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I316"
+  ],
+  "childIds": [
+    "I313",
+    "I317"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab/Hosier"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I316",
+      "familyId": "F155"
+    }
+  ]
+}

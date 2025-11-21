@@ -1,0 +1,27 @@
+{
+  "id": "I279",
+  "name": "Adelaide Unknown",
+  "givenName": "Adelaide",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I182"
+  ],
+  "childIds": [
+    "I1251",
+    "I1254",
+    "I1258"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I182",
+      "familyId": "F101"
+    }
+  ]
+}

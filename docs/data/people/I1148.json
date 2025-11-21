@@ -1,0 +1,36 @@
+{
+  "id": "I1148",
+  "name": "Kathleen Lily Rose Horlock",
+  "givenName": "Kathleen Lily Rose",
+  "surname": "Horlock",
+  "sex": "F",
+  "birthDate": "ABT 1917",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1149"
+  ],
+  "childIds": [
+    "I1151"
+  ],
+  "parentIds": [
+    "I1144",
+    "I1143"
+  ],
+  "residences": [
+    {
+      "date": "1938",
+      "place": "Marnhull, Dorset, Gannetts"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1149",
+      "familyId": "F466",
+      "marriageDate": "18 APRIL 1938",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

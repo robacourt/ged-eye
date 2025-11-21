@@ -1,0 +1,45 @@
+{
+  "id": "I1642",
+  "name": "Henry George A'Court",
+  "givenName": "Henry George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1854",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1643"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Zinc Worker",
+    "Zinc Worker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Middlesex, Willesdon, 37 Tennyson Rd"
+    },
+    {
+      "date": "1891",
+      "place": "Zinc Worker"
+    },
+    {
+      "date": "1901",
+      "place": "Willesden, Middlesex, 94 Charteris Rd"
+    },
+    {
+      "date": "1911",
+      "place": "London, Paddington, 49 Carlton Vale"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1643",
+      "familyId": "F609"
+    }
+  ]
+}

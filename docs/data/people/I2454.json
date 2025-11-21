@@ -1,0 +1,46 @@
+{
+  "id": "I2454",
+  "name": "George W A'Court",
+  "givenName": "George W",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1873",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Kensington/RG12 32 14 22.jpg"
+  ],
+  "spouseIds": [
+    "I2455"
+  ],
+  "childIds": [
+    "I2456",
+    "I2457",
+    "I2546",
+    "I2547"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Footman domestic servant",
+    "Messenger"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Kensington, Cromwell House, Cromwell Rd."
+    },
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 136 Marlboro Buildings."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2455",
+      "familyId": "F870",
+      "marriageDate": "ABT 1894"
+    }
+  ],
+  "avatar": "avatars/I2454_0.jpg"
+}

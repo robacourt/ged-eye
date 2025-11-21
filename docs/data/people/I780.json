@@ -1,0 +1,48 @@
+{
+  "id": "I780",
+  "name": "Francis Charles (Frank) A'Court",
+  "givenName": "Francis Charles (Frank)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1850",
+  "birthPlace": "Martock, Somerset",
+  "deathDate": "16 MAR 1922",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [
+    "Data/Picture/Francis A'Court Bicycle Workshop.jpg",
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
+    "Data/Media/1861 Census/Martock/RG09 1642 8 10.jpg"
+  ],
+  "spouseIds": [
+    "I868"
+  ],
+  "childIds": [
+    "I515"
+  ],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "notes": [
+    "Occupation was carpenter and builder and he built the Ashburton Courthouse, Pigeon Bay Hotel, General Davidson's home at Tara ?Ghior, Glen Kennel, the Sailors' Home at Lyttleton and the church at Little Akaroa"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I868",
+      "familyId": "F221",
+      "marriageDate": "27 APR 1870",
+      "marriagePlace": "Bound Brook, New Jersey, USA"
+    }
+  ],
+  "avatar": "avatars/I780_0.jpg"
+}

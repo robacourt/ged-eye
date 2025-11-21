@@ -1,0 +1,50 @@
+{
+  "id": "I2772",
+  "name": "Emma Ransley",
+  "givenName": "Emma",
+  "surname": "Ransley",
+  "sex": "F",
+  "birthDate": "ABT 1841",
+  "birthPlace": "Middlesex, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2771"
+  ],
+  "childIds": [
+    "I2778",
+    "I2773",
+    "I446",
+    "I2774",
+    "I2775",
+    "I2776",
+    "I2777"
+  ],
+  "parentIds": [
+    "I2779"
+  ],
+  "notes": [
+    "Name:  Edward John Hubbard"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Middlesex, Bethnal Green, 28 West Street"
+    }
+  ],
+  "residences": [
+    {
+      "date": "AUG 1865",
+      "place": "Middlesex, Bethnal Green, 50 Bethnal Green Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2771",
+      "familyId": "F964",
+      "marriageDate": "20 AUG 1865",
+      "marriagePlace": "Middlesex, Bethnal Green, St Judes"
+    }
+  ]
+}

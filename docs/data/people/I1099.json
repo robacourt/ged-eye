@@ -1,0 +1,18 @@
+{
+  "id": "I1099",
+  "name": "Julia Anne A'Court",
+  "givenName": "Julia Anne",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "4 DEC 1977",
+  "birthPlace": "Salisbury, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1086",
+    "I1304"
+  ]
+}

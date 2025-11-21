@@ -1,0 +1,37 @@
+{
+  "id": "I1152",
+  "name": "Edwina Marjorie Blanche Horlock",
+  "givenName": "Edwina Marjorie Blanche",
+  "surname": "Horlock",
+  "sex": "F",
+  "birthDate": "ABT 1923",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1153"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1144",
+    "I1143"
+  ],
+  "occupations": [
+    "Land Army"
+  ],
+  "residences": [
+    {
+      "date": "1945",
+      "place": "Marnhull, Dorset, Gannetts"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1153",
+      "familyId": "F468",
+      "marriageDate": "15 MAR 1945",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

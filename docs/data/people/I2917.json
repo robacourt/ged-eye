@@ -1,0 +1,30 @@
+{
+  "id": "I2917",
+  "name": "Robert Edward A'Court",
+  "givenName": "Robert Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1893",
+  "birthPlace": "Glamorganshire, Ystrad",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Glamorganshire/RG14 32552 223.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2915",
+    "I2916"
+  ],
+  "occupations": [
+    "Coal miner hewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Glamorganshire, Llandyfodwg, 20 Adare St."
+    }
+  ],
+  "avatar": "avatars/I2917_0.jpg"
+}

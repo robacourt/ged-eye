@@ -1,0 +1,40 @@
+{
+  "id": "I1974",
+  "name": "John Yendal",
+  "givenName": "John",
+  "surname": "Yendal",
+  "sex": "M",
+  "birthDate": "Abt 1798",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I1405"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Agricultural Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F706"
+    }
+  ],
+  "avatar": "avatars/I1974_0.jpg"
+}

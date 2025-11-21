@@ -1,0 +1,18 @@
+{
+  "id": "I2415",
+  "name": "William John A'Court",
+  "givenName": "William John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1895",
+  "birthPlace": "Box, Wiltshire",
+  "deathDate": "1895",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ]
+}

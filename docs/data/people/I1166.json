@@ -1,0 +1,30 @@
+{
+  "id": "I1166",
+  "name": "Sidney Swain",
+  "givenName": "Sidney",
+  "surname": "Swain",
+  "sex": "M",
+  "birthDate": "ABT 1864",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1165"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1167"
+  ],
+  "occupations": [
+    "Gardener"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1165",
+      "familyId": "F476",
+      "marriageDate": "15 SEP 1887",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

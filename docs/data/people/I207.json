@@ -1,0 +1,35 @@
+{
+  "id": "I207",
+  "name": "George Dober",
+  "givenName": "George",
+  "surname": "Dober",
+  "sex": "M",
+  "birthDate": "ABT 1794",
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1293"
+  ],
+  "childIds": [
+    "I107"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Farmer",
+    "Annuitant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881 AGE 87",
+      "place": "Stalbridge, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1293",
+      "familyId": "F65"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1077",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1076"
+  ],
+  "childIds": [
+    "I769"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1076",
+      "familyId": "F321"
+    }
+  ]
+}

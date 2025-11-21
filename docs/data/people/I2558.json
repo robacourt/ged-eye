@@ -1,0 +1,34 @@
+{
+  "id": "I2558",
+  "name": "Mary Margaret Unknown",
+  "givenName": "Mary Margaret",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1877",
+  "birthPlace": "London, St Pancras",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2557"
+  ],
+  "childIds": [
+    "I2560",
+    "I2559",
+    "I2561"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Mile End Old Town, 23 Bloomfield Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2557",
+      "familyId": "F900",
+      "marriageDate": "ABT 1899"
+    }
+  ]
+}

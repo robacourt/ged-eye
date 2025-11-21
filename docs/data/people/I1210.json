@@ -1,0 +1,21 @@
+{
+  "id": "I1210",
+  "name": "Edna Haskett",
+  "givenName": "Edna",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1181",
+    "I1182"
+  ],
+  "notes": [
+    "Marr WILL TUBBS s.p."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "I284",
+  "name": "Cornelius A'Court",
+  "givenName": "Cornelius",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "6 JAN1860",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Marnhull/RG09 1329 34 38.jpg",
+    "Data/Media/1871 census/Marnhull/RG10 1972 33 4.jpg"
+  ],
+  "spouseIds": [
+    "I287"
+  ],
+  "childIds": [
+    "I1274",
+    "I1275",
+    "I288",
+    "I1263",
+    "I1628",
+    "I1290",
+    "I1311"
+  ],
+  "parentIds": [
+    "I185",
+    "I283"
+  ],
+  "baptismDate": "12 FEB1860",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carpenter & Wheelwright",
+    "Carpenter & Wheelwright",
+    "Carpenter & Wheelwright",
+    "Carpenter & Wheelwright",
+    "Carpenter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset,  65 Muds Plot, Pleck"
+    },
+    {
+      "date": "1871",
+      "place": "Dorset, Marnhull, New St."
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St Beer House"
+    },
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    },
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Gracious St"
+    },
+    {
+      "date": "1911",
+      "place": "Selborne, Hampshire, Gracious St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I287",
+      "familyId": "F141",
+      "marriageDate": "17 OCT 1883",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ],
+  "avatar": "avatars/I284_0.jpg"
+}

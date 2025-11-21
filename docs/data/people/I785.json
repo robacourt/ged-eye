@@ -1,0 +1,36 @@
+{
+  "id": "I785",
+  "name": "George Henry A'Court",
+  "givenName": "George Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "20 JUL 1863",
+  "birthPlace": "Brisbane, Queensland",
+  "deathDate": "11 APR 1921",
+  "deathPlace": "Lake Coleridge, Canterbury, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I797"
+  ],
+  "childIds": [
+    "I798",
+    "I799"
+  ],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "burialDate": "13 APR 1921",
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "SOURCE:"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I797",
+      "familyId": "F332",
+      "marriageDate": "19 JUN 1886",
+      "marriagePlace": "Registrars Office, Wellington,  NZ"
+    }
+  ]
+}

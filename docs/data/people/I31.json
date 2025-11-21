@@ -1,0 +1,20 @@
+{
+  "id": "I31",
+  "name": "Letitia A'Court",
+  "givenName": "Letitia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "AS INFANT ?",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I17",
+    "I30"
+  ],
+  "burialDate": "25 MAR 1787",
+  "burialPlace": "Fifehead Magdalen, Dorset"
+}

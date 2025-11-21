@@ -1,0 +1,26 @@
+{
+  "id": "I2501",
+  "name": "Audrey Lee",
+  "givenName": "Audrey",
+  "surname": "Lee",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2502"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1909",
+    "I1908"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2502",
+      "familyId": "F885"
+    }
+  ]
+}

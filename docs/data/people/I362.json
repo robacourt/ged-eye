@@ -1,0 +1,53 @@
+{
+  "id": "I362",
+  "name": "Annie Eliza A'Court",
+  "givenName": "Annie Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "8 APR 1879",
+  "birthPlace": "Quemerford, Calne, Wiltshire",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Wiltshire/Calne/RG11 2035 125 25.jpg",
+    "Data/Media/1891 census/Wiltshire/Cricklade/RG12 1588 42 2.jpg"
+  ],
+  "spouseIds": [
+    "I2928"
+  ],
+  "childIds": [
+    "I2929",
+    "I2930",
+    "I2931",
+    "I2932",
+    "I2933"
+  ],
+  "parentIds": [
+    "I229",
+    "I360"
+  ],
+  "notes": [
+    "1891 Census: Living with Arthur a'Court, Albert's brother."
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Wiltshire, Calne, Quemerford"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Cricklade, Marston Maisey, Baker & Grocer Shop"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Swindon, 7 Rose St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2928",
+      "familyId": "F1000"
+    }
+  ],
+  "avatar": "avatars/I362_0.jpg"
+}

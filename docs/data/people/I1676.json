@@ -1,0 +1,19 @@
+{
+  "id": "I1676",
+  "name": "William Dean",
+  "givenName": "William",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": "ABT 1741",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "22 MAY 1741"
+}

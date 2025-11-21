@@ -1,0 +1,28 @@
+{
+  "id": "I678",
+  "name": "Deborah Warren",
+  "givenName": "Deborah",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I677"
+  ],
+  "childIds": [
+    "I676"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Seamstress"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I677",
+      "familyId": "F285"
+    }
+  ]
+}

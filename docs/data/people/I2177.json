@@ -1,0 +1,30 @@
+{
+  "id": "I2177",
+  "name": "Alan James Turner",
+  "givenName": "Alan James",
+  "surname": "Turner",
+  "sex": "M",
+  "birthDate": "21 MAY 1947",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2180"
+  ],
+  "childIds": [
+    "I2181",
+    "I2182"
+  ],
+  "parentIds": [
+    "I2178",
+    "I2254"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2180",
+      "familyId": "F781",
+      "marriageDate": "1971"
+    }
+  ]
+}

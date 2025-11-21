@@ -1,0 +1,39 @@
+{
+  "id": "I19",
+  "name": "Ibbot A'Court",
+  "givenName": "Ibbot",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1767",
+  "birthPlace": null,
+  "deathDate": "1825 AGE  58",
+  "deathPlace": "Henstridge, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I60"
+  ],
+  "childIds": [
+    "I61",
+    "I62",
+    "I63",
+    "I64",
+    "I65",
+    "I66"
+  ],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "8 JUN 1767",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "11 JAN 1825",
+  "burialPlace": "Henstridge, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I60",
+      "familyId": "F14",
+      "marriageDate": "5 NOV 1788",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

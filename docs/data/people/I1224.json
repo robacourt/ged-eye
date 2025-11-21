@@ -1,0 +1,30 @@
+{
+  "id": "I1224",
+  "name": "Patricia Haskett",
+  "givenName": "Patricia",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "1931",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1225"
+  ],
+  "childIds": [
+    "I1226",
+    "I1227",
+    "I1228"
+  ],
+  "parentIds": [
+    "I1215",
+    "I1216"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1225",
+      "familyId": "F495"
+    }
+  ]
+}

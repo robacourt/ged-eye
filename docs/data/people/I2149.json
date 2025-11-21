@@ -1,0 +1,26 @@
+{
+  "id": "I2149",
+  "name": "J.D. Davies",
+  "givenName": "J.D.",
+  "surname": "Davies",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2150"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Witness to:  Florence Unknown #2018   Died  13 Aug 1957  50 Vernon Rd Leigh on Sea"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2150",
+      "familyId": "F766"
+    }
+  ]
+}

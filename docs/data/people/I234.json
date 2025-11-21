@@ -1,0 +1,25 @@
+{
+  "id": "I234",
+  "name": "Stephen Hatcher",
+  "givenName": "Stephen",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I235"
+  ],
+  "childIds": [
+    "I88"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I235",
+      "familyId": "F56"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I728",
+  "name": "Unknown",
+  "givenName": "Unknown",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1 MARCH 1777",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I727"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I727",
+      "familyId": "F296"
+    }
+  ]
+}

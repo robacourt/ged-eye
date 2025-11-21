@@ -1,0 +1,25 @@
+{
+  "id": "I971",
+  "name": "William Whitton",
+  "givenName": "William",
+  "surname": "Whitton",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I972"
+  ],
+  "childIds": [
+    "I733"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I972",
+      "familyId": "F298"
+    }
+  ]
+}

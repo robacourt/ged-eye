@@ -1,0 +1,25 @@
+{
+  "id": "I2662",
+  "name": "Unknown Tommey",
+  "givenName": "Unknown",
+  "surname": "Tommey",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2663"
+  ],
+  "childIds": [
+    "I2661"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2663",
+      "familyId": "F927"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2838",
+  "name": "Joshua St C A'Court",
+  "givenName": "Joshua St C",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1873",
+  "birthPlace": "Jersey C.I. St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Jersey/St Helier/RG11 5610 73 21.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2837",
+    "I2836"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Helier, 23 George St."
+    }
+  ],
+  "avatar": "avatars/I2838_0.jpg"
+}

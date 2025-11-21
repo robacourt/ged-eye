@@ -1,0 +1,23 @@
+{
+  "id": "I4",
+  "name": "Nathaniel A'Court",
+  "givenName": "Nathaniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "28 SEP 1815",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1",
+    "I2"
+  ],
+  "baptismDate": "26 DEC 1815",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "Could be #369"
+  ]
+}

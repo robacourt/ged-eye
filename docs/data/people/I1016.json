@@ -1,0 +1,23 @@
+{
+  "id": "I1016",
+  "name": "Eric Bardsley",
+  "givenName": "Eric",
+  "surname": "Bardsley",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1003"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1003",
+      "familyId": "F417"
+    }
+  ]
+}

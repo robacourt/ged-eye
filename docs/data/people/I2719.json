@@ -1,0 +1,32 @@
+{
+  "id": "I2719",
+  "name": "Sarah Unknown",
+  "givenName": "Sarah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1833",
+  "birthPlace": "Somerset, Ditcheat.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Alhampton/RG13 2314 81 3.jpg"
+  ],
+  "spouseIds": [
+    "I2720"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Somerset, Alhampton"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2720",
+      "familyId": "F947"
+    }
+  ],
+  "avatar": "avatars/I2719_0.jpg"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "I158",
+  "name": "Emanual Hatcher",
+  "givenName": "Emanual",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "29.3.1850",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I639"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I152",
+    "I38"
+  ],
+  "baptismDate": "26.5.1850",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Innkeeper of Manston"
+  ],
+  "notes": [
+    "1 in 1851, 11 in 1861, 30 in 1881, 46 in 1896."
+  ],
+  "marriages": [
+    {
+      "spouseId": "I639",
+      "familyId": "F91",
+      "marriageDate": "6.10.1896",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ]
+}

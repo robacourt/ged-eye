@@ -1,0 +1,54 @@
+{
+  "id": "I2837",
+  "name": "Henry J A'Court",
+  "givenName": "Henry J",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1849",
+  "birthPlace": "Jersey C.I. St Clement",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2836"
+  ],
+  "childIds": [
+    "I2838",
+    "I2839"
+  ],
+  "parentIds": [],
+  "burialDate": "20 FEB 1936",
+  "burialPlace": "Jersey C.I. St Clement",
+  "occupations": [
+    "Plasterer",
+    "Plasterer",
+    "Ship labourer",
+    "Plasterer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Helier, 23 George St."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Helier, George St."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St. Helier, 3 Bellozanne Rd, Leyminage Place"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2836",
+      "familyId": "F816",
+      "marriageDate": "28 APR 1870",
+      "marriagePlace": "Jersey C.I. St Saviour"
+    }
+  ]
+}

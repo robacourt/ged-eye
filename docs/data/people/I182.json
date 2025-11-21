@@ -1,0 +1,38 @@
+{
+  "id": "I182",
+  "name": "John Curtis",
+  "givenName": "John",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I279"
+  ],
+  "childIds": [
+    "I1251",
+    "I1254",
+    "I1258"
+  ],
+  "parentIds": [
+    "I178",
+    "I50"
+  ],
+  "baptismDate": "15.12.1833",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "12-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I279",
+      "familyId": "F101"
+    }
+  ]
+}

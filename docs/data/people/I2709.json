@@ -1,0 +1,33 @@
+{
+  "id": "I2709",
+  "name": "Harriet (Hetty) Leah Barnett",
+  "givenName": "Harriet (Hetty) Leah",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "6 SEP 1902",
+  "birthPlace": "London,Stoke Newington.",
+  "deathDate": "10 JUNE 1970",
+  "deathPlace": "Richmond, Surrey",
+  "photos": [],
+  "spouseIds": [
+    "I2710"
+  ],
+  "childIds": [
+    "I2711"
+  ],
+  "parentIds": [
+    "I2335",
+    "I2708"
+  ],
+  "occupations": [
+    "Shorthand Typist"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2710",
+      "familyId": "F943",
+      "marriageDate": "2 DEC 1922",
+      "marriagePlace": "Richmond, Surrey"
+    }
+  ]
+}

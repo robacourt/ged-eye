@@ -1,0 +1,28 @@
+{
+  "id": "I2429",
+  "name": "Hilda A'Court",
+  "givenName": "Hilda",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1921",
+  "birthPlace": "Buckinghamshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2430"
+  ],
+  "childIds": [
+    "I2431"
+  ],
+  "parentIds": [
+    "I2418",
+    "I2419"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2430",
+      "familyId": "F863"
+    }
+  ]
+}

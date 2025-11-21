@@ -1,0 +1,18 @@
+{
+  "id": "I2100",
+  "name": "Amelia Thomas",
+  "givenName": "Amelia",
+  "surname": "Thomas",
+  "sex": "F",
+  "birthDate": "1942",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2099",
+    "I2098"
+  ]
+}

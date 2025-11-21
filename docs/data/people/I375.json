@@ -1,0 +1,49 @@
+{
+  "id": "I375",
+  "name": "Mary S Wheeler",
+  "givenName": "Mary S",
+  "surname": "Wheeler",
+  "sex": "F",
+  "birthDate": "ABT 1815",
+  "birthPlace": "Hampshire, Gosport",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I374"
+  ],
+  "childIds": [
+    "I378",
+    "I377",
+    "I376",
+    "I2749",
+    "I113",
+    "I379"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1871",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1881",
+      "place": "Hampshire, Portsmouth, Portsea, 1 Chichester Terrace"
+    },
+    {
+      "date": "1901",
+      "place": "Hampshire, Portsmouth, Portsea, I Chichester Terrace, Victoria Rd North."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I374",
+      "familyId": "F68",
+      "marriageDate": "ABT 1842"
+    }
+  ]
+}

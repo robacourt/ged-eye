@@ -1,0 +1,26 @@
+{
+  "id": "I2243",
+  "name": "Victoria Beatrice Ruth Tiley",
+  "givenName": "Victoria Beatrice Ruth",
+  "surname": "Tiley",
+  "sex": "F",
+  "birthDate": "13 AUG 1887",
+  "birthPlace": "Bristol",
+  "deathDate": "25 JUL 1974",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2242"
+  ],
+  "childIds": [
+    "I2151"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2242",
+      "familyId": "F769",
+      "marriageDate": "23 OCT 1920"
+    }
+  ]
+}

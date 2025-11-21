@@ -1,0 +1,29 @@
+{
+  "id": "I2381",
+  "name": "Leonore A Duffey",
+  "givenName": "Leonore A",
+  "surname": "Duffey",
+  "sex": "F",
+  "birthDate": "10 FEB 1918",
+  "birthPlace": "Victoria or Vancover B.C.",
+  "deathDate": "19 DEC 2003",
+  "deathPlace": "King, Seattle, Washington, USA",
+  "photos": [],
+  "spouseIds": [
+    "I2382"
+  ],
+  "childIds": [
+    "I2383",
+    "I2384"
+  ],
+  "parentIds": [
+    "I2379",
+    "I1406"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2382",
+      "familyId": "F847"
+    }
+  ]
+}

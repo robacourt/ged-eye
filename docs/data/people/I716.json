@@ -1,0 +1,25 @@
+{
+  "id": "I716",
+  "name": "Robert Foot",
+  "givenName": "Robert",
+  "surname": "Foot",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I717"
+  ],
+  "childIds": [
+    "I579"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I717",
+      "familyId": "F238"
+    }
+  ]
+}

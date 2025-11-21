@@ -1,0 +1,28 @@
+{
+  "id": "I1425",
+  "name": "Alexander Isaacs",
+  "givenName": "Alexander",
+  "surname": "Isaacs",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1424"
+  ],
+  "childIds": [
+    "I1426",
+    "I1427"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1424",
+      "familyId": "F554",
+      "marriageDate": "1896",
+      "marriagePlace": "London, City"
+    }
+  ]
+}

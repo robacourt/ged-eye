@@ -1,0 +1,25 @@
+{
+  "id": "I486",
+  "name": "Miss Godden",
+  "givenName": "Miss",
+  "surname": "Godden",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I485"
+  ],
+  "childIds": [
+    "I487"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I485",
+      "familyId": "F208"
+    }
+  ]
+}

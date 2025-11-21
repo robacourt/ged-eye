@@ -1,0 +1,21 @@
+{
+  "id": "I385",
+  "name": "Robert Wheeler Bennett",
+  "givenName": "Robert Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "1883",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I378",
+    "I894"
+  ],
+  "notes": [
+    "Badly wounded in the Boer War 1900 ,still alive 1980"
+  ]
+}

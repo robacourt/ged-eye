@@ -1,0 +1,18 @@
+{
+  "id": "I487",
+  "name": "Harry A'Court",
+  "givenName": "Harry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1915",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I485",
+    "I486"
+  ]
+}

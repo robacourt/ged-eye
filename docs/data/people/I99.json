@@ -1,0 +1,23 @@
+{
+  "id": "I99",
+  "name": "Emma Hunt",
+  "givenName": "Emma",
+  "surname": "Hunt",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I96",
+    "I36"
+  ],
+  "baptismDate": "6.12.1829",
+  "baptismPlace": "East Stour, Dorset",
+  "notes": [
+    "21-1851"
+  ]
+}

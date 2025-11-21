@@ -1,0 +1,40 @@
+{
+  "id": "I2447",
+  "name": "Rose Mears A'Court",
+  "givenName": "Rose Mears",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1881",
+  "birthPlace": "London, Clapton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Bethnal Green/RG13 284 135 39.jpg"
+  ],
+  "spouseIds": [
+    "I2901"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2451",
+    "I2446"
+  ],
+  "occupations": [
+    "Collar Turner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Bethnal Green, 8 Pollards Row."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2901",
+      "familyId": "F993",
+      "marriageDate": "29 FEB 1904",
+      "marriagePlace": "Essex, Little Ilford"
+    }
+  ],
+  "avatar": "avatars/I2447_0.jpg"
+}

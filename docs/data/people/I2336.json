@@ -1,0 +1,55 @@
+{
+  "id": "I2336",
+  "name": "Michael Robert Barnett",
+  "givenName": "Michael Robert",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "1869",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Shoreditch/RG10 422 16 26.jpg",
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg"
+  ],
+  "spouseIds": [
+    "I2984"
+  ],
+  "childIds": [
+    "I2991"
+  ],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "occupations": [
+    "Cigar bundler and sorter",
+    "Tobacco dealer, own account, Leswin Place Stoke Newington."
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Shoreditch"
+    },
+    {
+      "date": "1881",
+      "place": "London, Shoreditch,161 High St"
+    },
+    {
+      "date": "1891",
+      "place": "London, Shoreditch, 248 Kingsland Rd"
+    },
+    {
+      "date": "1921",
+      "place": "London, Willesden, 72 Teigmouth Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2984",
+      "familyId": "F1026",
+      "marriageDate": "BEF 1891"
+    }
+  ],
+  "avatar": "avatars/I2336_0.jpg"
+}

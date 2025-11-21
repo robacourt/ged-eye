@@ -1,0 +1,30 @@
+{
+  "id": "I1904",
+  "name": "Rosina A'Court",
+  "givenName": "Rosina",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1861",
+  "birthPlace": "France",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 46 115 10.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2085",
+    "I2086"
+  ],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Kensington, 42 Finborough Rd."
+    }
+  ],
+  "avatar": "avatars/I1904_0.jpg"
+}

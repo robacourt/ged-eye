@@ -1,0 +1,31 @@
+{
+  "id": "I2604",
+  "name": "Dorothy Martha Emberson",
+  "givenName": "Dorothy Martha",
+  "surname": "Emberson",
+  "sex": "F",
+  "birthDate": "ABT 1894",
+  "birthPlace": "Walton-on - Thames, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg",
+    "Data/Media/1911 census/Surrey/RG14 2982 162.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1336",
+    "I1335"
+  ],
+  "occupations": [
+    "Telephonist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Walton-on-Thames, Surrey, Heytesbury, Station Avenue"
+    }
+  ],
+  "avatar": "avatars/I2604_0.jpg"
+}

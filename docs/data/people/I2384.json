@@ -1,0 +1,18 @@
+{
+  "id": "I2384",
+  "name": "Bruce Robert MacDonald",
+  "givenName": "Bruce Robert",
+  "surname": "MacDonald",
+  "sex": "M",
+  "birthDate": "1949",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2382",
+    "I2381"
+  ]
+}

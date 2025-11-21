@@ -1,0 +1,37 @@
+{
+  "id": "I2815",
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "8 JUL 1865",
+  "birthPlace": "Jersey C.I. St Ouen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Jersey/RG10 5763 11 13.jpg",
+    "Data/Media/1881 census/Jersey/St Ouen/RG11 5621 42 11.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "baptismDate": "18 JUL 1865",
+  "baptismPlace": "Jersey C.I. St Ouen",
+  "occupations": [
+    "Dairy maid"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Ouen, La Porte"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey, C.I. St Ouen, Puit de Leoville,"
+    }
+  ],
+  "avatar": "avatars/I2815_0.jpg"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I2184",
+  "name": "Henry John Watts",
+  "givenName": "Henry John",
+  "surname": "Watts",
+  "sex": "M",
+  "birthDate": "23 SEP 1901",
+  "birthPlace": "Wedmore, Somerset",
+  "deathDate": "29 SEP 1981",
+  "deathPlace": "Eastville, Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2250"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Cartetaker / Gardener"
+  ],
+  "notes": [
+    "Died watching Bristol Rovers vs Wimbledon"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2250",
+      "familyId": "F784",
+      "marriageDate": "28 OCT 1967",
+      "marriagePlace": "Bristol, Eastville Park Methodist"
+    }
+  ]
+}

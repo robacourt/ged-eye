@@ -1,0 +1,30 @@
+{
+  "id": "I2918",
+  "name": "Charles Henry A'Court",
+  "givenName": "Charles Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1896",
+  "birthPlace": "Glamorganshire, Ystrad",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Glamorganshire/RG14 32552 223.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2915",
+    "I2916"
+  ],
+  "occupations": [
+    "Coal miner hewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Glamorganshire, Llandyfodwg, 20 Adare St."
+    }
+  ],
+  "avatar": "avatars/I2918_0.jpg"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I1516",
+  "name": "Fredrick George Morgan",
+  "givenName": "Fredrick George",
+  "surname": "Morgan",
+  "sex": "M",
+  "birthDate": "19 APR 1882",
+  "birthPlace": "Bimport St. Shaftesbury, Dorset",
+  "deathDate": "13 DEC 1975",
+  "deathPlace": "Enfield, Middlesex",
+  "photos": [],
+  "spouseIds": [
+    "I1486"
+  ],
+  "childIds": [
+    "I1517",
+    "I1519",
+    "I1520",
+    "I1521",
+    "I1524"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1486",
+      "familyId": "F566",
+      "marriageDate": "25 DEC 1905",
+      "marriagePlace": "Enfield, Middlesex,  St. John The Baptist"
+    }
+  ]
+}

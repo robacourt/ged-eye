@@ -1,0 +1,25 @@
+{
+  "id": "I1729",
+  "name": "Francis I Wheeler Bennett",
+  "givenName": "Francis I Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1730"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1728"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1730",
+      "familyId": "F636"
+    }
+  ]
+}

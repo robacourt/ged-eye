@@ -1,0 +1,25 @@
+{
+  "id": "I1111",
+  "name": "Daniel Smith",
+  "givenName": "Daniel",
+  "surname": "Smith",
+  "sex": "M",
+  "birthDate": "ABT 1881",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1105"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1105",
+      "familyId": "F447",
+      "marriageDate": "23 MAY 1904",
+      "marriagePlace": "Queen Camel, Somerset"
+    }
+  ]
+}

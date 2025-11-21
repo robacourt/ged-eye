@@ -1,0 +1,28 @@
+{
+  "id": "I237",
+  "name": "Rachel Down",
+  "givenName": "Rachel",
+  "surname": "Down",
+  "sex": "F",
+  "birthDate": "ABT 1807",
+  "birthPlace": null,
+  "deathDate": "AFT 1832",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I90"
+  ],
+  "childIds": [
+    "I238",
+    "I239"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I90",
+      "familyId": "F58",
+      "marriageDate": "22 OCT 1832",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

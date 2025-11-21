@@ -1,0 +1,18 @@
+{
+  "id": "I252",
+  "name": "Job Fudge",
+  "givenName": "Job",
+  "surname": "Fudge",
+  "sex": "M",
+  "birthDate": "20 SEP 1855",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I246",
+    "I40"
+  ]
+}

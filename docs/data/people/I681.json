@@ -1,0 +1,23 @@
+{
+  "id": "I681",
+  "name": "John Drew",
+  "givenName": "John",
+  "surname": "Drew",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I680"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F287"
+    }
+  ]
+}

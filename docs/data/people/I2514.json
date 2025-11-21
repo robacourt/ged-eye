@@ -1,0 +1,24 @@
+{
+  "id": "I2514",
+  "name": "Elizabeth Bewes",
+  "givenName": "Elizabeth",
+  "surname": "Bewes",
+  "sex": "F",
+  "birthDate": "ABT 1900",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2510",
+    "I2509"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wavertree, Lancashire, 14 Cambridge St."
+    }
+  ]
+}

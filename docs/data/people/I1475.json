@@ -1,0 +1,37 @@
+{
+  "id": "I1475",
+  "name": "Edmund \\ Edward A'Court",
+  "givenName": "Edmund \\ Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1829",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Henstridge/RG09 1648 61 3.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1473",
+    "I1474"
+  ],
+  "occupations": [
+    "Farmers son"
+  ],
+  "notes": [
+    "1861 England Census"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Baslands Hill farm"
+    }
+  ],
+  "avatar": "avatars/I1475_0.jpg"
+}

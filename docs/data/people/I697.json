@@ -1,0 +1,25 @@
+{
+  "id": "I697",
+  "name": "Nathanial Jomnioll",
+  "givenName": "Nathanial",
+  "surname": "Jomnioll",
+  "sex": "M",
+  "birthDate": "BEF 1659",
+  "birthPlace": null,
+  "deathDate": "AFT 1672",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I692"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I692",
+      "familyId": "F288",
+      "marriageDate": "11 FEB 1671/72",
+      "marriagePlace": "South Cadbury, Somerset"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I1806",
+  "name": "Unknown Short",
+  "givenName": "Unknown",
+  "surname": "Short",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1805",
+    "I1807"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F651"
+    }
+  ]
+}

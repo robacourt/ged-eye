@@ -1,0 +1,26 @@
+{
+  "id": "I1124",
+  "name": "William Henry Matthews",
+  "givenName": "William Henry",
+  "surname": "Matthews",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1123"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Smallholder"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F455"
+    }
+  ]
+}

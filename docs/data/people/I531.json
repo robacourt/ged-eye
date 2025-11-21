@@ -1,0 +1,35 @@
+{
+  "id": "I531",
+  "name": "Daisy Unknown",
+  "givenName": "Daisy",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Dorset, Fifehead Magdalen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1581"
+  ],
+  "childIds": [
+    "I2896"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Leather glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Dorset, Fifehead Magdalen"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1581",
+      "familyId": "F992",
+      "marriageDate": "Abt 1909"
+    }
+  ]
+}

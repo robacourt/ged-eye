@@ -1,0 +1,25 @@
+{
+  "id": "I2656",
+  "name": "Unknown Ennis",
+  "givenName": "Unknown",
+  "surname": "Ennis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2657"
+  ],
+  "childIds": [
+    "I2655"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2657",
+      "familyId": "F925"
+    }
+  ]
+}

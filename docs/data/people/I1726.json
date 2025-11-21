@@ -1,0 +1,30 @@
+{
+  "id": "I1726",
+  "name": "James Daniels",
+  "givenName": "James",
+  "surname": "Daniels",
+  "sex": "M",
+  "birthDate": "ABT 1835",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I77"
+  ],
+  "childIds": [
+    "I1975",
+    "I1987",
+    "I1988",
+    "I1989"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I77",
+      "familyId": "F49",
+      "marriageDate": "7 SEP 1851",
+      "marriagePlace": "Portsea, Hampshire"
+    }
+  ]
+}

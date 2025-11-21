@@ -1,0 +1,33 @@
+{
+  "id": "I1153",
+  "name": "Ronald Leonard Arthur Roberts",
+  "givenName": "Ronald Leonard Arthur",
+  "surname": "Roberts",
+  "sex": "M",
+  "birthDate": "ABT 1923",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1152"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1154"
+  ],
+  "residences": [
+    {
+      "date": "1945",
+      "place": "Bulford Camp, Wiltshire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1152",
+      "familyId": "F468",
+      "marriageDate": "15 MAR 1945",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

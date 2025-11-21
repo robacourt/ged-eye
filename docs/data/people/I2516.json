@@ -1,0 +1,35 @@
+{
+  "id": "I2516",
+  "name": "Harriet Hartland",
+  "givenName": "Harriet",
+  "surname": "Hartland",
+  "sex": "F",
+  "birthDate": "ABT 1820",
+  "birthPlace": "Long Sutton, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2375"
+  ],
+  "childIds": [
+    "I2373",
+    "I2518",
+    "I2517"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Long Sutton, Somerset. Green St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2375",
+      "familyId": "F842",
+      "marriageDate": "1843 JUN QTR",
+      "marriagePlace": "Langport, Somerset"
+    }
+  ]
+}

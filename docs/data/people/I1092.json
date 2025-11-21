@@ -1,0 +1,40 @@
+{
+  "id": "I1092",
+  "name": "James Victor A'Court",
+  "givenName": "James Victor",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "14 SEP 1910",
+  "birthPlace": "West Camel, Somerset",
+  "deathDate": "25 JAN 1987",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [
+    "Data/Media/1911 census/Dorset/Dorchester/RG14 12386 91.jpg"
+  ],
+  "spouseIds": [
+    "I1264"
+  ],
+  "childIds": [
+    "I2633"
+  ],
+  "parentIds": [
+    "I1338",
+    "I1089"
+  ],
+  "notes": [
+    "Jim spent many hours fishing the river Yeo,his great passion."
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Dorchester, Dorset, 7 Prospect Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1264",
+      "familyId": "F439"
+    }
+  ],
+  "avatar": "avatars/I1092_0.jpg"
+}

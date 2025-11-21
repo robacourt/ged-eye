@@ -1,0 +1,39 @@
+{
+  "id": "I1639",
+  "name": "Herbert A'Court",
+  "givenName": "Herbert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "28 DEC 1890",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Yeovil/RG13 2301 115 .jpg",
+    "Data/Media/1911 census/Somerset/Yeovil/RG14 14412 290.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1636",
+    "I1637"
+  ],
+  "occupations": [
+    "Shop Assistant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Yeovil, Somerset, 29 Queen's St."
+    },
+    {
+      "date": "1901",
+      "place": "Yeovil, Somerset, Huish"
+    },
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 11 Woodland Grove, Mill Rd."
+    }
+  ],
+  "avatar": "avatars/I1639_0.jpg"
+}

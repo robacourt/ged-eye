@@ -1,0 +1,27 @@
+{
+  "id": "I328",
+  "name": "Hannah Wilkins",
+  "givenName": "Hannah",
+  "surname": "Wilkins",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I327"
+  ],
+  "childIds": [
+    "I196"
+  ],
+  "parentIds": [
+    "I329"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I327",
+      "familyId": "F112"
+    }
+  ]
+}

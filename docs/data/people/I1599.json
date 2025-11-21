@@ -1,0 +1,26 @@
+{
+  "id": "I1599",
+  "name": "Annie Bryant",
+  "givenName": "Annie",
+  "surname": "Bryant",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1595"
+  ],
+  "childIds": [
+    "I1597",
+    "I1598"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1595",
+      "familyId": "F599"
+    }
+  ]
+}

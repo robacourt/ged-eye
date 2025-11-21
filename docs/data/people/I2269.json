@@ -1,0 +1,36 @@
+{
+  "id": "I2269",
+  "name": "Francis John A'Court",
+  "givenName": "Francis John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "10 AUG 1857",
+  "birthPlace": "Jersey, C.I. St Ouen.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Jersey/RG09 4405 6 6.png",
+    "Data/Media/1871 census/Jersey/RG10 5763 59 4.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "baptismDate": "20 AUG 1857",
+  "occupations": [
+    "Farm servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    },
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Ouen, La Bottellerie"
+    }
+  ],
+  "avatar": "avatars/I2269_0.jpg"
+}

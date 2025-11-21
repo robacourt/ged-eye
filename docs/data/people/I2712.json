@@ -1,0 +1,26 @@
+{
+  "id": "I2712",
+  "name": "John Richard Wood",
+  "givenName": "John Richard",
+  "surname": "Wood",
+  "sex": "M",
+  "birthDate": "1936",
+  "birthPlace": "London, Lewisham.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2711"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2713",
+    "I2714"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2711",
+      "familyId": "F944"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I924",
+  "name": "Leslie Lane",
+  "givenName": "Leslie",
+  "surname": "Lane",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I918"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I918",
+      "familyId": "F385"
+    }
+  ]
+}

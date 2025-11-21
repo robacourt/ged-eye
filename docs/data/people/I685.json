@@ -1,0 +1,18 @@
+{
+  "id": "I685",
+  "name": "Elliji Ryall",
+  "givenName": "Elliji",
+  "surname": "Ryall",
+  "sex": "M",
+  "birthDate": "1640",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I683",
+    "I564"
+  ]
+}

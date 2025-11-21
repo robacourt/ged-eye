@@ -1,0 +1,20 @@
+{
+  "id": "I2823",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I571",
+    "I2359"
+  ],
+  "baptismDate": "10 AUG 1862",
+  "baptismPlace": "Over Compton"
+}

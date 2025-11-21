@@ -1,0 +1,18 @@
+{
+  "id": "I2393",
+  "name": "Anne Doreen A'Court",
+  "givenName": "Anne Doreen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "26 DEC 1940",
+  "birthPlace": "Southhampton, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1962",
+    "I2392"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": "I265",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1869",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Blandford Forum/RG 10 1978 61 26.jpg",
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg",
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 67 19.jpg"
+  ],
+  "spouseIds": [
+    "I2519"
+  ],
+  "childIds": [
+    "I2520",
+    "I2521",
+    "I2531",
+    "I2532",
+    "I392"
+  ],
+  "parentIds": [
+    "I44",
+    "I259"
+  ],
+  "occupations": [
+    "Farmer",
+    "Farmer and Contractor",
+    "Haulier"
+  ],
+  "notes": [
+    "1911 In business with his brother Fred.  Charles Street backs on to Damory Court Street  North off East St."
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 20 Dorset St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Damory Court Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2519",
+      "familyId": "F890",
+      "marriageDate": "ABT 1896"
+    }
+  ],
+  "avatar": "avatars/I265_0.jpg"
+}

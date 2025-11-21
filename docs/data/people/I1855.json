@@ -1,0 +1,23 @@
+{
+  "id": "I1855",
+  "name": "Unknown Van De Voorde",
+  "givenName": "Unknown Van",
+  "surname": "De Voorde",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1854"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F668"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I484",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I485"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Wheelwright"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F207"
+    }
+  ]
+}

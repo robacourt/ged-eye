@@ -1,0 +1,24 @@
+{
+  "id": "I2599",
+  "name": "Thomas George Emberson",
+  "givenName": "Thomas George",
+  "surname": "Emberson",
+  "sex": "M",
+  "birthDate": "ABT 1903",
+  "birthPlace": "Chertsey, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2472",
+    "I2468"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Chiswick, Middlesex, 80 Grove Park Terrace"
+    }
+  ]
+}

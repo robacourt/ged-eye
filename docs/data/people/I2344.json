@@ -1,0 +1,25 @@
+{
+  "id": "I2344",
+  "name": "Richard Carter",
+  "givenName": "Richard",
+  "surname": "Carter",
+  "sex": "M",
+  "birthDate": "ABT 1799",
+  "birthPlace": "Churwell, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2345"
+  ],
+  "childIds": [
+    "I2342"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2345",
+      "familyId": "F833"
+    }
+  ]
+}

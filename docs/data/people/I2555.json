@@ -1,0 +1,40 @@
+{
+  "id": "I2555",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1873",
+  "birthPlace": "London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2548"
+  ],
+  "childIds": [
+    "I2549",
+    "I2550",
+    "I2551",
+    "I2553",
+    "I2552",
+    "I2554"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Could be #1911"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 47 Shawfield St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2548",
+      "familyId": "F899",
+      "marriageDate": "ABT 1899"
+    }
+  ]
+}

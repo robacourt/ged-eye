@@ -1,0 +1,23 @@
+{
+  "id": "I1723",
+  "name": "Unknown Collar",
+  "givenName": "Unknown",
+  "surname": "Collar",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1722"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F629"
+    }
+  ]
+}

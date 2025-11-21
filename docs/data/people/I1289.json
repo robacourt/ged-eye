@@ -1,0 +1,27 @@
+{
+  "id": "I1289",
+  "name": "Fanny Mansey",
+  "givenName": "Fanny",
+  "surname": "Mansey",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": null,
+  "deathDate": "1940",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1288"
+  ],
+  "childIds": [
+    "I1276",
+    "I1286",
+    "I1287"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1288",
+      "familyId": "F515"
+    }
+  ]
+}

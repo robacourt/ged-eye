@@ -1,0 +1,24 @@
+{
+  "id": "I1268",
+  "name": "Unknown Helyar",
+  "givenName": "Unknown",
+  "surname": "Helyar",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1267"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1267",
+      "familyId": "F512",
+      "marriageDate": "1937"
+    }
+  ]
+}

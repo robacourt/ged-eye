@@ -1,0 +1,38 @@
+{
+  "id": "I117",
+  "name": "Alfred Hunt",
+  "givenName": "Alfred",
+  "surname": "Hunt",
+  "sex": "M",
+  "birthDate": "ABT 1854",
+  "birthPlace": null,
+  "deathDate": "BEF 1891",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I108"
+  ],
+  "childIds": [
+    "I1291",
+    "I1292"
+  ],
+  "parentIds": [
+    "I208",
+    "I209"
+  ],
+  "occupations": [
+    "Stoker",
+    "Ships Cook"
+  ],
+  "notes": [
+    "24-1878"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I108",
+      "familyId": "F66",
+      "marriageDate": "6 FEB 1878",
+      "marriagePlace": "St. James, Milton, Portsea"
+    }
+  ]
+}

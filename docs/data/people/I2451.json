@@ -1,0 +1,28 @@
+{
+  "id": "I2451",
+  "name": "Alfred Richard A'Court",
+  "givenName": "Alfred Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1858",
+  "birthPlace": null,
+  "deathDate": "AFT 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2446"
+  ],
+  "childIds": [
+    "I2447",
+    "I2448"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2446",
+      "familyId": "F867",
+      "marriageDate": "Abt 1880",
+      "marriagePlace": "London, Hackney"
+    }
+  ]
+}

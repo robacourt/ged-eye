@@ -1,0 +1,35 @@
+{
+  "id": "I79",
+  "name": "Daniel A'Court",
+  "givenName": "Daniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1836/7",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg",
+    "Data/Media/1851 census/Henstridge/Piece 1931 folio 374 page 25.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "occupations": [
+    "Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "avatar": "avatars/I79_0.jpg"
+}

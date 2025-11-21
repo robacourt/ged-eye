@@ -1,0 +1,23 @@
+{
+  "id": "I1796",
+  "name": "Unknown Stowe",
+  "givenName": "Unknown",
+  "surname": "Stowe",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1795"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F647"
+    }
+  ]
+}

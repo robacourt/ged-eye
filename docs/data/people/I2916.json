@@ -1,0 +1,27 @@
+{
+  "id": "I2916",
+  "name": "Unknowm Unknown",
+  "givenName": "Unknowm",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1911",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2915"
+  ],
+  "childIds": [
+    "I2917",
+    "I2918",
+    "I2919"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2915",
+      "familyId": "F996"
+    }
+  ]
+}

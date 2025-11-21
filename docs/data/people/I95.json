@@ -1,0 +1,25 @@
+{
+  "id": "I95",
+  "name": "Samuel Durrant",
+  "givenName": "Samuel",
+  "surname": "Durrant",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I33"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I33",
+      "familyId": "F22",
+      "marriageDate": "20 FEB 1817",
+      "marriagePlace": "Folke, Dorset"
+    }
+  ]
+}

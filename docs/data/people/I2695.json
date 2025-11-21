@@ -1,0 +1,28 @@
+{
+  "id": "I2695",
+  "name": "William Eiles",
+  "givenName": "William",
+  "surname": "Eiles",
+  "sex": "M",
+  "birthDate": "1898",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2694"
+  ],
+  "childIds": [
+    "I2699",
+    "I2696",
+    "I2697",
+    "I2698"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2694",
+      "familyId": "F938"
+    }
+  ]
+}

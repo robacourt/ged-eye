@@ -1,0 +1,53 @@
+{
+  "id": "I108",
+  "name": "Clara Ann A'Court",
+  "givenName": "Clara Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1855",
+  "birthPlace": "Southampton, South Stoneham, Hampshire",
+  "deathDate": "1905",
+  "deathPlace": "Hampshire, Portsmouth",
+  "photos": [],
+  "spouseIds": [
+    "I117"
+  ],
+  "childIds": [
+    "I1291",
+    "I1292"
+  ],
+  "parentIds": [
+    "I76",
+    "I107"
+  ],
+  "occupations": [
+    "Wife of ships cook",
+    "Laundress",
+    "Charwoman"
+  ],
+  "notes": [
+    "1891 Census 15 Omega Street"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881 AGE 25",
+      "place": "Portsea, Hampshire, 48 Fleet Street"
+    },
+    {
+      "date": "1891 AGE 35",
+      "place": "15 Omega St."
+    },
+    {
+      "date": "1901",
+      "place": "Portsmouth, Hampshire, 39 Raglan St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I117",
+      "familyId": "F66",
+      "marriageDate": "6 FEB 1878",
+      "marriagePlace": "St. James, Milton, Portsea"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2852",
+  "name": "WilliamTheobald",
+  "givenName": "WilliamTheobald",
+  "surname": "",
+  "sex": "M",
+  "birthDate": "ABT 1877",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Grandson of 767 see 1881 census, possible son of Edith Mary A'Court # 887"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Hackney, 64 Graham Road"
+    }
+  ]
+}

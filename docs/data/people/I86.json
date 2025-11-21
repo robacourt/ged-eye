@@ -1,0 +1,72 @@
+{
+  "id": "I86",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1824",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": "Aft 1892 BEF 1911",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Fifehead Mag/Mill and Factory.jpg"
+  ],
+  "spouseIds": [
+    "I227"
+  ],
+  "childIds": [
+    "I228",
+    "I229",
+    "I230",
+    "I232",
+    "I231"
+  ],
+  "parentIds": [
+    "I25",
+    "I80"
+  ],
+  "baptismDate": "11 JUL 1824",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Gardener",
+    "Grocer",
+    "Dairyman of 12 cows",
+    "Baker & Grocer",
+    "Baker"
+  ],
+  "notes": [
+    "Marriage cert of son Arthur",
+    "Marriage certificate of son Arthur"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Fifehead Magdalen, Dorset, Factory Farm,"
+    },
+    {
+      "date": "1851",
+      "place": "Fifehead Magdalen, Dorset, Quail House"
+    },
+    {
+      "date": "1861",
+      "place": "East Stour, Dorset, Back St"
+    },
+    {
+      "date": "1871",
+      "place": "Wiltshire, Amesbury, Idmiston, Wesleyan Chapel"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Cricklade, Marston Maisey, Baker & Grocer Shop"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I227",
+      "familyId": "F55",
+      "marriageDate": "2 MAR 1845",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "avatar": "avatars/I86_0.jpg"
+}

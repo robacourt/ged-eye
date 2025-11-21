@@ -1,0 +1,20 @@
+{
+  "id": "I479",
+  "name": "Charity a'Court",
+  "givenName": "Charity",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1739",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": "ABT 1740",
+  "deathPlace": "Horsington, Somerset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I469",
+    "I470"
+  ],
+  "burialDate": "29 FEB 1739/40",
+  "burialPlace": "Horsington, Somerset"
+}

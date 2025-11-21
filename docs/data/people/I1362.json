@@ -1,0 +1,25 @@
+{
+  "id": "I1362",
+  "name": "Annie Donald",
+  "givenName": "Annie",
+  "surname": "Donald",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1361"
+  ],
+  "childIds": [
+    "I1360"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1361",
+      "familyId": "F540"
+    }
+  ]
+}

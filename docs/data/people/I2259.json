@@ -1,0 +1,55 @@
+{
+  "id": "I2259",
+  "name": "Alfred William A'Court",
+  "givenName": "Alfred William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1855",
+  "birthPlace": "Bedminster, Somerset",
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1704 58 9.jpg"
+  ],
+  "spouseIds": [
+    "I2475"
+  ],
+  "childIds": [
+    "I2509",
+    "I2476"
+  ],
+  "parentIds": [
+    "I1764",
+    "I2258"
+  ],
+  "occupations": [
+    "Haulier",
+    "Tanner",
+    "Shunter Railway"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Bedminster, 11 Richmond Terrace."
+    },
+    {
+      "date": "1871",
+      "place": "Bedminster, 18 Clarence Place"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, Warrington, 20 Norman St."
+    },
+    {
+      "date": "1891",
+      "place": "Lancashire, Wavertree, 21 Upper Cross St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2475",
+      "familyId": "F887"
+    }
+  ],
+  "avatar": "avatars/I2259_0.jpg"
+}

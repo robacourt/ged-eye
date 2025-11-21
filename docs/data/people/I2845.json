@@ -1,0 +1,37 @@
+{
+  "id": "I2845",
+  "name": "Caroline Unknown",
+  "givenName": "Caroline",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1823",
+  "birthPlace": "Somerset, Yeovil",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Somerset/Yeovil/RG11 2393 73 26.jpg"
+  ],
+  "spouseIds": [
+    "I2846"
+  ],
+  "childIds": [
+    "I2847"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Somerset, Yeovil, 11 Wellington St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2846",
+      "familyId": "F720"
+    }
+  ],
+  "avatar": "avatars/I2845_0.jpg"
+}

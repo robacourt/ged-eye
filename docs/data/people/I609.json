@@ -1,0 +1,28 @@
+{
+  "id": "I609",
+  "name": "William Alfred Bastable",
+  "givenName": "William Alfred",
+  "surname": "Bastable",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I610"
+  ],
+  "childIds": [
+    "I608"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Mason"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I610",
+      "familyId": "F251"
+    }
+  ]
+}

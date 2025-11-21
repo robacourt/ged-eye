@@ -1,0 +1,40 @@
+{
+  "id": "I2462",
+  "name": "Emily A'Court",
+  "givenName": "Emily",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1888",
+  "birthPlace": "St. Lukes, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Holborn/RG12 233 83 9.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 220 113 47.jpg",
+    "Data/Media/1911 census/London/Edmonton/RG14 7361 42.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I520",
+    "I521"
+  ],
+  "occupations": [
+    "Ostrich Feather Sewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
+    },
+    {
+      "date": "1901",
+      "place": "Hackney, London,  39 Gilpin Road."
+    },
+    {
+      "date": "1911",
+      "place": "Edmonton, Middlesex, 84 Haselbury Rd. Upper Edmonton"
+    }
+  ],
+  "avatar": "avatars/I2462_0.jpg"
+}

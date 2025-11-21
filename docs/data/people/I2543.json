@@ -1,0 +1,42 @@
+{
+  "id": "I2543",
+  "name": "Alice Sarah Unknown",
+  "givenName": "Alice Sarah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1864",
+  "birthPlace": "Winchester, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Hampshire/Winchester/RG13 1082 120 29.jpg"
+  ],
+  "spouseIds": [
+    "I296"
+  ],
+  "childIds": [
+    "I2544"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Living on own means"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Camden Town, 82 St. Augustines Rd."
+    },
+    {
+      "date": "1901",
+      "place": "Winchester,  Hampshire. 15 Elm Rod, Weeke Within"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I296",
+      "familyId": "F898",
+      "marriageDate": "ABT 1897"
+    }
+  ],
+  "avatar": "avatars/I2543_0.jpg"
+}

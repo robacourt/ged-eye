@@ -1,0 +1,27 @@
+{
+  "id": "I2585",
+  "name": "Arthur Henry A'Court",
+  "givenName": "Arthur Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "Chandler's Ford, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Eastleigh/RG14 6061 110.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2580",
+    "I2581"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Eastleigh, Hampshire, 72 Chamberlayne Rd."
+    }
+  ],
+  "avatar": "avatars/I2585_0.jpg"
+}

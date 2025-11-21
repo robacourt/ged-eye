@@ -1,0 +1,18 @@
+{
+  "id": "I397",
+  "name": "Samantha A'Court",
+  "givenName": "Samantha",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "DEC 1972",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I394",
+    "I396"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I2791",
+  "name": "Joan A Needham",
+  "givenName": "Joan A",
+  "surname": "Needham",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2790",
+    "I2792"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2790",
+      "familyId": "F969",
+      "marriageDate": "DEC 1942",
+      "marriagePlace": "London, Hackney"
+    },
+    {
+      "spouseId": "I2792",
+      "familyId": "F970",
+      "marriageDate": "SEP 1946",
+      "marriagePlace": "London, Hackney"
+    }
+  ]
+}

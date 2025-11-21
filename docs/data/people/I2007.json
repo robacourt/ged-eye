@@ -1,0 +1,27 @@
+{
+  "id": "I2007",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2005"
+  ],
+  "childIds": [
+    "I2261",
+    "I2006",
+    "I366"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2005",
+      "familyId": "F716"
+    }
+  ]
+}

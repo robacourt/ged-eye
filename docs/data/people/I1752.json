@@ -1,0 +1,24 @@
+{
+  "id": "I1752",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1833",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Queen Camel/HO107 1931 8 9 25.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Queen Camel, Somerset, Hazlegrove"
+    }
+  ],
+  "avatar": "avatars/I1752_0.jpg"
+}

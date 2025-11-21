@@ -1,0 +1,36 @@
+{
+  "id": "I534",
+  "name": "John a`Courte",
+  "givenName": "John",
+  "surname": "a`Courte",
+  "sex": "M",
+  "birthDate": "ABT 1674",
+  "birthPlace": null,
+  "deathDate": "1716",
+  "deathPlace": "North Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I535"
+  ],
+  "childIds": [
+    "I469",
+    "I536",
+    "I537",
+    "I539",
+    "I538",
+    "I540"
+  ],
+  "parentIds": [
+    "I541",
+    "I542"
+  ],
+  "baptismDate": "5 NOV1674",
+  "burialDate": "27 SEP 1716",
+  "burialPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I535",
+      "familyId": "F206"
+    }
+  ]
+}

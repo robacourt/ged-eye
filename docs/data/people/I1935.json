@@ -1,0 +1,23 @@
+{
+  "id": "I1935",
+  "name": "Unknown Webster",
+  "givenName": "Unknown",
+  "surname": "Webster",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1934"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1934",
+      "familyId": "F687"
+    }
+  ]
+}

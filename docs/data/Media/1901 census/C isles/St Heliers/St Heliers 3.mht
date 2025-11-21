@@ -1,0 +1,2128 @@
+From: <Saved by Microsoft Internet Explorer 5>
+Subject: 1901 Census of England and Wales Online
+Date: Fri, 30 Jan 2004 21:33:25 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_014E_01C3E778.B1361830";
+	type="multipart/alternative"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1106
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.census.pro.gov.uk/images/background.gif
+
+R0lGODlhrAAhALMAAABDRACZmf39/fPz89nZ2a+vr4SEhGVlZQAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAACwAAAAArAAhAAAEsjDISau9OOvNu/+gBxgFMQhoqq5o6L5wLM/aWJ5sntJ87/8wm0lHBBqP
+yJ8QR2Qln9AoZ9nMSa/YKLW6ynq/vi13By6bQ+Kx4MxuZ9Jjt3wO587v7HoVzwfrm32BWH9FgoZP
+hDqHi0eJVoyQPY5OkZUyk12Wmi6YKpufH51koKRvJENqLaWrFqKqrLABrmuxsLO1tqdMarist72l
+v8CgwsObxcaWyMmRy8yMzs+H0dKCsxEAOw==
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/styles/menu.css
+
+A:visited {
+	COLOR: #ffffff
+}
+A:link {
+	COLOR: #ffffff
+}
+A:hover {
+	COLOR: #000000
+}
+A:active {
+	COLOR: #ff0000
+}
+A.sub:visited {
+	COLOR: #9c0000
+}
+A.sub:link {
+	COLOR: #9c0000
+}
+A.sub:hover {
+	COLOR: #ff0000
+}
+A.sub:active {
+	COLOR: #ff0000
+}
+.tabletextgray {
+	FONT-SIZE: 10pt; BACKGROUND: #dddddd; COLOR: #ff0000; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.tabletextgrayselected {
+	FONT-SIZE: 8pt; BACKGROUND: #ffffff; COLOR: #9c0000; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.menutopunselected {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.menutopselected {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; BACKGROUND: #99cccc; COLOR: #000000; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.sub {
+	FONT-SIZE: 8pt; COLOR: #9c0000; FONT-FAMILY: Verdana, Arial, Helvetica, =
+Sans-serif
+}
+.datetext {
+	FONT-SIZE: 8pt; COLOR: #ccffff; FONT-FAMILY: Verdana, Arial, Helvetica, =
+Sans-serif
+}
+.menuheading {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #cccccc; FONT-FAMILY: =
+Verdana, Arial, Helvetica, sans-serif
+}
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/javascript/status.js
+
+//status.js RDS 29/1/2001=0A=
+=0A=
+var minFieldEntry=3D1;=0A=
+var servletBase =3D "/";=0A=
+var logout =3D servletBase + "DynamicPageServlet?rType=3DO";=0A=
+var printer =3D servletBase + "ChargeableServlet?rType=3Dprint";=0A=
+var feedback =3D servletBase + "StaticPageServlet?rType=3Dfeedback_menu";=0A=
+var basic =3D servletBase + "StaticPageServlet?rType=3DBAS";=0A=
+var address =3D servletBase + "StaticPageServlet?rType=3DADR";=0A=
+var place =3D servletBase + "StaticPageServlet?rType=3DLOC";=0A=
+var institution =3D servletBase + "StaticPageServlet?rType=3DINS";=0A=
+var vessel =3D servletBase + "StaticPageServlet?rType=3DVSL";=0A=
+var direct =3D servletBase + "StaticPageServlet?rType=3DPIX";=0A=
+var payment =3D servletBase + =
+"StaticPageServlet?rType=3Dselect_payment_type";=0A=
+var accounts =3D servletBase + "DynamicPageServlet?rType=3Daccounts";=0A=
+var image_viewer =3D "/image_viewer.html";=0A=
+var isSSL =3D false;=0A=
+=0A=
+var contentFrame =3D "content";=0A=
+var menuFrame =3D "left";=0A=
+var statusFrame =3D "bottom";=0A=
+var nearSessionLimit=3D10;=0A=
+var status =3D "STATUS";=0A=
+var timeout =3D "TIMEOUT";=0A=
+=0A=
+function isIE(){=0A=
+	if(navigator.userAgent.indexOf('MSIE') !=3D-1) return true;=0A=
+	return false;=0A=
+}=0A=
+=0A=
+function isNS6(){=0A=
+	if(navigator.appName.indexOf('Netscape') >=3D 0 && =
+navigator.appVersion.charAt(0) =3D=3D '5') return true;=0A=
+	return false;=0A=
+}=0A=
+=0A=
+function isNS4(){=0A=
+	if(navigator.appName.indexOf('Netscape') >=3D 0 && =
+navigator.appVersion.charAt(0) < '5') return true;=0A=
+	return false;=0A=
+}=0A=
+=0A=
+function getCookie(cookieName){=0A=
+	var c=3Ddocument.cookie;=0A=
+	if(c=3D=3Dnull||c.length<=3D0) return null;=0A=
+	var start=3Dc.indexOf(cookieName+"=3D");=0A=
+	var len =3D start+cookieName.length+1;=0A=
+	if (start =3D=3D -1){=0A=
+		return null;=0A=
+	}=0A=
+	var end =3D c.indexOf(";",len);=0A=
+	if (end =3D=3D -1) end =3D document.cookie.length;=0A=
+	var s=3Dc.substring(len, end);=0A=
+	return s;=0A=
+}=0A=
+=0A=
+function setCookie(name,value,path) {=0A=
+    document.cookie =3D name + "=3D" +value +=0A=
+        ( (path) ? ";path=3D" + path : "");=0A=
+}=0A=
+=0A=
+	=0A=
+function deleteCookie(name,path) {=0A=
+    if (getCookie(name)) document.cookie =3D name + "=3D" +=0A=
+        ( (path) ? ";path=3D" + path : "") +=0A=
+        ";expires=3DThu, 01-Jan-1970 00:00:01 GMT";=0A=
+}=0A=
+=0A=
+=0A=
+function checkSurveyCookie(){=0A=
+	var s=3DgetCookie("SURVEY");=0A=
+	deleteCookie("SURVEY", "/");=0A=
+	if(s!=3Dnull&&s!=3D""){=0A=
+		var x =3D 0, y =3D 0;=0A=
+	=0A=
+		if (isIE()) {=0A=
+  			x =3D window.screenLeft + 100;=0A=
+  			y =3D window.screenTop;// + 100;=0A=
+		}=0A=
+		else{=0A=
+  			x =3D window.screenX + 100;=0A=
+  			y =3D window.screenY + 100;=0A=
+		}	=0A=
+	=0A=
+		var =
+features=3D"scrollbars=3Dyes,resizable=3Dyes,toolbar=3Dno,width=3D700,hei=
+ght=3D400,top=3D"+y+",screenY=3D"+y+",left=3D"+x+",screenX=3D"+x;=0A=
+		window.open(s,"survey",features);=0A=
+	}=0A=
+	return;=0A=
+}=0A=
+=0A=
+=0A=
+function getMenuContent(isExpanding){=0A=
+      menu=3D"";=0A=
+	return menu;=0A=
+}=0A=
+=0A=
+function getStatusContent(isExpanding){=0A=
+	status =3D "";=0A=
+	return status;=0A=
+}=0A=
+=0A=
+function setSessionDetails(){=0A=
+	if(!checkCookiesEnabled()){=0A=
+		MM_openBrWindow('/help/Technical_help.html#cookies');=0A=
+		return true;=0A=
+	}=0A=
+	if(!checkBrowserVersion()){=0A=
+		MM_openBrWindow('/help/Technical_help.html#browser');=0A=
+		return true;=0A=
+	}=0A=
+	=0A=
+	//parent.loaded=3Dtrue;=0A=
+	top.loaded=3Dtrue;=0A=
+	return true;=0A=
+}=0A=
+		=0A=
+function updateSessionDetails () {=0A=
+	preventViewOutsideFrameset();=0A=
+	checkNonSSL();=0A=
+	=0A=
+	if(parent !=3D null && !parent.loaded){=0A=
+		return;=0A=
+	}=0A=
+	window.status=3D"Testing...";=0A=
+	checkSurveyCookie();=0A=
+	=0A=
+	var message=3DgetCookie("MESSAGE");=0A=
+	deleteCookie("MESSAGE", "/");=0A=
+	if(message!=3Dnull) alert(message);=0A=
+}=0A=
+=0A=
+function displaySearches(expand) {=0A=
+		return;=0A=
+}=0A=
+=0A=
+function bg() {=0A=
+        if (isIE())=0A=
+        {=0A=
+                document.write('<body topmargin=3D"6" leftmargin=3D4 =
+rightmargin=3D"7" background=3D"/images/background.gif"> ');=0A=
+        }=0A=
+        else=0A=
+        {=0A=
+                document.write('<body =
+background=3D"/images/background_ns.gif">');=0A=
+        }=0A=
+        document.close();=0A=
+}=0A=
+=0A=
+//function checkCookiesEnabled () {=0A=
+//	if(getCookie(status)=3D=3Dnull) return false;=0A=
+//	return true;=0A=
+//}=0A=
+=0A=
+function checkCookiesEnabled () {=0A=
+	if(getCookie("STATUS")=3D=3Dnull) {=0A=
+		setCookie("TEST", "test", "/");=0A=
+		if(getCookie("TEST")=3D=3Dnull) {=0A=
+			return false;=0A=
+		} else {=0A=
+			deleteCookie("TEST","/");=0A=
+		}=0A=
+	}=0A=
+	return true;=0A=
+}=0A=
+=0A=
+=0A=
+function checkBrowserVersion(){=0A=
+	if(navigator.appVersion.charAt(0)>=3D4) return true;=0A=
+	return false;=0A=
+}=0A=
+=0A=
+function checkNonSSL() {=0A=
+	if (!isSSL && document.location.protocol=3D=3D"https:") {=0A=
+                var URL=3Descape(document.location.pathname + =
+document.location.search);=0A=
+		//alert("http://" + document.location.hostname + "/index.jsp?URL=3D" + =
+URL);=0A=
+		top.document.location.href=3D"http://" + document.location.hostname + =
+"/index.jsp?URL=3D" + URL;=0A=
+	}=0A=
+	isSSL=3Dfalse;=0A=
+}=0A=
+=0A=
+function preventViewOutsideFrameset() {=0A=
+	if (self =3D=3D top){=0A=
+		parent.top.document.location.href=3D"index.html";=0A=
+	}=0A=
+}=0A=
+=0A=
+function MM_openBrWindow(theURL) {=0A=
+	var winName=3D"help";=0A=
+	var x =3D 0, y =3D 0;=0A=
+	var w, h;=0A=
+	=0A=
+	if (isIE()) {=0A=
+  		x =3D window.screenLeft;=0A=
+  		y =3D window.screenTop;=0A=
+		w =3D 600;=0A=
+		h =3D 350;=0A=
+	}=0A=
+	else{=0A=
+  		x =3D window.screenX + 100;=0A=
+  		y =3D window.screenY + 100;=0A=
+		w =3D 700;=0A=
+		h =3D 400;=0A=
+	}=0A=
+	=0A=
+	var =
+features=3D"scrollbars=3Dyes,resizable=3Dyes,toolbar=3Dyes,width=3D"+w+",=
+height=3D"+h+",top=3D"+y+",screenY=3D"+y+",left=3D"+x+",screenX=3D"+x;=0A=
+=0A=
+        if ( parent.helpwin !=3D null && !parent.helpwin.closed){=0A=
+            parent.helpwin.location.href =3D theURL;=0A=
+        }=0A=
+        else if (parent.helpwin !=3D null){=0A=
+                        parent.helpwin =3D =
+window.open(theURL,winName,features);=0A=
+        }=0A=
+        else{=0A=
+                parent.helpwin =3D window.open(theURL,winName,features);=0A=
+        }=0A=
+=0A=
+        parent.helpwin.focus();=0A=
+=0A=
+  return;=0A=
+}=0A=
+=0A=
+function validated(string, validityStr) { =0A=
+	for (var i=3D0; i<string.length; i++)=0A=
+		 if (validityStr.indexOf(string.charAt(i)) =3D=3D -1) =0A=
+			return false;=0A=
+	return true;=0A=
+}=0A=
+=0A=
+function isDigit(string) {=0A=
+	var allowed =3D '0123456789';=0A=
+	if(string.length=3D=3D0) return false;=0A=
+	return validated(string, allowed);=0A=
+}=0A=
+=0A=
+function checkAddress(address, maxLines){=0A=
+	var lines=3D0;=0A=
+	var chars=3D0;=0A=
+	for(var i=3D0;i<address.length;i++){=0A=
+		if(address.charAt(i)=3D=3D'\n'){=0A=
+			lines++;=0A=
+			chars=3D0;=0A=
+		}=0A=
+		else chars++;=0A=
+		if(chars>50){=0A=
+			return false;=0A=
+		}=0A=
+	}=0A=
+	if(lines>=3DmaxLines){=0A=
+		return false;=0A=
+	}=0A=
+	return true;=0A=
+}=0A=
+=0A=
+function checkRows(){=0A=
+	var string=3Ddocument.contents.address.value;=0A=
+	var i;=0A=
+	var cnt=3D0;=0A=
+	for(i=3D0;i<string.length;i++){=0A=
+		if(string.charAt(i)=3D=3D'\n') cnt++;=0A=
+	}=0A=
+	var rows=3Ddocument.contents.address.rows;=0A=
+	if(cnt>=3Drows) alert("You have entered too many lines for the address =
+field. This may not print correctly.");=0A=
+}=0A=
+=0A=
+function setLoginTargetNew(name, query){=0A=
+    var form =3D document.contents;=0A=
+	form.rType.value=3Dname;=0A=
+	//alert("doing status setLoginTargetNew name:"+name+" query:" + query);=0A=
+	//alert(document.location.hostname);=0A=
+	if (form.SSL !=3D null && form.SSL.checked =3D=3D false) {=0A=
+			form.action=3D"https://" + document.location.hostname + =
+"/secure_index.jsp" ;=0A=
+	} else {=0A=
+		form.action=3D"secure_index.jsp";=0A=
+	}=0A=
+=0A=
+	form.submit();=0A=
+}=0A=
+=0A=
+function setLoginTarget(name, query){=0A=
+    var form =3D document.contents;=0A=
+	form.rType.value=3Dname;=0A=
+	//alert("doing status setLoginTarget");=0A=
+	//alert(document.location.hostname);=0A=
+	if (form.SSL !=3D null && form.SSL.checked =3D=3D false) {=0A=
+		var host=3Ddocument.location.hostname;=0A=
+		var port =3D document.location.port;=0A=
+		if (port !=3D null) {=0A=
+			host +=3D ":7002";=0A=
+		}=0A=
+		form.action=3D"https://" + host + query;=0A=
+	} else {=0A=
+		form.action=3Dquery;=0A=
+	}=0A=
+=0A=
+	form.submit();=0A=
+}=0A=
+=0A=
+function isValidField(string){=0A=
+	if(string.length=3D=3D0) return false;=0A=
+	if(string.length<minFieldEntry) return false;=0A=
+	return true;=0A=
+}=0A=
+=0A=
+function getPage(loc){=0A=
+	var msg=3DgetCookie("TEMP");=0A=
+	deleteCookie("TEMP", "/");=0A=
+	if(msg!=3Dnull && msg!=3D""){		=0A=
+		setCookie("MESSAGE", msg, "/");=0A=
+	}=0A=
+	document.location.href =3D loc;=0A=
+}=0A=
+=0A=
+function MM_openSiteTour(theURL) {=0A=
+	var winName=3D"help";=0A=
+	var x =3D 0, y =3D 0;=0A=
+	var w, h;=0A=
+	=0A=
+	if (isIE()) {=0A=
+  		x =3D window.screenLeft;=0A=
+  		y =3D window.screenTop;=0A=
+		w =3D 770;=0A=
+		h =3D 500;=0A=
+	}=0A=
+	else{=0A=
+  		x =3D window.screenX + 100;=0A=
+  		y =3D window.screenY + 100;=0A=
+		w =3D 770;=0A=
+		h =3D 500;=0A=
+	}=0A=
+	=0A=
+	var =
+features=3D"scrollbars=3Dno,resizable=3Dyes,toolbar=3Dno,width=3D"+w+",he=
+ight=3D"+h+",top=3D"+y+",screenY=3D"+y+",left=3D"+x+",screenX=3D"+x;=0A=
+=0A=
+        if ( parent.helpwin !=3D null && !parent.helpwin.closed){=0A=
+            parent.helpwin.location.href =3D theURL;=0A=
+        }=0A=
+        else if (parent.helpwin !=3D null){=0A=
+                        parent.helpwin =3D =
+window.open(theURL,winName,features);=0A=
+        }=0A=
+        else{=0A=
+                parent.helpwin =3D window.open(theURL,winName,features);=0A=
+        }=0A=
+=0A=
+        parent.helpwin.focus();=0A=
+=0A=
+  return;=0A=
+}
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_001_0155_01C3E778.B1388930"
+
+
+------=_NextPart_001_0155_01C3E778.B1388930
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN">
+<HTML><HEAD><TITLE>1901 Census of England and Wales Online</TITLE>
+<META=20
+content=3D"1901 Census of England and Wales Online. View 1.5 million =
+original 1901 census documents of England and Wales online detailing 32 =
+million people: A unique source for your family's history from the =
+Public Record Office"=20
+name=3Ddescription>
+<META=20
+content=3D"1901 census England Wales genealogy geneology family history =
+free index ancestry ancestor archives immigrants ship manifest sailors =
+ship passengers abode address adoption ancestors ancestor ancestral army =
+&#10;&#9;&#9;Australia Australian barracks biography borough British =
+Canada Canadian children church cities city civil community corporation =
+counties county demographic &#10;&#9;&#9;demography descendents =
+descendants descent Diaspora digitised digitized district documents =
+ecclesiastical English emigration emigrants enumerator folk forebears =
+general given name&#10;&#9;&#9;hamlet heredity heritage histories =
+domicile dwelling home hospital house household housing immigration =
+images institutions institute kin kith local location =
+&#10;&#9;&#9;lineage locality migration military municipal names =
+national navy New Zealand office online original orphanage parish pauper =
+pedigree people persons place-name &#10;&#9;&#9;placename places =
+population poll poor prisoners public records register registrar =
+registration related relations relatives research residence return RG =
+royal &#10;&#9;&#9;rural sanitary search ship statistics street surname =
+survey town tree Victorian Victoria Victoriana vessel village ward Welsh =
+workhouse"=20
+name=3Dkeywords><!-- View the original 1901 census documents of England =
+and Wales online: A unique source for your family history from the =
+Public Record Office -->
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<SCRIPT language=3DJavaScript=20
+src=3D"http://www.census.pro.gov.uk/javascript/status.js"></SCRIPT>
+
+<SCRIPT language=3DJavascript>
+var loaded=3Dfalse;
+var helpwin;
+
+function setStatus(val){
+	//window.status=3Dval;
+	//alert("set status");
+}</SCRIPT>
+
+<META content=3D"MSHTML 6.00.2800.1264" =
+name=3DGENERATOR></HEAD><FRAMESET=20
+frameSpacing=3D0 frameBorder=3D0 onload=3DsetSessionDetails() =
+cols=3D1100,*=20
+marginwidth=3D"0" marginheight=3D"0"><FRAMESET frameSpacing=3D0 =
+frameBorder=3D0=20
+onload=3DsetSessionDetails() cols=3D171,*><FRAME name=3Dleft =
+marginWidth=3D0=20
+marginHeight=3D0 src=3D"http://www.census.pro.gov.uk/menu_root.html" =
+frameBorder=3D0=20
+noResize><FRAME name=3Dcontent marginWidth=3D0 marginHeight=3D0=20
+src=3D"http://www.census.pro.gov.uk/SearchServlet?button=3Dsubmit&amp;rTy=
+pe=3DSCH&amp;scheduleType=3DSCHEDULE&amp;scheduleId=3D5519492"=20
+frameBorder=3D0></FRAMESET><FRAME name=3Dstatus marginWidth=3D0 =
+marginHeight=3D0=20
+src=3D"http://www.census.pro.gov.uk/blank.html" frameBorder=3D0 noResize =
+
+scrolling=3Dno></FRAMESET></HTML>
+
+------=_NextPart_001_0155_01C3E778.B1388930
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/menu_root.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Menu</TITLE><LINK=20
+href=3D"http://www.census.pro.gov.uk/styles/menu.css" rel=3DStyleSheet>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<SCRIPT language=3DJavaScript=20
+src=3D"http://www.census.pro.gov.uk/javascript/status.js"></SCRIPT>
+
+<META content=3D"MSHTML 6.00.2800.1264" name=3DGENERATOR></HEAD>
+<BODY bgColor=3D#009999 leftMargin=3D0=20
+background=3Dhttp://www.census.pro.gov.uk/images/background.gif =
+topMargin=3D0>
+<P><BR></P>
+<TABLE cellSpacing=3D1 width=3D143 border=3D0 name=3D"menu">
+  <TBODY>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      href=3D"http://www.census.pro.gov.uk/index.html" =
+target=3D_top>Census Home=20
+      Page</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3Dfeedback_m=
+enu"=20
+      target=3Dcontent>Contact Us</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"javascript:MM_openBrWindow('/help/mainhelp.html');">Help</A></TD>=
+</TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"javascript:MM_openBrWindow('/help/Frequently_Asked_Questions.html=
+');">FAQs</A>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"javascript:MM_openSiteTour('/help/site_tour/default.html');">Site=
+=20
+      Tour</A>=20
+      <HR align=3Dleft width=3D"95%">
+    </TD></TR>
+  <TR>
+    <TD class=3Dmenuheading>Search</TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DBAS"=20
+      target=3Dcontent>Person Search</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected height=3D*><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DPSR"=20
+      target=3Dcontent>Advanced Person Search</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DADR"=20
+      target=3Dcontent>Address Search</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DLOC"=20
+      target=3Dcontent>Place Search</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DINS"=20
+      target=3Dcontent>Institution Search</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DVSL"=20
+      target=3Dcontent>Vessel Search</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3DPIX"=20
+      target=3Dcontent>Direct Search</A>=20
+      <HR align=3Dleft width=3D"95%">
+    </TD></TR>
+  <TR>
+    <TD class=3Dmenuheading>Account Sessions</TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      href=3D"javascript:MM_openBrWindow('/help/Sessions.html')"=20
+      target=3Dcontent>What are they?</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/StaticPageServlet?rType=3Daccounts" =
+
+      target=3Dcontent>Open/Resume</A> </TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected height=3D*><A=20
+      href=3D"http://www.census.pro.gov.uk/DynamicPageServlet?rType=3DO" =
+
+      target=3Dcontent>Suspend/Logout</A></TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected height=3D*><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/DynamicPageServlet?rType=3DmyAccount=
+"=20
+      target=3Dcontent>My Account</A> </TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected height=3D*><A=20
+      =
+href=3D"http://www.census.pro.gov.uk/ChargeableServlet?rType=3Dprint"=20
+      target=3Dcontent>Print Ordering</A>=20
+      <HR align=3Dleft width=3D"95%">
+    </TD></TR>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      href=3D"http://www.census.pro.gov.uk/help/useful_links.html"=20
+      target=3D_blank>Useful Links<BR></A></TD>
+  <TR>
+    <TD class=3Dmenutopunselected><A=20
+      =
+href=3D"http://www.prq0.com/quickstart/LeadCapture/Display_LeadCapture.as=
+p?e=3DXbcajbbiCC-RaA&amp;oid=3DUdddhBG"=20
+      target=3D_blank>National Archives' email updates</A>=20
+</TD></TR></TBODY></TABLE><BR></BODY></HTML>
+
+------=_NextPart_001_0155_01C3E778.B1388930--
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.census.pro.gov.uk/images/back_to_search1.gif
+
+R0lGODlhuQAbALMAAP////7+/u7u7t3d3bKysn5+fmZmZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAACwAAAAAuQAbAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wDBx0bd94ru987//AoHBI7BwC
+yKRyyWw6n9CodEqtWq/Yw+Y46Hq/4LB4TC6bz+i0es1mBwzaDLdNr9vv+DwerpnrvTR/gmyBg3SF
+anxyAYA3doiCOIZgkGI5k5Vnihh+iJlpn1+hY5CjeaYDpQeGnqtmmxedrl2opLO2apW1j7eWt7tr
+rZpxnIy0v8g1osqps7o2jZmmjtGFgczN16vQlMjdzNSqx8fK1F2wFrKNosvjtM3u3e3wy9jr7t6S
+9NnOveL3/Nj9E7YvlRd0FWSZC6ON4bZeAP9VA+fNYcGLEuNl5DYPX79402AQUlAXUZI0e/JAjoKm
+gxxLfzA7unzmQ6UrgvrOEYtlDOPDdicvlpTpS2jBhkQz7lM68+c9gvwQiZxAcp24oEahHo356WpM
+mc86okLqEWDHqRKq0hvobClEtik1/toqtFVFs27BOs0m9x1AtDN6Xppo9+bdaNV8cZxJeG89x2Hj
+huP40uZDe4D9TNrMubPnMZl7fh5NuvSd0KJNq17N+iDgGQZiy55Nu7bt27hz697Nu7fv38CD75RD
+pLjx48iTK08uo7nz59CjS59Ovbr169ipRwAAOw==
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.census.pro.gov.uk/images/charge_yes.gif
+
+R0lGODlhSgARAPcAAADCwgCZmQCSkgCFhQBkZABhYQBTUwxoaBWUlBmjoyqqqi6rqzuxsUCzs0i2
+thk+Pl21tTNgYF2jo5HT053Y2ISxsZjLy5TGxpPFxZLDw5HCwom3t4Crq3Oamm6Tk2iLi2eKipnM
+zJfJyZbIyJDAwI69vYi1tYWxsYGsrH+pqXylpXeenm6SkmSFhWKCgl59fVd0dFVxcZzOzpvNzYSv
+r2qMjGODg1x6elZycpG+vlhzcyAqKp7OzpvKyqDPz6PR0XCQkJvGxqbT06XS0mN9fZO5uWaAgK3W
+1pe6unOOjqnQ0HKMjLrj47HY2GyEhKrPz5q7u3mTk3qUlJ/AwH+ZmXuUlHmSkrfb25Gtrbjb26/Q
+0Lrc3LXW1rPU1I+pqXqQkLrb24efn5GqqoCVlcLg4MXi4pasrLzW1p2zs5SpqaW7u6S6uo6hoai+
+vszm5qG1tcri4sbe3r3U1JaoqJOlpdHo6JytrZ6urtXq6tPm5rrLy9jr67fHx9vt7drs7LrJyd3u
+7s/f37rIyOLx8bnFxeb09N/s7Nrn58XR0eHu7ufz89zn59vm5tTf38bQ0MPNzcHLy+r19ez29ubw
+8OHr69vk5Ojx8cvT06KoqPH4+PD39+/29uzz89/m5vP5+e/19e709Oju7uHn5+Hm5uru7ubq6vr9
+/fDz8+7x8ens7Pv9/fn7+/P19fHz8/3+/vz9/fr7+/////39/fv7++bm5uLi4sPDw6GhoVlZWSIi
+IiEhIQwMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAASgARAAAI/wB5CRxI
+sCCvHQgTKlzIsKHDhxAT8gJAsaJFiwZCaNzIsaPHjyBDitQoEECAkyhTosw4sqXLlx53TFSpgAIT
+JhNWwtzJM6RMkygbqIpFNJbOnkiRlkypJFYtXbtwHf0og4wfPFlClMk0JKnSmSgFxcI0QACBqR1n
+KIrFqJGsCm5iJdHglefSkwsuxeLDgEECtByvxPoT44MXHHEdvZLk44emWK8G+QiRqc+gOk08vYrE
+lcceU68AyXD5E+WWokQhAN4Yd0wHjSbi2tETy0wPLmEexUJzIZYoNWJCfZJCSC6cV1jmxFojomXp
+kw9sxbqVK9eB1RrLxGJjgnUsJ1Bi0fUpsomTIfEoYkFykSIWohdxvieSleoTqDspnIMNgIDVrAgD
+lIVdCEK4UsoURwwSQlxOPCGeHLFQkYZ4HKjHQgiStNLGWk7kAcsXL1QRhQr6ARVAIbHQAsZNTDhw
+EksfdYEKUZN8wKCDdCCxSiyWUGhhCE10Mgol3wVRCVGvaFFCiSihVpQEL4pEwxJExNBCCCvEQMIG
+MXCQgxEx2NBlCDFceMUZb5Byig4kZACEEzrAcAKTJxnESwFRjkQCBiGNwKdHVxyySCBW3GCBRheQ
+cCidKjUKY10gnVADCB4s2ZNMBmSq6aacQuqpSHaGKlBEpJZqqkMBAQA7
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.census.pro.gov.uk/images/view_image_1.gif
+
+R0lGODlhdAAbAKIAAP////7+/t3d3WZmZgAAAAAAAAAAAAAAACwAAAAAdAAbAAAD/wi63P4wykmr
+vTjrzbv/YCgyRGmeaKqubOu+sFsRQW3feK7vfO//QB9hQhMYj8ikcslsOp/QqDMwGEaK0qx2y+0a
+qxKstOQtm8vgayBJRrbbZzYqHk9DxEZ4nkB/6vtedg94An9vfG4mR3CMiEp6ZIqFhidylYuSSIIO
+hJOYn6CHoJ5LkIeIf6ONoY5fVndrcqqOq3u2pKWttbiyvKK3R5sNnbuNc7aVqaO4u5OXpnvHwa+D
+sbLQwNd5vL3AxbSouuFOwiTWib7gTZKZueje6rfYytNh54mt6dns9PvxzP9OsUpSbkGnaN2i5SPV
+LwW8ZQ4x8TGVqqCCg4AyxulHkEIap3saQ5bh2NGeyJNcpEWxCIAGSJQwAQ1g2XKmzZs4c+rcybOn
+z59Af3q8E6Oo0aNIk5YYwbSp06dQo0qdSrXqggQAOw==
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://www.census.pro.gov.uk/images/printer.gif
+
+R0lGODlhGwAUALMAAAAAAEJCOYSEe6Wlpa2trbW1tb29vcbGxs7Ozv/vAP//9///////////////
+/////yH5BAEAAAsALAAAAAAbABQAAASHcMlJgb3Y0r2B+mD4AVzpiShZdorggoESxOo6nWhY24sn
+yLPfb8S75UQ728k1i70Uyc7lqLtIMghAYdkMgrSALOBALgMMOOp5bCmbM3D4wWKo2+/4/J1uSCgS
+eoF4FgWFhoeIiYcWBAR+CY2RkpOUjJSXmJEWA5ydnp+gnpuhpKUkcaipJBEAADs=
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/styles/doc.css
+
+BODY {
+	FONT-SIZE: 100%; BACKGROUND: #ffffff; FONT-FAMILY: Verdana, Arial, =
+Helvetica, sans-serif
+}
+H1 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H2 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H3 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H4 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H5 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H6 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H7 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+H8 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H9 {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+A:visited {
+	COLOR: #008080
+}
+A:link {
+	COLOR: #cc0000
+}
+A:hover {
+	COLOR: #ff0000
+}
+A:active {
+	COLOR: #0000ff
+}
+.topmenu {
+	BACKGROUND: #cc0000
+}
+.mainheading {
+	FONT-WEIGHT: bold; FONT-SIZE: 90%; COLOR: #000000; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.subheading {
+	FONT-SIZE: 90%; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.foliolevel {
+	BORDER-RIGHT: black 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 60%; =
+BACKGROUND: #006666; COLOR: #ffffff; BORDER-BOTTOM: black 1px solid; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.namelevel {
+	BORDER-RIGHT: black 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 60%; =
+BACKGROUND: #99cccc; COLOR: #000000; BORDER-BOTTOM: black 1px solid; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.addresslevel {
+	BORDER-RIGHT: black 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 60%; =
+BACKGROUND: #dddddd; COLOR: #000000; BORDER-BOTTOM: black 1px solid; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.text {
+	FONT-SIZE: 75%; COLOR: #000000; LINE-HEIGHT: 18px; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.tabletext {
+	BORDER-RIGHT: black 1px solid; FONT-SIZE: 60%; BACKGROUND: #ffffff; =
+BORDER-BOTTOM: black 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, =
+Sans-serif
+}
+.homepage {
+	FONT-SIZE: 90%; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.disclaimer {
+	FONT-SIZE: 55%; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.tabletext2 {
+	FONT-SIZE: 75%; BACKGROUND: #ffffff; COLOR: #000000; LINE-HEIGHT: 18px; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.tabletext3 {
+	BORDER-RIGHT: black 1px solid; FONT-SIZE: 75%; BACKGROUND: #ffffff; =
+LINE-HEIGHT: 18px; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: Verdana, =
+Arial, Helvetica, Sans-serif
+}
+.selected {
+	COLOR: #000000
+}
+.notes {
+	FONT-SIZE: 75%; BACKGROUND: #eeeeee; COLOR: #000000; LINE-HEIGHT: 18px; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.news {
+	FONT-WEIGHT: bold; FONT-SIZE: 60%; BACKGROUND: #99cccc; COLOR: #000000; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+INPUT.rad2 {
+	BACKGROUND: #dddddd; COLOR: #dddddd
+}
+.cardlevel1 {
+	BORDER-RIGHT: black 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 60%; =
+BACKGROUND: #9c0000; COLOR: #ffffff; BORDER-BOTTOM: black 1px solid; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.cardlevel2 {
+	BORDER-RIGHT: black 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 60%; =
+BACKGROUND: #dddddd; COLOR: #000000; BORDER-BOTTOM: black 1px solid; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.cardlevel3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 60%; BACKGROUND: #dddddd; COLOR: #000000; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.bottom1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 70%; BACKGROUND: #99cccc; COLOR: #000000; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.bottom3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 70%; BACKGROUND: #006666; COLOR: #ffffff; =
+FONT-FAMILY: Verdana, Arial, Helvetica, Sans-serif
+}
+.bottom2 {
+	FONT-SIZE: 65%; BACKGROUND: #99cccc; COLOR: #000000; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.message {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; COLOR: #cc0000; FONT-FAMILY: =
+Verdana, Arial, Helvetica, Sans-serif
+}
+.warning {
+	FONT-SIZE: 14pt; COLOR: #990000; FONT-FAMILY: Verdana, Arial, =
+Helvetica, Sans-serif
+}
+.homepagebullets {
+	LIST-STYLE-POSITION: outside; FONT-SIZE: 90%; FONT-FAMILY: Verdana, =
+Arial, Helvetica, Sans-serif; LIST-STYLE-TYPE: disc
+}
+.blackheading {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #000000; FONT-FAMILY: =
+Verdana, Arial, Helvetica, sans-serif
+}
+.greenlinks {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #006666; FONT-FAMILY: =
+Verdana, Arial, Helvetica, sans-serif
+}
+.blacktable {
+	BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid
+}
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/javascript/search.js
+
+//search.js RDS 29/1/2001=0A=
+=0A=
+var minNumSearchChars=3D3;=0A=
+var charsBeforeWildcard=3D2;=0A=
+var addressSearch=3D"ADR";=0A=
+var addressSearchWithLocale=3D"ADL";=0A=
+var localeSearch=3D"LOC";=0A=
+var directSearch=3D"PIX";=0A=
+var basicSearch=3D"BAS";=0A=
+var expandedSearch=3D"PSR";=0A=
+var expandedLocaleSearch=3D"PSL";=0A=
+var institutionSearch=3D"INS";=0A=
+var vesselSearch=3D"VSL";=0A=
+var charge=3D"/images/charge_yes.gif";=0A=
+var nocharge=3D"/images/charge_no.gif";=0A=
+var blank=3D"/images/charge_blank.gif";=0A=
+=0A=
+function isValidSearchString(string){=0A=
+	var i;=0A=
+	var cnt=3D0;=0A=
+	var len=3Dstring.length;=0A=
+	if(string.charAt(0)=3D=3D' ') return false;=0A=
+	for(i=3D0;i<len;i++){=0A=
+		=
+if(string.charAt(i)=3D=3D'%'||string.charAt(i)=3D=3D'*'||string.charAt(i)=
+=3D=3D'_'||string.charAt(i)=3D=3D'\t'||string.charAt(i)=3D=3D'?') cnt++;=0A=
+	}=0A=
+	if(cnt=3D=3Dlen) return false;=0A=
+	minNumSearchChars=3Ddocument.contents.minNumSearchChars.value;=0A=
+	if(string.length>=3DminNumSearchChars) return true;=0A=
+	return false;=0A=
+}=0A=
+function isValidStreet(string){=0A=
+	var i=3D0;=0A=
+	var cnt=3D0;=0A=
+	var len=3Dstring.length;=0A=
+	// skip numbers and spaces=0A=
+	while ( i < len && (isDigit(string.charAt(i)) ||=0A=
+		string.charAt(i)=3D=3D' '||string.charAt(i)=3D=3D'\t')) {=0A=
+		i++;=0A=
+	}=0A=
+	while  ( i < len && =
+string.charAt(i)!=3D'%'&&string.charAt(i)!=3D'*'&&string.charAt(i)!=3D'_'=
+&&string.charAt(i)!=3D'?') {=0A=
+		if  ( string.charAt(i)=3D=3D' '||string.charAt(i)=3D=3D'\t') {=0A=
+		}=0A=
+		else {=0A=
+			cnt++;=0A=
+		}=0A=
+		i++;=0A=
+	}=0A=
+	minNumSearchChars=3Ddocument.contents.minNumSearchChars.value;=0A=
+	if(cnt>=3DminNumSearchChars) return 0;=0A=
+	if (i < len) return 1;=0A=
+	return 2;=0A=
+}=0A=
+function isValidWildcard(string){=0A=
+	charsBeforeWildcard=3Ddocument.contents.charsBeforeWildcard.value;=0A=
+	for(var i=3D0;i<string.length;i++){=0A=
+		=
+if(string.charAt(i)=3D=3D'%'||string.charAt(i)=3D=3D'*'||string.charAt(i)=
+=3D=3D'_'){=0A=
+			if(i<charsBeforeWildcard) return false;=0A=
+		}=0A=
+	}=0A=
+	return true;=0A=
+}=0A=
+=0A=
+function isValidMultipleWordWildcard(multipleWordString)=0A=
+{=0A=
+  var numberOfCharacters =3D multipleWordString.length;=0A=
+  var charCount =3D 0;=0A=
+  var validString =3D true;=0A=
+=0A=
+  for(var count =3D 0; count < numberOfCharacters; count++)=0A=
+  {=0A=
+    if(multipleWordString.charAt(count) =3D=3D ' ')=0A=
+    {=0A=
+      charCount =3D 0;=0A=
+    }=0A=
+    else if(multipleWordString.charAt(count) =3D=3D '%' ||=0A=
+       multipleWordString.charAt(count) =3D=3D '_' ||=0A=
+       multipleWordString.charAt(count) =3D=3D '*')=0A=
+    {=0A=
+      if(charCount < 2)=0A=
+      {=0A=
+        validString =3D false;=0A=
+        count =3D numberOfCharacters;=0A=
+      }=0A=
+    }=0A=
+    else=0A=
+    {=0A=
+      charCount++;=0A=
+    }=0A=
+  }=0A=
+  =0A=
+  return validString;=0A=
+}=0A=
+=0A=
+function removeAllSpaces(){=0A=
+	var fieldArray=3Ddocument.contents.elements;=0A=
+	var total =3D fieldArray.length;=0A=
+	var cnt;=0A=
+	var field;=0A=
+	for(cnt=3D0;cnt<total;cnt++){=0A=
+		field=3DfieldArray[cnt];=0A=
+		if(typeof field.value =3D=3D 'string'){=0A=
+			if(isAllSpaces(field.value)){=0A=
+				field.value=3D"";=0A=
+			}=0A=
+		}=0A=
+	}=0A=
+}=0A=
+=0A=
+function isAllSpaces(field){=0A=
+	if(field.length>0){=0A=
+		var allSpaces=3Dtrue;=0A=
+		var cnt;=0A=
+		for(cnt=3D0;cnt<field.length;cnt++){=0A=
+			if(field.charAt(cnt)!=3D' ' && field.charAt(cnt)!=3D'\t') =
+allSpaces=3Dfalse;=0A=
+		}=0A=
+		return allSpaces;=0A=
+	}=0A=
+	return false;=0A=
+}=0A=
+=0A=
+function validateSearch () {=0A=
+	if (validateSearchCheck()) {=0A=
+		document.contents.submit();=0A=
+	}=0A=
+}=0A=
+/***************/=0A=
+function validateSearchCheck () {=0A=
+	var notEntered=3D"The following must be entered:";=0A=
+	var nameMissing=3D"You must enter either Last Name or First Name";=0A=
+	var ageMissing=3D"If you enter only First Name, you must also enter =
+Gender, Age and Where Born";=0A=
+	var not=3D"NOT cannot be used as a place keyword.";=0A=
+	var NAN=3D" must be a number";=0A=
+	var msg=3D"";=0A=
+	var newEntry=3Dtrue;=0A=
+	var wildcard=3D"At least "+charsBeforeWildcard+" characters must be =
+entered before a wildcard";=0A=
+	=0A=
+	removeAllSpaces();=0A=
+=0A=
+	var correct=3Dtrue;=0A=
+=0A=
+    if(document.contents.rType.value=3D=3DaddressSearch)=0A=
+    {=0A=
+		var street=3Ddocument.contents.street;=0A=
+		var localeKeywords=3Ddocument.contents.localeKeywords;=0A=
+		=0A=
+        var streetPresent =3D false;=0A=
+        var localePresent =3D false;        =0A=
+=0A=
+        if(street.value.length =3D=3D 0) =0A=
+        {=0A=
+		  streetPresent =3D false;=0A=
+        }=0A=
+        else=0A=
+        {=0A=
+          streetPresent =3D true;=0A=
+        }=0A=
+=0A=
+        if(localeKeywords.value.length =3D=3D 0)=0A=
+        {=0A=
+          localePresent =3D false;=0A=
+        }=0A=
+        else=0A=
+        {=0A=
+          localePresent =3D true;=0A=
+        }=0A=
+=0A=
+        if(!streetPresent)=0A=
+        {=0A=
+          correct =3D false;=0A=
+          if(newEntry)=0A=
+          {=0A=
+            msg +=3D notEntered;=0A=
+            newEntry =3D false;=0A=
+          }=0A=
+=0A=
+          msg +=3D "\nHouse and/or Street";=0A=
+          street.focus();=0A=
+        }=0A=
+        =0A=
+        if(!localePresent)=0A=
+        {=0A=
+          correct =3D false;=0A=
+          if(newEntry)=0A=
+          {=0A=
+            msg +=3D notEntered;=0A=
+            newEntry =3D false;=0A=
+          }=0A=
+=0A=
+          msg +=3D "\nPlace Keywords";=0A=
+          localeKeywords.focus();=0A=
+=0A=
+        }=0A=
+        =0A=
+        if(correct =3D=3D true)=0A=
+        {=0A=
+		  prob =3D isValidStreet(street.value);=0A=
+		  if( prob > 0)=0A=
+		  {=0A=
+			correct=3Dfalse;=0A=
+			if ( prob =3D=3D 1)=0A=
+			{=0A=
+				msg+=3D"\n"+wildcard + ", not including house numbers";=0A=
+			}=0A=
+			else=0A=
+			{=0A=
+				msg+=3D"The House and/or Street field must contain a house or street =
+name.";=0A=
+			}=0A=
+		=0A=
+			street.focus();=0A=
+		  }=0A=
+=0A=
+          var validStreet =3D isValidMultipleWordWildcard(street.value);=0A=
+          if(validStreet =3D=3D false)=0A=
+          {=0A=
+            if(!correct)=0A=
+			{=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+            else=0A=
+            {=0A=
+       			msg +=3D "Need to have at least two characters before each =
+wildcard";=0A=
+            }=0A=
+		               =0A=
+			correct =3D false;=0A=
+ 			street.focus();=0A=
+          }=0A=
+ 		=0A=
+          if(localeKeywords.value.toUpperCase().indexOf('NOT ') =3D=3D 0)=0A=
+		  {=0A=
+		  	if(!correct)=0A=
+			{=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+		=0A=
+			correct =3D false;=0A=
+			msg +=3D not;=0A=
+			localeKeywords.focus();=0A=
+		  }=0A=
+		=0A=
+          if(!isValidSearchString(localeKeywords.value))=0A=
+          {=0A=
+            if(!correct)=0A=
+            {=0A=
+              msg +=3D "\n\n";=0A=
+            } =0A=
+=0A=
+            msg +=3D "Place Keywords is an invalid search parameter.\n";=0A=
+            correct =3D false;=0A=
+          }=0A=
+=0A=
+		  if(!isValidWildcard(localeKeywords.value))=0A=
+		  {=0A=
+			if(!correct)=0A=
+			{=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+		=0A=
+			correct=3Dfalse;=0A=
+			msg+=3Dwildcard;=0A=
+		  }=0A=
+=0A=
+          var vaildPlaceKeywords =3D =
+isValidMultipleWordWildcard(localeKeywords.value);=0A=
+          if(vaildPlaceKeywords =3D=3D false)=0A=
+          {=0A=
+            if(!correct)=0A=
+			{=0A=
+			  msg +=3D "\n\n";=0A=
+			}=0A=
+            else=0A=
+            {=0A=
+              if(validStreet =3D=3D true)=0A=
+              {=0A=
+	    		  msg +=3D "Need to have at least two characters before each =
+wildcard\n";=0A=
+              }=0A=
+            }=0A=
+=0A=
+            correct =3D false;=0A=
+ 			localeKeywords.focus();=0A=
+          }=0A=
+        }=0A=
+    }=0A=
+	else if(document.contents.rType.value=3D=3DaddressSearchWithLocale)=0A=
+	{=0A=
+		var street=3Ddocument.contents.street;=0A=
+    	var adminCounty=3Ddocument.contents.adminCounty;=0A=
+		var civilParish=3Ddocument.contents.civilParish;=0A=
+		var municipalBorough=3Ddocument.contents.municipalBorough;=0A=
+		var municipalWard=3Ddocument.contents.municipalWard;=0A=
+		var urbanSanitaryDistrict=3Ddocument.contents.urbanSanitaryDistrict;=0A=
+		var town=3Ddocument.contents.town;=0A=
+		var ruralSanitaryDistrict=3Ddocument.contents.ruralSanitaryDistrict;=0A=
+		var borough=3Ddocument.contents.borough;=0A=
+		var ecclParish=3Ddocument.contents.ecclParish;=0A=
+		var wildCardProb=3Dfalse;=0A=
+		=0A=
+        var streetPresent =3D false;=0A=
+        var otherPresent =3D false;=0A=
+=0A=
+        if(street.value.length =3D=3D 0) =0A=
+        {=0A=
+		  streetPresent =3D false;=0A=
+        }=0A=
+        else=0A=
+        {=0A=
+          streetPresent =3D true;=0A=
+        }=0A=
+=0A=
+        if ((adminCounty.value.length =3D=3D 0)           && =0A=
+            (civilParish.value.length =3D=3D 0)           && =0A=
+            (municipalBorough.value.length =3D=3D 0)      && =0A=
+            (municipalWard.value.length =3D=3D 0)         &&=0A=
+            (town.value.length =3D=3D 0)                  && =0A=
+            (ruralSanitaryDistrict.value.length =3D=3D 0) && =0A=
+            (borough.value.length =3D=3D 0)               && =0A=
+            (ecclParish.value.length =3D=3D 0))=0A=
+        {=0A=
+          otherPresent =3D false;=0A=
+        }=0A=
+        else=0A=
+        {=0A=
+          otherPresent =3D true;=0A=
+        }=0A=
+=0A=
+        if(!streetPresent || !otherPresent)=0A=
+        {=0A=
+          correct=3Dfalse;=0A=
+		  if(newEntry)=0A=
+		  {=0A=
+		    msg+=3DnotEntered;=0A=
+		    newEntry=3Dfalse;=0A=
+		  }=0A=
+			=0A=
+		  msg+=3D"\nHouse/Street and at least one other field";=0A=
+		  street.focus();=0A=
+        }=0A=
+=0A=
+        if(correct =3D=3D true)=0A=
+        {=0A=
+		  prob =3D isValidStreet(street.value);=0A=
+		  if( prob > 0)=0A=
+		  {=0A=
+			correct=3Dfalse;=0A=
+			if (prob =3D=3D 1)=0A=
+			{=0A=
+				msg+=3D"\n"+ wildcard + ", not including house numbers";=0A=
+			}=0A=
+			else=0A=
+			{=0A=
+				msg+=3D"The House and/or Street field must contain a house or street =
+name.";=0A=
+  			}=0A=
+		=0A=
+			street.focus();=0A=
+		  }=0A=
+=0A=
+          var validStreet =3D isValidMultipleWordWildcard(street.value);=0A=
+          if(validStreet =3D=3D false)=0A=
+          {=0A=
+            if(!correct)=0A=
+		    {=0A=
+		      msg +=3D "\n\n";=0A=
+		    }=0A=
+		    else=0A=
+            {=0A=
+              msg +=3D "Need to have at least two characters before each =
+wildcard";=0A=
+            }=0A=
+		    =0A=
+            correct =3D false;=0A=
+		    street.focus();=0A=
+          }=0A=
+=0A=
+          if(  !isValidSearchString(adminCounty.value)=0A=
+            && !isValidSearchString(civilParish.value)=0A=
+            && !isValidSearchString(municipalBorough.value)=0A=
+            && !isValidSearchString(municipalWard.value)=0A=
+            && !isValidSearchString(town.value)=0A=
+            && !isValidSearchString(ruralSanitaryDistrict.value)=0A=
+            && !isValidSearchString(borough.value)=0A=
+            && !isValidSearchString(ecclParish.value))=0A=
+            {=0A=
+	          correct=3Dfalse;=0A=
+			  msg=3D"\nInvalid search string";=0A=
+			  street.focus();=0A=
+            }		=0A=
+		=0A=
+		    if(!isValidMultipleWordWildcard(adminCounty.value)            ||=0A=
+		       !isValidMultipleWordWildcard(civilParish.value)            ||=0A=
+		       !isValidMultipleWordWildcard(municipalBorough.value)       ||=0A=
+   		       !isValidMultipleWordWildcard(municipalWard.value)          ||=0A=
+		       !isValidMultipleWordWildcard(town.value)                   ||=0A=
+		       !isValidMultipleWordWildcard(ruralSanitaryDistrict.value)  ||=0A=
+		       !isValidMultipleWordWildcard(borough.value)                ||=0A=
+		       !isValidMultipleWordWildcard(ecclParish.value))=0A=
+		    {=0A=
+			  if(!correct)=0A=
+			  {=0A=
+				msg +=3D "\n\n";=0A=
+			  }=0A=
+              else=0A=
+              {=0A=
+                if(validStreet =3D=3D true)=0A=
+                {=0A=
+			      msg+=3D "Need to have at least two characters before each =
+wildcard";=0A=
+                }=0A=
+              }=0A=
+		=0A=
+			  correct=3Dfalse;=0A=
+		    }=0A=
+        }=0A=
+	}=0A=
+	else if(document.contents.rType.value=3D=3DinstitutionSearch){=0A=
+		var institutionName=3Ddocument.contents.institutionName;=0A=
+		var localeKeywords=3Ddocument.contents.localeKeywords;=0A=
+		var adminCounty=3Ddocument.contents.adminCounty;=0A=
+		var civilParish=3Ddocument.contents.civilParish;=0A=
+		var municipalBorough=3Ddocument.contents.municipalBorough;=0A=
+		var municipalWard=3Ddocument.contents.municipalWard;=0A=
+		var town=3Ddocument.contents.town;=0A=
+		var ruralSanitaryDistrict=3Ddocument.contents.ruralSanitaryDistrict;=0A=
+		var borough=3Ddocument.contents.borough;=0A=
+		var ecclParish=3Ddocument.contents.ecclParish;=0A=
+		if(!isValidSearchString(institutionName.value)){=0A=
+			correct=3Dfalse;=0A=
+			msg+=3DnotEntered;=0A=
+			msg+=3D"\nInstitution Name";=0A=
+			institutionName.focus();=0A=
+		}=0A=
+		if(localeKeywords.value.toUpperCase().indexOf('NOT ') =3D=3D 0){=0A=
+			if(!correct){=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+			correct =3D false;=0A=
+			msg +=3D not;=0A=
+			localeKeywords.focus();=0A=
+		}=0A=
+		if(!isValidWildcard(institutionName.value) ||=0A=
+		!isValidWildcard(localeKeywords.value) ||=0A=
+		!isValidWildcard(adminCounty.value) ||=0A=
+		!isValidWildcard(civilParish.value) ||=0A=
+		!isValidWildcard(municipalBorough.value) ||=0A=
+		!isValidWildcard(municipalWard.value) ||=0A=
+		!isValidWildcard(town.value) ||=0A=
+		!isValidWildcard(ruralSanitaryDistrict.value) ||=0A=
+		!isValidWildcard(borough.value) ||=0A=
+		!isValidWildcard(ecclParish.value)){=0A=
+			if(!correct){=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+			correct=3Dfalse;=0A=
+			msg+=3Dwildcard;=0A=
+			//institutionName.focus();=0A=
+		}=0A=
+	}=0A=
+	else if(document.contents.rType.value=3D=3DvesselSearch){=0A=
+		var vesselName=3Ddocument.contents.vesselName;=0A=
+		if(!isValidSearchString(vesselName.value)){=0A=
+			msg=3DnotEntered;=0A=
+			msg+=3D"\nVessel Name";=0A=
+			correct=3Dfalse;=0A=
+			vesselName.focus();=0A=
+		}=0A=
+		if(!isValidWildcard(vesselName.value)){=0A=
+			if(!correct){=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+			correct=3Dfalse;=0A=
+			msg+=3Dwildcard;=0A=
+			vesselName.focus();=0A=
+		}=0A=
+	}=0A=
+	else if(document.contents.rType.value=3D=3DlocaleSearch){=0A=
+		var regSubDistrict=3Ddocument.contents.regSubDistrict;=0A=
+		var regDistrict=3Ddocument.contents.regDistrict;=0A=
+		var localeKeywords=3Ddocument.contents.localeKeywords;=0A=
+		var adminCounty=3Ddocument.contents.adminCounty;=0A=
+		var civilParish=3Ddocument.contents.civilParish;=0A=
+		var municipalBorough=3Ddocument.contents.municipalBorough;=0A=
+		var municipalWard=3Ddocument.contents.municipalWard;=0A=
+		//var urbanSanitaryDistrict=3Ddocument.contents.urbanSanitaryDistrict;=0A=
+		var town=3Ddocument.contents.town;=0A=
+		var ruralSanitaryDistrict=3Ddocument.contents.ruralSanitaryDistrict;=0A=
+		var borough=3Ddocument.contents.borough;=0A=
+		var ecclParish=3Ddocument.contents.ecclParish;=0A=
+		=0A=
+// DI - Issue 257/268/274 - made admin county mandatory=0A=
+		if (!isValidSearchString(adminCounty.value)) {=0A=
+			correct=3Dfalse;=0A=
+			msg=3D"You must enter a value for Administrative County";=0A=
+			localeKeywords.focus();=0A=
+		}=0A=
+/*=0A=
+//  This seems like a waste of time now - since admin county is =
+compulsory, this check should never complete, =0A=
+// and if it does the previous check would have caught it.=0A=
+		=
+if(!isValidSearchString(regSubDistrict.value)&&!isValidSearchString(regDi=
+strict.value)&&!isValidSearchString(localeKeywords.value)=0A=
+		=
+&&!isValidSearchString(adminCounty.value)&&!isValidSearchString(civilPari=
+sh.value)&&!isValidSearchString(municipalBorough.value)&&!isValidSearchSt=
+ring(municipalWard.value)=0A=
+		=
+&&!isValidSearchString(town.value)&&!isValidSearchString(ruralSanitaryDis=
+trict.value)&&!isValidSearchString(borough.value)&&!isValidSearchString(e=
+cclParish.value)){=0A=
+			correct=3Dfalse;=0A=
+			msg+=3D"At least one field must be entered";=0A=
+			localeKeywords.focus();=0A=
+		}=0A=
+*/=0A=
+		if(localeKeywords.value.toUpperCase().indexOf('NOT ') =3D=3D 0){=0A=
+			if(!correct){=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+			correct =3D false;=0A=
+			msg +=3D not;=0A=
+			localeKeywords.focus();=0A=
+		}=0A=
+		if(!isValidWildcard(regDistrict.value) ||=0A=
+		!isValidWildcard(regSubDistrict.value) ||=0A=
+		!isValidWildcard(localeKeywords.value) ||=0A=
+		!isValidWildcard(adminCounty.value) ||=0A=
+		!isValidWildcard(civilParish.value) ||=0A=
+		!isValidWildcard(municipalBorough.value) ||=0A=
+		!isValidWildcard(municipalWard.value) ||=0A=
+		!isValidWildcard(town.value) ||=0A=
+		!isValidWildcard(ruralSanitaryDistrict.value) ||=0A=
+		!isValidWildcard(borough.value) ||=0A=
+		!isValidWildcard(ecclParish.value)){=0A=
+			if(!correct) msg+=3D"\n\n";=0A=
+			msg+=3Dwildcard;=0A=
+			correct=3Dfalse;=0A=
+		}=0A=
+	}=0A=
+	else if(document.contents.rType.value=3D=3DbasicSearch||=0A=
+		document.contents.rType.value=3D=3DexpandedSearch||=0A=
+		document.contents.rType.value=3D=3DexpandedLocaleSearch){=0A=
+		charsBeforeWildcard=3Ddocument.contents.charsBeforeWildcard.value;=0A=
+		=0A=
+		var lastName=3Ddocument.contents.lastName;=0A=
+		var firstName=3Ddocument.contents.firstName;=0A=
+		var age=3Ddocument.contents.age;=0A=
+		var ageRange=3Ddocument.contents.ageRange;=0A=
+		var placeOfBirth=3Ddocument.contents.placeOfBirth;=0A=
+		var localeKeywords=3Ddocument.contents.localeKeywords;=0A=
+		var fName =3D true;=0A=
+		/*if(firstName.value.length !=3D 0){=0A=
+			correct=3Dfalse;=0A=
+			if(newEntry){=0A=
+				msg+=3DnameMissing;=0A=
+				newEntry=3Dfalse;=0A=
+			}=0A=
+			firstName.focus();=0A=
+		}*/=0A=
+		if (firstName.value.length =3D=3D 0) {=0A=
+			fName =3D false;=0A=
+		}=0A=
+=0A=
+		var lastName=3Ddocument.contents.lastName;=0A=
+		var lastNameEntered =3D false;=0A=
+		if(!isValidSearchString(lastName.value) && (lastName.value.length !=3D =
+0) || (lastName.value.length =3D=3D 0 && !fName ) ){=0A=
+			correct=3Dfalse;=0A=
+			if(newEntry){=0A=
+				msg+=3DnameMissing;=0A=
+				newEntry=3Dfalse;=0A=
+			}=0A=
+			/*msg+=3D"\nLast Name";*/=0A=
+			lastName.focus();=0A=
+		} else if (lastName.value.length !=3D 0){=0A=
+			lastNameEntered =3D true;=0A=
+		}=0A=
+		var ageEntered =3D false;=0A=
+		if(age.value.length>0){=0A=
+			ageEntered =3D true;=0A=
+			if(!isDigit(age.value)){=0A=
+				correct=3Dfalse;=0A=
+				if(!newEntry){=0A=
+					msg+=3D"\n\n";=0A=
+				}=0A=
+				newEntry=3Dfalse;=0A=
+				msg+=3D"Age"+NAN;=0A=
+				age.value=3D"";=0A=
+				age.focus();=0A=
+			}=0A=
+		}=0A=
+		if(ageRange.value.length>0){=0A=
+			if(!isDigit(ageRange.value)){=0A=
+				correct=3Dfalse;=0A=
+				if(!newEntry){=0A=
+					msg+=3D"\n\n";=0A=
+				}=0A=
+				newEntry=3Dfalse;=0A=
+				msg+=3D"Age Range"+NAN;=0A=
+				ageRange.value=3D"";=0A=
+				ageRange.focus();=0A=
+			}=0A=
+			if(age.value.length<=3D0){=0A=
+				correct=3Dfalse;=0A=
+				if(!newEntry){=0A=
+					msg+=3D"\n\n";=0A=
+				}=0A=
+				newEntry=3Dfalse;=0A=
+				msg+=3D"Age must be entered for Age Range to be used";=0A=
+				age.focus();=0A=
+			}=0A=
+		}=0A=
+		if(age.value.length>0){=0A=
+			var ageVal=3DparseInt(age.value);=0A=
+			if(ageVal>200){=0A=
+				correct=3Dfalse;=0A=
+				if(!newEntry){=0A=
+					msg+=3D"\n\n";=0A=
+				}=0A=
+				newEntry=3Dfalse;=0A=
+				msg+=3D"An invalid age was entered";=0A=
+				age.focus();=0A=
+			}=0A=
+		}=0A=
+		=0A=
+		var placeOfBirth =3D document.contents.placeOfBirth;=0A=
+		var placeEntered =3D false;=0A=
+		if (placeOfBirth.value.length !=3D 0) {=0A=
+			placeEntered =3D true;=0A=
+		}=0A=
+		var gender =3D document.contents.gender;=0A=
+		var genderEntered =3D false;=0A=
+		if(gender.options[gender.options.selectedIndex].value.length !=3D 0){=0A=
+			genderEntered =3D true;=0A=
+		}=0A=
+		=0A=
+		if (!lastNameEntered && !(fName && placeEntered && ageEntered)) {=0A=
+			correct=3Dfalse;=0A=
+			//msg +=3D "\nIf you enter only First Name, you must also enter Age =
+and Where Born.";=0A=
+            msg +=3D "\n" + ageMissing;=0A=
+		}=0A=
+		if(placeEntered && !genderEntered){=0A=
+			correct =3D false;=0A=
+			msg +=3D "\nIf you enter Where Born, you must also enter Gender.";=0A=
+		}=0A=
+		if(localeKeywords.value.toUpperCase().indexOf('NOT ') =3D=3D 0){=0A=
+			if(!correct){=0A=
+				msg +=3D "\n\n";=0A=
+			}=0A=
+			correct =3D false;=0A=
+			msg +=3D not;=0A=
+			localeKeywords.focus();=0A=
+		}=0A=
+		if(document.contents.rType.value=3D=3DbasicSearch){=0A=
+			if(!isValidWildcard(lastName.value) ||=0A=
+			!isValidWildcard(firstName.value) ||=0A=
+			!isValidWildcard(placeOfBirth.value) ||=0A=
+			!isValidWildcard(localeKeywords.value)){=0A=
+				if(!correct) msg+=3D"\n\n";=0A=
+				msg+=3Dwildcard;=0A=
+				correct=3Dfalse;=0A=
+			}=0A=
+		}=0A=
+		=0A=
+		if(document.contents.rType.value=3D=3DexpandedSearch){=0A=
+			var street=3Ddocument.contents.street;=0A=
+			var otherName=3Ddocument.contents.otherName;=0A=
+			var occupation=3Ddocument.contents.occupation;=0A=
+			if(street.value.length>0 && localeKeywords.value.length=3D=3D0){=0A=
+				correct=3Dfalse;=0A=
+				if(!newEntry){=0A=
+					msg+=3D"\n\n";=0A=
+				}=0A=
+				newEntry=3Dfalse;=0A=
+				msg+=3D"Place Keywords must be entered in addition to House and/or =
+Street";=0A=
+				localeKeywords.focus();=0A=
+			}=0A=
+			if(!isValidWildcard(lastName.value) ||=0A=
+			!isValidWildcard(firstName.value) ||=0A=
+			!isValidWildcard(otherName.value) ||=0A=
+			!isValidWildcard(occupation.value) ||=0A=
+			!isValidWildcard(placeOfBirth.value) ||=0A=
+			!isValidWildcard(street.value) ||=0A=
+			!isValidWildcard(localeKeywords.value)){=0A=
+				if(!correct) msg+=3D"\n\n";=0A=
+				msg+=3Dwildcard;=0A=
+				correct=3Dfalse;=0A=
+			}=0A=
+		}=0A=
+		=0A=
+		if(document.contents.rType.value=3D=3DexpandedLocaleSearch){=0A=
+			var street=3Ddocument.contents.street;=0A=
+			var otherName=3Ddocument.contents.otherName;=0A=
+			var occupation=3Ddocument.contents.occupation;=0A=
+			var localeKeywords=3Ddocument.contents.localeKeywords;=0A=
+			var adminCounty=3Ddocument.contents.adminCounty;=0A=
+			var civilParish=3Ddocument.contents.civilParish;=0A=
+			var municipalBorough=3Ddocument.contents.municipalBorough;=0A=
+			var municipalWard=3Ddocument.contents.municipalWard;=0A=
+			var town=3Ddocument.contents.town;=0A=
+			var ruralSanitaryDistrict=3Ddocument.contents.ruralSanitaryDistrict;=0A=
+			var borough=3Ddocument.contents.borough;=0A=
+			var ecclParish=3Ddocument.contents.ecclParish;=0A=
+			if(street.value.length>0 && =0A=
+			localeKeywords.value.length=3D=3D0 && =0A=
+			adminCounty.value.length=3D=3D0 &&=0A=
+			civilParish.value.length=3D=3D0 &&=0A=
+			municipalBorough.value.length=3D=3D0 &&=0A=
+			municipalWard.value.length=3D=3D0 &&=0A=
+			town.value.length=3D=3D0 &&=0A=
+			ruralSanitaryDistrict.value.length=3D=3D0 &&=0A=
+			borough.value.length=3D=3D0 &&=0A=
+			ecclParish.value.length=3D=3D0){=0A=
+				correct=3Dfalse;=0A=
+				if(!newEntry){=0A=
+					msg+=3D"\n\n";=0A=
+				}=0A=
+				newEntry=3Dfalse;=0A=
+				msg+=3D"Place Keywords or one of the advanced address fields must be =
+entered in addition to House and/or Street";=0A=
+				localeKeywords.focus();=0A=
+			}=0A=
+			if(!isValidWildcard(lastName.value) ||=0A=
+			!isValidWildcard(firstName.value) ||=0A=
+			!isValidWildcard(otherName.value) ||=0A=
+			!isValidWildcard(occupation.value) ||=0A=
+			!isValidWildcard(placeOfBirth.value) ||=0A=
+			!isValidWildcard(street.value) ||=0A=
+			!isValidWildcard(localeKeywords.value) ||=0A=
+			!isValidWildcard(adminCounty.value) ||=0A=
+			!isValidWildcard(civilParish.value) ||=0A=
+			!isValidWildcard(municipalBorough.value) ||=0A=
+			!isValidWildcard(municipalWard.value) ||=0A=
+			!isValidWildcard(town.value) ||=0A=
+			!isValidWildcard(ruralSanitaryDistrict.value) ||=0A=
+			!isValidWildcard(borough.value) ||=0A=
+			!isValidWildcard(ecclParish.value)){=0A=
+				if(!correct) msg+=3D"\n\n";=0A=
+				msg+=3Dwildcard;=0A=
+				correct=3Dfalse;=0A=
+			}=0A=
+		}=0A=
+	}=0A=
+	else if(document.contents.rType.value=3D=3DdirectSearch){=0A=
+		var piece=3Ddocument.contents.piece;=0A=
+		var folio=3Ddocument.contents.folio;=0A=
+		var page=3Ddocument.contents.page;=0A=
+		if(!isDigit(piece.value)){=0A=
+			correct=3Dfalse;=0A=
+			msg+=3D"Piece"+NAN;=0A=
+			piece.value=3D"";=0A=
+			piece.focus();=0A=
+		}=0A=
+		if(piece.value.length>0 && page.value.length>0 && =
+folio.value.length=3D=3D0){=0A=
+			if(!correct) msg+=3D"\n\n";=0A=
+			correct=3Dfalse;=0A=
+			msg+=3D"Folio must be entered for a page";=0A=
+			folio.focus();=0A=
+		}=0A=
+	}=0A=
+=0A=
+	if(correct){=0A=
+		//window.status=3D"Please wait, Searching.....";=0A=
+		//document.contents.submit();=0A=
+		return true;=0A=
+	}=0A=
+	else{=0A=
+		alert(msg);=0A=
+		return false;=0A=
+	}=0A=
+}=0A=
+=0A=
+function submitter(type, button, srch){=0A=
+    if ( type =3D=3D "SUBMIT"){=0A=
+        document.contents.rType.value =3D srch;=0A=
+        document.contents.button.value =3D button;=0A=
+        validateSearch();=0A=
+    }=0A=
+    else if ( type =3D=3D "RESET"){=0A=
+        document.contents.rType.value =3D srch;=0A=
+        document.contents.button.value =3D button;=0A=
+        document.contents.submit();=0A=
+	}=0A=
+	else if ( type =3D=3D "NEXT"){=0A=
+		goTo(srch);=0A=
+	}=0A=
+	else if ( type =3D=3D "PREVIOUS"){=0A=
+		goTo(srch);=0A=
+	}=0A=
+}=0A=
+=0A=
+function submitImage(row, imgQuery){=0A=
+	box=3Deval("document.contents.chooser" + row );=0A=
+	if(box.options[box.selectedIndex].value!=3D"0"){=0A=
+		=
+document.contents.action=3DimgQuery+box.options[box.selectedIndex].value;=0A=
+		document.contents.submit();=0A=
+	}=0A=
+	else{=0A=
+		alert("That was not a valid entry");=0A=
+	}=0A=
+}=0A=
+function imageSelected(name, value, row){=0A=
+	=0A=
+	box=3Deval("document.contents.pageType"+value);=0A=
+	if ( box.value=3D=3D"true"){=0A=
+		box =3D eval("document.images.pictures" + row );=0A=
+		box.src=3Dcharge;=0A=
+	}=0A=
+	else{=0A=
+		box =3D eval("document.images.pictures" + row );=0A=
+		if(value=3D=3D0){=0A=
+			box.src=3Dblank;=0A=
+		}=0A=
+		else box.src=3Dnocharge;=0A=
+	}=0A=
+}=0A=
+function personImageSelected(value, imageLink, scheduleLink){=0A=
+	box=3Deval("document.contents.pageType"+value);=0A=
+	if ( box.value=3D=3D"true"){=0A=
+		document.images.pictures.src=3Dcharge;=0A=
+	}=0A=
+	else{=0A=
+		document.images.pictures.src=3Dnocharge;=0A=
+	}=0A=
+	if ( value =3D=3D 14){=0A=
+		document.contents.action =3D imageLink;=0A=
+	}=0A=
+	else if (value=3D=3D15){=0A=
+		document.contents.action =3D scheduleLink;=0A=
+	}=0A=
+	else document.contents.action =3D "";=0A=
+}=0A=
+=0A=
+function goTo(url) {=0A=
+    if (document.images)=0A=
+        location.replace(url);=0A=
+    else=0A=
+        location.href =3D url;=0A=
+}=0A=
+ 
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.census.pro.gov.uk/SearchServlet?button=submit&rType=SCH&scheduleType=SCHEDULE&scheduleId=5519492
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Person with Schedule</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dwindows-1252"><LINK=20
+href=3D"http://www.census.pro.gov.uk/styles/doc.css" rel=3DStyleSheet>
+<SCRIPT language=3DJavaScript=20
+src=3D"http://www.census.pro.gov.uk/javascript/status.js"></SCRIPT>
+
+<SCRIPT language=3DJavaScript=20
+src=3D"http://www.census.pro.gov.uk/javascript/search.js"></SCRIPT>
+
+<META content=3D"MSHTML 6.00.2800.1264" name=3DGENERATOR></HEAD>
+<BODY leftMargin=3D3 topMargin=3D7 =
+onload=3Djavascript:updateSessionDetails()>
+<FORM name=3Dcontents action=3D"" method=3Dpost>
+<TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+  <TBODY>
+  <TR>
+    <TD align=3Dmiddle>
+      <P>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" border=3D0>
+        <TBODY>
+        <TR>
+          <TD vAlign=3Dtop align=3Dmiddle colSpan=3D2><SPAN =
+class=3Dmainheading>Person=20
+            Details for Schedule<BR>&nbsp;</SPAN></TD></TR>
+        <TR>
+          <TD vAlign=3Dtop align=3Dright colSpan=3D2><A=20
+            onmousedown=3D"document.backToSearch.src =3D =
+'/images/back_to_search3.gif';window.status=3D'Back to search';return =
+true;"=20
+            onmouseover=3D"document.backToSearch.src =3D =
+'/images/back_to_search2.gif';window.status=3D'Back to search';return =
+true;"=20
+            onmouseout=3D"document.backToSearch.src =3D =
+'/images/back_to_search1.gif';window.status=3D'';return true;"=20
+            =
+href=3D"http://www.census.pro.gov.uk/SearchServlet?rType=3DSHW"><IMG=20
+            height=3D27 alt=3D"Back to search"=20
+            =
+src=3D"http://www.census.pro.gov.uk/images/back_to_search1.gif"=20
+            width=3D185 align=3DabsMiddle border=3D0 =
+name=3DbackToSearch> </A></TD></TR>
+        <TR>
+          <TD colSpan=3D2>&nbsp; </TD></TR>
+        <TR>
+          <TD colSpan=3D2>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dfoliolevel colSpan=3D4>PRO =
+Reference</TD>
+                      <TD class=3Dfoliolevel rowSpan=3D2>Schedule =
+Number</TD></TR>
+                    <TR>
+                      <TD class=3Dfoliolevel>RG Number, Series</TD>
+                      <TD class=3Dfoliolevel>Piece</TD>
+                      <TD class=3Dfoliolevel>Folio</TD>
+                      <TD class=3Dfoliolevel>Page</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>RG13</TD>
+                      <TD class=3Dtabletext>5314</TD>
+                      <TD class=3Dtabletext>94</TD>
+                      <TD class=3Dtabletext>5</TD>
+                      <TD=20
+            =
+class=3Dtabletext>37</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <P>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dnamelevel =
+colSpan=3D4>Address</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext colSpan=3D4>Norman House St =
+Aubins=20
+                      Road</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Civil Parish</TD>
+                      <TD class=3Dnamelevel colSpan=3D3>Rural =
+District</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>St Heliers</TD>
+                      <TD class=3Dtabletext colSpan=3D3>&nbsp;</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Town or Village or =
+Hamlet</TD>
+                      <TD class=3Dnamelevel colSpan=3D3>Parliamentary =
+Borough or=20
+                        Division</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>St Heliers</TD>
+                      <TD class=3Dtabletext colSpan=3D3>&nbsp;</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Ecclesiastical Parish</TD>
+                      <TD class=3Dnamelevel colSpan=3D3>Administrative=20
+County</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>All Saints</TD>
+                      <TD class=3Dtabletext colSpan=3D3>Jersey</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>County Borough, Municipal =
+Borough or=20
+                        Urban District</TD>
+                      <TD class=3Dnamelevel colSpan=3D3>Ward of =
+Municipal Borough=20
+                        or Urban District</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>&nbsp;</TD>
+                      <TD class=3Dtabletext=20
+                =
+colSpan=3D3>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <P>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dfoliolevel colSpan=3D4>Henry D =
+Acourt</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel width=3D"35%">Relation to =
+Head of=20
+                        Family</TD>
+                      <TD class=3Dnamelevel>Condition as to =
+Marriage</TD>
+                      <TD class=3Dnamelevel>Age Last Birthday</TD>
+                      <TD class=3Dnamelevel>Sex</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>Head</TD>
+                      <TD class=3Dtabletext>M</TD>
+                      <TD class=3Dtabletext>30</TD>
+                      <TD class=3Dtabletext>M</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Profession or =
+Occupation</TD>
+                      <TD class=3Dnamelevel>Employment Status</TD>
+                      <TD class=3Dnamelevel colSpan=3D2>Where =
+Born</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>Drapers Assistant</TD>
+                      <TD class=3Dtabletext>Worker</TD>
+                      <TD class=3Dtabletext colSpan=3D2>Jersey St =
+Heliers</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel colSpan=3D2>Language</TD>
+                      <TD class=3Dnamelevel =
+colSpan=3D2>Infirmity</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext colSpan=3D2>&nbsp;</TD>
+                      <TD class=3Dtabletext=20
+                =
+colSpan=3D2>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <P>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dfoliolevel colSpan=3D4>Gertrude =
+Acourt</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel width=3D"35%">Relation to =
+Head of=20
+                        Family</TD>
+                      <TD class=3Dnamelevel>Condition as to =
+Marriage</TD>
+                      <TD class=3Dnamelevel>Age Last Birthday</TD>
+                      <TD class=3Dnamelevel>Sex</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>Wife</TD>
+                      <TD class=3Dtabletext>M</TD>
+                      <TD class=3Dtabletext>27</TD>
+                      <TD class=3Dtabletext>F</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Profession or =
+Occupation</TD>
+                      <TD class=3Dnamelevel>Employment Status</TD>
+                      <TD class=3Dnamelevel colSpan=3D2>Where =
+Born</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>&nbsp;</TD>
+                      <TD class=3Dtabletext>Undefined</TD>
+                      <TD class=3Dtabletext colSpan=3D2>Jersey St =
+Heliers</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel colSpan=3D2>Language</TD>
+                      <TD class=3Dnamelevel =
+colSpan=3D2>Infirmity</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext colSpan=3D2>&nbsp;</TD>
+                      <TD class=3Dtabletext=20
+                =
+colSpan=3D2>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <P>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dfoliolevel colSpan=3D4>Florence M =
+Acourt</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel width=3D"35%">Relation to =
+Head of=20
+                        Family</TD>
+                      <TD class=3Dnamelevel>Condition as to =
+Marriage</TD>
+                      <TD class=3Dnamelevel>Age Last Birthday</TD>
+                      <TD class=3Dnamelevel>Sex</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>Daughter</TD>
+                      <TD class=3Dtabletext>&nbsp;</TD>
+                      <TD class=3Dtabletext>2</TD>
+                      <TD class=3Dtabletext>F</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Profession or =
+Occupation</TD>
+                      <TD class=3Dnamelevel>Employment Status</TD>
+                      <TD class=3Dnamelevel colSpan=3D2>Where =
+Born</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>&nbsp;</TD>
+                      <TD class=3Dtabletext>Undefined</TD>
+                      <TD class=3Dtabletext colSpan=3D2>Jersey St =
+Heliers</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel colSpan=3D2>Language</TD>
+                      <TD class=3Dnamelevel =
+colSpan=3D2>Infirmity</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext colSpan=3D2>&nbsp;</TD>
+                      <TD class=3Dtabletext=20
+                =
+colSpan=3D2>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <P>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dfoliolevel colSpan=3D4>Henry Ph =
+Acourt</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel width=3D"35%">Relation to =
+Head of=20
+                        Family</TD>
+                      <TD class=3Dnamelevel>Condition as to =
+Marriage</TD>
+                      <TD class=3Dnamelevel>Age Last Birthday</TD>
+                      <TD class=3Dnamelevel>Sex</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>Son</TD>
+                      <TD class=3Dtabletext>&nbsp;</TD>
+                      <TD class=3Dtabletext>4M</TD>
+                      <TD class=3Dtabletext>M</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel>Profession or =
+Occupation</TD>
+                      <TD class=3Dnamelevel>Employment Status</TD>
+                      <TD class=3Dnamelevel colSpan=3D2>Where =
+Born</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext>&nbsp;</TD>
+                      <TD class=3Dtabletext>Undefined</TD>
+                      <TD class=3Dtabletext colSpan=3D2>Jersey St =
+Heliers</TD></TR>
+                    <TR>
+                      <TD class=3Dnamelevel colSpan=3D2>Language</TD>
+                      <TD class=3Dnamelevel =
+colSpan=3D2>Infirmity</TD></TR>
+                    <TR>
+                      <TD class=3Dtabletext colSpan=3D2>&nbsp;</TD>
+                      <TD class=3Dtabletext=20
+                =
+colSpan=3D2>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <P><IMG height=3D17 alt=3D"=A3 Charge"=20
+            src=3D"http://www.census.pro.gov.uk/images/charge_yes.gif" =
+width=3D74=20
+            name=3Dpictures> <A=20
+            onmousedown=3D"document.imagebutton.src =3D =
+'/images/view_image_4.gif';"=20
+            onmouseover=3D"document.imagebutton.src =3D =
+'/images/view_image_2.gif';window.status=3D'View Image';return true;"=20
+            onmouseout=3D"document.imagebutton.src =3D =
+'/images/view_image_1.gif';window.status=3D'';return true;"=20
+            =
+href=3D"http://www.census.pro.gov.uk/ChargeableServlet?rType=3Dimage&amp;=
+pageType=3DSCHEDULE&amp;pageId=3D1389475&amp;itemId=3D5519492"><IMG=20
+            height=3D27 alt=3D"View Image"=20
+            src=3D"http://www.census.pro.gov.uk/images/view_image_1.gif" =
+width=3D116=20
+            border=3D0 name=3Dimagebutton></A>=20
+            <P>
+            <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%" =
+border=3D0>
+              <TBODY>
+              <TR>
+                <TD bgColor=3D#000000>
+                  <TABLE cellSpacing=3D1 cellPadding=3D4 width=3D"100%" =
+border=3D0>
+                    <TBODY>
+                    <TR>
+                      <TD class=3Dtabletext align=3Dleft =
+colSpan=3D2><B>To find out=20
+                        how much you have spent, click on 'My =
+Account'</B></TD>
+                      <TD class=3Dtabletext align=3Dright>Your Session =
+ID is :=20
+                        =
+<B>4783508</B></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--<a =
+href=3D'#' onMouseOut=3D"document.prev.src =3D =
+'images/prev_in_household_1.gif';" onMouseOver=3D"document.prev.src =3D =
+'images/prev_in_household_2.gif';" onMouseDown=3D"document.prev.src =3D =
+'images/prev_in_household_4.gif';" ><img alt=3D'<< Prev in Household' =
+border=3D'0' name=3D'prev' src=3D'images/prev_in_household_1.gif' =
+width=3D'149' height=3D'19' align=3D"absmiddle"></a>=0A=
+=0A=
+             <a href=3D'#' onMouseOut=3D"document.next.src =3D =
+'images/next_in_household_1.gif';" onMouseOver=3D"document.next.src =3D =
+'images/next_in_household_2.gif';" onMouseDown=3D"document.next.src =3D =
+'images/next_in_household_4.gif';" ><img alt=3D'Next in Household >>'  =
+border=3D'0' name=3D'next' src=3D'images/next_in_household_1.gif' =
+width=3D'149' height=3D'19' =
+align=3D"absmiddle"></a>--><BR></P></TD></TR></TBODY></TABLE></P></TD></T=
+R></TBODY></TABLE><IMG=20
+height=3D20 alt=3DPrint =
+src=3D"http://www.census.pro.gov.uk/images/printer.gif"=20
+width=3D27 border=3D0>&nbsp; Netscape users - for help on printing this =
+page <A=20
+onmouseover=3D"window.status=3D'Help';return true;"=20
+onmouseout=3D"window.status=3D'';return true;"=20
+href=3D"javascript:MM_openBrWindow('help/NetscapeHelp.html')">click =
+here</A>.=20
+</FORM></BODY></HTML>
+
+------=_NextPart_000_014E_01C3E778.B1361830
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: 7bit
+Content-Location: http://www.census.pro.gov.uk/blank.html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>1901 Census</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1264" name=GENERATOR></HEAD>
+<BODY class=background leftMargin=0 topMargin=0 marginwidth="0" 
+marginheight="0"></BODY></HTML>
+
+------=_NextPart_000_014E_01C3E778.B1361830--

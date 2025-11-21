@@ -1,0 +1,33 @@
+{
+  "id": "I786",
+  "name": "Lavinia A'Court",
+  "givenName": "Lavinia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "26 DEC 1865",
+  "birthPlace": "Queensland, Australia",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I802"
+  ],
+  "childIds": [
+    "I803"
+  ],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I802",
+      "familyId": "F333",
+      "marriageDate": "1890",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

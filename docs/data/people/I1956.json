@@ -1,0 +1,35 @@
+{
+  "id": "I1956",
+  "name": "William Donavan Winston Plant",
+  "givenName": "William Donavan Winston",
+  "surname": "Plant",
+  "sex": "M",
+  "birthDate": "14 APR 1940",
+  "birthPlace": "London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1955",
+    "I1957"
+  ],
+  "childIds": [
+    "I1958",
+    "I1959"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1955",
+      "familyId": "F698",
+      "marriageDate": "10 SEP 1977",
+      "marriagePlace": "Mitcham, Surrey, St Marks"
+    },
+    {
+      "spouseId": "I1957",
+      "familyId": "F699",
+      "marriageDate": "1960",
+      "marriagePlace": "London"
+    }
+  ]
+}

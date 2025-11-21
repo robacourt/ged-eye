@@ -1,0 +1,29 @@
+{
+  "id": "I2419",
+  "name": "Lottie Honour",
+  "givenName": "Lottie",
+  "surname": "Honour",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2418"
+  ],
+  "childIds": [
+    "I2429",
+    "I2432",
+    "I2426",
+    "I2437"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2418",
+      "familyId": "F859",
+      "marriageDate": "1920"
+    }
+  ]
+}

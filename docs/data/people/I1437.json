@@ -1,0 +1,23 @@
+{
+  "id": "I1437",
+  "name": "Unknown Wallis",
+  "givenName": "Unknown",
+  "surname": "Wallis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1435"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1435",
+      "familyId": "F558"
+    }
+  ]
+}

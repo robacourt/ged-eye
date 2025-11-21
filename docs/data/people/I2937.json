@@ -1,0 +1,40 @@
+{
+  "id": "I2937",
+  "name": "Elizabeth J A'Court",
+  "givenName": "Elizabeth J",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1891",
+  "birthPlace": "Sussex, Hove",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Sussex/RG12 818 67 23.jpg",
+    "Data/Media/1901 census/Sussex/RG13 938 9.jpg",
+    "Data/Media/1911 census/Sussex/RG14 6895 79.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2797",
+    "I2936"
+  ],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Sussex, Hove, Livingstone Rd."
+    },
+    {
+      "date": "1901",
+      "place": "Sussex, Hove, 12 Byron St."
+    },
+    {
+      "date": "1911",
+      "place": "Sussex, Hove, 45 Shirley St."
+    }
+  ],
+  "avatar": "avatars/I2937_0.jpg"
+}

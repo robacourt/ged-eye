@@ -1,0 +1,23 @@
+{
+  "id": "I2319",
+  "name": "Unknown Ricketts",
+  "givenName": "Unknown",
+  "surname": "Ricketts",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1037"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1037",
+      "familyId": "F822"
+    }
+  ]
+}

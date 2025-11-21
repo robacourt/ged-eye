@@ -1,0 +1,26 @@
+{
+  "id": "I1164",
+  "name": "Charles Whitelock",
+  "givenName": "Charles",
+  "surname": "Whitelock",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1163"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Motor Driver"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F475"
+    }
+  ]
+}

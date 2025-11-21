@@ -1,0 +1,20 @@
+{
+  "id": "I342",
+  "name": "Gordon Francis Edward Gabriel Chapman",
+  "givenName": "Gordon Francis Edward Gabriel",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": "25.4.1916",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I341",
+    "I340"
+  ],
+  "baptismDate": "21.5.1916",
+  "baptismPlace": "Marnhull, Dorset"
+}

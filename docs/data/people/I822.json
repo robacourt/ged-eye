@@ -1,0 +1,26 @@
+{
+  "id": "I822",
+  "name": "Edwin Frank A'Court",
+  "givenName": "Edwin Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "14 DEC 1865",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1866",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I832"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I776",
+    "I820"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I832",
+      "familyId": "F352"
+    }
+  ]
+}

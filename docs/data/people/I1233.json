@@ -1,0 +1,28 @@
+{
+  "id": "I1233",
+  "name": "P?????? Lissenburgh",
+  "givenName": "P??????",
+  "surname": "Lissenburgh",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1232"
+  ],
+  "childIds": [
+    "I1234",
+    "I1235",
+    "I1236",
+    "I1237"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1232",
+      "familyId": "F497"
+    }
+  ]
+}

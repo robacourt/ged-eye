@@ -1,0 +1,20 @@
+{
+  "id": "I501",
+  "name": "Anthony A'Court",
+  "givenName": "Anthony",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I373"
+  ],
+  "occupations": [
+    "Pianist"
+  ]
+}

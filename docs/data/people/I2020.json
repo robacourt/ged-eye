@@ -1,0 +1,37 @@
+{
+  "id": "I2020",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1833",
+  "birthPlace": "Surrey, Clapham",
+  "deathDate": "BEF 1871",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2807"
+  ],
+  "childIds": [
+    "I2088",
+    "I520",
+    "I2808",
+    "I2809"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Coach Smith"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, St Lukes, 17 George Yard"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2807",
+      "familyId": "F725"
+    }
+  ]
+}

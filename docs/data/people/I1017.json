@@ -1,0 +1,18 @@
+{
+  "id": "I1017",
+  "name": "Rebbeca Fay Bardsley",
+  "givenName": "Rebbeca Fay",
+  "surname": "Bardsley",
+  "sex": "F",
+  "birthDate": "30AUGUST 1982",
+  "birthPlace": "Sydney, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1015",
+    "I1003"
+  ]
+}

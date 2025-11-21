@@ -1,0 +1,32 @@
+{
+  "id": "I2123",
+  "name": "Amelia A'Court",
+  "givenName": "Amelia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1883",
+  "birthPlace": "Jersey, C.I. St. Ouens",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Jersey C.I/RG12 4699 133 6.jpg",
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 44 6.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2121",
+    "I2122"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": null
+    },
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    }
+  ],
+  "avatar": "avatars/I2123_0.jpg"
+}

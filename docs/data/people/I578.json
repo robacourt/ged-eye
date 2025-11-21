@@ -1,0 +1,51 @@
+{
+  "id": "I578",
+  "name": "Jemima Wadham",
+  "givenName": "Jemima",
+  "surname": "Wadham",
+  "sex": "F",
+  "birthDate": "Abt 1802",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Horsington/Folio 22 page 22.jpg"
+  ],
+  "spouseIds": [
+    "I577"
+  ],
+  "childIds": [
+    "I1765",
+    "I1766",
+    "I571"
+  ],
+  "parentIds": [
+    "I2366"
+  ],
+  "notes": [
+    "Hi Ian"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Horsington St."
+    },
+    {
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I577",
+      "familyId": "F237",
+      "marriageDate": "19 FEB 1824",
+      "marriagePlace": "Horsington, Somerset"
+    }
+  ],
+  "avatar": "avatars/I578_0.jpg"
+}

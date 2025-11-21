@@ -1,0 +1,18 @@
+{
+  "id": "I1023",
+  "name": "Leah Renee O'Conner",
+  "givenName": "Leah Renee",
+  "surname": "O'Conner",
+  "sex": "F",
+  "birthDate": "14 JULY 1983",
+  "birthPlace": "Blacktown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1004",
+    "I1019"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "I1952",
+  "name": "Frederick Arthur Armstrong",
+  "givenName": "Frederick Arthur",
+  "surname": "Armstrong",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1029"
+  ],
+  "childIds": [
+    "I1953"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Newsagent, Hairdresser"
+  ],
+  "notes": [
+    "Louie became a hairdresser.  She and her husband Frederick Arthur (known as Arthur) owned a newsagents/hairdressers/barbers in Caledonian Road"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Ilford, Essex"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1029",
+      "familyId": "F696",
+      "marriageDate": "SEP 14 1919"
+    }
+  ]
+}

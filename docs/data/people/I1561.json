@@ -1,0 +1,32 @@
+{
+  "id": "I1561",
+  "name": "Emily Ellen Cox",
+  "givenName": "Emily Ellen",
+  "surname": "Cox",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1275"
+  ],
+  "childIds": [
+    "I2577",
+    "I2578"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Grayshott, Hampshire, 1The Villas"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1275",
+      "familyId": "F514"
+    }
+  ]
+}

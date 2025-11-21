@@ -1,0 +1,27 @@
+{
+  "id": "I1110",
+  "name": "Ernest James Elford",
+  "givenName": "Ernest James",
+  "surname": "Elford",
+  "sex": "M",
+  "birthDate": "ABT 1875",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1106"
+  ],
+  "childIds": [
+    "I1421"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1106",
+      "familyId": "F448",
+      "marriageDate": "16 JULY 1901",
+      "marriagePlace": "Queen Camel, Somerset"
+    }
+  ]
+}

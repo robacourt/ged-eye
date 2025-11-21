@@ -1,0 +1,23 @@
+{
+  "id": "I2492",
+  "name": "Ted Smith",
+  "givenName": "Ted",
+  "surname": "Smith",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2491"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2491",
+      "familyId": "F880"
+    }
+  ]
+}

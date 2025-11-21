@@ -1,0 +1,73 @@
+{
+  "id": "I1450",
+  "name": "William Charles A'Court",
+  "givenName": "William Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1842",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": "13 FEB 1900",
+  "deathPlace": "Weymouth, Dorset",
+  "photos": [
+    "Data/Media/1851 census/Weymouth/HO107 1857 194 8.jpg"
+  ],
+  "spouseIds": [
+    "I1451"
+  ],
+  "childIds": [
+    "I2346",
+    "I1645",
+    "I1646",
+    "I2347",
+    "I1647",
+    "I1452",
+    "I2348",
+    "I2360"
+  ],
+  "parentIds": [
+    "I143",
+    "I174"
+  ],
+  "occupations": [
+    "Coachman",
+    "Coachman",
+    "Cab Driver",
+    "Coachman",
+    "Lodging House Keeper",
+    "Livery Stable Proprietor"
+  ],
+  "notes": [
+    "Rosa A'Court widow �584-17-2"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Dorset, Melcombe Regis, 6 Terrace Court"
+    },
+    {
+      "date": "1871",
+      "place": "Weymouth, Dorset, Gloster Mews House Inn"
+    },
+    {
+      "date": "1881",
+      "place": "Dorset. Melcombe Regis, 4 Alexandra Terrace"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Melcombe Regis, Gloucester Row"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1900",
+      "place": "Dorset,  Melcombe Regis, No. 3 Gloucester Row"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1451",
+      "familyId": "F559"
+    }
+  ],
+  "avatar": "avatars/I1450_0.jpg"
+}

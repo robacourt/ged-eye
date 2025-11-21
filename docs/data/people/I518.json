@@ -1,0 +1,44 @@
+{
+  "id": "I518",
+  "name": "Frank A'Court",
+  "givenName": "Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1889",
+  "birthPlace": null,
+  "deathDate": "11 FEB 1915",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Martock/RG12 1897 6 5.jpg",
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "burialPlace": "Ploegsteert Wood Military Cemetery, Belgium",
+  "occupations": [
+    "Carter"
+  ],
+  "notes": [
+    "In Memory of"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Martock, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Somerset, Martock, East St"
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
+  "avatar": "avatars/I518_0.jpg"
+}

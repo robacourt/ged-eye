@@ -1,0 +1,35 @@
+{
+  "id": "I2207",
+  "name": "Robert (Haycourt) A'Court",
+  "givenName": "Robert (Haycourt)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1881",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Bristol/RG12 1981 112 3.jpg",
+    "Data/Media/1901 census/Bristol/RG13 2380 51 4.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2190",
+    "I2192"
+  ],
+  "occupations": [
+    "Vegetable Hawker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Bristol, Gloucestershire, 7, Eugene Street, St Philip & St Jacob without"
+    },
+    {
+      "date": "1901",
+      "place": "Bristol, Gloucestershire, 3 Arnolds Court"
+    }
+  ],
+  "avatar": "avatars/I2207_0.jpg"
+}

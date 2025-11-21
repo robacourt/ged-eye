@@ -1,0 +1,26 @@
+{
+  "id": "I321",
+  "name": "Matthew Clarke",
+  "givenName": "Matthew",
+  "surname": "Clarke",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I320"
+  ],
+  "childIds": [
+    "I195",
+    "I190"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I320",
+      "familyId": "F108"
+    }
+  ]
+}

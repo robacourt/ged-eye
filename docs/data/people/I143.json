@@ -1,0 +1,54 @@
+{
+  "id": "I143",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "19 MAY 1821",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I174"
+  ],
+  "childIds": [
+    "I175",
+    "I176",
+    "I1450",
+    "I1648",
+    "I2405"
+  ],
+  "parentIds": [
+    "I49",
+    "I142"
+  ],
+  "baptismDate": "27 MAY 1821",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "29 JUN 1891",
+  "burialPlace": "Melcombe Regis, Dorset, Cemetery",
+  "occupations": [
+    "Post Boy"
+  ],
+  "notes": [
+    "From Bap of son Geo Thomas"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Dorset, Melcombe Regis, 6 Terrace Court"
+    },
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, Hotel Yard"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I174",
+      "familyId": "F83",
+      "marriageDate": "1841",
+      "marriagePlace": "Dorset, Wyke Regis."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "I254",
+  "name": "Sarah Elizabeth Wiles",
+  "givenName": "Sarah Elizabeth",
+  "surname": "Wiles",
+  "sex": "F",
+  "birthDate": "4.10.1824",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I42"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I255",
+    "I256"
+  ],
+  "baptismDate": "31.10.1824",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "notes": [
+    "15-1841  27-1851  36-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I42",
+      "familyId": "F29",
+      "marriageDate": "5.7.1846",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

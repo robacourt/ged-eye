@@ -1,0 +1,30 @@
+{
+  "id": "I986",
+  "name": "Keith Robert John A'Court",
+  "givenName": "Keith Robert John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "8 FEB 1921",
+  "birthPlace": "Coonabarabran, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I987"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "notes": [
+    "Title"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I987",
+      "familyId": "F409",
+      "marriageDate": "1944"
+    }
+  ]
+}

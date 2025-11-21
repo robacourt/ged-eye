@@ -1,0 +1,24 @@
+{
+  "id": "I2488",
+  "name": "Richard A Court",
+  "givenName": "Richard A",
+  "surname": "Court",
+  "sex": "M",
+  "birthDate": "1880",
+  "birthPlace": "London, Kensington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Valet, Butler"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Winchester, Hampshire,Lily Borndaly, Compton, St Cross Mill"
+    }
+  ]
+}

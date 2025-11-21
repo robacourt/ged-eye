@@ -1,0 +1,33 @@
+{
+  "id": "I2801",
+  "name": "Jane Unknown",
+  "givenName": "Jane",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1842",
+  "birthPlace": "London, Lambeth",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2800"
+  ],
+  "childIds": [
+    "I2802",
+    "I2803",
+    "I2804"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, St Pancras, 20 Hadley St. North"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2800",
+      "familyId": "F724"
+    }
+  ]
+}

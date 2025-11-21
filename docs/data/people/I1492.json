@@ -1,0 +1,18 @@
+{
+  "id": "I1492",
+  "name": "James Chamberlain",
+  "givenName": "James",
+  "surname": "Chamberlain",
+  "sex": "M",
+  "birthDate": "1865",
+  "birthPlace": null,
+  "deathDate": "1866",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I864",
+    "I777"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "I600",
+  "name": "Elias Frederick Hatcher",
+  "givenName": "Elias Frederick",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I612"
+  ],
+  "childIds": [
+    "I613"
+  ],
+  "parentIds": [
+    "I589",
+    "I595"
+  ],
+  "occupations": [
+    "Gardener"
+  ],
+  "notes": [
+    "27-1940"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I612",
+      "familyId": "F248",
+      "marriageDate": "4- MAR 1940",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

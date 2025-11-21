@@ -1,0 +1,18 @@
+{
+  "id": "I946",
+  "name": "Mary Phyllis Hunter A'Court",
+  "givenName": "Mary Phyllis Hunter",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "28 APR 1901",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": "4 JUL 1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I937",
+    "I938"
+  ]
+}

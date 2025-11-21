@@ -1,0 +1,30 @@
+{
+  "id": "I2869",
+  "name": "Fanny I Coutts",
+  "givenName": "Fanny I",
+  "surname": "Coutts",
+  "sex": "F",
+  "birthDate": "Abt 1851",
+  "birthPlace": "London, Lewisham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Lewisham/RG11 729 123 43.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2867",
+    "I2868"
+  ],
+  "occupations": [
+    "Charwoman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Lewisham, 6 Merton Place"
+    }
+  ],
+  "avatar": "avatars/I2869_0.jpg"
+}

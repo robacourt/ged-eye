@@ -1,0 +1,27 @@
+{
+  "id": "I2908",
+  "name": "Violet Rose A'Court",
+  "givenName": "Violet Rose",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1911",
+  "birthPlace": "Jersey C.I St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34901 8 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2839",
+    "I2878"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "avatar": "avatars/I2908_0.jpg"
+}

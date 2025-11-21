@@ -1,0 +1,31 @@
+{
+  "id": "I812",
+  "name": "Gladys Irene A'Court",
+  "givenName": "Gladys Irene",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "10 FEB 1899",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "17 APR 1983",
+  "deathPlace": "Riverhead, Auckland, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I817"
+  ],
+  "childIds": [
+    "I1045"
+  ],
+  "parentIds": [
+    "I794",
+    "I810"
+  ],
+  "burialPlace": "Waikumete Cemetery, Auckland, NZ",
+  "marriages": [
+    {
+      "spouseId": "I817",
+      "familyId": "F346",
+      "marriageDate": "25 MAY 1920",
+      "marriagePlace": "Methodist Church, Sydenham, Christchurch, NZ"
+    }
+  ]
+}

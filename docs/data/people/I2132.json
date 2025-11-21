@@ -1,0 +1,26 @@
+{
+  "id": "I2132",
+  "name": "Phillip A'Court",
+  "givenName": "Phillip",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2140"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2125",
+    "I2131"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2140",
+      "familyId": "F763"
+    }
+  ]
+}

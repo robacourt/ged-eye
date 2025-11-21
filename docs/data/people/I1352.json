@@ -1,0 +1,24 @@
+{
+  "id": "I1352",
+  "name": "William Alexander Donald",
+  "givenName": "William Alexander",
+  "surname": "Donald",
+  "sex": "M",
+  "birthDate": "ABT 1868",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1351"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1351",
+      "familyId": "F535",
+      "marriageDate": "1887"
+    }
+  ]
+}

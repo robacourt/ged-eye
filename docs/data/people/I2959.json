@@ -1,0 +1,29 @@
+{
+  "id": "I2959",
+  "name": "Maud Unknown",
+  "givenName": "Maud",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1867",
+  "birthPlace": "London, Bayswater",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2958"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Surrey, Guildford, The Manor House Sutton Park"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2958",
+      "familyId": "F1015"
+    }
+  ]
+}

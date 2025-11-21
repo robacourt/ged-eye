@@ -1,0 +1,24 @@
+{
+  "id": "I1649",
+  "name": "Jemima A'Court",
+  "givenName": "Jemima",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1800",
+  "birthPlace": "Galhampton, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Formerly Houskeeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Musbery Lane"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "I1275",
+  "name": "Howard William A'Court",
+  "givenName": "Howard William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1886",
+  "birthPlace": "Charlton Horethorne, Somerset",
+  "deathDate": "1962",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg",
+    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg"
+  ],
+  "spouseIds": [
+    "I1561"
+  ],
+  "childIds": [
+    "I2577",
+    "I2578"
+  ],
+  "parentIds": [
+    "I284",
+    "I287"
+  ],
+  "occupations": [
+    "Telegraph Boy",
+    "Baker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    },
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Gracious St"
+    },
+    {
+      "date": "1911",
+      "place": "Grayshott, Hampshire, 1 The Villas"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1561",
+      "familyId": "F514"
+    }
+  ],
+  "avatar": "avatars/I1275_0.jpg"
+}

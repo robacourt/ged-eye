@@ -1,0 +1,32 @@
+{
+  "id": "I526",
+  "name": "Felix Daniel Reuben A'Court",
+  "givenName": "Felix Daniel Reuben",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1867",
+  "birthPlace": "Mudgee, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I527"
+  ],
+  "childIds": [
+    "I516"
+  ],
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "notes": [
+    "From John Stafford File Page 3"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I527",
+      "familyId": "F222",
+      "marriageDate": "1917"
+    }
+  ]
+}

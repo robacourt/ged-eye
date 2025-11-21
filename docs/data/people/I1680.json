@@ -1,0 +1,25 @@
+{
+  "id": "I1680",
+  "name": "Unknown Punter",
+  "givenName": "Unknown",
+  "surname": "Punter",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1681"
+  ],
+  "childIds": [
+    "I1682"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1681",
+      "familyId": "F615"
+    }
+  ]
+}

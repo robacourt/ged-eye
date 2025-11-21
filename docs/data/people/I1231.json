@@ -1,0 +1,18 @@
+{
+  "id": "I1231",
+  "name": "Stephanie Myatt",
+  "givenName": "Stephanie",
+  "surname": "Myatt",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1230",
+    "I1229"
+  ]
+}

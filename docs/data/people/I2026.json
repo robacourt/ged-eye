@@ -1,0 +1,25 @@
+{
+  "id": "I2026",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2027"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1035"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2027",
+      "familyId": "F728"
+    }
+  ]
+}

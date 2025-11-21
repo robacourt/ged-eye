@@ -1,0 +1,24 @@
+{
+  "id": "I701",
+  "name": "Rachal Hurham",
+  "givenName": "Rachal",
+  "surname": "Hurham",
+  "sex": "F",
+  "birthDate": "BEF 1736",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I537"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I537",
+      "familyId": "F229",
+      "marriageDate": "17.APRIL 1749"
+    }
+  ]
+}

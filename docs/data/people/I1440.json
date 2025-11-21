@@ -1,0 +1,18 @@
+{
+  "id": "I1440",
+  "name": "Jodie Wholagan",
+  "givenName": "Jodie",
+  "surname": "Wholagan",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1318",
+    "I1317"
+  ]
+}

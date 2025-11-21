@@ -1,0 +1,28 @@
+{
+  "id": "I1525",
+  "name": "Doreen Leeson",
+  "givenName": "Doreen",
+  "surname": "Leeson",
+  "sex": "F",
+  "birthDate": "6 FEB 1933",
+  "birthPlace": null,
+  "deathDate": "9 FEB 1999",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1524"
+  ],
+  "childIds": [
+    "I1526",
+    "I1527",
+    "I1529"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1524",
+      "familyId": "F582",
+      "marriageDate": "9 APR 1954"
+    }
+  ]
+}

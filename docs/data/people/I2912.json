@@ -1,0 +1,27 @@
+{
+  "id": "I2912",
+  "name": "Dora A'Court",
+  "givenName": "Dora",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1891",
+  "birthPlace": "Jersey C.I. St Ouen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Jersey C.I/St Ouen/RG14 34872 27.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Cook domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Ouen, Vinchelez Bas, Manor St"
+    }
+  ],
+  "avatar": "avatars/I2912_0.jpg"
+}

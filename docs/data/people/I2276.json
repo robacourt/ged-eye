@@ -1,0 +1,23 @@
+{
+  "id": "I2276",
+  "name": "Samuel Vickers",
+  "givenName": "Samuel",
+  "surname": "Vickers",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2067"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2067",
+      "familyId": "F803"
+    }
+  ]
+}

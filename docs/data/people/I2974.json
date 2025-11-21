@@ -1,0 +1,40 @@
+{
+  "id": "I2974",
+  "name": "Harriett Martin",
+  "givenName": "Harriett",
+  "surname": "Martin",
+  "sex": "F",
+  "birthDate": "26 APR1904",
+  "birthPlace": "London, Stoke Newington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hackney/RG14 1063 151.jpg",
+    "Data/Media/1921 Census/London/Westminster/RG15 00535 31.jpg",
+    "Data/Media/1939 Register/Surrey/RG101 1901c 7.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2726",
+    "I1429"
+  ],
+  "occupations": [
+    "Licenced Victualler Assistant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Upper Clapton, 34 Ickburgh Rd."
+    },
+    {
+      "date": "1921",
+      "place": "London, Westminster, 1 Derby St"
+    },
+    {
+      "date": "1939",
+      "place": "Surrey, Guilford, 9 Wherwell Rd"
+    }
+  ],
+  "avatar": "avatars/I2974_0.jpg"
+}

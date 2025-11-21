@@ -1,0 +1,29 @@
+{
+  "id": "I1554",
+  "name": "Marilyn MacDonald",
+  "givenName": "Marilyn",
+  "surname": "MacDonald",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1546"
+  ],
+  "childIds": [
+    "I1555",
+    "I1556"
+  ],
+  "parentIds": [
+    "I1550",
+    "I1551"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1546",
+      "familyId": "F591"
+    }
+  ]
+}

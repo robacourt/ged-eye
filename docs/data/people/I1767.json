@@ -1,0 +1,30 @@
+{
+  "id": "I1767",
+  "name": "Unknown Tombleson",
+  "givenName": "Unknown",
+  "surname": "Tombleson",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1768"
+  ],
+  "childIds": [
+    "I1769",
+    "I1770",
+    "I1771",
+    "I1772",
+    "I1773",
+    "I1774"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1768",
+      "familyId": "F639"
+    }
+  ]
+}

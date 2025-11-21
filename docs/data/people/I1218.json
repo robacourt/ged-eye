@@ -1,0 +1,27 @@
+{
+  "id": "I1218",
+  "name": "Roy Haskett",
+  "givenName": "Roy",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1923",
+  "birthPlace": null,
+  "deathDate": "1993",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1219",
+    "I1220"
+  ],
+  "parentIds": [
+    "I1215",
+    "I1216"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F493"
+    }
+  ]
+}

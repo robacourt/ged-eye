@@ -1,0 +1,24 @@
+{
+  "id": "I1836",
+  "name": "Unknown Ford",
+  "givenName": "Unknown",
+  "surname": "Ford",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1835",
+    "I1837"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F661"
+    }
+  ]
+}

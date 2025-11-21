@@ -1,0 +1,20 @@
+{
+  "id": "I650",
+  "name": "Amanda Mary Warren",
+  "givenName": "Amanda Mary",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "2.4.1872",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I646",
+    "I241"
+  ],
+  "baptismDate": "14.7.1872",
+  "baptismPlace": "Marnhull, Dorset"
+}

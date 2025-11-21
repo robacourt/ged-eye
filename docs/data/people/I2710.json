@@ -1,0 +1,33 @@
+{
+  "id": "I2710",
+  "name": "Harry Lewis Nixon",
+  "givenName": "Harry Lewis",
+  "surname": "Nixon",
+  "sex": "M",
+  "birthDate": "13 JUNE 1893",
+  "birthPlace": "Southsea, Hampshire",
+  "deathDate": "28 AUG 1963",
+  "deathPlace": "West Middlesex, Hospital",
+  "photos": [],
+  "spouseIds": [
+    "I2709"
+  ],
+  "childIds": [
+    "I2711"
+  ],
+  "parentIds": [
+    "I2715",
+    "I2716"
+  ],
+  "occupations": [
+    "Scientific Civil Servant"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2709",
+      "familyId": "F943",
+      "marriageDate": "2 DEC 1922",
+      "marriagePlace": "Richmond, Surrey"
+    }
+  ]
+}

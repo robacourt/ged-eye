@@ -1,0 +1,25 @@
+{
+  "id": "I2644",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2645"
+  ],
+  "childIds": [
+    "I2643"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2645",
+      "familyId": "F921"
+    }
+  ]
+}

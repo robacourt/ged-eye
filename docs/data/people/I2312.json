@@ -1,0 +1,23 @@
+{
+  "id": "I2312",
+  "name": "Dorothy Clunie Drake",
+  "givenName": "Dorothy Clunie",
+  "surname": "Drake",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1996",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1924"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1924",
+      "familyId": "F683"
+    }
+  ]
+}

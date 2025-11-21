@@ -1,0 +1,27 @@
+{
+  "id": "I2275",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1836",
+  "birthPlace": "Galhampton, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/South Petherton/RG09 1641 60 29.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Cook, Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "South Petherton, Somerset, Compton Durville,"
+    }
+  ],
+  "avatar": "avatars/I2275_0.jpg"
+}

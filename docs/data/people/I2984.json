@@ -1,0 +1,36 @@
+{
+  "id": "I2984",
+  "name": "Rachel Unknown",
+  "givenName": "Rachel",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1868",
+  "birthPlace": "London, City",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2336"
+  ],
+  "childIds": [
+    "I2991"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Shoreditch, 248 Kingsland Rd"
+    },
+    {
+      "date": "1921",
+      "place": "London, Willesden, 72 Teigmouth Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2336",
+      "familyId": "F1026",
+      "marriageDate": "BEF 1891"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I2311",
+  "name": "Harold Edward Taylor",
+  "givenName": "Harold Edward",
+  "surname": "Taylor",
+  "sex": "M",
+  "birthDate": "8 AUG 1902",
+  "birthPlace": null,
+  "deathDate": "10 JAN 1984",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1931"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1931",
+      "familyId": "F818"
+    }
+  ]
+}

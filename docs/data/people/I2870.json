@@ -1,0 +1,27 @@
+{
+  "id": "I2870",
+  "name": "Mary A A'Court",
+  "givenName": "Mary A",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": "London, Lewisham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Lewisham/RG11 729 123 44.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I405",
+    "I2866"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Lewisham, 6 Merton Place"
+    }
+  ],
+  "avatar": "avatars/I2870_0.jpg"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I331",
+  "name": "Henry Kendal",
+  "givenName": "Henry",
+  "surname": "Kendal",
+  "sex": "M",
+  "birthDate": "1.12.1855",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I197",
+    "I330"
+  ],
+  "baptismDate": "27.12.1855",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "5-1861  15-1871"
+  ]
+}

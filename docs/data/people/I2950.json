@@ -1,0 +1,25 @@
+{
+  "id": "I2950",
+  "name": "John Middlecote",
+  "givenName": "John",
+  "surname": "Middlecote",
+  "sex": "M",
+  "birthDate": "1879",
+  "birthPlace": "Surrey, Reigate",
+  "deathDate": "7 DEC1942",
+  "deathPlace": "Hampshire, South Tidworth",
+  "photos": [],
+  "spouseIds": [
+    "I2949"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2949",
+      "familyId": "F1008",
+      "marriageDate": "1935",
+      "marriagePlace": "Wiltshire, Pewsey"
+    }
+  ]
+}

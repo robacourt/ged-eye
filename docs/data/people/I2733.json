@@ -1,0 +1,45 @@
+{
+  "id": "I2733",
+  "name": "Herbert Lewis Barnett",
+  "givenName": "Herbert Lewis",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": "ABT 1896",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/Croydon_Times_22_February_1939_0005_Clip.jpg"
+  ],
+  "spouseIds": [
+    "I2989"
+  ],
+  "childIds": [
+    "I2990"
+  ],
+  "parentIds": [
+    "I2337",
+    "I2730"
+  ],
+  "occupations": [
+    "Apprentice Furrier",
+    "Commercial Traveler, Wholesale Furriers, S Cohen & Co. 449 Oxford St."
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Clapton, 14 Thistlewaite Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, East Finchley, 49 Bedford Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2989",
+      "familyId": "F1029"
+    }
+  ],
+  "avatar": "avatars/I2733_0.jpg"
+}

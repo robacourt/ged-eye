@@ -1,0 +1,18 @@
+{
+  "id": "I2620",
+  "name": "Lisa Maree Kostic",
+  "givenName": "Lisa Maree",
+  "surname": "Kostic",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2619",
+    "I2618"
+  ]
+}

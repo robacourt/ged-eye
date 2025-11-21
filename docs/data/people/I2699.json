@@ -1,0 +1,28 @@
+{
+  "id": "I2699",
+  "name": "Jane Lucy Winifred Eiles",
+  "givenName": "Jane Lucy Winifred",
+  "surname": "Eiles",
+  "sex": "F",
+  "birthDate": "ABT 1923",
+  "birthPlace": "Southend-On-Sea, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2700"
+  ],
+  "childIds": [
+    "I2701"
+  ],
+  "parentIds": [
+    "I2695",
+    "I2694"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2700",
+      "familyId": "F939"
+    }
+  ]
+}

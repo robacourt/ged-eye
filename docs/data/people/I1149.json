@@ -1,0 +1,38 @@
+{
+  "id": "I1149",
+  "name": "Arthur Harry Vincent",
+  "givenName": "Arthur Harry",
+  "surname": "Vincent",
+  "sex": "M",
+  "birthDate": "ABT 1912",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1148"
+  ],
+  "childIds": [
+    "I1151"
+  ],
+  "parentIds": [
+    "I1150"
+  ],
+  "occupations": [
+    "Head Cowman"
+  ],
+  "residences": [
+    {
+      "date": "1938",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1148",
+      "familyId": "F466",
+      "marriageDate": "18 APRIL 1938",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

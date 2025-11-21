@@ -1,0 +1,35 @@
+{
+  "id": "I228",
+  "name": "Emily Jane A'Court",
+  "givenName": "Emily Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Wales/RG12 4620 24 8.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I86",
+    "I227"
+  ],
+  "baptismDate": "6.12.1846",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "House Caretaker"
+  ],
+  "notes": [
+    "4-1851  14-1861"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Llanarmon-Denbighshire, Bodidris Hall"
+    }
+  ],
+  "avatar": "avatars/I228_0.jpg"
+}

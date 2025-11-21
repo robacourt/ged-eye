@@ -1,0 +1,18 @@
+{
+  "id": "I1207",
+  "name": "Marie Sharp",
+  "givenName": "Marie",
+  "surname": "Sharp",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1205",
+    "I1204"
+  ]
+}

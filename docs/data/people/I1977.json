@@ -1,0 +1,28 @@
+{
+  "id": "I1977",
+  "name": "Percy James Gumbrell",
+  "givenName": "Percy James",
+  "surname": "Gumbrell",
+  "sex": "M",
+  "birthDate": "1889",
+  "birthPlace": "Gosport, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1978"
+  ],
+  "childIds": [
+    "I1979"
+  ],
+  "parentIds": [
+    "I1976",
+    "I1975"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1978",
+      "familyId": "F708"
+    }
+  ]
+}

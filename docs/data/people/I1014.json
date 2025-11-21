@@ -1,0 +1,25 @@
+{
+  "id": "I1014",
+  "name": "Marilyn Anne Bennett",
+  "givenName": "Marilyn Anne",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I738"
+  ],
+  "childIds": [
+    "I739"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I738",
+      "familyId": "F302"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "I1293",
+  "name": "Susan Unknown",
+  "givenName": "Susan",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1813",
+  "birthPlace": "Kingsbury Episcopi, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I207"
+  ],
+  "childIds": [
+    "I107"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Annuitant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881 AGE 68",
+      "place": "Stalbridge, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I207",
+      "familyId": "F65"
+    }
+  ]
+}

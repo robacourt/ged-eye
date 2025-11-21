@@ -1,0 +1,32 @@
+{
+  "id": "I2796",
+  "name": "Celia Unknown",
+  "givenName": "Celia",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1815",
+  "birthPlace": "Hertfordshire, Ashwell",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I404"
+  ],
+  "childIds": [
+    "I405",
+    "I2798"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Greenwich, Marlborough St. Pound Cottage."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I404",
+      "familyId": "F184"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I412",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "16-8-1954",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I410"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F680"
+    }
+  ]
+}

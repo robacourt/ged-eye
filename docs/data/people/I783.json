@@ -1,0 +1,25 @@
+{
+  "id": "I783",
+  "name": "Sarah Unknown",
+  "givenName": "Sarah",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I773"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I773",
+      "familyId": "F322",
+      "marriageDate": "1859",
+      "marriagePlace": "Wincanton, Somerset"
+    }
+  ]
+}

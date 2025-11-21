@@ -1,0 +1,33 @@
+{
+  "id": "I225",
+  "name": "James Myall",
+  "givenName": "James",
+  "surname": "Myall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "Stour Provost, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I84"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I226"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "37-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I84",
+      "familyId": "F54",
+      "marriageDate": "7 JUN1846",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

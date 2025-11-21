@@ -1,0 +1,32 @@
+{
+  "id": "I2071",
+  "name": "Maud LouiseDrinkwater",
+  "givenName": "Maud",
+  "surname": "LouiseDrinkwater",
+  "sex": "F",
+  "birthDate": "1891",
+  "birthPlace": "Deptford",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2070"
+  ],
+  "childIds": [
+    "I2072",
+    "I2073",
+    "I2074",
+    "I2075",
+    "I2076",
+    "I2077",
+    "I2078",
+    "I2079"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2070",
+      "familyId": "F744"
+    }
+  ]
+}

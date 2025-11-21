@@ -1,0 +1,36 @@
+{
+  "id": "I1123",
+  "name": "Walter Matthews",
+  "givenName": "Walter",
+  "surname": "Matthews",
+  "sex": "M",
+  "birthDate": "Abt 1908",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1122"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1124"
+  ],
+  "occupations": [
+    "Roadman"
+  ],
+  "residences": [
+    {
+      "date": "1939",
+      "place": "Sturminster Newton, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1122",
+      "familyId": "F454",
+      "marriageDate": "29 JULY 1939",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

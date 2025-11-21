@@ -1,0 +1,34 @@
+{
+  "id": "I959",
+  "name": "Marie Elizabeth Chapman",
+  "givenName": "Marie Elizabeth",
+  "surname": "Chapman",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I955"
+  ],
+  "childIds": [
+    "I960",
+    "I961",
+    "I962",
+    "I963",
+    "I964"
+  ],
+  "parentIds": [
+    "I967",
+    "I968"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I955",
+      "familyId": "F398",
+      "marriageDate": "1879",
+      "marriagePlace": "Mudgee, NSW"
+    }
+  ]
+}

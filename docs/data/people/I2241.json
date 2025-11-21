@@ -1,0 +1,28 @@
+{
+  "id": "I2241",
+  "name": "David Summers",
+  "givenName": "David",
+  "surname": "Summers",
+  "sex": "M",
+  "birthDate": "1 NOV 1957",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2239"
+  ],
+  "childIds": [
+    "I2248",
+    "I2247"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2239",
+      "familyId": "F795",
+      "marriageDate": "30 JUN 1982",
+      "marriagePlace": "Hanham Methodist Church"
+    }
+  ]
+}

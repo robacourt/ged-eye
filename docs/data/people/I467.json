@@ -1,0 +1,26 @@
+{
+  "id": "I467",
+  "name": "Thomas Coffin",
+  "givenName": "Thomas",
+  "surname": "Coffin",
+  "sex": "M",
+  "birthDate": "Bef 1780",
+  "birthPlace": null,
+  "deathDate": "Aft 1798",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I468"
+  ],
+  "childIds": [
+    "I71",
+    "I1472"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I468",
+      "familyId": "F45"
+    }
+  ]
+}

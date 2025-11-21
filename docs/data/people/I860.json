@@ -1,0 +1,28 @@
+{
+  "id": "I860",
+  "name": "Walter Campbell White",
+  "givenName": "Walter Campbell",
+  "surname": "White",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I846"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I846",
+      "familyId": "F372",
+      "marriageDate": "1938",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I1984",
+  "name": "Daniel Llewellyn Jones",
+  "givenName": "Daniel Llewellyn",
+  "surname": "Jones",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1410"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1410",
+      "familyId": "F710"
+    }
+  ]
+}

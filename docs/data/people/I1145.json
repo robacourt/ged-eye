@@ -1,0 +1,26 @@
+{
+  "id": "I1145",
+  "name": "George Horlock",
+  "givenName": "George",
+  "surname": "Horlock",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1144"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F465"
+    }
+  ]
+}

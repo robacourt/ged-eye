@@ -1,0 +1,23 @@
+{
+  "id": "I665",
+  "name": "Thomas Lewis",
+  "givenName": "Thomas",
+  "surname": "Lewis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I664"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F278"
+    }
+  ]
+}

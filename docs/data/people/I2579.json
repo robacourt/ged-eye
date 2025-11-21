@@ -1,0 +1,24 @@
+{
+  "id": "I2579",
+  "name": "Arthur A'Court",
+  "givenName": "Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1886",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1636",
+    "I1637"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Yeovil, Somerset, 29 Queen's St."
+    }
+  ]
+}

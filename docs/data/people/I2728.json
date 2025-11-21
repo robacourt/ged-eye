@@ -1,0 +1,18 @@
+{
+  "id": "I2728",
+  "name": "Eric Fraser",
+  "givenName": "Eric",
+  "surname": "Fraser",
+  "sex": "M",
+  "birthDate": "1918",
+  "birthPlace": null,
+  "deathDate": "2 WEEKS OLD",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I417",
+    "I418"
+  ]
+}

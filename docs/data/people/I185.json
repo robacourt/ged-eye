@@ -1,0 +1,65 @@
+{
+  "id": "I185",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4 AUG1827",
+  "birthPlace": null,
+  "deathDate": "OCT 13 1885",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I283"
+  ],
+  "childIds": [
+    "I284",
+    "I285",
+    "I286"
+  ],
+  "parentIds": [
+    "I53",
+    "I183"
+  ],
+  "baptismDate": "12 AUG1827",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "1885",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab",
+    "Brewer",
+    "Assistant Brewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": null
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, Pleck, Muds Plot"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset. New St."
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St, Beer House"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Marnhull, Dorset, Butts, New Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I283",
+      "familyId": "F103",
+      "marriageDate": "4 APR 1859",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

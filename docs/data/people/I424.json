@@ -1,0 +1,72 @@
+{
+  "id": "I424",
+  "name": "Agnes Taylor Hillocks",
+  "givenName": "Agnes Taylor",
+  "surname": "Hillocks",
+  "sex": "F",
+  "birthDate": "23 MAR 1855",
+  "birthPlace": "Dundee Scotland",
+  "deathDate": "MAR 1931",
+  "deathPlace": "London, Edmonton",
+  "photos": [
+    "Data/Picture/Agnes Taylor Hillocks.jpg",
+    "Data/Picture/Agnes Taylor Frentzel ne'e Hillocks - scot clan Gordon.  on the stage at 14 yrs.jpg",
+    "Data/Picture/Agnes Taylor Hillocks yr of photo1880.jpg",
+    "Data/Media/1921 Census/London/RG15 06930 292.jpg"
+  ],
+  "spouseIds": [
+    "I423"
+  ],
+  "childIds": [
+    "I417",
+    "I425",
+    "I426",
+    "I427",
+    "I428"
+  ],
+  "parentIds": [
+    "I443",
+    "I444"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Lambeth, 12 Hanover Place"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, Sandringham Road"
+    },
+    {
+      "date": "1891",
+      "place": "London, Stamford Hill, 96 Osbaldeston Road"
+    },
+    {
+      "date": "1901",
+      "place": "London, Stamford Hill, 96 Osbaldeston Road"
+    },
+    {
+      "date": "1911",
+      "place": "London, Stamford Hill, 46 Northfield Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Southgate, 13 Mayfield Avenue"
+    }
+  ],
+  "residences": [
+    {
+      "date": "NOV 1918",
+      "place": "London, Old Southgate, 13 Mayfield Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I423",
+      "familyId": "F192",
+      "marriageDate": "22 JUL 1885",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I424_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I2700",
+  "name": "George Douglas McCann",
+  "givenName": "George Douglas",
+  "surname": "McCann",
+  "sex": "M",
+  "birthDate": "ABT 1926",
+  "birthPlace": "Essex",
+  "deathDate": "ABT 1993",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2699"
+  ],
+  "childIds": [
+    "I2701"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2699",
+      "familyId": "F939"
+    }
+  ]
+}

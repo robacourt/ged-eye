@@ -1,0 +1,18 @@
+{
+  "id": "I2380",
+  "name": "Bert A'Court Duffey",
+  "givenName": "Bert A'Court",
+  "surname": "Duffey",
+  "sex": "M",
+  "birthDate": "11 APR 1916",
+  "birthPlace": "Canada, Victoria B.C.",
+  "deathDate": "23 NOV 1996",
+  "deathPlace": "Vancover B.C.",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2379",
+    "I1406"
+  ]
+}

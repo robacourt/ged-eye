@@ -1,0 +1,33 @@
+{
+  "id": "I591",
+  "name": "( louisa ) Kate Lewis Hatcher",
+  "givenName": "( louisa ) Kate Lewis",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I619"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I157",
+    "I317"
+  ],
+  "baptismDate": "13.10.1878",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "2-1881, 12-1891, 23-1902,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I619",
+      "familyId": "F243",
+      "marriageDate": "17.6.1902",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

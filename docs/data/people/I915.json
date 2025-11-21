@@ -1,0 +1,35 @@
+{
+  "id": "I915",
+  "name": "Ellen Unknown",
+  "givenName": "Ellen",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "BEF 1885",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I231"
+  ],
+  "childIds": [
+    "I916",
+    "I917",
+    "I918",
+    "I2538"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Cricklade, Chelworth"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I231",
+      "familyId": "F127",
+      "marriageDate": "ABT 1898"
+    }
+  ]
+}

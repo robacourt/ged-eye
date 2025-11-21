@@ -1,0 +1,26 @@
+{
+  "id": "I1970",
+  "name": "Betty Elizabeth Drost",
+  "givenName": "Betty Elizabeth",
+  "surname": "Drost",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1971"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1969",
+    "I1408"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1971",
+      "familyId": "F704"
+    }
+  ]
+}

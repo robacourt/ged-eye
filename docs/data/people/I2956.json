@@ -1,0 +1,35 @@
+{
+  "id": "I2956",
+  "name": "Katherine Unknown",
+  "givenName": "Katherine",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1850",
+  "birthPlace": "Dorset, Weymouth",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Devon/Torquay/RG14 12772 195.jpg"
+  ],
+  "spouseIds": [
+    "I2957"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Assistant Matron, Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Devon, Torquay, Tormoham, Temple Lodge"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2957",
+      "familyId": "F1014"
+    }
+  ],
+  "avatar": "avatars/I2956_0.jpg"
+}

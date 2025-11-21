@@ -1,0 +1,34 @@
+{
+  "id": "I2691",
+  "name": "Joseph Bishop",
+  "givenName": "Joseph",
+  "surname": "Bishop",
+  "sex": "M",
+  "birthDate": "ABT 1823",
+  "birthPlace": "Buckland Newton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I191"
+  ],
+  "childIds": [
+    "I323"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Elementary School Carpenter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Sherborne, Dorset, 169 Horsecastles"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I191",
+      "familyId": "F109"
+    }
+  ]
+}

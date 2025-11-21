@@ -1,0 +1,24 @@
+{
+  "id": "I2408",
+  "name": "Alfred T Crew",
+  "givenName": "Alfred T",
+  "surname": "Crew",
+  "sex": "M",
+  "birthDate": "ABT 1861",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2406",
+    "I2407"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stalbridge, Dorset, Landshire Lane"
+    }
+  ]
+}

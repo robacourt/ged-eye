@@ -1,0 +1,52 @@
+{
+  "id": "I8",
+  "name": "Henry ( Harry ) A'Court",
+  "givenName": "Henry ( Harry )",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1827",
+  "birthPlace": "Okeford Fitzpaine, Dorset",
+  "deathDate": "Bef 1891",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I140"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1",
+    "I2"
+  ],
+  "occupations": [
+    "Sawyer",
+    "Ag Lab",
+    "Ag Lab",
+    "Brewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, Marnhull Common"
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, New St"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, New St.  Beer House"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I140",
+      "familyId": "F7",
+      "marriageDate": "27 MAR 1851",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

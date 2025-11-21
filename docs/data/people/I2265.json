@@ -1,0 +1,27 @@
+{
+  "id": "I2265",
+  "name": "Philip A'Court",
+  "givenName": "Philip",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1850",
+  "birthPlace": "Jersey, C.I. St Ouen.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Jersey/RG09 4405 6 6.png"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    }
+  ],
+  "avatar": "avatars/I2265_0.jpg"
+}

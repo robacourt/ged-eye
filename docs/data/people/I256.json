@@ -1,0 +1,25 @@
+{
+  "id": "I256",
+  "name": "Priscilla Trowbridge",
+  "givenName": "Priscilla",
+  "surname": "Trowbridge",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I255"
+  ],
+  "childIds": [
+    "I254"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I255",
+      "familyId": "F131"
+    }
+  ]
+}

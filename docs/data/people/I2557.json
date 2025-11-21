@@ -1,0 +1,37 @@
+{
+  "id": "I2557",
+  "name": "Charles John A'Court",
+  "givenName": "Charles John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1870",
+  "birthPlace": "London, St. Pancras",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2558"
+  ],
+  "childIds": [
+    "I2560",
+    "I2559",
+    "I2561"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Post Office Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Mile End Old Town, 23 Bloomfield Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2558",
+      "familyId": "F900",
+      "marriageDate": "ABT 1899"
+    }
+  ]
+}

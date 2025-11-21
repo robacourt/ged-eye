@@ -1,0 +1,49 @@
+{
+  "id": "I360",
+  "name": "Emma Mitchell",
+  "givenName": "Emma",
+  "surname": "Mitchell",
+  "sex": "F",
+  "birthDate": "ABT 1843",
+  "birthPlace": "Idmiston, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Swindon/RG14 11786 263.jpg"
+  ],
+  "spouseIds": [
+    "I229"
+  ],
+  "childIds": [
+    "I361",
+    "I362"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Wiltshire, Calne, Quemerford"
+    },
+    {
+      "date": "1891",
+      "place": "Wiltshire, Swindon, Highworth, Shaftesbury Terrace, Dixon St."
+    },
+    {
+      "date": "1901",
+      "place": "Wiltshire, Swindon, 186 Rodbourne Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Swindon, 7 Rose St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I229",
+      "familyId": "F124",
+      "marriageDate": "1872",
+      "marriagePlace": "Wiltshire, Idmiston."
+    }
+  ],
+  "avatar": "avatars/I360_0.jpg"
+}

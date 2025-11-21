@@ -1,0 +1,33 @@
+{
+  "id": "I2055",
+  "name": "Evelyn Beatrice Drinkwater",
+  "givenName": "Evelyn Beatrice",
+  "surname": "Drinkwater",
+  "sex": "F",
+  "birthDate": "Abt 1897",
+  "birthPlace": "Peckham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2054"
+  ],
+  "childIds": [
+    "I2056",
+    "I2057",
+    "I2058",
+    "I2059",
+    "I2060",
+    "I2061",
+    "I2062",
+    "I2053",
+    "I2063"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2054",
+      "familyId": "F740"
+    }
+  ]
+}

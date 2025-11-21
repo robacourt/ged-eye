@@ -1,0 +1,35 @@
+{
+  "id": "I2068",
+  "name": "Lillian Frances A'Court",
+  "givenName": "Lillian Frances",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1887",
+  "birthPlace": "Greenwich, Deptford",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg"
+  ],
+  "spouseIds": [
+    "I2069"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2065",
+    "I2066"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Deptford, Windmill Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2069",
+      "familyId": "F743"
+    }
+  ],
+  "avatar": "avatars/I2068_0.jpg"
+}

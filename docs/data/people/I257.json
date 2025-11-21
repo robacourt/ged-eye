@@ -1,0 +1,18 @@
+{
+  "id": "I257",
+  "name": "Eliza",
+  "givenName": "Eliza",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "20-1861 30-1871 40-1881"
+  ]
+}

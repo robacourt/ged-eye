@@ -1,0 +1,29 @@
+{
+  "id": "I879",
+  "name": "Mary Ann Unknown",
+  "givenName": "Mary Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1839",
+  "birthPlace": "Oxfordshire, Peppard",
+  "deathDate": "BEF 1898",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I386"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Portsmouth, 82 Thomas St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I386",
+      "familyId": "F595"
+    }
+  ]
+}

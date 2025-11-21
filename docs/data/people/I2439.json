@@ -1,0 +1,18 @@
+{
+  "id": "I2439",
+  "name": "Angela Slaymaker",
+  "givenName": "Angela",
+  "surname": "Slaymaker",
+  "sex": "F",
+  "birthDate": "1952",
+  "birthPlace": "Marsh Gibbon, Buckinghamshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2438",
+    "I2437"
+  ]
+}

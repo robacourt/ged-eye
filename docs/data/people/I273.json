@@ -1,0 +1,28 @@
+{
+  "id": "I273",
+  "name": "Stephen Shute",
+  "givenName": "Stephen",
+  "surname": "Shute",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I274"
+  ],
+  "childIds": [
+    "I270"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Yeoman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I274",
+      "familyId": "F134"
+    }
+  ]
+}

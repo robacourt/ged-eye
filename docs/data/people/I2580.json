@@ -1,0 +1,38 @@
+{
+  "id": "I2580",
+  "name": "Arthur A'Court",
+  "givenName": "Arthur",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1884",
+  "birthPlace": "Gillingham, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2581"
+  ],
+  "childIds": [
+    "I2582",
+    "I2583",
+    "I2584",
+    "I2585"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Builders labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Hampshire, Eastleigh, 72 Chamberlayne Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2581",
+      "familyId": "F904",
+      "marriageDate": "ABT 1906"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I327",
+  "name": "Christopher Kendall",
+  "givenName": "Christopher",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I328"
+  ],
+  "childIds": [
+    "I196"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I328",
+      "familyId": "F112"
+    }
+  ]
+}

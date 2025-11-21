@@ -1,0 +1,33 @@
+{
+  "id": "I1470",
+  "name": "Elizabeth F Unknown",
+  "givenName": "Elizabeth F",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1855",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1458"
+  ],
+  "childIds": [
+    "I1457",
+    "I1464",
+    "I1471"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Stoke Gabriel, Devon"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1458",
+      "familyId": "F562"
+    }
+  ]
+}

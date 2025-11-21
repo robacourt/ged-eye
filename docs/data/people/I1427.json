@@ -1,0 +1,40 @@
+{
+  "id": "I1427",
+  "name": "Lewis Soloman Isaacs",
+  "givenName": "Lewis Soloman",
+  "surname": "Isaacs",
+  "sex": "M",
+  "birthDate": "ABT 1899",
+  "birthPlace": "South Hackney, Victoria Park, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg",
+    "Data/Media/1911 census/London/Islington/RG14 829 73.jpg",
+    "Data/Media/1921 Census/London/Westminster/RG15 00535 31.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1425",
+    "I1424"
+  ],
+  "occupations": [
+    "Marine Engineer, Sea going, Blue Star Line, SS Celtic Star"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Hackney, London, 64 Kenninghall Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Islington, 29 Tollington Park N"
+    },
+    {
+      "date": "1921",
+      "place": "London, Westminster, 1 Derby St"
+    }
+  ],
+  "avatar": "avatars/I1427_0.jpg"
+}

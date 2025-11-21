@@ -1,0 +1,29 @@
+{
+  "id": "I394",
+  "name": "David A'Court",
+  "givenName": "David",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4- MAY 1933",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I396"
+  ],
+  "childIds": [
+    "I397",
+    "I398"
+  ],
+  "parentIds": [
+    "I392",
+    "I393"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I396",
+      "familyId": "F181"
+    }
+  ]
+}

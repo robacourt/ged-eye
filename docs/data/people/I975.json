@@ -1,0 +1,24 @@
+{
+  "id": "I975",
+  "name": "Henry C. Ryan",
+  "givenName": "Henry C.",
+  "surname": "Ryan",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I974"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I974",
+      "familyId": "F404",
+      "marriageDate": "1926"
+    }
+  ]
+}

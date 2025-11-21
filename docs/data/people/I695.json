@@ -1,0 +1,18 @@
+{
+  "id": "I695",
+  "name": "Deborah a'Court",
+  "givenName": "Deborah",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "14 JAN 1659/60",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I563",
+    "I686"
+  ]
+}

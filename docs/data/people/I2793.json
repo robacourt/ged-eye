@@ -1,0 +1,23 @@
+{
+  "id": "I2793",
+  "name": "Andreas Unknown",
+  "givenName": "Andreas",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I437"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I437",
+      "familyId": "F971"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I807",
+  "name": "Annie Hill",
+  "givenName": "Annie",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I791"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I791",
+      "familyId": "F336",
+      "marriageDate": "1896",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

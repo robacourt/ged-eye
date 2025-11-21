@@ -1,0 +1,27 @@
+{
+  "id": "I1596",
+  "name": "Elsie Amy A'Court",
+  "givenName": "Elsie Amy",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1910",
+  "birthPlace": "Glamorganshire, Cardiff",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Herefordshire/RG14 15809 298.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1591",
+    "I1593"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Cardiff, 15 Rennie St."
+    }
+  ],
+  "avatar": "avatars/I1596_0.jpg"
+}

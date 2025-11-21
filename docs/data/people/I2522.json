@@ -1,0 +1,27 @@
+{
+  "id": "I2522",
+  "name": "Amelia Rosina E. Percival",
+  "givenName": "Amelia Rosina E.",
+  "surname": "Percival",
+  "sex": "F",
+  "birthDate": "1895",
+  "birthPlace": "Bournemouth,",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2521"
+  ],
+  "childIds": [
+    "I2523"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2521",
+      "familyId": "F891",
+      "marriageDate": "1932",
+      "marriagePlace": "Bournemouth"
+    }
+  ]
+}

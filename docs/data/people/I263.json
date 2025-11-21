@@ -1,0 +1,40 @@
+{
+  "id": "I263",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Blandford Forum/RG 10 1978 61 26.jpg",
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg",
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 67 19.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I44",
+    "I259"
+  ],
+  "occupations": [
+    "Farmer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    }
+  ],
+  "avatar": "avatars/I263_0.jpg"
+}

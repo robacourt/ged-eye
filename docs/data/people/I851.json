@@ -1,0 +1,23 @@
+{
+  "id": "I851",
+  "name": "never married",
+  "givenName": "never",
+  "surname": "married",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I838"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I838",
+      "familyId": "F363"
+    }
+  ]
+}

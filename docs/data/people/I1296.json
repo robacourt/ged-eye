@@ -1,0 +1,18 @@
+{
+  "id": "I1296",
+  "name": "Margaret J A'Court",
+  "givenName": "Margaret J",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1ST QTR 1941",
+  "birthPlace": "Bridgewater, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1266",
+    "I1295"
+  ]
+}

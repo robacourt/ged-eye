@@ -1,0 +1,47 @@
+{
+  "id": "I382",
+  "name": "Clement Wheeler Bennett",
+  "givenName": "Clement Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "1888",
+  "birthPlace": "Kent, Bromley",
+  "deathDate": "1958",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I387"
+  ],
+  "childIds": [
+    "I388",
+    "I1629"
+  ],
+  "parentIds": [
+    "I377",
+    "I380"
+  ],
+  "occupations": [
+    "Doctor",
+    "Medical Practitioner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Sussex, Steyning, Glen Ofen"
+    },
+    {
+      "date": "1891",
+      "place": "Kent, Bromley, Carisbrook"
+    },
+    {
+      "date": "1939",
+      "place": "Sussex, Steyning, Goring Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I387",
+      "familyId": "F175"
+    }
+  ]
+}

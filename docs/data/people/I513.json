@@ -1,0 +1,41 @@
+{
+  "id": "I513",
+  "name": "Ernest Richard A'Court",
+  "givenName": "Ernest Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "London, Shephe??",
+  "deathDate": "21JAN1940",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 205 1.jpg"
+  ],
+  "spouseIds": [
+    "I514"
+  ],
+  "childIds": [
+    "I2106"
+  ],
+  "parentIds": [
+    "I2042",
+    "I2043"
+  ],
+  "notes": [
+    "In Memory of"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hammersmith, 1 Aylmer Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I514",
+      "familyId": "F219",
+      "marriageDate": "1934"
+    }
+  ],
+  "avatar": "avatars/I513_0.jpg"
+}

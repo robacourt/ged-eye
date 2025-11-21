@@ -1,0 +1,24 @@
+{
+  "id": "I2513",
+  "name": "Frederick Bewes",
+  "givenName": "Frederick",
+  "surname": "Bewes",
+  "sex": "M",
+  "birthDate": "ABT 1891",
+  "birthPlace": "Liverpool, Lancashire, West Derby",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2510",
+    "I2509"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wavertree, Lancashire, 14 Cambridge St."
+    }
+  ]
+}

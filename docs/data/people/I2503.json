@@ -1,0 +1,26 @@
+{
+  "id": "I2503",
+  "name": "Charles Harold A'Court",
+  "givenName": "Charles Harold",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1890",
+  "birthPlace": "Kumara, Westland, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2504"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1906",
+    "I1907"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2504",
+      "familyId": "F886"
+    }
+  ]
+}

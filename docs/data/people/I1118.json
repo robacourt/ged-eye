@@ -1,0 +1,36 @@
+{
+  "id": "I1118",
+  "name": "Joseph Charles Legg",
+  "givenName": "Joseph Charles",
+  "surname": "Legg",
+  "sex": "M",
+  "birthDate": "ABT 1885",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1117"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1119"
+  ],
+  "occupations": [
+    "Groom"
+  ],
+  "residences": [
+    {
+      "date": "1923",
+      "place": "Bishops Caundle, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1117",
+      "familyId": "F451",
+      "marriageDate": "6 JUN 1923",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

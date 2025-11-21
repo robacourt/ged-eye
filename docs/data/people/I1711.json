@@ -1,0 +1,23 @@
+{
+  "id": "I1711",
+  "name": "Unknown Turnbull",
+  "givenName": "Unknown",
+  "surname": "Turnbull",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1710"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F626"
+    }
+  ]
+}

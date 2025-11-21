@@ -1,0 +1,30 @@
+{
+  "id": "I2240",
+  "name": "Andrew James Davis",
+  "givenName": "Andrew James",
+  "surname": "Davis",
+  "sex": "M",
+  "birthDate": "2 MAY 1959",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2245"
+  ],
+  "childIds": [
+    "I2246",
+    "I2244"
+  ],
+  "parentIds": [
+    "I2151",
+    "I2152"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2245",
+      "familyId": "F796",
+      "marriagePlace": "Bristol Registry Office"
+    }
+  ]
+}

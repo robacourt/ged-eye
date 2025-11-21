@@ -1,0 +1,50 @@
+{
+  "id": "I246",
+  "name": "Thomas Fudge",
+  "givenName": "Thomas",
+  "surname": "Fudge",
+  "sex": "M",
+  "birthDate": "4 AUG 1823",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I40",
+    "I682"
+  ],
+  "childIds": [
+    "I247",
+    "I248",
+    "I249",
+    "I250",
+    "I251",
+    "I252",
+    "I253"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "General labourer"
+  ],
+  "notes": [
+    "1881 British Census"
+  ],
+  "censusRecords": [
+    {
+      "date": null,
+      "place": "15-1841, 27-1851, 38-1861, 57-1881"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I40",
+      "familyId": "F28",
+      "marriageDate": "8.4.1844",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I682",
+      "familyId": "F129"
+    }
+  ]
+}

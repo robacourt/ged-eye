@@ -1,0 +1,25 @@
+{
+  "id": "I2367",
+  "name": "Unknown Wood",
+  "givenName": "Unknown",
+  "surname": "Wood",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2142"
+  ],
+  "childIds": [
+    "I2368"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2142",
+      "familyId": "F838"
+    }
+  ]
+}

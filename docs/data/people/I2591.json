@@ -1,0 +1,27 @@
+{
+  "id": "I2591",
+  "name": "Leslie Ernest A'Court",
+  "givenName": "Leslie Ernest",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "Bristol, Brislington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 14917 46.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1587",
+    "I2590"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Southville, 10 Allington Rd."
+    }
+  ],
+  "avatar": "avatars/I2591_0.jpg"
+}

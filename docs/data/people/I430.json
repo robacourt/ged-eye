@@ -1,0 +1,39 @@
+{
+  "id": "I430",
+  "name": "Arthur Walter Francis Wilkinson",
+  "givenName": "Arthur Walter Francis",
+  "surname": "Wilkinson",
+  "sex": "M",
+  "birthDate": "29 JUL 1920",
+  "birthPlace": "London, 96 Northfield Rd",
+  "deathDate": "23 OCT 2006",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Frank Wilkinson.jpg",
+    "Data/Picture/Frank Wilkinson2.jpg",
+    "Data/Media/1921 Census/London/RG15 06930 292.jpg"
+  ],
+  "spouseIds": [
+    "I436"
+  ],
+  "childIds": [
+    "I437"
+  ],
+  "parentIds": [
+    "I429",
+    "I428"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "London, Southgate, 13 Mayfield Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I436",
+      "familyId": "F198"
+    }
+  ],
+  "avatar": "avatars/I430_1.jpg"
+}

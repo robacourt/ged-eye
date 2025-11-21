@@ -1,0 +1,28 @@
+{
+  "id": "I2009",
+  "name": "John Wigglesworth",
+  "givenName": "John",
+  "surname": "Wigglesworth",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2981"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2008",
+    "I422"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2981",
+      "familyId": "F1024",
+      "marriageDate": "1968",
+      "marriagePlace": "London Westminster"
+    }
+  ]
+}

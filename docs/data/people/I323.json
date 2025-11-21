@@ -1,0 +1,31 @@
+{
+  "id": "I323",
+  "name": "Joseph Bishop A'Court",
+  "givenName": "Joseph Bishop",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "26 OCT 1845",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2691",
+    "I191"
+  ],
+  "baptismDate": "30 NOV 1845",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "14 FEB 1914",
+  "burialPlace": "Sherborne Cemetery",
+  "occupations": [
+    "Carpenter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Sherborne, Dorset, Horsecastles"
+    }
+  ]
+}

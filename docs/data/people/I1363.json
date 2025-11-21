@@ -1,0 +1,27 @@
+{
+  "id": "I1363",
+  "name": "Horace William Charles Cundy",
+  "givenName": "Horace William Charles",
+  "surname": "Cundy",
+  "sex": "M",
+  "birthDate": "1879",
+  "birthPlace": "Greytown",
+  "deathDate": "1945",
+  "deathPlace": "Featherston, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I1364"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1346",
+    "I1345"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1364",
+      "familyId": "F541",
+      "marriageDate": "1945"
+    }
+  ]
+}

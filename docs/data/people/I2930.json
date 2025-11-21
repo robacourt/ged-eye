@@ -1,0 +1,27 @@
+{
+  "id": "I2930",
+  "name": "Cecil West",
+  "givenName": "Cecil",
+  "surname": "West",
+  "sex": "M",
+  "birthDate": "Abt 1904",
+  "birthPlace": "Wiltshire, Swindon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Swindon/RG14 11786 263.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2928",
+    "I362"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Swindon, 7 Rose St."
+    }
+  ],
+  "avatar": "avatars/I2930_0.jpg"
+}

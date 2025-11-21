@@ -1,0 +1,23 @@
+{
+  "id": "I2914",
+  "name": "George Alfred Pearce",
+  "givenName": "George Alfred",
+  "surname": "Pearce",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2590"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F995"
+    }
+  ]
+}

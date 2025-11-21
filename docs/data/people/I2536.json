@@ -1,0 +1,27 @@
+{
+  "id": "I2536",
+  "name": "Dorothy May A'Court",
+  "givenName": "Dorothy May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1902",
+  "birthPlace": "Buckhorn Weston, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Dorset/Bourton/RG14 12188 29.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I221",
+    "I358"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bourton, Dorset, The Common"
+    }
+  ],
+  "avatar": "avatars/I2536_0.jpg"
+}

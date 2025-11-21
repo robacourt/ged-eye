@@ -1,0 +1,26 @@
+{
+  "id": "I2763",
+  "name": "Steven A'Court",
+  "givenName": "Steven",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2764"
+  ],
+  "parentIds": [
+    "I1449",
+    "I2762"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F962"
+    }
+  ]
+}

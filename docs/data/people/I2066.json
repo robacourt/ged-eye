@@ -1,0 +1,44 @@
+{
+  "id": "I2066",
+  "name": "Emily Stephenson",
+  "givenName": "Emily",
+  "surname": "Stephenson",
+  "sex": "F",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Reading, Berkshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2065"
+  ],
+  "childIds": [
+    "I2067",
+    "I2068",
+    "I2070",
+    "I2080",
+    "I2054",
+    "I2081",
+    "I2082",
+    "I2083",
+    "I2084"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    },
+    {
+      "date": "1891",
+      "place": "London, Deptford, Windmill Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2065",
+      "familyId": "F742",
+      "marriageDate": "ABT 1884"
+    }
+  ]
+}

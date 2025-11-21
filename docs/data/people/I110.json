@@ -1,0 +1,29 @@
+{
+  "id": "I110",
+  "name": "Elizabeth Terrell",
+  "givenName": "Elizabeth",
+  "surname": "Terrell",
+  "sex": "F",
+  "birthDate": "1855",
+  "birthPlace": null,
+  "deathDate": "1940",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I730"
+  ],
+  "childIds": [
+    "I731"
+  ],
+  "parentIds": [
+    "I109",
+    "I78"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I730",
+      "familyId": "F67",
+      "marriageDate": "2 JUN 1884"
+    }
+  ]
+}

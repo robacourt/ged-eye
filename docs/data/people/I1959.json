@@ -1,0 +1,19 @@
+{
+  "id": "I1959",
+  "name": "Victoria Louise Plant",
+  "givenName": "Victoria Louise",
+  "surname": "Plant",
+  "sex": "F",
+  "birthDate": "30 JAN 1982",
+  "birthPlace": "Surrey, British Columbia, Canada",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1956",
+    "I1955"
+  ],
+  "baptismPlace": "Delta, St. Cuthberts"
+}

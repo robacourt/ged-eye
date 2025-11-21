@@ -1,0 +1,38 @@
+{
+  "id": "I1905",
+  "name": "Mary Crosley",
+  "givenName": "Mary",
+  "surname": "Crosley",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I74",
+    "I1943"
+  ],
+  "childIds": [
+    "I2481",
+    "I1906"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Hello Ian"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I74",
+      "familyId": "F675",
+      "marriageDate": "1 MAR 1860",
+      "marriagePlace": "Melbourne, Australia, St James Cathedral"
+    },
+    {
+      "spouseId": "I1943",
+      "familyId": "F691",
+      "marriageDate": "1872",
+      "marriagePlace": "Kumara, Westland, New Zealand"
+    }
+  ]
+}

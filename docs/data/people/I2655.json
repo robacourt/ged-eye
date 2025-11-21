@@ -1,0 +1,18 @@
+{
+  "id": "I2655",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3QTR 1939",
+  "birthPlace": "Bridgend",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2657",
+    "I2656"
+  ]
+}

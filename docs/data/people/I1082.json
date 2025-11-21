@@ -1,0 +1,35 @@
+{
+  "id": "I1082",
+  "name": "Julia Hatcher",
+  "givenName": "Julia",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "11 JULY 1856",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1081"
+  ],
+  "childIds": [
+    "I1116",
+    "I1117",
+    "I1120",
+    "I1129"
+  ],
+  "parentIds": [
+    "I1083",
+    "I1084"
+  ],
+  "baptismDate": "22 JULY 1856",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1081",
+      "familyId": "F430",
+      "marriageDate": "27 JULY 1885",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

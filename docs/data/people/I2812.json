@@ -1,0 +1,54 @@
+{
+  "id": "I2812",
+  "name": "Gertrude A'Court",
+  "givenName": "Gertrude",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1867",
+  "birthPlace": "Jersey,C.I. St Peter",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Jersey/RG10 5763 101 2.jpg",
+    "Data/Media/1881 census/Jersey/St Laurence/RG11 5623 24 1.jpg",
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34928 87 .jpg"
+  ],
+  "spouseIds": [
+    "I2877"
+  ],
+  "childIds": [
+    "I2909",
+    "I2910",
+    "I2911"
+  ],
+  "parentIds": [
+    "I2089",
+    "I2810"
+  ],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Peter, Ruette a la Vioge"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Laurence, Mill Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, St Aubins Rd, Orient Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2877",
+      "familyId": "F983",
+      "marriageDate": "13 JAN 1889",
+      "marriagePlace": "St Simon"
+    }
+  ],
+  "avatar": "avatars/I2812_0.jpg"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "I1414",
+  "name": "Mary J A'Court",
+  "givenName": "Mary J",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1852",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg",
+    "Data/Media/1881 census/Surrey/RG11 773 101 11.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1386",
+    "I1405"
+  ],
+  "occupations": [
+    "Dressmaker",
+    "Domestic servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1881",
+      "place": "Surrey, Woking Knaphill Female Prison"
+    }
+  ],
+  "avatar": "avatars/I1414_0.jpg"
+}

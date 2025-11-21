@@ -1,0 +1,25 @@
+{
+  "id": "I2947",
+  "name": "Joseph Barnett",
+  "givenName": "Joseph",
+  "surname": "Barnett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2948"
+  ],
+  "childIds": [
+    "I2734"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2948",
+      "familyId": "F1006"
+    }
+  ]
+}

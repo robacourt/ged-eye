@@ -1,0 +1,18 @@
+{
+  "id": "I2685",
+  "name": "Walter J. A'Court",
+  "givenName": "Walter J.",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4QTR 1941",
+  "birthPlace": "Portsmouth, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2687",
+    "I2686"
+  ]
+}

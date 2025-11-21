@@ -1,0 +1,22 @@
+{
+  "id": "I70",
+  "name": "Elizabeth Megan A'Court",
+  "givenName": "Elizabeth Megan",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I23",
+    "I69"
+  ],
+  "baptismDate": "15 MAY 1799",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "14 DEC 1815",
+  "burialPlace": "Fifehead Magdalen, Dorset"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I2444",
+  "name": "Annie Hooper",
+  "givenName": "Annie",
+  "surname": "Hooper",
+  "sex": "F",
+  "birthDate": "ABT 1868",
+  "birthPlace": "Wellow, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2443"
+  ],
+  "childIds": [
+    "I1089"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Burgate, Fordingbridge, Hampshire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2443",
+      "familyId": "F866"
+    }
+  ]
+}

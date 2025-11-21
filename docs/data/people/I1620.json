@@ -1,0 +1,40 @@
+{
+  "id": "I1620",
+  "name": "Thomas A'Court",
+  "givenName": "Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1867",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 36 17 .jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 28 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1617",
+    "I1616"
+  ],
+  "occupations": [
+    "Ag Lab",
+    "Brewers Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    }
+  ],
+  "avatar": "avatars/I1620_0.jpg"
+}

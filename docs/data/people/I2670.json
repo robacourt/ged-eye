@@ -1,0 +1,18 @@
+{
+  "id": "I2670",
+  "name": "Theresa J. A'Court",
+  "givenName": "Theresa J.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2QTR 1941",
+  "birthPlace": "Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2671",
+    "I2672"
+  ]
+}

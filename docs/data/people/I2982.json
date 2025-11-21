@@ -1,0 +1,26 @@
+{
+  "id": "I2982",
+  "name": "Phoebe Unknown",
+  "givenName": "Phoebe",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/Fenland_Citizen_27_March_1996_0015.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I2981"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F1025"
+    }
+  ],
+  "avatar": "avatars/I2982_0.jpg"
+}

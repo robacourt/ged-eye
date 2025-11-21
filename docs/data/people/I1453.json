@@ -1,0 +1,28 @@
+{
+  "id": "I1453",
+  "name": "Florence Eliza Bennett",
+  "givenName": "Florence Eliza",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "ABT 1877",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1610"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I378",
+    "I894"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1610",
+      "familyId": "F623",
+      "marriageDate": "27TH JULY 1905",
+      "marriagePlace": "London, Streatham Common"
+    }
+  ]
+}

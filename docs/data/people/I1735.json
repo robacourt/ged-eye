@@ -1,0 +1,25 @@
+{
+  "id": "I1735",
+  "name": "Martha Candy",
+  "givenName": "Martha",
+  "surname": "Candy",
+  "sex": "F",
+  "birthDate": "BEF 1828",
+  "birthPlace": "Bourton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1733"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1733",
+      "familyId": "F634",
+      "marriageDate": "8 FEB 1848",
+      "marriagePlace": "Wincanton, Baptist Chapel"
+    }
+  ]
+}

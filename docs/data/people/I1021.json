@@ -1,0 +1,25 @@
+{
+  "id": "I1021",
+  "name": "Mabel Soans",
+  "givenName": "Mabel",
+  "surname": "Soans",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1020"
+  ],
+  "childIds": [
+    "I1019"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1020",
+      "familyId": "F420"
+    }
+  ]
+}

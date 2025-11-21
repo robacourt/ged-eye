@@ -1,0 +1,27 @@
+{
+  "id": "I2980",
+  "name": "James Lent",
+  "givenName": "James",
+  "surname": "Lent",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2979"
+  ],
+  "childIds": [
+    "I452"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2979",
+      "familyId": "F1023",
+      "marriageDate": "18 AUG 1858",
+      "marriagePlace": "Northumberland, Berwick"
+    }
+  ]
+}

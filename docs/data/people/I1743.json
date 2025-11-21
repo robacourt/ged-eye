@@ -1,0 +1,27 @@
+{
+  "id": "I1743",
+  "name": "William Theobald",
+  "givenName": "William",
+  "surname": "Theobald",
+  "sex": "M",
+  "birthDate": "ABT 1877",
+  "birthPlace": "Hackney, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Hackney/RG11 298 67 9.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Grandson of Richard A'Court #767 possibly child of Edith A'Court #887"
+  ],
+  "censusRecords": [
+    {
+      "date": null,
+      "place": "London, Hackney, 64 Graham Road."
+    }
+  ],
+  "avatar": "avatars/I1743_0.jpg"
+}

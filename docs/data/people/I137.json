@@ -1,0 +1,29 @@
+{
+  "id": "I137",
+  "name": "James Dean",
+  "givenName": "James",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I136"
+  ],
+  "childIds": [
+    "I135",
+    "I12"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Malster"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I136",
+      "familyId": "F9"
+    }
+  ]
+}

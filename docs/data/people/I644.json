@@ -1,0 +1,21 @@
+{
+  "id": "I644",
+  "name": "Elizabeth Hatcher",
+  "givenName": "Elizabeth",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "ABT 1879",
+  "birthPlace": "Newfoundland, Canada",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I159",
+    "I643"
+  ],
+  "notes": [
+    "2 in 1881"
+  ]
+}

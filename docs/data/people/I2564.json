@@ -1,0 +1,27 @@
+{
+  "id": "I2564",
+  "name": "Doris A'court",
+  "givenName": "Doris",
+  "surname": "A'court",
+  "sex": "F",
+  "birthDate": "ABT 1906",
+  "birthPlace": "London, Lambeth",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Tooting/RG14 2353 222.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2458",
+    "I2563"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Tooting, 84 Gassiot Rd."
+    }
+  ],
+  "avatar": "avatars/I2564_0.jpg"
+}

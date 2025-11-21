@@ -1,0 +1,54 @@
+{
+  "id": "I2856",
+  "name": "Henry Charles A'Court",
+  "givenName": "Henry Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1878",
+  "birthPlace": "London, Poplar",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Bromley/RG11 502 3 3.jpg",
+    "Data/Media/1891 census/London/West Ham/RG12 1323 58 12.jpg"
+  ],
+  "spouseIds": [
+    "I2893"
+  ],
+  "childIds": [
+    "I2899",
+    "I2900"
+  ],
+  "parentIds": [
+    "I2853",
+    "I2854"
+  ],
+  "occupations": [
+    "General painter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Poplar, 195 Grundy St."
+    },
+    {
+      "date": "1891",
+      "place": "London, West Ham, Sussex St"
+    },
+    {
+      "date": "1901",
+      "place": "London, West Ham, 75 New City Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Plaistow, 20 Hollybush St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2893",
+      "familyId": "F894"
+    }
+  ],
+  "avatar": "avatars/I2856_0.jpg"
+}

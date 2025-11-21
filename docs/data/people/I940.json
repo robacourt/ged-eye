@@ -1,0 +1,28 @@
+{
+  "id": "I940",
+  "name": "Ella Kathleen Anderson",
+  "givenName": "Ella Kathleen",
+  "surname": "Anderson",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I939"
+  ],
+  "childIds": [
+    "I1931",
+    "I1923"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I939",
+      "familyId": "F394",
+      "marriageDate": "10 AUG 1910",
+      "marriagePlace": "Sanson, Wellington, New Zealand"
+    }
+  ]
+}

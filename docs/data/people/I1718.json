@@ -1,0 +1,24 @@
+{
+  "id": "I1718",
+  "name": "Unknown Stuart",
+  "givenName": "Unknown",
+  "surname": "Stuart",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1719",
+    "I1717"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F628"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2274",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1839",
+  "birthPlace": "Jersey C.I. St. Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Lodging Housekeeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey C.I. St. Helier,11Grenville Street."
+    }
+  ]
+}

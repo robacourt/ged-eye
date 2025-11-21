@@ -1,0 +1,24 @@
+{
+  "id": "I176",
+  "name": "Libia a'Court",
+  "givenName": "Libia",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "1838",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I143",
+    "I174"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ]
+}

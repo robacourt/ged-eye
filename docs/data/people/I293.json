@@ -1,0 +1,28 @@
+{
+  "id": "I293",
+  "name": "William Seymour",
+  "givenName": "William",
+  "surname": "Seymour",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I294"
+  ],
+  "childIds": [
+    "I292"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Farmer"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I294",
+      "familyId": "F145"
+    }
+  ]
+}

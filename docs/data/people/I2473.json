@@ -1,0 +1,31 @@
+{
+  "id": "I2473",
+  "name": "Victoria Mary Emberson",
+  "givenName": "Victoria Mary",
+  "surname": "Emberson",
+  "sex": "F",
+  "birthDate": "1898",
+  "birthPlace": "London, Kennington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/St James/RG13 97 111 1.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2472",
+    "I2468"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Westminster, St. James, 179 Regent Street"
+    },
+    {
+      "date": "1911",
+      "place": "Chiswick, Middlesex, 80 Grove Park Terrace"
+    }
+  ],
+  "avatar": "avatars/I2473_0.jpg"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "I2428",
+  "name": "Ursula Wild",
+  "givenName": "Ursula",
+  "surname": "Wild",
+  "sex": "F",
+  "birthDate": "28 DEC 1959",
+  "birthPlace": "New Mills, Derbyshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2427",
+    "I2426"
+  ],
+  "baptismPlace": "Marsh Gibbon, Buckinghamshire"
+}

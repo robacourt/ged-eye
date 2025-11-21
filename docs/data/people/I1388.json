@@ -1,0 +1,52 @@
+{
+  "id": "I1388",
+  "name": "Annie Thomas",
+  "givenName": "Annie",
+  "surname": "Thomas",
+  "sex": "F",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Bristol, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg"
+  ],
+  "spouseIds": [
+    "I1387"
+  ],
+  "childIds": [
+    "I1410",
+    "I1411",
+    "I1406",
+    "I1407",
+    "I1408"
+  ],
+  "parentIds": [
+    "I1409"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1860",
+      "place": "Bristol, 3 St John's Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1387",
+      "familyId": "F550",
+      "marriageDate": "11 DEC 1883",
+      "marriagePlace": "Bristol"
+    }
+  ],
+  "avatar": "avatars/I1388_0.jpg"
+}

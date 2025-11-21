@@ -1,0 +1,41 @@
+{
+  "id": "I2303",
+  "name": "Susan A Unknown",
+  "givenName": "Susan A",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1825",
+  "birthPlace": "Dorset, Tolpuddle",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1750"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Weymouth, Dorset, North Quay"
+    },
+    {
+      "date": "1881",
+      "place": "Weymouth, Dorset, High West St."
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Weymouth, 3 Stanley Terrace"
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Weymouth, 3 Stanley Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1750",
+      "familyId": "F722"
+    }
+  ]
+}

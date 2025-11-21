@@ -1,0 +1,26 @@
+{
+  "id": "I749",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BEF 9 NOV1764",
+  "birthPlace": null,
+  "deathDate": "1824",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I901"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I741",
+    "I742"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I901",
+      "familyId": "F308"
+    }
+  ]
+}

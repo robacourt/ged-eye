@@ -1,0 +1,23 @@
+{
+  "id": "I920",
+  "name": "John Philp",
+  "givenName": "John",
+  "surname": "Philp",
+  "sex": "M",
+  "birthDate": "20 MAY 1893",
+  "birthPlace": null,
+  "deathDate": "27 JUN 1979",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I913"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I913",
+      "familyId": "F381"
+    }
+  ]
+}

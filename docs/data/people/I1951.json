@@ -1,0 +1,18 @@
+{
+  "id": "I1951",
+  "name": "Michael Warren A'Court",
+  "givenName": "Michael Warren",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "30 JAN 1982",
+  "birthPlace": "Ranfurly, Otago, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1949",
+    "I1950"
+  ]
+}

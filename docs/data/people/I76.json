@@ -1,0 +1,58 @@
+{
+  "id": "I76",
+  "name": "Felix A'Court",
+  "givenName": "Felix",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1826",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": "23 AUG1855",
+  "deathPlace": "Landport, Portsmouth, Hampshire",
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg",
+    "Data/Media/Crime-Courts/Felix A'Court.png"
+  ],
+  "spouseIds": [
+    "I105",
+    "I107"
+  ],
+  "childIds": [
+    "I106",
+    "I108"
+  ],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "baptismDate": "7 MAY 1826",
+  "baptismPlace": "Henstridge, Somerset",
+  "burialPlace": "Hampshire, Portsea Island, Mile End Cemetery",
+  "occupations": [
+    "Stonemason"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Landport, Portsea, Hampshire, 16 Merry Row."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I105",
+      "familyId": "F47",
+      "marriageDate": "15 SEP 1847",
+      "marriagePlace": "Wesley Chapel, Landport, Portsmouth"
+    },
+    {
+      "spouseId": "I107",
+      "familyId": "F48",
+      "marriageDate": "3 NOV 1851",
+      "marriagePlace": "Portsmouth, Portsea, All Saints, Parish Church"
+    }
+  ],
+  "avatar": "avatars/I76_0.jpg"
+}

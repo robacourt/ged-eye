@@ -1,0 +1,25 @@
+{
+  "id": "I2355",
+  "name": "Patricia S Lacy",
+  "givenName": "Patricia S",
+  "surname": "Lacy",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2354"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2354",
+      "familyId": "F835",
+      "marriageDate": "DEC 1997",
+      "marriagePlace": "Wiltshire"
+    }
+  ]
+}

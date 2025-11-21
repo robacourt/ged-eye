@@ -1,0 +1,30 @@
+{
+  "id": "I582",
+  "name": "Rose Louisa Pike",
+  "givenName": "Rose Louisa",
+  "surname": "Pike",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I580"
+  ],
+  "childIds": [
+    "I718"
+  ],
+  "parentIds": [
+    "I581",
+    "I155"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I580",
+      "familyId": "F239",
+      "marriageDate": "20 MAY 1890",
+      "marriagePlace": "Manston, Dorset"
+    }
+  ]
+}

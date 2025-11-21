@@ -1,0 +1,25 @@
+{
+  "id": "I1435",
+  "name": "Angela A'Court",
+  "givenName": "Angela",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "6 NOV 1961",
+  "birthPlace": "Sunbury on Thames, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1437"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1434"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1437",
+      "familyId": "F558"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I1614",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1898",
+  "birthPlace": "Warrington, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg",
+    "Data/Media/1911 census/Lancashire/Warrington/RG14 23171 5 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1608",
+    "I1609"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    },
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "avatar": "avatars/I1614_0.jpg"
+}

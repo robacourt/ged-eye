@@ -1,0 +1,49 @@
+{
+  "id": "I2783",
+  "name": "Julia Markwell",
+  "givenName": "Julia",
+  "surname": "Markwell",
+  "sex": "F",
+  "birthDate": "ABT 1888",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2782"
+  ],
+  "childIds": [
+    "I2008",
+    "I2790"
+  ],
+  "parentIds": [
+    "I2786",
+    "I2784"
+  ],
+  "occupations": [
+    "Fowarding Clerk"
+  ],
+  "notes": [
+    "1911 census transcription details for:  9 Perth Street Stepney E  National Archive Reference:  RG14PN1593 RG78PN56 RD21 SD1 ED22 SN159"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Stepney, London, 9 Perth St."
+    },
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 6 Perth St"
+    },
+    {
+      "date": "1921",
+      "place": "Kent, Margate, Rosenburgh, Sweyn Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2782",
+      "familyId": "F967"
+    }
+  ]
+}

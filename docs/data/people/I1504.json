@@ -1,0 +1,28 @@
+{
+  "id": "I1504",
+  "name": "Winifred Violet Louisa Frier",
+  "givenName": "Winifred Violet Louisa",
+  "surname": "Frier",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1497",
+    "I1505"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1497",
+      "familyId": "F569"
+    },
+    {
+      "spouseId": "I1505",
+      "familyId": "F575"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I1328",
+  "name": "Bessie May Lock",
+  "givenName": "Bessie May",
+  "surname": "Lock",
+  "sex": "F",
+  "birthDate": "1870",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": "1901",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1327"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "burialDate": "30 DEC 1901",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "marriages": [
+    {
+      "spouseId": "I1327",
+      "familyId": "F524",
+      "marriageDate": "22 MAY 1893",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
+    }
+  ]
+}

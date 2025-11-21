@@ -1,0 +1,32 @@
+{
+  "id": "I1635",
+  "name": "Jessie A'Court",
+  "givenName": "Jessie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1899",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 23 2.jpg",
+    "Data/Media/1911 census/Dorset/Marnhull/RG14 12201 43.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1633",
+    "I1634"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Church Lane"
+    },
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Old Workhouse."
+    }
+  ],
+  "avatar": "avatars/I1635_0.jpg"
+}

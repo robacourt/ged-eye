@@ -1,0 +1,34 @@
+{
+  "id": "I460",
+  "name": "Marjorie Edith Alice Lent",
+  "givenName": "Marjorie Edith Alice",
+  "surname": "Lent",
+  "sex": "F",
+  "birthDate": "12 FEB 1910",
+  "birthPlace": "Canterbury, Kent",
+  "deathDate": "7 APR 1994",
+  "deathPlace": "Kent, Canterbury",
+  "photos": [],
+  "spouseIds": [
+    "I466"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I455",
+    "I459"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Dover, Kent 1Harveyan Place"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I466",
+      "familyId": "F205",
+      "marriageDate": "JUL 1937",
+      "marriagePlace": "London, Woolwich"
+    }
+  ]
+}

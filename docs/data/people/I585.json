@@ -1,0 +1,34 @@
+{
+  "id": "I585",
+  "name": "John Maidment",
+  "givenName": "John",
+  "surname": "Maidment",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "East Stour, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I156"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I586",
+    "I587"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "7-1851,17-1861,20-1865"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I156",
+      "familyId": "F89",
+      "marriageDate": "21.1.1865",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

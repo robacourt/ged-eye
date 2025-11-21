@@ -1,0 +1,49 @@
+{
+  "id": "I457",
+  "name": "Gordon Charles Lent",
+  "givenName": "Gordon Charles",
+  "surname": "Lent",
+  "sex": "M",
+  "birthDate": "11 JUN 1889",
+  "birthPlace": "Edinburgh, Castle Barracks",
+  "deathDate": "OCT 1957",
+  "deathPlace": "Kent, Bromley",
+  "photos": [
+    "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg"
+  ],
+  "spouseIds": [
+    "I2953",
+    "I2954"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I452",
+    "I453"
+  ],
+  "occupations": [
+    "Electrican"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Scarborough, Yorkshire, 202 Prospect Rd"
+    },
+    {
+      "date": "1911",
+      "place": "Canterbury, Kent, 9 Victoria Grove, Hawkes Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2953",
+      "familyId": "F1011",
+      "marriageDate": "JUL 1913",
+      "marriagePlace": "Kent, Blean"
+    },
+    {
+      "spouseId": "I2954",
+      "familyId": "F1012"
+    }
+  ],
+  "avatar": "avatars/I457_0.jpg"
+}

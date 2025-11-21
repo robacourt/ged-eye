@@ -1,0 +1,25 @@
+{
+  "id": "I1305",
+  "name": "Laurence James Fairweather",
+  "givenName": "Laurence James",
+  "surname": "Fairweather",
+  "sex": "M",
+  "birthDate": "7 JUN 1972",
+  "birthPlace": "Northampton, Northamptonshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1098"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1098",
+      "familyId": "F442",
+      "marriageDate": "22 NOV 1997",
+      "marriagePlace": "Perth, Western Australia"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1678",
+  "name": "John Antell",
+  "givenName": "John",
+  "surname": "Antell",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1674"
+  ],
+  "childIds": [
+    "I1679"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1674",
+      "familyId": "F614"
+    }
+  ]
+}

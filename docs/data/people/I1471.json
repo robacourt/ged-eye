@@ -1,0 +1,28 @@
+{
+  "id": "I1471",
+  "name": "Sydney J Skedgel",
+  "givenName": "Sydney J",
+  "surname": "Skedgel",
+  "sex": "F",
+  "birthDate": "ABT 1888",
+  "birthPlace": "Stoke Gabriel, Devon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1458",
+    "I1470"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Stoke Gabriel, Devon"
+    },
+    {
+      "date": "1901",
+      "place": "Stoke Gabriel, Devon"
+    }
+  ]
+}

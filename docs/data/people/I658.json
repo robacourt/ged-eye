@@ -1,0 +1,30 @@
+{
+  "id": "I658",
+  "name": "Mary Lambert",
+  "givenName": "Mary",
+  "surname": "Lambert",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I657"
+  ],
+  "childIds": [
+    "I646"
+  ],
+  "parentIds": [
+    "I659"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I657",
+      "familyId": "F271"
+    }
+  ]
+}

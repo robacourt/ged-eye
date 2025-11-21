@@ -1,0 +1,24 @@
+{
+  "id": "I1756",
+  "name": "Emma Chamberlain",
+  "givenName": "Emma",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "ABT 1867",
+  "birthPlace": "Cardiff, Glamorgan",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I891",
+    "I768"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Pendleton-in-Salford, 13 Lytham St, Lancashire"
+    }
+  ]
+}

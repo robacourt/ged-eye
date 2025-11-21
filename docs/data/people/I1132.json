@@ -1,0 +1,20 @@
+{
+  "id": "I1132",
+  "name": "Joyce Mary West",
+  "givenName": "Joyce Mary",
+  "surname": "West",
+  "sex": "F",
+  "birthDate": "14 NOV 1926",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1130",
+    "I1129"
+  ],
+  "baptismDate": "23 JAN 1927",
+  "baptismPlace": "Marnhull, Dorset"
+}

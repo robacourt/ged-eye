@@ -1,0 +1,32 @@
+{
+  "id": "I647",
+  "name": "Bertha Warren",
+  "givenName": "Bertha",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "1.4.1866",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I660"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I646",
+    "I241"
+  ],
+  "baptismDate": "10.4.1866",
+  "notes": [
+    "5 in 1871, 22 in 1888"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I660",
+      "familyId": "F272",
+      "marriageDate": "25.12.1888",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

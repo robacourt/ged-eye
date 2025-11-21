@@ -1,0 +1,49 @@
+{
+  "id": "I2361",
+  "name": "Ellen A'Court",
+  "givenName": "Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1854",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Over Compton/RG 10 2021 81 19.jpg",
+    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg",
+    "Data/Media/1911 census/Somerset/South Cadbury/RG14 14423 47.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I571",
+    "I2359"
+  ],
+  "occupations": [
+    "Servant",
+    "Servant",
+    ""
+  ],
+  "notes": [
+    "Very Possible 1482#"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Over Compton, Dorset"
+    },
+    {
+      "date": "1911",
+      "place": "South Cadbury, Somerset, The Rectory"
+    },
+    {
+      "date": "1901",
+      "place": null
+    }
+  ],
+  "avatar": "avatars/I2361_0.jpg"
+}

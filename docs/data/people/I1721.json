@@ -1,0 +1,17 @@
+{
+  "id": "I1721",
+  "name": "Julie Christine A'Court",
+  "givenName": "Julie Christine",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1ST QRT 1975",
+  "birthPlace": "Greenwich",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1713"
+  ]
+}

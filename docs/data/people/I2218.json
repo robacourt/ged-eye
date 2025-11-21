@@ -1,0 +1,24 @@
+{
+  "id": "I2218",
+  "name": "Thomas Pearce",
+  "givenName": "Thomas",
+  "surname": "Pearce",
+  "sex": "M",
+  "birthDate": "ABT 1878",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2157"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2157",
+      "familyId": "F774",
+      "marriageDate": "Q4 1899"
+    }
+  ]
+}

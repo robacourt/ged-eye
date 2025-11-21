@@ -1,0 +1,20 @@
+{
+  "id": "I1146",
+  "name": "Lional Frederick John Horlock",
+  "givenName": "Lional Frederick John",
+  "surname": "Horlock",
+  "sex": "M",
+  "birthDate": "19 APRIL 1916",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1144",
+    "I1143"
+  ],
+  "baptismDate": "11 JUN 1916",
+  "baptismPlace": "Marnhull, Dorset"
+}

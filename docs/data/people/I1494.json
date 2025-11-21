@@ -1,0 +1,25 @@
+{
+  "id": "I1494",
+  "name": "Arthur Collis",
+  "givenName": "Arthur",
+  "surname": "Collis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1493"
+  ],
+  "childIds": [
+    "I1495"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1493",
+      "familyId": "F568"
+    }
+  ]
+}

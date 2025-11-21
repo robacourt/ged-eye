@@ -1,0 +1,25 @@
+{
+  "id": "I438",
+  "name": "Daphne J Harvey",
+  "givenName": "Daphne J",
+  "surname": "Harvey",
+  "sex": "F",
+  "birthDate": "ABT 1926",
+  "birthPlace": null,
+  "deathDate": "15 OCT 2021",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I432"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I432",
+      "familyId": "F199",
+      "marriageDate": "3RD QTR 1951",
+      "marriagePlace": "London, Stoke Newington"
+    }
+  ]
+}

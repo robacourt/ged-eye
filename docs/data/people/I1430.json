@@ -1,0 +1,32 @@
+{
+  "id": "I1430",
+  "name": "Robert Glen A'Court",
+  "givenName": "Robert Glen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1947",
+  "birthPlace": "Waverly, Sydney, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Robert Glen A'Court.jpg"
+  ],
+  "spouseIds": [
+    "I1431"
+  ],
+  "childIds": [
+    "I1432",
+    "I1960"
+  ],
+  "parentIds": [
+    "I989",
+    "I990"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1431",
+      "familyId": "F555"
+    }
+  ],
+  "avatar": "avatars/I1430_0.jpg"
+}

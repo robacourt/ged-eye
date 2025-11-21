@@ -1,0 +1,27 @@
+{
+  "id": "I290",
+  "name": "Jane Hayward",
+  "givenName": "Jane",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I289"
+  ],
+  "childIds": [
+    "I287"
+  ],
+  "parentIds": [
+    "I291"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I289",
+      "familyId": "F143"
+    }
+  ]
+}

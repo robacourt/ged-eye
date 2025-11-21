@@ -1,0 +1,25 @@
+{
+  "id": "I2615",
+  "name": "Marion Thistlethwayte",
+  "givenName": "Marion",
+  "surname": "Thistlethwayte",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2610"
+  ],
+  "childIds": [
+    "I1449"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2610",
+      "familyId": "F911"
+    }
+  ]
+}

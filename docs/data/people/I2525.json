@@ -1,0 +1,18 @@
+{
+  "id": "I2525",
+  "name": "Russell John A'Court",
+  "givenName": "Russell John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1964",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2523",
+    "I2524"
+  ]
+}

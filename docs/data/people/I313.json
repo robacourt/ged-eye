@@ -1,0 +1,38 @@
+{
+  "id": "I313",
+  "name": "Frederick Lewis",
+  "givenName": "Frederick",
+  "surname": "Lewis",
+  "sex": "M",
+  "birthDate": "27.12.1853",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I308",
+    "I314"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I315",
+    "I316"
+  ],
+  "baptismDate": "26.2.1854",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I308",
+      "familyId": "F150",
+      "marriageDate": "2.10.1879",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I314",
+      "familyId": "F154"
+    }
+  ]
+}

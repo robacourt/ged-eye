@@ -1,0 +1,25 @@
+{
+  "id": "I131",
+  "name": "George Banbrook",
+  "givenName": "George",
+  "surname": "Banbrook",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I132"
+  ],
+  "childIds": [
+    "I124"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I132",
+      "familyId": "F78"
+    }
+  ]
+}

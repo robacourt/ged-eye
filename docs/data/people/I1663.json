@@ -1,0 +1,28 @@
+{
+  "id": "I1663",
+  "name": "Betty Barber",
+  "givenName": "Betty",
+  "surname": "Barber",
+  "sex": "F",
+  "birthDate": "1921",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1664"
+  ],
+  "childIds": [
+    "I1665"
+  ],
+  "parentIds": [
+    "I1662",
+    "I1290"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1664",
+      "familyId": "F612"
+    }
+  ]
+}

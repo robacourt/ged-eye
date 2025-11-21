@@ -1,0 +1,23 @@
+{
+  "id": "I1365",
+  "name": "Francis T. Opie",
+  "givenName": "Francis T.",
+  "surname": "Opie",
+  "sex": "M",
+  "birthDate": "ABT 1845",
+  "birthPlace": "New Zealand",
+  "deathDate": "BEF 1945",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1342"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1342",
+      "familyId": "F529"
+    }
+  ]
+}

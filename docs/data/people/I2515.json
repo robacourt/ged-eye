@@ -1,0 +1,32 @@
+{
+  "id": "I2515",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1801",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2375"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "House Keeper"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Yeovil, High St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F889"
+    }
+  ]
+}

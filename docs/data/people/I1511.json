@@ -1,0 +1,27 @@
+{
+  "id": "I1511",
+  "name": "Albert Ridout",
+  "givenName": "Albert",
+  "surname": "Ridout",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1510"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1512"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1510",
+      "familyId": "F576",
+      "marriageDate": "16 APR 1895",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

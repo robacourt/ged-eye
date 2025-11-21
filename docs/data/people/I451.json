@@ -1,0 +1,29 @@
+{
+  "id": "I451",
+  "name": "Bertha Unknown",
+  "givenName": "Bertha",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I448"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1939",
+      "place": "Hertfordshire, Letchworth, 125 Wilbury Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I448",
+      "familyId": "F203"
+    }
+  ]
+}

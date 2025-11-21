@@ -1,0 +1,25 @@
+{
+  "id": "I2354",
+  "name": "Dennis G A'Court",
+  "givenName": "Dennis G",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2355"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2355",
+      "familyId": "F835",
+      "marriageDate": "DEC 1997",
+      "marriagePlace": "Wiltshire"
+    }
+  ]
+}

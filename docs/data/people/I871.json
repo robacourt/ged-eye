@@ -1,0 +1,39 @@
+{
+  "id": "I871",
+  "name": "Mary Parker",
+  "givenName": "Mary",
+  "surname": "Parker",
+  "sex": "F",
+  "birthDate": "BEF 1824",
+  "birthPlace": "Shepton Mallet, Somerset",
+  "deathDate": "AFT 1861",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I763"
+  ],
+  "childIds": [
+    "I872",
+    "I874",
+    "I873",
+    "I875",
+    "I876",
+    "I877",
+    "I878",
+    "I2107",
+    "I2108"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Middx. St Pancras 3, Brill Cottages."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I763",
+      "familyId": "F315"
+    }
+  ]
+}

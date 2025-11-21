@@ -1,0 +1,17 @@
+{
+  "id": "I1843",
+  "name": "Nigel A'Court",
+  "givenName": "Nigel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1ST QRT 1957",
+  "birthPlace": "Northampton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1844"
+  ]
+}

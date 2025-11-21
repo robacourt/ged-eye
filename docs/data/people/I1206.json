@@ -1,0 +1,18 @@
+{
+  "id": "I1206",
+  "name": "Phyliss Sharp",
+  "givenName": "Phyliss",
+  "surname": "Sharp",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1205",
+    "I1204"
+  ]
+}

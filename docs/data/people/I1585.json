@@ -1,0 +1,26 @@
+{
+  "id": "I1585",
+  "name": "Albert Charles A'Court",
+  "givenName": "Albert Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1584"
+  ],
+  "childIds": [
+    "I1586",
+    "I1583"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1584",
+      "familyId": "F596"
+    }
+  ]
+}

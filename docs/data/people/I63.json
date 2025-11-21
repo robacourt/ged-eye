@@ -1,0 +1,20 @@
+{
+  "id": "I63",
+  "name": "Mary Dowding",
+  "givenName": "Mary",
+  "surname": "Dowding",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I60",
+    "I19"
+  ],
+  "baptismDate": "12 JAN 1792",
+  "baptismPlace": "Marnhull, Dorset"
+}

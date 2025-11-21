@@ -1,0 +1,48 @@
+{
+  "id": "I187",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1830",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "AFT 1881 BEF 1891",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I295"
+  ],
+  "childIds": [
+    "I296"
+  ],
+  "parentIds": [
+    "I53",
+    "I183"
+  ],
+  "occupations": [
+    "Carpenter"
+  ],
+  "notes": [
+    "9-1841"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841 AGE 9",
+      "place": null
+    },
+    {
+      "date": "1861",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I295",
+      "familyId": "F104"
+    }
+  ]
+}

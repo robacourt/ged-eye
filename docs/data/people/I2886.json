@@ -1,0 +1,27 @@
+{
+  "id": "I2886",
+  "name": "Mabel A'Court",
+  "givenName": "Mabel",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1890",
+  "birthPlace": "London, Plaistow",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/West Ham/RG12 1323 58 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2853",
+    "I2854"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, West Ham, Sussex St"
+    }
+  ],
+  "avatar": "avatars/I2886_0.jpg"
+}

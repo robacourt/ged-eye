@@ -1,0 +1,35 @@
+{
+  "id": "I155",
+  "name": "Louisa Hatcher",
+  "givenName": "Louisa",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I581"
+  ],
+  "childIds": [
+    "I582"
+  ],
+  "parentIds": [
+    "I152",
+    "I38"
+  ],
+  "baptismDate": "8.10.1842",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "8-1851, 21-1863"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I581",
+      "familyId": "F88",
+      "marriageDate": "24.9.1863",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

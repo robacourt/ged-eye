@@ -1,0 +1,18 @@
+{
+  "id": "I1762",
+  "name": "Theresa Wildgoose",
+  "givenName": "Theresa",
+  "surname": "Wildgoose",
+  "sex": "F",
+  "birthDate": "1877",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1760",
+    "I1759"
+  ]
+}

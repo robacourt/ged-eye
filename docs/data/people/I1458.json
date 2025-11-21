@@ -1,0 +1,43 @@
+{
+  "id": "I1458",
+  "name": "James Skedgel",
+  "givenName": "James",
+  "surname": "Skedgel",
+  "sex": "M",
+  "birthDate": "ABT 1854",
+  "birthPlace": "Stoke Gabriel, Devon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1470"
+  ],
+  "childIds": [
+    "I1457",
+    "I1464",
+    "I1471"
+  ],
+  "parentIds": [],
+  "burialDate": "APR 4 1919",
+  "burialPlace": "Stoke Gabriel, Devon",
+  "occupations": [
+    "Cowkeeper",
+    "Farmer own account"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Stoke Gabriel, Devon"
+    },
+    {
+      "date": "1901",
+      "place": "Stoke Gabriel, Devon"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1470",
+      "familyId": "F562"
+    }
+  ]
+}

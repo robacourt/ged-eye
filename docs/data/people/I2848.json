@@ -1,0 +1,20 @@
+{
+  "id": "I2848",
+  "name": "Theodore A'Court",
+  "givenName": "Theodore",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1880",
+  "birthPlace": "Somerset, Yeovil",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Somerset/Yeovil/RG11 2393 73 26.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2847"
+  ],
+  "avatar": "avatars/I2848_0.jpg"
+}

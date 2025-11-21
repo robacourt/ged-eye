@@ -1,0 +1,26 @@
+{
+  "id": "I671",
+  "name": "Joseph Chant",
+  "givenName": "Joseph",
+  "surname": "Chant",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I670"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Basketmaker"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F282"
+    }
+  ]
+}

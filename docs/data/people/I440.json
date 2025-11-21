@@ -1,0 +1,21 @@
+{
+  "id": "I440",
+  "name": "David Anthony Frentzel",
+  "givenName": "David Anthony",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "13 FEB1949",
+  "birthPlace": "Redhill, Surrey, Thorton House Nursing Home",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/Surrey Mirror, Births.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I435",
+    "I439"
+  ],
+  "avatar": "avatars/I440_0.jpg"
+}

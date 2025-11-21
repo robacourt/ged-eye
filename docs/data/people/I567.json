@@ -1,0 +1,18 @@
+{
+  "id": "I567",
+  "name": "Margerais a'Court",
+  "givenName": "Margerais",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1621",
+  "birthPlace": null,
+  "deathDate": "ABT 1623",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I558",
+    "I559"
+  ]
+}

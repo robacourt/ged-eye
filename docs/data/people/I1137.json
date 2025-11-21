@@ -1,0 +1,31 @@
+{
+  "id": "I1137",
+  "name": "Henry George Pike",
+  "givenName": "Henry George",
+  "surname": "Pike",
+  "sex": "M",
+  "birthDate": "ABT 1881",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1138"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1135",
+    "I1134"
+  ],
+  "occupations": [
+    "Engine Driver"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1138",
+      "familyId": "F462",
+      "marriageDate": "25 OCT 1915",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

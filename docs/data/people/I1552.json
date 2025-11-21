@@ -1,0 +1,18 @@
+{
+  "id": "I1552",
+  "name": "Ryan A'Court",
+  "givenName": "Ryan",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1545",
+    "I1549"
+  ]
+}

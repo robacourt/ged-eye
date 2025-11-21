@@ -1,0 +1,28 @@
+{
+  "id": "I677",
+  "name": "Thomas Hatcher",
+  "givenName": "Thomas",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I678"
+  ],
+  "childIds": [
+    "I676"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Gardener"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I678",
+      "familyId": "F285"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "I2810",
+  "name": "Eliza Unknown",
+  "givenName": "Eliza",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1834",
+  "birthPlace": "England, Somerset",
+  "deathDate": "Bef OR 1911",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St Brelade/RG13 5310 14 2.jpg"
+  ],
+  "spouseIds": [
+    "I2089"
+  ],
+  "childIds": [
+    "I2811",
+    "I2812",
+    "I2813",
+    "I2833"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Cook domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey C.I. St Peter, Ruette a la Vioge"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Laurence, Mill Rd."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Laurence, Mid Bay Cottages"
+    },
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St Brelade, Rochebois."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2089",
+      "familyId": "F732"
+    }
+  ],
+  "avatar": "avatars/I2810_0.jpg"
+}

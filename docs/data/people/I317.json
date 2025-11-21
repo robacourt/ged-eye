@@ -1,0 +1,43 @@
+{
+  "id": "I317",
+  "name": "Elizabeth Lewis",
+  "givenName": "Elizabeth",
+  "surname": "Lewis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I157"
+  ],
+  "childIds": [
+    "I588",
+    "I589",
+    "I590",
+    "I591",
+    "I592",
+    "I593",
+    "I594"
+  ],
+  "parentIds": [
+    "I315",
+    "I316"
+  ],
+  "baptismDate": "3.4.1845",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Leather Glover"
+  ],
+  "notes": [
+    "5-1851,16-1861,24-1871,35-1881,44-1891"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I157",
+      "familyId": "F90",
+      "marriageDate": "6.12.1870"
+    }
+  ]
+}

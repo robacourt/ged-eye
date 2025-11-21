@@ -1,0 +1,64 @@
+{
+  "id": "I53",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1801",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I183"
+  ],
+  "childIds": [
+    "I184",
+    "I185",
+    "I186",
+    "I187",
+    "I188",
+    "I189"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "6 MAR  1801",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "4 MAR 1880",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "labourer",
+    "Ag Lab"
+  ],
+  "notes": [
+    "of Kentsford"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, Marnhull Common"
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, Pleck, Muds Plot"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I183",
+      "familyId": "F35",
+      "marriageDate": "2 JUN 1825",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

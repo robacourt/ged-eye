@@ -1,0 +1,31 @@
+{
+  "id": "I1053",
+  "name": "Gladys Augusta Diehm",
+  "givenName": "Gladys Augusta",
+  "surname": "Diehm",
+  "sex": "F",
+  "birthDate": "11 APRIL 1922",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1054"
+  ],
+  "childIds": [
+    "I1055",
+    "I1056",
+    "I1057"
+  ],
+  "parentIds": [
+    "I934",
+    "I933"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1054",
+      "familyId": "F426",
+      "marriageDate": "5 MARCH 1941"
+    }
+  ]
+}

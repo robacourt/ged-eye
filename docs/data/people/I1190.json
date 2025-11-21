@@ -1,0 +1,59 @@
+{
+  "id": "I1190",
+  "name": "Mary Elizabeth Crew",
+  "givenName": "Mary Elizabeth",
+  "surname": "Crew",
+  "sex": "F",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Dorset, Stalbridge",
+  "deathDate": "AFT 1891",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1185"
+  ],
+  "childIds": [
+    "I1191",
+    "I1192",
+    "I1193",
+    "I1194",
+    "I2414",
+    "I2415",
+    "I2416",
+    "I2418",
+    "I2420",
+    "I2422",
+    "I2423",
+    "I2920",
+    "I2921"
+  ],
+  "parentIds": [
+    "I2406",
+    "I2407"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stalbridge, Dorset, Landshire Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Wadswick Village, Box, Wiltshire, Cottages"
+    },
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1185",
+      "familyId": "F484",
+      "marriageDate": "1883"
+    }
+  ]
+}

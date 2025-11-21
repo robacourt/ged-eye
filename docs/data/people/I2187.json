@@ -1,0 +1,65 @@
+{
+  "id": "I2187",
+  "name": "Martha Pilot",
+  "givenName": "Martha",
+  "surname": "Pilot",
+  "sex": "F",
+  "birthDate": "ABT 1816",
+  "birthPlace": "Bristol",
+  "deathDate": "14 APR 1906",
+  "deathPlace": "St Philip & Jacob, Bristol",
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2498 33 15.jpg",
+    "Data/Media/1891 census/Bristol/RG12 1983 136 2.jpg"
+  ],
+  "spouseIds": [
+    "I2186"
+  ],
+  "childIds": [
+    "I2190",
+    "I2153",
+    "I2221",
+    "I2222",
+    "I2224",
+    "I2225",
+    "I2226",
+    "I2210"
+  ],
+  "parentIds": [
+    "I2219",
+    "I2220"
+  ],
+  "occupations": [
+    "Fish Hawker",
+    "Earthen ware dealer",
+    "Housekeeper",
+    "Stick and coal dealer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Bristol, Clifton, Nible House Court, 3 West St"
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 33 Little George St, Ss Philip And Jacob"
+    },
+    {
+      "date": "1891",
+      "place": "Gloucestershire, Barton Regis, Brick St"
+    },
+    {
+      "date": "1901",
+      "place": "Bristol, Gloucestershire, 1 Arnolds Court,"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2186",
+      "familyId": "F772",
+      "marriageDate": "8 NOV 1842",
+      "marriagePlace": "Bitton, Gloucestershire"
+    }
+  ],
+  "avatar": "avatars/I2187_0.jpg"
+}

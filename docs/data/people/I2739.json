@@ -1,0 +1,18 @@
+{
+  "id": "I2739",
+  "name": "Desmond Thompson",
+  "givenName": "Desmond",
+  "surname": "Thompson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I859",
+    "I845"
+  ]
+}

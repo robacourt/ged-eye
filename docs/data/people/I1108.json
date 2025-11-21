@@ -1,0 +1,41 @@
+{
+  "id": "I1108",
+  "name": "Albertina Rose A'Court",
+  "givenName": "Albertina Rose",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1891",
+  "birthPlace": "Kingston Magna, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
+  ],
+  "spouseIds": [
+    "I1113"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1100",
+    "I1109"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Mells, Frome,  Somerset, Rectory Cottage"
+    },
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1113",
+      "familyId": "F449",
+      "marriageDate": "23 OCT 1909",
+      "marriagePlace": "Queen Camel, Somerset"
+    }
+  ],
+  "avatar": "avatars/I1108_0.jpg"
+}

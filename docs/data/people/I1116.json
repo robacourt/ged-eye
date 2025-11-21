@@ -1,0 +1,20 @@
+{
+  "id": "I1116",
+  "name": "Harry Charles Curtis",
+  "givenName": "Harry Charles",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1081",
+    "I1082"
+  ],
+  "baptismDate": "14 FEB 1886",
+  "baptismPlace": "Marnhull, Dorset"
+}

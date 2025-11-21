@@ -1,0 +1,37 @@
+{
+  "id": "I2420",
+  "name": "Hilda Alice A'Court",
+  "givenName": "Hilda Alice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1900",
+  "birthPlace": "Box, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg"
+  ],
+  "spouseIds": [
+    "I2421"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2421",
+      "familyId": "F860",
+      "marriageDate": "1921",
+      "marriagePlace": "Brixworth, Northamptonshire"
+    }
+  ],
+  "avatar": "avatars/I2420_0.jpg"
+}

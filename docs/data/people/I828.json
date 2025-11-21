@@ -1,0 +1,28 @@
+{
+  "id": "I828",
+  "name": "Albert RANBY",
+  "givenName": "Albert",
+  "surname": "RANBY",
+  "sex": "M",
+  "birthDate": "21 DEC 1867",
+  "birthPlace": "Oxford, NZ",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I821"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I821",
+      "familyId": "F350",
+      "marriageDate": "14 JAN 1891",
+      "marriagePlace": "St Lukes, Christchurch, NZ"
+    }
+  ]
+}

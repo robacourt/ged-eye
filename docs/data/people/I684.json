@@ -1,0 +1,18 @@
+{
+  "id": "I684",
+  "name": "Edward Ryall",
+  "givenName": "Edward",
+  "surname": "Ryall",
+  "sex": "M",
+  "birthDate": "1637",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I683",
+    "I564"
+  ]
+}

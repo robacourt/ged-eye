@@ -1,0 +1,23 @@
+{
+  "id": "I2794",
+  "name": "Franco Montinari",
+  "givenName": "Franco",
+  "surname": "Montinari",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I436"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I436",
+      "familyId": "F972"
+    }
+  ]
+}

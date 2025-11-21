@@ -1,0 +1,26 @@
+{
+  "id": "I2287",
+  "name": "Benjamin Francis White",
+  "givenName": "Benjamin Francis",
+  "surname": "White",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2985"
+  ],
+  "childIds": [
+    "I2288",
+    "I105"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2985",
+      "familyId": "F809"
+    }
+  ]
+}

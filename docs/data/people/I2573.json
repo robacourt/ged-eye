@@ -1,0 +1,27 @@
+{
+  "id": "I2573",
+  "name": "Violet May A'Court",
+  "givenName": "Violet May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1898",
+  "birthPlace": "Keynsham, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Peckham/RG14 2525 266.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2571",
+    "I2572"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Peckham, 2 Hazlemere Rd."
+    }
+  ],
+  "avatar": "avatars/I2573_0.jpg"
+}

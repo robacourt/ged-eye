@@ -1,0 +1,25 @@
+{
+  "id": "I1731",
+  "name": "Alison Jane Crawford",
+  "givenName": "Alison Jane",
+  "surname": "Crawford",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1728"
+  ],
+  "childIds": [
+    "I1732"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1728",
+      "familyId": "F640"
+    }
+  ]
+}

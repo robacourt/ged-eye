@@ -1,0 +1,42 @@
+{
+  "id": "I1188",
+  "name": "Albertina A'Court",
+  "givenName": "Albertina",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BET 1869/70",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "AFT 1891",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg",
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 26 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1183",
+    "I1184"
+  ],
+  "baptismDate": "22 APR 1870",
+  "baptismPlace": "Dorset, Marnhull",
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Barton"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Near Antills Farm"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Batts Alley"
+    }
+  ],
+  "avatar": "avatars/I1188_0.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I970",
+  "name": "Eris A. Williams",
+  "givenName": "Eris A.",
+  "surname": "Williams",
+  "sex": "U",
+  "birthDate": "1894",
+  "birthPlace": "Dubbo, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I965",
+    "I956"
+  ]
+}

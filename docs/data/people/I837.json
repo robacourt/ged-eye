@@ -1,0 +1,30 @@
+{
+  "id": "I837",
+  "name": "Frank Austin A'Court",
+  "givenName": "Frank Austin",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "20 SEP 1897",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "14 OCT 1918",
+  "deathPlace": "war death",
+  "photos": [],
+  "spouseIds": [
+    "I850"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "burialPlace": "Edinburgh, Scotland (Coneley Bank) Cemetery, Edinburgh, Scotland",
+  "notes": [
+    "In Memory of"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I850",
+      "familyId": "F362"
+    }
+  ]
+}

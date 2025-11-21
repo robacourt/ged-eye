@@ -1,0 +1,29 @@
+{
+  "id": "I316",
+  "name": "Elizabeth Clarke",
+  "givenName": "Elizabeth",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I315"
+  ],
+  "childIds": [
+    "I313",
+    "I317"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "leather Glover"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I315",
+      "familyId": "F155"
+    }
+  ]
+}

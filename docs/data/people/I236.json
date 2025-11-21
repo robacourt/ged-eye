@@ -1,0 +1,25 @@
+{
+  "id": "I236",
+  "name": "Ann Harris",
+  "givenName": "Ann",
+  "surname": "Harris",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I89"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I89",
+      "familyId": "F57",
+      "marriageDate": "1 JAN 1831",
+      "marriagePlace": "Henstridge, Somerset"
+    }
+  ]
+}

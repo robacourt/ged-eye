@@ -1,0 +1,21 @@
+{
+  "id": "I2358",
+  "name": "Richard G A'Court",
+  "givenName": "Richard G",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": "Glamorgan",
+  "deathDate": "20 MAR 1945",
+  "deathPlace": "Burma",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "residences": [
+    {
+      "date": null,
+      "place": "Middlesex"
+    }
+  ]
+}

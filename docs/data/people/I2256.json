@@ -1,0 +1,27 @@
+{
+  "id": "I2256",
+  "name": "Arthur A'Court Simmonds",
+  "givenName": "Arthur A'Court",
+  "surname": "Simmonds",
+  "sex": "M",
+  "birthDate": "ABT 1859",
+  "birthPlace": "Sherborne, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Sherborne/RG09 1360 52 40.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2255",
+    "I193"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Sherborne, Dorset, Hound St"
+    }
+  ],
+  "avatar": "avatars/I2256_0.jpg"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I2969",
+  "name": "Charles Edward Garnett Wilkinson",
+  "givenName": "Charles Edward Garnett",
+  "surname": "Wilkinson",
+  "sex": "M",
+  "birthDate": "1885",
+  "birthPlace": "Dorset, Pankstone",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2967",
+    "I2968"
+  ]
+}

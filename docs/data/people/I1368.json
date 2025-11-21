@@ -1,0 +1,25 @@
+{
+  "id": "I1368",
+  "name": "Barbara Palmer",
+  "givenName": "Barbara",
+  "surname": "Palmer",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1367"
+  ],
+  "childIds": [
+    "I1366"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1367",
+      "familyId": "F542"
+    }
+  ]
+}

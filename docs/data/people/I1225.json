@@ -1,0 +1,27 @@
+{
+  "id": "I1225",
+  "name": "C?????? Hayward",
+  "givenName": "C??????",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1224"
+  ],
+  "childIds": [
+    "I1226",
+    "I1227",
+    "I1228"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1224",
+      "familyId": "F495"
+    }
+  ]
+}

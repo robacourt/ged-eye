@@ -1,0 +1,36 @@
+{
+  "id": "I2842",
+  "name": "Annie Katherine A'Court",
+  "givenName": "Annie Katherine",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1862",
+  "birthPlace": "London, Battersea",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Herefordshire/RG11 2605 37 21.jpg",
+    "Data/Media/1901 census/Herefordshire/RG13 2493 71 15.jpg",
+    "Data/Media/1911 census/Herefordshire/RG14 15809 298.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2843"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Herefordshire, Leominster, 28 Burgess St."
+    },
+    {
+      "date": "1901",
+      "place": "Herefordshire, Leominster, 17 Broad St."
+    },
+    {
+      "date": "1911",
+      "place": "Herefordshire, Leominster, 17 Broad St."
+    }
+  ],
+  "avatar": "avatars/I2842_0.jpg"
+}

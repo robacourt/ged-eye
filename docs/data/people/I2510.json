@@ -1,0 +1,37 @@
+{
+  "id": "I2510",
+  "name": "Frederick Bewes",
+  "givenName": "Frederick",
+  "surname": "Bewes",
+  "sex": "M",
+  "birthDate": "ABT 1868",
+  "birthPlace": "Liverpool, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2509"
+  ],
+  "childIds": [
+    "I2513",
+    "I2511",
+    "I2512",
+    "I2514"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Head Porter, Hotel"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wavertree, Lancashire, 14 Cambridge St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2509",
+      "familyId": "F888"
+    }
+  ]
+}

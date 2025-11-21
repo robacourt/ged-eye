@@ -1,0 +1,40 @@
+{
+  "id": "I330",
+  "name": "Albertina Harding",
+  "givenName": "Albertina",
+  "surname": "Harding",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I197"
+  ],
+  "childIds": [
+    "I331",
+    "I332",
+    "I333",
+    "I334"
+  ],
+  "parentIds": [
+    "I335",
+    "I336"
+  ],
+  "baptismDate": "16.9.1832",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Dressmaker"
+  ],
+  "notes": [
+    "8-1841  18-1851  28-1861  39-1871 48-1881 58-1891"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I197",
+      "familyId": "F113",
+      "marriageDate": "ANTE 1855"
+    }
+  ]
+}

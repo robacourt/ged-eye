@@ -1,0 +1,51 @@
+{
+  "id": "I190",
+  "name": "Hannah Clarke",
+  "givenName": "Hannah",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Sherborne/RG09 1360 52 40.jpg",
+    "Data/Media/1881 census/Dorset/Sherborne/RG11 2117 83 36.jpg"
+  ],
+  "spouseIds": [
+    "I55"
+  ],
+  "childIds": [
+    "I191",
+    "I192",
+    "I193"
+  ],
+  "parentIds": [
+    "I321",
+    "I320"
+  ],
+  "baptismDate": "12 FEB1804",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Seamstress",
+    "Formaly dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Sherborne, Dorset, Hound St"
+    },
+    {
+      "date": "1881",
+      "place": "Sherborne, Dorset, Horsecastles"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I55",
+      "familyId": "F36",
+      "marriageDate": "5 NOV 1827"
+    }
+  ],
+  "avatar": "avatars/I190_0.jpg"
+}

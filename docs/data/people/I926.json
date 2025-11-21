@@ -1,0 +1,47 @@
+{
+  "id": "I926",
+  "name": "Elizabeth Maria Unknown",
+  "givenName": "Elizabeth Maria",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1842",
+  "birthPlace": "Wombwell, Yorkshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I874"
+  ],
+  "childIds": [
+    "I2468",
+    "I2469",
+    "I2470",
+    "I2471"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Hertfordshire, Ware, Gilston, Lolings Cottage"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
+    },
+    {
+      "date": "1891",
+      "place": "West Derby, Lancashire, 2 Quarry Road"
+    },
+    {
+      "date": "1911",
+      "place": "West Derby, Lancashire, 147 Eaton Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I874",
+      "familyId": "F375",
+      "marriageDate": "ABT 1868"
+    }
+  ]
+}

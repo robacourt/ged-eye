@@ -1,0 +1,38 @@
+{
+  "id": "I2786",
+  "name": "Samuel Markwell",
+  "givenName": "Samuel",
+  "surname": "Markwell",
+  "sex": "M",
+  "birthDate": "ABT 1845",
+  "birthPlace": "London, Stepney",
+  "deathDate": "BEF 1911",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2784"
+  ],
+  "childIds": [
+    "I2787",
+    "I2788",
+    "I2789",
+    "I2783",
+    "I2785"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Wool ??"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 6 Perth St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2784",
+      "familyId": "F968"
+    }
+  ]
+}

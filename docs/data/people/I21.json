@@ -1,0 +1,25 @@
+{
+  "id": "I21",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "14 JUN 1772",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "17 DEC 1780",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "notes": [
+    "buried age 8"
+  ]
+}

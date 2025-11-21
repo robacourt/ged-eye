@@ -1,0 +1,23 @@
+{
+  "id": "I659",
+  "name": "George Lambert",
+  "givenName": "George",
+  "surname": "Lambert",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I658"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F275"
+    }
+  ]
+}

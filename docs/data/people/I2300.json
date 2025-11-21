@@ -1,0 +1,29 @@
+{
+  "id": "I2300",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1886",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2298"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Castle Cary, Somerset, Cockhill Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2298",
+      "familyId": "F814"
+    }
+  ]
+}

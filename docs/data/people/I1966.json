@@ -1,0 +1,23 @@
+{
+  "id": "I1966",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1815",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1965"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Shepton Mallet, Somerset, Paul St"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I618",
+  "name": "Patricia Grace Unknown",
+  "givenName": "Patricia Grace",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I617"
+  ],
+  "childIds": [
+    "I615"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I617",
+      "familyId": "F255"
+    }
+  ]
+}

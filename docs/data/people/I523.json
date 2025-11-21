@@ -1,0 +1,25 @@
+{
+  "id": "I523",
+  "name": "Robert Edward A'Court",
+  "givenName": "Robert Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I522"
+  ],
+  "childIds": [
+    "I511"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I522",
+      "familyId": "F217"
+    }
+  ]
+}

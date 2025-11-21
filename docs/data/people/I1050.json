@@ -1,0 +1,30 @@
+{
+  "id": "I1050",
+  "name": "Lolius Marcia Bailey",
+  "givenName": "Lolius Marcia",
+  "surname": "Bailey",
+  "sex": "F",
+  "birthDate": "11 NOVEMBER 1922",
+  "birthPlace": "Grenfell",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1049"
+  ],
+  "childIds": [
+    "I1047",
+    "I1048",
+    "I1051",
+    "I1052"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1049",
+      "familyId": "F425",
+      "marriageDate": "9 AUGUST 1943",
+      "marriagePlace": "Grenfell"
+    }
+  ]
+}

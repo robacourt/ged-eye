@@ -1,0 +1,30 @@
+{
+  "id": "I540",
+  "name": "Dinah a'Court",
+  "givenName": "Dinah",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "BEF 18 MAY 170",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "AFT 1747",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I929"
+  ],
+  "childIds": [
+    "I930"
+  ],
+  "parentIds": [
+    "I534",
+    "I535"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I929",
+      "familyId": "F231",
+      "marriageDate": "3 APR 1738",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

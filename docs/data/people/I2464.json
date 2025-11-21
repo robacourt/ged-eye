@@ -1,0 +1,32 @@
+{
+  "id": "I2464",
+  "name": "Emma Unkown",
+  "givenName": "Emma",
+  "surname": "Unkown",
+  "sex": "F",
+  "birthDate": "ABT 1833",
+  "birthPlace": "London City",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2465"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Artificial Florist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Finsbury, 7, J Block Peabody's Buildings, Roscoe Street,"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2465",
+      "familyId": "F871"
+    }
+  ]
+}

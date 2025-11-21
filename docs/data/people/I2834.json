@@ -1,0 +1,37 @@
+{
+  "id": "I2834",
+  "name": "Joshua Coutanche",
+  "givenName": "Joshua",
+  "surname": "Coutanche",
+  "sex": "M",
+  "birthDate": "1808",
+  "birthPlace": "Jersey C.I. St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Jersey/St Helier/RG11 5610 73 21.jpg"
+  ],
+  "spouseIds": [
+    "I2835"
+  ],
+  "childIds": [
+    "I2836"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Stone Mason"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Helier, 23 George St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2835",
+      "familyId": "F918"
+    }
+  ],
+  "avatar": "avatars/I2834_0.jpg"
+}

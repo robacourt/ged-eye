@@ -1,0 +1,40 @@
+{
+  "id": "I519",
+  "name": "Leonard Percy Frank A'Court",
+  "givenName": "Leonard Percy Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "18 AUG 1899",
+  "birthPlace": "Surrey, Addlestone, Brooklands Farm",
+  "deathDate": "23 MAY 1918",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Surrey/RG13 589 24.jpg",
+    "Data/Media/1911 census/Surrey/RG14 3007 92.jpg",
+    "Data/Media/Death certs and reports/Leaonard P F A'Court- New Haw.pdf"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I532",
+    "I533"
+  ],
+  "baptismDate": "23 SEP1899",
+  "baptismPlace": "Surrey, Weybridge, St James",
+  "burialDate": "MAY 1918",
+  "burialPlace": "MAILLY WOOD CEMETERY, Mailly-Maillet, Somme, France",
+  "occupations": [
+    "Mr A Burgess, Baker & Confectioner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "Addlestone, Surrey, 10 Australian Cottages, New Haw"
+    }
+  ],
+  "avatar": "avatars/I519_0.jpg"
+}

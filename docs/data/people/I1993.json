@@ -1,0 +1,21 @@
+{
+  "id": "I1993",
+  "name": "Jean Ford",
+  "givenName": "Jean",
+  "surname": "Ford",
+  "sex": "F",
+  "birthDate": "ABT 1930 TWIN",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Jean Joan  Freddy Ford.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1627",
+    "I1033"
+  ],
+  "avatar": "avatars/I1993_0.jpg"
+}

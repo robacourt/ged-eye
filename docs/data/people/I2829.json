@@ -1,0 +1,25 @@
+{
+  "id": "I2829",
+  "name": "Unknown Tuley",
+  "givenName": "Unknown",
+  "surname": "Tuley",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2828"
+  ],
+  "childIds": [
+    "I1572"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2828",
+      "familyId": "F874"
+    }
+  ]
+}

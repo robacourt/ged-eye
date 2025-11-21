@@ -1,0 +1,27 @@
+{
+  "id": "I2911",
+  "name": "Mabel Le Manguand",
+  "givenName": "Mabel",
+  "surname": "Le Manguand",
+  "sex": "F",
+  "birthDate": "1901",
+  "birthPlace": "Jersey C.I St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34928 87 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2877",
+    "I2812"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, St Aubins Rd, Orient Cottage"
+    }
+  ],
+  "avatar": "avatars/I2911_0.jpg"
+}

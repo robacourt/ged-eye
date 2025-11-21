@@ -1,0 +1,20 @@
+{
+  "id": "I2962",
+  "name": "Bertrum A'Court",
+  "givenName": "Bertrum",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1571",
+    "I1572"
+  ],
+  "baptismDate": "23 NOV 1896",
+  "baptismPlace": "Dorset, Blandford Forum"
+}

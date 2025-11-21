@@ -1,0 +1,35 @@
+{
+  "id": "I37",
+  "name": "Ann Rowland",
+  "givenName": "Ann",
+  "surname": "Rowland",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I34"
+  ],
+  "childIds": [
+    "I38",
+    "I39",
+    "I40",
+    "I41",
+    "I42",
+    "I43",
+    "I44"
+  ],
+  "parentIds": [],
+  "baptismDate": "18.7.1798",
+  "baptismPlace": "Hinton St. Mary, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I34",
+      "familyId": "F23",
+      "marriageDate": "15-5-1817",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ]
+}

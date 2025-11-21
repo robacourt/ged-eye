@@ -1,0 +1,26 @@
+{
+  "id": "I312",
+  "name": "Thomas Kendall",
+  "givenName": "Thomas",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I311"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F153"
+    }
+  ]
+}

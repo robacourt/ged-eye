@@ -1,0 +1,26 @@
+{
+  "id": "I1295",
+  "name": "Lilian Woodfield",
+  "givenName": "Lilian",
+  "surname": "Woodfield",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1266"
+  ],
+  "childIds": [
+    "I1296",
+    "I1297"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1266",
+      "familyId": "F510"
+    }
+  ]
+}

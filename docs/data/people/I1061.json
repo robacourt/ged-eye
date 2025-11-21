@@ -1,0 +1,18 @@
+{
+  "id": "I1061",
+  "name": "Rhonda Denise Diehm",
+  "givenName": "Rhonda Denise",
+  "surname": "Diehm",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1058",
+    "I1059"
+  ]
+}

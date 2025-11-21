@@ -1,0 +1,33 @@
+{
+  "id": "I1449",
+  "name": "Alan A'Court",
+  "givenName": "Alan",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "30 SEP 1934",
+  "birthPlace": "Rainhill, Lancashire",
+  "deathDate": "14 DEC 2009",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Alan A'Court 2.jpg",
+    "Data/Picture/Alan A'Court.jpg",
+    "Data/Picture/Alan A'Court3.jpg"
+  ],
+  "spouseIds": [
+    "I2762"
+  ],
+  "childIds": [
+    "I2763"
+  ],
+  "parentIds": [
+    "I2610",
+    "I2615"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2762",
+      "familyId": "F961"
+    }
+  ],
+  "avatar": "avatars/I1449_0.jpg"
+}

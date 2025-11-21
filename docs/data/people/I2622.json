@@ -1,0 +1,28 @@
+{
+  "id": "I2622",
+  "name": "George Kostic",
+  "givenName": "George",
+  "surname": "Kostic",
+  "sex": "M",
+  "birthDate": "18 APR 1951",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2617"
+  ],
+  "childIds": [
+    "I2623",
+    "I2624"
+  ],
+  "parentIds": [
+    "I2632"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2617",
+      "familyId": "F913"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "I1196",
+  "name": "Albert William Haskett",
+  "givenName": "Albert William",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1197"
+  ],
+  "childIds": [
+    "I1198"
+  ],
+  "parentIds": [
+    "I1181",
+    "I1182"
+  ],
+  "baptismDate": "8 MAY 1881",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "age 1"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1197",
+      "familyId": "F485"
+    }
+  ]
+}

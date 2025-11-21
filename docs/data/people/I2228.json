@@ -1,0 +1,28 @@
+{
+  "id": "I2228",
+  "name": "George Spencer",
+  "givenName": "George",
+  "surname": "Spencer",
+  "sex": "M",
+  "birthDate": "ABT 1853",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2225"
+  ],
+  "childIds": [
+    "I2227"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Furniture Broker"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2225",
+      "familyId": "F794"
+    }
+  ]
+}

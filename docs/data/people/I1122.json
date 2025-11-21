@@ -1,0 +1,28 @@
+{
+  "id": "I1122",
+  "name": "Bessie Victoria Kent",
+  "givenName": "Bessie Victoria",
+  "surname": "Kent",
+  "sex": "F",
+  "birthDate": "Abt 1916",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1123"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1121",
+    "I1120"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1123",
+      "familyId": "F454",
+      "marriageDate": "29 JULY 1939",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

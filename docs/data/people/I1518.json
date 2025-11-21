@@ -1,0 +1,24 @@
+{
+  "id": "I1518",
+  "name": "Kate Isabel Baldwin",
+  "givenName": "Kate Isabel",
+  "surname": "Baldwin",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "7 JAN 1987",
+  "deathPlace": "Exmouth, Devon. 9 Brixington Drive",
+  "photos": [],
+  "spouseIds": [
+    "I1517"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1517",
+      "familyId": "F579",
+      "marriageDate": "9 APRIL 1932"
+    }
+  ]
+}

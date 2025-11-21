@@ -1,0 +1,39 @@
+{
+  "id": "I2939",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1790",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/BDM/Somerset/Rimpton Baptism 1755.png"
+  ],
+  "spouseIds": [
+    "I2940"
+  ],
+  "childIds": [
+    "I2942",
+    "I577",
+    "I2943",
+    "I2944",
+    "I2945",
+    "I1860",
+    "I2946"
+  ],
+  "parentIds": [
+    "I741",
+    "I742"
+  ],
+  "baptismDate": "3 JUN 1755",
+  "baptismPlace": "Somerset, Rimpton",
+  "marriages": [
+    {
+      "spouseId": "I2940",
+      "familyId": "F1004"
+    }
+  ],
+  "avatar": "avatars/I2939_0.jpg"
+}

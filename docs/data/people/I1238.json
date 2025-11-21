@@ -1,0 +1,32 @@
+{
+  "id": "I1238",
+  "name": "Paul Haskett",
+  "givenName": "Paul",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1937",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1239"
+  ],
+  "childIds": [
+    "I1240",
+    "I1241"
+  ],
+  "parentIds": [
+    "I1215",
+    "I1216"
+  ],
+  "notes": [
+    "of Bournemouth, Hampshire"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1239",
+      "familyId": "F498"
+    }
+  ]
+}

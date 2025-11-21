@@ -1,0 +1,36 @@
+{
+  "id": "I124",
+  "name": "Lesley Patricia Banbrook",
+  "givenName": "Lesley Patricia",
+  "surname": "Banbrook",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I122"
+  ],
+  "childIds": [
+    "I125",
+    "I126"
+  ],
+  "parentIds": [
+    "I131",
+    "I132"
+  ],
+  "occupations": [
+    "Teacher"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I122",
+      "familyId": "F75",
+      "marriageDate": "18 SEP 1963",
+      "marriagePlace": "Auckland, New Zealand,  St. Johns, Northcote",
+      "divorceDate": "8 FEB 1985",
+      "divorcePlace": "Whangarei, New Zealand"
+    }
+  ]
+}

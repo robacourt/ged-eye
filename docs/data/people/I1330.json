@@ -1,0 +1,26 @@
+{
+  "id": "I1330",
+  "name": "Clara Louisa Unknown",
+  "givenName": "Clara Louisa",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": null,
+  "deathDate": "1943",
+  "deathPlace": "Stoke Sub Hamdon, Somerset, Footlands",
+  "photos": [],
+  "spouseIds": [
+    "I1329"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "burialDate": "4 OCT 1943",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "marriages": [
+    {
+      "spouseId": "I1329",
+      "familyId": "F525",
+      "marriageDate": "ABT 1892"
+    }
+  ]
+}

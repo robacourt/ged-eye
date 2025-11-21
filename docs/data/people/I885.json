@@ -1,0 +1,18 @@
+{
+  "id": "I885",
+  "name": "Louisa A'Court",
+  "givenName": "Louisa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1848",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": "AFT 1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I766",
+    "I882"
+  ]
+}

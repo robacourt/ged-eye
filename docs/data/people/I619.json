@@ -1,0 +1,33 @@
+{
+  "id": "I619",
+  "name": "Ernest Edwin Watts",
+  "givenName": "Ernest Edwin",
+  "surname": "Watts",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I591"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I620"
+  ],
+  "occupations": [
+    "Cabinet Maker"
+  ],
+  "notes": [
+    "24-1902"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I591",
+      "familyId": "F243",
+      "marriageDate": "17.6.1902",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

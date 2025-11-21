@@ -1,0 +1,29 @@
+{
+  "id": "I2313",
+  "name": "Ronald A'Court",
+  "givenName": "Ronald",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1919",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2314"
+  ],
+  "childIds": [
+    "I2315",
+    "I2316"
+  ],
+  "parentIds": [
+    "I1542",
+    "I1543"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2314",
+      "familyId": "F819"
+    }
+  ]
+}

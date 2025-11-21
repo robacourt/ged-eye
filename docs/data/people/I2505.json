@@ -1,0 +1,18 @@
+{
+  "id": "I2505",
+  "name": "Adeline Maud A'Court",
+  "givenName": "Adeline Maud",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1895",
+  "birthPlace": "Toko, Stratford, Taranaki, New Zealand",
+  "deathDate": "1979",
+  "deathPlace": "Greymouth, Westland, New Zealand",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1906",
+    "I1907"
+  ]
+}

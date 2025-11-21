@@ -1,0 +1,24 @@
+{
+  "id": "I1211",
+  "name": "Ernest Alfred Haskett",
+  "givenName": "Ernest Alfred",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1885",
+  "birthPlace": "Gorley, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1181",
+    "I1182"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Ipswich, Suffolk"
+    }
+  ]
+}

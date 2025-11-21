@@ -1,0 +1,31 @@
+{
+  "id": "I2605",
+  "name": "George A'Court Emberson",
+  "givenName": "George A'Court",
+  "surname": "Emberson",
+  "sex": "M",
+  "birthDate": "ABT 1896",
+  "birthPlace": "Walton-on-Thames, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg",
+    "Data/Media/1911 census/Surrey/RG14 2982 162.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1336",
+    "I1335"
+  ],
+  "occupations": [
+    "Secretary's Junior Clerk"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Walton-on-Thames, Surrey, Heytesbury Station Avenue"
+    }
+  ],
+  "avatar": "avatars/I2605_0.jpg"
+}

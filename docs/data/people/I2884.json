@@ -1,0 +1,24 @@
+{
+  "id": "I2884",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1873",
+  "birthPlace": "London, Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/London/Deptford/RG12 500 18 29.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Deptford, Park Rd."
+    }
+  ],
+  "avatar": "avatars/I2884_0.jpg"
+}

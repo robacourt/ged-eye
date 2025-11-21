@@ -1,0 +1,25 @@
+{
+  "id": "I132",
+  "name": "Hilda Miller",
+  "givenName": "Hilda",
+  "surname": "Miller",
+  "sex": "F",
+  "birthDate": "9 SEP 1915",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I131"
+  ],
+  "childIds": [
+    "I124"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I131",
+      "familyId": "F78"
+    }
+  ]
+}

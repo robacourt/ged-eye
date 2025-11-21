@@ -1,0 +1,37 @@
+{
+  "id": "I2452",
+  "name": "Stephen A'Court",
+  "givenName": "Stephen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1839",
+  "birthPlace": "Ely, Cambridgeshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2453"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Beer Seller",
+    "Coach Smith"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Lewisham, Perry Vale, The Prince of Wales"
+    },
+    {
+      "date": "1901",
+      "place": "London, Battersea, 30 Edna Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2453",
+      "familyId": "F977"
+    }
+  ]
+}

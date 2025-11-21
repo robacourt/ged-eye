@@ -1,0 +1,26 @@
+{
+  "id": "I2296",
+  "name": "James Parker",
+  "givenName": "James",
+  "surname": "Parker",
+  "sex": "M",
+  "birthDate": "1821",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2297"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2295",
+    "I2294"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2297",
+      "familyId": "F812"
+    }
+  ]
+}

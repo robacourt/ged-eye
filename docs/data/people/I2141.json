@@ -1,0 +1,45 @@
+{
+  "id": "I2141",
+  "name": "Annie Amelia A'Court",
+  "givenName": "Annie Amelia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1894",
+  "birthPlace": "Nether Compton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Surrey/RG13 589 24.jpg",
+    "Data/Media/1911 census/Surrey/RG14 3009 234 .jpg"
+  ],
+  "spouseIds": [
+    "I2143"
+  ],
+  "childIds": [
+    "I2144"
+  ],
+  "parentIds": [
+    "I532",
+    "I533"
+  ],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "West Byfleet, Surrey, Mussoorie Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2143",
+      "familyId": "F764"
+    }
+  ],
+  "avatar": "avatars/I2141_0.jpg"
+}

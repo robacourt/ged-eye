@@ -1,0 +1,18 @@
+{
+  "id": "I691",
+  "name": "Mary a'Court",
+  "givenName": "Mary",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1648",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I563",
+    "I686"
+  ]
+}

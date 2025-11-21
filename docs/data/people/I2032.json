@@ -1,0 +1,31 @@
+{
+  "id": "I2032",
+  "name": "Noel James A'Court",
+  "givenName": "Noel James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "24 NOV 1948",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2033"
+  ],
+  "childIds": [
+    "I2045",
+    "I2046",
+    "I2047"
+  ],
+  "parentIds": [
+    "I1930",
+    "I1944"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2033",
+      "familyId": "F733",
+      "divorceDate": "DATE UNKNOWN"
+    }
+  ]
+}

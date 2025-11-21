@@ -1,0 +1,32 @@
+{
+  "id": "I2701",
+  "name": "Evelyn J McCann",
+  "givenName": "Evelyn J",
+  "surname": "McCann",
+  "sex": "F",
+  "birthDate": "1951",
+  "birthPlace": "Southend-On-Sea, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Evelyn McCann, Ester Barnett, Herbert Barnett.png"
+  ],
+  "spouseIds": [
+    "I2702"
+  ],
+  "childIds": [
+    "I2703",
+    "I2704"
+  ],
+  "parentIds": [
+    "I2700",
+    "I2699"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2702",
+      "familyId": "F940"
+    }
+  ],
+  "avatar": "avatars/I2701_0.jpg"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I1032",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1901",
+  "birthPlace": "Martock, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901 AGE",
+      "place": "Martock, Somerset, East St."
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
+  "avatar": "avatars/I1032_0.jpg"
+}

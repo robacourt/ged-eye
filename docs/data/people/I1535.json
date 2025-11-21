@@ -1,0 +1,30 @@
+{
+  "id": "I1535",
+  "name": "Freda Pedder",
+  "givenName": "Freda",
+  "surname": "Pedder",
+  "sex": "F",
+  "birthDate": "1923",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1536"
+  ],
+  "childIds": [
+    "I1985",
+    "I1986"
+  ],
+  "parentIds": [
+    "I1534",
+    "I1532"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1536",
+      "familyId": "F586",
+      "marriageDate": "1945"
+    }
+  ]
+}

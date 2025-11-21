@@ -1,0 +1,28 @@
+{
+  "id": "I1159",
+  "name": "Mary Monica Curtis",
+  "givenName": "Mary Monica",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1903",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1160"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1155",
+    "I1156"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1160",
+      "familyId": "F472",
+      "marriageDate": "14 JULY  1926",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

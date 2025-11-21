@@ -1,0 +1,30 @@
+{
+  "id": "I1306",
+  "name": "Kim Nicole Hall-Richardson",
+  "givenName": "Kim Nicole",
+  "surname": "Hall-Richardson",
+  "sex": "F",
+  "birthDate": "28 JAN 1967",
+  "birthPlace": "Canterbury, Kent",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1097"
+  ],
+  "childIds": [
+    "I1307",
+    "I1308",
+    "I1309",
+    "I1310"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1097",
+      "familyId": "F441",
+      "marriageDate": "24 SEP 1993",
+      "marriagePlace": "Perth, Western Australia"
+    }
+  ]
+}

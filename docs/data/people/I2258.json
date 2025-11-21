@@ -1,0 +1,54 @@
+{
+  "id": "I2258",
+  "name": "Elizabeth Mary Unknown",
+  "givenName": "Elizabeth Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1824",
+  "birthPlace": "Freebourgh, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg",
+    "Data/Media/1911 census/Lancashire/Lancaster/RG14 25552 81.jpg"
+  ],
+  "spouseIds": [
+    "I1764"
+  ],
+  "childIds": [
+    "I2259",
+    "I2260",
+    "I1601",
+    "I1608"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Bedminster, Bristol, 11 Richmond Terrace."
+    },
+    {
+      "date": "1871",
+      "place": "Bedminster, Bristol, 18 Clarence Place"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, Warrington, 34 Chorley St."
+    },
+    {
+      "date": "1891",
+      "place": "Lancashire, Warrington, Sandy Lane, Cherry House"
+    },
+    {
+      "date": "1911",
+      "place": "St. Helens, Lancs, 9 South John St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1764",
+      "familyId": "F798"
+    }
+  ],
+  "avatar": "avatars/I2258_0.jpg"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "I459",
+  "name": "Sarah Alice Spillett",
+  "givenName": "Sarah Alice",
+  "surname": "Spillett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Sheldwick, Kent",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I455"
+  ],
+  "childIds": [
+    "I460",
+    "I461"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I455",
+      "familyId": "F204",
+      "marriageDate": "APR 1909",
+      "marriagePlace": "Kent, Faversham"
+    }
+  ]
+}

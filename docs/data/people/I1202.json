@@ -1,0 +1,21 @@
+{
+  "id": "I1202",
+  "name": "Geraldine Haskett",
+  "givenName": "Geraldine",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1199",
+    "I1200"
+  ],
+  "occupations": [
+    "Nurse"
+  ]
+}

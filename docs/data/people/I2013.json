@@ -1,0 +1,43 @@
+{
+  "id": "I2013",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1815",
+  "birthPlace": "Devon, Washfield",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Devon/Exeter/RG11 2153 51 10.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I2014",
+    "I2017",
+    "I2018",
+    "I2019"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Railway Policeman",
+    "Railway signalman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Devon, Exeter, 3 St Davids Hill"
+    },
+    {
+      "date": "1881",
+      "place": "Devon, Exeter, 36 Lower North St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F717"
+    }
+  ],
+  "avatar": "avatars/I2013_0.jpg"
+}

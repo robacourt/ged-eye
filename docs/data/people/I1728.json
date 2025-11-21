@@ -1,0 +1,39 @@
+{
+  "id": "I1728",
+  "name": "Giles Wheeler Bennett",
+  "givenName": "Giles Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1731"
+  ],
+  "childIds": [
+    "I1729",
+    "I1732"
+  ],
+  "parentIds": [
+    "I1727",
+    "I1629"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Hampshire, Hambledon"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F632"
+    },
+    {
+      "spouseId": "I1731",
+      "familyId": "F640"
+    }
+  ]
+}

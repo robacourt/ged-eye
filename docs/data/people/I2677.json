@@ -1,0 +1,18 @@
+{
+  "id": "I2677",
+  "name": "George R. A'Court",
+  "givenName": "George R.",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3QTR 1941",
+  "birthPlace": "Droxford, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2660",
+    "I2659"
+  ]
+}

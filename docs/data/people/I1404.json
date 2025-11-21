@@ -1,0 +1,21 @@
+{
+  "id": "I1404",
+  "name": "William Yendal",
+  "givenName": "William",
+  "surname": "Yendal",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F553"
+    }
+  ]
+}

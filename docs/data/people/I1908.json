@@ -1,0 +1,36 @@
+{
+  "id": "I1908",
+  "name": "Mary Phyllis A'Court",
+  "givenName": "Mary Phyllis",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1888",
+  "birthPlace": "Kumara, Westland, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1909"
+  ],
+  "childIds": [
+    "I1942",
+    "I2489",
+    "I2491",
+    "I2493",
+    "I2495",
+    "I2497",
+    "I2499",
+    "I2501"
+  ],
+  "parentIds": [
+    "I1906",
+    "I1907"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1909",
+      "familyId": "F677",
+      "marriagePlace": "Kumara, Westland, New Zealand"
+    }
+  ]
+}

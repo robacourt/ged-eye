@@ -1,0 +1,25 @@
+{
+  "id": "I816",
+  "name": "Ernest William WILTSHIRE",
+  "givenName": "Ernest William",
+  "surname": "WILTSHIRE",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I811"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I811",
+      "familyId": "F345",
+      "marriageDate": "28 JUN 1917",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

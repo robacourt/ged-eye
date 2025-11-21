@@ -1,0 +1,40 @@
+{
+  "id": "I197",
+  "name": "Christopher Kendall",
+  "givenName": "Christopher",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I330"
+  ],
+  "childIds": [
+    "I331",
+    "I332",
+    "I333",
+    "I334"
+  ],
+  "parentIds": [
+    "I196",
+    "I59"
+  ],
+  "baptismDate": "27.4.1834",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Master Carpenter"
+  ],
+  "notes": [
+    "17-1851  27-1861  37-1871  47-1881  57-1891"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I330",
+      "familyId": "F113",
+      "marriageDate": "ANTE 1855"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "I799",
+  "name": "Lavinia Amelia (Amelia) A'Court",
+  "givenName": "Lavinia Amelia (Amelia)",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3 OCT 1888",
+  "birthPlace": "Rangiora, New Zealand",
+  "deathDate": "15 NOV 1965",
+  "deathPlace": "Wellington, NZ, Wellington Public Hospital",
+  "photos": [],
+  "spouseIds": [
+    "I801"
+  ],
+  "childIds": [
+    "I1927"
+  ],
+  "parentIds": [
+    "I785",
+    "I797"
+  ],
+  "burialPlace": "Wellington, NZ, Karori Cemetery,",
+  "notes": [
+    "Headstone (Plot 08/B/05/008)"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I801",
+      "familyId": "F343",
+      "marriageDate": "3 DEC 1920",
+      "marriagePlace": "Wellington, New Zealand"
+    }
+  ]
+}

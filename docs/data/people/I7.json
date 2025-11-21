@@ -1,0 +1,35 @@
+{
+  "id": "I7",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1823",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I138"
+  ],
+  "childIds": [
+    "I139"
+  ],
+  "parentIds": [
+    "I1",
+    "I2"
+  ],
+  "baptismDate": "10 DEC 1823",
+  "baptismPlace": "Hinton St. Mary, Dorset",
+  "notes": [
+    "of Fiddleford"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I138",
+      "familyId": "F6",
+      "marriageDate": "10 DEC 1847",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

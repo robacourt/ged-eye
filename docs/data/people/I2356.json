@@ -1,0 +1,25 @@
+{
+  "id": "I2356",
+  "name": "Dennis C A'Court",
+  "givenName": "Dennis C",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2357"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2357",
+      "familyId": "F836",
+      "marriageDate": "JUL 1994",
+      "marriagePlace": "Hampshire"
+    }
+  ]
+}

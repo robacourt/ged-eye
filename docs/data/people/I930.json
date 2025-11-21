@@ -1,0 +1,18 @@
+{
+  "id": "I930",
+  "name": "Marie Cooke",
+  "givenName": "Marie",
+  "surname": "Cooke",
+  "sex": "F",
+  "birthDate": "ABT 1747",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I929",
+    "I540"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1961",
+  "name": "Mark Amendolia",
+  "givenName": "Mark",
+  "surname": "Amendolia",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1960"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1960",
+      "familyId": "F700",
+      "marriageDate": "8 DEC 2004",
+      "marriagePlace": "Oakhill College Chapel, Castle Hill,"
+    }
+  ]
+}

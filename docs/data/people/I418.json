@@ -1,0 +1,66 @@
+{
+  "id": "I418",
+  "name": "Birdie Eveline Barnett",
+  "givenName": "Birdie Eveline",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "25 OCT 1893",
+  "birthPlace": "London, Bethnal Green,",
+  "deathDate": "10 FEB 1980",
+  "deathPlace": "London, Ealing",
+  "photos": [
+    "Data/Picture/Birdie Barnett.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 212 71.jpg",
+    "Data/Media/1911 census/London/Hackney/RG14 1034 13.jpg",
+    "Data/Media/1939 Register/Bristol/26 Royal York Cresent.jpg"
+  ],
+  "spouseIds": [
+    "I417"
+  ],
+  "childIds": [
+    "I422",
+    "I121",
+    "I2728",
+    "I421",
+    "I420",
+    "I419",
+    "I2729"
+  ],
+  "parentIds": [
+    "I445",
+    "I446"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Hackney, London, 51 Ickburgh Rd"
+    },
+    {
+      "date": "1911",
+      "place": "London, Lower Clapton,164 Lower Clapton Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Hackney, 40 London Road"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1969",
+      "place": "London, Lower Clapton, 22 Milldenhall Rd."
+    },
+    {
+      "date": "1969",
+      "place": "Middlesex, Edgware,13 Alders Close"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I417",
+      "familyId": "F74",
+      "marriageDate": "18 OCT 1912",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I418_0.jpg"
+}

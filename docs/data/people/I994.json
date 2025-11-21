@@ -1,0 +1,26 @@
+{
+  "id": "I994",
+  "name": "Isabel Ada A'Court",
+  "givenName": "Isabel Ada",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "19 NOVEMBER 1929",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I995"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I734",
+    "I735"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I995",
+      "familyId": "F414"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I2197",
+  "name": "Charles Nicholas Rowe",
+  "givenName": "Charles Nicholas",
+  "surname": "Rowe",
+  "sex": "M",
+  "birthDate": "1946",
+  "birthPlace": "Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2203"
+  ],
+  "childIds": [
+    "I2202",
+    "I2204",
+    "I2205"
+  ],
+  "parentIds": [
+    "I2185",
+    "I2253"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2203",
+      "familyId": "F788"
+    }
+  ]
+}

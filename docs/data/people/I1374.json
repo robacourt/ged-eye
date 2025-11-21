@@ -1,0 +1,23 @@
+{
+  "id": "I1374",
+  "name": "Brian Igglesden",
+  "givenName": "Brian",
+  "surname": "Igglesden",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1373"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1373",
+      "familyId": "F543"
+    }
+  ]
+}

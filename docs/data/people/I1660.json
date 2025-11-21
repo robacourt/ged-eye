@@ -1,0 +1,28 @@
+{
+  "id": "I1660",
+  "name": "Ernest Hayward",
+  "givenName": "Ernest",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": "ABT 1877",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1658",
+    "I309"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Flanders"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ]
+}

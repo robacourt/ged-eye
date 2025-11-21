@@ -1,0 +1,23 @@
+{
+  "id": "I896",
+  "name": "Samuel Durrant",
+  "givenName": "Samuel",
+  "surname": "Durrant",
+  "sex": "M",
+  "birthDate": "BEF 1804",
+  "birthPlace": null,
+  "deathDate": "AFT 1817",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I758"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I758",
+      "familyId": "F312"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I1273",
+  "name": "Unknown Amer",
+  "givenName": "Unknown",
+  "surname": "Amer",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1272"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1272",
+      "familyId": "F513",
+      "marriageDate": "1950"
+    }
+  ]
+}

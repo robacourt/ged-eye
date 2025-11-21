@@ -1,0 +1,59 @@
+{
+  "id": "I2251",
+  "name": "William George A'Court",
+  "givenName": "William George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4 APR 1875",
+  "birthPlace": "Bristol, Newtown, 18 Regent Street",
+  "deathDate": "20 NOV 1934",
+  "deathPlace": "Newtown, Bristol",
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2497 134 28.jpg",
+    "Data/Media/1901 census/Bristol/RG13 2381 24 2.jpg"
+  ],
+  "spouseIds": [
+    "I2252"
+  ],
+  "childIds": [
+    "I2206",
+    "I2250",
+    "I2254",
+    "I2253"
+  ],
+  "parentIds": [
+    "I2153",
+    "I2154"
+  ],
+  "occupations": [
+    "Cocoa Operative",
+    "House Painter",
+    "House Painter"
+  ],
+  "notes": [
+    "1901 census transcription details for:  18, Regent Street, Bristol"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 68 Regent St., Ss Philip and Jacob"
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, 18 Regent Street"
+    },
+    {
+      "date": "1911 AS HAYCOURT",
+      "place": "Bristol, Easton, 2 Peel Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2252",
+      "familyId": "F791",
+      "marriageDate": "10 DEC 1904",
+      "marriagePlace": "Bristol Registry Office"
+    }
+  ],
+  "avatar": "avatars/I2251_0.jpg"
+}

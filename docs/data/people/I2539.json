@@ -1,0 +1,29 @@
+{
+  "id": "I2539",
+  "name": "Job Hayward",
+  "givenName": "Job",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": "ABT 1830",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1634"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Old Workhouse."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F896"
+    }
+  ]
+}

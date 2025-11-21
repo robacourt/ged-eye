@@ -1,0 +1,27 @@
+{
+  "id": "I2741",
+  "name": "Katie Nora King",
+  "givenName": "Katie Nora",
+  "surname": "King",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2115"
+  ],
+  "childIds": [
+    "I2116"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2115",
+      "familyId": "F755",
+      "marriageDate": "1925",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

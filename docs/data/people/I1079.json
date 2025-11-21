@@ -1,0 +1,26 @@
+{
+  "id": "I1079",
+  "name": "Ann Curtis",
+  "givenName": "Ann",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "29 JULY 1849",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "21 OCTOBER 1849",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ]
+}

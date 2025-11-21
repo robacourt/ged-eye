@@ -1,0 +1,31 @@
+{
+  "id": "I1862",
+  "name": "Ann Unknown",
+  "givenName": "Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1824",
+  "birthPlace": "Buckhorn Weston, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1765"
+  ],
+  "childIds": [
+    "I1863"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Poor Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1765",
+      "familyId": "F671"
+    }
+  ]
+}

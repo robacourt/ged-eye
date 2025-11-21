@@ -1,0 +1,24 @@
+{
+  "id": "I1963",
+  "name": "Elijah A'Court",
+  "givenName": "Elijah",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1816",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Walcot/Piece 970 folio 41 page 19.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Bath, Somerset, 24 Green Park ,"
+    }
+  ],
+  "avatar": "avatars/I1963_0.jpg"
+}

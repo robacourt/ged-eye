@@ -1,0 +1,23 @@
+{
+  "id": "I1971",
+  "name": "Unknown Jones",
+  "givenName": "Unknown",
+  "surname": "Jones",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1970"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1970",
+      "familyId": "F704"
+    }
+  ]
+}

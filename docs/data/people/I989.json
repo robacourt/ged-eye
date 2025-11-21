@@ -1,0 +1,31 @@
+{
+  "id": "I989",
+  "name": "Ronald Glen A'Court",
+  "givenName": "Ronald Glen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "22 APR1920",
+  "birthPlace": null,
+  "deathDate": "18 JAN 1988",
+  "deathPlace": "Parklea",
+  "photos": [],
+  "spouseIds": [
+    "I990"
+  ],
+  "childIds": [
+    "I2618",
+    "I1430",
+    "I2617",
+    "I2616"
+  ],
+  "parentIds": [
+    "I734",
+    "I735"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I990",
+      "familyId": "F411"
+    }
+  ]
+}

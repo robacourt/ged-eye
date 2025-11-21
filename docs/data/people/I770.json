@@ -1,0 +1,27 @@
+{
+  "id": "I770",
+  "name": "Betsy A'Court",
+  "givenName": "Betsy",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1833",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "occupations": [
+    "Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Castle Cary, Somerset"
+    }
+  ]
+}

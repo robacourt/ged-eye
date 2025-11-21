@@ -1,0 +1,26 @@
+{
+  "id": "I354",
+  "name": "Edward Hayter",
+  "givenName": "Edward",
+  "surname": "Hayter",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I353"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F165"
+    }
+  ]
+}

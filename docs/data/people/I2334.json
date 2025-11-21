@@ -1,0 +1,40 @@
+{
+  "id": "I2334",
+  "name": "Leah Simmons",
+  "givenName": "Leah",
+  "surname": "Simmons",
+  "sex": "F",
+  "birthDate": "ABT 1808",
+  "birthPlace": "London, Whitechapel",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Shoreditch/RG10 422 16 26.jpg",
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg"
+  ],
+  "spouseIds": [
+    "I2734"
+  ],
+  "childIds": [
+    "I1422",
+    "I2723"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Shoreditch, London, Old Street"
+    },
+    {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2734",
+      "familyId": "F830"
+    }
+  ],
+  "avatar": "avatars/I2334_0.jpg"
+}

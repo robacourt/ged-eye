@@ -1,0 +1,33 @@
+{
+  "id": "I1277",
+  "name": "Doris Stacey",
+  "givenName": "Doris",
+  "surname": "Stacey",
+  "sex": "F",
+  "birthDate": "MAR 1919",
+  "birthPlace": "Thames Ditton, Surrey",
+  "deathDate": "1997",
+  "deathPlace": "Worthing, East Sussex",
+  "photos": [],
+  "spouseIds": [
+    "I1279",
+    "I1280"
+  ],
+  "childIds": [
+    "I1281"
+  ],
+  "parentIds": [
+    "I1276",
+    "I1263"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1279",
+      "familyId": "F516"
+    },
+    {
+      "spouseId": "I1280",
+      "familyId": "F517"
+    }
+  ]
+}

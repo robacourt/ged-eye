@@ -1,0 +1,37 @@
+{
+  "id": "I2572",
+  "name": "Louisa Agnes Unknown",
+  "givenName": "Louisa Agnes",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1880",
+  "birthPlace": "St. Braivels, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2571"
+  ],
+  "childIds": [
+    "I2573",
+    "I2574",
+    "I2575",
+    "I2576",
+    "I2641",
+    "I2642"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Peckham, 2 Hazlemere Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2571",
+      "familyId": "F903",
+      "marriageDate": "ABT 1897"
+    }
+  ]
+}

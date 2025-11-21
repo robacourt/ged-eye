@@ -1,0 +1,18 @@
+{
+  "id": "I1051",
+  "name": "John Sydney Diehm",
+  "givenName": "John Sydney",
+  "surname": "Diehm",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1049",
+    "I1050"
+  ]
+}

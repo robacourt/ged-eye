@@ -1,0 +1,43 @@
+{
+  "id": "I2306",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1791",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Castle Cary/1.jpg",
+    "Data/Media/1871 census/Castle Cary/RG10 2422 25 14.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Out Door Pauper",
+    "Formerly Ag Lab",
+    ""
+  ],
+  "notes": [
+    "See Census image",
+    "Not discerable see census document",
+    "Aunt of James A'Court #2305"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Castle Cary, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Castle Cary, Somerset, South Cary"
+    },
+    {
+      "date": "1871",
+      "place": "Castle Cary, Somerset, South Cary"
+    }
+  ],
+  "avatar": "avatars/I2306_0.jpg"
+}

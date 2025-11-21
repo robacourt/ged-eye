@@ -1,0 +1,34 @@
+{
+  "id": "I1619",
+  "name": "Harriet A'Court",
+  "givenName": "Harriet",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1865",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 36 17 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1617",
+    "I1616"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "avatar": "avatars/I1619_0.jpg"
+}

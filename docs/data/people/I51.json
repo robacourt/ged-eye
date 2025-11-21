@@ -1,0 +1,46 @@
+{
+  "id": "I51",
+  "name": "Thomas Cook A'Court",
+  "givenName": "Thomas Cook",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1871",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1753",
+    "I1928"
+  ],
+  "childIds": [
+    "I1929"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "21 SEP 1798",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Printer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Shepton Mallet, Somerset, Town St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1753",
+      "familyId": "F684",
+      "marriageDate": "1 FEB 1821",
+      "marriagePlace": "Shepton Mallet, Somerset"
+    },
+    {
+      "spouseId": "I1928",
+      "familyId": "F685"
+    }
+  ]
+}

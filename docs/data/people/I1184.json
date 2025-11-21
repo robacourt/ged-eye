@@ -1,0 +1,57 @@
+{
+  "id": "I1184",
+  "name": "Sarah Warren",
+  "givenName": "Sarah",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "Abt 1834",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1183"
+  ],
+  "childIds": [
+    "I1100",
+    "I1185",
+    "I1186",
+    "I1187",
+    "I1188",
+    "I1189",
+    "I1657"
+  ],
+  "parentIds": [
+    "I1624"
+  ],
+  "occupations": [
+    "Glover",
+    "Glover",
+    "Glover"
+  ],
+  "notes": [
+    "104;    ;    Emmanuel;    ACOURT;    Head;    Married;    34;    Ag. Labourer;    Marnhull;    RG10/1972F40p17"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Barton"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Near Antills Farm"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Batts Alley"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1183",
+      "familyId": "F443",
+      "marriageDate": "25 SEP 1857",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

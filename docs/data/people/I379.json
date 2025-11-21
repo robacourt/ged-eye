@@ -1,0 +1,65 @@
+{
+  "id": "I379",
+  "name": "Sarah Wheeler Bennett",
+  "givenName": "Sarah Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "ABT 1857",
+  "birthPlace": "Hampshire, Portsmouth, Landport",
+  "deathDate": "1947",
+  "deathPlace": "Portsmouth",
+  "photos": [
+    "Data/Media/1861 Census/Hampshire/RG09 641 39 30 2.jpg",
+    "Data/Media/1881 census/Hampshire/Portsea/RG11 1160 124.jpg",
+    "Data/Media/1891 census/Hampshire/Portsmouth/RG12 871 116 47.jpg"
+  ],
+  "spouseIds": [
+    "I386"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I374",
+    "I375"
+  ],
+  "notes": [
+    "Known in family as Auntie Tofe had a beautiful voice"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1871",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1881",
+      "place": "Hampshire, Portsmouth, Portsea, I Chichester Terrace, Victoria Rd North."
+    },
+    {
+      "date": "1891",
+      "place": "Hampshire, Portsmouth, Portsea, I Chichester Terrace, Victoria Rd North."
+    },
+    {
+      "date": "1901",
+      "place": "Hampshire, Portsmouth, 4 Wilberforce Rd."
+    },
+    {
+      "date": "1921",
+      "place": "Hampshire, Portsmouth, 2 Craneswater Avenue"
+    },
+    {
+      "date": "1939",
+      "place": "Hampshire, Portsmouth, 2 Craneswater Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I386",
+      "familyId": "F174",
+      "marriageDate": "5 APRIL 1898"
+    }
+  ],
+  "avatar": "avatars/I379_0.jpg"
+}

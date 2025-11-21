@@ -1,0 +1,64 @@
+{
+  "id": "I2807",
+  "name": "Emma Chapman",
+  "givenName": "Emma",
+  "surname": "Chapman",
+  "sex": "F",
+  "birthDate": "Abt 1833",
+  "birthPlace": "London, City of London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg",
+    "Data/Media/1881 census/London/Shoreditch/RG11 384 70 18.jpg",
+    "Data/Media/1891 census/London/Holborn/RG12 233 84 11.jpg",
+    "Data/Media/1901 census/London/St Luke/RG13 261 52 10.jpg"
+  ],
+  "spouseIds": [
+    "I2020"
+  ],
+  "childIds": [
+    "I2088",
+    "I520",
+    "I2808",
+    "I2809"
+  ],
+  "parentIds": [
+    "I2882"
+  ],
+  "occupations": [
+    "Needle woman",
+    "Artificial florist",
+    "Artificial florist",
+    "Artificial florist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, St Lukes, 17 George Yard"
+    },
+    {
+      "date": "1871",
+      "place": "London, Holborn, 15 Peerless St."
+    },
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 13 Clifton St."
+    },
+    {
+      "date": "1891",
+      "place": "London, St Luke, Roscoe St. Peabodys Buildings Block J"
+    },
+    {
+      "date": "1901",
+      "place": "ndon, St Luke, Roscoe St. Peabodys Buildings Block J"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2020",
+      "familyId": "F725"
+    }
+  ],
+  "avatar": "avatars/I2807_0.jpg"
+}

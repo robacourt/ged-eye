@@ -1,0 +1,18 @@
+{
+  "id": "I2629",
+  "name": "Alex Adam Jack Giudice",
+  "givenName": "Alex Adam Jack",
+  "surname": "Giudice",
+  "sex": "M",
+  "birthDate": "28 JULY 2006",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2627",
+    "I2626"
+  ]
+}

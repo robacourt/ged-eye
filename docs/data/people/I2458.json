@@ -1,0 +1,43 @@
+{
+  "id": "I2458",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1880",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Lambeth/RG13 417 101 30.jpg"
+  ],
+  "spouseIds": [
+    "I2563"
+  ],
+  "childIds": [
+    "I2564"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Compositor",
+    "Compositor"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Lambeth, 33 Southville"
+    },
+    {
+      "date": "1911",
+      "place": "London, Tooting, 84 Gassiot Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2563",
+      "familyId": "F901",
+      "marriageDate": "ABT 1905"
+    }
+  ],
+  "avatar": "avatars/I2458_0.jpg"
+}

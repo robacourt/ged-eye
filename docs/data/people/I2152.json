@@ -1,0 +1,32 @@
+{
+  "id": "I2152",
+  "name": "Shirley Hylda Hill",
+  "givenName": "Shirley Hylda",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": "3 APR 1932",
+  "birthPlace": "Newtown, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2151"
+  ],
+  "childIds": [
+    "I2239",
+    "I2240",
+    "I2238"
+  ],
+  "parentIds": [
+    "I2249",
+    "I2250"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2151",
+      "familyId": "F768",
+      "marriageDate": "11 JUN 1955",
+      "marriagePlace": "Stapleton, Bristol"
+    }
+  ]
+}

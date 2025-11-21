@@ -1,0 +1,74 @@
+{
+  "id": "I777",
+  "name": "Eleanor A'Court",
+  "givenName": "Eleanor",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "13 JUN 1844",
+  "birthPlace": "Galhampton, Somerset",
+  "deathDate": "22 MAY  1922",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Eleanor A'Court.jpg",
+    "Data/Picture/Eleanor cottage.jpg",
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
+  ],
+  "spouseIds": [
+    "I864",
+    "I865",
+    "I1483",
+    "I1485"
+  ],
+  "childIds": [
+    "I1491",
+    "I1492",
+    "I1493",
+    "I1496",
+    "I1507",
+    "I1508",
+    "I1513",
+    "I1509",
+    "I1510",
+    "I1514",
+    "I1532",
+    "I1533",
+    "I1484",
+    "I1486"
+  ],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "burialPlace": "Ditcheat, Somerset. Parish Church",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1871",
+      "place": "Galhampton, North Cadbury, Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I864",
+      "familyId": "F325",
+      "marriageDate": "11 AUG 1863"
+    },
+    {
+      "spouseId": "I865",
+      "familyId": "F326",
+      "marriageDate": "12 SEP 1886"
+    },
+    {
+      "spouseId": "I1483",
+      "familyId": "F327"
+    },
+    {
+      "spouseId": "I1485",
+      "familyId": "F328"
+    }
+  ],
+  "avatar": "avatars/I777_0.jpg"
+}

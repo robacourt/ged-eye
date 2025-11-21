@@ -1,0 +1,25 @@
+{
+  "id": "I1367",
+  "name": "Robert Thomas Fairweather",
+  "givenName": "Robert Thomas",
+  "surname": "Fairweather",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1368"
+  ],
+  "childIds": [
+    "I1366"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1368",
+      "familyId": "F542"
+    }
+  ]
+}

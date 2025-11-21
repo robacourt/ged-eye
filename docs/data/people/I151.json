@@ -1,0 +1,25 @@
+{
+  "id": "I151",
+  "name": "Edith Not Known",
+  "givenName": "Edith Not",
+  "surname": "Known",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I150"
+  ],
+  "childIds": [
+    "I80"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I150",
+      "familyId": "F51"
+    }
+  ]
+}

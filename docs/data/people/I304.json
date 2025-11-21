@@ -1,0 +1,28 @@
+{
+  "id": "I304",
+  "name": "Robert Galpin",
+  "givenName": "Robert",
+  "surname": "Galpin",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I305"
+  ],
+  "childIds": [
+    "I297"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I305",
+      "familyId": "F146"
+    }
+  ]
+}

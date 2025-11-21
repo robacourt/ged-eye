@@ -1,0 +1,45 @@
+{
+  "id": "I1175",
+  "name": "Thomas Haskett",
+  "givenName": "Thomas",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "ABT 1835",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I181",
+    "I1178"
+  ],
+  "childIds": [
+    "I1173",
+    "I1174",
+    "I1179",
+    "I1181",
+    "I1245",
+    "I1246"
+  ],
+  "parentIds": [
+    "I1176",
+    "I1177"
+  ],
+  "baptismDate": "19 APR 1835",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Stonemason"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I181",
+      "familyId": "F100",
+      "marriageDate": "6 NOV 1858",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I1178",
+      "familyId": "F479"
+    }
+  ]
+}

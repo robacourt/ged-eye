@@ -1,0 +1,26 @@
+{
+  "id": "I1128",
+  "name": "James Phillips",
+  "givenName": "James",
+  "surname": "Phillips",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1127"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F457"
+    }
+  ]
+}

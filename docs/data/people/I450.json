@@ -1,0 +1,21 @@
+{
+  "id": "I450",
+  "name": "Glen D L Carter",
+  "givenName": "Glen D L",
+  "surname": "Carter",
+  "sex": "M",
+  "birthDate": "1945",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Glen Carter.tif"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I449",
+    "I447"
+  ],
+  "avatar": "avatars/I450_0.jpg"
+}

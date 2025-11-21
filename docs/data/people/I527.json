@@ -1,0 +1,26 @@
+{
+  "id": "I527",
+  "name": "Margaret Davis Christie",
+  "givenName": "Margaret Davis",
+  "surname": "Christie",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I526"
+  ],
+  "childIds": [
+    "I516"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I526",
+      "familyId": "F222",
+      "marriageDate": "1917"
+    }
+  ]
+}

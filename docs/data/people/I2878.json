@@ -1,0 +1,44 @@
+{
+  "id": "I2878",
+  "name": "Ester Rebecca E Kent",
+  "givenName": "Ester Rebecca E",
+  "surname": "Kent",
+  "sex": "F",
+  "birthDate": "Abt 1877",
+  "birthPlace": "Jersey C.I. Grouville",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2839"
+  ],
+  "childIds": [
+    "I2486",
+    "I2890",
+    "I2905",
+    "I2906",
+    "I2907",
+    "I2908"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St. Helier, 3 Bellozanne Rd, Leyminage Place"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2839",
+      "familyId": "F984",
+      "marriageDate": "22 NOV 1896"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2968",
+  "name": "Annie Elizabeth Unknown",
+  "givenName": "Annie Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1861",
+  "birthPlace": "Cornwall, Torpoint",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2967"
+  ],
+  "childIds": [
+    "I429",
+    "I2969",
+    "I2970"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2967",
+      "familyId": "F1019"
+    }
+  ]
+}

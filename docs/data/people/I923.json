@@ -1,0 +1,23 @@
+{
+  "id": "I923",
+  "name": "Albert Ricks",
+  "givenName": "Albert",
+  "surname": "Ricks",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "9 SEP 1966",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I917"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I917",
+      "familyId": "F384"
+    }
+  ]
+}

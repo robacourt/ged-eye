@@ -1,0 +1,18 @@
+{
+  "id": "I2508",
+  "name": "Alan Crosley A'Court",
+  "givenName": "Alan Crosley",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1912",
+  "birthPlace": null,
+  "deathDate": "1978",
+  "deathPlace": "Kumara, Westland, New Zealand",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1906",
+    "I1907"
+  ]
+}

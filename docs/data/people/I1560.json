@@ -1,0 +1,23 @@
+{
+  "id": "I1560",
+  "name": "Arthur Hutchings",
+  "givenName": "Arthur",
+  "surname": "Hutchings",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I139"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I139",
+      "familyId": "F81"
+    }
+  ]
+}

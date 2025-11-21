@@ -1,0 +1,57 @@
+{
+  "id": "I769",
+  "name": "Anna WILTON",
+  "givenName": "Anna",
+  "surname": "WILTON",
+  "sex": "F",
+  "birthDate": "1810",
+  "birthPlace": null,
+  "deathDate": "1889",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I761"
+  ],
+  "childIds": [
+    "I770",
+    "I771",
+    "I772",
+    "I773",
+    "I774",
+    "I775",
+    "I776",
+    "I777",
+    "I778",
+    "I779",
+    "I780",
+    "I781",
+    "I782"
+  ],
+  "parentIds": [
+    "I1076",
+    "I1077"
+  ],
+  "baptismDate": "26 AUG 1810",
+  "baptismPlace": "North Cadbury, Somerset",
+  "notes": [
+    "from notes from Blackford, North Cadbury, and Wincanton Registers, and North Cadbury census held Canterbury Museum Family History section"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I761",
+      "familyId": "F313",
+      "marriageDate": "28 APR 1831",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

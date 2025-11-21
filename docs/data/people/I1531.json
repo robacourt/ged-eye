@@ -1,0 +1,23 @@
+{
+  "id": "I1531",
+  "name": "George White",
+  "givenName": "George",
+  "surname": "White",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I865"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F374"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "I1081",
+  "name": "Charles Curtis",
+  "givenName": "Charles",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": "ABT 1854",
+  "birthPlace": null,
+  "deathDate": "ABT 1926",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1082"
+  ],
+  "childIds": [
+    "I1116",
+    "I1117",
+    "I1120",
+    "I1129"
+  ],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "14 MAY 1854",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Gardener"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1082",
+      "familyId": "F430",
+      "marriageDate": "27 JULY 1885",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

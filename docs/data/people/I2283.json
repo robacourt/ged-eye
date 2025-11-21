@@ -1,0 +1,34 @@
+{
+  "id": "I2283",
+  "name": "Sarah Barnett",
+  "givenName": "Sarah",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "ABT 1876",
+  "birthPlace": "London, Shoreditch",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1422",
+    "I1428"
+  ],
+  "occupations": [
+    "Cigar Maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    },
+    {
+      "date": "1891",
+      "place": "Shoreditch, London, 341 Old St."
+    }
+  ],
+  "avatar": "avatars/I2283_0.jpg"
+}

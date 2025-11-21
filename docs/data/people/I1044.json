@@ -1,0 +1,18 @@
+{
+  "id": "I1044",
+  "name": "Oliver A'Court",
+  "givenName": "Oliver",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1987",
+  "birthPlace": "Auckland, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1042",
+    "I1043"
+  ]
+}

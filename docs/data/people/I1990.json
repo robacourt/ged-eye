@@ -1,0 +1,33 @@
+{
+  "id": "I1990",
+  "name": "Elizabeth Maud Bawden",
+  "givenName": "Elizabeth Maud",
+  "surname": "Bawden",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Hemerdon, Plympton, Devon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I492"
+  ],
+  "childIds": [
+    "I2586",
+    "I1991"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Gosport, Hampshire, 105 Parham Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I492",
+      "familyId": "F711",
+      "marriageDate": "1910"
+    }
+  ]
+}

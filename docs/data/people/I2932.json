@@ -1,0 +1,27 @@
+{
+  "id": "I2932",
+  "name": "Denis W A West",
+  "givenName": "Denis W A",
+  "surname": "West",
+  "sex": "M",
+  "birthDate": "Abt 1907",
+  "birthPlace": "Wiltshire, Swindon",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Swindon/RG14 11786 263.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2928",
+    "I362"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Swindon, 7 Rose St."
+    }
+  ],
+  "avatar": "avatars/I2932_0.jpg"
+}

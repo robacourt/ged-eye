@@ -1,0 +1,30 @@
+{
+  "id": "I2588",
+  "name": "Ina Isabel Lines",
+  "givenName": "Ina Isabel",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "ABT 1896",
+  "birthPlace": "Boscombe, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Boscombe/RG14 5851 144.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I904",
+    "I230"
+  ],
+  "occupations": [
+    "Assistant in Business"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Boscombe, Hampshire, 75 Palmerston Rd.,"
+    }
+  ],
+  "avatar": "avatars/I2588_0.jpg"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I2043",
+  "name": "Amelia Unknown",
+  "givenName": "Amelia",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1878",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2042"
+  ],
+  "childIds": [
+    "I2096",
+    "I513",
+    "I2098",
+    "I2102"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hammersmith, 1 Aylmer Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2042",
+      "familyId": "F737",
+      "marriageDate": "ABT 1907"
+    }
+  ]
+}

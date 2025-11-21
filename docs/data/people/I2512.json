@@ -1,0 +1,31 @@
+{
+  "id": "I2512",
+  "name": "Violet May Bewes",
+  "givenName": "Violet May",
+  "surname": "Bewes",
+  "sex": "F",
+  "birthDate": "ABT 1896",
+  "birthPlace": "Liverpool, Lancashire, West Derby",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2510",
+    "I2509"
+  ],
+  "occupations": [
+    "Errand Girl"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Wavertree, Lancashire, 14 Cambridge St."
+    },
+    {
+      "date": "1911",
+      "place": "Lancaster, Lancashire, 24 Broadway"
+    }
+  ]
+}

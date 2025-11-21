@@ -1,0 +1,25 @@
+{
+  "id": "I2371",
+  "name": "Lenore Hale",
+  "givenName": "Lenore",
+  "surname": "Hale",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2370"
+  ],
+  "childIds": [
+    "I2369"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2370",
+      "familyId": "F840"
+    }
+  ]
+}

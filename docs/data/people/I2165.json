@@ -1,0 +1,27 @@
+{
+  "id": "I2165",
+  "name": "Mervyn Willis",
+  "givenName": "Mervyn",
+  "surname": "Willis",
+  "sex": "M",
+  "birthDate": "1930",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2163"
+  ],
+  "childIds": [
+    "I2167",
+    "I2166",
+    "I2164"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2163",
+      "familyId": "F777"
+    }
+  ]
+}

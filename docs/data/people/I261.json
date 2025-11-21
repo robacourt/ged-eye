@@ -1,0 +1,59 @@
+{
+  "id": "I261",
+  "name": "Arthur John A'Court",
+  "givenName": "Arthur John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1861",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Blandford Forum/RG 10 1978 61 26.jpg",
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg",
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 67 19.jpg",
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 38 20.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12217 330.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I44",
+    "I259"
+  ],
+  "baptismDate": "3 APR 1861",
+  "baptismPlace": "Dorset, Blanford Forum",
+  "occupations": [
+    "Farmer",
+    "Innkeeper",
+    "Labourer On Roads for Bourgh Council",
+    "Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 44 East St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, 27 Orchard St."
+    }
+  ],
+  "avatar": "avatars/I261_0.jpg"
+}

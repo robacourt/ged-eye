@@ -1,0 +1,18 @@
+{
+  "id": "I2383",
+  "name": "Ruth MacDonald",
+  "givenName": "Ruth",
+  "surname": "MacDonald",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2382",
+    "I2381"
+  ]
+}

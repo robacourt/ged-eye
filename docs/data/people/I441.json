@@ -1,0 +1,26 @@
+{
+  "id": "I441",
+  "name": "Johann Nicolaus Frentzel",
+  "givenName": "Johann Nicolaus",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I442"
+  ],
+  "childIds": [
+    "I423",
+    "I2983"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I442",
+      "familyId": "F194"
+    }
+  ]
+}

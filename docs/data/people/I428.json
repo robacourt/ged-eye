@@ -1,0 +1,57 @@
+{
+  "id": "I428",
+  "name": "Agnes Margarith Florence Frentzel",
+  "givenName": "Agnes Margarith Florence",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": "18 MAR 1895",
+  "birthPlace": "London, Clapton",
+  "deathDate": "11 OCT 1980",
+  "deathPlace": "Middlesex, Enfield",
+  "photos": [
+    "Data/Media/1939 Register/Middlesex/TNA_R39_0885_0885I_007.jpg",
+    "Data/Media/1911 census/London/Stamford Hill/RG14 1049 215.jpg"
+  ],
+  "spouseIds": [
+    "I429"
+  ],
+  "childIds": [
+    "I430",
+    "I431",
+    "I432"
+  ],
+  "parentIds": [
+    "I423",
+    "I424"
+  ],
+  "notes": [
+    "Known as Aunty Margo"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Hackney, London, 96 Osbaldeston Road,"
+    },
+    {
+      "date": "1911",
+      "place": "London, Stamford Hill, 46 Northfield Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Southgate, 13 Mayfield Avenue"
+    },
+    {
+      "date": "1939 REGISTER",
+      "place": "London, Southgate, 13 Mayfield Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I429",
+      "familyId": "F197",
+      "marriageDate": "21 OCT 1919",
+      "marriagePlace": "London, Stamford Hill. Hackney"
+    }
+  ],
+  "avatar": "avatars/I428_0.jpg"
+}

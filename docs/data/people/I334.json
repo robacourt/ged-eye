@@ -1,0 +1,26 @@
+{
+  "id": "I334",
+  "name": "John ( Daniel ) Kendall",
+  "givenName": "John ( Daniel )",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": "24.6.1865",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I197",
+    "I330"
+  ],
+  "baptismDate": "25.7.1865",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carpenter"
+  ],
+  "notes": [
+    "5-1871  15-1881  25-1891"
+  ]
+}

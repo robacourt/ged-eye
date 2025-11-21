@@ -1,0 +1,29 @@
+{
+  "id": "I2541",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1846",
+  "birthPlace": "Kimberidge, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2540"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Weymouth, Dorset, 12 Derby St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2540",
+      "familyId": "F897"
+    }
+  ]
+}

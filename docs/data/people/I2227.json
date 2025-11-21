@@ -1,0 +1,18 @@
+{
+  "id": "I2227",
+  "name": "George Spencer Haycourt",
+  "givenName": "George Spencer",
+  "surname": "Haycourt",
+  "sex": "M",
+  "birthDate": "1880",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": "25 MAY 1881",
+  "deathPlace": "St Philip & Jacob, Bristol",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2228",
+    "I2225"
+  ]
+}

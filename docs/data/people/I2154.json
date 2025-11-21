@@ -1,0 +1,43 @@
+{
+  "id": "I2154",
+  "name": "Mary Rowe",
+  "givenName": "Mary",
+  "surname": "Rowe",
+  "sex": "F",
+  "birthDate": "17 JAN 1850",
+  "birthPlace": "Bristol",
+  "deathDate": "23 JUL 1878",
+  "deathPlace": "Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2153"
+  ],
+  "childIds": [
+    "I2155",
+    "I2156",
+    "I2158",
+    "I2251",
+    "I2157"
+  ],
+  "parentIds": [
+    "I2188",
+    "I2189"
+  ],
+  "occupations": [
+    "Staymaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Bristol, Gloucestershire, 68 Regent Street, St Philip & Jacob Without."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2153",
+      "familyId": "F771",
+      "marriageDate": "26 JUN 1869",
+      "marriagePlace": "St Paul's, Bristol"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "I2459",
+  "name": "William Charles A'Court",
+  "givenName": "William Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1881",
+  "birthPlace": "London, Hoxton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Shoreditch/RG11 397 54 40.jpg",
+    "Data/Media/1891 census/London/Holborn/RG12 233 83 9.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 220 113 47.jpg"
+  ],
+  "spouseIds": [
+    "I2567"
+  ],
+  "childIds": [
+    "I2568",
+    "I2569",
+    "I2570"
+  ],
+  "parentIds": [
+    "I520",
+    "I521"
+  ],
+  "occupations": [
+    "Drapers Packer",
+    "Clerk, Shipping agents"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 84 New North Rd.,"
+    },
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
+    },
+    {
+      "date": "1901",
+      "place": "London,Hackney, 39 Gilpin Road."
+    },
+    {
+      "date": "1911",
+      "place": "London, Hackney, 23 Colne Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2567",
+      "familyId": "F902",
+      "marriageDate": "ABT 1906"
+    }
+  ],
+  "avatar": "avatars/I2459_0.jpg"
+}

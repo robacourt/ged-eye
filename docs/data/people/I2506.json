@@ -1,0 +1,18 @@
+{
+  "id": "I2506",
+  "name": "Irene Alice A'Court",
+  "givenName": "Irene Alice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1892",
+  "birthPlace": "Kumara, Westland, New Zealand",
+  "deathDate": "1899",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1906",
+    "I1907"
+  ]
+}

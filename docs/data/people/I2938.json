@@ -1,0 +1,25 @@
+{
+  "id": "I2938",
+  "name": "Lily M McKernon",
+  "givenName": "Lily M",
+  "surname": "McKernon",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2111"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2111",
+      "familyId": "F1003",
+      "marriageDate": "1921",
+      "marriagePlace": "Hampshire, Portsmouth"
+    }
+  ]
+}

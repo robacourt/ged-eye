@@ -1,0 +1,23 @@
+{
+  "id": "I831",
+  "name": "Unknown Andrews",
+  "givenName": "Unknown",
+  "surname": "Andrews",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I830"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I830",
+      "familyId": "F358"
+    }
+  ]
+}

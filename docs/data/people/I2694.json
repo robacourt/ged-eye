@@ -1,0 +1,42 @@
+{
+  "id": "I2694",
+  "name": "Ester (Winnie) Barnett",
+  "givenName": "Ester (Winnie)",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "16 DEC 1903",
+  "birthPlace": "London, Clapton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Evelyn McCann, Ester Barnett, Herbert Barnett.png",
+    "Data/Picture/Ester Barnett.png",
+    "Data/Media/1911 census/London/Tottenham/RG14 132 7278.png"
+  ],
+  "spouseIds": [
+    "I2695"
+  ],
+  "childIds": [
+    "I2699",
+    "I2696",
+    "I2697",
+    "I2698"
+  ],
+  "parentIds": [
+    "I2282",
+    "I2693"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Finsbury Park, 10 Vale Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2695",
+      "familyId": "F938"
+    }
+  ],
+  "avatar": "avatars/I2694_0.jpg"
+}

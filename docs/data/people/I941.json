@@ -1,0 +1,26 @@
+{
+  "id": "I941",
+  "name": "Catherine Sarah Howden A'Court",
+  "givenName": "Catherine Sarah Howden",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "6 FEB 1888",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2307"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I937",
+    "I938"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2307",
+      "familyId": "F817"
+    }
+  ]
+}

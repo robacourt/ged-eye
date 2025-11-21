@@ -1,0 +1,43 @@
+{
+  "id": "I427",
+  "name": "Walther Rudolph Nicholas Frentzel",
+  "givenName": "Walther Rudolph Nicholas",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "8 MAY 1893",
+  "birthPlace": "London, Clapton",
+  "deathDate": "9 NOV 1918",
+  "deathPlace": "Cambridgeshire",
+  "photos": [
+    "Data/Picture/Walther Rudolph Nicholas Frentzel.tif",
+    "Data/Media/1911 census/London/Stamford Hill/RG14 1049 215.jpg",
+    "Data/Media/Service Records/WRN Frentzel MM award.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I423",
+    "I424"
+  ],
+  "burialDate": "1918",
+  "burialPlace": "London, Chingford Mount Cemetery",
+  "occupations": [
+    "Insurance Clerk"
+  ],
+  "notes": [
+    "First name(s) W N R",
+    "First name(s) Walter Nicholas",
+    "First name(s) W N"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Hackney, 96 Osbaldeston Road,"
+    },
+    {
+      "date": "1911",
+      "place": "London, Stamford Hill, 46 Northfield Road"
+    }
+  ],
+  "avatar": "avatars/I427_0.jpg"
+}

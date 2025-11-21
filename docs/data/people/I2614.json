@@ -1,0 +1,33 @@
+{
+  "id": "I2614",
+  "name": "Annie Unknown",
+  "givenName": "Annie",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1883",
+  "birthPlace": "Lancaster, Lancashire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2476"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Winder at Malting Mill"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Lancaster, Lancashire, 24 Broadway"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2476",
+      "familyId": "F910",
+      "marriageDate": "ABT 1909"
+    }
+  ]
+}

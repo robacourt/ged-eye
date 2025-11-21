@@ -1,0 +1,29 @@
+{
+  "id": "I1316",
+  "name": "Wayne Arthur Pryor",
+  "givenName": "Wayne Arthur",
+  "surname": "Pryor",
+  "sex": "M",
+  "birthDate": "28 AUG 1939",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Wayne Pryor.jpg"
+  ],
+  "spouseIds": [
+    "I1441"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I982",
+    "I981"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1441",
+      "familyId": "F520"
+    }
+  ],
+  "avatar": "avatars/I1316_0.jpg"
+}

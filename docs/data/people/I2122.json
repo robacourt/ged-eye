@@ -1,0 +1,43 @@
+{
+  "id": "I2122",
+  "name": "Amelia S Unknown",
+  "givenName": "Amelia S",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1848",
+  "birthPlace": "Jersey, C.I. St. Ouens",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2121"
+  ],
+  "childIds": [
+    "I2123",
+    "I2124",
+    "I2125",
+    "I2126",
+    "I2127"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I. St Ouen, Vinchelez"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2121",
+      "familyId": "F760"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "I1575",
+  "name": "Charles Frank A'Court",
+  "givenName": "Charles Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1892",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12217 333.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1571",
+    "I1572"
+  ],
+  "occupations": [
+    "Grocer's Assistant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 33 Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Orchard St."
+    }
+  ],
+  "avatar": "avatars/I1575_0.jpg"
+}

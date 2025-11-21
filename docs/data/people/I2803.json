@@ -1,0 +1,27 @@
+{
+  "id": "I2803",
+  "name": "Janet A'Court",
+  "givenName": "Janet",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1865",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/St Pancras/RG10 239 40 9.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2800",
+    "I2801"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, St Pancras, 20 Hadley St. North"
+    }
+  ],
+  "avatar": "avatars/I2803_0.jpg"
+}

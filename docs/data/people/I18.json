@@ -1,0 +1,55 @@
+{
+  "id": "I18",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1762",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I46"
+  ],
+  "childIds": [
+    "I47",
+    "I48",
+    "I49",
+    "I50",
+    "I51",
+    "I52",
+    "I53",
+    "I54",
+    "I55",
+    "I56",
+    "I57",
+    "I58",
+    "I59"
+  ],
+  "parentIds": [
+    "I16",
+    "I15"
+  ],
+  "baptismDate": "22 JUL 1765",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "14 SEP 1830",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Miller"
+  ],
+  "censusRecords": [
+    {
+      "date": "1821",
+      "place": "Marnhull, Dorset, Lemons Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I46",
+      "familyId": "F13",
+      "marriageDate": "17 MAY 1791",
+      "marriagePlace": "Evercreech, Somerset"
+    }
+  ]
+}

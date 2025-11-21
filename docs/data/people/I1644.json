@@ -1,0 +1,35 @@
+{
+  "id": "I1644",
+  "name": "Mabel Emily A'Court",
+  "givenName": "Mabel Emily",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1893",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/London/Willesdon/RG13 1225 160 42.jpg",
+    "Data/Media/1911 census/London/Willesden/RG14 7065 166.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "School Girl"
+  ],
+  "notes": [
+    "Adopted see 1901 note"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Willesden Green, Middlesex, 15 Churchill Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Willesden Green, Middlesex, 15 Churchill Rd."
+    }
+  ],
+  "avatar": "avatars/I1644_0.jpg"
+}

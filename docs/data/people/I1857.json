@@ -1,0 +1,28 @@
+{
+  "id": "I1857",
+  "name": "Joyce Primrose Howes",
+  "givenName": "Joyce Primrose",
+  "surname": "Howes",
+  "sex": "F",
+  "birthDate": "19 APRIL 1933",
+  "birthPlace": "Battersea, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2053"
+  ],
+  "childIds": [
+    "I1856",
+    "I2049"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2053",
+      "familyId": "F669",
+      "marriageDate": "1953",
+      "marriagePlace": "Epsom"
+    }
+  ]
+}

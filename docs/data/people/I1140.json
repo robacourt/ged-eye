@@ -1,0 +1,28 @@
+{
+  "id": "I1140",
+  "name": "Ursula Hatcher",
+  "givenName": "Ursula",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1139"
+  ],
+  "childIds": [
+    "I1138"
+  ],
+  "parentIds": [
+    "I1083",
+    "I1084"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1139",
+      "familyId": "F463"
+    }
+  ]
+}

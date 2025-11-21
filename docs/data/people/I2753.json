@@ -1,0 +1,35 @@
+{
+  "id": "I2753",
+  "name": "Letitia Lydia A'Court",
+  "givenName": "Letitia Lydia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "4 APR 1841",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2755"
+  ],
+  "childIds": [
+    "I2759",
+    "I2760",
+    "I2756",
+    "I2761",
+    "I2757",
+    "I2758"
+  ],
+  "parentIds": [
+    "I2754",
+    "I32"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2755",
+      "familyId": "F960",
+      "marriageDate": "24 MAY 1831",
+      "marriagePlace": "Henstridge, Somerset"
+    }
+  ]
+}

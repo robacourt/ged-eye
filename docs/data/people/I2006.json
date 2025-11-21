@@ -1,0 +1,30 @@
+{
+  "id": "I2006",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1831",
+  "birthPlace": "Middlesex, Islington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/London/HO107 1502 30 53.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2007",
+    "I2005"
+  ],
+  "occupations": [
+    "Warehouseman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Middlesex, Islington"
+    }
+  ],
+  "avatar": "avatars/I2006_0.jpg"
+}

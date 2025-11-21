@@ -1,0 +1,29 @@
+{
+  "id": "I834",
+  "name": "Alice Maud (Maud) JACOBS",
+  "givenName": "Alice Maud (Maud)",
+  "surname": "JACOBS",
+  "sex": "F",
+  "birthDate": "24 JUN 1880",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "4 DEC 1965",
+  "deathPlace": "New Plymouth Hospital, New Plymouth, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I824"
+  ],
+  "childIds": [
+    "I835"
+  ],
+  "parentIds": [],
+  "notes": [
+    "NZ Probates New Plymouth Court 515/65",
+    "Information provided by Carole Stewart"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I824",
+      "familyId": "F354"
+    }
+  ]
+}

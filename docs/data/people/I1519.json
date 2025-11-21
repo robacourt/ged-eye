@@ -1,0 +1,23 @@
+{
+  "id": "I1519",
+  "name": "Lillian Alice Morgan",
+  "givenName": "Lillian Alice",
+  "surname": "Morgan",
+  "sex": "F",
+  "birthDate": "9 APR 1909",
+  "birthPlace": "London, St. Pancras, 11 Stratford Place off Oxford Street.",
+  "deathDate": "30 JUNE 1911",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Lilian Morgan.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1516",
+    "I1486"
+  ],
+  "burialDate": "6 JULY 1911",
+  "burialPlace": "Chestnut Cemetery",
+  "avatar": "avatars/I1519_0.jpg"
+}

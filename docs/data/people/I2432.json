@@ -1,0 +1,30 @@
+{
+  "id": "I2432",
+  "name": "Mona A'Court",
+  "givenName": "Mona",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1924",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2433"
+  ],
+  "childIds": [
+    "I2434",
+    "I2435",
+    "I2436"
+  ],
+  "parentIds": [
+    "I2418",
+    "I2419"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2433",
+      "familyId": "F864"
+    }
+  ]
+}

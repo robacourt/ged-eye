@@ -1,0 +1,42 @@
+{
+  "id": "I1329",
+  "name": "Sydney Waterman",
+  "givenName": "Sydney",
+  "surname": "Waterman",
+  "sex": "M",
+  "birthDate": "1872",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": "1925",
+  "deathPlace": "Stoke Sub Hamdon, Somerset, Footlands",
+  "photos": [],
+  "spouseIds": [
+    "I1330"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1322",
+    "I1320"
+  ],
+  "burialDate": "27 APR 1925",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "occupations": [
+    "Box Manufacturer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1891",
+      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1330",
+      "familyId": "F525",
+      "marriageDate": "ABT 1892"
+    }
+  ]
+}

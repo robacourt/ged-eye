@@ -1,0 +1,23 @@
+{
+  "id": "I944",
+  "name": "Harry Wilford A'Court",
+  "givenName": "Harry Wilford",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "6 AUG 1893",
+  "birthPlace": "Rongotea, New Zealand",
+  "deathDate": "17 MAY 1918",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I937",
+    "I938"
+  ],
+  "burialPlace": "Sanson Cemetery, Manawatu, New Zealand",
+  "notes": [
+    "Served on the Western Front",
+    "n Memory of"
+  ]
+}

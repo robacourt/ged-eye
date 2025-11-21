@@ -1,0 +1,20 @@
+{
+  "id": "I2226",
+  "name": "Elizabeth Haycourt",
+  "givenName": "Elizabeth",
+  "surname": "Haycourt",
+  "sex": "F",
+  "birthDate": "ABT 1858",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "baptismDate": "24 JUL 1859",
+  "baptismPlace": "Bristol, Staints Philip & Jacob"
+}

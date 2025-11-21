@@ -1,0 +1,33 @@
+{
+  "id": "I1091",
+  "name": "Kathleen Mabel Gosney",
+  "givenName": "Kathleen Mabel",
+  "surname": "Gosney",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1090"
+  ],
+  "childIds": [
+    "I1101",
+    "I1267",
+    "I1269",
+    "I1102",
+    "I1103",
+    "I1104",
+    "I1272"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1090",
+      "familyId": "F437",
+      "marriageDate": "1913",
+      "marriagePlace": "Yeovil, Somerset"
+    }
+  ]
+}

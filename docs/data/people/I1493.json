@@ -1,0 +1,37 @@
+{
+  "id": "I1493",
+  "name": "Anna Chamberlain",
+  "givenName": "Anna",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "1868",
+  "birthPlace": null,
+  "deathDate": "11 DEC 1922",
+  "deathPlace": "Cheriton, Alresford, Hampshire, Mill Cross,",
+  "photos": [
+    "Data/Media/1871 census/Galhampton/RG10 2421 61 22.jpg"
+  ],
+  "spouseIds": [
+    "I1494"
+  ],
+  "childIds": [
+    "I1495"
+  ],
+  "parentIds": [
+    "I864",
+    "I777"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "North Cadbury, Galhampton, Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1494",
+      "familyId": "F568"
+    }
+  ],
+  "avatar": "avatars/I1493_0.jpg"
+}

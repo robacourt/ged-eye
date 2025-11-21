@@ -1,0 +1,22 @@
+{
+  "id": "I510",
+  "name": "Victor Charles A'Court",
+  "givenName": "Victor Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1921",
+  "birthPlace": "Bristol",
+  "deathDate": "12.11.1945",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1411",
+    "I1412"
+  ],
+  "burialPlace": "Tripoli War Cemetery, Libya",
+  "notes": [
+    "In Memory of"
+  ]
+}

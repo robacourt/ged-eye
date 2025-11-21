@@ -1,0 +1,49 @@
+{
+  "id": "I1638",
+  "name": "Henry George A'Court",
+  "givenName": "Henry George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1888",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Somerset/Yeovil/RG13 2301 115 .jpg"
+  ],
+  "spouseIds": [
+    "I2528"
+  ],
+  "childIds": [
+    "I2529"
+  ],
+  "parentIds": [
+    "I1636",
+    "I1637"
+  ],
+  "occupations": [
+    "Carpenter",
+    "Journeyman, Carpenter and Joiner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Yeovil, Somerset, 29 Queen's St."
+    },
+    {
+      "date": "1901",
+      "place": "Yeovil, Somerset, Huish"
+    },
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 29 Great Western Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2528",
+      "familyId": "F893"
+    }
+  ],
+  "avatar": "avatars/I1638_0.jpg"
+}

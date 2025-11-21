@@ -1,0 +1,29 @@
+{
+  "id": "I1398",
+  "name": "Vincent Peters",
+  "givenName": "Vincent",
+  "surname": "Peters",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I718"
+  ],
+  "childIds": [
+    "I719"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "New Zealand Army"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I718",
+      "familyId": "F292",
+      "marriageDate": "1918"
+    }
+  ]
+}

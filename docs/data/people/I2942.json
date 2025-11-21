@@ -1,0 +1,20 @@
+{
+  "id": "I2942",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1780",
+  "birthPlace": "Somerset, Horsington",
+  "deathDate": "6 NOV 1796",
+  "deathPlace": "Somerset, Horsington",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2939",
+    "I2940"
+  ],
+  "baptismDate": "2 APR 1780",
+  "baptismPlace": "Somerset, Horsington"
+}

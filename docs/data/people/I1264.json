@@ -1,0 +1,25 @@
+{
+  "id": "I1264",
+  "name": "Peggy Martha Jane Wills",
+  "givenName": "Peggy Martha Jane",
+  "surname": "Wills",
+  "sex": "F",
+  "birthDate": "1929",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1092"
+  ],
+  "childIds": [
+    "I2633"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1092",
+      "familyId": "F439"
+    }
+  ]
+}

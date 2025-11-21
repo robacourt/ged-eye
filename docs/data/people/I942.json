@@ -1,0 +1,29 @@
+{
+  "id": "I942",
+  "name": "Stanley James A'Court",
+  "givenName": "Stanley James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "20 MAR 1890",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2308"
+  ],
+  "childIds": [
+    "I1924"
+  ],
+  "parentIds": [
+    "I937",
+    "I938"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2308",
+      "familyId": "F682",
+      "marriageDate": "1914"
+    }
+  ]
+}

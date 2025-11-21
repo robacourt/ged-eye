@@ -1,0 +1,36 @@
+{
+  "id": "I810",
+  "name": "Jane Perkins",
+  "givenName": "Jane",
+  "surname": "Perkins",
+  "sex": "F",
+  "birthDate": "11 APR 1877",
+  "birthPlace": "Heathcote, Christchurch, NZ",
+  "deathDate": "1969",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I794"
+  ],
+  "childIds": [
+    "I811",
+    "I812",
+    "I813",
+    "I814",
+    "I815",
+    "I1930"
+  ],
+  "parentIds": [],
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I794",
+      "familyId": "F339",
+      "marriageDate": "21 MAY 1897",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+    }
+  ]
+}

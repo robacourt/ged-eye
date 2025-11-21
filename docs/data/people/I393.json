@@ -1,0 +1,27 @@
+{
+  "id": "I393",
+  "name": "Cicely Mary Unknown",
+  "givenName": "Cicely Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "7  FEB 1911",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I392"
+  ],
+  "childIds": [
+    "I394",
+    "I395"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I392",
+      "familyId": "F179",
+      "marriageDate": "ABT 1933"
+    }
+  ]
+}

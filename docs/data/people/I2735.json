@@ -1,0 +1,31 @@
+{
+  "id": "I2735",
+  "name": "Marie Harriet Barnett",
+  "givenName": "Marie Harriet",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "ABT 1902",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/London/RG15 06619 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2337",
+    "I2730"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Clapton, 14 Thistlewaite Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Golders Green, 21 Rodborough Rd."
+    }
+  ],
+  "avatar": "avatars/I2735_0.jpg"
+}

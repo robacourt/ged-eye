@@ -1,0 +1,28 @@
+{
+  "id": "I1169",
+  "name": "James Humphries",
+  "givenName": "James",
+  "surname": "Humphries",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1170"
+  ],
+  "childIds": [
+    "I1168"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1170",
+      "familyId": "F478"
+    }
+  ]
+}

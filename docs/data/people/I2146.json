@@ -1,0 +1,18 @@
+{
+  "id": "I2146",
+  "name": "Malcolm Paul Shakesheff",
+  "givenName": "Malcolm Paul",
+  "surname": "Shakesheff",
+  "sex": "M",
+  "birthDate": "1941",
+  "birthPlace": "Farncombe, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2145",
+    "I2144"
+  ]
+}

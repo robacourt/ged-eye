@@ -1,0 +1,25 @@
+{
+  "id": "I2766",
+  "name": "James Hillocks",
+  "givenName": "James",
+  "surname": "Hillocks",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2767"
+  ],
+  "childIds": [
+    "I443"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2767",
+      "familyId": "F963"
+    }
+  ]
+}

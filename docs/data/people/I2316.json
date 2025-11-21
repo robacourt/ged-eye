@@ -1,0 +1,26 @@
+{
+  "id": "I2316",
+  "name": "Stephanie A'Court",
+  "givenName": "Stephanie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1950",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2317"
+  ],
+  "parentIds": [
+    "I2313",
+    "I2314"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F820"
+    }
+  ]
+}

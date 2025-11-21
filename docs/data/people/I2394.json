@@ -1,0 +1,34 @@
+{
+  "id": "I2394",
+  "name": "Ruth Margaret A'Court",
+  "givenName": "Ruth Margaret",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "29 MAR 1942",
+  "birthPlace": "Southampton, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2395"
+  ],
+  "childIds": [
+    "I2397",
+    "I2399"
+  ],
+  "parentIds": [
+    "I1962",
+    "I2392"
+  ],
+  "occupations": [
+    "Nurse"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2395",
+      "familyId": "F849",
+      "marriageDate": "7 MAY 1967",
+      "marriagePlace": "Durban, South Africa"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I679",
+  "name": "Samuel Fudge",
+  "givenName": "Samuel",
+  "surname": "Fudge",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I680"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I680",
+      "familyId": "F286"
+    }
+  ]
+}

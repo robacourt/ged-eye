@@ -1,0 +1,26 @@
+{
+  "id": "I2985",
+  "name": "Jane Holland",
+  "givenName": "Jane",
+  "surname": "Holland",
+  "sex": "F",
+  "birthDate": "15 SEP",
+  "birthPlace": "Hampshire, Portsea Island",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2287"
+  ],
+  "childIds": [
+    "I2288",
+    "I105"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2287",
+      "familyId": "F809"
+    }
+  ]
+}

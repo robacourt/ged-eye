@@ -1,0 +1,35 @@
+{
+  "id": "I2818",
+  "name": "Mary A A'Court",
+  "givenName": "Mary A",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1862",
+  "birthPlace": "Jersey C.I. St Ouen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Jersey/RG10 5763 61 7.jpg",
+    "Data/Media/1881 census/Jersey/St Ouen/RG11 5621 50 7.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Dressmaker"
+  ],
+  "notes": [
+    "niece of Geo: A'Court 2816"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey C.I. St Ouen"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Ouen, 6 Le Coin Rd."
+    }
+  ],
+  "avatar": "avatars/I2818_0.jpg"
+}

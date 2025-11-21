@@ -1,0 +1,39 @@
+{
+  "id": "I2915",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1868",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Glamorganshire/RG14 32552 223.jpg"
+  ],
+  "spouseIds": [
+    "I2916"
+  ],
+  "childIds": [
+    "I2917",
+    "I2918",
+    "I2919"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Coal miner hewer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Glamorganshire, Llandyfodwg, 20 Adare St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2916",
+      "familyId": "F996"
+    }
+  ],
+  "avatar": "avatars/I2915_0.jpg"
+}

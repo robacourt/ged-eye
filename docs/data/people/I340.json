@@ -1,0 +1,33 @@
+{
+  "id": "I340",
+  "name": "Mabel Maud Kendall",
+  "givenName": "Mabel Maud",
+  "surname": "Kendall",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I341"
+  ],
+  "childIds": [
+    "I342"
+  ],
+  "parentIds": [
+    "I332",
+    "I337"
+  ],
+  "notes": [
+    "3-1891  24-1911"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I341",
+      "familyId": "F161",
+      "marriageDate": "30.11.1911",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

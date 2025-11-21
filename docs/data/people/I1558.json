@@ -1,0 +1,21 @@
+{
+  "id": "I1558",
+  "name": "Nathaniel A'Court",
+  "givenName": "Nathaniel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1821",
+      "place": "Marnhull, Dorset, Ham Lane"
+    }
+  ]
+}

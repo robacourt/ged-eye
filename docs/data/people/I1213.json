@@ -1,0 +1,36 @@
+{
+  "id": "I1213",
+  "name": "William Charles George Stovey",
+  "givenName": "William Charles George",
+  "surname": "Stovey",
+  "sex": "M",
+  "birthDate": "ABT 1887",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1212"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1214"
+  ],
+  "occupations": [
+    "Asylum Attendant"
+  ],
+  "residences": [
+    {
+      "date": "1914",
+      "place": "County Asylum, Charminster, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1212",
+      "familyId": "F489",
+      "marriageDate": "22 AUG 1914",
+      "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
+    }
+  ]
+}

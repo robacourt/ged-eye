@@ -1,0 +1,27 @@
+{
+  "id": "I2799",
+  "name": "Emma A'Court",
+  "givenName": "Emma",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1832",
+  "birthPlace": "Berkshire, Windsor",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Windsor/RG10 1299 17 5.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Housemaid"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Berkshire, Windsor, Royal Mews"
+    }
+  ],
+  "avatar": "avatars/I2799_0.jpg"
+}

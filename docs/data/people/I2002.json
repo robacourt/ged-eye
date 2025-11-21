@@ -1,0 +1,28 @@
+{
+  "id": "I2002",
+  "name": "Gladys Jessie Peapell",
+  "givenName": "Gladys Jessie",
+  "surname": "Peapell",
+  "sex": "F",
+  "birthDate": "20 JUL 1929",
+  "birthPlace": "Broadtown, Wiltshire",
+  "deathDate": "7 OCT 2003",
+  "deathPlace": "Purton, Wiltshire",
+  "photos": [],
+  "spouseIds": [
+    "I2001"
+  ],
+  "childIds": [
+    "I1775"
+  ],
+  "parentIds": [],
+  "notes": [
+    "1928/29"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2001",
+      "familyId": "F715"
+    }
+  ]
+}

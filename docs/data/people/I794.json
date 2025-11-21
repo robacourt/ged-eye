@@ -1,0 +1,39 @@
+{
+  "id": "I794",
+  "name": "Sydney John A'Court",
+  "givenName": "Sydney John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "21 NOV 1878",
+  "birthPlace": "Springfield Rd, St Albans, Christchurch, NZ",
+  "deathDate": "1964",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I810"
+  ],
+  "childIds": [
+    "I811",
+    "I812",
+    "I813",
+    "I814",
+    "I815",
+    "I1930"
+  ],
+  "parentIds": [
+    "I775",
+    "I784"
+  ],
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "Electoral roll"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I810",
+      "familyId": "F339",
+      "marriageDate": "21 MAY 1897",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+    }
+  ]
+}

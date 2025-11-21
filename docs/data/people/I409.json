@@ -1,0 +1,17 @@
+{
+  "id": "I409",
+  "name": "Lille Lorraine A'Court",
+  "givenName": "Lille Lorraine",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "10 OCT 1916",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I408"
+  ]
+}

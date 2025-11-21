@@ -1,0 +1,25 @@
+{
+  "id": "I1001",
+  "name": "Thomas O'Connor",
+  "givenName": "Thomas",
+  "surname": "O'Connor",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1002"
+  ],
+  "childIds": [
+    "I737"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1002",
+      "familyId": "F301"
+    }
+  ]
+}

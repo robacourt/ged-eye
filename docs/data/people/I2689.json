@@ -1,0 +1,18 @@
+{
+  "id": "I2689",
+  "name": "Charles Henry A'Court",
+  "givenName": "Charles Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "21 MAR 1901",
+  "birthPlace": "Bristol, St. Judes",
+  "deathDate": "NOV 1908",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ]
+}

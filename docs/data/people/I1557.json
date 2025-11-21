@@ -1,0 +1,23 @@
+{
+  "id": "I1557",
+  "name": "Peter Woodyer",
+  "givenName": "Peter",
+  "surname": "Woodyer",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1548"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1548",
+      "familyId": "F592"
+    }
+  ]
+}

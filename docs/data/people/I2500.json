@@ -1,0 +1,23 @@
+{
+  "id": "I2500",
+  "name": "Allison Unknown",
+  "givenName": "Allison",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2499"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2499",
+      "familyId": "F884"
+    }
+  ]
+}

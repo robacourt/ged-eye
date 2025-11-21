@@ -1,0 +1,44 @@
+{
+  "id": "I2086",
+  "name": "Susan Quarry",
+  "givenName": "Susan",
+  "surname": "Quarry",
+  "sex": "F",
+  "birthDate": "Abt 1838",
+  "birthPlace": "Kingsland, Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Woodford/RG11 1734 34 24.jpg"
+  ],
+  "spouseIds": [
+    "I2085",
+    "I2865"
+  ],
+  "childIds": [
+    "I2065",
+    "I1904"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Chelsea, 3 Whitelands Terrace"
+    },
+    {
+      "date": "1881",
+      "place": "London, Woodford, Snakes Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2085",
+      "familyId": "F745"
+    },
+    {
+      "spouseId": "I2865",
+      "familyId": "F979"
+    }
+  ],
+  "avatar": "avatars/I2086_0.jpg"
+}

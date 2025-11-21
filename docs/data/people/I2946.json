@@ -1,0 +1,22 @@
+{
+  "id": "I2946",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1789",
+  "birthPlace": "Somerset, Horsington",
+  "deathDate": "JAN 1790",
+  "deathPlace": "Somerset, Horsington",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2939",
+    "I2940"
+  ],
+  "baptismDate": "3 MAY 1789",
+  "baptismPlace": "Somerset, Horsington",
+  "burialDate": "5 JAN1790",
+  "burialPlace": "Somerset, Horsington"
+}

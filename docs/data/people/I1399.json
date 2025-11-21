@@ -1,0 +1,25 @@
+{
+  "id": "I1399",
+  "name": "Valerie Leddy",
+  "givenName": "Valerie",
+  "surname": "Leddy",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I719"
+  ],
+  "childIds": [
+    "I720"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I719",
+      "familyId": "F293"
+    }
+  ]
+}

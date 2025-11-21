@@ -1,0 +1,20 @@
+{
+  "id": "I2824",
+  "name": "Mary Ann A'Court",
+  "givenName": "Mary Ann",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1858",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I571",
+    "I2359"
+  ],
+  "burialDate": "5 OCT 1863",
+  "burialPlace": "Over Compton"
+}

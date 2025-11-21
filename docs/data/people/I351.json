@@ -1,0 +1,28 @@
+{
+  "id": "I351",
+  "name": "Stephen Kendall",
+  "givenName": "Stephen",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I352"
+  ],
+  "childIds": [
+    "I350"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I352",
+      "familyId": "F164"
+    }
+  ]
+}

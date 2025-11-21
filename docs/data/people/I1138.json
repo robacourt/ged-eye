@@ -1,0 +1,28 @@
+{
+  "id": "I1138",
+  "name": "Eva Ethel Dean",
+  "givenName": "Eva Ethel",
+  "surname": "Dean",
+  "sex": "F",
+  "birthDate": "ABT 1882",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1137"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1139",
+    "I1140"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1137",
+      "familyId": "F462",
+      "marriageDate": "25 OCT 1915",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

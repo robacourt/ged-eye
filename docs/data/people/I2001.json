@@ -1,0 +1,28 @@
+{
+  "id": "I2001",
+  "name": "Charles Roy Luke A'Court",
+  "givenName": "Charles Roy Luke",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2002"
+  ],
+  "childIds": [
+    "I1775"
+  ],
+  "parentIds": [
+    "I912",
+    "I919"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2002",
+      "familyId": "F715"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "I68",
+  "name": "Susannah Oram",
+  "givenName": "Susannah",
+  "surname": "Oram",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Shaftesbury, Dorset",
+  "deathDate": "18 MAR 1854",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I20"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Proved 19/6/1854 GC",
+    "of Pensbury House Motcombe w 28-12-1852   pr 19-6-1854 GC"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I20",
+      "familyId": "F16",
+      "marriageDate": "13 NOV 1815",
+      "marriagePlace": "Motcombe, Dorset By licence"
+    }
+  ]
+}

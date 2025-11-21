@@ -1,0 +1,28 @@
+{
+  "id": "I2178",
+  "name": "James Allan Turner",
+  "givenName": "James Allan",
+  "surname": "Turner",
+  "sex": "M",
+  "birthDate": "27 SEP 1913",
+  "birthPlace": "Glasgow",
+  "deathDate": "1978",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2254"
+  ],
+  "childIds": [
+    "I2177",
+    "I2179"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2254",
+      "familyId": "F782",
+      "marriageDate": "7 JUN 1941",
+      "marriagePlace": "Stapleton Church, Bristol"
+    }
+  ]
+}

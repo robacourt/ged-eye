@@ -1,0 +1,25 @@
+{
+  "id": "I235",
+  "name": "Frances Petteredge",
+  "givenName": "Frances",
+  "surname": "Petteredge",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I234"
+  ],
+  "childIds": [
+    "I88"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I234",
+      "familyId": "F56"
+    }
+  ]
+}

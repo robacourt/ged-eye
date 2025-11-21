@@ -1,0 +1,69 @@
+{
+  "id": "I1451",
+  "name": "Rosa Unknown",
+  "givenName": "Rosa",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1863",
+  "birthPlace": "Chard, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Weymouth/RG13 1993 89 15.jpg",
+    "Data/Media/1911 census/Dorset/Weymouth/RG14 12344 97.jpg"
+  ],
+  "spouseIds": [
+    "I1450"
+  ],
+  "childIds": [
+    "I2346",
+    "I1645",
+    "I1646",
+    "I2347",
+    "I1647",
+    "I1452",
+    "I2348",
+    "I2360"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Coachmans Wife",
+    "Lodging House Keeper",
+    "Private Apartments Proprietress"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Weymouth, Dorset, Gloster Mews House Inn"
+    },
+    {
+      "date": "1881",
+      "place": "Weymouth, Dorset. Melcombe Regis, 4 Alexandra Terrace"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Melcombe Regis, Gloucester Row"
+    },
+    {
+      "date": "1901",
+      "place": "Weymouth, Dorset, Melcombe Regis, 3 Gloster Row"
+    },
+    {
+      "date": "1911",
+      "place": "Weymouth, Dorset, 3 Gloucester Row"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1900",
+      "place": "Weymouth, Dorset, No. 3 Gloucester Row"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1450",
+      "familyId": "F559"
+    }
+  ],
+  "avatar": "avatars/I1451_0.jpg"
+}

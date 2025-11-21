@@ -1,0 +1,30 @@
+{
+  "id": "I2805",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1854",
+  "birthPlace": "Somerset, Yeovil",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Hampstead/RG10 198 24 41.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I766",
+    "I882"
+  ],
+  "occupations": [
+    "Zinc Worker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Hampstead, William Terrace"
+    }
+  ],
+  "avatar": "avatars/I2805_0.jpg"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "I71",
+  "name": "Hannah Coffin",
+  "givenName": "Hannah",
+  "surname": "Coffin",
+  "sex": "F",
+  "birthDate": "ABT 1793",
+  "birthPlace": null,
+  "deathDate": "31 JAN 1858",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Henstridge/Piece 1931 folio 374 page 25.jpg"
+  ],
+  "spouseIds": [
+    "I23"
+  ],
+  "childIds": [
+    "I2186",
+    "I73",
+    "I75",
+    "I74",
+    "I76",
+    "I77",
+    "I78",
+    "I79"
+  ],
+  "parentIds": [
+    "I467",
+    "I468"
+  ],
+  "baptismDate": "10 JUN 1798",
+  "baptismPlace": "Henstridge, Somerset",
+  "burialDate": "7 FEB 1858",
+  "burialPlace": "Henstridge, Somerset",
+  "occupations": [
+    "Charwoman"
+  ],
+  "notes": [
+    "In 1851"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I23",
+      "familyId": "F18",
+      "marriageDate": "20 MAR 1815",
+      "marriagePlace": "Henstridge Ash, Somerset"
+    }
+  ],
+  "avatar": "avatars/I71_0.jpg"
+}

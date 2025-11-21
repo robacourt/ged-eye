@@ -1,0 +1,23 @@
+{
+  "id": "I1499",
+  "name": "John Collis",
+  "givenName": "John",
+  "surname": "Collis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1498"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F572"
+    }
+  ]
+}

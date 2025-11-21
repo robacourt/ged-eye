@@ -1,0 +1,18 @@
+{
+  "id": "I945",
+  "name": "Dorothy Alice Stuart A'Court",
+  "givenName": "Dorothy Alice Stuart",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "23 OCT 1897",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": "7 AUG 1923",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I937",
+    "I938"
+  ]
+}

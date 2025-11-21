@@ -1,0 +1,26 @@
+{
+  "id": "I525",
+  "name": "May Elizabeth Ansett",
+  "givenName": "May Elizabeth",
+  "surname": "Ansett",
+  "sex": "F",
+  "birthDate": "1886",
+  "birthPlace": "Collingwood, Victoria",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I524"
+  ],
+  "childIds": [
+    "I512",
+    "I2092"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I524",
+      "familyId": "F218"
+    }
+  ]
+}

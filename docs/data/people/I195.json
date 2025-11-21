@@ -1,0 +1,42 @@
+{
+  "id": "I195",
+  "name": "James Clark",
+  "givenName": "James",
+  "surname": "Clark",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "ANTE 1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I58"
+  ],
+  "childIds": [
+    "I1178"
+  ],
+  "parentIds": [
+    "I321",
+    "I320"
+  ],
+  "baptismDate": "6.5.1798",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Miller"
+  ],
+  "notes": [
+    "40-1841"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Fifehead Magdalen, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I58",
+      "familyId": "F39"
+    }
+  ]
+}

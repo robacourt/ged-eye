@@ -1,0 +1,67 @@
+{
+  "id": "I426",
+  "name": "James Alexandra Rudolph Frentzel",
+  "givenName": "James Alexandra Rudolph",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "26 AUG 1891",
+  "birthPlace": "London, Clapton",
+  "deathDate": "26 JUNE 1956",
+  "deathPlace": "London, Charing Cross Hospital",
+  "photos": [
+    "Data/Picture/James Alexandra Rudolph Frentzel.tif",
+    "Data/Media/Wills & Probate/gbor_govprobate_1956_f002636-french-1956 (2).jpg",
+    "Data/Media/1911 census/London/Stamford Hill/RG14 1049 215.jpg",
+    "Data/Media/London Gazette/JAR Frentzel 1925.jpg",
+    "Data/Media/London Gazette/gbor_london-gazette_1928_03-27_33370_0070.jpg"
+  ],
+  "spouseIds": [
+    "I433"
+  ],
+  "childIds": [
+    "I434",
+    "I435"
+  ],
+  "parentIds": [
+    "I423",
+    "I424"
+  ],
+  "occupations": [
+    "Insurance Clerk"
+  ],
+  "notes": [
+    "First name(s) Alexander James Rudolph",
+    "First name(s) Alexander James Rudolph",
+    "First name(s) A J R",
+    "First name(s) A J R",
+    "First name(s) A J R"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Hackney, London, 96 Osbaldeston Road,"
+    },
+    {
+      "date": "1911",
+      "place": "London, Stamford Hill, 46 Northfield Road"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1921",
+      "place": "London, Southgate"
+    },
+    {
+      "date": "1956",
+      "place": "Bexhill-on-Sea, East Lodge, Hastings Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I433",
+      "familyId": "F196",
+      "marriageDate": "1918"
+    }
+  ],
+  "avatar": "avatars/I426_0.jpg"
+}

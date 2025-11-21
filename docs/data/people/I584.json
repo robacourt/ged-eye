@@ -1,0 +1,25 @@
+{
+  "id": "I584",
+  "name": "Elizabeth Butt",
+  "givenName": "Elizabeth",
+  "surname": "Butt",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I583"
+  ],
+  "childIds": [
+    "I581"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I583",
+      "familyId": "F240"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2768",
+  "name": "George Gilfillian Hillocks",
+  "givenName": "George Gilfillian",
+  "surname": "Hillocks",
+  "sex": "M",
+  "birthDate": "1853",
+  "birthPlace": "Scotland",
+  "deathDate": "3RD QTR 1870",
+  "deathPlace": "London, Hackney",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I443",
+    "I444"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Lambeth, 12 Hanover Place"
+    }
+  ]
+}

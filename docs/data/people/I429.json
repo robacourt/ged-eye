@@ -1,0 +1,54 @@
+{
+  "id": "I429",
+  "name": "Cyril Arthur Wilkinson",
+  "givenName": "Cyril Arthur",
+  "surname": "Wilkinson",
+  "sex": "M",
+  "birthDate": "5 JUL 1893",
+  "birthPlace": "Watford, Gorse Rd",
+  "deathDate": "17 NOV 1926",
+  "deathPlace": "London, Southgate, 13 Mayfield Avenue",
+  "photos": [
+    "Data/Picture/Cyril Aurther Wilkinson.jpg",
+    "Data/Picture/Private Cyril Wilkinson (002).jpg",
+    "Data/Media/Wills & Probate/C A Wilkinson 1926.jpg"
+  ],
+  "spouseIds": [
+    "I428"
+  ],
+  "childIds": [
+    "I430",
+    "I431",
+    "I432"
+  ],
+  "parentIds": [
+    "I2967",
+    "I2968"
+  ],
+  "occupations": [
+    "Marine Artist"
+  ],
+  "notes": [
+    "Printmaker, illustrator and designer; born in Wandsworth, London; designed posters for the Underground Group and London Central Omnibus Co Ltd and produced work for Sun Engraving Co. and London Metropolitan Railway; lived in Southgate, north Londo",
+    "Printmaker, illustrator and designer; born in Wandsworth, London; designed posters for the Underground Group and London Central Omnibus Co Ltd and produced work for Sun Engraving Co. and London Metropolitan Railway; lived in Southgate, north Londo"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Surrey, Croydon, 25 St Pauls Rd Thornton Heath"
+    },
+    {
+      "date": "1921",
+      "place": "London, Southgate, 13 Mayfield Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I428",
+      "familyId": "F197",
+      "marriageDate": "21 OCT 1919",
+      "marriagePlace": "London, Stamford Hill. Hackney"
+    }
+  ],
+  "avatar": "avatars/I429_0.jpg"
+}

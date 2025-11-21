@@ -1,0 +1,58 @@
+{
+  "id": "I403",
+  "name": "Robert Grantham Sherborne",
+  "givenName": "Robert Grantham",
+  "surname": "Sherborne",
+  "sex": "M",
+  "birthDate": "12 MAR 1918",
+  "birthPlace": "Surrey, Guildford",
+  "deathDate": "20 JUN 1979",
+  "deathPlace": "Devon, Plymouth",
+  "photos": [
+    "Data/Media/1939 Register/Surrey/TNA_R39_1926_1926A_017.jpg",
+    "Data/Media/1921 Census/Surrey/RG15 03164 208.jpg",
+    "Data/Media/Wills & Probate/Sherborne R G.jpg"
+  ],
+  "spouseIds": [
+    "I402"
+  ],
+  "childIds": [
+    "I127"
+  ],
+  "parentIds": [
+    "I480",
+    "I481"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Surrey, Woking, Alfine Lavender Rd"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1949",
+      "place": "Surrey, New Haw, 9 Pine Close"
+    },
+    {
+      "date": "1939",
+      "place": "Surrey, Byfleet, 5 Church Rd"
+    },
+    {
+      "date": "1959",
+      "place": "Surrey, New Haw, 9 Pine Close"
+    },
+    {
+      "date": "1979",
+      "place": "Devon, Plymouth, Billacombe, Nirvana Colesdon Hill"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I402",
+      "familyId": "F80",
+      "marriageDate": "1ST QTR 1944"
+    }
+  ],
+  "avatar": "avatars/I403_0.jpg"
+}

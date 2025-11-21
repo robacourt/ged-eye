@@ -1,0 +1,25 @@
+{
+  "id": "I680",
+  "name": "Elizabeth ( Betty ) Drew",
+  "givenName": "Elizabeth ( Betty )",
+  "surname": "Drew",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I679"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I681"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I679",
+      "familyId": "F286"
+    }
+  ]
+}

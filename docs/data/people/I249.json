@@ -1,0 +1,26 @@
+{
+  "id": "I249",
+  "name": "Eliza Fudge",
+  "givenName": "Eliza",
+  "surname": "Fudge",
+  "sex": "F",
+  "birthDate": "3 AUG 1847",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I246",
+    "I40"
+  ],
+  "baptismDate": "5 SEP 1847",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "age 14"
+    }
+  ]
+}

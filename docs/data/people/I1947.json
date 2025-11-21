@@ -1,0 +1,32 @@
+{
+  "id": "I1947",
+  "name": "Rex Sydney A'Court",
+  "givenName": "Rex Sydney",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "16 JULY 1927",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "31 DEC 2005",
+  "deathPlace": "Rangiora, NZ Wiltshire Rest Home & Hospital, Ivory street.",
+  "photos": [],
+  "spouseIds": [
+    "I1948"
+  ],
+  "childIds": [
+    "I2024",
+    "I1949",
+    "I2022",
+    "I2023"
+  ],
+  "parentIds": [
+    "I1930",
+    "I1944"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1948",
+      "familyId": "F694",
+      "marriageDate": "26 APR 1955"
+    }
+  ]
+}

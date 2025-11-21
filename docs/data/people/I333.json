@@ -1,0 +1,23 @@
+{
+  "id": "I333",
+  "name": "James Kendall",
+  "givenName": "James",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": "24.9.1860",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I197",
+    "I330"
+  ],
+  "baptismDate": "11.11.1860",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "6Mths -1861  10-1871  20-1881"
+  ]
+}

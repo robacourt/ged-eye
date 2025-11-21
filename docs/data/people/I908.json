@@ -1,0 +1,18 @@
+{
+  "id": "I908",
+  "name": "Alice Lines",
+  "givenName": "Alice",
+  "surname": "Lines",
+  "sex": "F",
+  "birthDate": "ABT 1877",
+  "birthPlace": "Wiltshire, England",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I904",
+    "I230"
+  ]
+}

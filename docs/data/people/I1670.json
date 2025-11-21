@@ -1,0 +1,33 @@
+{
+  "id": "I1670",
+  "name": "Ibbot Unknown",
+  "givenName": "Ibbot",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1788",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1669"
+  ],
+  "childIds": [
+    "I1671",
+    "I1672",
+    "I1673",
+    "I1674",
+    "I1675",
+    "I1676",
+    "I15",
+    "I1677"
+  ],
+  "parentIds": [],
+  "burialDate": "11 JUN 1788",
+  "marriages": [
+    {
+      "spouseId": "I1669",
+      "familyId": "F11"
+    }
+  ]
+}

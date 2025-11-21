@@ -1,0 +1,29 @@
+{
+  "id": "I1041",
+  "name": "Mavis Williams",
+  "givenName": "Mavis",
+  "surname": "Williams",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Fred & Mavis A'Court.jpg"
+  ],
+  "spouseIds": [
+    "I1040"
+  ],
+  "childIds": [
+    "I1042"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1040",
+      "familyId": "F422",
+      "marriageDate": "1951"
+    }
+  ],
+  "avatar": "avatars/I1041_0.jpg"
+}

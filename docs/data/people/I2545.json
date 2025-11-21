@@ -1,0 +1,35 @@
+{
+  "id": "I2545",
+  "name": "Edwin A'Court",
+  "givenName": "Edwin",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1892",
+  "birthPlace": "Hove, Sussex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Sussex/RG13 938 9.jpg",
+    "Data/Media/1911 census/London/St Pancras/RG14 708 335.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2797",
+    "I2936"
+  ],
+  "occupations": [
+    "Motor Car Upholsterer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Sussex, Hove, 12 Byron St."
+    },
+    {
+      "date": "1911",
+      "place": "London, St. Pancras, 53 Swinton Street"
+    }
+  ],
+  "avatar": "avatars/I2545_0.jpg"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I396",
+  "name": "Jean Curtis",
+  "givenName": "Jean",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I394"
+  ],
+  "childIds": [
+    "I397",
+    "I398"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I394",
+      "familyId": "F181"
+    }
+  ]
+}

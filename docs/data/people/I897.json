@@ -1,0 +1,26 @@
+{
+  "id": "I897",
+  "name": "Ann Wilkin",
+  "givenName": "Ann",
+  "surname": "Wilkin",
+  "sex": "F",
+  "birthDate": "BEF 1778",
+  "birthPlace": null,
+  "deathDate": "AFT 1804",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I745"
+  ],
+  "childIds": [
+    "I898",
+    "I899"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I745",
+      "familyId": "F306"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "I581",
+  "name": "Alfred Thomas Pike",
+  "givenName": "Alfred Thomas",
+  "surname": "Pike",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I155"
+  ],
+  "childIds": [
+    "I582"
+  ],
+  "parentIds": [
+    "I583",
+    "I584"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I155",
+      "familyId": "F88",
+      "marriageDate": "24.9.1863",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

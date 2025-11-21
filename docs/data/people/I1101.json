@@ -1,0 +1,26 @@
+{
+  "id": "I1101",
+  "name": "Laura Anne A'Court",
+  "givenName": "Laura Anne",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1913",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ],
+  "baptismDate": "7 DECEMBER 1913",
+  "baptismPlace": "West Camel, Somerset",
+  "residences": [
+    {
+      "date": "1913",
+      "place": "Urgashay,West Camel, Somerset"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1022",
+  "name": "Joanne Kokham O'Connor",
+  "givenName": "Joanne Kokham",
+  "surname": "O'Connor",
+  "sex": "F",
+  "birthDate": "27 NOVEMBER 2000",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1004",
+    "I1018"
+  ]
+}

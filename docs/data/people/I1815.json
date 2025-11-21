@@ -1,0 +1,23 @@
+{
+  "id": "I1815",
+  "name": "Unknown Kemp",
+  "givenName": "Unknown",
+  "surname": "Kemp",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1814"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F654"
+    }
+  ]
+}

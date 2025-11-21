@@ -1,0 +1,23 @@
+{
+  "id": "I2028",
+  "name": "Frederick Montague Augustus Morris",
+  "givenName": "Frederick Montague Augustus",
+  "surname": "Morris",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2029"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2029",
+      "familyId": "F730"
+    }
+  ]
+}

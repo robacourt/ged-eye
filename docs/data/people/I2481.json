@@ -1,0 +1,24 @@
+{
+  "id": "I2481",
+  "name": "Phyllis A'Court",
+  "givenName": "Phyllis",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1860",
+  "birthPlace": "Schnapper Point, Victoria, Australia",
+  "deathDate": "1862",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I74",
+    "I1905"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F877"
+    }
+  ]
+}

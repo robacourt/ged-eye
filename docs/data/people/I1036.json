@@ -1,0 +1,23 @@
+{
+  "id": "I1036",
+  "name": "Wilfred Denis A'Court",
+  "givenName": "Wilfred Denis",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1922",
+  "birthPlace": null,
+  "deathDate": "21 NOV 2005",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [
+    "Data/Picture/Wilfred Dennis A'Court Judi.jpg",
+    "Data/Picture/Wilfred Dennis A'Court2.jpg",
+    "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1027",
+    "I1034"
+  ],
+  "avatar": "avatars/I1036_0.jpg"
+}

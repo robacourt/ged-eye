@@ -1,0 +1,35 @@
+{
+  "id": "I1613",
+  "name": "Annie A'Court",
+  "givenName": "Annie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1895",
+  "birthPlace": "Warrington, Lancs",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg",
+    "Data/Media/1911 census/Lancashire/Warrington/RG14 23171 5 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1608",
+    "I1609"
+  ],
+  "occupations": [
+    "Assistant in Cycle and Furniture Shop"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    },
+    {
+      "date": "1911",
+      "place": "Warrington, Lancs, 104 Bridge St"
+    }
+  ],
+  "avatar": "avatars/I1613_0.jpg"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I1842",
+  "name": "Unknown Staker",
+  "givenName": "Unknown",
+  "surname": "Staker",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1841"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F663"
+    }
+  ]
+}

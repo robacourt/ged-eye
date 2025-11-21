@@ -1,0 +1,44 @@
+{
+  "id": "I1637",
+  "name": "Emily Unknown",
+  "givenName": "Emily",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1636"
+  ],
+  "childIds": [
+    "I2579",
+    "I1638",
+    "I1639",
+    "I1640",
+    "I1641",
+    "I2527"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Yeovil, Somerset, 29 Queen's St."
+    },
+    {
+      "date": "1901",
+      "place": "Yeovil, Somerset, Huish"
+    },
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 11 Woodland Grove, Mill Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1636",
+      "familyId": "F608"
+    }
+  ]
+}

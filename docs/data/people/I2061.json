@@ -1,0 +1,18 @@
+{
+  "id": "I2061",
+  "name": "Lilian A'Court",
+  "givenName": "Lilian",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1926",
+  "birthPlace": "Tooting",
+  "deathDate": "20 AUG 1995",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2054",
+    "I2055"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "I114",
+  "name": "Evelyn Alice May A'Court",
+  "givenName": "Evelyn Alice May",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "JUN QR 1877",
+  "birthPlace": "Portsmouth, Hampshire",
+  "deathDate": "10 FEB 1949",
+  "deathPlace": "Portsmouth, Hampshire, Southsea, 13 Villiers Rd.",
+  "photos": [
+    "Data/Media/Baptisms/s2_gbprs_portsmouth_103772299_00073.jpg",
+    "Data/Media/1881 census/Hampshire/Portsea/RG11 1161 37 22.jpg",
+    "Data/Media/1891 census/Hampshire/Portsmouth/RG12 872 56 8.jpg",
+    "Data/Media/1901 census/Kent/RG13 686 39 5a.jpg",
+    "Data/Media/1901 census/Kent/RG13 686 39 5b.jpg",
+    "Data/Media/1911 census/Hampshire/Portsmouth/RG14 5603 94.jpg",
+    "Data/Media/1921 Census/Kent/GBC_1921_RG15_03844_0391.jpg",
+    "Data/Media/1939 Register/Hampshire/TNA_R39_2278_2278E_004.jpg",
+    "Data/Media/Newspaper Reports/The_evening_news_17_January_1890_0002.jpg",
+    "Data/Media/Newspaper Reports/Hampshire Telegraph 5 Jan 1940.png"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I106",
+    "I113"
+  ],
+  "baptismDate": "17 DEC 1896",
+  "baptismPlace": "Hampshire, Southsea, Victoria Rd Wesleyan Chapel",
+  "notes": [
+    "gifted musician"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Portsea, Hampshire, 8 Alsace Terrace, Brittania Rd"
+    },
+    {
+      "date": "1891",
+      "place": "Portsmouth, Hampshire, Southsea, 29 St. David's Rd.,"
+    },
+    {
+      "date": "1901",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    },
+    {
+      "date": "1911",
+      "place": "Portsmouth, Hampshire, Southsea, 29 St. David's Rd.,"
+    },
+    {
+      "date": "1921",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    }
+  ],
+  "residences": [
+    {
+      "date": "BEF 1949",
+      "place": "Portsmouth, Hampshire, Southsea, 2 Craneswater Avenue"
+    }
+  ],
+  "avatar": "avatars/I114_0.jpg"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "I615",
+  "name": "Frederick James Clarkson",
+  "givenName": "Frederick James",
+  "surname": "Clarkson",
+  "sex": "M",
+  "birthDate": "5.7.1949",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I613"
+  ],
+  "childIds": [
+    "I616"
+  ],
+  "parentIds": [
+    "I617",
+    "I618"
+  ],
+  "baptismDate": "25.9.1949",
+  "baptismPlace": "Stalbridge, Dorset",
+  "occupations": [
+    "Tractor Driver"
+  ],
+  "notes": [
+    "25-1975"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I613",
+      "familyId": "F254",
+      "marriageDate": "15.2.1975",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

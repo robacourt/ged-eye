@@ -1,0 +1,29 @@
+{
+  "id": "I2888",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1846",
+  "birthPlace": "London, Kensington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2887"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Kent. Bexley, Albert Rd, 3 Albert Cottages"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2887",
+      "familyId": "F988"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2427",
+  "name": "Ronald Wild",
+  "givenName": "Ronald",
+  "surname": "Wild",
+  "sex": "M",
+  "birthDate": "1928",
+  "birthPlace": "New Mills, Derbyshire",
+  "deathDate": "2003",
+  "deathPlace": "New Mills, Derbyshire",
+  "photos": [],
+  "spouseIds": [
+    "I2426"
+  ],
+  "childIds": [
+    "I2428"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2426",
+      "familyId": "F862",
+      "marriageDate": "1950",
+      "marriagePlace": "Marsh Gibbon, Buckinghamshire"
+    }
+  ]
+}

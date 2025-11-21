@@ -1,0 +1,33 @@
+{
+  "id": "I3",
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I135"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1",
+    "I2"
+  ],
+  "baptismDate": "10 APR 1814",
+  "baptismPlace": "Hinton St. Mary, Dorset",
+  "occupations": [
+    "Glover"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I135",
+      "familyId": "F4",
+      "marriageDate": "25 MAY 1859",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

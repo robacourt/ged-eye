@@ -1,0 +1,27 @@
+{
+  "id": "I1666",
+  "name": "Leonard Ash",
+  "givenName": "Leonard",
+  "surname": "Ash",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1665"
+  ],
+  "childIds": [
+    "I1667",
+    "I1668"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1665",
+      "familyId": "F613",
+      "marriageDate": "1977"
+    }
+  ]
+}

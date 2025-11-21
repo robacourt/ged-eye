@@ -1,0 +1,24 @@
+{
+  "id": "I750",
+  "name": "Mary Baker",
+  "givenName": "Mary",
+  "surname": "Baker",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1779",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I744"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I744",
+      "familyId": "F304",
+      "marriageDate": "1775"
+    }
+  ]
+}

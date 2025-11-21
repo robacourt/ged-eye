@@ -1,0 +1,59 @@
+{
+  "id": "I2405",
+  "name": "Gabriel Jacob A'Court",
+  "givenName": "Gabriel Jacob",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1847",
+  "birthPlace": "Dorset, Melcombe Regis",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Weymouth/HO107 1857 194 8.jpg"
+  ],
+  "spouseIds": [
+    "I2474"
+  ],
+  "childIds": [
+    "I806",
+    "I2825",
+    "I2826"
+  ],
+  "parentIds": [
+    "I143",
+    "I174"
+  ],
+  "burialDate": "27 JAN 1909",
+  "burialPlace": "Melcombe Regis, Dorset, St Mary & St. John",
+  "occupations": [
+    "Waiter at Hotel",
+    "Waiter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Dorset, Melcombe Regis, 6 Terrace Court"
+    },
+    {
+      "date": "1871",
+      "place": "Melcombe Regis, Dorset, 10 Alexandra Terrace"
+    },
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, 16 West Parade."
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Melcombe Regis, 14 Commercial Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2474",
+      "familyId": "F721",
+      "marriageDate": "3 DEC 1867",
+      "marriagePlace": "Dorset, Weymouth"
+    }
+  ],
+  "avatar": "avatars/I2405_0.jpg"
+}

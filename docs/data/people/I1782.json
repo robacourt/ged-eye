@@ -1,0 +1,26 @@
+{
+  "id": "I1782",
+  "name": "Unknown Preston",
+  "givenName": "Unknown",
+  "surname": "Preston",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1783"
+  ],
+  "childIds": [
+    "I2684",
+    "I1781"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1783",
+      "familyId": "F642"
+    }
+  ]
+}

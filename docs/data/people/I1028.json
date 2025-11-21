@@ -1,0 +1,21 @@
+{
+  "id": "I1028",
+  "name": "Alice A'Court",
+  "givenName": "Alice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1893",
+  "birthPlace": "Somerset",
+  "deathDate": "1893",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I782",
+    "I870"
+  ],
+  "notes": [
+    "Not on 1901 census !"
+  ]
+}

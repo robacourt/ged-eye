@@ -1,0 +1,29 @@
+{
+  "id": "I2745",
+  "name": "Ken Gillam",
+  "givenName": "Ken",
+  "surname": "Gillam",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2748"
+  ],
+  "childIds": [
+    "I2746",
+    "I2747"
+  ],
+  "parentIds": [
+    "I1315",
+    "I1073"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2748",
+      "familyId": "F955"
+    }
+  ]
+}

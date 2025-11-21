@@ -1,0 +1,18 @@
+{
+  "id": "I536",
+  "name": "Jobe a'Court",
+  "givenName": "Jobe",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "BEF 1695",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I534",
+    "I535"
+  ]
+}

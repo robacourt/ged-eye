@@ -1,0 +1,28 @@
+{
+  "id": "I1510",
+  "name": "Ada Chamberlain",
+  "givenName": "Ada",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "1875",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1511"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I864",
+    "I777"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1511",
+      "familyId": "F576",
+      "marriageDate": "16 APR 1895",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

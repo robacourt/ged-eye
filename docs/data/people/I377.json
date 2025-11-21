@@ -1,0 +1,67 @@
+{
+  "id": "I377",
+  "name": "John Wheeler Bennett",
+  "givenName": "John Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "1845",
+  "birthPlace": "Hampshire, Portsmouth, Portsea",
+  "deathDate": "1926",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Hampshire/RG09 641 39 30.jpg",
+    "Data/Media/Death certs and reports/John Wheeler Bennett.jpg"
+  ],
+  "spouseIds": [
+    "I380"
+  ],
+  "childIds": [
+    "I381",
+    "I382",
+    "I383",
+    "I384"
+  ],
+  "parentIds": [
+    "I374",
+    "I375"
+  ],
+  "occupations": [
+    "Grocer Apprentice",
+    "Provision Agent",
+    "City of London, Import Merchant",
+    "Import Merchant, Canadian Produce, J P Kent"
+  ],
+  "notes": [
+    "took hyphenated name Wheeler-Bennett 1889 prominent City business man Appointed CBE ,Probably for work as Chairman British Red Cross during WW1 High Sheriff of Kent 1923-24"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1891",
+      "place": "Kent, Bromley, Carisbrook"
+    },
+    {
+      "date": "1901",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    },
+    {
+      "date": "1911",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    },
+    {
+      "date": "1921",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I380",
+      "familyId": "F172",
+      "marriageDate": "1882"
+    }
+  ],
+  "avatar": "avatars/I377_0.jpg"
+}

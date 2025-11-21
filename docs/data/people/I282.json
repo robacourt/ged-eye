@@ -1,0 +1,23 @@
+{
+  "id": "I282",
+  "name": "William Galpin",
+  "givenName": "William",
+  "surname": "Galpin",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I281"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F138"
+    }
+  ]
+}

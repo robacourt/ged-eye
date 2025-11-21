@@ -1,0 +1,50 @@
+{
+  "id": "I1406",
+  "name": "Ethel A'Court",
+  "givenName": "Ethel",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1887",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Bristol/RG14 14916 116.jpg"
+  ],
+  "spouseIds": [
+    "I2379"
+  ],
+  "childIds": [
+    "I2380",
+    "I2381"
+  ],
+  "parentIds": [
+    "I1387",
+    "I1388"
+  ],
+  "occupations": [
+    "Cigartte Packer"
+  ],
+  "notes": [
+    "Ian, In 2002 I gave you misinformation about Ethel Mary A'Court.  My mother did not tell us the truth about her sister.  My research is as follows:Ethel Mary Acourt b 1887 Bristol  m. Edward Jack Duffey March 1913 , Bristol Avon Glostershire.  Emm"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2379",
+      "familyId": "F846",
+      "marriageDate": "MARCH 1913",
+      "marriagePlace": "Bristol, Glostershire"
+    }
+  ],
+  "avatar": "avatars/I1406_0.jpg"
+}

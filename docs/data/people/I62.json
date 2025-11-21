@@ -1,0 +1,32 @@
+{
+  "id": "I62",
+  "name": "William Dowding",
+  "givenName": "William",
+  "surname": "Dowding",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I200"
+  ],
+  "childIds": [
+    "I201"
+  ],
+  "parentIds": [
+    "I60",
+    "I19"
+  ],
+  "baptismDate": "2 JUL 1790",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I200",
+      "familyId": "F42",
+      "marriageDate": "10 JUL 1832",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

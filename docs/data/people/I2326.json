@@ -1,0 +1,43 @@
+{
+  "id": "I2326",
+  "name": "Elizabeth Baumann",
+  "givenName": "Elizabeth",
+  "surname": "Baumann",
+  "sex": "F",
+  "birthDate": "ABT 1840",
+  "birthPlace": "London, Shoreditch",
+  "deathDate": "1ST QTR 1885",
+  "deathPlace": "London, Southwark",
+  "photos": [],
+  "spouseIds": [
+    "I423"
+  ],
+  "childIds": [
+    "I2327"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Shoreditch, 47 Clifton St"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, 122 Stoke Newington Rd"
+    },
+    {
+      "date": "1881",
+      "place": "London, Southwark, 45 Alpha St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I423",
+      "familyId": "F825",
+      "marriageDate": "29 SEP 1856",
+      "marriagePlace": "City of London, All Hallows, London Wall",
+      "divorceDate": "1878",
+      "divorcePlace": "London"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I461",
+  "name": "Kathleen Mabel Lent",
+  "givenName": "Kathleen Mabel",
+  "surname": "Lent",
+  "sex": "F",
+  "birthDate": "30 NOV 1913",
+  "birthPlace": "Kent, Dover",
+  "deathDate": "MAY 1995",
+  "deathPlace": "Lancashire, Blackburn",
+  "photos": [],
+  "spouseIds": [
+    "I2951"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I455",
+    "I459"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2951",
+      "familyId": "F1009",
+      "marriageDate": "JUL 1939",
+      "marriagePlace": "London, Woolwich"
+    }
+  ]
+}

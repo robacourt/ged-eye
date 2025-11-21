@@ -1,0 +1,20 @@
+{
+  "id": "I543",
+  "name": "Agetha a'Court",
+  "givenName": "Agetha",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "BEF 28.6.1665",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I541",
+    "I542"
+  ],
+  "baptismDate": "28.6.1665",
+  "baptismPlace": "North Cadbury, Somerset"
+}

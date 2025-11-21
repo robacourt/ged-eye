@@ -1,0 +1,23 @@
+{
+  "id": "I1279",
+  "name": "Denton Herd",
+  "givenName": "Denton",
+  "surname": "Herd",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1277"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1277",
+      "familyId": "F516"
+    }
+  ]
+}

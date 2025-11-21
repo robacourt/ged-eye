@@ -1,0 +1,39 @@
+{
+  "id": "I198",
+  "name": "James Kendall",
+  "givenName": "James",
+  "surname": "Kendall",
+  "sex": "M",
+  "birthDate": "19.4.1838",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I344"
+  ],
+  "childIds": [
+    "I345",
+    "I346"
+  ],
+  "parentIds": [
+    "I196",
+    "I59"
+  ],
+  "baptismDate": "13.5.1838",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carpenter"
+  ],
+  "notes": [
+    "12-1851  22-1861  23-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I344",
+      "familyId": "F114",
+      "marriageDate": "16.12.1861",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

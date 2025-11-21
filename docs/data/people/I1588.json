@@ -1,0 +1,39 @@
+{
+  "id": "I1588",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1879",
+  "birthPlace": "Bristol, Bedminster",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2361 36 7.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Flour Mill Labourer",
+    "Mill Hand Labourer"
+  ],
+  "notes": [
+    "1901 Living with paternal grandmother Ann Yendal widow see census note"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Bristol, Bedminster, Weaie St."
+    },
+    {
+      "date": "1901",
+      "place": "Bristol, Bedminster, 42 Phillip St"
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+    }
+  ],
+  "avatar": "avatars/I1588_0.jpg"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "I1321",
+  "name": "Mary Ellen Palmer",
+  "givenName": "Mary Ellen",
+  "surname": "Palmer",
+  "sex": "F",
+  "birthDate": "1844",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1319",
+    "I762"
+  ],
+  "occupations": [
+    "Fabric Glove Finisher",
+    "Glove Machinist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Yeovil, Somerset, Ebenezer Row"
+    },
+    {
+      "date": "1861",
+      "place": "Stoke Sub Hamdon, Somerset, Higher Street,"
+    },
+    {
+      "date": "1871",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    }
+  ]
+}

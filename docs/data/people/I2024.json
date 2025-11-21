@@ -1,0 +1,31 @@
+{
+  "id": "I2024",
+  "name": "Mark William A'Court",
+  "givenName": "Mark William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "13 MAR 1956",
+  "birthPlace": "Milton, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2025"
+  ],
+  "childIds": [
+    "I2036",
+    "I2037"
+  ],
+  "parentIds": [
+    "I1947",
+    "I1948"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2025",
+      "familyId": "F726",
+      "marriageDate": "26 JAN 1980",
+      "marriagePlace": "Balclutha, New Zealand"
+    }
+  ]
+}

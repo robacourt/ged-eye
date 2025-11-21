@@ -1,0 +1,29 @@
+{
+  "id": "I502",
+  "name": "Jennifer Jones",
+  "givenName": "Jennifer",
+  "surname": "Jones",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I499"
+  ],
+  "childIds": [
+    "I503",
+    "I504"
+  ],
+  "parentIds": [
+    "I569",
+    "I570"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I499",
+      "familyId": "F212"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I881",
+  "name": "Louisa unknown",
+  "givenName": "Louisa",
+  "surname": "unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I766"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I766",
+      "familyId": "F317",
+      "marriageDate": "1848"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "I1019",
+  "name": "Charmaine Gloria Cantem",
+  "givenName": "Charmaine Gloria",
+  "surname": "Cantem",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1004"
+  ],
+  "childIds": [
+    "I1023",
+    "I1024",
+    "I1025"
+  ],
+  "parentIds": [
+    "I1020",
+    "I1021"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1004",
+      "familyId": "F419",
+      "marriageDate": "31 OCTOBER 1980"
+    }
+  ]
+}

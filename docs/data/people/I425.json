@@ -1,0 +1,18 @@
+{
+  "id": "I425",
+  "name": "Katherine Agnes Frentzel",
+  "givenName": "Katherine Agnes",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": "8 AUG1890",
+  "birthPlace": null,
+  "deathDate": "8 AUG1890",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I423",
+    "I424"
+  ]
+}

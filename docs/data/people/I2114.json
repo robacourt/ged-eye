@@ -1,0 +1,25 @@
+{
+  "id": "I2114",
+  "name": "Henry Clifford A'Court",
+  "givenName": "Henry Clifford",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1434"
+  ],
+  "parentIds": [
+    "I2113"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F759"
+    }
+  ]
+}

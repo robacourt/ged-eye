@@ -1,0 +1,25 @@
+{
+  "id": "I2357",
+  "name": "June D East",
+  "givenName": "June D",
+  "surname": "East",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2356"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2356",
+      "familyId": "F836",
+      "marriageDate": "JUL 1994",
+      "marriagePlace": "Hampshire"
+    }
+  ]
+}

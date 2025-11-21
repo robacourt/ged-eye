@@ -1,0 +1,31 @@
+{
+  "id": "I2528",
+  "name": "Annie Louisa Unknown",
+  "givenName": "Annie Louisa",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1886",
+  "birthPlace": "Closworth, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1638"
+  ],
+  "childIds": [
+    "I2529"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 29 Great Western Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1638",
+      "familyId": "F893"
+    }
+  ]
+}

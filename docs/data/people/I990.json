@@ -1,0 +1,28 @@
+{
+  "id": "I990",
+  "name": "June Elizabeth Gatland",
+  "givenName": "June Elizabeth",
+  "surname": "Gatland",
+  "sex": "F",
+  "birthDate": "7 SEP 1926",
+  "birthPlace": null,
+  "deathDate": "21 DEC 1988",
+  "deathPlace": "Quakers Hill Nursing Home",
+  "photos": [],
+  "spouseIds": [
+    "I989"
+  ],
+  "childIds": [
+    "I2618",
+    "I1430",
+    "I2617",
+    "I2616"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I989",
+      "familyId": "F411"
+    }
+  ]
+}

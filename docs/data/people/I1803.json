@@ -1,0 +1,24 @@
+{
+  "id": "I1803",
+  "name": "Unknown Mackintosh",
+  "givenName": "Unknown",
+  "surname": "Mackintosh",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1802",
+    "I1804"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F650"
+    }
+  ]
+}

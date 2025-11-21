@@ -1,0 +1,37 @@
+{
+  "id": "I65",
+  "name": "John Dowding",
+  "givenName": "John",
+  "surname": "Dowding",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Aft 1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I202"
+  ],
+  "childIds": [
+    "I203",
+    "I204",
+    "I205",
+    "I206"
+  ],
+  "parentIds": [
+    "I60",
+    "I19"
+  ],
+  "baptismDate": "11 AUG 1795",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "notes": [
+    "50-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I202",
+      "familyId": "F43",
+      "marriagePlace": "Martock, Somerset"
+    }
+  ]
+}

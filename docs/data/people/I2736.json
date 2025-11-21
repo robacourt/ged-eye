@@ -1,0 +1,34 @@
+{
+  "id": "I2736",
+  "name": "Olive Madeline Barnett",
+  "givenName": "Olive Madeline",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "ABT 1903",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/London/RG15 06619 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2337",
+    "I2730"
+  ],
+  "occupations": [
+    "Milliner, Ernest Cie Milliners"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Clapton, 14 Thistlewaite Road"
+    },
+    {
+      "date": "1921",
+      "place": "London, Golders Green, 21 Rodborough Rd."
+    }
+  ],
+  "avatar": "avatars/I2736_0.jpg"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1938",
+  "name": "Jan Unknown",
+  "givenName": "Jan",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1937"
+  ],
+  "childIds": [
+    "I1940"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1937",
+      "familyId": "F688"
+    }
+  ]
+}

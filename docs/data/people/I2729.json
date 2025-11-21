@@ -1,0 +1,18 @@
+{
+  "id": "I2729",
+  "name": "April Fraser",
+  "givenName": "April",
+  "surname": "Fraser",
+  "sex": "F",
+  "birthDate": "APRIL 1925",
+  "birthPlace": null,
+  "deathDate": "APRIL 1925",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I417",
+    "I418"
+  ]
+}

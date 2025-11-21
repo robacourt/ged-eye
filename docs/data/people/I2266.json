@@ -1,0 +1,29 @@
+{
+  "id": "I2266",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "4 FEB 1852",
+  "birthPlace": "Jersey, C.I. St Ouen.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Jersey/RG09 4405 6 6.png"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "baptismDate": "15 FEB 1852",
+  "baptismPlace": "Jersey C.I. St Ouen",
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    }
+  ],
+  "avatar": "avatars/I2266_0.jpg"
+}

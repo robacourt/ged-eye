@@ -1,0 +1,36 @@
+{
+  "id": "I622",
+  "name": "Winifred Joan Hatcher",
+  "givenName": "Winifred Joan",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "21.2.1921",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I630"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I593",
+    "I621"
+  ],
+  "baptismDate": "28.8.1921",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "General Cook"
+  ],
+  "notes": [
+    "26-1948,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I630",
+      "familyId": "F260",
+      "marriageDate": "3.4,1948",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

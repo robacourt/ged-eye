@@ -1,0 +1,24 @@
+{
+  "id": "I2565",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1849",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Patient"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Bethnal Green, Bethnal Green Infirmary, Cambridge Rd"
+    }
+  ]
+}

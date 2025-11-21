@@ -1,0 +1,25 @@
+{
+  "id": "I992",
+  "name": "John Trinks",
+  "givenName": "John",
+  "surname": "Trinks",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I991"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I991",
+      "familyId": "F412",
+      "marriageDate": "1942",
+      "marriagePlace": "Bathurst, NSW"
+    }
+  ]
+}

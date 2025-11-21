@@ -1,0 +1,29 @@
+{
+  "id": "I389",
+  "name": "Trevor Heaton",
+  "givenName": "Trevor",
+  "surname": "Heaton",
+  "sex": "M",
+  "birthDate": "1886",
+  "birthPlace": "Oslo, Norway",
+  "deathDate": "FEB 1972",
+  "deathPlace": "Chichester, Sussex",
+  "photos": [],
+  "spouseIds": [
+    "I383"
+  ],
+  "childIds": [
+    "I390",
+    "I576",
+    "I756"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I383",
+      "familyId": "F176",
+      "marriageDate": "19 DEC 1921",
+      "marriagePlace": "Oxford"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": "I44",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "MAY 12 1884",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/The_Commercial_Gazette_27_June_1894_0020_Clip.jpg"
+  ],
+  "spouseIds": [
+    "I259",
+    "I2827"
+  ],
+  "childIds": [
+    "I1571",
+    "I261",
+    "I262",
+    "I263",
+    "I264",
+    "I265",
+    "I266",
+    "I260"
+  ],
+  "parentIds": [
+    "I34",
+    "I37"
+  ],
+  "baptismDate": "6 JUN 1830",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Journeyman Butcher",
+    "Butcher and Inn Keeper, Blue Boar, Blandford",
+    "Inn Keeper Blue Boar  East St. Blandford",
+    "Inn Keeper Blue Boar  East St. Blandford"
+  ],
+  "notes": [
+    "Journeyman Butcher, of Rope Close, Blandford."
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Blandford, Dorset, The Blue Boar Inn, 10 East St"
+    },
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, 10 East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I259",
+      "familyId": "F30"
+    },
+    {
+      "spouseId": "I2827",
+      "familyId": "F844"
+    }
+  ],
+  "avatar": "avatars/I44_0.jpg"
+}

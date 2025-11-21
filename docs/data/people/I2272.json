@@ -1,0 +1,47 @@
+{
+  "id": "I2272",
+  "name": "Kate W Unknown",
+  "givenName": "Kate W",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1865",
+  "birthPlace": "Jersey C.I. St Lawrence",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St. Peter/RG13 5316 144 5.jpg"
+  ],
+  "spouseIds": [
+    "I2816"
+  ],
+  "childIds": [
+    "I2273",
+    "I2894"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Cook domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Ouen, Le Coin Rd"
+    },
+    {
+      "date": "1901",
+      "place": "C.I. St Peter, La Hougue, Les Augerz"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I. St Ouen, Telephone Exchange"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2816",
+      "familyId": "F802",
+      "marriageDate": "Abt 1891"
+    }
+  ],
+  "avatar": "avatars/I2272_0.jpg"
+}

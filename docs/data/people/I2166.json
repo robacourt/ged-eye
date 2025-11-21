@@ -1,0 +1,29 @@
+{
+  "id": "I2166",
+  "name": "Elizabeth Willis",
+  "givenName": "Elizabeth",
+  "surname": "Willis",
+  "sex": "F",
+  "birthDate": "22 NOV 1963",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2174"
+  ],
+  "childIds": [
+    "I2175",
+    "I2176"
+  ],
+  "parentIds": [
+    "I2165",
+    "I2163"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2174",
+      "familyId": "F779"
+    }
+  ]
+}

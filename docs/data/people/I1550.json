@@ -1,0 +1,26 @@
+{
+  "id": "I1550",
+  "name": "Paul Allister MacDonald",
+  "givenName": "Paul Allister",
+  "surname": "MacDonald",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1551"
+  ],
+  "childIds": [
+    "I1549",
+    "I1554"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1551",
+      "familyId": "F593"
+    }
+  ]
+}

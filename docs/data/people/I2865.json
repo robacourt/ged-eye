@@ -1,0 +1,23 @@
+{
+  "id": "I2865",
+  "name": "Unknown Kingham",
+  "givenName": "Unknown",
+  "surname": "Kingham",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2086"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2086",
+      "familyId": "F979"
+    }
+  ]
+}

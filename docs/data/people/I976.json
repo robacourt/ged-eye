@@ -1,0 +1,27 @@
+{
+  "id": "I976",
+  "name": "Susan A.L.L. A'Court",
+  "givenName": "Susan A.L.L.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1901",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1072"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1072",
+      "familyId": "F405",
+      "marriageDate": "1921"
+    }
+  ]
+}

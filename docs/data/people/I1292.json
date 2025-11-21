@@ -1,0 +1,42 @@
+{
+  "id": "I1292",
+  "name": "Maud Lilian Hunt",
+  "givenName": "Maud Lilian",
+  "surname": "Hunt",
+  "sex": "F",
+  "birthDate": "27 FEB1881",
+  "birthPlace": "Southsea, Hampshire",
+  "deathDate": "1965",
+  "deathPlace": "Portsmouth, Hampshire.",
+  "photos": [],
+  "spouseIds": [
+    "I805"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I117",
+    "I108"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881 AGE 1 MTH",
+      "place": "Portsea, Hampshire, 48 Fleet Street"
+    },
+    {
+      "date": "1901",
+      "place": "Portsmouth, Hampshire, 84 Osborne Rd"
+    },
+    {
+      "date": "1939",
+      "place": "Portsmouth, Hampshire, 22 South Brighton St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I805",
+      "familyId": "F483",
+      "marriageDate": "18 ___ 19 ?",
+      "marriagePlace": "Portsmouth, Hampshire."
+    }
+  ]
+}

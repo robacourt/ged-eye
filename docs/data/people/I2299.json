@@ -1,0 +1,33 @@
+{
+  "id": "I2299",
+  "name": "Ann Unknown",
+  "givenName": "Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1801",
+  "birthPlace": "Shepton Montague, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2298"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Castle Cary, Somerset, Cockhill Lane"
+    },
+    {
+      "date": "1851",
+      "place": "Castle Cary, Somerset, Hounslow"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2298",
+      "familyId": "F813"
+    }
+  ]
+}

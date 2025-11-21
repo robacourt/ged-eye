@@ -1,0 +1,29 @@
+{
+  "id": "I865",
+  "name": "Joseph White",
+  "givenName": "Joseph",
+  "surname": "White",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I777"
+  ],
+  "childIds": [
+    "I1532",
+    "I1533"
+  ],
+  "parentIds": [
+    "I1531"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I777",
+      "familyId": "F326",
+      "marriageDate": "12 SEP 1886"
+    }
+  ]
+}

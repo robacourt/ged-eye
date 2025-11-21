@@ -1,0 +1,35 @@
+{
+  "id": "I1654",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1821",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1653"
+  ],
+  "childIds": [
+    "I1651",
+    "I1655"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Glove Maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1653",
+      "familyId": "F611"
+    }
+  ]
+}

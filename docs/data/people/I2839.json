@@ -1,0 +1,61 @@
+{
+  "id": "I2839",
+  "name": "John Francis A'Court",
+  "givenName": "John Francis",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1878",
+  "birthPlace": "Jersey C.I. St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Jersey/St Helier/RG11 5610 73 21.jpg",
+    "Data/Media/1891 census/Jersey C.I/RG12 4693 62 10.jpg"
+  ],
+  "spouseIds": [
+    "I2878"
+  ],
+  "childIds": [
+    "I2486",
+    "I2890",
+    "I2905",
+    "I2906",
+    "I2907",
+    "I2908"
+  ],
+  "parentIds": [
+    "I2837",
+    "I2836"
+  ],
+  "occupations": [
+    "Shop assistant",
+    "Joiner",
+    "Carpenter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Helier, 23 George St."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Helier, George St."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St. Helier, 3 Bellozanne Rd, Leyminage Place"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2878",
+      "familyId": "F984",
+      "marriageDate": "22 NOV 1896"
+    }
+  ],
+  "avatar": "avatars/I2839_0.jpg"
+}

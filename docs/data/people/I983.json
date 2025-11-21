@@ -1,0 +1,30 @@
+{
+  "id": "I983",
+  "name": "Wilfred Nathaniel ( Wilf ) A'Court",
+  "givenName": "Wilfred Nathaniel ( Wilf )",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1914",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I984"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "notes": [
+    "Title"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I984",
+      "familyId": "F408",
+      "marriageDate": "1943"
+    }
+  ]
+}

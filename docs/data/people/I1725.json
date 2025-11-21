@@ -1,0 +1,23 @@
+{
+  "id": "I1725",
+  "name": "Unknown Proudley",
+  "givenName": "Unknown",
+  "surname": "Proudley",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1724"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F630"
+    }
+  ]
+}

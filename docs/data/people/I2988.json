@@ -1,0 +1,25 @@
+{
+  "id": "I2988",
+  "name": "Unknown Saunders",
+  "givenName": "Unknown",
+  "surname": "Saunders",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2731"
+  ],
+  "childIds": [
+    "I2986"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2731",
+      "familyId": "F1027"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "I38",
+  "name": "Christiana A'Court",
+  "givenName": "Christiana",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1817",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "31 DEC 1864",
+  "deathPlace": "Marnhull, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I152"
+  ],
+  "childIds": [
+    "I153",
+    "I154",
+    "I155",
+    "I156",
+    "I157",
+    "I158",
+    "I159",
+    "I160",
+    "I161"
+  ],
+  "parentIds": [
+    "I34",
+    "I37"
+  ],
+  "baptismDate": "26 DEC 1817",
+  "baptismPlace": "Hinton St. Mary, Dorset",
+  "occupations": [
+    "Leather Glover"
+  ],
+  "notes": [
+    "of Moorside 20-1841  33-1851  43-1861"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I152",
+      "familyId": "F26",
+      "marriageDate": "31MAY1839",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

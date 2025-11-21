@@ -1,0 +1,18 @@
+{
+  "id": "I1769",
+  "name": "David J A'Court",
+  "givenName": "David J",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "2ND QRT 1951",
+  "birthPlace": "Downham",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1768",
+    "I1767"
+  ]
+}

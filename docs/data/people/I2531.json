@@ -1,0 +1,28 @@
+{
+  "id": "I2531",
+  "name": "Ada A'Court",
+  "givenName": "Ada",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1901",
+  "birthPlace": "Blandford, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 46 35.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12216 139.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I265",
+    "I2519"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Damory Court Street"
+    }
+  ],
+  "avatar": "avatars/I2531_0.jpg"
+}

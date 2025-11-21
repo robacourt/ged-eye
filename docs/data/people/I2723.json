@@ -1,0 +1,28 @@
+{
+  "id": "I2723",
+  "name": "Phoebe Barnett",
+  "givenName": "Phoebe",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "AFT 1905",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2727"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2734",
+    "I2334"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2727",
+      "familyId": "F952",
+      "marriageDate": "1864",
+      "marriagePlace": "London, Whitechapel"
+    }
+  ]
+}

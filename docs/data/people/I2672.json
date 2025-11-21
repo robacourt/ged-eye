@@ -1,0 +1,25 @@
+{
+  "id": "I2672",
+  "name": "Unknown Douglas",
+  "givenName": "Unknown",
+  "surname": "Douglas",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2671"
+  ],
+  "childIds": [
+    "I2670"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2671",
+      "familyId": "F930"
+    }
+  ]
+}

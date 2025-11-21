@@ -1,0 +1,23 @@
+{
+  "id": "I921",
+  "name": "Ivy Unknown",
+  "givenName": "Ivy",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "4 OCT 1896",
+  "birthPlace": null,
+  "deathDate": "9 OCT 1964",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I914"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I914",
+      "familyId": "F382"
+    }
+  ]
+}

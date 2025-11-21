@@ -1,0 +1,35 @@
+{
+  "id": "I2633",
+  "name": "Graham A'Court",
+  "givenName": "Graham",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1910",
+  "birthPlace": "Dorchester",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2634",
+    "I2636"
+  ],
+  "childIds": [
+    "I2635",
+    "I2637",
+    "I2638"
+  ],
+  "parentIds": [
+    "I1092",
+    "I1264"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2634",
+      "familyId": "F917"
+    },
+    {
+      "spouseId": "I2636",
+      "familyId": "F920"
+    }
+  ]
+}

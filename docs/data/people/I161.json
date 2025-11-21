@@ -1,0 +1,26 @@
+{
+  "id": "I161",
+  "name": "Elizabeth Hatcher",
+  "givenName": "Elizabeth",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "16.7.1859",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I152",
+    "I38"
+  ],
+  "baptismDate": "11.3.1860",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    ""
+  ],
+  "notes": [
+    "1 in 1861, 11 in 1871, 21 in1881."
+  ]
+}

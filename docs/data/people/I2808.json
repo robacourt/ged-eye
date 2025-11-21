@@ -1,0 +1,38 @@
+{
+  "id": "I2808",
+  "name": "Agnes A'Court",
+  "givenName": "Agnes",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1862",
+  "birthPlace": "London, Greenwich",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg"
+  ],
+  "spouseIds": [
+    "I2862"
+  ],
+  "childIds": [
+    "I2863",
+    "I2864"
+  ],
+  "parentIds": [
+    "I2020",
+    "I2807"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Shoreditch, 13 Clifton St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2862",
+      "familyId": "F869"
+    }
+  ],
+  "avatar": "avatars/I2808_0.jpg"
+}

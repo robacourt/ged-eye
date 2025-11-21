@@ -1,0 +1,24 @@
+{
+  "id": "I1403",
+  "name": "George R. Acourt",
+  "givenName": "George R.",
+  "surname": "Acourt",
+  "sex": "M",
+  "birthDate": "6 MAY 1928",
+  "birthPlace": null,
+  "deathDate": "6 JUL 1999",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Possible his mother ?"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Bay Shore Suffolk,, NY, USA"
+    }
+  ]
+}

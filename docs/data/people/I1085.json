@@ -1,0 +1,26 @@
+{
+  "id": "I1085",
+  "name": "John Tulk",
+  "givenName": "John",
+  "surname": "Tulk",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1084"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Carpenter"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F432"
+    }
+  ]
+}

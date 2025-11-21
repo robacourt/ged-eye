@@ -1,0 +1,48 @@
+{
+  "id": "I2264",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1817",
+  "birthPlace": "Jersey, C.I.  St Ouen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2263"
+  ],
+  "childIds": [
+    "I2121",
+    "I2265",
+    "I2266",
+    "I2267",
+    "I2268",
+    "I2269",
+    "I2270",
+    "I2271",
+    "I2814",
+    "I2815"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    },
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Ouen, La Porte"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey, C.I. St Ouen, 3 La Pointe Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2263",
+      "familyId": "F801"
+    }
+  ]
+}

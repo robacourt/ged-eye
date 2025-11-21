@@ -1,0 +1,28 @@
+{
+  "id": "I1157",
+  "name": "Hurbert Wylds",
+  "givenName": "Hurbert",
+  "surname": "Wylds",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1158"
+  ],
+  "childIds": [
+    "I1156"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1158",
+      "familyId": "F471"
+    }
+  ]
+}

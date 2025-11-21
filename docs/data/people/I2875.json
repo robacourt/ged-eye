@@ -1,0 +1,23 @@
+{
+  "id": "I2875",
+  "name": "Unknown Rogers",
+  "givenName": "Unknown",
+  "surname": "Rogers",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I302"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I302",
+      "familyId": "F982"
+    }
+  ]
+}

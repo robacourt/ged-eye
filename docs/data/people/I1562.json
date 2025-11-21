@@ -1,0 +1,55 @@
+{
+  "id": "I1562",
+  "name": "Mary Jane Ball",
+  "givenName": "Mary Jane",
+  "surname": "Ball",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 92 28.jpg"
+  ],
+  "spouseIds": [
+    "I298"
+  ],
+  "childIds": [
+    "I1563",
+    "I1570",
+    "I2556",
+    "I1564",
+    "I1565",
+    "I1566",
+    "I1567",
+    "I1568",
+    "I1569",
+    "I2542"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Dorset, Poole, Russell Place."
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Poole, Russell Place."
+    },
+    {
+      "date": "1901",
+      "place": "Poole, Dorset, 30 South Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Poole, Dorset, 30 South Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I298",
+      "familyId": "F147"
+    }
+  ],
+  "avatar": "avatars/I1562_0.jpg"
+}

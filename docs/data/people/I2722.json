@@ -1,0 +1,27 @@
+{
+  "id": "I2722",
+  "name": "Julia Young",
+  "givenName": "Julia",
+  "surname": "Young",
+  "sex": "F",
+  "birthDate": "ABT 1845",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2721",
+    "I140"
+  ],
+  "occupations": [
+    "Leather Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ]
+}

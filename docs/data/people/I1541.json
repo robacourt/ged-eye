@@ -1,0 +1,42 @@
+{
+  "id": "I1541",
+  "name": "Dennis Edward A'Court",
+  "givenName": "Dennis Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1914",
+  "birthPlace": "Bristol,  Keynsham, England",
+  "deathDate": "1 APR 1993",
+  "deathPlace": "Halifax, Nova Scotia, Canada",
+  "photos": [],
+  "spouseIds": [
+    "I1544"
+  ],
+  "childIds": [
+    "I1545",
+    "I1546",
+    "I1547",
+    "I1548"
+  ],
+  "parentIds": [
+    "I1542",
+    "I1543"
+  ],
+  "occupations": [
+    "Heavy Lorry Driver"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 69 Pearl St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1544",
+      "familyId": "F588",
+      "marriageDate": "14 DEC 1939",
+      "marriagePlace": "Bristol Register Office, by special licence"
+    }
+  ]
+}

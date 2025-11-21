@@ -1,0 +1,18 @@
+{
+  "id": "I72",
+  "name": "Greta Alice A'Court Mond",
+  "givenName": "Greta Alice A'Court",
+  "surname": "Mond",
+  "sex": "F",
+  "birthDate": "5 JAN 2016",
+  "birthPlace": "Bristol, St Michaels",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2744",
+    "I128"
+  ]
+}

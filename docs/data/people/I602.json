@@ -1,0 +1,28 @@
+{
+  "id": "I602",
+  "name": "Sidney George Elkins",
+  "givenName": "Sidney George",
+  "surname": "Elkins",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I603"
+  ],
+  "childIds": [
+    "I595"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Sawyer"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I603",
+      "familyId": "F245"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1983",
+  "name": "James Henry Gumbrell",
+  "givenName": "James Henry",
+  "surname": "Gumbrell",
+  "sex": "M",
+  "birthDate": "8 JAN 1969",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1979",
+    "I1980"
+  ]
+}

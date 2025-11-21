@@ -1,0 +1,27 @@
+{
+  "id": "I2789",
+  "name": "Jean Markwell",
+  "givenName": "Jean",
+  "surname": "Markwell",
+  "sex": "M",
+  "birthDate": "ABT 1882",
+  "birthPlace": "London, Stepney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2786",
+    "I2784"
+  ],
+  "occupations": [
+    "Cork Cutter"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Mile End Old Town, 9 Perth St"
+    }
+  ]
+}

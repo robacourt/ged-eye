@@ -1,0 +1,36 @@
+{
+  "id": "I1266",
+  "name": "Herbert Maurice A'Court",
+  "givenName": "Herbert Maurice",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1921",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1295",
+    "I1298"
+  ],
+  "childIds": [
+    "I1296",
+    "I1297",
+    "I1299",
+    "I1300"
+  ],
+  "parentIds": [
+    "I1338",
+    "I1089"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1295",
+      "familyId": "F510"
+    },
+    {
+      "spouseId": "I1298",
+      "familyId": "F511"
+    }
+  ]
+}

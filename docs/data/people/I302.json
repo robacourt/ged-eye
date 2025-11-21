@@ -1,0 +1,41 @@
+{
+  "id": "I302",
+  "name": "Fanny Sylvia A'Court",
+  "givenName": "Fanny Sylvia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1871",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 138 35.jpg"
+  ],
+  "spouseIds": [
+    "I2875"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I188",
+    "I297"
+  ],
+  "baptismDate": "10.5.1871",
+  "baptismPlace": "St. James,Poole , Dorset",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": null
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Poole, Stanley Rd, Grocer Shop"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2875",
+      "familyId": "F982"
+    }
+  ],
+  "avatar": "avatars/I302_0.jpg"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I1009",
+  "name": "Michael Farrelly",
+  "givenName": "Michael",
+  "surname": "Farrelly",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I996"
+  ],
+  "childIds": [
+    "I1010",
+    "I1011",
+    "I1012",
+    "I1013"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I996",
+      "familyId": "F415"
+    }
+  ]
+}

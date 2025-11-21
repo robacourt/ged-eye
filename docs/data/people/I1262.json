@@ -1,0 +1,31 @@
+{
+  "id": "I1262",
+  "name": "Elizabeth Ralph",
+  "givenName": "Elizabeth",
+  "surname": "Ralph",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1261"
+  ],
+  "childIds": [
+    "I1260"
+  ],
+  "parentIds": [],
+  "residences": [
+    {
+      "date": null,
+      "place": "Stalbridge, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1261",
+      "familyId": "F508"
+    }
+  ]
+}

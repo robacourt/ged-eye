@@ -1,0 +1,36 @@
+{
+  "id": "I1160",
+  "name": "Francis Paull",
+  "givenName": "Francis",
+  "surname": "Paull",
+  "sex": "M",
+  "birthDate": "ABT 1900",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1159"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1161"
+  ],
+  "occupations": [
+    "Farmer"
+  ],
+  "residences": [
+    {
+      "date": "1926",
+      "place": "Merriott, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1159",
+      "familyId": "F472",
+      "marriageDate": "14 JULY  1926",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

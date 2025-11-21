@@ -1,0 +1,32 @@
+{
+  "id": "I535",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BEF 1682",
+  "birthPlace": null,
+  "deathDate": "1716",
+  "deathPlace": "North Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I534"
+  ],
+  "childIds": [
+    "I469",
+    "I536",
+    "I537",
+    "I539",
+    "I538",
+    "I540"
+  ],
+  "parentIds": [],
+  "burialDate": "11.09.1716",
+  "burialPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I534",
+      "familyId": "F206"
+    }
+  ]
+}

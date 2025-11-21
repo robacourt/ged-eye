@@ -1,0 +1,36 @@
+{
+  "id": "I781",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1851",
+  "birthPlace": "Wincanton, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Martock/RG09 1642 8 10.jpg"
+  ],
+  "spouseIds": [
+    "I869"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I869",
+      "familyId": "F331",
+      "marriageDate": "1885"
+    }
+  ],
+  "avatar": "avatars/I781_0.jpg"
+}

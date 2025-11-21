@@ -1,0 +1,48 @@
+{
+  "id": "I355",
+  "name": "Harriet Unknown",
+  "givenName": "Harriet",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Shaftesbury, Dorset, Little Down",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Dorset/Kington Magna/RG14 12185 43.jpg"
+  ],
+  "spouseIds": [
+    "I220"
+  ],
+  "childIds": [
+    "I356",
+    "I357",
+    "I1581",
+    "I1582"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Buckhorn Weston, Dorset, 1 Tunnel Head"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Higher Hill"
+    },
+    {
+      "date": "1911",
+      "place": "Kington Magna, Dorset, Hill Top"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I220",
+      "familyId": "F119"
+    }
+  ],
+  "avatar": "avatars/I355_0.jpg"
+}

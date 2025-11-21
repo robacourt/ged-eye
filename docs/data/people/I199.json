@@ -1,0 +1,25 @@
+{
+  "id": "I199",
+  "name": "Mary Hedditch",
+  "givenName": "Mary",
+  "surname": "Hedditch",
+  "sex": "F",
+  "birthDate": "BEF 1797",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I61"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I61",
+      "familyId": "F41",
+      "marriageDate": "26 SEP 1811",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

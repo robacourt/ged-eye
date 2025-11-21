@@ -1,0 +1,31 @@
+{
+  "id": "I1524",
+  "name": "Harold Albert Morgan",
+  "givenName": "Harold Albert",
+  "surname": "Morgan",
+  "sex": "M",
+  "birthDate": "19 OCT 1924",
+  "birthPlace": "Waltham Cross, Hertfordshire, 83 Queens Road",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1525"
+  ],
+  "childIds": [
+    "I1526",
+    "I1527",
+    "I1529"
+  ],
+  "parentIds": [
+    "I1516",
+    "I1486"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1525",
+      "familyId": "F582",
+      "marriageDate": "9 APR 1954"
+    }
+  ]
+}

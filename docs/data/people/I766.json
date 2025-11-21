@@ -1,0 +1,61 @@
+{
+  "id": "I766",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1820",
+  "birthPlace": "Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Willesden/RG11 1362 86 17.jpg"
+  ],
+  "spouseIds": [
+    "I881",
+    "I882"
+  ],
+  "childIds": [
+    "I883",
+    "I884",
+    "I885",
+    "I2805"
+  ],
+  "parentIds": [
+    "I755",
+    "I760"
+  ],
+  "baptismDate": "27 FEB 1820",
+  "occupations": [
+    "Coach Smith",
+    "Locksmith"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Rickleford Hill, Frome, Somerset"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hamstead, William Terrace."
+    },
+    {
+      "date": "1881",
+      "place": "Willesden, Middlesex,19 Chichester Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I881",
+      "familyId": "F317",
+      "marriageDate": "1848"
+    },
+    {
+      "spouseId": "I882",
+      "familyId": "F318",
+      "marriageDate": "1840",
+      "marriagePlace": "England"
+    }
+  ],
+  "avatar": "avatars/I766_0.jpg"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "I2813",
+  "name": "Henry Dixon A'Court",
+  "givenName": "Henry Dixon",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1870",
+  "birthPlace": "Jersey, St Peter",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Jersey/RG10 5763 101 2.jpg",
+    "Data/Media/1891 census/Jersey C.I/RG12 4697 160 3.jpg"
+  ],
+  "spouseIds": [
+    "I2534"
+  ],
+  "childIds": [
+    "I2533",
+    "I2892",
+    "I2913"
+  ],
+  "parentIds": [
+    "I2089",
+    "I2810"
+  ],
+  "occupations": [
+    "Drapers assistant",
+    "Drapers assistant",
+    "Drapers assistant"
+  ],
+  "notes": [
+    "First name(s) Last name Relationship Marital status Sex Age Birth year Occupation Birth place"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey,St Peter, Ruette a la Vioge"
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Clement, East View, Beach Rd."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St Helier, Norman House, St Aubins Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Clements, East View"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2534",
+      "familyId": "F989",
+      "marriageDate": "Abt 1897"
+    }
+  ],
+  "avatar": "avatars/I2813_0.jpg"
+}

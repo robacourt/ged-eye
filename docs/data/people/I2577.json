@@ -1,0 +1,27 @@
+{
+  "id": "I2577",
+  "name": "Gladys Florence A'Court",
+  "givenName": "Gladys Florence",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1909",
+  "birthPlace": "Newton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Hampshire/Grayshott/RG14 6231 201.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1275",
+    "I1561"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Grayshott, Hampshire, 1The Villas"
+    }
+  ],
+  "avatar": "avatars/I2577_0.jpg"
+}

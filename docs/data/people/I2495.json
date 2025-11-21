@@ -1,0 +1,26 @@
+{
+  "id": "I2495",
+  "name": "Beryl Lee",
+  "givenName": "Beryl",
+  "surname": "Lee",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2496"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1909",
+    "I1908"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2496",
+      "familyId": "F882"
+    }
+  ]
+}

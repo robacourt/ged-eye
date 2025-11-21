@@ -1,0 +1,27 @@
+{
+  "id": "I2991",
+  "name": "Martha Barnett",
+  "givenName": "Martha",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "1905",
+  "birthPlace": "London, Walthamstow.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/London/RG15 06519 133.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2336",
+    "I2984"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "London, Willesden, 72 Teigmouth Rd"
+    }
+  ],
+  "avatar": "avatars/I2991_0.jpg"
+}

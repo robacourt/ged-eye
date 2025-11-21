@@ -1,0 +1,18 @@
+{
+  "id": "I1064",
+  "name": "Larry Murray Higgins",
+  "givenName": "Larry Murray",
+  "surname": "Higgins",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1063",
+    "I1062"
+  ]
+}

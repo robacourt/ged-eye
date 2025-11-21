@@ -1,0 +1,46 @@
+{
+  "id": "I1629",
+  "name": "John Arthur Wheeler Bennett",
+  "givenName": "John Arthur Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "1920",
+  "birthPlace": "Sussex, Steyning",
+  "deathDate": "1975",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1921 Census/Sussex/RG15 05017 14.jpg"
+  ],
+  "spouseIds": [
+    "I1727"
+  ],
+  "childIds": [
+    "I1728"
+  ],
+  "parentIds": [
+    "I382",
+    "I387"
+  ],
+  "occupations": [
+    "Dr."
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Sussex, Steyning, Glen Ofen"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Buckinghamshire, Monks Risborough"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1727",
+      "familyId": "F631"
+    }
+  ],
+  "avatar": "avatars/I1629_0.jpg"
+}

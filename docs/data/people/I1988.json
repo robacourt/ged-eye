@@ -1,0 +1,27 @@
+{
+  "id": "I1988",
+  "name": "Sarah Daniels",
+  "givenName": "Sarah",
+  "surname": "Daniels",
+  "sex": "F",
+  "birthDate": "ABT 1866",
+  "birthPlace": "Portsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1726",
+    "I77"
+  ],
+  "occupations": [
+    "Domestic Servant House"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Portsea Hampshire, Prince Regent Arms, 19 Prince St."
+    }
+  ]
+}

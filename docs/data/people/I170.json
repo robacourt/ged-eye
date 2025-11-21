@@ -1,0 +1,37 @@
+{
+  "id": "I170",
+  "name": "George Bastable",
+  "givenName": "George",
+  "surname": "Bastable",
+  "sex": "M",
+  "birthDate": "4- AUG 1813",
+  "birthPlace": null,
+  "deathDate": "ANTE 1891",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I144"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I171",
+    "I172"
+  ],
+  "baptismDate": "4 SEP 1813",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Blacksmith"
+  ],
+  "notes": [
+    "20-1841  35-1851  48-1861  67-1881  79-1891 of Burton Street ,Roman Catholic"
+  ],
+  "religion": "Roman Catholic",
+  "marriages": [
+    {
+      "spouseId": "I144",
+      "familyId": "F84",
+      "marriageDate": "1 SEPT 1838",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

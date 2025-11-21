@@ -1,0 +1,18 @@
+{
+  "id": "I1495",
+  "name": "Florence Amy Collis",
+  "givenName": "Florence Amy",
+  "surname": "Collis",
+  "sex": "F",
+  "birthDate": "25 APR 1896",
+  "birthPlace": "Wilton, Wiltshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1494",
+    "I1493"
+  ]
+}

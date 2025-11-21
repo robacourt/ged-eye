@@ -1,0 +1,23 @@
+{
+  "id": "I727",
+  "name": "William Ashe A'Court",
+  "givenName": "William Ashe",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1709",
+  "birthPlace": null,
+  "deathDate": "2 AUG 1781",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I728"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I728",
+      "familyId": "F296"
+    }
+  ]
+}

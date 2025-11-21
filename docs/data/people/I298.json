@@ -1,0 +1,65 @@
+{
+  "id": "I298",
+  "name": "Henry (Harry) A'Court",
+  "givenName": "Henry (Harry)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1857",
+  "birthPlace": "Sturminster Newton, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Marnhull/RG09 1329 30 29.jpg"
+  ],
+  "spouseIds": [
+    "I1562"
+  ],
+  "childIds": [
+    "I1563",
+    "I1570",
+    "I2556",
+    "I1564",
+    "I1565",
+    "I1566",
+    "I1567",
+    "I1568",
+    "I1569",
+    "I2542"
+  ],
+  "parentIds": [
+    "I188",
+    "I297"
+  ],
+  "baptismDate": "12 MAR 1858",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Mariner",
+    "Merchant Seaman",
+    "Invalide"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1881",
+      "place": "Poole, Dorset, Russell Place"
+    },
+    {
+      "date": "1901",
+      "place": "Poole, Dorset, 30 South Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Poole, Dorset, 30 South Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1562",
+      "familyId": "F147"
+    }
+  ],
+  "avatar": "avatars/I298_0.jpg"
+}

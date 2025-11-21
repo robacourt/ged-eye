@@ -1,0 +1,26 @@
+{
+  "id": "I2116",
+  "name": "John Stephen A'Court",
+  "givenName": "John Stephen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1929",
+  "birthPlace": "NZ",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2117"
+  ],
+  "parentIds": [
+    "I2115",
+    "I2741"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F757"
+    }
+  ]
+}

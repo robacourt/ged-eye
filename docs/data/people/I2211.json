@@ -1,0 +1,32 @@
+{
+  "id": "I2211",
+  "name": "Sarah Matilda A'Court",
+  "givenName": "Sarah Matilda",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "27 AUG 1883",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2381 122 3.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ],
+  "baptismDate": "23 SEP 1883",
+  "baptismPlace": "Bristol, Saints Philip and Jacob",
+  "occupations": [
+    "Lozenge cutter (confr's)"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Gloucestershire, Bristol, Barrow Court, 1 Wade St"
+    }
+  ],
+  "avatar": "avatars/I2211_0.jpg"
+}

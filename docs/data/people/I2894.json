@@ -1,0 +1,27 @@
+{
+  "id": "I2894",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1894",
+  "birthPlace": "Jersey C.I. St Ouen.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 44 6.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2816",
+    "I2272"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St Ouen, Oxford Cottage"
+    }
+  ],
+  "avatar": "avatars/I2894_0.jpg"
+}

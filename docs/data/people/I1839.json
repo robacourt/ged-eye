@@ -1,0 +1,24 @@
+{
+  "id": "I1839",
+  "name": "Unknown Blackmore",
+  "givenName": "Unknown",
+  "surname": "Blackmore",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1838",
+    "I1840"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F662"
+    }
+  ]
+}

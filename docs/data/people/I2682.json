@@ -1,0 +1,25 @@
+{
+  "id": "I2682",
+  "name": "Unknown Ransley",
+  "givenName": "Unknown",
+  "surname": "Ransley",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2683"
+  ],
+  "childIds": [
+    "I2681"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2683",
+      "familyId": "F933"
+    }
+  ]
+}

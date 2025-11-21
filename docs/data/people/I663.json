@@ -1,0 +1,28 @@
+{
+  "id": "I663",
+  "name": "Felix Hayward",
+  "givenName": "Felix",
+  "surname": "Hayward",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I664"
+  ],
+  "childIds": [
+    "I662"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I664",
+      "familyId": "F277"
+    }
+  ]
+}

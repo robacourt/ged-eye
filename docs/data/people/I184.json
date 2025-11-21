@@ -1,0 +1,23 @@
+{
+  "id": "I184",
+  "name": "Elizabeth Marianne A'Court",
+  "givenName": "Elizabeth Marianne",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "28.1.1826",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I53",
+    "I183"
+  ],
+  "baptismDate": "26.3.1826",
+  "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "Died as a baby of smallpox. Celia Granger"
+  ]
+}

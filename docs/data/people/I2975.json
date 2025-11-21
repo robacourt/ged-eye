@@ -1,0 +1,35 @@
+{
+  "id": "I2975",
+  "name": "David Martin",
+  "givenName": "David",
+  "surname": "Martin",
+  "sex": "M",
+  "birthDate": "1906",
+  "birthPlace": "London, Haggerston",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hackney/RG14 1063 151.jpg",
+    "Data/Media/1921 Census/London/Westminster/RG15 00535 31.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2726",
+    "I1429"
+  ],
+  "occupations": [
+    "Licenced Victualler Assistant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Upper Clapton, 34 Ickburgh Rd."
+    },
+    {
+      "date": "1921",
+      "place": "London, Westminster, 1 Derby St"
+    }
+  ],
+  "avatar": "avatars/I2975_0.jpg"
+}

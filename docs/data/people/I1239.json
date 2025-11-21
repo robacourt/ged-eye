@@ -1,0 +1,26 @@
+{
+  "id": "I1239",
+  "name": "Linda Unknown",
+  "givenName": "Linda",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1238"
+  ],
+  "childIds": [
+    "I1240",
+    "I1241"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1238",
+      "familyId": "F498"
+    }
+  ]
+}

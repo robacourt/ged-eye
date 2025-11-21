@@ -1,0 +1,20 @@
+{
+  "id": "I66",
+  "name": "Ann Dowding",
+  "givenName": "Ann",
+  "surname": "Dowding",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I60",
+    "I19"
+  ],
+  "baptismDate": "25 JUL 1797",
+  "baptismPlace": "Fifehead Magdalen, Dorset"
+}

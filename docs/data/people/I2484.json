@@ -1,0 +1,32 @@
+{
+  "id": "I2484",
+  "name": "Tyrus Thorne",
+  "givenName": "Tyrus",
+  "surname": "Thorne",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2483"
+  ],
+  "childIds": [
+    "I2485"
+  ],
+  "parentIds": [],
+  "burialDate": "16 MAR 1851",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Shoemaker"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2483",
+      "familyId": "F878",
+      "marriageDate": "25 SEP 1843",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

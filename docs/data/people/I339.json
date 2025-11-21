@@ -1,0 +1,21 @@
+{
+  "id": "I339",
+  "name": "Lily Margaret Kendall",
+  "givenName": "Lily Margaret",
+  "surname": "Kendall",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I332",
+    "I337"
+  ],
+  "notes": [
+    "5-1891"
+  ]
+}

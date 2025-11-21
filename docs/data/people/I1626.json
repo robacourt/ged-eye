@@ -1,0 +1,27 @@
+{
+  "id": "I1626",
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1855",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1617",
+    "I1616"
+  ],
+  "occupations": [
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ]
+}

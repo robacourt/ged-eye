@@ -1,0 +1,18 @@
+{
+  "id": "I1682",
+  "name": "Edward Robert A'Court",
+  "givenName": "Edward Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1ST QR 1973",
+  "birthPlace": "Ipswich, Suffolk",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1681",
+    "I1680"
+  ]
+}

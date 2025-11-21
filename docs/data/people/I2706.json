@@ -1,0 +1,25 @@
+{
+  "id": "I2706",
+  "name": "Rebecca Winebaum",
+  "givenName": "Rebecca",
+  "surname": "Winebaum",
+  "sex": "F",
+  "birthDate": "ABT 1904",
+  "birthPlace": "London, Hackney",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2705"
+  ],
+  "childIds": [
+    "I2707"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2705",
+      "familyId": "F941"
+    }
+  ]
+}

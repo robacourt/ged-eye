@@ -1,0 +1,23 @@
+{
+  "id": "I2069",
+  "name": "Clement Jarvis",
+  "givenName": "Clement",
+  "surname": "Jarvis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2068"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2068",
+      "familyId": "F743"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I667",
+  "name": "Harold John Warren",
+  "givenName": "Harold John",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I672"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I654",
+    "I666"
+  ],
+  "occupations": [
+    "Masons Lab."
+  ],
+  "notes": [
+    "21 in 1931"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I672",
+      "familyId": "F280"
+    }
+  ]
+}

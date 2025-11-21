@@ -1,0 +1,27 @@
+{
+  "id": "I410",
+  "name": "Kenneth James A'Court",
+  "givenName": "Kenneth James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "24 MAY 1923",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I411",
+    "I412",
+    "I413"
+  ],
+  "parentIds": [
+    "I408"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F189"
+    }
+  ]
+}

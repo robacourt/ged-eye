@@ -1,0 +1,33 @@
+{
+  "id": "I735",
+  "name": "Ada Margaret Robbins",
+  "givenName": "Ada Margaret",
+  "surname": "Robbins",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I734"
+  ],
+  "childIds": [
+    "I989",
+    "I991",
+    "I736",
+    "I993",
+    "I994",
+    "I996",
+    "I997"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I734",
+      "familyId": "F299",
+      "marriageDate": "1919",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

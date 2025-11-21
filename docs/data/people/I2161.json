@@ -1,0 +1,30 @@
+{
+  "id": "I2161",
+  "name": "Sarah Willcox",
+  "givenName": "Sarah",
+  "surname": "Willcox",
+  "sex": "F",
+  "birthDate": "26 JAN 1845",
+  "birthPlace": "Coleford, Somerset",
+  "deathDate": "22 MAR 1921",
+  "deathPlace": "Frome, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I2162"
+  ],
+  "childIds": [
+    "I2252"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Charwoman Domestic"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2162",
+      "familyId": "F776",
+      "marriageDate": "10 SEP 1874",
+      "marriagePlace": "St Jude's, Bristol"
+    }
+  ]
+}

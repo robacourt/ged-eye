@@ -1,0 +1,23 @@
+{
+  "id": "I1730",
+  "name": "Giles A Mountford",
+  "givenName": "Giles A",
+  "surname": "Mountford",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1729"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1729",
+      "familyId": "F636"
+    }
+  ]
+}

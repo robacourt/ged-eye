@@ -1,0 +1,27 @@
+{
+  "id": "I2715",
+  "name": "John Albert Nixon",
+  "givenName": "John Albert",
+  "surname": "Nixon",
+  "sex": "M",
+  "birthDate": "4 JUN1864",
+  "birthPlace": "Gosport, Hampshire",
+  "deathDate": "6 NOV 1926",
+  "deathPlace": "Teddington, Middlesex",
+  "photos": [],
+  "spouseIds": [
+    "I2716"
+  ],
+  "childIds": [
+    "I2710"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2716",
+      "familyId": "F946",
+      "marriageDate": "23 APR 1886",
+      "marriagePlace": "Portsmouth, Hampshire, St Mary's"
+    }
+  ]
+}

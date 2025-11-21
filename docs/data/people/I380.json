@@ -1,0 +1,62 @@
+{
+  "id": "I380",
+  "name": "Christina  Hill cNutt",
+  "givenName": "Christina  Hill",
+  "surname": "cNutt",
+  "sex": "F",
+  "birthDate": "16 JAN 1862",
+  "birthPlace": "Canada, Nova Scotia, Truro",
+  "deathDate": "1946",
+  "deathPlace": "Worcestershire",
+  "photos": [
+    "Data/Media/1921 Census/Kent/GBC_1921_RG15_03844_0391.jpg",
+    "Data/Media/Newspaper Reports/Brightside Great Malvern.docx",
+    "Data/Media/Newspaper Reports/Bromley & West Kent Telegraph Jan 7 1899.jpg",
+    "Data/Media/Newspaper Reports/Bromley & West Kent Mercury 26 Nov 1937.jpg"
+  ],
+  "spouseIds": [
+    "I377"
+  ],
+  "childIds": [
+    "I381",
+    "I382",
+    "I383",
+    "I384"
+  ],
+  "parentIds": [],
+  "notes": [
+    "First name(s) Last name(s) Birth date Sex Occupation Marital status Schedule Schedule sub number"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Kent, Bromley, Carisbrook"
+    },
+    {
+      "date": "1901",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    },
+    {
+      "date": "1911",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    },
+    {
+      "date": "1921",
+      "place": "Kent, Keston, Westerham Rd. Ravensbourne"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1944",
+      "place": "Great Malvern, Priors Rd, Brightside"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I377",
+      "familyId": "F172",
+      "marriageDate": "1882"
+    }
+  ],
+  "avatar": "avatars/I380_0.jpg"
+}

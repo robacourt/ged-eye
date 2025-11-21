@@ -1,0 +1,23 @@
+{
+  "id": "I2502",
+  "name": "Gethin Parkinson",
+  "givenName": "Gethin",
+  "surname": "Parkinson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2501"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2501",
+      "familyId": "F885"
+    }
+  ]
+}

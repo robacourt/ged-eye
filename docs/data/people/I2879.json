@@ -1,0 +1,25 @@
+{
+  "id": "I2879",
+  "name": "Alice Vibert Le Cornu",
+  "givenName": "Alice Vibert",
+  "surname": "Le Cornu",
+  "sex": "F",
+  "birthDate": "Abt 1895",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2127"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2127",
+      "familyId": "F985",
+      "marriageDate": "9 SEP 1916",
+      "marriagePlace": "St Ouen"
+    }
+  ]
+}

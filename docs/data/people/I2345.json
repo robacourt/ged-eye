@@ -1,0 +1,25 @@
+{
+  "id": "I2345",
+  "name": "Mary R Carter",
+  "givenName": "Mary R",
+  "surname": "Carter",
+  "sex": "F",
+  "birthDate": "1795",
+  "birthPlace": "Wyke, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2344"
+  ],
+  "childIds": [
+    "I2342"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2344",
+      "familyId": "F833"
+    }
+  ]
+}

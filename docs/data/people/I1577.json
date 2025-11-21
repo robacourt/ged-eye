@@ -1,0 +1,36 @@
+{
+  "id": "I1577",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1898",
+  "birthPlace": "Blandford Forum, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12217 333.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1571",
+    "I1572"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Blandford, Dorset, 33 Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Orchard St."
+    },
+    {
+      "date": "1911",
+      "place": "Blandford, Dorset, Orchard St."
+    }
+  ],
+  "avatar": "avatars/I1577_0.jpg"
+}

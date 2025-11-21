@@ -1,0 +1,27 @@
+{
+  "id": "I2103",
+  "name": "Timothy McSweeney",
+  "givenName": "Timothy",
+  "surname": "McSweeney",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2102"
+  ],
+  "childIds": [
+    "I2104",
+    "I2105"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2102",
+      "familyId": "F751",
+      "marriageDate": "1948"
+    }
+  ]
+}

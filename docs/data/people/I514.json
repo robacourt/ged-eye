@@ -1,0 +1,26 @@
+{
+  "id": "I514",
+  "name": "Maud Alice ?????",
+  "givenName": "Maud Alice",
+  "surname": "?????",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I513"
+  ],
+  "childIds": [
+    "I2106"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I513",
+      "familyId": "F219",
+      "marriageDate": "1934"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "I2857",
+  "name": "Unknown Steele",
+  "givenName": "Unknown",
+  "surname": "Steele",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2453"
+  ],
+  "childIds": [
+    "I2858",
+    "I2859",
+    "I2860",
+    "I2861"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2453",
+      "familyId": "F978"
+    }
+  ]
+}

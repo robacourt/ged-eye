@@ -1,0 +1,18 @@
+{
+  "id": "I2237",
+  "name": "Martha Clements",
+  "givenName": "Martha",
+  "surname": "Clements",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "St Philip & Jacob, Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2229",
+    "I2221"
+  ]
+}

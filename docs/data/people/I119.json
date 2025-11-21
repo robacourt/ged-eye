@@ -1,0 +1,68 @@
+{
+  "id": "I119",
+  "name": "Clement Bernard A'Court",
+  "givenName": "Clement Bernard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "20 OCT 1914",
+  "birthPlace": "Cowplain, Hampshire, Hillview",
+  "deathDate": "1 MAY 2005",
+  "deathPlace": "St. Austell, Cornwall, Mount Edgecumbe Hospice",
+  "photos": [
+    "Data/Picture/CBAC.jpg",
+    "Data/Picture/Clem.jpg",
+    "Data/Media/1921 Census/Kent/RG15 04338 179.jpg",
+    "Data/Media/London Gazette/Index Record for CBA'C.docx"
+  ],
+  "spouseIds": [
+    "I121",
+    "I2150"
+  ],
+  "childIds": [
+    "I122",
+    "I123"
+  ],
+  "parentIds": [
+    "I115",
+    "I118"
+  ],
+  "baptismDate": "27 DEC 1914",
+  "baptismPlace": "Horndean, Hampshire, All Saints, Catherington Lane",
+  "occupations": [
+    "Industrial Commercial Photographer"
+  ],
+  "notes": [
+    "First name(s) Clement Bernard"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Canterbury, Kent, 31 St Peters Lane."
+    }
+  ],
+  "residences": [
+    {
+      "date": "23 AUG 1969",
+      "place": "47 The Plateau, Warfield"
+    },
+    {
+      "date": "2005",
+      "place": "Magpie, Trelights, Port Isaac, Cornwall"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I121",
+      "familyId": "F73",
+      "marriageDate": "4TH JUN 1938",
+      "marriagePlace": "Hackney, London"
+    },
+    {
+      "spouseId": "I2150",
+      "familyId": "F767",
+      "marriageDate": "JUL 1969",
+      "marriagePlace": "Berkshire,Easthampstead"
+    }
+  ],
+  "avatar": "avatars/I119_0.jpg"
+}

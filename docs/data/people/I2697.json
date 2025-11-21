@@ -1,0 +1,18 @@
+{
+  "id": "I2697",
+  "name": "Bernard Eiles",
+  "givenName": "Bernard",
+  "surname": "Eiles",
+  "sex": "M",
+  "birthDate": "1927",
+  "birthPlace": "Southend-On-Sea, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2695",
+    "I2694"
+  ]
+}

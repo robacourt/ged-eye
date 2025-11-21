@@ -1,0 +1,46 @@
+{
+  "id": "I2252",
+  "name": "Elizabeth Eliza Witcombe",
+  "givenName": "Elizabeth Eliza",
+  "surname": "Witcombe",
+  "sex": "F",
+  "birthDate": "12 JUL 1880",
+  "birthPlace": "Coleford, Somerset",
+  "deathDate": "11 JUL 1943",
+  "deathPlace": "Bristol, Eastville Junction",
+  "photos": [
+    "Data/Media/1939 Register/Bristol/RG101 4984C 9.jpg"
+  ],
+  "spouseIds": [
+    "I2251"
+  ],
+  "childIds": [
+    "I2206",
+    "I2250",
+    "I2254",
+    "I2253"
+  ],
+  "parentIds": [
+    "I2162",
+    "I2161"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Easton, 2 Peel Street"
+    },
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 80 Wellington Rd"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2251",
+      "familyId": "F791",
+      "marriageDate": "10 DEC 1904",
+      "marriagePlace": "Bristol Registry Office"
+    }
+  ],
+  "avatar": "avatars/I2252_0.jpg"
+}

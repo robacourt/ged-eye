@@ -1,0 +1,23 @@
+{
+  "id": "I978",
+  "name": "Grace Unknown",
+  "givenName": "Grace",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I977"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I977",
+      "familyId": "F406"
+    }
+  ]
+}

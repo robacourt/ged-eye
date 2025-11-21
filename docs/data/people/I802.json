@@ -1,0 +1,30 @@
+{
+  "id": "I802",
+  "name": "Francis John LUMB",
+  "givenName": "Francis John",
+  "surname": "LUMB",
+  "sex": "M",
+  "birthDate": "1861",
+  "birthPlace": "Brisbane, Queensland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I786"
+  ],
+  "childIds": [
+    "I803"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I786",
+      "familyId": "F333",
+      "marriageDate": "1890",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

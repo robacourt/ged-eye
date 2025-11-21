@@ -1,0 +1,46 @@
+{
+  "id": "I15",
+  "name": "Deborah Dean",
+  "givenName": "Deborah",
+  "surname": "Dean",
+  "sex": "F",
+  "birthDate": "ABT 1744",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I16"
+  ],
+  "childIds": [
+    "I18",
+    "I17",
+    "I19",
+    "I20",
+    "I21",
+    "I22",
+    "I23",
+    "I24",
+    "I25",
+    "I26",
+    "I27",
+    "I28",
+    "I29"
+  ],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "14 MAY 1744",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "15 MAY 1816",
+  "burialPlace": "Fifehead Magdalen, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I16",
+      "familyId": "F10",
+      "marriageDate": "14 NOV 1762",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

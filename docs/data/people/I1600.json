@@ -1,0 +1,23 @@
+{
+  "id": "I1600",
+  "name": "Ruth Jones",
+  "givenName": "Ruth",
+  "surname": "Jones",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1597"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1597",
+      "familyId": "F600"
+    }
+  ]
+}

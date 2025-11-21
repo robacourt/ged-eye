@@ -1,0 +1,29 @@
+{
+  "id": "I579",
+  "name": "John Foot",
+  "givenName": "John",
+  "surname": "Foot",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I154"
+  ],
+  "childIds": [
+    "I580"
+  ],
+  "parentIds": [
+    "I716",
+    "I717"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I154",
+      "familyId": "F87",
+      "marriageDate": "1859"
+    }
+  ]
+}

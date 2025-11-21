@@ -1,0 +1,57 @@
+{
+  "id": "I1335",
+  "name": "Mary Ellen A'Court",
+  "givenName": "Mary Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1872",
+  "birthPlace": "Thurmaston,  Leicestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 25 12 17.jpg",
+    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg",
+    "Data/Media/1911 census/Surrey/RG14 2982 162.jpg"
+  ],
+  "spouseIds": [
+    "I1336"
+  ],
+  "childIds": [
+    "I2602",
+    "I2603",
+    "I2604",
+    "I2605",
+    "I2895"
+  ],
+  "parentIds": [
+    "I878",
+    "I928"
+  ],
+  "occupations": [
+    "Photographer",
+    "Widow Private Means"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1901",
+      "place": "Walton on Thames, Surrey, Station Road"
+    },
+    {
+      "date": "1911",
+      "place": "Walton-on-Thames, Surrey, Heytesbury,  Station Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1336",
+      "familyId": "F528",
+      "marriageDate": "4 DEC 1887",
+      "marriagePlace": "London, St Michael, Cornhill"
+    }
+  ],
+  "avatar": "avatars/I1335_0.jpg"
+}

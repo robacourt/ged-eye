@@ -1,0 +1,40 @@
+{
+  "id": "I973",
+  "name": "Zachariah Abraham Charles (Zac) A'Court",
+  "givenName": "Zachariah Abraham Charles (Zac)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1899",
+  "birthPlace": "Wellington, NSW",
+  "deathDate": "1988",
+  "deathPlace": "late of Mount Warrigal, formerly of Wollongong,",
+  "photos": [
+    "Data/Picture/ZachariahAC and Nephew.jpg"
+  ],
+  "spouseIds": [
+    "I998"
+  ],
+  "childIds": [
+    "I999",
+    "I1000",
+    "I1445",
+    "I1446",
+    "I1447"
+  ],
+  "parentIds": [
+    "I104",
+    "I733"
+  ],
+  "notes": [
+    "Zach Acourt made a few thousand when Coca Cola built their factory on his"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I998",
+      "familyId": "F403",
+      "marriageDate": "1923",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ],
+  "avatar": "avatars/I973_0.jpg"
+}

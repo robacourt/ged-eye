@@ -1,0 +1,20 @@
+{
+  "id": "I546",
+  "name": "Richard a'Court",
+  "givenName": "Richard",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "BEF 21.9.1670",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I541",
+    "I542"
+  ],
+  "baptismDate": "21.SEP.1670",
+  "baptismPlace": "North Cadbury, Somerset"
+}

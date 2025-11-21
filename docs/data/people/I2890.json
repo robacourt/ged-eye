@@ -1,0 +1,32 @@
+{
+  "id": "I2890",
+  "name": "James Henry A'Court",
+  "givenName": "James Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1899",
+  "birthPlace": "Jersey C.I. St. Helier.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/C isles/St Heliers/RG13 5314 98 13.jpg",
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34901 8 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2839",
+    "I2878"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St. Helier, 3 Bellozanne Rd, Leyminage Place"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "avatar": "avatars/I2890_0.jpg"
+}

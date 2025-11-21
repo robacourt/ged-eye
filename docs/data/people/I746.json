@@ -1,0 +1,19 @@
+{
+  "id": "I746",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1758",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I741",
+    "I742"
+  ],
+  "baptismDate": "13 JUL 1858"
+}

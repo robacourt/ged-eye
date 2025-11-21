@@ -1,0 +1,18 @@
+{
+  "id": "I2441",
+  "name": "Adrian Slaymaker",
+  "givenName": "Adrian",
+  "surname": "Slaymaker",
+  "sex": "M",
+  "birthDate": "1959",
+  "birthPlace": "Marsh Gibbon, Buckinghamshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2438",
+    "I2437"
+  ]
+}

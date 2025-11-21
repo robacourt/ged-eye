@@ -1,0 +1,23 @@
+{
+  "id": "I1382",
+  "name": "Rex Abernethy",
+  "givenName": "Rex",
+  "surname": "Abernethy",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1376"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1376",
+      "familyId": "F546"
+    }
+  ]
+}

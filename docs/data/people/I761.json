@@ -1,0 +1,60 @@
+{
+  "id": "I761",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1808",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "18 MAY 1885",
+  "deathPlace": "Martock, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I769"
+  ],
+  "childIds": [
+    "I770",
+    "I771",
+    "I772",
+    "I773",
+    "I774",
+    "I775",
+    "I776",
+    "I777",
+    "I778",
+    "I779",
+    "I780",
+    "I781",
+    "I782"
+  ],
+  "parentIds": [
+    "I755",
+    "I760"
+  ],
+  "baptismDate": "31 DEC 1808",
+  "baptismPlace": "North Cadbury, Somerset",
+  "occupations": [
+    "Blacksmith & Wheelwright"
+  ],
+  "notes": [
+    "'Old Charley was a great musician.  His instruments were the cornet and the largest brass instrument.  He played in Wimbell's famous brass band and on Sunday mornings in the church.  As a change, he went on tour with a circus as a player in thei"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I769",
+      "familyId": "F313",
+      "marriageDate": "28 APR 1831",
+      "marriagePlace": "North Cadbury, Somerset"
+    }
+  ]
+}

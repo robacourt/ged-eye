@@ -1,0 +1,42 @@
+{
+  "id": "I122",
+  "name": "Ian John A'Court",
+  "givenName": "Ian John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1 NOV 1940",
+  "birthPlace": "Bristol, Clifton",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Ian A'Court 2003.jpg"
+  ],
+  "spouseIds": [
+    "I124",
+    "I127"
+  ],
+  "childIds": [
+    "I125",
+    "I126",
+    "I128"
+  ],
+  "parentIds": [
+    "I119",
+    "I121"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I124",
+      "familyId": "F75",
+      "marriageDate": "18 SEP 1963",
+      "marriagePlace": "Auckland, New Zealand,  St. Johns, Northcote",
+      "divorceDate": "8 FEB 1985",
+      "divorcePlace": "Whangarei, New Zealand"
+    },
+    {
+      "spouseId": "I127",
+      "familyId": "F76"
+    }
+  ],
+  "avatar": "avatars/I122_0.jpg"
+}

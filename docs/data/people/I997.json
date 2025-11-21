@@ -1,0 +1,18 @@
+{
+  "id": "I997",
+  "name": "Nora Kay A'Court",
+  "givenName": "Nora Kay",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "30 OCTOBER 1940",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I734",
+    "I735"
+  ]
+}

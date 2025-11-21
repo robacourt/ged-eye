@@ -1,0 +1,47 @@
+{
+  "id": "I2261",
+  "name": "Henrietta A'Court",
+  "givenName": "Henrietta",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1834",
+  "birthPlace": "Middlesex, Islington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/London/HO107 1502 30 53.jpg",
+    "Data/Media/1861 Census/Brighton/RG9 593 34 1.jpg",
+    "Data/Media/1871 census/London/Holborn/RG10 371 36 62.jpg",
+    "Data/Media/1881 census/Oxfordshire/Watlington, Henley/RG11 1491 15 1.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2007",
+    "I2005"
+  ],
+  "occupations": [
+    "Under Nurse",
+    "Sick Nurse",
+    "Nurse domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Middlesex, Islington"
+    },
+    {
+      "date": "1861",
+      "place": "Brighton Sussex, Sussex County Hospital."
+    },
+    {
+      "date": "1871",
+      "place": "London, Holborn, 21 New Osmond St."
+    },
+    {
+      "date": "1881",
+      "place": "Oxfordshire, Henley, Watlington, Watlington Cottage Hospital, Hill Rd.."
+    }
+  ],
+  "avatar": "avatars/I2261_0.jpg"
+}

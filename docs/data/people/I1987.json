@@ -1,0 +1,27 @@
+{
+  "id": "I1987",
+  "name": "Charles Daniels",
+  "givenName": "Charles",
+  "surname": "Daniels",
+  "sex": "M",
+  "birthDate": "ABT 1862",
+  "birthPlace": "Southsea, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1726",
+    "I77"
+  ],
+  "occupations": [
+    "Sailmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Portsea Hampshire, Prince Regent Arms, 19 Prince St."
+    }
+  ]
+}

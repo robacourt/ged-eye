@@ -1,0 +1,36 @@
+{
+  "id": "I1243",
+  "name": "Gordon Pascal Brockway",
+  "givenName": "Gordon Pascal",
+  "surname": "Brockway",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1242"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1244"
+  ],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": "1914",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1242",
+      "familyId": "F499",
+      "marriageDate": "13 APRIL 1914",
+      "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
+    }
+  ]
+}

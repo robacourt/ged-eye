@@ -1,0 +1,43 @@
+{
+  "id": "I2268",
+  "name": "Louisa A'Court",
+  "givenName": "Louisa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "18 JAN 1856",
+  "birthPlace": "Jersey, C.I. St Ouen.",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Jersey/RG09 4405 6 6.png",
+    "Data/Media/1871 census/Jersey/RG10 5764 162 8.jpg",
+    "Data/Media/1881 census/Jersey/St Ouen/RG11 5621 32 12.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "baptismDate": "24 FEB 1856",
+  "baptismPlace": "Jersey C.I. St Ouen",
+  "occupations": [
+    "General servant",
+    "General domestic Servant."
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Jersey, C.I. St Ouen, La Pointe Road."
+    },
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Lawrence, Hampton Villa (Donet Des Rues)"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey, C.I. St Ouen, Bel Voir."
+    }
+  ],
+  "avatar": "avatars/I2268_0.jpg"
+}

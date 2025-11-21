@@ -1,0 +1,49 @@
+{
+  "id": "I11",
+  "name": "Christiana A'Court",
+  "givenName": "Christiana",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1835/6",
+  "birthPlace": "Fiddleford, Okeford Fitzpaine, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 34 5.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I141"
+  ],
+  "parentIds": [
+    "I1",
+    "I2"
+  ],
+  "baptismDate": "30 JAN 1835",
+  "baptismPlace": "Sturminster Newton, Dorset",
+  "occupations": [
+    "Glover",
+    "Laundress"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    },
+    {
+      "date": "1861",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F8"
+    }
+  ],
+  "avatar": "avatars/I11_0.jpg"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I612",
+  "name": "Kate Irene Groves",
+  "givenName": "Kate Irene",
+  "surname": "Groves",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I600"
+  ],
+  "childIds": [
+    "I613"
+  ],
+  "parentIds": [
+    "I614"
+  ],
+  "notes": [
+    "26-1940"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I600",
+      "familyId": "F248",
+      "marriageDate": "4- MAR 1940",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

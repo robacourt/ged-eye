@@ -1,0 +1,28 @@
+{
+  "id": "I626",
+  "name": "( Marwood )James Jarvis",
+  "givenName": "( Marwood )James",
+  "surname": "Jarvis",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I627"
+  ],
+  "childIds": [
+    "I621"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Cellerman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I627",
+      "familyId": "F259"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "I1371",
+  "name": "Henry Hammond",
+  "givenName": "Henry",
+  "surname": "Hammond",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1372"
+  ],
+  "childIds": [
+    "I938"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1372",
+      "familyId": "F393"
+    }
+  ]
+}

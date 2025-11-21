@@ -1,0 +1,25 @@
+{
+  "id": "I2285",
+  "name": "Jean A'Court",
+  "givenName": "Jean",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2286"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2286",
+      "familyId": "F808",
+      "marriageDate": "10 JUN 1720",
+      "marriagePlace": "Lytchett Matravers, Dorset"
+    }
+  ]
+}

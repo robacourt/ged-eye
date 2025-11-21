@@ -1,0 +1,35 @@
+{
+  "id": "I341",
+  "name": "Francis George Chapman",
+  "givenName": "Francis George",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I340"
+  ],
+  "childIds": [
+    "I342"
+  ],
+  "parentIds": [
+    "I343"
+  ],
+  "occupations": [
+    "Mason"
+  ],
+  "notes": [
+    "24-1911"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I340",
+      "familyId": "F161",
+      "marriageDate": "30.11.1911",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

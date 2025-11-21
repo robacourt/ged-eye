@@ -1,0 +1,27 @@
+{
+  "id": "I2524",
+  "name": "Marian I Legge",
+  "givenName": "Marian I",
+  "surname": "Legge",
+  "sex": "F",
+  "birthDate": "1940",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2523"
+  ],
+  "childIds": [
+    "I2525",
+    "I2526"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2523",
+      "familyId": "F892",
+      "divorceDate": "DATE UNKNOWN"
+    }
+  ]
+}

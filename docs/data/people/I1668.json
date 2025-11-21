@@ -1,0 +1,18 @@
+{
+  "id": "I1668",
+  "name": "Chris Ash",
+  "givenName": "Chris",
+  "surname": "Ash",
+  "sex": "M",
+  "birthDate": "1979",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1666",
+    "I1665"
+  ]
+}

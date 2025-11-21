@@ -1,0 +1,60 @@
+{
+  "id": "I221",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1851",
+  "birthPlace": "Dorset, Fifehead Magdalen",
+  "deathDate": "BEF 1911",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I358"
+  ],
+  "childIds": [
+    "I2873",
+    "I2535",
+    "I2536"
+  ],
+  "parentIds": [
+    "I82",
+    "I215"
+  ],
+  "baptismDate": "11.9.1853",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Fishmonger",
+    "Dealer",
+    "Farmer & cattle dealer"
+  ],
+  "notes": [
+    "8-1861  17-1871 Baptized same day as Charles 308"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1861",
+      "place": "Fifehead Magdalen, Dorset"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Chapel Hill, Vezey's Hole"
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Bourton, Marvin's House"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I358",
+      "familyId": "F120",
+      "marriageDate": "12.2.1877",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

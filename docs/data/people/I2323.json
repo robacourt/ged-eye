@@ -1,0 +1,24 @@
+{
+  "id": "I2323",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT SEP 1870",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2321",
+    "I2322"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Castle Cary, Somerset, Mill Lane"
+    }
+  ]
+}

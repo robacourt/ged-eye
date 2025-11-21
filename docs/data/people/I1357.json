@@ -1,0 +1,26 @@
+{
+  "id": "I1357",
+  "name": "Mabel Frances Cundy",
+  "givenName": "Mabel Frances",
+  "surname": "Cundy",
+  "sex": "F",
+  "birthDate": "1874",
+  "birthPlace": "Greytown",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1358"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1346",
+    "I1345"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1358",
+      "familyId": "F538"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I545",
+  "name": "John a'Court",
+  "givenName": "John",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "BEF 12.5.1669",
+  "birthPlace": null,
+  "deathDate": "APR 1669",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I541",
+    "I542"
+  ]
+}

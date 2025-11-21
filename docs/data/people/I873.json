@@ -1,0 +1,18 @@
+{
+  "id": "I873",
+  "name": "George a'Court",
+  "givenName": "George",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "ABT 1842",
+  "birthPlace": null,
+  "deathDate": "ABT 1846",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I763",
+    "I871"
+  ]
+}

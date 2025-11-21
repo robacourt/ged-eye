@@ -1,0 +1,18 @@
+{
+  "id": "I1598",
+  "name": "Betty A. A'Court",
+  "givenName": "Betty A.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1940  2QTR",
+  "birthPlace": "East Glamorgan",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1595",
+    "I1599"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I2247",
+  "name": "Lauren Grace Bethany Summers",
+  "givenName": "Lauren Grace Bethany",
+  "surname": "Summers",
+  "sex": "F",
+  "birthDate": "23 FEB 1993",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2241",
+    "I2239"
+  ]
+}

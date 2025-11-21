@@ -1,0 +1,25 @@
+{
+  "id": "I2113",
+  "name": "Henry Dixon A'Court",
+  "givenName": "Henry Dixon",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2114"
+  ],
+  "parentIds": [
+    "I2112"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F754"
+    }
+  ]
+}

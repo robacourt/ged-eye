@@ -1,0 +1,33 @@
+{
+  "id": "I1909",
+  "name": "Hugh Lee",
+  "givenName": "Hugh",
+  "surname": "Lee",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1908"
+  ],
+  "childIds": [
+    "I1942",
+    "I2489",
+    "I2491",
+    "I2493",
+    "I2495",
+    "I2497",
+    "I2499",
+    "I2501"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1908",
+      "familyId": "F677",
+      "marriagePlace": "Kumara, Westland, New Zealand"
+    }
+  ]
+}

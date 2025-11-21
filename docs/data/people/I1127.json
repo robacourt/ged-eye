@@ -1,0 +1,36 @@
+{
+  "id": "I1127",
+  "name": "Walter Charles James Phillips",
+  "givenName": "Walter Charles James",
+  "surname": "Phillips",
+  "sex": "M",
+  "birthDate": "ABT 1918",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1126"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1128"
+  ],
+  "occupations": [
+    "Butcher"
+  ],
+  "residences": [
+    {
+      "date": "1939",
+      "place": "Marnhull, Dorset, Gannetts"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1126",
+      "familyId": "F456",
+      "marriageDate": "4 NOV 1939",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

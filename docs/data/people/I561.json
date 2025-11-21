@@ -1,0 +1,18 @@
+{
+  "id": "I561",
+  "name": "William a'Court",
+  "givenName": "William",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "ABT 1605",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "MAY 1667",
+  "deathPlace": "South Cadbury, Somerset",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I558",
+    "I559"
+  ]
+}

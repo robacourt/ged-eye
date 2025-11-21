@@ -1,0 +1,36 @@
+{
+  "id": "I1126",
+  "name": "Lilian Joan Kent",
+  "givenName": "Lilian Joan",
+  "surname": "Kent",
+  "sex": "F",
+  "birthDate": "6 MAY 1920",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1127"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1121",
+    "I1120"
+  ],
+  "baptismDate": "1 AUG 1920",
+  "baptismPlace": "Marnhull, Dorset",
+  "residences": [
+    {
+      "date": "1939",
+      "place": "Marnhull, Dorset, Gannetts"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1127",
+      "familyId": "F456",
+      "marriageDate": "4 NOV 1939",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

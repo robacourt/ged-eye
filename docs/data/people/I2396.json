@@ -1,0 +1,23 @@
+{
+  "id": "I2396",
+  "name": "Mabel Stegmann",
+  "givenName": "Mabel",
+  "surname": "Stegmann",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2395"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2395",
+      "familyId": "F850"
+    }
+  ]
+}

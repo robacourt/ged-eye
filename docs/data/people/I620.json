@@ -1,0 +1,26 @@
+{
+  "id": "I620",
+  "name": "James Watts",
+  "givenName": "James",
+  "surname": "Watts",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I619"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Cooper"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F256"
+    }
+  ]
+}

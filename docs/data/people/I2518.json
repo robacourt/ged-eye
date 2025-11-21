@@ -1,0 +1,24 @@
+{
+  "id": "I2518",
+  "name": "Thomas A'Court",
+  "givenName": "Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1845",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2375",
+    "I2516"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ]
+}

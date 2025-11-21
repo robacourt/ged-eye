@@ -1,0 +1,46 @@
+{
+  "id": "I275",
+  "name": "Jane Galpin",
+  "givenName": "Jane",
+  "surname": "Galpin",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I179",
+    "I276"
+  ],
+  "childIds": [
+    "I1078",
+    "I1079",
+    "I1080",
+    "I1081",
+    "I1133",
+    "I1134",
+    "I1155",
+    "I1165"
+  ],
+  "parentIds": [
+    "I277"
+  ],
+  "notes": [
+    "30-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I179",
+      "familyId": "F98",
+      "marriageDate": "25.10.1846",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I276",
+      "familyId": "F135",
+      "marriageDate": "25.8.1884",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

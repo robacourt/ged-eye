@@ -1,0 +1,30 @@
+{
+  "id": "I859",
+  "name": "Frank Broadbent THOMPSON",
+  "givenName": "Frank Broadbent",
+  "surname": "THOMPSON",
+  "sex": "M",
+  "birthDate": "1905",
+  "birthPlace": "Invercargill, NZ",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I845"
+  ],
+  "childIds": [
+    "I2739"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I845",
+      "familyId": "F371",
+      "marriageDate": "1931",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

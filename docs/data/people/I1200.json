@@ -1,0 +1,27 @@
+{
+  "id": "I1200",
+  "name": "Myrtle Unknown",
+  "givenName": "Myrtle",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1199"
+  ],
+  "childIds": [
+    "I1201",
+    "I1202",
+    "I1203"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1199",
+      "familyId": "F486"
+    }
+  ]
+}

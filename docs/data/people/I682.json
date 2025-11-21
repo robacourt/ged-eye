@@ -1,0 +1,32 @@
+{
+  "id": "I682",
+  "name": "Eliza Unknown",
+  "givenName": "Eliza",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I246"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "71 in 1881,"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Stalbridge, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I246",
+      "familyId": "F129"
+    }
+  ]
+}

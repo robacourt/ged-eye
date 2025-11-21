@@ -1,0 +1,25 @@
+{
+  "id": "I932",
+  "name": "Gladys Lillian Burgess",
+  "givenName": "Gladys Lillian",
+  "surname": "Burgess",
+  "sex": "F",
+  "birthDate": "8TH JUNE 1898",
+  "birthPlace": "Yass, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I931"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I931",
+      "familyId": "F387",
+      "marriageDate": "13.12.1930",
+      "marriagePlace": "Yass, NSW"
+    }
+  ]
+}

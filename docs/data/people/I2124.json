@@ -1,0 +1,46 @@
+{
+  "id": "I2124",
+  "name": "Ada A'Court",
+  "givenName": "Ada",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1886",
+  "birthPlace": "Jersey, C.I. St. Ouens",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Jersey C.I/RG12 4699 133 6.jpg",
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 44 6.jpg"
+  ],
+  "spouseIds": [
+    "I2128"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2121",
+    "I2122"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1969",
+      "place": "Jersey, C.I. Millais Villa, St. Ouen"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2128",
+      "familyId": "F761"
+    }
+  ],
+  "avatar": "avatars/I2124_0.jpg"
+}

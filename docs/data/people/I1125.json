@@ -1,0 +1,20 @@
+{
+  "id": "I1125",
+  "name": "Harry George Kent",
+  "givenName": "Harry George",
+  "surname": "Kent",
+  "sex": "M",
+  "birthDate": "8 JUN 1918",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1121",
+    "I1120"
+  ],
+  "baptismDate": "28 JUL 1918",
+  "baptismPlace": "Marnhull, Dorset"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1055",
+  "name": "Wayne Darcy Malone",
+  "givenName": "Wayne Darcy",
+  "surname": "Malone",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1054",
+    "I1053"
+  ]
+}

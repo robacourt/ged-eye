@@ -1,0 +1,44 @@
+{
+  "id": "I778",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1844",
+  "birthPlace": "Wincanton, Somerset",
+  "deathDate": "29 NOV 1925",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
+  ],
+  "spouseIds": [
+    "I866"
+  ],
+  "childIds": [
+    "I2324",
+    "I1537"
+  ],
+  "parentIds": [
+    "I761",
+    "I769"
+  ],
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1871",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I866",
+      "familyId": "F329",
+      "marriageDate": "1867"
+    }
+  ],
+  "avatar": "avatars/I778_0.jpg"
+}

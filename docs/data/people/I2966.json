@@ -1,0 +1,18 @@
+{
+  "id": "I2966",
+  "name": "Lindsey Fraser",
+  "givenName": "Lindsey",
+  "surname": "Fraser",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I421",
+    "I2369"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I815",
+  "name": "George Wilton A'Court",
+  "givenName": "George Wilton",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "22 SEP 1907",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "10 AUG 1978",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2742"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I794",
+    "I810"
+  ],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2742",
+      "familyId": "F349",
+      "marriageDate": "1928"
+    }
+  ]
+}

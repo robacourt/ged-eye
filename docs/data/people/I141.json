@@ -1,0 +1,28 @@
+{
+  "id": "I141",
+  "name": "Georgina Geara",
+  "givenName": "Georgina",
+  "surname": "Geara",
+  "sex": "F",
+  "birthDate": "ABT 1864",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 34 5.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I11"
+  ],
+  "baptismDate": "11 DEC 1864",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "avatar": "avatars/I141_0.jpg"
+}

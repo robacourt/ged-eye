@@ -1,0 +1,18 @@
+{
+  "id": "I1141",
+  "name": "Emily Pike",
+  "givenName": "Emily",
+  "surname": "Pike",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1135",
+    "I1134"
+  ]
+}

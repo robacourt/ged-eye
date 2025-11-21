@@ -1,0 +1,41 @@
+{
+  "id": "I1105",
+  "name": "Mary Elizabeth A'Court",
+  "givenName": "Mary Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1882",
+  "birthPlace": "East Stour, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1111"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1100",
+    "I1109"
+  ],
+  "occupations": [
+    "General Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891 AGE 9",
+      "place": "Mells, Frome,  Somerset, Rectory Cottage"
+    },
+    {
+      "date": "1901",
+      "place": "Swindon, Wiltshire, 49 Bridge St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1111",
+      "familyId": "F447",
+      "marriageDate": "23 MAY 1904",
+      "marriagePlace": "Queen Camel, Somerset"
+    }
+  ]
+}

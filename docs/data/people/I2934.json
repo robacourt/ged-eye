@@ -1,0 +1,32 @@
+{
+  "id": "I2934",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1875",
+  "birthPlace": "Glamorgan",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I361"
+  ],
+  "childIds": [
+    "I2935"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Kent, Gillingham, 53 Windsor Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I361",
+      "familyId": "F1001",
+      "marriageDate": "Abt 1891"
+    }
+  ]
+}

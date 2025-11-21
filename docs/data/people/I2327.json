@@ -1,0 +1,52 @@
+{
+  "id": "I2327",
+  "name": "Emily Elizabeth Hunt Frentzel",
+  "givenName": "Emily Elizabeth Hunt",
+  "surname": "Frentzel",
+  "sex": "F",
+  "birthDate": "1864",
+  "birthPlace": "London, Finsbury",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/6 London Standard 8th September 1883 003-0001.docx",
+    "Data/Media/1871 census/London/Hackney/RG10 313 61 24.jpg"
+  ],
+  "spouseIds": [
+    "I2331"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I423",
+    "I2326"
+  ],
+  "occupations": [
+    "School MA Cambridge"
+  ],
+  "notes": [
+    "Spouse possible Frederick T Dalton or George Rieth, on same index page"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Hackney, 122 Stoke Newington Rd"
+    },
+    {
+      "date": "1881",
+      "place": "Southport, Lancashire, 9 Promenade. [Lodger]"
+    },
+    {
+      "date": "1891",
+      "place": "Yorkshire, Sheffield, Ecclesall Bierlow, Priory Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2331",
+      "familyId": "F827",
+      "marriageDate": "SEP 5 1883",
+      "marriagePlace": "London, Friern Barnet, All Saints"
+    }
+  ],
+  "avatar": "avatars/I2327_1.jpg"
+}

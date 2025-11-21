@@ -1,0 +1,61 @@
+{
+  "id": "I309",
+  "name": "Elizabeth Hayward",
+  "givenName": "Elizabeth",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": "ABT 1841",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 41 13.jpg"
+  ],
+  "spouseIds": [
+    "I1658",
+    "I189"
+  ],
+  "childIds": [
+    "I1661",
+    "I1659",
+    "I1660"
+  ],
+  "parentIds": [
+    "I318",
+    "I319"
+  ],
+  "notes": [
+    "10.1851  45-1886  50-1891"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Flanders"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1658",
+      "familyId": "F151"
+    },
+    {
+      "spouseId": "I189",
+      "familyId": "F107",
+      "marriageDate": "18 JAN 1886",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ],
+  "avatar": "avatars/I309_0.jpg"
+}

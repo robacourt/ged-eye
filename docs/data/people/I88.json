@@ -1,0 +1,38 @@
+{
+  "id": "I88",
+  "name": "Stephen Hatcher",
+  "givenName": "Stephen",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "Abt 1780",
+  "birthPlace": null,
+  "deathDate": "Aft 1807",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I28"
+  ],
+  "childIds": [
+    "I89",
+    "I90",
+    "I91",
+    "I92",
+    "I93",
+    "I94"
+  ],
+  "parentIds": [
+    "I234",
+    "I235"
+  ],
+  "occupations": [
+    "School Master"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I28",
+      "familyId": "F21",
+      "marriageDate": "4  APR 1804",
+      "marriagePlace": "Fifehead Magdalen, Dorset"
+    }
+  ]
+}

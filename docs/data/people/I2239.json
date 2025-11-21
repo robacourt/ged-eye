@@ -1,0 +1,31 @@
+{
+  "id": "I2239",
+  "name": "Julia Claire Davis",
+  "givenName": "Julia Claire",
+  "surname": "Davis",
+  "sex": "F",
+  "birthDate": "30 APR 1957",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2241"
+  ],
+  "childIds": [
+    "I2248",
+    "I2247"
+  ],
+  "parentIds": [
+    "I2151",
+    "I2152"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2241",
+      "familyId": "F795",
+      "marriageDate": "30 JUN 1982",
+      "marriagePlace": "Hanham Methodist Church"
+    }
+  ]
+}

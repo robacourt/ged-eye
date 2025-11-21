@@ -1,0 +1,41 @@
+{
+  "id": "I2305",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1831",
+  "birthPlace": "Castle Cary, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Castle Cary/1.jpg",
+    "Data/Media/1881 census/Somerset/Wincanton/RG11 2398 73 4.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "None, Asylum patient",
+    "None. Imbecile"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Castle Cary, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Castle Cary, Somerset, South Cary"
+    },
+    {
+      "date": "1871",
+      "place": "Wells, Somerset, County Lunatic Asylum, St Cuthbert Out Wells"
+    },
+    {
+      "date": "1881",
+      "place": "Somerset, Wincanton, Union Workhouse"
+    }
+  ],
+  "avatar": "avatars/I2305_0.jpg"
+}

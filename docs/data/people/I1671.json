@@ -1,0 +1,19 @@
+{
+  "id": "I1671",
+  "name": "Ibbot Dean",
+  "givenName": "Ibbot",
+  "surname": "Dean",
+  "sex": "F",
+  "birthDate": "ABT 1729",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1669",
+    "I1670"
+  ],
+  "baptismDate": "8 APR 1729"
+}

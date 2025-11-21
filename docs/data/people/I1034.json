@@ -1,0 +1,31 @@
+{
+  "id": "I1034",
+  "name": "Minnie Ryall",
+  "givenName": "Minnie",
+  "surname": "Ryall",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1027"
+  ],
+  "childIds": [
+    "I1035",
+    "I1036",
+    "I1037",
+    "I1038",
+    "I1039",
+    "I1040"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1027",
+      "familyId": "F421",
+      "marriagePlace": "Yeovil, Somerset"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "I1383",
+  "name": "K.W. Robinson",
+  "givenName": "K.W.",
+  "surname": "Robinson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1377"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1377",
+      "familyId": "F547"
+    }
+  ]
+}

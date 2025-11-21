@@ -1,0 +1,32 @@
+{
+  "id": "I2607",
+  "name": "Elizabeth Jenny Unknown",
+  "givenName": "Elizabeth Jenny",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1885",
+  "birthPlace": "Canning Town, West Ham, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2606"
+  ],
+  "childIds": [
+    "I2608"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Plaistow, 30 Salmen Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2606",
+      "familyId": "F908",
+      "marriageDate": "ABT 1909"
+    }
+  ]
+}

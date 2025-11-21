@@ -1,0 +1,71 @@
+{
+  "id": "I56",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1804",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": "Abt 1887",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Marnhull/RG09 1329 33 36.jpg",
+    "Data/Media/1881 census/Dorset/Weymouth/RG11 2104 66 20.jpg"
+  ],
+  "spouseIds": [
+    "I142",
+    "I194"
+  ],
+  "childIds": [
+    "I138",
+    "I1750"
+  ],
+  "parentIds": [
+    "I18",
+    "I46"
+  ],
+  "baptismDate": "2 DEC 1804",
+  "baptismPlace": "Fifehead Magdalen, Dorset",
+  "occupations": [
+    "Ag Lab",
+    "Dealer"
+  ],
+  "notes": [
+    "35-1841 46-1851  58-1863 65-1871 of Whitchurch Street Henstridge Somerset"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Marnhull, Dorset"
+    },
+    {
+      "date": "1851",
+      "place": null
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, Pleck"
+    },
+    {
+      "date": "1881",
+      "place": "Weymouth, Dorset, High West St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I142",
+      "familyId": "F37"
+    },
+    {
+      "spouseId": "I194",
+      "familyId": "F38",
+      "marriageDate": "24 MAR 1864",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": null,
+      "familyId": "F829"
+    }
+  ],
+  "avatar": "avatars/I56_0.jpg"
+}

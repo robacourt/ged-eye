@@ -1,0 +1,45 @@
+{
+  "id": "I2375",
+  "name": "Frederick A'Court",
+  "givenName": "Frederick",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1821",
+  "birthPlace": "Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2516"
+  ],
+  "childIds": [
+    "I2373",
+    "I2518",
+    "I2517"
+  ],
+  "parentIds": [
+    "I2515"
+  ],
+  "occupations": [
+    "Inn Keeper",
+    "Coach Builder"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Yeovil, Somerset. High St."
+    },
+    {
+      "date": "1851",
+      "place": "Long Sutton, Somerset. Green St"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2516",
+      "familyId": "F842",
+      "marriageDate": "1843 JUN QTR",
+      "marriagePlace": "Langport, Somerset"
+    }
+  ]
+}

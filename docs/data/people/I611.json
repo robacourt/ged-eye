@@ -1,0 +1,26 @@
+{
+  "id": "I611",
+  "name": "Henry Street",
+  "givenName": "Henry",
+  "surname": "Street",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I610"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Keeper"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F252"
+    }
+  ]
+}

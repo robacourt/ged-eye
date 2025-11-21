@@ -1,0 +1,21 @@
+{
+  "id": "I1481",
+  "name": "Michelle A'Court",
+  "givenName": "Michelle",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/michelle_acourt[1].jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "notes": [
+    "Speaker details for Michele A'Court"
+  ],
+  "avatar": "avatars/I1481_0.jpg"
+}

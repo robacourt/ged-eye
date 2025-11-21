@@ -1,0 +1,26 @@
+{
+  "id": "I226",
+  "name": "Robert Myall",
+  "givenName": "Robert",
+  "surname": "Myall",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I225"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F122"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I437",
+  "name": "Francesca Cordelia Beatrice Wilkinson",
+  "givenName": "Francesca Cordelia Beatrice",
+  "surname": "Wilkinson",
+  "sex": "F",
+  "birthDate": "6 SEP 1950",
+  "birthPlace": "London, Kensington,St Mary Abbot Hospital",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2793"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I430",
+    "I436"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2793",
+      "familyId": "F971"
+    }
+  ]
+}

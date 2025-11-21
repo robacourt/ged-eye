@@ -1,0 +1,41 @@
+{
+  "id": "I2556",
+  "name": "Elsie A'Court",
+  "givenName": "Elsie",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1885",
+  "birthPlace": "Poole, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 92 28.jpg",
+    "Data/Media/1901 census/Dorset/Poole/RG13 1993 40 9.jpg",
+    "Data/Media/1911 census/London/Hampstead/RG14 610 161.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I298",
+    "I1562"
+  ],
+  "occupations": [
+    "Domestic Servant",
+    "London, Hampstead, 47 Glenmore Rd.,"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Poole, Russell Place."
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Dorset, Longfleet, Bampton Villa"
+    },
+    {
+      "date": "1911",
+      "place": "Domestic Servant"
+    }
+  ],
+  "avatar": "avatars/I2556_0.jpg"
+}

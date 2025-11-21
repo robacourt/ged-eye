@@ -1,0 +1,26 @@
+{
+  "id": "I1151",
+  "name": "Malcolm Arthur Vincent",
+  "givenName": "Malcolm Arthur",
+  "surname": "Vincent",
+  "sex": "M",
+  "birthDate": "31 OCT  1944",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1149",
+    "I1148"
+  ],
+  "baptismDate": "26 NOV 1944",
+  "baptismPlace": "Marnhull, Dorset",
+  "residences": [
+    {
+      "date": "31 OCT 1944",
+      "place": "Marnhull, Dorset, 17 Church Cottages"
+    }
+  ]
+}

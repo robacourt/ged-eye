@@ -1,0 +1,46 @@
+{
+  "id": "I2155",
+  "name": "Alice Lavinia  A'Court (Haycourt)",
+  "givenName": "Alice Lavinia  A'Court",
+  "surname": "(Haycourt)",
+  "sex": "F",
+  "birthDate": "4 SEP 1869",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Bristol/RG10 2559 75 35.jpg",
+    "Data/Media/1881 census/Bristol/RG11 2497 134 28.jpg",
+    "Data/Media/1901 census/Bristol/RG13 2381 24 2.jpg",
+    "Data/Media/1911 census/Bristol/RG14 15023 250.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2153",
+    "I2154"
+  ],
+  "occupations": [
+    "Tailoress",
+    "Sewing Machinist Tailoring home worker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Bristol, Gloucestershire, Regent Street, St Philip & Jacob Without."
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 68 Regent St., Ss Philip and Jacob"
+    },
+    {
+      "date": "1901 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, 18 Regent Street"
+    },
+    {
+      "date": "1911 AS HAYCOURT",
+      "place": "Bristol, Gloucestershire, Kenilworth Cottage, Albany Place, Saints Philip & Jacob"
+    }
+  ],
+  "avatar": "avatars/I2155_0.jpg"
+}

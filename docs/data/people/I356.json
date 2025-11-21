@@ -1,0 +1,44 @@
+{
+  "id": "I356",
+  "name": "Sidney George A'Court",
+  "givenName": "Sidney George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "BEF 25 AUG 1878",
+  "birthPlace": "Buckhorn Weston, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Buckhorn Weston/RG12 1902 148 7.jpg",
+    "Data/Media/1901 census/Dorset/Buckhorn Weston/RG13 1968 52 16.jpg",
+    "Data/Media/1911 census/Dorset/Kington Magna/RG14 12185 43.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I220",
+    "I355"
+  ],
+  "baptismDate": "25 AUG 1878",
+  "baptismPlace": "Buckhorn Weston, Dorset",
+  "occupations": [
+    "Farm Labourer",
+    "Feeder Of Threshing Machine",
+    "Farm Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Higher Hill"
+    },
+    {
+      "date": "1901",
+      "place": "Buckhorn Weston, Dorset, 1 Tunnel Head"
+    },
+    {
+      "date": "1911",
+      "place": "Kington Magna, Dorset, Hill Top"
+    }
+  ],
+  "avatar": "avatars/I356_0.jpg"
+}

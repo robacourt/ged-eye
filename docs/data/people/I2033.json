@@ -1,0 +1,28 @@
+{
+  "id": "I2033",
+  "name": "Carol Ann Beckwith",
+  "givenName": "Carol Ann",
+  "surname": "Beckwith",
+  "sex": "F",
+  "birthDate": "20 NOV 1945",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2032"
+  ],
+  "childIds": [
+    "I2045",
+    "I2046",
+    "I2047"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2032",
+      "familyId": "F733",
+      "divorceDate": "DATE UNKNOWN"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2601",
+  "name": "Violet Maud A'Court",
+  "givenName": "Violet Maud",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1911",
+  "birthPlace": "Wood Green, Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Wood Green/RG14 7249 167.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wood Green, Middlesex, 75 Winkfield Rd"
+    }
+  ],
+  "avatar": "avatars/I2601_0.jpg"
+}

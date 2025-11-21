@@ -1,0 +1,21 @@
+{
+  "id": "I1594",
+  "name": "Victor William A'Court",
+  "givenName": "Victor William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1904",
+  "birthPlace": "Glamorgan, Cardiff",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Glamorganshire/RG14 32138 268.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1591",
+    "I1593"
+  ],
+  "avatar": "avatars/I1594_0.jpg"
+}

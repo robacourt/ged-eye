@@ -1,0 +1,25 @@
+{
+  "id": "I966",
+  "name": "Mervyn R. Macquire",
+  "givenName": "Mervyn R.",
+  "surname": "Macquire",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I964"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I964",
+      "familyId": "F402",
+      "marriageDate": "1924",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
+}

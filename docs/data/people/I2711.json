@@ -1,0 +1,26 @@
+{
+  "id": "I2711",
+  "name": "Jacqueline Ann Nixon",
+  "givenName": "Jacqueline Ann",
+  "surname": "Nixon",
+  "sex": "F",
+  "birthDate": "1940",
+  "birthPlace": "Teddington, Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2712"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I2710",
+    "I2709"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2712",
+      "familyId": "F944"
+    }
+  ]
+}

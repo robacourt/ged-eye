@@ -1,0 +1,19 @@
+{
+  "id": "I2120",
+  "name": "Laurie A'Court",
+  "givenName": "Laurie",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/Newspaper Reports/Laurie A'Court Thetford News.mht"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2119"
+  ]
+}

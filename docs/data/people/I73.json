@@ -1,0 +1,29 @@
+{
+  "id": "I73",
+  "name": "Lavinia A'Court",
+  "givenName": "Lavinia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I23",
+    "I71"
+  ],
+  "baptismDate": "6 JAN 1817",
+  "baptismPlace": "Henstridge, Somerset",
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset"
+    }
+  ],
+  "avatar": "avatars/I73_0.jpg"
+}

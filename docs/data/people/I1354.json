@@ -1,0 +1,23 @@
+{
+  "id": "I1354",
+  "name": "Unknown Robinson",
+  "givenName": "Unknown",
+  "surname": "Robinson",
+  "sex": "M",
+  "birthDate": "ABT 1870",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1353"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1353",
+      "familyId": "F536"
+    }
+  ]
+}

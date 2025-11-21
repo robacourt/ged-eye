@@ -1,0 +1,26 @@
+{
+  "id": "I1412",
+  "name": "Eileen Unknown",
+  "givenName": "Eileen",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1411"
+  ],
+  "childIds": [
+    "I1413",
+    "I510"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1411",
+      "familyId": "F216"
+    }
+  ]
+}

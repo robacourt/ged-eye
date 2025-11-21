@@ -1,0 +1,21 @@
+{
+  "id": "I872",
+  "name": "Jane a'Court",
+  "givenName": "Jane",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1838",
+  "birthPlace": "Bath, Somerset",
+  "deathDate": "AFT 1851",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I763",
+    "I871"
+  ],
+  "notes": [
+    "1851"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "I308",
+  "name": "Amelia A'Court",
+  "givenName": "Amelia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1860/61",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I313"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I189",
+    "I307"
+  ],
+  "notes": [
+    "9Months--1861  19-1879"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": null
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I313",
+      "familyId": "F150",
+      "marriageDate": "2.10.1879",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

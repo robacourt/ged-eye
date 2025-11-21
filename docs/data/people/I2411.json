@@ -1,0 +1,25 @@
+{
+  "id": "I2411",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1192"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1192",
+      "familyId": "F855",
+      "marriageDate": "1ST QTR 1909",
+      "marriagePlace": "Chippenham, Wiltshire"
+    }
+  ]
+}

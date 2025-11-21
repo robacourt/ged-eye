@@ -1,0 +1,18 @@
+{
+  "id": "I2526",
+  "name": "Helen Marian A'Court",
+  "givenName": "Helen Marian",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1968",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2523",
+    "I2524"
+  ]
+}

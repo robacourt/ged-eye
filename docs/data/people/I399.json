@@ -1,0 +1,26 @@
+{
+  "id": "I399",
+  "name": "Norman",
+  "givenName": "Norman",
+  "surname": "",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I395"
+  ],
+  "childIds": [
+    "I400",
+    "I401"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I395",
+      "familyId": "F182"
+    }
+  ]
+}

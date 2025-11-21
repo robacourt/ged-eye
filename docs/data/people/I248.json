@@ -1,0 +1,24 @@
+{
+  "id": "I248",
+  "name": "John Fudge",
+  "givenName": "John",
+  "surname": "Fudge",
+  "sex": "M",
+  "birthDate": "19 SEP 1844",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I246",
+    "I40"
+  ],
+  "occupations": [
+    "Assistant Miller, A'Courts Mill"
+  ],
+  "notes": [
+    "1881 British Census [Possible John Fudge]"
+  ]
+}

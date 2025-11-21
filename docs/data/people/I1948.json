@@ -1,0 +1,29 @@
+{
+  "id": "I1948",
+  "name": "Alice Doreen Leishman",
+  "givenName": "Alice Doreen",
+  "surname": "Leishman",
+  "sex": "F",
+  "birthDate": "30 APR 1929",
+  "birthPlace": "Ngahere, New Zealand",
+  "deathDate": "6 NOV 2004",
+  "deathPlace": "Balclutha, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I1947"
+  ],
+  "childIds": [
+    "I2024",
+    "I1949",
+    "I2022",
+    "I2023"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1947",
+      "familyId": "F694",
+      "marriageDate": "26 APR 1955"
+    }
+  ]
+}

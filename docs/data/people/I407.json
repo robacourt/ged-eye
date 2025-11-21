@@ -1,0 +1,23 @@
+{
+  "id": "I407",
+  "name": "\\",
+  "givenName": "\\",
+  "surname": "",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I408"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F187"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "I189",
+  "name": "Thomas A'Court",
+  "givenName": "Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "AFT 1891",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1851 census/Marnhull/1852 foli 13 page 19.jpg"
+  ],
+  "spouseIds": [
+    "I307",
+    "I309"
+  ],
+  "childIds": [
+    "I308"
+  ],
+  "parentIds": [
+    "I53",
+    "I183"
+  ],
+  "baptismDate": "23 FEB1840",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab",
+    "Ag Lab",
+    "Brewer's Lab",
+    "Labourer",
+    "General Farm Labourer",
+    "Farm Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset, Marnhull Common"
+    },
+    {
+      "date": "1861",
+      "place": null
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Burton Street"
+    },
+    {
+      "date": "1911",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I307",
+      "familyId": "F106",
+      "marriageDate": "29 MAR 1860",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I309",
+      "familyId": "F107",
+      "marriageDate": "18 JAN 1886",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ],
+  "avatar": "avatars/I189_0.jpg"
+}

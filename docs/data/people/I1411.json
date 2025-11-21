@@ -1,0 +1,42 @@
+{
+  "id": "I1411",
+  "name": "Ernest A'Court",
+  "givenName": "Ernest",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1885",
+  "birthPlace": "Bedminster, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg"
+  ],
+  "spouseIds": [
+    "I1412"
+  ],
+  "childIds": [
+    "I1413",
+    "I510"
+  ],
+  "parentIds": [
+    "I1387",
+    "I1388"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    },
+    {
+      "date": "1901",
+      "place": "Rock, Ferry St Peter, Birkenhead, Cheshire,Reformatory School Ship Akbar"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1412",
+      "familyId": "F216"
+    }
+  ],
+  "avatar": "avatars/I1411_0.jpg"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I868",
+  "name": "Frances Sarah (Fanny) STOKE",
+  "givenName": "Frances Sarah (Fanny)",
+  "surname": "STOKE",
+  "sex": "F",
+  "birthDate": "ABT 1849",
+  "birthPlace": null,
+  "deathDate": "7 DEC 1925",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I780"
+  ],
+  "childIds": [
+    "I515"
+  ],
+  "parentIds": [],
+  "burialDate": "1925",
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
+  "notes": [
+    "Cemetery records"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I780",
+      "familyId": "F221",
+      "marriageDate": "27 APR 1870",
+      "marriagePlace": "Bound Brook, New Jersey, USA"
+    }
+  ]
+}

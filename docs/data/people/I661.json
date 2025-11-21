@@ -1,0 +1,26 @@
+{
+  "id": "I661",
+  "name": "George Warr",
+  "givenName": "George",
+  "surname": "Warr",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I660"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F276"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I1514",
+  "name": "Flora Chamberlain",
+  "givenName": "Flora",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "1878",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1515"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I864",
+    "I777"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1515",
+      "familyId": "F578"
+    }
+  ]
+}

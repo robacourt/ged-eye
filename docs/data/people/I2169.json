@@ -1,0 +1,18 @@
+{
+  "id": "I2169",
+  "name": "Harry Thomas Willis",
+  "givenName": "Harry Thomas",
+  "surname": "Willis",
+  "sex": "M",
+  "birthDate": "1993",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2167",
+    "I2168"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I2765",
+  "name": "Friedrick Frentzel",
+  "givenName": "Friedrick",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Barnes"
+    }
+  ]
+}

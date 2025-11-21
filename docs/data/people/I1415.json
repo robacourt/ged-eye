@@ -1,0 +1,44 @@
+{
+  "id": "I1415",
+  "name": "Albert D A'Court",
+  "givenName": "Albert D",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Bristol, Bedminster",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg",
+    "Data/Media/1881 census/Bristol/RG11 2465 104 10.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1386",
+    "I1405"
+  ],
+  "occupations": [
+    "News Vendor",
+    "Packer"
+  ],
+  "notes": [
+    ""
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    }
+  ],
+  "avatar": "avatars/I1415_0.jpg"
+}

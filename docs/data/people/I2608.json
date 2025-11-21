@@ -1,0 +1,27 @@
+{
+  "id": "I2608",
+  "name": "Reginald Stanley A'Court",
+  "givenName": "Reginald Stanley",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "Plaistow, West Ham, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Plaistow/RG14 9429 32.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2606",
+    "I2607"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Plaistow, 30 Salmen Rd."
+    }
+  ],
+  "avatar": "avatars/I2608_0.jpg"
+}

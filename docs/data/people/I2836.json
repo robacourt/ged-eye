@@ -1,0 +1,49 @@
+{
+  "id": "I2836",
+  "name": "Julia Eliabeth Coutanche",
+  "givenName": "Julia Eliabeth",
+  "surname": "Coutanche",
+  "sex": "F",
+  "birthDate": "1845",
+  "birthPlace": "Jersey C.I. St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2837"
+  ],
+  "childIds": [
+    "I2838",
+    "I2839"
+  ],
+  "parentIds": [
+    "I2834",
+    "I2835"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Helier, 23 George St."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Helier, George St."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey C.I. St. Helier, 3 Bellozanne Rd, Leyminage Place"
+    },
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2837",
+      "familyId": "F816",
+      "marriageDate": "28 APR 1870",
+      "marriagePlace": "Jersey C.I. St Saviour"
+    }
+  ]
+}

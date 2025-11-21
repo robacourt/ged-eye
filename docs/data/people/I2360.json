@@ -1,0 +1,32 @@
+{
+  "id": "I2360",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1861",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Weymouth/RG 10 2002 48 41.jpg",
+    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 75 6.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1450",
+    "I1451"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Weymouth, Dorset, Gloster Mews House Inn"
+    },
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, Hotel Yard"
+    }
+  ],
+  "avatar": "avatars/I2360_0.jpg"
+}

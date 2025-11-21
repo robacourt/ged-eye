@@ -1,0 +1,42 @@
+{
+  "id": "I288",
+  "name": "Margaret Louisa A'Court",
+  "givenName": "Margaret Louisa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "27 JAN 1888",
+  "birthPlace": "Charlton Horethorne, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg",
+    "Data/Media/1911 census/Berkshire/RG14 6681 92.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I284",
+    "I287"
+  ],
+  "baptismDate": "8  APR 1888",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "General Domestic",
+    "House parlourmaid domestic"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    },
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Silkwood House"
+    },
+    {
+      "date": "1911",
+      "place": "Berkshire, Sandhurst, The Cedars."
+    }
+  ],
+  "avatar": "avatars/I288_0.jpg"
+}

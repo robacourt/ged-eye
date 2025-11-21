@@ -1,0 +1,26 @@
+{
+  "id": "I2779",
+  "name": "George Ransley",
+  "givenName": "George",
+  "surname": "Ransley",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2772"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Furniture Dealer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F965"
+    }
+  ]
+}

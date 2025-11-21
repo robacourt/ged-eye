@@ -1,0 +1,30 @@
+{
+  "id": "I2194",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Bristol",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Bristol/RG11 2498 33 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2190",
+    "I2192"
+  ],
+  "occupations": [
+    "Cotton Spinner"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Bristol, Gloucestershire, 33 Little George St, Ss Philip And Jacob"
+    }
+  ],
+  "avatar": "avatars/I2194_0.jpg"
+}

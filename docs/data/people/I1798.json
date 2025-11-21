@@ -1,0 +1,24 @@
+{
+  "id": "I1798",
+  "name": "Unknown Curtis",
+  "givenName": "Unknown",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1797",
+    "I1799"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F648"
+    }
+  ]
+}

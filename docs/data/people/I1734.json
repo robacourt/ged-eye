@@ -1,0 +1,35 @@
+{
+  "id": "I1734",
+  "name": "Jemima A'Court",
+  "givenName": "Jemima",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1801",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 28 page 19.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I2365"
+  ],
+  "parentIds": [
+    "I2752"
+  ],
+  "baptismDate": "29 MAY 1801",
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Parish House"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F957"
+    }
+  ],
+  "avatar": "avatars/I1734_0.jpg"
+}

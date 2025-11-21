@@ -1,0 +1,28 @@
+{
+  "id": "I1543",
+  "name": "Ellen S Hunter",
+  "givenName": "Ellen S",
+  "surname": "Hunter",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1542"
+  ],
+  "childIds": [
+    "I1541",
+    "I2313"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1542",
+      "familyId": "F589",
+      "marriageDate": "DEC 1913",
+      "marriagePlace": "Bristol"
+    }
+  ]
+}

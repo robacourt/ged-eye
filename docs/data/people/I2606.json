@@ -1,0 +1,54 @@
+{
+  "id": "I2606",
+  "name": "Charles John A'Court",
+  "givenName": "Charles John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1873",
+  "birthPlace": "Bromley by Bow, Essex",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Bromley/RG11 502 3 3.jpg",
+    "Data/Media/1891 census/London/West Ham/RG12 1323 58 12.jpg"
+  ],
+  "spouseIds": [
+    "I2607"
+  ],
+  "childIds": [
+    "I2608"
+  ],
+  "parentIds": [
+    "I2853",
+    "I2854"
+  ],
+  "occupations": [
+    "Blacksmith"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Bromley, 195 Grundy St."
+    },
+    {
+      "date": "1891",
+      "place": "London, West Ham, Sussex St"
+    },
+    {
+      "date": "1911",
+      "place": "London, Plaistow, 30 Salmen Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Warehouse Stockeeper-Ironmongers"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2607",
+      "familyId": "F908",
+      "marriageDate": "ABT 1909"
+    }
+  ],
+  "avatar": "avatars/I2606_0.jpg"
+}

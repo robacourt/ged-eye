@@ -1,0 +1,18 @@
+{
+  "id": "I1781",
+  "name": "Elaine C A'Court",
+  "givenName": "Elaine C",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3RD QRT 1951",
+  "birthPlace": "Surrey NE",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1783",
+    "I1782"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "I2295",
+  "name": "John Parker",
+  "givenName": "John",
+  "surname": "Parker",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2294"
+  ],
+  "childIds": [
+    "I2296"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2294",
+      "familyId": "F811",
+      "marriageDate": "FEB 1817",
+      "marriagePlace": "Barton St. David, Somerset"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "I1982",
+  "name": "David James Gumbrell",
+  "givenName": "David James",
+  "surname": "Gumbrell",
+  "sex": "M",
+  "birthDate": "4 OCT 1967",
+  "birthPlace": "York, Yorkshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1979",
+    "I1980"
+  ]
+}

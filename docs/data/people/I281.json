@@ -1,0 +1,27 @@
+{
+  "id": "I281",
+  "name": "Susanna Galpin",
+  "givenName": "Susanna",
+  "surname": "Galpin",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I280"
+  ],
+  "childIds": [
+    "I183"
+  ],
+  "parentIds": [
+    "I282"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I280",
+      "familyId": "F102"
+    }
+  ]
+}

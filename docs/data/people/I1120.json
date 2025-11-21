@@ -1,0 +1,32 @@
+{
+  "id": "I1120",
+  "name": "Kate Curtis",
+  "givenName": "Kate",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1121"
+  ],
+  "childIds": [
+    "I1122",
+    "I1125",
+    "I1126"
+  ],
+  "parentIds": [
+    "I1081",
+    "I1082"
+  ],
+  "baptismDate": "9 FEB 1890",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1121",
+      "familyId": "F453"
+    }
+  ]
+}

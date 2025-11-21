@@ -1,0 +1,27 @@
+{
+  "id": "I2905",
+  "name": "Joseph George A'Court",
+  "givenName": "Joseph George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1901",
+  "birthPlace": "Jersey C.I St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34901 8 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2839",
+    "I2878"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, Plevna Cottage, Ingonville Place."
+    }
+  ],
+  "avatar": "avatars/I2905_0.jpg"
+}

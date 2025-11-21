@@ -1,0 +1,25 @@
+{
+  "id": "I1170",
+  "name": "Jemima Unknown",
+  "givenName": "Jemima",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1169"
+  ],
+  "childIds": [
+    "I1168"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1169",
+      "familyId": "F478"
+    }
+  ]
+}

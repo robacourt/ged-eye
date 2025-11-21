@@ -1,0 +1,56 @@
+{
+  "id": "I2210",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1864",
+  "birthPlace": "Bristol, Gloucestershire, St Judes",
+  "deathDate": "27 JAN 1934",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2381 122 3.jpg"
+  ],
+  "spouseIds": [
+    "I2212"
+  ],
+  "childIds": [
+    "I2211",
+    "I2213",
+    "I2214",
+    "I2215",
+    "I2216",
+    "I2217",
+    "I2689",
+    "I2594",
+    "I2595"
+  ],
+  "parentIds": [
+    "I2186",
+    "I2187"
+  ],
+  "occupations": [
+    "Butcher Journeyman",
+    "Butcher's labourer",
+    "Butcher"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Gloucestershire, Bristol, Barrow Court, 1 Wade St"
+    },
+    {
+      "date": "1911",
+      "place": "Gloucestershire, Bristol, 36 Wade St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2212",
+      "familyId": "F792",
+      "marriageDate": "16 APR 1883",
+      "marriagePlace": "Bristol Registry Office"
+    }
+  ],
+  "avatar": "avatars/I2210_0.jpg"
+}

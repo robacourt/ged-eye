@@ -1,0 +1,28 @@
+{
+  "id": "I2379",
+  "name": "Edward Jack Duffy",
+  "givenName": "Edward Jack",
+  "surname": "Duffy",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1406"
+  ],
+  "childIds": [
+    "I2380",
+    "I2381"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1406",
+      "familyId": "F846",
+      "marriageDate": "MARCH 1913",
+      "marriagePlace": "Bristol, Glostershire"
+    }
+  ]
+}

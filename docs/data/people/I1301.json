@@ -1,0 +1,27 @@
+{
+  "id": "I1301",
+  "name": "Unknown Lloyd",
+  "givenName": "Unknown",
+  "surname": "Lloyd",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1102"
+  ],
+  "childIds": [
+    "I1302",
+    "I1303"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1102",
+      "familyId": "F444",
+      "marriageDate": "1947"
+    }
+  ]
+}

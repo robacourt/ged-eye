@@ -1,0 +1,33 @@
+{
+  "id": "I2160",
+  "name": "Ada Walters",
+  "givenName": "Ada",
+  "surname": "Walters",
+  "sex": "F",
+  "birthDate": "17 SEP 1878",
+  "birthPlace": "Bristol",
+  "deathDate": "4 JAN 1959",
+  "deathPlace": "Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2159"
+  ],
+  "childIds": [
+    "I2249"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Boot Machinist"
+  ],
+  "notes": [
+    "Father's name missing from birth certificate.  Mother Sarah Croker married Charles Henry Walters after birth but before registration.  Charles Henry Walters may not be natural father.  Buried in Greenbank Cemetry Plot: Blue H, Grave: 772"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2159",
+      "familyId": "F775",
+      "marriageDate": "25 DEC 1902",
+      "marriagePlace": "St Agnes Parish Church, Bristol"
+    }
+  ]
+}

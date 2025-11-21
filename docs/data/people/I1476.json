@@ -1,0 +1,24 @@
+{
+  "id": "I1476",
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1835",
+  "birthPlace": "Henstridge, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1473",
+    "I1474"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Baslands Hill farm"
+    }
+  ]
+}

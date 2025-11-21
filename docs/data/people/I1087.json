@@ -1,0 +1,39 @@
+{
+  "id": "I1087",
+  "name": "Robert Frank A'Court",
+  "givenName": "Robert Frank",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "29 JUN 1914",
+  "birthPlace": "West Camel, Somerset",
+  "deathDate": "9 NOV 1999",
+  "deathPlace": "Perth, Western Australia",
+  "photos": [],
+  "spouseIds": [
+    "I1088"
+  ],
+  "childIds": [
+    "I1094",
+    "I1086",
+    "I1095",
+    "I1096"
+  ],
+  "parentIds": [
+    "I1338",
+    "I1089"
+  ],
+  "occupations": [
+    "Inn Keeper, Podimore, Somerset"
+  ],
+  "notes": [
+    "On the Fairstar"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1088",
+      "familyId": "F434",
+      "marriageDate": "28 SEP 1940",
+      "marriagePlace": "Yeovil, Somerset"
+    }
+  ]
+}

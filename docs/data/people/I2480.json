@@ -1,0 +1,28 @@
+{
+  "id": "I2480",
+  "name": "John Augustus A'Court",
+  "givenName": "John Augustus",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1898",
+  "birthPlace": null,
+  "deathDate": "1971",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2479",
+    "I1373",
+    "I2750"
+  ],
+  "parentIds": [
+    "I1906",
+    "I1907"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F876"
+    }
+  ]
+}

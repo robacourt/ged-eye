@@ -1,0 +1,25 @@
+{
+  "id": "I2901",
+  "name": "George Mowbray",
+  "givenName": "George",
+  "surname": "Mowbray",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2447"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2447",
+      "familyId": "F993",
+      "marriageDate": "29 FEB 1904",
+      "marriagePlace": "Essex, Little Ilford"
+    }
+  ]
+}

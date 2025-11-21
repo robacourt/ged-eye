@@ -1,0 +1,71 @@
+{
+  "id": "I113",
+  "name": "Alice Jane Richards Wheeler Bennett",
+  "givenName": "Alice Jane Richards Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "1854",
+  "birthPlace": "Hampshire, Portsmouth, Portsea",
+  "deathDate": "6 FEB 1927",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Alice Wheeler Bennett.jpeg",
+    "Data/Media/1861 Census/Hampshire/RG09 641 39 30 2.jpg",
+    "Data/Media/1871 census/Portsea/John Bennett.jpg"
+  ],
+  "spouseIds": [
+    "I106"
+  ],
+  "childIds": [
+    "I114",
+    "I115"
+  ],
+  "parentIds": [
+    "I374",
+    "I375"
+  ],
+  "burialPlace": "Portsmouth, Hampshire, Highlands Road Cemetery",
+  "notes": [
+    "Probate Calendar 1927",
+    "Address for Mrs. A'Court only as at 1879 :--"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1871",
+      "place": "Hampshire, Portsmouth, Portsea, 25 Hereford Street."
+    },
+    {
+      "date": "1881",
+      "place": "Portsea, Hampshire, 8 Alsace Terrace, Brittania Rd"
+    },
+    {
+      "date": "1891",
+      "place": "Hampshire, Portsmouth, Landport,29 St. David's Rd"
+    },
+    {
+      "date": "1901",
+      "place": "Hampshire, Portsmouth,, 16 Kings Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "Portsmouth, Hampshire, Southsea, 29 St. David's Rd.,"
+    },
+    {
+      "date": "1921",
+      "place": "Hampshire, Southsea, 29 St. David's Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I106",
+      "familyId": "F63",
+      "marriageDate": "4 JUL 1876",
+      "marriagePlace": "Portsea, Hampshire, St Peter's Weslyan Chapel"
+    }
+  ],
+  "avatar": "avatars/I113_0.jpg"
+}

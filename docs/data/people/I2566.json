@@ -1,0 +1,28 @@
+{
+  "id": "I2566",
+  "name": "Leslie A'Court",
+  "givenName": "Leslie",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1910",
+  "birthPlace": "London, Norwood Home",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Hampstead/RG14 592 105.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hampstead, 9 Heath Villas"
+    },
+    {
+      "date": "1911",
+      "place": "Inmate, childrens Home"
+    }
+  ],
+  "avatar": "avatars/I2566_0.jpg"
+}

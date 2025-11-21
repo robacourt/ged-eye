@@ -1,0 +1,34 @@
+{
+  "id": "I289",
+  "name": "George Haskett",
+  "givenName": "George",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I290"
+  ],
+  "childIds": [
+    "I287"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Marnhull, Dorset, Burton Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I290",
+      "familyId": "F143"
+    }
+  ]
+}

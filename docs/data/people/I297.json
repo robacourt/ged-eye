@@ -1,0 +1,59 @@
+{
+  "id": "I297",
+  "name": "Sylvia Galpin",
+  "givenName": "Sylvia",
+  "surname": "Galpin",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1891",
+  "deathPlace": "Poole, Dorset",
+  "photos": [],
+  "spouseIds": [
+    "I188"
+  ],
+  "childIds": [
+    "I298",
+    "I299",
+    "I300",
+    "I301",
+    "I302",
+    "I303"
+  ],
+  "parentIds": [
+    "I304",
+    "I305"
+  ],
+  "baptismDate": "11 DEC 1831",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Servant"
+  ],
+  "notes": [
+    "19-1851  26-1861"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    },
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1857",
+      "place": "Marnhull, Dorset, New St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I188",
+      "familyId": "F105",
+      "marriageDate": "1SEP1857",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

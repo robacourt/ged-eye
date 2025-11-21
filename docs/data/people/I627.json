@@ -1,0 +1,28 @@
+{
+  "id": "I627",
+  "name": "Jane Warren",
+  "givenName": "Jane",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I626"
+  ],
+  "childIds": [
+    "I621"
+  ],
+  "parentIds": [
+    "I628",
+    "I628"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I626",
+      "familyId": "F259"
+    }
+  ]
+}

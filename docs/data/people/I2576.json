@@ -1,0 +1,27 @@
+{
+  "id": "I2576",
+  "name": "Herbert George A'Court",
+  "givenName": "Herbert George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "18 MAY 1905",
+  "birthPlace": "Bristol, St. George, Gloucestershire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Peckham/RG14 2525 266.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2571",
+    "I2572"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Peckham, 2 Hazlemere Rd."
+    }
+  ],
+  "avatar": "avatars/I2576_0.jpg"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "I1551",
+  "name": "Audrey Lounsbury",
+  "givenName": "Audrey",
+  "surname": "Lounsbury",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1550"
+  ],
+  "childIds": [
+    "I1549",
+    "I1554"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1550",
+      "familyId": "F593"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "I2214",
+  "name": "John (Jack) A'Court",
+  "givenName": "John (Jack)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "5 OCT 1887",
+  "birthPlace": "Bristol, Gloucestershire, St Judes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2381 122 3.jpg",
+    "Data/Media/1911 census/Bristol/RG14 15010 14.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2210",
+    "I2212"
+  ],
+  "baptismDate": "6 NOV 1887",
+  "baptismPlace": "Bristol, Staints Philip & Jacob",
+  "occupations": [
+    "Messenger railway",
+    "Bootmaker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Gloucestershire, Bristol, Barrow Court, 1 Wade St"
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Gloucestershire, 36 Wade St."
+    }
+  ],
+  "avatar": "avatars/I2214_0.jpg"
+}

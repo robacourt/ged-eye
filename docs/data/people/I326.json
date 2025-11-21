@@ -1,0 +1,28 @@
+{
+  "id": "I326",
+  "name": "Ann",
+  "givenName": "Ann",
+  "surname": "",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I325"
+  ],
+  "childIds": [
+    "I194"
+  ],
+  "parentIds": [],
+  "notes": [
+    "Of East Stour ill dau of Elizabeth Francis"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I325",
+      "familyId": "F111"
+    }
+  ]
+}

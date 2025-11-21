@@ -1,0 +1,63 @@
+{
+  "id": "I2125",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1888",
+  "birthPlace": "Jersey, C.I. St. Ouens",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Jersey C.I/RG12 4699 133 6.jpg",
+    "Data/Media/1901 census/C isles/St.Ouen/RG13 5316 44 6.jpg"
+  ],
+  "spouseIds": [
+    "I2131"
+  ],
+  "childIds": [
+    "I2139",
+    "I2133",
+    "I2134",
+    "I2135",
+    "I2136",
+    "I2137",
+    "I2138",
+    "I2132"
+  ],
+  "parentIds": [
+    "I2121",
+    "I2122"
+  ],
+  "occupations": [
+    "Farmer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1901",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    },
+    {
+      "date": "1911",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1969",
+      "place": "Jersey, C.I. Champ Donne, St. Ouen"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2131",
+      "familyId": "F762",
+      "marriageDate": "Abt 1911"
+    }
+  ],
+  "avatar": "avatars/I2125_0.jpg"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "I2776",
+  "name": "Florence Hubbard",
+  "givenName": "Florence",
+  "surname": "Hubbard",
+  "sex": "F",
+  "birthDate": "ABT 1875",
+  "birthPlace": "Middlesex, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2771",
+    "I2772"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Middlesex, Bethnal Green, 28 West Street"
+    }
+  ]
+}

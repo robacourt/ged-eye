@@ -1,0 +1,44 @@
+{
+  "id": "I1462",
+  "name": "Emily Rosilla A'Court",
+  "givenName": "Emily Rosilla",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1880",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg"
+  ],
+  "spouseIds": [
+    "I1632"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1459",
+    "I1460"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burges"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
+    },
+    {
+      "date": "1901",
+      "place": "Ealing, Middlesex, 13 Norfolk Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1632",
+      "familyId": "F563"
+    }
+  ],
+  "avatar": "avatars/I1462_0.jpg"
+}

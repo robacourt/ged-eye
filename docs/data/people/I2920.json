@@ -1,0 +1,27 @@
+{
+  "id": "I2920",
+  "name": "Lily A'Court",
+  "givenName": "Lily",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1901",
+  "birthPlace": "Wiltshire, Box",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Wiltshire/Box/RG14 11864 213.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1185",
+    "I1190"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "avatar": "avatars/I2920_0.jpg"
+}

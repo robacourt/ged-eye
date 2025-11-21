@@ -1,0 +1,54 @@
+{
+  "id": "I1",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1792",
+  "birthPlace": "Lattiford, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2"
+  ],
+  "childIds": [
+    "I3",
+    "I4",
+    "I5",
+    "I6",
+    "I7",
+    "I8",
+    "I9",
+    "I10",
+    "I11"
+  ],
+  "parentIds": [
+    "I17",
+    "I30"
+  ],
+  "occupations": [
+    "Miller of Stalbridge"
+  ],
+  "notes": [
+    "Message Boards  Login"
+  ],
+  "censusRecords": [
+    {
+      "date": "1821",
+      "place": "Marnhull, Dorset, Coxhill"
+    },
+    {
+      "date": "1851",
+      "place": "Marnhull, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2",
+      "familyId": "F1",
+      "marriageDate": "21 MAR1813",
+      "marriagePlace": "Hinton St. Mary, Dorset"
+    }
+  ]
+}

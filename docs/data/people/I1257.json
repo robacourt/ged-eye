@@ -1,0 +1,47 @@
+{
+  "id": "I1257",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1842",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "AFT 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1256"
+  ],
+  "childIds": [
+    "I1631",
+    "I1255"
+  ],
+  "parentIds": [
+    "I177",
+    "I1195"
+  ],
+  "baptismDate": "30 APR 1842",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Washerwoman",
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "East Well Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1256",
+      "familyId": "F507"
+    }
+  ]
+}

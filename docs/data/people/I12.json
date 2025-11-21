@@ -1,0 +1,34 @@
+{
+  "id": "I12",
+  "name": "Robert Dean",
+  "givenName": "Robert",
+  "surname": "Dean",
+  "sex": "M",
+  "birthDate": "1 MAR 1817",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I6"
+  ],
+  "childIds": [
+    "I13",
+    "I14"
+  ],
+  "parentIds": [
+    "I137",
+    "I136"
+  ],
+  "baptismDate": "19 JAN 1817",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Maltster of Burton Street"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I6",
+      "familyId": "F5"
+    }
+  ]
+}

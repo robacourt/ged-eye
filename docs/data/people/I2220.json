@@ -1,0 +1,27 @@
+{
+  "id": "I2220",
+  "name": "Mary Hungerford",
+  "givenName": "Mary",
+  "surname": "Hungerford",
+  "sex": "F",
+  "birthDate": "ABT 1795",
+  "birthPlace": "England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2219"
+  ],
+  "childIds": [
+    "I2187"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2219",
+      "familyId": "F786",
+      "marriageDate": "28 SEP 1818",
+      "marriagePlace": "Wetbury-On-Trym, Bristol"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "I1820",
+  "name": "Suzanne B A'Court",
+  "givenName": "Suzanne B",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "2ND QRT 1955",
+  "birthPlace": "Woolwich",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1819"
+  ]
+}

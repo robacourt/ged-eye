@@ -1,0 +1,28 @@
+{
+  "id": "I1937",
+  "name": "Trevor A'Court",
+  "givenName": "Trevor",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1938"
+  ],
+  "childIds": [
+    "I1940"
+  ],
+  "parentIds": [
+    "I844",
+    "I858"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1938",
+      "familyId": "F688"
+    }
+  ]
+}

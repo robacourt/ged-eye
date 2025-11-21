@@ -1,0 +1,35 @@
+{
+  "id": "I2809",
+  "name": "Edward A'Court",
+  "givenName": "Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1864",
+  "birthPlace": "London, St lukes",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg",
+    "Data/Media/1881 census/London/Holborn/RG11 342 129 11.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2020",
+    "I2807"
+  ],
+  "occupations": [
+    "Pauper Inmate / Carman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Holborn, 15 Peerless St."
+    },
+    {
+      "date": "1881",
+      "place": "London, St Pancras, Holborn Union Workhouse, Grays Inn Rd."
+    }
+  ],
+  "avatar": "avatars/I2809_0.jpg"
+}

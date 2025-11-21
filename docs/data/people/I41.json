@@ -1,0 +1,20 @@
+{
+  "id": "I41",
+  "name": "Elijah A'Court",
+  "givenName": "Elijah",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4.6.1823",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I34",
+    "I37"
+  ],
+  "baptismDate": "26.12.1823",
+  "baptismPlace": "Marnhull, Dorset"
+}

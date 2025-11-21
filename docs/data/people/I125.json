@@ -1,0 +1,29 @@
+{
+  "id": "I125",
+  "name": "Timothy John A'Court",
+  "givenName": "Timothy John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "8 NOV 1968",
+  "birthPlace": "Guildford, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1390"
+  ],
+  "childIds": [
+    "I1396",
+    "I1397"
+  ],
+  "parentIds": [
+    "I122",
+    "I124"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1390",
+      "familyId": "F79"
+    }
+  ]
+}

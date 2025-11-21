@@ -1,0 +1,51 @@
+{
+  "id": "I1581",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1888",
+  "birthPlace": "Buckhorn Weston, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Dorset/Buckhorn Weston/RG12 1902 148 7.jpg",
+    "Data/Media/1901 census/Dorset/Buckhorn Weston/RG13 1968 52 16.jpg"
+  ],
+  "spouseIds": [
+    "I531"
+  ],
+  "childIds": [
+    "I2896"
+  ],
+  "parentIds": [
+    "I220",
+    "I355"
+  ],
+  "occupations": [
+    "Baker's Errand Boy",
+    "Farm labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Dorset, Buckhorn Weston, Higher Hill"
+    },
+    {
+      "date": "1901",
+      "place": "Buckhorn Weston, Dorset, 1 Tunnel Head"
+    },
+    {
+      "date": "1911",
+      "place": "Dorset, Fifehead Magdalen"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I531",
+      "familyId": "F992",
+      "marriageDate": "Abt 1909"
+    }
+  ],
+  "avatar": "avatars/I1581_0.jpg"
+}

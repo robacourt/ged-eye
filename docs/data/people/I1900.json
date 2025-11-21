@@ -1,0 +1,27 @@
+{
+  "id": "I1900",
+  "name": "Joseph Adams Carlisle",
+  "givenName": "Joseph Adams",
+  "surname": "Carlisle",
+  "sex": "M",
+  "birthDate": "1835",
+  "birthPlace": "Birkenhead, Cheshire",
+  "deathDate": "29 JUL 1904",
+  "deathPlace": "Waimate, Canterbury, NZ",
+  "photos": [],
+  "spouseIds": [
+    "I1901"
+  ],
+  "childIds": [
+    "I797"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1901",
+      "familyId": "F673",
+      "marriageDate": "12 MAY 1859",
+      "marriagePlace": "Christchurch, NZ"
+    }
+  ]
+}

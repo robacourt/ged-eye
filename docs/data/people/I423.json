@@ -1,0 +1,93 @@
+{
+  "id": "I423",
+  "name": "George Rudolph Nicholas Frentzel",
+  "givenName": "George Rudolph Nicholas",
+  "surname": "Frentzel",
+  "sex": "M",
+  "birthDate": "9 JUN1835",
+  "birthPlace": "Hamburg Germany",
+  "deathDate": "3 JUL 1915",
+  "deathPlace": "London, Hackney",
+  "photos": [
+    "Data/Picture/G.R.N.Frentzel.jpg",
+    "Data/Picture/George Rudolph Nicholas Frentzel.tif",
+    "Data/Media/Passenger lists/Geo R N Frentzel/Geo R N Frentzel 1.jpg",
+    "Data/Media/Passenger lists/Geo R N Frentzel/Geo R N Frentzel 2.jpg",
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/1 Morning Post  9th May 1876 022-0005.docx",
+    "Data/Media/London Gazette/GRN Frentzel Bankruptcy.jpg",
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/7 London Standard 5th March 1886 0007-0003.docx",
+    "Data/Media/Wills & Probate/Geo R N Frentzel.png",
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/8 London  Daily News  27 Jan 1890 020-0004.docx"
+  ],
+  "spouseIds": [
+    "I2326",
+    "I424"
+  ],
+  "childIds": [
+    "I2327",
+    "I417",
+    "I425",
+    "I426",
+    "I427",
+    "I428"
+  ],
+  "parentIds": [
+    "I441",
+    "I442"
+  ],
+  "burialPlace": "London, Chingford Mount Cemetery",
+  "occupations": [
+    "Merchant Clerk, Buyer of ....... Silk",
+    "Silk and General Merchant",
+    "Silk Merchant",
+    "China Merchant",
+    "Silk Merchant",
+    "Retired Raw Silk Merchant"
+  ],
+  "notes": [
+    "poss 6brothers & 6 sisters"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Shoreditch, 47 Clifton St"
+    },
+    {
+      "date": "1871",
+      "place": "London, Hackney, 122 Stoke Newington Rd"
+    },
+    {
+      "date": "1881",
+      "place": "London, Hackney,42 Rectory Rd., [Lodger]"
+    },
+    {
+      "date": "1891",
+      "place": "London, Stamford Hill, 96 Osbaldeston Road"
+    },
+    {
+      "date": "1901",
+      "place": "London, Stamford Hill, 96 Osbaldeston Road"
+    },
+    {
+      "date": "1911",
+      "place": "London, Stamford Hill, 46 Northfield Road"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2326",
+      "familyId": "F825",
+      "marriageDate": "29 SEP 1856",
+      "marriagePlace": "City of London, All Hallows, London Wall",
+      "divorceDate": "1878",
+      "divorcePlace": "London"
+    },
+    {
+      "spouseId": "I424",
+      "familyId": "F192",
+      "marriageDate": "22 JUL 1885",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I423_0.jpg"
+}

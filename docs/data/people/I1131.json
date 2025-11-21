@@ -1,0 +1,26 @@
+{
+  "id": "I1131",
+  "name": "James West",
+  "givenName": "James",
+  "surname": "West",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [
+    "I1130"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Groom"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F459"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "I1636",
+  "name": "Charles Henry A'Court",
+  "givenName": "Charles Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1862",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Yeovil/RG10 2418 13 15.jpg"
+  ],
+  "spouseIds": [
+    "I1637"
+  ],
+  "childIds": [
+    "I2579",
+    "I1638",
+    "I1639",
+    "I1640",
+    "I1641",
+    "I2527"
+  ],
+  "parentIds": [
+    "I1766",
+    "I1864"
+  ],
+  "occupations": [
+    "Leather Parer",
+    "Leather Parer",
+    "Glover Parer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Yeovil, Somerset, 41 Larkhill"
+    },
+    {
+      "date": "1891",
+      "place": "Yeovil, Somerset, 29 Queen's St."
+    },
+    {
+      "date": "1901",
+      "place": "Yeovil, Somerset, Huish"
+    },
+    {
+      "date": "1911",
+      "place": "Yeovil, Somerset, 11 Woodland Grove, Mill Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1637",
+      "familyId": "F608"
+    }
+  ],
+  "avatar": "avatars/I1636_0.jpg"
+}

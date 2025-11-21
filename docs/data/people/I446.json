@@ -1,0 +1,66 @@
+{
+  "id": "I446",
+  "name": "Harriet Eliza Hubbard",
+  "givenName": "Harriet Eliza",
+  "surname": "Hubbard",
+  "sex": "F",
+  "birthDate": "27 AUG 1869",
+  "birthPlace": "London, Bethnal Green,",
+  "deathDate": "JUNE 1947",
+  "deathPlace": "Hackney, London",
+  "photos": [
+    "Data/Picture/Harriet Hubbard 2.jpg",
+    "Data/Picture/Harriet Hubbard.jpg",
+    "Data/Media/1871 census/London/Bethnal Green/RG10 477 44 34.jpg"
+  ],
+  "spouseIds": [
+    "I445"
+  ],
+  "childIds": [
+    "I418",
+    "I448",
+    "I447"
+  ],
+  "parentIds": [
+    "I2771",
+    "I2772"
+  ],
+  "notes": [
+    "not certain that this is Sams wife. name Hubbard came from Doreen on 1901 census as possible Buiro"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Middlesex, Bethnal Green, 28 West Street"
+    },
+    {
+      "date": "1881",
+      "place": "Middlesex, Bethnal Green, 28 West Street"
+    },
+    {
+      "date": "1901",
+      "place": "London, Hackney, 64 Kenninghall Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Lower Clapton,164 Lower Clapton Road"
+    },
+    {
+      "date": "2021",
+      "place": "London, Lower Clapton,164 Lower Clapton Road E5"
+    },
+    {
+      "date": "1939 REGISTER",
+      "place": "Buckinghamshire, Chesham, Brucecot, Chartridge Lane."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I445",
+      "familyId": "F193",
+      "marriageDate": "DEC 1893",
+      "marriagePlace": "London, Shorditch,"
+    }
+  ],
+  "avatar": "avatars/I446_0.jpg"
+}

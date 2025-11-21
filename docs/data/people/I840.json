@@ -1,0 +1,26 @@
+{
+  "id": "I840",
+  "name": "Dalton Britton A'Court",
+  "givenName": "Dalton Britton",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "27 AUG 1901",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "FEB 1902",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I853"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I853",
+      "familyId": "F365"
+    }
+  ]
+}

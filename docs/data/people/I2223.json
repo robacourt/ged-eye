@@ -1,0 +1,24 @@
+{
+  "id": "I2223",
+  "name": "Nicholas D Barnes",
+  "givenName": "Nicholas D",
+  "surname": "Barnes",
+  "sex": "M",
+  "birthDate": "ABT 1974",
+  "birthPlace": "England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2201"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2201",
+      "familyId": "F790",
+      "marriageDate": "SEP 2003"
+    }
+  ]
+}

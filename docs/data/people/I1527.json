@@ -1,0 +1,27 @@
+{
+  "id": "I1527",
+  "name": "Linda Julia Francis Morgan",
+  "givenName": "Linda Julia Francis",
+  "surname": "Morgan",
+  "sex": "F",
+  "birthDate": "29 JUN 1959",
+  "birthPlace": "Holme Abby, Cumberland",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1528"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1524",
+    "I1525"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1528",
+      "familyId": "F583",
+      "marriageDate": "15 SEP 1979"
+    }
+  ]
+}

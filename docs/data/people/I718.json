@@ -1,0 +1,29 @@
+{
+  "id": "I718",
+  "name": "Gertrude Annie Foot",
+  "givenName": "Gertrude Annie",
+  "surname": "Foot",
+  "sex": "F",
+  "birthDate": "1901",
+  "birthPlace": null,
+  "deathDate": "1956",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1398"
+  ],
+  "childIds": [
+    "I719"
+  ],
+  "parentIds": [
+    "I580",
+    "I582"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1398",
+      "familyId": "F292",
+      "marriageDate": "1918"
+    }
+  ]
+}

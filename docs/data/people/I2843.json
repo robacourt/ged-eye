@@ -1,0 +1,48 @@
+{
+  "id": "I2843",
+  "name": "Jane Unknown",
+  "givenName": "Jane",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1842",
+  "birthPlace": "Somerset, Frome",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Herefordshire/RG11 2605 37 21.jpg",
+    "Data/Media/1901 census/Herefordshire/RG13 2493 71 15.jpg",
+    "Data/Media/1911 census/Herefordshire/RG14 15809 298.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I2842"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Boarding house, Own account"
+  ],
+  "notes": [
+    "First name(s) Last name Relationship to head Marital status Sex Age Birth year Occupation Birth place"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Herefordshire, Leominster, 28 Burgess St."
+    },
+    {
+      "date": "1901",
+      "place": "Herefordshire, Leominster, 17 Broad St."
+    },
+    {
+      "date": "1911",
+      "place": "Herefordshire, Leominster, 17 Broad St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F936"
+    }
+  ],
+  "avatar": "avatars/I2843_0.jpg"
+}

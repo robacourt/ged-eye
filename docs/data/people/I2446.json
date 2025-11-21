@@ -1,0 +1,49 @@
+{
+  "id": "I2446",
+  "name": "Louisa Esther Mears",
+  "givenName": "Louisa Esther",
+  "surname": "Mears",
+  "sex": "F",
+  "birthDate": "1862",
+  "birthPlace": "London, Bethnal Green",
+  "deathDate": "1954",
+  "deathPlace": "London, Islington",
+  "photos": [
+    "Data/Media/1901 census/London/Bethnal Green/RG13 284 135 39.jpg",
+    "Data/Media/1911 census/London/Bethnal Green/RG14 1422 191.jpg"
+  ],
+  "spouseIds": [
+    "I2451"
+  ],
+  "childIds": [
+    "I2447",
+    "I2448"
+  ],
+  "parentIds": [
+    "I2450",
+    "I2449"
+  ],
+  "occupations": [
+    "Collar Machinist",
+    "Collar Machinist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Bethnal Green, 8 Pollards Row."
+    },
+    {
+      "date": "1911",
+      "place": "London, Bethnal Green, 8 Pollards Row."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2451",
+      "familyId": "F867",
+      "marriageDate": "Abt 1880",
+      "marriagePlace": "London, Hackney"
+    }
+  ],
+  "avatar": "avatars/I2446_0.jpg"
+}

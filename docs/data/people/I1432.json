@@ -1,0 +1,29 @@
+{
+  "id": "I1432",
+  "name": "Raymond Glen A'Court",
+  "givenName": "Raymond Glen",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Raymond Glen A'Court.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [
+    "I1433"
+  ],
+  "parentIds": [
+    "I1430",
+    "I1431"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F556"
+    }
+  ],
+  "avatar": "avatars/I1432_0.jpg"
+}

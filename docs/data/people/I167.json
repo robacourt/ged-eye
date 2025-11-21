@@ -1,0 +1,40 @@
+{
+  "id": "I167",
+  "name": "Michael Cull Harding",
+  "givenName": "Michael Cull",
+  "surname": "Harding",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "ABT 1847",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I48"
+  ],
+  "childIds": [
+    "I2483"
+  ],
+  "parentIds": [
+    "I168",
+    "I169"
+  ],
+  "baptismDate": "10 JUN 1787",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Carpenter"
+  ],
+  "notes": [
+    "Will written 7 May 1845",
+    "w 7.5.1845 pr 1.10.1847  pcc Illegitimate son of Peter Harding"
+  ],
+  "religion": "Roman Catholic",
+  "marriages": [
+    {
+      "spouseId": "I48",
+      "familyId": "F31",
+      "marriageDate": "20 MAY 1810",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

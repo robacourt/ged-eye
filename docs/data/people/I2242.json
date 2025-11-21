@@ -1,0 +1,29 @@
+{
+  "id": "I2242",
+  "name": "Harold Colston Davis",
+  "givenName": "Harold Colston",
+  "surname": "Davis",
+  "sex": "M",
+  "birthDate": "1 MAY 1888",
+  "birthPlace": "Bristol",
+  "deathDate": "29 DEC 1968",
+  "deathPlace": "Bristol",
+  "photos": [],
+  "spouseIds": [
+    "I2243"
+  ],
+  "childIds": [
+    "I2151"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Jig and Tool Draughtsman"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2243",
+      "familyId": "F769",
+      "marriageDate": "23 OCT 1920"
+    }
+  ]
+}

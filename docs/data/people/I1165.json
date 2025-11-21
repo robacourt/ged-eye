@@ -1,0 +1,30 @@
+{
+  "id": "I1165",
+  "name": "Emily Curtis",
+  "givenName": "Emily",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1166"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "10 SEP 1865",
+  "baptismPlace": "Marnhull, Dorset",
+  "marriages": [
+    {
+      "spouseId": "I1166",
+      "familyId": "F476",
+      "marriageDate": "15 SEP 1887",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

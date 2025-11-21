@@ -1,0 +1,30 @@
+{
+  "id": "I2910",
+  "name": "Percy Le Manguand",
+  "givenName": "Percy",
+  "surname": "Le Manguand",
+  "sex": "M",
+  "birthDate": "1897",
+  "birthPlace": "Jersey C.I St Helier",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34928 87 .jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2877",
+    "I2812"
+  ],
+  "occupations": [
+    "Working on farm"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey C.I St Helier, St Aubins Rd, Orient Cottage"
+    }
+  ],
+  "avatar": "avatars/I2910_0.jpg"
+}

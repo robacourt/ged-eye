@@ -1,0 +1,39 @@
+{
+  "id": "I2131",
+  "name": "Melanie Le Maistre",
+  "givenName": "Melanie",
+  "surname": "Le Maistre",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2125"
+  ],
+  "childIds": [
+    "I2139",
+    "I2133",
+    "I2134",
+    "I2135",
+    "I2136",
+    "I2137",
+    "I2138",
+    "I2132"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Jersey, C.I. L'Etacq, St. Ouen."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2125",
+      "familyId": "F762",
+      "marriageDate": "Abt 1911"
+    }
+  ]
+}

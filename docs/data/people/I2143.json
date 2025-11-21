@@ -1,0 +1,25 @@
+{
+  "id": "I2143",
+  "name": "Albert Joshua Renmant",
+  "givenName": "Albert Joshua",
+  "surname": "Renmant",
+  "sex": "M",
+  "birthDate": "ABT 1893",
+  "birthPlace": "Charlwood",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2141"
+  ],
+  "childIds": [
+    "I2144"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2141",
+      "familyId": "F764"
+    }
+  ]
+}

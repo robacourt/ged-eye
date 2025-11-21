@@ -1,0 +1,44 @@
+{
+  "id": "I2548",
+  "name": "Phoebe Ann Unknown",
+  "givenName": "Phoebe Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1876",
+  "birthPlace": "Astbury, Cheshire",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/London/Chelsea/RG14 399 462.jpg"
+  ],
+  "spouseIds": [
+    "I2555"
+  ],
+  "childIds": [
+    "I2549",
+    "I2550",
+    "I2551",
+    "I2553",
+    "I2552",
+    "I2554"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Chelsea, 47 Shawfield St"
+    },
+    {
+      "date": "1911",
+      "place": "London, Chelsea, 29 Shawfield St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2555",
+      "familyId": "F899",
+      "marriageDate": "ABT 1899"
+    }
+  ],
+  "avatar": "avatars/I2548_0.jpg"
+}

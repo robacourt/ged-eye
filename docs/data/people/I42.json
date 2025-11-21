@@ -1,0 +1,36 @@
+{
+  "id": "I42",
+  "name": "Eli A'Court",
+  "givenName": "Eli",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "6.8.1825",
+  "birthPlace": null,
+  "deathDate": "ANTE1861",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I254"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I34",
+    "I37"
+  ],
+  "baptismDate": "4.9.1825",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "15.1841  25-1851"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I254",
+      "familyId": "F29",
+      "marriageDate": "5.7.1846",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

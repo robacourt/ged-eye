@@ -1,0 +1,36 @@
+{
+  "id": "I652",
+  "name": "Ellen Warren",
+  "givenName": "Ellen",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "26.10.1876",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I662"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I646",
+    "I241"
+  ],
+  "baptismDate": "11.11.1877",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Glovemaker"
+  ],
+  "notes": [
+    "15 in 1891, 31 in 1906,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I662",
+      "familyId": "F273",
+      "marriageDate": "25.12.1906",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

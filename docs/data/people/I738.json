@@ -1,0 +1,28 @@
+{
+  "id": "I738",
+  "name": "Thomas John O'Connor",
+  "givenName": "Thomas John",
+  "surname": "O'Connor",
+  "sex": "M",
+  "birthDate": "7 MARCH 1950",
+  "birthPlace": "Sydney, NSW",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1014"
+  ],
+  "childIds": [
+    "I739"
+  ],
+  "parentIds": [
+    "I737",
+    "I736"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1014",
+      "familyId": "F302"
+    }
+  ]
+}

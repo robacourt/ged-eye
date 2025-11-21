@@ -1,0 +1,45 @@
+{
+  "id": "I2142",
+  "name": "Maud Cecilia A'Court",
+  "givenName": "Maud Cecilia",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1896",
+  "birthPlace": "Weybridge, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1901 census/Surrey/RG13 589 24.jpg",
+    "Data/Media/1911 census/Surrey/RG14 3007 134.jpg"
+  ],
+  "spouseIds": [
+    "I2367"
+  ],
+  "childIds": [
+    "I2368"
+  ],
+  "parentIds": [
+    "I532",
+    "I533"
+  ],
+  "occupations": [
+    "Domestic Servant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "Addlestone, Surrey, Wingfield Pinewood Grove"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2367",
+      "familyId": "F838"
+    }
+  ],
+  "avatar": "avatars/I2142_0.jpg"
+}

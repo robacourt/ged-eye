@@ -1,0 +1,30 @@
+{
+  "id": "I2144",
+  "name": "Daphne Renmant",
+  "givenName": "Daphne",
+  "surname": "Renmant",
+  "sex": "F",
+  "birthDate": "1921",
+  "birthPlace": "Addlestone, Surrey",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2145"
+  ],
+  "childIds": [
+    "I2147",
+    "I2146",
+    "I2148"
+  ],
+  "parentIds": [
+    "I2143",
+    "I2141"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2145",
+      "familyId": "F765"
+    }
+  ]
+}

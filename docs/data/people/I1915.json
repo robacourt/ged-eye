@@ -1,0 +1,29 @@
+{
+  "id": "I1915",
+  "name": "Emily A G Unknown",
+  "givenName": "Emily A G",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1875",
+  "birthPlace": "Glamorganshire,Tondu",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1914"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Swindon, Wiltshire, 23  Ford St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1914",
+      "familyId": "F678"
+    }
+  ]
+}

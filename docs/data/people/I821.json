@@ -1,0 +1,43 @@
+{
+  "id": "I821",
+  "name": "Lucy Britton A'Court",
+  "givenName": "Lucy Britton",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "25 JUN 1864",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Nina, Lucy, Frank A'Court.jpg"
+  ],
+  "spouseIds": [
+    "I828",
+    "I829"
+  ],
+  "childIds": [
+    "I830"
+  ],
+  "parentIds": [
+    "I776",
+    "I820"
+  ],
+  "notes": [
+    "SARAH'S WILL"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I828",
+      "familyId": "F350",
+      "marriageDate": "14 JAN 1891",
+      "marriagePlace": "St Lukes, Christchurch, NZ"
+    },
+    {
+      "spouseId": "I829",
+      "familyId": "F351",
+      "marriageDate": "1905",
+      "marriagePlace": "New Zealand"
+    }
+  ],
+  "avatar": "avatars/I821_0.jpg"
+}

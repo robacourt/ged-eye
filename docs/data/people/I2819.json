@@ -1,0 +1,29 @@
+{
+  "id": "I2819",
+  "name": "Robert A'Court",
+  "givenName": "Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1815",
+  "birthPlace": "Froome ? Somerset",
+  "deathDate": "BEF 1881",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2820"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Devon, Plympton, Bickleigh, Shaugh Bridge"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2820",
+      "familyId": "F756"
+    }
+  ]
+}

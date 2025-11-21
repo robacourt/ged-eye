@@ -1,0 +1,34 @@
+{
+  "id": "I1461",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1848",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1861 Census/Marnhull/RG09 1329 35 39.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I177",
+    "I1195"
+  ],
+  "baptismDate": "6 OCT 1860",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "15 MAY 1863",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Agricultural Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "avatar": "avatars/I1461_0.jpg"
+}

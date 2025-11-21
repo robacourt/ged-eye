@@ -1,0 +1,24 @@
+{
+  "id": "I1271",
+  "name": "Unknown Dawson",
+  "givenName": "Unknown",
+  "surname": "Dawson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1104"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1104",
+      "familyId": "F446",
+      "marriageDate": "1946"
+    }
+  ]
+}

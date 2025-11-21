@@ -1,0 +1,20 @@
+{
+  "id": "I2945",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "12 DEC 1786",
+  "birthPlace": "Somerset, Horsington",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2939",
+    "I2940"
+  ],
+  "baptismDate": "17 DEC 1786",
+  "baptismPlace": "Somerset, Horsington"
+}

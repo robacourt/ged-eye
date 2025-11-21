@@ -1,0 +1,28 @@
+{
+  "id": "I698",
+  "name": "Anne Edwards",
+  "givenName": "Anne",
+  "surname": "Edwards",
+  "sex": "F",
+  "birthDate": "BEF 1722",
+  "birthPlace": null,
+  "deathDate": "1748",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I537"
+  ],
+  "childIds": [
+    "I699",
+    "I700"
+  ],
+  "parentIds": [],
+  "burialDate": "28 SEP 1748",
+  "burialPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I537",
+      "familyId": "F228"
+    }
+  ]
+}

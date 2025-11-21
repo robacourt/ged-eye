@@ -1,0 +1,34 @@
+{
+  "id": "I2567",
+  "name": "May Maria Unknown",
+  "givenName": "May Maria",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1885",
+  "birthPlace": "London, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2459"
+  ],
+  "childIds": [
+    "I2568",
+    "I2569",
+    "I2570"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hackney, 23 Colne Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2459",
+      "familyId": "F902",
+      "marriageDate": "ABT 1906"
+    }
+  ]
+}

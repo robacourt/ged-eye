@@ -1,0 +1,34 @@
+{
+  "id": "I2903",
+  "name": "Alice Unknown",
+  "givenName": "Alice",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1885",
+  "birthPlace": "London, Bethnal Green",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1911 census/Kent/RG14 3691 127.jpg"
+  ],
+  "spouseIds": [
+    "I2904"
+  ],
+  "childIds": [
+    "I2902"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Kent, Biggen Hill, The Grove"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2904",
+      "familyId": "F994"
+    }
+  ],
+  "avatar": "avatars/I2903_0.jpg"
+}

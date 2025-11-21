@@ -1,0 +1,18 @@
+{
+  "id": "I1269",
+  "name": "Eleanor M A'Court",
+  "givenName": "Eleanor M",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1919",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1090",
+    "I1091"
+  ]
+}

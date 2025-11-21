@@ -1,0 +1,25 @@
+{
+  "id": "I2941",
+  "name": "John Longman",
+  "givenName": "John",
+  "surname": "Longman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2940"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2940",
+      "familyId": "F1005",
+      "marriageDate": "1792",
+      "marriagePlace": "Somerset, Horsington"
+    }
+  ]
+}

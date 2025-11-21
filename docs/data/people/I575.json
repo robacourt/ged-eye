@@ -1,0 +1,25 @@
+{
+  "id": "I575",
+  "name": "Andrew Ridler",
+  "givenName": "Andrew",
+  "surname": "Ridler",
+  "sex": "M",
+  "birthDate": "1829",
+  "birthPlace": null,
+  "deathDate": "1892",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I574"
+  ],
+  "childIds": [
+    "I453"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I574",
+      "familyId": "F316"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I1299",
+  "name": "Adrian A'Court",
+  "givenName": "Adrian",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1916"
+  ],
+  "childIds": [
+    "I1917",
+    "I1918",
+    "I1919"
+  ],
+  "parentIds": [
+    "I1266",
+    "I1298"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1916",
+      "familyId": "F679"
+    }
+  ]
+}

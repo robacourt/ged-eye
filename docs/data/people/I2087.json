@@ -1,0 +1,35 @@
+{
+  "id": "I2087",
+  "name": "George Alfred A'Court",
+  "givenName": "George Alfred",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1879",
+  "birthPlace": "London, Kensington",
+  "deathDate": "1922",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg",
+    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I878",
+    "I928"
+  ],
+  "occupations": [
+    "Errand Boy"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1891",
+      "place": "London,Kensington 9, Lucerne Mews"
+    }
+  ],
+  "avatar": "avatars/I2087_0.jpg"
+}

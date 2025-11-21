@@ -1,0 +1,31 @@
+{
+  "id": "I1953",
+  "name": "Douglas Armstrong",
+  "givenName": "Douglas",
+  "surname": "Armstrong",
+  "sex": "M",
+  "birthDate": "1921",
+  "birthPlace": "London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
+  ],
+  "spouseIds": [
+    "I1954"
+  ],
+  "childIds": [
+    "I1955"
+  ],
+  "parentIds": [
+    "I1952",
+    "I1029"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1954",
+      "familyId": "F697"
+    }
+  ],
+  "avatar": "avatars/I1953_0.jpg"
+}

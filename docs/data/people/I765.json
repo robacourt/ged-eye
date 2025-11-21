@@ -1,0 +1,24 @@
+{
+  "id": "I765",
+  "name": "Walter Power Stanford",
+  "givenName": "Walter Power",
+  "surname": "Stanford",
+  "sex": "M",
+  "birthDate": "1916",
+  "birthPlace": null,
+  "deathDate": "2004",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I576"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I576",
+      "familyId": "F357",
+      "marriageDate": "SEP 1945"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "I178",
+  "name": "William Curtis",
+  "givenName": "William",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": "BEF 1806",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I50"
+  ],
+  "childIds": [
+    "I179",
+    "I180",
+    "I181",
+    "I182"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Sawyer"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I50",
+      "familyId": "F33",
+      "marriageDate": "22 OCT 1822",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
+}

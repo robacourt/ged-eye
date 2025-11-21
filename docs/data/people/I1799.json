@@ -1,0 +1,17 @@
+{
+  "id": "I1799",
+  "name": "Laurence A A'Court",
+  "givenName": "Laurence A",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "2ND QRT 1954",
+  "birthPlace": "Uckfield",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1798"
+  ]
+}

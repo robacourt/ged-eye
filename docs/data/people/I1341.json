@@ -1,0 +1,25 @@
+{
+  "id": "I1341",
+  "name": "Alison Thomson",
+  "givenName": "Alison",
+  "surname": "Thomson",
+  "sex": "F",
+  "birthDate": "1798",
+  "birthPlace": null,
+  "deathDate": "1898",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1340"
+  ],
+  "childIds": [
+    "I936"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1340",
+      "familyId": "F391"
+    }
+  ]
+}

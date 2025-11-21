@@ -1,0 +1,35 @@
+{
+  "id": "I2590",
+  "name": "Emily Victoria Pearce",
+  "givenName": "Emily Victoria",
+  "surname": "Pearce",
+  "sex": "F",
+  "birthDate": "ABT 1888",
+  "birthPlace": "Bristol, St James",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1587"
+  ],
+  "childIds": [
+    "I2591",
+    "I1701"
+  ],
+  "parentIds": [
+    "I2914"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Bristol, Southville, 10 Allington Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1587",
+      "familyId": "F906",
+      "marriageDate": "ABT 1908"
+    }
+  ]
+}

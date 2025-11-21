@@ -1,0 +1,26 @@
+{
+  "id": "I468",
+  "name": "Mary Lass",
+  "givenName": "Mary",
+  "surname": "Lass",
+  "sex": "F",
+  "birthDate": "Bef 1780",
+  "birthPlace": null,
+  "deathDate": "Aft 1798",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I467"
+  ],
+  "childIds": [
+    "I71",
+    "I1472"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I467",
+      "familyId": "F45"
+    }
+  ]
+}

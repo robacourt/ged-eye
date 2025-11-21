@@ -1,0 +1,25 @@
+{
+  "id": "I1903",
+  "name": "Alice Potts",
+  "givenName": "Alice",
+  "surname": "Potts",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1902"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1902",
+      "familyId": "F674",
+      "marriageDate": "1889",
+      "marriagePlace": "Sydney, NSW"
+    }
+  ]
+}

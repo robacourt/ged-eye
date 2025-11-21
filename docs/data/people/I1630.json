@@ -1,0 +1,26 @@
+{
+  "id": "I1630",
+  "name": "George Warren",
+  "givenName": "George",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": "ABT 1832",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1624"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, Barton"
+    }
+  ],
+  "avatar": "avatars/I1630_0.jpg"
+}

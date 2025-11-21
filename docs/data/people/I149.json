@@ -1,0 +1,28 @@
+{
+  "id": "I149",
+  "name": "Mary Jeffery",
+  "givenName": "Mary",
+  "surname": "Jeffery",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I148"
+  ],
+  "childIds": [
+    "I67"
+  ],
+  "parentIds": [],
+  "notes": [
+    "of Winterborne Zelstone"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I148",
+      "familyId": "F44"
+    }
+  ]
+}

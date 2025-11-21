@@ -1,0 +1,29 @@
+{
+  "id": "I146",
+  "name": "Robert Warren",
+  "givenName": "Robert",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I147"
+  ],
+  "childIds": [
+    "I140"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I147",
+      "familyId": "F82",
+      "marriageDate": "NOT MARR:"
+    }
+  ]
+}

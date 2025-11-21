@@ -1,0 +1,31 @@
+{
+  "id": "I841",
+  "name": "Sydney Charles A'Court",
+  "givenName": "Sydney Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "24 JUL 1902",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1955",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [
+    "I854"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I824",
+    "I836"
+  ],
+  "notes": [
+    "Wises"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I854",
+      "familyId": "F366",
+      "marriageDate": "1926",
+      "marriagePlace": "New Zealand"
+    }
+  ]
+}

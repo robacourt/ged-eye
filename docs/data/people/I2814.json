@@ -1,0 +1,27 @@
+{
+  "id": "I2814",
+  "name": "Edward A'Court",
+  "givenName": "Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1863",
+  "birthPlace": "Jersey C.I, St Ouen",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Jersey/RG10 5763 11 13.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2263",
+    "I2264"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Jersey, C.I. St Ouen, La Porte"
+    }
+  ],
+  "avatar": "avatars/I2814_0.jpg"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "I1256",
+  "name": "James Haskett",
+  "givenName": "James",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "ABT 1842",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1257"
+  ],
+  "childIds": [
+    "I1631",
+    "I1255"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1257",
+      "familyId": "F507"
+    }
+  ]
+}

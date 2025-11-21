@@ -1,0 +1,29 @@
+{
+  "id": "I1278",
+  "name": "Phyllis Stacey",
+  "givenName": "Phyllis",
+  "surname": "Stacey",
+  "sex": "F",
+  "birthDate": "1921",
+  "birthPlace": "Thames Ditton, Surrey",
+  "deathDate": "1955",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1282"
+  ],
+  "childIds": [
+    "I1283",
+    "I1284"
+  ],
+  "parentIds": [
+    "I1276",
+    "I1263"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1282",
+      "familyId": "F518"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "I2523",
+  "name": "John A'Court",
+  "givenName": "John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1935",
+  "birthPlace": "Bournemouth",
+  "deathDate": "2006",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2524"
+  ],
+  "childIds": [
+    "I2525",
+    "I2526"
+  ],
+  "parentIds": [
+    "I2521",
+    "I2522"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2524",
+      "familyId": "F892",
+      "divorceDate": "DATE UNKNOWN"
+    }
+  ]
+}

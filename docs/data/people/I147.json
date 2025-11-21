@@ -1,0 +1,26 @@
+{
+  "id": "I147",
+  "name": "Elizabeth Young",
+  "givenName": "Elizabeth",
+  "surname": "Young",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I146"
+  ],
+  "childIds": [
+    "I140"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I146",
+      "familyId": "F82",
+      "marriageDate": "NOT MARR:"
+    }
+  ]
+}

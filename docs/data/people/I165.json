@@ -1,0 +1,28 @@
+{
+  "id": "I165",
+  "name": "William Senior",
+  "givenName": "William",
+  "surname": "Senior",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I166"
+  ],
+  "childIds": [
+    "I162"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I166",
+      "familyId": "F93"
+    }
+  ]
+}

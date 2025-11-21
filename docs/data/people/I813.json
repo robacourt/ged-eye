@@ -1,0 +1,30 @@
+{
+  "id": "I813",
+  "name": "James Drysdale A'Court",
+  "givenName": "James Drysdale",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "5 NOV 1900",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1972",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I794",
+    "I810"
+  ],
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "Headstone"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F347",
+      "marriageDate": "21 MAY 1879",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+    }
+  ]
+}

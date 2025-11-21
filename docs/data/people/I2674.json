@@ -1,0 +1,18 @@
+{
+  "id": "I2674",
+  "name": "Anne D. A'Court",
+  "givenName": "Anne D.",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "3QTR 1941",
+  "birthPlace": "Islington, London",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2676",
+    "I2675"
+  ]
+}

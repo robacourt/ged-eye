@@ -1,0 +1,57 @@
+{
+  "id": "I386",
+  "name": "John Main",
+  "givenName": "John",
+  "surname": "Main",
+  "sex": "M",
+  "birthDate": "1842",
+  "birthPlace": null,
+  "deathDate": "1929",
+  "deathPlace": "Portsmouth",
+  "photos": [],
+  "spouseIds": [
+    "I379",
+    "I879"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Portsmouth Business",
+    "Insurance agent",
+    "Consular Representative",
+    "Consular representative own account",
+    "Vice Consul for Finland"
+  ],
+  "notes": [
+    "Sometime Russian Consul Portsmouth"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Portsmouth, 82 Thomas St."
+    },
+    {
+      "date": "1891",
+      "place": "Portsmouth, 82 Thomas St."
+    },
+    {
+      "date": "1901",
+      "place": "Hampshire, Portsmouth, 4 Wilberforce Rd."
+    },
+    {
+      "date": "1921",
+      "place": "Portsmouth, 2 Craneswater Avenue"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I379",
+      "familyId": "F174",
+      "marriageDate": "5 APRIL 1898"
+    },
+    {
+      "spouseId": "I879",
+      "familyId": "F595"
+    }
+  ]
+}

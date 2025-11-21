@@ -1,0 +1,35 @@
+{
+  "id": "I2443",
+  "name": "Albert E Stallard",
+  "givenName": "Albert E",
+  "surname": "Stallard",
+  "sex": "M",
+  "birthDate": "ABT 1860",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2444"
+  ],
+  "childIds": [
+    "I1089"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Burgate, Fordingbridge, Hampshire"
+    },
+    {
+      "date": "1891",
+      "place": "Burgate, Fordingbridge, Hampshire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2444",
+      "familyId": "F866"
+    }
+  ]
+}

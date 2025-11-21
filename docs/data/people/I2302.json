@@ -1,0 +1,32 @@
+{
+  "id": "I2302",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1784",
+  "birthPlace": "Chilton, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I2301"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Washerwoman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Castle Cary, Somerset, Cockhill Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2301",
+      "familyId": "F815"
+    }
+  ]
+}

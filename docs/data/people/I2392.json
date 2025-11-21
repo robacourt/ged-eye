@@ -1,0 +1,26 @@
+{
+  "id": "I2392",
+  "name": "Winifred Lilian Bingley",
+  "givenName": "Winifred Lilian",
+  "surname": "Bingley",
+  "sex": "F",
+  "birthDate": "4 JUNE 1914",
+  "birthPlace": "Isle of Wight",
+  "deathDate": "Abt 1973",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [
+    "I1962"
+  ],
+  "childIds": [
+    "I2393",
+    "I2394"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1962",
+      "familyId": "F848"
+    }
+  ]
+}

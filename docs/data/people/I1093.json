@@ -1,0 +1,31 @@
+{
+  "id": "I1093",
+  "name": "Olive Edith A'Court",
+  "givenName": "Olive Edith",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1912",
+  "birthPlace": null,
+  "deathDate": "1972",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [],
+  "spouseIds": [
+    "I1265"
+  ],
+  "childIds": [
+    "I2673"
+  ],
+  "parentIds": [
+    "I1338",
+    "I1089"
+  ],
+  "baptismDate": "8 AUGUST 1815",
+  "baptismPlace": "West Camel, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I1265",
+      "familyId": "F440",
+      "marriageDate": "1931"
+    }
+  ]
+}
