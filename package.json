@@ -1,0 +1,25 @@
+{
+  "name": "ged-eye",
+  "version": "0.1.0",
+  "description": "Modern family tree viewer",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "process-ged": "node scripts/processGed.js"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0",
+    "jsdom": "^25.0.0"
+  },
+  "dependencies": {
+    "cytoscape": "^3.30.0",
+    "parse-gedcom": "^2.0.0",
+    "sharp": "^0.33.0",
+    "@vladmandic/face-api": "^1.7.0",
+    "@canvas/image": "^1.0.0"
+  }
+}
