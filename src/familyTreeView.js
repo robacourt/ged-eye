@@ -551,41 +551,108 @@ export class FamilyTreeView {
       }
     }
 
-    // Clear existing graph and add new elements
-    this.cy.elements().remove();
-    this.cy.add(elements);
+    // Animate transitions between graph states
+    this.animateGraphTransition(elements);
+  }
 
-    // Run dagre layout
+  /**
+   * Animate smooth transitions when switching between people
+   */
+  animateGraphTransition(newElements) {
+    // Save current positions of all existing nodes
+    const oldPositions = new Map();
+    this.cy.nodes().forEach(node => {
+      oldPositions.set(node.id(), { x: node.position().x, y: node.position().y });
+    });
+
+    // Create sets of IDs for comparison
+    const newNodeIds = new Set(newElements.filter(e => e.group === 'nodes').map(e => e.data.id));
+    const newEdgeIds = new Set(newElements.filter(e => e.group === 'edges').map(e => e.data.id));
+    const existingNodeIds = new Set(this.cy.nodes().map(n => n.id()));
+    const existingEdgeIds = new Set(this.cy.edges().map(e => e.id()));
+
+    // Identify nodes/edges to keep, add, or remove
+    const nodesToRemove = [...existingNodeIds].filter(id => !newNodeIds.has(id));
+    const edgesToRemove = [...existingEdgeIds].filter(id => !newEdgeIds.has(id));
+    const edgesToAdd = newElements.filter(e => e.group === 'edges' && !existingEdgeIds.has(e.data.id));
+    const nodesToAdd = [...newNodeIds].filter(id => !existingNodeIds.has(id));
+
+    // Remove old elements immediately (no animation for now, to keep it simple)
+    const elementsToRemove = this.cy.collection();
+    nodesToRemove.forEach(id => elementsToRemove.merge(this.cy.getElementById(id)));
+    edgesToRemove.forEach(id => elementsToRemove.merge(this.cy.getElementById(id)));
+    elementsToRemove.remove();
+
+    // Update data for nodes that are staying
+    newElements.filter(e => e.group === 'nodes' && existingNodeIds.has(e.data.id)).forEach(element => {
+      const node = this.cy.getElementById(element.data.id);
+      Object.keys(element.data).forEach(key => {
+        node.data(key, element.data[key]);
+      });
+    });
+
+    // Add new nodes and edges
+    const elementsToAdd = [];
+    nodesToAdd.forEach(id => {
+      const element = newElements.find(e => e.group === 'nodes' && e.data.id === id);
+      if (element) elementsToAdd.push(element);
+    });
+    edgesToAdd.forEach(edge => elementsToAdd.push(edge));
+
+    if (elementsToAdd.length > 0) {
+      this.cy.add(elementsToAdd);
+    }
+
+    // Run layout to calculate new positions
     const layout = this.cy.layout({
       name: 'dagre',
-      rankDir: 'TB', // Top to bottom
-      nodeSep: 100,  // Horizontal spacing between nodes
-      rankSep: 150,  // Vertical spacing between ranks
+      rankDir: 'TB',
+      nodeSep: 100,
+      rankSep: 150,
       padding: 50,
-      ranker: 'network-simplex' // Better ranking algorithm
+      ranker: 'network-simplex',
+      animate: false
     });
 
     layout.run();
 
-    // After layout, adjust partnership node positions to spread them vertically
+    // Adjust partnership positions
+    this.cy.nodes('[type="partnership"]').forEach(node => {
+      const index = node.data('partnershipIndex');
+      if (index !== undefined && index > 0) {
+        const pos = node.position();
+        node.position({ x: pos.x, y: pos.y + index * 50 });
+      }
+    });
+
+    // Now animate nodes from old positions to new positions
+    this.cy.nodes().forEach(node => {
+      const oldPos = oldPositions.get(node.id());
+      const newPos = { x: node.position().x, y: node.position().y };
+
+      if (oldPos) {
+        // Node existed before - animate from old to new position
+        node.position(oldPos);
+        node.animate({
+          position: newPos,
+          duration: 500,
+          easing: 'ease-in-out-cubic'
+        });
+      } else {
+        // New node - fade in at its position
+        node.style('opacity', 0);
+        node.animate({
+          style: { opacity: 1 },
+          duration: 500,
+          easing: 'ease-in-out-cubic'
+        });
+      }
+    });
+
+    // Fit the view
     setTimeout(() => {
-      const partnershipNodes = this.cy.nodes('[type="partnership"]');
-
-      // Offset each partnership based on its index
-      partnershipNodes.forEach(node => {
-        const index = node.data('partnershipIndex');
-        if (index !== undefined && index > 0) {
-          const currentPos = node.position();
-          const verticalOffset = index * 50; // 50px per additional partnership
-          node.position({
-            x: currentPos.x,
-            y: currentPos.y + verticalOffset
-          });
-        }
-      });
-
       this.cy.fit(50);
-    }, 100);
+    }, 500);
   }
 
   /**
