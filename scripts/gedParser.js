@@ -66,12 +66,38 @@ export function parseGedcom(gedcomText) {
     } else if (tag === 'FILE') {
       if (!parent.FILES) parent.FILES = [];
       parent.FILES.push(value);
+    } else if (tag === 'NOTE') {
+      if (!parent.NOTE) parent.NOTE = [];
+      parent.NOTE.push(value);
+    } else if (tag === 'OCCU') {
+      if (!parent.OCCU) parent.OCCU = [];
+      parent.OCCU.push(value);
+    } else if (tag === 'EMAIL') {
+      parent.EMAIL = value;
+    } else if (tag === 'PHON') {
+      parent.PHON = value;
     } else if (tag === 'BIRT') {
       parent.BIRT = {};
       stack.push(parent.BIRT);
     } else if (tag === 'DEAT') {
       parent.DEAT = {};
       stack.push(parent.DEAT);
+    } else if (tag === 'BAPM') {
+      parent.BAPM = {};
+      stack.push(parent.BAPM);
+    } else if (tag === 'BURI') {
+      parent.BURI = {};
+      stack.push(parent.BURI);
+    } else if (tag === 'CENS') {
+      if (!parent.CENS) parent.CENS = [];
+      const censusRecord = {};
+      parent.CENS.push(censusRecord);
+      stack.push(censusRecord);
+    } else if (tag === 'RESI') {
+      if (!parent.RESI) parent.RESI = [];
+      const residenceRecord = {};
+      parent.RESI.push(residenceRecord);
+      stack.push(residenceRecord);
     } else if (tag === 'OBJE') {
       const obj = {};
       if (!parent.OBJE) parent.OBJE = [];
@@ -158,7 +184,8 @@ export function extractPersonData(parsedGed, personId) {
     }
   }
 
-  return {
+  // Build the result object with all available data
+  const result = {
     id: personId,
     name,
     givenName,
@@ -173,6 +200,38 @@ export function extractPersonData(parsedGed, personId) {
     childIds,
     parentIds
   };
+
+  // Add optional fields if they exist
+  if (data.BAPM?.DATE) result.baptismDate = data.BAPM.DATE;
+  if (data.BAPM?.PLAC) result.baptismPlace = data.BAPM.PLAC;
+
+  if (data.BURI?.DATE) result.burialDate = data.BURI.DATE;
+  if (data.BURI?.PLAC) result.burialPlace = data.BURI.PLAC;
+
+  if (data.OCCU && data.OCCU.length > 0) result.occupations = data.OCCU;
+
+  if (data.NOTE && data.NOTE.length > 0) result.notes = data.NOTE;
+
+  if (data.EMAIL) result.email = data.EMAIL;
+  if (data.PHON) result.phone = data.PHON;
+
+  // Census records
+  if (data.CENS && data.CENS.length > 0) {
+    result.censusRecords = data.CENS.map(cens => ({
+      date: cens.DATE || null,
+      place: cens.PLAC || null
+    })).filter(c => c.date || c.place);
+  }
+
+  // Residences
+  if (data.RESI && data.RESI.length > 0) {
+    result.residences = data.RESI.map(resi => ({
+      date: resi.DATE || null,
+      place: resi.PLAC || null
+    })).filter(r => r.date || r.place);
+  }
+
+  return result;
 }
 
 function convertPath(windowsPath) {
