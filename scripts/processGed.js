@@ -47,10 +47,22 @@ async function processGedcomFile() {
 
     personData.photos = existingPhotos;
 
+    // Preserve existing avatar field if the person JSON already exists
+    const outputFile = path.join(OUTPUT_DIR, `${id}.json`);
+    if (fs.existsSync(outputFile)) {
+      try {
+        const existingData = JSON.parse(fs.readFileSync(outputFile, 'utf-8'));
+        if (existingData.avatar) {
+          personData.avatar = existingData.avatar;
+        }
+      } catch (error) {
+        // If we can't read the existing file, just continue without preserving avatar
+      }
+    }
+
     allIds.push(id);
 
     // Write JSON file for this person
-    const outputFile = path.join(OUTPUT_DIR, `${id}.json`);
     fs.writeFileSync(outputFile, JSON.stringify(personData, null, 2));
 
     count++;

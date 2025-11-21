@@ -98,6 +98,16 @@ export function parseGedcom(gedcomText) {
       const residenceRecord = {};
       parent.RESI.push(residenceRecord);
       stack.push(residenceRecord);
+    } else if (tag === 'MARR') {
+      parent.MARR = {};
+      stack.push(parent.MARR);
+    } else if (tag === 'DIV') {
+      parent.DIV = {};
+      stack.push(parent.DIV);
+    } else if (tag === 'RELI') {
+      parent.RELI = value;
+    } else if (tag === 'EDUC') {
+      parent.EDUC = value;
     } else if (tag === 'OBJE') {
       const obj = {};
       if (!parent.OBJE) parent.OBJE = [];
@@ -147,6 +157,7 @@ export function extractPersonData(parsedGed, personId) {
   // Get spouses and children from families where this person is a parent
   const spouseIds = [];
   const childIds = [];
+  const marriages = [];
 
   if (data.FAMS) {
     for (const famId of data.FAMS) {
@@ -155,13 +166,29 @@ export function extractPersonData(parsedGed, personId) {
 
       const famData = family.data;
 
-      // Add spouse
+      // Determine spouse ID
+      let spouseId = null;
       if (famData.HUSB && famData.HUSB !== personId) {
-        spouseIds.push(famData.HUSB);
+        spouseId = famData.HUSB;
+        spouseIds.push(spouseId);
       }
       if (famData.WIFE && famData.WIFE !== personId) {
-        spouseIds.push(famData.WIFE);
+        spouseId = famData.WIFE;
+        spouseIds.push(spouseId);
       }
+
+      // Add marriage information
+      const marriage = {
+        spouseId: spouseId,
+        familyId: famId
+      };
+
+      if (famData.MARR?.DATE) marriage.marriageDate = famData.MARR.DATE;
+      if (famData.MARR?.PLAC) marriage.marriagePlace = famData.MARR.PLAC;
+      if (famData.DIV?.DATE) marriage.divorceDate = famData.DIV.DATE;
+      if (famData.DIV?.PLAC) marriage.divorcePlace = famData.DIV.PLAC;
+
+      marriages.push(marriage);
 
       // Add children
       if (famData.CHIL) {
@@ -215,6 +242,9 @@ export function extractPersonData(parsedGed, personId) {
   if (data.EMAIL) result.email = data.EMAIL;
   if (data.PHON) result.phone = data.PHON;
 
+  if (data.RELI) result.religion = data.RELI;
+  if (data.EDUC) result.education = data.EDUC;
+
   // Census records
   if (data.CENS && data.CENS.length > 0) {
     result.censusRecords = data.CENS.map(cens => ({
@@ -229,6 +259,11 @@ export function extractPersonData(parsedGed, personId) {
       date: resi.DATE || null,
       place: resi.PLAC || null
     })).filter(r => r.date || r.place);
+  }
+
+  // Marriages
+  if (marriages.length > 0) {
+    result.marriages = marriages;
   }
 
   return result;

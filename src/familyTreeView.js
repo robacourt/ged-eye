@@ -185,12 +185,9 @@ export class FamilyTreeView {
         return;
       }
 
+      // Select the person (no action on re-clicking selected person)
       if (personId !== this.selectedPersonId) {
-        // Click on different person - select them
         this.selectPerson(personId);
-      } else {
-        // Click on already selected person - open photo viewer
-        this.openPhotoViewer(personId);
       }
     });
   }
@@ -215,36 +212,12 @@ export class FamilyTreeView {
       // Build the graph
       this.buildGraph(person, family, relationships);
 
-      return person;
+      return { person, relationships };
     } catch (error) {
       console.error('Error loading person:', error);
       console.error('Person ID:', personId);
       throw error;
     }
-  }
-
-  /**
-   * Open photo viewer for a person
-   */
-  async openPhotoViewer(personId) {
-    let personData = this.personDataCache.get(personId);
-
-    // If not in cache, load it
-    if (!personData) {
-      try {
-        const { person } = await loadPersonWithFamily(personId);
-        personData = person;
-        this.personDataCache.set(personId, personData);
-      } catch (error) {
-        console.error('Error loading person for photo viewer:', error);
-        return;
-      }
-    }
-
-    // Format photos for viewer
-    const photos = (personData.photos || []).map(path => ({ path }));
-
-    this.photoViewer.open(personData.name, photos);
   }
 
   /**

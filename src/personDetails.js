@@ -1,3 +1,5 @@
+import { PhotoViewer } from './photoViewer.js';
+
 /**
  * Person details panel component
  */
@@ -5,6 +7,7 @@ export class PersonDetails {
   constructor(containerElement) {
     this.container = containerElement;
     this.currentPerson = null;
+    this.photoViewer = new PhotoViewer();
     this.createPanel();
   }
 
@@ -27,8 +30,9 @@ export class PersonDetails {
   /**
    * Display details for a person
    */
-  showPerson(personData) {
+  async showPerson(personData, relationships = null) {
     this.currentPerson = personData;
+    this.relationships = relationships;
     this.emptyState.style.display = 'none';
 
     // Build the details HTML
@@ -37,7 +41,34 @@ export class PersonDetails {
         <h2>${personData.name || 'Unknown'}</h2>
         ${personData.sex ? `<span class="person-sex">${personData.sex === 'M' ? 'Male' : 'Female'}</span>` : ''}
       </div>
+    `;
 
+    // Add photo thumbnails if available (max 4)
+    if (personData.photos && personData.photos.length > 0) {
+      const maxThumbnails = Math.min(4, personData.photos.length);
+      html += '<div class="person-photos-row">';
+      for (let i = 0; i < maxThumbnails; i++) {
+        const photoPath = personData.photos[i];
+        const isImage = this.isImageFile(photoPath);
+
+        if (isImage) {
+          html += `
+            <div class="person-photo-thumbnail" data-photo-index="${i}">
+              <img src="/${photoPath}" alt="Photo ${i + 1}" />
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="person-photo-thumbnail person-photo-file" data-photo-index="${i}">
+              <div class="file-icon">📄</div>
+            </div>
+          `;
+        }
+      }
+      html += '</div>';
+    }
+
+    html += `
       <div class="person-details-sections">
     `;
 
@@ -88,6 +119,44 @@ export class PersonDetails {
       html += '</div>';
     }
 
+    // Marriages
+    if (personData.marriages && personData.marriages.length > 0 && this.relationships?.spouses) {
+      html += '<div class="person-details-section">';
+      html += '<h3>Marriages</h3>';
+      personData.marriages.forEach(marriage => {
+        const spouse = this.relationships.spouses.find(s => s.id === marriage.spouseId);
+        const spouseName = spouse ? spouse.name : 'Unknown';
+
+        html += `<div class="detail-item">`;
+        html += `<span class="detail-label">Spouse:</span>`;
+        html += `<span class="detail-value"><strong>${spouseName}</strong></span>`;
+        html += `</div>`;
+
+        if (marriage.marriageDate || marriage.marriagePlace) {
+          html += `<div class="detail-item">`;
+          html += `<span class="detail-label">Married:</span>`;
+          html += `<span class="detail-value">`;
+          if (marriage.marriageDate) html += `<span class="detail-date">${marriage.marriageDate}</span>`;
+          if (marriage.marriageDate && marriage.marriagePlace) html += ' • ';
+          if (marriage.marriagePlace) html += `<span class="detail-place">${marriage.marriagePlace}</span>`;
+          html += `</span>`;
+          html += `</div>`;
+        }
+
+        if (marriage.divorceDate || marriage.divorcePlace) {
+          html += `<div class="detail-item">`;
+          html += `<span class="detail-label">Divorced:</span>`;
+          html += `<span class="detail-value">`;
+          if (marriage.divorceDate) html += `<span class="detail-date">${marriage.divorceDate}</span>`;
+          if (marriage.divorceDate && marriage.divorcePlace) html += ' • ';
+          if (marriage.divorcePlace) html += `<span class="detail-place">${marriage.divorcePlace}</span>`;
+          html += `</span>`;
+          html += `</div>`;
+        }
+      });
+      html += '</div>';
+    }
+
     // Occupations
     if (personData.occupations && personData.occupations.length > 0) {
       html += '<div class="person-details-section">';
@@ -95,6 +164,25 @@ export class PersonDetails {
       personData.occupations.forEach(occ => {
         html += `<div class="detail-item"><span class="detail-value">${occ}</span></div>`;
       });
+      html += '</div>';
+    }
+
+    // Religion & Education
+    if (personData.religion || personData.education) {
+      html += '<div class="person-details-section">';
+      html += '<h3>Personal</h3>';
+      if (personData.religion) {
+        html += `<div class="detail-item">`;
+        html += `<span class="detail-label">Religion:</span>`;
+        html += `<span class="detail-value">${personData.religion}</span>`;
+        html += `</div>`;
+      }
+      if (personData.education) {
+        html += `<div class="detail-item">`;
+        html += `<span class="detail-label">Education:</span>`;
+        html += `<span class="detail-value">${personData.education}</span>`;
+        html += `</div>`;
+      }
       html += '</div>';
     }
 
@@ -162,6 +250,41 @@ export class PersonDetails {
     html += '</div>'; // Close sections
 
     this.content.innerHTML = html;
+
+    // Add click handlers to photo thumbnails
+    const thumbnails = this.content.querySelectorAll('.person-photo-thumbnail');
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const photoIndex = parseInt(thumbnail.getAttribute('data-photo-index'));
+        this.openPhotoViewer(photoIndex);
+      });
+    });
+  }
+
+  /**
+   * Check if a file is an image based on extension
+   */
+  isImageFile(filePath) {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg'];
+    const fileExtension = filePath.toLowerCase().substring(filePath.lastIndexOf('.'));
+    return imageExtensions.includes(fileExtension);
+  }
+
+  /**
+   * Open photo viewer at a specific photo index
+   */
+  openPhotoViewer(startIndex = 0) {
+    if (!this.currentPerson || !this.currentPerson.photos || this.currentPerson.photos.length === 0) {
+      return;
+    }
+
+    // Format photos for viewer
+    const photos = this.currentPerson.photos.map(path => ({ path }));
+
+    // Open viewer and set to the specified index
+    this.photoViewer.open(this.currentPerson.name, photos);
+    this.photoViewer.currentIndex = startIndex;
+    this.photoViewer.updateDisplay();
   }
 
   /**

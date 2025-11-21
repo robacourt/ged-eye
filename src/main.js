@@ -28,8 +28,8 @@ async function initApp() {
 
     // Load the person
     loadingEl.textContent = 'Rendering...';
-    const personData = await treeView.loadPerson(personId);
-    personDetails.showPerson(personData);
+    const { person: personData, relationships } = await treeView.loadPerson(personId);
+    personDetails.showPerson(personData, relationships);
 
     // Listen for person selection to update URL and details
     treeView.onPersonSelect(async (selectedPersonId) => {
@@ -38,16 +38,16 @@ async function initApp() {
       window.history.pushState({}, '', newUrl);
 
       // Load and show person details
-      const personData = await treeView.loadPerson(selectedPersonId);
-      personDetails.showPerson(personData);
+      const { person: personData, relationships } = await treeView.loadPerson(selectedPersonId);
+      personDetails.showPerson(personData, relationships);
     });
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const personId = urlParams.get('person') || 'I122';
-      const personData = await treeView.loadPerson(personId);
-      personDetails.showPerson(personData);
+      const { person: personData, relationships } = await treeView.loadPerson(personId);
+      personDetails.showPerson(personData, relationships);
     });
 
     // Hide loading
