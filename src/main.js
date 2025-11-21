@@ -31,8 +31,14 @@ async function initApp() {
 
   } catch (error) {
     console.error('Failed to initialize app:', error);
-    loadingEl.textContent = `Error: ${error.message}`;
-    loadingEl.style.color = '#ff4444';
+    loadingEl.innerHTML = `
+      <div style="color: #ff4444; max-width: 600px; text-align: left;">
+        <strong>Error:</strong> ${error.message}<br><br>
+        <strong>Stack:</strong><br>
+        <pre style="background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; overflow: auto; font-size: 12px; user-select: text;">${error.stack}</pre>
+      </div>
+    `;
+    loadingEl.style.pointerEvents = 'auto';
   }
 }
 

@@ -92,11 +92,30 @@ export async function loadPersonWithFamily(personId) {
   // Now collect extended family IDs
   const extendedIds = new Set();
 
-  // Get siblings (children of person's parents)
+  // Get siblings (children of person's parents) and their other parents
   for (const parent of immediateFamily.filter(m => person.parentIds.includes(m.id))) {
     parent.childIds.forEach(id => {
       if (id !== personId) extendedIds.add(id);
     });
+  }
+
+  // Load siblings first to get their parents
+  const siblingsResults = await Promise.allSettled(
+    Array.from(extendedIds).map(id => loadPerson(id))
+  );
+
+  const siblings = siblingsResults
+    .filter(result => result.status === 'fulfilled')
+    .map(result => result.value)
+    .filter(sibling => person.parentIds.some(parentId => sibling.parentIds.includes(parentId)));
+
+  // Get other parents of half-siblings
+  for (const sibling of siblings) {
+    for (const siblingParentId of sibling.parentIds) {
+      if (!person.parentIds.includes(siblingParentId)) {
+        extendedIds.add(siblingParentId);
+      }
+    }
   }
 
   // Get grandparents (parents of person's parents)

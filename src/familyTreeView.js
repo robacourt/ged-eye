@@ -152,12 +152,16 @@ export class FamilyTreeView {
       const { person, family, relationships } = await loadPersonWithFamily(personId);
       this.selectedPersonId = personId;
 
+      console.log('Person data:', person);
+      console.log('Relationships:', relationships);
+
       // Build the graph
       this.buildGraph(person, family, relationships);
 
       return person;
     } catch (error) {
       console.error('Error loading person:', error);
+      console.error('Person ID:', personId);
       throw error;
     }
   }
@@ -228,27 +232,101 @@ export class FamilyTreeView {
       });
     });
 
-    // Add partnership node for parents
-    if (relationships?.parents && relationships.parents.length === 2) {
-      const parent1 = relationships.parents[0];
-      const parent2 = relationships.parents[1];
-      const parentsPartnershipId = `partnership-${parent1.id}-${parent2.id}`;
+    // Create partnership nodes for all unique parent pairs (including half-siblings' parents)
+    const parentPartnerships = new Map(); // Map of "parentId1-parentId2" -> [children]
 
+    // Add selected person's parents partnership (when selected person is a child)
+    if (selectedPerson.parentIds.length === 2) {
+      const key = selectedPerson.parentIds.sort().join('-');
+      if (!parentPartnerships.has(key)) {
+        parentPartnerships.set(key, []);
+      }
+      parentPartnerships.get(key).push(selectedPerson);
+    }
+
+    // Add siblings to their parent partnerships
+    if (relationships?.siblings) {
+      for (const sibling of relationships.siblings) {
+        if (sibling.parentIds && sibling.parentIds.length === 2) {
+          const key = sibling.parentIds.sort().join('-');
+          if (!parentPartnerships.has(key)) {
+            parentPartnerships.set(key, []);
+          }
+          parentPartnerships.get(key).push(sibling);
+        }
+      }
+    }
+
+    // Add selected person's children partnerships (when selected person is a parent)
+    if (relationships?.children) {
+      for (const child of relationships.children) {
+        if (child.parentIds && child.parentIds.length === 2) {
+          const key = child.parentIds.sort().join('-');
+          if (!parentPartnerships.has(key)) {
+            parentPartnerships.set(key, []);
+          }
+          parentPartnerships.get(key).push(child);
+        }
+      }
+    }
+
+    // Add grandchildren partnerships
+    if (relationships?.grandchildren) {
+      for (const grandchild of relationships.grandchildren) {
+        if (grandchild.parentIds && grandchild.parentIds.length === 2) {
+          const key = grandchild.parentIds.sort().join('-');
+          if (!parentPartnerships.has(key)) {
+            parentPartnerships.set(key, []);
+          }
+          parentPartnerships.get(key).push(grandchild);
+        }
+      }
+    }
+
+    // Get set of all node IDs that exist in the graph
+    const existingNodeIds = new Set([
+      selectedPerson.id,
+      ...familyMembers.map(m => m.id)
+    ]);
+
+    // Track children whose partnerships were skipped
+    const childrenWithSkippedPartnerships = [];
+
+    // Create partnership nodes and connections for each parent pair
+    for (const [parentKey, children] of parentPartnerships.entries()) {
+      const [parent1Id, parent2Id] = parentKey.split('-');
+
+      // Only create partnership if both parents are in the graph
+      if (!existingNodeIds.has(parent1Id) || !existingNodeIds.has(parent2Id)) {
+        console.warn(`Skipping partnership ${parent1Id}-${parent2Id}: one or both parents not in graph`);
+        // Track these children for direct connection
+        for (const child of children) {
+          childrenWithSkippedPartnerships.push({
+            child,
+            parentIds: [parent1Id, parent2Id]
+          });
+        }
+        continue;
+      }
+
+      const partnershipId = `partnership-${parent1Id}-${parent2Id}`;
+
+      // Add partnership node
       elements.push({
         group: 'nodes',
         data: {
-          id: parentsPartnershipId,
+          id: partnershipId,
           type: 'partnership'
         }
       });
 
-      // Connect parents to their partnership
+      // Connect parents to partnership
       elements.push({
         group: 'edges',
         data: {
-          id: `${parent1.id}-${parentsPartnershipId}`,
-          source: parent1.id,
-          target: parentsPartnershipId,
+          id: `${parent1Id}-${partnershipId}`,
+          source: parent1Id,
+          target: partnershipId,
           type: 'spouse'
         }
       });
@@ -256,68 +334,74 @@ export class FamilyTreeView {
       elements.push({
         group: 'edges',
         data: {
-          id: `${parent2.id}-${parentsPartnershipId}`,
-          source: parent2.id,
-          target: parentsPartnershipId,
+          id: `${parent2Id}-${partnershipId}`,
+          source: parent2Id,
+          target: partnershipId,
           type: 'spouse'
         }
       });
 
-      // Connect partnership to selected person
-      elements.push({
-        group: 'edges',
-        data: {
-          id: `${parentsPartnershipId}-${selectedPerson.id}`,
-          source: parentsPartnershipId,
-          target: selectedPerson.id,
-          type: 'parent'
-        }
-      });
-
-      // Connect partnership to siblings
-      if (relationships?.siblings) {
-        for (const sibling of relationships.siblings) {
-          elements.push({
-            group: 'edges',
-            data: {
-              id: `${parentsPartnershipId}-${sibling.id}`,
-              source: parentsPartnershipId,
-              target: sibling.id,
-              type: 'parent'
-            }
-          });
-        }
-      }
-    } else if (selectedPerson.parentIds.length > 0) {
-      // Single parent or missing parent data
-      for (const parentId of selectedPerson.parentIds) {
+      // Connect partnership to all children from this partnership
+      for (const child of children) {
         elements.push({
           group: 'edges',
           data: {
-            id: `${parentId}-${selectedPerson.id}`,
-            source: parentId,
-            target: selectedPerson.id,
+            id: `${partnershipId}-${child.id}`,
+            source: partnershipId,
+            target: child.id,
             type: 'parent'
           }
         });
       }
+    }
 
-      // Connect to siblings too
-      if (relationships?.siblings) {
-        for (const sibling of relationships.siblings) {
-          for (const parentId of sibling.parentIds) {
-            if (selectedPerson.parentIds.includes(parentId)) {
-              elements.push({
-                group: 'edges',
-                data: {
-                  id: `${parentId}-${sibling.id}`,
-                  source: parentId,
-                  target: sibling.id,
-                  type: 'parent'
-                }
-              });
+    // Handle children whose partnerships were skipped (parent not in graph)
+    for (const { child, parentIds } of childrenWithSkippedPartnerships) {
+      // Connect to whichever parent IS in the graph
+      for (const parentId of parentIds) {
+        if (existingNodeIds.has(parentId)) {
+          elements.push({
+            group: 'edges',
+            data: {
+              id: `${parentId}-${child.id}-partial`,
+              source: parentId,
+              target: child.id,
+              type: 'parent'
             }
-          }
+          });
+          break; // Only connect once
+        }
+      }
+    }
+
+    // Handle single parent cases (children who only have one parent listed)
+    if (selectedPerson.parentIds.length === 1) {
+      const parentId = selectedPerson.parentIds[0];
+      elements.push({
+        group: 'edges',
+        data: {
+          id: `${parentId}-${selectedPerson.id}`,
+          source: parentId,
+          target: selectedPerson.id,
+          type: 'parent'
+        }
+      });
+    }
+
+    // Handle siblings with single parents
+    if (relationships?.siblings) {
+      for (const sibling of relationships.siblings) {
+        if (sibling.parentIds && sibling.parentIds.length === 1) {
+          const parentId = sibling.parentIds[0];
+          elements.push({
+            group: 'edges',
+            data: {
+              id: `${parentId}-${sibling.id}-single`,
+              source: parentId,
+              target: sibling.id,
+              type: 'parent'
+            }
+          });
         }
       }
     }
@@ -341,51 +425,37 @@ export class FamilyTreeView {
       }
     }
 
-    // Add edges from partnership nodes to children
-    // For now, connect to first partnership if multiple spouses
-    if (selectedPerson.childIds.length > 0 && selectedPerson.spouseIds.length > 0) {
-      const partnershipId = `partnership-${selectedPerson.id}-${selectedPerson.spouseIds[0]}`;
-      for (const childId of selectedPerson.childIds) {
-        elements.push({
-          group: 'edges',
-          data: {
-            id: `${partnershipId}-${childId}`,
-            source: partnershipId,
-            target: childId,
-            type: 'parent'
-          }
-        });
-      }
-    } else if (selectedPerson.childIds.length > 0) {
-      // No spouse, connect directly
-      for (const childId of selectedPerson.childIds) {
-        elements.push({
-          group: 'edges',
-          data: {
-            id: `${selectedPerson.id}-${childId}`,
-            source: selectedPerson.id,
-            target: childId,
-            type: 'parent'
-          }
-        });
+    // Handle children with single parents (no partnership)
+    if (relationships?.children) {
+      for (const child of relationships.children) {
+        if (child.parentIds && child.parentIds.length === 1 && child.parentIds[0] === selectedPerson.id) {
+          elements.push({
+            group: 'edges',
+            data: {
+              id: `${selectedPerson.id}-${child.id}-single`,
+              source: selectedPerson.id,
+              target: child.id,
+              type: 'parent'
+            }
+          });
+        }
       }
     }
 
-    // Add edges for grandchildren to children
-    if (relationships?.grandchildren && relationships?.children) {
+    // Handle grandchildren with single parents (no partnership)
+    if (relationships?.grandchildren) {
       for (const grandchild of relationships.grandchildren) {
-        for (const child of relationships.children) {
-          if (child.childIds.includes(grandchild.id)) {
-            elements.push({
-              group: 'edges',
-              data: {
-                id: `${child.id}-${grandchild.id}`,
-                source: child.id,
-                target: grandchild.id,
-                type: 'parent'
-              }
-            });
-          }
+        if (grandchild.parentIds && grandchild.parentIds.length === 1) {
+          const parentId = grandchild.parentIds[0];
+          elements.push({
+            group: 'edges',
+            data: {
+              id: `${parentId}-${grandchild.id}-single`,
+              source: parentId,
+              target: grandchild.id,
+              type: 'parent'
+            }
+          });
         }
       }
     }
