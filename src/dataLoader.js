@@ -3,7 +3,7 @@
  */
 
 const cache = new Map();
-const BASE_URL = '/data/people';
+const BASE_URL = `${import.meta.env.BASE_URL}data/people`;
 
 /**
  * Load a person's data by ID

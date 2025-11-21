@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/ged-eye/',
   root: '.',
   publicDir: 'public',
   server: {
@@ -9,7 +10,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
     emptyOutDir: true
   },
   test: {
