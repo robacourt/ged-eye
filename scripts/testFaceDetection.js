@@ -20,6 +20,7 @@ async function testFace() {
   console.log('Models loaded!\n');
 
   const testImages = [
+    'Data/Picture/Ian A\'Court 2003.jpg',
     'Data/Media/Barnett 1.jpg',
     'Data/Media/Bob-A\'Court.jpg',
     'Data/Media/cff93e8f-2055-4c3c-b48e-8eb005e234b2.jpg'

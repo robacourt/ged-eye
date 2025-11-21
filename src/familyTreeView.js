@@ -32,7 +32,7 @@ export class FamilyTreeView {
             'height': 90,
             'background-color': '#3a3a4a',
             'background-fit': 'cover',
-            'background-clip': 'none',
+            'background-clip': 'node',
             'background-image': 'data(avatar)',
             'border-width': 3,
             'border-color': '#555',
