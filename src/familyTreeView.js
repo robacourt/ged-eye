@@ -234,7 +234,7 @@ export class FamilyTreeView {
         label: this.formatLabel(selectedPerson),
         type: 'selected',
         sex: selectedPerson.sex,
-        avatar: selectedPerson.avatar ? `${import.meta.env.BASE_URL}${selectedPerson.avatar}` : null
+        avatar: this.getAvatarPath(selectedPerson)
       }
     });
 
@@ -247,7 +247,7 @@ export class FamilyTreeView {
           label: this.formatLabel(member),
           type: 'family',
           sex: member.sex,
-          avatar: member.avatar ? `${import.meta.env.BASE_URL}${member.avatar}` : null
+          avatar: this.getAvatarPath(member)
         }
       });
     }
@@ -700,6 +700,25 @@ export class FamilyTreeView {
 
 
     return positions;
+  }
+
+  /**
+   * Get avatar path for a person, with fallback to man.png or woman.png
+   */
+  getAvatarPath(person) {
+    if (person.avatar) {
+      return `${import.meta.env.BASE_URL}${person.avatar}`;
+    }
+
+    // Use gender-specific fallback
+    if (person.sex === 'M') {
+      return `${import.meta.env.BASE_URL}avatars/man.png`;
+    } else if (person.sex === 'F') {
+      return `${import.meta.env.BASE_URL}avatars/woman.png`;
+    }
+
+    // Default fallback if sex is not specified
+    return `${import.meta.env.BASE_URL}avatars/man.png`;
   }
 
   /**
