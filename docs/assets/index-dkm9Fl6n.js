@@ -375,7 +375,7 @@ b. ${a}`:t}async selectPerson(e){await this.loadPerson(e),this.onPersonSelectCal
       </div>
     `;if(e.photos&&e.photos.length>0){const o=Math.min(4,e.photos.length);a+='<div class="person-photos-row">';for(let u=0;u<o;u++){const l=e.photos[u];this.isImageFile(l)?a+=`
             <div class="person-photo-thumbnail" data-photo-index="${u}">
-              <img src="/${l}" alt="Photo ${u+1}" />
+              <img src="/ged-eye/${l}" alt="Photo ${u+1}" />
             </div>
           `:a+=`
             <div class="person-photo-thumbnail person-photo-file" data-photo-index="${u}">
