@@ -26,16 +26,23 @@ export class PhotoViewer {
           <p class="photo-viewer-counter"></p>
         </div>
         <div class="photo-viewer-main">
-          <button class="photo-viewer-nav photo-viewer-prev" aria-label="Previous photo">‹</button>
-          <div class="photo-viewer-image-container">
-            <img class="photo-viewer-image" alt="Person photo" />
-            <div class="photo-viewer-loading">Loading...</div>
-            <div class="photo-viewer-download">
-              <p class="photo-viewer-download-message">This file cannot be displayed</p>
-              <a class="photo-viewer-download-button" download>Download File</a>
+          <div class="photo-viewer-image-wrapper">
+            <button class="photo-viewer-nav photo-viewer-prev photo-viewer-nav-desktop" aria-label="Previous photo">‹</button>
+            <div class="photo-viewer-image-container">
+              <img class="photo-viewer-image" alt="Person photo" />
+              <div class="photo-viewer-loading">Loading...</div>
+              <div class="photo-viewer-download">
+                <p class="photo-viewer-download-filename"></p>
+                <p class="photo-viewer-download-message">This file cannot be displayed</p>
+                <a class="photo-viewer-download-button" download>Download File</a>
+              </div>
             </div>
+            <button class="photo-viewer-nav photo-viewer-next photo-viewer-nav-desktop" aria-label="Next photo">›</button>
           </div>
-          <button class="photo-viewer-nav photo-viewer-next" aria-label="Next photo">›</button>
+          <div class="photo-viewer-nav-mobile">
+            <button class="photo-viewer-nav photo-viewer-prev" aria-label="Previous photo">‹</button>
+            <button class="photo-viewer-nav photo-viewer-next" aria-label="Next photo">›</button>
+          </div>
         </div>
         <div class="photo-viewer-footer">
           <p class="photo-viewer-filename"></p>
@@ -49,10 +56,11 @@ export class PhotoViewer {
     this.title = modal.querySelector('.photo-viewer-title');
     this.counter = modal.querySelector('.photo-viewer-counter');
     this.loading = modal.querySelector('.photo-viewer-loading');
-    this.prevBtn = modal.querySelector('.photo-viewer-prev');
-    this.nextBtn = modal.querySelector('.photo-viewer-next');
+    this.prevBtns = modal.querySelectorAll('.photo-viewer-prev');
+    this.nextBtns = modal.querySelectorAll('.photo-viewer-next');
     this.filename = modal.querySelector('.photo-viewer-filename');
     this.downloadContainer = modal.querySelector('.photo-viewer-download');
+    this.downloadFilename = modal.querySelector('.photo-viewer-download-filename');
     this.downloadButton = modal.querySelector('.photo-viewer-download-button');
   }
 
@@ -67,9 +75,13 @@ export class PhotoViewer {
       this.close();
     });
 
-    // Navigation buttons
-    this.prevBtn.addEventListener('click', () => this.showPrevious());
-    this.nextBtn.addEventListener('click', () => this.showNext());
+    // Navigation buttons - attach to all prev/next buttons
+    this.prevBtns.forEach(btn => {
+      btn.addEventListener('click', () => this.showPrevious());
+    });
+    this.nextBtns.forEach(btn => {
+      btn.addEventListener('click', () => this.showNext());
+    });
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -156,11 +168,11 @@ export class PhotoViewer {
 
     // Show/hide navigation buttons
     if (this.photos.length <= 1) {
-      this.prevBtn.style.display = 'none';
-      this.nextBtn.style.display = 'none';
+      this.prevBtns.forEach(btn => btn.style.display = 'none');
+      this.nextBtns.forEach(btn => btn.style.display = 'none');
     } else {
-      this.prevBtn.style.display = 'flex';
-      this.nextBtn.style.display = 'flex';
+      this.prevBtns.forEach(btn => btn.style.display = 'flex');
+      this.nextBtns.forEach(btn => btn.style.display = 'flex');
     }
 
     // Handle no photo case
@@ -197,6 +209,7 @@ export class PhotoViewer {
       this.image.src = '';
       this.loading.style.display = 'none';
       this.downloadContainer.style.display = 'flex';
+      this.downloadFilename.textContent = fileName;
       this.downloadButton.href = `/${currentPhoto.path}`;
       this.downloadButton.download = fileName;
     }
