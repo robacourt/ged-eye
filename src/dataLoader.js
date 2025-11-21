@@ -66,7 +66,7 @@ export async function loadIndex() {
 }
 
 /**
- * Preload a person and their immediate family
+ * Preload a person and their extended family
  * @param {string} personId - The person ID
  * @returns {Promise<Object>} Object with person and family data
  */
@@ -74,24 +74,72 @@ export async function loadPersonWithFamily(personId) {
   const person = await loadPerson(personId);
 
   // Collect all immediate family IDs
-  const familyIds = [
+  const familyIds = new Set([
     ...person.parentIds,
     ...person.spouseIds,
     ...person.childIds
-  ];
+  ]);
 
-  // Load all family members in parallel
-  const familyMembers = await Promise.allSettled(
-    familyIds.map(id => loadPerson(id))
+  // Load immediate family first
+  const immediateFamilyResults = await Promise.allSettled(
+    Array.from(familyIds).map(id => loadPerson(id))
   );
 
-  // Filter out any that failed to load
-  const loadedFamily = familyMembers
+  const immediateFamily = immediateFamilyResults
     .filter(result => result.status === 'fulfilled')
     .map(result => result.value);
 
+  // Now collect extended family IDs
+  const extendedIds = new Set();
+
+  // Get siblings (children of person's parents)
+  for (const parent of immediateFamily.filter(m => person.parentIds.includes(m.id))) {
+    parent.childIds.forEach(id => {
+      if (id !== personId) extendedIds.add(id);
+    });
+  }
+
+  // Get grandparents (parents of person's parents)
+  for (const parent of immediateFamily.filter(m => person.parentIds.includes(m.id))) {
+    parent.parentIds.forEach(id => extendedIds.add(id));
+  }
+
+  // Get grandchildren (children of person's children)
+  for (const child of immediateFamily.filter(m => person.childIds.includes(m.id))) {
+    child.childIds.forEach(id => extendedIds.add(id));
+  }
+
+  // Load extended family
+  const extendedFamilyResults = await Promise.allSettled(
+    Array.from(extendedIds).map(id => loadPerson(id))
+  );
+
+  const extendedFamily = extendedFamilyResults
+    .filter(result => result.status === 'fulfilled')
+    .map(result => result.value);
+
+  // Combine and deduplicate
+  const allFamily = [...immediateFamily, ...extendedFamily];
+
   return {
     person,
-    family: loadedFamily
+    family: allFamily,
+    relationships: {
+      parents: immediateFamily.filter(m => person.parentIds.includes(m.id)),
+      spouses: immediateFamily.filter(m => person.spouseIds.includes(m.id)),
+      children: immediateFamily.filter(m => person.childIds.includes(m.id)),
+      siblings: extendedFamily.filter(m => extendedIds.has(m.id) &&
+        person.parentIds.some(parentId => m.parentIds.includes(parentId))),
+      grandparents: extendedFamily.filter(m =>
+        person.parentIds.some(parentId => {
+          const parent = immediateFamily.find(p => p.id === parentId);
+          return parent && parent.parentIds.includes(m.id);
+        })),
+      grandchildren: extendedFamily.filter(m =>
+        person.childIds.some(childId => {
+          const child = immediateFamily.find(c => c.id === childId);
+          return child && child.childIds.includes(m.id);
+        }))
+    }
   };
 }

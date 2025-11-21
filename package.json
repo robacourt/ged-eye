@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "cytoscape": "^3.30.0",
+    "cytoscape-dagre": "^2.5.0",
+    "dagre": "^0.8.5",
     "parse-gedcom": "^2.0.0",
     "sharp": "^0.33.0",
     "@vladmandic/face-api": "^1.7.0",
