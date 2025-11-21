@@ -19,9 +19,27 @@ async function initApp() {
     // Create the family tree view
     const treeView = new FamilyTreeView(cyEl);
 
-    // Load the default person (I122)
+    // Check URL for person ID, otherwise use default
+    const urlParams = new URLSearchParams(window.location.search);
+    const personId = urlParams.get('person') || 'I122';
+
+    // Load the person
     loadingEl.textContent = 'Rendering...';
-    await treeView.loadPerson('I122');
+    await treeView.loadPerson(personId);
+
+    // Listen for person selection to update URL
+    treeView.onPersonSelect((selectedPersonId) => {
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.set('person', selectedPersonId);
+      window.history.pushState({}, '', newUrl);
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const personId = urlParams.get('person') || 'I122';
+      treeView.loadPerson(personId);
+    });
 
     // Hide loading
     loadingEl.classList.add('hidden');
