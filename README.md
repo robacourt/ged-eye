@@ -1,4 +1,8 @@
-# GedEye 👁️
+<div align="center" style="background-color: #1a1a1a; padding: 20px; border-radius: 10px;">
+  <img src="GED-eye.png" alt="GED-eye Logo" width="400">
+</div>
+
+# GED-Eye
 
 A modern, interactive family tree viewer for GEDCOM files. Because other family tree viewers look like they're stuck in 1999.
 
