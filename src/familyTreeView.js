@@ -28,13 +28,13 @@ export class FamilyTreeView {
         {
           selector: 'node',
           style: {
-            'width': 90,
-            'height': 90,
+            'width': 135,
+            'height': 135,
             'background-color': '#3a3a4a',
             'background-fit': 'cover',
             'background-clip': 'node',
             'background-image': 'data(avatar)',
-            'border-width': 3,
+            'border-width': 4,
             'border-color': '#555',
             'shape': 'ellipse',
             'label': 'data(label)',
@@ -42,13 +42,13 @@ export class FamilyTreeView {
             'text-halign': 'center',
             'text-margin-y': 15,
             'color': '#fff',
-            'font-size': '13px',
+            'font-size': '14px',
             'font-weight': '500',
             'text-wrap': 'wrap',
-            'text-max-width': '180px',
+            'text-max-width': '200px',
             'text-background-color': 'rgba(0, 0, 0, 0.6)',
             'text-background-opacity': 1,
-            'text-background-padding': '4px',
+            'text-background-padding': '5px',
             'text-background-shape': 'roundrectangle',
             'transition-property': 'width, height, border-color, background-color',
             'transition-duration': '0.3s',
@@ -58,12 +58,12 @@ export class FamilyTreeView {
         {
           selector: 'node[type="selected"]',
           style: {
-            'width': 130,
-            'height': 130,
+            'width': 180,
+            'height': 180,
             'border-color': '#00d4ff',
-            'border-width': 5,
+            'border-width': 6,
             'z-index': 100,
-            'font-size': '15px',
+            'font-size': '16px',
             'font-weight': '600'
           }
         },
@@ -377,18 +377,6 @@ export class FamilyTreeView {
       }
     }
 
-    // Add grandchildren partnerships
-    if (relationships?.grandchildren) {
-      for (const grandchild of relationships.grandchildren) {
-        if (grandchild.parentIds && grandchild.parentIds.length === 2) {
-          const key = grandchild.parentIds.sort().join('-');
-          if (!parentPartnerships.has(key)) {
-            parentPartnerships.set(key, []);
-          }
-          parentPartnerships.get(key).push(grandchild);
-        }
-      }
-    }
 
     // Get set of all node IDs that exist in the graph
     const existingNodeIds = new Set([
@@ -554,24 +542,6 @@ export class FamilyTreeView {
       }
     }
 
-    // Add edges for grandparents to parents
-    if (relationships?.grandparents && relationships?.parents) {
-      for (const grandparent of relationships.grandparents) {
-        for (const parent of relationships.parents) {
-          if (parent.parentIds.includes(grandparent.id)) {
-            elements.push({
-              group: 'edges',
-              data: {
-                id: `${grandparent.id}-${parent.id}`,
-                source: grandparent.id,
-                target: parent.id,
-                type: 'parent'
-              }
-            });
-          }
-        }
-      }
-    }
 
     // Handle children with single parents (no partnership)
     if (relationships?.children) {
@@ -590,23 +560,6 @@ export class FamilyTreeView {
       }
     }
 
-    // Handle grandchildren with single parents (no partnership)
-    if (relationships?.grandchildren) {
-      for (const grandchild of relationships.grandchildren) {
-        if (grandchild.parentIds && grandchild.parentIds.length === 1) {
-          const parentId = grandchild.parentIds[0];
-          elements.push({
-            group: 'edges',
-            data: {
-              id: `${parentId}-${grandchild.id}-single`,
-              source: parentId,
-              target: grandchild.id,
-              type: 'parent'
-            }
-          });
-        }
-      }
-    }
 
     // Animate transitions between graph states
     this.animateGraphTransition(elements);
@@ -664,9 +617,9 @@ export class FamilyTreeView {
     const layout = this.cy.layout({
       name: 'dagre',
       rankDir: 'TB',
-      nodeSep: 100,
-      rankSep: 150,
-      padding: 50,
+      nodeSep: 40,
+      rankSep: 80,
+      padding: 30,
       ranker: 'network-simplex',
       animate: false
     });
@@ -726,8 +679,6 @@ export class FamilyTreeView {
     const parents = relationships?.parents || [];
     const spouses = relationships?.spouses || [];
     const children = relationships?.children || [];
-    const grandparents = relationships?.grandparents || [];
-    const grandchildren = relationships?.grandchildren || [];
 
     // Selected person and siblings on same row
     const siblingRow = [selectedPerson, ...siblings];
@@ -756,14 +707,6 @@ export class FamilyTreeView {
       };
     }
 
-    // Position grandparents above parents
-    grandparents.forEach((grandparent, index) => {
-      const offset = (index - (grandparents.length - 1) / 2) * spacing;
-      positions[grandparent.id] = {
-        x: centerX + offset,
-        y: centerY - spacing * 3
-      };
-    });
 
     // Position spouses to the sides and create partnership nodes
     spouses.forEach((spouse, index) => {
@@ -791,14 +734,6 @@ export class FamilyTreeView {
       };
     });
 
-    // Position grandchildren below children
-    grandchildren.forEach((grandchild, index) => {
-      const offset = (index - (grandchildren.length - 1) / 2) * spacing;
-      positions[grandchild.id] = {
-        x: centerX + offset,
-        y: centerY + spacing * 3
-      };
-    });
 
     return positions;
   }

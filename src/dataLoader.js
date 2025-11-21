@@ -118,16 +118,6 @@ export async function loadPersonWithFamily(personId) {
     }
   }
 
-  // Get grandparents (parents of person's parents)
-  for (const parent of immediateFamily.filter(m => person.parentIds.includes(m.id))) {
-    parent.parentIds.forEach(id => extendedIds.add(id));
-  }
-
-  // Get grandchildren (children of person's children)
-  for (const child of immediateFamily.filter(m => person.childIds.includes(m.id))) {
-    child.childIds.forEach(id => extendedIds.add(id));
-  }
-
   // Load extended family
   const extendedFamilyResults = await Promise.allSettled(
     Array.from(extendedIds).map(id => loadPerson(id))
@@ -148,17 +138,7 @@ export async function loadPersonWithFamily(personId) {
       spouses: immediateFamily.filter(m => person.spouseIds.includes(m.id)),
       children: immediateFamily.filter(m => person.childIds.includes(m.id)),
       siblings: extendedFamily.filter(m => extendedIds.has(m.id) &&
-        person.parentIds.some(parentId => m.parentIds.includes(parentId))),
-      grandparents: extendedFamily.filter(m =>
-        person.parentIds.some(parentId => {
-          const parent = immediateFamily.find(p => p.id === parentId);
-          return parent && parent.parentIds.includes(m.id);
-        })),
-      grandchildren: extendedFamily.filter(m =>
-        person.childIds.some(childId => {
-          const child = immediateFamily.find(c => c.id === childId);
-          return child && child.childIds.includes(m.id);
-        }))
+        person.parentIds.some(parentId => m.parentIds.includes(parentId)))
     }
   };
 }
