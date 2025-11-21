@@ -201,7 +201,7 @@ export class PhotoViewer {
       this.loading.style.display = 'flex';
       this.loading.textContent = 'Loading...';
       this.image.style.opacity = '0';
-      this.image.src = `/${currentPhoto.path}`;
+      this.image.src = `${import.meta.env.BASE_URL}${currentPhoto.path}`;
       this.downloadContainer.style.display = 'none';
     } else {
       // Show download button for non-image files
@@ -210,7 +210,7 @@ export class PhotoViewer {
       this.loading.style.display = 'none';
       this.downloadContainer.style.display = 'flex';
       this.downloadFilename.textContent = fileName;
-      this.downloadButton.href = `/${currentPhoto.path}`;
+      this.downloadButton.href = `${import.meta.env.BASE_URL}${currentPhoto.path}`;
       this.downloadButton.download = fileName;
     }
   }
