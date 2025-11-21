@@ -54,7 +54,7 @@ export class PersonDetails {
         if (isImage) {
           html += `
             <div class="person-photo-thumbnail" data-photo-index="${i}">
-              <img src="/${photoPath}" alt="Photo ${i + 1}" />
+              <img src="${import.meta.env.BASE_URL}${photoPath}" alt="Photo ${i + 1}" />
             </div>
           `;
         } else {
