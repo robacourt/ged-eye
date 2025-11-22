@@ -664,7 +664,12 @@ export class FamilyTreeView {
     const availableHeight = h - (2 * verticalMargin);
 
     // Calculate zoom to fit height
-    const zoom = availableHeight / bb.h;
+    let zoom = availableHeight / bb.h;
+
+    // Cap zoom to prevent nodes from being too large when there are fewer generations
+    // Maximum zoom of 1.0 keeps nodes at their natural size (135-180px)
+    const maxZoom = 1.0;
+    zoom = Math.min(zoom, maxZoom);
 
     // Get the selected person's position
     const selectedNode = cy.nodes('[type="selected"]');
