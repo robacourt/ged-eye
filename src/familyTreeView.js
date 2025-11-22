@@ -189,6 +189,18 @@ export class FamilyTreeView {
         this.selectPerson(personId);
       }
     });
+
+    // Allow right-click context menu by not preventing default on the canvas
+    // Wait for canvas to be created
+    setTimeout(() => {
+      const canvas = this.container.querySelector('canvas');
+      if (canvas) {
+        canvas.addEventListener('contextmenu', (event) => {
+          // Allow the default context menu - don't call preventDefault
+          event.stopPropagation();
+        }, true);
+      }
+    }, 100);
   }
 
   /**
