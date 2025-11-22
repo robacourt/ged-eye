@@ -1,0 +1,21 @@
+{
+  "id": "I2992",
+  "name": "Felix Harvey-A'Court",
+  "givenName": "Felix",
+  "surname": "Harvey-A'Court",
+  "sex": "M",
+  "birthDate": "5.6.2017",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/FromRob/FelixHarveyACourt.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I130",
+    "I2993"
+  ],
+  "avatar": "avatars/I2992_0.jpg"
+}

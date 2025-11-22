@@ -1,0 +1,29 @@
+{
+  "id": "I2993",
+  "name": "Kim Harvey",
+  "givenName": "Kim",
+  "surname": "Harvey",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/FromRob/KimHarvey.jpg"
+  ],
+  "spouseIds": [
+    "I130"
+  ],
+  "childIds": [
+    "I2992",
+    "I2994"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I130",
+      "familyId": "F1029"
+    }
+  ],
+  "avatar": "avatars/I2993_0.jpg"
+}
