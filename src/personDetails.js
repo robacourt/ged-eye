@@ -35,6 +35,9 @@ export class PersonDetails {
     this.relationships = relationships;
     this.emptyState.style.display = 'none';
 
+    // Reset scroll position to top
+    this.content.scrollTop = 0;
+
     // Build the details HTML
     let html = `
       <div class="person-details-header">
