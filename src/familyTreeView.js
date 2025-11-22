@@ -168,9 +168,10 @@ export class FamilyTreeView {
         name: 'preset'
       },
 
-      userZoomingEnabled: true,
+      userZoomingEnabled: false,
       userPanningEnabled: true,
-      boxSelectionEnabled: false
+      boxSelectionEnabled: false,
+      autoungrabify: true  // Prevent nodes from being dragged
     });
 
     // Add click handler
@@ -559,8 +560,36 @@ export class FamilyTreeView {
       }
     });
 
-    // Fit the view immediately
-    this.cy.fit(50);
+    // Fit to fill height and center horizontally
+    this.fitToHeight();
+  }
+
+  /**
+   * Fit graph to fill the full height with margins, centered horizontally
+   */
+  fitToHeight() {
+    const cy = this.cy;
+    const bb = cy.elements().boundingBox();
+    const w = cy.width();
+    const h = cy.height();
+
+    // Calculate vertical margins (top and bottom)
+    const verticalMargin = 50;
+    const availableHeight = h - (2 * verticalMargin);
+
+    // Calculate zoom to fit height
+    const zoom = availableHeight / bb.h;
+
+    // Center horizontally and vertically with margins
+    const pan = {
+      x: (w - bb.w * zoom) / 2 - bb.x1 * zoom,
+      y: verticalMargin - bb.y1 * zoom
+    };
+
+    cy.viewport({
+      zoom: zoom,
+      pan: pan
+    });
   }
 
   /**
