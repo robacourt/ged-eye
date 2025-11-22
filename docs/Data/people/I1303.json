@@ -1,10 +1,10 @@
 {
   "id": "I1303",
-  "name": "Rodney S A'Court",
-  "givenName": "Rodney S",
+  "name": "Nigel H A'Court",
+  "givenName": "Nigel H",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1950",
+  "birthDate": "1949",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1102",
-    "I1301"
+    "I1103",
+    "I1302"
   ]
 }

@@ -1,28 +1,25 @@
 {
   "id": "I1178",
-  "name": "Phoebe Clarke",
-  "givenName": "Phoebe",
-  "surname": "Clarke",
+  "name": "Mary Merridew",
+  "givenName": "Mary",
+  "surname": "Merridew",
   "sex": "F",
-  "birthDate": "ABT 1843",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1175"
+    "I1177"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I195",
-    "I58"
+  "childIds": [
+    "I1176"
   ],
-  "baptismDate": "16 SEP 1843",
-  "baptismPlace": "Marnhull, Dorset",
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1175",
-      "familyId": "F479"
+      "spouseId": "I1177",
+      "familyId": "F543"
     }
   ]
 }

@@ -1,29 +1,30 @@
 {
   "id": "I830",
-  "name": "Hinemoa Hayward",
-  "givenName": "Hinemoa",
+  "name": "Richard Hayward",
+  "givenName": "Richard",
   "surname": "Hayward",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
+    "I822"
+  ],
+  "childIds": [
     "I831"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I829",
-    "I821"
-  ],
+  "parentIds": [],
   "notes": [
-    "SARAH'S WILL"
+    "Wises"
   ],
   "marriages": [
     {
-      "spouseId": "I831",
-      "familyId": "F358"
+      "spouseId": "I822",
+      "familyId": "F404",
+      "marriageDate": "1905",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

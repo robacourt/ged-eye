@@ -1,32 +1,25 @@
 {
   "id": "I806",
-  "name": "Gertrude A'Court",
-  "givenName": "Gertrude",
-  "surname": "A'Court",
+  "name": "Alfred Henry Buckland",
+  "givenName": "Alfred Henry",
+  "surname": "Buckland",
   "sex": "F",
-  "birthDate": "1870",
+  "birthDate": "1875",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1949",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1871 census/Weymouth/RG 10 2002 54 53.jpg",
-    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 55 12.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1293"
   ],
-  "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I2405",
-    "I2474"
-  ],
-  "censusRecords": [
+  "parentIds": [],
+  "marriages": [
     {
-      "date": "1871",
-      "place": "Melcombe Regis, Dorset, 10 Alexandra Terrace"
-    },
-    {
-      "date": "1881",
-      "place": "Melcombe Regis, Dorset, 16 West Parade"
+      "spouseId": "I1293",
+      "familyId": "F396",
+      "marriageDate": "18 ___ 19 ?",
+      "marriagePlace": "Portsmouth, Hampshire."
     }
-  ],
-  "avatar": "avatars/I806_0.jpg"
+  ]
 }

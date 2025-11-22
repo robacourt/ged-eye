@@ -1,37 +1,34 @@
 {
   "id": "I2020",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Sarah A'Court",
+  "givenName": "Sarah",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1833",
-  "birthPlace": "Surrey, Clapham",
-  "deathDate": "BEF 1871",
+  "sex": "F",
+  "birthDate": "ABT 1857",
+  "birthPlace": "Devon, Exeter, St Davids",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I2807"
+  "photos": [
+    "Data/Media/1861 Census/Exeter/RG09 1397 44 10.png",
+    "Data/Media/1881 census/Devon/Exeter/RG11 2153 51 10.jpg"
   ],
-  "childIds": [
-    "I2088",
-    "I520",
-    "I2808",
-    "I2809"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2014"
   ],
-  "parentIds": [],
   "occupations": [
-    "Coach Smith"
+    "Mantle maker"
   ],
   "censusRecords": [
     {
       "date": "1861",
-      "place": "London, St Lukes, 17 George Yard"
+      "place": "Devon, Exeter, St Davids, 3 St Davids Hill"
+    },
+    {
+      "date": "1881",
+      "place": "evon, Exeter, 36 Lower North St."
     }
   ],
-  "marriages": [
-    {
-      "spouseId": "I2807",
-      "familyId": "F725"
-    }
-  ]
+  "avatar": "avatars/I2020_0.jpg"
 }

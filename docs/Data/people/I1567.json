@@ -1,10 +1,10 @@
 {
   "id": "I1567",
-  "name": "Harry A'Court",
-  "givenName": "Harry",
+  "name": "Frank A'Court",
+  "givenName": "Frank",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1895",
+  "birthDate": "ABT 1893",
   "birthPlace": "Poole, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -16,7 +16,7 @@
   "childIds": [],
   "parentIds": [
     "I298",
-    "I1562"
+    "I1563"
   ],
   "occupations": [
     "Labourer"

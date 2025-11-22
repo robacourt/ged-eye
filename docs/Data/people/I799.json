@@ -1,34 +1,33 @@
 {
   "id": "I799",
-  "name": "Lavinia Amelia (Amelia) A'Court",
-  "givenName": "Lavinia Amelia (Amelia)",
+  "name": "George Stanley A'Court",
+  "givenName": "George Stanley",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "3 OCT 1888",
-  "birthPlace": "Rangiora, New Zealand",
-  "deathDate": "15 NOV 1965",
-  "deathPlace": "Wellington, NZ, Wellington Public Hospital",
+  "sex": "M",
+  "birthDate": "1886",
+  "birthPlace": "Wellington, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I801"
   ],
-  "childIds": [
-    "I1927"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I785",
-    "I797"
+    "I786",
+    "I798"
   ],
-  "burialPlace": "Wellington, NZ, Karori Cemetery,",
+  "baptismDate": "17 SEP 1886",
+  "baptismPlace": "Francis Place, Wellington, NZ",
   "notes": [
-    "Headstone (Plot 08/B/05/008)"
+    "Electoral roll"
   ],
   "marriages": [
     {
       "spouseId": "I801",
-      "familyId": "F343",
-      "marriageDate": "3 DEC 1920",
-      "marriagePlace": "Wellington, New Zealand"
+      "familyId": "F393",
+      "marriageDate": "4 DEC 1907",
+      "marriagePlace": "St James's Church, Wellington, NZ"
     }
   ]
 }

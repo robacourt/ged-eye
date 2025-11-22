@@ -4,16 +4,23 @@
   "givenName": "Jane",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1763",
+  "birthDate": "BEF 1 APR 1761",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "JUN 1761",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I901"
+  ],
   "childIds": [],
   "parentIds": [
-    "I741",
-    "I742"
+    "I742",
+    "I743"
   ],
-  "baptismDate": "1 APR 1763"
+  "marriages": [
+    {
+      "spouseId": "I901",
+      "familyId": "F357"
+    }
+  ]
 }

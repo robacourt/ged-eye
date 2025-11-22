@@ -1,7 +1,7 @@
 {
   "id": "I1488",
-  "name": "Henry Cluett",
-  "givenName": "Henry",
+  "name": "Albert Cuthbert Cluett",
+  "givenName": "Albert Cuthbert",
   "surname": "Cluett",
   "sex": "M",
   "birthDate": null,
@@ -9,15 +9,21 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I1487"
+  "spouseIds": [
+    "I1485"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1489"
+  ],
+  "occupations": [
+    "Farmer of Lyndlinch"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F567"
+      "spouseId": "I1485",
+      "familyId": "F651",
+      "marriageDate": "29 JAN 1890"
     }
   ]
 }

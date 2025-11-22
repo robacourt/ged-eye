@@ -1,7 +1,7 @@
 {
   "id": "I106",
-  "name": "John A'Court",
-  "givenName": "John",
+  "name": ".,John A'Court",
+  "givenName": ".,John",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": "4 DEC 1848",
@@ -76,7 +76,7 @@
   "marriages": [
     {
       "spouseId": "I113",
-      "familyId": "F63",
+      "familyId": "F71",
       "marriageDate": "4 JUL 1876",
       "marriagePlace": "Portsea, Hampshire, St Peter's Weslyan Chapel"
     }

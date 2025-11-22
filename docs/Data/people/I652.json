@@ -1,36 +1,26 @@
 {
   "id": "I652",
-  "name": "Ellen Warren",
-  "givenName": "Ellen",
+  "name": "Arthur Warren",
+  "givenName": "Arthur",
   "surname": "Warren",
-  "sex": "F",
-  "birthDate": "26.10.1876",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I662"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
-  "baptismDate": "11.11.1877",
+  "baptismDate": "12.9.1875",
   "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Glovemaker"
+    "Ag Lab"
   ],
   "notes": [
-    "15 in 1891, 31 in 1906,"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I662",
-      "familyId": "F273",
-      "marriageDate": "25.12.1906",
-      "marriagePlace": "Marnhull, Dorset"
-    }
+    "17 in 1891,"
   ]
 }

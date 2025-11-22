@@ -1,23 +1,18 @@
 {
   "id": "I715",
-  "name": "Melior Hill",
-  "givenName": "Melior",
-  "surname": "Hill",
-  "sex": "F",
-  "birthDate": "BEF 1694",
+  "name": "Nathanial a'Court",
+  "givenName": "Nathanial",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "ABT 1828",
   "birthPlace": null,
-  "deathDate": "AFT 1707",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I552"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I552",
-      "familyId": "F233"
-    }
+  "notes": [
+    "Please advise any errors/send additions to:"
   ]
 }

@@ -1,34 +1,43 @@
 {
   "id": "I2087",
-  "name": "George Alfred A'Court",
-  "givenName": "George Alfred",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1879",
-  "birthPlace": "London, Kensington",
-  "deathDate": "1922",
+  "name": "Susan Quarry",
+  "givenName": "Susan",
+  "surname": "Quarry",
+  "sex": "F",
+  "birthDate": "Abt 1838",
+  "birthPlace": "Kingsland, Middlesex",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg",
-    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg"
+    "Data/Media/1881 census/London/Woodford/RG11 1734 34 24.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I878",
-    "I928"
+  "spouseIds": [
+    "I2086",
+    "I2865"
   ],
-  "occupations": [
-    "Errand Boy"
+  "childIds": [
+    "I2066",
+    "I1905"
   ],
+  "parentIds": [],
   "censusRecords": [
     {
-      "date": "1881",
-      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+      "date": "1861",
+      "place": "London, Chelsea, 3 Whitelands Terrace"
     },
     {
-      "date": "1891",
-      "place": "London,Kensington 9, Lucerne Mews"
+      "date": "1881",
+      "place": "London, Woodford, Snakes Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2086",
+      "familyId": "F771"
+    },
+    {
+      "spouseId": "I2865",
+      "familyId": "F819"
     }
   ],
   "avatar": "avatars/I2087_0.jpg"

@@ -1,48 +1,50 @@
 {
   "id": "I493",
-  "name": "Alfred A'Court",
-  "givenName": "Alfred",
+  "name": "Frederick Charles A'Court",
+  "givenName": "Frederick Charles",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "26.5.1893",
+  "birthDate": "ABT 1884",
   "birthPlace": "Nether Compton, Dorset",
-  "deathDate": "MAR 1941",
-  "deathPlace": "Somerset, Wincanton",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Dorset/Nether Compton/RG13 2007 17 3.jpg",
-    "Data/Media/1911 census/Dorset/Nether Compton/RG14 12439 36.jpg"
+    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg"
   ],
   "spouseIds": [
-    "I496"
+    "I1991"
   ],
   "childIds": [
-    "I497"
+    "I2586",
+    "I1992"
   ],
   "parentIds": [
-    "I490",
-    "I491"
+    "I491",
+    "I492"
   ],
   "occupations": [
-    "Groom",
-    "Farm Labourer"
+    "Royal Marine",
+    "Private Royal Marine Light Infantry"
   ],
   "notes": [
-    "After his death in 1942,his widow and only son moved to Appledore, Devon"
+    "four sons, one daughter",
+    "Wife from Devon 5 Children .Ref; source"
   ],
   "censusRecords": [
     {
-      "date": "1901",
-      "place": "Nether Compton, Dorset, Halfway House"
+      "date": "1891",
+      "place": "Dorset, Sherborne, Over Compton, Lodge"
     },
     {
       "date": "1911",
-      "place": "Nether Compton, Dorset"
+      "place": "Gosport, Hampshire, 105 Parham Rd."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I496",
-      "familyId": "F210"
+      "spouseId": "I1991",
+      "familyId": "F254",
+      "marriageDate": "1910"
     }
   ],
   "avatar": "avatars/I493_0.jpg"

@@ -9,8 +9,8 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/6 London Standard 8th September 1883 003-0001.docx",
-    "Data/Media/1871 census/London/Hackney/RG10 313 61 24.jpg"
+    "Data/Media/1871 census/London/Hackney/RG10 313 61 24.jpg",
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/6 London Standard 8th September 1883 003-0001.docx"
   ],
   "spouseIds": [
     "I2331"
@@ -43,10 +43,10 @@
   "marriages": [
     {
       "spouseId": "I2331",
-      "familyId": "F827",
+      "familyId": "F885",
       "marriageDate": "SEP 5 1883",
       "marriagePlace": "London, Friern Barnet, All Saints"
     }
   ],
-  "avatar": "avatars/I2327_1.jpg"
+  "avatar": "avatars/I2327_0.jpg"
 }

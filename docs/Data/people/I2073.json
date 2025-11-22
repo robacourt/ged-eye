@@ -1,10 +1,10 @@
 {
   "id": "I2073",
-  "name": "Olive Amy Frances A'Court",
-  "givenName": "Olive Amy Frances",
+  "name": "Evelyn Maud A'Court",
+  "givenName": "Evelyn Maud",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1917",
+  "birthDate": "1915",
   "birthPlace": "London",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2070",
-    "I2071"
+    "I2071",
+    "I2072"
   ]
 }

@@ -1,30 +1,31 @@
 {
   "id": "I813",
-  "name": "James Drysdale A'Court",
-  "givenName": "James Drysdale",
+  "name": "Gladys Irene A'Court",
+  "givenName": "Gladys Irene",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "5 NOV 1900",
+  "sex": "F",
+  "birthDate": "10 FEB 1899",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1972",
-  "deathPlace": "Christchurch, New Zealand",
+  "deathDate": "17 APR 1983",
+  "deathPlace": "Riverhead, Auckland, NZ",
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I818"
+  ],
+  "childIds": [
+    "I1046"
+  ],
   "parentIds": [
-    "I794",
-    "I810"
+    "I795",
+    "I811"
   ],
-  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
-  "notes": [
-    "Headstone"
-  ],
+  "burialPlace": "Waikumete Cemetery, Auckland, NZ",
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F347",
-      "marriageDate": "21 MAY 1879",
-      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+      "spouseId": "I818",
+      "familyId": "F399",
+      "marriageDate": "25 MAY 1920",
+      "marriagePlace": "Methodist Church, Sydenham, Christchurch, NZ"
     }
   ]
 }

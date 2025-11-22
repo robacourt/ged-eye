@@ -1,15 +1,18 @@
 {
   "id": "I1933",
-  "name": "Margaret Lynette A'Court",
-  "givenName": "Margaret Lynette",
+  "name": "Gordon Basil A'Court",
+  "givenName": "Gordon Basil",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1934",
+  "sex": "M",
+  "birthDate": "1926",
   "birthPlace": "New Zealand",
-  "deathDate": "1985",
-  "deathPlace": null,
+  "deathDate": "1967",
+  "deathPlace": "Kaiakoura coast, New Zealand",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I845",
+    "I858"
+  ]
 }

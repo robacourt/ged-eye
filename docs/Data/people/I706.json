@@ -1,9 +1,9 @@
 {
   "id": "I706",
-  "name": "William Palmer",
-  "givenName": "William",
-  "surname": "Palmer",
-  "sex": "M",
+  "name": "Dinah ?????",
+  "givenName": "Dinah",
+  "surname": "?????",
+  "sex": "U",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -11,8 +11,5 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Witness to marriage of Jane Dober, Widow of Felix A'Court to Edward Stubbington 6 Aug 1860. Portsea, All Saints."
-  ]
+  "parentIds": []
 }

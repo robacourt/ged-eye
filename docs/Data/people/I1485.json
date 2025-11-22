@@ -1,25 +1,38 @@
 {
   "id": "I1485",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
-  "surname": "Unknown",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "Maria A'Court",
+  "givenName": "Maria",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "13 JAN 1862",
+  "birthPlace": "Yeovil, Somerset, Back Street",
+  "deathDate": "11 JAN 1939",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I777"
+    "I1488"
   ],
-  "childIds": [
-    "I1486"
+  "childIds": [],
+  "parentIds": [
+    "I1484",
+    "I778"
   ],
-  "parentIds": [],
+  "burialDate": "14 JAN 1939",
+  "burialPlace": "Longbridge Deverill, Wiltshire",
+  "notes": [
+    "a) Children include Winnie married Mr Lakey(used to live Warminster during the War) - had several children  including"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Galhampton, Somerset"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I777",
-      "familyId": "F328"
+      "spouseId": "I1488",
+      "familyId": "F651",
+      "marriageDate": "29 JAN 1890"
     }
   ]
 }

@@ -1,23 +1,23 @@
 {
   "id": "I1560",
-  "name": "Arthur Hutchings",
-  "givenName": "Arthur",
-  "surname": "Hutchings",
+  "name": "Kenneth (Dennis) George A'Court",
+  "givenName": "Kenneth (Dennis) George",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "27 JULY 1937,",
+  "birthPlace": "Markham, Bedwellty, Monmouth",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I139"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I139",
-      "familyId": "F81"
-    }
+  "parentIds": [
+    "I2279"
+  ],
+  "occupations": [
+    "County Cricketer"
+  ],
+  "notes": [
+    "Dennis A'Court"
   ]
 }

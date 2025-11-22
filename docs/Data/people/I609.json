@@ -1,28 +1,36 @@
 {
   "id": "I609",
-  "name": "William Alfred Bastable",
-  "givenName": "William Alfred",
+  "name": "Vincent Bastable",
+  "givenName": "Vincent",
   "surname": "Bastable",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "14.12.1906",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I610"
+    "I600"
   ],
-  "childIds": [
-    "I608"
+  "childIds": [],
+  "parentIds": [
+    "I610",
+    "I611"
   ],
-  "parentIds": [],
+  "baptismDate": "13.1.1907",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Mason"
+    "Carpenter"
+  ],
+  "notes": [
+    "27-1934,"
   ],
   "marriages": [
     {
-      "spouseId": "I610",
-      "familyId": "F251"
+      "spouseId": "I600",
+      "familyId": "F297",
+      "marriageDate": "2.6.1934",
+      "marriagePlace": "Todber, Dorset"
     }
   ]
 }

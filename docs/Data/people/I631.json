@@ -1,28 +1,36 @@
 {
   "id": "I631",
-  "name": "Harry John Hatcher",
-  "givenName": "Harry John",
+  "name": "Frederick Harry Hatcher",
+  "givenName": "Frederick Harry",
   "surname": "Hatcher",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "27.2.1920",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I632"
+    "I623"
   ],
-  "childIds": [
-    "I630"
+  "childIds": [],
+  "parentIds": [
+    "I632",
+    "I633"
   ],
-  "parentIds": [],
+  "baptismDate": "4.4.1920",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Slaughterman"
+    "Dorset Council Roadman"
+  ],
+  "notes": [
+    "27-1948,"
   ],
   "marriages": [
     {
-      "spouseId": "I632",
-      "familyId": "F265"
+      "spouseId": "I623",
+      "familyId": "F310",
+      "marriageDate": "3.4,1948",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

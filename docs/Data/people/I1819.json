@@ -1,25 +1,17 @@
 {
   "id": "I1819",
-  "name": "Unknown Self",
-  "givenName": "Unknown",
-  "surname": "Self",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Niel J A'Court",
+  "givenName": "Niel J",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1ST QRT 1954",
+  "birthPlace": "Woolwich",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1818",
-    "I1820",
-    "I1821"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F656"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1820"
   ]
 }

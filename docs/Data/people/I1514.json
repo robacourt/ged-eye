@@ -1,26 +1,18 @@
 {
   "id": "I1514",
-  "name": "Flora Chamberlain",
-  "givenName": "Flora",
+  "name": "Ernest Ellias Chamberlain",
+  "givenName": "Ernest Ellias",
   "surname": "Chamberlain",
-  "sex": "F",
-  "birthDate": "1878",
+  "sex": "M",
+  "birthDate": "1872",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1878",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1515"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I864",
-    "I777"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1515",
-      "familyId": "F578"
-    }
+    "I865",
+    "I778"
   ]
 }

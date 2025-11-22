@@ -10,7 +10,7 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1406"
+    "I1407"
   ],
   "childIds": [
     "I2380",
@@ -19,8 +19,8 @@
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1406",
-      "familyId": "F846",
+      "spouseId": "I1407",
+      "familyId": "F626",
       "marriageDate": "MARCH 1913",
       "marriagePlace": "Bristol, Glostershire"
     }

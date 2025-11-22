@@ -18,7 +18,7 @@
   ],
   "parentIds": [
     "I207",
-    "I1293"
+    "I1294"
   ],
   "occupations": [
     "Widow",
@@ -47,13 +47,13 @@
   "marriages": [
     {
       "spouseId": "I76",
-      "familyId": "F48",
+      "familyId": "F55",
       "marriageDate": "3 NOV 1851",
       "marriagePlace": "Portsmouth, Portsea, All Saints, Parish Church"
     },
     {
       "spouseId": "I116",
-      "familyId": "F64",
+      "familyId": "F72",
       "marriageDate": "26 AUG 1860",
       "marriagePlace": "Portsea, Hampshire, All Saints"
     }

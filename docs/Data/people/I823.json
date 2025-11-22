@@ -1,35 +1,26 @@
 {
   "id": "I823",
-  "name": "Frances Nina A'Court",
-  "givenName": "Frances Nina",
+  "name": "Edwin Frank A'Court",
+  "givenName": "Edwin Frank",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "14 JAN 1868",
+  "sex": "M",
+  "birthDate": "14 DEC 1865",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1939",
-  "deathPlace": null,
-  "photos": [
-    "Data/Picture/Nina, Lucy, Frank A'Court.jpg"
-  ],
+  "deathDate": "1866",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [],
   "spouseIds": [
     "I833"
   ],
   "childIds": [],
   "parentIds": [
-    "I776",
-    "I820"
-  ],
-  "notes": [
-    "NZ Probates Christchurch Court 20438",
-    "SARAH'S WILL"
+    "I777",
+    "I821"
   ],
   "marriages": [
     {
       "spouseId": "I833",
-      "familyId": "F353",
-      "marriageDate": "28 NOV 1900",
-      "marriagePlace": "St Lukes, Christchurch, NZ"
+      "familyId": "F405"
     }
-  ],
-  "avatar": "avatars/I823_0.jpg"
+  ]
 }

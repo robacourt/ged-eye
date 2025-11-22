@@ -13,7 +13,7 @@
     "I2782"
   ],
   "childIds": [
-    "I2008",
+    "I2009",
     "I2790"
   ],
   "parentIds": [
@@ -43,7 +43,7 @@
   "marriages": [
     {
       "spouseId": "I2782",
-      "familyId": "F967"
+      "familyId": "F799"
     }
   ]
 }

@@ -1,27 +1,36 @@
 {
   "id": "I1332",
-  "name": "Minnie Unknown",
-  "givenName": "Minnie",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "1875",
-  "birthPlace": null,
-  "deathDate": "1943",
-  "deathPlace": "Stoke Sub Hamdon, Somerset, Summerlands",
+  "name": "William Roland Waterman",
+  "givenName": "William Roland",
+  "surname": "Waterman",
+  "sex": "M",
+  "birthDate": "1878",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1331"
-  ],
-  "childIds": [
     "I1333"
   ],
-  "parentIds": [],
-  "burialDate": "13 OCT 1943",
+  "childIds": [
+    "I1334"
+  ],
+  "parentIds": [
+    "I1323",
+    "I1321"
+  ],
+  "burialDate": "JUL 1947",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1331",
-      "familyId": "F526"
+      "spouseId": "I1333",
+      "familyId": "F596"
     }
   ]
 }

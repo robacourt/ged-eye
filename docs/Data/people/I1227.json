@@ -1,7 +1,7 @@
 {
   "id": "I1227",
-  "name": "June Hayward",
-  "givenName": "June",
+  "name": "Denise Hayward",
+  "givenName": "Denise",
   "surname": "Hayward",
   "sex": "F",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1225",
-    "I1224"
+    "I1226",
+    "I1225"
   ]
 }

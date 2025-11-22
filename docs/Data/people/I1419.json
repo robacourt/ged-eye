@@ -1,35 +1,25 @@
 {
   "id": "I1419",
-  "name": "Linda A'Court",
-  "givenName": "Linda",
-  "surname": "A'Court",
+  "name": "Unknown",
+  "givenName": "Unknown",
+  "surname": "",
   "sex": "F",
-  "birthDate": "ABT 1896",
-  "birthPlace": "Horsington, Somerset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg",
-    "Data/Media/1911 census/Somerset/Queen Camel/RG14 14426 96.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I411"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1100",
-    "I1109"
+  "childIds": [
+    "I414"
   ],
-  "occupations": [
-    "Domestic servant"
-  ],
-  "censusRecords": [
+  "parentIds": [],
+  "marriages": [
     {
-      "date": "1901",
-      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
-    },
-    {
-      "date": "1911",
-      "place": "Somerset, Queen Camel. Wales Dairy"
+      "spouseId": "I411",
+      "familyId": "F215"
     }
-  ],
-  "avatar": "avatars/I1419_0.jpg"
+  ]
 }

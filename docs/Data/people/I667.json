@@ -1,32 +1,39 @@
 {
   "id": "I667",
-  "name": "Harold John Warren",
-  "givenName": "Harold John",
-  "surname": "Warren",
-  "sex": "M",
+  "name": "Clara Charlotte Drew",
+  "givenName": "Clara Charlotte",
+  "surname": "Drew",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I672"
+    "I655"
   ],
-  "childIds": [],
+  "childIds": [
+    "I668",
+    "I669"
+  ],
   "parentIds": [
-    "I654",
-    "I666"
+    "I670",
+    "I671"
   ],
+  "baptismDate": "11.2.1883",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Masons Lab."
+    "Glovemaker"
   ],
   "notes": [
-    "21 in 1931"
+    "8 in 1891, 22 in 1905,"
   ],
   "marriages": [
     {
-      "spouseId": "I672",
-      "familyId": "F280"
+      "spouseId": "I655",
+      "familyId": "F324",
+      "marriageDate": "7.8.1905",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

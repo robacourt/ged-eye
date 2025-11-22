@@ -1,10 +1,10 @@
 {
   "id": "I1577",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Reginald John A'Court",
+  "givenName": "Reginald John",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1898",
+  "birthDate": "ABT 1895",
   "birthPlace": "Blandford Forum, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -15,17 +15,16 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1571",
-    "I1572"
+    "I1572",
+    "I1573"
+  ],
+  "occupations": [
+    "Apprentice in Cycle Trade"
   ],
   "censusRecords": [
     {
       "date": "1901",
       "place": "Blandford, Dorset, 33 Orchard St."
-    },
-    {
-      "date": "1911",
-      "place": "Blandford, Dorset, Orchard St."
     },
     {
       "date": "1911",

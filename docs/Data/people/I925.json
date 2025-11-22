@@ -1,8 +1,8 @@
 {
   "id": "I925",
-  "name": "Peter Cook",
-  "givenName": "Peter",
-  "surname": "Cook",
+  "name": "Leslie Lane",
+  "givenName": "Leslie",
+  "surname": "Lane",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,18 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I918"
+    "I919"
   ],
   "childIds": [],
   "parentIds": [],
-  "notes": [
-    "Woodcutter"
-  ],
   "marriages": [
     {
-      "spouseId": "I918",
-      "familyId": "F386",
-      "divorceDate": "1947"
+      "spouseId": "I919",
+      "familyId": "F439"
     }
   ]
 }

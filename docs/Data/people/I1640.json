@@ -1,10 +1,10 @@
 {
   "id": "I1640",
-  "name": "Ethel A'Court",
-  "givenName": "Ethel",
+  "name": "Herbert A'Court",
+  "givenName": "Herbert",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "Abt 1893",
+  "sex": "M",
+  "birthDate": "28 DEC 1890",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
@@ -15,13 +15,17 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1636",
-    "I1637"
+    "I1637",
+    "I1638"
   ],
   "occupations": [
-    "Sewing Machinist Gloving"
+    "Shop Assistant"
   ],
   "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Yeovil, Somerset, 29 Queen's St."
+    },
     {
       "date": "1901",
       "place": "Yeovil, Somerset, Huish"

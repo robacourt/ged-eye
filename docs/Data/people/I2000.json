@@ -1,10 +1,10 @@
 {
   "id": "I2000",
-  "name": "Frea Moon Gooderson-A'Court",
-  "givenName": "Frea Moon",
+  "name": "Fern Arianne Gooderson-A'Court",
+  "givenName": "Fern Arianne",
   "surname": "Gooderson-A'Court",
   "sex": "F",
-  "birthDate": "11 MAY 1992",
+  "birthDate": "14 JAN 1991",
   "birthPlace": "Llandough, Penarth, Cardiff",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1996",
-    "I1992"
+    "I1997",
+    "I1993"
   ]
 }

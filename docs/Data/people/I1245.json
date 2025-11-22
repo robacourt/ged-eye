@@ -1,20 +1,26 @@
 {
   "id": "I1245",
-  "name": "Albert Haskett",
-  "givenName": "Albert",
-  "surname": "Haskett",
+  "name": "Mark Tom Seaviour Kendall",
+  "givenName": "Mark Tom Seaviour",
+  "surname": "Kendall",
   "sex": "M",
-  "birthDate": "1863",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1175",
-    "I181"
+  "childIds": [
+    "I1244"
   ],
-  "baptismDate": "1864",
-  "baptismPlace": "Marnhull, Dorset"
+  "parentIds": [],
+  "occupations": [
+    "Dealer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F567"
+    }
+  ]
 }

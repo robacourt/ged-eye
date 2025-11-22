@@ -1,28 +1,18 @@
 {
   "id": "I1229",
-  "name": "Ann Haskett",
-  "givenName": "Ann",
-  "surname": "Haskett",
+  "name": "Tracey Hayward",
+  "givenName": "Tracey",
+  "surname": "Hayward",
   "sex": "F",
-  "birthDate": "1934",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1230"
-  ],
-  "childIds": [
-    "I1231"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1215",
-    "I1216"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1230",
-      "familyId": "F496"
-    }
+    "I1226",
+    "I1225"
   ]
 }

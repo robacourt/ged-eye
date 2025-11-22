@@ -1,32 +1,26 @@
 {
   "id": "I526",
-  "name": "Felix Daniel Reuben A'Court",
-  "givenName": "Felix Daniel Reuben",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1867",
-  "birthPlace": "Mudgee, NSW",
+  "name": "May Elizabeth Ansett",
+  "givenName": "May Elizabeth",
+  "surname": "Ansett",
+  "sex": "F",
+  "birthDate": "1886",
+  "birthPlace": "Collingwood, Victoria",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I527"
+    "I525"
   ],
   "childIds": [
-    "I516"
+    "I513",
+    "I2093"
   ],
-  "parentIds": [
-    "I75",
-    "I103"
-  ],
-  "notes": [
-    "From John Stafford File Page 3"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I527",
-      "familyId": "F222",
-      "marriageDate": "1917"
+      "spouseId": "I525",
+      "familyId": "F263"
     }
   ]
 }

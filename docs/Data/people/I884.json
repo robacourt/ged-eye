@@ -1,28 +1,18 @@
 {
   "id": "I884",
-  "name": "Mary A'Court",
-  "givenName": "Mary",
+  "name": "Amelia A'Court",
+  "givenName": "Amelia",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1846",
+  "birthDate": "ABT 1841",
   "birthPlace": "Yeovil, Somerset",
-  "deathDate": "AFT 1870",
+  "deathDate": "AFT 1851",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I902"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I766",
-    "I882"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I902",
-      "familyId": "F377",
-      "marriageDate": "1870",
-      "marriagePlace": "Yeovil, Somerset"
-    }
+    "I767",
+    "I883"
   ]
 }

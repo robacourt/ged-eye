@@ -1,32 +1,20 @@
 {
   "id": "I480",
-  "name": "Grantham Enos Sherborne",
-  "givenName": "Grantham Enos",
-  "surname": "Sherborne",
-  "sex": "M",
-  "birthDate": "25 NOV 1875",
-  "birthPlace": null,
-  "deathDate": "C. 1946",
-  "deathPlace": "Byfleet Surrey",
+  "name": "Charity a'Court",
+  "givenName": "Charity",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1739",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": "ABT 1740",
+  "deathPlace": "Horsington, Somerset",
   "photos": [],
-  "spouseIds": [
-    "I481"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I470",
+    "I471"
   ],
-  "childIds": [
-    "I403"
-  ],
-  "parentIds": [],
-  "residences": [
-    {
-      "date": "1939",
-      "place": null
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I481",
-      "familyId": "F183",
-      "marriageDate": "C.1911"
-    }
-  ]
+  "burialDate": "29 FEB 1739/40",
+  "burialPlace": "Horsington, Somerset"
 }

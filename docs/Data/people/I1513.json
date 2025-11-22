@@ -1,18 +1,23 @@
 {
   "id": "I1513",
-  "name": "Ernest Ellias Chamberlain",
-  "givenName": "Ernest Ellias",
-  "surname": "Chamberlain",
+  "name": "John Ridout",
+  "givenName": "John",
+  "surname": "Ridout",
   "sex": "M",
-  "birthDate": "1872",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1878",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I864",
-    "I777"
+  "childIds": [
+    "I1512"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F663"
+    }
   ]
 }

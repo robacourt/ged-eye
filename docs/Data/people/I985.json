@@ -1,21 +1,24 @@
 {
   "id": "I985",
-  "name": "Ronald Edward Alan A'Court",
-  "givenName": "Ronald Edward Alan",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "12 AUG 1917",
-  "birthPlace": "Dubbo, NSW",
+  "name": "Martha Enid Lewis",
+  "givenName": "Martha Enid",
+  "surname": "Lewis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I104",
-    "I733"
+  "spouseIds": [
+    "I984"
   ],
-  "notes": [
-    "Title"
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I984",
+      "familyId": "F464",
+      "marriageDate": "1943"
+    }
   ]
 }

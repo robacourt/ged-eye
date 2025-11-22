@@ -1,11 +1,11 @@
 {
   "id": "I808",
-  "name": "William Charles Leonard ROWSE",
-  "givenName": "William Charles Leonard",
-  "surname": "ROWSE",
-  "sex": "M",
-  "birthDate": "Abt 1875",
-  "birthPlace": "Cornwall, England",
+  "name": "Annie Hill",
+  "givenName": "Annie",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -20,9 +20,9 @@
   "marriages": [
     {
       "spouseId": "I792",
-      "familyId": "F337",
-      "marriageDate": "12 MAY 1897",
-      "marriagePlace": "Christchurch, NZ, Madras St"
+      "familyId": "F386",
+      "marriageDate": "1896",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

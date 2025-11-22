@@ -1,18 +1,25 @@
 {
   "id": "I1860",
-  "name": "James A'Court",
-  "givenName": "James",
-  "surname": "A'Court",
-  "sex": "U",
-  "birthDate": "12 DEC 1786",
-  "birthPlace": "Somerset, Horsington",
+  "name": "Martha Randall",
+  "givenName": "Martha",
+  "surname": "Randall",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1859"
+  ],
   "childIds": [],
-  "parentIds": [
-    "I2939",
-    "I2940"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1859",
+      "familyId": "F769",
+      "marriageDate": "25 DEC 1831",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+    }
   ]
 }

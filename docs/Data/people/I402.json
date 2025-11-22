@@ -14,7 +14,7 @@
   ],
   "spouseIds": [
     "I403",
-    "I529"
+    "I530"
   ],
   "childIds": [
     "I127"
@@ -48,12 +48,12 @@
   "marriages": [
     {
       "spouseId": "I403",
-      "familyId": "F80",
+      "familyId": "F92",
       "marriageDate": "1ST QTR 1944"
     },
     {
-      "spouseId": "I529",
-      "familyId": "F220"
+      "spouseId": "I530",
+      "familyId": "F205"
     }
   ],
   "avatar": "avatars/I402_0.jpg"

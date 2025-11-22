@@ -1,23 +1,24 @@
 {
   "id": "I1531",
-  "name": "George White",
-  "givenName": "George",
-  "surname": "White",
+  "name": "Gary Evans",
+  "givenName": "Gary",
+  "surname": "Evans",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I865"
+  "spouseIds": [
+    "I1530"
   ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F374"
+      "spouseId": "I1530",
+      "familyId": "F670",
+      "marriageDate": "1 NOV 1986"
     }
   ]
 }

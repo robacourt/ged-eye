@@ -1,39 +1,45 @@
 {
   "id": "I542",
-  "name": "Ann Unknown",
-  "givenName": "Ann",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "BEF 1650",
+  "name": "Richard a`Court",
+  "givenName": "Richard",
+  "surname": "a`Court",
+  "sex": "M",
+  "birthDate": "ABT 1642",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1717",
+  "deathPlace": "North Cadbury, Somerset",
   "photos": [],
   "spouseIds": [
-    "I541"
+    "I543"
   ],
   "childIds": [
-    "I543",
     "I544",
     "I545",
     "I546",
     "I547",
-    "I534",
     "I548",
+    "I535",
     "I549",
     "I550",
     "I551",
     "I552",
     "I553",
-    "I554"
+    "I554",
+    "I555"
   ],
-  "parentIds": [],
-  "burialDate": "29.01.1713/14",
+  "parentIds": [
+    "I556",
+    "I557"
+  ],
+  "burialDate": "12 AUG1717",
   "burialPlace": "North Cadbury, Somerset",
+  "notes": [
+    "BIOGRAPHY: Extract from The Parsons Quarter Companion by S.W. Miller North Cadbury, Galhampton, Woolston 1663: Richard settled in the parish and of 15 children three died in infancy 1679: Richard was churchwarden when the parish collected ove"
+  ],
   "marriages": [
     {
-      "spouseId": "I541",
-      "familyId": "F227"
+      "spouseId": "I543",
+      "familyId": "F274"
     }
   ]
 }

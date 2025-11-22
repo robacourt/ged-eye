@@ -1,43 +1,25 @@
 {
   "id": "I2013",
-  "name": "Henry A'Court",
-  "givenName": "Henry",
-  "surname": "A'Court",
+  "name": "Willie Garnett",
+  "givenName": "Willie",
+  "surname": "Garnett",
   "sex": "M",
-  "birthDate": "ABT 1815",
-  "birthPlace": "Devon, Washfield",
-  "deathDate": null,
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "15 OCT 2021",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/Devon/Exeter/RG11 2153 51 10.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I2012"
   ],
-  "spouseIds": [],
   "childIds": [
-    "I2014",
-    "I2017",
-    "I2018",
-    "I2019"
+    "I489"
   ],
   "parentIds": [],
-  "occupations": [
-    "Railway Policeman",
-    "Railway signalman"
-  ],
-  "censusRecords": [
-    {
-      "date": "1861",
-      "place": "Devon, Exeter, 3 St Davids Hill"
-    },
-    {
-      "date": "1881",
-      "place": "Devon, Exeter, 36 Lower North St."
-    }
-  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F717"
+      "spouseId": "I2012",
+      "familyId": "F252"
     }
-  ],
-  "avatar": "avatars/I2013_0.jpg"
+  ]
 }

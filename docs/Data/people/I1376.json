@@ -1,26 +1,36 @@
 {
   "id": "I1376",
-  "name": "Kathleen A'Court",
-  "givenName": "Kathleen",
+  "name": "Frank Clifford A'Court",
+  "givenName": "Frank Clifford",
   "surname": "A'Court",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
+    "I1381",
     "I1382"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2309",
+    "I2310"
+  ],
   "parentIds": [
-    "I947",
-    "I1370"
+    "I948",
+    "I1371"
   ],
   "marriages": [
     {
+      "spouseId": "I1381",
+      "familyId": "F615",
+      "marriageDate": "1912",
+      "marriagePlace": "New Zealand"
+    },
+    {
       "spouseId": "I1382",
-      "familyId": "F546"
+      "familyId": "F616"
     }
   ]
 }

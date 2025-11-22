@@ -1,33 +1,25 @@
 {
   "id": "I1003",
-  "name": "Pauline Fay O'Connor",
-  "givenName": "Pauline Fay",
-  "surname": "O'Connor",
+  "name": "Alma Moran",
+  "givenName": "Alma",
+  "surname": "Moran",
   "sex": "F",
-  "birthDate": "23 JULY 1951",
-  "birthPlace": "Sydney, NSW",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1015",
-    "I1016"
+    "I1002"
   ],
   "childIds": [
-    "I1017"
+    "I738"
   ],
-  "parentIds": [
-    "I737",
-    "I736"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1015",
-      "familyId": "F416"
-    },
-    {
-      "spouseId": "I1016",
-      "familyId": "F417"
+      "spouseId": "I1002",
+      "familyId": "F351"
     }
   ]
 }

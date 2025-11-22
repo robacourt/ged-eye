@@ -1,28 +1,32 @@
 {
   "id": "I1458",
-  "name": "James Skedgel",
-  "givenName": "James",
+  "name": "William George Skedgel",
+  "givenName": "William George",
   "surname": "Skedgel",
   "sex": "M",
-  "birthDate": "ABT 1854",
-  "birthPlace": "Stoke Gabriel, Devon",
+  "birthDate": "ABT 1875",
+  "birthPlace": "Devon, Stoke Gabriel",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1470"
+    "I1457"
   ],
   "childIds": [
-    "I1457",
-    "I1464",
+    "I1468",
+    "I1469",
+    "I1470",
+    "I2964"
+  ],
+  "parentIds": [
+    "I1459",
     "I1471"
   ],
-  "parentIds": [],
-  "burialDate": "APR 4 1919",
-  "burialPlace": "Stoke Gabriel, Devon",
   "occupations": [
-    "Cowkeeper",
-    "Farmer own account"
+    "Cowkeeper Assistant",
+    "Farmer",
+    "Post Master",
+    "Sub postmaster"
   ],
   "censusRecords": [
     {
@@ -32,12 +36,18 @@
     {
       "date": "1901",
       "place": "Stoke Gabriel, Devon"
+    },
+    {
+      "date": "1911",
+      "place": "Devon, Stoke Gabriel, Post Office"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1470",
-      "familyId": "F562"
+      "spouseId": "I1457",
+      "familyId": "F645",
+      "marriageDate": "26 DEC 1899",
+      "marriagePlace": "Stoke Gabriel, Devon"
     }
   ]
 }

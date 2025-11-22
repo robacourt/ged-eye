@@ -1,28 +1,31 @@
 {
   "id": "I1050",
-  "name": "Lolius Marcia Bailey",
-  "givenName": "Lolius Marcia",
-  "surname": "Bailey",
-  "sex": "F",
-  "birthDate": "11 NOVEMBER 1922",
-  "birthPlace": "Grenfell",
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Wilfred John Diehm",
+  "givenName": "Wilfred John",
+  "surname": "Diehm",
+  "sex": "M",
+  "birthDate": "22 NOVEMBER 1920",
+  "birthPlace": "Gulgong, NSW",
+  "deathDate": "3 JULY 1991",
+  "deathPlace": "Kogarah, NSW",
   "photos": [],
   "spouseIds": [
-    "I1049"
+    "I1051"
   ],
   "childIds": [
-    "I1047",
     "I1048",
-    "I1051",
-    "I1052"
+    "I1049",
+    "I1052",
+    "I1053"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I935",
+    "I934"
+  ],
   "marriages": [
     {
-      "spouseId": "I1049",
-      "familyId": "F425",
+      "spouseId": "I1051",
+      "familyId": "F486",
       "marriageDate": "9 AUGUST 1943",
       "marriagePlace": "Grenfell"
     }

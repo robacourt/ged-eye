@@ -1,9 +1,9 @@
 {
   "id": "I708",
-  "name": "Jane Hill",
-  "givenName": "Jane",
-  "surname": "Hill",
-  "sex": "U",
+  "name": "Louisa Wilson",
+  "givenName": "Louisa",
+  "surname": "Wilson",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -11,5 +11,8 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "notes": [
+    "Witness to marriage of Jane Dober, widow of Felix A'Court, to Edward Stubbington 6 Aug. 1860. Portsea , All Saints"
+  ]
 }

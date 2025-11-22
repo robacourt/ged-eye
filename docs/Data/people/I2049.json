@@ -1,29 +1,25 @@
 {
   "id": "I2049",
-  "name": "Tina Joyce A'Court",
-  "givenName": "Tina Joyce",
-  "surname": "A'Court",
+  "name": "Wendy Ann Ashman",
+  "givenName": "Wendy Ann",
+  "surname": "Ashman",
   "sex": "F",
-  "birthDate": "14 MAR 1964",
-  "birthPlace": "Wiltshire",
+  "birthDate": "1964",
+  "birthPlace": "Saham Toney",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2050"
-  ],
-  "childIds": [
-    "I2051",
-    "I2052"
-  ],
-  "parentIds": [
-    "I2053",
     "I1857"
   ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2050",
-      "familyId": "F739"
+      "spouseId": "I1857",
+      "familyId": "F767",
+      "marriageDate": "28 JUNE 1986",
+      "marriagePlace": "Watton"
     }
   ]
 }

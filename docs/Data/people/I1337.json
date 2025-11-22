@@ -1,40 +1,31 @@
 {
   "id": "I1337",
-  "name": "Louise Ann A'Court",
-  "givenName": "Louise Ann",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1884",
-  "birthPlace": "London, Kensington",
-  "deathDate": null,
+  "name": "George Emberson",
+  "givenName": "George",
+  "surname": "Emberson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1901",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg",
-    "Data/Media/1901 census/London/Putney/RG13 489 96 11.jpg",
-    "Data/Media/1911 census/London/Putney/RG14 2435 46.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1336"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I878",
-    "I928"
+  "childIds": [
+    "I2602",
+    "I2603",
+    "I2604",
+    "I2605",
+    "I2895"
   ],
-  "occupations": [
-    "Restaurant bar attendant"
-  ],
-  "censusRecords": [
+  "parentIds": [],
+  "marriages": [
     {
-      "date": "1891",
-      "place": "London,Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1901",
-      "place": "London, Putney, 12 Rotherwood Terrace"
-    },
-    {
-      "date": "1911",
-      "place": "London, Putney, 72 Lower Richmond Rd"
+      "spouseId": "I1336",
+      "familyId": "F598",
+      "marriageDate": "4 DEC 1887",
+      "marriagePlace": "London, St Michael, Cornhill"
     }
-  ],
-  "avatar": "avatars/I1337_0.jpg"
+  ]
 }

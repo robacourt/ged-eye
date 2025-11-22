@@ -1,8 +1,8 @@
 {
   "id": "I1381",
-  "name": "Kay Unknown",
-  "givenName": "Kay",
-  "surname": "Unknown",
+  "name": "Evelyn Beatrice Robjohns",
+  "givenName": "Evelyn Beatrice",
+  "surname": "Robjohns",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
@@ -10,14 +10,19 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1375"
+    "I1376"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2309",
+    "I2310"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1375",
-      "familyId": "F545"
+      "spouseId": "I1376",
+      "familyId": "F615",
+      "marriageDate": "1912",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

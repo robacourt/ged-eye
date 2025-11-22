@@ -1,41 +1,29 @@
 {
   "id": "I1105",
-  "name": "Mary Elizabeth A'Court",
-  "givenName": "Mary Elizabeth",
+  "name": "Elsie Mabel A'Court",
+  "givenName": "Elsie Mabel",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1882",
-  "birthPlace": "East Stour, Dorset",
+  "birthDate": "ABT 1926",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1111"
+    "I1272"
   ],
   "childIds": [],
   "parentIds": [
-    "I1100",
-    "I1109"
+    "I1091",
+    "I1092"
   ],
-  "occupations": [
-    "General Domestic Servant"
-  ],
-  "censusRecords": [
-    {
-      "date": "1891 AGE 9",
-      "place": "Mells, Frome,  Somerset, Rectory Cottage"
-    },
-    {
-      "date": "1901",
-      "place": "Swindon, Wiltshire, 49 Bridge St."
-    }
-  ],
+  "baptismDate": "18 JULY 1926",
+  "baptismPlace": "West Camel, Somerset",
   "marriages": [
     {
-      "spouseId": "I1111",
-      "familyId": "F447",
-      "marriageDate": "23 MAY 1904",
-      "marriagePlace": "Queen Camel, Somerset"
+      "spouseId": "I1272",
+      "familyId": "F508",
+      "marriageDate": "1946"
     }
   ]
 }

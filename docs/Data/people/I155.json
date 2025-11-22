@@ -10,10 +10,10 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I581"
+    "I582"
   ],
   "childIds": [
-    "I582"
+    "I583"
   ],
   "parentIds": [
     "I152",
@@ -26,8 +26,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I581",
-      "familyId": "F88",
+      "spouseId": "I582",
+      "familyId": "F101",
       "marriageDate": "24.9.1863",
       "marriagePlace": "Marnhull, Dorset"
     }

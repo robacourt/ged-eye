@@ -1,18 +1,29 @@
 {
   "id": "I482",
-  "name": "C.A. A'Court",
-  "givenName": "C.A.",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Alice Melinda Cheeseman",
+  "givenName": "Alice Melinda",
+  "surname": "Cheeseman",
+  "sex": "F",
+  "birthDate": "23 JAN 1887",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "C.1991",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I481"
+  ],
+  "childIds": [
+    "I403"
+  ],
   "parentIds": [],
-  "notes": [
-    "Col. C.A. A'Court C.B. K.H. Companion of the order of the bath, Knight of the Royal Hanoverian Guelphic order. \"Officers listed in the1840 army and Navy Almanac GENUK1  ARMOF40.A.txt"
+  "occupations": [
+    "Window dresser"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I481",
+      "familyId": "F207",
+      "marriageDate": "C.1911"
+    }
   ]
 }

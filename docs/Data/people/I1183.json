@@ -1,66 +1,40 @@
 {
   "id": "I1183",
-  "name": "Emmanuel A'Court",
-  "givenName": "Emmanuel",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1836",
-  "birthPlace": "Manston, Dorset",
-  "deathDate": "Aft 1881",
+  "name": "Harriet Jones",
+  "givenName": "Harriet",
+  "surname": "Jones",
+  "sex": "F",
+  "birthDate": "ABT 1852",
+  "birthPlace": "Teffont Magna, Wiltshire",
+  "deathDate": "1932",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1184"
+    "I1182"
   ],
   "childIds": [
-    "I1100",
-    "I1185",
-    "I1186",
-    "I1187",
-    "I1188",
-    "I1189",
-    "I1657"
+    "I1197",
+    "I1200",
+    "I1205",
+    "I1211",
+    "I1212",
+    "I1213",
+    "I1216",
+    "I1243"
   ],
-  "parentIds": [
-    "I177",
-    "I1195"
-  ],
-  "baptismDate": "23 AUG 1857",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Ag Lab",
-    "Ag Lab",
-    "Lab",
-    "Ag Lab"
-  ],
+  "parentIds": [],
+  "burialDate": "1932",
+  "burialPlace": "Charminster, Dorset",
   "censusRecords": [
     {
-      "date": "1851",
-      "place": "Marnhull, Dorset"
-    },
-    {
-      "date": "1861",
-      "place": "Marnhull, Dorset, Barton"
-    },
-    {
-      "date": "1871",
-      "place": "Marnhull, Dorset, Barton"
-    },
-    {
-      "date": "1881",
-      "place": "Marnhull, Dorset, Near Antills Farm"
-    },
-    {
-      "date": "1891",
-      "place": "Marnhull, Dorset, Batts Alley"
+      "date": "1881 AGE 26",
+      "place": null
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1184",
-      "familyId": "F443",
-      "marriageDate": "25 SEP 1857",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I1182",
+      "familyId": "F545"
     }
   ]
 }

@@ -1,30 +1,37 @@
 {
   "id": "I538",
-  "name": "George A'Court",
-  "givenName": "George",
-  "surname": "A'Court",
+  "name": "Abraham a'Court",
+  "givenName": "Abraham",
+  "surname": "a'Court",
   "sex": "M",
-  "birthDate": "1705",
-  "birthPlace": null,
-  "deathDate": "1766",
+  "birthDate": "1697",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1753",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I740"
+    "I699",
+    "I702"
   ],
   "childIds": [
-    "I741"
+    "I700",
+    "I701"
   ],
   "parentIds": [
-    "I534",
-    "I535"
+    "I535",
+    "I536"
   ],
+  "burialDate": "23MARCH 1753",
+  "burialPlace": "North Cadbury, Somerset",
   "marriages": [
     {
-      "spouseId": "I740",
-      "familyId": "F230",
-      "marriageDate": "21 APR 1726",
-      "marriagePlace": "North Cadbury, Somerset"
+      "spouseId": "I699",
+      "familyId": "F275"
+    },
+    {
+      "spouseId": "I702",
+      "familyId": "F276",
+      "marriageDate": "17.APRIL 1749"
     }
   ]
 }

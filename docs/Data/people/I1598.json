@@ -1,18 +1,26 @@
 {
   "id": "I1598",
-  "name": "Betty A. A'Court",
-  "givenName": "Betty A.",
+  "name": "Gordon Charles A'Court",
+  "givenName": "Gordon Charles",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1940  2QTR",
-  "birthPlace": "East Glamorgan",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1601"
+  ],
   "childIds": [],
   "parentIds": [
-    "I1595",
-    "I1599"
+    "I1596",
+    "I1600"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1601",
+      "familyId": "F692"
+    }
   ]
 }

@@ -16,7 +16,7 @@
     "I2827"
   ],
   "childIds": [
-    "I1571",
+    "I1572",
     "I261",
     "I262",
     "I263",
@@ -57,11 +57,11 @@
   "marriages": [
     {
       "spouseId": "I259",
-      "familyId": "F30"
+      "familyId": "F31"
     },
     {
       "spouseId": "I2827",
-      "familyId": "F844"
+      "familyId": "F32"
     }
   ],
   "avatar": "avatars/I44_0.jpg"

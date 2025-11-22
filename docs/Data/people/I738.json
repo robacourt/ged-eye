@@ -1,28 +1,33 @@
 {
   "id": "I738",
-  "name": "Thomas John O'Connor",
-  "givenName": "Thomas John",
+  "name": "John Edward O'Connor",
+  "givenName": "John Edward",
   "surname": "O'Connor",
   "sex": "M",
-  "birthDate": "7 MARCH 1950",
-  "birthPlace": "Sydney, NSW",
-  "deathDate": null,
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1970",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1014"
+    "I737"
   ],
   "childIds": [
-    "I739"
+    "I739",
+    "I1004",
+    "I1005",
+    "I1006"
   ],
   "parentIds": [
-    "I737",
-    "I736"
+    "I1002",
+    "I1003"
   ],
   "marriages": [
     {
-      "spouseId": "I1014",
-      "familyId": "F302"
+      "spouseId": "I737",
+      "familyId": "F350",
+      "marriageDate": "1 NOVEMBER 1947",
+      "marriagePlace": "Liverpool NSW"
     }
   ]
 }

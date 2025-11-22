@@ -1,34 +1,15 @@
 {
   "id": "I1738",
-  "name": "George Davis",
-  "givenName": "George",
-  "surname": "Davis",
-  "sex": "M",
-  "birthDate": "Abt 1810",
-  "birthPlace": "Compton",
+  "name": "Robert Baker",
+  "givenName": "Robert",
+  "surname": "Baker",
+  "sex": "U",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I764"
-  ],
-  "childIds": [
-    "I1739",
-    "I1741",
-    "I1742",
-    "I1740"
-  ],
-  "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Yeovil, Somerset, Kiddles Lane"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I764",
-      "familyId": "F633"
-    }
-  ]
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": []
 }

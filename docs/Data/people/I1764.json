@@ -1,59 +1,24 @@
 {
   "id": "I1764",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1832",
+  "sex": "F",
+  "birthDate": "ABT 1831",
   "birthPlace": "Brockley, Bedminster, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I2258"
-  ],
-  "childIds": [
-    "I2259",
-    "I2260",
-    "I1601",
-    "I1608"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1386",
-    "I1405"
-  ],
-  "occupations": [
-    "Farm Labourer",
-    "Saw Yard Labourer",
-    "Railway Labourer",
-    "Railway Labourer"
+    "I1387",
+    "I1406"
   ],
   "censusRecords": [
     {
       "date": "1841",
       "place": "Brockley, Bedminster, Somerset, Court Farm House"
-    },
-    {
-      "date": "1861",
-      "place": "Bedminster, Bristol, 11 Richmond Terrace."
-    },
-    {
-      "date": "1871",
-      "place": "Bedminster, Bristol, 18 Clarence Place"
-    },
-    {
-      "date": "1881",
-      "place": "Lancashire, Warrington, 34 Chorley St."
-    },
-    {
-      "date": "1891",
-      "place": "Lancashire, Warrington, Sandy Lane, Cherry House"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2258",
-      "familyId": "F798"
     }
   ]
 }

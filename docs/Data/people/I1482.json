@@ -1,20 +1,21 @@
 {
   "id": "I1482",
-  "name": "Ellen A'Court",
-  "givenName": "Ellen",
+  "name": "Michelle A'Court",
+  "givenName": "Michelle",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1854",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "4 MAY 1940",
-  "deathPlace": "Sturminster Newton Institute",
-  "photos": [],
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/michelle_acourt[1].jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "burialDate": "8 MAY 1940",
-  "burialPlace": "Sturminster Newton, Dorset",
   "notes": [
-    "Could this be #2361"
-  ]
+    "Speaker details for Michele A'Court"
+  ],
+  "avatar": "avatars/I1482_0.jpg"
 }

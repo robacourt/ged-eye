@@ -1,39 +1,25 @@
 {
   "id": "I1728",
-  "name": "Giles Wheeler Bennett",
-  "givenName": "Giles Wheeler",
-  "surname": "Bennett",
+  "name": "Jane Horsley",
+  "givenName": "Jane",
+  "surname": "Horsley",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "1919",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "16 SEP 2004",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1731"
+    "I1630"
   ],
   "childIds": [
-    "I1729",
-    "I1732"
+    "I1729"
   ],
-  "parentIds": [
-    "I1727",
-    "I1629"
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Hampshire, Hambledon"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F632"
-    },
-    {
-      "spouseId": "I1731",
-      "familyId": "F640"
+      "spouseId": "I1630",
+      "familyId": "F699"
     }
   ]
 }

@@ -1,22 +1,25 @@
 {
   "id": "I1564",
-  "name": "Lilly A'Court",
-  "givenName": "Lilly",
+  "name": "Florence A'Court",
+  "givenName": "Florence",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1886",
+  "birthDate": "ABT 1883",
   "birthPlace": "Poole, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1891 census/Dorset/Poole/RG12 1638 92 29.jpg",
+    "Data/Media/1891 census/Dorset/Poole/RG12 1638 92 28.jpg",
     "Data/Media/1901 census/Dorset/Poole/RG13 1979 134 37.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I298",
-    "I1562"
+    "I1563"
+  ],
+  "occupations": [
+    "Domestic Servant"
   ],
   "censusRecords": [
     {

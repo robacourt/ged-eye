@@ -1,7 +1,7 @@
 {
   "id": "I1922",
-  "name": "Andrew Cassan",
-  "givenName": "Andrew",
+  "name": "Richard Cassan",
+  "givenName": "Richard",
   "surname": "Cassan",
   "sex": "M",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1920",
-    "I1300"
+    "I1921",
+    "I1301"
   ]
 }

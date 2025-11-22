@@ -4,23 +4,21 @@
   "givenName": "Emily",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "18 JAN 1869",
-  "birthPlace": "Brisbane, Queensland",
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "22 AUG 1867",
+  "birthPlace": "Queensland, Australia",
+  "deathDate": "3 FEB 1868",
+  "deathPlace": "Queensland, Australia",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I775",
-    "I784"
+    "I776",
+    "I785"
   ],
   "marriages": [
     {
       "spouseId": null,
-      "familyId": "F335",
-      "marriageDate": "19 JUN 1886",
-      "marriagePlace": "Wellington, New Zealand. Registrars Office"
+      "familyId": "F384"
     }
   ]
 }

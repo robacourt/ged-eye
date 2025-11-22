@@ -1,11 +1,11 @@
 {
   "id": "I1402",
-  "name": "Charles Acourt",
-  "givenName": "Charles",
+  "name": "Albert Acourt",
+  "givenName": "Albert",
   "surname": "Acourt",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1 JAN 1894",
+  "birthPlace": "St Heliers, Jersey, Chanel Islands",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -15,7 +15,7 @@
   "residences": [
     {
       "date": null,
-      "place": "San Francisco, California, USA"
+      "place": "Bottineau,ND,USA"
     }
   ]
 }

@@ -1,30 +1,23 @@
 {
   "id": "I1037",
-  "name": "Irene (Ciss) A'Court",
-  "givenName": "Irene (Ciss)",
+  "name": "Wilfred Denis A'Court",
+  "givenName": "Wilfred Denis",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1923",
+  "sex": "M",
+  "birthDate": "1922",
   "birthPlace": null,
-  "deathDate": "2000",
-  "deathPlace": null,
+  "deathDate": "21 NOV 2005",
+  "deathPlace": "Yeovil, Somerset",
   "photos": [
-    "Data/Picture/Irene Ricketts (A'Court).jpg",
+    "Data/Picture/Wilfred Dennis A'Court Judi.jpg",
+    "Data/Picture/Wilfred Dennis A'Court2.jpg",
     "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
   ],
-  "spouseIds": [
-    "I2319"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1027",
-    "I1034"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2319",
-      "familyId": "F822"
-    }
+    "I1028",
+    "I1035"
   ],
   "avatar": "avatars/I1037_0.jpg"
 }

@@ -1,24 +1,17 @@
 {
   "id": "I1803",
-  "name": "Unknown Mackintosh",
-  "givenName": "Unknown",
-  "surname": "Mackintosh",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "David R A'Court",
+  "givenName": "David R",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3RD QRT 1952",
+  "birthPlace": "Uxbridge",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1802",
+  "childIds": [],
+  "parentIds": [
     "I1804"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F650"
-    }
   ]
 }

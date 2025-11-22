@@ -1,36 +1,28 @@
 {
   "id": "I1603",
-  "name": "George T A'Court",
-  "givenName": "George T",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1884",
+  "name": "Emma Unknown",
+  "givenName": "Emma",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1863",
   "birthPlace": "Warrington, Lancs",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/Lancashire/RG12 3002 35 63.jpg",
-    "Data/Media/1901 census/Lancashire/RG13 3524 92 1.jpg",
-    "Data/Media/1911 census/Lancashire/St Helens/RG14 22777 305.jpg"
-  ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1601",
+  "photos": [],
+  "spouseIds": [
     "I1602"
   ],
-  "occupations": [
-    "Glass Maker",
-    "Flagman, LNW Railway"
+  "childIds": [
+    "I1604",
+    "I1616",
+    "I1605",
+    "I1606",
+    "I1607",
+    "I1608",
+    "I2613"
   ],
-  "notes": [
-    "ACOURT, HENRY   HEAD   MARRIED     M   45   CHARGEMAN SIGNALS   BEDMINSTER SOMERSET"
-  ],
+  "parentIds": [],
   "censusRecords": [
-    {
-      "date": "1891",
-      "place": "Lancashire, Wavertree, 13 Upper cross St."
-    },
     {
       "date": "1901",
       "place": "St. Helens, Lancs, 10 South John St"
@@ -38,7 +30,17 @@
     {
       "date": "1911",
       "place": "St. Helens, Lancs, 9 South John St"
+    },
+    {
+      "date": "1891",
+      "place": null
     }
   ],
-  "avatar": "avatars/I1603_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1602",
+      "familyId": "F693",
+      "marriageDate": "ABT 1883"
+    }
+  ]
 }

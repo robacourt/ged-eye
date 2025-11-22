@@ -1,20 +1,28 @@
 {
   "id": "I557",
-  "name": "John a'Court",
-  "givenName": "John",
-  "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "ABT 1646",
+  "name": "Dorothy Unknown",
+  "givenName": "Dorothy",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "BEF 1629",
   "birthPlace": null,
-  "deathDate": "1669",
+  "deathDate": "1693",
   "deathPlace": "South Cadbury, Somerset",
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I555",
+  "spouseIds": [
     "I556"
   ],
-  "burialDate": "15 APR 1669",
-  "burialPlace": "South Cadbury, Somerset"
+  "childIds": [
+    "I542",
+    "I558"
+  ],
+  "parentIds": [],
+  "burialDate": "17.05.1693",
+  "burialPlace": "South Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I556",
+      "familyId": "F279"
+    }
+  ]
 }

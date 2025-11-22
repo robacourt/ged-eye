@@ -1,20 +1,25 @@
 {
   "id": "I1958",
-  "name": "Christopher James Plant",
-  "givenName": "Christopher James",
-  "surname": "Plant",
-  "sex": "M",
-  "birthDate": "4 AUG 1979",
-  "birthPlace": "Carshalton, Surrey",
+  "name": "Brenda Wallis",
+  "givenName": "Brenda",
+  "surname": "Wallis",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1956",
-    "I1955"
+  "spouseIds": [
+    "I1957"
   ],
-  "baptismDate": "17  AUG 1980",
-  "baptismPlace": "Norbury, Surrey, St. Philips"
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1957",
+      "familyId": "F788",
+      "marriageDate": "1960",
+      "marriagePlace": "London"
+    }
+  ]
 }

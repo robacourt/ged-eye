@@ -1,38 +1,26 @@
 {
   "id": "I615",
-  "name": "Frederick James Clarkson",
-  "givenName": "Frederick James",
-  "surname": "Clarkson",
+  "name": "William Groves",
+  "givenName": "William",
+  "surname": "Groves",
   "sex": "M",
-  "birthDate": "5.7.1949",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [
     "I613"
   ],
-  "childIds": [
-    "I616"
-  ],
-  "parentIds": [
-    "I617",
-    "I618"
-  ],
-  "baptismDate": "25.9.1949",
-  "baptismPlace": "Stalbridge, Dorset",
+  "parentIds": [],
   "occupations": [
-    "Tractor Driver"
-  ],
-  "notes": [
-    "25-1975"
+    "Foreman Powder Factory"
   ],
   "marriages": [
     {
-      "spouseId": "I613",
-      "familyId": "F254",
-      "marriageDate": "15.2.1975",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F303"
     }
   ]
 }

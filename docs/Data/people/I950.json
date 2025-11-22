@@ -1,18 +1,18 @@
 {
   "id": "I950",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "John Medlyn A'Court",
+  "givenName": "John Medlyn",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": "18 MAY 1854",
+  "birthPlace": "Waiwhetu, Wellington, New Zealand",
+  "deathDate": "1921",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "URL: http://freepages.genealogy.rootsweb.com/~ourstuff/Jury1847A-E.htm - size 166kb - 25 Sep 2001"
+  "parentIds": [
+    "I936",
+    "I937"
   ]
 }

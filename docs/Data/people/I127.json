@@ -11,8 +11,8 @@
   "photos": [],
   "spouseIds": [
     "I122",
-    "I530",
-    "I530"
+    "I531",
+    "I531"
   ],
   "childIds": [
     "I128"
@@ -24,16 +24,16 @@
   "marriages": [
     {
       "spouseId": "I122",
-      "familyId": "F76"
+      "familyId": "F86"
     },
     {
-      "spouseId": "I530",
-      "familyId": "F311",
+      "spouseId": "I531",
+      "familyId": "F90",
       "marriageDate": "3RD QTR 1967"
     },
     {
-      "spouseId": "I530",
-      "familyId": "F672"
+      "spouseId": "I531",
+      "familyId": "F91"
     }
   ]
 }

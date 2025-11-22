@@ -1,34 +1,32 @@
 {
   "id": "I1168",
-  "name": "Aaron Humphries",
-  "givenName": "Aaron",
-  "surname": "Humphries",
+  "name": "Edward Swain",
+  "givenName": "Edward",
+  "surname": "Swain",
   "sex": "M",
-  "birthDate": "ABT 1829",
-  "birthPlace": "Bruton, Somerset",
-  "deathDate": "ABT 1861",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I180"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1171",
-    "I1172"
+    "I1167"
   ],
-  "parentIds": [
-    "I1169",
-    "I1170"
-  ],
+  "parentIds": [],
   "occupations": [
-    "Bellhanger"
+    "Carter"
+  ],
+  "residences": [
+    {
+      "date": "1887",
+      "place": "Fifehead Neville, Dorset"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I180",
-      "familyId": "F99",
-      "marriageDate": "25 JUL 1850",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F540"
     }
   ]
 }

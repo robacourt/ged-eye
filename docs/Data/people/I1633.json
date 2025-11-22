@@ -1,43 +1,32 @@
 {
   "id": "I1633",
-  "name": "Tom A'Court",
-  "givenName": "Tom",
-  "surname": "A'Court",
+  "name": "Henry Elliott",
+  "givenName": "Henry",
+  "surname": "Elliott",
   "sex": "M",
-  "birthDate": "Abt 1866",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": "ABT 1879",
+  "birthPlace": "Totnes, Devon",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1634"
+    "I1463"
   ],
-  "childIds": [
-    "I1635"
-  ],
+  "childIds": [],
   "parentIds": [],
   "occupations": [
-    "Masons Labourer",
-    "Farm Labourer"
-  ],
-  "notes": [
-    "Very likely son of Ann Warren on bk#1632"
+    "Bricklayer"
   ],
   "censusRecords": [
     {
       "date": "1901",
-      "place": "Marnhull, Dorset, Church Lane"
-    },
-    {
-      "date": "1911",
-      "place": "Marnhull, Dorset, Old Workhouse."
+      "place": "Ealing, Middlesex, 13 Norfolk Terrace"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1634",
-      "familyId": "F607",
-      "marriageDate": "ABT 1897"
+      "spouseId": "I1463",
+      "familyId": "F648"
     }
   ]
 }

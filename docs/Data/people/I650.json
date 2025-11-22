@@ -1,10 +1,10 @@
 {
   "id": "I650",
-  "name": "Amanda Mary Warren",
-  "givenName": "Amanda Mary",
+  "name": "Elizabeth Ann Warren",
+  "givenName": "Elizabeth Ann",
   "surname": "Warren",
   "sex": "F",
-  "birthDate": "2.4.1872",
+  "birthDate": "26.8.1870",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,9 +12,15 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
-  "baptismDate": "14.7.1872",
-  "baptismPlace": "Marnhull, Dorset"
+  "baptismDate": "27.3.1871",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Servant"
+  ],
+  "notes": [
+    "6 months in 1871,20 in 1891,"
+  ]
 }

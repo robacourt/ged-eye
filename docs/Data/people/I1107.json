@@ -1,33 +1,45 @@
 {
   "id": "I1107",
-  "name": "Eveline A'Court",
-  "givenName": "Eveline",
+  "name": "Beatrice Crew A'Court",
+  "givenName": "Beatrice Crew",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1886",
-  "birthPlace": "Dorset, Kingston St Mary",
+  "birthDate": "ABT 1884",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 108 1.jpg"
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg",
+    "Data/Media/Newspaper Reports/Beautrice A'Court 16 Jul 1901 Queen Camel.docx"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1111"
+  ],
+  "childIds": [
+    "I1422"
+  ],
   "parentIds": [
-    "I1100",
-    "I1109"
+    "I1101",
+    "I1110"
   ],
-  "occupations": [
-    "Domestic Servant"
-  ],
+  "baptismDate": "9 MAR 1884",
+  "baptismPlace": "Dorset, Marnhull",
   "censusRecords": [
     {
-      "date": "1891",
-      "place": "Somerset, Frome, Mells, Rectory Cottage"
+      "date": "1891 AGE 7",
+      "place": "Mells, Frome,  Somerset, Rectory Cottage"
     },
     {
       "date": "1901",
-      "place": "Somerset, Queen Camel, Church Lane"
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1111",
+      "familyId": "F510",
+      "marriageDate": "16 JULY 1901",
+      "marriagePlace": "Queen Camel, Somerset"
     }
   ],
   "avatar": "avatars/I1107_0.jpg"

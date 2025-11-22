@@ -1,34 +1,35 @@
 {
   "id": "I1243",
-  "name": "Gordon Pascal Brockway",
-  "givenName": "Gordon Pascal",
-  "surname": "Brockway",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Gladys Amy Haskett",
+  "givenName": "Gladys Amy",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "1894",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1242"
+    "I1244"
   ],
   "childIds": [],
   "parentIds": [
-    "I1244"
+    "I1182",
+    "I1183"
   ],
   "occupations": [
-    "Ag Lab"
+    "Laundress"
   ],
   "residences": [
     {
-      "date": "1914",
+      "date": null,
       "place": "Marnhull, Dorset, New St."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1242",
-      "familyId": "F499",
+      "spouseId": "I1244",
+      "familyId": "F566",
       "marriageDate": "13 APRIL 1914",
       "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
     }

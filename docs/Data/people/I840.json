@@ -1,12 +1,12 @@
 {
   "id": "I840",
-  "name": "Dalton Britton A'Court",
-  "givenName": "Dalton Britton",
+  "name": "Unita Adele A'Court",
+  "givenName": "Unita Adele",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "27 AUG 1901",
+  "sex": "F",
+  "birthDate": "6 JAN 1900",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "FEB 1902",
+  "deathDate": "2 MAR 1970",
   "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
@@ -14,13 +14,14 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
+    "I825",
+    "I837"
   ],
   "marriages": [
     {
       "spouseId": "I853",
-      "familyId": "F365"
+      "familyId": "F416",
+      "marriagePlace": "never married"
     }
   ]
 }

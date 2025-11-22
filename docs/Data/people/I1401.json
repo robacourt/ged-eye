@@ -1,21 +1,23 @@
 {
   "id": "I1401",
-  "name": "Albert Acourt",
-  "givenName": "Albert",
-  "surname": "Acourt",
+  "name": "Norman Greig",
+  "givenName": "Norman",
+  "surname": "Greig",
   "sex": "M",
-  "birthDate": "1 JAN 1894",
-  "birthPlace": "St Heliers, Jersey, Chanel Islands",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I721"
+  ],
   "childIds": [],
   "parentIds": [],
-  "residences": [
+  "marriages": [
     {
-      "date": null,
-      "place": "Bottineau,ND,USA"
+      "spouseId": "I721",
+      "familyId": "F344"
     }
   ]
 }

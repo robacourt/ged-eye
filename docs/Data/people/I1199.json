@@ -1,33 +1,18 @@
 {
   "id": "I1199",
-  "name": "Sidney Frank Haskett",
-  "givenName": "Sidney Frank",
+  "name": "Peter Haskett",
+  "givenName": "Peter",
   "surname": "Haskett",
   "sex": "M",
-  "birthDate": "1882",
-  "birthPlace": "Teffont Magna, Wiltshire",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1200"
-  ],
-  "childIds": [
-    "I1201",
-    "I1202",
-    "I1203"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1181",
-    "I1182"
-  ],
-  "notes": [
-    "of Canada"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1200",
-      "familyId": "F486"
-    }
+    "I1197",
+    "I1198"
   ]
 }

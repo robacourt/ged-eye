@@ -1,24 +1,32 @@
 {
   "id": "I869",
-  "name": "James Baker",
-  "givenName": "James",
-  "surname": "Baker",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Frances Sarah (Fanny) STOKE",
+  "givenName": "Frances Sarah (Fanny)",
+  "surname": "STOKE",
+  "sex": "F",
+  "birthDate": "ABT 1849",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "7 DEC 1925",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
     "I781"
   ],
-  "childIds": [],
+  "childIds": [
+    "I516"
+  ],
   "parentIds": [],
+  "burialDate": "1925",
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
+  "notes": [
+    "Cemetery records"
+  ],
   "marriages": [
     {
       "spouseId": "I781",
-      "familyId": "F331",
-      "marriageDate": "1885"
+      "familyId": "F266",
+      "marriageDate": "27 APR 1870",
+      "marriagePlace": "Bound Brook, New Jersey, USA"
     }
   ]
 }

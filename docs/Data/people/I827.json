@@ -1,18 +1,22 @@
 {
   "id": "I827",
-  "name": "Nellie Maud A'Court",
-  "givenName": "Nellie Maud",
+  "name": "William Henry A'Court",
+  "givenName": "William Henry",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "14 AUG 1874",
+  "sex": "M",
+  "birthDate": "1 AUG 1872",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "19 MAR 1947",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I776",
-    "I820"
+    "I777",
+    "I821"
+  ],
+  "notes": [
+    "First name(s) W H",
+    "From \"Smithy Tales - events in the life of Samuel A'Court (1842-1913)\", which were recounted by his daughter Lucy & published in The Star newspaper in 1924 (ref. Family History Section, Canterbury Museum, New Zealand.)"
   ]
 }

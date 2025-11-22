@@ -1,26 +1,24 @@
 {
   "id": "I1502",
-  "name": "Frederick Randall",
-  "givenName": "Frederick",
-  "surname": "Randall",
+  "name": "Victor James Collis",
+  "givenName": "Victor James",
+  "surname": "Collis",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "25 JUL 1899",
+  "birthPlace": "Abbas, Templecombe, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1507"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1503"
+    "I1499",
+    "I1508"
   ],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I1507",
-      "familyId": "F573",
-      "marriageDate": "25 SEP 1905"
+      "date": "1901",
+      "place": "Templecombe, Somerset"
     }
   ]
 }

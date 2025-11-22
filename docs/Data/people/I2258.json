@@ -13,13 +13,13 @@
     "Data/Media/1911 census/Lancashire/Lancaster/RG14 25552 81.jpg"
   ],
   "spouseIds": [
-    "I1764"
+    "I1765"
   ],
   "childIds": [
     "I2259",
     "I2260",
-    "I1601",
-    "I1608"
+    "I1602",
+    "I1609"
   ],
   "parentIds": [],
   "censusRecords": [
@@ -46,8 +46,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1764",
-      "familyId": "F798"
+      "spouseId": "I1765",
+      "familyId": "F694"
     }
   ],
   "avatar": "avatars/I2258_0.jpg"

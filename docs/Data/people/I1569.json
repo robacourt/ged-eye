@@ -1,10 +1,10 @@
 {
   "id": "I1569",
-  "name": "James A'Court",
-  "givenName": "James",
+  "name": "Edward A'Court",
+  "givenName": "Edward",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1901",
+  "birthDate": "ABT 1897",
   "birthPlace": "Poole, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -16,7 +16,7 @@
   "childIds": [],
   "parentIds": [
     "I298",
-    "I1562"
+    "I1563"
   ],
   "censusRecords": [
     {

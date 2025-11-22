@@ -1,26 +1,51 @@
 {
   "id": "I525",
-  "name": "May Elizabeth Ansett",
-  "givenName": "May Elizabeth",
-  "surname": "Ansett",
-  "sex": "F",
-  "birthDate": "1886",
-  "birthPlace": "Collingwood, Victoria",
-  "deathDate": null,
+  "name": "Arthur John A'Court",
+  "givenName": "Arthur John",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1888",
+  "birthPlace": "London, Mayfair",
+  "deathDate": "1968",
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg",
+    "Data/Media/1901 census/London/Putney/RG13 489 96 11.jpg",
+    "Data/Media/1911 census/London/Putney/RG14 2435 46.jpg"
+  ],
   "spouseIds": [
-    "I524"
+    "I526"
   ],
   "childIds": [
-    "I512",
-    "I2092"
+    "I513",
+    "I2093"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I879",
+    "I929"
+  ],
+  "occupations": [
+    "Dancing Master"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London,Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1901",
+      "place": "London, Putney, 12 Rotherwood Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "London, Putney, 72 Lower Richmond Rd"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I524",
-      "familyId": "F218"
+      "spouseId": "I526",
+      "familyId": "F263"
     }
-  ]
+  ],
+  "avatar": "avatars/I525_0.jpg"
 }

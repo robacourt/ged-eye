@@ -1,10 +1,10 @@
 {
   "id": "I1576",
-  "name": "Reginald John A'Court",
-  "givenName": "Reginald John",
+  "name": "Charles Frank A'Court",
+  "givenName": "Charles Frank",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1895",
+  "birthDate": "ABT 1892",
   "birthPlace": "Blandford Forum, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -15,11 +15,11 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1571",
-    "I1572"
+    "I1572",
+    "I1573"
   ],
   "occupations": [
-    "Apprentice in Cycle Trade"
+    "Grocer's Assistant"
   ],
   "censusRecords": [
     {

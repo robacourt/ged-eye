@@ -1,21 +1,21 @@
 {
   "id": "I645",
-  "name": "John W Hatcher",
-  "givenName": "John W",
+  "name": "Elizabeth Hatcher",
+  "givenName": "Elizabeth",
   "surname": "Hatcher",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": "Harnham Salisbury Wiltshire",
-  "deathDate": "1957",
-  "deathPlace": "Dorset",
+  "sex": "F",
+  "birthDate": "ABT 1879",
+  "birthPlace": "Newfoundland, Canada",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I159",
-    "I643"
+    "I644"
   ],
   "notes": [
-    "2 months in 1881"
+    "2 in 1881"
   ]
 }

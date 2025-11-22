@@ -1,10 +1,10 @@
 {
   "id": "I544",
-  "name": "Dorothy a'Court",
-  "givenName": "Dorothy",
+  "name": "Agetha a'Court",
+  "givenName": "Agetha",
   "surname": "a'Court",
   "sex": "F",
-  "birthDate": "BEF 22.8.1667",
+  "birthDate": "BEF 28.6.1665",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,9 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I541",
-    "I542"
-  ]
+    "I542",
+    "I543"
+  ],
+  "baptismDate": "28.6.1665",
+  "baptismPlace": "North Cadbury, Somerset"
 }

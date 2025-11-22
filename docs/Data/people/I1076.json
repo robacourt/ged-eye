@@ -1,25 +1,15 @@
 {
   "id": "I1076",
-  "name": "Robert Wilton",
-  "givenName": "Robert",
-  "surname": "Wilton",
-  "sex": "M",
-  "birthDate": "1779",
+  "name": "Edward Hobbs",
+  "givenName": "Edward",
+  "surname": "Hobbs",
+  "sex": "U",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1077"
-  ],
-  "childIds": [
-    "I769"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1077",
-      "familyId": "F321"
-    }
-  ]
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": []
 }

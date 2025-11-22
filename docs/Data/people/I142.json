@@ -40,13 +40,13 @@
   "marriages": [
     {
       "spouseId": "I49",
-      "familyId": "F32",
+      "familyId": "F34",
       "marriageDate": "18 SEP 1818",
       "marriagePlace": "Marnhull, Dorset"
     },
     {
       "spouseId": "I56",
-      "familyId": "F37"
+      "familyId": "F41"
     }
   ],
   "avatar": "avatars/I142_0.jpg"

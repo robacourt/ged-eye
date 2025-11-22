@@ -1,20 +1,44 @@
 {
   "id": "I1929",
-  "name": "Thomas Frederic Cooke A'Court",
-  "givenName": "Thomas Frederic Cooke",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "17 AUG 1835",
-  "birthPlace": "Shepton Mallet, Somerset",
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1820",
+  "birthPlace": "Bratton, Wiltshire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I51",
-    "I1753"
+  "photos": [
+    "Data/Media/1891 census/Somerset/Shepton Mallet/RG12 1910 69 23.jpg"
   ],
-  "baptismDate": "6 JAN 1836",
-  "baptismPlace": "Shepton Mallet, Somerset"
+  "spouseIds": [
+    "I51"
+  ],
+  "childIds": [],
+  "parentIds": [],
+  "occupations": [
+    "Printers Wife",
+    "Annuitant"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Shepton Mallet, Somerset, Town St."
+    },
+    {
+      "date": "1871",
+      "place": "Somerset, Shepton Mallet, Paul St."
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Shepton Mallet, Paul St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I51",
+      "familyId": "F38"
+    }
+  ],
+  "avatar": "avatars/I1929_0.jpg"
 }

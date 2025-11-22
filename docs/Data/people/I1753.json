@@ -1,27 +1,24 @@
 {
   "id": "I1753",
-  "name": "Mary Ann Davis",
-  "givenName": "Mary Ann",
-  "surname": "Davis",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1800",
-  "birthPlace": "Somerset",
+  "birthDate": "1833",
+  "birthPlace": "Castle Cary, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I51"
+  "photos": [
+    "Data/Media/1851 census/Queen Camel/HO107 1931 8 9 25.jpg"
   ],
-  "childIds": [
-    "I1929"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I51",
-      "familyId": "F684",
-      "marriageDate": "1 FEB 1821",
-      "marriagePlace": "Shepton Mallet, Somerset"
+      "date": "1851",
+      "place": "Queen Camel, Somerset, Hazlegrove"
     }
-  ]
+  ],
+  "avatar": "avatars/I1753_0.jpg"
 }

@@ -1,23 +1,25 @@
 {
   "id": "I1749",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1788",
+  "birthPlace": "Compton Pauncefoot, Somerset",
+  "deathDate": "1834",
+  "deathPlace": "Wincanton, Somerset",
   "photos": [],
   "spouseIds": [
-    "I1748"
+    "I1750"
   ],
   "childIds": [],
   "parentIds": [],
+  "burialDate": "8 AUG 1834",
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
   "marriages": [
     {
-      "spouseId": "I1748",
-      "familyId": "F635"
+      "spouseId": "I1750",
+      "familyId": "F732"
     }
   ]
 }

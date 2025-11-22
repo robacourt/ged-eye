@@ -1,24 +1,21 @@
 {
   "id": "I1072",
-  "name": "Walter H. Christie",
-  "givenName": "Walter H.",
-  "surname": "Christie",
+  "name": "Thomas A'Court",
+  "givenName": "Thomas",
+  "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I976"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I976",
-      "familyId": "F405",
-      "marriageDate": "1921"
-    }
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "notes": [
+    "foster child not adopted"
   ]
 }

@@ -1,22 +1,27 @@
 {
   "id": "I1256",
-  "name": "James Haskett",
-  "givenName": "James",
+  "name": "Edgar Bennett Haskett",
+  "givenName": "Edgar Bennett",
   "surname": "Haskett",
   "sex": "M",
-  "birthDate": "ABT 1842",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": "29 MAY 1867",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1257"
-  ],
-  "childIds": [
-    "I1631",
     "I1255"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1257",
+    "I1258"
+  ],
+  "baptismDate": "10 JULY 1867",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Lab"
+  ],
   "censusRecords": [
     {
       "date": "1871",
@@ -25,8 +30,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1257",
-      "familyId": "F507"
+      "spouseId": "I1255",
+      "familyId": "F573",
+      "marriageDate": "22 JAN 1890",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "I967",
-  "name": "John Chapman",
-  "givenName": "John",
-  "surname": "Chapman",
+  "name": "Mervyn R. Macquire",
+  "givenName": "Mervyn R.",
+  "surname": "Macquire",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,16 +10,16 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I968"
+    "I965"
   ],
-  "childIds": [
-    "I959"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I968",
-      "familyId": "F400"
+      "spouseId": "I965",
+      "familyId": "F458",
+      "marriageDate": "1924",
+      "marriagePlace": "Dubbo, NSW"
     }
   ]
 }

@@ -22,8 +22,8 @@
     "I2437"
   ],
   "parentIds": [
-    "I1185",
-    "I1190"
+    "I1186",
+    "I1191"
   ],
   "censusRecords": [
     {
@@ -38,7 +38,7 @@
   "marriages": [
     {
       "spouseId": "I2419",
-      "familyId": "F859",
+      "familyId": "F907",
       "marriageDate": "1920"
     }
   ],

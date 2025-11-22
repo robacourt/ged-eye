@@ -1,18 +1,28 @@
 {
   "id": "I1099",
-  "name": "Julia Anne A'Court",
-  "givenName": "Julia Anne",
+  "name": "Toni Linda A'Court",
+  "givenName": "Toni Linda",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "4 DEC 1977",
-  "birthPlace": "Salisbury, Wiltshire",
+  "birthDate": "17 FEB 1972",
+  "birthPlace": "Perth, Western Australia",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1306"
+  ],
   "childIds": [],
   "parentIds": [
-    "I1086",
-    "I1304"
+    "I1087",
+    "I1305"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1306",
+      "familyId": "F504",
+      "marriageDate": "22 NOV 1997",
+      "marriagePlace": "Perth, Western Australia"
+    }
   ]
 }

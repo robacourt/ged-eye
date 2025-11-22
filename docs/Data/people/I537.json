@@ -1,37 +1,18 @@
 {
   "id": "I537",
-  "name": "Abraham a'Court",
-  "givenName": "Abraham",
+  "name": "Jobe a'Court",
+  "givenName": "Jobe",
   "surname": "a'Court",
   "sex": "M",
-  "birthDate": "1697",
-  "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "1753",
+  "birthDate": "BEF 1695",
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I698",
-    "I701"
-  ],
-  "childIds": [
-    "I699",
-    "I700"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I534",
-    "I535"
-  ],
-  "burialDate": "23MARCH 1753",
-  "burialPlace": "North Cadbury, Somerset",
-  "marriages": [
-    {
-      "spouseId": "I698",
-      "familyId": "F228"
-    },
-    {
-      "spouseId": "I701",
-      "familyId": "F229",
-      "marriageDate": "17.APRIL 1749"
-    }
+    "I535",
+    "I536"
   ]
 }

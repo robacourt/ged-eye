@@ -1,17 +1,23 @@
 {
   "id": "I1438",
-  "name": "Clement John Wheeler Bennett",
-  "givenName": "Clement John Wheeler",
-  "surname": "Bennett",
+  "name": "Unknown Wallis",
+  "givenName": "Unknown",
+  "surname": "Wallis",
   "sex": "M",
-  "birthDate": "ABT 1966",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1986",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1436"
+  ],
   "childIds": [],
-  "parentIds": [
-    "I388"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1436",
+      "familyId": "F640"
+    }
   ]
 }

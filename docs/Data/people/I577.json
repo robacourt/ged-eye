@@ -1,34 +1,27 @@
 {
   "id": "I577",
-  "name": "Charles A'Court",
-  "givenName": "Charles",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "23 JUL 1830",
-  "deathPlace": "Somerset, Horsington",
+  "name": "Mary Heaton",
+  "givenName": "Mary",
+  "surname": "Heaton",
+  "sex": "F",
+  "birthDate": "1924",
+  "birthPlace": "Oxford",
+  "deathDate": "2014",
+  "deathPlace": "Western Cape, South Africa",
   "photos": [],
   "spouseIds": [
-    "I578"
+    "I766"
   ],
-  "childIds": [
-    "I1765",
-    "I1766",
-    "I571"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I2939",
-    "I2940"
+    "I389",
+    "I383"
   ],
-  "baptismDate": "25 DEC1781",
-  "baptismPlace": "Horsington, Somerset",
   "marriages": [
     {
-      "spouseId": "I578",
-      "familyId": "F237",
-      "marriageDate": "19 FEB 1824",
-      "marriagePlace": "Horsington, Somerset"
+      "spouseId": "I766",
+      "familyId": "F285",
+      "marriageDate": "SEP 1945"
     }
   ]
 }

@@ -13,15 +13,15 @@
     "Data/Media/1911 census/Hampshire/Boscombe/RG14 5851 144.jpg"
   ],
   "spouseIds": [
-    "I904"
+    "I905"
   ],
   "childIds": [
-    "I905",
     "I906",
     "I907",
     "I908",
     "I909",
     "I910",
+    "I911",
     "I2587",
     "I2588"
   ],
@@ -43,8 +43,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I904",
-      "familyId": "F125",
+      "spouseId": "I905",
+      "familyId": "F140",
       "marriageDate": "3 NOV 1870",
       "marriagePlace": "Idmiston, Wiltshire"
     }

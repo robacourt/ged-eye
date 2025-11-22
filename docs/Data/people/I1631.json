@@ -1,24 +1,26 @@
 {
   "id": "I1631",
-  "name": "Henry Haskett",
-  "givenName": "Henry",
-  "surname": "Haskett",
+  "name": "George Warren",
+  "givenName": "George",
+  "surname": "Warren",
   "sex": "M",
-  "birthDate": "Abt 1863",
+  "birthDate": "ABT 1832",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1256",
-    "I1257"
+    "I1625"
   ],
   "censusRecords": [
     {
       "date": "1871",
-      "place": "Marnhull, Dorset, East Well"
+      "place": "Marnhull, Dorset, Barton"
     }
-  ]
+  ],
+  "avatar": "avatars/I1631_0.jpg"
 }

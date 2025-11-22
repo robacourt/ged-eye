@@ -1,10 +1,10 @@
 {
   "id": "I2101",
-  "name": "Julia Thomas",
-  "givenName": "Julia",
+  "name": "Amelia Thomas",
+  "givenName": "Amelia",
   "surname": "Thomas",
   "sex": "F",
-  "birthDate": "1945",
+  "birthDate": "1942",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2099",
-    "I2098"
+    "I2100",
+    "I2099"
   ]
 }

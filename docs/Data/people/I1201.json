@@ -1,27 +1,27 @@
 {
   "id": "I1201",
-  "name": "Barry Haskett",
-  "givenName": "Barry",
-  "surname": "Haskett",
-  "sex": "M",
+  "name": "Myrtle Unknown",
+  "givenName": "Myrtle",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1199",
+  "spouseIds": [
     "I1200"
   ],
-  "occupations": [
-    "Lawyer"
+  "childIds": [
+    "I1202",
+    "I1203",
+    "I1204"
   ],
-  "residences": [
+  "parentIds": [],
+  "marriages": [
     {
-      "date": null,
-      "place": "U.S.A."
+      "spouseId": "I1200",
+      "familyId": "F553"
     }
   ]
 }

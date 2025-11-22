@@ -1,18 +1,25 @@
 {
   "id": "I1691",
-  "name": "Joanne Marie A'Court",
-  "givenName": "Joanne Marie",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "2ND QR 1973",
-  "birthPlace": "Taunton, Somerset",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1690",
-    "I1689"
+  "spouseIds": [
+    "I1690"
+  ],
+  "childIds": [
+    "I1692"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1690",
+      "familyId": "F713"
+    }
   ]
 }

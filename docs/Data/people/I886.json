@@ -1,36 +1,18 @@
 {
   "id": "I886",
-  "name": "Ann Unknown",
-  "givenName": "Ann",
-  "surname": "Unknown",
+  "name": "Louisa A'Court",
+  "givenName": "Louisa",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1820",
-  "birthPlace": "Oxford, Oxfordshire",
-  "deathDate": "AFT 1881",
+  "birthDate": "ABT 1848",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": "AFT 1851",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I767"
-  ],
-  "childIds": [
-    "I887",
-    "I888",
-    "I889",
-    "I890"
-  ],
-  "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "London, Hackney, 64 Graham Road"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I767",
-      "familyId": "F319",
-      "marriageDate": "1843",
-      "marriagePlace": "Somerset"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I767",
+    "I883"
   ]
 }

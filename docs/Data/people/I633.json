@@ -1,8 +1,8 @@
 {
   "id": "I633",
-  "name": "Joyce Cecelia Frampton",
-  "givenName": "Joyce Cecelia",
-  "surname": "Frampton",
+  "name": "Alice Maude Mary Voller",
+  "givenName": "Alice Maude Mary",
+  "surname": "Voller",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
@@ -10,26 +10,19 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I623"
+    "I632"
   ],
   "childIds": [
-    "I634"
+    "I631"
   ],
-  "parentIds": [
-    "I635"
-  ],
-  "occupations": [
-    "Landworker"
-  ],
+  "parentIds": [],
   "notes": [
-    "22-1948"
+    "with issue"
   ],
   "marriages": [
     {
-      "spouseId": "I623",
-      "familyId": "F261",
-      "marriageDate": "28.8.1948",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I632",
+      "familyId": "F315"
     }
   ]
 }

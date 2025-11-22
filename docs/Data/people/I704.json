@@ -1,8 +1,8 @@
 {
   "id": "I704",
-  "name": "Edward Dober",
-  "givenName": "Edward",
-  "surname": "Dober",
+  "name": "Anna Daniels",
+  "givenName": "Anna",
+  "surname": "Daniels",
   "sex": "U",
   "birthDate": null,
   "birthPlace": null,
@@ -11,8 +11,5 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Witness to marriage of Felix A'Court and Jane Dober, possible Jane's brother."
-  ]
+  "parentIds": []
 }

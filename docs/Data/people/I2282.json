@@ -24,8 +24,8 @@
     "I2738"
   ],
   "parentIds": [
-    "I1422",
-    "I1428"
+    "I1423",
+    "I1429"
   ],
   "occupations": [
     "Tobacco Cutter",
@@ -66,7 +66,7 @@
   "marriages": [
     {
       "spouseId": "I2693",
-      "familyId": "F937",
+      "familyId": "F633",
       "marriageDate": "5 JUL 1898",
       "marriagePlace": "London, Bishopsgate, The New Synagoge"
     }

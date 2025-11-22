@@ -12,13 +12,13 @@
     "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 41 13.jpg"
   ],
   "spouseIds": [
-    "I1658",
+    "I1659",
     "I189"
   ],
   "childIds": [
-    "I1661",
-    "I1659",
-    "I1660"
+    "I1662",
+    "I1660",
+    "I1661"
   ],
   "parentIds": [
     "I318",
@@ -47,12 +47,12 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1658",
-      "familyId": "F151"
+      "spouseId": "I1659",
+      "familyId": "F169"
     },
     {
       "spouseId": "I189",
-      "familyId": "F107",
+      "familyId": "F121",
       "marriageDate": "18 JAN 1886",
       "marriagePlace": "Marnhull, Dorset"
     }

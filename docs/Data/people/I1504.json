@@ -1,28 +1,23 @@
 {
   "id": "I1504",
-  "name": "Winifred Violet Louisa Frier",
-  "givenName": "Winifred Violet Louisa",
-  "surname": "Frier",
-  "sex": "F",
+  "name": "Henry Randall",
+  "givenName": "Henry",
+  "surname": "Randall",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "BEF 1905",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1497",
-    "I1505"
+  "spouseIds": [],
+  "childIds": [
+    "I1503"
   ],
-  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1497",
-      "familyId": "F569"
-    },
-    {
-      "spouseId": "I1505",
-      "familyId": "F575"
+      "spouseId": null,
+      "familyId": "F660"
     }
   ]
 }

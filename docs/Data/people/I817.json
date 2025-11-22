@@ -1,30 +1,25 @@
 {
   "id": "I817",
-  "name": "William Arthur MOIR",
-  "givenName": "William Arthur",
-  "surname": "MOIR",
+  "name": "Ernest William WILTSHIRE",
+  "givenName": "Ernest William",
+  "surname": "WILTSHIRE",
   "sex": "M",
-  "birthDate": "1899",
-  "birthPlace": "Christchurch, New Zealand",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I812"
   ],
-  "childIds": [
-    "I1045"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "notes": [
-    "Wises"
-  ],
   "marriages": [
     {
       "spouseId": "I812",
-      "familyId": "F346",
-      "marriageDate": "25 MAY 1920",
-      "marriagePlace": "Methodist Church, Sydenham, Christchurch, NZ"
+      "familyId": "F398",
+      "marriageDate": "28 JUN 1917",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

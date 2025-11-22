@@ -1,60 +1,49 @@
 {
   "id": "I761",
-  "name": "Charles A'Court",
-  "givenName": "Charles",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1808",
-  "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "18 MAY 1885",
-  "deathPlace": "Martock, Somerset",
-  "photos": [],
+  "name": "Mary NEWMAN",
+  "givenName": "Mary",
+  "surname": "NEWMAN",
+  "sex": "F",
+  "birthDate": "1784",
+  "birthPlace": "Blackford, Somerset, England",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1871 census/Galhampton/RG10 2421 61 23.jpg"
+  ],
   "spouseIds": [
-    "I769"
+    "I756"
   ],
   "childIds": [
-    "I770",
-    "I771",
-    "I772",
-    "I773",
-    "I774",
-    "I775",
-    "I776",
-    "I777",
-    "I778",
-    "I779",
-    "I780",
-    "I781",
-    "I782"
+    "I762",
+    "I763",
+    "I764",
+    "I765",
+    "I1734",
+    "I767",
+    "I768",
+    "I769"
   ],
-  "parentIds": [
-    "I755",
-    "I760"
-  ],
-  "baptismDate": "31 DEC 1808",
-  "baptismPlace": "North Cadbury, Somerset",
-  "occupations": [
-    "Blacksmith & Wheelwright"
-  ],
-  "notes": [
-    "'Old Charley was a great musician.  His instruments were the cornet and the largest brass instrument.  He played in Wimbell's famous brass band and on Sunday mornings in the church.  As a change, he went on tour with a circus as a player in thei"
-  ],
+  "parentIds": [],
+  "baptismDate": "2 MAY 1784",
+  "baptismPlace": "Blackford, Somerset, England",
   "censusRecords": [
     {
       "date": "1851",
-      "place": "North Cadbury, Somerset"
+      "place": "North Cadbury, Lower Woolston"
     },
     {
-      "date": "1861",
-      "place": "Martock, Somerset, East Street"
+      "date": "1871",
+      "place": "Galhampton, North Cadbury, Cottage"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I769",
-      "familyId": "F313",
-      "marriageDate": "28 APR 1831",
-      "marriagePlace": "North Cadbury, Somerset"
+      "spouseId": "I756",
+      "familyId": "F360",
+      "marriageDate": "3 FEB 1808",
+      "marriagePlace": "Blackford, Somerset, England"
     }
-  ]
+  ],
+  "avatar": "avatars/I761_0.jpg"
 }

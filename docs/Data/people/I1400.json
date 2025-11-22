@@ -1,9 +1,9 @@
 {
   "id": "I1400",
-  "name": "Norman Greig",
-  "givenName": "Norman",
-  "surname": "Greig",
-  "sex": "M",
+  "name": "Valerie Leddy",
+  "givenName": "Valerie",
+  "surname": "Leddy",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,12 +12,14 @@
   "spouseIds": [
     "I720"
   ],
-  "childIds": [],
+  "childIds": [
+    "I721"
+  ],
   "parentIds": [],
   "marriages": [
     {
       "spouseId": "I720",
-      "familyId": "F294"
+      "familyId": "F343"
     }
   ]
 }

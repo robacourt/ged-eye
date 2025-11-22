@@ -1,18 +1,18 @@
 {
   "id": "I1297",
-  "name": "Angela A'Court",
-  "givenName": "Angela",
+  "name": "Margaret J A'Court",
+  "givenName": "Margaret J",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1ST QTR 1941",
+  "birthPlace": "Bridgewater, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1266",
-    "I1295"
+    "I1267",
+    "I1296"
   ]
 }

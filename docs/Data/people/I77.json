@@ -13,13 +13,13 @@
     "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg"
   ],
   "spouseIds": [
-    "I1726"
+    "I1727"
   ],
   "childIds": [
-    "I1975",
-    "I1987",
+    "I1976",
     "I1988",
-    "I1989"
+    "I1989",
+    "I1990"
   ],
   "parentIds": [
     "I23",
@@ -45,8 +45,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1726",
-      "familyId": "F49",
+      "spouseId": "I1727",
+      "familyId": "F56",
       "marriageDate": "7 SEP 1851",
       "marriagePlace": "Portsea, Hampshire"
     }

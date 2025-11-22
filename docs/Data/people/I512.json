@@ -1,23 +1,27 @@
 {
   "id": "I512",
-  "name": "Gladstone Arthur A'Court",
-  "givenName": "Gladstone Arthur",
+  "name": "Richard George A'Court",
+  "givenName": "Richard George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1920",
-  "birthPlace": "Collingwood, Victoria",
-  "deathDate": "22.6.1944",
-  "deathPlace": null,
+  "birthDate": "ABT 1921",
+  "birthPlace": "Glamorgan",
+  "deathDate": "20.3.1945",
+  "deathPlace": "Burma",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I524",
-    "I525"
+    "I523"
   ],
-  "burialPlace": "Germany, Reichswald Forest Cemetery",
   "notes": [
-    "Name: A'COURT, GLADSTONE ARTHUR",
     "In Memory of"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Middlesex"
+    }
   ]
 }

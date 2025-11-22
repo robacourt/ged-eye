@@ -1,18 +1,27 @@
 {
   "id": "I1206",
-  "name": "Phyliss Sharp",
-  "givenName": "Phyliss",
+  "name": "Jack Sharp",
+  "givenName": "Jack",
   "surname": "Sharp",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1205",
-    "I1204"
+  "spouseIds": [
+    "I1205"
+  ],
+  "childIds": [
+    "I1207",
+    "I1208",
+    "I1209"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1205",
+      "familyId": "F554"
+    }
   ]
 }

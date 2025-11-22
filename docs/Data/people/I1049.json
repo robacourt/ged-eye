@@ -1,33 +1,18 @@
 {
   "id": "I1049",
-  "name": "Wilfred John Diehm",
-  "givenName": "Wilfred John",
+  "name": "Robyn Ann Diehm",
+  "givenName": "Robyn Ann",
   "surname": "Diehm",
-  "sex": "M",
-  "birthDate": "22 NOVEMBER 1920",
-  "birthPlace": "Gulgong, NSW",
-  "deathDate": "3 JULY 1991",
-  "deathPlace": "Kogarah, NSW",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1050"
-  ],
-  "childIds": [
-    "I1047",
-    "I1048",
-    "I1051",
-    "I1052"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I934",
-    "I933"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1050",
-      "familyId": "F425",
-      "marriageDate": "9 AUGUST 1943",
-      "marriagePlace": "Grenfell"
-    }
+    "I1050",
+    "I1051"
   ]
 }

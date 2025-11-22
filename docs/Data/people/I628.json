@@ -1,31 +1,28 @@
 {
   "id": "I628",
-  "name": "Henry Warren",
-  "givenName": "Henry",
+  "name": "Jane Warren",
+  "givenName": "Jane",
   "surname": "Warren",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I627",
+  "spouseIds": [
     "I627"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab"
+  "childIds": [
+    "I622"
+  ],
+  "parentIds": [
+    "I629",
+    "I629"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F264"
-    },
-    {
-      "spouseId": null,
-      "familyId": "F263"
+      "spouseId": "I627",
+      "familyId": "F309"
     }
   ]
 }

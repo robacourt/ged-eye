@@ -1,41 +1,30 @@
 {
   "id": "I844",
-  "name": "Raymond Britton A'Court",
-  "givenName": "Raymond Britton",
+  "name": "William Douglas A'Court",
+  "givenName": "William Douglas",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "21 MAR 1908",
-  "birthPlace": "Rangiora, NZ",
-  "deathDate": "6 JAN 1971",
-  "deathPlace": "Christchurch, New Zealand",
+  "birthDate": "3 JAN 1907",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "1957",
+  "deathPlace": "Nelson Hospital, Nelson, NZ",
   "photos": [],
   "spouseIds": [
-    "I857",
-    "I858"
+    "I857"
   ],
-  "childIds": [
-    "I1932",
-    "I1934",
-    "I1936",
-    "I1937"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
+    "I825",
+    "I837"
   ],
   "notes": [
-    "Note marriages"
+    "Wises"
   ],
   "marriages": [
     {
       "spouseId": "I857",
-      "familyId": "F369",
-      "marriageDate": "BET. 1924 - 1939"
-    },
-    {
-      "spouseId": "I858",
-      "familyId": "F370",
-      "marriageDate": "1939",
+      "familyId": "F420",
+      "marriageDate": "1936",
       "marriagePlace": "New Zealand"
     }
   ]

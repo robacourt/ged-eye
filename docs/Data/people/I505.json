@@ -1,25 +1,18 @@
 {
   "id": "I505",
-  "name": "Thomas A A'Court",
-  "givenName": "Thomas A",
+  "name": "Sarah A'Court",
+  "givenName": "Sarah",
   "surname": "A'Court",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I506"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I506",
-      "familyId": "F214",
-      "marriageDate": "4 OCT 1562",
-      "marriagePlace": "Frome, Somerset"
-    }
+  "parentIds": [
+    "I500",
+    "I503"
   ]
 }

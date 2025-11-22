@@ -1,17 +1,26 @@
 {
   "id": "I489",
-  "name": "Ruby Garnett",
-  "givenName": "Ruby",
+  "name": "Alex Garnett",
+  "givenName": "Alex",
   "surname": "Garnett",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
+  "childIds": [
+    "I490"
+  ],
   "parentIds": [
-    "I488"
+    "I2013",
+    "I2012"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F251"
+    }
   ]
 }

@@ -1,20 +1,18 @@
 {
   "id": "I1142",
-  "name": "Frances May Pike",
-  "givenName": "Frances May",
+  "name": "Emily Pike",
+  "givenName": "Emily",
   "surname": "Pike",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1887",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1135",
-    "I1134"
-  ],
-  "baptismDate": "8 SEP 1889",
-  "baptismPlace": "Marnhull, Dorset"
+    "I1136",
+    "I1135"
+  ]
 }

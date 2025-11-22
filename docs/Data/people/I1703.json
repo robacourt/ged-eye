@@ -1,21 +1,28 @@
 {
   "id": "I1703",
-  "name": "Dennis A'Court",
-  "givenName": "Dennis",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Emily C Blunt",
+  "givenName": "Emily C",
+  "surname": "Blunt",
+  "sex": "F",
+  "birthDate": "1919",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1992",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1701",
+  "spouseIds": [
     "I1702"
   ],
-  "notes": [
-    "possible 641"
+  "childIds": [
+    "I1701",
+    "I1704",
+    "I2349",
+    "I2350"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1702",
+      "familyId": "F717"
+    }
   ]
 }

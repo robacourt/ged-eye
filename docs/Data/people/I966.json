@@ -1,8 +1,8 @@
 {
   "id": "I966",
-  "name": "Mervyn R. Macquire",
-  "givenName": "Mervyn R.",
-  "surname": "Macquire",
+  "name": "William C. Williams",
+  "givenName": "William C.",
+  "surname": "Williams",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,15 +10,18 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I964"
+    "I957"
   ],
-  "childIds": [],
+  "childIds": [
+    "I970",
+    "I971"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I964",
-      "familyId": "F402",
-      "marriageDate": "1924",
+      "spouseId": "I957",
+      "familyId": "F455",
+      "marriageDate": "1889",
       "marriagePlace": "Dubbo, NSW"
     }
   ]

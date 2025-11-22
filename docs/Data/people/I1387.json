@@ -1,43 +1,48 @@
 {
   "id": "I1387",
-  "name": "Charles Edward A'Court",
-  "givenName": "Charles Edward",
+  "name": "Silas A'Court",
+  "givenName": "Silas",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "14 APR 1860",
-  "birthPlace": "Bristol, St Mary Redcliff, Back Lane",
-  "deathDate": "18 JAN 1926",
-  "deathPlace": "Vancouver, BC, Canada",
-  "photos": [
-    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
-    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg",
-    "Data/Media/1881 census/Bristol/RG11 2465 104 10.jpg",
-    "Data/Media/1901 census/Glamorganshire/Glamorganshire/RG13 4983 244.jpg"
-  ],
+  "birthDate": "ABT 1801/1809",
+  "birthPlace": "Cadbury, Somerset",
+  "deathDate": "22 MAR 1886",
+  "deathPlace": "Bedminster, Somerset, 97 Weare St.",
+  "photos": [],
   "spouseIds": [
-    "I1388"
+    "I1406"
   ],
   "childIds": [
-    "I1410",
-    "I1411",
-    "I1406",
-    "I1407",
-    "I1408"
+    "I1764",
+    "I1765",
+    "I1760",
+    "I1415",
+    "I1416",
+    "I1417",
+    "I1388"
   ],
-  "parentIds": [
-    "I1386",
-    "I1405"
-  ],
+  "parentIds": [],
   "occupations": [
-    "Marine Fireman (Merchant Service)",
-    "Labourer, Unemployed",
-    "Dock Labourer"
+    "Ag Lab",
+    "Farmers Labourer",
+    "Manure Manufacturers Labourer",
+    "General Labourer",
+    "Tanner",
+    "Farmer Labourer"
   ],
   "notes": [
-    "On my mother's birth certificate (Lilian Doris A'Court) the address where she was born is 3 St. John's Road. Bristol.  Her father's occupation is listed Marine Fireman (Merchant Service)",
-    "written by his granddaughter, Betty Jones - bdjones1@cox.net"
+    "Charles Edward A'Court.  Birth Certificate Bedminster, counties of Bristol and Somerset.  When & where, 14 April 1860, Back Lane",
+    "Fromthe 1871  for St Mary Redcliff/Bristol I see that Silas and Ann  had a daughter Mary and three sons, Albert, William and my grandfather, Charles Edward.  I have no information beyond that.  Thanks for any help.  Betty Jones  Solana Beach, Cali"
   ],
   "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Brockley, Bedminster, Somerset, Court Farm House"
+    },
+    {
+      "date": "1851",
+      "place": "Bristol, Bedminster, 134 Charlotte St."
+    },
     {
       "date": "1861",
       "place": "Somerset, Bedminster, 3 Still House Lane"
@@ -51,31 +56,14 @@
       "place": "Bristol, St Mary Redcliff, 3 Arch Place"
     },
     {
-      "date": "1901",
-      "place": "Glamorganshire, Cardiff, Roath docks"
-    },
-    {
-      "date": "1901",
-      "place": "Crew, Steam ship Belfast"
-    },
-    {
-      "date": "1911",
-      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
-    }
-  ],
-  "residences": [
-    {
-      "date": "1860",
-      "place": "Bristol, 3 St John's Rd"
+      "date": "1891",
+      "place": "Somerset, Bedminster, Weare St."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1388",
-      "familyId": "F550",
-      "marriageDate": "11 DEC 1883",
-      "marriagePlace": "Bristol"
+      "spouseId": "I1406",
+      "familyId": "F620"
     }
-  ],
-  "avatar": "avatars/I1387_0.jpg"
+  ]
 }

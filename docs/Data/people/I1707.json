@@ -1,24 +1,17 @@
 {
   "id": "I1707",
-  "name": "Unknown Keeley",
-  "givenName": "Unknown",
-  "surname": "Keeley",
+  "name": "Carol Ann A'Court",
+  "givenName": "Carol Ann",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "2ND QTR 1974",
+  "birthPlace": "Northumberland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1706",
-    "I1720"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F624"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1708"
   ]
 }

@@ -1,23 +1,30 @@
 {
   "id": "I604",
-  "name": "Matthew Hayward",
-  "givenName": "Matthew",
+  "name": "Charlotte Louisa Hayward",
+  "givenName": "Charlotte Louisa",
   "surname": "Hayward",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I603"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I596"
+  ],
+  "parentIds": [
+    "I605"
+  ],
+  "occupations": [
+    "Glovemaker"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F249"
+      "spouseId": "I603",
+      "familyId": "F295"
     }
   ]
 }

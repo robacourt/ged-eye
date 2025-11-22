@@ -1,40 +1,23 @@
 {
   "id": "I593",
-  "name": "Ernest Hatcher",
-  "givenName": "Ernest",
+  "name": "Fred Lewis Hatcher",
+  "givenName": "Fred Lewis",
   "surname": "Hatcher",
   "sex": "M",
-  "birthDate": "10.4.1883",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I621"
-  ],
-  "childIds": [
-    "I622",
-    "I623",
-    "I624"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
     "I157",
     "I317"
   ],
-  "baptismDate": "26.4.1883",
+  "baptismDate": "11.9.1881",
   "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Builders Lab."
-  ],
   "notes": [
-    "8-1891, 37-1920"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I621",
-      "familyId": "F244",
-      "marriageDate": "28.9.1920",
-      "marriagePlace": "Marnhull, Dorset"
-    }
+    "10-1891,"
   ]
 }

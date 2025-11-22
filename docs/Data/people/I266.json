@@ -14,10 +14,10 @@
     "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 5 1.jpg"
   ],
   "spouseIds": [
-    "I1579"
+    "I1580"
   ],
   "childIds": [
-    "I1580"
+    "I1581"
   ],
   "parentIds": [
     "I44",
@@ -51,8 +51,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1579",
-      "familyId": "F132",
+      "spouseId": "I1580",
+      "familyId": "F148",
       "marriageDate": "ABT 1897"
     }
   ],

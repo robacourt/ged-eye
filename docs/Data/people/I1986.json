@@ -1,18 +1,18 @@
 {
   "id": "I1986",
-  "name": "Peter Marks",
-  "givenName": "Peter",
+  "name": "John Marks",
+  "givenName": "John",
   "surname": "Marks",
   "sex": "M",
-  "birthDate": "1949",
+  "birthDate": "29 DEC 1946",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "MAR 2004",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1536",
-    "I1535"
+    "I1537",
+    "I1536"
   ]
 }

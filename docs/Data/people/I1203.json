@@ -1,9 +1,9 @@
 {
   "id": "I1203",
-  "name": "Jack Haskett",
-  "givenName": "Jack",
+  "name": "Geraldine Haskett",
+  "givenName": "Geraldine",
   "surname": "Haskett",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,10 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1199",
-    "I1200"
+    "I1200",
+    "I1201"
+  ],
+  "occupations": [
+    "Nurse"
   ]
 }

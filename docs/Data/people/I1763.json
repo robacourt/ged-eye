@@ -1,24 +1,18 @@
 {
   "id": "I1763",
-  "name": "Elizabeth A'Court",
-  "givenName": "Elizabeth",
-  "surname": "A'Court",
+  "name": "Theresa Wildgoose",
+  "givenName": "Theresa",
+  "surname": "Wildgoose",
   "sex": "F",
-  "birthDate": "ABT 1831",
-  "birthPlace": "Brockley, Bedminster, Somerset",
+  "birthDate": "1877",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1386",
-    "I1405"
-  ],
-  "censusRecords": [
-    {
-      "date": "1841",
-      "place": "Brockley, Bedminster, Somerset, Court Farm House"
-    }
+    "I1761",
+    "I1760"
   ]
 }

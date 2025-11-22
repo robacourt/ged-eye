@@ -1,61 +1,24 @@
 {
   "id": "I766",
-  "name": "John A'Court",
-  "givenName": "John",
-  "surname": "A'Court",
+  "name": "Walter Power Stanford",
+  "givenName": "Walter Power",
+  "surname": "Stanford",
   "sex": "M",
-  "birthDate": "1820",
-  "birthPlace": "Cadbury, Somerset",
-  "deathDate": null,
+  "birthDate": "1916",
+  "birthPlace": null,
+  "deathDate": "2004",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Willesden/RG11 1362 86 17.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I881",
-    "I882"
+    "I577"
   ],
-  "childIds": [
-    "I883",
-    "I884",
-    "I885",
-    "I2805"
-  ],
-  "parentIds": [
-    "I755",
-    "I760"
-  ],
-  "baptismDate": "27 FEB 1820",
-  "occupations": [
-    "Coach Smith",
-    "Locksmith"
-  ],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Rickleford Hill, Frome, Somerset"
-    },
-    {
-      "date": "1871",
-      "place": "London, Hamstead, William Terrace."
-    },
-    {
-      "date": "1881",
-      "place": "Willesden, Middlesex,19 Chichester Road"
-    }
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I881",
-      "familyId": "F317",
-      "marriageDate": "1848"
-    },
-    {
-      "spouseId": "I882",
-      "familyId": "F318",
-      "marriageDate": "1840",
-      "marriagePlace": "England"
+      "spouseId": "I577",
+      "familyId": "F285",
+      "marriageDate": "SEP 1945"
     }
-  ],
-  "avatar": "avatars/I766_0.jpg"
+  ]
 }

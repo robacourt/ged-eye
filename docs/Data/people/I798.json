@@ -1,33 +1,36 @@
 {
   "id": "I798",
-  "name": "George Stanley A'Court",
-  "givenName": "George Stanley",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1886",
-  "birthPlace": "Wellington, New Zealand",
+  "name": "Charlotte Annie CARLISLE(Carlyle)",
+  "givenName": "Charlotte Annie",
+  "surname": "CARLISLE(Carlyle)",
+  "sex": "F",
+  "birthDate": "28 FEB 1870",
+  "birthPlace": "Christchurch, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
+    "I786"
+  ],
+  "childIds": [
+    "I799",
     "I800"
   ],
-  "childIds": [],
   "parentIds": [
-    "I785",
-    "I797"
+    "I1901",
+    "I1902"
   ],
-  "baptismDate": "17 SEP 1886",
-  "baptismPlace": "Francis Place, Wellington, NZ",
+  "baptismDate": "12 JUN 1870",
+  "baptismPlace": "St. Lukes, Christchurch, NZ",
   "notes": [
-    "Electoral roll"
+    "!SOURCE:Entry #562,St Lukes,Christchurch.Births."
   ],
   "marriages": [
     {
-      "spouseId": "I800",
-      "familyId": "F342",
-      "marriageDate": "4 DEC 1907",
-      "marriagePlace": "St James's Church, Wellington, NZ"
+      "spouseId": "I786",
+      "familyId": "F382",
+      "marriageDate": "19 JUN 1886",
+      "marriagePlace": "Registrars Office, Wellington,  NZ"
     }
   ]
 }

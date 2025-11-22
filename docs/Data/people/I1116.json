@@ -1,8 +1,8 @@
 {
   "id": "I1116",
-  "name": "Harry Charles Curtis",
-  "givenName": "Harry Charles",
-  "surname": "Curtis",
+  "name": "George Hyde",
+  "givenName": "George",
+  "surname": "Hyde",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,11 +10,17 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1081",
-    "I1082"
+  "childIds": [
+    "I1114"
   ],
-  "baptismDate": "14 FEB 1886",
-  "baptismPlace": "Marnhull, Dorset"
+  "parentIds": [],
+  "occupations": [
+    "Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F513"
+    }
+  ]
 }

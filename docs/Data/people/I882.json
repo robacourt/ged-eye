@@ -1,40 +1,24 @@
 {
   "id": "I882",
-  "name": "Matilda unknown",
-  "givenName": "Matilda",
+  "name": "Louisa unknown",
+  "givenName": "Louisa",
   "surname": "unknown",
   "sex": "F",
-  "birthDate": "Abt 1816",
-  "birthPlace": "Yeovilton, Somerset",
-  "deathDate": "AFT 1881",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I766"
+    "I767"
   ],
-  "childIds": [
-    "I883",
-    "I884",
-    "I885",
-    "I2805"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Rickleford Hill, Frome, Somerset"
-    },
-    {
-      "date": "1871",
-      "place": "London, Hamstead, William Terrace."
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I766",
-      "familyId": "F318",
-      "marriageDate": "1840",
-      "marriagePlace": "England"
+      "spouseId": "I767",
+      "familyId": "F367",
+      "marriageDate": "1848"
     }
   ]
 }

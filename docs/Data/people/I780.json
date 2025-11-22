@@ -1,30 +1,30 @@
 {
   "id": "I780",
-  "name": "Francis Charles (Frank) A'Court",
-  "givenName": "Francis Charles (Frank)",
+  "name": "John A'Court",
+  "givenName": "John",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1850",
-  "birthPlace": "Martock, Somerset",
-  "deathDate": "16 MAR 1922",
+  "birthDate": "1848",
+  "birthPlace": "Wincanton, Somerset",
+  "deathDate": "11 JUL 1914",
   "deathPlace": "Christchurch, New Zealand",
   "photos": [
-    "Data/Picture/Francis A'Court Bicycle Workshop.jpg",
+    "Data/Picture/John A'Court chch.jpg",
     "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
-    "Data/Media/1861 Census/Martock/RG09 1642 8 10.jpg"
+    "Data/Media/1861 Census/Martock/RG09 1642 8 9.jpg"
   ],
   "spouseIds": [
     "I868"
   ],
-  "childIds": [
-    "I515"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I761",
-    "I769"
+    "I762",
+    "I770"
   ],
+  "burialDate": "1914",
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
   "notes": [
-    "Occupation was carpenter and builder and he built the Ashburton Courthouse, Pigeon Bay Hotel, General Davidson's home at Tara ?Ghior, Glen Kennel, the Sailors' Home at Lyttleton and the church at Little Akaroa"
+    "He lived in the U.S.A. then returned to England before emigrating to Canterbury, New Zealand, in 1878"
   ],
   "censusRecords": [
     {
@@ -39,9 +39,8 @@
   "marriages": [
     {
       "spouseId": "I868",
-      "familyId": "F221",
-      "marriageDate": "27 APR 1870",
-      "marriagePlace": "Bound Brook, New Jersey, USA"
+      "familyId": "F380",
+      "marriageDate": "1871"
     }
   ],
   "avatar": "avatars/I780_0.jpg"

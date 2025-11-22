@@ -1,28 +1,31 @@
 {
   "id": "I481",
-  "name": "Alice Melinda Cheeseman",
-  "givenName": "Alice Melinda",
-  "surname": "Cheeseman",
-  "sex": "F",
-  "birthDate": "23 JAN 1887",
+  "name": "Grantham Enos Sherborne",
+  "givenName": "Grantham Enos",
+  "surname": "Sherborne",
+  "sex": "M",
+  "birthDate": "25 NOV 1875",
   "birthPlace": null,
-  "deathDate": "C.1991",
-  "deathPlace": null,
+  "deathDate": "C. 1946",
+  "deathPlace": "Byfleet Surrey",
   "photos": [],
   "spouseIds": [
-    "I480"
+    "I482"
   ],
   "childIds": [
     "I403"
   ],
   "parentIds": [],
-  "occupations": [
-    "Window dresser"
+  "residences": [
+    {
+      "date": "1939",
+      "place": null
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I480",
-      "familyId": "F183",
+      "spouseId": "I482",
+      "familyId": "F207",
       "marriageDate": "C.1911"
     }
   ]

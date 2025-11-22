@@ -1,25 +1,23 @@
 {
   "id": "I716",
-  "name": "Robert Foot",
-  "givenName": "Robert",
-  "surname": "Foot",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Melior Hill",
+  "givenName": "Melior",
+  "surname": "Hill",
+  "sex": "F",
+  "birthDate": "BEF 1694",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "AFT 1707",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I717"
+    "I553"
   ],
-  "childIds": [
-    "I579"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I717",
-      "familyId": "F238"
+      "spouseId": "I553",
+      "familyId": "F280"
     }
   ]
 }

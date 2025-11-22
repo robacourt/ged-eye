@@ -1,23 +1,26 @@
 {
   "id": "I1364",
-  "name": "Margaret Helen Winchcomb",
-  "givenName": "Margaret Helen",
-  "surname": "Winchcomb",
-  "sex": "F",
-  "birthDate": "1881",
-  "birthPlace": "New Zealand",
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Horace William Charles Cundy",
+  "givenName": "Horace William Charles",
+  "surname": "Cundy",
+  "sex": "M",
+  "birthDate": "1879",
+  "birthPlace": "Greytown",
+  "deathDate": "1945",
+  "deathPlace": "Featherston, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I1363"
+    "I1365"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1347",
+    "I1346"
+  ],
   "marriages": [
     {
-      "spouseId": "I1363",
-      "familyId": "F541",
+      "spouseId": "I1365",
+      "familyId": "F611",
       "marriageDate": "1945"
     }
   ]

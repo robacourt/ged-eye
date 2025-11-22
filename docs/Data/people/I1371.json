@@ -1,25 +1,31 @@
 {
   "id": "I1371",
-  "name": "Henry Hammond",
-  "givenName": "Henry",
-  "surname": "Hammond",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Julia Pashby",
+  "givenName": "Julia",
+  "surname": "Pashby",
+  "sex": "F",
+  "birthDate": "ABT 1850",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "BEF 1950",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1372"
+    "I948"
   ],
   "childIds": [
-    "I938"
+    "I1376",
+    "I1377",
+    "I1378",
+    "I1379",
+    "I1380"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1372",
-      "familyId": "F393"
+      "spouseId": "I948",
+      "familyId": "F451",
+      "marriageDate": "1883",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

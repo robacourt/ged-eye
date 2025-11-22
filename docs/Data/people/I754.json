@@ -1,28 +1,18 @@
 {
   "id": "I754",
-  "name": "Perninnah A'Court",
-  "givenName": "Perninnah",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
   "surname": "A'Court",
-  "sex": "F",
+  "sex": "M",
   "birthDate": "1785",
   "birthPlace": "Yarlington, Somerset",
   "deathDate": "31 JUL 1801",
-  "deathPlace": null,
+  "deathPlace": "England",
   "photos": [],
-  "spouseIds": [
-    "I759"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I744",
-    "I751"
-  ],
-  "baptismDate": "23 JAN 1787",
-  "baptismPlace": "Bratton Seymour, Somerset",
-  "marriages": [
-    {
-      "spouseId": "I759",
-      "familyId": "F309"
-    }
+    "I745",
+    "I752"
   ]
 }

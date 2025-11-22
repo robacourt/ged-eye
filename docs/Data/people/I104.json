@@ -12,22 +12,22 @@
     "Data/Picture/Nathaniel 1870 1944.jpg"
   ],
   "spouseIds": [
-    "I733"
+    "I734"
   ],
   "childIds": [
-    "I734",
-    "I973",
-    "I976",
-    "I933",
-    "I977",
+    "I735",
     "I974",
-    "I979",
+    "I977",
+    "I934",
+    "I978",
+    "I975",
     "I980",
     "I981",
-    "I983",
-    "I985",
+    "I982",
+    "I984",
     "I986",
-    "I988"
+    "I987",
+    "I989"
   ],
   "parentIds": [
     "I75",
@@ -35,8 +35,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I733",
-      "familyId": "F62",
+      "spouseId": "I734",
+      "familyId": "F69",
       "marriageDate": "1897",
       "marriagePlace": "Dubbo, NSW"
     }

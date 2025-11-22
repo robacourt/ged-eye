@@ -1,26 +1,41 @@
 {
   "id": "I514",
-  "name": "Maud Alice ?????",
-  "givenName": "Maud Alice",
-  "surname": "?????",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "Ernest Richard A'Court",
+  "givenName": "Ernest Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1910",
+  "birthPlace": "London, Shephe??",
+  "deathDate": "21JAN1940",
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 205 1.jpg"
+  ],
   "spouseIds": [
-    "I513"
+    "I515"
   ],
   "childIds": [
-    "I2106"
+    "I2107"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2043",
+    "I2044"
+  ],
+  "notes": [
+    "In Memory of"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hammersmith, 1 Aylmer Rd."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I513",
-      "familyId": "F219",
+      "spouseId": "I515",
+      "familyId": "F264",
       "marriageDate": "1934"
     }
-  ]
+  ],
+  "avatar": "avatars/I514_0.jpg"
 }

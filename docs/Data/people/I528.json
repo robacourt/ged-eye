@@ -1,41 +1,26 @@
 {
   "id": "I528",
-  "name": "Charles Henry A'Court",
-  "givenName": "Charles Henry",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1874",
-  "birthPlace": "Canterbury, Kent, Herne St.",
+  "name": "Margaret Davis Christie",
+  "givenName": "Margaret Davis",
+  "surname": "Christie",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg",
-    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I527"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I878",
-    "I928"
+  "childIds": [
+    "I517"
   ],
-  "occupations": [
-    "Groom, Domestic Servant"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1891",
-      "place": "London,Kensington 9, Lucerne Mews"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F223"
+      "spouseId": "I527",
+      "familyId": "F267",
+      "marriageDate": "1917"
     }
-  ],
-  "avatar": "avatars/I528_0.jpg"
+  ]
 }

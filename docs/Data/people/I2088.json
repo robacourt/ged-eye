@@ -1,31 +1,34 @@
 {
   "id": "I2088",
-  "name": "Emily A'Court",
-  "givenName": "Emily",
+  "name": "George Alfred A'Court",
+  "givenName": "George Alfred",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1856",
-  "birthPlace": "Middlesex, St Lukes",
-  "deathDate": null,
+  "sex": "M",
+  "birthDate": "1879",
+  "birthPlace": "London, Kensington",
+  "deathDate": "1922",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1861 Census/London/St Luke/RG09 203 17 41.jpg",
-    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg"
+    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg",
+    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2020",
-    "I2807"
+    "I879",
+    "I929"
+  ],
+  "occupations": [
+    "Errand Boy"
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "London, St Lukes, 17 George Yard"
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
     },
     {
-      "date": "1871",
-      "place": "London, Holborn, 15 Peerless St."
+      "date": "1891",
+      "place": "London,Kensington 9, Lucerne Mews"
     }
   ],
   "avatar": "avatars/I2088_0.jpg"

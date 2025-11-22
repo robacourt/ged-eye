@@ -1,26 +1,37 @@
 {
   "id": "I1596",
-  "name": "Elsie Amy A'Court",
-  "givenName": "Elsie Amy",
+  "name": "Charles Samuel A'Court",
+  "givenName": "Charles Samuel",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "Abt 1910",
+  "sex": "M",
+  "birthDate": "1905",
   "birthPlace": "Glamorganshire, Cardiff",
-  "deathDate": null,
+  "deathDate": "1957",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1911 census/Herefordshire/RG14 15809 298.jpg"
+    "Data/Media/1911 census/Glamorganshire/RG14 32138 268.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1600"
+  ],
+  "childIds": [
+    "I1598",
+    "I1599"
+  ],
   "parentIds": [
-    "I1591",
-    "I1593"
+    "I1592",
+    "I1594"
   ],
   "censusRecords": [
     {
       "date": "1911",
       "place": "Cardiff, 15 Rennie St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1600",
+      "familyId": "F691"
     }
   ],
   "avatar": "avatars/I1596_0.jpg"

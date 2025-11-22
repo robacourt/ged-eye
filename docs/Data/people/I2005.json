@@ -1,33 +1,15 @@
 {
   "id": "I2005",
-  "name": "Sarah Unknown",
-  "givenName": "Sarah",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "1812",
-  "birthPlace": "Wiltshire, Salisbury",
+  "name": "William Clothier",
+  "givenName": "William",
+  "surname": "Clothier",
+  "sex": "U",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I2007"
-  ],
-  "childIds": [
-    "I2261",
-    "I2006",
-    "I366"
-  ],
-  "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Middlesex, Islington"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2007",
-      "familyId": "F716"
-    }
-  ]
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": []
 }

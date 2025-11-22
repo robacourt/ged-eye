@@ -1,7 +1,7 @@
 {
   "id": "I1067",
-  "name": "Mark Anthony Higgins",
-  "givenName": "Mark Anthony",
+  "name": "Derek Ronald Higgins",
+  "givenName": "Derek Ronald",
   "surname": "Higgins",
   "sex": "M",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1063",
-    "I1062"
+    "I1064",
+    "I1063"
   ]
 }

@@ -1,18 +1,23 @@
 {
   "id": "I1520",
-  "name": "Leonard Arthur Morgan",
-  "givenName": "Leonard Arthur",
+  "name": "Lillian Alice Morgan",
+  "givenName": "Lillian Alice",
   "surname": "Morgan",
-  "sex": "M",
-  "birthDate": "26 MAR 1911",
-  "birthPlace": "Waltham Cross, Hertfordshire, 83 Queens Road",
-  "deathDate": "10 DEC 1975",
-  "deathPlace": "Enfield, Middlesex, 52 Holly Road",
-  "photos": [],
+  "sex": "F",
+  "birthDate": "9 APR 1909",
+  "birthPlace": "London, St. Pancras, 11 Stratford Place off Oxford Street.",
+  "deathDate": "30 JUNE 1911",
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Lilian Morgan.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1516",
-    "I1486"
-  ]
+    "I1517",
+    "I1487"
+  ],
+  "burialDate": "6 JULY 1911",
+  "burialPlace": "Chestnut Cemetery",
+  "avatar": "avatars/I1520_0.jpg"
 }

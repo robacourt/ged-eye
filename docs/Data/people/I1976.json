@@ -1,25 +1,28 @@
 {
   "id": "I1976",
-  "name": "Charles Gumbrell",
-  "givenName": "Charles",
-  "surname": "Gumbrell",
-  "sex": "M",
-  "birthDate": "Abt 1848",
-  "birthPlace": "Bognor, Sussex",
+  "name": "Elizabeth Daniels",
+  "givenName": "Elizabeth",
+  "surname": "Daniels",
+  "sex": "F",
+  "birthDate": "27 MAR 1852",
+  "birthPlace": "Henstridge, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1975"
-  ],
-  "childIds": [
     "I1977"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1978"
+  ],
+  "parentIds": [
+    "I1727",
+    "I77"
+  ],
   "marriages": [
     {
-      "spouseId": "I1975",
-      "familyId": "F707",
+      "spouseId": "I1977",
+      "familyId": "F794",
       "marriageDate": "2 OCT 1870",
       "marriagePlace": "Portsea Island, Hampshire"
     }

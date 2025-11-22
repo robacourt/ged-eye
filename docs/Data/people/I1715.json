@@ -1,18 +1,26 @@
 {
   "id": "I1715",
-  "name": "Nery Christine A'Court",
-  "givenName": "Nery Christine",
-  "surname": "A'Court",
+  "name": "Glenys Tucker",
+  "givenName": "Glenys",
+  "surname": "Tucker",
   "sex": "F",
   "birthDate": null,
-  "birthPlace": "Bath, Somerset",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
+  "spouseIds": [
+    "I1701"
+  ],
+  "childIds": [
     "I1700",
-    "I1714"
+    "I1716"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1701",
+      "familyId": "F716"
+    }
   ]
 }

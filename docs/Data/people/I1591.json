@@ -1,56 +1,43 @@
 {
   "id": "I1591",
-  "name": "Charles William A'Court",
-  "givenName": "Charles William",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1880",
+  "name": "Augusta Derrick",
+  "givenName": "Augusta",
+  "surname": "Derrick",
+  "sex": "F",
+  "birthDate": "Abt 1850",
   "birthPlace": "Weymouth, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1881 census/Wiltshire/Swindon/RG11 2020 30 51.jpg",
-    "Data/Media/1891 census/Dorset/Weymouth/RG12 1647 24 42.jpg",
-    "Data/Media/1901 census/Glamorganshire/Glamorganshire/RG13 4985 52 29.jpg"
+    "Data/Media/1891 census/Dorset/Weymouth/RG12 1647 24 42.jpg"
   ],
   "spouseIds": [
-    "I1593"
+    "I1590"
   ],
   "childIds": [
-    "I1594",
-    "I1595",
-    "I1596"
+    "I2889"
   ],
-  "parentIds": [
-    "I1589",
-    "I2871"
-  ],
-  "occupations": [
-    "Railway Engine Fireman",
-    "Timekeeper, Great West Railway"
-  ],
+  "parentIds": [],
   "censusRecords": [
     {
-      "date": "1881",
-      "place": "Wiltshire, Swindon, Highworth, 8 Gooch St."
+      "date": "1891",
+      "place": "Weymouth, Dorset, Penny St."
     },
     {
       "date": "1901",
-      "place": "Cardiff, Canton, 45 Wells St"
-    },
-    {
-      "date": "1891",
-      "place": "Dorset, Weymouth, Penny Lane"
+      "place": "Glamorganshire, Cardiff, 45 Wells St"
     },
     {
       "date": "1911",
-      "place": "Cardiff, 15 Rennie St."
+      "place": "Glamorganshire, Cardiff, 45 Wells St"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1593",
-      "familyId": "F598"
+      "spouseId": "I1590",
+      "familyId": "F687",
+      "marriageDate": "4TH QTR 1877",
+      "marriagePlace": "Weymouth, Dorset"
     }
   ],
   "avatar": "avatars/I1591_0.jpg"

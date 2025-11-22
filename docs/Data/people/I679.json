@@ -1,26 +1,28 @@
 {
   "id": "I679",
-  "name": "Samuel Fudge",
-  "givenName": "Samuel",
-  "surname": "Fudge",
-  "sex": "M",
+  "name": "Deborah Warren",
+  "givenName": "Deborah",
+  "surname": "Warren",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I680"
+    "I678"
   ],
-  "childIds": [],
+  "childIds": [
+    "I677"
+  ],
   "parentIds": [],
   "occupations": [
-    "Ag Lab"
+    "Seamstress"
   ],
   "marriages": [
     {
-      "spouseId": "I680",
-      "familyId": "F286"
+      "spouseId": "I678",
+      "familyId": "F335"
     }
   ]
 }

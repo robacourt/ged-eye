@@ -1,24 +1,17 @@
 {
   "id": "I1798",
-  "name": "Unknown Curtis",
-  "givenName": "Unknown",
-  "surname": "Curtis",
+  "name": "Beryl M A'Court",
+  "givenName": "Beryl M",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "2ND QRT 1952",
+  "birthPlace": "Surrey NW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1797",
+  "childIds": [],
+  "parentIds": [
     "I1799"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F648"
-    }
   ]
 }

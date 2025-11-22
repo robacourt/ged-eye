@@ -1,27 +1,26 @@
 {
   "id": "I1349",
-  "name": "Eva Ellen Cundy",
-  "givenName": "Eva Ellen",
-  "surname": "Cundy",
+  "name": "Annie Fisher",
+  "givenName": "Annie",
+  "surname": "Fisher",
   "sex": "F",
-  "birthDate": "1866",
-  "birthPlace": "Greytown",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1350"
+    "I1348"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
+  "childIds": [
+    "I1347",
+    "I1370"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1350",
-      "familyId": "F534",
-      "marriageDate": "1887"
+      "spouseId": "I1348",
+      "familyId": "F603"
     }
   ]
 }

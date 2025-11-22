@@ -1,37 +1,18 @@
 {
   "id": "I1242",
-  "name": "Gladys Amy Haskett",
-  "givenName": "Gladys Amy",
+  "name": "Deborah Haskett",
+  "givenName": "Deborah",
   "surname": "Haskett",
   "sex": "F",
-  "birthDate": "1894",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1243"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1181",
-    "I1182"
-  ],
-  "occupations": [
-    "Laundress"
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Marnhull, Dorset, New St."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1243",
-      "familyId": "F499",
-      "marriageDate": "13 APRIL 1914",
-      "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
-    }
+    "I1239",
+    "I1240"
   ]
 }

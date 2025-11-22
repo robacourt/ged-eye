@@ -1,25 +1,26 @@
 {
   "id": "I1506",
-  "name": "Unknown Unknown",
+  "name": "Unknown Inwood",
   "givenName": "Unknown",
-  "surname": "Unknown",
+  "surname": "Inwood",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
-  "deathPlace": null,
+  "deathPlace": "WW1",
   "photos": [],
   "spouseIds": [
-    "I1507"
+    "I1505"
   ],
-  "childIds": [
-    "I1497"
-  ],
+  "childIds": [],
   "parentIds": [],
+  "notes": [
+    "Ernest Edward Collis was asked by his best friend in the WWI to look after his wife Winnie when he died.  He did - he married her Winifred Violet Louisa Inwood formerly Frier on 14th July 1920 by licence at Lewisham Register Office.  They wen"
+  ],
   "marriages": [
     {
-      "spouseId": "I1507",
-      "familyId": "F570"
+      "spouseId": "I1505",
+      "familyId": "F661"
     }
   ]
 }

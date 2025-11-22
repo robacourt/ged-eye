@@ -1,21 +1,21 @@
 {
   "id": "I726",
-  "name": "Peirce A'Court",
-  "givenName": "Peirce",
+  "name": "Pearce A'Court",
+  "givenName": "Pearce",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "20 MARCH 1725",
+  "deathDate": "1768",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
   "occupations": [
-    "MP for Heytesbury"
+    "MP. for Heytesbury"
   ],
   "notes": [
-    "Of"
+    "Authors source,"
   ]
 }

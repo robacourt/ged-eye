@@ -1,32 +1,18 @@
 {
   "id": "I2107",
-  "name": "Helen A'Court",
-  "givenName": "Helen",
+  "name": "Iris A'Court",
+  "givenName": "Iris",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "Abt 1854",
-  "birthPlace": "London, Middx, Westbourne Terrace",
+  "birthDate": "1936",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/London/Pancras/RG09 110 111 50.jpg",
-    "Data/Media/1881 census/London/Marylebone/RG11 148 5 4.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I763",
-    "I871"
-  ],
-  "censusRecords": [
-    {
-      "date": "1861",
-      "place": "London, Middx. St Pancras 3, Brill Cottages."
-    },
-    {
-      "date": "1881",
-      "place": "London, St Marylebone, 8 Queen St."
-    }
-  ],
-  "avatar": "avatars/I2107_0.jpg"
+    "I514",
+    "I515"
+  ]
 }

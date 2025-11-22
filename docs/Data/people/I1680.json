@@ -1,25 +1,18 @@
 {
   "id": "I1680",
-  "name": "Unknown Punter",
-  "givenName": "Unknown",
-  "surname": "Punter",
+  "name": "Deborah Antell",
+  "givenName": "Deborah",
+  "surname": "Antell",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1681"
-  ],
-  "childIds": [
-    "I1682"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1681",
-      "familyId": "F615"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1679",
+    "I1675"
   ]
 }

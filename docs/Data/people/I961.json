@@ -1,18 +1,29 @@
 {
   "id": "I961",
-  "name": "Mary A. L. A'Court",
-  "givenName": "Mary A. L.",
+  "name": "Albert Perry A'Court",
+  "givenName": "Albert Perry",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1886",
+  "sex": "M",
+  "birthDate": "1879",
   "birthPlace": "Mudgee, NSW",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1942",
+  "deathPlace": "Newtown, NSW, Australia",
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1443"
+  ],
+  "childIds": [
+    "I1444",
+    "I1445"
+  ],
   "parentIds": [
-    "I955",
-    "I959"
+    "I956",
+    "I960"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1443",
+      "familyId": "F457"
+    }
   ]
 }

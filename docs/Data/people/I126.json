@@ -8,11 +8,14 @@
   "birthPlace": "Guildford, Surrey",
   "deathDate": "20 AUG 2018",
   "deathPlace": "The Netherlands, Amsterdam, Nachtwachtiaan 243",
-  "photos": [],
+  "photos": [
+    "Data/Media/FromRob/DavidACourt.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I122",
     "I124"
-  ]
+  ],
+  "avatar": "avatars/I126_0.jpg"
 }

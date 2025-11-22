@@ -1,29 +1,25 @@
 {
   "id": "I718",
-  "name": "Gertrude Annie Foot",
-  "givenName": "Gertrude Annie",
-  "surname": "Foot",
+  "name": "Mary Snook",
+  "givenName": "Mary",
+  "surname": "Snook",
   "sex": "F",
-  "birthDate": "1901",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1956",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1398"
+    "I717"
   ],
   "childIds": [
-    "I719"
+    "I580"
   ],
-  "parentIds": [
-    "I580",
-    "I582"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1398",
-      "familyId": "F292",
-      "marriageDate": "1918"
+      "spouseId": "I717",
+      "familyId": "F288"
     }
   ]
 }

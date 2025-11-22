@@ -1,37 +1,29 @@
 {
   "id": "I1584",
-  "name": "Elizabeth Unknown",
-  "givenName": "Elizabeth",
-  "surname": "Unknown",
+  "name": "Florence A'Court",
+  "givenName": "Florence",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "Abt 1856",
+  "birthDate": "Abt 1886",
   "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1901 census/Bristol/RG13 2376 40 19.jpg"
   ],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1586",
     "I1585"
   ],
-  "childIds": [
-    "I1586",
-    "I1583"
-  ],
-  "parentIds": [],
   "occupations": [
-    "Button Hole Maker"
+    "Clothiers Machinist"
   ],
   "censusRecords": [
     {
       "date": "1901",
       "place": "Bristol, Redcliff, 13 Rowley Place"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1585",
-      "familyId": "F596"
     }
   ],
   "avatar": "avatars/I1584_0.jpg"

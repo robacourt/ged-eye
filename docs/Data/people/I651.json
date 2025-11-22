@@ -1,10 +1,10 @@
 {
   "id": "I651",
-  "name": "Arthur Warren",
-  "givenName": "Arthur",
+  "name": "Amanda Mary Warren",
+  "givenName": "Amanda Mary",
   "surname": "Warren",
-  "sex": "M",
-  "birthDate": null,
+  "sex": "F",
+  "birthDate": "2.4.1872",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,15 +12,9 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
-  "baptismDate": "12.9.1875",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Ag Lab"
-  ],
-  "notes": [
-    "17 in 1891,"
-  ]
+  "baptismDate": "14.7.1872",
+  "baptismPlace": "Marnhull, Dorset"
 }

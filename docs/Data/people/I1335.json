@@ -1,57 +1,25 @@
 {
   "id": "I1335",
-  "name": "Mary Ellen A'Court",
-  "givenName": "Mary Ellen",
-  "surname": "A'Court",
+  "name": "Ivy Jones",
+  "givenName": "Ivy",
+  "surname": "Jones",
   "sex": "F",
-  "birthDate": "1872",
-  "birthPlace": "Thurmaston,  Leicestershire",
-  "deathDate": null,
+  "birthDate": "ABT 1905",
+  "birthPlace": null,
+  "deathDate": "AFT 1928",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Kensington/RG11 25 12 17.jpg",
-    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg",
-    "Data/Media/1911 census/Surrey/RG14 2982 162.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1336"
+    "I1334"
   ],
-  "childIds": [
-    "I2602",
-    "I2603",
-    "I2604",
-    "I2605",
-    "I2895"
-  ],
-  "parentIds": [
-    "I878",
-    "I928"
-  ],
-  "occupations": [
-    "Photographer",
-    "Widow Private Means"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1901",
-      "place": "Walton on Thames, Surrey, Station Road"
-    },
-    {
-      "date": "1911",
-      "place": "Walton-on-Thames, Surrey, Heytesbury,  Station Avenue"
-    }
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1336",
-      "familyId": "F528",
-      "marriageDate": "4 DEC 1887",
-      "marriagePlace": "London, St Michael, Cornhill"
+      "spouseId": "I1334",
+      "familyId": "F597",
+      "marriageDate": "23 JUL 1928",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
     }
-  ],
-  "avatar": "avatars/I1335_0.jpg"
+  ]
 }

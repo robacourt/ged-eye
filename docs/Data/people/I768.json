@@ -1,45 +1,43 @@
 {
   "id": "I768",
-  "name": "Jane A'Court",
-  "givenName": "Jane",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1825",
-  "birthPlace": "North Cadbury, Somerset,",
-  "deathDate": null,
+  "sex": "M",
+  "birthDate": "1823",
+  "birthPlace": "Somerset",
+  "deathDate": "ABT 1881",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I891"
+    "I887"
   ],
   "childIds": [
-    "I892",
-    "I893",
-    "I1758",
-    "I1757",
-    "I1756"
+    "I888",
+    "I889",
+    "I890",
+    "I891"
   ],
   "parentIds": [
-    "I755",
-    "I760"
+    "I756",
+    "I761"
   ],
-  "baptismDate": "11 DEC 1825",
+  "baptismDate": "19 JAN 1823",
+  "occupations": [
+    "Carpenter, employing 2 men"
+  ],
   "censusRecords": [
     {
-      "date": "1851",
-      "place": "North Cadbury, Lower Woolston"
-    },
-    {
       "date": "1881",
-      "place": "Pendleton-in-Salford, Lancashire, 13 Lytham St."
+      "place": "London, Hackney, 64 Graham Road"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I891",
-      "familyId": "F320",
-      "marriageDate": "1844",
-      "marriagePlace": "England"
+      "spouseId": "I887",
+      "familyId": "F369",
+      "marriageDate": "1843",
+      "marriagePlace": "Somerset"
     }
   ]
 }

@@ -1,17 +1,15 @@
 {
   "id": "I954",
-  "name": "Susannah A'Court",
-  "givenName": "Susannah",
+  "name": "Anastasia A'Court",
+  "givenName": "Anastasia",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "25 AUG 1845",
-  "birthPlace": "Sydney, NSW",
-  "deathDate": "1940",
-  "deathPlace": "Dunedoo, NSW",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1866",
+  "deathPlace": "Mudgee, NSW",
   "photos": [],
-  "spouseIds": [
-    "I1069"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I75",
@@ -19,10 +17,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1069",
-      "familyId": "F397",
-      "marriageDate": "1880",
-      "marriagePlace": "Mudgee, NSW"
+      "spouseId": null,
+      "familyId": "F452"
     }
   ]
 }

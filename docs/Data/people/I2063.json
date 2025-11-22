@@ -1,18 +1,18 @@
 {
   "id": "I2063",
-  "name": "Jean A'Court",
-  "givenName": "Jean",
+  "name": "Victor James A'Court",
+  "givenName": "Victor James",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1933",
+  "sex": "M",
+  "birthDate": "19 APR1929",
   "birthPlace": "Tooting",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1993",
+  "deathPlace": "Sutton, Surrey",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2054",
-    "I2055"
+    "I2055",
+    "I2056"
   ]
 }

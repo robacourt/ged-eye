@@ -1,28 +1,18 @@
 {
   "id": "I1045",
-  "name": "Ronald William Moir",
-  "givenName": "Ronald William",
-  "surname": "Moir",
+  "name": "Oliver A'Court",
+  "givenName": "Oliver",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1929",
-  "birthPlace": "Christchurch, New Zealand",
+  "birthDate": "1987",
+  "birthPlace": "Auckland, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1046"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I817",
-    "I812"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1046",
-      "familyId": "F424",
-      "marriageDate": "1951",
-      "marriagePlace": "Christchurch, New Zealand"
-    }
+    "I1043",
+    "I1044"
   ]
 }

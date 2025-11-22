@@ -11,11 +11,22 @@
   "photos": [
     "Data/Picture/Rob-ACourt.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I2993"
+  ],
+  "childIds": [
+    "I2992",
+    "I2994"
+  ],
   "parentIds": [
     "I123",
     "I129"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2993",
+      "familyId": "F1029"
+    }
   ],
   "avatar": "avatars/I130_0.jpg"
 }

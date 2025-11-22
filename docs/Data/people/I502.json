@@ -1,29 +1,20 @@
 {
   "id": "I502",
-  "name": "Jennifer Jones",
-  "givenName": "Jennifer",
-  "surname": "Jones",
-  "sex": "F",
+  "name": "Anthony A'Court",
+  "givenName": "Anthony",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I499"
-  ],
-  "childIds": [
-    "I503",
-    "I504"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I569",
-    "I570"
+    "I373"
   ],
-  "marriages": [
-    {
-      "spouseId": "I499",
-      "familyId": "F212"
-    }
+  "occupations": [
+    "Pianist"
   ]
 }

@@ -1,17 +1,26 @@
 {
   "id": "I1784",
-  "name": "Lynda R A'Court",
-  "givenName": "Lynda R",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "3RD QRT 1951",
-  "birthPlace": "Gosport, Hampshire",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1785"
+  "spouseIds": [
+    "I1783"
+  ],
+  "childIds": [
+    "I2684",
+    "I1782"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1783",
+      "familyId": "F740"
+    }
   ]
 }

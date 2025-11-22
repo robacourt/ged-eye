@@ -1,46 +1,43 @@
 {
   "id": "I779",
-  "name": "John A'Court",
-  "givenName": "John",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1848",
+  "sex": "F",
+  "birthDate": "1844",
   "birthPlace": "Wincanton, Somerset",
-  "deathDate": "11 JUL 1914",
-  "deathPlace": "Christchurch, New Zealand",
+  "deathDate": "29 NOV 1925",
+  "deathPlace": null,
   "photos": [
-    "Data/Picture/John A'Court chch.jpg",
-    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
-    "Data/Media/1861 Census/Martock/RG09 1642 8 9.jpg"
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
   ],
   "spouseIds": [
     "I867"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2324",
+    "I1538"
+  ],
   "parentIds": [
-    "I761",
-    "I769"
+    "I762",
+    "I770"
   ],
-  "burialDate": "1914",
-  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
-  "notes": [
-    "He lived in the U.S.A. then returned to England before emigrating to Canterbury, New Zealand, in 1878"
-  ],
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
   "censusRecords": [
     {
       "date": "1851",
       "place": "North Cadbury, Somerset"
     },
     {
-      "date": "1861",
-      "place": "Martock, Somerset, East Street"
+      "date": "1871",
+      "place": "North Cadbury, Somerset"
     }
   ],
   "marriages": [
     {
       "spouseId": "I867",
-      "familyId": "F330",
-      "marriageDate": "1871"
+      "familyId": "F379",
+      "marriageDate": "1867"
     }
   ],
   "avatar": "avatars/I779_0.jpg"

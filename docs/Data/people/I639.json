@@ -1,37 +1,26 @@
 {
   "id": "I639",
-  "name": "Mary Ann Tuffin",
-  "givenName": "Mary Ann",
-  "surname": "Tuffin",
-  "sex": "F",
-  "birthDate": "1868",
-  "birthPlace": "Sturminster Newton, Dorset",
+  "name": "Frederick George Green",
+  "givenName": "Frederick George",
+  "surname": "Green",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I158"
+  "spouseIds": [],
+  "childIds": [
+    "I638"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I640",
-    "I641"
-  ],
-  "notes": [
-    "2i in 1871, 28 in1896,"
-  ],
-  "censusRecords": [
-    {
-      "date": "1871,2",
-      "place": null
-    }
+  "parentIds": [],
+  "occupations": [
+    "Plumber"
   ],
   "marriages": [
     {
-      "spouseId": "I158",
-      "familyId": "F91",
-      "marriageDate": "6.10.1896",
-      "marriagePlace": "Hinton St. Mary, Dorset"
+      "spouseId": null,
+      "familyId": "F318"
     }
   ]
 }

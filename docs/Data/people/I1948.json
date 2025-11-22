@@ -1,28 +1,31 @@
 {
   "id": "I1948",
-  "name": "Alice Doreen Leishman",
-  "givenName": "Alice Doreen",
-  "surname": "Leishman",
-  "sex": "F",
-  "birthDate": "30 APR 1929",
-  "birthPlace": "Ngahere, New Zealand",
-  "deathDate": "6 NOV 2004",
-  "deathPlace": "Balclutha, New Zealand",
+  "name": "Rex Sydney A'Court",
+  "givenName": "Rex Sydney",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "16 JULY 1927",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "31 DEC 2005",
+  "deathPlace": "Rangiora, NZ Wiltshire Rest Home & Hospital, Ivory street.",
   "photos": [],
   "spouseIds": [
-    "I1947"
+    "I1949"
   ],
   "childIds": [
-    "I2024",
-    "I1949",
-    "I2022",
-    "I2023"
+    "I2025",
+    "I1950",
+    "I2023",
+    "I2024"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1931",
+    "I1945"
+  ],
   "marriages": [
     {
-      "spouseId": "I1947",
-      "familyId": "F694",
+      "spouseId": "I1949",
+      "familyId": "F784",
       "marriageDate": "26 APR 1955"
     }
   ]

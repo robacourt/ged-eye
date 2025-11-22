@@ -1,10 +1,10 @@
 {
   "id": "I1025",
-  "name": "Alison Louise O'Conner",
-  "givenName": "Alison Louise",
-  "surname": "O'Conner",
+  "name": "Lauren Kate O'Connor",
+  "givenName": "Lauren Kate",
+  "surname": "O'Connor",
   "sex": "F",
-  "birthDate": "3 DECEMBER 1990",
+  "birthDate": "27 JULY 1987",
   "birthPlace": "Blacktown",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1004",
-    "I1019"
+    "I1005",
+    "I1020"
   ]
 }

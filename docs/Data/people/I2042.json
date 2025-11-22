@@ -1,52 +1,25 @@
 {
   "id": "I2042",
-  "name": "Ernest Richard A'Court",
-  "givenName": "Ernest Richard",
-  "surname": "A'Court",
+  "name": "Murray Collins",
+  "givenName": "Murray",
+  "surname": "Collins",
   "sex": "M",
-  "birthDate": "1881",
-  "birthPlace": "London, Kensington",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I2043"
+    "I2041"
   ],
-  "childIds": [
-    "I2096",
-    "I513",
-    "I2098",
-    "I2102"
-  ],
-  "parentIds": [
-    "I878",
-    "I928"
-  ],
-  "occupations": [
-    "Dancing Instructor"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "London, Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1891",
-      "place": "London, Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1911",
-      "place": "London, Hammersmith, 1 Aylmer Rd."
-    }
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2043",
-      "familyId": "F737",
-      "marriageDate": "ABT 1907"
+      "spouseId": "I2041",
+      "familyId": "F809",
+      "marriageDate": "MAY 1983",
+      "marriagePlace": "Christchurch, New Zealand"
     }
-  ],
-  "avatar": "avatars/I2042_0.jpg"
+  ]
 }

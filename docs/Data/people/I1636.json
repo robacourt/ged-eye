@@ -1,58 +1,31 @@
 {
   "id": "I1636",
-  "name": "Charles Henry A'Court",
-  "givenName": "Charles Henry",
+  "name": "Jessie A'Court",
+  "givenName": "Jessie",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1862",
-  "birthPlace": "Horsington, Somerset",
+  "sex": "F",
+  "birthDate": "Abt 1899",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1871 census/Yeovil/RG10 2418 13 15.jpg"
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 23 2.jpg",
+    "Data/Media/1911 census/Dorset/Marnhull/RG14 12201 43.jpg"
   ],
-  "spouseIds": [
-    "I1637"
-  ],
-  "childIds": [
-    "I2579",
-    "I1638",
-    "I1639",
-    "I1640",
-    "I1641",
-    "I2527"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1766",
-    "I1864"
-  ],
-  "occupations": [
-    "Leather Parer",
-    "Leather Parer",
-    "Glover Parer"
+    "I1634",
+    "I1635"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Yeovil, Somerset, 41 Larkhill"
-    },
-    {
-      "date": "1891",
-      "place": "Yeovil, Somerset, 29 Queen's St."
-    },
-    {
       "date": "1901",
-      "place": "Yeovil, Somerset, Huish"
+      "place": "Marnhull, Dorset, Church Lane"
     },
     {
       "date": "1911",
-      "place": "Yeovil, Somerset, 11 Woodland Grove, Mill Rd."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1637",
-      "familyId": "F608"
+      "place": "Marnhull, Dorset, Old Workhouse."
     }
   ],
   "avatar": "avatars/I1636_0.jpg"

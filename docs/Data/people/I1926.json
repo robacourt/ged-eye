@@ -1,15 +1,25 @@
 {
   "id": "I1926",
-  "name": "Albert Charles A'Court",
-  "givenName": "Albert Charles",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1949",
-  "birthPlace": "Whangarei, New Zealand",
-  "deathDate": "1979",
-  "deathPlace": "Alaska",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Bef OR 1945",
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": []
+  "spouseIds": [
+    "I1778"
+  ],
+  "childIds": [
+    "I391"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1778",
+      "familyId": "F201"
+    }
+  ]
 }

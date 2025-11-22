@@ -1,23 +1,18 @@
 {
   "id": "I1441",
-  "name": "Dorothy Howell",
-  "givenName": "Dorothy",
-  "surname": "Howell",
+  "name": "Jodie Wholagan",
+  "givenName": "Jodie",
+  "surname": "Wholagan",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1316"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1316",
-      "familyId": "F520"
-    }
+  "parentIds": [
+    "I1319",
+    "I1318"
   ]
 }

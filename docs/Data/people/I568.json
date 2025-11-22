@@ -1,18 +1,18 @@
 {
   "id": "I568",
-  "name": "Edward a'Court",
-  "givenName": "Edward",
+  "name": "Margerais a'Court",
+  "givenName": "Margerais",
   "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "BEF 1632",
+  "sex": "F",
+  "birthDate": "ABT 1621",
   "birthPlace": null,
-  "deathDate": "1632",
+  "deathDate": "ABT 1623",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I558",
-    "I559"
+    "I559",
+    "I560"
   ]
 }

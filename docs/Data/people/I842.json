@@ -1,27 +1,30 @@
 {
   "id": "I842",
-  "name": "Nellie Gwendoline A'Court",
-  "givenName": "Nellie Gwendoline",
+  "name": "Sydney Charles A'Court",
+  "givenName": "Sydney Charles",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "27 DEC 1904",
+  "sex": "M",
+  "birthDate": "24 JUL 1902",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1955",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
     "I855"
   ],
   "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
+    "I825",
+    "I837"
+  ],
+  "notes": [
+    "Wises"
   ],
   "marriages": [
     {
       "spouseId": "I855",
-      "familyId": "F367",
-      "marriageDate": "1931",
+      "familyId": "F418",
+      "marriageDate": "1926",
       "marriagePlace": "New Zealand"
     }
   ]

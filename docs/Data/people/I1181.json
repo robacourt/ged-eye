@@ -1,46 +1,28 @@
 {
   "id": "I1181",
-  "name": "Sidney Haskett",
-  "givenName": "Sidney",
-  "surname": "Haskett",
+  "name": "James Jones",
+  "givenName": "James",
+  "surname": "Jones",
   "sex": "M",
-  "birthDate": "1861",
+  "birthDate": "ABT 1857",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1182"
+    "I1180"
   ],
-  "childIds": [
-    "I1196",
-    "I1199",
-    "I1204",
-    "I1210",
-    "I1211",
-    "I1212",
-    "I1215",
-    "I1242"
-  ],
-  "parentIds": [
-    "I1175",
-    "I181"
-  ],
-  "baptismDate": "1862",
-  "baptismPlace": "Marnhull, Dorset",
+  "childIds": [],
+  "parentIds": [],
   "occupations": [
-    "Engine Driver"
-  ],
-  "residences": [
-    {
-      "date": "1881",
-      "place": "Caraway Lane"
-    }
+    "Ag Lab"
   ],
   "marriages": [
     {
-      "spouseId": "I1182",
-      "familyId": "F482"
+      "spouseId": "I1180",
+      "familyId": "F544",
+      "marriageDate": "5 JUNE 1877",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

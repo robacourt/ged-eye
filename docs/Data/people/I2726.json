@@ -10,7 +10,7 @@
   "deathPlace": "London, Kensington",
   "photos": [],
   "spouseIds": [
-    "I1429"
+    "I1430"
   ],
   "childIds": [
     "I2974",
@@ -38,8 +38,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1429",
-      "familyId": "F951",
+      "spouseId": "I1430",
+      "familyId": "F635",
       "marriageDate": "3 RD QTR 1902"
     }
   ]

@@ -1,34 +1,28 @@
 {
   "id": "I1118",
-  "name": "Joseph Charles Legg",
-  "givenName": "Joseph Charles",
-  "surname": "Legg",
-  "sex": "M",
-  "birthDate": "ABT 1885",
+  "name": "Bessie Curtis",
+  "givenName": "Bessie",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1888",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1117"
+    "I1119"
   ],
   "childIds": [],
   "parentIds": [
-    "I1119"
+    "I1082",
+    "I1083"
   ],
-  "occupations": [
-    "Groom"
-  ],
-  "residences": [
-    {
-      "date": "1923",
-      "place": "Bishops Caundle, Dorset"
-    }
-  ],
+  "baptismDate": "9 OCT 1887",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1117",
-      "familyId": "F451",
+      "spouseId": "I1119",
+      "familyId": "F514",
       "marriageDate": "6 JUN 1923",
       "marriagePlace": "Marnhull, Dorset"
     }

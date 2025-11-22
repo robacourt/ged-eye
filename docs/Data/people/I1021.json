@@ -1,25 +1,25 @@
 {
   "id": "I1021",
-  "name": "Mabel Soans",
-  "givenName": "Mabel",
-  "surname": "Soans",
-  "sex": "F",
+  "name": "Basil Cantem",
+  "givenName": "Basil",
+  "surname": "Cantem",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1020"
+    "I1022"
   ],
   "childIds": [
-    "I1019"
+    "I1020"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1020",
-      "familyId": "F420"
+      "spouseId": "I1022",
+      "familyId": "F476"
     }
   ]
 }

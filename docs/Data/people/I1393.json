@@ -1,18 +1,28 @@
 {
   "id": "I1393",
-  "name": "Gerard Simon Egge Emme Mulder",
-  "givenName": "Gerard Simon Egge Emme",
-  "surname": "Mulder",
-  "sex": "M",
-  "birthDate": "14JUN 1969",
-  "birthPlace": "Wagening, Provinsie Gelderland, Holland",
+  "name": "Saskia De Wilde",
+  "givenName": "Saskia",
+  "surname": "De Wilde",
+  "sex": "F",
+  "birthDate": "31 AUG 1947",
+  "birthPlace": "Amsterdam, Holland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1391",
+  "spouseIds": [
     "I1392"
+  ],
+  "childIds": [
+    "I1394",
+    "I1391",
+    "I1395",
+    "I1396"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1392",
+      "familyId": "F623"
+    }
   ]
 }

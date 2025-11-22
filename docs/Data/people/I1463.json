@@ -1,41 +1,43 @@
 {
   "id": "I1463",
-  "name": "Ada Mary A'Court",
-  "givenName": "Ada Mary",
+  "name": "Emily Rosilla A'Court",
+  "givenName": "Emily Rosilla",
   "surname": "A'Court",
-  "sex": "U",
-  "birthDate": "ABT 1882",
+  "sex": "F",
+  "birthDate": "ABT 1880",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg",
-    "Data/Media/1901 census/London/Ealing/RG13 1192 52 16.jpg",
-    "Data/Media/1911 census/Devon/Stoke Gabriel/RG14 12799 78.jpg"
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg"
   ],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1633"
+  ],
   "childIds": [],
   "parentIds": [
-    "I1459",
-    "I1460"
-  ],
-  "baptismDate": "13 AUG 1882",
-  "baptismPlace": "Dorset, Marnhull",
-  "notes": [
-    "Lucy's father was James, but cannot tie him in, too many loose connections, she had a sister called Emily, Ada possible born after 1881 otherwise no information."
+    "I1460",
+    "I1461"
   ],
   "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burges"
+    },
     {
       "date": "1891",
       "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
     },
     {
       "date": "1901",
-      "place": "Middlesex, Ealing,13 Norfolk Terrace, Northfield Lane."
-    },
+      "place": "Ealing, Middlesex, 13 Norfolk Terrace"
+    }
+  ],
+  "marriages": [
     {
-      "date": "1911",
-      "place": "Devon, Stoke Gabriel, Post Office"
+      "spouseId": "I1633",
+      "familyId": "F648"
     }
   ],
   "avatar": "avatars/I1463_0.jpg"

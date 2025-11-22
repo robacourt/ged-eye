@@ -1,26 +1,29 @@
 {
   "id": "I1970",
-  "name": "Betty Elizabeth Drost",
-  "givenName": "Betty Elizabeth",
+  "name": "Roland Grant Drost",
+  "givenName": "Roland Grant",
   "surname": "Drost",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "Abt 1896",
+  "birthPlace": "Hartney, Manitoba, Canada",
+  "deathDate": "23 JUL 1978",
+  "deathPlace": "Vancover, B.C, Canada",
   "photos": [],
   "spouseIds": [
+    "I1409"
+  ],
+  "childIds": [
     "I1971"
   ],
-  "childIds": [],
   "parentIds": [
-    "I1969",
-    "I1408"
+    "I1973",
+    "I1974"
   ],
   "marriages": [
     {
-      "spouseId": "I1971",
-      "familyId": "F704"
+      "spouseId": "I1409",
+      "familyId": "F627",
+      "marriageDate": "8 JUL 1925"
     }
   ]
 }

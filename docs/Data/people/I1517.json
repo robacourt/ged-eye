@@ -1,27 +1,31 @@
 {
   "id": "I1517",
-  "name": "Frederick Charles John Morgan",
-  "givenName": "Frederick Charles John",
+  "name": "Fredrick George Morgan",
+  "givenName": "Fredrick George",
   "surname": "Morgan",
   "sex": "M",
-  "birthDate": "24 NOV 1906",
-  "birthPlace": "London, St. Pancras, 55 Torriano Ave.",
-  "deathDate": "24 SEP 1972",
-  "deathPlace": "Enfield, Middlesex, 98 Ordnance Road",
+  "birthDate": "19 APR 1882",
+  "birthPlace": "Bimport St. Shaftesbury, Dorset",
+  "deathDate": "13 DEC 1975",
+  "deathPlace": "Enfield, Middlesex",
   "photos": [],
   "spouseIds": [
-    "I1518"
+    "I1487"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1516",
-    "I1486"
+  "childIds": [
+    "I1518",
+    "I1520",
+    "I1521",
+    "I1522",
+    "I1525"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1518",
-      "familyId": "F579",
-      "marriageDate": "9 APRIL 1932"
+      "spouseId": "I1487",
+      "familyId": "F652",
+      "marriageDate": "25 DEC 1905",
+      "marriagePlace": "Enfield, Middlesex,  St. John The Baptist"
     }
   ]
 }

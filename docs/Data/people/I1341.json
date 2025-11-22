@@ -1,25 +1,28 @@
 {
   "id": "I1341",
-  "name": "Alison Thomson",
-  "givenName": "Alison",
-  "surname": "Thomson",
-  "sex": "F",
-  "birthDate": "1798",
+  "name": "Thomas Todrick",
+  "givenName": "Thomas",
+  "surname": "Todrick",
+  "sex": "M",
+  "birthDate": "1787",
   "birthPlace": null,
-  "deathDate": "1898",
+  "deathDate": "1832",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1340"
+    "I1342"
   ],
   "childIds": [
-    "I936"
+    "I937"
   ],
   "parentIds": [],
+  "occupations": [
+    "Baker"
+  ],
   "marriages": [
     {
-      "spouseId": "I1340",
-      "familyId": "F391"
+      "spouseId": "I1342",
+      "familyId": "F445"
     }
   ]
 }

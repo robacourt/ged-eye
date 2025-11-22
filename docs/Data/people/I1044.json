@@ -1,18 +1,26 @@
 {
   "id": "I1044",
-  "name": "Oliver A'Court",
-  "givenName": "Oliver",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1987",
-  "birthPlace": "Auckland, New Zealand",
+  "name": "Susan Mary Moon",
+  "givenName": "Susan Mary",
+  "surname": "Moon",
+  "sex": "F",
+  "birthDate": "1949",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1042",
+  "spouseIds": [
     "I1043"
+  ],
+  "childIds": [
+    "I1045"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1043",
+      "familyId": "F484",
+      "marriageDate": "1985"
+    }
   ]
 }

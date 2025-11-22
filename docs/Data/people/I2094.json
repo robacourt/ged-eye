@@ -1,18 +1,26 @@
 {
   "id": "I2094",
-  "name": "Janet Fletcher",
-  "givenName": "Janet",
+  "name": "Charles Fletcher",
+  "givenName": "Charles",
   "surname": "Fletcher",
-  "sex": "F",
-  "birthDate": "1955",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I2093",
-    "I2092"
+  "spouseIds": [
+    "I2093"
+  ],
+  "childIds": [
+    "I2095",
+    "I2096"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2093",
+      "familyId": "F822"
+    }
   ]
 }

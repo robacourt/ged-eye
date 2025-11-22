@@ -1,26 +1,25 @@
 {
   "id": "I467",
-  "name": "Thomas Coffin",
-  "givenName": "Thomas",
-  "surname": "Coffin",
+  "name": "Llewellyn Lewis Jones",
+  "givenName": "Llewellyn Lewis",
+  "surname": "Jones",
   "sex": "M",
-  "birthDate": "Bef 1780",
-  "birthPlace": null,
-  "deathDate": "Aft 1798",
-  "deathPlace": null,
+  "birthDate": "17 MAY 1909",
+  "birthPlace": "South Africa, Pretoria",
+  "deathDate": "5 AUG 1987",
+  "deathPlace": "Kent, Whitstable",
   "photos": [],
   "spouseIds": [
-    "I468"
+    "I461"
   ],
-  "childIds": [
-    "I71",
-    "I1472"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I468",
-      "familyId": "F45"
+      "spouseId": "I461",
+      "familyId": "F246",
+      "marriageDate": "JUL 1937",
+      "marriagePlace": "London, Woolwich"
     }
   ]
 }

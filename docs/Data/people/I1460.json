@@ -1,25 +1,34 @@
 {
   "id": "I1460",
-  "name": "Emily Kate Unknown",
-  "givenName": "Emily Kate",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "ABT 1856",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1853",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1911 census/London/Ealing/RG14 6895 79.jpg"
+  ],
   "spouseIds": [
-    "I1459"
+    "I1461"
   ],
   "childIds": [
-    "I1456",
-    "I1462",
-    "I1463"
+    "I1457",
+    "I1463",
+    "I1464"
   ],
   "parentIds": [],
+  "occupations": [
+    "Dray Man",
+    "Labourer",
+    "Labourer",
+    "General labourer",
+    "Park Gardener"
+  ],
   "notes": [
-    "Lucy's father was James, but cannot tie him in, too many loose connections, she had a sister called Emily, Ada possible born after 1881 otherwise no information."
+    "Roy, I expect you spotted this on the Dorset list:-"
   ],
   "censusRecords": [
     {
@@ -33,12 +42,17 @@
     {
       "date": "1901",
       "place": "Middlesex, Ealing,13 Norfolk Terrace, Northfield Lane."
+    },
+    {
+      "date": "1911",
+      "place": "Ealing, Middlesex, 55 Northfield Avenue"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1459",
-      "familyId": "F561"
+      "spouseId": "I1461",
+      "familyId": "F646"
     }
-  ]
+  ],
+  "avatar": "avatars/I1460_0.jpg"
 }

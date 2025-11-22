@@ -1,10 +1,10 @@
 {
   "id": "I1771",
-  "name": "Susan J A'Court",
-  "givenName": "Susan J",
+  "name": "Colin S A'Court",
+  "givenName": "Colin S",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "2ND QRT 1953",
+  "sex": "M",
+  "birthDate": "2ND QRT 1952",
   "birthPlace": "Downham",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1768",
-    "I1767"
+    "I1769",
+    "I1768"
   ]
 }

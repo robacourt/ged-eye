@@ -1,33 +1,24 @@
 {
   "id": "I1757",
-  "name": "Henry Chamberlain",
-  "givenName": "Henry",
+  "name": "Emma Chamberlain",
+  "givenName": "Emma",
   "surname": "Chamberlain",
-  "sex": "M",
-  "birthDate": "ABT 1856",
-  "birthPlace": "Neath, Glamorgan",
+  "sex": "F",
+  "birthDate": "ABT 1867",
+  "birthPlace": "Cardiff, Glamorgan",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I891",
-    "I768"
-  ],
-  "occupations": [
-    "Stonemason"
+    "I892",
+    "I769"
   ],
   "censusRecords": [
     {
       "date": "1881",
       "place": "Pendleton-in-Salford, 13 Lytham St, Lancashire"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F637"
     }
   ]
 }

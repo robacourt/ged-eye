@@ -1,38 +1,35 @@
 {
   "id": "I878",
-  "name": "Charles A'Court",
-  "givenName": "Charles",
+  "name": "Elisha Thomas A'Court",
+  "givenName": "Elisha Thomas",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1851",
-  "birthPlace": "Chew Magna, Somerset, England",
-  "deathDate": "ABT 1931",
+  "birthDate": "ABT 1848",
+  "birthPlace": "Walcot, Bath, Somerset",
+  "deathDate": "ABT 1911",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1861 Census/London/Pancras/RG09 110 111 50.jpg"
+    "Data/Media/1861 Census/London/Pancras/RG09 110 111 50.jpg",
+    "Data/Media/1911 census/London/Bethnal Green/RG14 1417 1.jpg"
   ],
   "spouseIds": [
     "I928"
   ],
   "childIds": [
-    "I1335",
-    "I528",
-    "I517",
-    "I2087",
-    "I2042",
-    "I1337",
-    "I524",
-    "I2090"
+    "I2445",
+    "I2830",
+    "I2831",
+    "I2832"
   ],
   "parentIds": [
-    "I763",
-    "I871"
+    "I764",
+    "I872"
   ],
   "occupations": [
-    "Coachman Domestic",
-    "Coachman, Domestic Servant",
-    "Coachman, not domestic",
-    "Coachman, Domestic"
+    "Errand Boy",
+    "Smiths Labourer",
+    "Blacksmith",
+    "General Smith"
   ],
   "censusRecords": [
     {
@@ -41,33 +38,25 @@
     },
     {
       "date": "1881",
-      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+      "place": "London, St Pancras, 19 Church Way"
     },
     {
       "date": "1891",
-      "place": "London,Kensington 9, Lucerne Mews"
+      "place": null
     },
     {
       "date": "1901",
-      "place": "London, Putney, 12 Rotherwood Terrace"
+      "place": "London, St Pancras, 1Ossulston Place,"
     },
     {
       "date": "1911",
-      "place": "London, Putney, 72 Lower Richmond Rd"
-    }
-  ],
-  "residences": [
-    {
-      "date": "MAY 1918",
-      "place": "Chertsey, Surrey, 91 Guildford St."
+      "place": "Patient, Bethnal Green Infirmary, Cambridge Rd."
     }
   ],
   "marriages": [
     {
       "spouseId": "I928",
-      "familyId": "F226",
-      "marriageDate": "1871",
-      "marriagePlace": "Somerset"
+      "familyId": "F428"
     }
   ],
   "avatar": "avatars/I878_0.jpg"

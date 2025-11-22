@@ -1,36 +1,20 @@
 {
   "id": "I1148",
-  "name": "Kathleen Lily Rose Horlock",
-  "givenName": "Kathleen Lily Rose",
+  "name": "Nora Evelyn Elsie Horlock",
+  "givenName": "Nora Evelyn Elsie",
   "surname": "Horlock",
   "sex": "F",
-  "birthDate": "ABT 1917",
+  "birthDate": "6 APRIL 1918",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1149"
-  ],
-  "childIds": [
-    "I1151"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1144",
-    "I1143"
+    "I1145",
+    "I1144"
   ],
-  "residences": [
-    {
-      "date": "1938",
-      "place": "Marnhull, Dorset, Gannetts"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1149",
-      "familyId": "F466",
-      "marriageDate": "18 APRIL 1938",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "19 MAY 1918",
+  "baptismPlace": "Marnhull, Dorset"
 }

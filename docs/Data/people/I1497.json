@@ -1,29 +1,29 @@
 {
   "id": "I1497",
-  "name": "Ernest Edward Chamberlain (Collis)",
-  "givenName": "Ernest Edward Chamberlain",
-  "surname": "(Collis)",
+  "name": "Frank Chamberlain",
+  "givenName": "Frank",
+  "surname": "Chamberlain",
   "sex": "M",
-  "birthDate": "17 MAY 1890",
+  "birthDate": "1869",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "9 FEB 1932",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1504"
+  "photos": [
+    "Data/Media/1871 census/Galhampton/RG10 2421 61 23.jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1506",
-    "I1507"
+    "I865",
+    "I778"
   ],
-  "notes": [
-    "Ernest Edward Collis was asked by his best friend in the WWI to look after his wife Winnie when he died.  He did - he married her Winifred Violet Louisa Inwood formerly Frier on 14th July 1920 by licence at Lewisham Register Office.  They wen"
-  ],
-  "marriages": [
+  "burialDate": "FEB 1932",
+  "burialPlace": "Bruton, Somerset",
+  "censusRecords": [
     {
-      "spouseId": "I1504",
-      "familyId": "F569"
+      "date": "1871 CENSUS",
+      "place": "Galhampton, North Cadbury, Cottage"
     }
-  ]
+  ],
+  "avatar": "avatars/I1497_0.jpg"
 }

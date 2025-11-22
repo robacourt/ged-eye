@@ -1,15 +1,23 @@
 {
   "id": "I1539",
-  "name": "Charles Britton",
-  "givenName": "Charles",
-  "surname": "Britton",
-  "sex": "U",
+  "name": "Unknown Andrews",
+  "givenName": "Unknown",
+  "surname": "Andrews",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1538"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1538",
+      "familyId": "F673"
+    }
+  ]
 }

@@ -1,15 +1,17 @@
 {
   "id": "I1439",
-  "name": "Benjamina Francis White",
-  "givenName": "Benjamina Francis",
-  "surname": "White",
-  "sex": "U",
-  "birthDate": null,
+  "name": "Clement John Wheeler Bennett",
+  "givenName": "Clement John Wheeler",
+  "surname": "Bennett",
+  "sex": "M",
+  "birthDate": "ABT 1966",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1986",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I388"
+  ]
 }

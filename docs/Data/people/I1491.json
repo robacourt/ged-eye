@@ -1,18 +1,25 @@
 {
   "id": "I1491",
-  "name": "Mary Jane Chamberlain",
-  "givenName": "Mary Jane",
-  "surname": "Chamberlain",
+  "name": "Silvy Baker",
+  "givenName": "Silvy",
+  "surname": "Baker",
   "sex": "F",
-  "birthDate": "1864",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1865",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I864",
-    "I777"
+  "spouseIds": [
+    "I1490"
+  ],
+  "childIds": [
+    "I865"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1490",
+      "familyId": "F425"
+    }
   ]
 }

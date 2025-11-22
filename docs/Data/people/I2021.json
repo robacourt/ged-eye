@@ -1,23 +1,37 @@
 {
   "id": "I2021",
-  "name": "John Lines",
-  "givenName": "John",
-  "surname": "Lines",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": "ABT 1833",
+  "birthPlace": "Surrey, Clapham",
+  "deathDate": "BEF 1871",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I2807"
+  ],
   "childIds": [
-    "I904"
+    "I2089",
+    "I521",
+    "I2808",
+    "I2809"
   ],
   "parentIds": [],
+  "occupations": [
+    "Coach Smith"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, St Lukes, 17 George Yard"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F729"
+      "spouseId": "I2807",
+      "familyId": "F271"
     }
   ]
 }

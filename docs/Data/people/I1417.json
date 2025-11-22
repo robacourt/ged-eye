@@ -1,28 +1,38 @@
 {
   "id": "I1417",
-  "name": "Herbert William Stanley",
-  "givenName": "Herbert William",
-  "surname": "Stanley",
+  "name": "William H A'Court",
+  "givenName": "William H",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I895"
+  "birthDate": "SEP QT 1857",
+  "birthPlace": "Bedminster, Somerset",
+  "deathDate": "JUN QT 1891",
+  "deathPlace": "Bedminster, Somerset",
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "occupations": [
-    "Corn Merchant"
+  "parentIds": [
+    "I1387",
+    "I1406"
   ],
-  "marriages": [
+  "occupations": [
+    "News Vendor"
+  ],
+  "notes": [
+    "Fromthe 1871  for St Mary Redcliff/Bristol I see that Silas and Ann  had a daughter Mary and three sons, Albert, William and my grandfather, Charles Edward.  I have no information beyond that.  Thanks for any help.  Betty Jones  Solana Beach, Cali"
+  ],
+  "censusRecords": [
     {
-      "spouseId": "I895",
-      "familyId": "F602",
-      "marriageDate": "17TH JULY 1902",
-      "marriagePlace": "London, Streatham"
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
     }
-  ]
+  ],
+  "avatar": "avatars/I1417_0.jpg"
 }

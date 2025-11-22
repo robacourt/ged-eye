@@ -1,23 +1,25 @@
 {
   "id": "I681",
-  "name": "John Drew",
-  "givenName": "John",
+  "name": "Elizabeth ( Betty ) Drew",
+  "givenName": "Elizabeth ( Betty )",
   "surname": "Drew",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I680"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I682"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F287"
+      "spouseId": "I680",
+      "familyId": "F336"
     }
   ]
 }

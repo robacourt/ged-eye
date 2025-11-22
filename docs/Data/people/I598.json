@@ -1,7 +1,7 @@
 {
   "id": "I598",
-  "name": "John Hatcher",
-  "givenName": "John",
+  "name": "Robert Hatcher",
+  "givenName": "Robert",
   "surname": "Hatcher",
   "sex": "M",
   "birthDate": null,
@@ -12,9 +12,9 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I589",
-    "I595"
+    "I590",
+    "I596"
   ],
-  "baptismDate": "28.10.1906",
+  "baptismDate": "24.4.1904",
   "baptismPlace": "Todber, Dorset"
 }

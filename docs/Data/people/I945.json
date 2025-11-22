@@ -1,18 +1,23 @@
 {
   "id": "I945",
-  "name": "Dorothy Alice Stuart A'Court",
-  "givenName": "Dorothy Alice Stuart",
+  "name": "Harry Wilford A'Court",
+  "givenName": "Harry Wilford",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "23 OCT 1897",
-  "birthPlace": "Sanson, Wellington, New Zealand",
-  "deathDate": "7 AUG 1923",
+  "sex": "M",
+  "birthDate": "6 AUG 1893",
+  "birthPlace": "Rongotea, New Zealand",
+  "deathDate": "17 MAY 1918",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I937",
-    "I938"
+    "I938",
+    "I939"
+  ],
+  "burialPlace": "Sanson Cemetery, Manawatu, New Zealand",
+  "notes": [
+    "Served on the Western Front",
+    "n Memory of"
   ]
 }

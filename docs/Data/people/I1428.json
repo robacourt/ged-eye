@@ -1,53 +1,40 @@
 {
   "id": "I1428",
-  "name": "Harriet Leah Leach",
-  "givenName": "Harriet Leah",
-  "surname": "Leach",
-  "sex": "F",
-  "birthDate": "Abt 1846",
-  "birthPlace": "Whitechapel, London",
-  "deathDate": "BEF 1901",
+  "name": "Lewis Soloman Isaacs",
+  "givenName": "Lewis Soloman",
+  "surname": "Isaacs",
+  "sex": "M",
+  "birthDate": "ABT 1899",
+  "birthPlace": "South Hackney, Victoria Park, London",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1422"
+  "photos": [
+    "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg",
+    "Data/Media/1911 census/London/Islington/RG14 829 73.jpg",
+    "Data/Media/1921 Census/London/Westminster/RG15 00535 31.jpg"
   ],
-  "childIds": [
-    "I2337",
-    "I2336",
-    "I445",
-    "I2335",
-    "I1423",
-    "I1424",
-    "I2283",
-    "I2282",
-    "I1429",
-    "I2338"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I2340",
-    "I2341"
+    "I1426",
+    "I1425"
+  ],
+  "occupations": [
+    "Marine Engineer, Sea going, Blue Star Line, SS Celtic Star"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Shoreditch, London,"
+      "date": "1901",
+      "place": "Hackney, London, 64 Kenninghall Rd."
     },
     {
-      "date": "1891",
-      "place": "Shoreditch, London, 341 Old St."
+      "date": "1911",
+      "place": "London, Islington, 29 Tollington Park N"
     },
     {
-      "date": "1881",
-      "place": null
+      "date": "1921",
+      "place": "London, Westminster, 1 Derby St"
     }
   ],
-  "marriages": [
-    {
-      "spouseId": "I1422",
-      "familyId": "F201",
-      "marriageDate": "2ND QTR 1867",
-      "marriagePlace": "City of London"
-    }
-  ]
+  "avatar": "avatars/I1428_0.jpg"
 }

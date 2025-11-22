@@ -1,18 +1,27 @@
 {
   "id": "I2104",
-  "name": "John McSweeney",
-  "givenName": "John",
+  "name": "Timothy McSweeney",
+  "givenName": "Timothy",
   "surname": "McSweeney",
   "sex": "M",
-  "birthDate": "1950",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I2103",
-    "I2102"
+  "spouseIds": [
+    "I2103"
+  ],
+  "childIds": [
+    "I2105",
+    "I2106"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2103",
+      "familyId": "F825",
+      "marriageDate": "1948"
+    }
   ]
 }

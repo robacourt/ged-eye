@@ -1,28 +1,25 @@
 {
   "id": "I1319",
-  "name": "Thomas Palmer",
-  "givenName": "Thomas",
-  "surname": "Palmer",
+  "name": "Neil Wholagan",
+  "givenName": "Neil",
+  "surname": "Wholagan",
   "sex": "M",
-  "birthDate": "1799",
-  "birthPlace": "Stoke Sub Hamdon, Somerset",
-  "deathDate": "AFT 1861",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I762"
+    "I1318"
   ],
   "childIds": [
-    "I1320",
-    "I1321"
+    "I1441"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I762",
-      "familyId": "F314",
-      "marriageDate": "16 SEP 1832",
-      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+      "spouseId": "I1318",
+      "familyId": "F591"
     }
   ]
 }

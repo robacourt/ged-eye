@@ -1,11 +1,11 @@
 {
   "id": "I1604",
-  "name": "Henry G A'Court",
-  "givenName": "Henry G",
+  "name": "George T A'Court",
+  "givenName": "George T",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1888",
-  "birthPlace": "Liverpool, Lancs",
+  "birthDate": "Abt 1884",
+  "birthPlace": "Warrington, Lancs",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
@@ -16,11 +16,15 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1601",
-    "I1602"
+    "I1602",
+    "I1603"
   ],
   "occupations": [
-    "Chargeman Assistant Signals, LNW Railway"
+    "Glass Maker",
+    "Flagman, LNW Railway"
+  ],
+  "notes": [
+    "ACOURT, HENRY   HEAD   MARRIED     M   45   CHARGEMAN SIGNALS   BEDMINSTER SOMERSET"
   ],
   "censusRecords": [
     {

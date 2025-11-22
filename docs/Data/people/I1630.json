@@ -1,25 +1,45 @@
 {
   "id": "I1630",
-  "name": "George Warren",
-  "givenName": "George",
-  "surname": "Warren",
+  "name": "John Arthur Wheeler Bennett",
+  "givenName": "John Arthur Wheeler",
+  "surname": "Bennett",
   "sex": "M",
-  "birthDate": "ABT 1832",
-  "birthPlace": "Marnhull, Dorset",
-  "deathDate": null,
+  "birthDate": "1920",
+  "birthPlace": "Sussex, Steyning",
+  "deathDate": "1975",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg"
+    "Data/Media/1921 Census/Sussex/RG15 05017 14.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1728"
+  ],
+  "childIds": [
+    "I1729"
+  ],
   "parentIds": [
-    "I1624"
+    "I382",
+    "I387"
+  ],
+  "occupations": [
+    "Dr."
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Marnhull, Dorset, Barton"
+      "date": "1921",
+      "place": "Sussex, Steyning, Glen Ofen"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Buckinghamshire, Monks Risborough"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1728",
+      "familyId": "F699"
     }
   ],
   "avatar": "avatars/I1630_0.jpg"

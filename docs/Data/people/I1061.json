@@ -1,9 +1,9 @@
 {
   "id": "I1061",
-  "name": "Rhonda Denise Diehm",
-  "givenName": "Rhonda Denise",
+  "name": "Glendyn Darold Diehm",
+  "givenName": "Glendyn Darold",
   "surname": "Diehm",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1058",
-    "I1059"
+    "I1059",
+    "I1060"
   ]
 }

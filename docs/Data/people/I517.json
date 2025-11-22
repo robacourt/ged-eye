@@ -1,60 +1,21 @@
 {
   "id": "I517",
-  "name": "William Frank A'Court",
-  "givenName": "William Frank",
+  "name": "Nigel Felix Daniel A'Court",
+  "givenName": "Nigel Felix Daniel",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1876",
-  "birthPlace": "London, Kensington",
-  "deathDate": "15 MAY 1918",
-  "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg",
-    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg",
-    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg",
-    "Data/Media/1911 census/Surrey/RG14 2982 162.jpg"
-  ],
+  "birthDate": "ABT 1918",
+  "birthPlace": "New Zealand",
+  "deathDate": "27 APR 1941",
+  "deathPlace": "Greece",
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I878",
-    "I928"
-  ],
-  "burialDate": "1918",
-  "burialPlace": "Belgium Battery Corner Cemetery, Ieper, Belgium",
-  "occupations": [
-    "Assistant Photographer",
-    "Photographer",
-    "Photographic Operator"
+    "I527",
+    "I528"
   ],
   "notes": [
-    "A'Court William Frank of Clandon House, Station Rd., Walton on Thames, Surrey. Private 9th battalion Norfolk regiment died 15 May 1918 in France on active service",
-    "PRO Reference Schedule Number",
-    "First name(s) Last name Relationship to head Marital status Sex Age Birth year Occupation Birth place"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1891",
-      "place": "London,Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1901",
-      "place": "Walton on Thames, Surrey, Station Rd."
-    },
-    {
-      "date": "1911",
-      "place": "Surrey, Walton-On-Thames, Station Ave, Heytesbury"
-    }
-  ],
-  "residences": [
-    {
-      "date": "1918",
-      "place": "Walton on Thames,  Clandon House, Station Ave,"
-    }
-  ],
-  "avatar": "avatars/I517_0.jpg"
+    "In Memory of"
+  ]
 }

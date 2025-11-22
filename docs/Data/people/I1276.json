@@ -1,31 +1,51 @@
 {
   "id": "I1276",
-  "name": "Frederick George Stacey",
-  "givenName": "Frederick George",
-  "surname": "Stacey",
+  "name": "Howard William A'Court",
+  "givenName": "Howard William",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": "15 DEC 1893",
-  "birthPlace": "Shortheath, Farnham, Surrey",
-  "deathDate": "24 AUG 1973",
-  "deathPlace": "Thames Ditton, Surrey",
-  "photos": [],
+  "birthDate": "1886",
+  "birthPlace": "Charlton Horethorne, Somerset",
+  "deathDate": "1962",
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg",
+    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg"
+  ],
   "spouseIds": [
-    "I1263"
+    "I1562"
   ],
   "childIds": [
-    "I1277",
-    "I1278"
+    "I2577",
+    "I2578"
   ],
   "parentIds": [
-    "I1288",
-    "I1289"
+    "I284",
+    "I287"
+  ],
+  "occupations": [
+    "Telegraph Boy",
+    "Baker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    },
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Gracious St"
+    },
+    {
+      "date": "1911",
+      "place": "Grayshott, Hampshire, 1 The Villas"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1263",
-      "familyId": "F509",
-      "marriageDate": "19 JUN 1916",
-      "marriagePlace": "Selborne, Hampshire"
+      "spouseId": "I1562",
+      "familyId": "F581"
     }
-  ]
+  ],
+  "avatar": "avatars/I1276_0.jpg"
 }

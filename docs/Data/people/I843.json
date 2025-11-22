@@ -1,30 +1,27 @@
 {
   "id": "I843",
-  "name": "William Douglas A'Court",
-  "givenName": "William Douglas",
+  "name": "Nellie Gwendoline A'Court",
+  "givenName": "Nellie Gwendoline",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "3 JAN 1907",
+  "sex": "F",
+  "birthDate": "27 DEC 1904",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1957",
-  "deathPlace": "Nelson Hospital, Nelson, NZ",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I856"
   ],
   "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
-  ],
-  "notes": [
-    "Wises"
+    "I825",
+    "I837"
   ],
   "marriages": [
     {
       "spouseId": "I856",
-      "familyId": "F368",
-      "marriageDate": "1936",
+      "familyId": "F419",
+      "marriageDate": "1931",
       "marriagePlace": "New Zealand"
     }
   ]

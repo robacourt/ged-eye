@@ -1,31 +1,18 @@
 {
   "id": "I1053",
-  "name": "Gladys Augusta Diehm",
-  "givenName": "Gladys Augusta",
+  "name": "Cheryl Sue Diehm",
+  "givenName": "Cheryl Sue",
   "surname": "Diehm",
   "sex": "F",
-  "birthDate": "11 APRIL 1922",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1054"
-  ],
-  "childIds": [
-    "I1055",
-    "I1056",
-    "I1057"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I934",
-    "I933"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1054",
-      "familyId": "F426",
-      "marriageDate": "5 MARCH 1941"
-    }
+    "I1050",
+    "I1051"
   ]
 }

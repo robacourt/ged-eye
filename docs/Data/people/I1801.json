@@ -1,23 +1,17 @@
 {
   "id": "I1801",
-  "name": "Unknown Brown",
-  "givenName": "Unknown",
-  "surname": "Brown",
+  "name": "Lucille A A'Court",
+  "givenName": "Lucille A",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "2ND QRT 1952",
+  "birthPlace": "Northumberland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1800"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F649"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1802"
   ]
 }

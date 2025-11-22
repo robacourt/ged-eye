@@ -1,29 +1,24 @@
 {
   "id": "I988",
-  "name": "Hilton (Dick) A'Court",
-  "givenName": "Hilton (Dick)",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1924",
+  "name": "Jean Hodges",
+  "givenName": "Jean",
+  "surname": "Hodges",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1389"
+    "I987"
   ],
   "childIds": [],
-  "parentIds": [
-    "I104",
-    "I733"
-  ],
-  "notes": [
-    "Hilton (son?) made a fair bit of money importing parts and putting buses"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1389",
-      "familyId": "F410"
+      "spouseId": "I987",
+      "familyId": "F465",
+      "marriageDate": "1944"
     }
   ]
 }

@@ -1,28 +1,23 @@
 {
   "id": "I1366",
-  "name": "Charles E. Fairweather",
-  "givenName": "Charles E.",
-  "surname": "Fairweather",
+  "name": "Francis T. Opie",
+  "givenName": "Francis T.",
+  "surname": "Opie",
   "sex": "M",
-  "birthDate": "1839",
-  "birthPlace": "Glasgow, Lanarkshire",
-  "deathDate": "1901",
-  "deathPlace": "Canterbury, NZ",
+  "birthDate": "ABT 1845",
+  "birthPlace": "New Zealand",
+  "deathDate": "BEF 1945",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I1343"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1367",
-    "I1368"
-  ],
+  "parentIds": [],
   "marriages": [
     {
       "spouseId": "I1343",
-      "familyId": "F530",
-      "marriageDate": "1866",
-      "marriagePlace": "Lower Hutt, NZ"
+      "familyId": "F599"
     }
   ]
 }

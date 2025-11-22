@@ -1,38 +1,31 @@
 {
   "id": "I1579",
-  "name": "Maud Unknown",
-  "givenName": "Maud",
-  "surname": "Unknown",
+  "name": "Eva Nellie A'Court",
+  "givenName": "Eva Nellie",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1871",
-  "birthPlace": "Falmouth, Cornwall",
+  "birthDate": "ABT FEB 1901",
+  "birthPlace": "Blandford Forum, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 17 25.jpg"
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG12226 90.jpg"
   ],
-  "spouseIds": [
-    "I266"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1572",
+    "I1573"
   ],
-  "childIds": [
-    "I1580"
-  ],
-  "parentIds": [],
   "censusRecords": [
     {
       "date": "1901",
-      "place": "Blandford, Dorset, 7 Charles St."
+      "place": "Blandford, Dorset, 33 Orchard St."
     },
     {
       "date": "1911",
-      "place": "Blandford, Dorset, 7 Charles St."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I266",
-      "familyId": "F132",
-      "marriageDate": "ABT 1897"
+      "place": "Dorset, Pimperne Isolation Hospital- patient"
     }
   ],
   "avatar": "avatars/I1579_0.jpg"

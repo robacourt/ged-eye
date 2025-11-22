@@ -1,18 +1,25 @@
 {
   "id": "I1685",
-  "name": "Jon A'Court",
-  "givenName": "Jon",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1ST QR 1973",
-  "birthPlace": "Bromsgrove",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1684",
-    "I1683"
+  "spouseIds": [
+    "I1684"
+  ],
+  "childIds": [
+    "I1686"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1684",
+      "familyId": "F711"
+    }
   ]
 }

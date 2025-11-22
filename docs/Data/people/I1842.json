@@ -1,23 +1,17 @@
 {
   "id": "I1842",
-  "name": "Unknown Staker",
-  "givenName": "Unknown",
-  "surname": "Staker",
+  "name": "Joanne V A'Court",
+  "givenName": "Joanne V",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1ST QRT 1957",
+  "birthPlace": "Abergavenny",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1841"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F663"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1843"
   ]
 }

@@ -1,28 +1,29 @@
 {
   "id": "I848",
-  "name": "Michael Patrick Joseph WALSH",
-  "givenName": "Michael Patrick Joseph",
-  "surname": "WALSH",
+  "name": "John Percy (Claude) McEWAN",
+  "givenName": "John Percy (Claude)",
+  "surname": "McEWAN",
   "sex": "M",
-  "birthDate": "ABT 1872",
-  "birthPlace": null,
-  "deathDate": "1958",
-  "deathPlace": "Mercer, NZ",
+  "birthDate": "1 NOV 1881",
+  "birthPlace": "Auckland, New Zealand, Grafton, 43 Seafield View Road,",
+  "deathDate": "8 FEB 1964",
+  "deathPlace": "Napier, NZ",
   "photos": [],
   "spouseIds": [
-    "I835"
+    "I836"
   ],
   "childIds": [],
   "parentIds": [],
   "notes": [
+    "ashes scattered at Waikamuku Cemetery, Auckland",
     "Information provided by Carole Stewart:"
   ],
   "marriages": [
     {
-      "spouseId": "I835",
-      "familyId": "F360",
-      "marriageDate": "28 JAN 1942",
-      "marriagePlace": "St John's Church, Ponsonby, Auckland, NZ"
+      "spouseId": "I836",
+      "familyId": "F411",
+      "marriageDate": "11 DEC 1920",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
     }
   ]
 }

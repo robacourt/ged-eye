@@ -1,26 +1,29 @@
 {
   "id": "I1550",
-  "name": "Paul Allister MacDonald",
-  "givenName": "Paul Allister",
+  "name": "Letha MacDonald",
+  "givenName": "Letha",
   "surname": "MacDonald",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1551"
+    "I1546"
   ],
   "childIds": [
-    "I1549",
+    "I1553",
     "I1554"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1551",
+    "I1552"
+  ],
   "marriages": [
     {
-      "spouseId": "I1551",
-      "familyId": "F593"
+      "spouseId": "I1546",
+      "familyId": "F677"
     }
   ]
 }

@@ -1,18 +1,26 @@
 {
   "id": "I721",
-  "name": "D. A. A'Court",
-  "givenName": "D. A.",
-  "surname": "A'Court",
-  "sex": "M",
+  "name": "Sandra Peters",
+  "givenName": "Sandra",
+  "surname": "Peters",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1401"
+  ],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Cpl. 7886036  Royal Armoured Corp WW2"
+  "parentIds": [
+    "I720",
+    "I1400"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1401",
+      "familyId": "F344"
+    }
   ]
 }

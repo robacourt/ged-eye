@@ -1,27 +1,24 @@
 {
   "id": "I888",
-  "name": "Mary C A'Court",
-  "givenName": "Mary C",
+  "name": "Edith Mary A'Court",
+  "givenName": "Edith Mary",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1858",
-  "birthPlace": "St Lukes, Middlesex",
-  "deathDate": "AFT 1881",
+  "birthDate": "BEF 1852",
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Hackney/RG11 298 67 9.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I767",
-    "I886"
+    "I768",
+    "I887"
   ],
-  "censusRecords": [
+  "marriages": [
     {
-      "date": "1881 CENSUS",
-      "place": "London, Hackney, 64 Graham Road"
+      "spouseId": null,
+      "familyId": "F430"
     }
-  ],
-  "avatar": "avatars/I888_0.jpg"
+  ]
 }

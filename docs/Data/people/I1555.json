@@ -1,18 +1,29 @@
 {
   "id": "I1555",
-  "name": "Charles Robert Dennis A'Court",
-  "givenName": "Charles Robert Dennis",
-  "surname": "A'Court",
-  "sex": "M",
+  "name": "Marilyn MacDonald",
+  "givenName": "Marilyn",
+  "surname": "MacDonald",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1547"
+  ],
+  "childIds": [
+    "I1556",
+    "I1557"
+  ],
   "parentIds": [
-    "I1546",
-    "I1554"
+    "I1551",
+    "I1552"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1547",
+      "familyId": "F678"
+    }
   ]
 }

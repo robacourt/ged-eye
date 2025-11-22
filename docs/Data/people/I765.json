@@ -1,24 +1,38 @@
 {
   "id": "I765",
-  "name": "Walter Power Stanford",
-  "givenName": "Walter Power",
-  "surname": "Stanford",
-  "sex": "M",
-  "birthDate": "1916",
-  "birthPlace": null,
-  "deathDate": "2004",
+  "name": "Diana A'Court",
+  "givenName": "Diana",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1816",
+  "birthPlace": "Cadbury, Somerset",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I576"
+    "I1739"
   ],
-  "childIds": [],
-  "parentIds": [],
+  "childIds": [
+    "I1740",
+    "I1742",
+    "I1743",
+    "I1741"
+  ],
+  "parentIds": [
+    "I756",
+    "I761"
+  ],
+  "baptismDate": "17 MAR 1816",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Yeovil, Somerset, Kiddles Lane"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I576",
-      "familyId": "F357",
-      "marriageDate": "SEP 1945"
+      "spouseId": "I1739",
+      "familyId": "F366"
     }
   ]
 }

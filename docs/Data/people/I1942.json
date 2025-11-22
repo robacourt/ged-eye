@@ -1,26 +1,23 @@
 {
   "id": "I1942",
-  "name": "Jack Lee",
-  "givenName": "Jack",
-  "surname": "Lee",
-  "sex": "M",
+  "name": "Allison Gunn",
+  "givenName": "Allison",
+  "surname": "Gunn",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1941"
+    "I1943"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1909",
-    "I1908"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1941",
-      "familyId": "F690"
+      "spouseId": "I1943",
+      "familyId": "F782"
     }
   ]
 }

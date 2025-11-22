@@ -1,23 +1,35 @@
 {
   "id": "I2069",
-  "name": "Clement Jarvis",
-  "givenName": "Clement",
-  "surname": "Jarvis",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Lillian Frances A'Court",
+  "givenName": "Lillian Frances",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1887",
+  "birthPlace": "Greenwich, Deptford",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg"
+  ],
   "spouseIds": [
-    "I2068"
+    "I2070"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I2066",
+    "I2067"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Deptford, Windmill Lane"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I2068",
-      "familyId": "F743"
+      "spouseId": "I2070",
+      "familyId": "F815"
     }
-  ]
+  ],
+  "avatar": "avatars/I2069_0.jpg"
 }

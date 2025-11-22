@@ -1,9 +1,9 @@
 {
   "id": "I1220",
-  "name": "Leigh Haskett",
-  "givenName": "Leigh",
+  "name": "Sharon Haskett",
+  "givenName": "Sharon",
   "surname": "Haskett",
-  "sex": "U",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,6 +12,6 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1218"
+    "I1219"
   ]
 }

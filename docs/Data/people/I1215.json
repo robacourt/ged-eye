@@ -1,43 +1,26 @@
 {
   "id": "I1215",
-  "name": "Montague Leonard Haskett",
-  "givenName": "Montague Leonard",
-  "surname": "Haskett",
+  "name": "Robert Edward Stovey",
+  "givenName": "Robert Edward",
+  "surname": "Stovey",
   "sex": "M",
-  "birthDate": "1889",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1950",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1216"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1218",
-    "I1222",
-    "I1221",
-    "I1224",
-    "I1229",
-    "I1232",
-    "I1238"
+    "I1214"
   ],
-  "parentIds": [
-    "I1181",
-    "I1182"
-  ],
+  "parentIds": [],
   "occupations": [
-    "Chauffeur"
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Ilsington House, Puddletown, Dorset"
-    }
+    "Ag Lab"
   ],
   "marriages": [
     {
-      "spouseId": "I1216",
-      "familyId": "F491"
+      "spouseId": null,
+      "familyId": "F557"
     }
   ]
 }

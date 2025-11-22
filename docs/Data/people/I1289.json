@@ -1,27 +1,30 @@
 {
   "id": "I1289",
-  "name": "Fanny Mansey",
-  "givenName": "Fanny",
-  "surname": "Mansey",
-  "sex": "F",
-  "birthDate": "1871",
+  "name": "John Stacey",
+  "givenName": "John",
+  "surname": "Stacey",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1940",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1288"
+    "I1290"
   ],
   "childIds": [
-    "I1276",
-    "I1286",
-    "I1287"
+    "I1277",
+    "I1287",
+    "I1288"
   ],
   "parentIds": [],
+  "occupations": [
+    "Gardener"
+  ],
   "marriages": [
     {
-      "spouseId": "I1288",
-      "familyId": "F515"
+      "spouseId": "I1290",
+      "familyId": "F582"
     }
   ]
 }

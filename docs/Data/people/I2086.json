@@ -1,44 +1,35 @@
 {
   "id": "I2086",
-  "name": "Susan Quarry",
-  "givenName": "Susan",
-  "surname": "Quarry",
-  "sex": "F",
-  "birthDate": "Abt 1838",
-  "birthPlace": "Kingsland, Middlesex",
+  "name": "Samuel A'Court",
+  "givenName": "Samuel",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1831",
+  "birthPlace": "Salford, Lancashire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Woodford/RG11 1734 34 24.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I2085",
-    "I2865"
+    "I2087"
   ],
   "childIds": [
-    "I2065",
-    "I1904"
+    "I2066",
+    "I1905"
   ],
   "parentIds": [],
+  "occupations": [
+    "Journeyman Watch Jobber"
+  ],
   "censusRecords": [
     {
       "date": "1861",
       "place": "London, Chelsea, 3 Whitelands Terrace"
-    },
-    {
-      "date": "1881",
-      "place": "London, Woodford, Snakes Lane"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2085",
-      "familyId": "F745"
-    },
-    {
-      "spouseId": "I2865",
-      "familyId": "F979"
+      "spouseId": "I2087",
+      "familyId": "F771"
     }
-  ],
-  "avatar": "avatars/I2086_0.jpg"
+  ]
 }

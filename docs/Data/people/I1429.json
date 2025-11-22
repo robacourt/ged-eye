@@ -1,64 +1,53 @@
 {
   "id": "I1429",
-  "name": "Madeline Beatrice Barnett",
-  "givenName": "Madeline Beatrice",
-  "surname": "Barnett",
+  "name": "Harriet Leah Leach",
+  "givenName": "Harriet Leah",
+  "surname": "Leach",
   "sex": "F",
-  "birthDate": "24 APR 1880",
-  "birthPlace": "St. Lukes, London",
-  "deathDate": "1954",
-  "deathPlace": "London, Holborn",
-  "photos": [
-    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg",
-    "Data/Media/1891 census/London/Shoreditch/RG12 243 53 8 54.jpg",
-    "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg"
-  ],
+  "birthDate": "Abt 1846",
+  "birthPlace": "Whitechapel, London",
+  "deathDate": "BEF 1901",
+  "deathPlace": null,
+  "photos": [],
   "spouseIds": [
-    "I2726"
+    "I1423"
   ],
   "childIds": [
-    "I2974",
-    "I2975"
+    "I2337",
+    "I2336",
+    "I445",
+    "I2335",
+    "I1424",
+    "I1425",
+    "I2283",
+    "I2282",
+    "I1430",
+    "I2338"
   ],
   "parentIds": [
-    "I1422",
-    "I1428"
-  ],
-  "occupations": [
-    "Licenced Victualler Assistant"
+    "I2340",
+    "I2341"
   ],
   "censusRecords": [
     {
-      "date": "1881",
-      "place": "Shoreditch, London, 161 High St"
+      "date": "1871",
+      "place": "Shoreditch, London,"
     },
     {
       "date": "1891",
       "place": "Shoreditch, London, 341 Old St."
     },
     {
-      "date": "1901",
-      "place": "Hackney, London, 64 Kenninghall Rd."
-    },
-    {
-      "date": "1911",
-      "place": "London, Clapton, 34 Ickburgh Rd."
-    },
-    {
-      "date": "1921",
-      "place": "London, Westminster, 1 Derby St"
-    },
-    {
-      "date": "1939",
-      "place": "Surrey, Guilford, 9 Wherwell Rd"
+      "date": "1881",
+      "place": null
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2726",
-      "familyId": "F951",
-      "marriageDate": "3 RD QTR 1902"
+      "spouseId": "I1423",
+      "familyId": "F233",
+      "marriageDate": "2ND QTR 1867",
+      "marriagePlace": "City of London"
     }
-  ],
-  "avatar": "avatars/I1429_0.jpg"
+  ]
 }

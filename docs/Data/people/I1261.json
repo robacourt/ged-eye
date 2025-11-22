@@ -1,28 +1,39 @@
 {
   "id": "I1261",
-  "name": "Ambrose Seymour",
-  "givenName": "Ambrose",
+  "name": "William Seymour",
+  "givenName": "William",
   "surname": "Seymour",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1832",
+  "birthPlace": "Bagber, Hinton St Mary, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1262"
+    "I283"
   ],
-  "childIds": [
-    "I1260"
+  "childIds": [],
+  "parentIds": [
+    "I1262",
+    "I1263"
   ],
-  "parentIds": [],
+  "baptismDate": "18 JUL 1831",
+  "baptismPlace": "Sturminster Newton, Dorset",
+  "burialDate": "24 MAY 1904",
+  "burialPlace": "Hinton St. Mary, Dorset",
   "occupations": [
     "Yeoman"
   ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1262",
-      "familyId": "F508"
+      "spouseId": "I283",
+      "familyId": "F155"
     }
   ]
 }

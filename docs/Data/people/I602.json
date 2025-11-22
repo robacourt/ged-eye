@@ -1,28 +1,22 @@
 {
   "id": "I602",
-  "name": "Sidney George Elkins",
-  "givenName": "Sidney George",
-  "surname": "Elkins",
+  "name": "Ernest John Hatcher",
+  "givenName": "Ernest John",
+  "surname": "Hatcher",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I603"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I590",
+    "I596"
   ],
-  "childIds": [
-    "I595"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Sawyer"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I603",
-      "familyId": "F245"
-    }
+  "baptismDate": "26.8.1917",
+  "notes": [
+    "alive 1999"
   ]
 }

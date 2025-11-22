@@ -1,63 +1,24 @@
 {
   "id": "I870",
-  "name": "Emily Cribb",
-  "givenName": "Emily",
-  "surname": "Cribb",
-  "sex": "F",
-  "birthDate": "Abt 1862",
-  "birthPlace": "Ash, Somerset",
+  "name": "James Baker",
+  "givenName": "James",
+  "surname": "Baker",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Ethel Louie  her mother Emily Cribb.jpg",
-    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
     "I782"
   ],
-  "childIds": [
-    "I1026",
-    "I518",
-    "I1027",
-    "I1028",
-    "I1029",
-    "I1030",
-    "I1031",
-    "I1032",
-    "I1033"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1891",
-      "place": "Somerset, Martock, East St"
-    },
-    {
-      "date": "1901",
-      "place": "Martock, Somerset"
-    },
-    {
-      "date": "1911",
-      "place": "Somerset, Martock, Bower Hinton"
-    }
-  ],
-  "residences": [
-    {
-      "date": "1901",
-      "place": "Martock, Somerset, East St."
-    },
-    {
-      "date": "1915",
-      "place": "Somerset, Martock, Bower Hinton"
-    }
-  ],
   "marriages": [
     {
       "spouseId": "I782",
-      "familyId": "F224",
-      "marriageDate": "1887",
-      "marriagePlace": "Somerset, Yeovil."
+      "familyId": "F381",
+      "marriageDate": "1885"
     }
-  ],
-  "avatar": "avatars/I870_0.jpg"
+  ]
 }

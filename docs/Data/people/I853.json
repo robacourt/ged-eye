@@ -1,9 +1,9 @@
 {
   "id": "I853",
-  "name": "never married",
-  "givenName": "never",
-  "surname": "married",
-  "sex": "F",
+  "name": "\\-\\",
+  "givenName": "\\-\\",
+  "surname": "",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -17,7 +17,8 @@
   "marriages": [
     {
       "spouseId": "I840",
-      "familyId": "F365"
+      "familyId": "F416",
+      "marriagePlace": "never married"
     }
   ]
 }

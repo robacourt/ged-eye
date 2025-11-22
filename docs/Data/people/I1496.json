@@ -1,29 +1,18 @@
 {
   "id": "I1496",
-  "name": "Frank Chamberlain",
-  "givenName": "Frank",
-  "surname": "Chamberlain",
-  "sex": "M",
-  "birthDate": "1869",
-  "birthPlace": null,
-  "deathDate": "9 FEB 1932",
+  "name": "Florence Amy Collis",
+  "givenName": "Florence Amy",
+  "surname": "Collis",
+  "sex": "F",
+  "birthDate": "25 APR 1896",
+  "birthPlace": "Wilton, Wiltshire",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1871 census/Galhampton/RG10 2421 61 23.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I864",
-    "I777"
-  ],
-  "burialDate": "FEB 1932",
-  "burialPlace": "Bruton, Somerset",
-  "censusRecords": [
-    {
-      "date": "1871 CENSUS",
-      "place": "Galhampton, North Cadbury, Cottage"
-    }
-  ],
-  "avatar": "avatars/I1496_0.jpg"
+    "I1495",
+    "I1494"
+  ]
 }

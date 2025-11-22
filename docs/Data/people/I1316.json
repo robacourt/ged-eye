@@ -1,29 +1,25 @@
 {
   "id": "I1316",
-  "name": "Wayne Arthur Pryor",
-  "givenName": "Wayne Arthur",
-  "surname": "Pryor",
+  "name": "Keith Gillam",
+  "givenName": "Keith",
+  "surname": "Gillam",
   "sex": "M",
-  "birthDate": "28 AUG 1939",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Wayne Pryor.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1441"
+    "I1074"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I982",
-    "I981"
+  "childIds": [
+    "I2745"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1441",
-      "familyId": "F520"
+      "spouseId": "I1074",
+      "familyId": "F490"
     }
-  ],
-  "avatar": "avatars/I1316_0.jpg"
+  ]
 }

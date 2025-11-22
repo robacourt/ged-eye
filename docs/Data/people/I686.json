@@ -1,34 +1,18 @@
 {
   "id": "I686",
-  "name": "Mary A'Court",
-  "givenName": "Mary",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "BEF 1627",
+  "name": "Elliji Ryall",
+  "givenName": "Elliji",
+  "surname": "Ryall",
+  "sex": "M",
+  "birthDate": "1640",
   "birthPlace": null,
-  "deathDate": "AFT 1640",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I563"
-  ],
-  "childIds": [
-    "I687",
-    "I688",
-    "I689",
-    "I690",
-    "I691",
-    "I692",
-    "I693",
-    "I694",
-    "I695",
-    "I696"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I563",
-      "familyId": "F235"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I684",
+    "I565"
   ]
 }

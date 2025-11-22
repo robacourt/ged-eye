@@ -1,18 +1,45 @@
 {
   "id": "I756",
-  "name": "Juliet Heaton",
-  "givenName": "Juliet",
-  "surname": "Heaton",
-  "sex": "F",
-  "birthDate": "1927",
-  "birthPlace": "Oxford",
-  "deathDate": "2005",
-  "deathPlace": "Lincoln, Lincolnshire",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1787",
+  "birthPlace": "Bratton Seymour, Somerset",
+  "deathDate": "1851",
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I761"
+  ],
+  "childIds": [
+    "I762",
+    "I763",
+    "I764",
+    "I765",
+    "I1734",
+    "I767",
+    "I768",
+    "I769"
+  ],
   "parentIds": [
-    "I389",
-    "I383"
+    "I745",
+    "I752"
+  ],
+  "burialDate": "18 OCT 1851",
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Lower Woolston"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I761",
+      "familyId": "F360",
+      "marriageDate": "3 FEB 1808",
+      "marriagePlace": "Blackford, Somerset, England"
+    }
   ]
 }

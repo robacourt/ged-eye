@@ -1,28 +1,28 @@
 {
   "id": "I1166",
-  "name": "Sidney Swain",
-  "givenName": "Sidney",
-  "surname": "Swain",
-  "sex": "M",
-  "birthDate": "ABT 1864",
+  "name": "Emily Curtis",
+  "givenName": "Emily",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1165"
+    "I1167"
   ],
   "childIds": [],
   "parentIds": [
-    "I1167"
+    "I179",
+    "I275"
   ],
-  "occupations": [
-    "Gardener"
-  ],
+  "baptismDate": "10 SEP 1865",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1165",
-      "familyId": "F476",
+      "spouseId": "I1167",
+      "familyId": "F539",
       "marriageDate": "15 SEP 1887",
       "marriagePlace": "Marnhull, Dorset"
     }

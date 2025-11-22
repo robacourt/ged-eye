@@ -1,31 +1,25 @@
 {
   "id": "I1944",
-  "name": "Gladys Amy Bertha Martin",
-  "givenName": "Gladys Amy Bertha",
-  "surname": "Martin",
-  "sex": "F",
-  "birthDate": "10 JUL 1908",
-  "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "10 OCT 1970",
-  "deathPlace": null,
+  "name": "Christian Solberg",
+  "givenName": "Christian",
+  "surname": "Solberg",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1887",
+  "deathPlace": "Ross, Westland, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I1930"
+    "I1906"
   ],
-  "childIds": [
-    "I1947",
-    "I2030",
-    "I2032"
-  ],
-  "parentIds": [
-    "I1945",
-    "I1946"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1930",
-      "familyId": "F692",
-      "marriageDate": "1927"
+      "spouseId": "I1906",
+      "familyId": "F772",
+      "marriageDate": "1872",
+      "marriagePlace": "Kumara, Westland, New Zealand"
     }
   ]
 }

@@ -1,16 +1,16 @@
 {
   "id": "I575",
-  "name": "Andrew Ridler",
-  "givenName": "Andrew",
-  "surname": "Ridler",
-  "sex": "M",
-  "birthDate": "1829",
+  "name": "Sarah Jeffries",
+  "givenName": "Sarah",
+  "surname": "Jeffries",
+  "sex": "F",
+  "birthDate": "1831",
   "birthPlace": null,
-  "deathDate": "1892",
+  "deathDate": "1877",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I574"
+    "I576"
   ],
   "childIds": [
     "I453"
@@ -18,8 +18,8 @@
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I574",
-      "familyId": "F316"
+      "spouseId": "I576",
+      "familyId": "F239"
     }
   ]
 }

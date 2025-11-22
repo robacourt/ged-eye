@@ -1,8 +1,8 @@
 {
   "id": "I1280",
-  "name": "George Cummings",
-  "givenName": "George",
-  "surname": "Cummings",
+  "name": "Denton Herd",
+  "givenName": "Denton",
+  "surname": "Herd",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,16 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1277"
+    "I1278"
   ],
-  "childIds": [
-    "I1281"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1277",
-      "familyId": "F517"
+      "spouseId": "I1278",
+      "familyId": "F583"
     }
   ]
 }

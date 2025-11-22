@@ -60,20 +60,20 @@
   "marriages": [
     {
       "spouseId": "I115",
-      "familyId": "F69",
+      "familyId": "F77",
       "marriageDate": "JUN QR. 1914",
       "marriagePlace": ",Hampshire, Portsmouth"
     },
     {
       "spouseId": "I120",
-      "familyId": "F71",
+      "familyId": "F79",
       "marriageDate": "19 AUG 1922",
       "marriagePlace": "London, Hackney",
       "divorceDate": "Abt 1936"
     },
     {
       "spouseId": null,
-      "familyId": "F973"
+      "familyId": "F80"
     }
   ],
   "avatar": "avatars/I118_0.jpg"

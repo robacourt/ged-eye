@@ -1,18 +1,24 @@
 {
   "id": "I958",
-  "name": "Emma A'Court",
-  "givenName": "Emma",
+  "name": "Zachariah Abraham Charles A'Court",
+  "givenName": "Zachariah Abraham Charles",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1865",
+  "sex": "M",
+  "birthDate": "1863",
   "birthPlace": "Mudgee, NSW",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Picture/ZachariahAC and Nephew.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I75",
     "I103"
-  ]
+  ],
+  "notes": [
+    "FROM MEEKA O'COONER e-mail 25/02/02"
+  ],
+  "avatar": "avatars/I958_0.jpg"
 }

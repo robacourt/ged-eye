@@ -1,24 +1,18 @@
 {
   "id": "I1270",
-  "name": "Unknown Greenhalgh",
-  "givenName": "Unknown",
-  "surname": "Greenhalgh",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Eleanor M A'Court",
+  "givenName": "Eleanor M",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1919",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1103"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1103",
-      "familyId": "F445",
-      "marriageDate": "1945"
-    }
+  "parentIds": [
+    "I1091",
+    "I1092"
   ]
 }

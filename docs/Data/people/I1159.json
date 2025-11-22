@@ -1,28 +1,25 @@
 {
   "id": "I1159",
-  "name": "Mary Monica Curtis",
-  "givenName": "Mary Monica",
-  "surname": "Curtis",
+  "name": "Elizabeth Barns",
+  "givenName": "Elizabeth",
+  "surname": "Barns",
   "sex": "F",
-  "birthDate": "ABT 1903",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1160"
+    "I1158"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1155",
-    "I1156"
+  "childIds": [
+    "I1157"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1160",
-      "familyId": "F472",
-      "marriageDate": "14 JULY  1926",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I1158",
+      "familyId": "F534"
     }
   ]
 }

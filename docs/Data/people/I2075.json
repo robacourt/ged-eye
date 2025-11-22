@@ -1,10 +1,10 @@
 {
   "id": "I2075",
-  "name": "Ronald Henry James A'Court",
-  "givenName": "Ronald Henry James",
+  "name": "Lillian Rose A'Court",
+  "givenName": "Lillian Rose",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1922",
+  "sex": "F",
+  "birthDate": "1920",
   "birthPlace": "London",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2070",
-    "I2071"
+    "I2071",
+    "I2072"
   ]
 }

@@ -1,23 +1,18 @@
 {
   "id": "I1941",
-  "name": "Allison Gunn",
-  "givenName": "Allison",
-  "surname": "Gunn",
-  "sex": "F",
+  "name": "Stephen A'Court",
+  "givenName": "Stephen",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1942"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1942",
-      "familyId": "F690"
-    }
+  "parentIds": [
+    "I1938",
+    "I1939"
   ]
 }

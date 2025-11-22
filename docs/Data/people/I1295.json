@@ -1,26 +1,23 @@
 {
   "id": "I1295",
-  "name": "Lilian Woodfield",
-  "givenName": "Lilian",
-  "surname": "Woodfield",
+  "name": "Leah Hussey",
+  "givenName": "Leah",
+  "surname": "Hussey",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1266"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1296",
-    "I1297"
+    "I1089"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1266",
-      "familyId": "F510"
+      "spouseId": null,
+      "familyId": "F497"
     }
   ]
 }

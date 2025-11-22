@@ -19,8 +19,8 @@
     "I2991"
   ],
   "parentIds": [
-    "I1422",
-    "I1428"
+    "I1423",
+    "I1429"
   ],
   "occupations": [
     "Cigar bundler and sorter",
@@ -47,7 +47,7 @@
   "marriages": [
     {
       "spouseId": "I2984",
-      "familyId": "F1026",
+      "familyId": "F889",
       "marriageDate": "BEF 1891"
     }
   ],

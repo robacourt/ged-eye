@@ -1,31 +1,35 @@
 {
   "id": "I1153",
-  "name": "Ronald Leonard Arthur Roberts",
-  "givenName": "Ronald Leonard Arthur",
-  "surname": "Roberts",
-  "sex": "M",
+  "name": "Edwina Marjorie Blanche Horlock",
+  "givenName": "Edwina Marjorie Blanche",
+  "surname": "Horlock",
+  "sex": "F",
   "birthDate": "ABT 1923",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1152"
+    "I1154"
   ],
   "childIds": [],
   "parentIds": [
-    "I1154"
+    "I1145",
+    "I1144"
+  ],
+  "occupations": [
+    "Land Army"
   ],
   "residences": [
     {
       "date": "1945",
-      "place": "Bulford Camp, Wiltshire"
+      "place": "Marnhull, Dorset, Gannetts"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1152",
-      "familyId": "F468",
+      "spouseId": "I1154",
+      "familyId": "F531",
       "marriageDate": "15 MAR 1945",
       "marriagePlace": "Marnhull, Dorset"
     }

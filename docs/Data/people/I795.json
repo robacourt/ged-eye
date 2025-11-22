@@ -1,29 +1,39 @@
 {
   "id": "I795",
-  "name": "Gertrude Alice A'Court",
-  "givenName": "Gertrude Alice",
+  "name": "Sydney John A'Court",
+  "givenName": "Sydney John",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1881",
-  "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1929",
+  "sex": "M",
+  "birthDate": "21 NOV 1878",
+  "birthPlace": "Springfield Rd, St Albans, Christchurch, NZ",
+  "deathDate": "1964",
   "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I819"
+    "I811"
   ],
-  "childIds": [],
+  "childIds": [
+    "I812",
+    "I813",
+    "I814",
+    "I815",
+    "I816",
+    "I1931"
+  ],
   "parentIds": [
-    "I775",
-    "I784"
+    "I776",
+    "I785"
   ],
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
   "notes": [
     "Electoral roll"
   ],
   "marriages": [
     {
-      "spouseId": "I819",
-      "familyId": "F340"
+      "spouseId": "I811",
+      "familyId": "F389",
+      "marriageDate": "21 MAY 1897",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
     }
   ]
 }

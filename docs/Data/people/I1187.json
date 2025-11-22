@@ -1,27 +1,26 @@
 {
   "id": "I1187",
-  "name": "Anna Maria A'Court",
-  "givenName": "Anna Maria",
+  "name": "Frederick A'Court",
+  "givenName": "Frederick",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1868",
+  "sex": "M",
+  "birthDate": "1865",
   "birthPlace": "Marnhull, Dorset",
-  "deathDate": "AFT 1881",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg",
-    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg"
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
+    "Data/Media/1911 census/Somerset/Henstridge/RG14 14432 71.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1183",
-    "I1184"
+    "I1184",
+    "I1185"
   ],
-  "baptismDate": "16 JUN 1868",
-  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Glover"
+    "Labourer on Farm"
   ],
   "censusRecords": [
     {
@@ -31,6 +30,10 @@
     {
       "date": "1881",
       "place": "Marnhull, Dorset, Near Antills Farm"
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Henstridge, Yenston"
     }
   ],
   "avatar": "avatars/I1187_0.jpg"

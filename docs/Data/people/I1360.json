@@ -1,26 +1,26 @@
 {
   "id": "I1360",
-  "name": "Ethel Hodder",
-  "givenName": "Ethel",
-  "surname": "Hodder",
-  "sex": "F",
-  "birthDate": "1880",
-  "birthPlace": "New Zealand",
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Ernest William Cundy",
+  "givenName": "Ernest William",
+  "surname": "Cundy",
+  "sex": "M",
+  "birthDate": "1877",
+  "birthPlace": "Greytown",
+  "deathDate": "1952",
+  "deathPlace": "Wellington, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I1359"
+    "I1361"
   ],
   "childIds": [],
   "parentIds": [
-    "I1361",
-    "I1362"
+    "I1347",
+    "I1346"
   ],
   "marriages": [
     {
-      "spouseId": "I1359",
-      "familyId": "F539",
+      "spouseId": "I1361",
+      "familyId": "F609",
       "marriageDate": "1901",
       "marriagePlace": "Sydney, NSW"
     }

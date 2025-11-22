@@ -1,8 +1,8 @@
 {
   "id": "I819",
-  "name": "\\-\\",
-  "givenName": "\\-\\",
-  "surname": "",
+  "name": "never married",
+  "givenName": "never",
+  "surname": "married",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,14 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I795"
+    "I815"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I795",
-      "familyId": "F340"
+      "spouseId": "I815",
+      "familyId": "F401"
     }
   ]
 }

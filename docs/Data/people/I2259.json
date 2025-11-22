@@ -19,7 +19,7 @@
     "I2476"
   ],
   "parentIds": [
-    "I1764",
+    "I1765",
     "I2258"
   ],
   "occupations": [
@@ -48,7 +48,7 @@
   "marriages": [
     {
       "spouseId": "I2475",
-      "familyId": "F887"
+      "familyId": "F872"
     }
   ],
   "avatar": "avatars/I2259_0.jpg"

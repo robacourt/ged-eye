@@ -1,21 +1,18 @@
 {
   "id": "I1396",
-  "name": "Robyn Sascha A'Court",
-  "givenName": "Robyn Sascha",
-  "surname": "A'Court",
+  "name": "Marie Antoinette Mulder",
+  "givenName": "Marie Antoinette",
+  "surname": "Mulder",
   "sex": "F",
-  "birthDate": "21 JUL 1997",
+  "birthDate": "2JUL 1978",
   "birthPlace": "Hoorn, Holland",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Robyn Sascha A'Court Fowey Jul 02.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I125",
-    "I1390"
-  ],
-  "avatar": "avatars/I1396_0.jpg"
+    "I1392",
+    "I1393"
+  ]
 }

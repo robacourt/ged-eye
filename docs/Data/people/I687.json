@@ -1,18 +1,34 @@
 {
   "id": "I687",
-  "name": "Joane a'Court",
-  "givenName": "Joane",
-  "surname": "a'Court",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1639",
+  "birthDate": "BEF 1627",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "AFT 1640",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I563",
-    "I686"
+  "spouseIds": [
+    "I564"
+  ],
+  "childIds": [
+    "I688",
+    "I689",
+    "I690",
+    "I691",
+    "I692",
+    "I693",
+    "I694",
+    "I695",
+    "I696",
+    "I697"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I564",
+      "familyId": "F282"
+    }
   ]
 }

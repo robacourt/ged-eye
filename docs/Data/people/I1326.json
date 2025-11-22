@@ -1,26 +1,38 @@
 {
   "id": "I1326",
-  "name": "William Thomas Waterman",
-  "givenName": "William Thomas",
+  "name": "John W Waterman",
+  "givenName": "John W",
   "surname": "Waterman",
   "sex": "M",
-  "birthDate": "1869",
+  "birthDate": "1864",
   "birthPlace": "Stoke Sub Hamdon, Somerset",
-  "deathDate": "1875",
-  "deathPlace": null,
+  "deathDate": "1909",
+  "deathPlace": "Stoke Sub Hamdon, Somerset",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1322",
-    "I1320"
+    "I1323",
+    "I1321"
   ],
-  "burialDate": "26 JAN 1875",
+  "burialDate": "10 APRIL 1909",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "occupations": [
+    "Clerk to Glove Factory",
+    "Cashier to Glove Factory"
+  ],
   "censusRecords": [
     {
       "date": "1871",
       "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1881",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1891",
+      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
     }
   ]
 }

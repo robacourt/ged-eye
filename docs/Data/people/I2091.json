@@ -1,23 +1,43 @@
 {
   "id": "I2091",
-  "name": "Katie Fletcher",
-  "givenName": "Katie",
-  "surname": "Fletcher",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "Herbert Thomas A'Court",
+  "givenName": "Herbert Thomas",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1893",
+  "birthPlace": "London, Kensington",
+  "deathDate": "1973",
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1901 census/London/Putney/RG13 489 96 11.jpg",
+    "Data/Media/1911 census/London/Putney/RG14 2435 46.jpg"
+  ],
   "spouseIds": [
-    "I2090"
+    "I2092"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I879",
+    "I929"
+  ],
+  "occupations": [
+    "Shop Assistant at home"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London, Putney, 12 Rotherwood Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "London, Putney, 72 Lower Richmond Rd"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I2090",
-      "familyId": "F747"
+      "spouseId": "I2092",
+      "familyId": "F821"
     }
-  ]
+  ],
+  "avatar": "avatars/I2091_0.jpg"
 }

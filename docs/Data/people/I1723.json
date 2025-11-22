@@ -1,23 +1,17 @@
 {
   "id": "I1723",
-  "name": "Unknown Collar",
-  "givenName": "Unknown",
-  "surname": "Collar",
+  "name": "Karen Rebecca A'Court",
+  "givenName": "Karen Rebecca",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "2ND QTR 1975",
+  "birthPlace": "Canterbury, Kent",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1722"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F629"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1724"
   ]
 }

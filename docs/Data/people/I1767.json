@@ -1,30 +1,55 @@
 {
   "id": "I1767",
-  "name": "Unknown Tombleson",
-  "givenName": "Unknown",
-  "surname": "Tombleson",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1829",
+  "birthPlace": "Horsington, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1841 Census/Horsington/Folio 22 page 23.jpg"
+  ],
   "spouseIds": [
-    "I1768"
+    "I1865"
   ],
   "childIds": [
-    "I1769",
-    "I1770",
-    "I1771",
-    "I1772",
-    "I1773",
-    "I1774"
+    "I2320",
+    "I1637",
+    "I1315"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I578",
+    "I579"
+  ],
+  "occupations": [
+    "Ag Laborer",
+    "Ag labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Poor Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Yeovil, Somerset, 41 Larkhill"
+    },
+    {
+      "date": "1891",
+      "place": "Sussex, Birdham"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1768",
-      "familyId": "F639"
+      "spouseId": "I1865",
+      "familyId": "F589"
     }
-  ]
+  ],
+  "avatar": "avatars/I1767_0.jpg"
 }

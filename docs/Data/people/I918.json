@@ -1,32 +1,29 @@
 {
   "id": "I918",
-  "name": "Nellie a'Court",
-  "givenName": "Nellie",
-  "surname": "a'Court",
+  "name": "May Godwin",
+  "givenName": "May",
+  "surname": "Godwin",
   "sex": "F",
-  "birthDate": "AFT 1897",
+  "birthDate": "1895",
   "birthPlace": null,
-  "deathDate": "17 OCT 1957",
+  "deathDate": "12 APR 1975",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I924",
-    "I925"
+    "I924"
   ],
   "childIds": [],
   "parentIds": [
     "I231",
-    "I915"
+    "I916"
+  ],
+  "notes": [
+    "Date Unknown: Lived in Ashton Keynes, Wiltshire, England."
   ],
   "marriages": [
     {
       "spouseId": "I924",
-      "familyId": "F385"
-    },
-    {
-      "spouseId": "I925",
-      "familyId": "F386",
-      "divorceDate": "1947"
+      "familyId": "F438"
     }
   ]
 }

@@ -1,19 +1,30 @@
 {
   "id": "I746",
-  "name": "Elizabeth A'Court",
-  "givenName": "Elizabeth",
+  "name": "John A'Court",
+  "givenName": "John",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1758",
+  "sex": "M",
+  "birthDate": "1756",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1826",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I741",
-    "I742"
+  "spouseIds": [
+    "I898"
   ],
-  "baptismDate": "13 JUL 1858"
+  "childIds": [
+    "I899",
+    "I900"
+  ],
+  "parentIds": [
+    "I742",
+    "I743"
+  ],
+  "baptismDate": "20 DEC 1756",
+  "marriages": [
+    {
+      "spouseId": "I898",
+      "familyId": "F356"
+    }
+  ]
 }

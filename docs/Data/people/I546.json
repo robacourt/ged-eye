@@ -1,20 +1,18 @@
 {
   "id": "I546",
-  "name": "Richard a'Court",
-  "givenName": "Richard",
+  "name": "John a'Court",
+  "givenName": "John",
   "surname": "a'Court",
   "sex": "M",
-  "birthDate": "BEF 21.9.1670",
+  "birthDate": "BEF 12.5.1669",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "APR 1669",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I541",
-    "I542"
-  ],
-  "baptismDate": "21.SEP.1670",
-  "baptismPlace": "North Cadbury, Somerset"
+    "I542",
+    "I543"
+  ]
 }

@@ -1,30 +1,21 @@
 {
   "id": "I540",
-  "name": "Dinah a'Court",
-  "givenName": "Dinah",
+  "name": "Jas a'Court",
+  "givenName": "Jas",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "BEF 18 MAY 170",
+  "sex": "M",
+  "birthDate": "2 APR 1702",
   "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "AFT 1747",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I929"
-  ],
-  "childIds": [
-    "I930"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I534",
-    "I535"
+    "I535",
+    "I536"
   ],
-  "marriages": [
-    {
-      "spouseId": "I929",
-      "familyId": "F231",
-      "marriageDate": "3 APR 1738",
-      "marriagePlace": "North Cadbury, Somerset"
-    }
+  "notes": [
+    "Assume to be child of Jn because of place."
   ]
 }

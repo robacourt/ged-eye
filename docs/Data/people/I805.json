@@ -1,25 +1,25 @@
 {
   "id": "I805",
-  "name": "Alfred Henry Buckland",
-  "givenName": "Alfred Henry",
-  "surname": "Buckland",
-  "sex": "F",
-  "birthDate": "1875",
+  "name": "\\-\\",
+  "givenName": "\\-\\",
+  "surname": "",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1949",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1292"
+    "I804"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1292",
-      "familyId": "F483",
-      "marriageDate": "18 ___ 19 ?",
-      "marriagePlace": "Portsmouth, Hampshire."
+      "spouseId": "I804",
+      "familyId": "F395",
+      "marriageDate": "1937",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

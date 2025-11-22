@@ -1,9 +1,9 @@
 {
   "id": "I1284",
-  "name": "Lesley Cross",
-  "givenName": "Lesley",
+  "name": "Alan Cross",
+  "givenName": "Alan",
   "surname": "Cross",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1282",
-    "I1278"
+    "I1283",
+    "I1279"
   ]
 }

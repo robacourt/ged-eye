@@ -1,36 +1,20 @@
 {
   "id": "I558",
-  "name": "Richard a`Court",
-  "givenName": "Richard",
-  "surname": "a`Court",
+  "name": "John a'Court",
+  "givenName": "John",
+  "surname": "a'Court",
   "sex": "M",
-  "birthDate": "BEF 1580",
-  "birthPlace": "South Cadbury, Somerset",
-  "deathDate": "1637",
+  "birthDate": "ABT 1646",
+  "birthPlace": null,
+  "deathDate": "1669",
   "deathPlace": "South Cadbury, Somerset",
   "photos": [],
-  "spouseIds": [
-    "I559"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I556",
+    "I557"
   ],
-  "childIds": [
-    "I560",
-    "I561",
-    "I562",
-    "I555",
-    "I563",
-    "I564",
-    "I565",
-    "I566",
-    "I567",
-    "I568"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I559",
-      "familyId": "F234",
-      "marriageDate": "11 JUL 1602",
-      "marriagePlace": "Bratton Seymour, Somerset"
-    }
-  ]
+  "burialDate": "15 APR 1669",
+  "burialPlace": "South Cadbury, Somerset"
 }

@@ -1,28 +1,42 @@
 {
   "id": "I1464",
-  "name": "Mary Ann Skedgel",
-  "givenName": "Mary Ann",
-  "surname": "Skedgel",
+  "name": "Ada Mary A'Court",
+  "givenName": "Ada Mary",
+  "surname": "A'Court",
   "sex": "U",
   "birthDate": "ABT 1882",
-  "birthPlace": "Stoke Gabriel, Devon",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg",
+    "Data/Media/1901 census/London/Ealing/RG13 1192 52 16.jpg",
+    "Data/Media/1911 census/Devon/Stoke Gabriel/RG14 12799 78.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1458",
-    "I1470"
+    "I1460",
+    "I1461"
+  ],
+  "baptismDate": "13 AUG 1882",
+  "baptismPlace": "Dorset, Marnhull",
+  "notes": [
+    "Lucy's father was James, but cannot tie him in, too many loose connections, she had a sister called Emily, Ada possible born after 1881 otherwise no information."
   ],
   "censusRecords": [
     {
       "date": "1891",
-      "place": "Stoke Gabriel, Devon"
+      "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
     },
     {
       "date": "1901",
-      "place": "Stoke Gabriel, Devon"
+      "place": "Middlesex, Ealing,13 Norfolk Terrace, Northfield Lane."
+    },
+    {
+      "date": "1911",
+      "place": "Devon, Stoke Gabriel, Post Office"
     }
-  ]
+  ],
+  "avatar": "avatars/I1464_0.jpg"
 }

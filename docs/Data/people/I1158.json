@@ -1,25 +1,28 @@
 {
   "id": "I1158",
-  "name": "Elizabeth Barns",
-  "givenName": "Elizabeth",
-  "surname": "Barns",
-  "sex": "F",
+  "name": "Hurbert Wylds",
+  "givenName": "Hurbert",
+  "surname": "Wylds",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1157"
+    "I1159"
   ],
   "childIds": [
-    "I1156"
+    "I1157"
   ],
   "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
   "marriages": [
     {
-      "spouseId": "I1157",
-      "familyId": "F471"
+      "spouseId": "I1159",
+      "familyId": "F534"
     }
   ]
 }

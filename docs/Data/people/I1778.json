@@ -1,18 +1,25 @@
 {
   "id": "I1778",
-  "name": "Jennifer A A'Court",
-  "givenName": "Jennifer A",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1ST QRT 1951",
-  "birthPlace": "Epping",
+  "name": "Calvin D Risher",
+  "givenName": "Calvin D",
+  "surname": "Risher",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1780",
-    "I1779"
+  "spouseIds": [
+    "I1926"
+  ],
+  "childIds": [
+    "I391"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1926",
+      "familyId": "F201"
+    }
   ]
 }

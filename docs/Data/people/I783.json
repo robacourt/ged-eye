@@ -1,25 +1,59 @@
 {
   "id": "I783",
-  "name": "Sarah Unknown",
-  "givenName": "Sarah",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I773"
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1853",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1910",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [
+    "Data/Media/1861 Census/Martock/RG09 1642 8 10.jpg"
   ],
-  "childIds": [],
-  "parentIds": [],
+  "spouseIds": [
+    "I871"
+  ],
+  "childIds": [
+    "I1027",
+    "I519",
+    "I1028",
+    "I1029",
+    "I1030",
+    "I1031",
+    "I1032",
+    "I1033",
+    "I1034"
+  ],
+  "parentIds": [
+    "I762",
+    "I770"
+  ],
+  "occupations": [
+    "Wheelwright",
+    "Wheelwright"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Somerset, Martock, East St."
+    },
+    {
+      "date": "1891",
+      "place": "Somerset, Martock, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Somerset, Martock, East St."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I773",
-      "familyId": "F322",
-      "marriageDate": "1859",
-      "marriagePlace": "Wincanton, Somerset"
+      "spouseId": "I871",
+      "familyId": "F269",
+      "marriageDate": "1887",
+      "marriagePlace": "Somerset, Yeovil."
     }
-  ]
+  ],
+  "avatar": "avatars/I783_0.jpg"
 }

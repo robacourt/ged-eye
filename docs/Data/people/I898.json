@@ -1,18 +1,26 @@
 {
   "id": "I898",
-  "name": "Sam a'Court",
-  "givenName": "Sam",
-  "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "ABT 1801",
+  "name": "Ann Wilkin",
+  "givenName": "Ann",
+  "surname": "Wilkin",
+  "sex": "F",
+  "birthDate": "BEF 1778",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "AFT 1804",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I745",
-    "I897"
+  "spouseIds": [
+    "I746"
+  ],
+  "childIds": [
+    "I899",
+    "I900"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I746",
+      "familyId": "F356"
+    }
   ]
 }

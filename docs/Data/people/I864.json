@@ -1,44 +1,15 @@
 {
   "id": "I864",
-  "name": "Elias Chamberlain",
-  "givenName": "Elias",
-  "surname": "Chamberlain",
+  "name": "\\-\\",
+  "givenName": "\\-\\",
+  "surname": "",
   "sex": "M",
-  "birthDate": "28 SEP 1837",
-  "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "7 MAR 1879",
-  "deathPlace": "North Cadbury, Somerset",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I777"
-  ],
-  "childIds": [
-    "I1491",
-    "I1492",
-    "I1493",
-    "I1496",
-    "I1507",
-    "I1508",
-    "I1513",
-    "I1509",
-    "I1510",
-    "I1514"
-  ],
-  "parentIds": [
-    "I1489",
-    "I1490"
-  ],
-  "censusRecords": [
-    {
-      "date": "1871",
-      "place": "Galhampton North Cadbury, Cottage"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I777",
-      "familyId": "F325",
-      "marriageDate": "11 AUG 1863"
-    }
-  ]
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": []
 }

@@ -1,18 +1,18 @@
 {
   "id": "I694",
-  "name": "Racheal a'Court",
-  "givenName": "Racheal",
-  "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "ABT 1655",
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Richard A'Court",
+  "givenName": "Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1653",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "1717",
+  "deathPlace": "North Cadbury, Somerset",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I563",
-    "I686"
+    "I564",
+    "I687"
   ]
 }

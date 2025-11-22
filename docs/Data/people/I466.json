@@ -1,25 +1,17 @@
 {
   "id": "I466",
-  "name": "Llewellyn Lewis Jones",
-  "givenName": "Llewellyn Lewis",
-  "surname": "Jones",
+  "name": "Herbert Ridler",
+  "givenName": "Herbert",
+  "surname": "Ridler",
   "sex": "M",
-  "birthDate": "17 MAY 1909",
-  "birthPlace": "South Africa, Pretoria",
-  "deathDate": "5 AUG 1987",
-  "deathPlace": "Kent, Whitstable",
+  "birthDate": "1871",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I460"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I460",
-      "familyId": "F205",
-      "marriageDate": "JUL 1937",
-      "marriagePlace": "London, Woolwich"
-    }
-  ]
+  "burialDate": "3 MAR1894",
+  "burialPlace": "Chelsea London"
 }

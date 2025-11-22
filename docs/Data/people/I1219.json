@@ -1,17 +1,27 @@
 {
   "id": "I1219",
-  "name": "Sharon Haskett",
-  "givenName": "Sharon",
+  "name": "Roy Haskett",
+  "givenName": "Roy",
   "surname": "Haskett",
-  "sex": "F",
-  "birthDate": null,
+  "sex": "M",
+  "birthDate": "1923",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1993",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
+  "childIds": [
+    "I1220",
+    "I1221"
+  ],
   "parentIds": [
-    "I1218"
+    "I1216",
+    "I1217"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F560"
+    }
   ]
 }

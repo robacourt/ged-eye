@@ -1,31 +1,40 @@
 {
   "id": "I1093",
-  "name": "Olive Edith A'Court",
-  "givenName": "Olive Edith",
+  "name": "James Victor A'Court",
+  "givenName": "James Victor",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1912",
-  "birthPlace": null,
-  "deathDate": "1972",
+  "sex": "M",
+  "birthDate": "14 SEP 1910",
+  "birthPlace": "West Camel, Somerset",
+  "deathDate": "25 JAN 1987",
   "deathPlace": "Yeovil, Somerset",
-  "photos": [],
+  "photos": [
+    "Data/Media/1911 census/Dorset/Dorchester/RG14 12386 91.jpg"
+  ],
   "spouseIds": [
     "I1265"
   ],
   "childIds": [
-    "I2673"
+    "I2633"
   ],
   "parentIds": [
-    "I1338",
-    "I1089"
+    "I1339",
+    "I1090"
   ],
-  "baptismDate": "8 AUGUST 1815",
-  "baptismPlace": "West Camel, Somerset",
+  "notes": [
+    "Jim spent many hours fishing the river Yeo,his great passion."
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Dorchester, Dorset, 7 Prospect Terrace"
+    }
+  ],
   "marriages": [
     {
       "spouseId": "I1265",
-      "familyId": "F440",
-      "marriageDate": "1931"
+      "familyId": "F501"
     }
-  ]
+  ],
+  "avatar": "avatars/I1093_0.jpg"
 }

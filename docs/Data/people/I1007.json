@@ -1,18 +1,26 @@
 {
   "id": "I1007",
-  "name": "Peter Fearne",
-  "givenName": "Peter",
+  "name": "Jack Fearne",
+  "givenName": "Jack",
   "surname": "Fearne",
   "sex": "M",
-  "birthDate": "1951",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1006",
-    "I993"
+  "spouseIds": [
+    "I994"
+  ],
+  "childIds": [
+    "I1008",
+    "I1009"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I994",
+      "familyId": "F469"
+    }
   ]
 }

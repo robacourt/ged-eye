@@ -1,43 +1,44 @@
 {
   "id": "I2067",
-  "name": "Rosina Susan A'Court",
-  "givenName": "Rosina Susan",
-  "surname": "A'Court",
+  "name": "Emily Stephenson",
+  "givenName": "Emily",
+  "surname": "Stephenson",
   "sex": "F",
-  "birthDate": "1885",
-  "birthPlace": "Westham, Woodford, Essex",
+  "birthDate": "ABT 1865",
+  "birthPlace": "Reading, Berkshire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg",
-    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I2276"
-  ],
-  "childIds": [],
-  "parentIds": [
-    "I2065",
     "I2066"
   ],
-  "occupations": [
-    "Packer, confectionery"
+  "childIds": [
+    "I2068",
+    "I2069",
+    "I2071",
+    "I2081",
+    "I2055",
+    "I2082",
+    "I2083",
+    "I2084",
+    "I2085"
   ],
+  "parentIds": [],
   "censusRecords": [
-    {
-      "date": "1891",
-      "place": "London, Deptford, Windmill Lane"
-    },
     {
       "date": "1911",
       "place": "London, Deptford, 9 Harcourt Rd."
+    },
+    {
+      "date": "1891",
+      "place": "London, Deptford, Windmill Lane"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2276",
-      "familyId": "F803"
+      "spouseId": "I2066",
+      "familyId": "F812",
+      "marriageDate": "ABT 1884"
     }
-  ],
-  "avatar": "avatars/I2067_0.jpg"
+  ]
 }

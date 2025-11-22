@@ -1,33 +1,36 @@
 {
   "id": "I786",
-  "name": "Lavinia A'Court",
-  "givenName": "Lavinia",
+  "name": "George Henry A'Court",
+  "givenName": "George Henry",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "26 DEC 1865",
-  "birthPlace": "Queensland, Australia",
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "20 JUL 1863",
+  "birthPlace": "Brisbane, Queensland",
+  "deathDate": "11 APR 1921",
+  "deathPlace": "Lake Coleridge, Canterbury, NZ",
   "photos": [],
   "spouseIds": [
-    "I802"
+    "I798"
   ],
   "childIds": [
-    "I803"
+    "I799",
+    "I800"
   ],
   "parentIds": [
-    "I775",
-    "I784"
+    "I776",
+    "I785"
   ],
+  "burialDate": "13 APR 1921",
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
   "notes": [
-    "Electoral roll"
+    "SOURCE:"
   ],
   "marriages": [
     {
-      "spouseId": "I802",
-      "familyId": "F333",
-      "marriageDate": "1890",
-      "marriagePlace": "New Zealand"
+      "spouseId": "I798",
+      "familyId": "F382",
+      "marriageDate": "19 JUN 1886",
+      "marriagePlace": "Registrars Office, Wellington,  NZ"
     }
   ]
 }

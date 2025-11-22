@@ -1,10 +1,10 @@
 {
   "id": "I1912",
-  "name": "George Alfred A'Court",
-  "givenName": "George Alfred",
+  "name": "George A'Court",
+  "givenName": "George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT JUL 1897",
+  "birthDate": "ABT 1872",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -13,7 +13,7 @@
   "childIds": [],
   "parentIds": [],
   "occupations": [
-    "Valet"
+    "Seaman, SS. Vennachar"
   ],
   "notes": [
     "From Ellis Island records"

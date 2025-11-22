@@ -1,50 +1,31 @@
 {
   "id": "I1581",
-  "name": "Albert A'Court",
-  "givenName": "Albert",
-  "surname": "A'Court",
+  "name": "Fred Uren",
+  "givenName": "Fred",
+  "surname": "Uren",
   "sex": "M",
-  "birthDate": "ABT 1888",
-  "birthPlace": "Buckhorn Weston, Dorset",
+  "birthDate": "ABT 1900",
+  "birthPlace": "Blandford Forum, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1891 census/Dorset/Buckhorn Weston/RG12 1902 148 7.jpg",
-    "Data/Media/1901 census/Dorset/Buckhorn Weston/RG13 1968 52 16.jpg"
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 17 25.jpg",
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12216 152.jpg"
   ],
-  "spouseIds": [
-    "I531"
-  ],
-  "childIds": [
-    "I2896"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I220",
-    "I355"
-  ],
-  "occupations": [
-    "Baker's Errand Boy",
-    "Farm labourer"
+    "I266",
+    "I1580"
   ],
   "censusRecords": [
     {
-      "date": "1891",
-      "place": "Dorset, Buckhorn Weston, Higher Hill"
-    },
-    {
       "date": "1901",
-      "place": "Buckhorn Weston, Dorset, 1 Tunnel Head"
+      "place": "Blandford, Dorset, 7 Charles St."
     },
     {
       "date": "1911",
-      "place": "Dorset, Fifehead Magdalen"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I531",
-      "familyId": "F992",
-      "marriageDate": "Abt 1909"
+      "place": "Blandford, Dorset, 7 Charles St."
     }
   ],
   "avatar": "avatars/I1581_0.jpg"

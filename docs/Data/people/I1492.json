@@ -1,18 +1,18 @@
 {
   "id": "I1492",
-  "name": "James Chamberlain",
-  "givenName": "James",
+  "name": "Mary Jane Chamberlain",
+  "givenName": "Mary Jane",
   "surname": "Chamberlain",
-  "sex": "M",
-  "birthDate": "1865",
+  "sex": "F",
+  "birthDate": "1864",
   "birthPlace": null,
-  "deathDate": "1866",
+  "deathDate": "1865",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I864",
-    "I777"
+    "I865",
+    "I778"
   ]
 }

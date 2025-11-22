@@ -1,31 +1,31 @@
 {
   "id": "I793",
-  "name": "Arthur Ernest A'Court",
-  "givenName": "Arthur Ernest",
+  "name": "Ada Elizabeth A'Court",
+  "givenName": "Ada Elizabeth",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "26 OCT 1876",
-  "birthPlace": "Queensland, Australia",
-  "deathDate": "28 NOV 1944",
-  "deathPlace": "Ashburton, Canterbury, NZ",
+  "sex": "F",
+  "birthDate": "21 DEC 1874",
+  "birthPlace": "Brisbane,Queensland, Australia",
+  "deathDate": "1953",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I809"
   ],
   "childIds": [],
   "parentIds": [
-    "I775",
-    "I784"
+    "I776",
+    "I785"
   ],
   "notes": [
-    "NZEF Reserve"
+    "NZ Probates Christchurch Court 3131"
   ],
   "marriages": [
     {
       "spouseId": "I809",
-      "familyId": "F338",
-      "marriageDate": "12 MAY 1904",
-      "marriagePlace": "Stanley St. Christchurch, NZ"
+      "familyId": "F387",
+      "marriageDate": "12 MAY 1897",
+      "marriagePlace": "Christchurch, NZ, Madras St"
     }
   ]
 }

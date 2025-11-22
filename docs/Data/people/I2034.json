@@ -1,25 +1,28 @@
 {
   "id": "I2034",
-  "name": "Unknown Harvey",
-  "givenName": "Unknown",
-  "surname": "Harvey",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Carol Ann Beckwith",
+  "givenName": "Carol Ann",
+  "surname": "Beckwith",
+  "sex": "F",
+  "birthDate": "20 NOV 1945",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2025"
+    "I2033"
   ],
   "childIds": [
-    "I2035"
+    "I2046",
+    "I2047",
+    "I2048"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2025",
-      "familyId": "F734"
+      "spouseId": "I2033",
+      "familyId": "F808",
+      "divorceDate": "DATE UNKNOWN"
     }
   ]
 }

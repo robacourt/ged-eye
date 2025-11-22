@@ -1,18 +1,18 @@
 {
   "id": "I2062",
-  "name": "Victor James A'Court",
-  "givenName": "Victor James",
+  "name": "Lilian A'Court",
+  "givenName": "Lilian",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "19 APR1929",
+  "sex": "F",
+  "birthDate": "1926",
   "birthPlace": "Tooting",
-  "deathDate": "1993",
-  "deathPlace": "Sutton, Surrey",
+  "deathDate": "20 AUG 1995",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2054",
-    "I2055"
+    "I2055",
+    "I2056"
   ]
 }

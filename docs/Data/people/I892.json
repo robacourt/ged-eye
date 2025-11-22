@@ -1,24 +1,44 @@
 {
   "id": "I892",
-  "name": "Mary Chamberlain",
-  "givenName": "Mary",
+  "name": "Uriah Chamberlain",
+  "givenName": "Uriah",
   "surname": "Chamberlain",
-  "sex": "F",
-  "birthDate": "ABT 1845",
+  "sex": "M",
+  "birthDate": "ABT 1815",
   "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "AFT 1851",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I891",
-    "I768"
+  "spouseIds": [
+    "I769"
+  ],
+  "childIds": [
+    "I893",
+    "I894",
+    "I1759",
+    "I1758",
+    "I1757"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Stonemason"
   ],
   "censusRecords": [
     {
+      "date": "1881",
+      "place": "Pendleton-in-Salford, Lancashire, 13 Lytham St."
+    },
+    {
       "date": "1851",
       "place": "North Cadbury, Lower Woolston"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I769",
+      "familyId": "F370",
+      "marriageDate": "1844",
+      "marriagePlace": "England"
     }
   ]
 }

@@ -1,21 +1,29 @@
 {
   "id": "I644",
-  "name": "Elizabeth Hatcher",
-  "givenName": "Elizabeth",
-  "surname": "Hatcher",
+  "name": "Maria Moore",
+  "givenName": "Maria",
+  "surname": "Moore",
   "sex": "F",
-  "birthDate": "ABT 1879",
+  "birthDate": null,
   "birthPlace": "Newfoundland, Canada",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I159",
-    "I643"
+  "spouseIds": [
+    "I159"
   ],
+  "childIds": [
+    "I645",
+    "I646"
+  ],
+  "parentIds": [],
   "notes": [
-    "2 in 1881"
+    "24 in 1881"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I159",
+      "familyId": "F105"
+    }
   ]
 }

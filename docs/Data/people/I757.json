@@ -1,34 +1,18 @@
 {
   "id": "I757",
-  "name": "Andrew A'Court",
-  "givenName": "Andrew",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1789",
-  "birthPlace": null,
-  "deathDate": "1864",
-  "deathPlace": null,
-  "photos": [
-    "Data/Media/1841 Census/North Cadbury/HO 107 937 7.jpg",
-    "Data/Media/1851 census/North Cadbury/HO 107 1931.jpg"
-  ],
+  "name": "Juliet Heaton",
+  "givenName": "Juliet",
+  "surname": "Heaton",
+  "sex": "F",
+  "birthDate": "1927",
+  "birthPlace": "Oxford",
+  "deathDate": "2005",
+  "deathPlace": "Lincoln, Lincolnshire",
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I744",
-    "I751"
-  ],
-  "burialDate": "31 MAY 1864",
-  "burialPlace": "North Cadbury, Somerset, St. Michael",
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "North Cadbury, Galhampton, Hewlets Mill"
-    },
-    {
-      "date": "1841",
-      "place": "North Cadbury, Somerset"
-    }
-  ],
-  "avatar": "avatars/I757_0.jpg"
+    "I389",
+    "I383"
+  ]
 }

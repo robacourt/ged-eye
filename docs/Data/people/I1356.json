@@ -1,23 +1,26 @@
 {
   "id": "I1356",
-  "name": "Alfred Charles Bicknell",
-  "givenName": "Alfred Charles",
-  "surname": "Bicknell",
-  "sex": "M",
+  "name": "Annie Maud Cundy",
+  "givenName": "Annie Maud",
+  "surname": "Cundy",
+  "sex": "F",
   "birthDate": "1872",
-  "birthPlace": "New Zealand",
-  "deathDate": "1946",
+  "birthPlace": "Greytown",
+  "deathDate": "1920",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1355"
+    "I1357"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1347",
+    "I1346"
+  ],
   "marriages": [
     {
-      "spouseId": "I1355",
-      "familyId": "F537"
+      "spouseId": "I1357",
+      "familyId": "F607"
     }
   ]
 }

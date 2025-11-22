@@ -1,21 +1,24 @@
 {
   "id": "I1404",
-  "name": "William Yendal",
-  "givenName": "William",
-  "surname": "Yendal",
+  "name": "George R. Acourt",
+  "givenName": "George R.",
+  "surname": "Acourt",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "6 MAY 1928",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "6 JUL 1999",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "marriages": [
+  "notes": [
+    "Possible his mother ?"
+  ],
+  "residences": [
     {
-      "spouseId": null,
-      "familyId": "F553"
+      "date": null,
+      "place": "Bay Shore Suffolk,, NY, USA"
     }
   ]
 }

@@ -18,13 +18,12 @@
   "parentIds": [],
   "notes": [
     "HMS HAWKINS",
-    "First name(s) John Joseph",
     "Possible son of John F A'Court and Ester Jersey CI #2839 & #2876 see 1901 census"
   ],
   "marriages": [
     {
       "spouseId": "I2938",
-      "familyId": "F1003",
+      "familyId": "F826",
       "marriageDate": "1921",
       "marriagePlace": "Hampshire, Portsmouth"
     }

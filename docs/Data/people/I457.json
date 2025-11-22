@@ -36,13 +36,13 @@
   "marriages": [
     {
       "spouseId": "I2953",
-      "familyId": "F1011",
+      "familyId": "F243",
       "marriageDate": "JUL 1913",
       "marriagePlace": "Kent, Blean"
     },
     {
       "spouseId": "I2954",
-      "familyId": "F1012"
+      "familyId": "F244"
     }
   ],
   "avatar": "avatars/I457_0.jpg"

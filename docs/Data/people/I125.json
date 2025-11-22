@@ -8,13 +8,15 @@
   "birthPlace": "Guildford, Surrey",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/FromRob/TimACourt.jpg"
+  ],
   "spouseIds": [
-    "I1390"
+    "I1391"
   ],
   "childIds": [
-    "I1396",
-    "I1397"
+    "I1397",
+    "I1398"
   ],
   "parentIds": [
     "I122",
@@ -22,8 +24,9 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1390",
-      "familyId": "F79"
+      "spouseId": "I1391",
+      "familyId": "F89"
     }
-  ]
+  ],
+  "avatar": "avatars/I125_0.jpg"
 }

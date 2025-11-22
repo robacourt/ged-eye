@@ -1,25 +1,31 @@
 {
   "id": "I1020",
-  "name": "Basil Cantem",
-  "givenName": "Basil",
+  "name": "Charmaine Gloria Cantem",
+  "givenName": "Charmaine Gloria",
   "surname": "Cantem",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1021"
+    "I1005"
   ],
   "childIds": [
-    "I1019"
+    "I1024",
+    "I1025",
+    "I1026"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1021",
+    "I1022"
+  ],
   "marriages": [
     {
-      "spouseId": "I1021",
-      "familyId": "F420"
+      "spouseId": "I1005",
+      "familyId": "F475",
+      "marriageDate": "31 OCTOBER 1980"
     }
   ]
 }

@@ -1,33 +1,36 @@
 {
   "id": "I1082",
-  "name": "Julia Hatcher",
-  "givenName": "Julia",
-  "surname": "Hatcher",
-  "sex": "F",
-  "birthDate": "11 JULY 1856",
-  "birthPlace": "Marnhull, Dorset",
-  "deathDate": null,
+  "name": "Charles Curtis",
+  "givenName": "Charles",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": "ABT 1854",
+  "birthPlace": null,
+  "deathDate": "ABT 1926",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1081"
+    "I1083"
   ],
   "childIds": [
-    "I1116",
     "I1117",
-    "I1120",
-    "I1129"
+    "I1118",
+    "I1121",
+    "I1130"
   ],
   "parentIds": [
-    "I1083",
-    "I1084"
+    "I179",
+    "I275"
   ],
-  "baptismDate": "22 JULY 1856",
+  "baptismDate": "14 MAY 1854",
   "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Gardener"
+  ],
   "marriages": [
     {
-      "spouseId": "I1081",
-      "familyId": "F430",
+      "spouseId": "I1083",
+      "familyId": "F491",
       "marriageDate": "27 JULY 1885",
       "marriagePlace": "Marnhull, Dorset"
     }

@@ -1,18 +1,28 @@
 {
   "id": "I1454",
-  "name": "Unknown A'Court",
-  "givenName": "Unknown",
-  "surname": "A'Court",
-  "sex": "U",
-  "birthDate": "JUN 1841",
-  "birthPlace": "Marnhull, Dorset",
-  "deathDate": "BEF 1851",
+  "name": "Florence Eliza Bennett",
+  "givenName": "Florence Eliza",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "ABT 1877",
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1611"
+  ],
   "childIds": [],
   "parentIds": [
-    "I177",
-    "I1195"
+    "I378",
+    "I895"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1611",
+      "familyId": "F644",
+      "marriageDate": "27TH JULY 1905",
+      "marriagePlace": "London, Streatham Common"
+    }
   ]
 }

@@ -1,37 +1,33 @@
 {
   "id": "I1004",
-  "name": "John O'Connor",
-  "givenName": "John",
+  "name": "Pauline Fay O'Connor",
+  "givenName": "Pauline Fay",
   "surname": "O'Connor",
-  "sex": "M",
-  "birthDate": "11 APRIL 1954",
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "23 JULY 1951",
+  "birthPlace": "Sydney, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1018",
-    "I1019"
+    "I1016",
+    "I1017"
   ],
   "childIds": [
-    "I1022",
-    "I1023",
-    "I1024",
-    "I1025"
+    "I1018"
   ],
   "parentIds": [
-    "I737",
-    "I736"
+    "I738",
+    "I737"
   ],
   "marriages": [
     {
-      "spouseId": "I1018",
-      "familyId": "F418"
+      "spouseId": "I1016",
+      "familyId": "F472"
     },
     {
-      "spouseId": "I1019",
-      "familyId": "F419",
-      "marriageDate": "31 OCTOBER 1980"
+      "spouseId": "I1017",
+      "familyId": "F473"
     }
   ]
 }

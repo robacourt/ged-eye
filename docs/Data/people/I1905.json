@@ -1,38 +1,30 @@
 {
   "id": "I1905",
-  "name": "Mary Crosley",
-  "givenName": "Mary",
-  "surname": "Crosley",
+  "name": "Rosina A'Court",
+  "givenName": "Rosina",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1861",
+  "birthPlace": "France",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I74",
-    "I1943"
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 46 115 10.jpg"
   ],
-  "childIds": [
-    "I2481",
-    "I1906"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2086",
+    "I2087"
   ],
-  "parentIds": [],
-  "notes": [
-    "Hello Ian"
+  "occupations": [
+    "Domestic Servant"
   ],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I74",
-      "familyId": "F675",
-      "marriageDate": "1 MAR 1860",
-      "marriagePlace": "Melbourne, Australia, St James Cathedral"
-    },
-    {
-      "spouseId": "I1943",
-      "familyId": "F691",
-      "marriageDate": "1872",
-      "marriagePlace": "Kumara, Westland, New Zealand"
+      "date": "1881",
+      "place": "London, Kensington, 42 Finborough Rd."
     }
-  ]
+  ],
+  "avatar": "avatars/I1905_0.jpg"
 }

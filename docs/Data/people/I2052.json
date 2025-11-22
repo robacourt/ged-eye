@@ -1,10 +1,10 @@
 {
   "id": "I2052",
-  "name": "James Alexander Phillips",
-  "givenName": "James Alexander",
+  "name": "Natasha Louise Phillips",
+  "givenName": "Natasha Louise",
   "surname": "Phillips",
-  "sex": "M",
-  "birthDate": "13 MAR 1995",
+  "sex": "F",
+  "birthDate": "12 NOV 1993",
   "birthPlace": "Norfolk",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2050",
-    "I2049"
+    "I2051",
+    "I2050"
   ]
 }

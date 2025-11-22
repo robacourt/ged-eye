@@ -1,27 +1,26 @@
 {
   "id": "I731",
-  "name": "Jane Symes",
-  "givenName": "Jane",
+  "name": "William Symes",
+  "givenName": "William",
   "surname": "Symes",
-  "sex": "F",
-  "birthDate": "1890",
+  "sex": "M",
+  "birthDate": "1855",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1907",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I732"
-  ],
-  "childIds": [],
-  "parentIds": [
-    "I730",
     "I110"
   ],
+  "childIds": [
+    "I732"
+  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I732",
-      "familyId": "F297",
-      "marriageDate": "23 OCT 1915"
+      "spouseId": "I110",
+      "familyId": "F75",
+      "marriageDate": "2 JUN 1884"
     }
   ]
 }

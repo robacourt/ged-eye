@@ -10,15 +10,15 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1175"
+    "I1176"
   ],
   "childIds": [
-    "I1173",
     "I1174",
-    "I1179",
-    "I1181",
-    "I1245",
-    "I1246"
+    "I1175",
+    "I1180",
+    "I1182",
+    "I1246",
+    "I1247"
   ],
   "parentIds": [
     "I178",
@@ -40,8 +40,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1175",
-      "familyId": "F100",
+      "spouseId": "I1176",
+      "familyId": "F114",
       "marriageDate": "6 NOV 1858",
       "marriagePlace": "Marnhull, Dorset"
     }

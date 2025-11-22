@@ -1,16 +1,15 @@
 {
   "id": "I914",
-  "name": "Albert a'Court",
-  "givenName": "Albert",
+  "name": "Emily Eliza a'Court",
+  "givenName": "Emily Eliza",
   "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "7 JUL 1897",
-  "birthPlace": "Gloucestershire, Little Rissington.",
-  "deathDate": "15 MAY 1966",
+  "sex": "F",
+  "birthDate": "12 OCT 1894",
+  "birthPlace": "Castle Eaton, Wiltshire",
+  "deathDate": "23 DEC 1980",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Wiltshire/Wotton Bassett/RG13 1911 105 18.jpg",
-    "Data/Media/1911 census/Wiltshire/Chelworth/RG14 11824 184.jpg"
+    "Data/Media/1911 census/Gloucestershire/RG14 15355 102.jpg"
   ],
   "spouseIds": [
     "I921"
@@ -18,7 +17,10 @@
   "childIds": [],
   "parentIds": [
     "I231",
-    "I911"
+    "I912"
+  ],
+  "occupations": [
+    "General servant domestic"
   ],
   "censusRecords": [
     {
@@ -27,13 +29,13 @@
     },
     {
       "date": "1911",
-      "place": "Wiltshire, Cricklade, Chelworth"
+      "place": "Gloucestershire, Painswick, Cheltenham Rd."
     }
   ],
   "marriages": [
     {
       "spouseId": "I921",
-      "familyId": "F382"
+      "familyId": "F435"
     }
   ],
   "avatar": "avatars/I914_0.jpg"

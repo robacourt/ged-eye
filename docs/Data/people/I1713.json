@@ -1,24 +1,17 @@
 {
   "id": "I1713",
-  "name": "Unknown Heywood",
-  "givenName": "Unknown",
-  "surname": "Heywood",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Grany A'Court",
+  "givenName": "Grany",
+  "surname": "A'Court",
+  "sex": "U",
+  "birthDate": "3RD QTR 1973",
+  "birthPlace": "Greenwich",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1712",
-    "I1721"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F627"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1714"
   ]
 }

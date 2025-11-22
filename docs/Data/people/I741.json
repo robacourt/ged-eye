@@ -1,41 +1,27 @@
 {
   "id": "I741",
-  "name": "Abraham A'Court",
-  "givenName": "Abraham",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "NOV 1731",
-  "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "1766",
-  "deathPlace": null,
+  "name": "Mary Somers",
+  "givenName": "Mary",
+  "surname": "Somers",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "13 MAR 1756",
+  "deathPlace": "Somerset, North Cadbury",
   "photos": [],
   "spouseIds": [
-    "I742"
+    "I539"
   ],
   "childIds": [
-    "I743",
-    "I744",
-    "I2939",
-    "I745",
-    "I746",
-    "I747",
-    "I748",
-    "I749"
+    "I742"
   ],
-  "parentIds": [
-    "I538",
-    "I740"
-  ],
-  "baptismDate": "6 MAR 1731",
-  "baptismPlace": "Somerset, North Cadbury",
-  "burialDate": "16 NOV 1766",
-  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I742",
-      "familyId": "F303",
-      "marriageDate": "18 DEC 1851",
-      "marriagePlace": "Mapperton, Dorset"
+      "spouseId": "I539",
+      "familyId": "F277",
+      "marriageDate": "21 APR 1726",
+      "marriagePlace": "North Cadbury, Somerset"
     }
   ]
 }

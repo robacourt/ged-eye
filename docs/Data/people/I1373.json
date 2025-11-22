@@ -1,8 +1,8 @@
 {
   "id": "I1373",
-  "name": "Beryl A'Court",
-  "givenName": "Beryl",
-  "surname": "A'Court",
+  "name": "Helen Nichol Cockburn",
+  "givenName": "Helen Nichol",
+  "surname": "Cockburn",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
@@ -10,16 +10,16 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1374"
+    "I1372"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I2480"
+  "childIds": [
+    "I939"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1374",
-      "familyId": "F543"
+      "spouseId": "I1372",
+      "familyId": "F447"
     }
   ]
 }

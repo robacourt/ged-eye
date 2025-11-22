@@ -1,18 +1,26 @@
 {
   "id": "I1240",
-  "name": "Lorraine Haskett",
-  "givenName": "Lorraine",
-  "surname": "Haskett",
+  "name": "Linda Unknown",
+  "givenName": "Linda",
+  "surname": "Unknown",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1238",
+  "spouseIds": [
     "I1239"
+  ],
+  "childIds": [
+    "I1241",
+    "I1242"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1239",
+      "familyId": "F565"
+    }
   ]
 }

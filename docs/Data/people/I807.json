@@ -1,28 +1,32 @@
 {
   "id": "I807",
-  "name": "Annie Hill",
-  "givenName": "Annie",
-  "surname": "Hill",
+  "name": "Gertrude A'Court",
+  "givenName": "Gertrude",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
+  "birthDate": "1870",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I791"
+  "photos": [
+    "Data/Media/1871 census/Weymouth/RG 10 2002 54 53.jpg",
+    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 55 12.jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Electoral roll"
+  "parentIds": [
+    "I2405",
+    "I2474"
   ],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I791",
-      "familyId": "F336",
-      "marriageDate": "1896",
-      "marriagePlace": "New Zealand"
+      "date": "1871",
+      "place": "Melcombe Regis, Dorset, 10 Alexandra Terrace"
+    },
+    {
+      "date": "1881",
+      "place": "Melcombe Regis, Dorset, 16 West Parade"
     }
-  ]
+  ],
+  "avatar": "avatars/I807_0.jpg"
 }

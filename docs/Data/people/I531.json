@@ -1,35 +1,29 @@
 {
   "id": "I531",
-  "name": "Daisy Unknown",
-  "givenName": "Daisy",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "ABT 1887",
-  "birthPlace": "Dorset, Fifehead Magdalen",
+  "name": "David Chapman",
+  "givenName": "David",
+  "surname": "Chapman",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1581"
+    "I127",
+    "I127"
   ],
-  "childIds": [
-    "I2896"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "occupations": [
-    "Leather glover"
-  ],
-  "censusRecords": [
-    {
-      "date": "1911",
-      "place": "Dorset, Fifehead Magdalen"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1581",
-      "familyId": "F992",
-      "marriageDate": "Abt 1909"
+      "spouseId": "I127",
+      "familyId": "F90",
+      "marriageDate": "3RD QTR 1967"
+    },
+    {
+      "spouseId": "I127",
+      "familyId": "F91"
     }
   ]
 }

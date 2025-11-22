@@ -1,20 +1,20 @@
 {
   "id": "I479",
-  "name": "Charity a'Court",
-  "givenName": "Charity",
+  "name": "James a'Court",
+  "givenName": "James",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "ABT 1739",
+  "sex": "M",
+  "birthDate": "BEF 14 FEB 173",
   "birthPlace": "Horsington, Somerset",
-  "deathDate": "ABT 1740",
+  "deathDate": "1744",
   "deathPlace": "Horsington, Somerset",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I469",
-    "I470"
+    "I470",
+    "I471"
   ],
-  "burialDate": "29 FEB 1739/40",
+  "burialDate": "15 DEC 1744",
   "burialPlace": "Horsington, Somerset"
 }

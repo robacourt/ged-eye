@@ -1,43 +1,26 @@
 {
   "id": "I469",
-  "name": "Elisha A'Court",
-  "givenName": "Elisha",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Mary Lass",
+  "givenName": "Mary",
+  "surname": "Lass",
+  "sex": "F",
+  "birthDate": "Bef 1780",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "Aft 1798",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I470"
+    "I468"
   ],
   "childIds": [
-    "I16",
-    "I471",
-    "I472",
-    "I473",
-    "I474",
-    "I475",
-    "I479",
-    "I477",
-    "I478",
-    "I476"
+    "I71",
+    "I1473"
   ],
-  "parentIds": [
-    "I534",
-    "I535"
-  ],
-  "baptismDate": "25 MAY 1701",
-  "baptismPlace": "North Cadbury, Somerset",
-  "burialDate": "10 NOV 1744",
-  "burialPlace": "Horsington, Somerset",
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I470",
-      "familyId": "F12",
-      "marriageDate": "23 JUN  1723",
-      "marriagePlace": "North Cadbury, Somerset"
+      "spouseId": "I468",
+      "familyId": "F50"
     }
   ]
 }

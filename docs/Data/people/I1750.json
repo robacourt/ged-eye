@@ -1,48 +1,23 @@
 {
   "id": "I1750",
-  "name": "James A'Court",
-  "givenName": "James",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1828",
-  "birthPlace": "Dorset, Marnhull.",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2303"
+    "I1749"
   ],
   "childIds": [],
-  "parentIds": [
-    "I56"
-  ],
-  "occupations": [
-    "Carter",
-    "Carman",
-    "Carman"
-  ],
-  "censusRecords": [
-    {
-      "date": "1871",
-      "place": "Weymouth, Dorset, North Quay"
-    },
-    {
-      "date": "1881",
-      "place": "Dorset, Weymouth, High West St."
-    },
-    {
-      "date": "1891",
-      "place": "Dorset, Weymouth, 3 Stanley Terrace"
-    },
-    {
-      "date": "1901",
-      "place": "Dorset, Weymouth, 3 Stanley Terrace"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2303",
-      "familyId": "F722"
+      "spouseId": "I1749",
+      "familyId": "F732"
     }
   ]
 }

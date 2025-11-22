@@ -1,18 +1,27 @@
 {
   "id": "I1226",
-  "name": "Denise Hayward",
-  "givenName": "Denise",
+  "name": "C?????? Hayward",
+  "givenName": "C??????",
   "surname": "Hayward",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1225",
-    "I1224"
+  "spouseIds": [
+    "I1225"
+  ],
+  "childIds": [
+    "I1227",
+    "I1228",
+    "I1229"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1225",
+      "familyId": "F562"
+    }
   ]
 }

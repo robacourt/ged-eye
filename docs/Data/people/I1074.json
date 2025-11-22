@@ -1,15 +1,34 @@
 {
   "id": "I1074",
-  "name": "Silas Ford",
-  "givenName": "Silas",
-  "surname": "Ford",
-  "sex": "U",
-  "birthDate": null,
+  "name": "Rhonda Pryor",
+  "givenName": "Rhonda",
+  "surname": "Pryor",
+  "sex": "F",
+  "birthDate": "8 AUG 1937",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": []
+  "photos": [
+    "Data/Picture/Rhonda Pryor.jpg"
+  ],
+  "spouseIds": [
+    "I1316"
+  ],
+  "childIds": [
+    "I2745"
+  ],
+  "parentIds": [
+    "I983",
+    "I982"
+  ],
+  "notes": [
+    "You should write to an elderly aunt of his:"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1316",
+      "familyId": "F490"
+    }
+  ],
+  "avatar": "avatars/I1074_0.jpg"
 }

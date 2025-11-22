@@ -1,18 +1,26 @@
 {
   "id": "I1781",
-  "name": "Elaine C A'Court",
-  "givenName": "Elaine C",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "3RD QRT 1951",
-  "birthPlace": "Surrey NE",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1783",
-    "I1782"
+  "spouseIds": [
+    "I1780"
+  ],
+  "childIds": [
+    "I1779",
+    "I1826"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1780",
+      "familyId": "F739"
+    }
   ]
 }

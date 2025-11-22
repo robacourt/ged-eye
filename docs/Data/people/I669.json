@@ -1,8 +1,8 @@
 {
   "id": "I669",
-  "name": "James Drew",
-  "givenName": "James",
-  "surname": "Drew",
+  "name": "Arthur Joseph Warren",
+  "givenName": "Arthur Joseph",
+  "surname": "Warren",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,16 +10,23 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I670"
+    "I675"
   ],
-  "childIds": [
-    "I666"
+  "childIds": [],
+  "parentIds": [
+    "I655",
+    "I667"
   ],
-  "parentIds": [],
+  "occupations": [
+    "Lorry Driver"
+  ],
+  "notes": [
+    "26 in 1934,"
+  ],
   "marriages": [
     {
-      "spouseId": "I670",
-      "familyId": "F279"
+      "spouseId": "I675",
+      "familyId": "F331"
     }
   ]
 }

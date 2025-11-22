@@ -1,36 +1,27 @@
 {
   "id": "I797",
-  "name": "Charlotte Annie CARLISLE(Carlyle)",
-  "givenName": "Charlotte Annie",
-  "surname": "CARLISLE(Carlyle)",
-  "sex": "F",
-  "birthDate": "28 FEB 1870",
+  "name": "Stanley Wilton A'Court",
+  "givenName": "Stanley Wilton",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1884",
   "birthPlace": "Christchurch, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I776",
     "I785"
   ],
-  "childIds": [
-    "I798",
-    "I799"
-  ],
-  "parentIds": [
-    "I1900",
-    "I1901"
-  ],
-  "baptismDate": "12 JUN 1870",
-  "baptismPlace": "St. Lukes, Christchurch, NZ",
   "notes": [
-    "!SOURCE:Entry #562,St Lukes,Christchurch.Births."
+    "Electoral roll"
   ],
   "marriages": [
     {
-      "spouseId": "I785",
-      "familyId": "F332",
-      "marriageDate": "19 JUN 1886",
-      "marriagePlace": "Registrars Office, Wellington,  NZ"
+      "spouseId": null,
+      "familyId": "F391"
     }
   ]
 }

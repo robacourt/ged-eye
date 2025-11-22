@@ -12,18 +12,18 @@
     "Data/Media/1861 Census/Marnhull/RG09 1329 30 29.jpg"
   ],
   "spouseIds": [
-    "I1562"
+    "I1563"
   ],
   "childIds": [
-    "I1563",
-    "I1570",
-    "I2556",
     "I1564",
+    "I1571",
+    "I2556",
     "I1565",
     "I1566",
     "I1567",
     "I1568",
     "I1569",
+    "I1570",
     "I2542"
   ],
   "parentIds": [
@@ -57,8 +57,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1562",
-      "familyId": "F147"
+      "spouseId": "I1563",
+      "familyId": "F164"
     }
   ],
   "avatar": "avatars/I298_0.jpg"

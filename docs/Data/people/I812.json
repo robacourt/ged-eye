@@ -1,31 +1,32 @@
 {
   "id": "I812",
-  "name": "Gladys Irene A'Court",
-  "givenName": "Gladys Irene",
+  "name": "Elsie A'Court",
+  "givenName": "Elsie",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "10 FEB 1899",
+  "birthDate": "8 APR 1897",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "17 APR 1983",
-  "deathPlace": "Riverhead, Auckland, NZ",
+  "deathDate": "21 NOV 1985",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
     "I817"
   ],
-  "childIds": [
-    "I1045"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I794",
-    "I810"
+    "I795",
+    "I811"
   ],
-  "burialPlace": "Waikumete Cemetery, Auckland, NZ",
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "notes": [
+    "Electoral roll"
+  ],
   "marriages": [
     {
       "spouseId": "I817",
-      "familyId": "F346",
-      "marriageDate": "25 MAY 1920",
-      "marriagePlace": "Methodist Church, Sydenham, Christchurch, NZ"
+      "familyId": "F398",
+      "marriageDate": "28 JUN 1917",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

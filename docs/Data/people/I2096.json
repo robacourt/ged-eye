@@ -1,35 +1,18 @@
 {
   "id": "I2096",
-  "name": "Muriel Thora A'Court",
-  "givenName": "Muriel Thora",
-  "surname": "A'Court",
+  "name": "Susan Fletcher",
+  "givenName": "Susan",
+  "surname": "Fletcher",
   "sex": "F",
-  "birthDate": "1909",
-  "birthPlace": "London, Pritnes?",
-  "deathDate": "1976",
+  "birthDate": "1957",
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 205 1.jpg"
-  ],
-  "spouseIds": [
-    "I2097"
-  ],
+  "photos": [],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2042",
-    "I2043"
-  ],
-  "censusRecords": [
-    {
-      "date": "1911",
-      "place": "London, Hammersmith, 1 Aylmer Rd."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2097",
-      "familyId": "F749"
-    }
-  ],
-  "avatar": "avatars/I2096_0.jpg"
+    "I2094",
+    "I2093"
+  ]
 }

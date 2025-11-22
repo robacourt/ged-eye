@@ -1,19 +1,22 @@
 {
   "id": "I1915",
-  "name": "Emily A G Unknown",
-  "givenName": "Emily A G",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "Alfred M A'Court",
+  "givenName": "Alfred M",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": "ABT 1875",
-  "birthPlace": "Glamorganshire,Tondu",
+  "birthPlace": "Glamors Tonder",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1914"
+    "I1916"
   ],
   "childIds": [],
   "parentIds": [],
+  "occupations": [
+    "Engineers Pattern Maker"
+  ],
   "censusRecords": [
     {
       "date": "1901",
@@ -22,8 +25,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1914",
-      "familyId": "F678"
+      "spouseId": "I1916",
+      "familyId": "F775"
     }
   ]
 }

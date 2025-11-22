@@ -1,29 +1,18 @@
 {
   "id": "I1521",
-  "name": "Ernest George Morgan",
-  "givenName": "Ernest George",
+  "name": "Leonard Arthur Morgan",
+  "givenName": "Leonard Arthur",
   "surname": "Morgan",
   "sex": "M",
-  "birthDate": "12 MAR 1915",
+  "birthDate": "26 MAR 1911",
   "birthPlace": "Waltham Cross, Hertfordshire, 83 Queens Road",
-  "deathDate": "6 DEC 1986",
-  "deathPlace": "Enfield, Middlesex, Chase Farm",
+  "deathDate": "10 DEC 1975",
+  "deathPlace": "Enfield, Middlesex, 52 Holly Road",
   "photos": [],
-  "spouseIds": [
-    "I1522"
-  ],
-  "childIds": [
-    "I1523"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1516",
-    "I1486"
-  ],
-  "burialPlace": "Enfield, Middlesex, Lavander Hill",
-  "marriages": [
-    {
-      "spouseId": "I1522",
-      "familyId": "F580"
-    }
+    "I1517",
+    "I1487"
   ]
 }

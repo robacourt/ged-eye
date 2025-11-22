@@ -1,7 +1,7 @@
 {
   "id": "I1283",
-  "name": "Alan Cross",
-  "givenName": "Alan",
+  "name": "Len Cross",
+  "givenName": "Len",
   "surname": "Cross",
   "sex": "M",
   "birthDate": null,
@@ -9,10 +9,18 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1282",
-    "I1278"
+  "spouseIds": [
+    "I1279"
+  ],
+  "childIds": [
+    "I1284",
+    "I1285"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1279",
+      "familyId": "F585"
+    }
   ]
 }

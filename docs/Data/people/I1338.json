@@ -1,53 +1,39 @@
 {
   "id": "I1338",
-  "name": "Victor James A'Court",
-  "givenName": "Victor James",
+  "name": "Louise Ann A'Court",
+  "givenName": "Louise Ann",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1888",
-  "birthPlace": "Fifehead Magdalen, Dorset",
-  "deathDate": "1944",
+  "sex": "F",
+  "birthDate": "1884",
+  "birthPlace": "London, Kensington",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Picture/Victor James A'Court.jpg",
-    "Data/Picture/VictorLast.jpg",
-    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
+    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg",
+    "Data/Media/1901 census/London/Putney/RG13 489 96 11.jpg",
+    "Data/Media/1911 census/London/Putney/RG14 2435 46.jpg"
   ],
-  "spouseIds": [
-    "I1089"
-  ],
-  "childIds": [
-    "I1092",
-    "I1093",
-    "I1087",
-    "I1266"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1100",
-    "I1109"
+    "I879",
+    "I929"
   ],
   "occupations": [
-    "Regular Soldier"
+    "Restaurant bar attendant"
   ],
   "censusRecords": [
     {
-      "date": "1901",
-      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+      "date": "1891",
+      "place": "London,Kensington 9, Lucerne Mews"
     },
     {
-      "date": "1891",
-      "place": "Mells, Frome,  Somerset, Rectory Cottage"
+      "date": "1901",
+      "place": "London, Putney, 12 Rotherwood Terrace"
     },
     {
       "date": "1911",
-      "place": "Dorchester, Dorset, 7 Prospect Terrace"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1089",
-      "familyId": "F435",
-      "marriageDate": "1910"
+      "place": "London, Putney, 72 Lower Richmond Rd"
     }
   ],
   "avatar": "avatars/I1338_0.jpg"

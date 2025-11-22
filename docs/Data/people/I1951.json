@@ -1,18 +1,28 @@
 {
   "id": "I1951",
-  "name": "Michael Warren A'Court",
-  "givenName": "Michael Warren",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "30 JAN 1982",
-  "birthPlace": "Ranfurly, Otago, New Zealand",
+  "name": "Eleanor May Spiers",
+  "givenName": "Eleanor May",
+  "surname": "Spiers",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1949",
+  "spouseIds": [
     "I1950"
+  ],
+  "childIds": [
+    "I1952",
+    "I2039"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1950",
+      "familyId": "F785",
+      "marriageDate": "26 AUG 1978",
+      "marriagePlace": "Ranfurly, Otago, New Zealand"
+    }
   ]
 }

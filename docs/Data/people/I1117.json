@@ -1,30 +1,20 @@
 {
   "id": "I1117",
-  "name": "Bessie Curtis",
-  "givenName": "Bessie",
+  "name": "Harry Charles Curtis",
+  "givenName": "Harry Charles",
   "surname": "Curtis",
-  "sex": "F",
-  "birthDate": "ABT 1888",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1118"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1081",
-    "I1082"
+    "I1082",
+    "I1083"
   ],
-  "baptismDate": "9 OCT 1887",
-  "baptismPlace": "Marnhull, Dorset",
-  "marriages": [
-    {
-      "spouseId": "I1118",
-      "familyId": "F451",
-      "marriageDate": "6 JUN 1923",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "14 FEB 1886",
+  "baptismPlace": "Marnhull, Dorset"
 }

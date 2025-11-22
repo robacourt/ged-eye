@@ -1,25 +1,37 @@
 {
   "id": "I640",
-  "name": "Robert Bartlett Tuffin",
-  "givenName": "Robert Bartlett",
+  "name": "Mary Ann Tuffin",
+  "givenName": "Mary Ann",
   "surname": "Tuffin",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "1868",
+  "birthPlace": "Sturminster Newton, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I641"
+    "I158"
   ],
-  "childIds": [
-    "I639"
+  "childIds": [],
+  "parentIds": [
+    "I641",
+    "I642"
   ],
-  "parentIds": [],
+  "notes": [
+    "2i in 1871, 28 in1896,"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871,2",
+      "place": null
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I641",
-      "familyId": "F269"
+      "spouseId": "I158",
+      "familyId": "F104",
+      "marriageDate": "6.10.1896",
+      "marriagePlace": "Hinton St. Mary, Dorset"
     }
   ]
 }

@@ -1,31 +1,18 @@
 {
   "id": "I998",
-  "name": "Elma J. Boon",
-  "givenName": "Elma J.",
-  "surname": "Boon",
+  "name": "Nora Kay A'Court",
+  "givenName": "Nora Kay",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1923",
+  "birthDate": "30 OCTOBER 1940",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I973"
-  ],
-  "childIds": [
-    "I999",
-    "I1000",
-    "I1445",
-    "I1446",
-    "I1447"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I973",
-      "familyId": "F403",
-      "marriageDate": "1923",
-      "marriagePlace": "Dubbo, NSW"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I735",
+    "I736"
   ]
 }

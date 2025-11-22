@@ -1,26 +1,28 @@
 {
   "id": "I941",
-  "name": "Catherine Sarah Howden A'Court",
-  "givenName": "Catherine Sarah Howden",
-  "surname": "A'Court",
+  "name": "Ella Kathleen Anderson",
+  "givenName": "Ella Kathleen",
+  "surname": "Anderson",
   "sex": "F",
-  "birthDate": "6 FEB 1888",
-  "birthPlace": "Sanson, Wellington, New Zealand",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2307"
+    "I940"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I937",
-    "I938"
+  "childIds": [
+    "I1932",
+    "I1924"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2307",
-      "familyId": "F817"
+      "spouseId": "I940",
+      "familyId": "F448",
+      "marriageDate": "10 AUG 1910",
+      "marriagePlace": "Sanson, Wellington, New Zealand"
     }
   ]
 }

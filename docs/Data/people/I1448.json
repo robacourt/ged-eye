@@ -1,21 +1,18 @@
 {
   "id": "I1448",
-  "name": "Phillip A'Court",
-  "givenName": "Phillip",
+  "name": "Delma A'Court",
+  "givenName": "Delma",
   "surname": "A'Court",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Phillip A'Court.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Phillip A'Court"
-  ],
-  "avatar": "avatars/I1448_0.jpg"
+  "parentIds": [
+    "I974",
+    "I999"
+  ]
 }

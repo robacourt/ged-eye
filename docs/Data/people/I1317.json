@@ -1,30 +1,28 @@
 {
   "id": "I1317",
-  "name": "Meryl Pryor",
-  "givenName": "Meryl",
+  "name": "Wayne Arthur Pryor",
+  "givenName": "Wayne Arthur",
   "surname": "Pryor",
-  "sex": "F",
-  "birthDate": "29 APR 1941",
+  "sex": "M",
+  "birthDate": "28 AUG 1939",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Picture/Meryl Pryor.jpg"
+    "Data/Picture/Wayne Pryor.jpg"
   ],
   "spouseIds": [
-    "I1318"
+    "I1442"
   ],
-  "childIds": [
-    "I1440"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I982",
-    "I981"
+    "I983",
+    "I982"
   ],
   "marriages": [
     {
-      "spouseId": "I1318",
-      "familyId": "F521"
+      "spouseId": "I1442",
+      "familyId": "F590"
     }
   ],
   "avatar": "avatars/I1317_0.jpg"

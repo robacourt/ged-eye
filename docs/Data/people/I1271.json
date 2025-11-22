@@ -1,8 +1,8 @@
 {
   "id": "I1271",
-  "name": "Unknown Dawson",
+  "name": "Unknown Greenhalgh",
   "givenName": "Unknown",
-  "surname": "Dawson",
+  "surname": "Greenhalgh",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -17,8 +17,8 @@
   "marriages": [
     {
       "spouseId": "I1104",
-      "familyId": "F446",
-      "marriageDate": "1946"
+      "familyId": "F507",
+      "marriageDate": "1945"
     }
   ]
 }

@@ -1,27 +1,30 @@
 {
   "id": "I1225",
-  "name": "C?????? Hayward",
-  "givenName": "C??????",
-  "surname": "Hayward",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Patricia Haskett",
+  "givenName": "Patricia",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "1931",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1224"
+    "I1226"
   ],
   "childIds": [
-    "I1226",
     "I1227",
-    "I1228"
+    "I1228",
+    "I1229"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1216",
+    "I1217"
+  ],
   "marriages": [
     {
-      "spouseId": "I1224",
-      "familyId": "F495"
+      "spouseId": "I1226",
+      "familyId": "F562"
     }
   ]
 }

@@ -1,43 +1,33 @@
 {
   "id": "I1462",
-  "name": "Emily Rosilla A'Court",
-  "givenName": "Emily Rosilla",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1880",
+  "sex": "M",
+  "birthDate": "1848",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
-    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg"
+    "Data/Media/1861 Census/Marnhull/RG09 1329 35 39.jpg"
   ],
-  "spouseIds": [
-    "I1632"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1459",
-    "I1460"
+    "I177",
+    "I1196"
+  ],
+  "baptismDate": "6 OCT 1860",
+  "baptismPlace": "Marnhull, Dorset",
+  "burialDate": "15 MAY 1863",
+  "burialPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Agricultural Labourer"
   ],
   "censusRecords": [
     {
-      "date": "1881",
-      "place": "Marnhull, Dorset, Burges"
-    },
-    {
-      "date": "1891",
-      "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
-    },
-    {
-      "date": "1901",
-      "place": "Ealing, Middlesex, 13 Norfolk Terrace"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1632",
-      "familyId": "F563"
+      "date": "1861",
+      "place": "Marnhull, Dorset, East Well"
     }
   ],
   "avatar": "avatars/I1462_0.jpg"

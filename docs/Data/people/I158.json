@@ -10,7 +10,7 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I639"
+    "I640"
   ],
   "childIds": [],
   "parentIds": [
@@ -27,8 +27,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I639",
-      "familyId": "F91",
+      "spouseId": "I640",
+      "familyId": "F104",
       "marriageDate": "6.10.1896",
       "marriagePlace": "Hinton St. Mary, Dorset"
     }

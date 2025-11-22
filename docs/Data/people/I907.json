@@ -1,10 +1,10 @@
 {
   "id": "I907",
-  "name": "Joanna Lines",
-  "givenName": "Joanna",
+  "name": "Beatrice E Lines",
+  "givenName": "Beatrice E",
   "surname": "Lines",
   "sex": "F",
-  "birthDate": "ABT 1876",
+  "birthDate": "ABT 1875",
   "birthPlace": "Wiltshire, England",
   "deathDate": "AFT 1881",
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I904",
+    "I905",
     "I230"
   ]
 }

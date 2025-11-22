@@ -1,26 +1,18 @@
 {
   "id": "I1782",
-  "name": "Unknown Preston",
-  "givenName": "Unknown",
-  "surname": "Preston",
+  "name": "Elaine C A'Court",
+  "givenName": "Elaine C",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "3RD QRT 1951",
+  "birthPlace": "Surrey NE",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1784",
     "I1783"
-  ],
-  "childIds": [
-    "I2684",
-    "I1781"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1783",
-      "familyId": "F642"
-    }
   ]
 }

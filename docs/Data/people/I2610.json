@@ -15,11 +15,11 @@
     "I2615"
   ],
   "childIds": [
-    "I1449"
+    "I1450"
   ],
   "parentIds": [
-    "I1608",
-    "I1609"
+    "I1609",
+    "I1610"
   ],
   "censusRecords": [
     {
@@ -30,7 +30,7 @@
   "marriages": [
     {
       "spouseId": "I2615",
-      "familyId": "F911"
+      "familyId": "F642"
     }
   ],
   "avatar": "avatars/I2610_0.jpg"

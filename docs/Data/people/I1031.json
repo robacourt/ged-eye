@@ -1,23 +1,25 @@
 {
   "id": "I1031",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Nettie A'Court",
+  "givenName": "Nettie",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1898",
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "1896",
+  "birthPlace": "Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Picture/William A'Court.jpg",
     "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
     "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I782",
-    "I870"
+    "I783",
+    "I871"
+  ],
+  "occupations": [
+    "Domestic servant"
   ],
   "censusRecords": [
     {

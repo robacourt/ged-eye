@@ -1,28 +1,36 @@
 {
   "id": "I1543",
-  "name": "Ellen S Hunter",
-  "givenName": "Ellen S",
-  "surname": "Hunter",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "William H A'Court",
+  "givenName": "William H",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1889",
+  "birthPlace": "Beaminster, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1542"
+    "I1544",
+    "I2281"
   ],
   "childIds": [
-    "I1541",
+    "I1542",
     "I2313"
   ],
   "parentIds": [],
+  "notes": [
+    "Dennis was my Grandmothers half brother ( she is Eileen Rundle).  From what Gran had told me William and my great grandmother Ellen Hunter divorced after they had had Dennis and Ronald. Unfortunately she does not know much more than that, thoug"
+  ],
   "marriages": [
     {
-      "spouseId": "I1542",
-      "familyId": "F589",
+      "spouseId": "I1544",
+      "familyId": "F675",
       "marriageDate": "DEC 1913",
       "marriagePlace": "Bristol"
+    },
+    {
+      "spouseId": "I2281",
+      "familyId": "F676"
     }
   ]
 }

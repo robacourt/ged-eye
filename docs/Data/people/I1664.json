@@ -1,25 +1,28 @@
 {
   "id": "I1664",
-  "name": "Jack Taylor",
-  "givenName": "Jack",
-  "surname": "Taylor",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Betty Barber",
+  "givenName": "Betty",
+  "surname": "Barber",
+  "sex": "F",
+  "birthDate": "1921",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1663"
-  ],
-  "childIds": [
     "I1665"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1666"
+  ],
+  "parentIds": [
+    "I1663",
+    "I1291"
+  ],
   "marriages": [
     {
-      "spouseId": "I1663",
-      "familyId": "F612"
+      "spouseId": "I1665",
+      "familyId": "F707"
     }
   ]
 }

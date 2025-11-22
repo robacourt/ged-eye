@@ -1,59 +1,31 @@
 {
   "id": "I2089",
-  "name": "Joseph A'Court",
-  "givenName": "Joseph",
+  "name": "Emily A'Court",
+  "givenName": "Emily",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1841",
-  "birthPlace": "Somerset , Castle Carey",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Middlesex, St Lukes",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/C isles/St Heliers/RG13 5314 107 5.jpg",
-    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34928 87 .jpg"
+    "Data/Media/1861 Census/London/St Luke/RG09 203 17 41.jpg",
+    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg"
   ],
-  "spouseIds": [
-    "I2810"
-  ],
-  "childIds": [
-    "I2811",
-    "I2812",
-    "I2813",
-    "I2833"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Agricultural Labourer",
-    "Labourer",
-    "Agricultural Labourer",
-    "Farm labourer"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2021",
+    "I2807"
   ],
   "censusRecords": [
     {
+      "date": "1861",
+      "place": "London, St Lukes, 17 George Yard"
+    },
+    {
       "date": "1871",
-      "place": "Jersey,St Peter, Ruette a la Vioge"
-    },
-    {
-      "date": "1881",
-      "place": "Jersey C.I. St Laurence, Mill Rd."
-    },
-    {
-      "date": "1891",
-      "place": "Jersey C.I. St Laurence, Mid Bay Cottages"
-    },
-    {
-      "date": "1901",
-      "place": "Jersey C.I. St Helier, First Tower Cottage, 4 St Aubins Rd."
-    },
-    {
-      "date": "1911",
-      "place": "Jersey C.I St Helier, St Aubins Rd, Orient Cottage"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2810",
-      "familyId": "F732"
+      "place": "London, Holborn, 15 Peerless St."
     }
   ],
   "avatar": "avatars/I2089_0.jpg"

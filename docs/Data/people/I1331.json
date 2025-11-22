@@ -1,36 +1,26 @@
 {
   "id": "I1331",
-  "name": "William Roland Waterman",
-  "givenName": "William Roland",
-  "surname": "Waterman",
-  "sex": "M",
-  "birthDate": "1878",
-  "birthPlace": "Stoke Sub Hamdon, Somerset",
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Clara Louisa Unknown",
+  "givenName": "Clara Louisa",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1871",
+  "birthPlace": null,
+  "deathDate": "1943",
+  "deathPlace": "Stoke Sub Hamdon, Somerset, Footlands",
   "photos": [],
   "spouseIds": [
-    "I1332"
+    "I1330"
   ],
-  "childIds": [
-    "I1333"
-  ],
-  "parentIds": [
-    "I1322",
-    "I1320"
-  ],
-  "burialDate": "JUL 1947",
+  "childIds": [],
+  "parentIds": [],
+  "burialDate": "4 OCT 1943",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1332",
-      "familyId": "F526"
+      "spouseId": "I1330",
+      "familyId": "F595",
+      "marriageDate": "ABT 1892"
     }
   ]
 }

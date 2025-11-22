@@ -1,32 +1,24 @@
 {
   "id": "I1632",
-  "name": "Henry Elliott",
+  "name": "Henry Haskett",
   "givenName": "Henry",
-  "surname": "Elliott",
+  "surname": "Haskett",
   "sex": "M",
-  "birthDate": "ABT 1879",
-  "birthPlace": "Totnes, Devon",
+  "birthDate": "Abt 1863",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1462"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "occupations": [
-    "Bricklayer"
+  "parentIds": [
+    "I1257",
+    "I1258"
   ],
   "censusRecords": [
     {
-      "date": "1901",
-      "place": "Ealing, Middlesex, 13 Norfolk Terrace"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1462",
-      "familyId": "F563"
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
     }
   ]
 }

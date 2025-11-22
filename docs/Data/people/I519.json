@@ -1,39 +1,43 @@
 {
   "id": "I519",
-  "name": "Leonard Percy Frank A'Court",
-  "givenName": "Leonard Percy Frank",
+  "name": "Frank A'Court",
+  "givenName": "Frank",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "18 AUG 1899",
-  "birthPlace": "Surrey, Addlestone, Brooklands Farm",
-  "deathDate": "23 MAY 1918",
+  "birthDate": "1889",
+  "birthPlace": null,
+  "deathDate": "11 FEB 1915",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Surrey/RG13 589 24.jpg",
-    "Data/Media/1911 census/Surrey/RG14 3007 92.jpg",
-    "Data/Media/Death certs and reports/Leaonard P F A'Court- New Haw.pdf"
+    "Data/Media/1891 census/Somerset/Martock/RG12 1897 6 5.jpg",
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I532",
-    "I533"
+    "I783",
+    "I871"
   ],
-  "baptismDate": "23 SEP1899",
-  "baptismPlace": "Surrey, Weybridge, St James",
-  "burialDate": "MAY 1918",
-  "burialPlace": "MAILLY WOOD CEMETERY, Mailly-Maillet, Somme, France",
+  "burialPlace": "Ploegsteert Wood Military Cemetery, Belgium",
   "occupations": [
-    "Mr A Burgess, Baker & Confectioner"
+    "Carter"
+  ],
+  "notes": [
+    "In Memory of"
   ],
   "censusRecords": [
     {
+      "date": "1891",
+      "place": "Somerset, Martock, East St"
+    },
+    {
       "date": "1901",
-      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
+      "place": "Somerset, Martock, East St"
     },
     {
       "date": "1911",
-      "place": "Addlestone, Surrey, 10 Australian Cottages, New Haw"
+      "place": "Somerset, Martock, Bower Hinton"
     }
   ],
   "avatar": "avatars/I519_0.jpg"

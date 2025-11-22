@@ -1,18 +1,28 @@
 {
   "id": "I553",
-  "name": "Barth A'Court",
-  "givenName": "Barth",
+  "name": "Elias A'Court",
+  "givenName": "Elias",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1683",
+  "birthDate": "1682",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I716"
+  ],
   "childIds": [],
   "parentIds": [
-    "I541",
-    "I542"
+    "I542",
+    "I543"
+  ],
+  "baptismDate": "11APR 1682",
+  "baptismPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I716",
+      "familyId": "F280"
+    }
   ]
 }

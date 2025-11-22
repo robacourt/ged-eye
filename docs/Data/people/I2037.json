@@ -1,10 +1,10 @@
 {
   "id": "I2037",
-  "name": "Jessica Alice A'Court",
-  "givenName": "Jessica Alice",
+  "name": "Casey Helen A'Court",
+  "givenName": "Casey Helen",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "9 JUN 1988",
+  "birthDate": "20 OCT 1983",
   "birthPlace": "Clyde, New Zealand",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2024",
-    "I2025"
+    "I2025",
+    "I2026"
   ]
 }

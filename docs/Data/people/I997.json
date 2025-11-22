@@ -1,18 +1,31 @@
 {
   "id": "I997",
-  "name": "Nora Kay A'Court",
-  "givenName": "Nora Kay",
+  "name": "Pamela Mae A'Court",
+  "givenName": "Pamela Mae",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "30 OCTOBER 1940",
+  "birthDate": "MAY 1938",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "AFT 1970",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1010"
+  ],
+  "childIds": [
+    "I1011",
+    "I1012",
+    "I1013",
+    "I1014"
+  ],
   "parentIds": [
-    "I734",
-    "I735"
+    "I735",
+    "I736"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1010",
+      "familyId": "F471"
+    }
   ]
 }

@@ -1,24 +1,17 @@
 {
   "id": "I1806",
-  "name": "Unknown Short",
-  "givenName": "Unknown",
-  "surname": "Short",
+  "name": "Joy H A'Court",
+  "givenName": "Joy H",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "3RD QRT 1952",
+  "birthPlace": "Surrey NE",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1805",
+  "childIds": [],
+  "parentIds": [
     "I1807"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F651"
-    }
   ]
 }

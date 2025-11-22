@@ -1,18 +1,25 @@
 {
   "id": "I1732",
-  "name": "Camilla Jane Wheeler Bennett",
-  "givenName": "Camilla Jane Wheeler",
-  "surname": "Bennett",
+  "name": "Alison Jane Crawford",
+  "givenName": "Alison Jane",
+  "surname": "Crawford",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1728",
-    "I1731"
+  "spouseIds": [
+    "I1729"
+  ],
+  "childIds": [
+    "I1733"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1729",
+      "familyId": "F727"
+    }
   ]
 }

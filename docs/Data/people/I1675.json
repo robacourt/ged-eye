@@ -1,19 +1,29 @@
 {
   "id": "I1675",
-  "name": "Robert Dean",
-  "givenName": "Robert",
+  "name": "Elizabeth Dean",
+  "givenName": "Elizabeth",
   "surname": "Dean",
-  "sex": "M",
-  "birthDate": "ABT 1737",
+  "sex": "F",
+  "birthDate": "ABT 1735",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1669",
-    "I1670"
+  "spouseIds": [
+    "I1679"
   ],
-  "baptismDate": "13 MAR 1737"
+  "childIds": [
+    "I1680"
+  ],
+  "parentIds": [
+    "I1670",
+    "I1671"
+  ],
+  "baptismDate": "17 AUG 1735",
+  "marriages": [
+    {
+      "spouseId": "I1679",
+      "familyId": "F709"
+    }
+  ]
 }

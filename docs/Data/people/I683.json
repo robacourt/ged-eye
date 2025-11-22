@@ -1,28 +1,32 @@
 {
   "id": "I683",
-  "name": "John Ryall",
-  "givenName": "John",
-  "surname": "Ryall",
-  "sex": "M",
-  "birthDate": "BEF 1620",
-  "birthPlace": null,
-  "deathDate": "AFT 1637",
+  "name": "Eliza Unknown",
+  "givenName": "Eliza",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": "Stalbridge, Dorset",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I564"
+    "I246"
   ],
-  "childIds": [
-    "I684",
-    "I685"
-  ],
+  "childIds": [],
   "parentIds": [],
+  "notes": [
+    "71 in 1881,"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Stalbridge, Dorset"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I564",
-      "familyId": "F236",
-      "marriageDate": "18 JUL 1636",
-      "marriagePlace": "South Cadbury, Somerset"
+      "spouseId": "I246",
+      "familyId": "F144"
     }
   ]
 }

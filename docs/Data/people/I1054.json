@@ -1,27 +1,30 @@
 {
   "id": "I1054",
-  "name": "Lindsay Malone",
-  "givenName": "Lindsay",
-  "surname": "Malone",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Gladys Augusta Diehm",
+  "givenName": "Gladys Augusta",
+  "surname": "Diehm",
+  "sex": "F",
+  "birthDate": "11 APRIL 1922",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1053"
+    "I1055"
   ],
   "childIds": [
-    "I1055",
     "I1056",
-    "I1057"
+    "I1057",
+    "I1058"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I935",
+    "I934"
+  ],
   "marriages": [
     {
-      "spouseId": "I1053",
-      "familyId": "F426",
+      "spouseId": "I1055",
+      "familyId": "F487",
       "marriageDate": "5 MARCH 1941"
     }
   ]

@@ -1,44 +1,25 @@
 {
   "id": "I784",
-  "name": "Emily Priscilla Wines",
-  "givenName": "Emily Priscilla",
-  "surname": "Wines",
+  "name": "Sarah Unknown",
+  "givenName": "Sarah",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "ABT 1842",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "20 FEB 1908",
-  "deathPlace": "Christchurch, New Zealand",
-  "photos": [
-    "Data/Picture/Emily Wines.jpg"
-  ],
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
   "spouseIds": [
-    "I775"
+    "I774"
   ],
-  "childIds": [
-    "I785",
-    "I786",
-    "I787",
-    "I788",
-    "I789",
-    "I790",
-    "I791",
-    "I792",
-    "I793",
-    "I794",
-    "I795",
-    "I796"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "notes": [
-    "Electoral roll"
-  ],
   "marriages": [
     {
-      "spouseId": "I775",
-      "familyId": "F323",
-      "marriageDate": "9 OCT 1860",
-      "marriagePlace": "Stoke Sub Hamdon, Somerset"
+      "spouseId": "I774",
+      "familyId": "F372",
+      "marriageDate": "1859",
+      "marriagePlace": "Wincanton, Somerset"
     }
-  ],
-  "avatar": "avatars/I784_0.jpg"
+  ]
 }

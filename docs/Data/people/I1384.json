@@ -1,25 +1,23 @@
 {
   "id": "I1384",
-  "name": "Jane A'Court",
-  "givenName": "Jane",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1863",
-  "birthPlace": "St. Ouen's, Jersey, CI",
+  "name": "K.W. Robinson",
+  "givenName": "K.W.",
+  "surname": "Robinson",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1385"
+    "I1378"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1385",
-      "familyId": "F548",
-      "marriageDate": "11 DEC 1863",
-      "marriagePlace": "St. Ouen's, Jersey, CI"
+      "spouseId": "I1378",
+      "familyId": "F618"
     }
   ]
 }

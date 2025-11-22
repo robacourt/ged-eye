@@ -1,31 +1,28 @@
 {
   "id": "I801",
-  "name": "Charles Samuel ALLAWAY",
-  "givenName": "Charles Samuel",
-  "surname": "ALLAWAY",
-  "sex": "M",
-  "birthDate": "15 MAR 1884",
-  "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "29 APR 1971",
+  "name": "Florence Spark",
+  "givenName": "Florence",
+  "surname": "Spark",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I799"
   ],
-  "childIds": [
-    "I1927"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "burialPlace": "Wellington, NZ, Karori Cemetery,",
   "notes": [
-    "School Inspectors Returns"
+    "Electoral roll"
   ],
   "marriages": [
     {
       "spouseId": "I799",
-      "familyId": "F343",
-      "marriageDate": "3 DEC 1920",
-      "marriagePlace": "Wellington, New Zealand"
+      "familyId": "F393",
+      "marriageDate": "4 DEC 1907",
+      "marriagePlace": "St James's Church, Wellington, NZ"
     }
   ]
 }

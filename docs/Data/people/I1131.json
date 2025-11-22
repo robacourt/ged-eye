@@ -1,26 +1,38 @@
 {
   "id": "I1131",
-  "name": "James West",
-  "givenName": "James",
+  "name": "Charles West",
+  "givenName": "Charles",
   "surname": "West",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1890",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1130"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1133"
+  ],
+  "parentIds": [
+    "I1132"
+  ],
   "occupations": [
     "Groom"
   ],
+  "residences": [
+    {
+      "date": "1926",
+      "place": "Fordington"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F459"
+      "spouseId": "I1130",
+      "familyId": "F521",
+      "marriageDate": "21 SEP 1926",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

@@ -1,25 +1,39 @@
 {
   "id": "I1729",
-  "name": "Francis I Wheeler Bennett",
-  "givenName": "Francis I Wheeler",
+  "name": "Giles Wheeler Bennett",
+  "givenName": "Giles Wheeler",
   "surname": "Bennett",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1730"
+    "I1732"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1730",
+    "I1733"
+  ],
   "parentIds": [
-    "I1728"
+    "I1728",
+    "I1630"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Hampshire, Hambledon"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1730",
-      "familyId": "F636"
+      "spouseId": null,
+      "familyId": "F726"
+    },
+    {
+      "spouseId": "I1732",
+      "familyId": "F727"
     }
   ]
 }

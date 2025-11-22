@@ -10,14 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1191"
+    "I1192"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1191",
-      "familyId": "F854",
+      "spouseId": "I1192",
+      "familyId": "F548",
       "marriageDate": "3RD QTR  1904",
       "marriagePlace": "Chippenham, Wiltshire"
     }

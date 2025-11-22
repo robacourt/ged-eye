@@ -1,9 +1,9 @@
 {
   "id": "I1071",
-  "name": "Thomas A'Court",
-  "givenName": "Thomas",
+  "name": "Blanche Evelyn A'Court",
+  "givenName": "Blanche Evelyn",
   "surname": "A'Court",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -16,6 +16,6 @@
     "I103"
   ],
   "notes": [
-    "foster child not adopted"
+    "Foster Child not adopted"
   ]
 }

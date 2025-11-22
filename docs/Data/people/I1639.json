@@ -1,25 +1,29 @@
 {
   "id": "I1639",
-  "name": "Herbert A'Court",
-  "givenName": "Herbert",
+  "name": "Henry George A'Court",
+  "givenName": "Henry George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "28 DEC 1890",
+  "birthDate": "Abt 1888",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Somerset/Yeovil/RG13 2301 115 .jpg",
-    "Data/Media/1911 census/Somerset/Yeovil/RG14 14412 290.jpg"
+    "Data/Media/1901 census/Somerset/Yeovil/RG13 2301 115 .jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I2528"
+  ],
+  "childIds": [
+    "I2529"
+  ],
   "parentIds": [
-    "I1636",
-    "I1637"
+    "I1637",
+    "I1638"
   ],
   "occupations": [
-    "Shop Assistant"
+    "Carpenter",
+    "Journeyman, Carpenter and Joiner"
   ],
   "censusRecords": [
     {
@@ -32,7 +36,13 @@
     },
     {
       "date": "1911",
-      "place": "Yeovil, Somerset, 11 Woodland Grove, Mill Rd."
+      "place": "Yeovil, Somerset, 29 Great Western Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2528",
+      "familyId": "F703"
     }
   ],
   "avatar": "avatars/I1639_0.jpg"

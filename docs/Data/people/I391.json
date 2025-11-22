@@ -14,8 +14,8 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I1777",
-    "I1925"
+    "I1778",
+    "I1926"
   ],
   "notes": [
     "of Virginia USA"
@@ -23,7 +23,7 @@
   "marriages": [
     {
       "spouseId": "I384",
-      "familyId": "F177",
+      "familyId": "F198",
       "marriageDate": "26 MAR 1945",
       "marriagePlace": "USA, Virginia, Charlottesville"
     }

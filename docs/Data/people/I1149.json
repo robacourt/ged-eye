@@ -1,36 +1,34 @@
 {
   "id": "I1149",
-  "name": "Arthur Harry Vincent",
-  "givenName": "Arthur Harry",
-  "surname": "Vincent",
-  "sex": "M",
-  "birthDate": "ABT 1912",
+  "name": "Kathleen Lily Rose Horlock",
+  "givenName": "Kathleen Lily Rose",
+  "surname": "Horlock",
+  "sex": "F",
+  "birthDate": "ABT 1917",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1148"
-  ],
-  "childIds": [
-    "I1151"
-  ],
-  "parentIds": [
     "I1150"
   ],
-  "occupations": [
-    "Head Cowman"
+  "childIds": [
+    "I1152"
+  ],
+  "parentIds": [
+    "I1145",
+    "I1144"
   ],
   "residences": [
     {
       "date": "1938",
-      "place": "Marnhull, Dorset, Burton Street"
+      "place": "Marnhull, Dorset, Gannetts"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1148",
-      "familyId": "F466",
+      "spouseId": "I1150",
+      "familyId": "F529",
       "marriageDate": "18 APRIL 1938",
       "marriagePlace": "Marnhull, Dorset"
     }

@@ -1,18 +1,26 @@
 {
   "id": "I1552",
-  "name": "Ryan A'Court",
-  "givenName": "Ryan",
-  "surname": "A'Court",
-  "sex": "M",
+  "name": "Audrey Lounsbury",
+  "givenName": "Audrey",
+  "surname": "Lounsbury",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1545",
-    "I1549"
+  "spouseIds": [
+    "I1551"
+  ],
+  "childIds": [
+    "I1550",
+    "I1555"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1551",
+      "familyId": "F680"
+    }
   ]
 }

@@ -1,42 +1,24 @@
 {
   "id": "I733",
-  "name": "Mary Maud Whitton",
-  "givenName": "Mary Maud",
-  "surname": "Whitton",
-  "sex": "F",
-  "birthDate": "1881",
-  "birthPlace": "Dubbo, NSW",
-  "deathDate": "1952",
+  "name": "William Winstanley",
+  "givenName": "William",
+  "surname": "Winstanley",
+  "sex": "M",
+  "birthDate": "1889",
+  "birthPlace": null,
+  "deathDate": "1962",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I104"
+    "I732"
   ],
-  "childIds": [
-    "I734",
-    "I973",
-    "I976",
-    "I933",
-    "I977",
-    "I974",
-    "I979",
-    "I980",
-    "I981",
-    "I983",
-    "I985",
-    "I986",
-    "I988"
-  ],
-  "parentIds": [
-    "I971",
-    "I972"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I104",
-      "familyId": "F62",
-      "marriageDate": "1897",
-      "marriagePlace": "Dubbo, NSW"
+      "spouseId": "I732",
+      "familyId": "F347",
+      "marriageDate": "23 OCT 1915"
     }
   ]
 }

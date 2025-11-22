@@ -18,8 +18,8 @@
     "I373"
   ],
   "parentIds": [
-    "I490",
-    "I491"
+    "I491",
+    "I492"
   ],
   "censusRecords": [
     {
@@ -34,7 +34,7 @@
   "marriages": [
     {
       "spouseId": null,
-      "familyId": "F168"
+      "familyId": "F189"
     }
   ],
   "avatar": "avatars/I371_0.jpg"

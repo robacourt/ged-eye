@@ -1,15 +1,28 @@
 {
   "id": "I2003",
-  "name": "Betsy Wilton",
-  "givenName": "Betsy",
-  "surname": "Wilton",
-  "sex": "U",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Gladys Jessie Peapell",
+  "givenName": "Gladys Jessie",
+  "surname": "Peapell",
+  "sex": "F",
+  "birthDate": "20 JUL 1929",
+  "birthPlace": "Broadtown, Wiltshire",
+  "deathDate": "7 OCT 2003",
+  "deathPlace": "Purton, Wiltshire",
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": []
+  "spouseIds": [
+    "I2002"
+  ],
+  "childIds": [
+    "I1776"
+  ],
+  "parentIds": [],
+  "notes": [
+    "1928/29"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2002",
+      "familyId": "F738"
+    }
+  ]
 }

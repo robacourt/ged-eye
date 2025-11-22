@@ -1,43 +1,47 @@
 {
   "id": "I1760",
-  "name": "William Shorland Wildgoose",
-  "givenName": "William Shorland",
-  "surname": "Wildgoose",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Louisa A'Court",
+  "givenName": "Louisa",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1847",
+  "birthPlace": "Bristol, Bedminster, Gloucestershire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1861 Census/Bristol/RG09 1723 122 21.jpg"
+  ],
   "spouseIds": [
-    "I1759"
+    "I1761"
   ],
   "childIds": [
-    "I1761",
-    "I1762"
+    "I1762",
+    "I1763"
   ],
-  "parentIds": [],
-  "burialDate": "20 MAY 1911",
-  "burialPlace": "Warrington, Lancashire",
+  "parentIds": [
+    "I1387",
+    "I1406"
+  ],
   "occupations": [
-    "Plumber",
-    "Unemployed Plumber",
-    "Working at Telegraph Depot",
-    "Telegraph Wire Man",
-    "Telegraph Foreman"
+    "General Servant",
+    "Paper bag maker and Cotton weaver",
+    "Calico Weaver"
+  ],
+  "notes": [
+    "Hi Ian Mon 10/03/2008 17:42"
   ],
   "censusRecords": [
     {
       "date": "1851",
-      "place": "Bristol, 47 Temple St."
+      "place": "Bristol, Bedminster, Charlotte St."
     },
     {
-      "date": "1871",
-      "place": "Bristol, 32 Broad St."
+      "date": "1861",
+      "place": "Bristol,14 Trinity Street, St Augustine."
     },
     {
       "date": "1881",
-      "place": "Warrington, Lancashire,7 Heaton St.,"
+      "place": "Warrington, Lancashire, 7 Heaton St."
     },
     {
       "date": "1891",
@@ -56,10 +60,11 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1759",
-      "familyId": "F638",
+      "spouseId": "I1761",
+      "familyId": "F735",
       "marriageDate": "13 DEC 1874",
       "marriagePlace": "Bristol, Gloucestershire, St. Mary's Redcliffe"
     }
-  ]
+  ],
+  "avatar": "avatars/I1760_0.jpg"
 }

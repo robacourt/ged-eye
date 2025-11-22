@@ -1,28 +1,30 @@
 {
   "id": "I1416",
-  "name": "William H A'Court",
-  "givenName": "William H",
+  "name": "Albert D A'Court",
+  "givenName": "Albert D",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "SEP QT 1857",
-  "birthPlace": "Bedminster, Somerset",
-  "deathDate": "JUN QT 1891",
-  "deathPlace": "Bedminster, Somerset",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Bristol, Bedminster",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [
     "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
-    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg"
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg",
+    "Data/Media/1881 census/Bristol/RG11 2465 104 10.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1386",
-    "I1405"
+    "I1387",
+    "I1406"
   ],
   "occupations": [
-    "News Vendor"
+    "News Vendor",
+    "Packer"
   ],
   "notes": [
-    "Fromthe 1871  for St Mary Redcliff/Bristol I see that Silas and Ann  had a daughter Mary and three sons, Albert, William and my grandfather, Charles Edward.  I have no information beyond that.  Thanks for any help.  Betty Jones  Solana Beach, Cali"
+    "Household:"
   ],
   "censusRecords": [
     {
@@ -31,6 +33,10 @@
     },
     {
       "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1881",
       "place": "Bristol, St Mary Redcliff, 3 Arch Place"
     }
   ],

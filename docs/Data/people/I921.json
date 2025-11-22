@@ -1,12 +1,12 @@
 {
   "id": "I921",
-  "name": "Ivy Unknown",
-  "givenName": "Ivy",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "4 OCT 1896",
+  "name": "John Philp",
+  "givenName": "John",
+  "surname": "Philp",
+  "sex": "M",
+  "birthDate": "20 MAY 1893",
   "birthPlace": null,
-  "deathDate": "9 OCT 1964",
+  "deathDate": "27 JUN 1979",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
@@ -17,7 +17,7 @@
   "marriages": [
     {
       "spouseId": "I914",
-      "familyId": "F382"
+      "familyId": "F435"
     }
   ]
 }

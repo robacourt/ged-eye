@@ -1,34 +1,34 @@
 {
   "id": "I459",
-  "name": "Sarah Alice Spillett",
-  "givenName": "Sarah Alice",
-  "surname": "Spillett",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": "Sheldwick, Kent",
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
+  "name": "Frank Turner",
+  "givenName": "Frank",
+  "surname": "Turner",
+  "sex": "M",
+  "birthDate": "22 MAR 1896",
+  "birthPlace": "Bristol",
+  "deathDate": "27 NOV 1962",
+  "deathPlace": "Gloucester, 66 Barnwood Avenue,",
+  "photos": [
+    "Data/Media/1921 Census/London/30 Thomas St Woolwich 2.jpg"
+  ],
   "spouseIds": [
-    "I455"
+    "I458"
   ],
-  "childIds": [
-    "I460",
-    "I461"
-  ],
+  "childIds": [],
   "parentIds": [],
   "censusRecords": [
     {
-      "date": "1911",
-      "place": null
+      "date": "1921",
+      "place": "London, Woolwich, Cambridge Cottages, 30 Thomas St. SE18"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I455",
-      "familyId": "F204",
-      "marriageDate": "APR 1909",
-      "marriagePlace": "Kent, Faversham"
+      "spouseId": "I458",
+      "familyId": "F245",
+      "marriageDate": "JUL 1919",
+      "marriagePlace": "Kent,   Dover,"
     }
-  ]
+  ],
+  "avatar": "avatars/I459_0.jpg"
 }

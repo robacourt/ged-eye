@@ -1,26 +1,21 @@
 {
   "id": "I1222",
-  "name": "Jean Haskett",
-  "givenName": "Jean",
+  "name": "Tony Haskett",
+  "givenName": "Tony",
   "surname": "Haskett",
-  "sex": "F",
-  "birthDate": "ABT 1923",
+  "sex": "M",
+  "birthDate": "1924",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1223"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1215",
-    "I1216"
+    "I1216",
+    "I1217"
   ],
-  "marriages": [
-    {
-      "spouseId": "I1223",
-      "familyId": "F494"
-    }
+  "notes": [
+    "Disabled"
   ]
 }

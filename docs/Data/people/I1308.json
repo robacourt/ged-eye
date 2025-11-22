@@ -1,10 +1,10 @@
 {
   "id": "I1308",
-  "name": "Kaya Laura A'Court",
-  "givenName": "Kaya Laura",
+  "name": "Zebee Lorne A'Court",
+  "givenName": "Zebee Lorne",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "13 MAR 1994",
+  "sex": "M",
+  "birthDate": "22 DEC 1991",
   "birthPlace": "Perth, Western Australia",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1097",
-    "I1306"
+    "I1098",
+    "I1307"
   ]
 }

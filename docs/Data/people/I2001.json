@@ -1,28 +1,18 @@
 {
   "id": "I2001",
-  "name": "Charles Roy Luke A'Court",
-  "givenName": "Charles Roy Luke",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Frea Moon Gooderson-A'Court",
+  "givenName": "Frea Moon",
+  "surname": "Gooderson-A'Court",
+  "sex": "F",
+  "birthDate": "11 MAY 1992",
+  "birthPlace": "Llandough, Penarth, Cardiff",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I2002"
-  ],
-  "childIds": [
-    "I1775"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I912",
-    "I919"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2002",
-      "familyId": "F715"
-    }
+    "I1997",
+    "I1993"
   ]
 }

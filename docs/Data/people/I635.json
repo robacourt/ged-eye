@@ -1,26 +1,30 @@
 {
   "id": "I635",
-  "name": "Alfred Frampton",
-  "givenName": "Alfred",
-  "surname": "Frampton",
+  "name": "Judith Cecelia Hatcher",
+  "givenName": "Judith Cecelia",
+  "surname": "Hatcher",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "20.12.1952",
+  "birthPlace": "Marnhull, Dorset, 11 Fellowsmead",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I633"
+  "spouseIds": [
+    "I638"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Farmer"
+  "childIds": [],
+  "parentIds": [
+    "I624",
+    "I634"
   ],
+  "baptismDate": "12.7.1953",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F266"
+      "spouseId": "I638",
+      "familyId": "F317",
+      "marriageDate": "20.4.1974",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

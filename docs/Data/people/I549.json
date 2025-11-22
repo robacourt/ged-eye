@@ -1,21 +1,18 @@
 {
   "id": "I549",
-  "name": "Ann A'Court",
-  "givenName": "Ann",
+  "name": "Samuel A'Court",
+  "givenName": "Samuel",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1679",
+  "sex": "M",
+  "birthDate": "1676",
   "birthPlace": null,
-  "deathDate": "1681",
-  "deathPlace": "South Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I541",
-    "I542"
-  ],
-  "notes": [
-    "Twin of Elias ?"
+    "I542",
+    "I543"
   ]
 }

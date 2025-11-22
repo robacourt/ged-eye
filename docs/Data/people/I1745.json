@@ -1,23 +1,17 @@
 {
   "id": "I1745",
-  "name": "Sarah A'Court",
-  "givenName": "Sarah",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1841",
-  "birthPlace": "Castle Cary",
+  "sex": "M",
+  "birthDate": "Abt 15 FEB 1854",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1851 census/Castle Cary/3.htm"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Castle Cary"
-    }
-  ]
+  "burialDate": "26 FEB 1854",
+  "burialPlace": "London, Hackney, Abney Park"
 }

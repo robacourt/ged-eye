@@ -10,7 +10,7 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2009"
+    "I2010"
   ],
   "childIds": [],
   "parentIds": [
@@ -18,8 +18,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2009",
-      "familyId": "F1024",
+      "spouseId": "I2010",
+      "familyId": "F800",
       "marriageDate": "1968",
       "marriagePlace": "London Westminster"
     }

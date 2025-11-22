@@ -1,40 +1,46 @@
 {
   "id": "I1182",
-  "name": "Harriet Jones",
-  "givenName": "Harriet",
-  "surname": "Jones",
-  "sex": "F",
-  "birthDate": "ABT 1852",
-  "birthPlace": "Teffont Magna, Wiltshire",
-  "deathDate": "1932",
+  "name": "Sidney Haskett",
+  "givenName": "Sidney",
+  "surname": "Haskett",
+  "sex": "M",
+  "birthDate": "1861",
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1181"
+    "I1183"
   ],
   "childIds": [
-    "I1196",
-    "I1199",
-    "I1204",
-    "I1210",
+    "I1197",
+    "I1200",
+    "I1205",
     "I1211",
     "I1212",
-    "I1215",
-    "I1242"
+    "I1213",
+    "I1216",
+    "I1243"
   ],
-  "parentIds": [],
-  "burialDate": "1932",
-  "burialPlace": "Charminster, Dorset",
-  "censusRecords": [
+  "parentIds": [
+    "I1176",
+    "I181"
+  ],
+  "baptismDate": "1862",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Engine Driver"
+  ],
+  "residences": [
     {
-      "date": "1881 AGE 26",
-      "place": null
+      "date": "1881",
+      "place": "Caraway Lane"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1181",
-      "familyId": "F482"
+      "spouseId": "I1183",
+      "familyId": "F545"
     }
   ]
 }

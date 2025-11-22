@@ -8,11 +8,14 @@
   "birthPlace": "Bristol, St Michaels",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/FromRob/GretaACourtMond.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I2744",
     "I128"
-  ]
+  ],
+  "avatar": "avatars/I72_0.jpg"
 }

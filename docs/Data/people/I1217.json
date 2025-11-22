@@ -1,26 +1,39 @@
 {
   "id": "I1217",
-  "name": "Arthur William Worman",
-  "givenName": "Arthur William",
+  "name": "Hermina Teresa Worman",
+  "givenName": "Hermina Teresa",
   "surname": "Worman",
-  "sex": "M",
-  "birthDate": null,
+  "sex": "F",
+  "birthDate": "1898",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1973",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1216"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Butler"
+  "childIds": [
+    "I1219",
+    "I1223",
+    "I1222",
+    "I1225",
+    "I1230",
+    "I1233",
+    "I1239"
+  ],
+  "parentIds": [
+    "I1218"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Ferndown, Dorset"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F492"
+      "spouseId": "I1216",
+      "familyId": "F558"
     }
   ]
 }

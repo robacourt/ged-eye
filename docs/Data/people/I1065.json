@@ -1,7 +1,7 @@
 {
   "id": "I1065",
-  "name": "Garry Norman Higgins",
-  "givenName": "Garry Norman",
+  "name": "Larry Murray Higgins",
+  "givenName": "Larry Murray",
   "surname": "Higgins",
   "sex": "M",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1063",
-    "I1062"
+    "I1064",
+    "I1063"
   ]
 }

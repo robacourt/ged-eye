@@ -1,24 +1,31 @@
 {
   "id": "I957",
-  "name": "Zachariah Abraham Charles A'Court",
-  "givenName": "Zachariah Abraham Charles",
+  "name": "Mary T. J. A'Court",
+  "givenName": "Mary T. J.",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1863",
+  "sex": "F",
+  "birthDate": "1861",
   "birthPlace": "Mudgee, NSW",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/ZachariahAC and Nephew.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I966"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "childIds": [
+    "I970",
+    "I971"
+  ],
   "parentIds": [
     "I75",
     "I103"
   ],
-  "notes": [
-    "FROM MEEKA O'COONER e-mail 25/02/02"
-  ],
-  "avatar": "avatars/I957_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I966",
+      "familyId": "F455",
+      "marriageDate": "1889",
+      "marriagePlace": "Dubbo, NSW"
+    }
+  ]
 }

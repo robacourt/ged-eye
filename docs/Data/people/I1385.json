@@ -1,23 +1,23 @@
 {
   "id": "I1385",
-  "name": "Thomas Le Couteur Mauger",
-  "givenName": "Thomas Le Couteur",
-  "surname": "Mauger",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Jane A'Court",
+  "givenName": "Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1863",
+  "birthPlace": "St. Ouen's, Jersey, CI",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1384"
+    "I1386"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1384",
-      "familyId": "F548",
+      "spouseId": "I1386",
+      "familyId": "F619",
       "marriageDate": "11 DEC 1863",
       "marriagePlace": "St. Ouen's, Jersey, CI"
     }

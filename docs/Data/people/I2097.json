@@ -1,23 +1,35 @@
 {
   "id": "I2097",
-  "name": "Frank St??????",
-  "givenName": "Frank",
-  "surname": "St??????",
-  "sex": "M",
-  "birthDate": "1905",
-  "birthPlace": null,
-  "deathDate": "1981",
+  "name": "Muriel Thora A'Court",
+  "givenName": "Muriel Thora",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1909",
+  "birthPlace": "London, Pritnes?",
+  "deathDate": "1976",
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 205 1.jpg"
+  ],
   "spouseIds": [
-    "I2096"
+    "I2098"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I2043",
+    "I2044"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hammersmith, 1 Aylmer Rd."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I2096",
-      "familyId": "F749"
+      "spouseId": "I2098",
+      "familyId": "F823"
     }
-  ]
+  ],
+  "avatar": "avatars/I2097_0.jpg"
 }

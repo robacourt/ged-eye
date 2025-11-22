@@ -1,22 +1,27 @@
 {
   "id": "I1634",
-  "name": "Ellen Hayward",
-  "givenName": "Ellen",
-  "surname": "Hayward",
-  "sex": "F",
-  "birthDate": "Abt 1864",
+  "name": "Tom A'Court",
+  "givenName": "Tom",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1866",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1633"
-  ],
-  "childIds": [
     "I1635"
   ],
-  "parentIds": [
-    "I2539"
+  "childIds": [
+    "I1636"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Masons Labourer",
+    "Farm Labourer"
+  ],
+  "notes": [
+    "Very likely son of Ann Warren on bk#1632"
   ],
   "censusRecords": [
     {
@@ -30,8 +35,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1633",
-      "familyId": "F607",
+      "spouseId": "I1635",
+      "familyId": "F700",
       "marriageDate": "ABT 1897"
     }
   ]

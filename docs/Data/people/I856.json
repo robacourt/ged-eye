@@ -1,11 +1,11 @@
 {
   "id": "I856",
-  "name": "Beulah Rachel Anderson",
-  "givenName": "Beulah Rachel",
-  "surname": "Anderson",
-  "sex": "F",
-  "birthDate": "15 SEP 1909",
-  "birthPlace": "Levin, NZ",
+  "name": "Robert McSTAY",
+  "givenName": "Robert",
+  "surname": "McSTAY",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -15,13 +15,13 @@
   "childIds": [],
   "parentIds": [],
   "notes": [
-    "School Admission records"
+    "Wises"
   ],
   "marriages": [
     {
       "spouseId": "I843",
-      "familyId": "F368",
-      "marriageDate": "1936",
+      "familyId": "F419",
+      "marriageDate": "1931",
       "marriagePlace": "New Zealand"
     }
   ]

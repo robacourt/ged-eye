@@ -1,26 +1,29 @@
 {
   "id": "I1628",
-  "name": "Nellie M A'Court",
-  "givenName": "Nellie M",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1890",
-  "birthPlace": "Yeovil, Somerset",
+  "name": "Herbert Ford",
+  "givenName": "Herbert",
+  "surname": "Ford",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg"
+    "Data/Picture/Jean Joan  Freddy Ford.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I284",
-    "I287"
+  "spouseIds": [
+    "I1034"
   ],
-  "censusRecords": [
+  "childIds": [
+    "I1994",
+    "I1995",
+    "I1996"
+  ],
+  "parentIds": [],
+  "marriages": [
     {
-      "date": "1891",
-      "place": "Horsebridge, Kings Somborne, Hampshire"
+      "spouseId": "I1034",
+      "familyId": "F480"
     }
   ],
   "avatar": "avatars/I1628_0.jpg"

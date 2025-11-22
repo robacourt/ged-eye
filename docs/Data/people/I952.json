@@ -1,16 +1,16 @@
 {
   "id": "I952",
-  "name": "Ellen Unknown",
-  "givenName": "Ellen",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "John Lawler",
+  "givenName": "John",
+  "surname": "Lawler",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I951"
+    "I953"
   ],
   "childIds": [
     "I103"
@@ -18,8 +18,8 @@
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I951",
-      "familyId": "F61"
+      "spouseId": "I953",
+      "familyId": "F68"
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
   "id": "I550",
-  "name": "Elias A'Court",
-  "givenName": "Elias",
+  "name": "Ann A'Court",
+  "givenName": "Ann",
   "surname": "A'Court",
-  "sex": "M",
+  "sex": "F",
   "birthDate": "1679",
   "birthPlace": null,
   "deathDate": "1681",
@@ -12,12 +12,10 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I541",
-    "I542"
+    "I542",
+    "I543"
   ],
-  "baptismDate": "30.12.1679",
-  "baptismPlace": "North Cadbury, Somerset",
   "notes": [
-    "Twin of Ann ?"
+    "Twin of Elias ?"
   ]
 }

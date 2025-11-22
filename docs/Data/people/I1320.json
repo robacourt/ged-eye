@@ -1,63 +1,28 @@
 {
   "id": "I1320",
-  "name": "Amelia Palmer",
-  "givenName": "Amelia",
+  "name": "Thomas Palmer",
+  "givenName": "Thomas",
   "surname": "Palmer",
-  "sex": "F",
-  "birthDate": "1835",
-  "birthPlace": "Yeovil, Somerset",
-  "deathDate": null,
+  "sex": "M",
+  "birthDate": "1799",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": "AFT 1861",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1322"
+    "I763"
   ],
   "childIds": [
-    "I1323",
-    "I1325",
-    "I1326",
-    "I1327",
-    "I1329",
-    "I1331"
+    "I1321",
+    "I1322"
   ],
-  "parentIds": [
-    "I1319",
-    "I762"
-  ],
-  "burialDate": "16 FEB 1901",
-  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
-  "occupations": [
-    "Glover",
-    "Glover",
-    "Glover"
-  ],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Yeovil, Somerset, Ebenezer Row"
-    },
-    {
-      "date": "1861",
-      "place": "Stoke Sub Hamdon, Somerset, Higher Street,"
-    },
-    {
-      "date": "1871",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    },
-    {
-      "date": "1881",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    },
-    {
-      "date": "1891",
-      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1322",
-      "familyId": "F522",
-      "marriageDate": "BEF 1854"
+      "spouseId": "I763",
+      "familyId": "F363",
+      "marriageDate": "16 SEP 1832",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
     }
   ]
 }

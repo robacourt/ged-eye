@@ -1,37 +1,25 @@
 {
   "id": "I1486",
-  "name": "Lillian Bennett Chamberlain",
-  "givenName": "Lillian Bennett",
-  "surname": "Chamberlain",
-  "sex": "F",
-  "birthDate": "13 MAR 1885",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1 MAY 1956",
-  "deathPlace": "Enfield, Middlesex",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1516"
+    "I778"
   ],
   "childIds": [
-    "I1517",
-    "I1519",
-    "I1520",
-    "I1521",
-    "I1524"
+    "I1487"
   ],
-  "parentIds": [
-    "I1485",
-    "I777"
-  ],
-  "notes": [
-    "Thought to be the illegitimate daughter of Capt. James Wentworth Bennett of the Manor House, Bournemouth."
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1516",
-      "familyId": "F566",
-      "marriageDate": "25 DEC 1905",
-      "marriagePlace": "Enfield, Middlesex,  St. John The Baptist"
+      "spouseId": "I778",
+      "familyId": "F378"
     }
   ]
 }

@@ -1,27 +1,25 @@
 {
   "id": "I1369",
-  "name": "Priscilla Cundy",
-  "givenName": "Priscilla",
-  "surname": "Cundy",
+  "name": "Barbara Palmer",
+  "givenName": "Barbara",
+  "surname": "Palmer",
   "sex": "F",
-  "birthDate": "1847",
-  "birthPlace": "Wellington, New Zealand",
-  "deathDate": "1931",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1344"
+    "I1368"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1347",
-    "I1348"
+  "childIds": [
+    "I1367"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1344",
-      "familyId": "F531",
-      "marriageDate": "1873"
+      "spouseId": "I1368",
+      "familyId": "F612"
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
   "id": "I720",
-  "name": "Sandra Peters",
-  "givenName": "Sandra",
+  "name": "Ronald Vincent Peters",
+  "givenName": "Ronald Vincent",
   "surname": "Peters",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,15 +12,17 @@
   "spouseIds": [
     "I1400"
   ],
-  "childIds": [],
+  "childIds": [
+    "I721"
+  ],
   "parentIds": [
-    "I719",
-    "I1399"
+    "I1399",
+    "I719"
   ],
   "marriages": [
     {
       "spouseId": "I1400",
-      "familyId": "F294"
+      "familyId": "F343"
     }
   ]
 }

@@ -1,29 +1,44 @@
 {
   "id": "I865",
-  "name": "Joseph White",
-  "givenName": "Joseph",
-  "surname": "White",
+  "name": "Elias Chamberlain",
+  "givenName": "Elias",
+  "surname": "Chamberlain",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "28 SEP 1837",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "7 MAR 1879",
+  "deathPlace": "North Cadbury, Somerset",
   "photos": [],
   "spouseIds": [
-    "I777"
+    "I778"
   ],
   "childIds": [
-    "I1532",
-    "I1533"
+    "I1492",
+    "I1493",
+    "I1494",
+    "I1497",
+    "I1508",
+    "I1509",
+    "I1514",
+    "I1510",
+    "I1511",
+    "I1515"
   ],
   "parentIds": [
-    "I1531"
+    "I1490",
+    "I1491"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Galhampton North Cadbury, Cottage"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I777",
-      "familyId": "F326",
-      "marriageDate": "12 SEP 1886"
+      "spouseId": "I778",
+      "familyId": "F375",
+      "marriageDate": "11 AUG 1863"
     }
   ]
 }

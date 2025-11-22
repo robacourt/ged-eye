@@ -1,34 +1,26 @@
 {
   "id": "I1160",
-  "name": "Francis Paull",
-  "givenName": "Francis",
-  "surname": "Paull",
-  "sex": "M",
-  "birthDate": "ABT 1900",
+  "name": "Mary Monica Curtis",
+  "givenName": "Mary Monica",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1903",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1159"
+    "I1161"
   ],
   "childIds": [],
   "parentIds": [
-    "I1161"
-  ],
-  "occupations": [
-    "Farmer"
-  ],
-  "residences": [
-    {
-      "date": "1926",
-      "place": "Merriott, Somerset"
-    }
+    "I1156",
+    "I1157"
   ],
   "marriages": [
     {
-      "spouseId": "I1159",
-      "familyId": "F472",
+      "spouseId": "I1161",
+      "familyId": "F535",
       "marriageDate": "14 JULY  1926",
       "marriagePlace": "Marnhull, Dorset"
     }

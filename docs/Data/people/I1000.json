@@ -1,7 +1,7 @@
 {
   "id": "I1000",
-  "name": "Joan A'Court",
-  "givenName": "Joan",
+  "name": "Sylvia A'Court",
+  "givenName": "Sylvia",
   "surname": "A'Court",
   "sex": "F",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I973",
-    "I998"
+    "I974",
+    "I999"
   ]
 }

@@ -1,26 +1,31 @@
 {
   "id": "I1250",
-  "name": "Samuel Fudge",
-  "givenName": "Samuel",
+  "name": "Charlotte Fudge",
+  "givenName": "Charlotte",
   "surname": "Fudge",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1249"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1248",
+    "I1254"
+  ],
+  "parentIds": [
+    "I1251"
+  ],
   "occupations": [
-    "Ag Lab"
+    "Laundress"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F503"
+      "spouseId": "I1249",
+      "familyId": "F569"
     }
   ]
 }

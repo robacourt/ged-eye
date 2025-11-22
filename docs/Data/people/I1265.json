@@ -1,11 +1,11 @@
 {
   "id": "I1265",
-  "name": "Gerald J. Acreman",
-  "givenName": "Gerald J.",
-  "surname": "Acreman",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Peggy Martha Jane Wills",
+  "givenName": "Peggy Martha Jane",
+  "surname": "Wills",
+  "sex": "F",
+  "birthDate": "1929",
+  "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -13,14 +13,13 @@
     "I1093"
   ],
   "childIds": [
-    "I2673"
+    "I2633"
   ],
   "parentIds": [],
   "marriages": [
     {
       "spouseId": "I1093",
-      "familyId": "F440",
-      "marriageDate": "1931"
+      "familyId": "F501"
     }
   ]
 }

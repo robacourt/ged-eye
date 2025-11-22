@@ -1,23 +1,21 @@
 {
   "id": "I1559",
-  "name": "Kenneth (Dennis) George A'Court",
-  "givenName": "Kenneth (Dennis) George",
+  "name": "Nathaniel A'Court",
+  "givenName": "Nathaniel",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "27 JULY 1937,",
-  "birthPlace": "Markham, Bedwellty, Monmouth",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I2279"
-  ],
-  "occupations": [
-    "County Cricketer"
-  ],
-  "notes": [
-    "Dennis A'Court"
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1821",
+      "place": "Marnhull, Dorset, Ham Lane"
+    }
   ]
 }

@@ -1,23 +1,23 @@
 {
   "id": "I1580",
-  "name": "Fred Uren",
-  "givenName": "Fred",
-  "surname": "Uren",
-  "sex": "M",
-  "birthDate": "ABT 1900",
-  "birthPlace": "Blandford Forum, Dorset",
+  "name": "Maud Unknown",
+  "givenName": "Maud",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1871",
+  "birthPlace": "Falmouth, Cornwall",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 17 25.jpg",
-    "Data/Media/1911 census/Dorset/Blandford/RG14 12216 152.jpg"
+    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 17 25.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I266",
-    "I1579"
+  "spouseIds": [
+    "I266"
   ],
+  "childIds": [
+    "I1581"
+  ],
+  "parentIds": [],
   "censusRecords": [
     {
       "date": "1901",
@@ -26,6 +26,13 @@
     {
       "date": "1911",
       "place": "Blandford, Dorset, 7 Charles St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I266",
+      "familyId": "F148",
+      "marriageDate": "ABT 1897"
     }
   ],
   "avatar": "avatars/I1580_0.jpg"

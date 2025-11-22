@@ -1,38 +1,59 @@
 {
   "id": "I1765",
-  "name": "Alfred A'Court",
-  "givenName": "Alfred",
+  "name": "George A'Court",
+  "givenName": "George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1825",
-  "birthPlace": "Horsington, Somerset",
+  "birthDate": "ABT 1832",
+  "birthPlace": "Brockley, Bedminster, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1862"
+    "I2258"
   ],
   "childIds": [
-    "I1863"
+    "I2259",
+    "I2260",
+    "I1602",
+    "I1609"
   ],
   "parentIds": [
-    "I577",
-    "I578"
+    "I1387",
+    "I1406"
+  ],
+  "occupations": [
+    "Farm Labourer",
+    "Saw Yard Labourer",
+    "Railway Labourer",
+    "Railway Labourer"
   ],
   "censusRecords": [
     {
       "date": "1841",
-      "place": "Horsington, Somerset"
+      "place": "Brockley, Bedminster, Somerset, Court Farm House"
     },
     {
-      "date": "1851",
-      "place": "Horsington, Somerset, Poor Lane"
+      "date": "1861",
+      "place": "Bedminster, Bristol, 11 Richmond Terrace."
+    },
+    {
+      "date": "1871",
+      "place": "Bedminster, Bristol, 18 Clarence Place"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, Warrington, 34 Chorley St."
+    },
+    {
+      "date": "1891",
+      "place": "Lancashire, Warrington, Sandy Lane, Cherry House"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1862",
-      "familyId": "F671"
+      "spouseId": "I2258",
+      "familyId": "F694"
     }
   ]
 }

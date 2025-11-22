@@ -1,28 +1,33 @@
 {
   "id": "I1157",
-  "name": "Hurbert Wylds",
-  "givenName": "Hurbert",
+  "name": "Alice Mary Wylds",
+  "givenName": "Alice Mary",
   "surname": "Wylds",
-  "sex": "M",
-  "birthDate": null,
+  "sex": "F",
+  "birthDate": "12 APRIL 1869",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1158"
-  ],
-  "childIds": [
     "I1156"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab"
+  "childIds": [
+    "I1160",
+    "I1163"
   ],
+  "parentIds": [
+    "I1158",
+    "I1159"
+  ],
+  "baptismDate": "13 JUN 1869",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1158",
-      "familyId": "F471"
+      "spouseId": "I1156",
+      "familyId": "F533",
+      "marriageDate": "15 JAN 1902",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

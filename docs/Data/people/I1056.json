@@ -1,9 +1,9 @@
 {
   "id": "I1056",
-  "name": "Jeanetta Robyn Kerr",
-  "givenName": "Jeanetta Robyn",
-  "surname": "Kerr",
-  "sex": "F",
+  "name": "Wayne Darcy Malone",
+  "givenName": "Wayne Darcy",
+  "surname": "Malone",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1054",
-    "I1053"
+    "I1055",
+    "I1054"
   ]
 }

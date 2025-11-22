@@ -1,24 +1,36 @@
 {
   "id": "I887",
-  "name": "Edith Mary A'Court",
-  "givenName": "Edith Mary",
-  "surname": "A'Court",
+  "name": "Ann Unknown",
+  "givenName": "Ann",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "BEF 1852",
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": "ABT 1820",
+  "birthPlace": "Oxford, Oxfordshire",
+  "deathDate": "AFT 1881",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I767",
-    "I886"
+  "spouseIds": [
+    "I768"
+  ],
+  "childIds": [
+    "I888",
+    "I889",
+    "I890",
+    "I891"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Hackney, 64 Graham Road"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F378"
+      "spouseId": "I768",
+      "familyId": "F369",
+      "marriageDate": "1843",
+      "marriagePlace": "Somerset"
     }
   ]
 }

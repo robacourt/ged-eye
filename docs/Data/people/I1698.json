@@ -1,7 +1,7 @@
 {
   "id": "I1698",
-  "name": "Kevin Floyd A'Court",
-  "givenName": "Kevin Floyd",
+  "name": "Gavin Bruce A'Court",
+  "givenName": "Gavin Bruce",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": "3RD QR 1973",
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1696",
-    "I1695"
+    "I1697",
+    "I1696"
   ]
 }

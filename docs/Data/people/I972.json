@@ -1,25 +1,25 @@
 {
   "id": "I972",
-  "name": "Rosanna McMunn",
-  "givenName": "Rosanna",
-  "surname": "McMunn",
-  "sex": "F",
+  "name": "William Whitton",
+  "givenName": "William",
+  "surname": "Whitton",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I971"
+    "I973"
   ],
   "childIds": [
-    "I733"
+    "I734"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I971",
-      "familyId": "F298"
+      "spouseId": "I973",
+      "familyId": "F348"
     }
   ]
 }

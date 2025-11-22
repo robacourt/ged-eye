@@ -1,26 +1,15 @@
 {
   "id": "I710",
-  "name": "Elizabeth A'Court",
-  "givenName": "Elizabeth",
-  "surname": "A'Court",
-  "sex": "F",
+  "name": "Henry Adam Hill",
+  "givenName": "Henry Adam",
+  "surname": "Hill",
+  "sex": "U",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I711"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Mandy Pemberton <corpie@alphalink.com.au>"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I711",
-      "familyId": "F290"
-    }
-  ]
+  "parentIds": []
 }

@@ -1,34 +1,27 @@
 {
   "id": "I1345",
-  "name": "Alice Jane A'Court",
-  "givenName": "Alice Jane",
+  "name": "William A'Court",
+  "givenName": "William",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1842",
-  "birthPlace": null,
-  "deathDate": "22 DEC 1898",
+  "sex": "M",
+  "birthDate": "1850",
+  "birthPlace": "New Zealand",
+  "deathDate": "1934",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1346"
+    "I1370"
   ],
-  "childIds": [
-    "I1349",
-    "I1351",
-    "I1353",
-    "I1355",
-    "I1357",
-    "I1359",
-    "I1363"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I935",
-    "I936"
+    "I936",
+    "I937"
   ],
   "marriages": [
     {
-      "spouseId": "I1346",
-      "familyId": "F532"
+      "spouseId": "I1370",
+      "familyId": "F601",
+      "marriageDate": "1873"
     }
   ]
 }

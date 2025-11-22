@@ -1,9 +1,9 @@
 {
   "id": "I893",
-  "name": "John Chamberlain",
-  "givenName": "John",
+  "name": "Mary Chamberlain",
+  "givenName": "Mary",
   "surname": "Chamberlain",
-  "sex": "M",
+  "sex": "F",
   "birthDate": "ABT 1845",
   "birthPlace": "North Cadbury, Somerset",
   "deathDate": "AFT 1851",
@@ -12,8 +12,8 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I891",
-    "I768"
+    "I892",
+    "I769"
   ],
   "censusRecords": [
     {

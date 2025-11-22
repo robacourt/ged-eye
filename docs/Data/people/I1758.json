@@ -1,19 +1,19 @@
 {
   "id": "I1758",
-  "name": "Nar Chamberlain",
-  "givenName": "Nar",
+  "name": "Henry Chamberlain",
+  "givenName": "Henry",
   "surname": "Chamberlain",
   "sex": "M",
-  "birthDate": "ABT 1853",
-  "birthPlace": "Somerset",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Neath, Glamorgan",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I891",
-    "I768"
+    "I892",
+    "I769"
   ],
   "occupations": [
     "Stonemason"
@@ -22,6 +22,12 @@
     {
       "date": "1881",
       "place": "Pendleton-in-Salford, 13 Lytham St, Lancashire"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F734"
     }
   ]
 }

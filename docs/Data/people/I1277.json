@@ -1,33 +1,31 @@
 {
   "id": "I1277",
-  "name": "Doris Stacey",
-  "givenName": "Doris",
+  "name": "Frederick George Stacey",
+  "givenName": "Frederick George",
   "surname": "Stacey",
-  "sex": "F",
-  "birthDate": "MAR 1919",
-  "birthPlace": "Thames Ditton, Surrey",
-  "deathDate": "1997",
-  "deathPlace": "Worthing, East Sussex",
+  "sex": "M",
+  "birthDate": "15 DEC 1893",
+  "birthPlace": "Shortheath, Farnham, Surrey",
+  "deathDate": "24 AUG 1973",
+  "deathPlace": "Thames Ditton, Surrey",
   "photos": [],
   "spouseIds": [
-    "I1279",
-    "I1280"
+    "I1264"
   ],
   "childIds": [
-    "I1281"
+    "I1278",
+    "I1279"
   ],
   "parentIds": [
-    "I1276",
-    "I1263"
+    "I1289",
+    "I1290"
   ],
   "marriages": [
     {
-      "spouseId": "I1279",
-      "familyId": "F516"
-    },
-    {
-      "spouseId": "I1280",
-      "familyId": "F517"
+      "spouseId": "I1264",
+      "familyId": "F576",
+      "marriageDate": "19 JUN 1916",
+      "marriagePlace": "Selborne, Hampshire"
     }
   ]
 }

@@ -1,29 +1,18 @@
 {
   "id": "I555",
-  "name": "John a`Court",
-  "givenName": "John",
-  "surname": "a`Court",
+  "name": "Edmunde A'Court",
+  "givenName": "Edmunde",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1609",
-  "birthPlace": "South Cadbury, Somerset",
-  "deathDate": "ABT 1692",
+  "birthDate": "1687",
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I556"
-  ],
-  "childIds": [
-    "I541",
-    "I557"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I558",
-    "I559"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I556",
-      "familyId": "F232"
-    }
+    "I542",
+    "I543"
   ]
 }

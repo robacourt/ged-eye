@@ -1,30 +1,29 @@
 {
   "id": "I580",
-  "name": "Robert William Foot",
-  "givenName": "Robert William",
+  "name": "John Foot",
+  "givenName": "John",
   "surname": "Foot",
   "sex": "M",
-  "birthDate": "1859",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I582"
+    "I154"
   ],
   "childIds": [
-    "I718"
+    "I581"
   ],
   "parentIds": [
-    "I579",
-    "I154"
+    "I717",
+    "I718"
   ],
   "marriages": [
     {
-      "spouseId": "I582",
-      "familyId": "F239",
-      "marriageDate": "20 MAY 1890",
-      "marriagePlace": "Manston, Dorset"
+      "spouseId": "I154",
+      "familyId": "F100",
+      "marriageDate": "1859"
     }
   ]
 }

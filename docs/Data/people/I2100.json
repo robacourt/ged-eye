@@ -1,18 +1,27 @@
 {
   "id": "I2100",
-  "name": "Amelia Thomas",
-  "givenName": "Amelia",
+  "name": "Sydney Thomas",
+  "givenName": "Sydney",
   "surname": "Thomas",
-  "sex": "F",
-  "birthDate": "1942",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I2099",
-    "I2098"
+  "spouseIds": [
+    "I2099"
+  ],
+  "childIds": [
+    "I2101",
+    "I2102"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I2099",
+      "familyId": "F824",
+      "marriageDate": "1939"
+    }
   ]
 }

@@ -1,19 +1,33 @@
 {
   "id": "I1671",
-  "name": "Ibbot Dean",
+  "name": "Ibbot Unknown",
   "givenName": "Ibbot",
-  "surname": "Dean",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "ABT 1729",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1788",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1669",
+  "spouseIds": [
     "I1670"
   ],
-  "baptismDate": "8 APR 1729"
+  "childIds": [
+    "I1672",
+    "I1673",
+    "I1674",
+    "I1675",
+    "I1676",
+    "I1677",
+    "I15",
+    "I1678"
+  ],
+  "parentIds": [],
+  "burialDate": "11 JUN 1788",
+  "marriages": [
+    {
+      "spouseId": "I1670",
+      "familyId": "F11"
+    }
+  ]
 }

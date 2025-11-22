@@ -1,34 +1,44 @@
 {
   "id": "I1461",
-  "name": "Richard A'Court",
-  "givenName": "Richard",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1848",
+  "name": "Emily Kate Unknown",
+  "givenName": "Emily Kate",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1856",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/Marnhull/RG09 1329 35 39.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1460"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I177",
-    "I1195"
+  "childIds": [
+    "I1457",
+    "I1463",
+    "I1464"
   ],
-  "baptismDate": "6 OCT 1860",
-  "baptismPlace": "Marnhull, Dorset",
-  "burialDate": "15 MAY 1863",
-  "burialPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Agricultural Labourer"
+  "parentIds": [],
+  "notes": [
+    "Lucy's father was James, but cannot tie him in, too many loose connections, she had a sister called Emily, Ada possible born after 1881 otherwise no information."
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "Marnhull, Dorset, East Well"
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burges"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
+    },
+    {
+      "date": "1901",
+      "place": "Middlesex, Ealing,13 Norfolk Terrace, Northfield Lane."
     }
   ],
-  "avatar": "avatars/I1461_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1460",
+      "familyId": "F646"
+    }
+  ]
 }

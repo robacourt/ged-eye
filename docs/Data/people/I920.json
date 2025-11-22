@@ -1,23 +1,31 @@
 {
   "id": "I920",
-  "name": "John Philp",
-  "givenName": "John",
-  "surname": "Philp",
-  "sex": "M",
-  "birthDate": "20 MAY 1893",
-  "birthPlace": null,
-  "deathDate": "27 JUN 1979",
-  "deathPlace": null,
+  "name": "Hilda Maud Tommey",
+  "givenName": "Hilda Maud",
+  "surname": "Tommey",
+  "sex": "F",
+  "birthDate": "14 MAR 1904",
+  "birthPlace": "Hursley, Winchester, Hampshire",
+  "deathDate": "13 JUL 1995",
+  "deathPlace": "Purton, Wiltshire, The Cedars,",
   "photos": [],
   "spouseIds": [
     "I913"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2002"
+  ],
   "parentIds": [],
+  "burialPlace": "Purton, Wiltshire, St Mary's",
+  "notes": [
+    "Known to have lived in:"
+  ],
   "marriages": [
     {
       "spouseId": "I913",
-      "familyId": "F381"
+      "familyId": "F434",
+      "marriageDate": "14 DEC 1929",
+      "marriagePlace": "Purton, Wiltshire, St. Mary's"
     }
   ]
 }

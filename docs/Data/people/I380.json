@@ -1,7 +1,7 @@
 {
   "id": "I380",
-  "name": "Christina  Hill cNutt",
-  "givenName": "Christina  Hill",
+  "name": "Christina Hill cNutt",
+  "givenName": "Christina Hill",
   "surname": "cNutt",
   "sex": "F",
   "birthDate": "16 JAN 1862",
@@ -10,9 +10,9 @@
   "deathPlace": "Worcestershire",
   "photos": [
     "Data/Media/1921 Census/Kent/GBC_1921_RG15_03844_0391.jpg",
-    "Data/Media/Newspaper Reports/Brightside Great Malvern.docx",
     "Data/Media/Newspaper Reports/Bromley & West Kent Telegraph Jan 7 1899.jpg",
-    "Data/Media/Newspaper Reports/Bromley & West Kent Mercury 26 Nov 1937.jpg"
+    "Data/Media/Newspaper Reports/Bromley & West Kent Mercury 26 Nov 1937.jpg",
+    "Data/Media/Newspaper Reports/Brightside Great Malvern.docx"
   ],
   "spouseIds": [
     "I377"
@@ -54,7 +54,7 @@
   "marriages": [
     {
       "spouseId": "I377",
-      "familyId": "F172",
+      "familyId": "F193",
       "marriageDate": "1882"
     }
   ],

@@ -1,51 +1,21 @@
 {
   "id": "I1029",
-  "name": "Ethel Louise (Louie) A'Court",
-  "givenName": "Ethel Louise (Louie)",
+  "name": "Alice A'Court",
+  "givenName": "Alice",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1895",
-  "birthPlace": null,
-  "deathDate": "1949",
-  "deathPlace": "London, Clapham Common",
-  "photos": [
-    "Data/Picture/Ethel Louie  her mother Emily Cribb.jpg",
-    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg"
-  ],
-  "spouseIds": [
-    "I1952"
-  ],
-  "childIds": [
-    "I1953"
-  ],
+  "birthDate": "1893",
+  "birthPlace": "Somerset",
+  "deathDate": "1893",
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I782",
-    "I870"
-  ],
-  "occupations": [
-    "Hairdresser"
+    "I783",
+    "I871"
   ],
   "notes": [
-    "Louie became a hairdresser.  She and her husband Frederick Arthur (known as Arthur) owned a newsagents/hairdressers/barbers in Caledonian Road."
-  ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Martock, Somerset, East St."
-    }
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Ilford, Essex"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1952",
-      "familyId": "F696",
-      "marriageDate": "SEP 14 1919"
-    }
-  ],
-  "avatar": "avatars/I1029_0.jpg"
+    "Not on 1901 census !"
+  ]
 }

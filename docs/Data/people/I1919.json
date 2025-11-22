@@ -1,7 +1,7 @@
 {
   "id": "I1919",
-  "name": "Tyler A'Court",
-  "givenName": "Tyler",
+  "name": "Ryan A'Court",
+  "givenName": "Ryan",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1299",
-    "I1916"
+    "I1300",
+    "I1917"
   ]
 }

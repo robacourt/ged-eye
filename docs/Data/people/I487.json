@@ -1,18 +1,25 @@
 {
   "id": "I487",
-  "name": "Harry A'Court",
-  "givenName": "Harry",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1915",
+  "name": "Miss Godden",
+  "givenName": "Miss",
+  "surname": "Godden",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I485",
+  "spouseIds": [
     "I486"
+  ],
+  "childIds": [
+    "I488"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I486",
+      "familyId": "F250"
+    }
   ]
 }

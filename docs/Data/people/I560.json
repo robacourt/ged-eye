@@ -1,18 +1,36 @@
 {
   "id": "I560",
-  "name": "Edmonde a'Court",
-  "givenName": "Edmonde",
-  "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "Abt 1603",
+  "name": "Lucres Abbot",
+  "givenName": "Lucres",
+  "surname": "Abbot",
+  "sex": "F",
+  "birthDate": "BEF 1580",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "ABT 1661",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I558",
+  "spouseIds": [
     "I559"
+  ],
+  "childIds": [
+    "I561",
+    "I562",
+    "I563",
+    "I556",
+    "I564",
+    "I565",
+    "I566",
+    "I567",
+    "I568",
+    "I569"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I559",
+      "familyId": "F281",
+      "marriageDate": "11 JUL 1602",
+      "marriagePlace": "Bratton Seymour, Somerset"
+    }
   ]
 }

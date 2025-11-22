@@ -1,8 +1,8 @@
 {
   "id": "I1286",
-  "name": "Nellie Stacey",
-  "givenName": "Nellie",
-  "surname": "Stacey",
+  "name": "Frank Moneys",
+  "givenName": "Frank",
+  "surname": "Moneys",
   "sex": "U",
   "birthDate": null,
   "birthPlace": null,
@@ -11,8 +11,5 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1288",
-    "I1289"
-  ]
+  "parentIds": []
 }

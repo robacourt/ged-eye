@@ -1,27 +1,18 @@
 {
   "id": "I1987",
-  "name": "Charles Daniels",
-  "givenName": "Charles",
-  "surname": "Daniels",
+  "name": "Peter Marks",
+  "givenName": "Peter",
+  "surname": "Marks",
   "sex": "M",
-  "birthDate": "ABT 1862",
-  "birthPlace": "Southsea, Hampshire",
+  "birthDate": "1949",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1726",
-    "I77"
-  ],
-  "occupations": [
-    "Sailmaker"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Portsea Hampshire, Prince Regent Arms, 19 Prince St."
-    }
+    "I1537",
+    "I1536"
   ]
 }

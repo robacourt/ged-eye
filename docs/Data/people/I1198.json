@@ -1,18 +1,25 @@
 {
   "id": "I1198",
-  "name": "Peter Haskett",
-  "givenName": "Peter",
-  "surname": "Haskett",
-  "sex": "M",
+  "name": "Maud Unknown",
+  "givenName": "Maud",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1196",
+  "spouseIds": [
     "I1197"
+  ],
+  "childIds": [
+    "I1199"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1197",
+      "familyId": "F552"
+    }
   ]
 }

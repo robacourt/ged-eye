@@ -1,31 +1,27 @@
 {
   "id": "I1370",
-  "name": "Julia Pashby",
-  "givenName": "Julia",
-  "surname": "Pashby",
+  "name": "Priscilla Cundy",
+  "givenName": "Priscilla",
+  "surname": "Cundy",
   "sex": "F",
-  "birthDate": "ABT 1850",
-  "birthPlace": null,
-  "deathDate": "BEF 1950",
+  "birthDate": "1847",
+  "birthPlace": "Wellington, New Zealand",
+  "deathDate": "1931",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I947"
+    "I1345"
   ],
-  "childIds": [
-    "I1375",
-    "I1376",
-    "I1377",
-    "I1378",
-    "I1379"
+  "childIds": [],
+  "parentIds": [
+    "I1348",
+    "I1349"
   ],
-  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I947",
-      "familyId": "F395",
-      "marriageDate": "1883",
-      "marriagePlace": "New Zealand"
+      "spouseId": "I1345",
+      "familyId": "F601",
+      "marriageDate": "1873"
     }
   ]
 }

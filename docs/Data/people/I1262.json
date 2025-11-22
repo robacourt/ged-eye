@@ -1,31 +1,28 @@
 {
   "id": "I1262",
-  "name": "Elizabeth Ralph",
-  "givenName": "Elizabeth",
-  "surname": "Ralph",
-  "sex": "F",
+  "name": "Ambrose Seymour",
+  "givenName": "Ambrose",
+  "surname": "Seymour",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1261"
+    "I1263"
   ],
   "childIds": [
-    "I1260"
+    "I1261"
   ],
   "parentIds": [],
-  "residences": [
-    {
-      "date": null,
-      "place": "Stalbridge, Dorset"
-    }
+  "occupations": [
+    "Yeoman"
   ],
   "marriages": [
     {
-      "spouseId": "I1261",
-      "familyId": "F508"
+      "spouseId": "I1263",
+      "familyId": "F575"
     }
   ]
 }

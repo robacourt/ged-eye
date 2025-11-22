@@ -1,8 +1,8 @@
 {
   "id": "I705",
-  "name": "Dinah ?????",
-  "givenName": "Dinah",
-  "surname": "?????",
+  "name": "Edward Dober",
+  "givenName": "Edward",
+  "surname": "Dober",
   "sex": "U",
   "birthDate": null,
   "birthPlace": null,
@@ -11,5 +11,8 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "notes": [
+    "Witness to marriage of Felix A'Court and Jane Dober, possible Jane's brother."
+  ]
 }

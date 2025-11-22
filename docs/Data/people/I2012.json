@@ -1,25 +1,28 @@
 {
   "id": "I2012",
-  "name": "Willie Garnett",
-  "givenName": "Willie",
-  "surname": "Garnett",
-  "sex": "M",
+  "name": "Susan Wigglesworth",
+  "givenName": "Susan",
+  "surname": "Wigglesworth",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "15 OCT 2021",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2011"
+    "I2013"
   ],
   "childIds": [
-    "I488"
+    "I489"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2009",
+    "I422"
+  ],
   "marriages": [
     {
-      "spouseId": "I2011",
-      "familyId": "F719"
+      "spouseId": "I2013",
+      "familyId": "F252"
     }
   ]
 }

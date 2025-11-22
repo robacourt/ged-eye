@@ -1,18 +1,29 @@
 {
   "id": "I714",
-  "name": "Nathanial a'Court",
-  "givenName": "Nathanial",
-  "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "ABT 1828",
+  "name": "Sarah ?????",
+  "givenName": "Sarah",
+  "surname": "?????",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I713"
+  ],
   "childIds": [],
   "parentIds": [],
+  "occupations": [
+    ""
+  ],
   "notes": [
     "Please advise any errors/send additions to:"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I713",
+      "familyId": "F341"
+    }
   ]
 }

@@ -11,7 +11,7 @@
   "photos": [],
   "spouseIds": [
     "I379",
-    "I879"
+    "I880"
   ],
   "childIds": [],
   "parentIds": [],
@@ -46,12 +46,12 @@
   "marriages": [
     {
       "spouseId": "I379",
-      "familyId": "F174",
+      "familyId": "F195",
       "marriageDate": "5 APRIL 1898"
     },
     {
-      "spouseId": "I879",
-      "familyId": "F595"
+      "spouseId": "I880",
+      "familyId": "F199"
     }
   ]
 }

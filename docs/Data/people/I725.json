@@ -1,21 +1,23 @@
 {
   "id": "I725",
-  "name": "Pearce A'Court",
-  "givenName": "Pearce",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Katherine Unknown",
+  "givenName": "Katherine",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1744",
   "birthPlace": null,
-  "deathDate": "1768",
+  "deathDate": "23 SEP. 1776",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I724"
+  ],
   "childIds": [],
   "parentIds": [],
-  "occupations": [
-    "MP. for Heytesbury"
-  ],
-  "notes": [
-    "Authors source,"
+  "marriages": [
+    {
+      "spouseId": "I724",
+      "familyId": "F345"
+    }
   ]
 }

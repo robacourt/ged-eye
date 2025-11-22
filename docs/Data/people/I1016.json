@@ -1,8 +1,8 @@
 {
   "id": "I1016",
-  "name": "Eric Bardsley",
-  "givenName": "Eric",
-  "surname": "Bardsley",
+  "name": "Douglas Martin",
+  "givenName": "Douglas",
+  "surname": "Martin",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,14 +10,16 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1003"
+    "I1004"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1018"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1003",
-      "familyId": "F417"
+      "spouseId": "I1004",
+      "familyId": "F472"
     }
   ]
 }

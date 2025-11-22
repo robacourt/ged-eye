@@ -1,27 +1,33 @@
 {
   "id": "I461",
-  "name": "Kathleen Mabel Lent",
-  "givenName": "Kathleen Mabel",
+  "name": "Marjorie Edith Alice Lent",
+  "givenName": "Marjorie Edith Alice",
   "surname": "Lent",
   "sex": "F",
-  "birthDate": "30 NOV 1913",
-  "birthPlace": "Kent, Dover",
-  "deathDate": "MAY 1995",
-  "deathPlace": "Lancashire, Blackburn",
+  "birthDate": "12 FEB 1910",
+  "birthPlace": "Canterbury, Kent",
+  "deathDate": "7 APR 1994",
+  "deathPlace": "Kent, Canterbury",
   "photos": [],
   "spouseIds": [
-    "I2951"
+    "I467"
   ],
   "childIds": [],
   "parentIds": [
     "I455",
-    "I459"
+    "I460"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Dover, Kent 1Harveyan Place"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I2951",
-      "familyId": "F1009",
-      "marriageDate": "JUL 1939",
+      "spouseId": "I467",
+      "familyId": "F246",
+      "marriageDate": "JUL 1937",
       "marriagePlace": "London, Woolwich"
     }
   ]

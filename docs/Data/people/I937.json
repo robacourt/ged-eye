@@ -1,36 +1,49 @@
 {
   "id": "I937",
-  "name": "James A'Court",
-  "givenName": "James",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "17 APRIL 1852",
-  "birthPlace": "Wellington, New Zealand",
-  "deathDate": "1911",
-  "deathPlace": null,
+  "name": "Catherine Howden Hunter TODRICK",
+  "givenName": "Catherine Howden Hunter",
+  "surname": "TODRICK",
+  "sex": "F",
+  "birthDate": "7 FEB 1820",
+  "birthPlace": "Haddington, East Loathian, Scotland",
+  "deathDate": "1 SEP 1904",
+  "deathPlace": "Sanson,Manawatu, NZ",
   "photos": [],
   "spouseIds": [
-    "I938"
+    "I936"
   ],
   "childIds": [
-    "I939",
-    "I941",
-    "I942",
-    "I943",
-    "I944",
-    "I945",
-    "I946"
+    "I1346",
+    "I1343",
+    "I1344",
+    "I1345",
+    "I938",
+    "I950",
+    "I948",
+    "I949"
   ],
   "parentIds": [
-    "I935",
-    "I936"
+    "I1341",
+    "I1342"
+  ],
+  "occupations": [
+    "Servant"
+  ],
+  "notes": [
+    "They left Gravesend on the  'London' on the second"
+  ],
+  "residences": [
+    {
+      "date": "1840",
+      "place": "Chelsea, Middlesex, 62 South Street,"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I938",
-      "familyId": "F392",
-      "marriageDate": "19 DEC 1883",
-      "marriagePlace": "Waitoi, Sanson,Wellington, New Zealand"
+      "spouseId": "I936",
+      "familyId": "F443",
+      "marriageDate": "10 AUG 1840",
+      "marriagePlace": "Chelsea & Kensington, London"
     }
   ]
 }

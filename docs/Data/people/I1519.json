@@ -1,23 +1,24 @@
 {
   "id": "I1519",
-  "name": "Lillian Alice Morgan",
-  "givenName": "Lillian Alice",
-  "surname": "Morgan",
+  "name": "Kate Isabel Baldwin",
+  "givenName": "Kate Isabel",
+  "surname": "Baldwin",
   "sex": "F",
-  "birthDate": "9 APR 1909",
-  "birthPlace": "London, St. Pancras, 11 Stratford Place off Oxford Street.",
-  "deathDate": "30 JUNE 1911",
-  "deathPlace": null,
-  "photos": [
-    "Data/Picture/Lilian Morgan.jpg"
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "7 JAN 1987",
+  "deathPlace": "Exmouth, Devon. 9 Brixington Drive",
+  "photos": [],
+  "spouseIds": [
+    "I1518"
   ],
-  "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1516",
-    "I1486"
-  ],
-  "burialDate": "6 JULY 1911",
-  "burialPlace": "Chestnut Cemetery",
-  "avatar": "avatars/I1519_0.jpg"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1518",
+      "familyId": "F665",
+      "marriageDate": "9 APRIL 1932"
+    }
+  ]
 }

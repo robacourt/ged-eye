@@ -1,8 +1,8 @@
 {
   "id": "I1549",
-  "name": "Letha MacDonald",
-  "givenName": "Letha",
-  "surname": "MacDonald",
+  "name": "Anne A'Court",
+  "givenName": "Anne",
+  "surname": "A'Court",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
@@ -10,20 +10,17 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1545"
+    "I1558"
   ],
-  "childIds": [
-    "I1552",
-    "I1553"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I1550",
-    "I1551"
+    "I1542",
+    "I1545"
   ],
   "marriages": [
     {
-      "spouseId": "I1545",
-      "familyId": "F590"
+      "spouseId": "I1558",
+      "familyId": "F679"
     }
   ]
 }

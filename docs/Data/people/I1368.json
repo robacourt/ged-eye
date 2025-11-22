@@ -1,25 +1,25 @@
 {
   "id": "I1368",
-  "name": "Barbara Palmer",
-  "givenName": "Barbara",
-  "surname": "Palmer",
-  "sex": "F",
+  "name": "Robert Thomas Fairweather",
+  "givenName": "Robert Thomas",
+  "surname": "Fairweather",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1367"
+    "I1369"
   ],
   "childIds": [
-    "I1366"
+    "I1367"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1367",
-      "familyId": "F542"
+      "spouseId": "I1369",
+      "familyId": "F612"
     }
   ]
 }

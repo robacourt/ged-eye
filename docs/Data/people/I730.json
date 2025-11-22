@@ -1,26 +1,18 @@
 {
   "id": "I730",
-  "name": "William Symes",
-  "givenName": "William",
-  "surname": "Symes",
-  "sex": "M",
-  "birthDate": "1855",
+  "name": "Harriett Rebecca Bradley",
+  "givenName": "Harriett Rebecca",
+  "surname": "Bradley",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1907",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I110"
-  ],
-  "childIds": [
-    "I731"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I110",
-      "familyId": "F67",
-      "marriageDate": "2 JUN 1884"
-    }
+  "notes": [
+    "Witness to marriage of Clara Ann A'Court and Alfred Hunt 6 Feb 1878"
   ]
 }

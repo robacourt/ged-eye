@@ -1,26 +1,23 @@
 {
   "id": "I1357",
-  "name": "Mabel Frances Cundy",
-  "givenName": "Mabel Frances",
-  "surname": "Cundy",
-  "sex": "F",
-  "birthDate": "1874",
-  "birthPlace": "Greytown",
-  "deathDate": null,
+  "name": "Alfred Charles Bicknell",
+  "givenName": "Alfred Charles",
+  "surname": "Bicknell",
+  "sex": "M",
+  "birthDate": "1872",
+  "birthPlace": "New Zealand",
+  "deathDate": "1946",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1358"
+    "I1356"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1358",
-      "familyId": "F538"
+      "spouseId": "I1356",
+      "familyId": "F607"
     }
   ]
 }

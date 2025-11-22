@@ -1,23 +1,18 @@
 {
   "id": "I2064",
-  "name": "Grace Preston",
-  "givenName": "Grace",
-  "surname": "Preston",
+  "name": "Jean A'Court",
+  "givenName": "Jean",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "2002",
+  "birthDate": "1933",
+  "birthPlace": "Tooting",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I2056"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I2056",
-      "familyId": "F741"
-    }
+  "parentIds": [
+    "I2055",
+    "I2056"
   ]
 }

@@ -8,7 +8,9 @@
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/FromRob/SamMond.jpg"
+  ],
   "spouseIds": [
     "I128"
   ],
@@ -20,9 +22,10 @@
   "marriages": [
     {
       "spouseId": "I128",
-      "familyId": "F954",
+      "familyId": "F51",
       "marriageDate": "23 APR 2011",
       "marriagePlace": "Bristol Registary Office"
     }
-  ]
+  ],
+  "avatar": "avatars/I2744_0.jpg"
 }

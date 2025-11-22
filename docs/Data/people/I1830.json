@@ -1,10 +1,10 @@
 {
   "id": "I1830",
-  "name": "David J A'Court",
-  "givenName": "David J",
+  "name": "Pauline J A'Court",
+  "givenName": "Pauline J",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1ST QRT 1960",
+  "sex": "F",
+  "birthDate": "4TH QRT 1957",
   "birthPlace": "Thanet",
   "deathDate": null,
   "deathPlace": null,
@@ -12,6 +12,6 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1817"
+    "I1818"
   ]
 }

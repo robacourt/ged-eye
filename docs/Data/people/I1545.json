@@ -1,29 +1,45 @@
 {
   "id": "I1545",
-  "name": "Robert A'Court",
-  "givenName": "Robert",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Margaret Clarke",
+  "givenName": "Margaret",
+  "surname": "Clarke",
+  "sex": "F",
+  "birthDate": "14 DEC 1920",
   "birthPlace": null,
-  "deathDate": "BEF APR 1993",
-  "deathPlace": null,
+  "deathDate": "25 MAR 1999",
+  "deathPlace": "Truro, Nova Scotia, Canada",
   "photos": [],
   "spouseIds": [
-    "I1549"
+    "I1542"
   ],
   "childIds": [
-    "I1552",
-    "I1553"
+    "I1546",
+    "I1547",
+    "I1548",
+    "I1549"
   ],
-  "parentIds": [
-    "I1541",
-    "I1544"
+  "parentIds": [],
+  "occupations": [
+    "Brush Finishing & packing"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 69 Pearl St"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1939",
+      "place": "Middlesex, Harrow"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1549",
-      "familyId": "F590"
+      "spouseId": "I1542",
+      "familyId": "F674",
+      "marriageDate": "14 DEC 1939",
+      "marriagePlace": "Bristol Register Office, by special licence"
     }
   ]
 }

@@ -1,68 +1,72 @@
 {
   "id": "I1451",
-  "name": "Rosa Unknown",
-  "givenName": "Rosa",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "ABT 1863",
-  "birthPlace": "Chard, Somerset",
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "William Charles A'Court",
+  "givenName": "William Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1842",
+  "birthPlace": "Weymouth, Dorset",
+  "deathDate": "13 FEB 1900",
+  "deathPlace": "Weymouth, Dorset",
   "photos": [
-    "Data/Media/1901 census/Dorset/Weymouth/RG13 1993 89 15.jpg",
-    "Data/Media/1911 census/Dorset/Weymouth/RG14 12344 97.jpg"
+    "Data/Media/1851 census/Weymouth/HO107 1857 194 8.jpg"
   ],
   "spouseIds": [
-    "I1450"
+    "I1452"
   ],
   "childIds": [
     "I2346",
-    "I1645",
     "I1646",
-    "I2347",
     "I1647",
-    "I1452",
+    "I2347",
+    "I1648",
+    "I1453",
     "I2348",
     "I2360"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I143",
+    "I174"
+  ],
   "occupations": [
-    "Coachmans Wife",
+    "Coachman",
+    "Coachman",
+    "Cab Driver",
+    "Coachman",
     "Lodging House Keeper",
-    "Private Apartments Proprietress"
+    "Livery Stable Proprietor"
+  ],
+  "notes": [
+    "Rosa A'Court widow £584-17-2"
   ],
   "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Dorset, Melcombe Regis, 6 Terrace Court"
+    },
     {
       "date": "1871",
       "place": "Weymouth, Dorset, Gloster Mews House Inn"
     },
     {
       "date": "1881",
-      "place": "Weymouth, Dorset. Melcombe Regis, 4 Alexandra Terrace"
+      "place": "Dorset. Melcombe Regis, 4 Alexandra Terrace"
     },
     {
       "date": "1891",
       "place": "Dorset, Melcombe Regis, Gloucester Row"
-    },
-    {
-      "date": "1901",
-      "place": "Weymouth, Dorset, Melcombe Regis, 3 Gloster Row"
-    },
-    {
-      "date": "1911",
-      "place": "Weymouth, Dorset, 3 Gloucester Row"
     }
   ],
   "residences": [
     {
       "date": "1900",
-      "place": "Weymouth, Dorset, No. 3 Gloucester Row"
+      "place": "Dorset,  Melcombe Regis, No. 3 Gloucester Row"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1450",
-      "familyId": "F559"
+      "spouseId": "I1452",
+      "familyId": "F643"
     }
   ],
   "avatar": "avatars/I1451_0.jpg"

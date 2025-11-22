@@ -1,10 +1,10 @@
 {
   "id": "I1310",
-  "name": "Jofi Serah A'Court",
-  "givenName": "Jofi Serah",
+  "name": "Jahlee Laura A'Court",
+  "givenName": "Jahlee Laura",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "14 MAY 1999",
+  "sex": "M",
+  "birthDate": "11 JAN 1997",
   "birthPlace": "Perth, Western Australia",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1097",
-    "I1306"
+    "I1098",
+    "I1307"
   ]
 }

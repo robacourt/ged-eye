@@ -13,10 +13,10 @@
     "Data/Picture/George Rudolph Nicholas Frentzel.tif",
     "Data/Media/Passenger lists/Geo R N Frentzel/Geo R N Frentzel 1.jpg",
     "Data/Media/Passenger lists/Geo R N Frentzel/Geo R N Frentzel 2.jpg",
-    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/1 Morning Post  9th May 1876 022-0005.docx",
     "Data/Media/London Gazette/GRN Frentzel Bankruptcy.jpg",
-    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/7 London Standard 5th March 1886 0007-0003.docx",
     "Data/Media/Wills & Probate/Geo R N Frentzel.png",
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/1 Morning Post  9th May 1876 022-0005.docx",
+    "Data/Media/Newspaper Reports/Frentzel Press Cuttings/7 London Standard 5th March 1886 0007-0003.docx",
     "Data/Media/Newspaper Reports/Frentzel Press Cuttings/8 London  Daily News  27 Jan 1890 020-0004.docx"
   ],
   "spouseIds": [
@@ -76,7 +76,7 @@
   "marriages": [
     {
       "spouseId": "I2326",
-      "familyId": "F825",
+      "familyId": "F221",
       "marriageDate": "29 SEP 1856",
       "marriagePlace": "City of London, All Hallows, London Wall",
       "divorceDate": "1878",
@@ -84,7 +84,7 @@
     },
     {
       "spouseId": "I424",
-      "familyId": "F192",
+      "familyId": "F217",
       "marriageDate": "22 JUL 1885",
       "marriagePlace": "London, Hackney"
     }

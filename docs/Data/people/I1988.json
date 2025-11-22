@@ -1,22 +1,22 @@
 {
   "id": "I1988",
-  "name": "Sarah Daniels",
-  "givenName": "Sarah",
+  "name": "Charles Daniels",
+  "givenName": "Charles",
   "surname": "Daniels",
-  "sex": "F",
-  "birthDate": "ABT 1866",
-  "birthPlace": "Portsea, Hampshire",
+  "sex": "M",
+  "birthDate": "ABT 1862",
+  "birthPlace": "Southsea, Hampshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1726",
+    "I1727",
     "I77"
   ],
   "occupations": [
-    "Domestic Servant House"
+    "Sailmaker"
   ],
   "censusRecords": [
     {

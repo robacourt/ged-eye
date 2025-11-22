@@ -24,13 +24,13 @@
   "marriages": [
     {
       "spouseId": "I2394",
-      "familyId": "F849",
+      "familyId": "F902",
       "marriageDate": "7 MAY 1967",
       "marriagePlace": "Durban, South Africa"
     },
     {
       "spouseId": "I2396",
-      "familyId": "F850"
+      "familyId": "F903"
     }
   ]
 }

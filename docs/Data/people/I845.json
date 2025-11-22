@@ -1,29 +1,41 @@
 {
   "id": "I845",
-  "name": "Ada Blanche A'Court",
-  "givenName": "Ada Blanche",
+  "name": "Raymond Britton A'Court",
+  "givenName": "Raymond Britton",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "8 MAY 1910",
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "21 MAR 1908",
+  "birthPlace": "Rangiora, NZ",
+  "deathDate": "6 JAN 1971",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
+    "I858",
     "I859"
   ],
   "childIds": [
-    "I2739"
+    "I1933",
+    "I1935",
+    "I1937",
+    "I1938"
   ],
   "parentIds": [
-    "I824",
-    "I836"
+    "I825",
+    "I837"
+  ],
+  "notes": [
+    "Note marriages"
   ],
   "marriages": [
     {
+      "spouseId": "I858",
+      "familyId": "F421",
+      "marriageDate": "BET. 1924 - 1939"
+    },
+    {
       "spouseId": "I859",
-      "familyId": "F371",
-      "marriageDate": "1931",
+      "familyId": "F422",
+      "marriageDate": "1939",
       "marriagePlace": "New Zealand"
     }
   ]

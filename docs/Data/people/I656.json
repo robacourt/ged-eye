@@ -1,10 +1,10 @@
 {
   "id": "I656",
-  "name": "Alice Warren",
-  "givenName": "Alice",
+  "name": "Ernest Warren",
+  "givenName": "Ernest",
   "surname": "Warren",
-  "sex": "F",
-  "birthDate": "ABT 1886",
+  "sex": "M",
+  "birthDate": "Abt 1883",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,10 +12,10 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
   "notes": [
-    "5 in 1891"
+    "8 in 1891"
   ]
 }

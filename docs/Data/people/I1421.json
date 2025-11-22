@@ -1,29 +1,31 @@
 {
   "id": "I1421",
-  "name": "Cecil A'Court",
-  "givenName": "Cecil",
+  "name": "Lena A'Court",
+  "givenName": "Lena",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1901",
+  "sex": "F",
+  "birthDate": "ABT 1899",
   "birthPlace": "Queen Camel, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg",
+    "Data/Media/1911 census/Somerset/Queen Camel/RG14 14426 104.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1110",
-    "I1106"
-  ],
-  "notes": [
-    "possible illigitmate son of Beatrice father may not have been Ernest Elford"
+    "I1101",
+    "I1110"
   ],
   "censusRecords": [
     {
       "date": "1901",
       "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1911",
+      "place": "Queen Camel, Somerset, Camel Hill"
     }
   ],
   "avatar": "avatars/I1421_0.jpg"

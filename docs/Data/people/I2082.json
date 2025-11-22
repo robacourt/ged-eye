@@ -1,23 +1,26 @@
 {
   "id": "I2082",
-  "name": "Albert Frederick A'Court",
-  "givenName": "Albert Frederick",
+  "name": "Horace Victor A'Court",
+  "givenName": "Horace Victor",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1899",
-  "birthPlace": "Camberwell, Peckham",
+  "birthDate": "1898",
+  "birthPlace": "Peckham",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
   ],
   "spouseIds": [
-    "I2278"
+    "I2277"
   ],
   "childIds": [],
   "parentIds": [
-    "I2065",
-    "I2066"
+    "I2066",
+    "I2067"
+  ],
+  "occupations": [
+    "Labourer"
   ],
   "censusRecords": [
     {
@@ -27,8 +30,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2278",
-      "familyId": "F805"
+      "spouseId": "I2277",
+      "familyId": "F817"
     }
   ],
   "avatar": "avatars/I2082_0.jpg"

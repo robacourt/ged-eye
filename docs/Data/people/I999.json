@@ -1,18 +1,31 @@
 {
   "id": "I999",
-  "name": "Sylvia A'Court",
-  "givenName": "Sylvia",
-  "surname": "A'Court",
+  "name": "Elma J. Boon",
+  "givenName": "Elma J.",
+  "surname": "Boon",
   "sex": "F",
-  "birthDate": null,
+  "birthDate": "1923",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I973",
-    "I998"
+  "spouseIds": [
+    "I974"
+  ],
+  "childIds": [
+    "I1000",
+    "I1001",
+    "I1446",
+    "I1447",
+    "I1448"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I974",
+      "familyId": "F459",
+      "marriageDate": "1923",
+      "marriagePlace": "Dubbo, NSW"
+    }
   ]
 }

@@ -1,26 +1,30 @@
 {
   "id": "I1582",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1892",
+  "birthDate": "ABT 1888",
   "birthPlace": "Buckhorn Weston, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1891 census/Dorset/Buckhorn Weston/RG12 1902 148 7.jpg",
-    "Data/Media/1901 census/Dorset/Buckhorn Weston/RG13 1968 52 16.jpg",
-    "Data/Media/1911 census/Dorset/Kington Magna/RG14 12185 43.jpg"
+    "Data/Media/1901 census/Dorset/Buckhorn Weston/RG13 1968 52 16.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I532"
+  ],
+  "childIds": [
+    "I2896"
+  ],
   "parentIds": [
     "I220",
     "I355"
   ],
   "occupations": [
-    "Farm Labourer"
+    "Baker's Errand Boy",
+    "Farm labourer"
   ],
   "censusRecords": [
     {
@@ -33,7 +37,14 @@
     },
     {
       "date": "1911",
-      "place": "Kington Magna, Dorset, Hill Top"
+      "place": "Dorset, Fifehead Magdalen"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I532",
+      "familyId": "F273",
+      "marriageDate": "Abt 1909"
     }
   ],
   "avatar": "avatars/I1582_0.jpg"

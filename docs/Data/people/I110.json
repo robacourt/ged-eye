@@ -10,10 +10,10 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I730"
+    "I731"
   ],
   "childIds": [
-    "I731"
+    "I732"
   ],
   "parentIds": [
     "I109",
@@ -21,8 +21,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I730",
-      "familyId": "F67",
+      "spouseId": "I731",
+      "familyId": "F75",
       "marriageDate": "2 JUN 1884"
     }
   ]

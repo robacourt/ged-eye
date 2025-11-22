@@ -1,45 +1,27 @@
 {
   "id": "I1290",
-  "name": "Frances A'Court",
-  "givenName": "Frances",
-  "surname": "A'Court",
+  "name": "Fanny Mansey",
+  "givenName": "Fanny",
+  "surname": "Mansey",
   "sex": "F",
-  "birthDate": "1891",
-  "birthPlace": "Horsebridge, Kings Somborne, Hampshire",
-  "deathDate": null,
+  "birthDate": "1871",
+  "birthPlace": null,
+  "deathDate": "1940",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg",
-    "Data/Media/1911 census/Hampshire/Selborne/RG14 6218 148.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1662"
+    "I1289"
   ],
   "childIds": [
-    "I1663"
+    "I1277",
+    "I1287",
+    "I1288"
   ],
-  "parentIds": [
-    "I284",
-    "I287"
-  ],
-  "occupations": [
-    "Parlourmaid"
-  ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Selborne, Hampshire, Gracious St"
-    },
-    {
-      "date": "1911",
-      "place": "Selborne, Hampshire, Coneycroft"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1662",
-      "familyId": "F519"
+      "spouseId": "I1289",
+      "familyId": "F582"
     }
-  ],
-  "avatar": "avatars/I1290_0.jpg"
+  ]
 }

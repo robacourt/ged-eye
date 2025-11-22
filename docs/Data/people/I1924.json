@@ -1,26 +1,18 @@
 {
   "id": "I1924",
-  "name": "Harry James Nicol A'Court",
-  "givenName": "Harry James Nicol",
+  "name": "Shirley Todrick A'Court",
+  "givenName": "Shirley Todrick",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "23 MAY 1916",
-  "birthPlace": "Wellington, New Zealand",
-  "deathDate": "9 MAR 1983",
-  "deathPlace": "Wellington, New Zealand",
+  "sex": "F",
+  "birthDate": "8 SEP 1921",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": "28 MAR 1986",
+  "deathPlace": "NZ",
   "photos": [],
-  "spouseIds": [
-    "I2312"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I942",
-    "I2308"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2312",
-      "familyId": "F683"
-    }
+    "I940",
+    "I941"
   ]
 }

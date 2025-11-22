@@ -16,8 +16,8 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I1185",
-    "I1190"
+    "I1186",
+    "I1191"
   ],
   "censusRecords": [
     {
@@ -28,7 +28,7 @@
   "marriages": [
     {
       "spouseId": "I2421",
-      "familyId": "F860",
+      "familyId": "F908",
       "marriageDate": "1921",
       "marriagePlace": "Brixworth, Northamptonshire"
     }

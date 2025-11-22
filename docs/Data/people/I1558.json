@@ -1,21 +1,23 @@
 {
   "id": "I1558",
-  "name": "Nathaniel A'Court",
-  "givenName": "Nathaniel",
-  "surname": "A'Court",
+  "name": "Peter Woodyer",
+  "givenName": "Peter",
+  "surname": "Woodyer",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1549"
+  ],
   "childIds": [],
   "parentIds": [],
-  "censusRecords": [
+  "marriages": [
     {
-      "date": "1821",
-      "place": "Marnhull, Dorset, Ham Lane"
+      "spouseId": "I1549",
+      "familyId": "F679"
     }
   ]
 }

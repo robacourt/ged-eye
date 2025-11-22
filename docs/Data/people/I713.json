@@ -1,16 +1,16 @@
 {
   "id": "I713",
-  "name": "Sarah ?????",
-  "givenName": "Sarah",
-  "surname": "?????",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "Eli a'Court",
+  "givenName": "Eli",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "6 AUG 1825",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "BEF 1861",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I712"
+    "I714"
   ],
   "childIds": [],
   "parentIds": [],
@@ -20,10 +20,16 @@
   "notes": [
     "Please advise any errors/send additions to:"
   ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Marhull, Dorset"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I712",
-      "familyId": "F291"
+      "spouseId": "I714",
+      "familyId": "F341"
     }
   ]
 }

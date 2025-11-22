@@ -1,23 +1,30 @@
 {
   "id": "I818",
-  "name": "never married",
-  "givenName": "never",
-  "surname": "married",
+  "name": "William Arthur MOIR",
+  "givenName": "William Arthur",
+  "surname": "MOIR",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1899",
+  "birthPlace": "Christchurch, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I814"
+    "I813"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1046"
+  ],
   "parentIds": [],
+  "notes": [
+    "Wises"
+  ],
   "marriages": [
     {
-      "spouseId": "I814",
-      "familyId": "F348"
+      "spouseId": "I813",
+      "familyId": "F399",
+      "marriageDate": "25 MAY 1920",
+      "marriagePlace": "Methodist Church, Sydenham, Christchurch, NZ"
     }
   ]
 }

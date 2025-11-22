@@ -1,8 +1,8 @@
 {
   "id": "I1254",
-  "name": "Elizabeth Ann",
+  "name": "Elizabeth Gillett",
   "givenName": "Elizabeth",
-  "surname": "Ann",
+  "surname": "Gillett",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
@@ -10,21 +10,23 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1255"
+    "I1253"
   ],
   "childIds": [],
   "parentIds": [
-    "I182",
-    "I279"
+    "I1249",
+    "I1250"
   ],
-  "baptismDate": "14 APRIL 1867",
+  "baptismDate": "11 OCT 1856",
   "baptismPlace": "Marnhull, Dorset",
+  "notes": [
+    "with issue"
+  ],
   "marriages": [
     {
-      "spouseId": "I1255",
-      "familyId": "F506",
-      "marriageDate": "22 JAN 1890",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I1253",
+      "familyId": "F572",
+      "marriageDate": "25 DEC 1878"
     }
   ]
 }

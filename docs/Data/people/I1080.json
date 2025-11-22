@@ -1,11 +1,11 @@
 {
   "id": "I1080",
-  "name": "Herbert Curtis",
-  "givenName": "Herbert",
+  "name": "Ann Curtis",
+  "givenName": "Ann",
   "surname": "Curtis",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "29 JULY 1849",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -15,6 +15,12 @@
     "I179",
     "I275"
   ],
-  "baptismDate": "4 APRIL 1852",
-  "baptismPlace": "Marnhull, Dorset"
+  "baptismDate": "21 OCTOBER 1849",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": null
+    }
+  ]
 }

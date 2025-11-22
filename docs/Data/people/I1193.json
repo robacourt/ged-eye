@@ -1,27 +1,29 @@
 {
   "id": "I1193",
-  "name": "Frederick Alwin A'Court",
-  "givenName": "Frederick Alwin",
+  "name": "Bessie A'Court",
+  "givenName": "Bessie",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1889",
-  "birthPlace": "Hinton St Mary, Dorset",
-  "deathDate": "AFT 1891",
+  "sex": "F",
+  "birthDate": "ABT 1886",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1891 census/Wiltshire/Box/RG12 1592 75 30.jpg",
-    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg"
+    "Data/Media/1901 census/Wiltshire/Corsham/RG13 1918 32 11.jpg"
   ],
   "spouseIds": [
-    "I2412"
+    "I2411"
   ],
   "childIds": [],
   "parentIds": [
-    "I1185",
-    "I1190"
+    "I1186",
+    "I1191"
   ],
+  "baptismDate": "12 SEP 1886",
+  "baptismPlace": "Dorset, Marnhull",
   "occupations": [
-    "Groom"
+    "General servant domestic"
   ],
   "censusRecords": [
     {
@@ -30,18 +32,15 @@
     },
     {
       "date": "1901",
-      "place": "Wadswick, Box, Wiltshire"
-    },
-    {
-      "date": "1911",
-      "place": "Glamorganshire, Porthcawl, Newton, Arosfa"
+      "place": "Wiltshire, Corsham, High St  East side"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2412",
-      "familyId": "F856",
-      "marriageDate": "Abt 1911"
+      "spouseId": "I2411",
+      "familyId": "F549",
+      "marriageDate": "1ST QTR 1909",
+      "marriagePlace": "Chippenham, Wiltshire"
     }
   ],
   "avatar": "avatars/I1193_0.jpg"

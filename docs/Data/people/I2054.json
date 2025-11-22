@@ -1,55 +1,31 @@
 {
   "id": "I2054",
-  "name": "William Charles A'Court",
-  "givenName": "William Charles",
+  "name": "Clement Cyril A'Court",
+  "givenName": "Clement Cyril",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1895",
-  "birthPlace": "Camberwell, Peckham",
-  "deathDate": "21 MARCH 1972",
-  "deathPlace": "Ashburton, Devon",
-  "photos": [
-    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
-  ],
+  "birthDate": "1931",
+  "birthPlace": "Tooting",
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
   "spouseIds": [
-    "I2055"
+    "I1858"
   ],
   "childIds": [
-    "I2056",
-    "I2057",
-    "I2058",
-    "I2059",
-    "I2060",
-    "I2061",
-    "I2062",
-    "I2053",
-    "I2063"
+    "I1857",
+    "I2050"
   ],
   "parentIds": [
-    "I2065",
-    "I2066"
-  ],
-  "censusRecords": [
-    {
-      "date": "1911",
-      "place": "London, Deptford, 9 Harcourt Rd."
-    },
-    {
-      "date": "1911",
-      "place": "Labourer, LCC tramways"
-    }
-  ],
-  "residences": [
-    {
-      "date": "1972",
-      "place": "Devon,  Ashburton, 43 Balland Park."
-    }
+    "I2055",
+    "I2056"
   ],
   "marriages": [
     {
-      "spouseId": "I2055",
-      "familyId": "F740"
+      "spouseId": "I1858",
+      "familyId": "F768",
+      "marriageDate": "1953",
+      "marriagePlace": "Epsom"
     }
-  ],
-  "avatar": "avatars/I2054_0.jpg"
+  ]
 }

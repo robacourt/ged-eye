@@ -1,11 +1,11 @@
 {
   "id": "I1613",
-  "name": "Annie A'Court",
-  "givenName": "Annie",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "Abt 1895",
-  "birthPlace": "Warrington, Lancs",
+  "birthDate": "Abt 1892",
+  "birthPlace": "Orford, Lancs",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
@@ -15,11 +15,11 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1608",
-    "I1609"
+    "I1609",
+    "I1610"
   ],
   "occupations": [
-    "Assistant in Cycle and Furniture Shop"
+    "Milliner"
   ],
   "censusRecords": [
     {

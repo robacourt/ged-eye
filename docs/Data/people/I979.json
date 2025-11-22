@@ -1,18 +1,23 @@
 {
   "id": "I979",
-  "name": "William Thomas (Bill) A'Court",
-  "givenName": "William Thomas (Bill)",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1908",
-  "birthPlace": "Dubbo NSW",
+  "name": "Grace Unknown",
+  "givenName": "Grace",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I978"
+  ],
   "childIds": [],
-  "parentIds": [
-    "I104",
-    "I733"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I978",
+      "familyId": "F462"
+    }
   ]
 }

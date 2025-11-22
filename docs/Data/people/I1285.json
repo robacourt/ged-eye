@@ -1,9 +1,9 @@
 {
   "id": "I1285",
-  "name": "Frank Moneys",
-  "givenName": "Frank",
-  "surname": "Moneys",
-  "sex": "U",
+  "name": "Lesley Cross",
+  "givenName": "Lesley",
+  "surname": "Cross",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -11,5 +11,8 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I1283",
+    "I1279"
+  ]
 }

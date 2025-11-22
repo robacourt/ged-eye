@@ -1,43 +1,65 @@
 {
   "id": "I1617",
-  "name": "Thomas A'Court",
-  "givenName": "Thomas",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1839",
+  "name": "Ann Warren",
+  "givenName": "Ann",
+  "surname": "Warren",
+  "sex": "F",
+  "birthDate": "Abt 1836",
   "birthPlace": "Marnhull, Dorset",
-  "deathDate": "1866",
-  "deathPlace": "Marnhull, Dorset",
-  "photos": [],
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 36 17 .jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 28 15.jpg",
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 30 15.jpg"
+  ],
   "spouseIds": [
-    "I1616"
+    "I1618"
   ],
   "childIds": [
+    "I1627",
     "I1626",
-    "I1625",
-    "I1618",
-    "I1622",
     "I1619",
-    "I1620"
+    "I1623",
+    "I1620",
+    "I1621"
   ],
   "parentIds": [
-    "I177",
-    "I1195"
+    "I1625"
   ],
-  "burialDate": "11 FEB",
   "occupations": [
-    "Ag Lab"
+    "Leather Glover",
+    "Glover",
+    "Glover",
+    "Kid Glove Maker"
   ],
   "censusRecords": [
     {
       "date": "1861",
       "place": "Marnhull, Dorset, East Well"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    },
+    {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Caraway Lane"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1616",
-      "familyId": "F604"
+      "spouseId": "I1618",
+      "familyId": "F697"
     }
-  ]
+  ],
+  "avatar": "avatars/I1617_0.jpg"
 }

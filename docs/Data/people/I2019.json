@@ -1,10 +1,10 @@
 {
   "id": "I2019",
-  "name": "Sarah A'Court",
-  "givenName": "Sarah",
+  "name": "Elizabeth Edith A'Court",
+  "givenName": "Elizabeth Edith",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1857",
+  "birthDate": "ABT 1854",
   "birthPlace": "Devon, Exeter, St Davids",
   "deathDate": null,
   "deathPlace": null,
@@ -15,10 +15,10 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2013"
+    "I2014"
   ],
   "occupations": [
-    "Mantle maker"
+    "Housekeeper"
   ],
   "censusRecords": [
     {

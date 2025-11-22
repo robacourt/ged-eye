@@ -1,37 +1,18 @@
 {
   "id": "I1733",
-  "name": "George A'Court",
-  "givenName": "George",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1818",
-  "birthPlace": "Bourton",
-  "deathDate": "1888",
-  "deathPlace": "Wincanton, Somerset, Workhouse",
+  "name": "Camilla Jane Wheeler Bennett",
+  "givenName": "Camilla Jane Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1735"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I755",
-    "I760"
-  ],
-  "baptismDate": "29 MAR 1818",
-  "burialDate": "30 JUN 1888",
-  "burialPlace": "North Cadbury, Somerset, St. Michael",
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Stalbridge, Dorset, Guggelton St"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1735",
-      "familyId": "F634",
-      "marriageDate": "8 FEB 1848",
-      "marriagePlace": "Wincanton, Baptist Chapel"
-    }
+    "I1729",
+    "I1732"
   ]
 }

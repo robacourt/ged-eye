@@ -1,11 +1,11 @@
 {
   "id": "I859",
-  "name": "Frank Broadbent THOMPSON",
-  "givenName": "Frank Broadbent",
-  "surname": "THOMPSON",
-  "sex": "M",
-  "birthDate": "1905",
-  "birthPlace": "Invercargill, NZ",
+  "name": "Marcia Ethel Hermione Beach",
+  "givenName": "Marcia Ethel Hermione",
+  "surname": "Beach",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -13,17 +13,19 @@
     "I845"
   ],
   "childIds": [
-    "I2739"
+    "I1935",
+    "I1937",
+    "I1938"
   ],
   "parentIds": [],
   "notes": [
-    "Wises"
+    "By the way I think you have my mothers maiden name mispelt. (but that could be wrong this end also) we have always had it spelt Beach and all the documents from her step father Henry Beach is spelt Beach. We dont know her biological fathers nam"
   ],
   "marriages": [
     {
       "spouseId": "I845",
-      "familyId": "F371",
-      "marriageDate": "1931",
+      "familyId": "F422",
+      "marriageDate": "1939",
       "marriagePlace": "New Zealand"
     }
   ]

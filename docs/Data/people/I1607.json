@@ -1,10 +1,10 @@
 {
   "id": "I1607",
-  "name": "Lillie A'Court",
-  "givenName": "Lillie",
+  "name": "Emily A'Court",
+  "givenName": "Emily",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "Abt 1899",
+  "birthDate": "Abt 1896",
   "birthPlace": "St. Helens, Lancs",
   "deathDate": null,
   "deathPlace": null,
@@ -15,8 +15,11 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1601",
-    "I1602"
+    "I1602",
+    "I1603"
+  ],
+  "occupations": [
+    "Tube Cutter- Glassworks"
   ],
   "censusRecords": [
     {

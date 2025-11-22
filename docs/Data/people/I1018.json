@@ -1,25 +1,18 @@
 {
   "id": "I1018",
-  "name": "Konkham Chansy",
-  "givenName": "Konkham",
-  "surname": "Chansy",
+  "name": "Rebbeca Fay Bardsley",
+  "givenName": "Rebbeca Fay",
+  "surname": "Bardsley",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "30AUGUST 1982",
+  "birthPlace": "Sydney, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1016",
     "I1004"
-  ],
-  "childIds": [
-    "I1022"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1004",
-      "familyId": "F418"
-    }
   ]
 }

@@ -1,25 +1,52 @@
 {
   "id": "I1328",
-  "name": "Bessie May Lock",
-  "givenName": "Bessie May",
-  "surname": "Lock",
-  "sex": "F",
+  "name": "Francis Winchester Waterman",
+  "givenName": "Francis Winchester",
+  "surname": "Waterman",
+  "sex": "M",
   "birthDate": "1870",
   "birthPlace": "Stoke Sub Hamdon, Somerset",
-  "deathDate": "1901",
+  "deathDate": "1935",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1327"
+    "I1329"
   ],
   "childIds": [],
-  "parentIds": [],
-  "burialDate": "30 DEC 1901",
+  "parentIds": [
+    "I1323",
+    "I1321"
+  ],
+  "burialDate": "2 APR 1935",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "occupations": [
+    "Grocer",
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1881",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1891",
+      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
+    }
+  ],
+  "residences": [
+    {
+      "date": "22 MAY 1893",
+      "place": "Martock, Somerset"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1327",
-      "familyId": "F524",
+      "spouseId": "I1329",
+      "familyId": "F594",
       "marriageDate": "22 MAY 1893",
       "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
     }

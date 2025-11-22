@@ -1,36 +1,49 @@
 {
   "id": "I622",
-  "name": "Winifred Joan Hatcher",
-  "givenName": "Winifred Joan",
-  "surname": "Hatcher",
+  "name": "Gertude Annie Jarvis",
+  "givenName": "Gertude Annie",
+  "surname": "Jarvis",
   "sex": "F",
-  "birthDate": "21.2.1921",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I630"
+    "I594",
+    "I626"
   ],
-  "childIds": [],
+  "childIds": [
+    "I623",
+    "I624",
+    "I625"
+  ],
   "parentIds": [
-    "I593",
-    "I621"
+    "I627",
+    "I628"
   ],
-  "baptismDate": "28.8.1921",
-  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "General Cook"
+    "Glovemaker"
   ],
   "notes": [
-    "26-1948,"
+    "6-1891,18-1903,35-1935,"
   ],
   "marriages": [
     {
-      "spouseId": "I630",
-      "familyId": "F260",
-      "marriageDate": "3.4,1948",
+      "spouseId": "I594",
+      "familyId": "F294",
+      "marriageDate": "28.9.1920",
       "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I626",
+      "familyId": "F307",
+      "marriageDate": "7.5.1903",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": null,
+      "familyId": "F308"
     }
   ]
 }

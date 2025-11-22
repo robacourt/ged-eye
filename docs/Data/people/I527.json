@@ -1,25 +1,31 @@
 {
   "id": "I527",
-  "name": "Margaret Davis Christie",
-  "givenName": "Margaret Davis",
-  "surname": "Christie",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Felix Daniel Reuben A'Court",
+  "givenName": "Felix Daniel Reuben",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1867",
+  "birthPlace": "Mudgee, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I526"
+    "I528"
   ],
   "childIds": [
-    "I516"
+    "I517"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I75",
+    "I103"
+  ],
+  "notes": [
+    "From John Stafford File Page 3"
+  ],
   "marriages": [
     {
-      "spouseId": "I526",
-      "familyId": "F222",
+      "spouseId": "I528",
+      "familyId": "F267",
       "marriageDate": "1917"
     }
   ]

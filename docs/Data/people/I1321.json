@@ -1,23 +1,35 @@
 {
   "id": "I1321",
-  "name": "Mary Ellen Palmer",
-  "givenName": "Mary Ellen",
+  "name": "Amelia Palmer",
+  "givenName": "Amelia",
   "surname": "Palmer",
   "sex": "F",
-  "birthDate": "1844",
+  "birthDate": "1835",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1319",
-    "I762"
+  "spouseIds": [
+    "I1323"
   ],
+  "childIds": [
+    "I1324",
+    "I1326",
+    "I1327",
+    "I1328",
+    "I1330",
+    "I1332"
+  ],
+  "parentIds": [
+    "I1320",
+    "I763"
+  ],
+  "burialDate": "16 FEB 1901",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
   "occupations": [
-    "Fabric Glove Finisher",
-    "Glove Machinist"
+    "Glover",
+    "Glover",
+    "Glover"
   ],
   "censusRecords": [
     {
@@ -31,6 +43,21 @@
     {
       "date": "1871",
       "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1881",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1891",
+      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1323",
+      "familyId": "F592",
+      "marriageDate": "BEF 1854"
     }
   ]
 }

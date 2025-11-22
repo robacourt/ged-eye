@@ -1,25 +1,26 @@
 {
   "id": "I1943",
-  "name": "Christian Solberg",
-  "givenName": "Christian",
-  "surname": "Solberg",
+  "name": "Jack Lee",
+  "givenName": "Jack",
+  "surname": "Lee",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1887",
-  "deathPlace": "Ross, Westland, New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1905"
+    "I1942"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1910",
+    "I1909"
+  ],
   "marriages": [
     {
-      "spouseId": "I1905",
-      "familyId": "F691",
-      "marriageDate": "1872",
-      "marriagePlace": "Kumara, Westland, New Zealand"
+      "spouseId": "I1942",
+      "familyId": "F782"
     }
   ]
 }

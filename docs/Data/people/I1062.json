@@ -1,33 +1,18 @@
 {
   "id": "I1062",
-  "name": "Edna Gloria Diehm",
-  "givenName": "Edna Gloria",
+  "name": "Rhonda Denise Diehm",
+  "givenName": "Rhonda Denise",
   "surname": "Diehm",
   "sex": "F",
-  "birthDate": "10 DECEMBER 1933",
-  "birthPlace": "Gulgong, NSW",
-  "deathDate": "14 NOVEMBER 1971",
-  "deathPlace": "Lithgow",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1063"
-  ],
-  "childIds": [
-    "I1064",
-    "I1065",
-    "I1066",
-    "I1067",
-    "I1068"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I934",
-    "I933"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1063",
-      "familyId": "F428",
-      "marriageDate": "MARCH 1951"
-    }
+    "I1059",
+    "I1060"
   ]
 }

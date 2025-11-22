@@ -1,18 +1,59 @@
 {
   "id": "I875",
-  "name": "Francis Henry a'Court",
-  "givenName": "Francis Henry",
-  "surname": "a'Court",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1845",
+  "birthDate": "1841",
   "birthPlace": "Bath, Somerset",
-  "deathDate": "BEF 1851",
-  "deathPlace": "Bath, Somerset",
+  "deathDate": "ABT 1917",
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I927"
+  ],
+  "childIds": [
+    "I2468",
+    "I2469",
+    "I2470",
+    "I2471"
+  ],
   "parentIds": [
-    "I763",
-    "I871"
+    "I764",
+    "I872"
+  ],
+  "occupations": [
+    "Coachman",
+    "Coachman",
+    "Coachman",
+    "Church Clerk"
+  ],
+  "notes": [
+    "But the William you mention, I have from the 1881 census living in West"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Hertfordshire, Ware, Gilston, Lolings Cottage"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
+    },
+    {
+      "date": "1891",
+      "place": "West Derby, Lancashire, 2 Quarry Rd."
+    },
+    {
+      "date": "1911",
+      "place": "West Derby, Lancashire, 147 Eaton Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I927",
+      "familyId": "F427",
+      "marriageDate": "ABT 1868"
+    }
   ]
 }

@@ -1,12 +1,12 @@
 {
   "id": "I923",
-  "name": "Albert Ricks",
-  "givenName": "Albert",
-  "surname": "Ricks",
-  "sex": "M",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "9 SEP 1966",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
@@ -14,10 +14,13 @@
   ],
   "childIds": [],
   "parentIds": [],
+  "notes": [
+    "Date Unknown: Lived at Buller Street, Swindon, Wiltshire, England"
+  ],
   "marriages": [
     {
       "spouseId": "I917",
-      "familyId": "F384"
+      "familyId": "F437"
     }
   ]
 }

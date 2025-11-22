@@ -1,49 +1,26 @@
 {
   "id": "I621",
-  "name": "Gertude Annie Jarvis",
-  "givenName": "Gertude Annie",
-  "surname": "Jarvis",
-  "sex": "F",
+  "name": "James Watts",
+  "givenName": "James",
+  "surname": "Watts",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I593",
-    "I625"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I622",
-    "I623",
-    "I624"
+    "I620"
   ],
-  "parentIds": [
-    "I626",
-    "I627"
-  ],
+  "parentIds": [],
   "occupations": [
-    "Glovemaker"
-  ],
-  "notes": [
-    "6-1891,18-1903,35-1935,"
+    "Cooper"
   ],
   "marriages": [
     {
-      "spouseId": "I593",
-      "familyId": "F244",
-      "marriageDate": "28.9.1920",
-      "marriagePlace": "Marnhull, Dorset"
-    },
-    {
-      "spouseId": "I625",
-      "familyId": "F257",
-      "marriageDate": "7.5.1903",
-      "marriagePlace": "Marnhull, Dorset"
-    },
-    {
       "spouseId": null,
-      "familyId": "F258"
+      "familyId": "F306"
     }
   ]
 }

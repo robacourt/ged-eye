@@ -1,45 +1,26 @@
 {
   "id": "I1629",
-  "name": "John Arthur Wheeler Bennett",
-  "givenName": "John Arthur Wheeler",
-  "surname": "Bennett",
-  "sex": "M",
-  "birthDate": "1920",
-  "birthPlace": "Sussex, Steyning",
-  "deathDate": "1975",
+  "name": "Nellie M A'Court",
+  "givenName": "Nellie M",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1890",
+  "birthPlace": "Yeovil, Somerset",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1921 Census/Sussex/RG15 05017 14.jpg"
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg"
   ],
-  "spouseIds": [
-    "I1727"
-  ],
-  "childIds": [
-    "I1728"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I382",
-    "I387"
-  ],
-  "occupations": [
-    "Dr."
+    "I284",
+    "I287"
   ],
   "censusRecords": [
     {
-      "date": "1921",
-      "place": "Sussex, Steyning, Glen Ofen"
-    }
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Buckinghamshire, Monks Risborough"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1727",
-      "familyId": "F631"
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
     }
   ],
   "avatar": "avatars/I1629_0.jpg"

@@ -1,33 +1,27 @@
 {
   "id": "I1990",
-  "name": "Elizabeth Maud Bawden",
-  "givenName": "Elizabeth Maud",
-  "surname": "Bawden",
-  "sex": "F",
-  "birthDate": "ABT 1887",
-  "birthPlace": "Hemerdon, Plympton, Devon",
+  "name": "John Daniels",
+  "givenName": "John",
+  "surname": "Daniels",
+  "sex": "M",
+  "birthDate": "ABT 1867",
+  "birthPlace": "Southsea, Hampshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I492"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1727",
+    "I77"
   ],
-  "childIds": [
-    "I2586",
-    "I1991"
+  "occupations": [
+    "Barman"
   ],
-  "parentIds": [],
   "censusRecords": [
     {
-      "date": "1911",
-      "place": "Gosport, Hampshire, 105 Parham Rd."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I492",
-      "familyId": "F711",
-      "marriageDate": "1910"
+      "date": "1881",
+      "place": "Portsea Hampshire, Prince Regent Arms, 19 Prince St."
     }
   ]
 }

@@ -1,18 +1,23 @@
 {
   "id": "I1017",
-  "name": "Rebbeca Fay Bardsley",
-  "givenName": "Rebbeca Fay",
+  "name": "Eric Bardsley",
+  "givenName": "Eric",
   "surname": "Bardsley",
-  "sex": "F",
-  "birthDate": "30AUGUST 1982",
-  "birthPlace": "Sydney, NSW",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1004"
+  ],
   "childIds": [],
-  "parentIds": [
-    "I1015",
-    "I1003"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1004",
+      "familyId": "F473"
+    }
   ]
 }

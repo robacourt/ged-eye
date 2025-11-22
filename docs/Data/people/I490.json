@@ -1,71 +1,17 @@
 {
   "id": "I490",
-  "name": "Frederick A'Court",
-  "givenName": "Frederick",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "20 FEB 1856",
-  "birthPlace": "Nether Compton, Dorset",
-  "deathDate": "1914",
-  "deathPlace": "Dorset, Sherborne",
-  "photos": [
-    "Data/Media/1871 census/Over Compton/RG 10 2021 81 19.jpg",
-    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
-  ],
-  "spouseIds": [
-    "I491"
-  ],
-  "childIds": [
-    "I492",
-    "I494",
-    "I495",
-    "I493",
-    "I371"
-  ],
+  "name": "Ruby Garnett",
+  "givenName": "Ruby",
+  "surname": "Garnett",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I571",
-    "I2359"
-  ],
-  "baptismDate": "31 AUG 1856",
-  "baptismPlace": "Dorset, Nether Compton",
-  "burialDate": "28 JAN 1915",
-  "burialPlace": "Dorset, Sherborne",
-  "occupations": [
-    "Ag Lab",
-    "Shepherd",
-    "Shepherd, labourer",
-    "Shepherd",
-    "Retired Shepherd, not able to work"
-  ],
-  "censusRecords": [
-    {
-      "date": "1871",
-      "place": "Over Compton, Dorset"
-    },
-    {
-      "date": "1881",
-      "place": "Over Compton, Sherborne, Dorset"
-    },
-    {
-      "date": "1891",
-      "place": "Dorset, Sherborne, Over Compton, Lodge"
-    },
-    {
-      "date": "1901",
-      "place": "Nether Compton, Dorset, Halfway House"
-    },
-    {
-      "date": "1911",
-      "place": "Nether Compton, Dorset"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I491",
-      "familyId": "F169",
-      "marriageDate": "DEC 1882",
-      "marriagePlace": "Dorset, Sherborne"
-    }
-  ],
-  "avatar": "avatars/I490_0.jpg"
+    "I489"
+  ]
 }

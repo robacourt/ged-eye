@@ -1,44 +1,40 @@
 {
   "id": "I776",
-  "name": "Samuel A'Court",
-  "givenName": "Samuel",
+  "name": "George A'Court",
+  "givenName": "George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "25 SEP 1842",
-  "birthPlace": "Galhampton, Somerset",
-  "deathDate": "25 MAR 1913",
-  "deathPlace": "Christchurch, New Zealand",
+  "birthDate": "1841",
+  "birthPlace": "Wincanton, Somerset",
+  "deathDate": "27 FEB 1917",
+  "deathPlace": "Christchurch Hospital, Christchurch, NZ",
   "photos": [
-    "Data/Picture/Sam A'Court01.jpg",
-    "Data/Picture/Sam A'Court's Forge.jpg",
-    "Data/Picture/Sam A'Court Sarah Britton.jpg",
+    "Data/Picture/George A'Court.jpg",
     "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
   ],
   "spouseIds": [
-    "I820"
+    "I785"
   ],
   "childIds": [
-    "I821",
-    "I822",
-    "I823",
-    "I824",
-    "I825",
-    "I826",
-    "I827"
+    "I786",
+    "I787",
+    "I788",
+    "I789",
+    "I790",
+    "I791",
+    "I792",
+    "I793",
+    "I794",
+    "I795",
+    "I796",
+    "I797"
   ],
   "parentIds": [
-    "I761",
-    "I769"
-  ],
-  "baptismDate": "25 DEC 1842",
-  "baptismPlace": "Galhampton, Somerset",
-  "burialDate": "1913",
-  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
-  "occupations": [
-    "Blacksmith"
+    "I762",
+    "I770"
   ],
   "notes": [
-    "Information provided by Carole Stewart - much of this comes from \"SmithyTales - events in the life of Samuel A'Court (1842-1913)\", which were recounted by his daughter Lucy & published in The Star newspaper in 1924(ref. Family History Section, Can"
+    "George spent several years in Brisbane, Australia before emigrating to Canterbury, New Zealand, between 1876 and 1878  [Ron and Eleanor Moir]."
   ],
   "censusRecords": [
     {
@@ -48,10 +44,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I820",
-      "familyId": "F324",
-      "marriageDate": "21 MAY 1863",
-      "marriagePlace": "Butleigh, Somerset, England"
+      "spouseId": "I785",
+      "familyId": "F373",
+      "marriageDate": "9 OCT 1860",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset"
     }
   ],
   "avatar": "avatars/I776_0.jpg"

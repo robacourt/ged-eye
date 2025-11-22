@@ -13,7 +13,7 @@
     "I2444"
   ],
   "childIds": [
-    "I1089"
+    "I1090"
   ],
   "parentIds": [],
   "censusRecords": [
@@ -29,7 +29,7 @@
   "marriages": [
     {
       "spouseId": "I2444",
-      "familyId": "F866"
+      "familyId": "F498"
     }
   ]
 }

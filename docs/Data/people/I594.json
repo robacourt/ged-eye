@@ -1,20 +1,40 @@
 {
   "id": "I594",
-  "name": "( Edward ) George Hatcher",
-  "givenName": "( Edward ) George",
+  "name": "Ernest Hatcher",
+  "givenName": "Ernest",
   "surname": "Hatcher",
   "sex": "M",
-  "birthDate": "27.12.1886",
+  "birthDate": "10.4.1883",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I622"
+  ],
+  "childIds": [
+    "I623",
+    "I624",
+    "I625"
+  ],
   "parentIds": [
     "I157",
     "I317"
   ],
-  "baptismDate": "13.3.1887",
-  "baptismPlace": "Marnhull, Dorset"
+  "baptismDate": "26.4.1883",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Builders Lab."
+  ],
+  "notes": [
+    "8-1891, 37-1920"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I622",
+      "familyId": "F294",
+      "marriageDate": "28.9.1920",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
 }

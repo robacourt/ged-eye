@@ -1,23 +1,17 @@
 {
   "id": "I1437",
-  "name": "Unknown Wallis",
-  "givenName": "Unknown",
-  "surname": "Wallis",
+  "name": "Andrew A'Court",
+  "givenName": "Andrew",
+  "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1435"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1435",
-      "familyId": "F558"
-    }
+  "parentIds": [
+    "I1435"
   ]
 }

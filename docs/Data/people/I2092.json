@@ -1,8 +1,8 @@
 {
   "id": "I2092",
-  "name": "Leila Holmes A'Court",
-  "givenName": "Leila Holmes",
-  "surname": "A'Court",
+  "name": "Katie Fletcher",
+  "givenName": "Katie",
+  "surname": "Fletcher",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
@@ -10,20 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2093"
+    "I2091"
   ],
-  "childIds": [
-    "I2094",
-    "I2095"
-  ],
-  "parentIds": [
-    "I524",
-    "I525"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2093",
-      "familyId": "F748"
+      "spouseId": "I2091",
+      "familyId": "F821"
     }
   ]
 }

@@ -1,26 +1,54 @@
 {
   "id": "I1339",
-  "name": "James A'Court",
-  "givenName": "James",
+  "name": "Victor James A'Court",
+  "givenName": "Victor James",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": "1888",
+  "birthPlace": "Fifehead Magdalen, Dorset",
+  "deathDate": "1944",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I935"
+  "photos": [
+    "Data/Picture/Victor James A'Court.jpg",
+    "Data/Picture/VictorLast.jpg",
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
   ],
-  "parentIds": [],
+  "spouseIds": [
+    "I1090"
+  ],
+  "childIds": [
+    "I1093",
+    "I1094",
+    "I1088",
+    "I1267"
+  ],
+  "parentIds": [
+    "I1101",
+    "I1110"
+  ],
   "occupations": [
-    "Labourer"
+    "Regular Soldier"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1891",
+      "place": "Mells, Frome,  Somerset, Rectory Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "Dorchester, Dorset, 7 Prospect Terrace"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F390"
+      "spouseId": "I1090",
+      "familyId": "F496",
+      "marriageDate": "1910"
     }
-  ]
+  ],
+  "avatar": "avatars/I1339_0.jpg"
 }

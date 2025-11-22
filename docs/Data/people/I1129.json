@@ -1,32 +1,26 @@
 {
   "id": "I1129",
-  "name": "Lilian Blanche Curtis",
-  "givenName": "Lilian Blanche",
-  "surname": "Curtis",
-  "sex": "F",
-  "birthDate": "18 MAR 1893",
+  "name": "James Phillips",
+  "givenName": "James",
+  "surname": "Phillips",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1130"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1132"
+    "I1128"
   ],
-  "parentIds": [
-    "I1081",
-    "I1082"
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
   ],
-  "baptismDate": "11 JUN 1893",
-  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1130",
-      "familyId": "F458",
-      "marriageDate": "21 SEP 1926",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F520"
     }
   ]
 }

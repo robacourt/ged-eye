@@ -1,30 +1,27 @@
 {
   "id": "I1415",
-  "name": "Albert D A'Court",
-  "givenName": "Albert D",
+  "name": "Mary J A'Court",
+  "givenName": "Mary J",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1856",
-  "birthPlace": "Bristol, Bedminster",
+  "sex": "F",
+  "birthDate": "Abt 1852",
+  "birthPlace": "Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
     "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg",
-    "Data/Media/1881 census/Bristol/RG11 2465 104 10.jpg"
+    "Data/Media/1881 census/Surrey/RG11 773 101 11.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1386",
-    "I1405"
+    "I1387",
+    "I1406"
   ],
   "occupations": [
-    "News Vendor",
-    "Packer"
-  ],
-  "notes": [
-    ""
+    "Dressmaker",
+    "Domestic servant"
   ],
   "censusRecords": [
     {
@@ -37,7 +34,7 @@
     },
     {
       "date": "1881",
-      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+      "place": "Surrey, Woking Knaphill Female Prison"
     }
   ],
   "avatar": "avatars/I1415_0.jpg"

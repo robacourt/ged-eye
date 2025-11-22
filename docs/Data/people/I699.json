@@ -1,20 +1,28 @@
 {
   "id": "I699",
-  "name": "Richard a'court",
-  "givenName": "Richard",
-  "surname": "a'court",
-  "sex": "M",
-  "birthDate": "BEF 13 NOV 1735",
-  "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "1743",
+  "name": "Anne Edwards",
+  "givenName": "Anne",
+  "surname": "Edwards",
+  "sex": "F",
+  "birthDate": "BEF 1722",
+  "birthPlace": null,
+  "deathDate": "1748",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I537",
-    "I698"
+  "spouseIds": [
+    "I538"
   ],
-  "burialDate": "28 MAY 1743",
-  "burialPlace": "North Cadbury, Somerset"
+  "childIds": [
+    "I700",
+    "I701"
+  ],
+  "parentIds": [],
+  "burialDate": "28 SEP 1748",
+  "burialPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I538",
+      "familyId": "F275"
+    }
+  ]
 }

@@ -1,30 +1,18 @@
 {
   "id": "I1455",
-  "name": "James A'Court",
-  "givenName": "James",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "BET 1844-1846",
+  "sex": "U",
+  "birthDate": "JUN 1841",
   "birthPlace": "Marnhull, Dorset",
-  "deathDate": "AFT 1861",
+  "deathDate": "BEF 1851",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/Marnhull/RG09 1329 35 39.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I177",
-    "I1195"
-  ],
-  "occupations": [
-    "Agricultural Labourer"
-  ],
-  "censusRecords": [
-    {
-      "date": "1861",
-      "place": "Marnhull, Dorset, East Well"
-    }
-  ],
-  "avatar": "avatars/I1455_0.jpg"
+    "I1196"
+  ]
 }

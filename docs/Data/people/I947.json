@@ -1,34 +1,18 @@
 {
   "id": "I947",
-  "name": "Henry A'Court",
-  "givenName": "Henry",
+  "name": "Mary Phyllis Hunter A'Court",
+  "givenName": "Mary Phyllis Hunter",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "6 APR 1856",
-  "birthPlace": "Waiwhetu, Wellington, New Zealand",
-  "deathDate": "AFT 1904",
+  "sex": "F",
+  "birthDate": "28 APR 1901",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": "4 JUL 1901",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1370"
-  ],
-  "childIds": [
-    "I1375",
-    "I1376",
-    "I1377",
-    "I1378",
-    "I1379"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I935",
-    "I936"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1370",
-      "familyId": "F395",
-      "marriageDate": "1883",
-      "marriagePlace": "New Zealand"
-    }
+    "I938",
+    "I939"
   ]
 }

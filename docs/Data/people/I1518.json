@@ -1,23 +1,26 @@
 {
   "id": "I1518",
-  "name": "Kate Isabel Baldwin",
-  "givenName": "Kate Isabel",
-  "surname": "Baldwin",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "7 JAN 1987",
-  "deathPlace": "Exmouth, Devon. 9 Brixington Drive",
+  "name": "Frederick Charles John Morgan",
+  "givenName": "Frederick Charles John",
+  "surname": "Morgan",
+  "sex": "M",
+  "birthDate": "24 NOV 1906",
+  "birthPlace": "London, St. Pancras, 55 Torriano Ave.",
+  "deathDate": "24 SEP 1972",
+  "deathPlace": "Enfield, Middlesex, 98 Ordnance Road",
   "photos": [],
   "spouseIds": [
-    "I1517"
+    "I1519"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1517",
+    "I1487"
+  ],
   "marriages": [
     {
-      "spouseId": "I1517",
-      "familyId": "F579",
+      "spouseId": "I1519",
+      "familyId": "F665",
       "marriageDate": "9 APRIL 1932"
     }
   ]

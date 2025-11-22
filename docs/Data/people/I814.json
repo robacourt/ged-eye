@@ -1,29 +1,30 @@
 {
   "id": "I814",
-  "name": "Vera A'Court",
-  "givenName": "Vera",
+  "name": "James Drysdale A'Court",
+  "givenName": "James Drysdale",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1902",
+  "sex": "M",
+  "birthDate": "5 NOV 1900",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1920",
+  "deathDate": "1972",
   "deathPlace": "Christchurch, New Zealand",
   "photos": [],
-  "spouseIds": [
-    "I818"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I794",
-    "I810"
+    "I795",
+    "I811"
   ],
+  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
   "notes": [
     "Headstone"
   ],
   "marriages": [
     {
-      "spouseId": "I818",
-      "familyId": "F348"
+      "spouseId": null,
+      "familyId": "F400",
+      "marriageDate": "21 MAY 1879",
+      "marriagePlace": "Registrar's Office, Christchurch, NZ"
     }
   ]
 }

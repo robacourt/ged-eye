@@ -1,35 +1,27 @@
 {
   "id": "I771",
-  "name": "Mary A'Court",
-  "givenName": "Mary",
+  "name": "Betsy A'Court",
+  "givenName": "Betsy",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1835",
-  "birthPlace": "Bradford Abbas, Dorset, England",
+  "birthDate": "1833",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
-    "Data/Media/1861 Census/Martock/RG09 1642 8 9.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I761",
-    "I769"
+    "I762",
+    "I770"
   ],
-  "notes": [
-    "1851 Census"
+  "occupations": [
+    "Servant"
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "Martock, Somerset, East Street"
-    },
-    {
       "date": "1851",
-      "place": "North Cadbury, Somerset"
+      "place": "Castle Cary, Somerset"
     }
-  ],
-  "avatar": "avatars/I771_0.jpg"
+  ]
 }

@@ -1,24 +1,47 @@
 {
   "id": "I533",
-  "name": "Cecilia Mary Hann",
-  "givenName": "Cecilia Mary",
-  "surname": "Hann",
-  "sex": "F",
-  "birthDate": "ABT 1861",
-  "birthPlace": "Milborne Port, Somerset",
+  "name": "Francis (Frank) A'Court",
+  "givenName": "Francis (Frank)",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1869",
+  "birthPlace": "Nether Compton, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1871 census/Over Compton/RG 10 2021 81 19.jpg",
+    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
+  ],
   "spouseIds": [
-    "I532"
+    "I534"
   ],
   "childIds": [
     "I2141",
     "I2142",
-    "I519"
+    "I520"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I572",
+    "I2359"
+  ],
+  "baptismDate": "11 APR 1869",
+  "baptismPlace": "Over Compton",
+  "occupations": [
+    "Estate labourer",
+    "Bricklayers Labourer"
+  ],
+  "notes": [
+    "Anny(Annie) Amelia was the daughter of Frank A'Court & Celia Mary(née Hann). I think they were married in 1881 & moved from Somerset to Weybridge where he was a labourer at the building of the aerodrome (Vickers)."
+  ],
   "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Over Compton, Dorset"
+    },
     {
       "date": "1901",
       "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
@@ -30,9 +53,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I532",
-      "familyId": "F225",
+      "spouseId": "I534",
+      "familyId": "F270",
       "marriageDate": "ABT 1881/1894"
     }
-  ]
+  ],
+  "avatar": "avatars/I533_0.jpg"
 }

@@ -1,18 +1,23 @@
 {
   "id": "I729",
-  "name": "Harriett Rebecca Bradley",
-  "givenName": "Harriett Rebecca",
-  "surname": "Bradley",
+  "name": "Unknown",
+  "givenName": "Unknown",
+  "surname": "",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1 MARCH 1777",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I728"
+  ],
   "childIds": [],
   "parentIds": [],
-  "notes": [
-    "Witness to marriage of Clara Ann A'Court and Alfred Hunt 6 Feb 1878"
+  "marriages": [
+    {
+      "spouseId": "I728",
+      "familyId": "F346"
+    }
   ]
 }

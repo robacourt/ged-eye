@@ -15,16 +15,16 @@
     "I103"
   ],
   "childIds": [
-    "I954",
-    "I953",
     "I955",
+    "I954",
     "I956",
     "I957",
     "I958",
-    "I526",
+    "I959",
+    "I527",
     "I104",
-    "I1070",
-    "I1071"
+    "I1071",
+    "I1072"
   ],
   "parentIds": [
     "I23",
@@ -37,7 +37,7 @@
   ],
   "notes": [
     "Transported 6 Nov 1837 Emma Eugenia ,Captain Giles Wade, Surgeon R. Wylie",
-    "Height: 5�",
+    "Height: 5½",
     "Some information on John; He was sent to the Bathurst district after landing in Sydney and was a bullock driver, taking cargo over the Blue Mountains to Sydney and return. He received his Ticket of Leave on March 7th 1846 after being recommende"
   ],
   "religion": "Protestant",
@@ -54,7 +54,7 @@
   "marriages": [
     {
       "spouseId": "I103",
-      "familyId": "F46",
+      "familyId": "F53",
       "marriageDate": "1851",
       "marriagePlace": "Kelso, NSW"
     }

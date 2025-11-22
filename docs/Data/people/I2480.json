@@ -12,17 +12,17 @@
   "spouseIds": [],
   "childIds": [
     "I2479",
-    "I1373",
+    "I1374",
     "I2750"
   ],
   "parentIds": [
-    "I1906",
-    "I1907"
+    "I1907",
+    "I1908"
   ],
   "marriages": [
     {
       "spouseId": null,
-      "familyId": "F876"
+      "familyId": "F614"
     }
   ]
 }

@@ -1,18 +1,18 @@
 {
   "id": "I696",
-  "name": "Grace a'Court",
-  "givenName": "Grace",
+  "name": "Deborah a'Court",
+  "givenName": "Deborah",
   "surname": "a'Court",
   "sex": "F",
-  "birthDate": "1 OCT 1657",
+  "birthDate": "14 JAN 1659/60",
   "birthPlace": null,
-  "deathDate": "1666",
-  "deathPlace": "South Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I563",
-    "I686"
+    "I564",
+    "I687"
   ]
 }

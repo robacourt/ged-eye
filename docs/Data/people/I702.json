@@ -1,25 +1,24 @@
 {
   "id": "I702",
-  "name": "Joan Coggan",
-  "givenName": "Joan",
-  "surname": "Coggan",
+  "name": "Rachal Hurham",
+  "givenName": "Rachal",
+  "surname": "Hurham",
   "sex": "F",
-  "birthDate": "BEF 1746",
+  "birthDate": "BEF 1736",
   "birthPlace": null,
-  "deathDate": "AFT 1759",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I700"
+    "I538"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I700",
-      "familyId": "F289",
-      "marriageDate": "5 NOV 1759",
-      "marriagePlace": "Somerton, Somerset"
+      "spouseId": "I538",
+      "familyId": "F276",
+      "marriageDate": "17.APRIL 1749"
     }
   ]
 }

@@ -1,26 +1,31 @@
 {
   "id": "I1931",
-  "name": "Marjorie Todrick A'Court",
-  "givenName": "Marjorie Todrick",
+  "name": "Sydney John A'Court",
+  "givenName": "Sydney John",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "3 SEP 1912",
-  "birthPlace": "Sanson, New Zealand",
-  "deathDate": "5 JUN 1985",
-  "deathPlace": "New Zealand",
+  "sex": "M",
+  "birthDate": "22 SEP 1907",
+  "birthPlace": "Christchurch, New Zealand, Springfield Rd.",
+  "deathDate": "JAN 1965",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I2311"
+    "I1945"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1948",
+    "I2031",
+    "I2033"
+  ],
   "parentIds": [
-    "I939",
-    "I940"
+    "I795",
+    "I811"
   ],
   "marriages": [
     {
-      "spouseId": "I2311",
-      "familyId": "F818"
+      "spouseId": "I1945",
+      "familyId": "F777",
+      "marriageDate": "1927"
     }
   ]
 }

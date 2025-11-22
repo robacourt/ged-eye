@@ -1,25 +1,26 @@
 {
   "id": "I1925",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "Bef OR 1945",
-  "deathPlace": null,
+  "name": "Harry James Nicol A'Court",
+  "givenName": "Harry James Nicol",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "23 MAY 1916",
+  "birthPlace": "Wellington, New Zealand",
+  "deathDate": "9 MAR 1983",
+  "deathPlace": "Wellington, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I1777"
+    "I2312"
   ],
-  "childIds": [
-    "I391"
+  "childIds": [],
+  "parentIds": [
+    "I943",
+    "I2308"
   ],
-  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1777",
-      "familyId": "F686"
+      "spouseId": "I2312",
+      "familyId": "F776"
     }
   ]
 }

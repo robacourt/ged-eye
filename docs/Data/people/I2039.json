@@ -1,25 +1,18 @@
 {
   "id": "I2039",
-  "name": "Tania Witty",
-  "givenName": "Tania",
-  "surname": "Witty",
-  "sex": "F",
-  "birthDate": null,
+  "name": "Nigel Bryce A'Court",
+  "givenName": "Nigel Bryce",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "31 MAY 1986",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I2023"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I2023",
-      "familyId": "F735",
-      "marriageDate": "2 MAR 2002",
-      "marriagePlace": "Nelson, New Zealand"
-    }
+  "parentIds": [
+    "I1950",
+    "I1951"
   ]
 }

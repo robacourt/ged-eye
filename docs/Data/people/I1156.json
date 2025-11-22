@@ -1,31 +1,40 @@
 {
   "id": "I1156",
-  "name": "Alice Mary Wylds",
-  "givenName": "Alice Mary",
-  "surname": "Wylds",
-  "sex": "F",
-  "birthDate": "12 APRIL 1869",
+  "name": "Albert Curtis",
+  "givenName": "Albert",
+  "surname": "Curtis",
+  "sex": "M",
+  "birthDate": "7 APR 1861",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1155"
+    "I1157"
   ],
   "childIds": [
-    "I1159",
-    "I1162"
+    "I1160",
+    "I1163"
   ],
   "parentIds": [
-    "I1157",
-    "I1158"
+    "I179",
+    "I275"
   ],
-  "baptismDate": "13 JUN 1869",
+  "baptismDate": "14 JUL 1861",
   "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Farmer"
+  ],
+  "residences": [
+    {
+      "date": "1902",
+      "place": "Antells Farm"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1155",
-      "familyId": "F470",
+      "spouseId": "I1157",
+      "familyId": "F533",
       "marriageDate": "15 JAN 1902",
       "marriagePlace": "Marnhull, Dorset"
     }

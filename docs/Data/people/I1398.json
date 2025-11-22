@@ -1,29 +1,21 @@
 {
   "id": "I1398",
-  "name": "Vincent Peters",
-  "givenName": "Vincent",
-  "surname": "Peters",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Kate Rosine A'Court",
+  "givenName": "Kate Rosine",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "18 MAR1999",
+  "birthPlace": "Enkhuizen, Holland",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I718"
+  "photos": [
+    "Data/Picture/Kate Rosine A'Court Fowey Jul 02.jpg"
   ],
-  "childIds": [
-    "I719"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I125",
+    "I1391"
   ],
-  "parentIds": [],
-  "occupations": [
-    "New Zealand Army"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I718",
-      "familyId": "F292",
-      "marriageDate": "1918"
-    }
-  ]
+  "avatar": "avatars/I1398_0.jpg"
 }

@@ -1,28 +1,45 @@
 {
   "id": "I778",
-  "name": "Susannah A'Court",
-  "givenName": "Susannah",
+  "name": "Eleanor A'Court",
+  "givenName": "Eleanor",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1844",
-  "birthPlace": "Wincanton, Somerset",
-  "deathDate": "29 NOV 1925",
+  "birthDate": "13 JUN 1844",
+  "birthPlace": "Galhampton, Somerset",
+  "deathDate": "22 MAY  1922",
   "deathPlace": null,
   "photos": [
+    "Data/Picture/Eleanor A'Court.jpg",
+    "Data/Picture/Eleanor cottage.jpg",
     "Data/Media/1851 census/North Cadbury/N Cadbury.jpg"
   ],
   "spouseIds": [
-    "I866"
+    "I865",
+    "I866",
+    "I1484",
+    "I1486"
   ],
   "childIds": [
-    "I2324",
-    "I1537"
+    "I1492",
+    "I1493",
+    "I1494",
+    "I1497",
+    "I1508",
+    "I1509",
+    "I1514",
+    "I1510",
+    "I1511",
+    "I1515",
+    "I1533",
+    "I1534",
+    "I1485",
+    "I1487"
   ],
   "parentIds": [
-    "I761",
-    "I769"
+    "I762",
+    "I770"
   ],
-  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "burialPlace": "Ditcheat, Somerset. Parish Church",
   "censusRecords": [
     {
       "date": "1851",
@@ -30,14 +47,27 @@
     },
     {
       "date": "1871",
-      "place": "North Cadbury, Somerset"
+      "place": "Galhampton, North Cadbury, Cottage"
     }
   ],
   "marriages": [
     {
+      "spouseId": "I865",
+      "familyId": "F375",
+      "marriageDate": "11 AUG 1863"
+    },
+    {
       "spouseId": "I866",
-      "familyId": "F329",
-      "marriageDate": "1867"
+      "familyId": "F376",
+      "marriageDate": "12 SEP 1886"
+    },
+    {
+      "spouseId": "I1484",
+      "familyId": "F377"
+    },
+    {
+      "spouseId": "I1486",
+      "familyId": "F378"
     }
   ],
   "avatar": "avatars/I778_0.jpg"

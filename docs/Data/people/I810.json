@@ -1,36 +1,25 @@
 {
   "id": "I810",
-  "name": "Jane Perkins",
-  "givenName": "Jane",
-  "surname": "Perkins",
+  "name": "Amelia Julia Anna KETTENBURG",
+  "givenName": "Amelia Julia Anna",
+  "surname": "KETTENBURG",
   "sex": "F",
-  "birthDate": "11 APR 1877",
-  "birthPlace": "Heathcote, Christchurch, NZ",
-  "deathDate": "1969",
-  "deathPlace": "Christchurch, New Zealand",
+  "birthDate": "1885",
+  "birthPlace": "Ellesmere, NZ",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I794"
   ],
-  "childIds": [
-    "I811",
-    "I812",
-    "I813",
-    "I814",
-    "I815",
-    "I1930"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
-  "notes": [
-    "Electoral roll"
-  ],
   "marriages": [
     {
       "spouseId": "I794",
-      "familyId": "F339",
-      "marriageDate": "21 MAY 1897",
-      "marriagePlace": "Registrar's Office, Christchurch, NZ"
+      "familyId": "F388",
+      "marriageDate": "12 MAY 1904",
+      "marriagePlace": "Stanley St. Christchurch, NZ"
     }
   ]
 }

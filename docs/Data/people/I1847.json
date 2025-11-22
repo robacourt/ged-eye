@@ -1,17 +1,15 @@
 {
   "id": "I1847",
-  "name": "Richard A'Court",
-  "givenName": "Richard",
+  "name": "Peter J A'Court",
+  "givenName": "Peter J",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1ST QRT 1959",
-  "birthPlace": "Ilford",
+  "birthDate": "4TH QRT 1958",
+  "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1848"
-  ]
+  "parentIds": []
 }

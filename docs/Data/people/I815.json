@@ -1,30 +1,29 @@
 {
   "id": "I815",
-  "name": "George Wilton A'Court",
-  "givenName": "George Wilton",
+  "name": "Vera A'Court",
+  "givenName": "Vera",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "22 SEP 1907",
+  "sex": "F",
+  "birthDate": "1902",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "10 AUG 1978",
-  "deathPlace": null,
+  "deathDate": "1920",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I2742"
+    "I819"
   ],
   "childIds": [],
   "parentIds": [
-    "I794",
-    "I810"
+    "I795",
+    "I811"
   ],
   "notes": [
-    "Wises"
+    "Headstone"
   ],
   "marriages": [
     {
-      "spouseId": "I2742",
-      "familyId": "F349",
-      "marriageDate": "1928"
+      "spouseId": "I819",
+      "familyId": "F401"
     }
   ]
 }

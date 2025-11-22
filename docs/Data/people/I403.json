@@ -20,8 +20,8 @@
     "I127"
   ],
   "parentIds": [
-    "I480",
-    "I481"
+    "I481",
+    "I482"
   ],
   "censusRecords": [
     {
@@ -50,7 +50,7 @@
   "marriages": [
     {
       "spouseId": "I402",
-      "familyId": "F80",
+      "familyId": "F92",
       "marriageDate": "1ST QTR 1944"
     }
   ],

@@ -1,37 +1,35 @@
 {
   "id": "I623",
-  "name": "Ronald George Hatcher",
-  "givenName": "Ronald George",
+  "name": "Winifred Joan Hatcher",
+  "givenName": "Winifred Joan",
   "surname": "Hatcher",
-  "sex": "M",
-  "birthDate": "12.3.1922",
+  "sex": "F",
+  "birthDate": "21.2.1921",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I633"
+    "I631"
   ],
-  "childIds": [
-    "I634"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I593",
-    "I621"
+    "I594",
+    "I622"
   ],
-  "baptismDate": "10.4.1936",
+  "baptismDate": "28.8.1921",
   "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Ag Lab"
+    "General Cook"
   ],
   "notes": [
-    "26-1948"
+    "26-1948,"
   ],
   "marriages": [
     {
-      "spouseId": "I633",
-      "familyId": "F261",
-      "marriageDate": "28.8.1948",
+      "spouseId": "I631",
+      "familyId": "F310",
+      "marriageDate": "3.4,1948",
       "marriagePlace": "Marnhull, Dorset"
     }
   ]

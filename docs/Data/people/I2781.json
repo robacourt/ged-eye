@@ -8,11 +8,14 @@
   "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/FromRob/MabelACourtMond.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I2744",
     "I128"
-  ]
+  ],
+  "avatar": "avatars/I2781_0.jpg"
 }

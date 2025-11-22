@@ -1,31 +1,52 @@
 {
   "id": "I1572",
-  "name": "Mary Julia Tuley",
-  "givenName": "Mary Julia",
-  "surname": "Tuley",
-  "sex": "F",
-  "birthDate": "Abt 1865",
-  "birthPlace": "Rugby, Warwickshire",
+  "name": "Charles Edward A'Court",
+  "givenName": "Charles Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "21 MAY 1859",
+  "birthPlace": "Blandford, Dorset, Rose Close",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1871 census/Blandford Forum/RG 10 1978 61 26.jpg",
+    "Data/Media/1881 census/Dorset/Blandford Forum/RG11 2088 54 22.jpg"
+  ],
   "spouseIds": [
-    "I1571"
+    "I1573"
   ],
   "childIds": [
-    "I1573",
     "I1574",
     "I1575",
     "I1576",
-    "I2962",
     "I1577",
-    "I1578"
+    "I2962",
+    "I1578",
+    "I1579"
   ],
   "parentIds": [
-    "I2829",
-    "I2828"
+    "I44",
+    "I259"
+  ],
+  "occupations": [
+    "Farmer",
+    "Inn Keeper",
+    "Labourer Railway Worker",
+    "House Painter"
   ],
   "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1871",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
+    {
+      "date": "1881",
+      "place": "Blandford, Dorset, The Blue Boar Inn, East St"
+    },
     {
       "date": "1891",
       "place": "Blandford, Dorset, 42 East St. White Hart Inn"
@@ -41,9 +62,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1571",
-      "familyId": "F594",
+      "spouseId": "I1573",
+      "familyId": "F682",
       "marriageDate": "ABT 1886"
     }
-  ]
+  ],
+  "avatar": "avatars/I1572_0.jpg"
 }

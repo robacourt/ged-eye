@@ -17,7 +17,7 @@
     "I2399"
   ],
   "parentIds": [
-    "I1962",
+    "I1963",
     "I2392"
   ],
   "occupations": [
@@ -26,7 +26,7 @@
   "marriages": [
     {
       "spouseId": "I2395",
-      "familyId": "F849",
+      "familyId": "F902",
       "marriageDate": "7 MAY 1967",
       "marriagePlace": "Durban, South Africa"
     }

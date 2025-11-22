@@ -1,36 +1,42 @@
 {
   "id": "I1542",
-  "name": "William H A'Court",
-  "givenName": "William H",
+  "name": "Dennis Edward A'Court",
+  "givenName": "Dennis Edward",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1889",
-  "birthPlace": "Beaminster, Dorset",
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "1914",
+  "birthPlace": "Bristol,  Keynsham, England",
+  "deathDate": "1 APR 1993",
+  "deathPlace": "Halifax, Nova Scotia, Canada",
   "photos": [],
   "spouseIds": [
-    "I1543",
-    "I2281"
+    "I1545"
   ],
   "childIds": [
-    "I1541",
-    "I2313"
+    "I1546",
+    "I1547",
+    "I1548",
+    "I1549"
   ],
-  "parentIds": [],
-  "notes": [
-    "Dennis was my Grandmothers half brother ( she is Eileen Rundle).  From what Gran had told me William and my great grandmother Ellen Hunter divorced after they had had Dennis and Ronald. Unfortunately she does not know much more than that, thoug"
+  "parentIds": [
+    "I1543",
+    "I1544"
+  ],
+  "occupations": [
+    "Heavy Lorry Driver"
+  ],
+  "censusRecords": [
+    {
+      "date": "1939 REGISTER",
+      "place": "Bristol, 69 Pearl St"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1543",
-      "familyId": "F589",
-      "marriageDate": "DEC 1913",
-      "marriagePlace": "Bristol"
-    },
-    {
-      "spouseId": "I2281",
-      "familyId": "F807"
+      "spouseId": "I1545",
+      "familyId": "F674",
+      "marriageDate": "14 DEC 1939",
+      "marriagePlace": "Bristol Register Office, by special licence"
     }
   ]
 }

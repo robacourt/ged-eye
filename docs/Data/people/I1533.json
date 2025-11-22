@@ -1,21 +1,29 @@
 {
   "id": "I1533",
-  "name": "Edward Charles White",
-  "givenName": "Edward Charles",
+  "name": "Ceilia Minnie White",
+  "givenName": "Ceilia Minnie",
   "surname": "White",
-  "sex": "M",
-  "birthDate": "23 AUG 1889",
+  "sex": "F",
+  "birthDate": "28 SEP 1887",
   "birthPlace": "Galhampton, Somerset",
-  "deathDate": "1961",
+  "deathDate": "1970",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I865",
-    "I777"
+  "spouseIds": [
+    "I1535"
   ],
-  "notes": [
-    "Edward Charles White (d 1961) married then remarried Lily (1888 -1981) they had two sons the second Bod White 1923 - 1996 never married or had children - the first son Eddie (b 1920) married Florrie in 1944.  Their daughter Eileen married Roge"
+  "childIds": [
+    "I1536"
+  ],
+  "parentIds": [
+    "I866",
+    "I778"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1535",
+      "familyId": "F671",
+      "marriageDate": "1916"
+    }
   ]
 }

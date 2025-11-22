@@ -1,31 +1,35 @@
 {
   "id": "I1249",
-  "name": "Charlotte Fudge",
-  "givenName": "Charlotte",
-  "surname": "Fudge",
-  "sex": "F",
+  "name": "George Gillett",
+  "givenName": "George",
+  "surname": "Gillett",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1248"
-  ],
-  "childIds": [
-    "I1247",
-    "I1253"
-  ],
-  "parentIds": [
     "I1250"
   ],
+  "childIds": [
+    "I1248",
+    "I1254"
+  ],
+  "parentIds": [],
   "occupations": [
-    "Laundress"
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": "1878",
+      "place": "Marnhull, Dorset, Musbery Lane Cottages"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1248",
-      "familyId": "F502"
+      "spouseId": "I1250",
+      "familyId": "F569"
     }
   ]
 }

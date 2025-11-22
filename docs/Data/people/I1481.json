@@ -1,21 +1,21 @@
 {
   "id": "I1481",
-  "name": "Michelle A'Court",
-  "givenName": "Michelle",
+  "name": "Alan A'Court",
+  "givenName": "Alan",
   "surname": "A'Court",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Picture/michelle_acourt[1].jpg"
+    "Data/Picture/AlanACourt[1].jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
   "notes": [
-    "Speaker details for Michele A'Court"
+    "Home | Contact Us | Site Map | Client Login | Alumni"
   ],
   "avatar": "avatars/I1481_0.jpg"
 }

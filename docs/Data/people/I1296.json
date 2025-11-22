@@ -1,18 +1,26 @@
 {
   "id": "I1296",
-  "name": "Margaret J A'Court",
-  "givenName": "Margaret J",
-  "surname": "A'Court",
+  "name": "Lilian Woodfield",
+  "givenName": "Lilian",
+  "surname": "Woodfield",
   "sex": "F",
-  "birthDate": "1ST QTR 1941",
-  "birthPlace": "Bridgewater, Somerset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1266",
-    "I1295"
+  "spouseIds": [
+    "I1267"
+  ],
+  "childIds": [
+    "I1297",
+    "I1298"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1267",
+      "familyId": "F577"
+    }
   ]
 }

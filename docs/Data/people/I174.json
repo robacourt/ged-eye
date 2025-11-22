@@ -15,8 +15,8 @@
   "childIds": [
     "I175",
     "I176",
-    "I1450",
-    "I1648",
+    "I1451",
+    "I1649",
     "I2405"
   ],
   "parentIds": [
@@ -35,7 +35,7 @@
   "marriages": [
     {
       "spouseId": "I143",
-      "familyId": "F83",
+      "familyId": "F96",
       "marriageDate": "1841",
       "marriagePlace": "Dorset, Wyke Regis."
     }

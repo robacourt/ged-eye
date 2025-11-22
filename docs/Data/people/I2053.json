@@ -1,31 +1,18 @@
 {
   "id": "I2053",
-  "name": "Clement Cyril A'Court",
-  "givenName": "Clement Cyril",
-  "surname": "A'Court",
+  "name": "James Alexander Phillips",
+  "givenName": "James Alexander",
+  "surname": "Phillips",
   "sex": "M",
-  "birthDate": "1931",
-  "birthPlace": "Tooting",
+  "birthDate": "13 MAR 1995",
+  "birthPlace": "Norfolk",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1857"
-  ],
-  "childIds": [
-    "I1856",
-    "I2049"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I2054",
-    "I2055"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1857",
-      "familyId": "F669",
-      "marriageDate": "1953",
-      "marriagePlace": "Epsom"
-    }
+    "I2051",
+    "I2050"
   ]
 }

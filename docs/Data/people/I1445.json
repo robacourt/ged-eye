@@ -1,9 +1,9 @@
 {
   "id": "I1445",
-  "name": "Renee A'Court",
-  "givenName": "Renee",
+  "name": "Keith A'Court",
+  "givenName": "Keith",
   "surname": "A'Court",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I973",
-    "I998"
+    "I961",
+    "I1443"
   ]
 }

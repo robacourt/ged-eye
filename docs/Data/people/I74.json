@@ -12,11 +12,11 @@
     "Data/Media/1841 Census/Henstridge/Folio 31 page 24.jpg"
   ],
   "spouseIds": [
-    "I1905"
+    "I1906"
   ],
   "childIds": [
     "I2481",
-    "I1906"
+    "I1907"
   ],
   "parentIds": [
     "I23",
@@ -25,8 +25,7 @@
   "baptismDate": "4 FEB 1826",
   "baptismPlace": "Henstridge, Somerset",
   "notes": [
-    "There is a possibility that there where TWO Zachariah one bap  1826 and dieing before c 1831and the other born c 1831/3 see 1841 census and marriage cert.",
-    "Known as Zaccheus"
+    "There is a possibility that there where TWO Zachariah one bap  1826 and dieing before c 1831and the other born c 1831/3 see 1841 census and marriage cert."
   ],
   "censusRecords": [
     {
@@ -36,8 +35,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1905",
-      "familyId": "F675",
+      "spouseId": "I1906",
+      "familyId": "F52",
       "marriageDate": "1 MAR 1860",
       "marriagePlace": "Melbourne, Australia, St James Cathedral"
     }

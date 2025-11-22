@@ -18,8 +18,8 @@
     "I2425"
   ],
   "parentIds": [
-    "I1185",
-    "I1190"
+    "I1186",
+    "I1191"
   ],
   "censusRecords": [
     {
@@ -30,7 +30,7 @@
   "marriages": [
     {
       "spouseId": "I2424",
-      "familyId": "F861"
+      "familyId": "F909"
     }
   ],
   "avatar": "avatars/I2423_0.jpg"

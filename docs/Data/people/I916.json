@@ -1,29 +1,35 @@
 {
   "id": "I916",
-  "name": "Bill Godwin",
-  "givenName": "Bill",
-  "surname": "Godwin",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Ellen Unknown",
+  "givenName": "Ellen",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "BEF 1885",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I922"
+    "I231"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I231",
-    "I915"
+  "childIds": [
+    "I917",
+    "I918",
+    "I919",
+    "I2538"
   ],
-  "notes": [
-    "Date Unknown: Lived at Buller Street, Swindon, Wiltshire, England"
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Wiltshire, Cricklade, Chelworth"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I922",
-      "familyId": "F383"
+      "spouseId": "I231",
+      "familyId": "F142",
+      "marriageDate": "ABT 1898"
     }
   ]
 }

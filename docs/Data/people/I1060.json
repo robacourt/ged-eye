@@ -1,18 +1,27 @@
 {
   "id": "I1060",
-  "name": "Glendyn Darold Diehm",
-  "givenName": "Glendyn Darold",
-  "surname": "Diehm",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Marjorie Beatrice Webb",
+  "givenName": "Marjorie Beatrice",
+  "surname": "Webb",
+  "sex": "F",
+  "birthDate": "5 JULY 1927",
+  "birthPlace": "Mudgee, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1058",
+  "spouseIds": [
     "I1059"
+  ],
+  "childIds": [
+    "I1061",
+    "I1062"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1059",
+      "familyId": "F488",
+      "marriageDate": "27 JANUARY 1951"
+    }
   ]
 }

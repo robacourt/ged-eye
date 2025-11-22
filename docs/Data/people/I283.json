@@ -11,7 +11,7 @@
   "photos": [],
   "spouseIds": [
     "I185",
-    "I1260"
+    "I1261"
   ],
   "childIds": [
     "I284",
@@ -19,7 +19,7 @@
     "I286"
   ],
   "parentIds": [
-    "I1259"
+    "I1260"
   ],
   "burialDate": "AUG 1885",
   "burialPlace": "Marnhull, Dorset",
@@ -43,13 +43,13 @@
   "marriages": [
     {
       "spouseId": "I185",
-      "familyId": "F103",
+      "familyId": "F117",
       "marriageDate": "4 APR 1859",
       "marriagePlace": "Marnhull, Dorset"
     },
     {
-      "spouseId": "I1260",
-      "familyId": "F139"
+      "spouseId": "I1261",
+      "familyId": "F155"
     }
   ]
 }

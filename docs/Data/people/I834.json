@@ -1,29 +1,29 @@
 {
   "id": "I834",
-  "name": "Alice Maud (Maud) JACOBS",
-  "givenName": "Alice Maud (Maud)",
-  "surname": "JACOBS",
-  "sex": "F",
-  "birthDate": "24 JUN 1880",
-  "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "4 DEC 1965",
-  "deathPlace": "New Plymouth Hospital, New Plymouth, NZ",
+  "name": "James Frederick THOMAS",
+  "givenName": "James Frederick",
+  "surname": "THOMAS",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I824"
   ],
-  "childIds": [
-    "I835"
-  ],
+  "childIds": [],
   "parentIds": [],
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
   "notes": [
-    "NZ Probates New Plymouth Court 515/65",
-    "Information provided by Carole Stewart"
+    "Headstone"
   ],
   "marriages": [
     {
       "spouseId": "I824",
-      "familyId": "F354"
+      "familyId": "F406",
+      "marriageDate": "28 NOV 1900",
+      "marriagePlace": "St Lukes, Christchurch, NZ"
     }
   ]
 }

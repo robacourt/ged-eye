@@ -1,35 +1,31 @@
 {
   "id": "I1653",
-  "name": "Edward Drew",
-  "givenName": "Edward",
-  "surname": "Drew",
-  "sex": "M",
-  "birthDate": "ABT 1816",
-  "birthPlace": "West Stour",
+  "name": "Kate A'Court",
+  "givenName": "Kate",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1870",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1654"
+  "photos": [
+    "Data/Media/1871 census/Marnhull/RG 10 1972 34 6.jpg"
   ],
-  "childIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
     "I1651",
-    "I1655"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Gardener"
+    "I1652"
   ],
   "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, New St."
+    },
     {
       "date": "1881",
       "place": "Marnhull, Dorset, Burton Street"
     }
   ],
-  "marriages": [
-    {
-      "spouseId": "I1654",
-      "familyId": "F611"
-    }
-  ]
+  "avatar": "avatars/I1653_0.jpg"
 }

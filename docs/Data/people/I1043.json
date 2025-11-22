@@ -1,26 +1,35 @@
 {
   "id": "I1043",
-  "name": "Susan Mary Moon",
-  "givenName": "Susan Mary",
-  "surname": "Moon",
-  "sex": "F",
-  "birthDate": "1949",
+  "name": "Frederick William A'Court",
+  "givenName": "Frederick William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1953",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1042"
+  "photos": [
+    "Data/Picture/FredACourt[1].jpg"
   ],
-  "childIds": [
+  "spouseIds": [
     "I1044"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1045"
+  ],
+  "parentIds": [
+    "I1041",
+    "I1042"
+  ],
+  "occupations": [
+    "Editor of \"Meat Trades Journal\""
+  ],
   "marriages": [
     {
-      "spouseId": "I1042",
-      "familyId": "F423",
+      "spouseId": "I1044",
+      "familyId": "F484",
       "marriageDate": "1985"
     }
-  ]
+  ],
+  "avatar": "avatars/I1043_0.jpg"
 }

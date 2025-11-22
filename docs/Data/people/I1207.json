@@ -1,9 +1,9 @@
 {
   "id": "I1207",
-  "name": "Marie Sharp",
-  "givenName": "Marie",
+  "name": "Phyliss Sharp",
+  "givenName": "Phyliss",
   "surname": "Sharp",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1205",
-    "I1204"
+    "I1206",
+    "I1205"
   ]
 }

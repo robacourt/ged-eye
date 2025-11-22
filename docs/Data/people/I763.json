@@ -1,56 +1,42 @@
 {
   "id": "I763",
-  "name": "Elisha A'Court",
-  "givenName": "Elisha",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1813",
-  "birthPlace": "Cadbury, Somerset",
-  "deathDate": null,
+  "sex": "F",
+  "birthDate": "1811",
+  "birthPlace": null,
+  "deathDate": "AFT 1871",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I871",
-    "I2262"
+    "I1320"
   ],
   "childIds": [
-    "I872",
-    "I874",
-    "I873",
-    "I875",
-    "I876",
-    "I877",
-    "I878",
-    "I2107",
-    "I2108"
+    "I1321",
+    "I1322"
   ],
   "parentIds": [
-    "I755",
-    "I760"
+    "I756",
+    "I761"
   ],
-  "baptismDate": "24 OCT 1813",
+  "baptismDate": "1 APR 1812",
+  "baptismPlace": "North Cadbury, Somerset",
   "occupations": [
-    "Ostler",
-    "Cab Driver"
+    "Nurse"
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "London, St Pancras, 3 Brill Cottages."
-    },
-    {
-      "date": "1881",
-      "place": "London, St Pancras, 27 Stanmore St."
+      "date": "1871",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I871",
-      "familyId": "F315"
-    },
-    {
-      "spouseId": "I2262",
-      "familyId": "F800"
+      "spouseId": "I1320",
+      "familyId": "F363",
+      "marriageDate": "16 SEP 1832",
+      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
     }
   ]
 }

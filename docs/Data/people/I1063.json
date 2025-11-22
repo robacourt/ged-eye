@@ -1,29 +1,32 @@
 {
   "id": "I1063",
-  "name": "Ronald Higgins",
-  "givenName": "Ronald",
-  "surname": "Higgins",
-  "sex": "M",
-  "birthDate": "15 FEBRUARY 1930",
-  "birthPlace": null,
-  "deathDate": "AUGUST 1982",
-  "deathPlace": "Orange",
+  "name": "Edna Gloria Diehm",
+  "givenName": "Edna Gloria",
+  "surname": "Diehm",
+  "sex": "F",
+  "birthDate": "10 DECEMBER 1933",
+  "birthPlace": "Gulgong, NSW",
+  "deathDate": "14 NOVEMBER 1971",
+  "deathPlace": "Lithgow",
   "photos": [],
   "spouseIds": [
-    "I1062"
+    "I1064"
   ],
   "childIds": [
-    "I1064",
     "I1065",
     "I1066",
     "I1067",
-    "I1068"
+    "I1068",
+    "I1069"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I935",
+    "I934"
+  ],
   "marriages": [
     {
-      "spouseId": "I1062",
-      "familyId": "F428",
+      "spouseId": "I1064",
+      "familyId": "F489",
       "marriageDate": "MARCH 1951"
     }
   ]

@@ -1,27 +1,40 @@
 {
   "id": "I974",
-  "name": "Anastasia ( Hannah ) A'Court",
-  "givenName": "Anastasia ( Hannah )",
+  "name": "Zachariah Abraham Charles (Zac) A'Court",
+  "givenName": "Zachariah Abraham Charles (Zac)",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1906",
-  "birthPlace": "Dubbo, NSW",
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I975"
+  "sex": "M",
+  "birthDate": "1899",
+  "birthPlace": "Wellington, NSW",
+  "deathDate": "1988",
+  "deathPlace": "late of Mount Warrigal, formerly of Wollongong,",
+  "photos": [
+    "Data/Picture/ZachariahAC and Nephew.jpg"
   ],
-  "childIds": [],
+  "spouseIds": [
+    "I999"
+  ],
+  "childIds": [
+    "I1000",
+    "I1001",
+    "I1446",
+    "I1447",
+    "I1448"
+  ],
   "parentIds": [
     "I104",
-    "I733"
+    "I734"
+  ],
+  "notes": [
+    "Zach Acourt made a few thousand when Coca Cola built their factory on his"
   ],
   "marriages": [
     {
-      "spouseId": "I975",
-      "familyId": "F404",
-      "marriageDate": "1926"
+      "spouseId": "I999",
+      "familyId": "F459",
+      "marriageDate": "1923",
+      "marriagePlace": "Dubbo, NSW"
     }
-  ]
+  ],
+  "avatar": "avatars/I974_0.jpg"
 }

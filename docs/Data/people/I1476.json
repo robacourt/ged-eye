@@ -1,24 +1,37 @@
 {
   "id": "I1476",
-  "name": "Eliza A'Court",
-  "givenName": "Eliza",
+  "name": "Edmund \\ Edward A'Court",
+  "givenName": "Edmund \\ Edward",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1835",
+  "sex": "M",
+  "birthDate": "ABT 1829",
   "birthPlace": "Henstridge, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1861 Census/Henstridge/RG09 1648 61 3.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1473",
-    "I1474"
+    "I1474",
+    "I1475"
+  ],
+  "occupations": [
+    "Farmers son"
+  ],
+  "notes": [
+    "1861 England Census"
   ],
   "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Henstridge, Somerset"
+    },
     {
       "date": "1841",
       "place": "Henstridge, Somerset, Baslands Hill farm"
     }
-  ]
+  ],
+  "avatar": "avatars/I1476_0.jpg"
 }

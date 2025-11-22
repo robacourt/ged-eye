@@ -10,10 +10,9 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I646"
+    "I647"
   ],
   "childIds": [
-    "I647",
     "I648",
     "I649",
     "I650",
@@ -22,7 +21,8 @@
     "I653",
     "I654",
     "I655",
-    "I656"
+    "I656",
+    "I657"
   ],
   "parentIds": [
     "I39",
@@ -38,8 +38,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I646",
-      "familyId": "F128",
+      "spouseId": "I647",
+      "familyId": "F143",
       "marriageDate": "31 MAY 1865",
       "marriagePlace": "Marnhull, Dorset"
     }

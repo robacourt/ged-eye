@@ -1,10 +1,10 @@
 {
   "id": "I2084",
-  "name": "George Wilfred A'Court",
-  "givenName": "George Wilfred",
+  "name": "Samuel Adolphus A'Court",
+  "givenName": "Samuel Adolphus",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1905",
+  "birthDate": "1901",
   "birthPlace": "Camberwell, Peckham",
   "deathDate": null,
   "deathPlace": null,
@@ -14,8 +14,8 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2065",
-    "I2066"
+    "I2066",
+    "I2067"
   ],
   "censusRecords": [
     {

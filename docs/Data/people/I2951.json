@@ -10,14 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I461"
+    "I462"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I461",
-      "familyId": "F1009",
+      "spouseId": "I462",
+      "familyId": "F247",
       "marriageDate": "JUL 1939",
       "marriagePlace": "London, Woolwich"
     }

@@ -1,10 +1,10 @@
 {
   "id": "I1661",
-  "name": "Debrah Hayward",
-  "givenName": "Debrah",
+  "name": "Ernest Hayward",
+  "givenName": "Ernest",
   "surname": "Hayward",
-  "sex": "F",
-  "birthDate": "ABT 1863",
+  "sex": "M",
+  "birthDate": "ABT 1877",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,13 +12,17 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1658",
+    "I1659",
     "I309"
   ],
   "censusRecords": [
     {
       "date": "1881",
       "place": "Marnhull, Dorset, Flanders"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Burton Street"
     }
   ]
 }

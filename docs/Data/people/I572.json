@@ -1,24 +1,57 @@
 {
   "id": "I572",
-  "name": "Albert A'Court",
-  "givenName": "Albert",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "16 JUL 1909",
+  "birthDate": "20 FEB1831",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": "BEF 1881",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "A'Court Albert of Bourton Dorsetshire died 16th July 1909"
+  "photos": [
+    "Data/Media/1841 Census/Horsington/Folio 22 page 23.jpg"
   ],
-  "residences": [
+  "spouseIds": [
+    "I2359"
+  ],
+  "childIds": [
+    "I2361",
+    "I491",
+    "I2364",
+    "I2362",
+    "I533",
+    "I2363",
+    "I2823",
+    "I2824"
+  ],
+  "parentIds": [
+    "I578",
+    "I579"
+  ],
+  "occupations": [
+    "Shepherd"
+  ],
+  "censusRecords": [
     {
-      "date": "1909",
-      "place": "Bourton, Dorsetshire"
+      "date": "1841",
+      "place": "Horsington, Somerset"
+    },
+    {
+      "date": "1851",
+      "place": "Horsington, Somerset, Horsington St."
+    },
+    {
+      "date": "1871",
+      "place": "Over Compton, Dorset"
     }
-  ]
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2359",
+      "familyId": "F253",
+      "marriageDate": "16 MAY 1853",
+      "marriagePlace": "Somerset, Horsington"
+    }
+  ],
+  "avatar": "avatars/I572_0.jpg"
 }

@@ -1,18 +1,25 @@
 {
   "id": "I969",
-  "name": "George H. C. Williams",
-  "givenName": "George H. C.",
-  "surname": "Williams",
-  "sex": "M",
-  "birthDate": "1891",
-  "birthPlace": "Dubbo, NSW",
+  "name": "Catherine Unknown",
+  "givenName": "Catherine",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I965",
-    "I956"
+  "spouseIds": [
+    "I968"
+  ],
+  "childIds": [
+    "I960"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I968",
+      "familyId": "F456"
+    }
   ]
 }

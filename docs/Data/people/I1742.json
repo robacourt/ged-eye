@@ -1,10 +1,10 @@
 {
   "id": "I1742",
-  "name": "George Davis",
-  "givenName": "George",
+  "name": "Charles Davis",
+  "givenName": "Charles",
   "surname": "Davis",
   "sex": "M",
-  "birthDate": "Abt 1846",
+  "birthDate": "Abt 1843",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,8 +12,8 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1738",
-    "I764"
+    "I1739",
+    "I765"
   ],
   "censusRecords": [
     {

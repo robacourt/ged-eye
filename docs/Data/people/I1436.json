@@ -1,17 +1,25 @@
 {
   "id": "I1436",
-  "name": "Andrew A'Court",
-  "givenName": "Andrew",
+  "name": "Angela A'Court",
+  "givenName": "Angela",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "6 NOV 1961",
+  "birthPlace": "Sunbury on Thames, Surrey",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1438"
+  ],
   "childIds": [],
   "parentIds": [
-    "I1434"
+    "I1435"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1438",
+      "familyId": "F640"
+    }
   ]
 }

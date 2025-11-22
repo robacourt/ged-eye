@@ -1,26 +1,26 @@
 {
   "id": "I1574",
-  "name": "Ella May A'Court",
-  "givenName": "Ella May",
+  "name": "Clara Edith A'Court",
+  "givenName": "Clara Edith",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1888",
+  "birthDate": "Abt 1887",
   "birthPlace": "Blandford Forum, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1891 census/Dorset/Blanford/RG12 1634 68 22.jpg",
     "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
-    "Data/Media/1911 census/Somerset/Glastonbury/RG14 14538 238.jpg"
+    "Data/Media/1911 census/Dorset/Blandford/RG14 12218 2.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1571",
-    "I1572"
+    "I1572",
+    "I1573"
   ],
   "occupations": [
-    "Hotel Assistant"
+    "Barmaid"
   ],
   "censusRecords": [
     {
@@ -33,7 +33,7 @@
     },
     {
       "date": "1911",
-      "place": "Glastonbury, Somerset, The Crown Hotel, 4 Market Place"
+      "place": "Blandford, Dorset, The Crown Hotel"
     }
   ],
   "avatar": "avatars/I1574_0.jpg"

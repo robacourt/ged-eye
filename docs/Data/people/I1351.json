@@ -1,26 +1,23 @@
 {
   "id": "I1351",
-  "name": "Beatrice Alice Cundy",
-  "givenName": "Beatrice Alice",
-  "surname": "Cundy",
-  "sex": "F",
-  "birthDate": "1868",
-  "birthPlace": "Greytown",
+  "name": "John Fairly Fenwick",
+  "givenName": "John Fairly",
+  "surname": "Fenwick",
+  "sex": "M",
+  "birthDate": "ABT 1866",
+  "birthPlace": "New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1352"
+    "I1350"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1352",
-      "familyId": "F535",
+      "spouseId": "I1350",
+      "familyId": "F604",
       "marriageDate": "1887"
     }
   ]

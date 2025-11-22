@@ -1,29 +1,23 @@
 {
   "id": "I1390",
-  "name": "Rachel Mascha Mulder",
-  "givenName": "Rachel Mascha",
-  "surname": "Mulder",
+  "name": "Norma Unknown",
+  "givenName": "Norma",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "1 FEB 1973",
-  "birthPlace": "Wagening, Provinsie Gelderland, Holland",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I125"
+    "I989"
   ],
-  "childIds": [
-    "I1396",
-    "I1397"
-  ],
-  "parentIds": [
-    "I1391",
-    "I1392"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I125",
-      "familyId": "F79"
+      "spouseId": "I989",
+      "familyId": "F466"
     }
   ]
 }

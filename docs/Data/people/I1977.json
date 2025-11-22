@@ -1,28 +1,27 @@
 {
   "id": "I1977",
-  "name": "Percy James Gumbrell",
-  "givenName": "Percy James",
+  "name": "Charles Gumbrell",
+  "givenName": "Charles",
   "surname": "Gumbrell",
   "sex": "M",
-  "birthDate": "1889",
-  "birthPlace": "Gosport, Hampshire",
+  "birthDate": "Abt 1848",
+  "birthPlace": "Bognor, Sussex",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1978"
+    "I1976"
   ],
   "childIds": [
-    "I1979"
+    "I1978"
   ],
-  "parentIds": [
-    "I1976",
-    "I1975"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1978",
-      "familyId": "F708"
+      "spouseId": "I1976",
+      "familyId": "F794",
+      "marriageDate": "2 OCT 1870",
+      "marriagePlace": "Portsea Island, Hampshire"
     }
   ]
 }

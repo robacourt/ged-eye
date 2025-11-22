@@ -1,29 +1,26 @@
 {
   "id": "I942",
-  "name": "Stanley James A'Court",
-  "givenName": "Stanley James",
+  "name": "Catherine Sarah Howden A'Court",
+  "givenName": "Catherine Sarah Howden",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "20 MAR 1890",
+  "sex": "F",
+  "birthDate": "6 FEB 1888",
   "birthPlace": "Sanson, Wellington, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2308"
+    "I2307"
   ],
-  "childIds": [
-    "I1924"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I937",
-    "I938"
+    "I938",
+    "I939"
   ],
   "marriages": [
     {
-      "spouseId": "I2308",
-      "familyId": "F682",
-      "marriageDate": "1914"
+      "spouseId": "I2307",
+      "familyId": "F449"
     }
   ]
 }

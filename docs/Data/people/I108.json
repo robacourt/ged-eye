@@ -13,8 +13,8 @@
     "I117"
   ],
   "childIds": [
-    "I1291",
-    "I1292"
+    "I1292",
+    "I1293"
   ],
   "parentIds": [
     "I76",
@@ -45,7 +45,7 @@
   "marriages": [
     {
       "spouseId": "I117",
-      "familyId": "F66",
+      "familyId": "F74",
       "marriageDate": "6 FEB 1878",
       "marriagePlace": "St. James, Milton, Portsea"
     }

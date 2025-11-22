@@ -1,28 +1,18 @@
 {
   "id": "I1380",
-  "name": "Evelyn Beatrice Robjohns",
-  "givenName": "Evelyn Beatrice",
-  "surname": "Robjohns",
+  "name": "Esme A'Court",
+  "givenName": "Esme",
+  "surname": "A'Court",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1375"
-  ],
-  "childIds": [
-    "I2309",
-    "I2310"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1375",
-      "familyId": "F544",
-      "marriageDate": "1912",
-      "marriagePlace": "New Zealand"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I948",
+    "I1371"
   ]
 }

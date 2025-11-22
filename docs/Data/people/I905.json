@@ -1,18 +1,36 @@
 {
   "id": "I905",
-  "name": "Lilian E Lines",
-  "givenName": "Lilian E",
+  "name": "Martin Luther Lines",
+  "givenName": "Martin Luther",
   "surname": "Lines",
-  "sex": "F",
-  "birthDate": "ABT 1872",
-  "birthPlace": "Wiltshire, England",
-  "deathDate": "AFT 1881",
+  "sex": "M",
+  "birthDate": "6 SEP 1846",
+  "birthPlace": "Sutton Veny, Wiltshire, England",
+  "deathDate": "18 MAY 1910",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I904",
+  "spouseIds": [
     "I230"
+  ],
+  "childIds": [
+    "I906",
+    "I907",
+    "I908",
+    "I909",
+    "I910",
+    "I911",
+    "I2587",
+    "I2588"
+  ],
+  "parentIds": [
+    "I2022"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I230",
+      "familyId": "F140",
+      "marriageDate": "3 NOV 1870",
+      "marriagePlace": "Idmiston, Wiltshire"
+    }
   ]
 }

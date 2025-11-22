@@ -1,18 +1,34 @@
 {
   "id": "I948",
-  "name": "Frank Howden A'Court",
-  "givenName": "Frank Howden",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "9 JUL 1864",
-  "birthPlace": "Hutt, Wellington, New Zealand",
-  "deathDate": "1889",
+  "birthDate": "6 APR 1856",
+  "birthPlace": "Waiwhetu, Wellington, New Zealand",
+  "deathDate": "AFT 1904",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1371"
+  ],
+  "childIds": [
+    "I1376",
+    "I1377",
+    "I1378",
+    "I1379",
+    "I1380"
+  ],
   "parentIds": [
-    "I935",
-    "I936"
+    "I936",
+    "I937"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1371",
+      "familyId": "F451",
+      "marriageDate": "1883",
+      "marriagePlace": "New Zealand"
+    }
   ]
 }

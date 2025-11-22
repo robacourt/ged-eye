@@ -1,27 +1,25 @@
 {
   "id": "I1363",
-  "name": "Horace William Charles Cundy",
-  "givenName": "Horace William Charles",
-  "surname": "Cundy",
-  "sex": "M",
-  "birthDate": "1879",
-  "birthPlace": "Greytown",
-  "deathDate": "1945",
-  "deathPlace": "Featherston, New Zealand",
+  "name": "Annie Donald",
+  "givenName": "Annie",
+  "surname": "Donald",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1364"
+    "I1362"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
+  "childIds": [
+    "I1361"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1364",
-      "familyId": "F541",
-      "marriageDate": "1945"
+      "spouseId": "I1362",
+      "familyId": "F610"
     }
   ]
 }

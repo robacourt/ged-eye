@@ -1,12 +1,12 @@
 {
   "id": "I917",
-  "name": "May Godwin",
-  "givenName": "May",
+  "name": "Bill Godwin",
+  "givenName": "Bill",
   "surname": "Godwin",
-  "sex": "F",
-  "birthDate": "1895",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "12 APR 1975",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
@@ -15,15 +15,15 @@
   "childIds": [],
   "parentIds": [
     "I231",
-    "I915"
+    "I916"
   ],
   "notes": [
-    "Date Unknown: Lived in Ashton Keynes, Wiltshire, England."
+    "Date Unknown: Lived at Buller Street, Swindon, Wiltshire, England"
   ],
   "marriages": [
     {
       "spouseId": "I923",
-      "familyId": "F384"
+      "familyId": "F437"
     }
   ]
 }

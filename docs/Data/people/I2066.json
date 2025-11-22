@@ -1,44 +1,59 @@
 {
   "id": "I2066",
-  "name": "Emily Stephenson",
-  "givenName": "Emily",
-  "surname": "Stephenson",
-  "sex": "F",
-  "birthDate": "ABT 1865",
-  "birthPlace": "Reading, Berkshire",
+  "name": "Francis Quarry A'Court",
+  "givenName": "Francis Quarry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1861",
+  "birthPlace": "London, Chelsea, Malbrow Rd.",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1881 census/London/Woodford/RG11 1734 34 24.jpg"
+  ],
   "spouseIds": [
-    "I2065"
+    "I2067"
   ],
   "childIds": [
-    "I2067",
     "I2068",
-    "I2070",
-    "I2080",
-    "I2054",
+    "I2069",
+    "I2071",
     "I2081",
+    "I2055",
     "I2082",
     "I2083",
-    "I2084"
+    "I2084",
+    "I2085"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2086",
+    "I2087"
+  ],
+  "occupations": [
+    "Milkman",
+    "Horse keeper",
+    "LCC tramway motorman"
+  ],
   "censusRecords": [
     {
-      "date": "1911",
-      "place": "London, Deptford, 9 Harcourt Rd."
+      "date": "1881",
+      "place": "Woodford, Essex, Snakes Lane"
     },
     {
       "date": "1891",
       "place": "London, Deptford, Windmill Lane"
+    },
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2065",
-      "familyId": "F742",
+      "spouseId": "I2067",
+      "familyId": "F812",
       "marriageDate": "ABT 1884"
     }
-  ]
+  ],
+  "avatar": "avatars/I2066_0.jpg"
 }

@@ -1,28 +1,20 @@
 {
   "id": "I617",
-  "name": "Peter Henry Clarkson",
-  "givenName": "Peter Henry",
+  "name": "Kerry Dawn Clarkson",
+  "givenName": "Kerry Dawn",
   "surname": "Clarkson",
-  "sex": "M",
-  "birthDate": null,
+  "sex": "F",
+  "birthDate": "8.12.1978",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I618"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I616",
+    "I614"
   ],
-  "childIds": [
-    "I615"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Baker"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I618",
-      "familyId": "F255"
-    }
-  ]
+  "baptismDate": "15.4.1979",
+  "baptismPlace": "Stalbridge, Dorset"
 }

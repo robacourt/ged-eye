@@ -1,29 +1,23 @@
 {
   "id": "I2030",
-  "name": "Vera Eleanor A'Court",
-  "givenName": "Vera Eleanor",
-  "surname": "A'Court",
+  "name": "Florence Preston",
+  "givenName": "Florence",
+  "surname": "Preston",
   "sex": "F",
-  "birthDate": "24 AUG 1930",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "ABT 2000",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2031"
+    "I2029"
   ],
-  "childIds": [
-    "I2040",
-    "I2044"
-  ],
-  "parentIds": [
-    "I1930",
-    "I1944"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2031",
-      "familyId": "F731"
+      "spouseId": "I2029",
+      "familyId": "F806"
     }
   ]
 }

@@ -1,23 +1,17 @@
 {
   "id": "I1855",
-  "name": "Unknown Van De Voorde",
-  "givenName": "Unknown Van",
-  "surname": "De Voorde",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "James M A'Court",
+  "givenName": "James M",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "2ND QRT 1960",
+  "birthPlace": "Surrey NE",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1854"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F668"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1856"
   ]
 }

@@ -1,18 +1,25 @@
 {
   "id": "I1022",
-  "name": "Joanne Kokham O'Connor",
-  "givenName": "Joanne Kokham",
-  "surname": "O'Connor",
+  "name": "Mabel Soans",
+  "givenName": "Mabel",
+  "surname": "Soans",
   "sex": "F",
-  "birthDate": "27 NOVEMBER 2000",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1004",
-    "I1018"
+  "spouseIds": [
+    "I1021"
+  ],
+  "childIds": [
+    "I1020"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1021",
+      "familyId": "F476"
+    }
   ]
 }

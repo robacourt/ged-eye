@@ -1,37 +1,30 @@
 {
   "id": "I1252",
-  "name": "Job Hatcher",
-  "givenName": "Job",
-  "surname": "Hatcher",
-  "sex": "M",
-  "birthDate": "ABT 1856",
+  "name": "Mary Jane Curtis",
+  "givenName": "Mary Jane",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "23 JUN 1864",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1251",
     "I1253"
   ],
   "childIds": [],
   "parentIds": [
-    "I1083",
-    "I1084"
+    "I182",
+    "I279"
   ],
-  "occupations": [
-    "Ag Lab"
-  ],
+  "baptismDate": "14 AUG 1864",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1251",
-      "familyId": "F504",
+      "spouseId": "I1253",
+      "familyId": "F571",
       "marriageDate": "15 FEB1892",
       "marriagePlace": "Marnhull, Dorset"
-    },
-    {
-      "spouseId": "I1253",
-      "familyId": "F505",
-      "marriageDate": "25 DEC 1878"
     }
   ]
 }

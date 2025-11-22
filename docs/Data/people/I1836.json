@@ -1,24 +1,17 @@
 {
   "id": "I1836",
-  "name": "Unknown Ford",
-  "givenName": "Unknown",
-  "surname": "Ford",
+  "name": "Linda R A'Court",
+  "givenName": "Linda R",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "2ND QRT 1956",
+  "birthPlace": "Southampton",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1835",
+  "childIds": [],
+  "parentIds": [
     "I1837"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F661"
-    }
   ]
 }

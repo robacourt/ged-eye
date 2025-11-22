@@ -1,18 +1,30 @@
 {
   "id": "I1307",
-  "name": "Zebee Lorne A'Court",
-  "givenName": "Zebee Lorne",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "22 DEC 1991",
-  "birthPlace": "Perth, Western Australia",
+  "name": "Kim Nicole Hall-Richardson",
+  "givenName": "Kim Nicole",
+  "surname": "Hall-Richardson",
+  "sex": "F",
+  "birthDate": "28 JAN 1967",
+  "birthPlace": "Canterbury, Kent",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1097",
-    "I1306"
+  "spouseIds": [
+    "I1098"
+  ],
+  "childIds": [
+    "I1308",
+    "I1309",
+    "I1310",
+    "I1311"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1098",
+      "familyId": "F503",
+      "marriageDate": "24 SEP 1993",
+      "marriagePlace": "Perth, Western Australia"
+    }
   ]
 }
