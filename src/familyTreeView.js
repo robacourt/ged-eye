@@ -237,6 +237,15 @@ export class FamilyTreeView {
   buildGraph(selectedPerson, familyMembers, relationships) {
     const elements = [];
 
+    // Create a map of person IDs to names for debugging
+    const personNames = new Map();
+    personNames.set(selectedPerson.id, selectedPerson.name);
+    familyMembers.forEach(m => personNames.set(m.id, m.name));
+    relationships?.spouses?.forEach(s => personNames.set(s.id, s.name));
+    relationships?.children?.forEach(c => personNames.set(c.id, c.name));
+    relationships?.parents?.forEach(p => personNames.set(p.id, p.name));
+    relationships?.siblings?.forEach(s => personNames.set(s.id, s.name));
+
     // Add selected person node
     elements.push({
       group: 'nodes',
@@ -273,10 +282,48 @@ export class FamilyTreeView {
       '#ff6b6b'  // Red
     ];
 
+    // Get set of all node IDs that exist in the graph (for checking spouse existence)
+    const existingNodeIds = new Set([
+      selectedPerson.id,
+      ...familyMembers.map(m => m.id)
+    ]);
+
+    // Track which partnerships have been created to avoid duplicates
+    const createdPartnerships = new Set();
+    const partnershipIdMap = new Map(); // Map partnershipKey -> actual partnershipId
+
     // Add partnership nodes and edges for spouses
     selectedPerson.spouseIds.forEach((spouseId, index) => {
+      const partnershipKey = [selectedPerson.id, spouseId].sort().join('-');
       const partnershipId = `partnership-${selectedPerson.id}-${spouseId}`;
       const color = partnershipColors[index % partnershipColors.length];
+
+      // Check if spouse exists in graph
+      const spouseExists = existingNodeIds.has(spouseId);
+
+      // Check if this partnership has children that are visible in the graph
+      const hasVisibleChildren = relationships?.children?.some(child => {
+        if (child.parentIds && child.parentIds.length === 2) {
+          const childParentKey = child.parentIds.sort().join('-');
+          // Child must match this partnership AND be in the graph
+          return childParentKey === partnershipKey && existingNodeIds.has(child.id);
+        }
+        return false;
+      });
+
+      // Skip partnership node if spouse doesn't exist AND there are no visible children
+      if (!spouseExists && !hasVisibleChildren) {
+        console.log(`Skipping partnership: ${selectedPerson.name} + ${personNames.get(spouseId) || spouseId} (spouse not in graph, no visible children)`);
+        return;
+      }
+
+      if (spouseExists || hasVisibleChildren) {
+        console.log(`Creating partnership: ${selectedPerson.name} + ${personNames.get(spouseId) || spouseId} (spouse exists: ${spouseExists}, has visible children: ${hasVisibleChildren})`);
+      }
+
+      // Mark this partnership as created and store the ID
+      createdPartnerships.add(partnershipKey);
+      partnershipIdMap.set(partnershipKey, partnershipId);
 
       // Add partnership node with color and index
       elements.push({
@@ -301,17 +348,19 @@ export class FamilyTreeView {
         }
       });
 
-      // Connect spouse to partnership
-      elements.push({
-        group: 'edges',
-        data: {
-          id: `${spouseId}-${partnershipId}`,
-          source: spouseId,
-          target: partnershipId,
-          type: 'spouse',
-          partnershipColor: color
-        }
-      });
+      // Connect spouse to partnership (only if spouse exists)
+      if (spouseExists) {
+        elements.push({
+          group: 'edges',
+          data: {
+            id: `${spouseId}-${partnershipId}`,
+            source: spouseId,
+            target: partnershipId,
+            type: 'spouse',
+            partnershipColor: color
+          }
+        });
+      }
     });
 
     // Create partnership nodes for all unique parent pairs (including half-siblings' parents)
@@ -352,12 +401,6 @@ export class FamilyTreeView {
       }
     }
 
-
-    // Get set of all node IDs that exist in the graph
-    const existingNodeIds = new Set([
-      selectedPerson.id,
-      ...familyMembers.map(m => m.id)
-    ]);
 
     // Track children whose partnerships were skipped
     const childrenWithSkippedPartnerships = [];
@@ -400,9 +443,40 @@ export class FamilyTreeView {
     for (const [parentKey, children] of parentPartnerships.entries()) {
       const [parent1Id, parent2Id] = parentKey.split('-');
 
-      // Only create partnership if both parents are in the graph
-      if (!existingNodeIds.has(parent1Id) || !existingNodeIds.has(parent2Id)) {
-        console.warn(`Skipping partnership ${parent1Id}-${parent2Id}: one or both parents not in graph`);
+      // If this partnership was already created in the spouse section, just add the child edges
+      if (createdPartnerships.has(parentKey)) {
+        console.log(`Partnership already exists: ${personNames.get(parent1Id) || parent1Id} + ${personNames.get(parent2Id) || parent2Id}, adding child connections`);
+
+        // The partnership node already exists, get the actual partnership ID that was created
+        const partnershipId = partnershipIdMap.get(parentKey);
+        const partnershipColor = partnershipColorMap.get(parentKey) || '#aaa';
+
+        for (const child of children) {
+          if (existingNodeIds.has(child.id)) {
+            elements.push({
+              group: 'edges',
+              data: {
+                id: `${partnershipId}-${child.id}`,
+                source: partnershipId,
+                target: child.id,
+                type: 'parent',
+                partnershipColor: partnershipColor
+              }
+            });
+          }
+        }
+        continue;
+      }
+
+      const parent1Exists = existingNodeIds.has(parent1Id);
+      const parent2Exists = existingNodeIds.has(parent2Id);
+
+      // Check if any children from this partnership are visible in the graph
+      const hasVisibleChildren = children.some(child => existingNodeIds.has(child.id));
+
+      // Skip partnership if both parents aren't in graph OR if there are no visible children
+      if (!parent1Exists || !parent2Exists || !hasVisibleChildren) {
+        console.log(`Skipping parent partnership: ${personNames.get(parent1Id) || parent1Id} + ${personNames.get(parent2Id) || parent2Id} (parent1 exists: ${parent1Exists}, parent2 exists: ${parent2Exists}, has visible children: ${hasVisibleChildren})`);
         // Track these children for direct connection
         for (const child of children) {
           childrenWithSkippedPartnerships.push({
