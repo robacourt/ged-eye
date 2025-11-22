@@ -502,9 +502,15 @@ body {
 
   .person-details-content {
     padding: 15px;
-    padding-bottom: 80px;
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px));
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
+    /* Force hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* Ensure scrolling works on Android */
+    overscroll-behavior-y: contain;
+    position: relative;
   }
 
   .person-details-header {
