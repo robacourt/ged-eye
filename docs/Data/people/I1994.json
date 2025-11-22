@@ -1,10 +1,10 @@
 {
   "id": "I1994",
-  "name": "Joan Ford",
-  "givenName": "Joan",
+  "name": "Jean Ford",
+  "givenName": "Jean",
   "surname": "Ford",
   "sex": "F",
-  "birthDate": "Abt 1930 TWIN",
+  "birthDate": "ABT 1930 TWIN",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -14,8 +14,8 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1627",
-    "I1033"
+    "I1628",
+    "I1034"
   ],
   "avatar": "avatars/I1994_0.jpg"
 }

@@ -1,28 +1,18 @@
 {
   "id": "I2011",
-  "name": "Susan Wigglesworth",
-  "givenName": "Susan",
+  "name": "Peter Wigglesworth",
+  "givenName": "Peter",
   "surname": "Wigglesworth",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I2012"
-  ],
-  "childIds": [
-    "I488"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I2008",
+    "I2009",
     "I422"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I2012",
-      "familyId": "F719"
-    }
   ]
 }

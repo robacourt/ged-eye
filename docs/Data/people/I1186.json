@@ -1,26 +1,43 @@
 {
   "id": "I1186",
-  "name": "Frederick A'Court",
-  "givenName": "Frederick",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1865",
+  "birthDate": "1863",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1871 census/Marnhull/RG 10 1972 40 18.jpg",
-    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
-    "Data/Media/1911 census/Somerset/Henstridge/RG14 14432 71.jpg"
+    "Data/Media/1871 census/Marnhull/RG 10 1972 40 17.jpg",
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1191"
+  ],
+  "childIds": [
+    "I1192",
+    "I1193",
+    "I1194",
+    "I1195",
+    "I2414",
+    "I2415",
+    "I2416",
+    "I2418",
+    "I2420",
+    "I2422",
+    "I2423",
+    "I2920",
+    "I2921"
+  ],
   "parentIds": [
-    "I1183",
-    "I1184"
+    "I1184",
+    "I1185"
   ],
   "occupations": [
-    "Labourer on Farm"
+    "Ag Lab",
+    "Ag Lab",
+    "Cowman on farm"
   ],
   "censusRecords": [
     {
@@ -32,8 +49,23 @@
       "place": "Marnhull, Dorset, Near Antills Farm"
     },
     {
+      "date": "1891",
+      "place": "Wadswick Village, Box, Wiltshire, Cottages"
+    },
+    {
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
       "date": "1911",
-      "place": "Somerset, Henstridge, Yenston"
+      "place": "Wiltshire, Box, Wadswick"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1191",
+      "familyId": "F547",
+      "marriageDate": "1883"
     }
   ],
   "avatar": "avatars/I1186_0.jpg"

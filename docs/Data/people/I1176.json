@@ -1,34 +1,45 @@
 {
   "id": "I1176",
-  "name": "Stephen Haskett",
-  "givenName": "Stephen",
+  "name": "Thomas Haskett",
+  "givenName": "Thomas",
   "surname": "Haskett",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1835",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1177"
+    "I181",
+    "I1179"
   ],
   "childIds": [
-    "I1175"
+    "I1174",
+    "I1175",
+    "I1180",
+    "I1182",
+    "I1246",
+    "I1247"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1177",
+    "I1178"
+  ],
+  "baptismDate": "19 APR 1835",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Ag Lab"
-  ],
-  "residences": [
-    {
-      "date": "1858",
-      "place": "Stapleford, Wiltshire"
-    }
+    "Stonemason"
   ],
   "marriages": [
     {
-      "spouseId": "I1177",
-      "familyId": "F480"
+      "spouseId": "I181",
+      "familyId": "F114",
+      "marriageDate": "6 NOV 1858",
+      "marriagePlace": "Marnhull, Dorset"
+    },
+    {
+      "spouseId": "I1179",
+      "familyId": "F542"
     }
   ]
 }

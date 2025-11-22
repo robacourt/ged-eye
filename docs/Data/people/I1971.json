@@ -1,23 +1,26 @@
 {
   "id": "I1971",
-  "name": "Unknown Jones",
-  "givenName": "Unknown",
-  "surname": "Jones",
-  "sex": "M",
+  "name": "Betty Elizabeth Drost",
+  "givenName": "Betty Elizabeth",
+  "surname": "Drost",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1970"
+    "I1972"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1970",
+    "I1409"
+  ],
   "marriages": [
     {
-      "spouseId": "I1970",
-      "familyId": "F704"
+      "spouseId": "I1972",
+      "familyId": "F793"
     }
   ]
 }

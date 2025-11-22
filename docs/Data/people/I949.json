@@ -1,18 +1,18 @@
 {
   "id": "I949",
-  "name": "John Medlyn A'Court",
-  "givenName": "John Medlyn",
+  "name": "Frank Howden A'Court",
+  "givenName": "Frank Howden",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "18 MAY 1854",
-  "birthPlace": "Waiwhetu, Wellington, New Zealand",
-  "deathDate": "1921",
+  "birthDate": "9 JUL 1864",
+  "birthPlace": "Hutt, Wellington, New Zealand",
+  "deathDate": "1889",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I935",
-    "I936"
+    "I936",
+    "I937"
   ]
 }

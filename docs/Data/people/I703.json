@@ -1,15 +1,25 @@
 {
   "id": "I703",
-  "name": "Anna Daniels",
-  "givenName": "Anna",
-  "surname": "Daniels",
-  "sex": "U",
-  "birthDate": null,
+  "name": "Joan Coggan",
+  "givenName": "Joan",
+  "surname": "Coggan",
+  "sex": "F",
+  "birthDate": "BEF 1746",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "AFT 1759",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I701"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I701",
+      "familyId": "F339",
+      "marriageDate": "5 NOV 1759",
+      "marriagePlace": "Somerton, Somerset"
+    }
+  ]
 }

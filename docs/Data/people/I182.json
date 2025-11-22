@@ -13,9 +13,9 @@
     "I279"
   ],
   "childIds": [
-    "I1251",
-    "I1254",
-    "I1258"
+    "I1252",
+    "I1255",
+    "I1259"
   ],
   "parentIds": [
     "I178",
@@ -32,7 +32,7 @@
   "marriages": [
     {
       "spouseId": "I279",
-      "familyId": "F101"
+      "familyId": "F115"
     }
   ]
 }

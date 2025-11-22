@@ -1,28 +1,31 @@
 {
   "id": "I1857",
-  "name": "Joyce Primrose Howes",
-  "givenName": "Joyce Primrose",
-  "surname": "Howes",
-  "sex": "F",
-  "birthDate": "19 APRIL 1933",
-  "birthPlace": "Battersea, London",
+  "name": "Ricky Clement A'Court",
+  "givenName": "Ricky Clement",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "2ND QRT 1960",
+  "birthPlace": "Launceston",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2053"
-  ],
-  "childIds": [
-    "I1856",
     "I2049"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2054",
+    "I1858"
+  ],
+  "occupations": [
+    "Ceramic Tiler"
+  ],
   "marriages": [
     {
-      "spouseId": "I2053",
-      "familyId": "F669",
-      "marriageDate": "1953",
-      "marriagePlace": "Epsom"
+      "spouseId": "I2049",
+      "familyId": "F767",
+      "marriageDate": "28 JUNE 1986",
+      "marriagePlace": "Watton"
     }
   ]
 }

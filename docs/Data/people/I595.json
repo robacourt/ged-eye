@@ -1,40 +1,20 @@
 {
   "id": "I595",
-  "name": "Alice Charlotte Elkins",
-  "givenName": "Alice Charlotte",
-  "surname": "Elkins",
-  "sex": "F",
-  "birthDate": null,
+  "name": "( Edward ) George Hatcher",
+  "givenName": "( Edward ) George",
+  "surname": "Hatcher",
+  "sex": "M",
+  "birthDate": "27.12.1886",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I589"
-  ],
-  "childIds": [
-    "I596",
-    "I597",
-    "I598",
-    "I599",
-    "I600",
-    "I601"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I602",
-    "I603"
+    "I157",
+    "I317"
   ],
-  "baptismDate": "11.3.1877",
-  "baptismPlace": "Marnhull, Dorset",
-  "notes": [
-    "4-1881,14-1891,23-1899"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I589",
-      "familyId": "F242",
-      "marriageDate": "27.7.1899",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "13.3.1887",
+  "baptismPlace": "Marnhull, Dorset"
 }

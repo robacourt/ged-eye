@@ -1,45 +1,27 @@
 {
   "id": "I1642",
-  "name": "Henry George A'Court",
-  "givenName": "Henry George",
+  "name": "Ernest W A'Court",
+  "givenName": "Ernest W",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1854",
+  "birthDate": "Abt 1895",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1643"
+  "photos": [
+    "Data/Media/1901 census/Somerset/Yeovil/RG13 2301 115 .jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "occupations": [
-    "Zinc Worker",
-    "Zinc Worker"
+  "parentIds": [
+    "I1637",
+    "I1638"
   ],
   "censusRecords": [
     {
-      "date": "1891",
-      "place": "Middlesex, Willesdon, 37 Tennyson Rd"
-    },
-    {
-      "date": "1891",
-      "place": "Zinc Worker"
-    },
-    {
       "date": "1901",
-      "place": "Willesden, Middlesex, 94 Charteris Rd"
-    },
-    {
-      "date": "1911",
-      "place": "London, Paddington, 49 Carlton Vale"
+      "place": "Yeovil, Somerset, Huish"
     }
   ],
-  "marriages": [
-    {
-      "spouseId": "I1643",
-      "familyId": "F609"
-    }
-  ]
+  "avatar": "avatars/I1642_0.jpg"
 }

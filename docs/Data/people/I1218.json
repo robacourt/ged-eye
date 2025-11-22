@@ -1,27 +1,26 @@
 {
   "id": "I1218",
-  "name": "Roy Haskett",
-  "givenName": "Roy",
-  "surname": "Haskett",
+  "name": "Arthur William Worman",
+  "givenName": "Arthur William",
+  "surname": "Worman",
   "sex": "M",
-  "birthDate": "1923",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1993",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [
-    "I1219",
-    "I1220"
+    "I1217"
   ],
-  "parentIds": [
-    "I1215",
-    "I1216"
+  "parentIds": [],
+  "occupations": [
+    "Butler"
   ],
   "marriages": [
     {
       "spouseId": null,
-      "familyId": "F493"
+      "familyId": "F559"
     }
   ]
 }

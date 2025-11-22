@@ -1,29 +1,37 @@
 {
   "id": "I1487",
-  "name": "Albert Cuthbert Cluett",
-  "givenName": "Albert Cuthbert",
-  "surname": "Cluett",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Lillian Bennett Chamberlain",
+  "givenName": "Lillian Bennett",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "13 MAR 1885",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1 MAY 1956",
+  "deathPlace": "Enfield, Middlesex",
   "photos": [],
   "spouseIds": [
-    "I1484"
+    "I1517"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1518",
+    "I1520",
+    "I1521",
+    "I1522",
+    "I1525"
+  ],
   "parentIds": [
-    "I1488"
+    "I1486",
+    "I778"
   ],
-  "occupations": [
-    "Farmer of Lyndlinch"
+  "notes": [
+    "Thought to be the illegitimate daughter of Capt. James Wentworth Bennett of the Manor House, Bournemouth."
   ],
   "marriages": [
     {
-      "spouseId": "I1484",
-      "familyId": "F565",
-      "marriageDate": "29 JAN 1890"
+      "spouseId": "I1517",
+      "familyId": "F652",
+      "marriageDate": "25 DEC 1905",
+      "marriagePlace": "Enfield, Middlesex,  St. John The Baptist"
     }
   ]
 }

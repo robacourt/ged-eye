@@ -1,27 +1,25 @@
 {
   "id": "I576",
-  "name": "Mary Heaton",
-  "givenName": "Mary",
-  "surname": "Heaton",
-  "sex": "F",
-  "birthDate": "1924",
-  "birthPlace": "Oxford",
-  "deathDate": "2014",
-  "deathPlace": "Western Cape, South Africa",
+  "name": "Andrew Ridler",
+  "givenName": "Andrew",
+  "surname": "Ridler",
+  "sex": "M",
+  "birthDate": "1829",
+  "birthPlace": null,
+  "deathDate": "1892",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I765"
+    "I575"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I389",
-    "I383"
+  "childIds": [
+    "I453"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I765",
-      "familyId": "F357",
-      "marriageDate": "SEP 1945"
+      "spouseId": "I575",
+      "familyId": "F239"
     }
   ]
 }

@@ -1,34 +1,15 @@
 {
   "id": "I2017",
-  "name": "Fanny A'Court",
-  "givenName": "Fanny",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1852",
-  "birthPlace": "Devon, Stoke Canon",
+  "name": "R.L.Keen",
+  "givenName": "R.L.Keen",
+  "surname": "",
+  "sex": "U",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/Exeter/RG09 1397 44 10.png",
-    "Data/Media/1881 census/Devon/Exeter/RG11 2152 94 17.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I2013"
-  ],
-  "occupations": [
-    "Cook domestic servant"
-  ],
-  "censusRecords": [
-    {
-      "date": "1861",
-      "place": "Devon, Exeter, St Davids, 3 St Davids Hill"
-    },
-    {
-      "date": "1881",
-      "place": "Devon, Exeter, St Leonard, Lyndhurst Rd."
-    }
-  ],
-  "avatar": "avatars/I2017_0.jpg"
+  "parentIds": []
 }

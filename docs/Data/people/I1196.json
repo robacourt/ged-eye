@@ -1,36 +1,46 @@
 {
   "id": "I1196",
-  "name": "Albert William Haskett",
-  "givenName": "Albert William",
-  "surname": "Haskett",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "Maria Ridout",
+  "givenName": "Maria",
+  "surname": "Ridout",
+  "sex": "F",
+  "birthDate": "BET 1803-1811",
+  "birthPlace": "Manston, Dorset",
+  "deathDate": "AFT 1861",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1197"
+    "I177"
   ],
   "childIds": [
-    "I1198"
+    "I1184",
+    "I1618",
+    "I1455",
+    "I1258",
+    "I1456",
+    "I1462"
   ],
-  "parentIds": [
-    "I1181",
-    "I1182"
+  "parentIds": [],
+  "occupations": [
+    "Agricultural Labourer",
+    "Charwomen"
   ],
-  "baptismDate": "8 MAY 1881",
-  "baptismPlace": "Marnhull, Dorset",
   "censusRecords": [
     {
-      "date": "1881",
-      "place": "age 1"
+      "date": "1861",
+      "place": "Marnhull, Dorset, East Well"
+    },
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1197",
-      "familyId": "F485"
+      "spouseId": "I177",
+      "familyId": "F111",
+      "marriageDate": "22 OCT 1835",
+      "marriagePlace": "Manston, Dorset"
     }
   ]
 }

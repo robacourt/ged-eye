@@ -1,25 +1,35 @@
 {
   "id": "I1315",
-  "name": "Keith Gillam",
-  "givenName": "Keith",
-  "surname": "Gillam",
+  "name": "Walter A'Court",
+  "givenName": "Walter",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1865",
+  "birthPlace": "Horsington, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1073"
+  "photos": [
+    "Data/Media/1871 census/Yeovil/RG10 2418 13 15.jpg",
+    "Data/Media/1891 census/Sussex/RG12 840 53 3.jpg"
   ],
-  "childIds": [
-    "I2745"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1767",
+    "I1865"
   ],
-  "parentIds": [],
-  "marriages": [
+  "occupations": [
+    "Glove maker"
+  ],
+  "censusRecords": [
     {
-      "spouseId": "I1073",
-      "familyId": "F429"
+      "date": "1871",
+      "place": "Yeovil, Somerset, 41 Larkhill"
+    },
+    {
+      "date": "1891",
+      "place": "Sussex, Birdham"
     }
-  ]
+  ],
+  "avatar": "avatars/I1315_0.jpg"
 }

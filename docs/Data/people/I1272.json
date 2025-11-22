@@ -1,27 +1,24 @@
 {
   "id": "I1272",
-  "name": "Barbara J A'Court",
-  "givenName": "Barbara J",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1932",
+  "name": "Unknown Dawson",
+  "givenName": "Unknown",
+  "surname": "Dawson",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1273"
+    "I1105"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1090",
-    "I1091"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1273",
-      "familyId": "F513",
-      "marriageDate": "1950"
+      "spouseId": "I1105",
+      "familyId": "F508",
+      "marriageDate": "1946"
     }
   ]
 }

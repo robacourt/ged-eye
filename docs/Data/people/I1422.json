@@ -1,75 +1,29 @@
 {
   "id": "I1422",
-  "name": "Lewis Barnett",
-  "givenName": "Lewis",
-  "surname": "Barnett",
+  "name": "Cecil A'Court",
+  "givenName": "Cecil",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1841",
-  "birthPlace": "St Lukes, London or Wandsworth",
-  "deathDate": "1 NOV 1905",
+  "birthDate": "1901",
+  "birthPlace": "Queen Camel, Somerset",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg",
-    "Data/Media/1901 census/London/Hackney/RG13 211 92 41.jpg"
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
   ],
-  "spouseIds": [
-    "I1428"
-  ],
-  "childIds": [
-    "I2337",
-    "I2336",
-    "I445",
-    "I2335",
-    "I1423",
-    "I1424",
-    "I2283",
-    "I2282",
-    "I1429",
-    "I2338"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I2734",
-    "I2334"
-  ],
-  "occupations": [
-    "Cigar Manufacturer",
-    "Cigar Manufacturer",
-    "Cigar Manufacturer",
-    "Tobacco Manufacturer, Employer"
+    "I1111",
+    "I1107"
   ],
   "notes": [
-    "Employing 1 man and 18 girls"
+    "possible illigitmate son of Beatrice father may not have been Ernest Elford"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Shoreditch, London, 11 Old Street Road"
-    },
-    {
-      "date": "1881",
-      "place": "Shoreditch, London, 161 High St"
-    },
-    {
-      "date": "1891",
-      "place": "Shoreditch, London, 341 Old St."
-    },
-    {
       "date": "1901",
-      "place": "Hackney, London, 64 Kenninghall Rd."
-    }
-  ],
-  "residences": [
-    {
-      "date": "1 NOV 1905",
-      "place": "London, 29 Tollington Park"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1428",
-      "familyId": "F201",
-      "marriageDate": "2ND QTR 1867",
-      "marriagePlace": "City of London"
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
     }
   ],
   "avatar": "avatars/I1422_0.jpg"

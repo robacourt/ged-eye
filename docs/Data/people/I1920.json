@@ -1,26 +1,18 @@
 {
   "id": "I1920",
-  "name": "Ernie Cassan",
-  "givenName": "Ernie",
-  "surname": "Cassan",
+  "name": "Tyler A'Court",
+  "givenName": "Tyler",
+  "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1300"
-  ],
-  "childIds": [
-    "I1921",
-    "I1922"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1300",
-      "familyId": "F681"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1300",
+    "I1917"
   ]
 }

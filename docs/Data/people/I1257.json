@@ -1,47 +1,32 @@
 {
   "id": "I1257",
-  "name": "Mary A'Court",
-  "givenName": "Mary",
-  "surname": "A'Court",
-  "sex": "F",
+  "name": "James Haskett",
+  "givenName": "James",
+  "surname": "Haskett",
+  "sex": "M",
   "birthDate": "ABT 1842",
   "birthPlace": "Marnhull, Dorset",
-  "deathDate": "AFT 1881",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1256"
+    "I1258"
   ],
   "childIds": [
-    "I1631",
-    "I1255"
+    "I1632",
+    "I1256"
   ],
-  "parentIds": [
-    "I177",
-    "I1195"
-  ],
-  "baptismDate": "30 APR 1842",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Washerwoman",
-    "Glover"
-  ],
+  "parentIds": [],
   "censusRecords": [
     {
       "date": "1871",
       "place": "Marnhull, Dorset, East Well"
     }
   ],
-  "residences": [
-    {
-      "date": null,
-      "place": "East Well Cottage"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1256",
-      "familyId": "F507"
+      "spouseId": "I1258",
+      "familyId": "F574"
     }
   ]
 }

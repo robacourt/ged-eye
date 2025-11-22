@@ -1,15 +1,25 @@
 {
   "id": "I1736",
-  "name": "May Ann Baker",
-  "givenName": "May Ann",
-  "surname": "Baker",
-  "sex": "U",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Martha Candy",
+  "givenName": "Martha",
+  "surname": "Candy",
+  "sex": "F",
+  "birthDate": "BEF 1828",
+  "birthPlace": "Bourton",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1734"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1734",
+      "familyId": "F729",
+      "marriageDate": "8 FEB 1848",
+      "marriagePlace": "Wincanton, Baptist Chapel"
+    }
+  ]
 }

@@ -1,27 +1,24 @@
 {
   "id": "I1475",
-  "name": "Edmund \\ Edward A'Court",
-  "givenName": "Edmund \\ Edward",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1829",
+  "name": "Ann Unknown",
+  "givenName": "Ann",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1791",
   "birthPlace": "Henstridge, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/Henstridge/RG09 1648 61 3.jpg"
-  ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1473",
+  "photos": [],
+  "spouseIds": [
     "I1474"
   ],
-  "occupations": [
-    "Farmers son"
+  "childIds": [
+    "I1476",
+    "I1477"
   ],
+  "parentIds": [],
   "notes": [
-    "1861 England Census"
+    "on census as Ann A'Court assuming this is James wife"
   ],
   "censusRecords": [
     {
@@ -33,5 +30,10 @@
       "place": "Henstridge, Somerset, Baslands Hill farm"
     }
   ],
-  "avatar": "avatars/I1475_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1474",
+      "familyId": "F650"
+    }
+  ]
 }

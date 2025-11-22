@@ -1,33 +1,55 @@
 {
   "id": "I1091",
-  "name": "Kathleen Mabel Gosney",
-  "givenName": "Kathleen Mabel",
-  "surname": "Gosney",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
+  "name": "Emmanuel Odessa A'Court",
+  "givenName": "Emmanuel Odessa",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1893",
+  "birthPlace": "Coleford, Somerset",
+  "deathDate": "1970",
+  "deathPlace": "Yeovil, Somerset",
+  "photos": [
+    "Data/Picture/EMMANUEL-ODESSA.JPG",
+    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg",
+    "Data/Media/1911 census/Somerset/Holton/RG14 14430 91.jpg"
+  ],
   "spouseIds": [
-    "I1090"
+    "I1092"
   ],
   "childIds": [
-    "I1101",
-    "I1267",
-    "I1269",
     "I1102",
+    "I1268",
+    "I1270",
     "I1103",
     "I1104",
-    "I1272"
+    "I1105",
+    "I1273"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1101",
+    "I1110"
+  ],
+  "occupations": [
+    "Labourer on Farm",
+    "Ag Lab"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1911",
+      "place": "Holton, Wincanton, Somerset"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1090",
-      "familyId": "F437",
+      "spouseId": "I1092",
+      "familyId": "F499",
       "marriageDate": "1913",
       "marriagePlace": "Yeovil, Somerset"
     }
-  ]
+  ],
+  "avatar": "avatars/I1091_0.jpg"
 }

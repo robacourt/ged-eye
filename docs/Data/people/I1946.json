@@ -1,25 +1,25 @@
 {
   "id": "I1946",
-  "name": "Eleanor Amelia Dwight",
-  "givenName": "Eleanor Amelia",
-  "surname": "Dwight",
-  "sex": "F",
-  "birthDate": "30 OCT 1884",
+  "name": "William Martin",
+  "givenName": "William",
+  "surname": "Martin",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1945"
+    "I1947"
   ],
   "childIds": [
-    "I1944"
+    "I1945"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1945",
-      "familyId": "F693"
+      "spouseId": "I1947",
+      "familyId": "F783"
     }
   ]
 }

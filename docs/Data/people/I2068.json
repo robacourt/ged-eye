@@ -1,34 +1,42 @@
 {
   "id": "I2068",
-  "name": "Lillian Frances A'Court",
-  "givenName": "Lillian Frances",
+  "name": "Rosina Susan A'Court",
+  "givenName": "Rosina Susan",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1887",
-  "birthPlace": "Greenwich, Deptford",
+  "birthDate": "1885",
+  "birthPlace": "Westham, Woodford, Essex",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg"
+    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg",
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
   ],
   "spouseIds": [
-    "I2069"
+    "I2276"
   ],
   "childIds": [],
   "parentIds": [
-    "I2065",
-    "I2066"
+    "I2066",
+    "I2067"
+  ],
+  "occupations": [
+    "Packer, confectionery"
   ],
   "censusRecords": [
     {
       "date": "1891",
       "place": "London, Deptford, Windmill Lane"
+    },
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2069",
-      "familyId": "F743"
+      "spouseId": "I2276",
+      "familyId": "F814"
     }
   ],
   "avatar": "avatars/I2068_0.jpg"

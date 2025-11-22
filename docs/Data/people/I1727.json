@@ -1,25 +1,30 @@
 {
   "id": "I1727",
-  "name": "Jane Horsley",
-  "givenName": "Jane",
-  "surname": "Horsley",
+  "name": "James Daniels",
+  "givenName": "James",
+  "surname": "Daniels",
   "sex": "M",
-  "birthDate": "1919",
+  "birthDate": "ABT 1835",
   "birthPlace": null,
-  "deathDate": "16 SEP 2004",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1629"
+    "I77"
   ],
   "childIds": [
-    "I1728"
+    "I1976",
+    "I1988",
+    "I1989",
+    "I1990"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1629",
-      "familyId": "F631"
+      "spouseId": "I77",
+      "familyId": "F56",
+      "marriageDate": "7 SEP 1851",
+      "marriagePlace": "Portsea, Hampshire"
     }
   ]
 }

@@ -1,23 +1,28 @@
 {
   "id": "I850",
-  "name": "never married",
-  "givenName": "never",
-  "surname": "married",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "David CHAPMAN",
+  "givenName": "David",
+  "surname": "CHAPMAN",
+  "sex": "M",
+  "birthDate": "1895",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "29 MAR 1974",
+  "deathPlace": "Mercer, NZ",
   "photos": [],
   "spouseIds": [
-    "I837"
+    "I836"
   ],
   "childIds": [],
   "parentIds": [],
+  "notes": [
+    "Information provided by Carole Stewart:"
+  ],
   "marriages": [
     {
-      "spouseId": "I837",
-      "familyId": "F362"
+      "spouseId": "I836",
+      "familyId": "F413",
+      "marriageDate": "1968",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

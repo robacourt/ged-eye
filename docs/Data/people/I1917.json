@@ -1,18 +1,27 @@
 {
   "id": "I1917",
-  "name": "Mathew A'Court",
-  "givenName": "Mathew",
-  "surname": "A'Court",
-  "sex": "M",
+  "name": "Heather Unknown",
+  "givenName": "Heather",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1299",
-    "I1916"
+  "spouseIds": [
+    "I1300"
+  ],
+  "childIds": [
+    "I1918",
+    "I1919",
+    "I1920"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1300",
+      "familyId": "F587"
+    }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "id": "I1512",
-  "name": "John Ridout",
-  "givenName": "John",
+  "name": "Albert Ridout",
+  "givenName": "Albert",
   "surname": "Ridout",
   "sex": "M",
   "birthDate": null,
@@ -9,15 +9,19 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1511"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1513"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F577"
+      "spouseId": "I1511",
+      "familyId": "F662",
+      "marriageDate": "16 APR 1895",
+      "marriagePlace": "North Cadbury, Somerset"
     }
   ]
 }

@@ -1,27 +1,46 @@
 {
   "id": "I521",
-  "name": "Mary Ann Unknown",
-  "givenName": "Mary Ann",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "1853",
-  "birthPlace": "Paddington, London",
+  "name": "William A'Court",
+  "givenName": "William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1859",
+  "birthPlace": "London, St lukes",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1861 Census/London/St Luke/RG09 203 17 41.jpg",
+    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg"
+  ],
   "spouseIds": [
-    "I520"
+    "I522"
   ],
   "childIds": [
     "I2459",
     "I2460",
     "I2461",
     "I2462",
-    "I508",
+    "I509",
     "I2463"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2021",
+    "I2807"
+  ],
+  "occupations": [
+    "Carman",
+    "Carman",
+    "Carman (Contractors)",
+    "Carman"
+  ],
+  "notes": [
+    "3.    CHARLES WARWICK (21) , Unlawfully obtaining 30 pieces of cloth and other goods by false pretenses."
+  ],
   "censusRecords": [
+    {
+      "date": "1871",
+      "place": "London, Holborn, 15 Peerless St."
+    },
     {
       "date": "1881",
       "place": "London, Shoreditch, 84 New North Rd.,"
@@ -41,9 +60,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I520",
-      "familyId": "F215",
+      "spouseId": "I522",
+      "familyId": "F260",
       "marriageDate": "ABT 1880"
     }
-  ]
+  ],
+  "avatar": "avatars/I521_0.jpg"
 }

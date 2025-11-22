@@ -1,25 +1,23 @@
 {
   "id": "I1489",
-  "name": "Ambrose Chamberlain",
-  "givenName": "Ambrose",
-  "surname": "Chamberlain",
+  "name": "Henry Cluett",
+  "givenName": "Henry",
+  "surname": "Cluett",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1490"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I864"
+    "I1488"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1490",
-      "familyId": "F373"
+      "spouseId": null,
+      "familyId": "F653"
     }
   ]
 }

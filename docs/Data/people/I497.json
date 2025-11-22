@@ -1,31 +1,25 @@
 {
   "id": "I497",
-  "name": "Basil A. A'Court",
-  "givenName": "Basil A.",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "30.10.1927",
-  "birthPlace": "Milborne Port, Somerset",
-  "deathDate": "12.10.1973",
+  "name": "Nellie Annie Draper",
+  "givenName": "Nellie Annie",
+  "surname": "Draper",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I498"
+    "I494"
   ],
   "childIds": [
-    "I499"
+    "I498"
   ],
-  "parentIds": [
-    "I493",
-    "I496"
-  ],
-  "occupations": [
-    "Watchmaker/Jeweller."
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I498",
-      "familyId": "F211"
+      "spouseId": "I494",
+      "familyId": "F255"
     }
   ]
 }

@@ -1,17 +1,23 @@
 {
   "id": "I1843",
-  "name": "Nigel A'Court",
-  "givenName": "Nigel",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1ST QRT 1957",
-  "birthPlace": "Northampton",
+  "name": "Unknown Staker",
+  "givenName": "Unknown",
+  "surname": "Staker",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1844"
+  "childIds": [
+    "I1842"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F761"
+    }
   ]
 }

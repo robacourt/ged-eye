@@ -1,10 +1,10 @@
 {
   "id": "I1740",
-  "name": "Mary Davis",
-  "givenName": "Mary",
+  "name": "William Davis",
+  "givenName": "William",
   "surname": "Davis",
-  "sex": "F",
-  "birthDate": "Abt 1850",
+  "sex": "M",
+  "birthDate": "Abt 1838",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,8 +12,8 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1738",
-    "I764"
+    "I1739",
+    "I765"
   ],
   "censusRecords": [
     {

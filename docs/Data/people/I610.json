@@ -1,27 +1,28 @@
 {
   "id": "I610",
-  "name": "Ellen Street",
-  "givenName": "Ellen",
-  "surname": "Street",
-  "sex": "F",
+  "name": "William Alfred Bastable",
+  "givenName": "William Alfred",
+  "surname": "Bastable",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I609"
+    "I611"
   ],
   "childIds": [
-    "I608"
+    "I609"
   ],
-  "parentIds": [
-    "I611"
+  "parentIds": [],
+  "occupations": [
+    "Mason"
   ],
   "marriages": [
     {
-      "spouseId": "I609",
-      "familyId": "F251"
+      "spouseId": "I611",
+      "familyId": "F301"
     }
   ]
 }

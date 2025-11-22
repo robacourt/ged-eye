@@ -1,9 +1,9 @@
 {
   "id": "I1202",
-  "name": "Geraldine Haskett",
-  "givenName": "Geraldine",
+  "name": "Barry Haskett",
+  "givenName": "Barry",
   "surname": "Haskett",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,10 +12,16 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1199",
-    "I1200"
+    "I1200",
+    "I1201"
   ],
   "occupations": [
-    "Nurse"
+    "Lawyer"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "U.S.A."
+    }
   ]
 }

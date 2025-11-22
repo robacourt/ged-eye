@@ -1,44 +1,18 @@
 {
   "id": "I891",
-  "name": "Uriah Chamberlain",
-  "givenName": "Uriah",
-  "surname": "Chamberlain",
-  "sex": "M",
-  "birthDate": "ABT 1815",
-  "birthPlace": "North Cadbury, Somerset",
+  "name": "Alice A'Court",
+  "givenName": "Alice",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BEF 30 MAY 185",
+  "birthPlace": "Holborn,London",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I768"
-  ],
-  "childIds": [
-    "I892",
-    "I893",
-    "I1758",
-    "I1757",
-    "I1756"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Stonemason"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Pendleton-in-Salford, Lancashire, 13 Lytham St."
-    },
-    {
-      "date": "1851",
-      "place": "North Cadbury, Lower Woolston"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I768",
-      "familyId": "F320",
-      "marriageDate": "1844",
-      "marriagePlace": "England"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I768",
+    "I887"
   ]
 }

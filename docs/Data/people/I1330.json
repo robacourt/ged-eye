@@ -1,25 +1,41 @@
 {
   "id": "I1330",
-  "name": "Clara Louisa Unknown",
-  "givenName": "Clara Louisa",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "1871",
-  "birthPlace": null,
-  "deathDate": "1943",
+  "name": "Sydney Waterman",
+  "givenName": "Sydney",
+  "surname": "Waterman",
+  "sex": "M",
+  "birthDate": "1872",
+  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "deathDate": "1925",
   "deathPlace": "Stoke Sub Hamdon, Somerset, Footlands",
   "photos": [],
   "spouseIds": [
-    "I1329"
+    "I1331"
   ],
   "childIds": [],
-  "parentIds": [],
-  "burialDate": "4 OCT 1943",
+  "parentIds": [
+    "I1323",
+    "I1321"
+  ],
+  "burialDate": "27 APR 1925",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
+  "occupations": [
+    "Box Manufacturer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1891",
+      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1329",
-      "familyId": "F525",
+      "spouseId": "I1331",
+      "familyId": "F595",
       "marriageDate": "ABT 1892"
     }
   ]

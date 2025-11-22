@@ -1,18 +1,37 @@
 {
   "id": "I1005",
-  "name": "Michael O'Connor",
-  "givenName": "Michael",
+  "name": "John O'Connor",
+  "givenName": "John",
   "surname": "O'Connor",
   "sex": "M",
   "birthDate": "11 APRIL 1954",
   "birthPlace": null,
-  "deathDate": "11 APRIL 1954",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1019",
+    "I1020"
+  ],
+  "childIds": [
+    "I1023",
+    "I1024",
+    "I1025",
+    "I1026"
+  ],
   "parentIds": [
-    "I737",
-    "I736"
+    "I738",
+    "I737"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1019",
+      "familyId": "F474"
+    },
+    {
+      "spouseId": "I1020",
+      "familyId": "F475",
+      "marriageDate": "31 OCTOBER 1980"
+    }
   ]
 }

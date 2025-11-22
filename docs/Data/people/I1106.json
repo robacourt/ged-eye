@@ -1,46 +1,41 @@
 {
   "id": "I1106",
-  "name": "Beatrice Crew A'Court",
-  "givenName": "Beatrice Crew",
+  "name": "Mary Elizabeth A'Court",
+  "givenName": "Mary Elizabeth",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1884",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": "ABT 1882",
+  "birthPlace": "East Stour, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/Newspaper Reports/Beautrice A'Court 16 Jul 1901 Queen Camel.docx",
-    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
+    "I1112"
+  ],
+  "childIds": [],
+  "parentIds": [
+    "I1101",
     "I1110"
   ],
-  "childIds": [
-    "I1421"
+  "occupations": [
+    "General Domestic Servant"
   ],
-  "parentIds": [
-    "I1100",
-    "I1109"
-  ],
-  "baptismDate": "9 MAR 1884",
-  "baptismPlace": "Dorset, Marnhull",
   "censusRecords": [
     {
-      "date": "1891 AGE 7",
+      "date": "1891 AGE 9",
       "place": "Mells, Frome,  Somerset, Rectory Cottage"
     },
     {
       "date": "1901",
-      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+      "place": "Swindon, Wiltshire, 49 Bridge St."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1110",
-      "familyId": "F448",
-      "marriageDate": "16 JULY 1901",
+      "spouseId": "I1112",
+      "familyId": "F509",
+      "marriageDate": "23 MAY 1904",
       "marriagePlace": "Queen Camel, Somerset"
     }
-  ],
-  "avatar": "avatars/I1106_1.jpg"
+  ]
 }

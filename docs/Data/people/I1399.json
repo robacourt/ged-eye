@@ -1,9 +1,9 @@
 {
   "id": "I1399",
-  "name": "Valerie Leddy",
-  "givenName": "Valerie",
-  "surname": "Leddy",
-  "sex": "F",
+  "name": "Vincent Peters",
+  "givenName": "Vincent",
+  "surname": "Peters",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -16,10 +16,14 @@
     "I720"
   ],
   "parentIds": [],
+  "occupations": [
+    "New Zealand Army"
+  ],
   "marriages": [
     {
       "spouseId": "I719",
-      "familyId": "F293"
+      "familyId": "F342",
+      "marriageDate": "1918"
     }
   ]
 }

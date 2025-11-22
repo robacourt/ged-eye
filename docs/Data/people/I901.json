@@ -1,8 +1,8 @@
 {
   "id": "I901",
-  "name": "\\-\\",
-  "givenName": "\\-\\",
-  "surname": "",
+  "name": "never married",
+  "givenName": "never",
+  "surname": "married",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,14 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I749"
+    "I748"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I749",
-      "familyId": "F308"
+      "spouseId": "I748",
+      "familyId": "F357"
     }
   ]
 }

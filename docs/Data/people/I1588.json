@@ -1,38 +1,42 @@
 {
   "id": "I1588",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "Ernest Edward A'Court",
+  "givenName": "Ernest Edward",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1879",
-  "birthPlace": "Bristol, Bedminster",
+  "birthDate": "Abt 1888",
+  "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/Bristol/RG13 2361 36 7.jpg"
+    "Data/Media/1901 census/Bristol/RG13 2376 40 19.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I2590"
+  ],
+  "childIds": [
+    "I2591",
+    "I1702"
+  ],
   "parentIds": [],
   "occupations": [
-    "Flour Mill Labourer",
-    "Mill Hand Labourer"
-  ],
-  "notes": [
-    "1901 Living with paternal grandmother Ann Yendal widow see census note"
+    "Postman"
   ],
   "censusRecords": [
     {
-      "date": "1891",
-      "place": "Bristol, Bedminster, Weaie St."
-    },
-    {
       "date": "1901",
-      "place": "Bristol, Bedminster, 42 Phillip St"
+      "place": "Bristol, Redcliff, 13 Rowley Place"
     },
     {
       "date": "1911",
-      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+      "place": "Bristol, Southville, 10 Allington Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2590",
+      "familyId": "F686",
+      "marriageDate": "ABT 1908"
     }
   ],
   "avatar": "avatars/I1588_0.jpg"

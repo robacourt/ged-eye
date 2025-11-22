@@ -1,25 +1,31 @@
 {
   "id": "I1945",
-  "name": "William Martin",
-  "givenName": "William",
+  "name": "Gladys Amy Bertha Martin",
+  "givenName": "Gladys Amy Bertha",
   "surname": "Martin",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "sex": "F",
+  "birthDate": "10 JUL 1908",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "10 OCT 1970",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1946"
+    "I1931"
   ],
   "childIds": [
-    "I1944"
+    "I1948",
+    "I2031",
+    "I2033"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1946",
+    "I1947"
+  ],
   "marriages": [
     {
-      "spouseId": "I1946",
-      "familyId": "F693"
+      "spouseId": "I1931",
+      "familyId": "F777",
+      "marriageDate": "1927"
     }
   ]
 }

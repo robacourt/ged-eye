@@ -18,8 +18,8 @@
     "I2709"
   ],
   "parentIds": [
-    "I1422",
-    "I1428"
+    "I1423",
+    "I1429"
   ],
   "occupations": [
     "Cigar maker"
@@ -40,7 +40,7 @@
   "marriages": [
     {
       "spouseId": "I2708",
-      "familyId": "F942",
+      "familyId": "F888",
       "marriageDate": "6 DEC 1901"
     }
   ],

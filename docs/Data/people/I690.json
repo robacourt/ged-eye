@@ -1,20 +1,21 @@
 {
   "id": "I690",
-  "name": "John a'Court",
-  "givenName": "John",
+  "name": "James a'Court",
+  "givenName": "James",
   "surname": "a'Court",
   "sex": "M",
-  "birthDate": "1642",
+  "birthDate": "ABT 1642",
   "birthPlace": "South Cadbury, Somerset",
-  "deathDate": "1642",
-  "deathPlace": "South Cadbury, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I563",
-    "I686"
+    "I564",
+    "I687"
   ],
-  "burialDate": "NOV 1642",
-  "burialPlace": "South Cadbury, Somerset"
+  "notes": [
+    "Possibly died 1685/6 in South Cadbury - from Parish Register."
+  ]
 }

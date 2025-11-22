@@ -19,8 +19,8 @@
     "I2144"
   ],
   "parentIds": [
-    "I532",
-    "I533"
+    "I533",
+    "I534"
   ],
   "occupations": [
     "Domestic Servant"
@@ -38,7 +38,7 @@
   "marriages": [
     {
       "spouseId": "I2143",
-      "familyId": "F764"
+      "familyId": "F839"
     }
   ],
   "avatar": "avatars/I2141_0.jpg"

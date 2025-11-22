@@ -1,24 +1,17 @@
 {
   "id": "I1787",
-  "name": "Unknown Peters",
-  "givenName": "Unknown",
-  "surname": "Peters",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Paul M A'Court",
+  "givenName": "Paul M",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3RD QRT 1951",
+  "birthPlace": "Croydon",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1786",
+  "childIds": [],
+  "parentIds": [
     "I1788"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F644"
-    }
   ]
 }

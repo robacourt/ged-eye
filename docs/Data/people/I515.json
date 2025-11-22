@@ -1,22 +1,26 @@
 {
   "id": "I515",
-  "name": "Leonard A'Court",
-  "givenName": "Leonard",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1886",
+  "name": "Maud Alice ?????",
+  "givenName": "Maud Alice",
+  "surname": "?????",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "11 JAN 1918",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I780",
-    "I868"
+  "spouseIds": [
+    "I514"
   ],
-  "burialPlace": "Lijssenthoek Military Cemetery, Belgium",
-  "notes": [
-    "In Memory of"
+  "childIds": [
+    "I2107"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I514",
+      "familyId": "F264",
+      "marriageDate": "1934"
+    }
   ]
 }

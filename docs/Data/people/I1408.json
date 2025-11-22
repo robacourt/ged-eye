@@ -1,40 +1,34 @@
 {
   "id": "I1408",
-  "name": "Lilian Doris A'Court",
-  "givenName": "Lilian Doris",
+  "name": "Albert Charles A'Court",
+  "givenName": "Albert Charles",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1902",
-  "birthPlace": "Bristol, 3 St John's Rd.",
-  "deathDate": "1986",
-  "deathPlace": "Santa Rosa, California, USA",
+  "sex": "M",
+  "birthDate": "Abt 1890",
+  "birthPlace": "Bristol, Somerset",
+  "deathDate": "20 MAR 1980",
+  "deathPlace": null,
   "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg",
     "Data/Media/1911 census/Bristol/RG14 14916 116.jpg"
   ],
-  "spouseIds": [
-    "I1969"
-  ],
-  "childIds": [
-    "I1970"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1387",
-    "I1388"
+    "I1388",
+    "I1389"
   ],
-  "notes": [
-    "To Ian A'Court."
+  "occupations": [
+    "Wharehouseman-Tobacco Factory"
   ],
   "censusRecords": [
     {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    },
+    {
       "date": "1911",
       "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1969",
-      "familyId": "F845",
-      "marriageDate": "8 JUL 1925"
     }
   ],
   "avatar": "avatars/I1408_0.jpg"

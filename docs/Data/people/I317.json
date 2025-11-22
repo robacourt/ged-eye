@@ -13,13 +13,13 @@
     "I157"
   ],
   "childIds": [
-    "I588",
     "I589",
     "I590",
     "I591",
     "I592",
     "I593",
-    "I594"
+    "I594",
+    "I595"
   ],
   "parentIds": [
     "I315",
@@ -36,7 +36,7 @@
   "marriages": [
     {
       "spouseId": "I157",
-      "familyId": "F90",
+      "familyId": "F103",
       "marriageDate": "6.12.1870"
     }
   ]

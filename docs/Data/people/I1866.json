@@ -1,9 +1,9 @@
 {
   "id": "I1866",
-  "name": "Brian C A'Court",
-  "givenName": "Brian C",
+  "name": "Brenda A'Court",
+  "givenName": "Brenda",
   "surname": "A'Court",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -11,5 +11,8 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "notes": [
+    "address as at 2003"
+  ]
 }

@@ -1,29 +1,27 @@
 {
   "id": "I1192",
-  "name": "Bessie A'Court",
-  "givenName": "Bessie",
+  "name": "Ethel Elfrida A'Court",
+  "givenName": "Ethel Elfrida",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1886",
+  "birthDate": "ABT 1885",
   "birthPlace": "Marnhull, Dorset",
-  "deathDate": null,
+  "deathDate": "AFT 1891",
   "deathPlace": null,
   "photos": [
     "Data/Media/1891 census/Wiltshire/Box/RG12 1592 75 30.jpg",
-    "Data/Media/1901 census/Wiltshire/Corsham/RG13 1918 32 11.jpg"
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 19.jpg"
   ],
   "spouseIds": [
-    "I2411"
+    "I2410"
   ],
   "childIds": [],
   "parentIds": [
-    "I1185",
-    "I1190"
+    "I1186",
+    "I1191"
   ],
-  "baptismDate": "12 SEP 1886",
-  "baptismPlace": "Dorset, Marnhull",
   "occupations": [
-    "General servant domestic"
+    "Servant"
   ],
   "censusRecords": [
     {
@@ -32,14 +30,14 @@
     },
     {
       "date": "1901",
-      "place": "Wiltshire, Corsham, High St  East side"
+      "place": "Wadswick Farm, Box, Wiltshire"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2411",
-      "familyId": "F855",
-      "marriageDate": "1ST QTR 1909",
+      "spouseId": "I2410",
+      "familyId": "F548",
+      "marriageDate": "3RD QTR  1904",
       "marriagePlace": "Chippenham, Wiltshire"
     }
   ],

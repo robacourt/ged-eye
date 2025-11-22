@@ -1,15 +1,28 @@
 {
   "id": "I1465",
-  "name": "Emily Balsehbach",
-  "givenName": "Emily",
-  "surname": "Balsehbach",
+  "name": "Mary Ann Skedgel",
+  "givenName": "Mary Ann",
+  "surname": "Skedgel",
   "sex": "U",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1882",
+  "birthPlace": "Stoke Gabriel, Devon",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I1459",
+    "I1471"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Stoke Gabriel, Devon"
+    },
+    {
+      "date": "1901",
+      "place": "Stoke Gabriel, Devon"
+    }
+  ]
 }

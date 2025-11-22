@@ -15,11 +15,11 @@
     "Data/Media/1901 census/London/St Luke/RG13 261 52 10.jpg"
   ],
   "spouseIds": [
-    "I2020"
+    "I2021"
   ],
   "childIds": [
-    "I2088",
-    "I520",
+    "I2089",
+    "I521",
     "I2808",
     "I2809"
   ],
@@ -56,8 +56,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2020",
-      "familyId": "F725"
+      "spouseId": "I2021",
+      "familyId": "F271"
     }
   ],
   "avatar": "avatars/I2807_0.jpg"

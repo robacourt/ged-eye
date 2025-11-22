@@ -1,31 +1,27 @@
 {
   "id": "I1524",
-  "name": "Harold Albert Morgan",
-  "givenName": "Harold Albert",
+  "name": "Hugh Morgan",
+  "givenName": "Hugh",
   "surname": "Morgan",
   "sex": "M",
-  "birthDate": "19 OCT 1924",
-  "birthPlace": "Waltham Cross, Hertfordshire, 83 Queens Road",
+  "birthDate": "1948",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1525"
-  ],
-  "childIds": [
-    "I1526",
-    "I1527",
-    "I1529"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1516",
-    "I1486"
+    "I1522",
+    "I1523"
+  ],
+  "notes": [
+    "Hugh married Doreen and they had three children , Jane (b 1969) who married Andrew and they have a daughter Abigail (b 1994) Lynne (b 1971) married Peter in 1999 they now have a little boy born last year and David (b1974) he had a partner and the"
   ],
   "marriages": [
     {
-      "spouseId": "I1525",
-      "familyId": "F582",
-      "marriageDate": "9 APR 1954"
+      "spouseId": null,
+      "familyId": "F667"
     }
   ]
 }

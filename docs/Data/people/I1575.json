@@ -1,34 +1,39 @@
 {
   "id": "I1575",
-  "name": "Charles Frank A'Court",
-  "givenName": "Charles Frank",
+  "name": "Ella May A'Court",
+  "givenName": "Ella May",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1892",
+  "sex": "F",
+  "birthDate": "ABT 1888",
   "birthPlace": "Blandford Forum, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
+    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 68 22.jpg",
     "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
-    "Data/Media/1911 census/Dorset/Blandford/RG14 12217 333.jpg"
+    "Data/Media/1911 census/Somerset/Glastonbury/RG14 14538 238.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1571",
-    "I1572"
+    "I1572",
+    "I1573"
   ],
   "occupations": [
-    "Grocer's Assistant"
+    "Hotel Assistant"
   ],
   "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Blandford, Dorset, 42 East St. White Hart Inn"
+    },
     {
       "date": "1901",
       "place": "Blandford, Dorset, 33 Orchard St."
     },
     {
       "date": "1911",
-      "place": "Blandford, Dorset, Orchard St."
+      "place": "Glastonbury, Somerset, The Crown Hotel, 4 Market Place"
     }
   ],
   "avatar": "avatars/I1575_0.jpg"

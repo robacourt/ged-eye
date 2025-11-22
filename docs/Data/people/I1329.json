@@ -1,42 +1,27 @@
 {
   "id": "I1329",
-  "name": "Sydney Waterman",
-  "givenName": "Sydney",
-  "surname": "Waterman",
-  "sex": "M",
-  "birthDate": "1872",
+  "name": "Bessie May Lock",
+  "givenName": "Bessie May",
+  "surname": "Lock",
+  "sex": "F",
+  "birthDate": "1870",
   "birthPlace": "Stoke Sub Hamdon, Somerset",
-  "deathDate": "1925",
-  "deathPlace": "Stoke Sub Hamdon, Somerset, Footlands",
+  "deathDate": "1901",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1330"
+    "I1328"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1322",
-    "I1320"
-  ],
-  "burialDate": "27 APR 1925",
+  "parentIds": [],
+  "burialDate": "30 DEC 1901",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
-  "occupations": [
-    "Box Manufacturer"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    },
-    {
-      "date": "1891",
-      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1330",
-      "familyId": "F525",
-      "marriageDate": "ABT 1892"
+      "spouseId": "I1328",
+      "familyId": "F594",
+      "marriageDate": "22 MAY 1893",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
     }
   ]
 }

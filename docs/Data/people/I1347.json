@@ -1,26 +1,34 @@
 {
   "id": "I1347",
-  "name": "Charles Cundy",
-  "givenName": "Charles",
+  "name": "William Cundy",
+  "givenName": "William",
   "surname": "Cundy",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "1841",
+  "birthPlace": "New Zealand",
+  "deathDate": "1897",
+  "deathPlace": "Featherston, New Zealand",
   "photos": [],
   "spouseIds": [
-    "I1348"
+    "I1346"
   ],
   "childIds": [
-    "I1346",
-    "I1369"
+    "I1350",
+    "I1352",
+    "I1354",
+    "I1356",
+    "I1358",
+    "I1360",
+    "I1364"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1348",
+    "I1349"
+  ],
   "marriages": [
     {
-      "spouseId": "I1348",
-      "familyId": "F533"
+      "spouseId": "I1346",
+      "familyId": "F602"
     }
   ]
 }

@@ -1,39 +1,63 @@
 {
   "id": "I871",
-  "name": "Mary Parker",
-  "givenName": "Mary",
-  "surname": "Parker",
+  "name": "Emily Cribb",
+  "givenName": "Emily",
+  "surname": "Cribb",
   "sex": "F",
-  "birthDate": "BEF 1824",
-  "birthPlace": "Shepton Mallet, Somerset",
-  "deathDate": "AFT 1861",
+  "birthDate": "Abt 1862",
+  "birthPlace": "Ash, Somerset",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Picture/Ethel Louie  her mother Emily Cribb.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
   "spouseIds": [
-    "I763"
+    "I783"
   ],
   "childIds": [
-    "I872",
-    "I874",
-    "I873",
-    "I875",
-    "I876",
-    "I877",
-    "I878",
-    "I2107",
-    "I2108"
+    "I1027",
+    "I519",
+    "I1028",
+    "I1029",
+    "I1030",
+    "I1031",
+    "I1032",
+    "I1033",
+    "I1034"
   ],
   "parentIds": [],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "London, Middx. St Pancras 3, Brill Cottages."
+      "date": "1891",
+      "place": "Somerset, Martock, East St"
+    },
+    {
+      "date": "1901",
+      "place": "Martock, Somerset"
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1901",
+      "place": "Martock, Somerset, East St."
+    },
+    {
+      "date": "1915",
+      "place": "Somerset, Martock, Bower Hinton"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I763",
-      "familyId": "F315"
+      "spouseId": "I783",
+      "familyId": "F269",
+      "marriageDate": "1887",
+      "marriagePlace": "Somerset, Yeovil."
     }
-  ]
+  ],
+  "avatar": "avatars/I871_0.jpg"
 }

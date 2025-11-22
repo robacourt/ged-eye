@@ -1,18 +1,28 @@
 {
   "id": "I739",
-  "name": "Meeka Leigh O'Conner",
-  "givenName": "Meeka Leigh",
-  "surname": "O'Conner",
-  "sex": "F",
-  "birthDate": "19 APRIL 1978",
-  "birthPlace": null,
+  "name": "Thomas John O'Connor",
+  "givenName": "Thomas John",
+  "surname": "O'Connor",
+  "sex": "M",
+  "birthDate": "7 MARCH 1950",
+  "birthPlace": "Sydney, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1015"
+  ],
+  "childIds": [
+    "I740"
+  ],
   "parentIds": [
     "I738",
-    "I1014"
+    "I737"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1015",
+      "familyId": "F352"
+    }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "id": "I620",
-  "name": "James Watts",
-  "givenName": "James",
+  "name": "Ernest Edwin Watts",
+  "givenName": "Ernest Edwin",
   "surname": "Watts",
   "sex": "M",
   "birthDate": null,
@@ -9,18 +9,25 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I619"
+  "spouseIds": [
+    "I592"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I621"
+  ],
   "occupations": [
-    "Cooper"
+    "Cabinet Maker"
+  ],
+  "notes": [
+    "24-1902"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F256"
+      "spouseId": "I592",
+      "familyId": "F293",
+      "marriageDate": "17.6.1902",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

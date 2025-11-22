@@ -1,31 +1,34 @@
 {
   "id": "I1275",
-  "name": "Howard William A'Court",
-  "givenName": "Howard William",
+  "name": "Arthur H A'Court",
+  "givenName": "Arthur H",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1886",
+  "birthDate": "1885",
   "birthPlace": "Charlton Horethorne, Somerset",
-  "deathDate": "1962",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg",
-    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg"
+    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg",
+    "Data/Media/1911 census/Hampshire/Selborne/RG14 6218 137.jpg",
+    "Data/Media/1921 Census/Hampshire/RG15 05787 66.jpg",
+    "Data/Media/1939 Register/Hampshire/RG101 2363c 009 39.jpg"
   ],
-  "spouseIds": [
-    "I1561"
-  ],
-  "childIds": [
-    "I2577",
-    "I2578"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
     "I284",
     "I287"
   ],
   "occupations": [
-    "Telegraph Boy",
-    "Baker"
+    "Apprentice Carpenter",
+    "Carpenter Joiner",
+    "Carpenter Joiner",
+    "Carpenter Joiner, W E Legg (out of work)"
+  ],
+  "notes": [
+    "Dear Ian"
   ],
   "censusRecords": [
     {
@@ -38,13 +41,15 @@
     },
     {
       "date": "1911",
-      "place": "Grayshott, Hampshire, 1 The Villas"
-    }
-  ],
-  "marriages": [
+      "place": "Selborne, Hampshire, Gracious St"
+    },
     {
-      "spouseId": "I1561",
-      "familyId": "F514"
+      "date": "1939 REGISTRATION",
+      "place": "Hampshire, Selborne, 2 Seale View"
+    },
+    {
+      "date": "1921",
+      "place": "Hampshire, Selborne, Seele View, Gilborne"
     }
   ],
   "avatar": "avatars/I1275_0.jpg"

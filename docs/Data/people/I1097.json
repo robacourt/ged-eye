@@ -1,33 +1,18 @@
 {
   "id": "I1097",
-  "name": "Robert Frank A'Court",
-  "givenName": "Robert Frank",
+  "name": "Michael John A'Court",
+  "givenName": "Michael John",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "7 AUG 1968",
-  "birthPlace": "Dorchester, Dorset",
+  "birthDate": "16 DEC 1952",
+  "birthPlace": "Austria",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1306"
-  ],
-  "childIds": [
-    "I1307",
-    "I1308",
-    "I1309",
-    "I1310"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1086",
-    "I1304"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1306",
-      "familyId": "F441",
-      "marriageDate": "24 SEP 1993",
-      "marriagePlace": "Perth, Western Australia"
-    }
+    "I1088",
+    "I1089"
   ]
 }

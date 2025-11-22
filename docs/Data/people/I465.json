@@ -1,17 +1,15 @@
 {
   "id": "I465",
-  "name": "Herbert Ridler",
-  "givenName": "Herbert",
+  "name": "William Samuel Ridler",
+  "givenName": "William Samuel",
   "surname": "Ridler",
   "sex": "M",
-  "birthDate": "1871",
+  "birthDate": "1859",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "28.9.1889",
+  "deathPlace": "Canterbury, Kent",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "burialDate": "3 MAR1894",
-  "burialPlace": "Chelsea London"
+  "parentIds": []
 }

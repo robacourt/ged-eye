@@ -1,20 +1,18 @@
 {
   "id": "I476",
-  "name": "Mary a'Court",
-  "givenName": "Mary",
+  "name": "John a'Court",
+  "givenName": "John",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "BEF 1744",
-  "birthPlace": null,
-  "deathDate": "1748",
-  "deathPlace": "Horsington, Somerset",
+  "sex": "M",
+  "birthDate": "BEF 17 NOV 173",
+  "birthPlace": "Horsington, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I469",
-    "I470"
-  ],
-  "burialDate": "8 MAY 1748",
-  "burialPlace": "Horsington, Somerset"
+    "I470",
+    "I471"
+  ]
 }

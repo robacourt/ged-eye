@@ -10,20 +10,20 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1705"
+    "I1706"
   ],
   "childIds": [
-    "I1704",
+    "I1705",
     "I2351"
   ],
   "parentIds": [
-    "I1701",
-    "I1702"
+    "I1702",
+    "I1703"
   ],
   "marriages": [
     {
-      "spouseId": "I1705",
-      "familyId": "F834"
+      "spouseId": "I1706",
+      "familyId": "F718"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "id": "I1774",
-  "name": "Denise Y A'Court",
-  "givenName": "Denise Y",
+  "name": "Glenn B A'Court",
+  "givenName": "Glenn B",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "4TH QRT 1959",
+  "sex": "M",
+  "birthDate": "3RD QRT 1956",
   "birthPlace": "King's L",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1768",
-    "I1767"
+    "I1769",
+    "I1768"
   ]
 }

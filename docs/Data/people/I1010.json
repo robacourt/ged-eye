@@ -1,7 +1,7 @@
 {
   "id": "I1010",
-  "name": "Paul Farrelly",
-  "givenName": "Paul",
+  "name": "Michael Farrelly",
+  "givenName": "Michael",
   "surname": "Farrelly",
   "sex": "M",
   "birthDate": null,
@@ -9,10 +9,20 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1009",
-    "I996"
+  "spouseIds": [
+    "I997"
+  ],
+  "childIds": [
+    "I1011",
+    "I1012",
+    "I1013",
+    "I1014"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I997",
+      "familyId": "F471"
+    }
   ]
 }

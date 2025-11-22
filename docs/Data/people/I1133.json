@@ -1,10 +1,10 @@
 {
   "id": "I1133",
-  "name": "Mary Jane Curtis",
-  "givenName": "Mary Jane",
-  "surname": "Curtis",
+  "name": "Joyce Mary West",
+  "givenName": "Joyce Mary",
+  "surname": "West",
   "sex": "F",
-  "birthDate": null,
+  "birthDate": "14 NOV 1926",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,9 +12,9 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I179",
-    "I275"
+    "I1131",
+    "I1130"
   ],
-  "baptismDate": "11 JUL 1858",
+  "baptismDate": "23 JAN 1927",
   "baptismPlace": "Marnhull, Dorset"
 }

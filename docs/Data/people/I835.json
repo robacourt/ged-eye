@@ -1,46 +1,29 @@
 {
   "id": "I835",
-  "name": "Evelyn Maud (Dorothy) JACOBS",
-  "givenName": "Evelyn Maud (Dorothy)",
+  "name": "Alice Maud (Maud) JACOBS",
+  "givenName": "Alice Maud (Maud)",
   "surname": "JACOBS",
   "sex": "F",
-  "birthDate": "22 APR 1896",
-  "birthPlace": "Christchurch, NZ, Essex Hospital",
-  "deathDate": "11 MAY 1979",
-  "deathPlace": "Napier Hospital, Napier, NZ",
+  "birthDate": "24 JUN 1880",
+  "birthPlace": "Christchurch, New Zealand",
+  "deathDate": "4 DEC 1965",
+  "deathPlace": "New Plymouth Hospital, New Plymouth, NZ",
   "photos": [],
   "spouseIds": [
-    "I847",
-    "I848",
-    "I849"
+    "I825"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I824",
-    "I834"
+  "childIds": [
+    "I836"
   ],
+  "parentIds": [],
   "notes": [
-    "ashes scattered at Taylors Mistake, Christchurch, NZ",
-    "Information provised by Carole Stewart"
+    "NZ Probates New Plymouth Court 515/65",
+    "Information provided by Carole Stewart"
   ],
   "marriages": [
     {
-      "spouseId": "I847",
-      "familyId": "F359",
-      "marriageDate": "11 DEC 1920",
-      "marriagePlace": "Registrar's Office, Christchurch, NZ"
-    },
-    {
-      "spouseId": "I848",
-      "familyId": "F360",
-      "marriageDate": "28 JAN 1942",
-      "marriagePlace": "St John's Church, Ponsonby, Auckland, NZ"
-    },
-    {
-      "spouseId": "I849",
-      "familyId": "F361",
-      "marriageDate": "1968",
-      "marriagePlace": "New Zealand"
+      "spouseId": "I825",
+      "familyId": "F407"
     }
   ]
 }

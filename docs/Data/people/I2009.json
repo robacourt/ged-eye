@@ -1,28 +1,41 @@
 {
   "id": "I2009",
-  "name": "John Wigglesworth",
-  "givenName": "John",
+  "name": "Leslie E Wigglesworth",
+  "givenName": "Leslie E",
   "surname": "Wigglesworth",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "25 NOV 1913",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1983",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I2981"
+  "photos": [
+    "Data/Media/1921 Census/Kent/RG15 04450 91.jpg"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I2008",
+  "spouseIds": [
     "I422"
+  ],
+  "childIds": [
+    "I2010",
+    "I2011",
+    "I2012"
+  ],
+  "parentIds": [
+    "I2782",
+    "I2783"
+  ],
+  "censusRecords": [
+    {
+      "date": "1921",
+      "place": "Kent, Margate, Rosenburgh, Sweyn Rd"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I2981",
-      "familyId": "F1024",
-      "marriageDate": "1968",
-      "marriagePlace": "London Westminster"
+      "spouseId": "I422",
+      "familyId": "F220",
+      "marriageDate": "1939",
+      "marriagePlace": "London, Hackney"
     }
-  ]
+  ],
+  "avatar": "avatars/I2009_0.jpg"
 }

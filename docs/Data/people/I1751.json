@@ -1,15 +1,48 @@
 {
   "id": "I1751",
-  "name": "Jane Godfrey",
-  "givenName": "Jane",
-  "surname": "Godfrey",
-  "sex": "U",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1828",
+  "birthPlace": "Dorset, Marnhull.",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I2303"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I56"
+  ],
+  "occupations": [
+    "Carter",
+    "Carman",
+    "Carman"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Weymouth, Dorset, North Quay"
+    },
+    {
+      "date": "1881",
+      "place": "Dorset, Weymouth, High West St."
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Weymouth, 3 Stanley Terrace"
+    },
+    {
+      "date": "1901",
+      "place": "Dorset, Weymouth, 3 Stanley Terrace"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2303",
+      "familyId": "F733"
+    }
+  ]
 }

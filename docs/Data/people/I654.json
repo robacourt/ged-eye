@@ -1,39 +1,20 @@
 {
   "id": "I654",
-  "name": "Walter Warren",
-  "givenName": "Walter",
+  "name": "William Warren",
+  "givenName": "William",
   "surname": "Warren",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "ABT 1931",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I666"
-  ],
-  "childIds": [
-    "I667",
-    "I668"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
-  "baptismDate": "9.10.1881",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Mason"
-  ],
-  "notes": [
-    "10 in 1891, 25 in 1905,"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I666",
-      "familyId": "F274",
-      "marriageDate": "7.8.1905",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "10.11.1878",
+  "baptismPlace": "Marnhull, Dorset"
 }

@@ -1,21 +1,52 @@
 {
   "id": "I1028",
-  "name": "Alice A'Court",
-  "givenName": "Alice",
+  "name": "Alfred A'Court",
+  "givenName": "Alfred",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1893",
-  "birthPlace": "Somerset",
-  "deathDate": "1893",
+  "sex": "M",
+  "birthDate": "1891",
+  "birthPlace": null,
+  "deathDate": "1928",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I782",
-    "I870"
+  "photos": [
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
   ],
-  "notes": [
-    "Not on 1901 census !"
-  ]
+  "spouseIds": [
+    "I1035"
+  ],
+  "childIds": [
+    "I1036",
+    "I1037",
+    "I1038",
+    "I1039",
+    "I1040",
+    "I1041"
+  ],
+  "parentIds": [
+    "I783",
+    "I871"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Martock, Somerset, East St."
+    },
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    },
+    {
+      "date": "1911",
+      "place": "Farm labourer"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1035",
+      "familyId": "F478",
+      "marriagePlace": "Yeovil, Somerset"
+    }
+  ],
+  "avatar": "avatars/I1028_0.jpg"
 }

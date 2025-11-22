@@ -1,26 +1,19 @@
 {
   "id": "I747",
-  "name": "Jane A'Court",
-  "givenName": "Jane",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "BEF 1 APR 1761",
+  "birthDate": "1758",
   "birthPlace": null,
-  "deathDate": "JUN 1761",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I900"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I741",
-    "I742"
+    "I742",
+    "I743"
   ],
-  "marriages": [
-    {
-      "spouseId": "I900",
-      "familyId": "F307"
-    }
-  ]
+  "baptismDate": "13 JUL 1858"
 }

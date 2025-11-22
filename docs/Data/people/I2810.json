@@ -12,7 +12,7 @@
     "Data/Media/1901 census/C isles/St Brelade/RG13 5310 14 2.jpg"
   ],
   "spouseIds": [
-    "I2089"
+    "I2090"
   ],
   "childIds": [
     "I2811",
@@ -44,8 +44,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2089",
-      "familyId": "F732"
+      "spouseId": "I2090",
+      "familyId": "F820"
     }
   ],
   "avatar": "avatars/I2810_0.jpg"

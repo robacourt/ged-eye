@@ -1,23 +1,17 @@
 {
   "id": "I1796",
-  "name": "Unknown Stowe",
-  "givenName": "Unknown",
-  "surname": "Stowe",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Rodger N J A'Court",
+  "givenName": "Rodger N J",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "4TH QRT 1951",
+  "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1795"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F647"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1797"
   ]
 }

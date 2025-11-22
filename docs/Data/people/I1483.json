@@ -1,25 +1,20 @@
 {
   "id": "I1483",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
-  "surname": "Unknown",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Ellen A'Court",
+  "givenName": "Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1854",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "4 MAY 1940",
+  "deathPlace": "Sturminster Newton Institute",
   "photos": [],
-  "spouseIds": [
-    "I777"
-  ],
-  "childIds": [
-    "I1484"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I777",
-      "familyId": "F327"
-    }
+  "burialDate": "8 MAY 1940",
+  "burialPlace": "Sturminster Newton, Dorset",
+  "notes": [
+    "Could this be #2361"
   ]
 }

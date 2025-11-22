@@ -1,25 +1,28 @@
 {
   "id": "I1139",
-  "name": "Silas Dean",
-  "givenName": "Silas",
+  "name": "Eva Ethel Dean",
+  "givenName": "Eva Ethel",
   "surname": "Dean",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "ABT 1882",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1140"
-  ],
-  "childIds": [
     "I1138"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1140",
+    "I1141"
+  ],
   "marriages": [
     {
-      "spouseId": "I1140",
-      "familyId": "F463"
+      "spouseId": "I1138",
+      "familyId": "F525",
+      "marriageDate": "25 OCT 1915",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

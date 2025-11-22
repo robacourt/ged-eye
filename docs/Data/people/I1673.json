@@ -1,19 +1,23 @@
 {
   "id": "I1673",
-  "name": "Robert Dean",
-  "givenName": "Robert",
+  "name": "John Dean",
+  "givenName": "John",
   "surname": "Dean",
   "sex": "M",
-  "birthDate": "ABT 1732",
+  "birthDate": "ABT 1731",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1803",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1669",
-    "I1670"
+    "I1670",
+    "I1671"
   ],
-  "baptismDate": "61 MAR 1732"
+  "baptismDate": "30 AUG 1731",
+  "burialDate": "27 MAY 1803",
+  "notes": [
+    "MARNHULL RATEPAYERS 1750"
+  ]
 }

@@ -1,29 +1,33 @@
 {
   "id": "I1278",
-  "name": "Phyllis Stacey",
-  "givenName": "Phyllis",
+  "name": "Doris Stacey",
+  "givenName": "Doris",
   "surname": "Stacey",
   "sex": "F",
-  "birthDate": "1921",
+  "birthDate": "MAR 1919",
   "birthPlace": "Thames Ditton, Surrey",
-  "deathDate": "1955",
-  "deathPlace": null,
+  "deathDate": "1997",
+  "deathPlace": "Worthing, East Sussex",
   "photos": [],
   "spouseIds": [
-    "I1282"
+    "I1280",
+    "I1281"
   ],
   "childIds": [
-    "I1283",
-    "I1284"
+    "I1282"
   ],
   "parentIds": [
-    "I1276",
-    "I1263"
+    "I1277",
+    "I1264"
   ],
   "marriages": [
     {
-      "spouseId": "I1282",
-      "familyId": "F518"
+      "spouseId": "I1280",
+      "familyId": "F583"
+    },
+    {
+      "spouseId": "I1281",
+      "familyId": "F584"
     }
   ]
 }

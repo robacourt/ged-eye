@@ -1,23 +1,47 @@
 {
   "id": "I1324",
-  "name": "Henry Chant",
-  "givenName": "Henry",
-  "surname": "Chant",
-  "sex": "M",
-  "birthDate": "1862",
-  "birthPlace": "Stoke Sub Hamdon, Somerset",
+  "name": "Alice Waterman",
+  "givenName": "Alice",
+  "surname": "Waterman",
+  "sex": "F",
+  "birthDate": "1854",
+  "birthPlace": "Yeovil, Somerset",
   "deathDate": "AFT 1891",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1323"
+    "I1325"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1323",
+    "I1321"
+  ],
+  "occupations": [
+    "Glove Machinist"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Stoke Sub Hamdon, Somerset, Higher Street,"
+    },
+    {
+      "date": "1871",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+    },
+    {
+      "date": "1881",
+      "place": null
+    },
+    {
+      "date": "1891",
+      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1323",
-      "familyId": "F523",
+      "spouseId": "I1325",
+      "familyId": "F593",
       "marriageDate": "AFT 1882"
     }
   ]

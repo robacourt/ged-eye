@@ -1,28 +1,21 @@
 {
   "id": "I657",
-  "name": "William Warren",
-  "givenName": "William",
+  "name": "Alice Warren",
+  "givenName": "Alice",
   "surname": "Warren",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "ABT 1886",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I658"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I647",
+    "I241"
   ],
-  "childIds": [
-    "I646"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Shoemaker"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I658",
-      "familyId": "F271"
-    }
+  "notes": [
+    "5 in 1891"
   ]
 }

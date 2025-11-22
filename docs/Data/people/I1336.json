@@ -1,16 +1,20 @@
 {
   "id": "I1336",
-  "name": "George Emberson",
-  "givenName": "George",
-  "surname": "Emberson",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "BEF 1901",
+  "name": "Mary Ellen A'Court",
+  "givenName": "Mary Ellen",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1872",
+  "birthPlace": "Thurmaston,  Leicestershire",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 25 12 17.jpg",
+    "Data/Media/1901 census/Surrey/RG13 587 19 30.jpg",
+    "Data/Media/1911 census/Surrey/RG14 2982 162.jpg"
+  ],
   "spouseIds": [
-    "I1335"
+    "I1337"
   ],
   "childIds": [
     "I2602",
@@ -19,13 +23,35 @@
     "I2605",
     "I2895"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I879",
+    "I929"
+  ],
+  "occupations": [
+    "Photographer",
+    "Widow Private Means"
+  ],
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1901",
+      "place": "Walton on Thames, Surrey, Station Road"
+    },
+    {
+      "date": "1911",
+      "place": "Walton-on-Thames, Surrey, Heytesbury,  Station Avenue"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1335",
-      "familyId": "F528",
+      "spouseId": "I1337",
+      "familyId": "F598",
       "marriageDate": "4 DEC 1887",
       "marriagePlace": "London, St Michael, Cornhill"
     }
-  ]
+  ],
+  "avatar": "avatars/I1336_0.jpg"
 }

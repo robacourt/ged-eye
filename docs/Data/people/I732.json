@@ -1,23 +1,26 @@
 {
   "id": "I732",
-  "name": "William Winstanley",
-  "givenName": "William",
-  "surname": "Winstanley",
-  "sex": "M",
-  "birthDate": "1889",
+  "name": "Jane Symes",
+  "givenName": "Jane",
+  "surname": "Symes",
+  "sex": "F",
+  "birthDate": "1890",
   "birthPlace": null,
-  "deathDate": "1962",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I731"
+    "I733"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I731",
+    "I110"
+  ],
   "marriages": [
     {
-      "spouseId": "I731",
-      "familyId": "F297",
+      "spouseId": "I733",
+      "familyId": "F347",
       "marriageDate": "23 OCT 1915"
     }
   ]

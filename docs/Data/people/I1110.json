@@ -1,27 +1,67 @@
 {
   "id": "I1110",
-  "name": "Ernest James Elford",
-  "givenName": "Ernest James",
-  "surname": "Elford",
-  "sex": "M",
-  "birthDate": "ABT 1875",
-  "birthPlace": null,
+  "name": "Hannah Jane Crew",
+  "givenName": "Hannah Jane",
+  "surname": "Crew",
+  "sex": "F",
+  "birthDate": "ABT 1864",
+  "birthPlace": "Stalbridge, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Picture/Hannah Crew.jpg"
+  ],
   "spouseIds": [
-    "I1106"
+    "I1101"
   ],
   "childIds": [
-    "I1421"
+    "I1106",
+    "I1107",
+    "I1108",
+    "I1339",
+    "I1109",
+    "I1091",
+    "I1420",
+    "I1421",
+    "I2530"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2406",
+    "I2407"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Stalbridge, Dorset, Landshire Lane"
+    },
+    {
+      "date": "1881",
+      "place": "East Stower, Dorset, Highgrove Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Mells, Frome,  Somerset"
+    },
+    {
+      "date": "1901",
+      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+    },
+    {
+      "date": "1911",
+      "place": "Queen Camel, Somerset, Camel Hill"
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1912",
+      "place": "South Barrow"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1106",
-      "familyId": "F448",
-      "marriageDate": "16 JULY 1901",
-      "marriagePlace": "Queen Camel, Somerset"
+      "spouseId": "I1101",
+      "familyId": "F500"
     }
-  ]
+  ],
+  "avatar": "avatars/I1110_0.jpg"
 }

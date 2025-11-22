@@ -1,45 +1,32 @@
 {
   "id": "I1089",
-  "name": "Olive May Stallard",
-  "givenName": "Olive May",
-  "surname": "Stallard",
+  "name": "Laura Whitty",
+  "givenName": "Laura",
+  "surname": "Whitty",
   "sex": "F",
-  "birthDate": "ABT 1899",
-  "birthPlace": "Fordingbridge, Hampshire",
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [
-    "Data/Picture/Olive May Stallard.jpg"
-  ],
+  "birthDate": "24 NOV 1918",
+  "birthPlace": null,
+  "deathDate": "15 MAR 1991",
+  "deathPlace": "Perth, Western Australia",
+  "photos": [],
   "spouseIds": [
-    "I1338"
+    "I1088"
   ],
   "childIds": [
-    "I1092",
-    "I1093",
+    "I1095",
     "I1087",
-    "I1266"
+    "I1096",
+    "I1097"
   ],
   "parentIds": [
-    "I2443",
-    "I2444"
-  ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Burgate, Fordinbridge,Hampshire"
-    },
-    {
-      "date": "1911",
-      "place": "Dorchester, Dorset, 7 Prospect Terrace"
-    }
+    "I1295"
   ],
   "marriages": [
     {
-      "spouseId": "I1338",
-      "familyId": "F435",
-      "marriageDate": "1910"
+      "spouseId": "I1088",
+      "familyId": "F495",
+      "marriageDate": "28 SEP 1940",
+      "marriagePlace": "Yeovil, Somerset"
     }
-  ],
-  "avatar": "avatars/I1089_0.jpg"
+  ]
 }

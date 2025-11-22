@@ -1,19 +1,35 @@
 {
   "id": "I606",
-  "name": "Denys Henry Damen",
-  "givenName": "Denys Henry",
+  "name": "Henry Giles Damen",
+  "givenName": "Henry Giles",
   "surname": "Damen",
   "sex": "M",
-  "birthDate": "8.5.1930",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I605",
-    "I596"
+  "spouseIds": [
+    "I597"
   ],
-  "baptismDate": "8.6.1930"
+  "childIds": [
+    "I607"
+  ],
+  "parentIds": [
+    "I608"
+  ],
+  "occupations": [
+    "Chauffeur"
+  ],
+  "notes": [
+    "25-1927"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I597",
+      "familyId": "F296",
+      "marriageDate": "1.9.1927",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
 }

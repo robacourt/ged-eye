@@ -1,18 +1,45 @@
 {
   "id": "I774",
-  "name": "Rhoda A'Court",
-  "givenName": "Rhoda",
+  "name": "William A'Court",
+  "givenName": "William",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1839",
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
-  "spouseIds": [],
+  "sex": "M",
+  "birthDate": "1838",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1859",
+  "deathPlace": "Wincanton, Somerset",
+  "photos": [
+    "Data/Media/1851 census/North Cadbury/N Cadbury.jpg",
+    "Data/Media/1861 Census/Martock/RG09 1642 8 9.jpg"
+  ],
+  "spouseIds": [
+    "I784"
+  ],
   "childIds": [],
   "parentIds": [
-    "I761",
-    "I769"
-  ]
+    "I762",
+    "I770"
+  ],
+  "notes": [
+    "1851 Census"
+  ],
+  "censusRecords": [
+    {
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I784",
+      "familyId": "F372",
+      "marriageDate": "1859",
+      "marriagePlace": "Wincanton, Somerset"
+    }
+  ],
+  "avatar": "avatars/I774_0.jpg"
 }

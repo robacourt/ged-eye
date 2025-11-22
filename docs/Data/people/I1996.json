@@ -1,28 +1,21 @@
 {
   "id": "I1996",
-  "name": "Iain James Gooderson",
-  "givenName": "Iain James",
-  "surname": "Gooderson",
+  "name": "Frederick Ford",
+  "givenName": "Frederick",
+  "surname": "Ford",
   "sex": "M",
-  "birthDate": "12 AUG 1962",
-  "birthPlace": "Haverfordwest, Pembrokeshire",
+  "birthDate": "Abt 1934",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1992"
+  "photos": [
+    "Data/Picture/Jean Joan  Freddy Ford.jpg"
   ],
-  "childIds": [
-    "I1997",
-    "I1998",
-    "I1999",
-    "I2000"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1628",
+    "I1034"
   ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1992",
-      "familyId": "F714"
-    }
-  ]
+  "avatar": "avatars/I1996_0.jpg"
 }

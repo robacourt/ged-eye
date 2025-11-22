@@ -1,64 +1,37 @@
 {
   "id": "I1616",
-  "name": "Ann Warren",
-  "givenName": "Ann",
-  "surname": "Warren",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "Abt 1836",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": "Abt 1886",
+  "birthPlace": "Lancs",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 36 17 .jpg",
-    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 28 15.jpg",
-    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 30 15.jpg"
+    "Data/Media/1891 census/Lancashire/RG12 3002 35 63.jpg",
+    "Data/Media/1901 census/Lancashire/RG13 3578 132 13.jpg"
   ],
-  "spouseIds": [
-    "I1617"
-  ],
-  "childIds": [
-    "I1626",
-    "I1625",
-    "I1618",
-    "I1622",
-    "I1619",
-    "I1620"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1624"
+    "I1602",
+    "I1603"
   ],
   "occupations": [
-    "Leather Glover",
-    "Glover",
-    "Glover",
-    "Kid Glove Maker"
+    "Domestic Servant"
+  ],
+  "notes": [
+    "This a a presumtion from 1901 census only that she is Henrys daughter and that Henry and George are brothers"
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "Marnhull, Dorset, East Well"
-    },
-    {
-      "date": "1871",
-      "place": "Marnhull, Dorset, East Well"
-    },
-    {
-      "date": "1881",
-      "place": "Marnhull, Dorset, Caraway Lane"
-    },
-    {
       "date": "1891",
-      "place": "Marnhull, Dorset, Caraway Lane"
+      "place": "Lancashire, Wavertree, 13 Upper cross St."
     },
     {
       "date": "1901",
-      "place": "Marnhull, Dorset, Caraway Lane"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1617",
-      "familyId": "F604"
+      "place": "Warrington, Lancs, 104 Bridge St"
     }
   ],
   "avatar": "avatars/I1616_0.jpg"

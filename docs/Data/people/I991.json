@@ -1,28 +1,28 @@
 {
   "id": "I991",
-  "name": "Elsie Sybil A'Court",
-  "givenName": "Elsie Sybil",
-  "surname": "A'Court",
+  "name": "June Elizabeth Gatland",
+  "givenName": "June Elizabeth",
+  "surname": "Gatland",
   "sex": "F",
-  "birthDate": "19 JUNE 1922",
+  "birthDate": "7 SEP 1926",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "21 DEC 1988",
+  "deathPlace": "Quakers Hill Nursing Home",
   "photos": [],
   "spouseIds": [
-    "I992"
+    "I990"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I734",
-    "I735"
+  "childIds": [
+    "I2618",
+    "I1431",
+    "I2617",
+    "I2616"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I992",
-      "familyId": "F412",
-      "marriageDate": "1942",
-      "marriagePlace": "Bathurst, NSW"
+      "spouseId": "I990",
+      "familyId": "F467"
     }
   ]
 }

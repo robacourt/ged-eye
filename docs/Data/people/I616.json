@@ -1,20 +1,38 @@
 {
   "id": "I616",
-  "name": "Kerry Dawn Clarkson",
-  "givenName": "Kerry Dawn",
+  "name": "Frederick James Clarkson",
+  "givenName": "Frederick James",
   "surname": "Clarkson",
-  "sex": "F",
-  "birthDate": "8.12.1978",
+  "sex": "M",
+  "birthDate": "5.7.1949",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I615",
-    "I613"
+  "spouseIds": [
+    "I614"
   ],
-  "baptismDate": "15.4.1979",
-  "baptismPlace": "Stalbridge, Dorset"
+  "childIds": [
+    "I617"
+  ],
+  "parentIds": [
+    "I618",
+    "I619"
+  ],
+  "baptismDate": "25.9.1949",
+  "baptismPlace": "Stalbridge, Dorset",
+  "occupations": [
+    "Tractor Driver"
+  ],
+  "notes": [
+    "25-1975"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I614",
+      "familyId": "F304",
+      "marriageDate": "15.2.1975",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
 }

@@ -1,26 +1,36 @@
 {
   "id": "I1119",
-  "name": "Job Legg",
-  "givenName": "Job",
+  "name": "Joseph Charles Legg",
+  "givenName": "Joseph Charles",
   "surname": "Legg",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1885",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1118"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1120"
+  ],
   "occupations": [
-    "Carter"
+    "Groom"
+  ],
+  "residences": [
+    {
+      "date": "1923",
+      "place": "Bishops Caundle, Dorset"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F452"
+      "spouseId": "I1118",
+      "familyId": "F514",
+      "marriageDate": "6 JUN 1923",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

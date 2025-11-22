@@ -1,18 +1,26 @@
 {
   "id": "I1443",
-  "name": "Sybil A'Court",
-  "givenName": "Sybil",
-  "surname": "A'Court",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "1917",
-  "birthPlace": "Dubbo, NSW",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I960",
-    "I1442"
+  "spouseIds": [
+    "I961"
+  ],
+  "childIds": [
+    "I1444",
+    "I1445"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I961",
+      "familyId": "F457"
+    }
   ]
 }

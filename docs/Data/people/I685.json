@@ -1,18 +1,18 @@
 {
   "id": "I685",
-  "name": "Elliji Ryall",
-  "givenName": "Elliji",
+  "name": "Edward Ryall",
+  "givenName": "Edward",
   "surname": "Ryall",
   "sex": "M",
-  "birthDate": "1640",
-  "birthPlace": null,
+  "birthDate": "1637",
+  "birthPlace": "South Cadbury, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I683",
-    "I564"
+    "I684",
+    "I565"
   ]
 }

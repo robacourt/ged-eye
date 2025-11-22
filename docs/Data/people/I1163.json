@@ -1,31 +1,32 @@
 {
   "id": "I1163",
-  "name": "Gilbert Charles Whitelock",
-  "givenName": "Gilbert Charles",
-  "surname": "Whitelock",
-  "sex": "M",
-  "birthDate": "ABT 1902",
+  "name": "Vera Jane Curtis",
+  "givenName": "Vera Jane",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "ABT 1904",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1162"
+    "I1164"
   ],
   "childIds": [],
   "parentIds": [
-    "I1164"
+    "I1156",
+    "I1157"
   ],
   "residences": [
     {
       "date": "1926",
-      "place": "Stourvale, Christchurch, Hampshire"
+      "place": "Wearwell Farm"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1162",
-      "familyId": "F474",
+      "spouseId": "I1164",
+      "familyId": "F537",
       "marriageDate": "22 MAR 1926",
       "marriagePlace": "Marnhull, Dorset"
     }

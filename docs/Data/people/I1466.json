@@ -1,8 +1,8 @@
 {
   "id": "I1466",
-  "name": "Unknown Hill",
-  "givenName": "Unknown",
-  "surname": "Hill",
+  "name": "Emily Balsehbach",
+  "givenName": "Emily",
+  "surname": "Balsehbach",
   "sex": "U",
   "birthDate": null,
   "birthPlace": null,
@@ -11,8 +11,5 @@
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "witness to wedding of william Geo. Skedgel and Lucy A'Court 26 Dec 1899"
-  ]
+  "parentIds": []
 }

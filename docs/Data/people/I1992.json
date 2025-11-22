@@ -1,30 +1,26 @@
 {
   "id": "I1992",
-  "name": "Joann A'Court",
-  "givenName": "Joann",
+  "name": "George Bawden A'Court",
+  "givenName": "George Bawden",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "M",
+  "birthDate": "16 MAY 1913",
+  "birthPlace": "Gosport, Hampshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1996"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1997",
-    "I1998",
-    "I1999",
-    "I2000"
+    "I1993"
   ],
   "parentIds": [
+    "I493",
     "I1991"
   ],
   "marriages": [
     {
-      "spouseId": "I1996",
-      "familyId": "F714"
+      "spouseId": null,
+      "familyId": "F797"
     }
   ]
 }

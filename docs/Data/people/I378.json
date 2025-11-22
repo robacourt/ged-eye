@@ -12,11 +12,11 @@
     "Data/Media/1861 Census/Hampshire/RG09 641 39 30.jpg"
   ],
   "spouseIds": [
-    "I894"
+    "I895"
   ],
   "childIds": [
-    "I1453",
-    "I895",
+    "I1454",
+    "I896",
     "I385"
   ],
   "parentIds": [
@@ -36,8 +36,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I894",
-      "familyId": "F173",
+      "spouseId": "I895",
+      "familyId": "F194",
       "marriageDate": "15TH JUL 1871",
       "marriagePlace": "London, Islington, Mildmay Park Chapel"
     }

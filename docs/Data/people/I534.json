@@ -1,36 +1,38 @@
 {
   "id": "I534",
-  "name": "John a`Courte",
-  "givenName": "John",
-  "surname": "a`Courte",
-  "sex": "M",
-  "birthDate": "ABT 1674",
-  "birthPlace": null,
-  "deathDate": "1716",
-  "deathPlace": "North Cadbury, Somerset",
+  "name": "Cecilia Mary Hann",
+  "givenName": "Cecilia Mary",
+  "surname": "Hann",
+  "sex": "F",
+  "birthDate": "ABT 1861",
+  "birthPlace": "Milborne Port, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I535"
+    "I533"
   ],
   "childIds": [
-    "I469",
-    "I536",
-    "I537",
-    "I539",
-    "I538",
-    "I540"
+    "I2141",
+    "I2142",
+    "I520"
   ],
-  "parentIds": [
-    "I541",
-    "I542"
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
+    },
+    {
+      "date": "1911",
+      "place": "New Haw, Addlestone, Surrey, 10 Australian  Cottages"
+    }
   ],
-  "baptismDate": "5 NOV1674",
-  "burialDate": "27 SEP 1716",
-  "burialPlace": "North Cadbury, Somerset",
   "marriages": [
     {
-      "spouseId": "I535",
-      "familyId": "F206"
+      "spouseId": "I533",
+      "familyId": "F270",
+      "marriageDate": "ABT 1881/1894"
     }
   ]
 }

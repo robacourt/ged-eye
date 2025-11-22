@@ -1,29 +1,31 @@
 {
   "id": "I1035",
-  "name": "Alfred Leon A'Court",
-  "givenName": "Alfred Leon",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1921",
+  "name": "Minnie Ryall",
+  "givenName": "Minnie",
+  "surname": "Ryall",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1979",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1028"
   ],
-  "spouseIds": [],
   "childIds": [
-    "I2026"
+    "I1036",
+    "I1037",
+    "I1038",
+    "I1039",
+    "I1040",
+    "I1041"
   ],
-  "parentIds": [
-    "I1027",
-    "I1034"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F727"
+      "spouseId": "I1028",
+      "familyId": "F478",
+      "marriagePlace": "Yeovil, Somerset"
     }
-  ],
-  "avatar": "avatars/I1035_0.jpg"
+  ]
 }

@@ -41,13 +41,13 @@
   "marriages": [
     {
       "spouseId": "I37",
-      "familyId": "F23",
+      "familyId": "F24",
       "marriageDate": "15-5-1817",
       "marriagePlace": "Hinton St. Mary, Dorset"
     },
     {
       "spouseId": "I45",
-      "familyId": "F24"
+      "familyId": "F25"
     }
   ]
 }

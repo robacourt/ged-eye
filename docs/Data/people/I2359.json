@@ -12,14 +12,14 @@
     "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
   ],
   "spouseIds": [
-    "I571"
+    "I572"
   ],
   "childIds": [
     "I2361",
-    "I490",
+    "I491",
     "I2364",
     "I2362",
-    "I532",
+    "I533",
     "I2363",
     "I2823",
     "I2824"
@@ -40,8 +40,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I571",
-      "familyId": "F209",
+      "spouseId": "I572",
+      "familyId": "F253",
       "marriageDate": "16 MAY 1853",
       "marriagePlace": "Somerset, Horsington"
     }

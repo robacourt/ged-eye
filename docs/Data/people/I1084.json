@@ -1,29 +1,36 @@
 {
   "id": "I1084",
-  "name": "Lavina Tulk",
-  "givenName": "Lavina",
-  "surname": "Tulk",
-  "sex": "F",
+  "name": "Samuel Hatcher",
+  "givenName": "Samuel",
+  "surname": "Hatcher",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1083"
+    "I1085"
   ],
   "childIds": [
-    "I1082",
-    "I1140",
-    "I1252"
+    "I1083",
+    "I1141",
+    "I1253"
   ],
-  "parentIds": [
-    "I1085"
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab,"
+  ],
+  "residences": [
+    {
+      "date": "1885",
+      "place": "Tober"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1083",
-      "familyId": "F431"
+      "spouseId": "I1085",
+      "familyId": "F492"
     }
   ]
 }

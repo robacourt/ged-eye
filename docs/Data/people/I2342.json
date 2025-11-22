@@ -15,7 +15,7 @@
     "I2343"
   ],
   "childIds": [
-    "I1589"
+    "I1590"
   ],
   "parentIds": [
     "I2344",
@@ -33,7 +33,7 @@
   "marriages": [
     {
       "spouseId": "I2343",
-      "familyId": "F832"
+      "familyId": "F689"
     }
   ],
   "avatar": "avatars/I2342_0.jpg"

@@ -1,23 +1,26 @@
 {
   "id": "I1528",
-  "name": "Philip John Sandell",
-  "givenName": "Philip John",
-  "surname": "Sandell",
-  "sex": "M",
-  "birthDate": "8 JAN 1954",
-  "birthPlace": null,
+  "name": "Linda Julia Francis Morgan",
+  "givenName": "Linda Julia Francis",
+  "surname": "Morgan",
+  "sex": "F",
+  "birthDate": "29 JUN 1959",
+  "birthPlace": "Holme Abby, Cumberland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1527"
+    "I1529"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1525",
+    "I1526"
+  ],
   "marriages": [
     {
-      "spouseId": "I1527",
-      "familyId": "F583",
+      "spouseId": "I1529",
+      "familyId": "F669",
       "marriageDate": "15 SEP 1979"
     }
   ]

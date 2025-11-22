@@ -1,18 +1,30 @@
 {
   "id": "I1051",
-  "name": "John Sydney Diehm",
-  "givenName": "John Sydney",
-  "surname": "Diehm",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Lolius Marcia Bailey",
+  "givenName": "Lolius Marcia",
+  "surname": "Bailey",
+  "sex": "F",
+  "birthDate": "11 NOVEMBER 1922",
+  "birthPlace": "Grenfell",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1049",
+  "spouseIds": [
     "I1050"
+  ],
+  "childIds": [
+    "I1048",
+    "I1049",
+    "I1052",
+    "I1053"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1050",
+      "familyId": "F486",
+      "marriageDate": "9 AUGUST 1943",
+      "marriagePlace": "Grenfell"
+    }
   ]
 }

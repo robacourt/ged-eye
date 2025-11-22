@@ -1,18 +1,25 @@
 {
   "id": "I1694",
-  "name": "Cheryl Louisa A'Court",
-  "givenName": "Cheryl Louisa",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "3RD QR 1973",
-  "birthPlace": "Sutton",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1693",
-    "I1692"
+  "spouseIds": [
+    "I1693"
+  ],
+  "childIds": [
+    "I1695"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1693",
+      "familyId": "F714"
+    }
   ]
 }

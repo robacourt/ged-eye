@@ -1,7 +1,7 @@
 {
   "id": "I1377",
-  "name": "Vera A'Court",
-  "givenName": "Vera",
+  "name": "Kathleen A'Court",
+  "givenName": "Kathleen",
   "surname": "A'Court",
   "sex": "F",
   "birthDate": null,
@@ -14,13 +14,13 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I947",
-    "I1370"
+    "I948",
+    "I1371"
   ],
   "marriages": [
     {
       "spouseId": "I1383",
-      "familyId": "F547"
+      "familyId": "F617"
     }
   ]
 }

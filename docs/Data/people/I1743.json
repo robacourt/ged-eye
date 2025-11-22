@@ -1,27 +1,24 @@
 {
   "id": "I1743",
-  "name": "William Theobald",
-  "givenName": "William",
-  "surname": "Theobald",
+  "name": "George Davis",
+  "givenName": "George",
+  "surname": "Davis",
   "sex": "M",
-  "birthDate": "ABT 1877",
-  "birthPlace": "Hackney, London",
+  "birthDate": "Abt 1846",
+  "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/London/Hackney/RG11 298 67 9.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Grandson of Richard A'Court #767 possibly child of Edith A'Court #887"
+  "parentIds": [
+    "I1739",
+    "I765"
   ],
   "censusRecords": [
     {
-      "date": null,
-      "place": "London, Hackney, 64 Graham Road."
+      "date": "1851",
+      "place": "Yeovil, Somerset, Kiddles Lane"
     }
-  ],
-  "avatar": "avatars/I1743_0.jpg"
+  ]
 }

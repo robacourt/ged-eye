@@ -19,17 +19,17 @@
     "I2638"
   ],
   "parentIds": [
-    "I1092",
-    "I1264"
+    "I1093",
+    "I1265"
   ],
   "marriages": [
     {
       "spouseId": "I2634",
-      "familyId": "F917"
+      "familyId": "F960"
     },
     {
       "spouseId": "I2636",
-      "familyId": "F920"
+      "familyId": "F961"
     }
   ]
 }

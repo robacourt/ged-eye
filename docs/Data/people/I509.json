@@ -1,18 +1,51 @@
 {
   "id": "I509",
-  "name": "Burleigh Charles A'Court",
-  "givenName": "Burleigh Charles",
+  "name": "Albert A'Court",
+  "givenName": "Albert",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "29 JUN 1944",
-  "deathPlace": null,
-  "photos": [],
+  "birthDate": "abt 1890",
+  "birthPlace": "St. Lukes, London",
+  "deathDate": "28 AUG 1918",
+  "deathPlace": "WW1 France",
+  "photos": [
+    "Data/Media/1891 census/London/Holborn/RG12 233 83 9.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 220 113 47.jpg",
+    "Data/Media/1911 census/London/Edmonton/RG14 7361 42.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I521",
+    "I522"
+  ],
+  "burialPlace": "H.A.C. CEMETERY, ECOUST-ST. MEIN, Pas de Calais, France",
+  "occupations": [
+    "Traveller in Textiles"
+  ],
   "notes": [
+    "A'Court Albert of 12 Cleveland Rd Downham Rd Islington Middlesex died 28 Aug 1918 in France on active service. Administration. London 10 Mar 1919 to William A'Court packer.",
     "In Memory of"
-  ]
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
+    },
+    {
+      "date": "1901",
+      "place": "Hackney, London,  39 Gilpin Road."
+    },
+    {
+      "date": "1911",
+      "place": "Edmonton, Middlesex, 84 Haselbury Rd. Upper Edmonton"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1918",
+      "place": "Islington, Middlesex, 12 Cleveland Rd, Downham Rd."
+    }
+  ],
+  "avatar": "avatars/I509_0.jpg"
 }

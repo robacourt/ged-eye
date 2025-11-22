@@ -1,27 +1,51 @@
 {
   "id": "I1590",
-  "name": "Augusta Derrick",
-  "givenName": "Augusta",
-  "surname": "Derrick",
-  "sex": "F",
+  "name": "Charles Hardy A'Court",
+  "givenName": "Charles Hardy",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": "Abt 1850",
   "birthPlace": "Weymouth, Dorset",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "28 OCT 1916",
+  "deathPlace": "Cardiff.",
   "photos": [
-    "Data/Media/1891 census/Dorset/Weymouth/RG12 1647 24 42.jpg"
+    "Data/Media/1851 census/Weymouth/HO 107 1857.jpg",
+    "Data/Media/1891 census/London/Paddington/RG12 1 62 47.jpg"
   ],
   "spouseIds": [
-    "I1589"
+    "I1591",
+    "I2871"
   ],
   "childIds": [
-    "I2889"
+    "I2889",
+    "I1592",
+    "I1593"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2343",
+    "I2342"
+  ],
+  "occupations": [
+    "Railway Engine Driver",
+    "Railway Engine Driver",
+    "Railway Engine Driver"
+  ],
+  "notes": [
+    "To Charles William A'Court railway clerk effects £364-11s -6d",
+    "See Celia Granger Tree states his mother was Mary Ann Hardy Nee Carter who was birth father?"
+  ],
   "censusRecords": [
     {
+      "date": "1851",
+      "place": "Weymouth, Dorset"
+    },
+    {
+      "date": "1881",
+      "place": "Wiltshire, Swindon, Highworth, 8 Gooch St."
+    },
+    {
       "date": "1891",
-      "place": "Weymouth, Dorset, Penny St."
+      "place": "London, Paddington, 9 Brindley St"
     },
     {
       "date": "1901",
@@ -30,14 +54,28 @@
     {
       "date": "1911",
       "place": "Glamorganshire, Cardiff, 45 Wells St"
+    },
+    {
+      "date": "1911",
+      "place": "Pensioned engine driver"
+    }
+  ],
+  "residences": [
+    {
+      "date": "OCT 1916",
+      "place": "Cardiff, 9 Rennie St. Riverside."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1589",
-      "familyId": "F597",
+      "spouseId": "I1591",
+      "familyId": "F687",
       "marriageDate": "4TH QTR 1877",
       "marriagePlace": "Weymouth, Dorset"
+    },
+    {
+      "spouseId": "I2871",
+      "familyId": "F688"
     }
   ],
   "avatar": "avatars/I1590_0.jpg"

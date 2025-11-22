@@ -1,25 +1,25 @@
 {
   "id": "I1372",
-  "name": "Helen Nichol Cockburn",
-  "givenName": "Helen Nichol",
-  "surname": "Cockburn",
-  "sex": "F",
+  "name": "Henry Hammond",
+  "givenName": "Henry",
+  "surname": "Hammond",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1371"
+    "I1373"
   ],
   "childIds": [
-    "I938"
+    "I939"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1371",
-      "familyId": "F393"
+      "spouseId": "I1373",
+      "familyId": "F447"
     }
   ]
 }

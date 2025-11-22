@@ -1,18 +1,27 @@
 {
   "id": "I1667",
-  "name": "Tom Ash",
-  "givenName": "Tom",
+  "name": "Leonard Ash",
+  "givenName": "Leonard",
   "surname": "Ash",
   "sex": "M",
-  "birthDate": "1977",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1666",
-    "I1665"
+  "spouseIds": [
+    "I1666"
+  ],
+  "childIds": [
+    "I1668",
+    "I1669"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1666",
+      "familyId": "F708",
+      "marriageDate": "1977"
+    }
   ]
 }

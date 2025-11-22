@@ -1,35 +1,37 @@
 {
   "id": "I1734",
-  "name": "Jemima A'Court",
-  "givenName": "Jemima",
+  "name": "George A'Court",
+  "givenName": "George",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1801",
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [
-    "Data/Media/1841 Census/Henstridge/Folio 28 page 19.jpg"
+  "sex": "M",
+  "birthDate": "1818",
+  "birthPlace": "Bourton",
+  "deathDate": "1888",
+  "deathPlace": "Wincanton, Somerset, Workhouse",
+  "photos": [],
+  "spouseIds": [
+    "I1736"
   ],
-  "spouseIds": [],
-  "childIds": [
-    "I2365"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I2752"
+    "I756",
+    "I761"
   ],
-  "baptismDate": "29 MAY 1801",
+  "baptismDate": "29 MAR 1818",
+  "burialDate": "30 JUN 1888",
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
   "censusRecords": [
     {
-      "date": "1841",
-      "place": "Henstridge, Somerset, Parish House"
+      "date": "1881",
+      "place": "Stalbridge, Dorset, Guggelton St"
     }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F957"
+      "spouseId": "I1736",
+      "familyId": "F729",
+      "marriageDate": "8 FEB 1848",
+      "marriagePlace": "Wincanton, Baptist Chapel"
     }
-  ],
-  "avatar": "avatars/I1734_0.jpg"
+  ]
 }

@@ -1,33 +1,36 @@
 {
   "id": "I1322",
-  "name": "William Joseph Waterman",
-  "givenName": "William Joseph",
-  "surname": "Waterman",
-  "sex": "M",
-  "birthDate": "1833",
-  "birthPlace": "Shoreditch, London",
+  "name": "Mary Ellen Palmer",
+  "givenName": "Mary Ellen",
+  "surname": "Palmer",
+  "sex": "F",
+  "birthDate": "1844",
+  "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1320"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1320",
+    "I763"
   ],
-  "childIds": [
-    "I1323",
-    "I1325",
-    "I1326",
-    "I1327",
-    "I1329",
-    "I1331"
+  "occupations": [
+    "Fabric Glove Finisher",
+    "Glove Machinist"
   ],
-  "parentIds": [],
-  "burialDate": "19 NOV 1903",
-  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I1320",
-      "familyId": "F522",
-      "marriageDate": "BEF 1854"
+      "date": "1851",
+      "place": "Yeovil, Somerset, Ebenezer Row"
+    },
+    {
+      "date": "1861",
+      "place": "Stoke Sub Hamdon, Somerset, Higher Street,"
+    },
+    {
+      "date": "1871",
+      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
     }
   ]
 }

@@ -1,27 +1,24 @@
 {
   "id": "I976",
-  "name": "Susan A.L.L. A'Court",
-  "givenName": "Susan A.L.L.",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1901",
+  "name": "Henry C. Ryan",
+  "givenName": "Henry C.",
+  "surname": "Ryan",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1072"
+    "I975"
   ],
   "childIds": [],
-  "parentIds": [
-    "I104",
-    "I733"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1072",
-      "familyId": "F405",
-      "marriageDate": "1921"
+      "spouseId": "I975",
+      "familyId": "F460",
+      "marriageDate": "1926"
     }
   ]
 }

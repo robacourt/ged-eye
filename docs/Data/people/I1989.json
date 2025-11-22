@@ -1,22 +1,22 @@
 {
   "id": "I1989",
-  "name": "John Daniels",
-  "givenName": "John",
+  "name": "Sarah Daniels",
+  "givenName": "Sarah",
   "surname": "Daniels",
-  "sex": "M",
-  "birthDate": "ABT 1867",
-  "birthPlace": "Southsea, Hampshire",
+  "sex": "F",
+  "birthDate": "ABT 1866",
+  "birthPlace": "Portsea, Hampshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1726",
+    "I1727",
     "I77"
   ],
   "occupations": [
-    "Barman"
+    "Domestic Servant House"
   ],
   "censusRecords": [
     {

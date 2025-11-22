@@ -1,18 +1,30 @@
 {
   "id": "I1769",
-  "name": "David J A'Court",
-  "givenName": "David J",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "2ND QRT 1951",
-  "birthPlace": "Downham",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1768",
-    "I1767"
+  "spouseIds": [
+    "I1768"
+  ],
+  "childIds": [
+    "I1770",
+    "I1771",
+    "I1772",
+    "I1773",
+    "I1774",
+    "I1775"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1768",
+      "familyId": "F737"
+    }
   ]
 }

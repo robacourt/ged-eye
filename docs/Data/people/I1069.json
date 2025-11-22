@@ -1,25 +1,18 @@
 {
   "id": "I1069",
-  "name": "William George Hough",
-  "givenName": "William George",
-  "surname": "Hough",
-  "sex": "M",
+  "name": "Kim Maree Higgins",
+  "givenName": "Kim Maree",
+  "surname": "Higgins",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I954"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I954",
-      "familyId": "F397",
-      "marriageDate": "1880",
-      "marriagePlace": "Mudgee, NSW"
-    }
+  "parentIds": [
+    "I1064",
+    "I1063"
   ]
 }

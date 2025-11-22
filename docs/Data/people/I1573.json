@@ -1,26 +1,29 @@
 {
   "id": "I1573",
-  "name": "Clara Edith A'Court",
-  "givenName": "Clara Edith",
-  "surname": "A'Court",
+  "name": "Mary Julia Tuley",
+  "givenName": "Mary Julia",
+  "surname": "Tuley",
   "sex": "F",
-  "birthDate": "Abt 1887",
-  "birthPlace": "Blandford Forum, Dorset",
+  "birthDate": "Abt 1865",
+  "birthPlace": "Rugby, Warwickshire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/Dorset/Blanford/RG12 1634 68 22.jpg",
-    "Data/Media/1901 census/Dorset/Blandford Forum/RG13 1972 48 39.jpg",
-    "Data/Media/1911 census/Dorset/Blandford/RG14 12218 2.jpg"
-  ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1571",
+  "photos": [],
+  "spouseIds": [
     "I1572"
   ],
-  "occupations": [
-    "Barmaid"
+  "childIds": [
+    "I1574",
+    "I1575",
+    "I1576",
+    "I1577",
+    "I2962",
+    "I1578",
+    "I1579"
+  ],
+  "parentIds": [
+    "I2829",
+    "I2828"
   ],
   "censusRecords": [
     {
@@ -33,8 +36,14 @@
     },
     {
       "date": "1911",
-      "place": "Blandford, Dorset, The Crown Hotel"
+      "place": "Blandford, Dorset, Orchard St."
     }
   ],
-  "avatar": "avatars/I1573_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1572",
+      "familyId": "F682",
+      "marriageDate": "ABT 1886"
+    }
+  ]
 }

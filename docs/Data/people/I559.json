@@ -1,34 +1,34 @@
 {
   "id": "I559",
-  "name": "Lucres Abbot",
-  "givenName": "Lucres",
-  "surname": "Abbot",
-  "sex": "F",
+  "name": "Richard a`Court",
+  "givenName": "Richard",
+  "surname": "a`Court",
+  "sex": "M",
   "birthDate": "BEF 1580",
-  "birthPlace": null,
-  "deathDate": "ABT 1661",
-  "deathPlace": null,
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "1637",
+  "deathPlace": "South Cadbury, Somerset",
   "photos": [],
   "spouseIds": [
-    "I558"
+    "I560"
   ],
   "childIds": [
-    "I560",
     "I561",
     "I562",
-    "I555",
     "I563",
+    "I556",
     "I564",
     "I565",
     "I566",
     "I567",
-    "I568"
+    "I568",
+    "I569"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I558",
-      "familyId": "F234",
+      "spouseId": "I560",
+      "familyId": "F281",
       "marriageDate": "11 JUL 1602",
       "marriagePlace": "Bratton Seymour, Somerset"
     }

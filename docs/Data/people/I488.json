@@ -1,26 +1,18 @@
 {
   "id": "I488",
-  "name": "Alex Garnett",
-  "givenName": "Alex",
-  "surname": "Garnett",
+  "name": "Harry A'Court",
+  "givenName": "Harry",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "Abt 1915",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I489"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I2012",
-    "I2011"
-  ],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F180"
-    }
+    "I486",
+    "I487"
   ]
 }

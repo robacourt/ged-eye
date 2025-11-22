@@ -1,26 +1,36 @@
 {
   "id": "I1244",
-  "name": "Mark Tom Seaviour Kendall",
-  "givenName": "Mark Tom Seaviour",
-  "surname": "Kendall",
+  "name": "Gordon Pascal Brockway",
+  "givenName": "Gordon Pascal",
+  "surname": "Brockway",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1243"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1245"
+  ],
   "occupations": [
-    "Dealer"
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": "1914",
+      "place": "Marnhull, Dorset, New St."
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F500"
+      "spouseId": "I1243",
+      "familyId": "F566",
+      "marriageDate": "13 APRIL 1914",
+      "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
     }
   ]
 }

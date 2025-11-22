@@ -1,18 +1,18 @@
 {
   "id": "I2077",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "Victor Horace A'Court",
+  "givenName": "Victor Horace",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1927",
-  "birthPlace": "London",
-  "deathDate": "Abt 1936",
+  "birthDate": "1924",
+  "birthPlace": "Deptford",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2070",
-    "I2071"
+    "I2071",
+    "I2072"
   ]
 }

@@ -1,22 +1,28 @@
 {
   "id": "I1472",
-  "name": "Hannah Coffin",
-  "givenName": "Hannah",
-  "surname": "Coffin",
+  "name": "Sydney J Skedgel",
+  "givenName": "Sydney J",
+  "surname": "Skedgel",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1888",
+  "birthPlace": "Stoke Gabriel, Devon",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I467",
-    "I468"
+    "I1459",
+    "I1471"
   ],
-  "baptismDate": "1 FEB 1795",
-  "baptismPlace": "Henstridge, Somerset",
-  "burialDate": "27 AUG 1796",
-  "burialPlace": "Henstridge, Somerset"
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Stoke Gabriel, Devon"
+    },
+    {
+      "date": "1901",
+      "place": "Stoke Gabriel, Devon"
+    }
+  ]
 }

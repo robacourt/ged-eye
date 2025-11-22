@@ -1,44 +1,20 @@
 {
   "id": "I1134",
-  "name": "Amelia Curtis",
-  "givenName": "Amelia",
+  "name": "Mary Jane Curtis",
+  "givenName": "Mary Jane",
   "surname": "Curtis",
   "sex": "F",
-  "birthDate": "21 DEC 1858",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1135"
-  ],
-  "childIds": [
-    "I1137",
-    "I1141",
-    "I1142",
-    "I1143"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
     "I179",
     "I275"
   ],
-  "baptismDate": "12 JUN 1859",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Glove Stitcher"
-  ],
-  "residences": [
-    {
-      "date": "1879",
-      "place": "Cottage, Stour Row"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1135",
-      "familyId": "F460",
-      "marriageDate": "27 OCT 1879",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "11 JUL 1858",
+  "baptismPlace": "Marnhull, Dorset"
 }

@@ -1,55 +1,25 @@
 {
   "id": "I1507",
-  "name": "Susanna Chamberlain",
-  "givenName": "Susanna",
-  "surname": "Chamberlain",
-  "sex": "F",
-  "birthDate": "1 OCT 1870",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1871 census/Galhampton/RG10 2421 61 23.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1506",
-    "I1498",
-    "I1502"
+    "I1508"
   ],
   "childIds": [
-    "I1497",
-    "I1500",
-    "I1501"
+    "I1498"
   ],
-  "parentIds": [
-    "I864",
-    "I777"
-  ],
-  "notes": [
-    "(married) using the name Susan.  We have a letter from Eleanor to Lilian dated 1922 saying Susan is alive and doing well in a village - my father was told that Susan/na drowned whilst going to live in Australia with her husband during WWI.  Thi"
-  ],
-  "censusRecords": [
-    {
-      "date": "1871",
-      "place": "Galhampton, North Cadbury, Cottage"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1506",
-      "familyId": "F570"
-    },
-    {
-      "spouseId": "I1498",
-      "familyId": "F571",
-      "marriageDate": "3 MAR 1892",
-      "marriagePlace": "Yarlington, Somerset"
-    },
-    {
-      "spouseId": "I1502",
-      "familyId": "F573",
-      "marriageDate": "25 SEP 1905"
+      "spouseId": "I1508",
+      "familyId": "F656"
     }
-  ],
-  "avatar": "avatars/I1507_0.jpg"
+  ]
 }

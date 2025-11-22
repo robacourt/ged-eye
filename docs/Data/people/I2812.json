@@ -22,7 +22,7 @@
     "I2911"
   ],
   "parentIds": [
-    "I2089",
+    "I2090",
     "I2810"
   ],
   "occupations": [
@@ -45,7 +45,7 @@
   "marriages": [
     {
       "spouseId": "I2877",
-      "familyId": "F983",
+      "familyId": "F1006",
       "marriageDate": "13 JAN 1889",
       "marriagePlace": "St Simon"
     }

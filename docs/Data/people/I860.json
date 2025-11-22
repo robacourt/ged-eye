@@ -1,18 +1,20 @@
 {
   "id": "I860",
-  "name": "Walter Campbell White",
-  "givenName": "Walter Campbell",
-  "surname": "White",
+  "name": "Frank Broadbent THOMPSON",
+  "givenName": "Frank Broadbent",
+  "surname": "THOMPSON",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1905",
+  "birthPlace": "Invercargill, NZ",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I846"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2739"
+  ],
   "parentIds": [],
   "notes": [
     "Wises"
@@ -20,8 +22,8 @@
   "marriages": [
     {
       "spouseId": "I846",
-      "familyId": "F372",
-      "marriageDate": "1938",
+      "familyId": "F423",
+      "marriageDate": "1931",
       "marriagePlace": "New Zealand"
     }
   ]

@@ -1,26 +1,18 @@
 {
   "id": "I1599",
-  "name": "Annie Bryant",
-  "givenName": "Annie",
-  "surname": "Bryant",
+  "name": "Betty A. A'Court",
+  "givenName": "Betty A.",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1940  2QTR",
+  "birthPlace": "East Glamorgan",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1595"
-  ],
-  "childIds": [
-    "I1597",
-    "I1598"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1595",
-      "familyId": "F599"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1596",
+    "I1600"
   ]
 }

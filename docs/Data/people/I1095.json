@@ -1,18 +1,18 @@
 {
   "id": "I1095",
-  "name": "Lorraine Olive A'Court",
-  "givenName": "Lorraine Olive",
+  "name": "Brenda J. A'Court",
+  "givenName": "Brenda J.",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "5 JAN 1952",
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": "1941",
+  "birthPlace": "Aldershot, Hampshire",
+  "deathDate": "1941",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1087",
-    "I1088"
+    "I1088",
+    "I1089"
   ]
 }

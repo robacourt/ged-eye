@@ -1,9 +1,9 @@
 {
   "id": "I1048",
-  "name": "Robyn Ann Diehm",
-  "givenName": "Robyn Ann",
+  "name": "Wilfred Grenfell Diehm",
+  "givenName": "Wilfred Grenfell",
   "surname": "Diehm",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1049",
-    "I1050"
+    "I1050",
+    "I1051"
   ]
 }

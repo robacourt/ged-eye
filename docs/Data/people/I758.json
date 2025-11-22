@@ -1,26 +1,34 @@
 {
   "id": "I758",
-  "name": "Amelia A'Court",
-  "givenName": "Amelia",
+  "name": "Andrew A'Court",
+  "givenName": "Andrew",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1792",
+  "sex": "M",
+  "birthDate": "1789",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1864",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I896"
+  "photos": [
+    "Data/Media/1841 Census/North Cadbury/HO 107 937 7.jpg",
+    "Data/Media/1851 census/North Cadbury/HO 107 1931.jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I744",
-    "I751"
+    "I745",
+    "I752"
   ],
-  "marriages": [
+  "burialDate": "31 MAY 1864",
+  "burialPlace": "North Cadbury, Somerset, St. Michael",
+  "censusRecords": [
     {
-      "spouseId": "I896",
-      "familyId": "F312"
+      "date": "1851",
+      "place": "North Cadbury, Galhampton, Hewlets Mill"
+    },
+    {
+      "date": "1841",
+      "place": "North Cadbury, Somerset"
     }
-  ]
+  ],
+  "avatar": "avatars/I758_0.jpg"
 }

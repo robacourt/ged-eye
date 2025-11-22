@@ -1,18 +1,29 @@
 {
   "id": "I943",
-  "name": "Helen Maud Cumming A'Court",
-  "givenName": "Helen Maud Cumming",
+  "name": "Stanley James A'Court",
+  "givenName": "Stanley James",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "27 AUG 1891",
+  "sex": "M",
+  "birthDate": "20 MAR 1890",
   "birthPlace": "Sanson, Wellington, New Zealand",
-  "deathDate": "1969",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I2308"
+  ],
+  "childIds": [
+    "I1925"
+  ],
   "parentIds": [
-    "I937",
-    "I938"
+    "I938",
+    "I939"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2308",
+      "familyId": "F450",
+      "marriageDate": "1914"
+    }
   ]
 }

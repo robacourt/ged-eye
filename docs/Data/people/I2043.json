@@ -1,25 +1,41 @@
 {
   "id": "I2043",
-  "name": "Amelia Unknown",
-  "givenName": "Amelia",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "ABT 1878",
-  "birthPlace": "Portsea, Hampshire",
+  "name": "Ernest Richard A'Court",
+  "givenName": "Ernest Richard",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1881",
+  "birthPlace": "London, Kensington",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1881 census/London/Kensington/RG11 25 12 18.jpg"
+  ],
   "spouseIds": [
-    "I2042"
+    "I2044"
   ],
   "childIds": [
-    "I2096",
-    "I513",
-    "I2098",
-    "I2102"
+    "I2097",
+    "I514",
+    "I2099",
+    "I2103"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I879",
+    "I929"
+  ],
+  "occupations": [
+    "Dancing Instructor"
+  ],
   "censusRecords": [
+    {
+      "date": "1881",
+      "place": "London, Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1891",
+      "place": "London, Kensington 9, Lucerne Mews"
+    },
     {
       "date": "1911",
       "place": "London, Hammersmith, 1 Aylmer Rd."
@@ -27,9 +43,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2042",
-      "familyId": "F737",
+      "spouseId": "I2044",
+      "familyId": "F265",
       "marriageDate": "ABT 1907"
     }
-  ]
+  ],
+  "avatar": "avatars/I2043_0.jpg"
 }

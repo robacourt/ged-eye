@@ -1,10 +1,10 @@
 {
   "id": "I1614",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "Annie A'Court",
+  "givenName": "Annie",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1898",
+  "sex": "F",
+  "birthDate": "Abt 1895",
   "birthPlace": "Warrington, Lancs",
   "deathDate": null,
   "deathPlace": null,
@@ -15,8 +15,11 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1608",
-    "I1609"
+    "I1609",
+    "I1610"
+  ],
+  "occupations": [
+    "Assistant in Cycle and Furniture Shop"
   ],
   "censusRecords": [
     {

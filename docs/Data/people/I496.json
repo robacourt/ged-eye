@@ -1,25 +1,32 @@
 {
   "id": "I496",
-  "name": "Nellie Annie Draper",
-  "givenName": "Nellie Annie",
-  "surname": "Draper",
+  "name": "Beatrice A'Court",
+  "givenName": "Beatrice",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1889",
+  "birthPlace": "Nether Compton, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I493"
+  "photos": [
+    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg",
+    "Data/Media/1901 census/Dorset/Nether Compton/RG13 2007 17 3.jpg"
   ],
-  "childIds": [
-    "I497"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I491",
+    "I492"
   ],
-  "parentIds": [],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I493",
-      "familyId": "F210"
+      "date": "1891",
+      "place": "Dorset, Sherborne, Over Compton, Lodge"
+    },
+    {
+      "date": "1901",
+      "place": "Nether Compton, Dorset, Halfway House"
     }
-  ]
+  ],
+  "avatar": "avatars/I496_0.jpg"
 }

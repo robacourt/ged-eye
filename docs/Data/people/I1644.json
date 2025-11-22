@@ -1,35 +1,37 @@
 {
   "id": "I1644",
-  "name": "Mabel Emily A'Court",
-  "givenName": "Mabel Emily",
-  "surname": "A'Court",
+  "name": "Mary Unknown",
+  "givenName": "Mary",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "Abt 1893",
-  "birthPlace": "Blandford Forum, Dorset",
+  "birthDate": "Abt 1854",
+  "birthPlace": "Rochester, Kent",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/London/Willesdon/RG13 1225 160 42.jpg",
-    "Data/Media/1911 census/London/Willesden/RG14 7065 166.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1643"
   ],
-  "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "occupations": [
-    "School Girl"
-  ],
-  "notes": [
-    "Adopted see 1901 note"
-  ],
   "censusRecords": [
     {
+      "date": "1891",
+      "place": "Middlesex, Willesdon, 37 Tennyson Rd"
+    },
+    {
       "date": "1901",
-      "place": "Willesden Green, Middlesex, 15 Churchill Rd."
+      "place": "Willesden, Middlesex, 94 Charteris Rd"
     },
     {
       "date": "1911",
-      "place": "Willesden Green, Middlesex, 15 Churchill Rd."
+      "place": "London, Paddington, 49 Carlton Vale"
     }
   ],
-  "avatar": "avatars/I1644_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1643",
+      "familyId": "F704"
+    }
+  ]
 }

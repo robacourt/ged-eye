@@ -1,11 +1,11 @@
 {
   "id": "I855",
-  "name": "Robert McSTAY",
-  "givenName": "Robert",
-  "surname": "McSTAY",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Margaret Mary Loader",
+  "givenName": "Margaret Mary",
+  "surname": "Loader",
+  "sex": "F",
+  "birthDate": "27 AUG 1906",
+  "birthPlace": "Lyttelton, NZ",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -14,14 +14,11 @@
   ],
   "childIds": [],
   "parentIds": [],
-  "notes": [
-    "Wises"
-  ],
   "marriages": [
     {
       "spouseId": "I842",
-      "familyId": "F367",
-      "marriageDate": "1931",
+      "familyId": "F418",
+      "marriageDate": "1926",
       "marriagePlace": "New Zealand"
     }
   ]

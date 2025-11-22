@@ -17,8 +17,8 @@
   "childIds": [
     "I356",
     "I357",
-    "I1581",
-    "I1582"
+    "I1582",
+    "I1583"
   ],
   "parentIds": [],
   "occupations": [
@@ -41,7 +41,7 @@
   "marriages": [
     {
       "spouseId": "I220",
-      "familyId": "F119"
+      "familyId": "F134"
     }
   ],
   "avatar": "avatars/I355_0.jpg"

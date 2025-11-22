@@ -1,26 +1,18 @@
 {
   "id": "I1006",
-  "name": "Jack Fearne",
-  "givenName": "Jack",
-  "surname": "Fearne",
+  "name": "Michael O'Connor",
+  "givenName": "Michael",
+  "surname": "O'Connor",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "11 APRIL 1954",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "11 APRIL 1954",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I993"
-  ],
-  "childIds": [
-    "I1007",
-    "I1008"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I993",
-      "familyId": "F413"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I738",
+    "I737"
   ]
 }

@@ -1,32 +1,18 @@
 {
   "id": "I1040",
-  "name": "Frederick John A'Court",
-  "givenName": "Frederick John",
+  "name": "Winifred A'Court",
+  "givenName": "Winifred",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1928",
+  "sex": "F",
+  "birthDate": "1926",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Fred & Mavis A'Court.jpg"
-  ],
-  "spouseIds": [
-    "I1041"
-  ],
-  "childIds": [
-    "I1042"
-  ],
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1027",
-    "I1034"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1041",
-      "familyId": "F422",
-      "marriageDate": "1951"
-    }
-  ],
-  "avatar": "avatars/I1040_0.jpg"
+    "I1028",
+    "I1035"
+  ]
 }

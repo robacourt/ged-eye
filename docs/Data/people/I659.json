@@ -1,23 +1,30 @@
 {
   "id": "I659",
-  "name": "George Lambert",
-  "givenName": "George",
+  "name": "Mary Lambert",
+  "givenName": "Mary",
   "surname": "Lambert",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I658"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I647"
+  ],
+  "parentIds": [
+    "I660"
+  ],
+  "occupations": [
+    "Glover"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F275"
+      "spouseId": "I658",
+      "familyId": "F321"
     }
   ]
 }

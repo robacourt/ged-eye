@@ -1,7 +1,7 @@
 {
   "id": "I1547",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Roderick A'Court",
+  "givenName": "Roderick",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
@@ -9,13 +9,21 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1541",
-    "I1544"
+  "spouseIds": [
+    "I1555"
   ],
-  "notes": [
-    "Hi Ian"
+  "childIds": [
+    "I1556",
+    "I1557"
+  ],
+  "parentIds": [
+    "I1542",
+    "I1545"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1555",
+      "familyId": "F678"
+    }
   ]
 }

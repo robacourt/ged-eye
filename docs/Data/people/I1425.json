@@ -1,28 +1,61 @@
 {
   "id": "I1425",
-  "name": "Alexander Isaacs",
-  "givenName": "Alexander",
-  "surname": "Isaacs",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "BEF 1901",
+  "name": "Henrietta Sarah Barnett",
+  "givenName": "Henrietta Sarah",
+  "surname": "Barnett",
+  "sex": "F",
+  "birthDate": "ABT 1876",
+  "birthPlace": "London,St. Lukes,",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/London/Shoreditch/RG12 243 53 8 54.jpg",
+    "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg"
+  ],
   "spouseIds": [
-    "I1424"
+    "I1426",
+    "I2725"
   ],
   "childIds": [
-    "I1426",
-    "I1427"
+    "I1427",
+    "I1428"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1423",
+    "I1429"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "London,Hackney, 64 Kenninghall Rd."
+    },
+    {
+      "date": "1911",
+      "place": "London, Islington, 29 Tollington Park N"
+    },
+    {
+      "date": "1921",
+      "place": "London, Islington, 29 Tollington Park N"
+    }
+  ],
+  "residences": [
+    {
+      "date": "DEC 1905",
+      "place": "London, Stamford Hill, 79 Darenth Rd."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1424",
-      "familyId": "F554",
+      "spouseId": "I1426",
+      "familyId": "F631",
       "marriageDate": "1896",
       "marriagePlace": "London, City"
+    },
+    {
+      "spouseId": "I2725",
+      "familyId": "F632",
+      "marriageDate": "BEF 1905"
     }
-  ]
+  ],
+  "avatar": "avatars/I1425_0.jpg"
 }

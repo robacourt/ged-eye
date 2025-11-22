@@ -1,38 +1,56 @@
 {
   "id": "I764",
-  "name": "Diana A'Court",
-  "givenName": "Diana",
+  "name": "Elisha A'Court",
+  "givenName": "Elisha",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1816",
+  "sex": "M",
+  "birthDate": "1813",
   "birthPlace": "Cadbury, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1738"
+    "I872",
+    "I2262"
   ],
   "childIds": [
-    "I1739",
-    "I1741",
-    "I1742",
-    "I1740"
+    "I873",
+    "I875",
+    "I874",
+    "I876",
+    "I877",
+    "I878",
+    "I879",
+    "I2108",
+    "I2109"
   ],
   "parentIds": [
-    "I755",
-    "I760"
+    "I756",
+    "I761"
   ],
-  "baptismDate": "17 MAR 1816",
+  "baptismDate": "24 OCT 1813",
+  "occupations": [
+    "Ostler",
+    "Cab Driver"
+  ],
   "censusRecords": [
     {
-      "date": "1851",
-      "place": "Yeovil, Somerset, Kiddles Lane"
+      "date": "1861",
+      "place": "London, St Pancras, 3 Brill Cottages."
+    },
+    {
+      "date": "1881",
+      "place": "London, St Pancras, 27 Stanmore St."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1738",
-      "familyId": "F633"
+      "spouseId": "I872",
+      "familyId": "F364"
+    },
+    {
+      "spouseId": "I2262",
+      "familyId": "F365"
     }
   ]
 }

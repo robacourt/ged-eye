@@ -1,23 +1,24 @@
 {
   "id": "I1365",
-  "name": "Francis T. Opie",
-  "givenName": "Francis T.",
-  "surname": "Opie",
-  "sex": "M",
-  "birthDate": "ABT 1845",
+  "name": "Margaret Helen Winchcomb",
+  "givenName": "Margaret Helen",
+  "surname": "Winchcomb",
+  "sex": "F",
+  "birthDate": "1881",
   "birthPlace": "New Zealand",
-  "deathDate": "BEF 1945",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1342"
+    "I1364"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1342",
-      "familyId": "F529"
+      "spouseId": "I1364",
+      "familyId": "F611",
+      "marriageDate": "1945"
     }
   ]
 }

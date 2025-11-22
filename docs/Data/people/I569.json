@@ -1,25 +1,18 @@
 {
   "id": "I569",
-  "name": "John Richard Jones",
-  "givenName": "John Richard",
-  "surname": "Jones",
+  "name": "Edward a'Court",
+  "givenName": "Edward",
+  "surname": "a'Court",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "BEF 1632",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1632",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I570"
-  ],
-  "childIds": [
-    "I502"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I570",
-      "familyId": "F213"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I559",
+    "I560"
   ]
 }

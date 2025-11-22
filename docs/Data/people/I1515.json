@@ -1,23 +1,26 @@
 {
   "id": "I1515",
-  "name": "Walter Rossiter",
-  "givenName": "Walter",
-  "surname": "Rossiter",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Flora Chamberlain",
+  "givenName": "Flora",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "1878",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1514"
+    "I1516"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I865",
+    "I778"
+  ],
   "marriages": [
     {
-      "spouseId": "I1514",
-      "familyId": "F578"
+      "spouseId": "I1516",
+      "familyId": "F664"
     }
   ]
 }

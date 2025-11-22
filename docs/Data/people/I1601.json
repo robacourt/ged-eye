@@ -1,62 +1,23 @@
 {
   "id": "I1601",
-  "name": "Henry J A'Court",
-  "givenName": "Henry J",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1863",
-  "birthPlace": "Bristol, Bedminster",
+  "name": "Ruth Jones",
+  "givenName": "Ruth",
+  "surname": "Jones",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1881 census/Lancs/Warrington/RG11 3797 52 12.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1602"
+    "I1598"
   ],
-  "childIds": [
-    "I1603",
-    "I1615",
-    "I1604",
-    "I1605",
-    "I1606",
-    "I1607",
-    "I2613"
-  ],
-  "parentIds": [
-    "I1764",
-    "I2258"
-  ],
-  "occupations": [
-    "Wire Labourer",
-    "Labourer plate worker",
-    "Railway Signal Fitter",
-    "Chargeman Signals LNW Railway"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Lancashire, Warrington, 34 Chorley St."
-    },
-    {
-      "date": "1891",
-      "place": "Lancashire, Wavertree, 13 Upper cross St."
-    },
-    {
-      "date": "1901",
-      "place": "St. Helens, Lancs, 10 South John St"
-    },
-    {
-      "date": "1911",
-      "place": "St. Helens, Lancs, 9 South John St"
-    }
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1602",
-      "familyId": "F601",
-      "marriageDate": "ABT 1883"
+      "spouseId": "I1598",
+      "familyId": "F692"
     }
-  ],
-  "avatar": "avatars/I1601_0.jpg"
+  ]
 }

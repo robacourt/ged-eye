@@ -1,26 +1,27 @@
 {
   "id": "I611",
-  "name": "Henry Street",
-  "givenName": "Henry",
+  "name": "Ellen Street",
+  "givenName": "Ellen",
   "surname": "Street",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I610"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Keeper"
+  "childIds": [
+    "I609"
+  ],
+  "parentIds": [
+    "I612"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F252"
+      "spouseId": "I610",
+      "familyId": "F301"
     }
   ]
 }

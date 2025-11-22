@@ -1,18 +1,28 @@
 {
   "id": "I1141",
-  "name": "Emily Pike",
-  "givenName": "Emily",
-  "surname": "Pike",
+  "name": "Ursula Hatcher",
+  "givenName": "Ursula",
+  "surname": "Hatcher",
   "sex": "F",
-  "birthDate": "ABT 1887",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1140"
+  ],
+  "childIds": [
+    "I1139"
+  ],
   "parentIds": [
-    "I1135",
-    "I1134"
+    "I1084",
+    "I1085"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1140",
+      "familyId": "F526"
+    }
   ]
 }

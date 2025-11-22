@@ -1,20 +1,23 @@
 {
   "id": "I956",
-  "name": "Mary T. J. A'Court",
-  "givenName": "Mary T. J.",
+  "name": "John ( Jack ) Robert A'Court",
+  "givenName": "John ( Jack ) Robert",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1861",
+  "sex": "M",
+  "birthDate": "1859",
   "birthPlace": "Mudgee, NSW",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1934",
+  "deathPlace": "Dubbo, NSW",
   "photos": [],
   "spouseIds": [
-    "I965"
+    "I960"
   ],
   "childIds": [
-    "I969",
-    "I970"
+    "I961",
+    "I962",
+    "I963",
+    "I964",
+    "I965"
   ],
   "parentIds": [
     "I75",
@@ -22,10 +25,10 @@
   ],
   "marriages": [
     {
-      "spouseId": "I965",
-      "familyId": "F399",
-      "marriageDate": "1889",
-      "marriagePlace": "Dubbo, NSW"
+      "spouseId": "I960",
+      "familyId": "F454",
+      "marriageDate": "1879",
+      "marriagePlace": "Mudgee, NSW"
     }
   ]
 }

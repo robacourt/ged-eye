@@ -1,21 +1,18 @@
 {
   "id": "I1509",
-  "name": "Herbert John Chamberlain",
-  "givenName": "Herbert John",
+  "name": "Mary Jane Chamberlain",
+  "givenName": "Mary Jane",
   "surname": "Chamberlain",
-  "sex": "M",
-  "birthDate": "1874",
+  "sex": "F",
+  "birthDate": "15 APR 1872",
   "birthPlace": null,
-  "deathDate": "6 FEB 1955",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I864",
-    "I777"
-  ],
-  "notes": [
-    "had three children Winnie, Florrie & Jack."
+    "I865",
+    "I778"
   ]
 }

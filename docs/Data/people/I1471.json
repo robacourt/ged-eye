@@ -1,28 +1,33 @@
 {
   "id": "I1471",
-  "name": "Sydney J Skedgel",
-  "givenName": "Sydney J",
-  "surname": "Skedgel",
+  "name": "Elizabeth F Unknown",
+  "givenName": "Elizabeth F",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "ABT 1888",
-  "birthPlace": "Stoke Gabriel, Devon",
+  "birthDate": "ABT 1855",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1458",
-    "I1470"
+  "spouseIds": [
+    "I1459"
   ],
+  "childIds": [
+    "I1458",
+    "I1465",
+    "I1472"
+  ],
+  "parentIds": [],
   "censusRecords": [
     {
       "date": "1891",
       "place": "Stoke Gabriel, Devon"
-    },
+    }
+  ],
+  "marriages": [
     {
-      "date": "1901",
-      "place": "Stoke Gabriel, Devon"
+      "spouseId": "I1459",
+      "familyId": "F647"
     }
   ]
 }

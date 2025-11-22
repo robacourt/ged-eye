@@ -1,26 +1,29 @@
 {
   "id": "I1085",
-  "name": "John Tulk",
-  "givenName": "John",
+  "name": "Lavina Tulk",
+  "givenName": "Lavina",
   "surname": "Tulk",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1084"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Carpenter"
+  "childIds": [
+    "I1083",
+    "I1141",
+    "I1253"
+  ],
+  "parentIds": [
+    "I1086"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F432"
+      "spouseId": "I1084",
+      "familyId": "F492"
     }
   ]
 }

@@ -1,30 +1,18 @@
 {
   "id": "I1058",
-  "name": "Darold Maxwell ( Dick ) Diehm",
-  "givenName": "Darold Maxwell ( Dick )",
-  "surname": "Diehm",
-  "sex": "M",
-  "birthDate": "27 FEBRUARY 1929",
-  "birthPlace": "Gulgong, NSW",
+  "name": "Mauryen Rhonda Malone",
+  "givenName": "Mauryen Rhonda",
+  "surname": "Malone",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1059"
-  ],
-  "childIds": [
-    "I1060",
-    "I1061"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I934",
-    "I933"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1059",
-      "familyId": "F427",
-      "marriageDate": "27 JANUARY 1951"
-    }
+    "I1055",
+    "I1054"
   ]
 }

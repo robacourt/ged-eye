@@ -1,25 +1,29 @@
 {
   "id": "I1522",
-  "name": "Maruerite Emily Unknown",
-  "givenName": "Maruerite Emily",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": "11 MAY 1957",
-  "deathPlace": "Chestnut Cemetery",
+  "name": "Ernest George Morgan",
+  "givenName": "Ernest George",
+  "surname": "Morgan",
+  "sex": "M",
+  "birthDate": "12 MAR 1915",
+  "birthPlace": "Waltham Cross, Hertfordshire, 83 Queens Road",
+  "deathDate": "6 DEC 1986",
+  "deathPlace": "Enfield, Middlesex, Chase Farm",
   "photos": [],
   "spouseIds": [
-    "I1521"
-  ],
-  "childIds": [
     "I1523"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1524"
+  ],
+  "parentIds": [
+    "I1517",
+    "I1487"
+  ],
+  "burialPlace": "Enfield, Middlesex, Lavander Hill",
   "marriages": [
     {
-      "spouseId": "I1521",
-      "familyId": "F580"
+      "spouseId": "I1523",
+      "familyId": "F666"
     }
   ]
 }

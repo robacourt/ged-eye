@@ -1,33 +1,27 @@
 {
   "id": "I955",
-  "name": "John ( Jack ) Robert A'Court",
-  "givenName": "John ( Jack ) Robert",
+  "name": "Susannah A'Court",
+  "givenName": "Susannah",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1859",
-  "birthPlace": "Mudgee, NSW",
-  "deathDate": "1934",
-  "deathPlace": "Dubbo, NSW",
+  "sex": "F",
+  "birthDate": "25 AUG 1845",
+  "birthPlace": "Sydney, NSW",
+  "deathDate": "1940",
+  "deathPlace": "Dunedoo, NSW",
   "photos": [],
   "spouseIds": [
-    "I959"
+    "I1070"
   ],
-  "childIds": [
-    "I960",
-    "I961",
-    "I962",
-    "I963",
-    "I964"
-  ],
+  "childIds": [],
   "parentIds": [
     "I75",
     "I103"
   ],
   "marriages": [
     {
-      "spouseId": "I959",
-      "familyId": "F398",
-      "marriageDate": "1879",
+      "spouseId": "I1070",
+      "familyId": "F453",
+      "marriageDate": "1880",
       "marriagePlace": "Mudgee, NSW"
     }
   ]

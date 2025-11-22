@@ -1,25 +1,25 @@
 {
   "id": "I1002",
-  "name": "Alma Moran",
-  "givenName": "Alma",
-  "surname": "Moran",
-  "sex": "F",
+  "name": "Thomas O'Connor",
+  "givenName": "Thomas",
+  "surname": "O'Connor",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1001"
+    "I1003"
   ],
   "childIds": [
-    "I737"
+    "I738"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1001",
-      "familyId": "F301"
+      "spouseId": "I1003",
+      "familyId": "F351"
     }
   ]
 }

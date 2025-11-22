@@ -1,10 +1,10 @@
 {
   "id": "I1147",
-  "name": "Nora Evelyn Elsie Horlock",
-  "givenName": "Nora Evelyn Elsie",
+  "name": "Lional Frederick John Horlock",
+  "givenName": "Lional Frederick John",
   "surname": "Horlock",
-  "sex": "F",
-  "birthDate": "6 APRIL 1918",
+  "sex": "M",
+  "birthDate": "19 APRIL 1916",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,9 +12,9 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1144",
-    "I1143"
+    "I1145",
+    "I1144"
   ],
-  "baptismDate": "19 MAY 1918",
+  "baptismDate": "11 JUN 1916",
   "baptismPlace": "Marnhull, Dorset"
 }

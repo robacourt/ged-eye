@@ -1,36 +1,25 @@
 {
   "id": "I933",
-  "name": "Mary Theresa Jemima ( Polly) A'Court",
-  "givenName": "Mary Theresa Jemima ( Polly)",
-  "surname": "A'Court",
+  "name": "Gladys Lillian Burgess",
+  "givenName": "Gladys Lillian",
+  "surname": "Burgess",
   "sex": "F",
-  "birthDate": "1902",
-  "birthPlace": "Ballimore, NSW",
-  "deathDate": "13 DECEMBER 1962",
-  "deathPlace": "Forbes",
+  "birthDate": "8TH JUNE 1898",
+  "birthPlace": "Yass, NSW",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I934"
+    "I932"
   ],
-  "childIds": [
-    "I1049",
-    "I1053",
-    "I1058",
-    "I1062"
-  ],
-  "parentIds": [
-    "I104",
-    "I733"
-  ],
-  "notes": [
-    "AKA Polly   source Lina Moffitt"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I934",
-      "familyId": "F388",
-      "marriageDate": "18 NOVEMBER 1920",
-      "marriagePlace": "Gulgong, NSW"
+      "spouseId": "I932",
+      "familyId": "F441",
+      "marriageDate": "13.12.1930",
+      "marriagePlace": "Yass, NSW"
     }
   ]
 }

@@ -10,15 +10,15 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1195"
+    "I1196"
   ],
   "childIds": [
-    "I1183",
-    "I1617",
-    "I1454",
-    "I1257",
+    "I1184",
+    "I1618",
     "I1455",
-    "I1461"
+    "I1258",
+    "I1456",
+    "I1462"
   ],
   "parentIds": [
     "I50"
@@ -47,8 +47,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1195",
-      "familyId": "F97",
+      "spouseId": "I1196",
+      "familyId": "F111",
       "marriageDate": "22 OCT 1835",
       "marriagePlace": "Manston, Dorset"
     }

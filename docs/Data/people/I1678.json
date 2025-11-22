@@ -1,25 +1,19 @@
 {
   "id": "I1678",
-  "name": "John Antell",
-  "givenName": "John",
-  "surname": "Antell",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Mary Dean",
+  "givenName": "Mary",
+  "surname": "Dean",
+  "sex": "F",
+  "birthDate": "ABT 1747",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1674"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1670",
+    "I1671"
   ],
-  "childIds": [
-    "I1679"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1674",
-      "familyId": "F614"
-    }
-  ]
+  "baptismDate": "25 APR 1747"
 }

@@ -1,31 +1,26 @@
 {
   "id": "I1137",
-  "name": "Henry George Pike",
-  "givenName": "Henry George",
+  "name": "Thomas Pike",
+  "givenName": "Thomas",
   "surname": "Pike",
   "sex": "M",
-  "birthDate": "ABT 1881",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1138"
+  "spouseIds": [],
+  "childIds": [
+    "I1136"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1135",
-    "I1134"
-  ],
+  "parentIds": [],
   "occupations": [
-    "Engine Driver"
+    "Ag Lab"
   ],
   "marriages": [
     {
-      "spouseId": "I1138",
-      "familyId": "F462",
-      "marriageDate": "25 OCT 1915",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F524"
     }
   ]
 }

@@ -1,25 +1,25 @@
 {
   "id": "I1015",
-  "name": "Douglas Martin",
-  "givenName": "Douglas",
-  "surname": "Martin",
-  "sex": "M",
+  "name": "Marilyn Anne Bennett",
+  "givenName": "Marilyn Anne",
+  "surname": "Bennett",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1003"
+    "I739"
   ],
   "childIds": [
-    "I1017"
+    "I740"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1003",
-      "familyId": "F416"
+      "spouseId": "I739",
+      "familyId": "F352"
     }
   ]
 }

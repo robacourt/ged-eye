@@ -1,27 +1,57 @@
 {
   "id": "I770",
-  "name": "Betsy A'Court",
-  "givenName": "Betsy",
-  "surname": "A'Court",
+  "name": "Anna WILTON",
+  "givenName": "Anna",
+  "surname": "WILTON",
   "sex": "F",
-  "birthDate": "1833",
+  "birthDate": "1810",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1889",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I761",
-    "I769"
+  "spouseIds": [
+    "I762"
   ],
-  "occupations": [
-    "Servant"
+  "childIds": [
+    "I771",
+    "I772",
+    "I773",
+    "I774",
+    "I775",
+    "I776",
+    "I777",
+    "I778",
+    "I779",
+    "I780",
+    "I781",
+    "I782",
+    "I783"
+  ],
+  "parentIds": [
+    "I1077",
+    "I1078"
+  ],
+  "baptismDate": "26 AUG 1810",
+  "baptismPlace": "North Cadbury, Somerset",
+  "notes": [
+    "from notes from Blackford, North Cadbury, and Wincanton Registers, and North Cadbury census held Canterbury Museum Family History section"
   ],
   "censusRecords": [
     {
       "date": "1851",
-      "place": "Castle Cary, Somerset"
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I762",
+      "familyId": "F362",
+      "marriageDate": "28 APR 1831",
+      "marriagePlace": "North Cadbury, Somerset"
     }
   ]
 }

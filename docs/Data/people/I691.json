@@ -1,18 +1,20 @@
 {
   "id": "I691",
-  "name": "Mary a'Court",
-  "givenName": "Mary",
+  "name": "John a'Court",
+  "givenName": "John",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "ABT 1648",
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "1642",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "1642",
+  "deathPlace": "South Cadbury, Somerset",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I563",
-    "I686"
-  ]
+    "I564",
+    "I687"
+  ],
+  "burialDate": "NOV 1642",
+  "burialPlace": "South Cadbury, Somerset"
 }

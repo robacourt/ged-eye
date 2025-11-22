@@ -1,26 +1,29 @@
 {
   "id": "I1536",
-  "name": "Lional Victor Marks",
-  "givenName": "Lional Victor",
-  "surname": "Marks",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Freda Pedder",
+  "givenName": "Freda",
+  "surname": "Pedder",
+  "sex": "F",
+  "birthDate": "1923",
   "birthPlace": null,
-  "deathDate": "NOV 1999",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1535"
+    "I1537"
   ],
   "childIds": [
-    "I1985",
-    "I1986"
+    "I1986",
+    "I1987"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1535",
+    "I1533"
+  ],
   "marriages": [
     {
-      "spouseId": "I1535",
-      "familyId": "F586",
+      "spouseId": "I1537",
+      "familyId": "F672",
       "marriageDate": "1945"
     }
   ]

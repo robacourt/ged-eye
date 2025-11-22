@@ -1,26 +1,28 @@
 {
   "id": "I1180",
-  "name": "James Jones",
-  "givenName": "James",
-  "surname": "Jones",
-  "sex": "M",
-  "birthDate": "ABT 1857",
+  "name": "Kate Haskett",
+  "givenName": "Kate",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "ABT 1859",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1179"
+    "I1181"
   ],
   "childIds": [],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab"
+  "parentIds": [
+    "I1176",
+    "I181"
   ],
+  "baptismDate": "1859",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1179",
-      "familyId": "F481",
+      "spouseId": "I1181",
+      "familyId": "F544",
       "marriageDate": "5 JUNE 1877",
       "marriagePlace": "Marnhull, Dorset"
     }

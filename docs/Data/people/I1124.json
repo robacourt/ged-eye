@@ -1,26 +1,36 @@
 {
   "id": "I1124",
-  "name": "William Henry Matthews",
-  "givenName": "William Henry",
+  "name": "Walter Matthews",
+  "givenName": "Walter",
   "surname": "Matthews",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "Abt 1908",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1123"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1125"
+  ],
   "occupations": [
-    "Smallholder"
+    "Roadman"
+  ],
+  "residences": [
+    {
+      "date": "1939",
+      "place": "Sturminster Newton, Dorset"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F455"
+      "spouseId": "I1123",
+      "familyId": "F517",
+      "marriageDate": "29 JULY 1939",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

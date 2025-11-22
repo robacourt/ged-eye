@@ -1,33 +1,62 @@
 {
   "id": "I1388",
-  "name": "Annie Thomas",
-  "givenName": "Annie",
-  "surname": "Thomas",
-  "sex": "F",
-  "birthDate": "ABT 1865",
-  "birthPlace": "Bristol, Somerset",
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Charles Edward A'Court",
+  "givenName": "Charles Edward",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "14 APR 1860",
+  "birthPlace": "Bristol, St Mary Redcliff, Back Lane",
+  "deathDate": "18 JAN 1926",
+  "deathPlace": "Vancouver, BC, Canada",
   "photos": [
-    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg"
+    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg",
+    "Data/Media/1881 census/Bristol/RG11 2465 104 10.jpg",
+    "Data/Media/1901 census/Glamorganshire/Glamorganshire/RG13 4983 244.jpg"
   ],
   "spouseIds": [
-    "I1387"
+    "I1389"
   ],
   "childIds": [
-    "I1410",
     "I1411",
-    "I1406",
+    "I1412",
     "I1407",
-    "I1408"
+    "I1408",
+    "I1409"
   ],
   "parentIds": [
-    "I1409"
+    "I1387",
+    "I1406"
+  ],
+  "occupations": [
+    "Marine Fireman (Merchant Service)",
+    "Labourer, Unemployed",
+    "Dock Labourer"
+  ],
+  "notes": [
+    "On my mother's birth certificate (Lilian Doris A'Court) the address where she was born is 3 St. John's Road. Bristol.  Her father's occupation is listed Marine Fireman (Merchant Service)",
+    "written by his granddaughter, Betty Jones - bdjones1@cox.net"
   ],
   "censusRecords": [
     {
-      "date": "1891",
-      "place": "Somerset, Bedminster, Catherine Mead St."
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1901",
+      "place": "Glamorganshire, Cardiff, Roath docks"
+    },
+    {
+      "date": "1901",
+      "place": "Crew, Steam ship Belfast"
     },
     {
       "date": "1911",
@@ -37,13 +66,13 @@
   "residences": [
     {
       "date": "1860",
-      "place": "Bristol, 3 St John's Rd."
+      "place": "Bristol, 3 St John's Rd"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1387",
-      "familyId": "F550",
+      "spouseId": "I1389",
+      "familyId": "F621",
       "marriageDate": "11 DEC 1883",
       "marriagePlace": "Bristol"
     }

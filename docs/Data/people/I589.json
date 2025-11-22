@@ -1,7 +1,7 @@
 {
   "id": "I589",
-  "name": "Wyndham Hatcher",
-  "givenName": "Wyndham",
+  "name": "Robert Hatcher",
+  "givenName": "Robert",
   "surname": "Hatcher",
   "sex": "M",
   "birthDate": null,
@@ -9,35 +9,15 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I595"
-  ],
-  "childIds": [
-    "I596",
-    "I597",
-    "I598",
-    "I599",
-    "I600",
-    "I601"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
     "I157",
     "I317"
   ],
-  "baptismDate": "26.4.1873",
+  "baptismDate": "4.1.1871",
   "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Quarryman"
-  ],
   "notes": [
-    "8-1881,18-1891,26-1899"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I595",
-      "familyId": "F242",
-      "marriageDate": "27.7.1899",
-      "marriagePlace": "Marnhull, Dorset"
-    }
+    "3 months-1871,10-1881,"
   ]
 }

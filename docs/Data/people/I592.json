@@ -1,23 +1,33 @@
 {
   "id": "I592",
-  "name": "Fred Lewis Hatcher",
-  "givenName": "Fred Lewis",
+  "name": "( louisa ) Kate Lewis Hatcher",
+  "givenName": "( louisa ) Kate Lewis",
   "surname": "Hatcher",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I620"
+  ],
   "childIds": [],
   "parentIds": [
     "I157",
     "I317"
   ],
-  "baptismDate": "11.9.1881",
+  "baptismDate": "13.10.1878",
   "baptismPlace": "Marnhull, Dorset",
   "notes": [
-    "10-1891,"
+    "2-1881, 12-1891, 23-1902,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I620",
+      "familyId": "F293",
+      "marriageDate": "17.6.1902",
+      "marriagePlace": "Marnhull, Dorset"
+    }
   ]
 }

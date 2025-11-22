@@ -1,10 +1,10 @@
 {
   "id": "I1660",
-  "name": "Ernest Hayward",
-  "givenName": "Ernest",
+  "name": "Harry Hayward",
+  "givenName": "Harry",
   "surname": "Hayward",
   "sex": "M",
-  "birthDate": "ABT 1877",
+  "birthDate": "ABT 1869",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1658",
+    "I1659",
     "I309"
   ],
   "censusRecords": [

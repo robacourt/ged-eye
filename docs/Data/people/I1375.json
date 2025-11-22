@@ -1,8 +1,8 @@
 {
   "id": "I1375",
-  "name": "Frank Clifford A'Court",
-  "givenName": "Frank Clifford",
-  "surname": "A'Court",
+  "name": "Brian Igglesden",
+  "givenName": "Brian",
+  "surname": "Igglesden",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,27 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1380",
-    "I1381"
+    "I1374"
   ],
-  "childIds": [
-    "I2309",
-    "I2310"
-  ],
-  "parentIds": [
-    "I947",
-    "I1370"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1380",
-      "familyId": "F544",
-      "marriageDate": "1912",
-      "marriagePlace": "New Zealand"
-    },
-    {
-      "spouseId": "I1381",
-      "familyId": "F545"
+      "spouseId": "I1374",
+      "familyId": "F613"
     }
   ]
 }

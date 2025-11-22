@@ -1,23 +1,23 @@
 {
   "id": "I506",
-  "name": "Alice Buskill",
-  "givenName": "Alice",
-  "surname": "Buskill",
-  "sex": "F",
+  "name": "Thomas A A'Court",
+  "givenName": "Thomas A",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I505"
+    "I507"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I505",
-      "familyId": "F214",
+      "spouseId": "I507",
+      "familyId": "F259",
       "marriageDate": "4 OCT 1562",
       "marriagePlace": "Frome, Somerset"
     }

@@ -1,35 +1,23 @@
 {
   "id": "I712",
-  "name": "Eli a'Court",
-  "givenName": "Eli",
-  "surname": "a'Court",
+  "name": "Josiah Brodribb",
+  "givenName": "Josiah",
+  "surname": "Brodribb",
   "sex": "M",
-  "birthDate": "6 AUG 1825",
-  "birthPlace": "Marnhull, Dorset",
-  "deathDate": "BEF 1861",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "Aft 1766",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I713"
+    "I711"
   ],
   "childIds": [],
   "parentIds": [],
-  "occupations": [
-    ""
-  ],
-  "notes": [
-    "Please advise any errors/send additions to:"
-  ],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Marhull, Dorset"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I713",
-      "familyId": "F291"
+      "spouseId": "I711",
+      "familyId": "F340"
     }
   ]
 }

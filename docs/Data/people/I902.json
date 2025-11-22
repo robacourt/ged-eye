@@ -1,8 +1,8 @@
 {
   "id": "I902",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
-  "surname": "Unknown",
+  "name": "\\-\\",
+  "givenName": "\\-\\",
+  "surname": "",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,16 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I884"
+    "I750"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I884",
-      "familyId": "F377",
-      "marriageDate": "1870",
-      "marriagePlace": "Yeovil, Somerset"
+      "spouseId": "I750",
+      "familyId": "F358"
     }
   ]
 }

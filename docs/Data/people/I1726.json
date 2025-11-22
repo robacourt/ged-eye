@@ -1,30 +1,23 @@
 {
   "id": "I1726",
-  "name": "James Daniels",
-  "givenName": "James",
-  "surname": "Daniels",
-  "sex": "M",
-  "birthDate": "ABT 1835",
+  "name": "Unknown Proudley",
+  "givenName": "Unknown",
+  "surname": "Proudley",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I77"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1975",
-    "I1987",
-    "I1988",
-    "I1989"
+    "I1725"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I77",
-      "familyId": "F49",
-      "marriageDate": "7 SEP 1851",
-      "marriagePlace": "Portsea, Hampshire"
+      "spouseId": null,
+      "familyId": "F725"
     }
   ]
 }

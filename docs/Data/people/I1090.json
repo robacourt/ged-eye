@@ -1,54 +1,44 @@
 {
   "id": "I1090",
-  "name": "Emmanuel Odessa A'Court",
-  "givenName": "Emmanuel Odessa",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1893",
-  "birthPlace": "Coleford, Somerset",
-  "deathDate": "1970",
-  "deathPlace": "Yeovil, Somerset",
+  "name": "Olive May Stallard",
+  "givenName": "Olive May",
+  "surname": "Stallard",
+  "sex": "F",
+  "birthDate": "ABT 1899",
+  "birthPlace": "Fordingbridge, Hampshire",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [
-    "Data/Picture/EMMANUEL-ODESSA.JPG",
-    "Data/Media/1901 census/Somerset/Queen Camel/RG13 2303 110 5 34.jpg",
-    "Data/Media/1911 census/Somerset/Holton/RG14 14430 91.jpg"
+    "Data/Picture/Olive May Stallard.jpg"
   ],
   "spouseIds": [
-    "I1091"
+    "I1339"
   ],
   "childIds": [
-    "I1101",
-    "I1267",
-    "I1269",
-    "I1102",
-    "I1103",
-    "I1104",
-    "I1272"
+    "I1093",
+    "I1094",
+    "I1088",
+    "I1267"
   ],
   "parentIds": [
-    "I1100",
-    "I1109"
-  ],
-  "occupations": [
-    "Labourer on Farm",
-    "Ag Lab"
+    "I2443",
+    "I2444"
   ],
   "censusRecords": [
     {
       "date": "1901",
-      "place": "Queen Camel, Somerset, Camel Hill Farm Cottages"
+      "place": "Burgate, Fordinbridge,Hampshire"
     },
     {
       "date": "1911",
-      "place": "Holton, Wincanton, Somerset"
+      "place": "Dorchester, Dorset, 7 Prospect Terrace"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1091",
-      "familyId": "F437",
-      "marriageDate": "1913",
-      "marriagePlace": "Yeovil, Somerset"
+      "spouseId": "I1339",
+      "familyId": "F496",
+      "marriageDate": "1910"
     }
   ],
   "avatar": "avatars/I1090_0.jpg"

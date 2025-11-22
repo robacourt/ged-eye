@@ -1,26 +1,26 @@
 {
   "id": "I1780",
-  "name": "Unknown A'Court",
+  "name": "Unknown Edgar",
   "givenName": "Unknown",
-  "surname": "A'Court",
-  "sex": "M",
+  "surname": "Edgar",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1779"
+    "I1781"
   ],
   "childIds": [
-    "I1778",
-    "I1825"
+    "I1779",
+    "I1826"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1779",
-      "familyId": "F641"
+      "spouseId": "I1781",
+      "familyId": "F739"
     }
   ]
 }

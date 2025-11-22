@@ -1,10 +1,10 @@
 {
   "id": "I970",
-  "name": "Eris A. Williams",
-  "givenName": "Eris A.",
+  "name": "George H. C. Williams",
+  "givenName": "George H. C.",
   "surname": "Williams",
-  "sex": "U",
-  "birthDate": "1894",
+  "sex": "M",
+  "birthDate": "1891",
   "birthPlace": "Dubbo, NSW",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I965",
-    "I956"
+    "I966",
+    "I957"
   ]
 }

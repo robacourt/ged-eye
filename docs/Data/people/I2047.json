@@ -1,18 +1,18 @@
 {
   "id": "I2047",
-  "name": "Carmel Antoinette A'Court",
-  "givenName": "Carmel Antoinette",
+  "name": "Nathan James A'Court",
+  "givenName": "Nathan James",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "28 MAR 1975",
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "25 FEB 1974",
+  "birthPlace": "Christchurch, Canterbury, New Zealand",
+  "deathDate": "15 JUNE 1974",
+  "deathPlace": "Cot Death",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2032",
-    "I2033"
+    "I2033",
+    "I2034"
   ]
 }

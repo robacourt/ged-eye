@@ -1,54 +1,26 @@
 {
   "id": "I1327",
-  "name": "Francis Winchester Waterman",
-  "givenName": "Francis Winchester",
+  "name": "William Thomas Waterman",
+  "givenName": "William Thomas",
   "surname": "Waterman",
   "sex": "M",
-  "birthDate": "1870",
+  "birthDate": "1869",
   "birthPlace": "Stoke Sub Hamdon, Somerset",
-  "deathDate": "1935",
+  "deathDate": "1875",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1328"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1322",
-    "I1320"
+    "I1323",
+    "I1321"
   ],
-  "burialDate": "2 APR 1935",
+  "burialDate": "26 JAN 1875",
   "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
-  "occupations": [
-    "Grocer",
-    "Glover"
-  ],
   "censusRecords": [
     {
       "date": "1871",
       "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    },
-    {
-      "date": "1881",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    },
-    {
-      "date": "1891",
-      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
-    }
-  ],
-  "residences": [
-    {
-      "date": "22 MAY 1893",
-      "place": "Martock, Somerset"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1328",
-      "familyId": "F524",
-      "marriageDate": "22 MAY 1893",
-      "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
     }
   ]
 }

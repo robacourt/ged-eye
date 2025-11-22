@@ -1,21 +1,17 @@
 {
   "id": "I510",
-  "name": "Victor Charles A'Court",
-  "givenName": "Victor Charles",
+  "name": "Burleigh Charles A'Court",
+  "givenName": "Burleigh Charles",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1921",
-  "birthPlace": "Bristol",
-  "deathDate": "12.11.1945",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "29 JUN 1944",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1411",
-    "I1412"
-  ],
-  "burialPlace": "Tripoli War Cemetery, Libya",
+  "parentIds": [],
   "notes": [
     "In Memory of"
   ]

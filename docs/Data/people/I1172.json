@@ -1,10 +1,10 @@
 {
   "id": "I1172",
-  "name": "Letitia Humphries",
-  "givenName": "Letitia",
+  "name": "Elizabeth Humphries",
+  "givenName": "Elizabeth",
   "surname": "Humphries",
   "sex": "F",
-  "birthDate": "ABT 1856",
+  "birthDate": "ABT 1851",
   "birthPlace": "Cerne Abbas, Dorset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,10 +12,14 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1168",
+    "I1169",
     "I180"
   ],
   "censusRecords": [
+    {
+      "date": "1851",
+      "place": "Mill Bank, Cerne Abbas, Dorset"
+    },
     {
       "date": "1861",
       "place": "Piddle Lane, Cerne Abbas, Dorset"

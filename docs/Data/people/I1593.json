@@ -1,33 +1,35 @@
 {
   "id": "I1593",
-  "name": "Amy Preece",
-  "givenName": "Amy",
-  "surname": "Preece",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "Abt 1877",
-  "birthPlace": "Hereford, Preston on Wye",
+  "birthDate": "Abt 1880",
+  "birthPlace": "Weymouth, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1591"
+  "photos": [
+    "Data/Media/1881 census/Wiltshire/Swindon/RG11 2020 30 51.jpg",
+    "Data/Media/1901 census/Glamorganshire/Glamorganshire/RG13 4985 52 29.jpg"
   ],
-  "childIds": [
-    "I1594",
-    "I1595",
-    "I1596"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1590",
+    "I2871"
   ],
-  "parentIds": [],
+  "notes": [
+    "Twin ?"
+  ],
   "censusRecords": [
     {
-      "date": "1911",
-      "place": "Cardiff, 15 Rennie St."
+      "date": "1881",
+      "place": "Wiltshire, Swindon, Highworth, 8 Gooch St."
+    },
+    {
+      "date": "1901",
+      "place": "Cardiff, Canton, 45 Wells St"
     }
   ],
-  "marriages": [
-    {
-      "spouseId": "I1591",
-      "familyId": "F598"
-    }
-  ]
+  "avatar": "avatars/I1593_0.jpg"
 }

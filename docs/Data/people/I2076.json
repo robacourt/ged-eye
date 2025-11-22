@@ -1,18 +1,18 @@
 {
   "id": "I2076",
-  "name": "Victor Horace A'Court",
-  "givenName": "Victor Horace",
+  "name": "Ronald Henry James A'Court",
+  "givenName": "Ronald Henry James",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1924",
-  "birthPlace": "Deptford",
+  "birthDate": "1922",
+  "birthPlace": "London",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2070",
-    "I2071"
+    "I2071",
+    "I2072"
   ]
 }

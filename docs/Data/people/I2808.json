@@ -19,7 +19,7 @@
     "I2864"
   ],
   "parentIds": [
-    "I2020",
+    "I2021",
     "I2807"
   ],
   "censusRecords": [
@@ -31,7 +31,7 @@
   "marriages": [
     {
       "spouseId": "I2862",
-      "familyId": "F869"
+      "familyId": "F1005"
     }
   ],
   "avatar": "avatars/I2808_0.jpg"

@@ -1,34 +1,26 @@
 {
   "id": "I1162",
-  "name": "Vera Jane Curtis",
-  "givenName": "Vera Jane",
-  "surname": "Curtis",
-  "sex": "F",
-  "birthDate": "ABT 1904",
+  "name": "William Paull",
+  "givenName": "William",
+  "surname": "Paull",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1163"
+  "spouseIds": [],
+  "childIds": [
+    "I1161"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1155",
-    "I1156"
-  ],
-  "residences": [
-    {
-      "date": "1926",
-      "place": "Wearwell Farm"
-    }
+  "parentIds": [],
+  "occupations": [
+    "Farmer"
   ],
   "marriages": [
     {
-      "spouseId": "I1163",
-      "familyId": "F474",
-      "marriageDate": "22 MAR 1926",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F536"
     }
   ]
 }

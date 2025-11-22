@@ -1,28 +1,36 @@
 {
   "id": "I663",
-  "name": "Felix Hayward",
-  "givenName": "Felix",
+  "name": "Arthur William Hayward",
+  "givenName": "Arthur William",
   "surname": "Hayward",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "23.3.1874",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I664"
+    "I653"
   ],
-  "childIds": [
-    "I662"
+  "childIds": [],
+  "parentIds": [
+    "I664",
+    "I665"
   ],
-  "parentIds": [],
+  "baptismDate": "14.6.1874",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Ag Lab"
+    "Mason"
+  ],
+  "notes": [
+    "7 in 1881, 17 in 1891, 32 in 1906,"
   ],
   "marriages": [
     {
-      "spouseId": "I664",
-      "familyId": "F277"
+      "spouseId": "I653",
+      "familyId": "F323",
+      "marriageDate": "25.12.1906",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

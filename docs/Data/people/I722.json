@@ -1,15 +1,18 @@
 {
   "id": "I722",
-  "name": "Edward A'Court",
-  "givenName": "Edward",
+  "name": "D. A. A'Court",
+  "givenName": "D. A.",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "DEC 1745",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "notes": [
+    "Cpl. 7886036  Royal Armoured Corp WW2"
+  ]
 }

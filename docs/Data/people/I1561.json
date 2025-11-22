@@ -1,32 +1,23 @@
 {
   "id": "I1561",
-  "name": "Emily Ellen Cox",
-  "givenName": "Emily Ellen",
-  "surname": "Cox",
-  "sex": "F",
+  "name": "Arthur Hutchings",
+  "givenName": "Arthur",
+  "surname": "Hutchings",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1275"
+    "I139"
   ],
-  "childIds": [
-    "I2577",
-    "I2578"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1911",
-      "place": "Grayshott, Hampshire, 1The Villas"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1275",
-      "familyId": "F514"
+      "spouseId": "I139",
+      "familyId": "F93"
     }
   ]
 }

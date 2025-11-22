@@ -1,8 +1,8 @@
 {
   "id": "I903",
-  "name": "Unknown Theobald",
+  "name": "Unknown Unknown",
   "givenName": "Unknown",
-  "surname": "Theobald",
+  "surname": "Unknown",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,14 +10,16 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I889"
+    "I885"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I889",
-      "familyId": "F379"
+      "spouseId": "I885",
+      "familyId": "F429",
+      "marriageDate": "1870",
+      "marriagePlace": "Yeovil, Somerset"
     }
   ]
 }

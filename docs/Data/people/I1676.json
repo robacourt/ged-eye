@@ -1,10 +1,10 @@
 {
   "id": "I1676",
-  "name": "William Dean",
-  "givenName": "William",
+  "name": "Robert Dean",
+  "givenName": "Robert",
   "surname": "Dean",
   "sex": "M",
-  "birthDate": "ABT 1741",
+  "birthDate": "ABT 1737",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,8 +12,8 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1669",
-    "I1670"
+    "I1670",
+    "I1671"
   ],
-  "baptismDate": "22 MAY 1741"
+  "baptismDate": "13 MAR 1737"
 }

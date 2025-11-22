@@ -1,24 +1,33 @@
 {
   "id": "I867",
-  "name": "Mary Ann WELLEY",
-  "givenName": "Mary Ann",
-  "surname": "WELLEY",
-  "sex": "F",
+  "name": "William George Taylor Cave",
+  "givenName": "William George Taylor",
+  "surname": "Cave",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "23 DEC 1916",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I779"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2324",
+    "I1538"
+  ],
   "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "North Cadbury, Somerset"
+    }
+  ],
   "marriages": [
     {
       "spouseId": "I779",
-      "familyId": "F330",
-      "marriageDate": "1871"
+      "familyId": "F379",
+      "marriageDate": "1867"
     }
   ]
 }

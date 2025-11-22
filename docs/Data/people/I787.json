@@ -1,24 +1,33 @@
 {
   "id": "I787",
-  "name": "Emily A'Court",
-  "givenName": "Emily",
+  "name": "Lavinia A'Court",
+  "givenName": "Lavinia",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "22 AUG 1867",
+  "birthDate": "26 DEC 1865",
   "birthPlace": "Queensland, Australia",
-  "deathDate": "3 FEB 1868",
-  "deathPlace": "Queensland, Australia",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I803"
+  ],
+  "childIds": [
+    "I804"
+  ],
   "parentIds": [
-    "I775",
-    "I784"
+    "I776",
+    "I785"
+  ],
+  "notes": [
+    "Electoral roll"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F334"
+      "spouseId": "I803",
+      "familyId": "F383",
+      "marriageDate": "1890",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

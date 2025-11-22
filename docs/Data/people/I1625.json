@@ -1,33 +1,34 @@
 {
   "id": "I1625",
-  "name": "Amelia A'Court",
-  "givenName": "Amelia",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "Abt 1861",
+  "name": "John Warren",
+  "givenName": "John",
+  "surname": "Warren",
+  "sex": "M",
+  "birthDate": "Abt 1801",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/Marnhull/RG09 1329 35 39.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
+  "childIds": [
+    "I1185",
     "I1617",
-    "I1616"
+    "I1631"
   ],
-  "baptismDate": "10 FEB 1861",
-  "baptismPlace": "Dorset, Marnhull",
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
   "censusRecords": [
-    {
-      "date": "1861",
-      "place": "Marnhull, Dorset, East Well"
-    },
     {
       "date": "1871",
       "place": "Marnhull, Dorset, East Well"
     }
   ],
-  "avatar": "avatars/I1625_0.jpg"
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F546"
+    }
+  ]
 }

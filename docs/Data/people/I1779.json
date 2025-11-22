@@ -1,26 +1,18 @@
 {
   "id": "I1779",
-  "name": "Unknown Edgar",
-  "givenName": "Unknown",
-  "surname": "Edgar",
+  "name": "Jennifer A A'Court",
+  "givenName": "Jennifer A",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1ST QRT 1951",
+  "birthPlace": "Epping",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1781",
     "I1780"
-  ],
-  "childIds": [
-    "I1778",
-    "I1825"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1780",
-      "familyId": "F641"
-    }
   ]
 }

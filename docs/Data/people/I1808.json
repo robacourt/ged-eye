@@ -1,17 +1,17 @@
 {
   "id": "I1808",
-  "name": "David C A'Court",
-  "givenName": "David C",
+  "name": "Gay A'Court",
+  "givenName": "Gay",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "4TH QRT 1952",
-  "birthPlace": "Blandford Forum, Dorset",
+  "sex": "F",
+  "birthDate": "2ND QRT 1956",
+  "birthPlace": "Surrey NE",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1809"
+    "I1807"
   ]
 }

@@ -1,18 +1,29 @@
 {
   "id": "I503",
-  "name": "Hannah A'Court",
-  "givenName": "Hannah",
-  "surname": "A'Court",
+  "name": "Jennifer Jones",
+  "givenName": "Jennifer",
+  "surname": "Jones",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I500"
+  ],
+  "childIds": [
+    "I504",
+    "I505"
+  ],
   "parentIds": [
-    "I499",
-    "I502"
+    "I570",
+    "I571"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I500",
+      "familyId": "F257"
+    }
   ]
 }

@@ -1,29 +1,24 @@
 {
   "id": "I894",
-  "name": "Eliza Ray",
-  "givenName": "Eliza",
-  "surname": "Ray",
-  "sex": "F",
-  "birthDate": "ABT 1847",
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "John Chamberlain",
+  "givenName": "John",
+  "surname": "Chamberlain",
+  "sex": "M",
+  "birthDate": "ABT 1845",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "AFT 1851",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I378"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I892",
+    "I769"
   ],
-  "childIds": [
-    "I1453",
-    "I895",
-    "I385"
-  ],
-  "parentIds": [],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I378",
-      "familyId": "F173",
-      "marriageDate": "15TH JUL 1871",
-      "marriagePlace": "London, Islington, Mildmay Park Chapel"
+      "date": "1851",
+      "place": "North Cadbury, Lower Woolston"
     }
   ]
 }

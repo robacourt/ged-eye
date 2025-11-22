@@ -1,8 +1,8 @@
 {
   "id": "I1383",
-  "name": "K.W. Robinson",
-  "givenName": "K.W.",
-  "surname": "Robinson",
+  "name": "Rex Abernethy",
+  "givenName": "Rex",
+  "surname": "Abernethy",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -17,7 +17,7 @@
   "marriages": [
     {
       "spouseId": "I1377",
-      "familyId": "F547"
+      "familyId": "F617"
     }
   ]
 }

@@ -1,15 +1,29 @@
 {
   "id": "I880",
-  "name": "Sarah Ann unknown",
-  "givenName": "Sarah Ann",
-  "surname": "unknown",
+  "name": "Mary Ann Unknown",
+  "givenName": "Mary Ann",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "21 SEP 1828",
-  "birthPlace": "Galhampton, Somerset",
-  "deathDate": null,
+  "birthDate": "ABT 1839",
+  "birthPlace": "Oxfordshire, Peppard",
+  "deathDate": "BEF 1898",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I386"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Portsmouth, 82 Thomas St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I386",
+      "familyId": "F199"
+    }
+  ]
 }

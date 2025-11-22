@@ -1,18 +1,18 @@
 {
   "id": "I962",
-  "name": "Phyllis S. A'Court",
-  "givenName": "Phyllis S.",
+  "name": "Mary A. L. A'Court",
+  "givenName": "Mary A. L.",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1889",
-  "birthPlace": "Dubbo, NSW",
+  "birthDate": "1886",
+  "birthPlace": "Mudgee, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I955",
-    "I959"
+    "I956",
+    "I960"
   ]
 }

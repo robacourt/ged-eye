@@ -1,10 +1,10 @@
 {
   "id": "I2074",
-  "name": "Lillian Rose A'Court",
-  "givenName": "Lillian Rose",
+  "name": "Olive Amy Frances A'Court",
+  "givenName": "Olive Amy Frances",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1920",
+  "birthDate": "1917",
   "birthPlace": "London",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2070",
-    "I2071"
+    "I2071",
+    "I2072"
   ]
 }

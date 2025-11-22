@@ -9,9 +9,9 @@
   "deathDate": "19 JUNE 1918",
   "deathPlace": "London, Wimbledon Broadway , Road accident",
   "photos": [
+    "Data/Media/Wills & Probate/gbor_govprobate_1920_b000141-barnett-1920.jpg",
     "Data/Media/Newspaper Reports/Jane Issacs accident report.pdf",
-    "Data/Media/Newspaper Reports/Jane Issacs inquest Jun 1918..pdf",
-    "Data/Media/Wills & Probate/gbor_govprobate_1920_b000141-barnett-1920.jpg"
+    "Data/Media/Newspaper Reports/Jane Issacs inquest Jun 1918..pdf"
   ],
   "spouseIds": [
     "I2282"
@@ -47,10 +47,10 @@
   "marriages": [
     {
       "spouseId": "I2282",
-      "familyId": "F937",
+      "familyId": "F633",
       "marriageDate": "5 JUL 1898",
       "marriagePlace": "London, Bishopsgate, The New Synagoge"
     }
   ],
-  "avatar": "avatars/I2693_2.jpg"
+  "avatar": "avatars/I2693_0.jpg"
 }

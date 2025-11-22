@@ -1,18 +1,28 @@
 {
   "id": "I693",
-  "name": "Richard A'Court",
-  "givenName": "Richard",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1653",
-  "birthPlace": "South Cadbury, Somerset",
-  "deathDate": "1717",
-  "deathPlace": "North Cadbury, Somerset",
+  "name": "Ann a'Court",
+  "givenName": "Ann",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1651",
+  "birthPlace": null,
+  "deathDate": "AFT 1672",
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I698"
+  ],
   "childIds": [],
   "parentIds": [
-    "I563",
-    "I686"
+    "I564",
+    "I687"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I698",
+      "familyId": "F338",
+      "marriageDate": "11 FEB 1671/72",
+      "marriagePlace": "South Cadbury, Somerset"
+    }
   ]
 }

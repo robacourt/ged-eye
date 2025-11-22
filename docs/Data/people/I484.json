@@ -1,7 +1,7 @@
 {
   "id": "I484",
-  "name": "Richard A'Court",
-  "givenName": "Richard",
+  "name": "Edward H. A'Court",
+  "givenName": "Edward H.",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
@@ -10,17 +10,9 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I485"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "occupations": [
-    "Wheelwright"
-  ],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F207"
-    }
+  "notes": [
+    "Navel and Marine Officers listed in the Navel and Military Almanac for 1840 FLGOFF. txt  GENUKI"
   ]
 }

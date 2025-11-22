@@ -1,18 +1,26 @@
 {
   "id": "I1932",
-  "name": "Gordon Basil A'Court",
-  "givenName": "Gordon Basil",
+  "name": "Marjorie Todrick A'Court",
+  "givenName": "Marjorie Todrick",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1926",
-  "birthPlace": "New Zealand",
-  "deathDate": "1967",
-  "deathPlace": "Kaiakoura coast, New Zealand",
+  "sex": "F",
+  "birthDate": "3 SEP 1912",
+  "birthPlace": "Sanson, New Zealand",
+  "deathDate": "5 JUN 1985",
+  "deathPlace": "New Zealand",
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I2311"
+  ],
   "childIds": [],
   "parentIds": [
-    "I844",
-    "I857"
+    "I940",
+    "I941"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2311",
+      "familyId": "F778"
+    }
   ]
 }

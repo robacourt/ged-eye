@@ -1,28 +1,34 @@
 {
   "id": "I586",
-  "name": "George Maidment",
-  "givenName": "George",
+  "name": "John Maidment",
+  "givenName": "John",
   "surname": "Maidment",
   "sex": "M",
   "birthDate": null,
-  "birthPlace": null,
+  "birthPlace": "East Stour, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I587"
+    "I156"
   ],
-  "childIds": [
-    "I585"
+  "childIds": [],
+  "parentIds": [
+    "I587",
+    "I588"
   ],
-  "parentIds": [],
   "occupations": [
     "Ag Lab"
   ],
+  "notes": [
+    "7-1851,17-1861,20-1865"
+  ],
   "marriages": [
     {
-      "spouseId": "I587",
-      "familyId": "F241"
+      "spouseId": "I156",
+      "familyId": "F102",
+      "marriageDate": "21.1.1865",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

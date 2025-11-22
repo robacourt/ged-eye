@@ -1,23 +1,19 @@
 {
   "id": "I1672",
-  "name": "John Dean",
-  "givenName": "John",
+  "name": "Ibbot Dean",
+  "givenName": "Ibbot",
   "surname": "Dean",
-  "sex": "M",
-  "birthDate": "ABT 1731",
+  "sex": "F",
+  "birthDate": "ABT 1729",
   "birthPlace": null,
-  "deathDate": "1803",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1669",
-    "I1670"
+    "I1670",
+    "I1671"
   ],
-  "baptismDate": "30 AUG 1731",
-  "burialDate": "27 MAY 1803",
-  "notes": [
-    "MARNHULL RATEPAYERS 1750"
-  ]
+  "baptismDate": "8 APR 1729"
 }

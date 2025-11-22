@@ -1,22 +1,30 @@
 {
   "id": "I826",
-  "name": "William Henry A'Court",
-  "givenName": "William Henry",
+  "name": "Sydney Charles A'Court",
+  "givenName": "Sydney Charles",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1 AUG 1872",
+  "birthDate": "5 SEP 1870",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "19 MAR 1947",
-  "deathPlace": "Christchurch, New Zealand",
+  "deathDate": "15 AUG 1902",
+  "deathPlace": "on board SS Montrose",
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I862"
+  ],
   "childIds": [],
   "parentIds": [
-    "I776",
-    "I820"
+    "I777",
+    "I821"
   ],
+  "burialPlace": "Three Kings Islands, at sea",
   "notes": [
-    "First name(s) W H",
-    "From \"Smithy Tales - events in the life of Samuel A'Court (1842-1913)\", which were recounted by his daughter Lucy & published in The Star newspaper in 1924 (ref. Family History Section, Canterbury Museum, New Zealand.)"
+    "First name(s) Sidney C"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I862",
+      "familyId": "F409"
+    }
   ]
 }

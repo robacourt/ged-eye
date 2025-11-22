@@ -1,18 +1,28 @@
 {
   "id": "I1997",
-  "name": "Thomas George Gooderson- A'Court",
-  "givenName": "Thomas George Gooderson-",
-  "surname": "A'Court",
+  "name": "Iain James Gooderson",
+  "givenName": "Iain James",
+  "surname": "Gooderson",
   "sex": "M",
-  "birthDate": "25 FEB 1986",
-  "birthPlace": "London, Dulwich",
+  "birthDate": "12 AUG 1962",
+  "birthPlace": "Haverfordwest, Pembrokeshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1996",
-    "I1992"
+  "spouseIds": [
+    "I1993"
+  ],
+  "childIds": [
+    "I1998",
+    "I1999",
+    "I2000",
+    "I2001"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1993",
+      "familyId": "F798"
+    }
   ]
 }

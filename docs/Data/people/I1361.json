@@ -1,25 +1,28 @@
 {
   "id": "I1361",
-  "name": "Walter George Hodder",
-  "givenName": "Walter George",
+  "name": "Ethel Hodder",
+  "givenName": "Ethel",
   "surname": "Hodder",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "1880",
+  "birthPlace": "New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1362"
-  ],
-  "childIds": [
     "I1360"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1362",
+    "I1363"
+  ],
   "marriages": [
     {
-      "spouseId": "I1362",
-      "familyId": "F540"
+      "spouseId": "I1360",
+      "familyId": "F609",
+      "marriageDate": "1901",
+      "marriagePlace": "Sydney, NSW"
     }
   ]
 }

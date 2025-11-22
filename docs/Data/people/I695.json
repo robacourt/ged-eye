@@ -1,10 +1,10 @@
 {
   "id": "I695",
-  "name": "Deborah a'Court",
-  "givenName": "Deborah",
+  "name": "Racheal a'Court",
+  "givenName": "Racheal",
   "surname": "a'Court",
   "sex": "F",
-  "birthDate": "14 JAN 1659/60",
+  "birthDate": "ABT 1655",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I563",
-    "I686"
+    "I564",
+    "I687"
   ]
 }

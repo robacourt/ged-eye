@@ -1,30 +1,29 @@
 {
   "id": "I983",
-  "name": "Wilfred Nathaniel ( Wilf ) A'Court",
-  "givenName": "Wilfred Nathaniel ( Wilf )",
-  "surname": "A'Court",
+  "name": "Thomas Pryor",
+  "givenName": "Thomas",
+  "surname": "Pryor",
   "sex": "M",
-  "birthDate": "1914",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I984"
+    "I982"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I104",
-    "I733"
+  "childIds": [
+    "I1074",
+    "I1317",
+    "I1318"
   ],
-  "notes": [
-    "Title"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I984",
-      "familyId": "F408",
-      "marriageDate": "1943"
+      "spouseId": "I982",
+      "familyId": "F463",
+      "marriageDate": "13 MAR 1937",
+      "marriagePlace": "Dubbo, NSW"
     }
   ]
 }

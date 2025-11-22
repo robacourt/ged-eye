@@ -1,25 +1,31 @@
 {
   "id": "I1318",
-  "name": "Neil Wholagan",
-  "givenName": "Neil",
-  "surname": "Wholagan",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Meryl Pryor",
+  "givenName": "Meryl",
+  "surname": "Pryor",
+  "sex": "F",
+  "birthDate": "29 APR 1941",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Picture/Meryl Pryor.jpg"
+  ],
   "spouseIds": [
-    "I1317"
+    "I1319"
   ],
   "childIds": [
-    "I1440"
+    "I1441"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I983",
+    "I982"
+  ],
   "marriages": [
     {
-      "spouseId": "I1317",
-      "familyId": "F521"
+      "spouseId": "I1319",
+      "familyId": "F591"
     }
-  ]
+  ],
+  "avatar": "avatars/I1318_0.jpg"
 }

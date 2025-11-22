@@ -1,34 +1,18 @@
 {
   "id": "I959",
-  "name": "Marie Elizabeth Chapman",
-  "givenName": "Marie Elizabeth",
-  "surname": "Chapman",
+  "name": "Emma A'Court",
+  "givenName": "Emma",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1865",
+  "birthPlace": "Mudgee, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I955"
-  ],
-  "childIds": [
-    "I960",
-    "I961",
-    "I962",
-    "I963",
-    "I964"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I967",
-    "I968"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I955",
-      "familyId": "F398",
-      "marriageDate": "1879",
-      "marriagePlace": "Mudgee, NSW"
-    }
+    "I75",
+    "I103"
   ]
 }

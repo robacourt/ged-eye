@@ -1,26 +1,33 @@
 {
   "id": "I1154",
-  "name": "Leonard John Roberts",
-  "givenName": "Leonard John",
+  "name": "Ronald Leonard Arthur Roberts",
+  "givenName": "Ronald Leonard Arthur",
   "surname": "Roberts",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1923",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1153"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Clerk"
+  "childIds": [],
+  "parentIds": [
+    "I1155"
+  ],
+  "residences": [
+    {
+      "date": "1945",
+      "place": "Bulford Camp, Wiltshire"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F469"
+      "spouseId": "I1153",
+      "familyId": "F531",
+      "marriageDate": "15 MAR 1945",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

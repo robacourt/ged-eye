@@ -1,46 +1,50 @@
 {
   "id": "I1195",
-  "name": "Maria Ridout",
-  "givenName": "Maria",
-  "surname": "Ridout",
-  "sex": "F",
-  "birthDate": "BET 1803-1811",
-  "birthPlace": "Manston, Dorset",
-  "deathDate": "AFT 1861",
+  "name": "Alfred Sydney A'Court",
+  "givenName": "Alfred Sydney",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1890",
+  "birthPlace": "Hinton St Mary, Dorset",
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/Wiltshire/Box/RG12 1592 75 30.jpg",
+    "Data/Media/1901 census/Wiltshire/Box/RG13 1917 72 20.jpg",
+    "Data/Media/1911 census/Wiltshire/Box/RG14 11864 213.jpg"
+  ],
   "spouseIds": [
-    "I177"
+    "I2413"
   ],
-  "childIds": [
-    "I1183",
-    "I1617",
-    "I1454",
-    "I1257",
-    "I1455",
-    "I1461"
+  "childIds": [],
+  "parentIds": [
+    "I1186",
+    "I1191"
   ],
-  "parentIds": [],
   "occupations": [
-    "Agricultural Labourer",
-    "Charwomen"
+    "Gardener domestic"
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "Marnhull, Dorset, East Well"
+      "date": "1891",
+      "place": "Wadswick Village, Box, Wiltshire, Cottages"
     },
     {
-      "date": "1871",
-      "place": "Marnhull, Dorset, East Well"
+      "date": "1901",
+      "place": "Wadswick, Box, Wiltshire"
+    },
+    {
+      "date": "1911",
+      "place": "Wiltshire, Box, Wadswick"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I177",
-      "familyId": "F97",
-      "marriageDate": "22 OCT 1835",
-      "marriagePlace": "Manston, Dorset"
+      "spouseId": "I2413",
+      "familyId": "F551",
+      "marriageDate": "1912",
+      "marriagePlace": "Chippenham, Wiltshire"
     }
-  ]
+  ],
+  "avatar": "avatars/I1195_0.jpg"
 }

@@ -1,20 +1,45 @@
 {
   "id": "I1468",
-  "name": "Marjorie Lucy Skedgel Hill",
-  "givenName": "Marjorie Lucy Skedgel",
+  "name": "William James Skedgel Hill",
+  "givenName": "William James Skedgel",
   "surname": "Hill",
-  "sex": "F",
-  "birthDate": "4 AUG 1912",
+  "sex": "M",
+  "birthDate": "18 DEC 1902",
   "birthPlace": "Stoke Gabriel, Devon",
-  "deathDate": "FEB 2000",
-  "deathPlace": "Devon, Teignbridge",
-  "photos": [],
-  "spouseIds": [],
+  "deathDate": "12 JAN 1967",
+  "deathPlace": "Devon, Buckfastleigh, 10 Old Totnes Rd",
+  "photos": [
+    "Data/Media/1911 census/Devon/Stoke Gabriel/RG14 12799 78.jpg"
+  ],
+  "spouseIds": [
+    "I2965"
+  ],
   "childIds": [],
   "parentIds": [
-    "I1457",
-    "I1456"
+    "I1458",
+    "I1457"
   ],
-  "baptismDate": "8 SEP 1912",
-  "baptismPlace": "Stoke Gabriel, Devon"
+  "baptismDate": "8 FEB 1903",
+  "baptismPlace": "Stoke Gabriel, Devon",
+  "occupations": [
+    "Dairy Farmer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Devon, Stoke Gabriel, Post Office"
+    },
+    {
+      "date": "1939",
+      "place": "Devon, Buckfastleigh, Button Farm"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2965",
+      "familyId": "F649",
+      "marriageDate": "4 QT 1924"
+    }
+  ],
+  "avatar": "avatars/I1468_0.jpg"
 }

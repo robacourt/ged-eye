@@ -1,27 +1,29 @@
 {
   "id": "I803",
-  "name": "Ruby Lavinia LUMB",
-  "givenName": "Ruby Lavinia",
+  "name": "Francis John LUMB",
+  "givenName": "Francis John",
   "surname": "LUMB",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "M",
+  "birthDate": "1861",
+  "birthPlace": "Brisbane, Queensland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
+    "I787"
+  ],
+  "childIds": [
     "I804"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I802",
-    "I786"
+  "parentIds": [],
+  "notes": [
+    "Wises"
   ],
   "marriages": [
     {
-      "spouseId": "I804",
-      "familyId": "F344",
-      "marriageDate": "1937",
+      "spouseId": "I787",
+      "familyId": "F383",
+      "marriageDate": "1890",
       "marriagePlace": "New Zealand"
     }
   ]

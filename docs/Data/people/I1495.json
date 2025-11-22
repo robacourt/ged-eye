@@ -1,18 +1,25 @@
 {
   "id": "I1495",
-  "name": "Florence Amy Collis",
-  "givenName": "Florence Amy",
+  "name": "Arthur Collis",
+  "givenName": "Arthur",
   "surname": "Collis",
-  "sex": "F",
-  "birthDate": "25 APR 1896",
-  "birthPlace": "Wilton, Wiltshire",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1494",
-    "I1493"
+  "spouseIds": [
+    "I1494"
+  ],
+  "childIds": [
+    "I1496"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1494",
+      "familyId": "F654"
+    }
   ]
 }

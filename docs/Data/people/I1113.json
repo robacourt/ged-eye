@@ -1,30 +1,15 @@
 {
   "id": "I1113",
-  "name": "George Hyde",
-  "givenName": "George",
-  "surname": "Hyde",
-  "sex": "M",
-  "birthDate": "ABT 1879",
+  "name": "Daisy Shern",
+  "givenName": "Daisy",
+  "surname": "Shern",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1108"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1115"
-  ],
-  "occupations": [
-    "Lab"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1108",
-      "familyId": "F449",
-      "marriageDate": "23 OCT 1909",
-      "marriagePlace": "Queen Camel, Somerset"
-    }
-  ]
+  "parentIds": []
 }

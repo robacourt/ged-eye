@@ -1,26 +1,23 @@
 {
   "id": "I897",
-  "name": "Ann Wilkin",
-  "givenName": "Ann",
-  "surname": "Wilkin",
-  "sex": "F",
-  "birthDate": "BEF 1778",
+  "name": "Samuel Durrant",
+  "givenName": "Samuel",
+  "surname": "Durrant",
+  "sex": "M",
+  "birthDate": "BEF 1804",
   "birthPlace": null,
-  "deathDate": "AFT 1804",
+  "deathDate": "AFT 1817",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I745"
+    "I759"
   ],
-  "childIds": [
-    "I898",
-    "I899"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I745",
-      "familyId": "F306"
+      "spouseId": "I759",
+      "familyId": "F361"
     }
   ]
 }

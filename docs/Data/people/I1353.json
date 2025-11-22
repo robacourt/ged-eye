@@ -1,26 +1,24 @@
 {
   "id": "I1353",
-  "name": "Katherine Howden Cundy",
-  "givenName": "Katherine Howden",
-  "surname": "Cundy",
-  "sex": "F",
-  "birthDate": "1870",
-  "birthPlace": "Greytown",
+  "name": "William Alexander Donald",
+  "givenName": "William Alexander",
+  "surname": "Donald",
+  "sex": "M",
+  "birthDate": "ABT 1868",
+  "birthPlace": "New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1354"
+    "I1352"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1354",
-      "familyId": "F536"
+      "spouseId": "I1352",
+      "familyId": "F605",
+      "marriageDate": "1887"
     }
   ]
 }

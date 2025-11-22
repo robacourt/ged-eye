@@ -1,24 +1,34 @@
 {
   "id": "I1739",
-  "name": "William Davis",
-  "givenName": "William",
+  "name": "George Davis",
+  "givenName": "George",
   "surname": "Davis",
   "sex": "M",
-  "birthDate": "Abt 1838",
-  "birthPlace": "Yeovil, Somerset",
+  "birthDate": "Abt 1810",
+  "birthPlace": "Compton",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1738",
-    "I764"
+  "spouseIds": [
+    "I765"
   ],
+  "childIds": [
+    "I1740",
+    "I1742",
+    "I1743",
+    "I1741"
+  ],
+  "parentIds": [],
   "censusRecords": [
     {
       "date": "1851",
       "place": "Yeovil, Somerset, Kiddles Lane"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I765",
+      "familyId": "F366"
     }
   ]
 }

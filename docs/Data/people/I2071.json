@@ -1,32 +1,52 @@
 {
   "id": "I2071",
-  "name": "Maud LouiseDrinkwater",
-  "givenName": "Maud",
-  "surname": "LouiseDrinkwater",
-  "sex": "F",
-  "birthDate": "1891",
-  "birthPlace": "Deptford",
+  "name": "Francis Henry A'Court",
+  "givenName": "Francis Henry",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1890",
+  "birthPlace": "London Greenwich, Deptford",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg",
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
+  ],
   "spouseIds": [
-    "I2070"
+    "I2072"
   ],
   "childIds": [
-    "I2072",
     "I2073",
     "I2074",
     "I2075",
     "I2076",
     "I2077",
     "I2078",
-    "I2079"
+    "I2079",
+    "I2080"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2066",
+    "I2067"
+  ],
+  "occupations": [
+    "Assistant Trolly Driver LCC"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "London, Deptford, Windmill Lane"
+    },
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I2070",
-      "familyId": "F744"
+      "spouseId": "I2072",
+      "familyId": "F816"
     }
-  ]
+  ],
+  "avatar": "avatars/I2071_0.jpg"
 }

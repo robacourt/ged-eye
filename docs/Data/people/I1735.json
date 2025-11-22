@@ -1,25 +1,35 @@
 {
   "id": "I1735",
-  "name": "Martha Candy",
-  "givenName": "Martha",
-  "surname": "Candy",
+  "name": "Jemima A'Court",
+  "givenName": "Jemima",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "BEF 1828",
-  "birthPlace": "Bourton",
+  "birthDate": "ABT 1801",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1733"
+  "photos": [
+    "Data/Media/1841 Census/Henstridge/Folio 28 page 19.jpg"
   ],
-  "childIds": [],
-  "parentIds": [],
+  "spouseIds": [],
+  "childIds": [
+    "I2365"
+  ],
+  "parentIds": [
+    "I2752"
+  ],
+  "baptismDate": "29 MAY 1801",
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Parish House"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1733",
-      "familyId": "F634",
-      "marriageDate": "8 FEB 1848",
-      "marriagePlace": "Wincanton, Baptist Chapel"
+      "spouseId": null,
+      "familyId": "F730"
     }
-  ]
+  ],
+  "avatar": "avatars/I1735_0.jpg"
 }

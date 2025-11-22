@@ -1,29 +1,29 @@
 {
   "id": "I1546",
-  "name": "Roderick A'Court",
-  "givenName": "Roderick",
+  "name": "Robert A'Court",
+  "givenName": "Robert",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "BEF APR 1993",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1554"
+    "I1550"
   ],
   "childIds": [
-    "I1555",
-    "I1556"
+    "I1553",
+    "I1554"
   ],
   "parentIds": [
-    "I1541",
-    "I1544"
+    "I1542",
+    "I1545"
   ],
   "marriages": [
     {
-      "spouseId": "I1554",
-      "familyId": "F591"
+      "spouseId": "I1550",
+      "familyId": "F677"
     }
   ]
 }

@@ -1,32 +1,23 @@
 {
   "id": "I682",
-  "name": "Eliza Unknown",
-  "givenName": "Eliza",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "John Drew",
+  "givenName": "John",
+  "surname": "Drew",
+  "sex": "M",
   "birthDate": null,
-  "birthPlace": "Stalbridge, Dorset",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I246"
+  "spouseIds": [],
+  "childIds": [
+    "I681"
   ],
-  "childIds": [],
   "parentIds": [],
-  "notes": [
-    "71 in 1881,"
-  ],
-  "censusRecords": [
-    {
-      "date": "1881",
-      "place": "Stalbridge, Dorset"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I246",
-      "familyId": "F129"
+      "spouseId": null,
+      "familyId": "F337"
     }
   ]
 }

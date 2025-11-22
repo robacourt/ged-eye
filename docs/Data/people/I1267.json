@@ -1,27 +1,36 @@
 {
   "id": "I1267",
-  "name": "Kathleen D A'Court",
-  "givenName": "Kathleen D",
+  "name": "Herbert Maurice A'Court",
+  "givenName": "Herbert Maurice",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1916",
+  "sex": "M",
+  "birthDate": "1921",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1268"
+    "I1296",
+    "I1299"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1297",
+    "I1298",
+    "I1300",
+    "I1301"
+  ],
   "parentIds": [
-    "I1090",
-    "I1091"
+    "I1339",
+    "I1090"
   ],
   "marriages": [
     {
-      "spouseId": "I1268",
-      "familyId": "F512",
-      "marriageDate": "1937"
+      "spouseId": "I1296",
+      "familyId": "F577"
+    },
+    {
+      "spouseId": "I1299",
+      "familyId": "F578"
     }
   ]
 }

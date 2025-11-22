@@ -1,15 +1,25 @@
 {
   "id": "I1112",
-  "name": "Daisy Shern",
-  "givenName": "Daisy",
-  "surname": "Shern",
-  "sex": "F",
-  "birthDate": null,
+  "name": "Daniel Smith",
+  "givenName": "Daniel",
+  "surname": "Smith",
+  "sex": "M",
+  "birthDate": "ABT 1881",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1106"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1106",
+      "familyId": "F509",
+      "marriageDate": "23 MAY 1904",
+      "marriagePlace": "Queen Camel, Somerset"
+    }
+  ]
 }

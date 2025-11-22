@@ -1,11 +1,11 @@
 {
   "id": "I854",
-  "name": "Margaret Mary Loader",
-  "givenName": "Margaret Mary",
-  "surname": "Loader",
+  "name": "never married",
+  "givenName": "never",
+  "surname": "married",
   "sex": "F",
-  "birthDate": "27 AUG 1906",
-  "birthPlace": "Lyttelton, NZ",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -17,9 +17,7 @@
   "marriages": [
     {
       "spouseId": "I841",
-      "familyId": "F366",
-      "marriageDate": "1926",
-      "marriagePlace": "New Zealand"
+      "familyId": "F417"
     }
   ]
 }

@@ -1,36 +1,26 @@
 {
   "id": "I1266",
-  "name": "Herbert Maurice A'Court",
-  "givenName": "Herbert Maurice",
-  "surname": "A'Court",
+  "name": "Gerald J. Acreman",
+  "givenName": "Gerald J.",
+  "surname": "Acreman",
   "sex": "M",
-  "birthDate": "1921",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1295",
-    "I1298"
+    "I1094"
   ],
   "childIds": [
-    "I1296",
-    "I1297",
-    "I1299",
-    "I1300"
+    "I2673"
   ],
-  "parentIds": [
-    "I1338",
-    "I1089"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1295",
-      "familyId": "F510"
-    },
-    {
-      "spouseId": "I1298",
-      "familyId": "F511"
+      "spouseId": "I1094",
+      "familyId": "F502",
+      "marriageDate": "1931"
     }
   ]
 }

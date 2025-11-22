@@ -1,33 +1,30 @@
 {
   "id": "I581",
-  "name": "Alfred Thomas Pike",
-  "givenName": "Alfred Thomas",
-  "surname": "Pike",
+  "name": "Robert William Foot",
+  "givenName": "Robert William",
+  "surname": "Foot",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "1859",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I155"
+    "I583"
   ],
   "childIds": [
-    "I582"
+    "I719"
   ],
   "parentIds": [
-    "I583",
-    "I584"
-  ],
-  "occupations": [
-    "Ag Lab"
+    "I580",
+    "I154"
   ],
   "marriages": [
     {
-      "spouseId": "I155",
-      "familyId": "F88",
-      "marriageDate": "24.9.1863",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I583",
+      "familyId": "F289",
+      "marriageDate": "20 MAY 1890",
+      "marriagePlace": "Manston, Dorset"
     }
   ]
 }

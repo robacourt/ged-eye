@@ -1,10 +1,10 @@
 {
   "id": "I1773",
-  "name": "Glenn B A'Court",
-  "givenName": "Glenn B",
+  "name": "Michael K A'Court",
+  "givenName": "Michael K",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "3RD QRT 1956",
+  "birthDate": "1ST QRT 1955",
   "birthPlace": "King's L",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1768",
-    "I1767"
+    "I1769",
+    "I1768"
   ]
 }

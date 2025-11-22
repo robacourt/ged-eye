@@ -1,18 +1,27 @@
 {
   "id": "I1302",
-  "name": "Nigel H A'Court",
-  "givenName": "Nigel H",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1949",
+  "name": "Unknown Lloyd",
+  "givenName": "Unknown",
+  "surname": "Lloyd",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1102",
-    "I1301"
+  "spouseIds": [
+    "I1103"
+  ],
+  "childIds": [
+    "I1303",
+    "I1304"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1103",
+      "familyId": "F506",
+      "marriageDate": "1947"
+    }
   ]
 }

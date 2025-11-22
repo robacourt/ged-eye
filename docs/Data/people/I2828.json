@@ -15,7 +15,7 @@
     "I2829"
   ],
   "childIds": [
-    "I1572"
+    "I1573"
   ],
   "parentIds": [],
   "censusRecords": [
@@ -27,7 +27,7 @@
   "marriages": [
     {
       "spouseId": "I2829",
-      "familyId": "F874"
+      "familyId": "F683"
     }
   ],
   "avatar": "avatars/I2828_0.jpg"

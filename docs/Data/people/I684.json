@@ -1,18 +1,28 @@
 {
   "id": "I684",
-  "name": "Edward Ryall",
-  "givenName": "Edward",
+  "name": "John Ryall",
+  "givenName": "John",
   "surname": "Ryall",
   "sex": "M",
-  "birthDate": "1637",
-  "birthPlace": "South Cadbury, Somerset",
-  "deathDate": null,
+  "birthDate": "BEF 1620",
+  "birthPlace": null,
+  "deathDate": "AFT 1637",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I683",
-    "I564"
+  "spouseIds": [
+    "I565"
+  ],
+  "childIds": [
+    "I685",
+    "I686"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I565",
+      "familyId": "F283",
+      "marriageDate": "18 JUL 1636",
+      "marriagePlace": "South Cadbury, Somerset"
+    }
   ]
 }

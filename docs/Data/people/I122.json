@@ -27,7 +27,7 @@
   "marriages": [
     {
       "spouseId": "I124",
-      "familyId": "F75",
+      "familyId": "F85",
       "marriageDate": "18 SEP 1963",
       "marriagePlace": "Auckland, New Zealand,  St. Johns, Northcote",
       "divorceDate": "8 FEB 1985",
@@ -35,7 +35,7 @@
     },
     {
       "spouseId": "I127",
-      "familyId": "F76"
+      "familyId": "F86"
     }
   ],
   "avatar": "avatars/I122_0.jpg"

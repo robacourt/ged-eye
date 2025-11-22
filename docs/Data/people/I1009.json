@@ -1,28 +1,18 @@
 {
   "id": "I1009",
-  "name": "Michael Farrelly",
-  "givenName": "Michael",
-  "surname": "Farrelly",
+  "name": "David Fearne",
+  "givenName": "David",
+  "surname": "Fearne",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I996"
-  ],
-  "childIds": [
-    "I1010",
-    "I1011",
-    "I1012",
-    "I1013"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I996",
-      "familyId": "F415"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1007",
+    "I994"
   ]
 }

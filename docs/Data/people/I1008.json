@@ -1,10 +1,10 @@
 {
   "id": "I1008",
-  "name": "David Fearne",
-  "givenName": "David",
+  "name": "Peter Fearne",
+  "givenName": "Peter",
   "surname": "Fearne",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "1951",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1006",
-    "I993"
+    "I1007",
+    "I994"
   ]
 }

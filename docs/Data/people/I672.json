@@ -1,28 +1,26 @@
 {
   "id": "I672",
-  "name": "Stella Mary Plowman",
-  "givenName": "Stella Mary",
-  "surname": "Plowman",
-  "sex": "F",
+  "name": "Joseph Chant",
+  "givenName": "Joseph",
+  "surname": "Chant",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I667"
+  "spouseIds": [],
+  "childIds": [
+    "I671"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I673"
-  ],
-  "notes": [
-    "20 in 1931"
+  "parentIds": [],
+  "occupations": [
+    "Basketmaker"
   ],
   "marriages": [
     {
-      "spouseId": "I667",
-      "familyId": "F280"
+      "spouseId": null,
+      "familyId": "F332"
     }
   ]
 }

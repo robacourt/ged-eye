@@ -1,42 +1,26 @@
 {
   "id": "I1155",
-  "name": "Albert Curtis",
-  "givenName": "Albert",
-  "surname": "Curtis",
+  "name": "Leonard John Roberts",
+  "givenName": "Leonard John",
+  "surname": "Roberts",
   "sex": "M",
-  "birthDate": "7 APR 1861",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1156"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1159",
-    "I1162"
+    "I1154"
   ],
-  "parentIds": [
-    "I179",
-    "I275"
-  ],
-  "baptismDate": "14 JUL 1861",
-  "baptismPlace": "Marnhull, Dorset",
+  "parentIds": [],
   "occupations": [
-    "Farmer"
-  ],
-  "residences": [
-    {
-      "date": "1902",
-      "place": "Antells Farm"
-    }
+    "Clerk"
   ],
   "marriages": [
     {
-      "spouseId": "I1156",
-      "familyId": "F470",
-      "marriageDate": "15 JAN 1902",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F532"
     }
   ]
 }

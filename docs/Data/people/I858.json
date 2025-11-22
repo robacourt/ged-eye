@@ -1,32 +1,26 @@
 {
   "id": "I858",
-  "name": "Marcia Ethel Hermione Beach",
-  "givenName": "Marcia Ethel Hermione",
-  "surname": "Beach",
+  "name": "Gladys Vera WILSON",
+  "givenName": "Gladys Vera",
+  "surname": "WILSON",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1910",
+  "birthPlace": "Dunedin, NZ",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I844"
+    "I845"
   ],
   "childIds": [
-    "I1934",
-    "I1936",
-    "I1937"
+    "I1933"
   ],
   "parentIds": [],
-  "notes": [
-    "By the way I think you have my mothers maiden name mispelt. (but that could be wrong this end also) we have always had it spelt Beach and all the documents from her step father Henry Beach is spelt Beach. We don�t know her biological fathers nam"
-  ],
   "marriages": [
     {
-      "spouseId": "I844",
-      "familyId": "F370",
-      "marriageDate": "1939",
-      "marriagePlace": "New Zealand"
+      "spouseId": "I845",
+      "familyId": "F421",
+      "marriageDate": "BET. 1924 - 1939"
     }
   ]
 }

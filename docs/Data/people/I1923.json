@@ -1,18 +1,18 @@
 {
   "id": "I1923",
-  "name": "Shirley Todrick A'Court",
-  "givenName": "Shirley Todrick",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "8 SEP 1921",
-  "birthPlace": "Sanson, Wellington, New Zealand",
-  "deathDate": "28 MAR 1986",
-  "deathPlace": "NZ",
+  "name": "Andrew Cassan",
+  "givenName": "Andrew",
+  "surname": "Cassan",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I939",
-    "I940"
+    "I1921",
+    "I1301"
   ]
 }

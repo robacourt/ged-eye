@@ -1,31 +1,38 @@
 {
   "id": "I1953",
-  "name": "Douglas Armstrong",
-  "givenName": "Douglas",
+  "name": "Frederick Arthur Armstrong",
+  "givenName": "Frederick Arthur",
   "surname": "Armstrong",
   "sex": "M",
-  "birthDate": "1921",
-  "birthPlace": "London",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Dennis Leon Billy Irene Doug 1930.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1954"
+    "I1030"
   ],
   "childIds": [
-    "I1955"
+    "I1954"
   ],
-  "parentIds": [
-    "I1952",
-    "I1029"
+  "parentIds": [],
+  "occupations": [
+    "Newsagent, Hairdresser"
+  ],
+  "notes": [
+    "Louie became a hairdresser.  She and her husband Frederick Arthur (known as Arthur) owned a newsagents/hairdressers/barbers in Caledonian Road"
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "Ilford, Essex"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1954",
-      "familyId": "F697"
+      "spouseId": "I1030",
+      "familyId": "F479",
+      "marriageDate": "SEP 14 1919"
     }
-  ],
-  "avatar": "avatars/I1953_0.jpg"
+  ]
 }

@@ -1,30 +1,18 @@
 {
   "id": "I1204",
-  "name": "Freda Haskett",
-  "givenName": "Freda",
+  "name": "Jack Haskett",
+  "givenName": "Jack",
   "surname": "Haskett",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1205"
-  ],
-  "childIds": [
-    "I1206",
-    "I1207",
-    "I1208"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1181",
-    "I1182"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1205",
-      "familyId": "F487"
-    }
+    "I1200",
+    "I1201"
   ]
 }

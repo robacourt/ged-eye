@@ -1,25 +1,28 @@
 {
   "id": "I1170",
-  "name": "Jemima Unknown",
-  "givenName": "Jemima",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "James Humphries",
+  "givenName": "James",
+  "surname": "Humphries",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1169"
+    "I1171"
   ],
   "childIds": [
-    "I1168"
+    "I1169"
   ],
   "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
   "marriages": [
     {
-      "spouseId": "I1169",
-      "familyId": "F478"
+      "spouseId": "I1171",
+      "familyId": "F541"
     }
   ]
 }

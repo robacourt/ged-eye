@@ -1,35 +1,27 @@
 {
   "id": "I2085",
-  "name": "Samuel A'Court",
-  "givenName": "Samuel",
+  "name": "George Wilfred A'Court",
+  "givenName": "George Wilfred",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1831",
-  "birthPlace": "Salford, Lancashire",
+  "birthDate": "1905",
+  "birthPlace": "Camberwell, Peckham",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I2086"
+  "photos": [
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
   ],
-  "childIds": [
-    "I2065",
-    "I1904"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Journeyman Watch Jobber"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I2066",
+    "I2067"
   ],
   "censusRecords": [
     {
-      "date": "1861",
-      "place": "London, Chelsea, 3 Whitelands Terrace"
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
     }
   ],
-  "marriages": [
-    {
-      "spouseId": "I2086",
-      "familyId": "F745"
-    }
-  ]
+  "avatar": "avatars/I2085_0.jpg"
 }

@@ -1,7 +1,7 @@
 {
   "id": "I2010",
-  "name": "Peter Wigglesworth",
-  "givenName": "Peter",
+  "name": "John Wigglesworth",
+  "givenName": "John",
   "surname": "Wigglesworth",
   "sex": "M",
   "birthDate": null,
@@ -9,10 +9,20 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I2981"
+  ],
   "childIds": [],
   "parentIds": [
-    "I2008",
+    "I2009",
     "I422"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2981",
+      "familyId": "F800",
+      "marriageDate": "1968",
+      "marriagePlace": "London Westminster"
+    }
   ]
 }

@@ -1,38 +1,21 @@
 {
   "id": "I981",
-  "name": "Muriel Maud A'Court",
-  "givenName": "Muriel Maud",
+  "name": "Rupert Victor (Vic) A'Court",
+  "givenName": "Rupert Victor (Vic)",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "7 OCT 1912",
-  "birthPlace": null,
-  "deathDate": "14 JAN 2007",
+  "sex": "M",
+  "birthDate": "27 MAY 1911",
+  "birthPlace": "Dubbo, NSW",
+  "deathDate": "1990",
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Muriel A'Court 30.06.01.jpg"
-  ],
-  "spouseIds": [
-    "I982"
-  ],
-  "childIds": [
-    "I1073",
-    "I1316",
-    "I1317"
-  ],
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
     "I104",
-    "I733"
+    "I734"
   ],
   "notes": [
-    "You should write to an elderly aunt of his:"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I982",
-      "familyId": "F407",
-      "marriageDate": "13 MAR 1937",
-      "marriagePlace": "Dubbo, NSW"
-    }
-  ],
-  "avatar": "avatars/I981_0.jpg"
+    "ACOURT RUPERT VICTOR : Service Number - N101700 : Date of birth - 27 May 1911 : Place of birth - DUBBO NSW : Place of enlistment - PADDINGTON NSW : Next of Kin - ACOURT MARY"
+  ]
 }

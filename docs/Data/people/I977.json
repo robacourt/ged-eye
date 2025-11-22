@@ -1,26 +1,27 @@
 {
   "id": "I977",
-  "name": "Nathaniel Robert (Bob) A'Court",
-  "givenName": "Nathaniel Robert (Bob)",
+  "name": "Susan A.L.L. A'Court",
+  "givenName": "Susan A.L.L.",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1904",
+  "sex": "F",
+  "birthDate": "1901",
   "birthPlace": null,
-  "deathDate": "BET 1980-1990",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I978"
+    "I1073"
   ],
   "childIds": [],
   "parentIds": [
     "I104",
-    "I733"
+    "I734"
   ],
   "marriages": [
     {
-      "spouseId": "I978",
-      "familyId": "F406"
+      "spouseId": "I1073",
+      "familyId": "F461",
+      "marriageDate": "1921"
     }
   ]
 }

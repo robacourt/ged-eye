@@ -1,24 +1,24 @@
 {
   "id": "I2018",
-  "name": "Elizabeth Edith A'Court",
-  "givenName": "Elizabeth Edith",
+  "name": "Fanny A'Court",
+  "givenName": "Fanny",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1854",
-  "birthPlace": "Devon, Exeter, St Davids",
+  "birthDate": "1852",
+  "birthPlace": "Devon, Stoke Canon",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1861 Census/Exeter/RG09 1397 44 10.png",
-    "Data/Media/1881 census/Devon/Exeter/RG11 2153 51 10.jpg"
+    "Data/Media/1881 census/Devon/Exeter/RG11 2152 94 17.jpg"
   ],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2013"
+    "I2014"
   ],
   "occupations": [
-    "Housekeeper"
+    "Cook domestic servant"
   ],
   "censusRecords": [
     {
@@ -27,7 +27,7 @@
     },
     {
       "date": "1881",
-      "place": "evon, Exeter, 36 Lower North St."
+      "place": "Devon, Exeter, St Leonard, Lyndhurst Rd."
     }
   ],
   "avatar": "avatars/I2018_0.jpg"

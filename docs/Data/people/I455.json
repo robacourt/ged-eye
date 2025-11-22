@@ -12,11 +12,11 @@
     "Data/Media/1901 census/Yorkshire/RG13 4530 46 84.jpg"
   ],
   "spouseIds": [
-    "I459"
+    "I460"
   ],
   "childIds": [
-    "I460",
-    "I461"
+    "I461",
+    "I462"
   ],
   "parentIds": [
     "I452",
@@ -38,8 +38,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I459",
-      "familyId": "F204",
+      "spouseId": "I460",
+      "familyId": "F241",
       "marriageDate": "APR 1909",
       "marriagePlace": "Kent, Faversham"
     }

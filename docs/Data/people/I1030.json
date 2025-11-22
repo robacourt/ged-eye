@@ -1,34 +1,50 @@
 {
   "id": "I1030",
-  "name": "Nettie A'Court",
-  "givenName": "Nettie",
+  "name": "Ethel Louise (Louie) A'Court",
+  "givenName": "Ethel Louise (Louie)",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1896",
-  "birthPlace": "Somerset",
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "1895",
+  "birthPlace": null,
+  "deathDate": "1949",
+  "deathPlace": "London, Clapham Common",
   "photos": [
-    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg",
-    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+    "Data/Picture/Ethel Louie  her mother Emily Cribb.jpg",
+    "Data/Media/1901 census/Somerset/Martock/RG13 2299 7 6.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1953"
+  ],
+  "childIds": [
+    "I1954"
+  ],
   "parentIds": [
-    "I782",
-    "I870"
+    "I783",
+    "I871"
   ],
   "occupations": [
-    "Domestic servant"
+    "Hairdresser"
+  ],
+  "notes": [
+    "Louie became a hairdresser.  She and her husband Frederick Arthur (known as Arthur) owned a newsagents/hairdressers/barbers in Caledonian Road."
   ],
   "censusRecords": [
     {
       "date": "1901",
       "place": "Martock, Somerset, East St."
-    },
+    }
+  ],
+  "residences": [
     {
-      "date": "1911",
-      "place": "Somerset, Martock, Bower Hinton"
+      "date": null,
+      "place": "Ilford, Essex"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1953",
+      "familyId": "F479",
+      "marriageDate": "SEP 14 1919"
     }
   ],
   "avatar": "avatars/I1030_0.jpg"

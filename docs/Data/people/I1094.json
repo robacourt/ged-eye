@@ -1,18 +1,31 @@
 {
   "id": "I1094",
-  "name": "Brenda J. A'Court",
-  "givenName": "Brenda J.",
+  "name": "Olive Edith A'Court",
+  "givenName": "Olive Edith",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1941",
-  "birthPlace": "Aldershot, Hampshire",
-  "deathDate": "1941",
-  "deathPlace": null,
+  "birthDate": "1912",
+  "birthPlace": null,
+  "deathDate": "1972",
+  "deathPlace": "Yeovil, Somerset",
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1266"
+  ],
+  "childIds": [
+    "I2673"
+  ],
   "parentIds": [
-    "I1087",
-    "I1088"
+    "I1339",
+    "I1090"
+  ],
+  "baptismDate": "8 AUGUST 1815",
+  "baptismPlace": "West Camel, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I1266",
+      "familyId": "F502",
+      "marriageDate": "1931"
+    }
   ]
 }

@@ -1,20 +1,38 @@
 {
   "id": "I624",
-  "name": "Harold Ernest Hatcher",
-  "givenName": "Harold Ernest",
+  "name": "Ronald George Hatcher",
+  "givenName": "Ronald George",
   "surname": "Hatcher",
   "sex": "M",
-  "birthDate": "23.3.1928",
+  "birthDate": "12.3.1922",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I593",
-    "I621"
+  "spouseIds": [
+    "I634"
   ],
-  "baptismDate": "12.5.1923",
-  "baptismPlace": "Marnhull, Dorset"
+  "childIds": [
+    "I635"
+  ],
+  "parentIds": [
+    "I594",
+    "I622"
+  ],
+  "baptismDate": "10.4.1936",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Ag Lab"
+  ],
+  "notes": [
+    "26-1948"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I634",
+      "familyId": "F311",
+      "marriageDate": "28.8.1948",
+      "marriagePlace": "Marnhull, Dorset"
+    }
+  ]
 }

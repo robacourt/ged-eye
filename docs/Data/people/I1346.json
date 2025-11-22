@@ -1,34 +1,34 @@
 {
   "id": "I1346",
-  "name": "William Cundy",
-  "givenName": "William",
-  "surname": "Cundy",
-  "sex": "M",
-  "birthDate": "1841",
-  "birthPlace": "New Zealand",
-  "deathDate": "1897",
-  "deathPlace": "Featherston, New Zealand",
+  "name": "Alice Jane A'Court",
+  "givenName": "Alice Jane",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1842",
+  "birthPlace": null,
+  "deathDate": "22 DEC 1898",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1345"
+    "I1347"
   ],
   "childIds": [
-    "I1349",
-    "I1351",
-    "I1353",
-    "I1355",
-    "I1357",
-    "I1359",
-    "I1363"
+    "I1350",
+    "I1352",
+    "I1354",
+    "I1356",
+    "I1358",
+    "I1360",
+    "I1364"
   ],
   "parentIds": [
-    "I1347",
-    "I1348"
+    "I936",
+    "I937"
   ],
   "marriages": [
     {
-      "spouseId": "I1345",
-      "familyId": "F532"
+      "spouseId": "I1347",
+      "familyId": "F602"
     }
   ]
 }

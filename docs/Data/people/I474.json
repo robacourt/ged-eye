@@ -1,18 +1,20 @@
 {
   "id": "I474",
-  "name": "Hannah a'Court",
-  "givenName": "Hannah",
+  "name": "Betty a'Court",
+  "givenName": "Betty",
   "surname": "a'Court",
   "sex": "F",
-  "birthDate": "BEF 11 APR 173",
-  "birthPlace": "Horsington, Somerset",
-  "deathDate": null,
+  "birthDate": "BEF 1731",
+  "birthPlace": null,
+  "deathDate": "1731",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I469",
-    "I470"
-  ]
+    "I470",
+    "I471"
+  ],
+  "burialDate": "12 DEC 1731",
+  "burialPlace": "Horsington, Somerset"
 }

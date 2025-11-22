@@ -1,45 +1,28 @@
 {
   "id": "I1544",
-  "name": "Margaret Clarke",
-  "givenName": "Margaret",
-  "surname": "Clarke",
+  "name": "Ellen S Hunter",
+  "givenName": "Ellen S",
+  "surname": "Hunter",
   "sex": "F",
-  "birthDate": "14 DEC 1920",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "25 MAR 1999",
-  "deathPlace": "Truro, Nova Scotia, Canada",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1541"
+    "I1543"
   ],
   "childIds": [
-    "I1545",
-    "I1546",
-    "I1547",
-    "I1548"
+    "I1542",
+    "I2313"
   ],
   "parentIds": [],
-  "occupations": [
-    "Brush Finishing & packing"
-  ],
-  "censusRecords": [
-    {
-      "date": "1939 REGISTER",
-      "place": "Bristol, 69 Pearl St"
-    }
-  ],
-  "residences": [
-    {
-      "date": "1939",
-      "place": "Middlesex, Harrow"
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1541",
-      "familyId": "F588",
-      "marriageDate": "14 DEC 1939",
-      "marriagePlace": "Bristol Register Office, by special licence"
+      "spouseId": "I1543",
+      "familyId": "F675",
+      "marriageDate": "DEC 1913",
+      "marriagePlace": "Bristol"
     }
   ]
 }

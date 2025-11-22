@@ -1,18 +1,26 @@
 {
   "id": "I890",
-  "name": "Alice A'Court",
-  "givenName": "Alice",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "BEF 30 MAY 185",
-  "birthPlace": "Holborn,London",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I904"
+  ],
   "childIds": [],
   "parentIds": [
-    "I767",
-    "I886"
+    "I768",
+    "I887"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I904",
+      "familyId": "F431"
+    }
   ]
 }

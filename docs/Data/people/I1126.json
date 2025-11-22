@@ -1,36 +1,20 @@
 {
   "id": "I1126",
-  "name": "Lilian Joan Kent",
-  "givenName": "Lilian Joan",
+  "name": "Harry George Kent",
+  "givenName": "Harry George",
   "surname": "Kent",
-  "sex": "F",
-  "birthDate": "6 MAY 1920",
+  "sex": "M",
+  "birthDate": "8 JUN 1918",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1127"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1121",
-    "I1120"
+    "I1122",
+    "I1121"
   ],
-  "baptismDate": "1 AUG 1920",
-  "baptismPlace": "Marnhull, Dorset",
-  "residences": [
-    {
-      "date": "1939",
-      "place": "Marnhull, Dorset, Gannetts"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1127",
-      "familyId": "F456",
-      "marriageDate": "4 NOV 1939",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "28 JUL 1918",
+  "baptismPlace": "Marnhull, Dorset"
 }

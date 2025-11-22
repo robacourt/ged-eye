@@ -1,23 +1,24 @@
 {
   "id": "I1964",
-  "name": "Frederick A'Court",
-  "givenName": "Frederick",
+  "name": "Elijah A'Court",
+  "givenName": "Elijah",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1841",
-  "birthPlace": "Shepton Mallet, Somerset, Paul St",
+  "birthDate": "ABT 1816",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1841 Census/Walcot/Piece 970 folio 41 page 19.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1965"
-  ],
+  "parentIds": [],
   "censusRecords": [
     {
       "date": "1841",
-      "place": "Shepton Mallet, Somerset, Paul St"
+      "place": "Bath, Somerset, 24 Green Park ,"
     }
-  ]
+  ],
+  "avatar": "avatars/I1964_0.jpg"
 }

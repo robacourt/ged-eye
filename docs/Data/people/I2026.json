@@ -1,25 +1,34 @@
 {
   "id": "I2026",
-  "name": "John A'Court",
-  "givenName": "John",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Andrenna Hansen",
+  "givenName": "Andrenna",
+  "surname": "Hansen",
+  "sex": "F",
+  "birthDate": "15 SEP 1960",
+  "birthPlace": "Balclutha, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2027"
+    "I2025",
+    "I2035"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1035"
+  "childIds": [
+    "I2037",
+    "I2038",
+    "I2036"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2027",
-      "familyId": "F728"
+      "spouseId": "I2025",
+      "familyId": "F803",
+      "marriageDate": "26 JAN 1980",
+      "marriagePlace": "Balclutha, New Zealand"
+    },
+    {
+      "spouseId": "I2035",
+      "familyId": "F804"
     }
   ]
 }

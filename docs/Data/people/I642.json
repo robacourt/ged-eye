@@ -1,26 +1,27 @@
 {
   "id": "I642",
-  "name": "Amos Chinn",
-  "givenName": "Amos",
+  "name": "Sarah Chinn",
+  "givenName": "Sarah",
   "surname": "Chinn",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I641"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab"
+  "childIds": [
+    "I640"
+  ],
+  "parentIds": [
+    "I643"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F270"
+      "spouseId": "I641",
+      "familyId": "F319"
     }
   ]
 }

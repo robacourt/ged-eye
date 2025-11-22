@@ -11,7 +11,7 @@
   "photos": [],
   "spouseIds": [
     "I40",
-    "I682"
+    "I683"
   ],
   "childIds": [
     "I247",
@@ -38,13 +38,13 @@
   "marriages": [
     {
       "spouseId": "I40",
-      "familyId": "F28",
+      "familyId": "F29",
       "marriageDate": "8.4.1844",
       "marriagePlace": "Marnhull, Dorset"
     },
     {
-      "spouseId": "I682",
-      "familyId": "F129"
+      "spouseId": "I683",
+      "familyId": "F144"
     }
   ]
 }

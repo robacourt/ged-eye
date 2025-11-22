@@ -22,8 +22,8 @@
     "I2599"
   ],
   "parentIds": [
-    "I874",
-    "I926"
+    "I875",
+    "I927"
   ],
   "occupations": [
     "Photographers Apprentice"
@@ -53,7 +53,7 @@
   "marriages": [
     {
       "spouseId": "I2472",
-      "familyId": "F873",
+      "familyId": "F924",
       "marriageDate": "ABT 1895"
     }
   ],

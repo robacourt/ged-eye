@@ -1,25 +1,25 @@
 {
   "id": "I968",
-  "name": "Catherine Unknown",
-  "givenName": "Catherine",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "John Chapman",
+  "givenName": "John",
+  "surname": "Chapman",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I967"
+    "I969"
   ],
   "childIds": [
-    "I959"
+    "I960"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I967",
-      "familyId": "F400"
+      "spouseId": "I969",
+      "familyId": "F456"
     }
   ]
 }

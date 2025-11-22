@@ -1,38 +1,35 @@
 {
   "id": "I494",
-  "name": "Arthur A'Court",
-  "givenName": "Arthur",
+  "name": "Alfred A'Court",
+  "givenName": "Alfred",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1887",
+  "birthDate": "26.5.1893",
   "birthPlace": "Nether Compton, Dorset",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "MAR 1941",
+  "deathPlace": "Somerset, Wincanton",
   "photos": [
-    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg",
     "Data/Media/1901 census/Dorset/Nether Compton/RG13 2007 17 3.jpg",
     "Data/Media/1911 census/Dorset/Nether Compton/RG14 12439 36.jpg"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I490",
-    "I491"
+  "spouseIds": [
+    "I497"
   ],
-  "burialDate": "31 MAR 1962",
-  "burialPlace": "Over Compton, Dorset, St Michaels",
+  "childIds": [
+    "I498"
+  ],
+  "parentIds": [
+    "I491",
+    "I492"
+  ],
   "occupations": [
-    "Under Cowman",
-    "Carter on Farm"
+    "Groom",
+    "Farm Labourer"
   ],
   "notes": [
-    "No issue"
+    "After his death in 1942,his widow and only son moved to Appledore, Devon"
   ],
   "censusRecords": [
-    {
-      "date": "1891",
-      "place": "Dorset, Sherborne, Over Compton, Lodge"
-    },
     {
       "date": "1901",
       "place": "Nether Compton, Dorset, Halfway House"
@@ -40,6 +37,12 @@
     {
       "date": "1911",
       "place": "Nether Compton, Dorset"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I497",
+      "familyId": "F255"
     }
   ],
   "avatar": "avatars/I494_0.jpg"

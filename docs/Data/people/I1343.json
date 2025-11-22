@@ -1,31 +1,29 @@
 {
   "id": "I1343",
-  "name": "Ellen A'Court",
-  "givenName": "Ellen",
+  "name": "Kate A'Court",
+  "givenName": "Kate",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1846",
-  "birthPlace": "Lower Hutt, NZ",
-  "deathDate": "1928",
-  "deathPlace": "Christchurch, NZ, St Albans",
+  "birthDate": "1845",
+  "birthPlace": null,
+  "deathDate": "1904",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I1366"
   ],
   "childIds": [],
   "parentIds": [
-    "I935",
-    "I936"
+    "I936",
+    "I937"
   ],
   "notes": [
-    "CNIDR Isearch-cgi 1.20.06 (File: 48)"
+    "Possible parents of C. A'Court Opie a member of the New Zeal;and 1907 Sub-Antarctic Islands Scientific Expedition. see web link"
   ],
   "marriages": [
     {
       "spouseId": "I1366",
-      "familyId": "F530",
-      "marriageDate": "1866",
-      "marriagePlace": "Lower Hutt, NZ"
+      "familyId": "F599"
     }
   ]
 }

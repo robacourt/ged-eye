@@ -1,72 +1,32 @@
 {
   "id": "I1450",
-  "name": "William Charles A'Court",
-  "givenName": "William Charles",
+  "name": "Alan A'Court",
+  "givenName": "Alan",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1842",
-  "birthPlace": "Weymouth, Dorset",
-  "deathDate": "13 FEB 1900",
-  "deathPlace": "Weymouth, Dorset",
+  "birthDate": "30 SEP 1934",
+  "birthPlace": "Rainhill, Lancashire",
+  "deathDate": "14 DEC 2009",
+  "deathPlace": null,
   "photos": [
-    "Data/Media/1851 census/Weymouth/HO107 1857 194 8.jpg"
+    "Data/Picture/Alan A'Court 2.jpg",
+    "Data/Picture/Alan A'Court.jpg",
+    "Data/Picture/Alan A'Court3.jpg"
   ],
   "spouseIds": [
-    "I1451"
+    "I2762"
   ],
   "childIds": [
-    "I2346",
-    "I1645",
-    "I1646",
-    "I2347",
-    "I1647",
-    "I1452",
-    "I2348",
-    "I2360"
+    "I2763"
   ],
   "parentIds": [
-    "I143",
-    "I174"
-  ],
-  "occupations": [
-    "Coachman",
-    "Coachman",
-    "Cab Driver",
-    "Coachman",
-    "Lodging House Keeper",
-    "Livery Stable Proprietor"
-  ],
-  "notes": [
-    "Rosa A'Court widow �584-17-2"
-  ],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Dorset, Melcombe Regis, 6 Terrace Court"
-    },
-    {
-      "date": "1871",
-      "place": "Weymouth, Dorset, Gloster Mews House Inn"
-    },
-    {
-      "date": "1881",
-      "place": "Dorset. Melcombe Regis, 4 Alexandra Terrace"
-    },
-    {
-      "date": "1891",
-      "place": "Dorset, Melcombe Regis, Gloucester Row"
-    }
-  ],
-  "residences": [
-    {
-      "date": "1900",
-      "place": "Dorset,  Melcombe Regis, No. 3 Gloucester Row"
-    }
+    "I2610",
+    "I2615"
   ],
   "marriages": [
     {
-      "spouseId": "I1451",
-      "familyId": "F559"
+      "spouseId": "I2762",
+      "familyId": "F641"
     }
   ],
   "avatar": "avatars/I1450_0.jpg"

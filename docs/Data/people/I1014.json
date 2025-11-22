@@ -1,25 +1,18 @@
 {
   "id": "I1014",
-  "name": "Marilyn Anne Bennett",
-  "givenName": "Marilyn Anne",
-  "surname": "Bennett",
+  "name": "Unknown Farrelly",
+  "givenName": "Unknown",
+  "surname": "Farrelly",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I738"
-  ],
-  "childIds": [
-    "I739"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I738",
-      "familyId": "F302"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1010",
+    "I997"
   ]
 }

@@ -1,15 +1,15 @@
 {
   "id": "I1746",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Sarah A'Court",
+  "givenName": "Sarah",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1825",
-  "birthPlace": "North Cadbury, Somerset",
+  "sex": "F",
+  "birthDate": "ABT 1841",
+  "birthPlace": "Castle Cary",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1851 census/North Cadbury/HO 107 1931 69 5 21.jpg"
+    "Data/Media/1851 census/Castle Cary/3.htm"
   ],
   "spouseIds": [],
   "childIds": [],
@@ -17,8 +17,7 @@
   "censusRecords": [
     {
       "date": "1851",
-      "place": "North Cadbury, Somerset"
+      "place": "Castle Cary"
     }
-  ],
-  "avatar": "avatars/I1746_0.jpg"
+  ]
 }

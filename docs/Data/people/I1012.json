@@ -1,9 +1,9 @@
 {
   "id": "I1012",
-  "name": "Jenny Farrelly",
-  "givenName": "Jenny",
+  "name": "Reuben Farrelly",
+  "givenName": "Reuben",
   "surname": "Farrelly",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1009",
-    "I996"
+    "I1010",
+    "I997"
   ]
 }

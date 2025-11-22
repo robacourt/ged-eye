@@ -1,18 +1,34 @@
 {
   "id": "I743",
-  "name": "Mary A'Court",
-  "givenName": "Mary",
-  "surname": "A'Court",
+  "name": "Diana Penny",
+  "givenName": "Diana",
+  "surname": "Penny",
   "sex": "F",
-  "birthDate": "1752",
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": null,
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "1767",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I741",
+  "spouseIds": [
     "I742"
+  ],
+  "childIds": [
+    "I744",
+    "I745",
+    "I2939",
+    "I746",
+    "I747",
+    "I748",
+    "I749",
+    "I750"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I742",
+      "familyId": "F353",
+      "marriageDate": "18 DEC 1851",
+      "marriagePlace": "Mapperton, Dorset"
+    }
   ]
 }

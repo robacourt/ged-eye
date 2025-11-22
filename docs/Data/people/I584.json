@@ -1,25 +1,28 @@
 {
   "id": "I584",
-  "name": "Elizabeth Butt",
-  "givenName": "Elizabeth",
-  "surname": "Butt",
-  "sex": "F",
+  "name": "James Pike",
+  "givenName": "James",
+  "surname": "Pike",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I583"
+    "I585"
   ],
   "childIds": [
-    "I581"
+    "I582"
   ],
   "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
   "marriages": [
     {
-      "spouseId": "I583",
-      "familyId": "F240"
+      "spouseId": "I585",
+      "familyId": "F290"
     }
   ]
 }

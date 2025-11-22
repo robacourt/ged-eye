@@ -1,26 +1,28 @@
 {
   "id": "I675",
-  "name": "Herbert Foote",
-  "givenName": "Herbert",
+  "name": "Nora Ellen Foote",
+  "givenName": "Nora Ellen",
   "surname": "Foote",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I674"
+  "spouseIds": [
+    "I669"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab"
+  "childIds": [],
+  "parentIds": [
+    "I676"
+  ],
+  "notes": [
+    "22 in 1934"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F284"
+      "spouseId": "I669",
+      "familyId": "F331"
     }
   ]
 }

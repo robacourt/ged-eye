@@ -1,30 +1,28 @@
 {
   "id": "I603",
-  "name": "Charlotte Louisa Hayward",
-  "givenName": "Charlotte Louisa",
-  "surname": "Hayward",
-  "sex": "F",
+  "name": "Sidney George Elkins",
+  "givenName": "Sidney George",
+  "surname": "Elkins",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I602"
-  ],
-  "childIds": [
-    "I595"
-  ],
-  "parentIds": [
     "I604"
   ],
+  "childIds": [
+    "I596"
+  ],
+  "parentIds": [],
   "occupations": [
-    "Glovemaker"
+    "Sawyer"
   ],
   "marriages": [
     {
-      "spouseId": "I602",
-      "familyId": "F245"
+      "spouseId": "I604",
+      "familyId": "F295"
     }
   ]
 }

@@ -1,31 +1,42 @@
 {
   "id": "I1622",
-  "name": "Unknown A'Court",
-  "givenName": "Unknown",
-  "surname": "A'Court",
+  "name": "Elizabeth Warren",
+  "givenName": "Elizabeth",
+  "surname": "Warren",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "Abt 1875",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 36 17 .jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 28 15.jpg",
+    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 30 15.jpg"
+  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1624",
     "I1623"
   ],
-  "childIds": [
-    "I1621"
+  "occupations": [
+    "Glover",
+    "Glover",
+    "Kid Glove Maker"
   ],
-  "parentIds": [
-    "I1617",
-    "I1616"
-  ],
-  "notes": [
-    "Could be Eliza"
-  ],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I1623",
-      "familyId": "F606"
+      "date": "1881",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1891",
+      "place": "Marnhull, Dorset, Caraway Lane"
+    },
+    {
+      "date": "1901",
+      "place": "Marnhull, Dorset, Caraway Lane"
     }
-  ]
+  ],
+  "avatar": "avatars/I1622_0.jpg"
 }

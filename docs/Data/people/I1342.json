@@ -1,29 +1,25 @@
 {
   "id": "I1342",
-  "name": "Kate A'Court",
-  "givenName": "Kate",
-  "surname": "A'Court",
+  "name": "Alison Thomson",
+  "givenName": "Alison",
+  "surname": "Thomson",
   "sex": "F",
-  "birthDate": "1845",
+  "birthDate": "1798",
   "birthPlace": null,
-  "deathDate": "1904",
+  "deathDate": "1898",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1365"
+    "I1341"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I935",
-    "I936"
+  "childIds": [
+    "I937"
   ],
-  "notes": [
-    "Possible parents of C. A'Court Opie a member of the New Zeal;and 1907 Sub-Antarctic Islands Scientific Expedition. see web link"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1365",
-      "familyId": "F529"
+      "spouseId": "I1341",
+      "familyId": "F445"
     }
   ]
 }

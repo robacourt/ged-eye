@@ -1,10 +1,10 @@
 {
   "id": "I472",
-  "name": "Elisha a'Court",
-  "givenName": "Elisha",
+  "name": "Ann a'Court",
+  "givenName": "Ann",
   "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "BEF 24 MARCH  172",
+  "sex": "F",
+  "birthDate": "BEF 16 JAN 172",
   "birthPlace": "Horsington, Somerset",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I469",
-    "I470"
+    "I470",
+    "I471"
   ]
 }

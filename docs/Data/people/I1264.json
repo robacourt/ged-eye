@@ -1,25 +1,45 @@
 {
   "id": "I1264",
-  "name": "Peggy Martha Jane Wills",
-  "givenName": "Peggy Martha Jane",
-  "surname": "Wills",
+  "name": "Mildred Annie A'Court",
+  "givenName": "Mildred Annie",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1929",
+  "birthDate": "1890",
   "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/Hampshire/Kings Somborne/RG12 933 22 37.jpg",
+    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg"
+  ],
   "spouseIds": [
-    "I1092"
+    "I1277"
   ],
   "childIds": [
-    "I2633"
+    "I1278",
+    "I1279"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I284",
+    "I287"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Horsebridge, Kings Somborne, Hampshire"
+    },
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Gracious St"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1092",
-      "familyId": "F439"
+      "spouseId": "I1277",
+      "familyId": "F576",
+      "marriageDate": "19 JUN 1916",
+      "marriagePlace": "Selborne, Hampshire"
     }
-  ]
+  ],
+  "avatar": "avatars/I1264_0.jpg"
 }

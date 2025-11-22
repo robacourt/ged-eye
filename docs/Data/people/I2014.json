@@ -1,39 +1,42 @@
 {
   "id": "I2014",
-  "name": "Mary Ann A'Court",
-  "givenName": "Mary Ann",
+  "name": "Henry A'Court",
+  "givenName": "Henry",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1847",
-  "birthPlace": "Devon, Stoke Canon",
+  "sex": "M",
+  "birthDate": "ABT 1815",
+  "birthPlace": "Devon, Washfield",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1861 Census/Exeter/RG09 1397 44 10.png",
-    "Data/Media/1871 census/Aberdare/RG10 5407 19 31.jpg",
-    "Data/Media/1881 census/Wales/RG11 5322 83 39.jpg"
+    "Data/Media/1881 census/Devon/Exeter/RG11 2153 51 10.jpg"
   ],
   "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I2013"
+  "childIds": [
+    "I2015",
+    "I2018",
+    "I2019",
+    "I2020"
   ],
+  "parentIds": [],
   "occupations": [
-    "Schoolmistress",
-    "Schoolmistress"
+    "Railway Policeman",
+    "Railway signalman"
   ],
   "censusRecords": [
     {
       "date": "1861",
-      "place": "Devon, Exeter, St Davids, 3 St Davids Hill"
-    },
-    {
-      "date": "1871",
-      "place": "Wales, Glamorganshire, Aberdare, Wetherall Place, Wetherall St."
+      "place": "Devon, Exeter, 3 St Davids Hill"
     },
     {
       "date": "1881",
-      "place": "Wales, Glamorganshire, Aberdare, 9 Jenkin Place"
+      "place": "Devon, Exeter, 36 Lower North St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F801"
     }
   ],
   "avatar": "avatars/I2014_0.jpg"

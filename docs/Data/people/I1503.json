@@ -1,23 +1,26 @@
 {
   "id": "I1503",
-  "name": "Henry Randall",
-  "givenName": "Henry",
+  "name": "Frederick Randall",
+  "givenName": "Frederick",
   "surname": "Randall",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "BEF 1905",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I1502"
+  "spouseIds": [
+    "I1508"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1504"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F574"
+      "spouseId": "I1508",
+      "familyId": "F659",
+      "marriageDate": "25 SEP 1905"
     }
   ]
 }

@@ -1,25 +1,18 @@
 {
   "id": "I1001",
-  "name": "Thomas O'Connor",
-  "givenName": "Thomas",
-  "surname": "O'Connor",
-  "sex": "M",
+  "name": "Joan A'Court",
+  "givenName": "Joan",
+  "surname": "A'Court",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1002"
-  ],
-  "childIds": [
-    "I737"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1002",
-      "familyId": "F301"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I974",
+    "I999"
   ]
 }

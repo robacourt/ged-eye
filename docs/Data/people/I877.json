@@ -1,63 +1,18 @@
 {
   "id": "I877",
-  "name": "Elisha Thomas A'Court",
-  "givenName": "Elisha Thomas",
-  "surname": "A'Court",
+  "name": "James a'Court",
+  "givenName": "James",
+  "surname": "a'Court",
   "sex": "M",
-  "birthDate": "ABT 1848",
-  "birthPlace": "Walcot, Bath, Somerset",
-  "deathDate": "ABT 1911",
+  "birthDate": "ABT 1846",
+  "birthPlace": "Bath, Somerset",
+  "deathDate": "AFT 1851",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1861 Census/London/Pancras/RG09 110 111 50.jpg",
-    "Data/Media/1911 census/London/Bethnal Green/RG14 1417 1.jpg"
-  ],
-  "spouseIds": [
-    "I927"
-  ],
-  "childIds": [
-    "I2445",
-    "I2830",
-    "I2831",
-    "I2832"
-  ],
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I763",
-    "I871"
-  ],
-  "occupations": [
-    "Errand Boy",
-    "Smiths Labourer",
-    "Blacksmith",
-    "General Smith"
-  ],
-  "censusRecords": [
-    {
-      "date": "1861",
-      "place": "London, Middx. St Pancras 3, Brill Cottages."
-    },
-    {
-      "date": "1881",
-      "place": "London, St Pancras, 19 Church Way"
-    },
-    {
-      "date": "1891",
-      "place": null
-    },
-    {
-      "date": "1901",
-      "place": "London, St Pancras, 1Ossulston Place,"
-    },
-    {
-      "date": "1911",
-      "place": "Patient, Bethnal Green Infirmary, Cambridge Rd."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I927",
-      "familyId": "F376"
-    }
-  ],
-  "avatar": "avatars/I877_0.jpg"
+    "I764",
+    "I872"
+  ]
 }

@@ -1,24 +1,24 @@
 {
   "id": "I1127",
-  "name": "Walter Charles James Phillips",
-  "givenName": "Walter Charles James",
-  "surname": "Phillips",
-  "sex": "M",
-  "birthDate": "ABT 1918",
+  "name": "Lilian Joan Kent",
+  "givenName": "Lilian Joan",
+  "surname": "Kent",
+  "sex": "F",
+  "birthDate": "6 MAY 1920",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1126"
+    "I1128"
   ],
   "childIds": [],
   "parentIds": [
-    "I1128"
+    "I1122",
+    "I1121"
   ],
-  "occupations": [
-    "Butcher"
-  ],
+  "baptismDate": "1 AUG 1920",
+  "baptismPlace": "Marnhull, Dorset",
   "residences": [
     {
       "date": "1939",
@@ -27,8 +27,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1126",
-      "familyId": "F456",
+      "spouseId": "I1128",
+      "familyId": "F519",
       "marriageDate": "4 NOV 1939",
       "marriagePlace": "Marnhull, Dorset"
     }

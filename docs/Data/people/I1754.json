@@ -1,23 +1,27 @@
 {
   "id": "I1754",
-  "name": "Edwin Durrant",
-  "givenName": "Edwin",
-  "surname": "Durrant",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Mary Ann Davis",
+  "givenName": "Mary Ann",
+  "surname": "Davis",
+  "sex": "F",
+  "birthDate": "1800",
+  "birthPlace": "Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I51"
+  ],
+  "childIds": [
+    "I1930"
+  ],
   "parentIds": [],
-  "baptismDate": "28 JUL 1826",
-  "baptismPlace": "Folke, Dorset",
-  "censusRecords": [
+  "marriages": [
     {
-      "date": "1851",
-      "place": "North Cadbury, Somerset"
+      "spouseId": "I51",
+      "familyId": "F37",
+      "marriageDate": "1 FEB 1821",
+      "marriagePlace": "Shepton Mallet, Somerset"
     }
   ]
 }

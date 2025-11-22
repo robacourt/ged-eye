@@ -1,18 +1,24 @@
 {
   "id": "I1477",
-  "name": "Nick A'Court",
-  "givenName": "Nick",
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "ABT 1835",
+  "birthPlace": "Henstridge, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Below is a cache of http://www.ecis.org/forum/display_message.asp?mid=968. It's a snapshot of the page taken as our search engine partner crawled the web. We've highlighted the words: acourt"
+  "parentIds": [
+    "I1474",
+    "I1475"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Henstridge, Somerset, Baslands Hill farm"
+    }
   ]
 }

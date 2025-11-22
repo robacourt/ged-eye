@@ -1,18 +1,35 @@
 {
   "id": "I2044",
-  "name": "John Mackey",
-  "givenName": "John",
-  "surname": "Mackey",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Amelia Unknown",
+  "givenName": "Amelia",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1878",
+  "birthPlace": "Portsea, Hampshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I2031",
-    "I2030"
+  "spouseIds": [
+    "I2043"
+  ],
+  "childIds": [
+    "I2097",
+    "I514",
+    "I2099",
+    "I2103"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Hammersmith, 1 Aylmer Rd."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2043",
+      "familyId": "F265",
+      "marriageDate": "ABT 1907"
+    }
   ]
 }

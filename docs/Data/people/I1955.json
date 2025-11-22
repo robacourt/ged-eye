@@ -1,36 +1,25 @@
 {
   "id": "I1955",
-  "name": "Judith Ann Armstrong",
-  "givenName": "Judith Ann",
-  "surname": "Armstrong",
+  "name": "Doreen Constance Stewart",
+  "givenName": "Doreen Constance",
+  "surname": "Stewart",
   "sex": "F",
-  "birthDate": "23 SEP1949",
+  "birthDate": "1919",
   "birthPlace": "London",
-  "deathDate": null,
+  "deathDate": "2004",
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Wilfred Dennis A'Court Judi.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1956"
-  ],
-  "childIds": [
-    "I1958",
-    "I1959"
-  ],
-  "parentIds": [
-    "I1953",
     "I1954"
   ],
-  "baptismDate": "10 DEC 1949",
-  "baptismPlace": "Ilford, St. Mary the Virgin",
+  "childIds": [
+    "I1956"
+  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1956",
-      "familyId": "F698",
-      "marriageDate": "10 SEP 1977",
-      "marriagePlace": "Mitcham, Surrey, St Marks"
+      "spouseId": "I1954",
+      "familyId": "F786"
     }
-  ],
-  "avatar": "avatars/I1955_0.jpg"
+  ]
 }

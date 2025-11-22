@@ -1,28 +1,18 @@
 {
   "id": "I828",
-  "name": "Albert RANBY",
-  "givenName": "Albert",
-  "surname": "RANBY",
-  "sex": "M",
-  "birthDate": "21 DEC 1867",
-  "birthPlace": "Oxford, NZ",
+  "name": "Nellie Maud A'Court",
+  "givenName": "Nellie Maud",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "14 AUG 1874",
+  "birthPlace": "Christchurch, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I821"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "Wises"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I821",
-      "familyId": "F350",
-      "marriageDate": "14 JAN 1891",
-      "marriagePlace": "St Lukes, Christchurch, NZ"
-    }
+  "parentIds": [
+    "I777",
+    "I821"
   ]
 }

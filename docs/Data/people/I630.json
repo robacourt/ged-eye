@@ -1,36 +1,26 @@
 {
   "id": "I630",
-  "name": "Frederick Harry Hatcher",
-  "givenName": "Frederick Harry",
-  "surname": "Hatcher",
+  "name": "John Foot",
+  "givenName": "John",
+  "surname": "Foot",
   "sex": "M",
-  "birthDate": "27.2.1920",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I622"
+  "spouseIds": [],
+  "childIds": [
+    "I626"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I631",
-    "I632"
-  ],
-  "baptismDate": "4.4.1920",
-  "baptismPlace": "Marnhull, Dorset",
+  "parentIds": [],
   "occupations": [
-    "Dorset Council Roadman"
-  ],
-  "notes": [
-    "27-1948,"
+    "Farmer"
   ],
   "marriages": [
     {
-      "spouseId": "I622",
-      "familyId": "F260",
-      "marriageDate": "3.4,1948",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F312"
     }
   ]
 }

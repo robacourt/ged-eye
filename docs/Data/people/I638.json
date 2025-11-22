@@ -1,26 +1,31 @@
 {
   "id": "I638",
-  "name": "Frederick George Green",
-  "givenName": "Frederick George",
+  "name": "Brian Richard Green",
+  "givenName": "Brian Richard",
   "surname": "Green",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I637"
+  "spouseIds": [
+    "I635"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I639"
+  ],
+  "baptismDate": "12.7.1953",
   "occupations": [
-    "Plumber"
+    "Petty Officer R.N."
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F268"
+      "spouseId": "I635",
+      "familyId": "F317",
+      "marriageDate": "20.4.1974",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

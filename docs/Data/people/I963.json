@@ -1,10 +1,10 @@
 {
   "id": "I963",
-  "name": "Hannah S. A'Court",
-  "givenName": "Hannah S.",
+  "name": "Phyllis S. A'Court",
+  "givenName": "Phyllis S.",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1892",
+  "birthDate": "1889",
   "birthPlace": "Dubbo, NSW",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I955",
-    "I959"
+    "I956",
+    "I960"
   ]
 }

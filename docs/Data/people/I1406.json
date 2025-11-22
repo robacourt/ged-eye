@@ -1,49 +1,61 @@
 {
   "id": "I1406",
-  "name": "Ethel A'Court",
-  "givenName": "Ethel",
-  "surname": "A'Court",
+  "name": "Ann Yendal",
+  "givenName": "Ann",
+  "surname": "Yendal",
   "sex": "F",
-  "birthDate": "1887",
-  "birthPlace": "Bristol",
+  "birthDate": "ABT 1822",
+  "birthPlace": "Somerset, Dunster, Luxborough,",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1911 census/Bristol/RG14 14916 116.jpg"
+    "Data/Media/1901 census/Bristol/RG13 2361 36 7.jpg"
   ],
   "spouseIds": [
-    "I2379"
+    "I1387"
   ],
   "childIds": [
-    "I2380",
-    "I2381"
-  ],
-  "parentIds": [
-    "I1387",
+    "I1764",
+    "I1765",
+    "I1760",
+    "I1415",
+    "I1416",
+    "I1417",
     "I1388"
   ],
-  "occupations": [
-    "Cigartte Packer"
-  ],
-  "notes": [
-    "Ian, In 2002 I gave you misinformation about Ethel Mary A'Court.  My mother did not tell us the truth about her sister.  My research is as follows:Ethel Mary Acourt b 1887 Bristol  m. Edward Jack Duffey March 1913 , Bristol Avon Glostershire.  Emm"
+  "parentIds": [
+    "I1975"
   ],
   "censusRecords": [
     {
-      "date": "1891",
-      "place": "Somerset, Bedminster, Catherine Mead St."
+      "date": "1841",
+      "place": "Brockley, Bedminster, Somerset, Court Farm House"
     },
     {
-      "date": "1911",
-      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+      "date": "1851",
+      "place": "Bristol, Bedminster, Charlotte St."
+    },
+    {
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1881",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    },
+    {
+      "date": "1901",
+      "place": "Bristol, Bedminster, 42 Phillip St"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2379",
-      "familyId": "F846",
-      "marriageDate": "MARCH 1913",
-      "marriagePlace": "Bristol, Glostershire"
+      "spouseId": "I1387",
+      "familyId": "F620"
     }
   ],
   "avatar": "avatars/I1406_0.jpg"

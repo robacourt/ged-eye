@@ -17,8 +17,8 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I1185",
-    "I1190"
+    "I1186",
+    "I1191"
   ],
   "occupations": [
     "Farm labourer"
@@ -36,7 +36,7 @@
   "marriages": [
     {
       "spouseId": "I2417",
-      "familyId": "F858"
+      "familyId": "F906"
     }
   ],
   "avatar": "avatars/I2416_0.jpg"

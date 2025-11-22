@@ -1,23 +1,18 @@
 {
   "id": "I944",
-  "name": "Harry Wilford A'Court",
-  "givenName": "Harry Wilford",
+  "name": "Helen Maud Cumming A'Court",
+  "givenName": "Helen Maud Cumming",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "6 AUG 1893",
-  "birthPlace": "Rongotea, New Zealand",
-  "deathDate": "17 MAY 1918",
+  "sex": "F",
+  "birthDate": "27 AUG 1891",
+  "birthPlace": "Sanson, Wellington, New Zealand",
+  "deathDate": "1969",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I937",
-    "I938"
-  ],
-  "burialPlace": "Sanson Cemetery, Manawatu, New Zealand",
-  "notes": [
-    "Served on the Western Front",
-    "n Memory of"
+    "I938",
+    "I939"
   ]
 }

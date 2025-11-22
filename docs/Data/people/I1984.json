@@ -1,23 +1,18 @@
 {
   "id": "I1984",
-  "name": "Daniel Llewellyn Jones",
-  "givenName": "Daniel Llewellyn",
-  "surname": "Jones",
+  "name": "James Henry Gumbrell",
+  "givenName": "James Henry",
+  "surname": "Gumbrell",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "8 JAN 1969",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1410"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1410",
-      "familyId": "F710"
-    }
+  "parentIds": [
+    "I1980",
+    "I1981"
   ]
 }

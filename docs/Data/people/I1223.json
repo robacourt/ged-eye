@@ -1,23 +1,26 @@
 {
   "id": "I1223",
-  "name": "Ronald Roberts",
-  "givenName": "Ronald",
-  "surname": "Roberts",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Jean Haskett",
+  "givenName": "Jean",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "ABT 1923",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1222"
+    "I1224"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I1216",
+    "I1217"
+  ],
   "marriages": [
     {
-      "spouseId": "I1222",
-      "familyId": "F494"
+      "spouseId": "I1224",
+      "familyId": "F561"
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
   "id": "I1068",
-  "name": "Kim Maree Higgins",
-  "givenName": "Kim Maree",
+  "name": "Mark Anthony Higgins",
+  "givenName": "Mark Anthony",
   "surname": "Higgins",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1063",
-    "I1062"
+    "I1064",
+    "I1063"
   ]
 }

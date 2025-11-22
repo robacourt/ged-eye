@@ -1,20 +1,35 @@
 {
   "id": "I597",
-  "name": "Robert Hatcher",
-  "givenName": "Robert",
+  "name": "Lilian Bessie Hatcher",
+  "givenName": "Lilian Bessie",
   "surname": "Hatcher",
-  "sex": "M",
-  "birthDate": null,
+  "sex": "F",
+  "birthDate": "23.12.1901",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I589",
-    "I595"
+  "spouseIds": [
+    "I606"
   ],
-  "baptismDate": "24.4.1904",
-  "baptismPlace": "Todber, Dorset"
+  "childIds": [
+    "I607"
+  ],
+  "parentIds": [
+    "I590",
+    "I596"
+  ],
+  "baptismDate": "2.2.1902",
+  "baptismPlace": "Todber, Dorset",
+  "notes": [
+    "25-1927,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I606",
+      "familyId": "F296",
+      "marriageDate": "1.9.1927",
+      "marriagePlace": "Todber, Dorset"
+    }
+  ]
 }

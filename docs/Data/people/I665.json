@@ -1,23 +1,27 @@
 {
   "id": "I665",
-  "name": "Thomas Lewis",
-  "givenName": "Thomas",
+  "name": "Matilda Lewis",
+  "givenName": "Matilda",
   "surname": "Lewis",
-  "sex": "M",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I664"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I663"
+  ],
+  "parentIds": [
+    "I666"
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F278"
+      "spouseId": "I664",
+      "familyId": "F327"
     }
   ]
 }

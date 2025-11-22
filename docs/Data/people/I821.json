@@ -1,42 +1,45 @@
 {
   "id": "I821",
-  "name": "Lucy Britton A'Court",
-  "givenName": "Lucy Britton",
-  "surname": "A'Court",
+  "name": "Sarah Ann BRITTON",
+  "givenName": "Sarah Ann",
+  "surname": "BRITTON",
   "sex": "F",
-  "birthDate": "25 JUN 1864",
-  "birthPlace": "Christchurch, New Zealand",
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "1843",
+  "birthPlace": "Butleigh, Somerset, England",
+  "deathDate": "16 JAN 1932",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [
-    "Data/Picture/Nina, Lucy, Frank A'Court.jpg"
+    "Data/Picture/Sarah Ann Britton.jpg",
+    "Data/Picture/Sarah Ann Britton2.jpg",
+    "Data/Picture/Sarah Britton.jpg",
+    "Data/Picture/Sam A'Court Sarah Britton.jpg"
   ],
   "spouseIds": [
-    "I828",
-    "I829"
+    "I777"
   ],
   "childIds": [
-    "I830"
+    "I822",
+    "I823",
+    "I824",
+    "I825",
+    "I826",
+    "I827",
+    "I828"
   ],
-  "parentIds": [
-    "I776",
-    "I820"
-  ],
+  "parentIds": [],
+  "baptismDate": "14 APR 1843",
+  "baptismPlace": "Butleigh, Somerset, England",
+  "burialDate": "1932",
+  "burialPlace": "Linwood Cemetery, Christchurch, NZ",
   "notes": [
-    "SARAH'S WILL"
+    "Information provided by Carole Stewart - much of this comes from \"Smithy Tales - events in the life of Samuel A'Court (1842-1913)\", which were recounted by his daughter Lucy & published in The Star newspaper in 1924 (ref. Family History Section"
   ],
   "marriages": [
     {
-      "spouseId": "I828",
-      "familyId": "F350",
-      "marriageDate": "14 JAN 1891",
-      "marriagePlace": "St Lukes, Christchurch, NZ"
-    },
-    {
-      "spouseId": "I829",
-      "familyId": "F351",
-      "marriageDate": "1905",
-      "marriagePlace": "New Zealand"
+      "spouseId": "I777",
+      "familyId": "F374",
+      "marriageDate": "21 MAY 1863",
+      "marriagePlace": "Butleigh, Somerset, England"
     }
   ],
   "avatar": "avatars/I821_0.jpg"

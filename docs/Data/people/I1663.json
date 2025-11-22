@@ -1,28 +1,25 @@
 {
   "id": "I1663",
-  "name": "Betty Barber",
-  "givenName": "Betty",
-  "surname": "Barber",
-  "sex": "F",
-  "birthDate": "1921",
+  "name": "Daniel Barber Baker",
+  "givenName": "Daniel Barber",
+  "surname": "Baker",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1664"
+    "I1291"
   ],
   "childIds": [
-    "I1665"
+    "I1664"
   ],
-  "parentIds": [
-    "I1662",
-    "I1290"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1664",
-      "familyId": "F612"
+      "spouseId": "I1291",
+      "familyId": "F586"
     }
   ]
 }

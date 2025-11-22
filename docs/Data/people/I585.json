@@ -1,34 +1,25 @@
 {
   "id": "I585",
-  "name": "John Maidment",
-  "givenName": "John",
-  "surname": "Maidment",
-  "sex": "M",
+  "name": "Elizabeth Butt",
+  "givenName": "Elizabeth",
+  "surname": "Butt",
+  "sex": "F",
   "birthDate": null,
-  "birthPlace": "East Stour, Dorset",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I156"
+    "I584"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I586",
-    "I587"
+  "childIds": [
+    "I582"
   ],
-  "occupations": [
-    "Ag Lab"
-  ],
-  "notes": [
-    "7-1851,17-1861,20-1865"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I156",
-      "familyId": "F89",
-      "marriageDate": "21.1.1865",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I584",
+      "familyId": "F290"
     }
   ]
 }

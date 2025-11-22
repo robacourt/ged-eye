@@ -13,14 +13,14 @@
     "I2341"
   ],
   "childIds": [
-    "I1428",
+    "I1429",
     "I2339"
   ],
   "parentIds": [],
   "marriages": [
     {
       "spouseId": "I2341",
-      "familyId": "F831"
+      "familyId": "F634"
     }
   ]
 }

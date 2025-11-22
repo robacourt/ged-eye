@@ -15,7 +15,7 @@
     "I2474"
   ],
   "childIds": [
-    "I806",
+    "I807",
     "I2825",
     "I2826"
   ],
@@ -50,7 +50,7 @@
   "marriages": [
     {
       "spouseId": "I2474",
-      "familyId": "F721",
+      "familyId": "F397",
       "marriageDate": "3 DEC 1867",
       "marriagePlace": "Dorset, Weymouth"
     }

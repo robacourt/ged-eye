@@ -1,26 +1,23 @@
 {
   "id": "I922",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
+  "name": "Ivy Unknown",
+  "givenName": "Ivy",
   "surname": "Unknown",
   "sex": "F",
-  "birthDate": null,
+  "birthDate": "4 OCT 1896",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "9 OCT 1964",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I916"
+    "I915"
   ],
   "childIds": [],
   "parentIds": [],
-  "notes": [
-    "Date Unknown: Lived at Buller Street, Swindon, Wiltshire, England"
-  ],
   "marriages": [
     {
-      "spouseId": "I916",
-      "familyId": "F383"
+      "spouseId": "I915",
+      "familyId": "F436"
     }
   ]
 }

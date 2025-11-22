@@ -1,51 +1,45 @@
 {
   "id": "I492",
-  "name": "Frederick Charles A'Court",
-  "givenName": "Frederick Charles",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1884",
+  "name": "Jane Haines",
+  "givenName": "Jane",
+  "surname": "Haines",
+  "sex": "F",
+  "birthDate": "ABT 1863",
   "birthPlace": "Nether Compton, Dorset",
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/Dorset/Over Compton/RG12 1659 25 15.jpg"
-  ],
+  "deathDate": "1926",
+  "deathPlace": "Somerset, Wincanton",
+  "photos": [],
   "spouseIds": [
-    "I1990"
-  ],
-  "childIds": [
-    "I2586",
-    "I1991"
-  ],
-  "parentIds": [
-    "I490",
     "I491"
   ],
-  "occupations": [
-    "Royal Marine",
-    "Private Royal Marine Light Infantry"
+  "childIds": [
+    "I493",
+    "I495",
+    "I496",
+    "I494",
+    "I371"
   ],
-  "notes": [
-    "four sons, one daughter",
-    "Wife from Devon 5 Children .Ref; source"
-  ],
+  "parentIds": [],
   "censusRecords": [
     {
       "date": "1891",
       "place": "Dorset, Sherborne, Over Compton, Lodge"
     },
     {
+      "date": "1901",
+      "place": "Nether Compton, Dorset, Halfway House"
+    },
+    {
       "date": "1911",
-      "place": "Gosport, Hampshire, 105 Parham Rd."
+      "place": "Nether Compton, Dorset"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1990",
-      "familyId": "F711",
-      "marriageDate": "1910"
+      "spouseId": "I491",
+      "familyId": "F190",
+      "marriageDate": "DEC 1882",
+      "marriagePlace": "Dorset, Sherborne"
     }
-  ],
-  "avatar": "avatars/I492_0.jpg"
+  ]
 }

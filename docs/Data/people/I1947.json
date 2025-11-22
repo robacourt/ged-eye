@@ -1,32 +1,25 @@
 {
   "id": "I1947",
-  "name": "Rex Sydney A'Court",
-  "givenName": "Rex Sydney",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "16 JULY 1927",
-  "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "31 DEC 2005",
-  "deathPlace": "Rangiora, NZ Wiltshire Rest Home & Hospital, Ivory street.",
+  "name": "Eleanor Amelia Dwight",
+  "givenName": "Eleanor Amelia",
+  "surname": "Dwight",
+  "sex": "F",
+  "birthDate": "30 OCT 1884",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1948"
+    "I1946"
   ],
   "childIds": [
-    "I2024",
-    "I1949",
-    "I2022",
-    "I2023"
+    "I1945"
   ],
-  "parentIds": [
-    "I1930",
-    "I1944"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1948",
-      "familyId": "F694",
-      "marriageDate": "26 APR 1955"
+      "spouseId": "I1946",
+      "familyId": "F783"
     }
   ]
 }

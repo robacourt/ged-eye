@@ -1,28 +1,23 @@
 {
   "id": "I1359",
-  "name": "Ernest William Cundy",
-  "givenName": "Ernest William",
-  "surname": "Cundy",
+  "name": "William Boyle",
+  "givenName": "William",
+  "surname": "Boyle",
   "sex": "M",
-  "birthDate": "1877",
-  "birthPlace": "Greytown",
-  "deathDate": "1952",
-  "deathPlace": "Wellington, New Zealand",
+  "birthDate": "ABT 1874",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1360"
+    "I1358"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1360",
-      "familyId": "F539",
-      "marriageDate": "1901",
-      "marriagePlace": "Sydney, NSW"
+      "spouseId": "I1358",
+      "familyId": "F608"
     }
   ]
 }

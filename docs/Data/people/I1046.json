@@ -1,26 +1,26 @@
 {
   "id": "I1046",
-  "name": "Eleanor King",
-  "givenName": "Eleanor",
-  "surname": "King",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Ronald William Moir",
+  "givenName": "Ronald William",
+  "surname": "Moir",
+  "sex": "M",
+  "birthDate": "1929",
+  "birthPlace": "Christchurch, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1045"
+    "I1047"
   ],
   "childIds": [],
-  "parentIds": [],
-  "notes": [
-    "family history researcher contact of Sandra Gieg"
+  "parentIds": [
+    "I818",
+    "I813"
   ],
   "marriages": [
     {
-      "spouseId": "I1045",
-      "familyId": "F424",
+      "spouseId": "I1047",
+      "familyId": "F485",
       "marriageDate": "1951",
       "marriagePlace": "Christchurch, New Zealand"
     }

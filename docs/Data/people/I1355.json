@@ -1,26 +1,23 @@
 {
   "id": "I1355",
-  "name": "Annie Maud Cundy",
-  "givenName": "Annie Maud",
-  "surname": "Cundy",
-  "sex": "F",
-  "birthDate": "1872",
-  "birthPlace": "Greytown",
-  "deathDate": "1920",
+  "name": "Unknown Robinson",
+  "givenName": "Unknown",
+  "surname": "Robinson",
+  "sex": "M",
+  "birthDate": "ABT 1870",
+  "birthPlace": "New Zealand",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1356"
+    "I1354"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1346",
-    "I1345"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1356",
-      "familyId": "F537"
+      "spouseId": "I1354",
+      "familyId": "F606"
     }
   ]
 }

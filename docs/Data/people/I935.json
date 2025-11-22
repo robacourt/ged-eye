@@ -1,52 +1,30 @@
 {
   "id": "I935",
-  "name": "James A'Court",
-  "givenName": "James",
-  "surname": "A'Court",
+  "name": "John Edward (Jack)Diehm",
+  "givenName": "John Edward",
+  "surname": "(Jack)Diehm",
   "sex": "M",
-  "birthDate": "ABT 1816",
-  "birthPlace": "Somerset",
-  "deathDate": "7 APR 1880",
-  "deathPlace": "Sandon, New Zealand",
+  "birthDate": "5 DECEMBER 1898",
+  "birthPlace": "Wellington, NSW",
+  "deathDate": "27 DECEMBER 1966",
+  "deathPlace": "Forbes",
   "photos": [],
   "spouseIds": [
-    "I936"
+    "I934"
   ],
   "childIds": [
-    "I1345",
-    "I1342",
-    "I1343",
-    "I1344",
-    "I937",
-    "I949",
-    "I947",
-    "I948"
+    "I1050",
+    "I1054",
+    "I1059",
+    "I1063"
   ],
-  "parentIds": [
-    "I1339"
-  ],
-  "burialDate": "9 APR 1880",
-  "burialPlace": "Sandon Cemetery,",
-  "occupations": [
-    "Servant",
-    "Farmer"
-  ],
-  "notes": [
-    "They left Gravesend on the  'London' on the second",
-    "London"
-  ],
-  "residences": [
-    {
-      "date": "10 AUG 1840",
-      "place": "Chelsea, Middlesex, 116 Sloane Street,"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I936",
-      "familyId": "F389",
-      "marriageDate": "10 AUG 1840",
-      "marriagePlace": "Chelsea & Kensington, London"
+      "spouseId": "I934",
+      "familyId": "F442",
+      "marriageDate": "18 NOVEMBER 1920",
+      "marriagePlace": "Gulgong, NSW"
     }
   ]
 }

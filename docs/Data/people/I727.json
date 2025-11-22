@@ -1,23 +1,21 @@
 {
   "id": "I727",
-  "name": "William Ashe A'Court",
-  "givenName": "William Ashe",
+  "name": "Peirce A'Court",
+  "givenName": "Peirce",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1709",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "2 AUG 1781",
+  "deathDate": "20 MARCH 1725",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I728"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I728",
-      "familyId": "F296"
-    }
+  "occupations": [
+    "MP for Heytesbury"
+  ],
+  "notes": [
+    "Of"
   ]
 }

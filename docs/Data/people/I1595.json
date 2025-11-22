@@ -1,38 +1,21 @@
 {
   "id": "I1595",
-  "name": "Charles Samuel A'Court",
-  "givenName": "Charles Samuel",
+  "name": "Victor William A'Court",
+  "givenName": "Victor William",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1905",
-  "birthPlace": "Glamorganshire, Cardiff",
-  "deathDate": "1957",
+  "birthDate": "Abt 1904",
+  "birthPlace": "Glamorgan, Cardiff",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
     "Data/Media/1911 census/Glamorganshire/RG14 32138 268.jpg"
   ],
-  "spouseIds": [
-    "I1599"
-  ],
-  "childIds": [
-    "I1597",
-    "I1598"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1591",
-    "I1593"
-  ],
-  "censusRecords": [
-    {
-      "date": "1911",
-      "place": "Cardiff, 15 Rennie St."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1599",
-      "familyId": "F599"
-    }
+    "I1592",
+    "I1594"
   ],
   "avatar": "avatars/I1595_0.jpg"
 }

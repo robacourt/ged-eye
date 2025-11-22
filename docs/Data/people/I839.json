@@ -1,12 +1,12 @@
 {
   "id": "I839",
-  "name": "Unita Adele A'Court",
-  "givenName": "Unita Adele",
+  "name": "Samuel Oakley A'Court",
+  "givenName": "Samuel Oakley",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "6 JAN 1900",
+  "sex": "M",
+  "birthDate": "3 SEP 1898",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "2 MAR 1970",
+  "deathDate": "13 JAN 1899",
   "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
@@ -14,14 +14,13 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
+    "I825",
+    "I837"
   ],
   "marriages": [
     {
       "spouseId": "I852",
-      "familyId": "F364",
-      "marriagePlace": "never married"
+      "familyId": "F415"
     }
   ]
 }

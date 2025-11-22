@@ -1,42 +1,47 @@
 {
   "id": "I927",
-  "name": "Agnes Ann Unknown",
-  "givenName": "Agnes Ann",
+  "name": "Elizabeth Maria Unknown",
+  "givenName": "Elizabeth Maria",
   "surname": "Unknown",
   "sex": "F",
-  "birthDate": "ABT 1854",
-  "birthPlace": "Paddington, Middlesex, England",
-  "deathDate": "1901",
-  "deathPlace": "London, St Pancras.",
+  "birthDate": "1842",
+  "birthPlace": "Wombwell, Yorkshire",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I877"
+    "I875"
   ],
   "childIds": [
-    "I2445",
-    "I2830",
-    "I2831",
-    "I2832"
+    "I2468",
+    "I2469",
+    "I2470",
+    "I2471"
   ],
   "parentIds": [],
   "censusRecords": [
     {
+      "date": "1871",
+      "place": "Hertfordshire, Ware, Gilston, Lolings Cottage"
+    },
+    {
       "date": "1881",
-      "place": "London, St Pancras, 19 Church Way"
+      "place": "Lancashire, West Derby, 2 Quarry Rd."
     },
     {
       "date": "1891",
-      "place": null
+      "place": "West Derby, Lancashire, 2 Quarry Road"
     },
     {
-      "date": "1901",
-      "place": "London, St Pancras\t1, Ossulston Place"
+      "date": "1911",
+      "place": "West Derby, Lancashire, 147 Eaton Rd."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I877",
-      "familyId": "F376"
+      "spouseId": "I875",
+      "familyId": "F427",
+      "marriageDate": "ABT 1868"
     }
   ]
 }

@@ -1,32 +1,26 @@
 {
   "id": "I1102",
-  "name": "Thomas Albert A'Court",
-  "givenName": "Thomas Albert",
+  "name": "Laura Anne A'Court",
+  "givenName": "Laura Anne",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1922",
+  "sex": "F",
+  "birthDate": "ABT 1913",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1301"
-  ],
-  "childIds": [
-    "I1302",
-    "I1303"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1090",
-    "I1091"
+    "I1091",
+    "I1092"
   ],
-  "baptismDate": "22 OCTOBER 1922",
+  "baptismDate": "7 DECEMBER 1913",
   "baptismPlace": "West Camel, Somerset",
-  "marriages": [
+  "residences": [
     {
-      "spouseId": "I1301",
-      "familyId": "F444",
-      "marriageDate": "1947"
+      "date": "1913",
+      "place": "Urgashay,West Camel, Somerset"
     }
   ]
 }

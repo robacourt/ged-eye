@@ -1,25 +1,37 @@
 {
   "id": "I1494",
-  "name": "Arthur Collis",
-  "givenName": "Arthur",
-  "surname": "Collis",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Anna Chamberlain",
+  "givenName": "Anna",
+  "surname": "Chamberlain",
+  "sex": "F",
+  "birthDate": "1868",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1493"
+  "deathDate": "11 DEC 1922",
+  "deathPlace": "Cheriton, Alresford, Hampshire, Mill Cross,",
+  "photos": [
+    "Data/Media/1871 census/Galhampton/RG10 2421 61 22.jpg"
   ],
-  "childIds": [
+  "spouseIds": [
     "I1495"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1496"
+  ],
+  "parentIds": [
+    "I865",
+    "I778"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "North Cadbury, Galhampton, Cottage"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1493",
-      "familyId": "F568"
+      "spouseId": "I1495",
+      "familyId": "F654"
     }
-  ]
+  ],
+  "avatar": "avatars/I1494_0.jpg"
 }

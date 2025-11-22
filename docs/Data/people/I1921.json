@@ -1,7 +1,7 @@
 {
   "id": "I1921",
-  "name": "Richard Cassan",
-  "givenName": "Richard",
+  "name": "Ernie Cassan",
+  "givenName": "Ernie",
   "surname": "Cassan",
   "sex": "M",
   "birthDate": null,
@@ -9,10 +9,18 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1920",
-    "I1300"
+  "spouseIds": [
+    "I1301"
+  ],
+  "childIds": [
+    "I1922",
+    "I1923"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1301",
+      "familyId": "F588"
+    }
   ]
 }

@@ -1,26 +1,30 @@
 {
   "id": "I838",
-  "name": "Samuel Oakley A'Court",
-  "givenName": "Samuel Oakley",
+  "name": "Frank Austin A'Court",
+  "givenName": "Frank Austin",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "3 SEP 1898",
+  "birthDate": "20 SEP 1897",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "13 JAN 1899",
-  "deathPlace": "Christchurch, New Zealand",
+  "deathDate": "14 OCT 1918",
+  "deathPlace": "war death",
   "photos": [],
   "spouseIds": [
     "I851"
   ],
   "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
+    "I825",
+    "I837"
+  ],
+  "burialPlace": "Edinburgh, Scotland (Coneley Bank) Cemetery, Edinburgh, Scotland",
+  "notes": [
+    "In Memory of"
   ],
   "marriages": [
     {
       "spouseId": "I851",
-      "familyId": "F363"
+      "familyId": "F414"
     }
   ]
 }

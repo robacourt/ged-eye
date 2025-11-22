@@ -1,27 +1,39 @@
 {
   "id": "I1658",
-  "name": "Unknown Unknown",
-  "givenName": "Unknown",
-  "surname": "Unknown",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Kate A'Court",
+  "givenName": "Kate",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1873",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I309"
+  "photos": [
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 26 12.jpg",
+    "Data/Media/1911 census/Dorset/Marnhull/RG14 12200 35.jpg"
   ],
-  "childIds": [
-    "I1661",
-    "I1659",
-    "I1660"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1184",
+    "I1185"
   ],
-  "parentIds": [],
-  "marriages": [
+  "occupations": [
+    "Glover",
+    "Glover"
+  ],
+  "notes": [
+    "Could this be Rose under another name -- no other referance other than 1891 census"
+  ],
+  "censusRecords": [
     {
-      "spouseId": "I309",
-      "familyId": "F151"
+      "date": "1891",
+      "place": "Marnhull, Dorset, Batts Alley"
+    },
+    {
+      "date": "1911",
+      "place": "Dorset, Marnhull, Carraway Lane"
     }
-  ]
+  ],
+  "avatar": "avatars/I1658_0.jpg"
 }

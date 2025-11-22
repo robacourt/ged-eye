@@ -1,10 +1,10 @@
 {
   "id": "I1587",
-  "name": "Ernest Edward A'Court",
-  "givenName": "Ernest Edward",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1888",
+  "birthDate": "Abt 1884",
   "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
@@ -12,15 +12,16 @@
     "Data/Media/1901 census/Bristol/RG13 2376 40 19.jpg"
   ],
   "spouseIds": [
-    "I2590"
+    "I2589"
   ],
-  "childIds": [
-    "I2591",
-    "I1701"
+  "childIds": [],
+  "parentIds": [
+    "I1586",
+    "I1585"
   ],
-  "parentIds": [],
   "occupations": [
-    "Postman"
+    "Chemist Drug",
+    "Wholesale Druggist Assistant"
   ],
   "censusRecords": [
     {
@@ -29,14 +30,14 @@
     },
     {
       "date": "1911",
-      "place": "Bristol, Southville, 10 Allington Rd."
+      "place": "Bristol, Bedminster, 7 Kensal Rd. Victoria Park"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2590",
-      "familyId": "F906",
-      "marriageDate": "ABT 1908"
+      "spouseId": "I2589",
+      "familyId": "F685",
+      "marriageDate": "ABT 1911"
     }
   ],
   "avatar": "avatars/I1587_0.jpg"

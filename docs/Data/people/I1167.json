@@ -1,32 +1,30 @@
 {
   "id": "I1167",
-  "name": "Edward Swain",
-  "givenName": "Edward",
+  "name": "Sidney Swain",
+  "givenName": "Sidney",
   "surname": "Swain",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1864",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1166"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Carter"
+  "childIds": [],
+  "parentIds": [
+    "I1168"
   ],
-  "residences": [
-    {
-      "date": "1887",
-      "place": "Fifehead Neville, Dorset"
-    }
+  "occupations": [
+    "Gardener"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F477"
+      "spouseId": "I1166",
+      "familyId": "F539",
+      "marriageDate": "15 SEP 1887",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

@@ -1,27 +1,25 @@
 {
   "id": "I641",
-  "name": "Sarah Chinn",
-  "givenName": "Sarah",
-  "surname": "Chinn",
-  "sex": "F",
+  "name": "Robert Bartlett Tuffin",
+  "givenName": "Robert Bartlett",
+  "surname": "Tuffin",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I640"
-  ],
-  "childIds": [
-    "I639"
-  ],
-  "parentIds": [
     "I642"
   ],
+  "childIds": [
+    "I640"
+  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I640",
-      "familyId": "F269"
+      "spouseId": "I642",
+      "familyId": "F319"
     }
   ]
 }

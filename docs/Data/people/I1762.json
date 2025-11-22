@@ -1,18 +1,20 @@
 {
   "id": "I1762",
-  "name": "Theresa Wildgoose",
-  "givenName": "Theresa",
+  "name": "Lily Wildgoose",
+  "givenName": "Lily",
   "surname": "Wildgoose",
   "sex": "F",
-  "birthDate": "1877",
-  "birthPlace": null,
+  "birthDate": "2ND QT 1875",
+  "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1760",
-    "I1759"
-  ]
+    "I1761",
+    "I1760"
+  ],
+  "baptismDate": "27 JUNE 1875",
+  "baptismPlace": "Bristol, St Mary Redcliff"
 }

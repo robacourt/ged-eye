@@ -1,17 +1,17 @@
 {
   "id": "I1831",
-  "name": "Jacqueline A'Court",
-  "givenName": "Jacqueline",
+  "name": "David J A'Court",
+  "givenName": "David J",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "3RD QRT 1955",
-  "birthPlace": "London, Stepney",
+  "sex": "M",
+  "birthDate": "1ST QRT 1960",
+  "birthPlace": "Thanet",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1832"
+    "I1818"
   ]
 }

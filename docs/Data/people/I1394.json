@@ -1,18 +1,18 @@
 {
   "id": "I1394",
-  "name": "Myrza Mulder",
-  "givenName": "Myrza",
+  "name": "Gerard Simon Egge Emme Mulder",
+  "givenName": "Gerard Simon Egge Emme",
   "surname": "Mulder",
-  "sex": "F",
-  "birthDate": "27 JAN 1974",
-  "birthPlace": "Enkhuizen, Holland",
+  "sex": "M",
+  "birthDate": "14JUN 1969",
+  "birthPlace": "Wagening, Provinsie Gelderland, Holland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1391",
-    "I1392"
+    "I1392",
+    "I1393"
   ]
 }

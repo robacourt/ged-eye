@@ -1,18 +1,23 @@
 {
   "id": "I1940",
-  "name": "Stephen A'Court",
-  "givenName": "Stephen",
-  "surname": "A'Court",
+  "name": "Wally Reid",
+  "givenName": "Wally",
+  "surname": "Reid",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1937"
+  ],
   "childIds": [],
-  "parentIds": [
-    "I1937",
-    "I1938"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1937",
+      "familyId": "F780"
+    }
   ]
 }

@@ -1,26 +1,20 @@
 {
   "id": "I1259",
-  "name": "Samuel Bench",
-  "givenName": "Samuel",
-  "surname": "Bench",
-  "sex": "M",
+  "name": "Martha Ann Curtis",
+  "givenName": "Martha Ann",
+  "surname": "Curtis",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I283"
+  "childIds": [],
+  "parentIds": [
+    "I182",
+    "I279"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Shepherd"
-  ],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F140"
-    }
-  ]
+  "baptismDate": "14 MARCH 1869",
+  "baptismPlace": "Marnhull, Dorset"
 }

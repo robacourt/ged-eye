@@ -1,41 +1,23 @@
 {
   "id": "I513",
-  "name": "Ernest Richard A'Court",
-  "givenName": "Ernest Richard",
+  "name": "Gladstone Arthur A'Court",
+  "givenName": "Gladstone Arthur",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1910",
-  "birthPlace": "London, Shephe??",
-  "deathDate": "21JAN1940",
+  "birthDate": "1920",
+  "birthPlace": "Collingwood, Victoria",
+  "deathDate": "22.6.1944",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1911 census/London/Hammersmith & Fulham/RG14 205 1.jpg"
-  ],
-  "spouseIds": [
-    "I514"
-  ],
-  "childIds": [
-    "I2106"
-  ],
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I2042",
-    "I2043"
+    "I525",
+    "I526"
   ],
+  "burialPlace": "Germany, Reichswald Forest Cemetery",
   "notes": [
+    "Name: A'COURT, GLADSTONE ARTHUR",
     "In Memory of"
-  ],
-  "censusRecords": [
-    {
-      "date": "1911",
-      "place": "London, Hammersmith, 1 Aylmer Rd."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I514",
-      "familyId": "F219",
-      "marriageDate": "1934"
-    }
-  ],
-  "avatar": "avatars/I513_0.jpg"
+  ]
 }

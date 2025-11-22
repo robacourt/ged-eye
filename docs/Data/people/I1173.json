@@ -1,24 +1,24 @@
 {
   "id": "I1173",
-  "name": "William",
-  "givenName": "William",
-  "surname": "",
-  "sex": "M",
-  "birthDate": "ABT 1852",
-  "birthPlace": "Sturminster Newton, Dorset",
+  "name": "Letitia Humphries",
+  "givenName": "Letitia",
+  "surname": "Humphries",
+  "sex": "F",
+  "birthDate": "ABT 1856",
+  "birthPlace": "Cerne Abbas, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1175",
-    "I181"
+    "I1169",
+    "I180"
   ],
-  "occupations": [
-    "Ag Lab"
-  ],
-  "notes": [
-    "This would mean that he was an  Ag Lab at 9 years old ?"
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Piddle Lane, Cerne Abbas, Dorset"
+    }
   ]
 }

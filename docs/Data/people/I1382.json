@@ -1,9 +1,9 @@
 {
   "id": "I1382",
-  "name": "Rex Abernethy",
-  "givenName": "Rex",
-  "surname": "Abernethy",
-  "sex": "M",
+  "name": "Kay Unknown",
+  "givenName": "Kay",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -17,7 +17,7 @@
   "marriages": [
     {
       "spouseId": "I1376",
-      "familyId": "F546"
+      "familyId": "F616"
     }
   ]
 }

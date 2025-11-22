@@ -1,31 +1,27 @@
 {
   "id": "I1333",
-  "name": "John Henry Norman Waterman",
-  "givenName": "John Henry Norman",
-  "surname": "Waterman",
-  "sex": "M",
-  "birthDate": "1905",
+  "name": "Minnie Unknown",
+  "givenName": "Minnie",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "1875",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1943",
+  "deathPlace": "Stoke Sub Hamdon, Somerset, Summerlands",
   "photos": [],
   "spouseIds": [
-    "I1334"
-  ],
-  "childIds": [],
-  "parentIds": [
-    "I1331",
     "I1332"
   ],
-  "occupations": [
-    "Glover"
+  "childIds": [
+    "I1334"
   ],
+  "parentIds": [],
+  "burialDate": "13 OCT 1943",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
   "marriages": [
     {
-      "spouseId": "I1334",
-      "familyId": "F527",
-      "marriageDate": "23 JUL 1928",
-      "marriagePlace": "Stoke Sub Hamdon, Somerset, St. Marys"
+      "spouseId": "I1332",
+      "familyId": "F596"
     }
   ]
 }

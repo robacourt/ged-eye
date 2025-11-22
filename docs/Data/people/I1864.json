@@ -1,44 +1,24 @@
 {
   "id": "I1864",
-  "name": "Mary Unknown",
-  "givenName": "Mary",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "Abt 1823",
+  "name": "Jeziah A'Court",
+  "givenName": "Jeziah",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt JAN 1850",
   "birthPlace": "Horsington, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1766"
-  ],
-  "childIds": [
-    "I2320",
-    "I1636",
-    "I1314"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Glove Sewer"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1766",
+    "I1863"
   ],
   "censusRecords": [
     {
       "date": "1851",
       "place": "Horsington, Somerset, Poor Lane"
-    },
-    {
-      "date": "1871",
-      "place": "Yeovil, Somerset, 41 Larkhill"
-    },
-    {
-      "date": "1891",
-      "place": "Sussex, Birdham"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1766",
-      "familyId": "F823"
     }
   ]
 }

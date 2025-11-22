@@ -1,18 +1,18 @@
 {
   "id": "I2038",
-  "name": "Nigel Bryce A'Court",
-  "givenName": "Nigel Bryce",
+  "name": "Jessica Alice A'Court",
+  "givenName": "Jessica Alice",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "31 MAY 1986",
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "9 JUN 1988",
+  "birthPlace": "Clyde, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1949",
-    "I1950"
+    "I2025",
+    "I2026"
   ]
 }

@@ -1,11 +1,11 @@
 {
   "id": "I2045",
-  "name": "Evan George A'Court",
-  "givenName": "Evan George",
-  "surname": "A'Court",
+  "name": "John Mackey",
+  "givenName": "John",
+  "surname": "Mackey",
   "sex": "M",
-  "birthDate": "24 AUG 1972",
-  "birthPlace": "Taupo",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -13,6 +13,6 @@
   "childIds": [],
   "parentIds": [
     "I2032",
-    "I2033"
+    "I2031"
   ]
 }

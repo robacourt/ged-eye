@@ -26,13 +26,13 @@
   "marriages": [
     {
       "spouseId": "I308",
-      "familyId": "F150",
+      "familyId": "F168",
       "marriageDate": "2.10.1879",
       "marriagePlace": "Marnhull, Dorset"
     },
     {
       "spouseId": "I314",
-      "familyId": "F154"
+      "familyId": "F172"
     }
   ]
 }

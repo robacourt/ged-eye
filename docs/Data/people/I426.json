@@ -31,10 +31,7 @@
   ],
   "notes": [
     "First name(s) Alexander James Rudolph",
-    "First name(s) Alexander James Rudolph",
-    "First name(s) A J R",
-    "First name(s) A J R",
-    "First name(s) A J R"
+    "First name(s) Alexander James Rudolph"
   ],
   "censusRecords": [
     {
@@ -59,7 +56,7 @@
   "marriages": [
     {
       "spouseId": "I433",
-      "familyId": "F196",
+      "familyId": "F224",
       "marriageDate": "1918"
     }
   ],

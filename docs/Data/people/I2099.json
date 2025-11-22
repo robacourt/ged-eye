@@ -1,26 +1,29 @@
 {
   "id": "I2099",
-  "name": "Sydney Thomas",
-  "givenName": "Sydney",
-  "surname": "Thomas",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Margaret Mary A'Court",
+  "givenName": "Margaret Mary",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1913",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1996",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2098"
+    "I2100"
   ],
   "childIds": [
-    "I2100",
-    "I2101"
+    "I2101",
+    "I2102"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2043",
+    "I2044"
+  ],
   "marriages": [
     {
-      "spouseId": "I2098",
-      "familyId": "F750",
+      "spouseId": "I2100",
+      "familyId": "F824",
       "marriageDate": "1939"
     }
   ]

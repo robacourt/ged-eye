@@ -1,21 +1,25 @@
 {
   "id": "I1070",
-  "name": "Blanche Evelyn A'Court",
-  "givenName": "Blanche Evelyn",
-  "surname": "A'Court",
-  "sex": "F",
+  "name": "William George Hough",
+  "givenName": "William George",
+  "surname": "Hough",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I75",
-    "I103"
+  "spouseIds": [
+    "I955"
   ],
-  "notes": [
-    "Foster Child not adopted"
+  "childIds": [],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I955",
+      "familyId": "F453",
+      "marriageDate": "1880",
+      "marriagePlace": "Mudgee, NSW"
+    }
   ]
 }

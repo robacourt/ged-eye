@@ -1,24 +1,21 @@
 {
   "id": "I1211",
-  "name": "Ernest Alfred Haskett",
-  "givenName": "Ernest Alfred",
+  "name": "Edna Haskett",
+  "givenName": "Edna",
   "surname": "Haskett",
-  "sex": "M",
-  "birthDate": "1885",
-  "birthPlace": "Gorley, Hampshire",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1181",
-    "I1182"
+    "I1182",
+    "I1183"
   ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Ipswich, Suffolk"
-    }
+  "notes": [
+    "Marr WILL TUBBS s.p."
   ]
 }

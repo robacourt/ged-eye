@@ -1,35 +1,30 @@
 {
   "id": "I1248",
-  "name": "George Gillett",
-  "givenName": "George",
+  "name": "James Gillett",
+  "givenName": "James",
   "surname": "Gillett",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "1 NOV 1862",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1249"
+    "I1247"
   ],
-  "childIds": [
-    "I1247",
-    "I1253"
+  "childIds": [],
+  "parentIds": [
+    "I1249",
+    "I1250"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab"
-  ],
-  "residences": [
-    {
-      "date": "1878",
-      "place": "Marnhull, Dorset, Musbery Lane Cottages"
-    }
-  ],
+  "baptismDate": "1 NOV 1862",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1249",
-      "familyId": "F502"
+      "spouseId": "I1247",
+      "familyId": "F568",
+      "marriageDate": "28 APRIL 1886",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

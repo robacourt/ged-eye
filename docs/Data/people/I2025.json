@@ -1,34 +1,31 @@
 {
   "id": "I2025",
-  "name": "Andrenna Hansen",
-  "givenName": "Andrenna",
-  "surname": "Hansen",
-  "sex": "F",
-  "birthDate": "15 SEP 1960",
-  "birthPlace": "Balclutha, New Zealand",
+  "name": "Mark William A'Court",
+  "givenName": "Mark William",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "13 MAR 1956",
+  "birthPlace": "Milton, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2024",
-    "I2034"
+    "I2026"
   ],
   "childIds": [
-    "I2036",
     "I2037",
-    "I2035"
+    "I2038"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1948",
+    "I1949"
+  ],
   "marriages": [
     {
-      "spouseId": "I2024",
-      "familyId": "F726",
+      "spouseId": "I2026",
+      "familyId": "F803",
       "marriageDate": "26 JAN 1980",
       "marriagePlace": "Balclutha, New Zealand"
-    },
-    {
-      "spouseId": "I2034",
-      "familyId": "F734"
     }
   ]
 }

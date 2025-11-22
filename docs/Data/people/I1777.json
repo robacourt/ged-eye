@@ -1,25 +1,27 @@
 {
   "id": "I1777",
-  "name": "Calvin D Risher",
-  "givenName": "Calvin D",
-  "surname": "Risher",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "1831",
+  "birthPlace": "Castle Cary, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1925"
+  "photos": [
+    "Data/Media/1851 census/Queen Camel/HO 107 1931 12 17 53.jpg"
   ],
-  "childIds": [
-    "I391"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [],
-  "marriages": [
+  "occupations": [
+    "Spinner"
+  ],
+  "censusRecords": [
     {
-      "spouseId": "I1925",
-      "familyId": "F686"
+      "date": "1851",
+      "place": "Queen Camel, Somerset, Hazelgrove"
     }
-  ]
+  ],
+  "avatar": "avatars/I1777_0.jpg"
 }

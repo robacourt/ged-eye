@@ -1,30 +1,33 @@
 {
   "id": "I582",
-  "name": "Rose Louisa Pike",
-  "givenName": "Rose Louisa",
+  "name": "Alfred Thomas Pike",
+  "givenName": "Alfred Thomas",
   "surname": "Pike",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I580"
+    "I155"
   ],
   "childIds": [
-    "I718"
+    "I583"
   ],
   "parentIds": [
-    "I581",
-    "I155"
+    "I584",
+    "I585"
+  ],
+  "occupations": [
+    "Ag Lab"
   ],
   "marriages": [
     {
-      "spouseId": "I580",
-      "familyId": "F239",
-      "marriageDate": "20 MAY 1890",
-      "marriagePlace": "Manston, Dorset"
+      "spouseId": "I155",
+      "familyId": "F101",
+      "marriageDate": "24.9.1863",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

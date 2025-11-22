@@ -1,28 +1,46 @@
 {
   "id": "I1453",
-  "name": "Florence Eliza Bennett",
-  "givenName": "Florence Eliza",
-  "surname": "Bennett",
-  "sex": "F",
+  "name": "Percy John J A'Court",
+  "givenName": "Percy John J",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": "ABT 1877",
-  "birthPlace": null,
+  "birthPlace": "Weymouth, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1610"
+  "photos": [
+    "Data/Media/1881 census/Dorset/Melcombe Regis/RG11 2105 101 58.jpg",
+    "Data/Media/1891 census/Dorset/Melcombe Regis/RG12 1646 96 6.jpg",
+    "Data/Media/1901 census/Dorset/Weymouth/RG13 1993 89 15.jpg",
+    "Data/Media/1911 census/Dorset/Weymouth/RG14 12344 97.jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I378",
-    "I894"
+    "I1451",
+    "I1452"
   ],
-  "marriages": [
+  "occupations": [
+    "Livery Stable Keeper",
+    "Motor and Cab Proprietor"
+  ],
+  "censusRecords": [
     {
-      "spouseId": "I1610",
-      "familyId": "F623",
-      "marriageDate": "27TH JULY 1905",
-      "marriagePlace": "London, Streatham Common"
+      "date": "1881",
+      "place": "Weymouth, Dorset. Melcombe Regis, 4 Alexandra Terrace"
+    },
+    {
+      "date": "1891",
+      "place": "Dorset, Melcombe Regis, Gloucester Row"
+    },
+    {
+      "date": "1901",
+      "place": "Weymouth, Dorset, Melcombe Regis, 3 Gloster Row"
+    },
+    {
+      "date": "1911",
+      "place": "Weymouth, Dorset, 3 Gloucester Row"
     }
-  ]
+  ],
+  "avatar": "avatars/I1453_0.jpg"
 }

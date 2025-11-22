@@ -1,25 +1,34 @@
 {
   "id": "I1177",
-  "name": "Mary Merridew",
-  "givenName": "Mary",
-  "surname": "Merridew",
-  "sex": "F",
+  "name": "Stephen Haskett",
+  "givenName": "Stephen",
+  "surname": "Haskett",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1176"
+    "I1178"
   ],
   "childIds": [
-    "I1175"
+    "I1176"
   ],
   "parentIds": [],
+  "occupations": [
+    "Ag Lab"
+  ],
+  "residences": [
+    {
+      "date": "1858",
+      "place": "Stapleford, Wiltshire"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1176",
-      "familyId": "F480"
+      "spouseId": "I1178",
+      "familyId": "F543"
     }
   ]
 }

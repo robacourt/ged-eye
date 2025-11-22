@@ -1,23 +1,17 @@
 {
   "id": "I1832",
-  "name": "Unknown Griffin",
-  "givenName": "Unknown",
-  "surname": "Griffin",
+  "name": "Jacqueline A'Court",
+  "givenName": "Jacqueline",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "3RD QRT 1955",
+  "birthPlace": "London, Stepney",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1831"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F659"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1833"
   ]
 }

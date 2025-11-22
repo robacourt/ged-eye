@@ -1,26 +1,41 @@
 {
   "id": "I1136",
-  "name": "Thomas Pike",
-  "givenName": "Thomas",
+  "name": "John Pike",
+  "givenName": "John",
   "surname": "Pike",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1857",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1135"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1138",
+    "I1142",
+    "I1143",
+    "I1144"
+  ],
+  "parentIds": [
+    "I1137"
+  ],
   "occupations": [
-    "Ag Lab"
+    "Stone Quarryman"
+  ],
+  "residences": [
+    {
+      "date": "1879",
+      "place": "Antills Farm"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F461"
+      "spouseId": "I1135",
+      "familyId": "F523",
+      "marriageDate": "27 OCT 1879",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

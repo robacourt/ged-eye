@@ -1,47 +1,27 @@
 {
   "id": "I926",
-  "name": "Elizabeth Maria Unknown",
-  "givenName": "Elizabeth Maria",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "1842",
-  "birthPlace": "Wombwell, Yorkshire",
+  "name": "Peter Cook",
+  "givenName": "Peter",
+  "surname": "Cook",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I874"
+    "I919"
   ],
-  "childIds": [
-    "I2468",
-    "I2469",
-    "I2470",
-    "I2471"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1871",
-      "place": "Hertfordshire, Ware, Gilston, Lolings Cottage"
-    },
-    {
-      "date": "1881",
-      "place": "Lancashire, West Derby, 2 Quarry Rd."
-    },
-    {
-      "date": "1891",
-      "place": "West Derby, Lancashire, 2 Quarry Road"
-    },
-    {
-      "date": "1911",
-      "place": "West Derby, Lancashire, 147 Eaton Rd."
-    }
+  "notes": [
+    "Woodcutter"
   ],
   "marriages": [
     {
-      "spouseId": "I874",
-      "familyId": "F375",
-      "marriageDate": "ABT 1868"
+      "spouseId": "I919",
+      "familyId": "F440",
+      "divorceDate": "1947"
     }
   ]
 }

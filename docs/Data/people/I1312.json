@@ -1,15 +1,41 @@
 {
   "id": "I1312",
-  "name": "Thomas Elisha A'Court",
-  "givenName": "Thomas Elisha",
+  "name": "Elsie Maud A'Court",
+  "givenName": "Elsie Maud",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1872",
-  "birthPlace": "Pancras, District",
+  "sex": "F",
+  "birthDate": "1894",
+  "birthPlace": "Horsebridge, Kings Somborne, Hampshire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1901 census/Hampshire/Selborne/RG13 1099 91 11.jpg",
+    "Data/Media/1911 census/Hampshire/Selborne/RG14 6218 137.jpg",
+    "Data/Media/1921 Census/Hampshire/RG15 05787 66.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I284",
+    "I287"
+  ],
+  "occupations": [
+    "Monitor",
+    "Po assistant, JP sub Contractor"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Selborne, Hampshire, Gracious St"
+    },
+    {
+      "date": "1911",
+      "place": "Selborne, Hampshire, Gracious St"
+    },
+    {
+      "date": "1921",
+      "place": "Hampshire, Selborne, Seele View, Gilborne"
+    }
+  ],
+  "avatar": "avatars/I1312_0.jpg"
 }

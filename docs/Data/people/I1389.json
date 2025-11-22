@@ -1,23 +1,52 @@
 {
   "id": "I1389",
-  "name": "Norma Unknown",
-  "givenName": "Norma",
-  "surname": "Unknown",
+  "name": "Annie Thomas",
+  "givenName": "Annie",
+  "surname": "Thomas",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1865",
+  "birthPlace": "Bristol, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I988"
+  "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg"
   ],
-  "childIds": [],
-  "parentIds": [],
+  "spouseIds": [
+    "I1388"
+  ],
+  "childIds": [
+    "I1411",
+    "I1412",
+    "I1407",
+    "I1408",
+    "I1409"
+  ],
+  "parentIds": [
+    "I1410"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    },
+    {
+      "date": "1911",
+      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
+    }
+  ],
+  "residences": [
+    {
+      "date": "1860",
+      "place": "Bristol, 3 St John's Rd."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I988",
-      "familyId": "F410"
+      "spouseId": "I1388",
+      "familyId": "F621",
+      "marriageDate": "11 DEC 1883",
+      "marriagePlace": "Bristol"
     }
-  ]
+  ],
+  "avatar": "avatars/I1389_0.jpg"
 }

@@ -1,18 +1,18 @@
 {
   "id": "I1395",
-  "name": "Marie Antoinette Mulder",
-  "givenName": "Marie Antoinette",
+  "name": "Myrza Mulder",
+  "givenName": "Myrza",
   "surname": "Mulder",
   "sex": "F",
-  "birthDate": "2JUL 1978",
-  "birthPlace": "Hoorn, Holland",
+  "birthDate": "27 JAN 1974",
+  "birthPlace": "Enkhuizen, Holland",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1391",
-    "I1392"
+    "I1392",
+    "I1393"
   ]
 }

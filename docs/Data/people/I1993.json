@@ -1,21 +1,30 @@
 {
   "id": "I1993",
-  "name": "Jean Ford",
-  "givenName": "Jean",
-  "surname": "Ford",
+  "name": "Joann A'Court",
+  "givenName": "Joann",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": "ABT 1930 TWIN",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Jean Joan  Freddy Ford.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1997"
   ],
-  "spouseIds": [],
-  "childIds": [],
+  "childIds": [
+    "I1998",
+    "I1999",
+    "I2000",
+    "I2001"
+  ],
   "parentIds": [
-    "I1627",
-    "I1033"
+    "I1992"
   ],
-  "avatar": "avatars/I1993_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1997",
+      "familyId": "F798"
+    }
+  ]
 }

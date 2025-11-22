@@ -1,15 +1,23 @@
 {
   "id": "I1967",
-  "name": "John A'Court",
-  "givenName": "John",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1845",
+  "sex": "F",
+  "birthDate": "ABT 1815",
   "birthPlace": null,
-  "deathDate": "2 DEC 1922",
-  "deathPlace": "Essondale, B.C. Canada",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I1966"
+  ],
+  "censusRecords": [
+    {
+      "date": "1841",
+      "place": "Shepton Mallet, Somerset, Paul St"
+    }
+  ]
 }

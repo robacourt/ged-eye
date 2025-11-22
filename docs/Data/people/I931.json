@@ -1,25 +1,18 @@
 {
   "id": "I931",
-  "name": "Francis John A'Court",
-  "givenName": "Francis John",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1893",
-  "birthPlace": "Dubbo, NSW",
-  "deathDate": "1936",
-  "deathPlace": "Goulburn, NSW, Australia",
+  "name": "Marie Cooke",
+  "givenName": "Marie",
+  "surname": "Cooke",
+  "sex": "F",
+  "birthDate": "ABT 1747",
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I932"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I932",
-      "familyId": "F387",
-      "marriageDate": "13.12.1930",
-      "marriagePlace": "Yass, NSW"
-    }
+  "parentIds": [
+    "I930",
+    "I541"
   ]
 }

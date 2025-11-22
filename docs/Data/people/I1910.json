@@ -1,18 +1,33 @@
 {
   "id": "I1910",
-  "name": "A.W. A'Court",
-  "givenName": "A.W.",
-  "surname": "A'Court",
+  "name": "Hugh Lee",
+  "givenName": "Hugh",
+  "surname": "Lee",
   "sex": "M",
-  "birthDate": "ABT 1879",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I1909"
+  ],
+  "childIds": [
+    "I1943",
+    "I2489",
+    "I2491",
+    "I2493",
+    "I2495",
+    "I2497",
+    "I2499",
+    "I2501"
+  ],
   "parentIds": [],
-  "notes": [
-    "From Ellis Island Records NY USA"
+  "marriages": [
+    {
+      "spouseId": "I1909",
+      "familyId": "F774",
+      "marriagePlace": "Kumara, Westland, New Zealand"
+    }
   ]
 }

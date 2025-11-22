@@ -1,23 +1,26 @@
 {
   "id": "I804",
-  "name": "\\-\\",
-  "givenName": "\\-\\",
-  "surname": "",
-  "sex": "M",
+  "name": "Ruby Lavinia LUMB",
+  "givenName": "Ruby Lavinia",
+  "surname": "LUMB",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I803"
+    "I805"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I803",
+    "I787"
+  ],
   "marriages": [
     {
-      "spouseId": "I803",
-      "familyId": "F344",
+      "spouseId": "I805",
+      "familyId": "F395",
       "marriageDate": "1937",
       "marriagePlace": "New Zealand"
     }

@@ -1,18 +1,18 @@
 {
   "id": "I2058",
-  "name": "Eileen A'Court",
-  "givenName": "Eileen",
+  "name": "Leslie (Bunny) A'Court",
+  "givenName": "Leslie (Bunny)",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1921",
-  "birthPlace": "Tooting",
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "1920",
+  "birthPlace": null,
+  "deathDate": "1981",
+  "deathPlace": "Saffron Walden",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2054",
-    "I2055"
+    "I2055",
+    "I2056"
   ]
 }

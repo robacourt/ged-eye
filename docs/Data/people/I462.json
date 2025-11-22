@@ -1,15 +1,28 @@
 {
   "id": "I462",
-  "name": "Fredrick G Ridler",
-  "givenName": "Fredrick G",
-  "surname": "Ridler",
-  "sex": "M",
-  "birthDate": "1861",
-  "birthPlace": null,
-  "deathDate": "29.4.1877",
-  "deathPlace": "Canterbury, Kent",
+  "name": "Kathleen Mabel Lent",
+  "givenName": "Kathleen Mabel",
+  "surname": "Lent",
+  "sex": "F",
+  "birthDate": "30 NOV 1913",
+  "birthPlace": "Kent, Dover",
+  "deathDate": "MAY 1995",
+  "deathPlace": "Lancashire, Blackburn",
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I2951"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I455",
+    "I460"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I2951",
+      "familyId": "F247",
+      "marriageDate": "JUL 1939",
+      "marriagePlace": "London, Woolwich"
+    }
+  ]
 }

@@ -1,18 +1,32 @@
 {
   "id": "I752",
-  "name": "Diana A'Court",
-  "givenName": "Diana",
-  "surname": "A'Court",
+  "name": "Susannah PENNY",
+  "givenName": "Susannah",
+  "surname": "PENNY",
   "sex": "F",
-  "birthDate": "1783",
-  "birthPlace": "Yarlington, Somerset",
-  "deathDate": "1803",
-  "deathPlace": "England",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "1807",
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I744",
-    "I751"
+  "spouseIds": [
+    "I745"
+  ],
+  "childIds": [
+    "I753",
+    "I754",
+    "I755",
+    "I756",
+    "I758",
+    "I759"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I745",
+      "familyId": "F355",
+      "marriageDate": "1782",
+      "marriagePlace": "Yarlington, Somerset"
+    }
   ]
 }

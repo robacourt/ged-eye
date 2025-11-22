@@ -1,10 +1,10 @@
 {
   "id": "I1221",
-  "name": "Tony Haskett",
-  "givenName": "Tony",
+  "name": "Leigh Haskett",
+  "givenName": "Leigh",
   "surname": "Haskett",
-  "sex": "M",
-  "birthDate": "1924",
+  "sex": "U",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,10 +12,6 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1215",
-    "I1216"
-  ],
-  "notes": [
-    "Disabled"
+    "I1219"
   ]
 }

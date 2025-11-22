@@ -1,9 +1,9 @@
 {
   "id": "I1755",
-  "name": "Letita Durrant",
-  "givenName": "Letita",
+  "name": "Edwin Durrant",
+  "givenName": "Edwin",
   "surname": "Durrant",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,12 +12,12 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "baptismDate": "27 SEP 1829",
+  "baptismDate": "28 JUL 1826",
   "baptismPlace": "Folke, Dorset",
   "censusRecords": [
     {
       "date": "1851",
-      "place": "Bishops Caundle, Dorset"
+      "place": "North Cadbury, Somerset"
     }
   ]
 }

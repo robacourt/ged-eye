@@ -1,28 +1,25 @@
 {
   "id": "I2040",
-  "name": "Jacqueline Mackey",
-  "givenName": "Jacqueline",
-  "surname": "Mackey",
+  "name": "Tania Witty",
+  "givenName": "Tania",
+  "surname": "Witty",
   "sex": "F",
-  "birthDate": "MAY 1956",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I2041"
+    "I2024"
   ],
   "childIds": [],
-  "parentIds": [
-    "I2031",
-    "I2030"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2041",
-      "familyId": "F736",
-      "marriageDate": "MAY 1983",
-      "marriagePlace": "Christchurch, New Zealand"
+      "spouseId": "I2024",
+      "familyId": "F802",
+      "marriageDate": "2 MAR 2002",
+      "marriagePlace": "Nelson, New Zealand"
     }
   ]
 }

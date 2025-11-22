@@ -1,18 +1,23 @@
 {
   "id": "I1985",
-  "name": "John Marks",
-  "givenName": "John",
-  "surname": "Marks",
+  "name": "Daniel Llewellyn Jones",
+  "givenName": "Daniel Llewellyn",
+  "surname": "Jones",
   "sex": "M",
-  "birthDate": "29 DEC 1946",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "MAR 2004",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1411"
+  ],
   "childIds": [],
-  "parentIds": [
-    "I1536",
-    "I1535"
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1411",
+      "familyId": "F628"
+    }
   ]
 }

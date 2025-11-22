@@ -1,10 +1,10 @@
 {
   "id": "I1911",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "A.W. A'Court",
+  "givenName": "A.W.",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1872",
+  "birthDate": "ABT 1879",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,10 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
-  "occupations": [
-    "Seaman, SS. Vennachar"
-  ],
   "notes": [
-    "From Ellis Island records"
+    "From Ellis Island Records NY USA"
   ]
 }

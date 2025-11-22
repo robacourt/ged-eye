@@ -1,10 +1,10 @@
 {
   "id": "I649",
-  "name": "Elizabeth Ann Warren",
-  "givenName": "Elizabeth Ann",
+  "name": "Henry Eli Warren",
+  "givenName": "Henry Eli",
   "surname": "Warren",
-  "sex": "F",
-  "birthDate": "26.8.1870",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,15 +12,15 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
-  "baptismDate": "27.3.1871",
+  "baptismDate": "10.5.1868",
   "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Servant"
+    "Butchers Man"
   ],
   "notes": [
-    "6 months in 1871,20 in 1891,"
+    "3 in 1871, 22 in 1891."
   ]
 }

@@ -1,31 +1,37 @@
 {
   "id": "I1652",
-  "name": "Kate A'Court",
-  "givenName": "Kate",
-  "surname": "A'Court",
+  "name": "Emma Drew",
+  "givenName": "Emma",
+  "surname": "Drew",
   "sex": "F",
-  "birthDate": "ABT 1870",
+  "birthDate": "ABT 1846",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1871 census/Marnhull/RG 10 1972 34 6.jpg"
-  ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1650",
+  "photos": [],
+  "spouseIds": [
     "I1651"
+  ],
+  "childIds": [
+    "I1653"
+  ],
+  "parentIds": [
+    "I1654",
+    "I1655"
+  ],
+  "occupations": [
+    "Glover"
   ],
   "censusRecords": [
     {
       "date": "1871",
       "place": "Marnhull, Dorset, New St."
-    },
-    {
-      "date": "1881",
-      "place": "Marnhull, Dorset, Burton Street"
     }
   ],
-  "avatar": "avatars/I1652_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1651",
+      "familyId": "F705"
+    }
+  ]
 }

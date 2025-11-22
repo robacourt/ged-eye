@@ -1,28 +1,30 @@
 {
   "id": "I1122",
-  "name": "Bessie Victoria Kent",
-  "givenName": "Bessie Victoria",
+  "name": "Herbert Alfred Kent",
+  "givenName": "Herbert Alfred",
   "surname": "Kent",
-  "sex": "F",
-  "birthDate": "Abt 1916",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "Abt 1939",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1123"
+    "I1121"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1121",
-    "I1120"
+  "childIds": [
+    "I1123",
+    "I1126",
+    "I1127"
+  ],
+  "parentIds": [],
+  "occupations": [
+    "Roadman Soldier"
   ],
   "marriages": [
     {
-      "spouseId": "I1123",
-      "familyId": "F454",
-      "marriageDate": "29 JULY 1939",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I1121",
+      "familyId": "F516"
     }
   ]
 }

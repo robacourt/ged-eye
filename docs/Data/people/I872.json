@@ -1,21 +1,39 @@
 {
   "id": "I872",
-  "name": "Jane a'Court",
-  "givenName": "Jane",
-  "surname": "a'Court",
+  "name": "Mary Parker",
+  "givenName": "Mary",
+  "surname": "Parker",
   "sex": "F",
-  "birthDate": "ABT 1838",
-  "birthPlace": "Bath, Somerset",
-  "deathDate": "AFT 1851",
+  "birthDate": "BEF 1824",
+  "birthPlace": "Shepton Mallet, Somerset",
+  "deathDate": "AFT 1861",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I763",
-    "I871"
+  "spouseIds": [
+    "I764"
   ],
-  "notes": [
-    "1851"
+  "childIds": [
+    "I873",
+    "I875",
+    "I874",
+    "I876",
+    "I877",
+    "I878",
+    "I879",
+    "I2108",
+    "I2109"
+  ],
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "London, Middx. St Pancras 3, Brill Cottages."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I764",
+      "familyId": "F364"
+    }
   ]
 }

@@ -1,31 +1,18 @@
 {
   "id": "I1232",
-  "name": "Pamela Haskett",
-  "givenName": "Pamela",
-  "surname": "Haskett",
+  "name": "Stephanie Myatt",
+  "givenName": "Stephanie",
+  "surname": "Myatt",
   "sex": "F",
-  "birthDate": "1936",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1233"
-  ],
-  "childIds": [
-    "I1234",
-    "I1235",
-    "I1236",
-    "I1237"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1215",
-    "I1216"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1233",
-      "familyId": "F497"
-    }
+    "I1231",
+    "I1230"
   ]
 }

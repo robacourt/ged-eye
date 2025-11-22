@@ -1,12 +1,12 @@
 {
   "id": "I841",
-  "name": "Sydney Charles A'Court",
-  "givenName": "Sydney Charles",
+  "name": "Dalton Britton A'Court",
+  "givenName": "Dalton Britton",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "24 JUL 1902",
+  "birthDate": "27 AUG 1901",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1955",
+  "deathDate": "FEB 1902",
   "deathPlace": "Christchurch, New Zealand",
   "photos": [],
   "spouseIds": [
@@ -14,18 +14,13 @@
   ],
   "childIds": [],
   "parentIds": [
-    "I824",
-    "I836"
-  ],
-  "notes": [
-    "Wises"
+    "I825",
+    "I837"
   ],
   "marriages": [
     {
       "spouseId": "I854",
-      "familyId": "F366",
-      "marriageDate": "1926",
-      "marriagePlace": "New Zealand"
+      "familyId": "F417"
     }
   ]
 }

@@ -1,18 +1,25 @@
 {
   "id": "I507",
-  "name": "Alan A'Court",
-  "givenName": "Alan",
-  "surname": "A'Court",
-  "sex": "M",
+  "name": "Alice Buskill",
+  "givenName": "Alice",
+  "surname": "Buskill",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I506"
+  ],
   "childIds": [],
   "parentIds": [],
-  "notes": [
-    "My husband works with an Alan A'Court who has many family members nearby in Wiltshire sara@chivers10.freeserve 6/04/01"
+  "marriages": [
+    {
+      "spouseId": "I506",
+      "familyId": "F259",
+      "marriageDate": "4 OCT 1562",
+      "marriagePlace": "Frome, Somerset"
+    }
   ]
 }

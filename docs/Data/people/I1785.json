@@ -1,23 +1,17 @@
 {
   "id": "I1785",
-  "name": "Unknown Inkpen",
-  "givenName": "Unknown",
-  "surname": "Inkpen",
+  "name": "Lynda R A'Court",
+  "givenName": "Lynda R",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "3RD QRT 1951",
+  "birthPlace": "Gosport, Hampshire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1784"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F643"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1786"
   ]
 }

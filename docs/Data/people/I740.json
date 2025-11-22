@@ -1,27 +1,18 @@
 {
   "id": "I740",
-  "name": "Mary Somers",
-  "givenName": "Mary",
-  "surname": "Somers",
+  "name": "Meeka Leigh O'Conner",
+  "givenName": "Meeka Leigh",
+  "surname": "O'Conner",
   "sex": "F",
-  "birthDate": null,
+  "birthDate": "19 APRIL 1978",
   "birthPlace": null,
-  "deathDate": "13 MAR 1756",
-  "deathPlace": "Somerset, North Cadbury",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I538"
-  ],
-  "childIds": [
-    "I741"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I538",
-      "familyId": "F230",
-      "marriageDate": "21 APR 1726",
-      "marriagePlace": "North Cadbury, Somerset"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I739",
+    "I1015"
   ]
 }

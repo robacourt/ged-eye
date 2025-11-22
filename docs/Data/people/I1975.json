@@ -1,30 +1,40 @@
 {
   "id": "I1975",
-  "name": "Elizabeth Daniels",
-  "givenName": "Elizabeth",
-  "surname": "Daniels",
-  "sex": "F",
-  "birthDate": "27 MAR 1852",
-  "birthPlace": "Henstridge, Somerset",
+  "name": "John Yendal",
+  "givenName": "John",
+  "surname": "Yendal",
+  "sex": "M",
+  "birthDate": "Abt 1798",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1976"
+  "photos": [
+    "Data/Media/1861 Census/Bedminster/RG9 1705 74 3.jpg",
+    "Data/Media/1871 census/Bristol/RG10 2520 13 13.jpg"
   ],
+  "spouseIds": [],
   "childIds": [
-    "I1977"
+    "I1406"
   ],
-  "parentIds": [
-    "I1726",
-    "I77"
+  "parentIds": [],
+  "occupations": [
+    "Agricultural Labourer"
+  ],
+  "censusRecords": [
+    {
+      "date": "1861",
+      "place": "Somerset, Bedminster, 3 Still House Lane"
+    },
+    {
+      "date": "1871",
+      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
+    }
   ],
   "marriages": [
     {
-      "spouseId": "I1976",
-      "familyId": "F707",
-      "marriageDate": "2 OCT 1870",
-      "marriagePlace": "Portsea Island, Hampshire"
+      "spouseId": null,
+      "familyId": "F625"
     }
-  ]
+  ],
+  "avatar": "avatars/I1975_0.jpg"
 }

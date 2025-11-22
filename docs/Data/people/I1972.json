@@ -1,25 +1,23 @@
 {
   "id": "I1972",
-  "name": "Peter Grant Drost",
-  "givenName": "Peter Grant",
-  "surname": "Drost",
+  "name": "Unknown Jones",
+  "givenName": "Unknown",
+  "surname": "Jones",
   "sex": "M",
-  "birthDate": "Abt 1876",
-  "birthPlace": "Wingham, Ontario, Canada",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1973"
+    "I1971"
   ],
-  "childIds": [
-    "I1969"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1973",
-      "familyId": "F705"
+      "spouseId": "I1971",
+      "familyId": "F793"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "I530",
-  "name": "David Chapman",
-  "givenName": "David",
-  "surname": "Chapman",
+  "name": "Leslie Jones",
+  "givenName": "Leslie",
+  "surname": "Jones",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,20 +10,14 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I127",
-    "I127"
+    "I402"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I127",
-      "familyId": "F311",
-      "marriageDate": "3RD QTR 1967"
-    },
-    {
-      "spouseId": "I127",
-      "familyId": "F672"
+      "spouseId": "I402",
+      "familyId": "F205"
     }
   ]
 }

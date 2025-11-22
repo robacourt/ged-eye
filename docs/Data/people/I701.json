@@ -1,24 +1,28 @@
 {
   "id": "I701",
-  "name": "Rachal Hurham",
-  "givenName": "Rachal",
-  "surname": "Hurham",
-  "sex": "F",
-  "birthDate": "BEF 1736",
-  "birthPlace": null,
-  "deathDate": null,
+  "name": "Abraham a'Court",
+  "givenName": "Abraham",
+  "surname": "a'Court",
+  "sex": "M",
+  "birthDate": "BEF 23 APRIL 1738",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "AFT 1759",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I537"
+    "I703"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I538",
+    "I699"
+  ],
   "marriages": [
     {
-      "spouseId": "I537",
-      "familyId": "F229",
-      "marriageDate": "17.APRIL 1749"
+      "spouseId": "I703",
+      "familyId": "F339",
+      "marriageDate": "5 NOV 1759",
+      "marriagePlace": "Somerton, Somerset"
     }
   ]
 }

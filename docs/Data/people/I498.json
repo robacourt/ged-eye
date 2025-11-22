@@ -1,25 +1,31 @@
 {
   "id": "I498",
-  "name": "Lillian Rendle",
-  "givenName": "Lillian",
-  "surname": "Rendle",
-  "sex": "F",
-  "birthDate": "25 MAR 1931",
-  "birthPlace": "Devon, Appledore",
-  "deathDate": "09 JUN 2019",
-  "deathPlace": "Devon, Westward Ho!",
+  "name": "Basil A. A'Court",
+  "givenName": "Basil A.",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "30.10.1927",
+  "birthPlace": "Milborne Port, Somerset",
+  "deathDate": "12.10.1973",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I497"
-  ],
-  "childIds": [
     "I499"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I500"
+  ],
+  "parentIds": [
+    "I494",
+    "I497"
+  ],
+  "occupations": [
+    "Watchmaker/Jeweller."
+  ],
   "marriages": [
     {
-      "spouseId": "I497",
-      "familyId": "F211"
+      "spouseId": "I499",
+      "familyId": "F256"
     }
   ]
 }

@@ -1,26 +1,36 @@
 {
   "id": "I1161",
-  "name": "William Paull",
-  "givenName": "William",
+  "name": "Francis Paull",
+  "givenName": "Francis",
   "surname": "Paull",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1900",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1160"
   ],
-  "parentIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1162"
+  ],
   "occupations": [
     "Farmer"
   ],
+  "residences": [
+    {
+      "date": "1926",
+      "place": "Merriott, Somerset"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F473"
+      "spouseId": "I1160",
+      "familyId": "F535",
+      "marriageDate": "14 JULY  1926",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

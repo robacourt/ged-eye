@@ -1,18 +1,18 @@
 {
   "id": "I876",
-  "name": "James a'Court",
-  "givenName": "James",
+  "name": "Francis Henry a'Court",
+  "givenName": "Francis Henry",
   "surname": "a'Court",
   "sex": "M",
-  "birthDate": "ABT 1846",
+  "birthDate": "1845",
   "birthPlace": "Bath, Somerset",
-  "deathDate": "AFT 1851",
-  "deathPlace": null,
+  "deathDate": "BEF 1851",
+  "deathPlace": "Bath, Somerset",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I763",
-    "I871"
+    "I764",
+    "I872"
   ]
 }

@@ -1,12 +1,12 @@
 {
   "id": "I719",
-  "name": "Ronald Vincent Peters",
-  "givenName": "Ronald Vincent",
-  "surname": "Peters",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Gertrude Annie Foot",
+  "givenName": "Gertrude Annie",
+  "surname": "Foot",
+  "sex": "F",
+  "birthDate": "1901",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "1956",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
@@ -16,13 +16,14 @@
     "I720"
   ],
   "parentIds": [
-    "I1398",
-    "I718"
+    "I581",
+    "I583"
   ],
   "marriages": [
     {
       "spouseId": "I1399",
-      "familyId": "F293"
+      "familyId": "F342",
+      "marriageDate": "1918"
     }
   ]
 }

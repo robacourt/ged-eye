@@ -1,29 +1,34 @@
 {
   "id": "I634",
-  "name": "Judith Cecelia Hatcher",
-  "givenName": "Judith Cecelia",
-  "surname": "Hatcher",
-  "sex": "M",
-  "birthDate": "20.12.1952",
-  "birthPlace": "Marnhull, Dorset, 11 Fellowsmead",
+  "name": "Joyce Cecelia Frampton",
+  "givenName": "Joyce Cecelia",
+  "surname": "Frampton",
+  "sex": "F",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I637"
+    "I624"
   ],
-  "childIds": [],
+  "childIds": [
+    "I635"
+  ],
   "parentIds": [
-    "I623",
-    "I633"
+    "I636"
   ],
-  "baptismDate": "12.7.1953",
-  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Landworker"
+  ],
+  "notes": [
+    "22-1948"
+  ],
   "marriages": [
     {
-      "spouseId": "I637",
-      "familyId": "F267",
-      "marriageDate": "20.4.1974",
+      "spouseId": "I624",
+      "familyId": "F311",
+      "marriageDate": "28.8.1948",
       "marriagePlace": "Marnhull, Dorset"
     }
   ]

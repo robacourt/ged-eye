@@ -1,18 +1,34 @@
 {
   "id": "I565",
-  "name": "John a'Court",
-  "givenName": "John",
+  "name": "Joanne a'Court",
+  "givenName": "Joanne",
   "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "ABT .1614",
+  "sex": "F",
+  "birthDate": "ABT 1612",
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "AFT 1637",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I684"
+  ],
+  "childIds": [
+    "I685",
+    "I686"
+  ],
   "parentIds": [
-    "I558",
-    "I559"
+    "I559",
+    "I560"
+  ],
+  "notes": [
+    "Pat Tuffin has the same details but as Avis A'court"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I684",
+      "familyId": "F283",
+      "marriageDate": "18 JUL 1636",
+      "marriagePlace": "South Cadbury, Somerset"
+    }
   ]
 }

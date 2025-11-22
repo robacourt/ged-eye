@@ -1,26 +1,42 @@
 {
   "id": "I1412",
-  "name": "Eileen Unknown",
-  "givenName": "Eileen",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Ernest A'Court",
+  "givenName": "Ernest",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "Abt 1885",
+  "birthPlace": "Bedminster, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1891 census/Somerset/Bedminster/RG12 1947 152 20.jpg"
+  ],
   "spouseIds": [
-    "I1411"
+    "I1413"
   ],
   "childIds": [
-    "I1413",
-    "I510"
+    "I1414",
+    "I511"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1388",
+    "I1389"
+  ],
+  "censusRecords": [
+    {
+      "date": "1891",
+      "place": "Somerset, Bedminster, Catherine Mead St."
+    },
+    {
+      "date": "1901",
+      "place": "Rock, Ferry St Peter, Birkenhead, Cheshire,Reformatory School Ship Akbar"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1411",
-      "familyId": "F216"
+      "spouseId": "I1413",
+      "familyId": "F261"
     }
-  ]
+  ],
+  "avatar": "avatars/I1412_0.jpg"
 }

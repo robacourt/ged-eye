@@ -1,32 +1,28 @@
 {
   "id": "I1426",
-  "name": "Esther Isaacs",
-  "givenName": "Esther",
+  "name": "Alexander Isaacs",
+  "givenName": "Alexander",
   "surname": "Isaacs",
   "sex": "M",
-  "birthDate": "ABT 1897",
-  "birthPlace": "South Hackney, London",
-  "deathDate": null,
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "BEF 1901",
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg",
-    "Data/Media/1911 census/London/Islington/RG14 829 73.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1425"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1425",
-    "I1424"
+  "childIds": [
+    "I1427",
+    "I1428"
   ],
-  "censusRecords": [
+  "parentIds": [],
+  "marriages": [
     {
-      "date": "1901 AGE 4",
-      "place": "Hackney, London, 64 Kenninghall Rd."
-    },
-    {
-      "date": "1911",
-      "place": "London, Islington, 29 Tollington Park N"
+      "spouseId": "I1425",
+      "familyId": "F631",
+      "marriageDate": "1896",
+      "marriagePlace": "London, City"
     }
-  ],
-  "avatar": "avatars/I1426_0.jpg"
+  ]
 }

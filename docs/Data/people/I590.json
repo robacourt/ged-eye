@@ -1,26 +1,43 @@
 {
   "id": "I590",
-  "name": "Alice Lewis Hatcher",
-  "givenName": "Alice Lewis",
+  "name": "Wyndham Hatcher",
+  "givenName": "Wyndham",
   "surname": "Hatcher",
-  "sex": "F",
-  "birthDate": "22.3.1875",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I596"
+  ],
+  "childIds": [
+    "I597",
+    "I598",
+    "I599",
+    "I600",
+    "I601",
+    "I602"
+  ],
   "parentIds": [
     "I157",
     "I317"
   ],
-  "baptismDate": "11.7.1875",
+  "baptismDate": "26.4.1873",
   "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Glover"
+    "Quarryman"
   ],
   "notes": [
-    "6-1881, 16-1891,"
+    "8-1881,18-1891,26-1899"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I596",
+      "familyId": "F292",
+      "marriageDate": "27.7.1899",
+      "marriagePlace": "Marnhull, Dorset"
+    }
   ]
 }

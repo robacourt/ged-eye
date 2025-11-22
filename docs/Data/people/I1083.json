@@ -1,36 +1,35 @@
 {
   "id": "I1083",
-  "name": "Samuel Hatcher",
-  "givenName": "Samuel",
+  "name": "Julia Hatcher",
+  "givenName": "Julia",
   "surname": "Hatcher",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "11 JULY 1856",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1084"
+    "I1082"
   ],
   "childIds": [
-    "I1082",
-    "I1140",
-    "I1252"
+    "I1117",
+    "I1118",
+    "I1121",
+    "I1130"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Ag Lab,"
+  "parentIds": [
+    "I1084",
+    "I1085"
   ],
-  "residences": [
-    {
-      "date": "1885",
-      "place": "Tober"
-    }
-  ],
+  "baptismDate": "22 JULY 1856",
+  "baptismPlace": "Marnhull, Dorset",
   "marriages": [
     {
-      "spouseId": "I1084",
-      "familyId": "F431"
+      "spouseId": "I1082",
+      "familyId": "F491",
+      "marriageDate": "27 JULY 1885",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

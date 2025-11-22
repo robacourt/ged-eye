@@ -1,39 +1,23 @@
 {
   "id": "I666",
-  "name": "Clara Charlotte Drew",
-  "givenName": "Clara Charlotte",
-  "surname": "Drew",
-  "sex": "F",
+  "name": "Thomas Lewis",
+  "givenName": "Thomas",
+  "surname": "Lewis",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I654"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I667",
-    "I668"
+    "I665"
   ],
-  "parentIds": [
-    "I669",
-    "I670"
-  ],
-  "baptismDate": "11.2.1883",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Glovemaker"
-  ],
-  "notes": [
-    "8 in 1891, 22 in 1905,"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I654",
-      "familyId": "F274",
-      "marriageDate": "7.8.1905",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F328"
     }
   ]
 }

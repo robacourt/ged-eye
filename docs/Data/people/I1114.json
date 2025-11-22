@@ -1,15 +1,30 @@
 {
   "id": "I1114",
-  "name": "Beatrice Peach",
-  "givenName": "Beatrice",
-  "surname": "Peach",
-  "sex": "F",
-  "birthDate": null,
+  "name": "George Hyde",
+  "givenName": "George",
+  "surname": "Hyde",
+  "sex": "M",
+  "birthDate": "ABT 1879",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1109"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [
+    "I1116"
+  ],
+  "occupations": [
+    "Lab"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1109",
+      "familyId": "F511",
+      "marriageDate": "23 OCT 1909",
+      "marriagePlace": "Queen Camel, Somerset"
+    }
+  ]
 }

@@ -1,28 +1,25 @@
 {
   "id": "I1140",
-  "name": "Ursula Hatcher",
-  "givenName": "Ursula",
-  "surname": "Hatcher",
-  "sex": "F",
+  "name": "Silas Dean",
+  "givenName": "Silas",
+  "surname": "Dean",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1139"
+    "I1141"
   ],
   "childIds": [
-    "I1138"
+    "I1139"
   ],
-  "parentIds": [
-    "I1083",
-    "I1084"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1139",
-      "familyId": "F463"
+      "spouseId": "I1141",
+      "familyId": "F526"
     }
   ]
 }

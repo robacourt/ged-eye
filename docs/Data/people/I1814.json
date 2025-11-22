@@ -1,17 +1,15 @@
 {
   "id": "I1814",
-  "name": "John A'Court",
-  "givenName": "John",
+  "name": "Jennifer A A'Court",
+  "givenName": "Jennifer A",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "3RD QRT 1953",
-  "birthPlace": "Winchester",
+  "sex": "F",
+  "birthDate": "1ST QRT 1953",
+  "birthPlace": "Surrey SW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I1815"
-  ]
+  "parentIds": []
 }

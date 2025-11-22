@@ -1,29 +1,21 @@
 {
   "id": "I1700",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "Andrew George A'Court",
+  "givenName": "Andrew George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "4TH QTR 1973",
+  "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1714"
-  ],
-  "childIds": [
-    "I1699",
-    "I1715"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
     "I1701",
-    "I1702"
+    "I1715"
   ],
-  "marriages": [
-    {
-      "spouseId": "I1714",
-      "familyId": "F621"
-    }
+  "notes": [
+    "Meet with Rebecca A'Court in Bristol May 2004"
   ]
 }

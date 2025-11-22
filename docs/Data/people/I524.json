@@ -1,51 +1,25 @@
 {
   "id": "I524",
-  "name": "Arthur John A'Court",
-  "givenName": "Arthur John",
+  "name": "Robert Edward A'Court",
+  "givenName": "Robert Edward",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1888",
-  "birthPlace": "London, Mayfair",
-  "deathDate": "1968",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/London/Kensington/RG12 19 130 8.jpg",
-    "Data/Media/1901 census/London/Putney/RG13 489 96 11.jpg",
-    "Data/Media/1911 census/London/Putney/RG14 2435 46.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I525"
+    "I523"
   ],
   "childIds": [
-    "I512",
-    "I2092"
+    "I512"
   ],
-  "parentIds": [
-    "I878",
-    "I928"
-  ],
-  "occupations": [
-    "Dancing Master"
-  ],
-  "censusRecords": [
-    {
-      "date": "1891",
-      "place": "London,Kensington 9, Lucerne Mews"
-    },
-    {
-      "date": "1901",
-      "place": "London, Putney, 12 Rotherwood Terrace"
-    },
-    {
-      "date": "1911",
-      "place": "London, Putney, 72 Lower Richmond Rd"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I525",
-      "familyId": "F218"
+      "spouseId": "I523",
+      "familyId": "F262"
     }
-  ],
-  "avatar": "avatars/I524_0.jpg"
+  ]
 }

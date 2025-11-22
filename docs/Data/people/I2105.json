@@ -1,10 +1,10 @@
 {
   "id": "I2105",
-  "name": "Kathleen McSweeney",
-  "givenName": "Kathleen",
+  "name": "John McSweeney",
+  "givenName": "John",
   "surname": "McSweeney",
-  "sex": "F",
-  "birthDate": "1953",
+  "sex": "M",
+  "birthDate": "1950",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I2103",
-    "I2102"
+    "I2104",
+    "I2103"
   ]
 }

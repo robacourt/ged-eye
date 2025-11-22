@@ -1,18 +1,26 @@
 {
   "id": "I1697",
-  "name": "Gavin Bruce A'Court",
-  "givenName": "Gavin Bruce",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "3RD QR 1973",
-  "birthPlace": "Yeovil, Somerset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1696",
-    "I1695"
+  "spouseIds": [
+    "I1696"
+  ],
+  "childIds": [
+    "I1698",
+    "I1699"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1696",
+      "familyId": "F715"
+    }
   ]
 }

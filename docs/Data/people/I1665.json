@@ -1,30 +1,25 @@
 {
   "id": "I1665",
-  "name": "Lesley Taylor",
-  "givenName": "Lesley",
+  "name": "Jack Taylor",
+  "givenName": "Jack",
   "surname": "Taylor",
-  "sex": "F",
-  "birthDate": "1950",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1666"
+    "I1664"
   ],
   "childIds": [
-    "I1667",
-    "I1668"
+    "I1666"
   ],
-  "parentIds": [
-    "I1664",
-    "I1663"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1666",
-      "familyId": "F613",
-      "marriageDate": "1977"
+      "spouseId": "I1664",
+      "familyId": "F707"
     }
   ]
 }

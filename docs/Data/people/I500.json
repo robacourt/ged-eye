@@ -1,23 +1,38 @@
 {
   "id": "I500",
-  "name": "????? Beale",
-  "givenName": "?????",
-  "surname": "Beale",
+  "name": "Christopher A'Court",
+  "givenName": "Christopher",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "8.8.1956",
+  "birthPlace": "Appledore, Devon",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I372"
+  "photos": [
+    "Data/Picture/Chris A'Court.jpg"
   ],
-  "childIds": [],
-  "parentIds": [],
+  "spouseIds": [
+    "I503"
+  ],
+  "childIds": [
+    "I504",
+    "I505"
+  ],
+  "parentIds": [
+    "I498",
+    "I499"
+  ],
+  "occupations": [
+    "Radio Broadcaster"
+  ],
+  "notes": [
+    "Saturday, 8 June, 2002, 13:25 GMT 14:25 UK"
+  ],
   "marriages": [
     {
-      "spouseId": "I372",
-      "familyId": "F170"
+      "spouseId": "I503",
+      "familyId": "F257"
     }
-  ]
+  ],
+  "avatar": "avatars/I500_0.jpg"
 }

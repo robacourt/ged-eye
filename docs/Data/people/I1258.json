@@ -1,20 +1,47 @@
 {
   "id": "I1258",
-  "name": "Martha Ann Curtis",
-  "givenName": "Martha Ann",
-  "surname": "Curtis",
+  "name": "Mary A'Court",
+  "givenName": "Mary",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
+  "birthDate": "ABT 1842",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "AFT 1881",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I182",
-    "I279"
+  "spouseIds": [
+    "I1257"
   ],
-  "baptismDate": "14 MARCH 1869",
-  "baptismPlace": "Marnhull, Dorset"
+  "childIds": [
+    "I1632",
+    "I1256"
+  ],
+  "parentIds": [
+    "I177",
+    "I1196"
+  ],
+  "baptismDate": "30 APR 1842",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Washerwoman",
+    "Glover"
+  ],
+  "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
+    }
+  ],
+  "residences": [
+    {
+      "date": null,
+      "place": "East Well Cottage"
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1257",
+      "familyId": "F574"
+    }
+  ]
 }

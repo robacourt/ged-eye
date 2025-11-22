@@ -1,28 +1,18 @@
 {
   "id": "I964",
-  "name": "Lavinia C.R. A'Court",
-  "givenName": "Lavinia C.R.",
+  "name": "Hannah S. A'Court",
+  "givenName": "Hannah S.",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "1895",
-  "birthPlace": "Wellington, NSW",
+  "birthDate": "1892",
+  "birthPlace": "Dubbo, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I966"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I955",
-    "I959"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I966",
-      "familyId": "F402",
-      "marriageDate": "1924",
-      "marriagePlace": "Dubbo, NSW"
-    }
+    "I956",
+    "I960"
   ]
 }

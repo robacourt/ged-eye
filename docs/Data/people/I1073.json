@@ -1,34 +1,24 @@
 {
   "id": "I1073",
-  "name": "Rhonda Pryor",
-  "givenName": "Rhonda",
-  "surname": "Pryor",
-  "sex": "F",
-  "birthDate": "8 AUG 1937",
+  "name": "Walter H. Christie",
+  "givenName": "Walter H.",
+  "surname": "Christie",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Rhonda Pryor.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I1315"
+    "I977"
   ],
-  "childIds": [
-    "I2745"
-  ],
-  "parentIds": [
-    "I982",
-    "I981"
-  ],
-  "notes": [
-    "You should write to an elderly aunt of his:"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1315",
-      "familyId": "F429"
+      "spouseId": "I977",
+      "familyId": "F461",
+      "marriageDate": "1921"
     }
-  ],
-  "avatar": "avatars/I1073_0.jpg"
+  ]
 }

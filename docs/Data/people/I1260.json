@@ -1,39 +1,26 @@
 {
   "id": "I1260",
-  "name": "William Seymour",
-  "givenName": "William",
-  "surname": "Seymour",
+  "name": "Samuel Bench",
+  "givenName": "Samuel",
+  "surname": "Bench",
   "sex": "M",
-  "birthDate": "ABT 1832",
-  "birthPlace": "Bagber, Hinton St Mary, Dorset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [
     "I283"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1261",
-    "I1262"
-  ],
-  "baptismDate": "18 JUL 1831",
-  "baptismPlace": "Sturminster Newton, Dorset",
-  "burialDate": "24 MAY 1904",
-  "burialPlace": "Hinton St. Mary, Dorset",
+  "parentIds": [],
   "occupations": [
-    "Yeoman"
-  ],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": null
-    }
+    "Shepherd"
   ],
   "marriages": [
     {
-      "spouseId": "I283",
-      "familyId": "F139"
+      "spouseId": null,
+      "familyId": "F156"
     }
   ]
 }

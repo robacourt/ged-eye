@@ -22,8 +22,8 @@
     "I2570"
   ],
   "parentIds": [
-    "I520",
-    "I521"
+    "I521",
+    "I522"
   ],
   "occupations": [
     "Drapers Packer",
@@ -50,7 +50,7 @@
   "marriages": [
     {
       "spouseId": "I2567",
-      "familyId": "F902",
+      "familyId": "F921",
       "marriageDate": "ABT 1906"
     }
   ],

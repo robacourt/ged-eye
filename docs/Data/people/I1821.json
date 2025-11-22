@@ -1,10 +1,10 @@
 {
   "id": "I1821",
-  "name": "Grahame A'Court",
-  "givenName": "Grahame",
+  "name": "Suzanne B A'Court",
+  "givenName": "Suzanne B",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1ST QRT 1959",
+  "sex": "F",
+  "birthDate": "2ND QRT 1955",
   "birthPlace": "Woolwich",
   "deathDate": null,
   "deathPlace": null,
@@ -12,6 +12,6 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1819"
+    "I1820"
   ]
 }

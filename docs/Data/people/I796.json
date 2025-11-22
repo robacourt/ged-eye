@@ -1,27 +1,29 @@
 {
   "id": "I796",
-  "name": "Stanley Wilton A'Court",
-  "givenName": "Stanley Wilton",
+  "name": "Gertrude Alice A'Court",
+  "givenName": "Gertrude Alice",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1884",
+  "sex": "F",
+  "birthDate": "1881",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1929",
+  "deathPlace": "Christchurch, New Zealand",
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I820"
+  ],
   "childIds": [],
   "parentIds": [
-    "I775",
-    "I784"
+    "I776",
+    "I785"
   ],
   "notes": [
     "Electoral roll"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F341"
+      "spouseId": "I820",
+      "familyId": "F390"
     }
   ]
 }

@@ -1,21 +1,33 @@
 {
   "id": "I1594",
-  "name": "Victor William A'Court",
-  "givenName": "Victor William",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "Abt 1904",
-  "birthPlace": "Glamorgan, Cardiff",
+  "name": "Amy Preece",
+  "givenName": "Amy",
+  "surname": "Preece",
+  "sex": "F",
+  "birthDate": "Abt 1877",
+  "birthPlace": "Hereford, Preston on Wye",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1911 census/Glamorganshire/RG14 32138 268.jpg"
+  "photos": [],
+  "spouseIds": [
+    "I1592"
   ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1591",
-    "I1593"
+  "childIds": [
+    "I1595",
+    "I1596",
+    "I1597"
   ],
-  "avatar": "avatars/I1594_0.jpg"
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Cardiff, 15 Rennie St."
+    }
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1592",
+      "familyId": "F690"
+    }
+  ]
 }

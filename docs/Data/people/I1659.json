@@ -1,28 +1,27 @@
 {
   "id": "I1659",
-  "name": "Harry Hayward",
-  "givenName": "Harry",
-  "surname": "Hayward",
+  "name": "Unknown Unknown",
+  "givenName": "Unknown",
+  "surname": "Unknown",
   "sex": "M",
-  "birthDate": "ABT 1869",
-  "birthPlace": "Marnhull, Dorset",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1658",
+  "spouseIds": [
     "I309"
   ],
-  "censusRecords": [
+  "childIds": [
+    "I1662",
+    "I1660",
+    "I1661"
+  ],
+  "parentIds": [],
+  "marriages": [
     {
-      "date": "1881",
-      "place": "Marnhull, Dorset, Flanders"
-    },
-    {
-      "date": "1891",
-      "place": "Marnhull, Dorset, Burton Street"
+      "spouseId": "I309",
+      "familyId": "F169"
     }
   ]
 }

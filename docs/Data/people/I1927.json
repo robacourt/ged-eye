@@ -1,18 +1,15 @@
 {
   "id": "I1927",
-  "name": "Stanley Charles Allaway",
-  "givenName": "Stanley Charles",
-  "surname": "Allaway",
-  "sex": "F",
-  "birthDate": "ABT 1926",
-  "birthPlace": null,
-  "deathDate": "1 JAN 1947",
-  "deathPlace": "Mueller Glacier, New Zealand",
+  "name": "Albert Charles A'Court",
+  "givenName": "Albert Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1949",
+  "birthPlace": "Whangarei, New Zealand",
+  "deathDate": "1979",
+  "deathPlace": "Alaska",
   "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [
-    "I801",
-    "I799"
-  ]
+  "parentIds": []
 }

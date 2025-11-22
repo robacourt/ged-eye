@@ -1,23 +1,23 @@
 {
   "id": "I724",
-  "name": "Katherine Unknown",
-  "givenName": "Katherine",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "Abt 1744",
+  "name": "William P. A'Court",
+  "givenName": "William P.",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "23 SEP. 1776",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I723"
+    "I725"
   ],
   "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I723",
-      "familyId": "F295"
+      "spouseId": "I725",
+      "familyId": "F345"
     }
   ]
 }

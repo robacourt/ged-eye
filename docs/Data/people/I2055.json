@@ -1,33 +1,55 @@
 {
   "id": "I2055",
-  "name": "Evelyn Beatrice Drinkwater",
-  "givenName": "Evelyn Beatrice",
-  "surname": "Drinkwater",
-  "sex": "F",
-  "birthDate": "Abt 1897",
-  "birthPlace": "Peckham",
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
+  "name": "William Charles A'Court",
+  "givenName": "William Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1895",
+  "birthPlace": "Camberwell, Peckham",
+  "deathDate": "21 MARCH 1972",
+  "deathPlace": "Ashburton, Devon",
+  "photos": [
+    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
+  ],
   "spouseIds": [
-    "I2054"
+    "I2056"
   ],
   "childIds": [
-    "I2056",
     "I2057",
     "I2058",
     "I2059",
     "I2060",
     "I2061",
     "I2062",
-    "I2053",
-    "I2063"
+    "I2063",
+    "I2054",
+    "I2064"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I2066",
+    "I2067"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "London, Deptford, 9 Harcourt Rd."
+    },
+    {
+      "date": "1911",
+      "place": "Labourer, LCC tramways"
+    }
+  ],
+  "residences": [
+    {
+      "date": "1972",
+      "place": "Devon,  Ashburton, 43 Balland Park."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I2054",
-      "familyId": "F740"
+      "spouseId": "I2056",
+      "familyId": "F811"
     }
-  ]
+  ],
+  "avatar": "avatars/I2055_0.jpg"
 }

@@ -1,37 +1,26 @@
 {
   "id": "I1152",
-  "name": "Edwina Marjorie Blanche Horlock",
-  "givenName": "Edwina Marjorie Blanche",
-  "surname": "Horlock",
-  "sex": "F",
-  "birthDate": "ABT 1923",
-  "birthPlace": null,
+  "name": "Malcolm Arthur Vincent",
+  "givenName": "Malcolm Arthur",
+  "surname": "Vincent",
+  "sex": "M",
+  "birthDate": "31 OCT  1944",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1153"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1144",
-    "I1143"
+    "I1150",
+    "I1149"
   ],
-  "occupations": [
-    "Land Army"
-  ],
+  "baptismDate": "26 NOV 1944",
+  "baptismPlace": "Marnhull, Dorset",
   "residences": [
     {
-      "date": "1945",
-      "place": "Marnhull, Dorset, Gannetts"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1153",
-      "familyId": "F468",
-      "marriageDate": "15 MAR 1945",
-      "marriagePlace": "Marnhull, Dorset"
+      "date": "31 OCT 1944",
+      "place": "Marnhull, Dorset, 17 Church Cottages"
     }
   ]
 }

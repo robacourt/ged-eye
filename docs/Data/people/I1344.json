@@ -1,27 +1,31 @@
 {
   "id": "I1344",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Ellen A'Court",
+  "givenName": "Ellen",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1850",
-  "birthPlace": "New Zealand",
-  "deathDate": "1934",
-  "deathPlace": null,
+  "sex": "F",
+  "birthDate": "1846",
+  "birthPlace": "Lower Hutt, NZ",
+  "deathDate": "1928",
+  "deathPlace": "Christchurch, NZ, St Albans",
   "photos": [],
   "spouseIds": [
-    "I1369"
+    "I1367"
   ],
   "childIds": [],
   "parentIds": [
-    "I935",
-    "I936"
+    "I936",
+    "I937"
+  ],
+  "notes": [
+    "CNIDR Isearch-cgi 1.20.06 (File: 48)"
   ],
   "marriages": [
     {
-      "spouseId": "I1369",
-      "familyId": "F531",
-      "marriageDate": "1873"
+      "spouseId": "I1367",
+      "familyId": "F600",
+      "marriageDate": "1866",
+      "marriagePlace": "Lower Hutt, NZ"
     }
   ]
 }

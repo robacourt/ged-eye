@@ -1,32 +1,21 @@
 {
   "id": "I1914",
-  "name": "Alfred M A'Court",
-  "givenName": "Alfred M",
+  "name": "Ewilese Edward A'Court",
+  "givenName": "Ewilese Edward",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "ABT 1875",
-  "birthPlace": "Glamors Tonder",
+  "birthDate": "ABT 1879",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1915"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [],
   "occupations": [
-    "Engineers Pattern Maker"
+    "Leading Seaman, \" Boston City\""
   ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Swindon, Wiltshire, 23  Ford St."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1915",
-      "familyId": "F678"
-    }
+  "notes": [
+    "From Ellis Island records"
   ]
 }

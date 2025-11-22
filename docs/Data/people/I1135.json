@@ -1,39 +1,42 @@
 {
   "id": "I1135",
-  "name": "John Pike",
-  "givenName": "John",
-  "surname": "Pike",
-  "sex": "M",
-  "birthDate": "ABT 1857",
+  "name": "Amelia Curtis",
+  "givenName": "Amelia",
+  "surname": "Curtis",
+  "sex": "F",
+  "birthDate": "21 DEC 1858",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1134"
-  ],
-  "childIds": [
-    "I1137",
-    "I1141",
-    "I1142",
-    "I1143"
-  ],
-  "parentIds": [
     "I1136"
   ],
+  "childIds": [
+    "I1138",
+    "I1142",
+    "I1143",
+    "I1144"
+  ],
+  "parentIds": [
+    "I179",
+    "I275"
+  ],
+  "baptismDate": "12 JUN 1859",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Stone Quarryman"
+    "Glove Stitcher"
   ],
   "residences": [
     {
       "date": "1879",
-      "place": "Antills Farm"
+      "place": "Cottage, Stour Row"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1134",
-      "familyId": "F460",
+      "spouseId": "I1136",
+      "familyId": "F523",
       "marriageDate": "27 OCT 1879",
       "marriagePlace": "Marnhull, Dorset"
     }

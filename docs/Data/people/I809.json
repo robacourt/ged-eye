@@ -1,11 +1,11 @@
 {
   "id": "I809",
-  "name": "Amelia Julia Anna KETTENBURG",
-  "givenName": "Amelia Julia Anna",
-  "surname": "KETTENBURG",
-  "sex": "F",
-  "birthDate": "1885",
-  "birthPlace": "Ellesmere, NZ",
+  "name": "William Charles Leonard ROWSE",
+  "givenName": "William Charles Leonard",
+  "surname": "ROWSE",
+  "sex": "M",
+  "birthDate": "Abt 1875",
+  "birthPlace": "Cornwall, England",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
@@ -14,12 +14,15 @@
   ],
   "childIds": [],
   "parentIds": [],
+  "notes": [
+    "Electoral roll"
+  ],
   "marriages": [
     {
       "spouseId": "I793",
-      "familyId": "F338",
-      "marriageDate": "12 MAY 1904",
-      "marriagePlace": "Stanley St. Christchurch, NZ"
+      "familyId": "F387",
+      "marriageDate": "12 MAY 1897",
+      "marriagePlace": "Christchurch, NZ, Madras St"
     }
   ]
 }

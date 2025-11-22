@@ -1,27 +1,22 @@
 {
   "id": "I511",
-  "name": "Richard George A'Court",
-  "givenName": "Richard George",
+  "name": "Victor Charles A'Court",
+  "givenName": "Victor Charles",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": "ABT 1921",
-  "birthPlace": "Glamorgan",
-  "deathDate": "20.3.1945",
-  "deathPlace": "Burma",
+  "birthPlace": "Bristol",
+  "deathDate": "12.11.1945",
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I523",
-    "I522"
+    "I1412",
+    "I1413"
   ],
+  "burialPlace": "Tripoli War Cemetery, Libya",
   "notes": [
     "In Memory of"
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Middlesex"
-    }
   ]
 }

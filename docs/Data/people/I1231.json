@@ -1,18 +1,25 @@
 {
   "id": "I1231",
-  "name": "Stephanie Myatt",
-  "givenName": "Stephanie",
+  "name": "Peter Myatt",
+  "givenName": "Peter",
   "surname": "Myatt",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1230",
-    "I1229"
+  "spouseIds": [
+    "I1230"
+  ],
+  "childIds": [
+    "I1232"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1230",
+      "familyId": "F563"
+    }
   ]
 }

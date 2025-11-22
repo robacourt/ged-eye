@@ -1,7 +1,7 @@
 {
   "id": "I601",
-  "name": "Ernest John Hatcher",
-  "givenName": "Ernest John",
+  "name": "Elias Frederick Hatcher",
+  "givenName": "Elias Frederick",
   "surname": "Hatcher",
   "sex": "M",
   "birthDate": null,
@@ -9,14 +9,28 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I589",
-    "I595"
+  "spouseIds": [
+    "I613"
   ],
-  "baptismDate": "26.8.1917",
+  "childIds": [
+    "I614"
+  ],
+  "parentIds": [
+    "I590",
+    "I596"
+  ],
+  "occupations": [
+    "Gardener"
+  ],
   "notes": [
-    "alive 1999"
+    "27-1940"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I613",
+      "familyId": "F298",
+      "marriageDate": "4- MAR 1940",
+      "marriagePlace": "Marnhull, Dorset"
+    }
   ]
 }

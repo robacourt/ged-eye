@@ -1,60 +1,48 @@
 {
   "id": "I1424",
-  "name": "Henrietta Sarah Barnett",
-  "givenName": "Henrietta Sarah",
+  "name": "Leah Lillie (Louise) Barnett",
+  "givenName": "Leah Lillie (Louise)",
   "surname": "Barnett",
   "sex": "F",
-  "birthDate": "ABT 1876",
-  "birthPlace": "London,St. Lukes,",
+  "birthDate": "ABT 1874",
+  "birthPlace": "St. Lukes, London",
   "deathDate": null,
   "deathPlace": null,
   "photos": [
+    "Data/Media/1881 census/London/Shoreditch/RG11 383 31 7 212.jpg",
     "Data/Media/1891 census/London/Shoreditch/RG12 243 53 8 54.jpg",
     "Data/Media/1901 census/London/Hackney/RG13 211 92 40.jpg"
   ],
   "spouseIds": [
-    "I1425",
-    "I2725"
+    "I2724"
   ],
-  "childIds": [
-    "I1426",
-    "I1427"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I1422",
-    "I1428"
+    "I1423",
+    "I1429"
+  ],
+  "occupations": [
+    "Cigar Maker"
   ],
   "censusRecords": [
     {
+      "date": "1881",
+      "place": "Shoreditch, London, 161 High St"
+    },
+    {
+      "date": "1891",
+      "place": "Shoreditch, London, 341 Old St."
+    },
+    {
       "date": "1901",
-      "place": "London,Hackney, 64 Kenninghall Rd."
-    },
-    {
-      "date": "1911",
-      "place": "London, Islington, 29 Tollington Park N"
-    },
-    {
-      "date": "1921",
-      "place": "London, Islington, 29 Tollington Park N"
-    }
-  ],
-  "residences": [
-    {
-      "date": "DEC 1905",
-      "place": "London, Stamford Hill, 79 Darenth Rd."
+      "place": "Hackney, London, 64 Kenninghall Rd."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1425",
-      "familyId": "F554",
-      "marriageDate": "1896",
-      "marriagePlace": "London, City"
-    },
-    {
-      "spouseId": "I2725",
-      "familyId": "F950",
-      "marriageDate": "BEF 1905"
+      "spouseId": "I2724",
+      "familyId": "F630",
+      "marriageDate": "3 RD  QTR 1902"
     }
   ],
   "avatar": "avatars/I1424_0.jpg"

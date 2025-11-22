@@ -1,25 +1,25 @@
 {
   "id": "I717",
-  "name": "Mary Snook",
-  "givenName": "Mary",
-  "surname": "Snook",
-  "sex": "F",
+  "name": "Robert Foot",
+  "givenName": "Robert",
+  "surname": "Foot",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I716"
+    "I718"
   ],
   "childIds": [
-    "I579"
+    "I580"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I716",
-      "familyId": "F238"
+      "spouseId": "I718",
+      "familyId": "F288"
     }
   ]
 }

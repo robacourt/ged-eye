@@ -1,31 +1,18 @@
 {
   "id": "I791",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Emma A'Court",
+  "givenName": "Emma",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "15 SEP 1872",
-  "birthPlace": "Queensland, Australia",
-  "deathDate": null,
-  "deathPlace": null,
+  "sex": "F",
+  "birthDate": "13 OCT 1871",
+  "birthPlace": "Brisbane, Queensland, Australia",
+  "deathDate": "14 OCT 1871",
+  "deathPlace": "Brisbane, Queensland, Australia",
   "photos": [],
-  "spouseIds": [
-    "I807"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I775",
-    "I784"
-  ],
-  "notes": [
-    "NZEF Reserve"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I807",
-      "familyId": "F336",
-      "marriageDate": "1896",
-      "marriagePlace": "New Zealand"
-    }
+    "I776",
+    "I785"
   ]
 }

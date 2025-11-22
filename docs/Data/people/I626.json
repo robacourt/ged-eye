@@ -1,8 +1,8 @@
 {
   "id": "I626",
-  "name": "( Marwood )James Jarvis",
-  "givenName": "( Marwood )James",
-  "surname": "Jarvis",
+  "name": "Herbert Foot",
+  "givenName": "Herbert",
+  "surname": "Foot",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,19 +10,24 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I627"
+    "I622"
   ],
-  "childIds": [
-    "I621"
+  "childIds": [],
+  "parentIds": [
+    "I630"
   ],
-  "parentIds": [],
   "occupations": [
-    "Cellerman"
+    "Ag Lab"
+  ],
+  "notes": [
+    "21-1903,"
   ],
   "marriages": [
     {
-      "spouseId": "I627",
-      "familyId": "F259"
+      "spouseId": "I622",
+      "familyId": "F307",
+      "marriageDate": "7.5.1903",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

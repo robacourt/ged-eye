@@ -1,34 +1,28 @@
 {
   "id": "I1042",
-  "name": "Frederick William A'Court",
-  "givenName": "Frederick William",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "1953",
+  "name": "Mavis Williams",
+  "givenName": "Mavis",
+  "surname": "Williams",
+  "sex": "F",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Picture/FredACourt[1].jpg"
+    "Data/Picture/Fred & Mavis A'Court.jpg"
   ],
   "spouseIds": [
-    "I1043"
-  ],
-  "childIds": [
-    "I1044"
-  ],
-  "parentIds": [
-    "I1040",
     "I1041"
   ],
-  "occupations": [
-    "Editor of \"Meat Trades Journal\""
+  "childIds": [
+    "I1043"
   ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1043",
-      "familyId": "F423",
-      "marriageDate": "1985"
+      "spouseId": "I1041",
+      "familyId": "F483",
+      "marriageDate": "1951"
     }
   ],
   "avatar": "avatars/I1042_0.jpg"

@@ -1,29 +1,25 @@
 {
   "id": "I993",
-  "name": "Leola Dawn A'Court",
-  "givenName": "Leola Dawn",
-  "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "23 AUGUST 1927",
+  "name": "John Trinks",
+  "givenName": "John",
+  "surname": "Trinks",
+  "sex": "M",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1006"
+    "I992"
   ],
-  "childIds": [
-    "I1007",
-    "I1008"
-  ],
-  "parentIds": [
-    "I734",
-    "I735"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1006",
-      "familyId": "F413"
+      "spouseId": "I992",
+      "familyId": "F468",
+      "marriageDate": "1942",
+      "marriagePlace": "Bathurst, NSW"
     }
   ]
 }

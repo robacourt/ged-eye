@@ -1,23 +1,17 @@
 {
   "id": "I1834",
-  "name": "Unknown Parker",
-  "givenName": "Unknown",
-  "surname": "Parker",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Steven A A'Court",
+  "givenName": "Steven A",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "3RD QRT 1955",
+  "birthPlace": "Surrey NE",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1833"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F660"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1835"
   ]
 }

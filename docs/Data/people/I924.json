@@ -1,12 +1,12 @@
 {
   "id": "I924",
-  "name": "Leslie Lane",
-  "givenName": "Leslie",
-  "surname": "Lane",
+  "name": "Albert Ricks",
+  "givenName": "Albert",
+  "surname": "Ricks",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "9 SEP 1966",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
@@ -17,7 +17,7 @@
   "marriages": [
     {
       "spouseId": "I918",
-      "familyId": "F385"
+      "familyId": "F438"
     }
   ]
 }

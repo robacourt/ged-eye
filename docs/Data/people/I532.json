@@ -1,62 +1,35 @@
 {
   "id": "I532",
-  "name": "Francis (Frank) A'Court",
-  "givenName": "Francis (Frank)",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1869",
-  "birthPlace": "Nether Compton, Dorset",
+  "name": "Daisy Unknown",
+  "givenName": "Daisy",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Dorset, Fifehead Magdalen",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1871 census/Over Compton/RG 10 2021 81 19.jpg",
-    "Data/Media/1881 census/Dorset/Over Compton/RG11 2118 31 21.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I533"
+    "I1582"
   ],
   "childIds": [
-    "I2141",
-    "I2142",
-    "I519"
+    "I2896"
   ],
-  "parentIds": [
-    "I571",
-    "I2359"
-  ],
-  "baptismDate": "11 APR 1869",
-  "baptismPlace": "Over Compton",
+  "parentIds": [],
   "occupations": [
-    "Estate labourer",
-    "Bricklayers Labourer"
-  ],
-  "notes": [
-    "Anny(Annie) Amelia was the daughter of Frank A'Court & Celia Mary(n�ee Hann). I think they were married in 1881 & moved from Somerset to Weybridge where he was a labourer at the building of the aerodrome (Vickers)."
+    "Leather glover"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Over Compton, Dorset"
-    },
-    {
-      "date": "1881",
-      "place": "Over Compton, Dorset"
-    },
-    {
-      "date": "1901",
-      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
-    },
-    {
       "date": "1911",
-      "place": "New Haw, Addlestone, Surrey, 10 Australian  Cottages"
+      "place": "Dorset, Fifehead Magdalen"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I533",
-      "familyId": "F225",
-      "marriageDate": "ABT 1881/1894"
+      "spouseId": "I1582",
+      "familyId": "F273",
+      "marriageDate": "Abt 1909"
     }
-  ],
-  "avatar": "avatars/I532_0.jpg"
+  ]
 }

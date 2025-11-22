@@ -1,7 +1,7 @@
 {
   "id": "I1556",
-  "name": "Mathew William A'Court",
-  "givenName": "Mathew William",
+  "name": "Charles Robert Dennis A'Court",
+  "givenName": "Charles Robert Dennis",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1546",
-    "I1554"
+    "I1547",
+    "I1555"
   ]
 }

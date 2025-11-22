@@ -1,31 +1,39 @@
 {
   "id": "I1034",
-  "name": "Minnie Ryall",
-  "givenName": "Minnie",
-  "surname": "Ryall",
+  "name": "Eva A'Court",
+  "givenName": "Eva",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "1903",
+  "birthPlace": "Martock, Somerset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1911 census/Somerset/Martock/RG14 14395 91.jpg"
+  ],
   "spouseIds": [
-    "I1027"
+    "I1628"
   ],
   "childIds": [
-    "I1035",
-    "I1036",
-    "I1037",
-    "I1038",
-    "I1039",
-    "I1040"
+    "I1994",
+    "I1995",
+    "I1996"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I783",
+    "I871"
+  ],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Somerset, Martock, Bower Hinton"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1027",
-      "familyId": "F421",
-      "marriagePlace": "Yeovil, Somerset"
+      "spouseId": "I1628",
+      "familyId": "F480"
     }
-  ]
+  ],
+  "avatar": "avatars/I1034_0.jpg"
 }

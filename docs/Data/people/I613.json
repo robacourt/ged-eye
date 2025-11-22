@@ -1,34 +1,31 @@
 {
   "id": "I613",
-  "name": "Marilyn Dawn Hatcher",
-  "givenName": "Marilyn Dawn",
-  "surname": "Hatcher",
+  "name": "Kate Irene Groves",
+  "givenName": "Kate Irene",
+  "surname": "Groves",
   "sex": "F",
-  "birthDate": "13.6.1953",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I615"
+    "I601"
   ],
   "childIds": [
-    "I616"
+    "I614"
   ],
   "parentIds": [
-    "I600",
-    "I612"
+    "I615"
   ],
-  "baptismDate": "30.8.1953",
-  "baptismPlace": "Marnhull, Dorset",
-  "occupations": [
-    "Hairdresser"
+  "notes": [
+    "26-1940"
   ],
   "marriages": [
     {
-      "spouseId": "I615",
-      "familyId": "F254",
-      "marriageDate": "15.2.1975",
+      "spouseId": "I601",
+      "familyId": "F298",
+      "marriageDate": "4- MAR 1940",
       "marriagePlace": "Marnhull, Dorset"
     }
   ]

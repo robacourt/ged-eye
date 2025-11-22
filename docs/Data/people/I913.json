@@ -1,26 +1,33 @@
 {
   "id": "I913",
-  "name": "Emily Eliza a'Court",
-  "givenName": "Emily Eliza",
+  "name": "Arthur Charles a'Court",
+  "givenName": "Arthur Charles",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "12 OCT 1894",
-  "birthPlace": "Castle Eaton, Wiltshire",
-  "deathDate": "23 DEC 1980",
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "9 FEB 1893",
+  "birthPlace": "Castle Eaton, Highworth, Wiltshire",
+  "deathDate": "3 SEP 1953",
+  "deathPlace": "East Lodge, Braydon, Wiltshire",
   "photos": [
-    "Data/Media/1911 census/Gloucestershire/RG14 15355 102.jpg"
+    "Data/Media/1901 census/Wiltshire/Wotton Bassett/RG13 1911 105 18.jpg",
+    "Data/Media/1911 census/Wiltshire/Chelworth/RG14 11824 184.jpg"
   ],
   "spouseIds": [
     "I920"
   ],
-  "childIds": [],
+  "childIds": [
+    "I2002"
+  ],
   "parentIds": [
     "I231",
-    "I911"
+    "I912"
   ],
+  "burialPlace": "Purton, Wiltshire, St Mary's",
   "occupations": [
-    "General servant domestic"
+    "General labourer, dairy farmer"
+  ],
+  "notes": [
+    "Farmer"
   ],
   "censusRecords": [
     {
@@ -29,13 +36,15 @@
     },
     {
       "date": "1911",
-      "place": "Gloucestershire, Painswick, Cheltenham Rd."
+      "place": "Wiltshire, Cricklade, Chelworth"
     }
   ],
   "marriages": [
     {
       "spouseId": "I920",
-      "familyId": "F381"
+      "familyId": "F434",
+      "marriageDate": "14 DEC 1929",
+      "marriagePlace": "Purton, Wiltshire, St. Mary's"
     }
   ],
   "avatar": "avatars/I913_0.jpg"

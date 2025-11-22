@@ -1,31 +1,20 @@
 {
   "id": "I599",
-  "name": "Elizabeth Kate Hatcher",
-  "givenName": "Elizabeth Kate",
+  "name": "John Hatcher",
+  "givenName": "John",
   "surname": "Hatcher",
-  "sex": "F",
-  "birthDate": "1910",
-  "birthPlace": "Motcombe, Dorset",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I608"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I589",
-    "I595"
+    "I590",
+    "I596"
   ],
-  "notes": [
-    "24-1934, alive 1999"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I608",
-      "familyId": "F247",
-      "marriageDate": "2.6.1934",
-      "marriagePlace": "Todber, Dorset"
-    }
-  ]
+  "baptismDate": "28.10.1906",
+  "baptismPlace": "Todber, Dorset"
 }

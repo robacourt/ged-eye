@@ -1,10 +1,10 @@
 {
   "id": "I547",
-  "name": "Elizabeth a'Court",
-  "givenName": "Elizabeth",
+  "name": "Richard a'Court",
+  "givenName": "Richard",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "Bef FEB 1672/7",
+  "sex": "M",
+  "birthDate": "BEF 21.9.1670",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,9 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I541",
-    "I542"
-  ]
+    "I542",
+    "I543"
+  ],
+  "baptismDate": "21.SEP.1670",
+  "baptismPlace": "North Cadbury, Somerset"
 }

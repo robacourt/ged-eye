@@ -1,69 +1,25 @@
 {
   "id": "I1386",
-  "name": "Silas A'Court",
-  "givenName": "Silas",
-  "surname": "A'Court",
+  "name": "Thomas Le Couteur Mauger",
+  "givenName": "Thomas Le Couteur",
+  "surname": "Mauger",
   "sex": "M",
-  "birthDate": "ABT 1801/1809",
-  "birthPlace": "Cadbury, Somerset",
-  "deathDate": "22 MAR 1886",
-  "deathPlace": "Bedminster, Somerset, 97 Weare St.",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1405"
+    "I1385"
   ],
-  "childIds": [
-    "I1763",
-    "I1764",
-    "I1759",
-    "I1414",
-    "I1415",
-    "I1416",
-    "I1387"
-  ],
+  "childIds": [],
   "parentIds": [],
-  "occupations": [
-    "Ag Lab",
-    "Farmers Labourer",
-    "Manure Manufacturers Labourer",
-    "General Labourer",
-    "Tanner",
-    "Farmer Labourer"
-  ],
-  "notes": [
-    "Charles Edward A'Court.  Birth Certificate Bedminster, counties of Bristol and Somerset.  When & where, 14 April 1860, Back Lane",
-    "Fromthe 1871  for St Mary Redcliff/Bristol I see that Silas and Ann  had a daughter Mary and three sons, Albert, William and my grandfather, Charles Edward.  I have no information beyond that.  Thanks for any help.  Betty Jones  Solana Beach, Cali"
-  ],
-  "censusRecords": [
-    {
-      "date": "1841",
-      "place": "Brockley, Bedminster, Somerset, Court Farm House"
-    },
-    {
-      "date": "1851",
-      "place": "Bristol, Bedminster, 134 Charlotte St."
-    },
-    {
-      "date": "1861",
-      "place": "Somerset, Bedminster, 3 Still House Lane"
-    },
-    {
-      "date": "1871",
-      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
-    },
-    {
-      "date": "1881",
-      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
-    },
-    {
-      "date": "1891",
-      "place": "Somerset, Bedminster, Weare St."
-    }
-  ],
   "marriages": [
     {
-      "spouseId": "I1405",
-      "familyId": "F549"
+      "spouseId": "I1385",
+      "familyId": "F619",
+      "marriageDate": "11 DEC 1863",
+      "marriagePlace": "St. Ouen's, Jersey, CI"
     }
   ]
 }

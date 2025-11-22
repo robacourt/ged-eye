@@ -1,27 +1,18 @@
 {
   "id": "I1776",
-  "name": "Eliza A'Court",
-  "givenName": "Eliza",
+  "name": "Roy Arthur A'Court",
+  "givenName": "Roy Arthur",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1831",
-  "birthPlace": "Castle Cary, Somerset",
+  "sex": "M",
+  "birthDate": "2ND QRT 1957",
+  "birthPlace": "Swindon, Wiltshire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1851 census/Queen Camel/HO 107 1931 12 17 53.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "occupations": [
-    "Spinner"
-  ],
-  "censusRecords": [
-    {
-      "date": "1851",
-      "place": "Queen Camel, Somerset, Hazelgrove"
-    }
-  ],
-  "avatar": "avatars/I1776_0.jpg"
+  "parentIds": [
+    "I2002",
+    "I2003"
+  ]
 }

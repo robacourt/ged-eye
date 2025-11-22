@@ -1,34 +1,42 @@
 {
   "id": "I1293",
-  "name": "Susan Unknown",
-  "givenName": "Susan",
-  "surname": "Unknown",
+  "name": "Maud Lilian Hunt",
+  "givenName": "Maud Lilian",
+  "surname": "Hunt",
   "sex": "F",
-  "birthDate": "ABT 1813",
-  "birthPlace": "Kingsbury Episcopi, Somerset",
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "27 FEB1881",
+  "birthPlace": "Southsea, Hampshire",
+  "deathDate": "1965",
+  "deathPlace": "Portsmouth, Hampshire.",
   "photos": [],
   "spouseIds": [
-    "I207"
+    "I806"
   ],
-  "childIds": [
-    "I107"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Annuitant"
+  "childIds": [],
+  "parentIds": [
+    "I117",
+    "I108"
   ],
   "censusRecords": [
     {
-      "date": "1881 AGE 68",
-      "place": "Stalbridge, Dorset"
+      "date": "1881 AGE 1 MTH",
+      "place": "Portsea, Hampshire, 48 Fleet Street"
+    },
+    {
+      "date": "1901",
+      "place": "Portsmouth, Hampshire, 84 Osborne Rd"
+    },
+    {
+      "date": "1939",
+      "place": "Portsmouth, Hampshire, 22 South Brighton St"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I207",
-      "familyId": "F65"
+      "spouseId": "I806",
+      "familyId": "F396",
+      "marriageDate": "18 ___ 19 ?",
+      "marriagePlace": "Portsmouth, Hampshire."
     }
   ]
 }

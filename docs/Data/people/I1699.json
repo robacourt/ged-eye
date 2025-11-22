@@ -1,21 +1,18 @@
 {
   "id": "I1699",
-  "name": "Andrew George A'Court",
-  "givenName": "Andrew George",
+  "name": "Kevin Floyd A'Court",
+  "givenName": "Kevin Floyd",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "4TH QTR 1973",
-  "birthPlace": "Bristol",
+  "birthDate": "3RD QR 1973",
+  "birthPlace": "Yeovil, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1700",
-    "I1714"
-  ],
-  "notes": [
-    "Meet with Rebecca A'Court in Bristol May 2004"
+    "I1697",
+    "I1696"
   ]
 }

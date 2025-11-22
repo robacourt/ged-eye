@@ -1,32 +1,24 @@
 {
   "id": "I751",
-  "name": "Susannah PENNY",
-  "givenName": "Susannah",
-  "surname": "PENNY",
+  "name": "Mary Baker",
+  "givenName": "Mary",
+  "surname": "Baker",
   "sex": "F",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1807",
+  "deathDate": "1779",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I744"
+    "I745"
   ],
-  "childIds": [
-    "I752",
-    "I753",
-    "I754",
-    "I755",
-    "I757",
-    "I758"
-  ],
+  "childIds": [],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I744",
-      "familyId": "F305",
-      "marriageDate": "1782",
-      "marriagePlace": "Yarlington, Somerset"
+      "spouseId": "I745",
+      "familyId": "F354",
+      "marriageDate": "1775"
     }
   ]
 }

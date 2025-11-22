@@ -1,34 +1,40 @@
 {
   "id": "I564",
-  "name": "Joanne a'Court",
-  "givenName": "Joanne",
+  "name": "James a'Court",
+  "givenName": "James",
   "surname": "a'Court",
-  "sex": "F",
-  "birthDate": "ABT 1612",
-  "birthPlace": null,
-  "deathDate": "AFT 1637",
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "ABT 1609",
+  "birthPlace": "South Cadbury, Somerset",
+  "deathDate": "ABT 1686",
+  "deathPlace": "South Cadbury, Somerset",
   "photos": [],
   "spouseIds": [
-    "I683"
+    "I687"
   ],
   "childIds": [
-    "I684",
-    "I685"
+    "I688",
+    "I689",
+    "I690",
+    "I691",
+    "I692",
+    "I693",
+    "I694",
+    "I695",
+    "I696",
+    "I697"
   ],
   "parentIds": [
-    "I558",
-    "I559"
+    "I559",
+    "I560"
   ],
   "notes": [
-    "Pat Tuffin has the same details but as Avis A'court"
+    "Possibly died 1685/6 in South Cadbury - from Parish Register."
   ],
   "marriages": [
     {
-      "spouseId": "I683",
-      "familyId": "F236",
-      "marriageDate": "18 JUL 1636",
-      "marriagePlace": "South Cadbury, Somerset"
+      "spouseId": "I687",
+      "familyId": "F282"
     }
   ]
 }

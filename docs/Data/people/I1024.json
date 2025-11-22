@@ -1,10 +1,10 @@
 {
   "id": "I1024",
-  "name": "Lauren Kate O'Connor",
-  "givenName": "Lauren Kate",
-  "surname": "O'Connor",
+  "name": "Leah Renee O'Conner",
+  "givenName": "Leah Renee",
+  "surname": "O'Conner",
   "sex": "F",
-  "birthDate": "27 JULY 1987",
+  "birthDate": "14 JULY 1983",
   "birthPlace": "Blacktown",
   "deathDate": null,
   "deathPlace": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1004",
-    "I1019"
+    "I1005",
+    "I1020"
   ]
 }

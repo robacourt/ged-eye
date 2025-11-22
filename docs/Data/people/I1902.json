@@ -1,25 +1,27 @@
 {
   "id": "I1902",
-  "name": "Edward A'Court",
-  "givenName": "Edward",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "name": "Emma Maria Dobbs",
+  "givenName": "Emma Maria",
+  "surname": "Dobbs",
+  "sex": "F",
+  "birthDate": "1842",
+  "birthPlace": "Maryborough, Queens County, Ireland",
+  "deathDate": "30 MAR 1882",
+  "deathPlace": "Sydenham, Christchurch, NZ",
   "photos": [],
   "spouseIds": [
-    "I1903"
+    "I1901"
   ],
-  "childIds": [],
+  "childIds": [
+    "I798"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1903",
-      "familyId": "F674",
-      "marriageDate": "1889",
-      "marriagePlace": "Sydney, NSW"
+      "spouseId": "I1901",
+      "familyId": "F392",
+      "marriageDate": "12 MAY 1859",
+      "marriagePlace": "Christchurch, NZ"
     }
   ]
 }

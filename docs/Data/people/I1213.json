@@ -1,34 +1,35 @@
 {
   "id": "I1213",
-  "name": "William Charles George Stovey",
-  "givenName": "William Charles George",
-  "surname": "Stovey",
-  "sex": "M",
+  "name": "Elsie Muriel Mary Haskett",
+  "givenName": "Elsie Muriel Mary",
+  "surname": "Haskett",
+  "sex": "F",
   "birthDate": "ABT 1887",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1212"
+    "I1214"
   ],
   "childIds": [],
   "parentIds": [
-    "I1214"
+    "I1182",
+    "I1183"
   ],
   "occupations": [
-    "Asylum Attendant"
+    "Nurse"
   ],
   "residences": [
     {
       "date": "1914",
-      "place": "County Asylum, Charminster, Dorset"
+      "place": "Marnhull, Dorset, New St."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1212",
-      "familyId": "F489",
+      "spouseId": "I1214",
+      "familyId": "F556",
       "marriageDate": "22 AUG 1914",
       "marriagePlace": "Marnhull, Dorset, New St. Wesleyan Chapel"
     }

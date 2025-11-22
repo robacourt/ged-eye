@@ -1,23 +1,17 @@
 {
   "id": "I1790",
-  "name": "Unknown Driscol",
-  "givenName": "Unknown",
-  "surname": "Driscol",
+  "name": "Christine M A'Court",
+  "givenName": "Christine M",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "4TH QRT 1951",
+  "birthPlace": "London, Stepney",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [
-    "I1789"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": null,
-      "familyId": "F645"
-    }
+  "childIds": [],
+  "parentIds": [
+    "I1791"
   ]
 }

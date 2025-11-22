@@ -1,26 +1,28 @@
 {
   "id": "I857",
-  "name": "Gladys Vera WILSON",
-  "givenName": "Gladys Vera",
-  "surname": "WILSON",
+  "name": "Beulah Rachel Anderson",
+  "givenName": "Beulah Rachel",
+  "surname": "Anderson",
   "sex": "F",
-  "birthDate": "1910",
-  "birthPlace": "Dunedin, NZ",
+  "birthDate": "15 SEP 1909",
+  "birthPlace": "Levin, NZ",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I844"
   ],
-  "childIds": [
-    "I1932"
-  ],
+  "childIds": [],
   "parentIds": [],
+  "notes": [
+    "School Admission records"
+  ],
   "marriages": [
     {
       "spouseId": "I844",
-      "familyId": "F369",
-      "marriageDate": "BET. 1924 - 1939"
+      "familyId": "F420",
+      "marriageDate": "1936",
+      "marriagePlace": "New Zealand"
     }
   ]
 }

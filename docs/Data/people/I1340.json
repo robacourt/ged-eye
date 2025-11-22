@@ -1,28 +1,26 @@
 {
   "id": "I1340",
-  "name": "Thomas Todrick",
-  "givenName": "Thomas",
-  "surname": "Todrick",
+  "name": "James A'Court",
+  "givenName": "James",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1787",
+  "birthDate": null,
   "birthPlace": null,
-  "deathDate": "1832",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1341"
-  ],
+  "spouseIds": [],
   "childIds": [
     "I936"
   ],
   "parentIds": [],
   "occupations": [
-    "Baker"
+    "Labourer"
   ],
   "marriages": [
     {
-      "spouseId": "I1341",
-      "familyId": "F391"
+      "spouseId": null,
+      "familyId": "F444"
     }
   ]
 }

@@ -1,18 +1,21 @@
 {
   "id": "I873",
-  "name": "George a'Court",
-  "givenName": "George",
+  "name": "Jane a'Court",
+  "givenName": "Jane",
   "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "ABT 1842",
-  "birthPlace": null,
-  "deathDate": "ABT 1846",
+  "sex": "F",
+  "birthDate": "ABT 1838",
+  "birthPlace": "Bath, Somerset",
+  "deathDate": "AFT 1851",
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I763",
-    "I871"
+    "I764",
+    "I872"
+  ],
+  "notes": [
+    "1851"
   ]
 }

@@ -1,30 +1,21 @@
 {
   "id": "I986",
-  "name": "Keith Robert John A'Court",
-  "givenName": "Keith Robert John",
+  "name": "Ronald Edward Alan A'Court",
+  "givenName": "Ronald Edward Alan",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "8 FEB 1921",
-  "birthPlace": "Coonabarabran, NSW",
+  "birthDate": "12 AUG 1917",
+  "birthPlace": "Dubbo, NSW",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I987"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
     "I104",
-    "I733"
+    "I734"
   ],
   "notes": [
     "Title"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I987",
-      "familyId": "F409",
-      "marriageDate": "1944"
-    }
   ]
 }

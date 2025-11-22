@@ -1,26 +1,33 @@
 {
   "id": "I1991",
-  "name": "George Bawden A'Court",
-  "givenName": "George Bawden",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "16 MAY 1913",
-  "birthPlace": "Gosport, Hampshire",
+  "name": "Elizabeth Maud Bawden",
+  "givenName": "Elizabeth Maud",
+  "surname": "Bawden",
+  "sex": "F",
+  "birthDate": "ABT 1887",
+  "birthPlace": "Hemerdon, Plympton, Devon",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I493"
+  ],
   "childIds": [
+    "I2586",
     "I1992"
   ],
-  "parentIds": [
-    "I492",
-    "I1990"
+  "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1911",
+      "place": "Gosport, Hampshire, 105 Parham Rd."
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F712"
+      "spouseId": "I493",
+      "familyId": "F254",
+      "marriageDate": "1910"
     }
   ]
 }

@@ -1,42 +1,59 @@
 {
   "id": "I2090",
-  "name": "Herbert Thomas A'Court",
-  "givenName": "Herbert Thomas",
+  "name": "Joseph A'Court",
+  "givenName": "Joseph",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1893",
-  "birthPlace": "London, Kensington",
-  "deathDate": "1973",
+  "birthDate": "ABT 1841",
+  "birthPlace": "Somerset , Castle Carey",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [
-    "Data/Media/1901 census/London/Putney/RG13 489 96 11.jpg",
-    "Data/Media/1911 census/London/Putney/RG14 2435 46.jpg"
+    "Data/Media/1901 census/C isles/St Heliers/RG13 5314 107 5.jpg",
+    "Data/Media/1911 census/Jersey C.I/St Helier/RG14 34928 87 .jpg"
   ],
   "spouseIds": [
-    "I2091"
+    "I2810"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I878",
-    "I928"
+  "childIds": [
+    "I2811",
+    "I2812",
+    "I2813",
+    "I2833"
   ],
+  "parentIds": [],
   "occupations": [
-    "Shop Assistant at home"
+    "Agricultural Labourer",
+    "Labourer",
+    "Agricultural Labourer",
+    "Farm labourer"
   ],
   "censusRecords": [
     {
+      "date": "1871",
+      "place": "Jersey,St Peter, Ruette a la Vioge"
+    },
+    {
+      "date": "1881",
+      "place": "Jersey C.I. St Laurence, Mill Rd."
+    },
+    {
+      "date": "1891",
+      "place": "Jersey C.I. St Laurence, Mid Bay Cottages"
+    },
+    {
       "date": "1901",
-      "place": "London, Putney, 12 Rotherwood Terrace"
+      "place": "Jersey C.I. St Helier, First Tower Cottage, 4 St Aubins Rd."
     },
     {
       "date": "1911",
-      "place": "London, Putney, 72 Lower Richmond Rd"
+      "place": "Jersey C.I St Helier, St Aubins Rd, Orient Cottage"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I2091",
-      "familyId": "F747"
+      "spouseId": "I2810",
+      "familyId": "F820"
     }
   ],
   "avatar": "avatars/I2090_0.jpg"

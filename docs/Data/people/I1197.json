@@ -1,25 +1,36 @@
 {
   "id": "I1197",
-  "name": "Maud Unknown",
-  "givenName": "Maud",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "Albert William Haskett",
+  "givenName": "Albert William",
+  "surname": "Haskett",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1196"
-  ],
-  "childIds": [
     "I1198"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1199"
+  ],
+  "parentIds": [
+    "I1182",
+    "I1183"
+  ],
+  "baptismDate": "8 MAY 1881",
+  "baptismPlace": "Marnhull, Dorset",
+  "censusRecords": [
+    {
+      "date": "1881",
+      "place": "age 1"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1196",
-      "familyId": "F485"
+      "spouseId": "I1198",
+      "familyId": "F552"
     }
   ]
 }

@@ -1,23 +1,15 @@
 {
   "id": "I723",
-  "name": "William P. A'Court",
-  "givenName": "William P.",
+  "name": "Edward A'Court",
+  "givenName": "Edward",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": null,
+  "deathDate": "DEC 1745",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I724"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I724",
-      "familyId": "F295"
-    }
-  ]
+  "parentIds": []
 }

@@ -1,21 +1,18 @@
 {
   "id": "I1480",
-  "name": "Alan A'Court",
-  "givenName": "Alan",
+  "name": "Ross A'Court",
+  "givenName": "Ross",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/AlanACourt[1].jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [],
   "notes": [
-    "Home | Contact Us | Site Map | Client Login | Alumni"
-  ],
-  "avatar": "avatars/I1480_0.jpg"
+    "Kingsbridge (Devon) Kingfishers from http://www.kksc.co.uk  Jun '03"
+  ]
 }

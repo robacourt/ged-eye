@@ -1,44 +1,26 @@
 {
   "id": "I1586",
-  "name": "Charles A'Court",
-  "givenName": "Charles",
+  "name": "Albert Charles A'Court",
+  "givenName": "Albert Charles",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1884",
-  "birthPlace": "Bristol",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/Bristol/RG13 2376 40 19.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I2589"
+    "I1585"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1585",
+  "childIds": [
+    "I1587",
     "I1584"
   ],
-  "occupations": [
-    "Chemist Drug",
-    "Wholesale Druggist Assistant"
-  ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Bristol, Redcliff, 13 Rowley Place"
-    },
-    {
-      "date": "1911",
-      "place": "Bristol, Bedminster, 7 Kensal Rd. Victoria Park"
-    }
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2589",
-      "familyId": "F905",
-      "marriageDate": "ABT 1911"
+      "spouseId": "I1585",
+      "familyId": "F684"
     }
-  ],
-  "avatar": "avatars/I1586_0.jpg"
+  ]
 }

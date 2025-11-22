@@ -1,26 +1,18 @@
 {
   "id": "I1282",
-  "name": "Len Cross",
-  "givenName": "Len",
-  "surname": "Cross",
-  "sex": "M",
+  "name": "Lesley Cummings",
+  "givenName": "Lesley",
+  "surname": "Cummings",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1281",
     "I1278"
-  ],
-  "childIds": [
-    "I1283",
-    "I1284"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1278",
-      "familyId": "F518"
-    }
   ]
 }

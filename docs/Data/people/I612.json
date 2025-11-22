@@ -1,32 +1,26 @@
 {
   "id": "I612",
-  "name": "Kate Irene Groves",
-  "givenName": "Kate Irene",
-  "surname": "Groves",
-  "sex": "F",
+  "name": "Henry Street",
+  "givenName": "Henry",
+  "surname": "Street",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I600"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I613"
+    "I611"
   ],
-  "parentIds": [
-    "I614"
-  ],
-  "notes": [
-    "26-1940"
+  "parentIds": [],
+  "occupations": [
+    "Keeper"
   ],
   "marriages": [
     {
-      "spouseId": "I600",
-      "familyId": "F248",
-      "marriageDate": "4- MAR 1940",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": null,
+      "familyId": "F302"
     }
   ]
 }

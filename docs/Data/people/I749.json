@@ -1,26 +1,19 @@
 {
   "id": "I749",
-  "name": "Ann A'Court",
-  "givenName": "Ann",
+  "name": "Jane A'Court",
+  "givenName": "Jane",
   "surname": "A'Court",
   "sex": "F",
-  "birthDate": "BEF 9 NOV1764",
+  "birthDate": "ABT 1763",
   "birthPlace": null,
-  "deathDate": "1824",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I901"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I741",
-    "I742"
+    "I742",
+    "I743"
   ],
-  "marriages": [
-    {
-      "spouseId": "I901",
-      "familyId": "F308"
-    }
-  ]
+  "baptismDate": "1 APR 1763"
 }

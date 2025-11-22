@@ -1,37 +1,45 @@
 {
   "id": "I1457",
-  "name": "William George Skedgel",
-  "givenName": "William George",
-  "surname": "Skedgel",
-  "sex": "M",
-  "birthDate": "ABT 1875",
-  "birthPlace": "Devon, Stoke Gabriel",
-  "deathDate": null,
-  "deathPlace": null,
-  "photos": [],
+  "name": "Lucy A'Court",
+  "givenName": "Lucy",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "ABT 1877",
+  "birthPlace": "Marnhull, Dorset",
+  "deathDate": "1956",
+  "deathPlace": "Devon, Stoke Gabriel",
+  "photos": [
+    "Data/Media/1881 census/Dorset/Marnhull/RG11 2085 34 14.jpg",
+    "Data/Media/1891 census/Dorset/Marnhull/RG12 1631 30 19.jpg"
+  ],
   "spouseIds": [
-    "I1456"
+    "I1458"
   ],
   "childIds": [
-    "I1467",
     "I1468",
     "I1469",
+    "I1470",
     "I2964"
   ],
   "parentIds": [
-    "I1458",
-    "I1470"
+    "I1460",
+    "I1461"
   ],
-  "occupations": [
-    "Cowkeeper Assistant",
-    "Farmer",
-    "Post Master",
-    "Sub postmaster"
+  "baptismDate": "SEP 1877",
+  "baptismPlace": "Dorset, Marnhull",
+  "burialDate": "1956",
+  "burialPlace": "Devon, Stoke Gabriel",
+  "notes": [
+    "As to Lucy she was the daughter of James and Emily, from the 1881 census James was born Abt 1853, (2001 census 1849) do not know who parents were. Which should rule out this James who was born 1844-1846 by the 1861 census, I also think he marrie"
   ],
   "censusRecords": [
     {
+      "date": "1881",
+      "place": "Marnhull, Dorset, Burges"
+    },
+    {
       "date": "1891",
-      "place": "Stoke Gabriel, Devon"
+      "place": "Marnhull, Dorset, Zinc Cottages Nr. Walton Elm Malthouse"
     },
     {
       "date": "1901",
@@ -44,10 +52,11 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1456",
-      "familyId": "F560",
+      "spouseId": "I1458",
+      "familyId": "F645",
       "marriageDate": "26 DEC 1899",
       "marriagePlace": "Stoke Gabriel, Devon"
     }
-  ]
+  ],
+  "avatar": "avatars/I1457_0.jpg"
 }

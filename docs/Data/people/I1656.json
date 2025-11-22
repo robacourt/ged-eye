@@ -1,30 +1,27 @@
 {
   "id": "I1656",
-  "name": "George Hatcher",
-  "givenName": "George",
-  "surname": "Hatcher",
+  "name": "Henry Drew",
+  "givenName": "Henry",
+  "surname": "Drew",
   "sex": "M",
-  "birthDate": "ABT 1847",
+  "birthDate": "ABT 1854",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1871 census/Marnhull/RG 10 1972 54 17.jpg"
-  ],
+  "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I310",
-    "I311"
+    "I1654",
+    "I1655"
   ],
   "occupations": [
-    "Ag Lab"
+    "Butchers Lab"
   ],
   "censusRecords": [
     {
-      "date": "1871",
+      "date": "1881",
       "place": "Marnhull, Dorset, Burton Street"
     }
-  ],
-  "avatar": "avatars/I1656_0.jpg"
+  ]
 }

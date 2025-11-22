@@ -1,25 +1,18 @@
 {
   "id": "I951",
-  "name": "John Lawler",
-  "givenName": "John",
-  "surname": "Lawler",
+  "name": "George A'Court",
+  "givenName": "George",
+  "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I952"
-  ],
-  "childIds": [
-    "I103"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I952",
-      "familyId": "F61"
-    }
+  "notes": [
+    "URL: http://freepages.genealogy.rootsweb.com/~ourstuff/Jury1847A-E.htm - size 166kb - 25 Sep 2001"
   ]
 }

@@ -1,18 +1,32 @@
 {
   "id": "I536",
-  "name": "Jobe a'Court",
-  "givenName": "Jobe",
-  "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "BEF 1695",
+  "name": "Elizabeth A'Court",
+  "givenName": "Elizabeth",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "BEF 1682",
   "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "deathDate": "1716",
+  "deathPlace": "North Cadbury, Somerset",
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I534",
+  "spouseIds": [
     "I535"
+  ],
+  "childIds": [
+    "I470",
+    "I537",
+    "I538",
+    "I540",
+    "I539",
+    "I541"
+  ],
+  "parentIds": [],
+  "burialDate": "11.09.1716",
+  "burialPlace": "North Cadbury, Somerset",
+  "marriages": [
+    {
+      "spouseId": "I535",
+      "familyId": "F248"
+    }
   ]
 }

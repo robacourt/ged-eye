@@ -1,29 +1,26 @@
 {
   "id": "I643",
-  "name": "Maria Moore",
-  "givenName": "Maria",
-  "surname": "Moore",
-  "sex": "F",
+  "name": "Amos Chinn",
+  "givenName": "Amos",
+  "surname": "Chinn",
+  "sex": "M",
   "birthDate": null,
-  "birthPlace": "Newfoundland, Canada",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I159"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I644",
-    "I645"
+    "I642"
   ],
   "parentIds": [],
-  "notes": [
-    "24 in 1881"
+  "occupations": [
+    "Ag Lab"
   ],
   "marriages": [
     {
-      "spouseId": "I159",
-      "familyId": "F92"
+      "spouseId": null,
+      "familyId": "F320"
     }
   ]
 }

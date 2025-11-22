@@ -1,23 +1,25 @@
 {
   "id": "I1939",
-  "name": "Wally Reid",
-  "givenName": "Wally",
-  "surname": "Reid",
-  "sex": "M",
+  "name": "Jan Unknown",
+  "givenName": "Jan",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1936"
+    "I1938"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1941"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1936",
-      "familyId": "F689"
+      "spouseId": "I1938",
+      "familyId": "F781"
     }
   ]
 }

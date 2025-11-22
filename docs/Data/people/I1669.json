@@ -1,36 +1,18 @@
 {
   "id": "I1669",
-  "name": "John Dean",
-  "givenName": "John",
-  "surname": "Dean",
+  "name": "Chris Ash",
+  "givenName": "Chris",
+  "surname": "Ash",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "1979",
   "birthPlace": null,
-  "deathDate": "1778",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1670"
-  ],
-  "childIds": [
-    "I1671",
-    "I1672",
-    "I1673",
-    "I1674",
-    "I1675",
-    "I1676",
-    "I15",
-    "I1677"
-  ],
-  "parentIds": [],
-  "burialDate": "21 JUN 1778",
-  "notes": [
-    "MARNHULL RATEPAYERS 1750"
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1670",
-      "familyId": "F11"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1667",
+    "I1666"
   ]
 }

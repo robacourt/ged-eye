@@ -1,24 +1,28 @@
 {
   "id": "I1305",
-  "name": "Laurence James Fairweather",
-  "givenName": "Laurence James",
-  "surname": "Fairweather",
-  "sex": "M",
-  "birthDate": "7 JUN 1972",
-  "birthPlace": "Northampton, Northamptonshire",
+  "name": "Gillian Arthur",
+  "givenName": "Gillian",
+  "surname": "Arthur",
+  "sex": "F",
+  "birthDate": "25 SEP 1948",
+  "birthPlace": "Leicester, Leicestershire",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1098"
+    "I1087"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1098",
+    "I1099",
+    "I1100"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1098",
-      "familyId": "F442",
-      "marriageDate": "22 NOV 1997",
+      "spouseId": "I1087",
+      "familyId": "F494",
+      "marriageDate": "17 SEP 1965",
       "marriagePlace": "Perth, Western Australia"
     }
   ]

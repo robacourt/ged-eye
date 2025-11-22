@@ -1,23 +1,18 @@
 {
   "id": "I900",
-  "name": "never married",
-  "givenName": "never",
-  "surname": "married",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Diana a'Court",
+  "givenName": "Diana",
+  "surname": "a'Court",
+  "sex": "F",
+  "birthDate": "ABT 1804",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I747"
-  ],
+  "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I747",
-      "familyId": "F307"
-    }
+  "parentIds": [
+    "I746",
+    "I898"
   ]
 }

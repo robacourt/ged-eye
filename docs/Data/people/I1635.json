@@ -1,22 +1,22 @@
 {
   "id": "I1635",
-  "name": "Jessie A'Court",
-  "givenName": "Jessie",
-  "surname": "A'Court",
+  "name": "Ellen Hayward",
+  "givenName": "Ellen",
+  "surname": "Hayward",
   "sex": "F",
-  "birthDate": "Abt 1899",
+  "birthDate": "Abt 1864",
   "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/Dorset/Marnhull/RG13 1969 23 2.jpg",
-    "Data/Media/1911 census/Dorset/Marnhull/RG14 12201 43.jpg"
-  ],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1633",
+  "photos": [],
+  "spouseIds": [
     "I1634"
+  ],
+  "childIds": [
+    "I1636"
+  ],
+  "parentIds": [
+    "I2539"
   ],
   "censusRecords": [
     {
@@ -28,5 +28,11 @@
       "place": "Marnhull, Dorset, Old Workhouse."
     }
   ],
-  "avatar": "avatars/I1635_0.jpg"
+  "marriages": [
+    {
+      "spouseId": "I1634",
+      "familyId": "F700",
+      "marriageDate": "ABT 1897"
+    }
+  ]
 }

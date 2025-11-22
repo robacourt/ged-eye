@@ -1,25 +1,28 @@
 {
   "id": "I1367",
-  "name": "Robert Thomas Fairweather",
-  "givenName": "Robert Thomas",
+  "name": "Charles E. Fairweather",
+  "givenName": "Charles E.",
   "surname": "Fairweather",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
-  "deathDate": null,
-  "deathPlace": null,
+  "birthDate": "1839",
+  "birthPlace": "Glasgow, Lanarkshire",
+  "deathDate": "1901",
+  "deathPlace": "Canterbury, NZ",
   "photos": [],
   "spouseIds": [
-    "I1368"
+    "I1344"
   ],
-  "childIds": [
-    "I1366"
+  "childIds": [],
+  "parentIds": [
+    "I1368",
+    "I1369"
   ],
-  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1368",
-      "familyId": "F542"
+      "spouseId": "I1344",
+      "familyId": "F600",
+      "marriageDate": "1866",
+      "marriagePlace": "Lower Hutt, NZ"
     }
   ]
 }

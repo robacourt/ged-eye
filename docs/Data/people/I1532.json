@@ -1,29 +1,23 @@
 {
   "id": "I1532",
-  "name": "Ceilia Minnie White",
-  "givenName": "Ceilia Minnie",
+  "name": "George White",
+  "givenName": "George",
   "surname": "White",
-  "sex": "F",
-  "birthDate": "28 SEP 1887",
-  "birthPlace": "Galhampton, Somerset",
-  "deathDate": "1970",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1534"
-  ],
+  "spouseIds": [],
   "childIds": [
-    "I1535"
+    "I866"
   ],
-  "parentIds": [
-    "I865",
-    "I777"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1534",
-      "familyId": "F585",
-      "marriageDate": "1916"
+      "spouseId": null,
+      "familyId": "F426"
     }
   ]
 }

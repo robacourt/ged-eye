@@ -9,7 +9,15 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I826"
+  ],
   "childIds": [],
-  "parentIds": []
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I826",
+      "familyId": "F409"
+    }
+  ]
 }

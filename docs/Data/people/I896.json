@@ -1,23 +1,28 @@
 {
   "id": "I896",
-  "name": "Samuel Durrant",
-  "givenName": "Samuel",
-  "surname": "Durrant",
-  "sex": "M",
-  "birthDate": "BEF 1804",
+  "name": "Emily Mary Louise Wheeler Bennett",
+  "givenName": "Emily Mary Louise Wheeler",
+  "surname": "Bennett",
+  "sex": "F",
+  "birthDate": "ABT 1880",
   "birthPlace": null,
-  "deathDate": "AFT 1817",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I758"
+    "I1418"
   ],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I378",
+    "I895"
+  ],
   "marriages": [
     {
-      "spouseId": "I758",
-      "familyId": "F312"
+      "spouseId": "I1418",
+      "familyId": "F432",
+      "marriageDate": "17TH JULY 1902",
+      "marriagePlace": "London, Streatham"
     }
   ]
 }

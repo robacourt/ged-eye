@@ -1,34 +1,24 @@
 {
   "id": "I1650",
-  "name": "James A'Court",
-  "givenName": "James",
+  "name": "Jemima A'Court",
+  "givenName": "Jemima",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "ABT 1845",
-  "birthPlace": "Marnhull, Dorset",
+  "sex": "F",
+  "birthDate": "ABT 1800",
+  "birthPlace": "Galhampton, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1651"
-  ],
-  "childIds": [
-    "I1652"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [],
   "occupations": [
-    "Ag Lab"
+    "Formerly Houskeeper"
   ],
   "censusRecords": [
     {
       "date": "1871",
-      "place": "Marnhull, Dorset, New St."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1651",
-      "familyId": "F610"
+      "place": "Marnhull, Dorset, Musbery Lane"
     }
   ]
 }

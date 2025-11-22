@@ -1,24 +1,18 @@
 {
   "id": "I1501",
-  "name": "Victor James Collis",
-  "givenName": "Victor James",
+  "name": "Wilfred John Collis",
+  "givenName": "Wilfred John",
   "surname": "Collis",
   "sex": "M",
-  "birthDate": "25 JUL 1899",
-  "birthPlace": "Abbas, Templecombe, Somerset",
+  "birthDate": "5 JUL 1894",
+  "birthPlace": "Noahs Ark, Ditcheat, Somerset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1498",
-    "I1507"
-  ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Templecombe, Somerset"
-    }
+    "I1499",
+    "I1508"
   ]
 }

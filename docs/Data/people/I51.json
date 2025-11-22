@@ -10,11 +10,11 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1753",
-    "I1928"
+    "I1754",
+    "I1929"
   ],
   "childIds": [
-    "I1929"
+    "I1930"
   ],
   "parentIds": [
     "I18",
@@ -33,14 +33,14 @@
   ],
   "marriages": [
     {
-      "spouseId": "I1753",
-      "familyId": "F684",
+      "spouseId": "I1754",
+      "familyId": "F37",
       "marriageDate": "1 FEB 1821",
       "marriagePlace": "Shepton Mallet, Somerset"
     },
     {
-      "spouseId": "I1928",
-      "familyId": "F685"
+      "spouseId": "I1929",
+      "familyId": "F38"
     }
   ]
 }

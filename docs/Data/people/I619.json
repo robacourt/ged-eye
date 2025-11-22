@@ -1,33 +1,25 @@
 {
   "id": "I619",
-  "name": "Ernest Edwin Watts",
-  "givenName": "Ernest Edwin",
-  "surname": "Watts",
-  "sex": "M",
+  "name": "Patricia Grace Unknown",
+  "givenName": "Patricia Grace",
+  "surname": "Unknown",
+  "sex": "F",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I591"
+    "I618"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I620"
+  "childIds": [
+    "I616"
   ],
-  "occupations": [
-    "Cabinet Maker"
-  ],
-  "notes": [
-    "24-1902"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I591",
-      "familyId": "F243",
-      "marriageDate": "17.6.1902",
-      "marriagePlace": "Marnhull, Dorset"
+      "spouseId": "I618",
+      "familyId": "F305"
     }
   ]
 }

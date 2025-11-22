@@ -1,62 +1,21 @@
 {
   "id": "I1405",
-  "name": "Ann Yendal",
-  "givenName": "Ann",
+  "name": "William Yendal",
+  "givenName": "William",
   "surname": "Yendal",
-  "sex": "F",
-  "birthDate": "ABT 1822",
-  "birthPlace": "Somerset, Dunster, Luxborough,",
+  "sex": "M",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1901 census/Bristol/RG13 2361 36 7.jpg"
-  ],
-  "spouseIds": [
-    "I1386"
-  ],
-  "childIds": [
-    "I1763",
-    "I1764",
-    "I1759",
-    "I1414",
-    "I1415",
-    "I1416",
-    "I1387"
-  ],
-  "parentIds": [
-    "I1974"
-  ],
-  "censusRecords": [
-    {
-      "date": "1841",
-      "place": "Brockley, Bedminster, Somerset, Court Farm House"
-    },
-    {
-      "date": "1851",
-      "place": "Bristol, Bedminster, Charlotte St."
-    },
-    {
-      "date": "1861",
-      "place": "Somerset, Bedminster, 3 Still House Lane"
-    },
-    {
-      "date": "1871",
-      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
-    },
-    {
-      "date": "1881",
-      "place": "Bristol, St Mary Redcliff, 3 Arch Place"
-    },
-    {
-      "date": "1901",
-      "place": "Bristol, Bedminster, 42 Phillip St"
-    }
-  ],
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1386",
-      "familyId": "F549"
+      "spouseId": null,
+      "familyId": "F624"
     }
-  ],
-  "avatar": "avatars/I1405_0.jpg"
+  ]
 }

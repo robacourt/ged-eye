@@ -13,7 +13,7 @@
     "Data/Media/1921 Census/London/30 Thomas St Woolwich.jpg"
   ],
   "spouseIds": [
-    "I2109"
+    "I459"
   ],
   "childIds": [],
   "parentIds": [
@@ -47,8 +47,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2109",
-      "familyId": "F752",
+      "spouseId": "I459",
+      "familyId": "F245",
       "marriageDate": "JUL 1919",
       "marriagePlace": "Kent,   Dover,"
     }

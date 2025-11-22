@@ -1,31 +1,29 @@
 {
   "id": "I989",
-  "name": "Ronald Glen A'Court",
-  "givenName": "Ronald Glen",
+  "name": "Hilton (Dick) A'Court",
+  "givenName": "Hilton (Dick)",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "22 APR1920",
+  "birthDate": "1924",
   "birthPlace": null,
-  "deathDate": "18 JAN 1988",
-  "deathPlace": "Parklea",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I990"
+    "I1390"
   ],
-  "childIds": [
-    "I2618",
-    "I1430",
-    "I2617",
-    "I2616"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I734",
-    "I735"
+    "I104",
+    "I734"
+  ],
+  "notes": [
+    "Hilton (son?) made a fair bit of money importing parts and putting buses"
   ],
   "marriages": [
     {
-      "spouseId": "I990",
-      "familyId": "F411"
+      "spouseId": "I1390",
+      "familyId": "F466"
     }
   ]
 }

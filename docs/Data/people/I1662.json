@@ -1,25 +1,24 @@
 {
   "id": "I1662",
-  "name": "Daniel Barber Baker",
-  "givenName": "Daniel Barber",
-  "surname": "Baker",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Debrah Hayward",
+  "givenName": "Debrah",
+  "surname": "Hayward",
+  "sex": "F",
+  "birthDate": "ABT 1863",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1290"
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1659",
+    "I309"
   ],
-  "childIds": [
-    "I1663"
-  ],
-  "parentIds": [],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I1290",
-      "familyId": "F519"
+      "date": "1881",
+      "place": "Marnhull, Dorset, Flanders"
     }
   ]
 }

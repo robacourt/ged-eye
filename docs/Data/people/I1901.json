@@ -1,25 +1,25 @@
 {
   "id": "I1901",
-  "name": "Emma Maria Dobbs",
-  "givenName": "Emma Maria",
-  "surname": "Dobbs",
-  "sex": "F",
-  "birthDate": "1842",
-  "birthPlace": "Maryborough, Queens County, Ireland",
-  "deathDate": "30 MAR 1882",
-  "deathPlace": "Sydenham, Christchurch, NZ",
+  "name": "Joseph Adams Carlisle",
+  "givenName": "Joseph Adams",
+  "surname": "Carlisle",
+  "sex": "M",
+  "birthDate": "1835",
+  "birthPlace": "Birkenhead, Cheshire",
+  "deathDate": "29 JUL 1904",
+  "deathPlace": "Waimate, Canterbury, NZ",
   "photos": [],
   "spouseIds": [
-    "I1900"
+    "I1902"
   ],
   "childIds": [
-    "I797"
+    "I798"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1900",
-      "familyId": "F673",
+      "spouseId": "I1902",
+      "familyId": "F392",
       "marriageDate": "12 MAY 1859",
       "marriagePlace": "Christchurch, NZ"
     }

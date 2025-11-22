@@ -1,26 +1,35 @@
 {
   "id": "I614",
-  "name": "William Groves",
-  "givenName": "William",
-  "surname": "Groves",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Marilyn Dawn Hatcher",
+  "givenName": "Marilyn Dawn",
+  "surname": "Hatcher",
+  "sex": "F",
+  "birthDate": "13.6.1953",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
-    "I612"
+  "spouseIds": [
+    "I616"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I617"
+  ],
+  "parentIds": [
+    "I601",
+    "I613"
+  ],
+  "baptismDate": "30.8.1953",
+  "baptismPlace": "Marnhull, Dorset",
   "occupations": [
-    "Foreman Powder Factory"
+    "Hairdresser"
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F253"
+      "spouseId": "I616",
+      "familyId": "F304",
+      "marriageDate": "15.2.1975",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

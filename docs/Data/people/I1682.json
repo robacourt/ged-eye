@@ -1,18 +1,25 @@
 {
   "id": "I1682",
-  "name": "Edward Robert A'Court",
-  "givenName": "Edward Robert",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1ST QR 1973",
-  "birthPlace": "Ipswich, Suffolk",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1681",
-    "I1680"
+  "spouseIds": [
+    "I1681"
+  ],
+  "childIds": [
+    "I1683"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1681",
+      "familyId": "F710"
+    }
   ]
 }

@@ -1,18 +1,28 @@
 {
   "id": "I1234",
-  "name": "Jane Lissenburgh",
-  "givenName": "Jane",
+  "name": "P?????? Lissenburgh",
+  "givenName": "P??????",
   "surname": "Lissenburgh",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1233",
-    "I1232"
+  "spouseIds": [
+    "I1233"
+  ],
+  "childIds": [
+    "I1235",
+    "I1236",
+    "I1237",
+    "I1238"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1233",
+      "familyId": "F564"
+    }
   ]
 }

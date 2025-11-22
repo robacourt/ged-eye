@@ -1,21 +1,26 @@
 {
   "id": "I1413",
-  "name": "Eileen A'Court",
+  "name": "Eileen Unknown",
   "givenName": "Eileen",
-  "surname": "A'Court",
+  "surname": "Unknown",
   "sex": "F",
-  "birthDate": "Abt 1921",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1411",
+  "spouseIds": [
     "I1412"
   ],
-  "notes": [
-    "a twin to victor"
+  "childIds": [
+    "I1414",
+    "I511"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1412",
+      "familyId": "F261"
+    }
   ]
 }

@@ -1,28 +1,20 @@
 {
   "id": "I700",
-  "name": "Abraham a'Court",
-  "givenName": "Abraham",
-  "surname": "a'Court",
+  "name": "Richard a'court",
+  "givenName": "Richard",
+  "surname": "a'court",
   "sex": "M",
-  "birthDate": "BEF 23 APRIL 1738",
+  "birthDate": "BEF 13 NOV 1735",
   "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "AFT 1759",
+  "deathDate": "1743",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I702"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I537",
-    "I698"
+    "I538",
+    "I699"
   ],
-  "marriages": [
-    {
-      "spouseId": "I702",
-      "familyId": "F289",
-      "marriageDate": "5 NOV 1759",
-      "marriagePlace": "Somerton, Somerset"
-    }
-  ]
+  "burialDate": "28 MAY 1743",
+  "burialPlace": "North Cadbury, Somerset"
 }

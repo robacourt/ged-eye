@@ -1,33 +1,29 @@
 {
   "id": "I866",
-  "name": "William George Taylor Cave",
-  "givenName": "William George Taylor",
-  "surname": "Cave",
+  "name": "Joseph White",
+  "givenName": "Joseph",
+  "surname": "White",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
-  "deathDate": "23 DEC 1916",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
     "I778"
   ],
   "childIds": [
-    "I2324",
-    "I1537"
+    "I1533",
+    "I1534"
   ],
-  "parentIds": [],
-  "censusRecords": [
-    {
-      "date": "1871",
-      "place": "North Cadbury, Somerset"
-    }
+  "parentIds": [
+    "I1532"
   ],
   "marriages": [
     {
       "spouseId": "I778",
-      "familyId": "F329",
-      "marriageDate": "1867"
+      "familyId": "F376",
+      "marriageDate": "12 SEP 1886"
     }
   ]
 }

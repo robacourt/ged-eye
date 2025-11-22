@@ -1,21 +1,39 @@
 {
   "id": "I655",
-  "name": "Ernest Warren",
-  "givenName": "Ernest",
+  "name": "Walter Warren",
+  "givenName": "Walter",
   "surname": "Warren",
   "sex": "M",
-  "birthDate": "Abt 1883",
-  "birthPlace": "Marnhull, Dorset",
-  "deathDate": null,
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": "ABT 1931",
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
+  "spouseIds": [
+    "I667"
+  ],
+  "childIds": [
+    "I668",
+    "I669"
+  ],
   "parentIds": [
-    "I646",
+    "I647",
     "I241"
   ],
+  "baptismDate": "9.10.1881",
+  "baptismPlace": "Marnhull, Dorset",
+  "occupations": [
+    "Mason"
+  ],
   "notes": [
-    "8 in 1891"
+    "10 in 1891, 25 in 1905,"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I667",
+      "familyId": "F324",
+      "marriageDate": "7.8.1905",
+      "marriagePlace": "Marnhull, Dorset"
+    }
   ]
 }

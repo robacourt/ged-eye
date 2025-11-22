@@ -1,18 +1,25 @@
 {
   "id": "I1688",
-  "name": "Paul Mark A'Court",
-  "givenName": "Paul Mark",
+  "name": "Unknown A'Court",
+  "givenName": "Unknown",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1ST QR 1973",
-  "birthPlace": "Gosport, Hampshire",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1687",
-    "I1686"
+  "spouseIds": [
+    "I1687"
+  ],
+  "childIds": [
+    "I1689"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1687",
+      "familyId": "F712"
+    }
   ]
 }

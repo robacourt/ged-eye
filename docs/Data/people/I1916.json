@@ -1,27 +1,29 @@
 {
   "id": "I1916",
-  "name": "Heather Unknown",
-  "givenName": "Heather",
+  "name": "Emily A G Unknown",
+  "givenName": "Emily A G",
   "surname": "Unknown",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "ABT 1875",
+  "birthPlace": "Glamorganshire,Tondu",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1299"
+    "I1915"
   ],
-  "childIds": [
-    "I1917",
-    "I1918",
-    "I1919"
-  ],
+  "childIds": [],
   "parentIds": [],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Swindon, Wiltshire, 23  Ford St."
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1299",
-      "familyId": "F679"
+      "spouseId": "I1915",
+      "familyId": "F775"
     }
   ]
 }

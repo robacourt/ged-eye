@@ -1,35 +1,25 @@
 {
   "id": "I1962",
-  "name": "Richard John A'Court",
-  "givenName": "Richard John",
-  "surname": "A'Court",
+  "name": "Mark Amendolia",
+  "givenName": "Mark",
+  "surname": "Amendolia",
   "sex": "M",
-  "birthDate": "1912",
-  "birthPlace": "North Cadbury, Somerset",
-  "deathDate": "1975",
+  "birthDate": null,
+  "birthPlace": null,
+  "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Richard A'Court.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I2392"
+    "I1961"
   ],
-  "childIds": [
-    "I2393",
-    "I2394"
-  ],
-  "parentIds": [
-    "I1026",
-    "I2391"
-  ],
-  "occupations": [
-    "Carpenter"
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2392",
-      "familyId": "F848"
+      "spouseId": "I1961",
+      "familyId": "F789",
+      "marriageDate": "8 DEC 2004",
+      "marriagePlace": "Oakhill College Chapel, Castle Hill,"
     }
-  ],
-  "avatar": "avatars/I1962_0.jpg"
+  ]
 }

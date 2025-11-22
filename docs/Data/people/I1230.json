@@ -1,25 +1,28 @@
 {
   "id": "I1230",
-  "name": "Peter Myatt",
-  "givenName": "Peter",
-  "surname": "Myatt",
-  "sex": "M",
-  "birthDate": null,
+  "name": "Ann Haskett",
+  "givenName": "Ann",
+  "surname": "Haskett",
+  "sex": "F",
+  "birthDate": "1934",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1229"
-  ],
-  "childIds": [
     "I1231"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1232"
+  ],
+  "parentIds": [
+    "I1216",
+    "I1217"
+  ],
   "marriages": [
     {
-      "spouseId": "I1229",
-      "familyId": "F496"
+      "spouseId": "I1231",
+      "familyId": "F563"
     }
   ]
 }

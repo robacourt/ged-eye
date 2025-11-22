@@ -1,36 +1,44 @@
 {
   "id": "I785",
-  "name": "George Henry A'Court",
-  "givenName": "George Henry",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "20 JUL 1863",
-  "birthPlace": "Brisbane, Queensland",
-  "deathDate": "11 APR 1921",
-  "deathPlace": "Lake Coleridge, Canterbury, NZ",
-  "photos": [],
+  "name": "Emily Priscilla Wines",
+  "givenName": "Emily Priscilla",
+  "surname": "Wines",
+  "sex": "F",
+  "birthDate": "ABT 1842",
+  "birthPlace": null,
+  "deathDate": "20 FEB 1908",
+  "deathPlace": "Christchurch, New Zealand",
+  "photos": [
+    "Data/Picture/Emily Wines.jpg"
+  ],
   "spouseIds": [
-    "I797"
+    "I776"
   ],
   "childIds": [
-    "I798",
-    "I799"
+    "I786",
+    "I787",
+    "I788",
+    "I789",
+    "I790",
+    "I791",
+    "I792",
+    "I793",
+    "I794",
+    "I795",
+    "I796",
+    "I797"
   ],
-  "parentIds": [
-    "I775",
-    "I784"
-  ],
-  "burialDate": "13 APR 1921",
-  "burialPlace": "Bromley Cemetery, Christchurch, NZ",
+  "parentIds": [],
   "notes": [
-    "SOURCE:"
+    "Electoral roll"
   ],
   "marriages": [
     {
-      "spouseId": "I797",
-      "familyId": "F332",
-      "marriageDate": "19 JUN 1886",
-      "marriagePlace": "Registrars Office, Wellington,  NZ"
+      "spouseId": "I776",
+      "familyId": "F373",
+      "marriageDate": "9 OCT 1860",
+      "marriagePlace": "Stoke Sub Hamdon, Somerset"
     }
-  ]
+  ],
+  "avatar": "avatars/I785_0.jpg"
 }

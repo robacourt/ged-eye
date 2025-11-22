@@ -1,26 +1,27 @@
 {
   "id": "I1597",
-  "name": "Gordon Charles A'Court",
-  "givenName": "Gordon Charles",
+  "name": "Elsie Amy A'Court",
+  "givenName": "Elsie Amy",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "sex": "F",
+  "birthDate": "Abt 1910",
+  "birthPlace": "Glamorganshire, Cardiff",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I1600"
+  "photos": [
+    "Data/Media/1911 census/Herefordshire/RG14 15809 298.jpg"
   ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1595",
-    "I1599"
+    "I1592",
+    "I1594"
   ],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I1600",
-      "familyId": "F600"
+      "date": "1911",
+      "place": "Cardiff, 15 Rennie St."
     }
-  ]
+  ],
+  "avatar": "avatars/I1597_0.jpg"
 }

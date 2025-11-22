@@ -1,27 +1,50 @@
 {
   "id": "I1609",
-  "name": "Mary Elizabeth Unknown",
-  "givenName": "Mary Elizabeth",
-  "surname": "Unknown",
-  "sex": "F",
+  "name": "George Theodore A'Court",
+  "givenName": "George Theodore",
+  "surname": "A'Court",
+  "sex": "M",
   "birthDate": "Abt 1867",
-  "birthPlace": "Orford, Lancs",
+  "birthPlace": "Bristol, Gloucestershire",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1881 census/Lancs/Warrington/RG11 3797 52 12.jpg"
+  ],
   "spouseIds": [
-    "I1608"
+    "I1610"
   ],
   "childIds": [
-    "I1611",
     "I1612",
     "I1613",
     "I1614",
+    "I1615",
     "I2610",
     "I2611"
   ],
-  "parentIds": [],
+  "parentIds": [
+    "I1765",
+    "I2258"
+  ],
+  "occupations": [
+    "Railway Labourer",
+    "Railway Signalman",
+    "Manager Of Cycle Shop Etc",
+    "Shops Manager Cycles and Furniture"
+  ],
   "censusRecords": [
+    {
+      "date": "1871",
+      "place": "Bedminster, Bristol, 18 Clarence Place"
+    },
+    {
+      "date": "1881",
+      "place": "Lancashire, Warrington, 34 Chorley St."
+    },
+    {
+      "date": "1891",
+      "place": "Lancashire, Warrington, Sandy Lane, Cherry House"
+    },
     {
       "date": "1901",
       "place": "Warrington, Lancs, 104 Bridge St"
@@ -29,17 +52,14 @@
     {
       "date": "1911",
       "place": "Warrington, Lancs, 104 Bridge St"
-    },
-    {
-      "date": "1891",
-      "place": "Lancashire, Warrington, Sandy Lane, Cherry House"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1608",
-      "familyId": "F603",
+      "spouseId": "I1610",
+      "familyId": "F695",
       "marriageDate": "ABT 1890"
     }
-  ]
+  ],
+  "avatar": "avatars/I1609_0.jpg"
 }

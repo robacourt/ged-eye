@@ -1,26 +1,38 @@
 {
   "id": "I1150",
-  "name": "Louis Vincent",
-  "givenName": "Louis",
+  "name": "Arthur Harry Vincent",
+  "givenName": "Arthur Harry",
   "surname": "Vincent",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1912",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1149"
   ],
-  "parentIds": [],
+  "childIds": [
+    "I1152"
+  ],
+  "parentIds": [
+    "I1151"
+  ],
   "occupations": [
-    "Ag Lab"
+    "Head Cowman"
+  ],
+  "residences": [
+    {
+      "date": "1938",
+      "place": "Marnhull, Dorset, Burton Street"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F467"
+      "spouseId": "I1149",
+      "familyId": "F529",
+      "marriageDate": "18 APRIL 1938",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

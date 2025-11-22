@@ -1,27 +1,24 @@
 {
   "id": "I1529",
-  "name": "Lena Alice Carolyn Morgan",
-  "givenName": "Lena Alice Carolyn",
-  "surname": "Morgan",
-  "sex": "F",
-  "birthDate": "31 MAR 1962",
-  "birthPlace": "Leamington Spa, Warwickshire",
+  "name": "Philip John Sandell",
+  "givenName": "Philip John",
+  "surname": "Sandell",
+  "sex": "M",
+  "birthDate": "8 JAN 1954",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1530"
+    "I1528"
   ],
   "childIds": [],
-  "parentIds": [
-    "I1524",
-    "I1525"
-  ],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1530",
-      "familyId": "F584",
-      "marriageDate": "1 NOV 1986"
+      "spouseId": "I1528",
+      "familyId": "F669",
+      "marriageDate": "15 SEP 1979"
     }
   ]
 }

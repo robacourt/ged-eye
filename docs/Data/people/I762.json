@@ -1,42 +1,60 @@
 {
   "id": "I762",
-  "name": "Susannah A'Court",
-  "givenName": "Susannah",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "1811",
-  "birthPlace": null,
-  "deathDate": "AFT 1871",
-  "deathPlace": null,
+  "sex": "M",
+  "birthDate": "1808",
+  "birthPlace": "North Cadbury, Somerset",
+  "deathDate": "18 MAY 1885",
+  "deathPlace": "Martock, Somerset",
   "photos": [],
   "spouseIds": [
-    "I1319"
+    "I770"
   ],
   "childIds": [
-    "I1320",
-    "I1321"
+    "I771",
+    "I772",
+    "I773",
+    "I774",
+    "I775",
+    "I776",
+    "I777",
+    "I778",
+    "I779",
+    "I780",
+    "I781",
+    "I782",
+    "I783"
   ],
   "parentIds": [
-    "I755",
-    "I760"
+    "I756",
+    "I761"
   ],
-  "baptismDate": "1 APR 1812",
+  "baptismDate": "31 DEC 1808",
   "baptismPlace": "North Cadbury, Somerset",
   "occupations": [
-    "Nurse"
+    "Blacksmith & Wheelwright"
+  ],
+  "notes": [
+    "'Old Charley was a great musician.  His instruments were the cornet and the largest brass instrument.  He played in Wimbell's famous brass band and on Sunday mornings in the church.  As a change, he went on tour with a circus as a player in thei"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
+      "date": "1851",
+      "place": "North Cadbury, Somerset"
+    },
+    {
+      "date": "1861",
+      "place": "Martock, Somerset, East Street"
     }
   ],
   "marriages": [
     {
-      "spouseId": "I1319",
-      "familyId": "F314",
-      "marriageDate": "16 SEP 1832",
-      "marriagePlace": "Yeovil, Somerset, St. John The Baptist"
+      "spouseId": "I770",
+      "familyId": "F362",
+      "marriageDate": "28 APR 1831",
+      "marriagePlace": "North Cadbury, Somerset"
     }
   ]
 }

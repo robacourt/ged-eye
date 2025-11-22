@@ -13,12 +13,12 @@
     "Data/Media/1921 Census/London/RG15 01129 79.jpg"
   ],
   "spouseIds": [
-    "I2008"
+    "I2009"
   ],
   "childIds": [
-    "I2009",
     "I2010",
-    "I2011"
+    "I2011",
+    "I2012"
   ],
   "parentIds": [
     "I417",
@@ -38,8 +38,8 @@
   ],
   "marriages": [
     {
-      "spouseId": "I2008",
-      "familyId": "F718",
+      "spouseId": "I2009",
+      "familyId": "F220",
       "marriageDate": "1939",
       "marriagePlace": "London, Hackney"
     }

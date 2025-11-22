@@ -1,51 +1,32 @@
 {
   "id": "I912",
-  "name": "Arthur Charles a'Court",
-  "givenName": "Arthur Charles",
-  "surname": "a'Court",
-  "sex": "M",
-  "birthDate": "9 FEB 1893",
-  "birthPlace": "Castle Eaton, Highworth, Wiltshire",
-  "deathDate": "3 SEP 1953",
-  "deathPlace": "East Lodge, Braydon, Wiltshire",
-  "photos": [
-    "Data/Media/1901 census/Wiltshire/Wotton Bassett/RG13 1911 105 18.jpg",
-    "Data/Media/1911 census/Wiltshire/Chelworth/RG14 11824 184.jpg"
-  ],
+  "name": "Rose Ann Couling",
+  "givenName": "Rose Ann",
+  "surname": "Couling",
+  "sex": "F",
+  "birthDate": "ABT 1859",
+  "birthPlace": "Kempsford, Gloucestershire, England",
+  "deathDate": "AFT 1897",
+  "deathPlace": null,
+  "photos": [],
   "spouseIds": [
-    "I919"
+    "I231"
   ],
   "childIds": [
-    "I2001"
+    "I913",
+    "I914",
+    "I915"
   ],
-  "parentIds": [
-    "I231",
-    "I911"
-  ],
-  "burialPlace": "Purton, Wiltshire, St Mary's",
-  "occupations": [
-    "General labourer, dairy farmer"
-  ],
+  "parentIds": [],
   "notes": [
-    "Farmer"
-  ],
-  "censusRecords": [
-    {
-      "date": "1901",
-      "place": "Wiltshire, Wotton Bassett, Beamans Lane"
-    },
-    {
-      "date": "1911",
-      "place": "Wiltshire, Cricklade, Chelworth"
-    }
+    "1881"
   ],
   "marriages": [
     {
-      "spouseId": "I919",
-      "familyId": "F380",
-      "marriageDate": "14 DEC 1929",
-      "marriagePlace": "Purton, Wiltshire, St. Mary's"
+      "spouseId": "I231",
+      "familyId": "F141",
+      "marriageDate": "12 MAY 1892",
+      "marriagePlace": "Kempsford,  Gloucestershire"
     }
-  ],
-  "avatar": "avatars/I912_0.jpg"
+  ]
 }

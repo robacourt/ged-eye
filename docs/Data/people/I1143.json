@@ -1,35 +1,20 @@
 {
   "id": "I1143",
-  "name": "Lilian Rose Pike",
-  "givenName": "Lilian Rose",
+  "name": "Frances May Pike",
+  "givenName": "Frances May",
   "surname": "Pike",
   "sex": "F",
-  "birthDate": "14 JUN 1893",
+  "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1144"
-  ],
-  "childIds": [
-    "I1146",
-    "I1148",
-    "I1147",
-    "I1152"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I1135",
-    "I1134"
+    "I1136",
+    "I1135"
   ],
-  "baptismDate": "8 OCT 1893",
-  "baptismPlace": "Marnhull, Dorset",
-  "marriages": [
-    {
-      "spouseId": "I1144",
-      "familyId": "F464",
-      "marriageDate": "8 DEC 1915",
-      "marriagePlace": "Marnhull, Dorset"
-    }
-  ]
+  "baptismDate": "8 SEP 1889",
+  "baptismPlace": "Marnhull, Dorset"
 }

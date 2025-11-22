@@ -1,26 +1,18 @@
 {
   "id": "I1695",
-  "name": "Unknown Northover",
-  "givenName": "Unknown",
-  "surname": "Northover",
+  "name": "Cheryl Louisa A'Court",
+  "givenName": "Cheryl Louisa",
+  "surname": "A'Court",
   "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "3RD QR 1973",
+  "birthPlace": "Sutton",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1696"
-  ],
-  "childIds": [
-    "I1697",
-    "I1698"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1696",
-      "familyId": "F620"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1694",
+    "I1693"
   ]
 }

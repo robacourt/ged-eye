@@ -1,38 +1,18 @@
 {
   "id": "I1952",
-  "name": "Frederick Arthur Armstrong",
-  "givenName": "Frederick Arthur",
-  "surname": "Armstrong",
+  "name": "Michael Warren A'Court",
+  "givenName": "Michael Warren",
+  "surname": "A'Court",
   "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "birthDate": "30 JAN 1982",
+  "birthPlace": "Ranfurly, Otago, New Zealand",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1029"
-  ],
-  "childIds": [
-    "I1953"
-  ],
-  "parentIds": [],
-  "occupations": [
-    "Newsagent, Hairdresser"
-  ],
-  "notes": [
-    "Louie became a hairdresser.  She and her husband Frederick Arthur (known as Arthur) owned a newsagents/hairdressers/barbers in Caledonian Road"
-  ],
-  "residences": [
-    {
-      "date": null,
-      "place": "Ilford, Essex"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1029",
-      "familyId": "F696",
-      "marriageDate": "SEP 14 1919"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1950",
+    "I1951"
   ]
 }

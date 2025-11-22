@@ -1,25 +1,28 @@
 {
   "id": "I1418",
-  "name": "Unknown",
-  "givenName": "Unknown",
-  "surname": "",
-  "sex": "F",
+  "name": "Herbert William Stanley",
+  "givenName": "Herbert William",
+  "surname": "Stanley",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I411"
+    "I896"
   ],
-  "childIds": [
-    "I414"
-  ],
+  "childIds": [],
   "parentIds": [],
+  "occupations": [
+    "Corn Merchant"
+  ],
   "marriages": [
     {
-      "spouseId": "I411",
-      "familyId": "F191"
+      "spouseId": "I896",
+      "familyId": "F432",
+      "marriageDate": "17TH JULY 1902",
+      "marriagePlace": "London, Streatham"
     }
   ]
 }

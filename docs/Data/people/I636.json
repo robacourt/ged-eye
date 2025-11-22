@@ -1,8 +1,8 @@
 {
   "id": "I636",
-  "name": "Dennis G A'Court",
-  "givenName": "Dennis G",
-  "surname": "A'Court",
+  "name": "Alfred Frampton",
+  "givenName": "Alfred",
+  "surname": "Frampton",
   "sex": "M",
   "birthDate": null,
   "birthPlace": null,
@@ -10,10 +10,17 @@
   "deathPlace": null,
   "photos": [],
   "spouseIds": [],
-  "childIds": [],
+  "childIds": [
+    "I634"
+  ],
   "parentIds": [],
   "occupations": [
-    "Electrical Engineer, 60 Coronation Rd, Southville, Bristol",
-    "Electrical Contractor, 14 Hillgrove St, Bristol"
+    "Farmer"
+  ],
+  "marriages": [
+    {
+      "spouseId": null,
+      "familyId": "F316"
+    }
   ]
 }

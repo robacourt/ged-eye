@@ -1,26 +1,43 @@
 {
   "id": "I822",
-  "name": "Edwin Frank A'Court",
-  "givenName": "Edwin Frank",
+  "name": "Lucy Britton A'Court",
+  "givenName": "Lucy Britton",
   "surname": "A'Court",
-  "sex": "M",
-  "birthDate": "14 DEC 1865",
+  "sex": "F",
+  "birthDate": "25 JUN 1864",
   "birthPlace": "Christchurch, New Zealand",
-  "deathDate": "1866",
-  "deathPlace": "Christchurch, New Zealand",
-  "photos": [],
-  "spouseIds": [
-    "I832"
+  "deathDate": null,
+  "deathPlace": null,
+  "photos": [
+    "Data/Picture/Nina, Lucy, Frank A'Court.jpg"
   ],
-  "childIds": [],
+  "spouseIds": [
+    "I829",
+    "I830"
+  ],
+  "childIds": [
+    "I831"
+  ],
   "parentIds": [
-    "I776",
-    "I820"
+    "I777",
+    "I821"
+  ],
+  "notes": [
+    "SARAH'S WILL"
   ],
   "marriages": [
     {
-      "spouseId": "I832",
-      "familyId": "F352"
+      "spouseId": "I829",
+      "familyId": "F403",
+      "marriageDate": "14 JAN 1891",
+      "marriagePlace": "St Lukes, Christchurch, NZ"
+    },
+    {
+      "spouseId": "I830",
+      "familyId": "F404",
+      "marriageDate": "1905",
+      "marriagePlace": "New Zealand"
     }
-  ]
+  ],
+  "avatar": "avatars/I822_0.jpg"
 }

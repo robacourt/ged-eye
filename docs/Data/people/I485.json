@@ -1,7 +1,7 @@
 {
   "id": "I485",
-  "name": "George A'Court",
-  "givenName": "George",
+  "name": "Richard A'Court",
+  "givenName": "Richard",
   "surname": "A'Court",
   "sex": "M",
   "birthDate": null,
@@ -9,19 +9,18 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
+  "spouseIds": [],
+  "childIds": [
     "I486"
   ],
-  "childIds": [
-    "I487"
-  ],
-  "parentIds": [
-    "I484"
+  "parentIds": [],
+  "occupations": [
+    "Wheelwright"
   ],
   "marriages": [
     {
-      "spouseId": "I486",
-      "familyId": "F208"
+      "spouseId": null,
+      "familyId": "F249"
     }
   ]
 }

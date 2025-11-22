@@ -1,26 +1,38 @@
 {
   "id": "I1585",
-  "name": "Albert Charles A'Court",
-  "givenName": "Albert Charles",
-  "surname": "A'Court",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Elizabeth Unknown",
+  "givenName": "Elizabeth",
+  "surname": "Unknown",
+  "sex": "F",
+  "birthDate": "Abt 1856",
+  "birthPlace": "Bristol",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1901 census/Bristol/RG13 2376 40 19.jpg"
+  ],
   "spouseIds": [
-    "I1584"
+    "I1586"
   ],
   "childIds": [
-    "I1586",
-    "I1583"
+    "I1587",
+    "I1584"
   ],
   "parentIds": [],
+  "occupations": [
+    "Button Hole Maker"
+  ],
+  "censusRecords": [
+    {
+      "date": "1901",
+      "place": "Bristol, Redcliff, 13 Rowley Place"
+    }
+  ],
   "marriages": [
     {
-      "spouseId": "I1584",
-      "familyId": "F596"
+      "spouseId": "I1586",
+      "familyId": "F684"
     }
-  ]
+  ],
+  "avatar": "avatars/I1585_0.jpg"
 }

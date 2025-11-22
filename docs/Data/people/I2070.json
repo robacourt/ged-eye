@@ -1,52 +1,23 @@
 {
   "id": "I2070",
-  "name": "Francis Henry A'Court",
-  "givenName": "Francis Henry",
-  "surname": "A'Court",
+  "name": "Clement Jarvis",
+  "givenName": "Clement",
+  "surname": "Jarvis",
   "sex": "M",
-  "birthDate": "1890",
-  "birthPlace": "London Greenwich, Deptford",
+  "birthDate": null,
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Media/1891 census/London/Deptford/RG12 498 31 56.jpg",
-    "Data/Media/1911 census/London/Deptford/RG14 2658 346.jpg"
-  ],
+  "photos": [],
   "spouseIds": [
-    "I2071"
+    "I2069"
   ],
-  "childIds": [
-    "I2072",
-    "I2073",
-    "I2074",
-    "I2075",
-    "I2076",
-    "I2077",
-    "I2078",
-    "I2079"
-  ],
-  "parentIds": [
-    "I2065",
-    "I2066"
-  ],
-  "occupations": [
-    "Assistant Trolly Driver LCC"
-  ],
-  "censusRecords": [
-    {
-      "date": "1891",
-      "place": "London, Deptford, Windmill Lane"
-    },
-    {
-      "date": "1911",
-      "place": "London, Deptford, 9 Harcourt Rd."
-    }
-  ],
+  "childIds": [],
+  "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I2071",
-      "familyId": "F744"
+      "spouseId": "I2069",
+      "familyId": "F815"
     }
-  ],
-  "avatar": "avatars/I2070_0.jpg"
+  ]
 }

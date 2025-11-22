@@ -1,29 +1,74 @@
 {
   "id": "I879",
-  "name": "Mary Ann Unknown",
-  "givenName": "Mary Ann",
-  "surname": "Unknown",
-  "sex": "F",
-  "birthDate": "ABT 1839",
-  "birthPlace": "Oxfordshire, Peppard",
-  "deathDate": "BEF 1898",
+  "name": "Charles A'Court",
+  "givenName": "Charles",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "ABT 1851",
+  "birthPlace": "Chew Magna, Somerset, England",
+  "deathDate": "ABT 1931",
   "deathPlace": null,
-  "photos": [],
-  "spouseIds": [
-    "I386"
+  "photos": [
+    "Data/Media/1861 Census/London/Pancras/RG09 110 111 50.jpg"
   ],
-  "childIds": [],
-  "parentIds": [],
+  "spouseIds": [
+    "I929"
+  ],
+  "childIds": [
+    "I1336",
+    "I529",
+    "I518",
+    "I2088",
+    "I2043",
+    "I1338",
+    "I525",
+    "I2091"
+  ],
+  "parentIds": [
+    "I764",
+    "I872"
+  ],
+  "occupations": [
+    "Coachman Domestic",
+    "Coachman, Domestic Servant",
+    "Coachman, not domestic",
+    "Coachman, Domestic"
+  ],
   "censusRecords": [
     {
+      "date": "1861",
+      "place": "London, Middx. St Pancras 3, Brill Cottages."
+    },
+    {
+      "date": "1881",
+      "place": "London, Middlesex, Kensington 9, Lucerne Mews"
+    },
+    {
       "date": "1891",
-      "place": "Portsmouth, 82 Thomas St."
+      "place": "London,Kensington 9, Lucerne Mews"
+    },
+    {
+      "date": "1901",
+      "place": "London, Putney, 12 Rotherwood Terrace"
+    },
+    {
+      "date": "1911",
+      "place": "London, Putney, 72 Lower Richmond Rd"
+    }
+  ],
+  "residences": [
+    {
+      "date": "MAY 1918",
+      "place": "Chertsey, Surrey, 91 Guildford St."
     }
   ],
   "marriages": [
     {
-      "spouseId": "I386",
-      "familyId": "F595"
+      "spouseId": "I929",
+      "familyId": "F268",
+      "marriageDate": "1871",
+      "marriagePlace": "Somerset"
     }
-  ]
+  ],
+  "avatar": "avatars/I879_0.jpg"
 }

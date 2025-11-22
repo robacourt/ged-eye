@@ -1,26 +1,21 @@
 {
   "id": "I1548",
-  "name": "Anne A'Court",
-  "givenName": "Anne",
+  "name": "William A'Court",
+  "givenName": "William",
   "surname": "A'Court",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1557"
-  ],
+  "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1541",
-    "I1544"
+    "I1542",
+    "I1545"
   ],
-  "marriages": [
-    {
-      "spouseId": "I1557",
-      "familyId": "F592"
-    }
+  "notes": [
+    "Hi Ian"
   ]
 }

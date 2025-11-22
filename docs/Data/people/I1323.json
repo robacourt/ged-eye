@@ -1,48 +1,33 @@
 {
   "id": "I1323",
-  "name": "Alice Waterman",
-  "givenName": "Alice",
+  "name": "William Joseph Waterman",
+  "givenName": "William Joseph",
   "surname": "Waterman",
-  "sex": "F",
-  "birthDate": "1854",
-  "birthPlace": "Yeovil, Somerset",
-  "deathDate": "AFT 1891",
+  "sex": "M",
+  "birthDate": "1833",
+  "birthPlace": "Shoreditch, London",
+  "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1324"
+    "I1321"
   ],
-  "childIds": [],
-  "parentIds": [
-    "I1322",
-    "I1320"
+  "childIds": [
+    "I1324",
+    "I1326",
+    "I1327",
+    "I1328",
+    "I1330",
+    "I1332"
   ],
-  "occupations": [
-    "Glove Machinist"
-  ],
-  "censusRecords": [
-    {
-      "date": "1861",
-      "place": "Stoke Sub Hamdon, Somerset, Higher Street,"
-    },
-    {
-      "date": "1871",
-      "place": "Stoke Sub Hamdon, Somerset, Lower Street,"
-    },
-    {
-      "date": "1881",
-      "place": null
-    },
-    {
-      "date": "1891",
-      "place": "Stoke Sub Hamdon, Somerset, Langlands, West Street"
-    }
-  ],
+  "parentIds": [],
+  "burialDate": "19 NOV 1903",
+  "burialPlace": "Stoke Sub Hamdon, Somerset, St. Marys",
   "marriages": [
     {
-      "spouseId": "I1324",
-      "familyId": "F523",
-      "marriageDate": "AFT 1882"
+      "spouseId": "I1321",
+      "familyId": "F592",
+      "marriageDate": "BEF 1854"
     }
   ]
 }

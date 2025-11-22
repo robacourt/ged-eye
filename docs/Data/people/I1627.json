@@ -1,30 +1,27 @@
 {
   "id": "I1627",
-  "name": "Herbert Ford",
-  "givenName": "Herbert",
-  "surname": "Ford",
-  "sex": "M",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Eliza A'Court",
+  "givenName": "Eliza",
+  "surname": "A'Court",
+  "sex": "F",
+  "birthDate": "Abt 1855",
+  "birthPlace": "Marnhull, Dorset",
   "deathDate": null,
   "deathPlace": null,
-  "photos": [
-    "Data/Picture/Jean Joan  Freddy Ford.jpg"
+  "photos": [],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1618",
+    "I1617"
   ],
-  "spouseIds": [
-    "I1033"
+  "occupations": [
+    "Glover"
   ],
-  "childIds": [
-    "I1993",
-    "I1994",
-    "I1995"
-  ],
-  "parentIds": [],
-  "marriages": [
+  "censusRecords": [
     {
-      "spouseId": "I1033",
-      "familyId": "F713"
+      "date": "1871",
+      "place": "Marnhull, Dorset, East Well"
     }
-  ],
-  "avatar": "avatars/I1627_0.jpg"
+  ]
 }

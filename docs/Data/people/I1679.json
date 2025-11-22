@@ -1,18 +1,25 @@
 {
   "id": "I1679",
-  "name": "Deborah Antell",
-  "givenName": "Deborah",
+  "name": "John Antell",
+  "givenName": "John",
   "surname": "Antell",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [],
-  "parentIds": [
-    "I1678",
-    "I1674"
+  "spouseIds": [
+    "I1675"
+  ],
+  "childIds": [
+    "I1680"
+  ],
+  "parentIds": [],
+  "marriages": [
+    {
+      "spouseId": "I1675",
+      "familyId": "F709"
+    }
   ]
 }

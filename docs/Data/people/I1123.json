@@ -1,34 +1,26 @@
 {
   "id": "I1123",
-  "name": "Walter Matthews",
-  "givenName": "Walter",
-  "surname": "Matthews",
-  "sex": "M",
-  "birthDate": "Abt 1908",
+  "name": "Bessie Victoria Kent",
+  "givenName": "Bessie Victoria",
+  "surname": "Kent",
+  "sex": "F",
+  "birthDate": "Abt 1916",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1122"
+    "I1124"
   ],
   "childIds": [],
   "parentIds": [
-    "I1124"
-  ],
-  "occupations": [
-    "Roadman"
-  ],
-  "residences": [
-    {
-      "date": "1939",
-      "place": "Sturminster Newton, Dorset"
-    }
+    "I1122",
+    "I1121"
   ],
   "marriages": [
     {
-      "spouseId": "I1122",
-      "familyId": "F454",
+      "spouseId": "I1124",
+      "familyId": "F517",
       "marriageDate": "29 JULY 1939",
       "marriagePlace": "Marnhull, Dorset"
     }

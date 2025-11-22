@@ -1,7 +1,7 @@
 {
   "id": "I1378",
-  "name": "Gwen A'Court",
-  "givenName": "Gwen",
+  "name": "Vera A'Court",
+  "givenName": "Vera",
   "surname": "A'Court",
   "sex": "F",
   "birthDate": null,
@@ -9,10 +9,18 @@
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
+  "spouseIds": [
+    "I1384"
+  ],
   "childIds": [],
   "parentIds": [
-    "I947",
-    "I1370"
+    "I948",
+    "I1371"
+  ],
+  "marriages": [
+    {
+      "spouseId": "I1384",
+      "familyId": "F618"
+    }
   ]
 }

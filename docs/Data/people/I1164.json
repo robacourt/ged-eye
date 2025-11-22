@@ -1,26 +1,33 @@
 {
   "id": "I1164",
-  "name": "Charles Whitelock",
-  "givenName": "Charles",
+  "name": "Gilbert Charles Whitelock",
+  "givenName": "Gilbert Charles",
   "surname": "Whitelock",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "ABT 1902",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [],
-  "childIds": [
+  "spouseIds": [
     "I1163"
   ],
-  "parentIds": [],
-  "occupations": [
-    "Motor Driver"
+  "childIds": [],
+  "parentIds": [
+    "I1165"
+  ],
+  "residences": [
+    {
+      "date": "1926",
+      "place": "Stourvale, Christchurch, Hampshire"
+    }
   ],
   "marriages": [
     {
-      "spouseId": null,
-      "familyId": "F475"
+      "spouseId": "I1163",
+      "familyId": "F537",
+      "marriageDate": "22 MAR 1926",
+      "marriagePlace": "Marnhull, Dorset"
     }
   ]
 }

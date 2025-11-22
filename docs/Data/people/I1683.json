@@ -1,25 +1,18 @@
 {
   "id": "I1683",
-  "name": "Unknown Knowles",
-  "givenName": "Unknown",
-  "surname": "Knowles",
-  "sex": "F",
-  "birthDate": null,
-  "birthPlace": null,
+  "name": "Edward Robert A'Court",
+  "givenName": "Edward Robert",
+  "surname": "A'Court",
+  "sex": "M",
+  "birthDate": "1ST QR 1973",
+  "birthPlace": "Ipswich, Suffolk",
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
-  "spouseIds": [
-    "I1684"
-  ],
-  "childIds": [
-    "I1685"
-  ],
-  "parentIds": [],
-  "marriages": [
-    {
-      "spouseId": "I1684",
-      "familyId": "F616"
-    }
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [
+    "I1682",
+    "I1681"
   ]
 }

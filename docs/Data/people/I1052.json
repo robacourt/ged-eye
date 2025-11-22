@@ -1,9 +1,9 @@
 {
   "id": "I1052",
-  "name": "Cheryl Sue Diehm",
-  "givenName": "Cheryl Sue",
+  "name": "John Sydney Diehm",
+  "givenName": "John Sydney",
   "surname": "Diehm",
-  "sex": "F",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
@@ -12,7 +12,7 @@
   "spouseIds": [],
   "childIds": [],
   "parentIds": [
-    "I1049",
-    "I1050"
+    "I1050",
+    "I1051"
   ]
 }

@@ -1,81 +1,38 @@
 {
   "id": "I1589",
-  "name": "Charles Hardy A'Court",
-  "givenName": "Charles Hardy",
+  "name": "George A'Court",
+  "givenName": "George",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "Abt 1850",
-  "birthPlace": "Weymouth, Dorset",
-  "deathDate": "28 OCT 1916",
-  "deathPlace": "Cardiff.",
+  "birthDate": "Abt 1879",
+  "birthPlace": "Bristol, Bedminster",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [
-    "Data/Media/1851 census/Weymouth/HO 107 1857.jpg",
-    "Data/Media/1891 census/London/Paddington/RG12 1 62 47.jpg"
+    "Data/Media/1901 census/Bristol/RG13 2361 36 7.jpg"
   ],
-  "spouseIds": [
-    "I1590",
-    "I2871"
-  ],
-  "childIds": [
-    "I2889",
-    "I1591",
-    "I1592"
-  ],
-  "parentIds": [
-    "I2343",
-    "I2342"
-  ],
+  "spouseIds": [],
+  "childIds": [],
+  "parentIds": [],
   "occupations": [
-    "Railway Engine Driver",
-    "Railway Engine Driver",
-    "Railway Engine Driver"
+    "Flour Mill Labourer",
+    "Mill Hand Labourer"
   ],
   "notes": [
-    "To Charles William A'Court railway clerk effects �364-11s -6d",
-    "See Celia Granger Tree states his mother was Mary Ann Hardy Nee Carter who was birth father?"
+    "1901 Living with paternal grandmother Ann Yendal widow see census note"
   ],
   "censusRecords": [
     {
-      "date": "1851",
-      "place": "Weymouth, Dorset"
-    },
-    {
-      "date": "1881",
-      "place": "Wiltshire, Swindon, Highworth, 8 Gooch St."
-    },
-    {
       "date": "1891",
-      "place": "London, Paddington, 9 Brindley St"
+      "place": "Bristol, Bedminster, Weaie St."
     },
     {
       "date": "1901",
-      "place": "Glamorganshire, Cardiff, 45 Wells St"
+      "place": "Bristol, Bedminster, 42 Phillip St"
     },
     {
       "date": "1911",
-      "place": "Glamorganshire, Cardiff, 45 Wells St"
-    },
-    {
-      "date": "1911",
-      "place": "Pensioned engine driver"
-    }
-  ],
-  "residences": [
-    {
-      "date": "OCT 1916",
-      "place": "Cardiff, 9 Rennie St. Riverside."
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I1590",
-      "familyId": "F597",
-      "marriageDate": "4TH QTR 1877",
-      "marriagePlace": "Weymouth, Dorset"
-    },
-    {
-      "spouseId": "I2871",
-      "familyId": "F981"
+      "place": "Bristol, Bedminster, 16 Mount Pleasant Terrace."
     }
   ],
   "avatar": "avatars/I1589_0.jpg"

@@ -1,25 +1,26 @@
 {
   "id": "I680",
-  "name": "Elizabeth ( Betty ) Drew",
-  "givenName": "Elizabeth ( Betty )",
-  "surname": "Drew",
-  "sex": "F",
+  "name": "Samuel Fudge",
+  "givenName": "Samuel",
+  "surname": "Fudge",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I679"
+    "I681"
   ],
   "childIds": [],
-  "parentIds": [
-    "I681"
+  "parentIds": [],
+  "occupations": [
+    "Ag Lab"
   ],
   "marriages": [
     {
-      "spouseId": "I679",
-      "familyId": "F286"
+      "spouseId": "I681",
+      "familyId": "F336"
     }
   ]
 }

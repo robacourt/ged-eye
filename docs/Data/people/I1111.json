@@ -1,24 +1,26 @@
 {
   "id": "I1111",
-  "name": "Daniel Smith",
-  "givenName": "Daniel",
-  "surname": "Smith",
+  "name": "Ernest James Elford",
+  "givenName": "Ernest James",
+  "surname": "Elford",
   "sex": "M",
-  "birthDate": "ABT 1881",
+  "birthDate": "ABT 1875",
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1105"
+    "I1107"
   ],
-  "childIds": [],
+  "childIds": [
+    "I1422"
+  ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1105",
-      "familyId": "F447",
-      "marriageDate": "23 MAY 1904",
+      "spouseId": "I1107",
+      "familyId": "F510",
+      "marriageDate": "16 JULY 1901",
       "marriagePlace": "Queen Camel, Somerset"
     }
   ]

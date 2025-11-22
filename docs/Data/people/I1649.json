@@ -1,24 +1,41 @@
 {
   "id": "I1649",
-  "name": "Jemima A'Court",
-  "givenName": "Jemima",
+  "name": "George Thomas A'Court",
+  "givenName": "George Thomas",
   "surname": "A'Court",
-  "sex": "F",
-  "birthDate": "ABT 1800",
-  "birthPlace": "Galhampton, Somerset",
+  "sex": "M",
+  "birthDate": "ABT 1851",
+  "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
-  "photos": [],
+  "photos": [
+    "Data/Media/1901 census/Dorset/Weymouth/RG13 1993 89 15.jpg",
+    "Data/Media/1911 census/Devon/Teignmouth/RG14 12694 41.jpg"
+  ],
   "spouseIds": [],
   "childIds": [],
-  "parentIds": [],
+  "parentIds": [
+    "I143",
+    "I174"
+  ],
+  "baptismDate": "21 DEC 1851",
+  "baptismPlace": "Weymouth, Dorset, St Mary's",
   "occupations": [
-    "Formerly Houskeeper"
+    "Butler"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "Marnhull, Dorset, Musbery Lane"
+      "date": "1901",
+      "place": "Dorset, Weymouth,  Melcombe Regis, 3 Gloster Row"
+    },
+    {
+      "date": "1911",
+      "place": "Devon, Teignmouth, Exeter Rd, Winterborne"
+    },
+    {
+      "date": "1911",
+      "place": "Butler domestic"
     }
-  ]
+  ],
+  "avatar": "avatars/I1649_0.jpg"
 }

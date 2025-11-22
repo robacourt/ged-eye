@@ -1,30 +1,29 @@
 {
   "id": "I1498",
-  "name": "Edwin Eli Collis",
-  "givenName": "Edwin Eli",
-  "surname": "Collis",
+  "name": "Ernest Edward Chamberlain (Collis)",
+  "givenName": "Ernest Edward Chamberlain",
+  "surname": "(Collis)",
   "sex": "M",
-  "birthDate": null,
+  "birthDate": "17 MAY 1890",
   "birthPlace": null,
-  "deathDate": "18 DEC 1903",
-  "deathPlace": "Abbas, Templecombe, Somerset",
+  "deathDate": null,
+  "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1507"
+    "I1505"
   ],
-  "childIds": [
-    "I1500",
-    "I1501"
-  ],
+  "childIds": [],
   "parentIds": [
-    "I1499"
+    "I1507",
+    "I1508"
+  ],
+  "notes": [
+    "Ernest Edward Collis was asked by his best friend in the WWI to look after his wife Winnie when he died.  He did - he married her Winifred Violet Louisa Inwood formerly Frier on 14th July 1920 by licence at Lewisham Register Office.  They wen"
   ],
   "marriages": [
     {
-      "spouseId": "I1507",
-      "familyId": "F571",
-      "marriageDate": "3 MAR 1892",
-      "marriagePlace": "Yarlington, Somerset"
+      "spouseId": "I1505",
+      "familyId": "F655"
     }
   ]
 }

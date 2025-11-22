@@ -1,25 +1,25 @@
 {
   "id": "I1362",
-  "name": "Annie Donald",
-  "givenName": "Annie",
-  "surname": "Donald",
-  "sex": "F",
+  "name": "Walter George Hodder",
+  "givenName": "Walter George",
+  "surname": "Hodder",
+  "sex": "M",
   "birthDate": null,
   "birthPlace": null,
   "deathDate": null,
   "deathPlace": null,
   "photos": [],
   "spouseIds": [
-    "I1361"
+    "I1363"
   ],
   "childIds": [
-    "I1360"
+    "I1361"
   ],
   "parentIds": [],
   "marriages": [
     {
-      "spouseId": "I1361",
-      "familyId": "F540"
+      "spouseId": "I1363",
+      "familyId": "F610"
     }
   ]
 }

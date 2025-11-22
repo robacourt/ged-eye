@@ -1,68 +1,39 @@
 {
   "id": "I520",
-  "name": "William A'Court",
-  "givenName": "William",
+  "name": "Leonard Percy Frank A'Court",
+  "givenName": "Leonard Percy Frank",
   "surname": "A'Court",
   "sex": "M",
-  "birthDate": "1859",
-  "birthPlace": "London, St lukes",
-  "deathDate": null,
+  "birthDate": "18 AUG 1899",
+  "birthPlace": "Surrey, Addlestone, Brooklands Farm",
+  "deathDate": "23 MAY 1918",
   "deathPlace": null,
   "photos": [
-    "Data/Media/1861 Census/London/St Luke/RG09 203 17 41.jpg",
-    "Data/Media/1871 census/London/Holborn/RG10 400 5 4.jpg"
+    "Data/Media/1901 census/Surrey/RG13 589 24.jpg",
+    "Data/Media/1911 census/Surrey/RG14 3007 92.jpg",
+    "Data/Media/Death certs and reports/Leaonard P F A'Court- New Haw.pdf"
   ],
-  "spouseIds": [
-    "I521"
-  ],
-  "childIds": [
-    "I2459",
-    "I2460",
-    "I2461",
-    "I2462",
-    "I508",
-    "I2463"
-  ],
+  "spouseIds": [],
+  "childIds": [],
   "parentIds": [
-    "I2020",
-    "I2807"
+    "I533",
+    "I534"
   ],
+  "baptismDate": "23 SEP1899",
+  "baptismPlace": "Surrey, Weybridge, St James",
+  "burialDate": "MAY 1918",
+  "burialPlace": "MAILLY WOOD CEMETERY, Mailly-Maillet, Somme, France",
   "occupations": [
-    "Carman",
-    "Carman",
-    "Carman (Contractors)",
-    "Carman"
-  ],
-  "notes": [
-    "3.    CHARLES WARWICK (21) , Unlawfully obtaining 30 pieces of cloth and other goods by false pretenses."
+    "Mr A Burgess, Baker & Confectioner"
   ],
   "censusRecords": [
     {
-      "date": "1871",
-      "place": "London, Holborn, 15 Peerless St."
-    },
-    {
-      "date": "1881",
-      "place": "London, Shoreditch, 84 New North Rd.,"
-    },
-    {
-      "date": "1891",
-      "place": "London, Holborn, Roscoe St. Peabodys Buildings Block H"
-    },
-    {
       "date": "1901",
-      "place": "Hackney, London,  39 Gilpin Road."
+      "place": "Surrey, Weybridge, The Heath, Brooklands Elmbury Cottage"
     },
     {
       "date": "1911",
-      "place": "Edmonton, Middlesex, 84 Haselbury Rd. Upper Edmonton"
-    }
-  ],
-  "marriages": [
-    {
-      "spouseId": "I521",
-      "familyId": "F215",
-      "marriageDate": "ABT 1880"
+      "place": "Addlestone, Surrey, 10 Australian Cottages, New Haw"
     }
   ],
   "avatar": "avatars/I520_0.jpg"
