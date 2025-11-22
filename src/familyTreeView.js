@@ -577,7 +577,7 @@ export class FamilyTreeView {
   }
 
   /**
-   * Fit graph to fill the full height with margins, centered horizontally
+   * Fit graph to fill the full height with margins, ensuring selected person is visible
    */
   fitToHeight() {
     const cy = this.cy;
@@ -586,15 +586,33 @@ export class FamilyTreeView {
     const h = cy.height();
 
     // Calculate vertical margins (top and bottom)
-    const verticalMargin = 50;
+    const verticalMargin = 20;
     const availableHeight = h - (2 * verticalMargin);
 
     // Calculate zoom to fit height
     const zoom = availableHeight / bb.h;
 
-    // Center horizontally and vertically with margins
+    // Get the selected person's position
+    const selectedNode = cy.nodes('[type="selected"]');
+    let panX;
+
+    const graphWidth = bb.w * zoom;
+
+    if (graphWidth <= w) {
+      // Graph fits within viewport - center it horizontally
+      panX = (w - graphWidth) / 2 - bb.x1 * zoom;
+    } else if (selectedNode.length > 0) {
+      // Graph is wider than viewport - position selected person on left with margin
+      const selectedPos = selectedNode.position();
+      const horizontalMargin = 100;
+      panX = horizontalMargin - selectedPos.x * zoom;
+    } else {
+      // Fallback: center horizontally
+      panX = (w - graphWidth) / 2 - bb.x1 * zoom;
+    }
+
     const pan = {
-      x: (w - bb.w * zoom) / 2 - bb.x1 * zoom,
+      x: panX,
       y: verticalMargin - bb.y1 * zoom
     };
 
