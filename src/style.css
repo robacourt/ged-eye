@@ -502,8 +502,9 @@ body {
 
   .person-details-content {
     padding: 15px;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
     -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
   }
 
   .person-details-header {
