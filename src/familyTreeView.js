@@ -50,8 +50,6 @@ export class FamilyTreeView {
             'text-background-opacity': 1,
             'text-background-padding': '5px',
             'text-background-shape': 'roundrectangle',
-            'transition-property': 'width, height, border-color, background-color',
-            'transition-duration': '0.3s',
             'cursor': 'pointer'
           }
         },
@@ -525,59 +523,21 @@ export class FamilyTreeView {
     }
 
 
-    // Animate transitions between graph states
-    this.animateGraphTransition(elements);
+    // Update graph without animation
+    this.updateGraph(elements);
   }
 
   /**
-   * Animate smooth transitions when switching between people
+   * Update the graph when switching between people (without animation)
    */
-  animateGraphTransition(newElements) {
-    // Save current positions of all existing nodes
-    const oldPositions = new Map();
-    this.cy.nodes().forEach(node => {
-      oldPositions.set(node.id(), { x: node.position().x, y: node.position().y });
-    });
+  updateGraph(elements) {
+    // Clear the existing graph
+    this.cy.elements().remove();
 
-    // Create sets of IDs for comparison
-    const newNodeIds = new Set(newElements.filter(e => e.group === 'nodes').map(e => e.data.id));
-    const newEdgeIds = new Set(newElements.filter(e => e.group === 'edges').map(e => e.data.id));
-    const existingNodeIds = new Set(this.cy.nodes().map(n => n.id()));
-    const existingEdgeIds = new Set(this.cy.edges().map(e => e.id()));
+    // Add all new elements
+    this.cy.add(elements);
 
-    // Identify nodes/edges to keep, add, or remove
-    const nodesToRemove = [...existingNodeIds].filter(id => !newNodeIds.has(id));
-    const edgesToRemove = [...existingEdgeIds].filter(id => !newEdgeIds.has(id));
-    const edgesToAdd = newElements.filter(e => e.group === 'edges' && !existingEdgeIds.has(e.data.id));
-    const nodesToAdd = [...newNodeIds].filter(id => !existingNodeIds.has(id));
-
-    // Remove old elements immediately (no animation for now, to keep it simple)
-    const elementsToRemove = this.cy.collection();
-    nodesToRemove.forEach(id => elementsToRemove.merge(this.cy.getElementById(id)));
-    edgesToRemove.forEach(id => elementsToRemove.merge(this.cy.getElementById(id)));
-    elementsToRemove.remove();
-
-    // Update data for nodes that are staying
-    newElements.filter(e => e.group === 'nodes' && existingNodeIds.has(e.data.id)).forEach(element => {
-      const node = this.cy.getElementById(element.data.id);
-      Object.keys(element.data).forEach(key => {
-        node.data(key, element.data[key]);
-      });
-    });
-
-    // Add new nodes and edges
-    const elementsToAdd = [];
-    nodesToAdd.forEach(id => {
-      const element = newElements.find(e => e.group === 'nodes' && e.data.id === id);
-      if (element) elementsToAdd.push(element);
-    });
-    edgesToAdd.forEach(edge => elementsToAdd.push(edge));
-
-    if (elementsToAdd.length > 0) {
-      this.cy.add(elementsToAdd);
-    }
-
-    // Run layout to calculate new positions
+    // Run layout to calculate positions
     const layout = this.cy.layout({
       name: 'dagre',
       rankDir: 'TB',
@@ -599,34 +559,8 @@ export class FamilyTreeView {
       }
     });
 
-    // Now animate nodes from old positions to new positions
-    this.cy.nodes().forEach(node => {
-      const oldPos = oldPositions.get(node.id());
-      const newPos = { x: node.position().x, y: node.position().y };
-
-      if (oldPos) {
-        // Node existed before - animate from old to new position
-        node.position(oldPos);
-        node.animate({
-          position: newPos,
-          duration: 500,
-          easing: 'ease-in-out-cubic'
-        });
-      } else {
-        // New node - fade in at its position
-        node.style('opacity', 0);
-        node.animate({
-          style: { opacity: 1 },
-          duration: 500,
-          easing: 'ease-in-out-cubic'
-        });
-      }
-    });
-
-    // Fit the view
-    setTimeout(() => {
-      this.cy.fit(50);
-    }, 500);
+    // Fit the view immediately
+    this.cy.fit(50);
   }
 
   /**
