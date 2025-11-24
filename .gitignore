@@ -3,3 +3,10 @@ Data
 acourt.ged
 node_modules
 public/avatars
+
+# Prevent committing downloaded website files
+*.download
+*_files/
+
+# macOS files
+.DS_Store
