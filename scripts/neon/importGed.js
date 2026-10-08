@@ -29,6 +29,12 @@ async function insertRows(client, table, columns, rows, returning) {
 async function main() {
   const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'public'));
   const replace = hasFlag('--replace');
+  const url = process.env.DATABASE_URL_UNPOOLED;
+  if (!url) throw new Error('DATABASE_URL_UNPOOLED is not set (run via npm run import-ged, or pass --env-file=.env.local)');
+  const host = new URL(url).hostname;
+  if (replace && argValue('--confirm') !== host) {
+    throw new Error(`Refusing to wipe ${host}: pass --confirm ${host} to replace all people, families and media there (Neon is the master copy; this discards edits).`);
+  }
   const manifest = readJson(MANIFEST_PATH, null);
   if (!manifest) throw new Error(`No media manifest at ${MANIFEST_PATH}; run npm run upload-media first`);
 
@@ -37,14 +43,14 @@ async function main() {
   const rows = gedToRows(parsed, manifest, readLegacyAvatars(legacyRoot));
   const people = rows.people.map(p => ({ ...p, facts: JSON.stringify(p.facts) }));
 
-  const client = new pg.Client({ connectionString: process.env.DATABASE_URL_UNPOOLED });
+  const client = new pg.Client({ connectionString: url });
   await client.connect();
   try {
     const { rows: [{ count }] } = await client.query('select count(*)::int as count from person');
     if (count > 0 && !replace) throw new Error(`person already has ${count} rows; pass --replace to wipe and reload`);
 
     await client.query('begin');
-    if (replace) await client.query('truncate person_media, media, family_child, family, person restart identity cascade');
+    if (replace) await client.query('truncate person_media, media, family_child, family, person restart identity');
     await insertRows(client, 'person', ['id', 'given_name', 'surname', 'display_name', 'sex', 'birth_date', 'birth_place',
       'death_date', 'death_place', 'baptism_date', 'baptism_place', 'burial_date', 'burial_place', 'facts', 'avatar_key'], people);
     await insertRows(client, 'family', ['id', 'partner1_id', 'partner2_id', 'marriage_date', 'marriage_place',
@@ -77,6 +83,8 @@ async function main() {
 if (isMain(import.meta.url)) {
   main().catch(error => {
     console.error(error.message);
+    if (error.detail) console.error(`detail: ${error.detail}`);
+    if (error.constraint) console.error(`constraint: ${error.constraint}`);
     process.exit(1);
   });
 }

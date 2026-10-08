@@ -2,7 +2,7 @@ import { Pool } from 'pg';
 import { attachDatabasePool } from '@neon/functions';
 import { createHandler } from './handler.js';
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5 });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5, connectionTimeoutMillis: 10_000 });
 attachDatabasePool(pool);
 
 const handle = createHandler(async (id) => {
