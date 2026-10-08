@@ -3,12 +3,11 @@ import pg from 'pg';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { ROOT, argValue, isMain, readJson } from './cli.js';
 import { readLegacyPeople } from './legacyData.js';
-import { legacyExpected, diffView } from './verifyCompare.js';
+import {
+  canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
+} from './verifyCompare.js';
 import { BUCKET, MANIFEST_PATH } from './uploadMedia.js';
 import { WARNINGS_PATH } from './importGed.js';
-
-const canonical = (value) => JSON.stringify(value, (_, v) =>
-  v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b))) : v);
 
 async function listKeys(s3) {
   const keys = new Set();
@@ -26,7 +25,13 @@ async function main() {
   const apiSample = Number(argValue('--api-sample', '25'));
   const manifest = readJson(MANIFEST_PATH, null);
   const warnings = readJson(WARNINGS_PATH, []);
-  const warnedPeople = new Set(warnings.map(w => w.personId).filter(Boolean));
+  // personId -> import warning types; splitDiffs() decides which differences a warning can explain.
+  const warningTypes = new Map();
+  for (const w of warnings) {
+    if (!w.personId) continue;
+    if (!warningTypes.has(w.personId)) warningTypes.set(w.personId, new Set());
+    warningTypes.get(w.personId).add(w.type);
+  }
   const people = readLegacyPeople(legacyRoot);
   const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL, max: 8 });
   const problems = [];
@@ -36,6 +41,7 @@ async function main() {
 
   const ids = [...people.keys()];
   const views = new Map();
+  const notes = createNotes();
   let explained = 0;
   let next = 0;
   await Promise.all(Array.from({ length: 8 }, async () => {
@@ -43,14 +49,14 @@ async function main() {
       const id = ids[next++];
       const { rows } = await pool.query('select person_view($1) as v', [id]);
       views.set(id, rows[0].v);
-      const diffs = diffView(legacyExpected(people, id), rows[0].v, manifest, people);
-      if (!diffs.length) continue;
-      if (warnedPeople.has(id)) {
+      const expected = legacyExpected(people, id);
+      collectNotes(notes, id, noteView(expected, rows[0].v, manifest));
+      const split = splitDiffs(diffView(expected, rows[0].v, manifest, people), warningTypes.get(id));
+      if (split.explained.length) {
         explained++;
-        console.log(`[explained] ${id}: ${diffs.join(' | ')}`);
-      } else {
-        problems.push(`${id}: ${diffs.join(' | ')}`);
+        console.log(`[explained] ${id}: ${split.explained.join(' | ')}`);
       }
+      if (split.unexplained.length) problems.push(`${id}: ${split.unexplained.join(' | ')}`);
     }
   }));
 
@@ -66,20 +72,40 @@ async function main() {
   const apiBase = (process.env.NEON_FUNCTION_API_BASE_URL || 'https://br-green-bonus-b26abimr-api.compute.c-6.eu-central-1.aws.neon.tech').replace(/\/$/, '');
   const timings = [];
   if (apiSample > 0) {
-    const sample = [...ids].sort(() => Math.random() - 0.5).slice(0, apiSample);
+    const sample = shuffled(ids).slice(0, apiSample);
+    console.log(`API sample (${sample.length}): ${sample.join(' ')}`);
     for (const id of sample) {
       const started = Date.now();
-      const res = await fetch(`${apiBase}/person/${encodeURIComponent(id)}`);
+      let res;
+      try {
+        res = await fetch(`${apiBase}/person/${encodeURIComponent(id)}`, { signal: AbortSignal.timeout(30_000) });
+      } catch (error) {
+        problems.push(`api ${id}: request failed (${error.message})`);
+        continue;
+      }
       timings.push(Date.now() - started);
-      const body = await res.json();
-      if (res.status !== 200 || canonical(body) !== canonical(views.get(id))) problems.push(`api ${id}: status ${res.status} or body differs from database`);
+      const contentType = res.headers.get('content-type') ?? '';
+      if (!res.ok || !/json/i.test(contentType)) {
+        problems.push(`api ${id}: status ${res.status}, content-type ${contentType || 'none'}`);
+        continue;
+      }
+      let body;
+      try {
+        body = await res.json();
+      } catch (error) {
+        problems.push(`api ${id}: status ${res.status} but body is not valid JSON (${error.message})`);
+        continue;
+      }
+      if (canonical(body) !== canonical(views.get(id))) problems.push(`api ${id}: body differs from database`);
     }
   }
   await pool.end();
 
+  console.log(formatNotes(notes).join('\n'));
   console.log(JSON.stringify({
     people: ids.length, explained, unexplained: problems.length, bucketObjects: keys.size,
-    apiSample: timings.length, apiMedianMs: timings.sort((a, b) => a - b)[Math.floor(timings.length / 2)] ?? null
+    apiSample: timings.length, apiMedianMs: timings.sort((a, b) => a - b)[Math.floor(timings.length / 2)] ?? null,
+    notes: summarizeNotes(notes)
   }));
   if (problems.length) {
     console.error(problems.join('\n'));
