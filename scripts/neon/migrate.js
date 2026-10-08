@@ -6,6 +6,13 @@ import { ROOT, argValue, isMain } from './cli.js';
 
 const MIGRATIONS_DIR = path.join(ROOT, 'db', 'migrations');
 
+const readMigration = (file) => fs.readFileSync(path.join(MIGRATIONS_DIR, file), 'utf-8');
+
+/** sha256 of a migration's text with LF line endings, so a CRLF checkout still matches. */
+export function migrationChecksum(sql) {
+  return crypto.createHash('sha256').update(sql.replace(/\r\n/g, '\n')).digest('hex');
+}
+
 export async function migrate(databaseUrl, { log = console.log } = {}) {
   const client = new pg.Client({ connectionString: databaseUrl });
   await client.connect();
@@ -16,25 +23,30 @@ export async function migrate(databaseUrl, { log = console.log } = {}) {
     )`);
     // sha256 of each file as applied; null for rows from before checksums were recorded.
     await client.query('alter table schema_migrations add column if not exists checksum text');
-    const applied = new Map((await client.query('select filename, checksum from schema_migrations')).rows
-      .map(r => [r.filename, r.checksum]));
+    const applied = (await client.query('select filename, checksum from schema_migrations order by filename')).rows;
     const files = fs.readdirSync(MIGRATIONS_DIR).filter(f => f.endsWith('.sql')).sort();
-    for (const file of files) {
-      const sql = fs.readFileSync(path.join(MIGRATIONS_DIR, file), 'utf-8');
-      const checksum = crypto.createHash('sha256').update(sql).digest('hex');
-      if (applied.has(file)) {
-        const stored = applied.get(file);
-        if (stored === null) {
-          await client.query('update schema_migrations set checksum = $2 where filename = $1', [file, checksum]);
-        } else if (stored !== checksum) {
-          throw new Error(`Migration ${file} has changed since it was applied`);
-        }
-        continue;
+
+    // Check every applied migration before running anything new.
+    const backfill = [];
+    for (const { filename, checksum: stored } of applied) {
+      if (!files.includes(filename)) {
+        throw new Error(`Migration ${filename} was applied but its file is missing from db/migrations`);
       }
+      const checksum = migrationChecksum(readMigration(filename));
+      if (stored === null) backfill.push([filename, checksum]);
+      else if (stored !== checksum) throw new Error(`Migration ${filename} has changed since it was applied`);
+    }
+    for (const [filename, checksum] of backfill) {
+      await client.query('update schema_migrations set checksum = $2 where filename = $1', [filename, checksum]);
+    }
+
+    const appliedNames = new Set(applied.map(r => r.filename));
+    for (const file of files.filter(f => !appliedNames.has(f))) {
+      const sql = readMigration(file);
       await client.query('begin');
       try {
         await client.query(sql);
-        await client.query('insert into schema_migrations (filename, checksum) values ($1, $2)', [file, checksum]);
+        await client.query('insert into schema_migrations (filename, checksum) values ($1, $2)', [file, migrationChecksum(sql)]);
         await client.query('commit');
         log(`applied ${file}`);
       } catch (error) {

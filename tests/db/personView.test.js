@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import pg from 'pg';
 import { ROOT } from '../../scripts/neon/cli.js';
-import { migrate } from '../../scripts/neon/migrate.js';
+import { migrate, migrationChecksum } from '../../scripts/neon/migrate.js';
 
 const url = process.env.DATABASE_URL_TEST;
 const host = (u) => new URL(u).hostname.replace('-pooler', '');
@@ -154,19 +154,62 @@ describe.skipIf(!url)('person_view (database)', () => {
     await expect(client.query(`update person set facts = '[]' where id = 'I12'`)).rejects.toThrow(/person_facts_is_object/);
   });
 
-  it('records migration checksums and refuses an edited, already-applied migration', async () => {
+  it('finds maternal half siblings and their other parent', async () => {
+    await client.query('begin');
+    try {
+      // F3 reaches I3 only through partner2 (I2, I3's mother).
+      await client.query(`
+        insert into person (id, display_name, sex) values ('I13', 'Mark Hill', 'M'), ('I14', 'Nora Hill', 'F');
+        insert into family (id, partner1_id, partner2_id) values ('F3', 'I13', 'I2');
+        insert into family_child (family_id, child_id, position) values ('F3', 'I14', 0);
+      `);
+      const carl = await view('I3');
+      expect(carl.relationships.siblings).toEqual(['I4', 'I6', 'I14']);
+      expect(carl.family.map(m => m.id)).toEqual(['I1', 'I2', 'I9', 'I7', 'I8', 'I4', 'I6', 'I14', 'I13', 'I5']);
+    } finally {
+      await client.query('rollback');
+    }
+  });
+
+  const migrationsDir = path.join(ROOT, 'db', 'migrations');
+  const fileSha256 = (file) => crypto.createHash('sha256').update(fs.readFileSync(path.join(migrationsDir, file))).digest('hex');
+  const storedChecksum = async (file) =>
+    (await client.query('select checksum from schema_migrations where filename = $1', [file])).rows[0]?.checksum;
+
+  it('records migration checksums, backfills missing ones and ignores CRLF line endings', async () => {
     const file = '002_person_view.sql';
-    const sha256 = crypto.createHash('sha256')
-      .update(fs.readFileSync(path.join(ROOT, 'db', 'migrations', file), 'utf-8')).digest('hex');
-    const stored = async () => (await client.query('select checksum from schema_migrations where filename = $1', [file])).rows[0].checksum;
-    expect(await stored()).toBe(sha256);
+    const sql = fs.readFileSync(path.join(migrationsDir, file), 'utf-8');
+    expect(sql).not.toContain('\r');
+    expect(await storedChecksum(file)).toBe(fileSha256(file));
+    expect(migrationChecksum(sql.replace(/\n/g, '\r\n'))).toBe(fileSha256(file));
 
     await client.query('update schema_migrations set checksum = null where filename = $1', [file]);
     await migrate(url, { log: () => {} });
-    expect(await stored()).toBe(sha256);
+    expect(await storedChecksum(file)).toBe(fileSha256(file));
+  });
 
-    await client.query(`update schema_migrations set checksum = 'edited' where filename = $1`, [file]);
-    await expect(migrate(url, { log: () => {} })).rejects.toThrow(`Migration ${file} has changed since it was applied`);
-    await client.query('update schema_migrations set checksum = $2 where filename = $1', [file, sha256]);
+  it('checks every applied migration before applying a pending one', async () => {
+    const pending = '003_gedcom_archive.sql';
+    const edited = '004_person_view_indexed.sql';
+    await client.query('delete from schema_migrations where filename = $1', [pending]);
+    await client.query(`update schema_migrations set checksum = 'edited' where filename = $1`, [edited]);
+    try {
+      await expect(migrate(url, { log: () => {} })).rejects.toThrow(`Migration ${edited} has changed since it was applied`);
+      expect(await storedChecksum(pending)).toBeUndefined();
+    } finally {
+      await client.query('insert into schema_migrations (filename, checksum) values ($1, $2)', [pending, fileSha256(pending)]);
+      await client.query('update schema_migrations set checksum = $2 where filename = $1', [edited, fileSha256(edited)]);
+    }
+  });
+
+  it('refuses to run when an applied migration file is missing', async () => {
+    await client.query(`insert into schema_migrations (filename, checksum) values ('000_removed.sql', 'x')`);
+    try {
+      await expect(migrate(url, { log: () => {} }))
+        .rejects.toThrow('Migration 000_removed.sql was applied but its file is missing from db/migrations');
+    } finally {
+      await client.query(`delete from schema_migrations where filename = '000_removed.sql'`);
+    }
+    await migrate(url, { log: () => {} });
   });
 });
