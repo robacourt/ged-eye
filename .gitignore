@@ -10,3 +10,8 @@ public/avatars
 
 # macOS files
 .DS_Store
+.neon
+.env.local
+.env*.local
+.neon-import/
+ignore/

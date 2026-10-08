@@ -1,7 +1,7 @@
 import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
-import { loadPersonWithFamily } from './dataLoader.js';
-import { PhotoViewer } from './photoViewer.js';
+import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
+import { mediaUrl } from './media.js';
 
 // Register the dagre layout
 cytoscape.use(dagre);
@@ -12,8 +12,6 @@ export class FamilyTreeView {
     this.cy = null;
     this.selectedPersonId = null;
     this.onPersonSelectCallback = null;
-    this.photoViewer = new PhotoViewer();
-    this.personDataCache = new Map(); // Cache person data for photo viewer
 
     this.init();
   }
@@ -204,31 +202,18 @@ export class FamilyTreeView {
   }
 
   /**
-   * Load and display a person and their immediate family
+   * Load and display a person and their immediate family.
+   * Returns null if a newer loadPerson() call started while this one was in flight.
    */
   async loadPerson(personId) {
-    try {
-      const { person, family, relationships } = await loadPersonWithFamily(personId);
-      this.selectedPersonId = personId;
+    this.pendingPersonId = personId;
+    const result = await loadPersonWithFamily(personId);
+    if (this.pendingPersonId !== personId) return null;
 
-      console.log('Person data:', person);
-      console.log('Relationships:', relationships);
-
-      // Cache person data for photo viewer
-      this.personDataCache.set(person.id, person);
-      family.forEach(member => {
-        this.personDataCache.set(member.id, member);
-      });
-
-      // Build the graph
-      this.buildGraph(person, family, relationships);
-
-      return { person, relationships };
-    } catch (error) {
-      console.error('Error loading person:', error);
-      console.error('Person ID:', personId);
-      throw error;
-    }
+    this.selectedPersonId = personId;
+    this.buildGraph(result.person, result.family, result.relationships);
+    prefetchFamily(result);
+    return { person: result.person, relationships: result.relationships };
   }
 
   /**
@@ -304,7 +289,7 @@ export class FamilyTreeView {
       // Check if this partnership has children that are visible in the graph
       const hasVisibleChildren = relationships?.children?.some(child => {
         if (child.parentIds && child.parentIds.length === 2) {
-          const childParentKey = child.parentIds.sort().join('-');
+          const childParentKey = [...child.parentIds].sort().join('-');
           // Child must match this partnership AND be in the graph
           return childParentKey === partnershipKey && existingNodeIds.has(child.id);
         }
@@ -368,7 +353,7 @@ export class FamilyTreeView {
 
     // Add selected person's parents partnership (when selected person is a child)
     if (selectedPerson.parentIds.length === 2) {
-      const key = selectedPerson.parentIds.sort().join('-');
+      const key = [...selectedPerson.parentIds].sort().join('-');
       if (!parentPartnerships.has(key)) {
         parentPartnerships.set(key, []);
       }
@@ -379,7 +364,7 @@ export class FamilyTreeView {
     if (relationships?.siblings) {
       for (const sibling of relationships.siblings) {
         if (sibling.parentIds && sibling.parentIds.length === 2) {
-          const key = sibling.parentIds.sort().join('-');
+          const key = [...sibling.parentIds].sort().join('-');
           if (!parentPartnerships.has(key)) {
             parentPartnerships.set(key, []);
           }
@@ -392,7 +377,7 @@ export class FamilyTreeView {
     if (relationships?.children) {
       for (const child of relationships.children) {
         if (child.parentIds && child.parentIds.length === 2) {
-          const key = child.parentIds.sort().join('-');
+          const key = [...child.parentIds].sort().join('-');
           if (!parentPartnerships.has(key)) {
             parentPartnerships.set(key, []);
           }
@@ -778,19 +763,11 @@ export class FamilyTreeView {
    * Get avatar path for a person, with fallback to man.png or woman.png
    */
   getAvatarPath(person) {
-    if (person.avatar) {
-      return `${import.meta.env.BASE_URL}${person.avatar}`;
+    if (person.avatarKey) {
+      return mediaUrl(person.avatarKey);
     }
-
-    // Use gender-specific fallback
-    if (person.sex === 'M') {
-      return `${import.meta.env.BASE_URL}avatars/man.png`;
-    } else if (person.sex === 'F') {
-      return `${import.meta.env.BASE_URL}avatars/woman.png`;
-    }
-
-    // Default fallback if sex is not specified
-    return `${import.meta.env.BASE_URL}avatars/man.png`;
+    const placeholder = person.sex === 'F' ? 'woman.png' : 'man.png';
+    return `${import.meta.env.BASE_URL}placeholders/${placeholder}`;
   }
 
   /**
@@ -807,14 +784,10 @@ export class FamilyTreeView {
   }
 
   /**
-   * Select a different person
+   * Select a different person (main.js loads and renders them)
    */
-  async selectPerson(personId) {
-    await this.loadPerson(personId);
-
-    if (this.onPersonSelectCallback) {
-      this.onPersonSelectCallback(personId);
-    }
+  selectPerson(personId) {
+    this.onPersonSelectCallback?.(personId);
   }
 
   /**

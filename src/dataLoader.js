@@ -1,144 +1,111 @@
 /**
- * Lazy loads person data from JSON files
+ * Loads person views (a person plus immediate family) from the Neon API, with an in-memory cache.
  */
 
-const cache = new Map();
-const BASE_URL = `${import.meta.env.BASE_URL}Data/people`;
+const PREFETCH_CONCURRENCY = 4;
+const REQUEST_TIMEOUT_MS = 10_000;
 
-/**
- * Load a person's data by ID
- * @param {string} personId - The person ID (e.g., 'I1')
- * @returns {Promise<Object>} Person data
- */
-export async function loadPerson(personId) {
-  // Check cache first
-  if (cache.has(personId)) {
-    return cache.get(personId);
+const cache = new Map();      // personId -> view
+const inflight = new Map();   // personId -> Promise<view>
+const prefetched = new Set(); // personIds already queued for prefetch
+
+export class PersonNotFoundError extends Error {
+  constructor(personId) {
+    super(`Person ${personId} not found`);
+    this.name = 'PersonNotFoundError';
+    this.personId = personId;
   }
+}
 
-  try {
-    const response = await fetch(`${BASE_URL}/${personId}.json`);
-    if (!response.ok) {
-      throw new Error(`Failed to load person ${personId}: ${response.statusText}`);
+// AbortSignal.timeout() needs Safari 16+; fall back for older iPads and iPhones.
+function timeoutSignal(ms) {
+  if (typeof AbortSignal.timeout === 'function') return AbortSignal.timeout(ms);
+  const controller = new AbortController();
+  setTimeout(() => controller.abort(), ms);
+  return controller.signal;
+}
+
+async function requestView(personId) {
+  const base = import.meta.env.VITE_API_URL;
+  if (!base) throw new Error('VITE_API_URL is not configured');
+  const url = `${base}/person/${encodeURIComponent(personId)}`;
+  for (let attempt = 1; ; attempt++) {
+    let response;
+    try {
+      response = await fetch(url, { signal: timeoutSignal(REQUEST_TIMEOUT_MS) });
+    } catch (error) {
+      if (attempt < 2) continue;
+      throw error;
     }
-
-    const data = await response.json();
-    cache.set(personId, data);
-    return data;
-  } catch (error) {
-    console.error(`Error loading person ${personId}:`, error);
-    throw error;
+    if (response.status === 404 || response.status === 400) throw new PersonNotFoundError(personId);
+    if (response.ok) return response.json();
+    if (response.status >= 500 && attempt < 2) continue;
+    throw new Error(`Failed to load person ${personId}: HTTP ${response.status}`);
   }
 }
 
-/**
- * Load multiple people at once
- * @param {string[]} personIds - Array of person IDs
- * @returns {Promise<Object[]>} Array of person data
- */
-export async function loadPeople(personIds) {
-  const promises = personIds.map(id => loadPerson(id));
-  return Promise.all(promises);
+function getView(personId) {
+  if (cache.has(personId)) return Promise.resolve(cache.get(personId));
+  if (inflight.has(personId)) return inflight.get(personId);
+  const promise = requestView(personId)
+    .then(view => {
+      cache.set(personId, view);
+      return view;
+    })
+    .finally(() => inflight.delete(personId));
+  inflight.set(personId, promise);
+  return promise;
 }
 
 /**
- * Get the index file with all person IDs
- * @returns {Promise<Object>} Index data
- */
-export async function loadIndex() {
-  if (cache.has('_index')) {
-    return cache.get('_index');
-  }
-
-  try {
-    const response = await fetch(`${BASE_URL}/index.json`);
-    if (!response.ok) {
-      throw new Error(`Failed to load index: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    cache.set('_index', data);
-    return data;
-  } catch (error) {
-    console.error('Error loading index:', error);
-    throw error;
-  }
-}
-
-/**
- * Preload a person and their extended family
- * @param {string} personId - The person ID
- * @returns {Promise<Object>} Object with person and family data
+ * Load a person and their immediate family.
+ * @returns {Promise<{person, family, relationships: {parents, spouses, children, siblings}}>}
  */
 export async function loadPersonWithFamily(personId) {
-  const person = await loadPerson(personId);
-
-  // Collect all immediate family IDs
-  const familyIds = new Set([
-    ...person.parentIds,
-    ...person.spouseIds,
-    ...person.childIds
-  ]);
-
-  // Load immediate family first
-  const immediateFamilyResults = await Promise.allSettled(
-    Array.from(familyIds).map(id => loadPerson(id))
-  );
-
-  const immediateFamily = immediateFamilyResults
-    .filter(result => result.status === 'fulfilled')
-    .map(result => result.value);
-
-  // Now collect extended family IDs
-  const extendedIds = new Set();
-
-  // Get siblings (children of person's parents) and their other parents
-  for (const parent of immediateFamily.filter(m => person.parentIds.includes(m.id))) {
-    parent.childIds.forEach(id => {
-      if (id !== personId) extendedIds.add(id);
-    });
-  }
-
-  // Load siblings first to get their parents
-  const siblingsResults = await Promise.allSettled(
-    Array.from(extendedIds).map(id => loadPerson(id))
-  );
-
-  const siblings = siblingsResults
-    .filter(result => result.status === 'fulfilled')
-    .map(result => result.value)
-    .filter(sibling => person.parentIds.some(parentId => sibling.parentIds.includes(parentId)));
-
-  // Get other parents of half-siblings
-  for (const sibling of siblings) {
-    for (const siblingParentId of sibling.parentIds) {
-      if (!person.parentIds.includes(siblingParentId)) {
-        extendedIds.add(siblingParentId);
-      }
-    }
-  }
-
-  // Load extended family
-  const extendedFamilyResults = await Promise.allSettled(
-    Array.from(extendedIds).map(id => loadPerson(id))
-  );
-
-  const extendedFamily = extendedFamilyResults
-    .filter(result => result.status === 'fulfilled')
-    .map(result => result.value);
-
-  // Combine and deduplicate
-  const allFamily = [...immediateFamily, ...extendedFamily];
-
+  const view = await getView(personId);
+  const byId = new Map(view.family.map(member => [member.id, member]));
+  const pick = ids => ids.map(id => byId.get(id)).filter(Boolean);
   return {
-    person,
-    family: allFamily,
+    person: view.person,
+    family: view.family,
     relationships: {
-      parents: immediateFamily.filter(m => person.parentIds.includes(m.id)),
-      spouses: immediateFamily.filter(m => person.spouseIds.includes(m.id)),
-      children: immediateFamily.filter(m => person.childIds.includes(m.id)),
-      siblings: extendedFamily.filter(m => extendedIds.has(m.id) &&
-        person.parentIds.some(parentId => m.parentIds.includes(parentId)))
+      parents: pick(view.relationships.parents),
+      spouses: pick(view.relationships.spouses),
+      children: pick(view.relationships.children),
+      siblings: pick(view.relationships.siblings)
     }
   };
+}
+
+/**
+ * Quietly fetch the views of everyone in `result.family` so clicking them is instant.
+ */
+export function prefetchFamily(result) {
+  const ids = result.family
+    .map(member => member.id)
+    .filter(id => !cache.has(id) && !inflight.has(id) && !prefetched.has(id));
+  if (ids.length === 0) return;
+  ids.forEach(id => prefetched.add(id));
+
+  const whenIdle = globalThis.requestIdleCallback ?? (callback => setTimeout(callback, 200));
+  whenIdle(() => {
+    let next = 0;
+    const worker = async () => {
+      while (next < ids.length) {
+        const id = ids[next++];
+        try {
+          await getView(id);
+        } catch {
+          // Prefetch is best effort; a real click will retry and report errors.
+        }
+      }
+    };
+    for (let i = 0; i < Math.min(PREFETCH_CONCURRENCY, ids.length); i++) worker();
+  });
+}
+
+export function resetDataLoaderForTests() {
+  cache.clear();
+  inflight.clear();
+  prefetched.clear();
 }
