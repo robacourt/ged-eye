@@ -6,4 +6,7 @@ export default defineConfig({
       "ged-eye-media": { access: "public_read" },
     },
   },
+  functions: {
+    api: { name: "ged-eye api", source: "api/index.js" },
+  },
 });

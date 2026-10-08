@@ -12,7 +12,9 @@
     "generate-avatars": "node scripts/generateAvatars.js"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1148.0",
     "jsdom": "^25.0.0",
+    "pg": "^8.23.1",
     "vite": "^6.0.0",
     "vitest": "^3.0.0"
   },
@@ -20,6 +22,7 @@
     "@canvas/image": "^1.0.0",
     "@neon/config": "^1.8.6",
     "@neon/env": "^1.5.3",
+    "@neon/functions": "^0.11.0",
     "@tensorflow/tfjs-node": "^4.22.0",
     "@vladmandic/face-api": "^1.7.0",
     "canvas": "^2.11.2",

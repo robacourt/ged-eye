@@ -1,7 +1,7 @@
 # Move GED-Eye data to Neon: design
 
 **Date:** 2026-10-08
-**Status:** Draft (revision 2, after spec review), awaiting the developer's review
+**Status:** Revision 3. The data-access layer changed from the Data API to a Neon Function after reading Neon's guidance and running the spike. The developer delegated approval ("I trust your process").
 **Scope:** Phase 1. Serve the existing tree (people, relationships, photos) from Neon instead of static JSON files, read-only. Editing comes in a later phase.
 
 ## Goals
@@ -25,8 +25,17 @@
 |---|---|
 | Master copy | Neon. One-time import from `acourt.ged`; Brother's Keeper is no longer used for edits. |
 | Read access | Public (anonymous). Sign-in will only be needed for editing, later. |
-| Data access | Normalized tables plus a `person_view()` Postgres function called through the Neon Data API (approach "A"). |
-| Hosting | Front end stays on GitHub Pages; no backend server. |
+| Data access | Normalized tables plus a `person_view()` Postgres function (approach "A"). The browser calls it through a Neon Function, `GET /person/:id`. |
+| Hosting | Front end stays on GitHub Pages; the backend is one Neon Function. |
+
+**Why a Function instead of the Data API (revision 3).** Neon's own guidance says to use the Data API only for apps that already use PostgREST or supabase-js. For a client-only app it recommends a Function that queries Postgres, and it warns that browser-facing PostgREST plus RLS is easy to get wrong. For this read-only phase the Function is also simpler:
+
+- one request per page, with no anonymous-token round trip
+- no Neon Auth until editing
+- no RLS or role setup
+- the database is not exposed to the browser at all
+
+Editing will verify Neon Auth JWTs inside the same Function.
 
 ## Constraints from Neon (as documented on 2026-10-08)
 
@@ -34,31 +43,29 @@
   - 1 GB Postgres per project.
   - 100 CU-hours per project per month.
   - 5 GB of Object Storage per project.
-  - 5 GB of public network egress per project per month, **shared** by Postgres, Data API and Object Storage.
+  - 5 GB of public network egress per project per month, **shared** by Postgres, Functions and Object Storage.
   - The compute scales to zero after 5 minutes idle (cannot be disabled on Free).
   - If an allowance runs out, the site stops loading data until the allowance resets at the start of the next month, or until the project is upgraded. Usage is checked in the Neon Console. The budget in [Performance and egress budget](#performance-and-egress-budget) keeps normal family use well inside the limits.
 - **Object Storage:**
   - It is in beta.
   - It is S3-compatible, with path-style addressing and SigV4 only.
   - Buckets are private or `public_read`. The access level is declared in `neon.ts`, not via S3 ACLs.
-- **Data API:**
-  - It is PostgREST-compatible and calls functions via `rpc`.
-  - It requires a JWT even for anonymous access. With Managed Better Auth (Neon Auth), `@neondatabase/neon-js` fetches a short-lived anonymous token from `GET {auth}/token/anonymous` when `allowAnonymous: true`.
-  - Anonymous requests run as the `anonymous` Postgres role; signed-in requests run as `authenticated`.
-  - Every table in an exposed schema needs RLS.
-  - After schema changes, the schema cache is refreshed with `neon data-api refresh-schema`.
+- **Functions:**
+  - Node.js 24 HTTP handlers (`export default { fetch }`) with a public HTTPS URL.
+  - `DATABASE_URL` (pooled) is injected at runtime.
+  - They are declared in `neon.ts` and deployed with `neon deploy`.
+  - They are available in eu-central-1, scale to zero when idle, and work on the Free plan (verified by the spike).
 
 ## Architecture
 
 ```
 Browser (GitHub Pages: robacourt.github.io/ged-eye)
-  ├─ GET  {auth-url}/token/anonymous       → anonymous JWT (SDK caches it, ~15 min life)
-  ├─ POST {data-api-url}/rpc/person_view   → person + immediate family (1 request per page)
-  └─ GET  {bucket-url}/avatars|thumbs|originals/…   → media from a public_read bucket
+  ├─ GET {api-url}/person/I122                       → person + immediate family (1 request per page)
+  └─ GET {bucket-url}/avatars|thumbs|originals/…     → media from a public_read bucket
 
 Neon project "GED-Eye" (calm-band-80930621), Free plan, AWS eu-central-1 (Frankfurt), Postgres 18
-  ├─ Branch "production": tables, RLS policies, person_view()
-  ├─ Data API (schema `public` only) + Managed Better Auth (anonymous read now; sign-in for edits later)
+  ├─ Branch "production": tables + person_view()
+  ├─ Function "api" (api/index.js, declared in neon.ts): GET /person/:id → select person_view($1)
   └─ Object Storage bucket "ged-eye-media" (public_read, declared in neon.ts)
 
 One-off scripts run on the developer's Mac (secrets in .env.local, gitignored)
@@ -70,41 +77,26 @@ One-off scripts run on the developer's Mac (secrets in .env.local, gitignored)
 
 Frankfurt is required because Object Storage is offered only in us-east-1, us-east-2, eu-central-1 and ap-southeast-1, and most of the family is in the UK. For family in Perth, one round trip to Frankfurt (~300 ms) is the main cost of a page load.
 
-## Step 0: Neon setup and verification spike
+## Step 0: Neon setup and verification spike (done 2026-10-08)
 
-### Already done (2026-10-08)
+**Setup**
 
 - The developer created the Neon account and project `GED-Eye` (`calm-band-80930621`, aws-eu-central-1, Postgres 18, default branch `production`) and bucket `ged-eye-media` (`public_read`).
 - The Neon CLI v8 is installed for this repo's Node version.
 - `neon skills` and `neon mcp` have been run.
 - `neon link` wrote `.neon` and `.env.local` (both gitignored).
-- `neon.ts` declares the bucket. `neon deploy` reported no changes.
+- `neon.ts` declares the bucket and the `api` function.
 
-### Remaining setup (via the CLI, developer approves each step)
+**Spike results**
 
-1. `neon neon-auth enable` on `production`.
-2. Add trusted domains with `neon neon-auth domain`:
-   - `https://robacourt.github.io`
-   - `http://localhost:5173` (dev)
-   - `http://localhost:4173` (`vite preview`)
-3. Disable new sign-ups, using `neon neon-auth config` where the CLI supports it for each sign-in method. Phase 1 has no sign-in UI. Even if someone signs up, the `authenticated` role has the same read-only access as `anonymous` (see [Access control](#access-control)).
-4. Create the Data API:
-   ```
-   neon data-api create --auth-provider neon_auth --db-schemas public --server-cors-allowed-origins "<the three origins above>"
-   ```
-   **Do not pass `--add-default-grants`**, which grants all permissions on `public` tables to `authenticated`.
-5. Record the Auth URL, Data API URL and bucket base URL in `.env.development` and `.env.production` (see [Configuration](#configuration)).
-
-### Spike
-
-Throwaway code, not committed. It verifies what the docs leave unclear:
-
-| # | Check | Fallback if it fails |
+| # | Check | Result |
 |---|---|---|
-| 1 | The URL format for objects in a `public_read` bucket, and that `<img src>` loads one from `localhost` and `github.io`. | Stop and revisit media hosting with the developer. Options: keep media on GitHub Pages, or a private bucket plus a presigning Neon Function. |
-| 2 | `Content-Type`, `Cache-Control` and `Content-Disposition` set at upload are returned on GET. | Drop forced-download for non-images; the viewer shows the original filename and a plain link. |
-| 3 | The anonymous token flow plus `rpc('person_view')` works from all three origins. | Investigate the trusted-domain and CORS configuration. Do not proceed to the front-end work until this works. |
-| 4 | Cold-start latency, measured as the time of the first `rpc` after 5+ minutes idle. | Informational only; recorded in the PR description. |
+| 1 | Public object URL | `${AWS_ENDPOINT_URL_S3}/ged-eye-media/<key>`, i.e. `https://br-green-bonus-b26abimr.storage.c-6.eu-central-1.aws.neon.tech/ged-eye-media/<key>`. Anonymous GET returns 200 with `Access-Control-Allow-Origin: *`, in ~140 ms from the developer's network. |
+| 2 | Upload headers | `Content-Type`, `Cache-Control` and `Content-Disposition` are returned unchanged on GET. |
+| 3 | Function | Deployed at `https://br-green-bonus-b26abimr-api.compute.c-6.eu-central-1.aws.neon.tech/`. The first call took 270 ms; warm calls take ~110 ms end to end with 2–3 ms in the database. CORS headers set by the handler are passed through. |
+| 4 | Cold start | Measured after the import and recorded in the PR description. |
+
+The spike object `spike/test.jpg` is deleted during the media upload step.
 
 ## Database schema
 
@@ -180,20 +172,11 @@ create table person_media (
 - Children within a family are ordered by `position`.
 - Photos are ordered by `person_media.position`.
 
-### Migration bookkeeping
+### Migration bookkeeping and access
 
-- `migrate.js` records applied migrations in `ged_admin.schema_migrations(filename text primary key, applied_at timestamptz not null default now())`.
-- Schema `ged_admin` is not in the Data API's exposed schemas, and `usage` on it is revoked from `public`, `anonymous` and `authenticated`.
-
-### Access control
-
-`001_schema.sql` also:
-
-- **Roles.** Ensures `anonymous` and `authenticated` exist, with a `DO` block that creates them `NOLOGIN` only if missing. This is a no-op on branches with the Data API, and it lets the same migrations run on the `test` branch.
-- **Revoke first.** Runs `revoke all on all tables in schema public from anonymous, authenticated`. This removes anything the Data API's default privileges may have granted.
-- **Grant read-only.** Grants `usage on schema public` and `select` on the five tables to `anonymous, authenticated`. No insert, update or delete.
-- **RLS.** Runs `alter table … enable row level security` on all five tables, with one policy per table: `for select to anonymous, authenticated using (true)`.
-  - With no write policies, writes are rejected even if a grant appears later.
+- `migrate.js` records applied migrations in `schema_migrations(filename text primary key, applied_at timestamptz not null default now())`.
+- No Data API is enabled, so the database is reachable only with the connection string, which only the Function and the developer's scripts hold. Phase 1 therefore needs no RLS or extra roles.
+- The editing phase adds authorization in the Function (verifying Neon Auth JWTs) rather than relying on browser-facing RLS.
 
 ## `person_view` function
 
@@ -201,10 +184,8 @@ create table person_media (
 
 ```sql
 create or replace function person_view(p_id text) returns jsonb
-  language sql stable security invoker
+  language sql stable
   as $$ … $$;
-revoke all on function person_view(text) from public;
-grant execute on function person_view(text) to anonymous, authenticated;
 ```
 
 ### Who is included
@@ -267,7 +248,7 @@ Today's loader fetches every relative's full JSON, but nothing reads the extra f
 
 | Item | Size |
 |---|---|
-| `person_view` | ~3 KB |
+| `/person/:id` | ~3 KB |
 | prefetch of up to ~20 relatives' views | ~60 KB |
 | ~20 avatars | ~200 KB |
 | up to 4 thumbnails | ~60 KB |
@@ -276,6 +257,22 @@ Today's loader fetches every relative's full JSON, but nothing reads the extra f
 - Media is served `immutable`, so repeat views of the same people cost almost nothing.
 - 5 GB a month therefore covers roughly 15,000 fresh page views, plus opening full-size originals at ~1 MB each.
 - Compute is used only while the database is awake. Prefetch happens within the same awake window as the page view, so it adds negligible CU-hours.
+
+## API function (`api/`)
+
+- **`api/handler.js`:** exports `createHandler(queryPersonView)`, which returns a `fetch(request)` function. It does no I/O itself, so it is unit-tested with a fake `queryPersonView(id) → Promise<object|null>`.
+  - `OPTIONS *` → 204 with CORS headers.
+  - `GET /person/:id`:
+    - If `id` does not match `^[A-Za-z0-9_-]{1,32}$` → 400 `{"error":"bad_id"}`.
+    - If the view is null → 404 `{"error":"not_found"}`.
+    - Otherwise → 200 with the view JSON.
+  - `GET /health` → 200 `{"ok":true}`.
+  - Anything else → 404 `{"error":"not_found"}`.
+  - If the query throws → 500 `{"error":"internal"}`, with the error logged via `console.error`.
+  - Every response carries `Access-Control-Allow-Origin: *` (the data is public) and `Content-Type: application/json`.
+  - 200 responses also carry `Cache-Control: public, max-age=300`. Other responses carry `Cache-Control: no-store`.
+- **`api/index.js`:** creates a module-scope `pg` `Pool` on `DATABASE_URL` (`max: 5`) and calls `attachDatabasePool(pool)` from `@neon/functions`. It default-exports `{ fetch: createHandler(id => pool.query('select person_view($1) as v', [id]).then(r => r.rows[0].v)) }`.
+- **`neon.ts`:** declares `functions: { api: { name: "ged-eye api", source: "api/index.js" } }`, deployed with `neon deploy`.
 
 ## Import pipeline
 
@@ -321,10 +318,8 @@ Identical files at different paths share one object and one `media` row.
 ### `npm run db:migrate` (`scripts/neon/migrate.js`)
 
 - Applies `db/migrations/*.sql` in filename order. Each file runs in its own transaction.
-- Records applied files in `ged_admin.schema_migrations` and skips any already applied.
-- Then runs `neon data-api refresh-schema` for the linked branch.
+- Records applied files in `schema_migrations` and skips any already applied.
 - Takes `--database-url` to override the connection, which the DB tests use.
-  - With `--database-url`, it skips the schema refresh, because the `test` branch has no Data API.
 
 ### `npm run import-ged` (`scripts/neon/importGed.js`)
 
@@ -345,10 +340,9 @@ Identical files at different paths share one object and one `media` row.
 
 | File | Change |
 |---|---|
-| `package.json` | Add the `@neondatabase/neon-js` dependency and the npm scripts above. Remove the `process-ged` script. |
-| `src/neonClient.js` (new) | Creates and exports the client from `VITE_NEON_AUTH_URL` and `VITE_NEON_DATA_API_URL`, with anonymous access enabled. |
+| `package.json` | Add the npm scripts above and the `@neon/functions` dependency (used by the Function). Remove the `process-ged` script. |
 | `src/media.js` (new) | `mediaUrl(key)` returns `${VITE_MEDIA_BASE_URL}/${key}` (key path segments URL-encoded). `thumbUrl(photo)` returns `mediaUrl(photo.thumbKey)`, or null. |
-| `src/dataLoader.js` | `loadPersonWithFamily(id)` calls `rpc('person_view', { p_id: id })` and returns `{ person, family, relationships }`. It maps the relationship ID lists to `RelativeRecord` objects, so callers are unchanged. It caches responses by ID in memory, and throws `PersonNotFoundError` on `null`. It retries once on network failure, then throws. `prefetchFamily(view)` fetches `person_view` for each relative in the view that is not cached and not already in flight, at most 4 at a time, using `requestIdleCallback` (falling back to `setTimeout`) and ignoring errors. Each ID is fetched at most once per page session. It removes `loadPerson`, `loadPeople` and `loadIndex`. |
+| `src/dataLoader.js` | `loadPersonWithFamily(id)` calls `fetch(`${VITE_API_URL}/person/${encodeURIComponent(id)}`)` and returns `{ person, family, relationships }`. It maps the relationship ID lists to `RelativeRecord` objects, so callers are unchanged. It caches responses by ID in memory, and throws `PersonNotFoundError` on a 404. It retries once on a network failure or 5xx, then throws. `prefetchFamily(view)` fetches `person_view` for each relative in the view that is not cached and not already in flight, at most 4 at a time, using `requestIdleCallback` (falling back to `setTimeout`) and ignoring errors. Each ID is fetched at most once per page session. It removes `loadPerson`, `loadPeople` and `loadIndex`. |
 | `src/familyTreeView.js` | `getAvatarPath` returns `mediaUrl(person.avatarKey)` when set, else `${BASE_URL}placeholders/man.png` or `woman.png`. It calls `prefetchFamily` after rendering. It removes the unused `photoViewer` and `personDataCache`. |
 | `src/personDetails.js` | Thumbnails use `thumbUrl(photo)`; a photo without a `thumbKey` shows the existing file icon. `isImageFile(path)` is replaced by checking `photo.thumbKey`. |
 | `src/photoViewer.js` | Takes photo objects. It displays `mediaUrl(photo.key)` when `thumbKey` is set; otherwise it shows the existing download panel with `photo.fileName` and `mediaUrl(photo.key)` (the `Content-Disposition` header forces download). Its existing "Failed to load image" behaviour is unchanged. |
@@ -362,16 +356,16 @@ Identical files at different paths share one object and one `media` row.
 
 | File | Committed | Contents |
 |---|---|---|
-| `.env.development`, `.env.production` | yes | `VITE_NEON_AUTH_URL`, `VITE_NEON_DATA_API_URL`, `VITE_MEDIA_BASE_URL`. These are public values that ship in the JS bundle anyway. |
-| `.env.local` | no | Written by `neon link` / `neon env pull`: `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `NEON_BRANCH`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_ENDPOINT_URL_S3`, `AWS_REGION`. Added by hand: optional `MEDIA_BUCKET` and `DATABASE_URL_TEST`. |
+| `.env` | yes | `VITE_API_URL` (the Function URL) and `VITE_MEDIA_BASE_URL` (`${AWS_ENDPOINT_URL_S3}/ged-eye-media`). These are public values that ship in the JS bundle anyway. |
+| `.env.local` | no | Written by `neon link` / `neon env pull` / `neon deploy`: `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `NEON_BRANCH`, `NEON_FUNCTION_API_BASE_URL`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_ENDPOINT_URL_S3`, `AWS_REGION`. Added by hand: optional `MEDIA_BUCKET` and `DATABASE_URL_TEST`. |
 | `.neon` | no | Project and branch link, written by `neon link`. |
-| `neon.ts` | yes | Neon resource policy (the bucket). |
+| `neon.ts` | yes | Neon resource policy (the bucket and the `api` function). |
 
 ## Error handling
 
 | Situation | Behaviour |
 |---|---|
-| Initial load fails (token or `rpc`, after one retry) | The existing error panel in `initApp`, showing the message only, not the stack trace. |
+| Initial load fails (after one retry) | The existing error panel in `initApp`, showing the message only, not the stack trace. |
 | Unknown `?person=` ID (initial load or navigation) | "Person not found", with a link to the default person. |
 | A navigation load (`onPersonSelect` or `popstate`) is slow | If it takes longer than 300 ms (e.g. a cold start of ~0.5–1 s), the `#loading` overlay reappears with "Loading…" until it finishes. |
 | A navigation load fails (after one retry) | The current graph stays. The overlay shows "Couldn't load this person." with a Retry button that repeats the load. Today these handlers have no error handling and fail with an unhandled rejection. |
@@ -395,14 +389,15 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
     - a dangling CHIL reference
     - a FAMS/FAMC inconsistency
     - an avatar mapping
-  - `tests/dataLoader.test.js` uses a stubbed client and covers:
+  - `tests/apiHandler.test.js` covers each route and status in [API function](#api-function-api) using a fake query function.
+  - `tests/dataLoader.test.js` uses a stubbed `fetch` and covers:
     - mapping IDs to objects
     - the cache
     - `PersonNotFoundError`
     - retry once on network failure
     - prefetch skipping cached and in-flight IDs
 - **Database tests (`npm run test:db`, skipped unless `DATABASE_URL_TEST` is set).**
-  - **Setup:** they run against a dedicated Neon branch `test`, which is a child of `production` and has no Data API. Each run resets it by dropping the five tables, `person_view(text)` and schema `ged_admin`. Then it applies the migrations with `migrate.js --database-url` and loads a fixture tree.
+  - **Setup:** they run against a dedicated Neon branch `test`, created with `neon branches create` so that no Function is deployed to it. Each run resets it by dropping the five tables, `schema_migrations` and `person_view(text)`. Then it applies the migrations with `migrate.js --database-url` and loads a fixture tree.
   - **`person_view` cases:**
     - full and half siblings, plus their other parent
     - multiple spouses, with children grouped per family
@@ -411,7 +406,6 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
     - `photos` and `avatarKey`
     - the `RelativeRecord` fields
     - an unknown ID returns null
-  - **RLS:** run as both `anonymous` and `authenticated`. `select` and `person_view` succeed; `insert`, `update` and `delete` on all five tables fail; any access to `ged_admin.schema_migrations` fails.
 - **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-dir <dir>`, default `public/data/people`).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
   - Compare relationship ID sets (parents, spouses, children, siblings, family members), order-insensitive.
   - Compare all `PersonRecord` scalar and `facts` fields.
@@ -422,7 +416,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
 - **Manual:**
   - `npm run dev` against Neon.
   - Navigate a few branches of the tree.
-  - Confirm the Network tab shows one `rpc` per newly visited person, and that clicking a relative hits the prefetch cache.
+  - Confirm the Network tab shows one `/person/` request per newly visited person, and that clicking a relative hits the prefetch cache.
   - Check a cold start, including the loading overlay on navigation.
   - Check mobile width.
   - Open one photo and one non-image download.
@@ -430,7 +424,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
 ## Rollout
 
 1. Finish Step 0 (remaining setup and spike).
-2. Run `upload-media` → `db:migrate` → `import-ged` → `verify-neon` on `production`, with zero unexplained differences, **while the legacy files are still in `public/`**.
+2. Run `upload-media` → `db:migrate` → `import-ged` → `neon deploy` (Function) → `verify-neon` on `production`, with zero unexplained differences, **while the legacy files are still in `public/`**.
 3. One PR with the front-end changes. To build:
    - Copy the two placeholder images to `public/placeholders/`.
    - Move `public/data` and `public/avatars` out to `ignore/legacy-data/`. They remain the parity baseline, usable via `--legacy-dir`.
@@ -444,6 +438,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
 - `personDetails.js` builds HTML with unescaped strings such as `personData.name`. That is harmless while the data comes only from the GEDCOM, but it must be escaped before family members can edit text.
 - New IDs: generate `I<n>` and `F<n>` from Postgres sequences seeded above the imported maximum.
 - Write access needs:
-  - RLS `insert`/`update` policies for `authenticated`
-  - re-enabled sign-ups behind an allowlist. Neon Auth has no built-in allowlist today; a blocking `user.before_create` webhook is the documented route.
-- Photo uploads from the browser need presigned PUT URLs, which means a small server-side piece (e.g. a Neon Function), plus avatar generation for new photos.
+  - Neon Auth (`auth: true` in `neon.ts`)
+  - write routes on the `api` Function that verify the JWT (`jose` against `NEON_AUTH_JWKS_URL`)
+  - a sign-up allowlist. Neon Auth has no built-in allowlist today; a blocking `user.before_create` webhook is the documented route.
+- Photo uploads from the browser need presigned PUT URLs minted by the same Function, plus avatar generation for new photos.
