@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import pg from 'pg';
@@ -13,20 +14,33 @@ export async function migrate(databaseUrl, { log = console.log } = {}) {
       filename text primary key,
       applied_at timestamptz not null default now()
     )`);
-    const applied = new Set((await client.query('select filename from schema_migrations')).rows.map(r => r.filename));
+    // sha256 of each file as applied; null for rows from before checksums were recorded.
+    await client.query('alter table schema_migrations add column if not exists checksum text');
+    const applied = new Map((await client.query('select filename, checksum from schema_migrations')).rows
+      .map(r => [r.filename, r.checksum]));
     const files = fs.readdirSync(MIGRATIONS_DIR).filter(f => f.endsWith('.sql')).sort();
     for (const file of files) {
-      if (applied.has(file)) continue;
       const sql = fs.readFileSync(path.join(MIGRATIONS_DIR, file), 'utf-8');
+      const checksum = crypto.createHash('sha256').update(sql).digest('hex');
+      if (applied.has(file)) {
+        const stored = applied.get(file);
+        if (stored === null) {
+          await client.query('update schema_migrations set checksum = $2 where filename = $1', [file, checksum]);
+        } else if (stored !== checksum) {
+          throw new Error(`Migration ${file} has changed since it was applied`);
+        }
+        continue;
+      }
       await client.query('begin');
       try {
         await client.query(sql);
-        await client.query('insert into schema_migrations (filename) values ($1)', [file]);
+        await client.query('insert into schema_migrations (filename, checksum) values ($1, $2)', [file, checksum]);
         await client.query('commit');
         log(`applied ${file}`);
       } catch (error) {
-        await client.query('rollback');
-        throw new Error(`${file}: ${error.message}`);
+        // A failed rollback must not hide why the migration failed.
+        await client.query('rollback').catch(() => {});
+        throw new Error(`${file}: ${error.message}`, { cause: error });
       }
     }
   } finally {

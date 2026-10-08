@@ -1,11 +1,18 @@
 // @vitest-environment node
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
 import pg from 'pg';
+import { ROOT } from '../../scripts/neon/cli.js';
 import { migrate } from '../../scripts/neon/migrate.js';
 
 const url = process.env.DATABASE_URL_TEST;
 const host = (u) => new URL(u).hostname.replace('-pooler', '');
 const productionHosts = [process.env.DATABASE_URL, process.env.DATABASE_URL_UNPOOLED].filter(Boolean).map(host);
+if (url && productionHosts.length === 0) {
+  throw new Error('DATABASE_URL_TEST is set but DATABASE_URL and DATABASE_URL_UNPOOLED are not, so it cannot be checked against production; run via npm run test:db');
+}
 if (url && productionHosts.includes(host(url))) {
   throw new Error('DATABASE_URL_TEST points at the production branch; refusing to reset it');
 }
@@ -124,5 +131,42 @@ describe.skipIf(!url)('person_view (database)', () => {
       { spouseId: 'I2', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil' },
       { spouseId: 'I5', familyId: 'F2', divorceDate: '1935' }
     ]);
+  });
+
+  it('finds spouses and children for someone who is only ever partner2', async () => {
+    const beth = await view('I2');
+    expect(beth.relationships).toEqual({ parents: [], spouses: ['I1'], children: ['I4', 'I3'], siblings: [] });
+    expect(beth.family.map(m => m.id)).toEqual(['I1', 'I4', 'I3']);
+    expect(beth.person.marriages).toEqual([
+      { spouseId: 'I1', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil' }
+    ]);
+  });
+
+  it('never lets facts overwrite core fields, and requires facts to be an object', async () => {
+    await client.query('begin');
+    try {
+      await client.query(`update person set facts = '{"id": "X", "name": "Bogus", "parentIds": ["I1"], "occupations": ["Smith"]}' where id = 'I12'`);
+      const { person } = await view('I12');
+      expect(person).toMatchObject({ id: 'I12', name: 'Liam Gray', parentIds: [], occupations: ['Smith'] });
+    } finally {
+      await client.query('rollback');
+    }
+    await expect(client.query(`update person set facts = '[]' where id = 'I12'`)).rejects.toThrow(/person_facts_is_object/);
+  });
+
+  it('records migration checksums and refuses an edited, already-applied migration', async () => {
+    const file = '002_person_view.sql';
+    const sha256 = crypto.createHash('sha256')
+      .update(fs.readFileSync(path.join(ROOT, 'db', 'migrations', file), 'utf-8')).digest('hex');
+    const stored = async () => (await client.query('select checksum from schema_migrations where filename = $1', [file])).rows[0].checksum;
+    expect(await stored()).toBe(sha256);
+
+    await client.query('update schema_migrations set checksum = null where filename = $1', [file]);
+    await migrate(url, { log: () => {} });
+    expect(await stored()).toBe(sha256);
+
+    await client.query(`update schema_migrations set checksum = 'edited' where filename = $1`, [file]);
+    await expect(migrate(url, { log: () => {} })).rejects.toThrow(`Migration ${file} has changed since it was applied`);
+    await client.query('update schema_migrations set checksum = $2 where filename = $1', [file, sha256]);
   });
 });
