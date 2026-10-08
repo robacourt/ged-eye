@@ -17,6 +17,14 @@ export class PersonNotFoundError extends Error {
   }
 }
 
+// AbortSignal.timeout() needs Safari 16+; fall back for older iPads and iPhones.
+function timeoutSignal(ms) {
+  if (typeof AbortSignal.timeout === 'function') return AbortSignal.timeout(ms);
+  const controller = new AbortController();
+  setTimeout(() => controller.abort(), ms);
+  return controller.signal;
+}
+
 async function requestView(personId) {
   const base = import.meta.env.VITE_API_URL;
   if (!base) throw new Error('VITE_API_URL is not configured');
@@ -24,7 +32,7 @@ async function requestView(personId) {
   for (let attempt = 1; ; attempt++) {
     let response;
     try {
-      response = await fetch(url, { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
+      response = await fetch(url, { signal: timeoutSignal(REQUEST_TIMEOUT_MS) });
     } catch (error) {
       if (attempt < 2) continue;
       throw error;

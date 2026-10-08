@@ -293,7 +293,7 @@ All scripts live in `scripts/neon/`, run with `node --env-file=.env.local`, and 
 
 `readLegacyAvatars(legacyRoot)` reads every `I*.json` in `<legacyRoot>/data/people` (skipping `index.json` and dotfiles). It returns `Map<personId, avatarPath>` for people with an `avatar` field, e.g. `'I1033' → 'avatars/I1033_0.jpg'`, with paths relative to `public/`.
 
-Both `uploadMedia.js` and `importGed.js` take `--legacy-root` (default `public`, so the people are read from `public/data/people` and avatars from `public/avatars/…`).
+Both `uploadMedia.js` and `importGed.js` take `--legacy-root` (default `ignore/legacy-data`, where the legacy files live since go-live, so the people are read from `ignore/legacy-data/data/people` and avatars from `ignore/legacy-data/avatars/…`; it was `public` before the cutover).
 
 ### `npm run upload-media` (`scripts/neon/uploadMedia.js`)
 
@@ -413,7 +413,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
     - `photos` and `avatarKey`
     - the `RelativeRecord` fields
     - an unknown ID returns null
-- **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-root <dir>`, default `public`).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
+- **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-root <dir>`, default `ignore/legacy-data`, where the legacy files live since go-live; it was `public` before the cutover).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
   - Compare relationship ID sets (parents, spouses, children, siblings, family members), order-insensitive.
   - Compare all `PersonRecord` scalar and `facts` fields.
   - Compare photo file names against today's `photos` paths.
@@ -435,7 +435,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
 3. One PR with the front-end changes. To build:
    - Copy the two placeholder images to `public/placeholders/`.
    - Move `public/data` and `public/avatars` out to `ignore/legacy-data/`. They remain the parity baseline, usable via `--legacy-root`.
-   - Run `./build`.
+   - Run `npm run build`.
    - `docs/` loses `Data/`, `data/` (the same directory on macOS) and `avatars/`, about 4,900 files.
 4. Merge → GitHub Pages deploys.
 5. **Rollback:** revert the merge commit. The old JSON files and media come back with it, and the old loader works without Neon.

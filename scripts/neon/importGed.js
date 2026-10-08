@@ -27,7 +27,7 @@ async function insertRows(client, table, columns, rows, returning) {
 }
 
 async function main() {
-  const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'public'));
+  const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'ignore/legacy-data'));
   const replace = hasFlag('--replace');
   const url = process.env.DATABASE_URL_UNPOOLED;
   if (!url) throw new Error('DATABASE_URL_UNPOOLED is not set (run via npm run import-ged, or pass --env-file=.env.local)');

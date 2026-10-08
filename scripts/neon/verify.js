@@ -21,7 +21,7 @@ async function listKeys(s3) {
 }
 
 async function main() {
-  const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'public'));
+  const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'ignore/legacy-data'));
   const apiSample = Number(argValue('--api-sample', '25'));
   const manifest = readJson(MANIFEST_PATH, null);
   const warnings = readJson(WARNINGS_PATH, []);

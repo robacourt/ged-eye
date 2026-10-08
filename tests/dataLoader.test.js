@@ -104,6 +104,21 @@ describe('dataLoader', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it('still loads when AbortSignal.timeout is unavailable (Safari 15)', async () => {
+    const original = AbortSignal.timeout;
+    delete AbortSignal.timeout;
+    try {
+      expect(typeof AbortSignal.timeout).toBe('undefined');
+      const fetchMock = vi.fn().mockResolvedValue(ok(view('I1')));
+      vi.stubGlobal('fetch', fetchMock);
+      await expect(loadPersonWithFamily('I1')).resolves.toBeTruthy();
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(fetchMock.mock.calls[0][1].signal).toBeInstanceOf(AbortSignal);
+    } finally {
+      AbortSignal.timeout = original;
+    }
+  });
+
   it('fails loudly when VITE_API_URL is not configured', async () => {
     vi.stubEnv('VITE_API_URL', '');
     const fetchMock = vi.fn();

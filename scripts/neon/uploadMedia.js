@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import sharp from 'sharp';
-import { S3Client, PutObjectCommand, HeadObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, PutObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
 import { parseGedcom, extractPersonData } from '../gedParser.js';
 import { ROOT, argValue, isMain, readJson, writeJson } from './cli.js';
 import { readLegacyAvatars } from './legacyData.js';
@@ -62,7 +62,7 @@ export function referencedMediaPaths(parsedGed) {
 }
 
 async function main() {
-  const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'public'));
+  const legacyRoot = path.resolve(ROOT, argValue('--legacy-root', 'ignore/legacy-data'));
   const parsed = parseGedcom(fs.readFileSync(path.join(ROOT, 'acourt.ged'), 'utf-8'));
   const manifest = readJson(MANIFEST_PATH, { files: {}, avatars: {} });
   const stats = { uploaded: 0, skipped: 0, missing: 0, failed: 0, thumbFailed: 0 };
@@ -145,7 +145,6 @@ async function main() {
   });
 
   save(true);
-  await s3.send(new DeleteObjectCommand({ Bucket: BUCKET, Key: 'spike/test.jpg' })).catch(() => {});
 
   console.log(JSON.stringify(stats));
   if (failures.length) {

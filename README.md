@@ -67,7 +67,7 @@ npm run verify-neon    # parity check against the old JSON files; exits non-zero
 ```
 
 - `import-ged` refuses to run if the database already has people. `npm run import-ged -- --replace --confirm <database host>` wipes and reloads everything, throwing away any edits made in Neon since.
-- The old JSON files and avatars (the parity baseline) now live outside the repo in `ignore/legacy-data/`. Pass `--legacy-root ignore/legacy-data` to `upload-media`, `import-ged` and `verify-neon`.
+- The old JSON files and avatars (the parity baseline) now live outside the repo in `ignore/legacy-data/`. `upload-media`, `import-ged` and `verify-neon` read them from there by default; pass `--legacy-root <dir>` to point elsewhere.
 - `scripts/generateAvatars.js` is legacy: it face-crops avatars from the old JSON files. It'll be reworked to read from Neon when editing arrives.
 
 ### Configuration
