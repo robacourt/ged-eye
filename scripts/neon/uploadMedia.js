@@ -150,7 +150,7 @@ async function main() {
   console.log(JSON.stringify(stats));
   if (failures.length) {
     console.error(failures.join('\n'));
-    process.exit(1);
+    process.exitCode = 1;
   }
 }
 

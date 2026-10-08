@@ -23,5 +23,8 @@ export function readJson(file, fallback) {
 
 export function writeJson(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, JSON.stringify(value, null, 2));
+  // Write then rename, so an interrupted run never leaves truncated JSON behind.
+  const tmp = `${file}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(value, null, 2));
+  fs.renameSync(tmp, file);
 }
