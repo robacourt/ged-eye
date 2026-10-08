@@ -406,7 +406,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
     - `photos` and `avatarKey`
     - the `RelativeRecord` fields
     - an unknown ID returns null
-- **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-root <dir>`, default `public/data/people`).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
+- **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-root <dir>`, default `public`).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
   - Compare relationship ID sets (parents, spouses, children, siblings, family members), order-insensitive.
   - Compare all `PersonRecord` scalar and `facts` fields.
   - Compare photo file names against today's `photos` paths.
