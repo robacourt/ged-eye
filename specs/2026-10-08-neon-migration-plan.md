@@ -1166,15 +1166,34 @@ describe.skipIf(!url)('person_view (database)', () => {
 - [ ] **Step 6: Apply the migrations to production.** `npm run db:migrate`. Expected output: `applied 001_schema.sql` and `applied 002_person_view.sql`.
 - [ ] **Step 7: Commit.** `git add db scripts/neon/migrate.js tests/db && git commit -m "Add schema, person_view and migration runner"`
 
-### Task 6: Import script, then run it
+### Task 6: GEDCOM archive, import script, then run it
 
-**Files:** Create `scripts/neon/importGed.js`
+**Files:** Create `db/migrations/003_gedcom_archive.sql`, `scripts/neon/importGed.js`
+
+**Why the archive (added after code review).** `scripts/gedParser.js` keeps only the tags the site shows. It drops CONT/CONC continuation lines (160 notes are cut short), census transcription notes, several event types and source citations. Neon becomes the master copy, so the original file must be kept verbatim. Then a better parser can re-derive those fields later without Brother's Keeper. The archive table is never exposed: the Function only calls `person_view`.
+
+- [ ] **Step 0a: Write `db/migrations/003_gedcom_archive.sql`.**
+
+```sql
+-- The original GEDCOM, byte for byte. The structured tables hold only what
+-- scripts/gedParser.js understands, and Neon is now the master copy.
+create table gedcom_archive (
+  id          bigint generated always as identity primary key,
+  file_name   text not null,
+  sha256      text not null unique,
+  imported_at timestamptz not null default now(),
+  content     bytea not null
+);
+```
+
+- [ ] **Step 0b: Apply it.** Run `npm run test:db` (all tests still pass; the reset re-applies every migration), then `npm run db:migrate`. Expected: `applied 003_gedcom_archive.sql`.
 
 - [ ] **Step 1: Implement.**
 
 ```js
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import pg from 'pg';
 import { parseGedcom } from '../gedParser.js';
 import { ROOT, argValue, hasFlag, isMain, readJson, writeJson } from './cli.js';
@@ -1206,7 +1225,8 @@ async function main() {
   const manifest = readJson(MANIFEST_PATH, null);
   if (!manifest) throw new Error(`No media manifest at ${MANIFEST_PATH}; run npm run upload-media first`);
 
-  const parsed = parseGedcom(fs.readFileSync(path.join(ROOT, 'acourt.ged'), 'utf-8'));
+  const gedBytes = fs.readFileSync(path.join(ROOT, 'acourt.ged'));
+  const parsed = parseGedcom(gedBytes.toString('utf-8'));
   const rows = gedToRows(parsed, manifest, readLegacyAvatars(legacyRoot));
   const people = rows.people.map(p => ({ ...p, facts: JSON.stringify(p.facts) }));
 
@@ -1227,6 +1247,10 @@ async function main() {
       'byte_size', 'object_key', 'thumb_key'], rows.media, 'id, sha256')).map(r => [r.sha256, r.id]));
     await insertRows(client, 'person_media', ['person_id', 'media_id', 'position'],
       rows.personMedia.map(pm => ({ person_id: pm.person_id, media_id: mediaIds.get(pm.sha256), position: pm.position })));
+    await client.query(
+      'insert into gedcom_archive (file_name, sha256, content) values ($1, $2, $3) on conflict (sha256) do nothing',
+      ['acourt.ged', crypto.createHash('sha256').update(gedBytes).digest('hex'), gedBytes]
+    );
     await client.query('commit');
   } catch (error) {
     await client.query('rollback').catch(() => {});
@@ -1255,7 +1279,8 @@ Importing `MANIFEST_PATH` from `uploadMedia.js` creates an `S3Client` at import 
 
 - [ ] **Step 2: Run it.** This requires Task 4's upload to have finished. Run `npm run import-ged`. Expected: `{"people":2994,"families":1029,…}` with exit code 0.
 - [ ] **Step 3: Spot-check it.** `node --env-file=.env.local -e "const pg=require('pg');const c=new pg.Client({connectionString:process.env.DATABASE_URL});c.connect().then(()=>c.query(\"select person_view('I122') v\")).then(r=>{console.log(JSON.stringify(r.rows[0].v.relationships));return c.end()})"`. Expected: I122's parents, spouses, children and siblings as ID arrays.
-- [ ] **Step 4: Commit.** `git add scripts/neon/importGed.js && git commit -m "Add GEDCOM import script"`
+- [ ] **Step 4: Check the archive.** Query `select file_name, sha256, length(content) from gedcom_archive` (using the same node one-liner style as Step 3). Expected: one row of about 3,063,220 bytes, whose `sha256` equals `shasum -a 256 acourt.ged`.
+- [ ] **Step 5: Commit.** `git add db/migrations/003_gedcom_archive.sql scripts/neon/importGed.js && git commit -m "Archive the GEDCOM and add the import script"`
 
 ### Task 7: API Function
 

@@ -17,7 +17,8 @@
 - Media attached to families. 172 FAM records have OBJE media; today's code ignores them and so does this phase.
 - Avatar generation for new photos. `scripts/generateAvatars.js` is left unchanged; the editing phase will rework it to read from Neon.
 - Rewriting git history to remove the ~800 MB of media already committed under `docs/`.
-- Re-running the import after go-live. Neon becomes the master copy; `acourt.ged` is imported once.
+- Re-running the import after go-live. Neon becomes the master copy; `acourt.ged` is imported once, and its original bytes are archived in `gedcom_archive`.
+- Parsing fields the current parser drops (CONT/CONC continuations, census notes, other events, sources). The site keeps showing exactly what it shows today. The archived GEDCOM makes this possible later.
 
 ## Decisions made during brainstorming
 
@@ -171,6 +172,12 @@ create table person_media (
   - It differs from today's per-person FAMS order for 9 people. Their partnership colours and marriage order may change; this is an intended change.
 - Children within a family are ordered by `position`.
 - Photos are ordered by `person_media.position`.
+
+### GEDCOM archive
+
+`db/migrations/003_gedcom_archive.sql` adds `gedcom_archive(id, file_name, sha256 unique, imported_at, content bytea)`, and `import-ged` stores `acourt.ged` there byte for byte, inside the same transaction.
+
+**Why:** the parser drops CONT/CONC continuation lines (160 notes are cut short), census transcription notes, several event types and source citations. That matches what the site shows today, but Neon is now the master copy, so the full source must be kept. A later phase can improve the parser and re-derive those fields from the archive. The table is never exposed through the API.
 
 ### Migration bookkeeping and access
 
