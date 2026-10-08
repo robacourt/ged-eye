@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@canvas/image": "^1.0.0",
+    "@neon/config": "^1.8.6",
+    "@neon/env": "^1.5.3",
     "@tensorflow/tfjs-node": "^4.22.0",
     "@vladmandic/face-api": "^1.7.0",
     "canvas": "^2.11.2",
