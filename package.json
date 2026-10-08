@@ -8,7 +8,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "generate-avatars": "node scripts/generateAvatars.js",
     "upload-media": "node --env-file=.env.local scripts/neon/uploadMedia.js",
     "db:migrate": "node --env-file=.env.local scripts/neon/migrate.js",
     "import-ged": "node --env-file=.env.local scripts/neon/importGed.js",
