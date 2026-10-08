@@ -12,3 +12,6 @@ public/avatars
 .DS_Store
 .neon
 .env.local
+.env*.local
+.neon-import/
+ignore/

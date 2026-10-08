@@ -8,8 +8,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "process-ged": "node scripts/processGed.js",
-    "generate-avatars": "node scripts/generateAvatars.js"
+    "generate-avatars": "node scripts/generateAvatars.js",
+    "upload-media": "node --env-file=.env.local scripts/neon/uploadMedia.js",
+    "db:migrate": "node --env-file=.env.local scripts/neon/migrate.js",
+    "import-ged": "node --env-file=.env.local scripts/neon/importGed.js",
+    "verify-neon": "node --env-file=.env.local scripts/neon/verify.js",
+    "test:db": "node --env-file=.env.local --env-file=.env.test.local node_modules/vitest/vitest.mjs run tests/db"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.1148.0",
