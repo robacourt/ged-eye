@@ -270,7 +270,7 @@ Today's loader fetches every relative's full JSON, but nothing reads the extra f
   - Anything else → 404 `{"error":"not_found"}`.
   - If the query throws → 500 `{"error":"internal"}`, with the error logged via `console.error`.
   - Every response carries `Access-Control-Allow-Origin: *` (the data is public) and `Content-Type: application/json`.
-  - 200 responses also carry `Cache-Control: public, max-age=300`. Other responses carry `Cache-Control: no-store`.
+  - Successful `/person/:id` responses also carry `Cache-Control: public, max-age=300`. All other responses carry `Cache-Control: no-store`.
 - **`api/index.js`:** creates a module-scope `pg` `Pool` on `DATABASE_URL` (`max: 5`) and calls `attachDatabasePool(pool)` from `@neon/functions`. It default-exports `{ fetch: createHandler(id => pool.query('select person_view($1) as v', [id]).then(r => r.rows[0].v)) }`.
 - **`neon.ts`:** declares `functions: { api: { name: "ged-eye api", source: "api/index.js" } }`, deployed with `neon deploy`.
 
@@ -284,9 +284,9 @@ All scripts live in `scripts/neon/`, run with `node --env-file=.env.local`, and 
 
 ### Shared helper: `scripts/neon/legacyData.js`
 
-`readLegacyAvatars(dir)` reads every `I*.json` in `dir` (skipping `index.json` and dotfiles). It returns `Map<personId, avatarPath>` for people with an `avatar` field, e.g. `'I1033' → 'avatars/I1033_0.jpg'`, with paths relative to `public/`.
+`readLegacyAvatars(legacyRoot)` reads every `I*.json` in `<legacyRoot>/data/people` (skipping `index.json` and dotfiles). It returns `Map<personId, avatarPath>` for people with an `avatar` field, e.g. `'I1033' → 'avatars/I1033_0.jpg'`, with paths relative to `public/`.
 
-Both `uploadMedia.js` and `importGed.js` take `--legacy-dir` (default `public/data/people`).
+Both `uploadMedia.js` and `importGed.js` take `--legacy-root` (default `public`, so the people are read from `public/data/people` and avatars from `public/avatars/…`).
 
 ### `npm run upload-media` (`scripts/neon/uploadMedia.js`)
 
@@ -356,7 +356,7 @@ Identical files at different paths share one object and one `media` row.
 
 | File | Committed | Contents |
 |---|---|---|
-| `.env` | yes | `VITE_API_URL` (the Function URL) and `VITE_MEDIA_BASE_URL` (`${AWS_ENDPOINT_URL_S3}/ged-eye-media`). These are public values that ship in the JS bundle anyway. |
+| `.env.development`, `.env.production` | yes | `VITE_API_URL` (the Function URL) and `VITE_MEDIA_BASE_URL` (`${AWS_ENDPOINT_URL_S3}/ged-eye-media`). These are public values that ship in the JS bundle anyway. There is deliberately no plain `.env`: the Neon CLI writes secrets into `.env` whenever that file exists. |
 | `.env.local` | no | Written by `neon link` / `neon env pull` / `neon deploy`: `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, `NEON_BRANCH`, `NEON_FUNCTION_API_BASE_URL`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_ENDPOINT_URL_S3`, `AWS_REGION`. Added by hand: optional `MEDIA_BUCKET` and `DATABASE_URL_TEST`. |
 | `.neon` | no | Project and branch link, written by `neon link`. |
 | `neon.ts` | yes | Neon resource policy (the bucket and the `api` function). |
@@ -406,7 +406,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
     - `photos` and `avatarKey`
     - the `RelativeRecord` fields
     - an unknown ID returns null
-- **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-dir <dir>`, default `public/data/people`).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
+- **Parity check (`npm run verify-neon`, `scripts/neon/verify.js --legacy-root <dir>`, default `public/data/people`).** For every person file (skipping `index.json` and dotfiles), compare `person_view(id)` against the current loader logic applied to the legacy JSON files.
   - Compare relationship ID sets (parents, spouses, children, siblings, family members), order-insensitive.
   - Compare all `PersonRecord` scalar and `facts` fields.
   - Compare photo file names against today's `photos` paths.
@@ -427,7 +427,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
 2. Run `upload-media` → `db:migrate` → `import-ged` → `neon deploy` (Function) → `verify-neon` on `production`, with zero unexplained differences, **while the legacy files are still in `public/`**.
 3. One PR with the front-end changes. To build:
    - Copy the two placeholder images to `public/placeholders/`.
-   - Move `public/data` and `public/avatars` out to `ignore/legacy-data/`. They remain the parity baseline, usable via `--legacy-dir`.
+   - Move `public/data` and `public/avatars` out to `ignore/legacy-data/`. They remain the parity baseline, usable via `--legacy-root`.
    - Run `./build`.
    - `docs/` loses `Data/`, `data/` (the same directory on macOS) and `avatars/`, about 4,900 files.
 4. Merge → GitHub Pages deploys.
