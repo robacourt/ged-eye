@@ -3,6 +3,7 @@
  */
 
 const PREFETCH_CONCURRENCY = 4;
+const REQUEST_TIMEOUT_MS = 10_000;
 
 const cache = new Map();      // personId -> view
 const inflight = new Map();   // personId -> Promise<view>
@@ -17,11 +18,13 @@ export class PersonNotFoundError extends Error {
 }
 
 async function requestView(personId) {
-  const url = `${import.meta.env.VITE_API_URL}/person/${encodeURIComponent(personId)}`;
+  const base = import.meta.env.VITE_API_URL;
+  if (!base) throw new Error('VITE_API_URL is not configured');
+  const url = `${base}/person/${encodeURIComponent(personId)}`;
   for (let attempt = 1; ; attempt++) {
     let response;
     try {
-      response = await fetch(url);
+      response = await fetch(url, { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
     } catch (error) {
       if (attempt < 2) continue;
       throw error;

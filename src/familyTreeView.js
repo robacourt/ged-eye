@@ -289,7 +289,7 @@ export class FamilyTreeView {
       // Check if this partnership has children that are visible in the graph
       const hasVisibleChildren = relationships?.children?.some(child => {
         if (child.parentIds && child.parentIds.length === 2) {
-          const childParentKey = child.parentIds.sort().join('-');
+          const childParentKey = [...child.parentIds].sort().join('-');
           // Child must match this partnership AND be in the graph
           return childParentKey === partnershipKey && existingNodeIds.has(child.id);
         }
@@ -353,7 +353,7 @@ export class FamilyTreeView {
 
     // Add selected person's parents partnership (when selected person is a child)
     if (selectedPerson.parentIds.length === 2) {
-      const key = selectedPerson.parentIds.sort().join('-');
+      const key = [...selectedPerson.parentIds].sort().join('-');
       if (!parentPartnerships.has(key)) {
         parentPartnerships.set(key, []);
       }
@@ -364,7 +364,7 @@ export class FamilyTreeView {
     if (relationships?.siblings) {
       for (const sibling of relationships.siblings) {
         if (sibling.parentIds && sibling.parentIds.length === 2) {
-          const key = sibling.parentIds.sort().join('-');
+          const key = [...sibling.parentIds].sort().join('-');
           if (!parentPartnerships.has(key)) {
             parentPartnerships.set(key, []);
           }
@@ -377,7 +377,7 @@ export class FamilyTreeView {
     if (relationships?.children) {
       for (const child of relationships.children) {
         if (child.parentIds && child.parentIds.length === 2) {
-          const key = child.parentIds.sort().join('-');
+          const key = [...child.parentIds].sort().join('-');
           if (!parentPartnerships.has(key)) {
             parentPartnerships.set(key, []);
           }

@@ -15,7 +15,7 @@ describe('dataLoader', () => {
     vi.stubEnv('VITE_API_URL', 'https://api.test');
     vi.stubEnv('VITE_MEDIA_BASE_URL', 'https://media.test/bucket');
     resetDataLoaderForTests();
-    globalThis.requestIdleCallback = (cb) => cb();
+    vi.stubGlobal('requestIdleCallback', (cb) => cb());
   });
   afterEach(() => {
     vi.unstubAllEnvs();
@@ -26,7 +26,7 @@ describe('dataLoader', () => {
     const fetchMock = vi.fn().mockResolvedValue(ok(view('I1', ['I2', 'I3'])));
     vi.stubGlobal('fetch', fetchMock);
     const result = await loadPersonWithFamily('I1');
-    expect(fetchMock).toHaveBeenCalledWith('https://api.test/person/I1');
+    expect(fetchMock).toHaveBeenCalledWith('https://api.test/person/I1', expect.objectContaining({ signal: expect.anything() }));
     expect(result.person.id).toBe('I1');
     expect(result.relationships.parents.map(p => p.id)).toEqual(['I2']);
     expect(result.relationships.children.map(p => p.id)).toEqual(['I3']);
@@ -55,9 +55,61 @@ describe('dataLoader', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it('retries once after a 503 and resolves on the second attempt', async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({}) })
+      .mockResolvedValueOnce(ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).resolves.toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
   it('gives up after a second server error', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 503, json: async () => ({}) }));
     await expect(loadPersonWithFamily('I1')).rejects.toThrow('HTTP 503');
+  });
+
+  it('does not retry a 404', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: false, status: 404, json: async () => ({ error: 'not_found' }) });
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I9')).rejects.toBeInstanceOf(PersonNotFoundError);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not cache a failed load', async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404, json: async () => ({ error: 'not_found' }) })
+      .mockResolvedValueOnce(ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).rejects.toBeInstanceOf(PersonNotFoundError);
+    await expect(loadPersonWithFamily('I1')).resolves.toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('shares one request between concurrent loads of the same person', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    const [a, b] = await Promise.all([loadPersonWithFamily('I1'), loadPersonWithFamily('I1')]);
+    expect(a.person.id).toBe('I1');
+    expect(b.person.id).toBe('I1');
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('retries once after a request timeout', async () => {
+    const fetchMock = vi.fn()
+      .mockRejectedValueOnce(new DOMException('The operation timed out.', 'TimeoutError'))
+      .mockResolvedValue(ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).resolves.toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('fails loudly when VITE_API_URL is not configured', async () => {
+    vi.stubEnv('VITE_API_URL', '');
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).rejects.toThrow('VITE_API_URL is not configured');
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it('prefetches uncached relatives only once', async () => {
@@ -97,5 +149,11 @@ describe('media urls', () => {
     expect(mediaUrl(null)).toBeNull();
     expect(thumbUrl({ thumbKey: 'thumbs/x.webp' })).toBe('https://media.test/bucket/thumbs/x.webp');
     expect(thumbUrl({ thumbKey: null })).toBeNull();
+  });
+
+  it('fails loudly when VITE_MEDIA_BASE_URL is not configured', () => {
+    vi.stubEnv('VITE_MEDIA_BASE_URL', '');
+    expect(() => mediaUrl('originals/a.jpg')).toThrow('VITE_MEDIA_BASE_URL is not configured');
+    expect(mediaUrl(null)).toBeNull();
   });
 });

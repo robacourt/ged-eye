@@ -41,6 +41,8 @@ function initApp() {
     const request = ++currentRequest;
     const isCurrent = () => request === currentRequest;
     requestedPersonId = personId;
+    // Don't leave a stale error/message panel on top of the new load.
+    if (loadingEl.classList.contains('interactive')) overlay.loading();
     const slowTimer = setTimeout(() => {
       if (isCurrent() && loadingEl.classList.contains('hidden')) overlay.loading();
     }, SLOW_LOAD_MS);
@@ -51,6 +53,7 @@ function initApp() {
       overlay.hide();
     } catch (error) {
       if (!isCurrent()) return;
+      requestedPersonId = null; // allow tapping the same person again to retry
       console.error('Failed to load person', personId, error);
       if (error instanceof PersonNotFoundError) {
         overlay.message(`<p>Person not found.</p><p><a href="?person=${DEFAULT_PERSON_ID}">Go to the start of the tree</a></p>`);
