@@ -397,7 +397,7 @@ Missing media objects are prevented rather than handled: `verify-neon` checks th
     - retry once on network failure
     - prefetch skipping cached and in-flight IDs
 - **Database tests (`npm run test:db`, skipped unless `DATABASE_URL_TEST` is set).**
-  - **Setup:** they run against a dedicated Neon branch `test`, created with `neon branches create` so that no Function is deployed to it. Each run resets it by dropping the five tables, `schema_migrations` and `person_view(text)`. Then it applies the migrations with `migrate.js --database-url` and loads a fixture tree.
+  - **Setup:** they run against a dedicated Neon branch `test`, created with `neon branches create` so that no Function is deployed to it. Each run resets it with `drop schema public cascade; create schema public;`. The test refuses to run if `DATABASE_URL_TEST` has the same host as the production `DATABASE_URL`. Then it applies the migrations with `migrate.js --database-url` and loads a fixture tree.
   - **`person_view` cases:**
     - full and half siblings, plus their other parent
     - multiple spouses, with children grouped per family
