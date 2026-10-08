@@ -187,7 +187,7 @@ create table person_media (
 
 ## `person_view` function
 
-`db/migrations/002_person_view.sql`:
+`db/migrations/002_person_view.sql`, with `person_view` and `person_record` later replaced by `004_person_view_indexed.sql`. Version 004 computes the parent IDs once, so the sibling lookup is a BitmapOr over the two partner indexes; it takes about 0.8 ms on a 200,000-person tree. It also merges `facts` first and requires `facts` to be a JSON object.
 
 ```sql
 create or replace function person_view(p_id text) returns jsonb
