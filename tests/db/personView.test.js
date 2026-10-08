@@ -11,25 +11,25 @@ if (url && productionHosts.includes(host(url))) {
 }
 
 const FIXTURE = `
-insert into person (id, given_name, surname, display_name, sex, birth_date, facts, avatar_key) values
-  ('I1', 'Adam', 'Smith', 'Adam Smith', 'M', '1900', '{}', null),
-  ('I2', 'Beth', 'Jones', 'Beth Jones', 'F', null, '{}', null),
-  ('I3', 'Carl', 'Smith', 'Carl Smith', 'M', 'ABT 1930', '{"occupations": ["Farmer"], "notes": ["A note"]}', 'avatars/c.jpg'),
-  ('I4', 'Dora', 'Smith', 'Dora Smith', 'F', null, '{}', null),
-  ('I5', 'Erin', 'Brown', 'Erin Brown', 'F', null, '{}', null),
-  ('I6', 'Fred', 'Smith', 'Fred Smith', 'M', null, '{}', null),
-  ('I7', 'Gina', 'Green', 'Gina Green', 'F', null, '{}', null),
-  ('I8', 'Hugo', 'Smith', 'Hugo Smith', 'M', null, '{}', null),
-  ('I9', 'Iris', 'White', 'Iris White', 'F', null, '{}', null),
-  ('I10', 'Jack', 'Black', 'Jack Black', 'M', null, '{}', null),
-  ('I11', 'Kate', 'Black', 'Kate Black', 'F', null, '{}', null),
-  ('I12', 'Liam', 'Gray', 'Liam Gray', 'U', null, '{}', null);
-insert into family (id, partner1_id, partner2_id, marriage_date, marriage_place) values
-  ('F1', 'I1', 'I2', '1925', 'Yeovil'),
-  ('F2', 'I1', 'I5', null, null),
-  ('F10', 'I3', 'I7', '1955', null),
-  ('F9', 'I3', 'I9', null, null),
-  ('F5', 'I10', null, null, null);
+insert into person (id, given_name, surname, display_name, sex, birth_date, burial_date, facts, avatar_key) values
+  ('I1', 'Adam', 'Smith', 'Adam Smith', 'M', '1900', '1980', '{}', null),
+  ('I2', 'Beth', 'Jones', 'Beth Jones', 'F', null, null, '{}', null),
+  ('I3', 'Carl', 'Smith', 'Carl Smith', 'M', 'ABT 1930', null, '{"occupations": ["Farmer"], "notes": ["A note"]}', 'avatars/c.jpg'),
+  ('I4', 'Dora', 'Smith', 'Dora Smith', 'F', null, null, '{}', null),
+  ('I5', 'Erin', 'Brown', 'Erin Brown', 'F', null, null, '{}', null),
+  ('I6', 'Fred', 'Smith', 'Fred Smith', 'M', null, null, '{}', null),
+  ('I7', 'Gina', 'Green', 'Gina Green', 'F', null, null, '{}', null),
+  ('I8', 'Hugo', 'Smith', 'Hugo Smith', 'M', null, null, '{}', null),
+  ('I9', 'Iris', 'White', 'Iris White', 'F', null, null, '{}', null),
+  ('I10', 'Jack', 'Black', 'Jack Black', 'M', null, null, '{}', null),
+  ('I11', 'Kate', 'Black', 'Kate Black', 'F', null, null, '{}', null),
+  ('I12', 'Liam', 'Gray', 'Liam Gray', 'U', null, null, '{}', null);
+insert into family (id, partner1_id, partner2_id, marriage_date, marriage_place, divorce_date) values
+  ('F1', 'I1', 'I2', '1925', 'Yeovil', null),
+  ('F2', 'I1', 'I5', null, null, '1935'),
+  ('F10', 'I3', 'I7', '1955', null, null),
+  ('F9', 'I3', 'I9', null, null, null),
+  ('F5', 'I10', null, null, null, null);
 insert into family_child (family_id, child_id, position) values
   ('F1', 'I4', 0), ('F1', 'I3', 1), ('F2', 'I6', 0), ('F10', 'I8', 0), ('F5', 'I11', 0);
 insert into media (sha256, original_path, file_name, content_type, byte_size, object_key, thumb_key) values
@@ -112,5 +112,17 @@ describe.skipIf(!url)('person_view (database)', () => {
     const liam = await view('I12');
     expect(liam.family).toEqual([]);
     expect(liam.person.parentIds).toEqual([]);
+  });
+
+  it('groups children per family and omits absent optional fields', async () => {
+    const adam = await view('I1');
+    expect(adam.relationships.children).toEqual(['I4', 'I3', 'I6']);
+    expect(adam.relationships.spouses).toEqual(['I2', 'I5']);
+    expect(adam.person.burialDate).toBe('1980');
+    expect('baptismDate' in adam.person).toBe(false);
+    expect(adam.person.marriages).toEqual([
+      { spouseId: 'I2', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil' },
+      { spouseId: 'I5', familyId: 'F2', divorceDate: '1935' }
+    ]);
   });
 });
