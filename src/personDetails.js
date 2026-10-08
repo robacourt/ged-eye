@@ -1,4 +1,5 @@
 import { PhotoViewer } from './photoViewer.js';
+import { thumbUrl } from './media.js';
 
 /**
  * Person details panel component
@@ -51,13 +52,11 @@ export class PersonDetails {
       const maxThumbnails = Math.min(4, personData.photos.length);
       html += '<div class="person-photos-row">';
       for (let i = 0; i < maxThumbnails; i++) {
-        const photoPath = personData.photos[i];
-        const isImage = this.isImageFile(photoPath);
-
-        if (isImage) {
+        const photo = personData.photos[i];
+        if (photo.thumbKey) {
           html += `
             <div class="person-photo-thumbnail" data-photo-index="${i}">
-              <img src="${import.meta.env.BASE_URL}${photoPath}" alt="Photo ${i + 1}" />
+              <img src="${thumbUrl(photo)}" alt="Photo ${i + 1}" />
             </div>
           `;
         } else {
@@ -265,15 +264,6 @@ export class PersonDetails {
   }
 
   /**
-   * Check if a file is an image based on extension
-   */
-  isImageFile(filePath) {
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg'];
-    const fileExtension = filePath.toLowerCase().substring(filePath.lastIndexOf('.'));
-    return imageExtensions.includes(fileExtension);
-  }
-
-  /**
    * Open photo viewer at a specific photo index
    */
   openPhotoViewer(startIndex = 0) {
@@ -281,11 +271,8 @@ export class PersonDetails {
       return;
     }
 
-    // Format photos for viewer
-    const photos = this.currentPerson.photos.map(path => ({ path }));
-
     // Open viewer and set to the specified index
-    this.photoViewer.open(this.currentPerson.name, photos);
+    this.photoViewer.open(this.currentPerson.name, this.currentPerson.photos);
     this.photoViewer.currentIndex = startIndex;
     this.photoViewer.updateDisplay();
   }

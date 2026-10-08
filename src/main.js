@@ -1,75 +1,85 @@
 import { FamilyTreeView } from './familyTreeView.js';
 import { PersonDetails } from './personDetails.js';
-import { loadIndex } from './dataLoader.js';
+import { PersonNotFoundError } from './dataLoader.js';
 
-async function initApp() {
-  const loadingEl = document.getElementById('loading');
-  const cyEl = document.getElementById('cy');
-  const detailsEl = document.getElementById('details');
+const DEFAULT_PERSON_ID = 'I122';
+const SLOW_LOAD_MS = 300;
 
-  try {
-    // Show loading
-    loadingEl.textContent = 'Loading family tree...';
-
-    // Get the index to find the first person
-    const index = await loadIndex();
-
-    if (!index.firstPersonId) {
-      throw new Error('No people found in database');
-    }
-
-    // Create the family tree view and details panel
-    const treeView = new FamilyTreeView(cyEl);
-    const personDetails = new PersonDetails(detailsEl);
-
-    // Check URL for person ID, otherwise use default
-    const urlParams = new URLSearchParams(window.location.search);
-    const personId = urlParams.get('person') || 'I122';
-
-    // Load the person
-    loadingEl.textContent = 'Rendering...';
-    const { person: personData, relationships } = await treeView.loadPerson(personId);
-    personDetails.showPerson(personData, relationships);
-
-    // Listen for person selection to update URL and details
-    treeView.onPersonSelect(async (selectedPersonId) => {
-      const newUrl = new URL(window.location);
-      newUrl.searchParams.set('person', selectedPersonId);
-      window.history.pushState({}, '', newUrl);
-
-      // Load and show person details
-      const { person: personData, relationships } = await treeView.loadPerson(selectedPersonId);
-      personDetails.showPerson(personData, relationships);
-    });
-
-    // Handle browser back/forward buttons
-    window.addEventListener('popstate', async () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const personId = urlParams.get('person') || 'I122';
-      const { person: personData, relationships } = await treeView.loadPerson(personId);
-      personDetails.showPerson(personData, relationships);
-    });
-
-    // Hide loading
-    loadingEl.classList.add('hidden');
-
-    console.log(`Family tree loaded with ${index.totalPeople} people`);
-    console.log('Click on any person to view their immediate family');
-
-  } catch (error) {
-    console.error('Failed to initialize app:', error);
-    loadingEl.innerHTML = `
-      <div style="color: #ff4444; max-width: 600px; text-align: left;">
-        <strong>Error:</strong> ${error.message}<br><br>
-        <strong>Stack:</strong><br>
-        <pre style="background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; overflow: auto; font-size: 12px; user-select: text;">${error.stack}</pre>
-      </div>
-    `;
-    loadingEl.style.pointerEvents = 'auto';
-  }
+function personIdFromUrl() {
+  return new URLSearchParams(window.location.search).get('person') || DEFAULT_PERSON_ID;
 }
 
-// Start the app when DOM is ready
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function initApp() {
+  const loadingEl = document.getElementById('loading');
+  const treeView = new FamilyTreeView(document.getElementById('cy'));
+  const personDetails = new PersonDetails(document.getElementById('details'));
+
+  const overlay = {
+    hide() {
+      loadingEl.classList.add('hidden');
+      loadingEl.classList.remove('interactive');
+    },
+    loading(text = 'Loading...') {
+      loadingEl.textContent = text;
+      loadingEl.classList.remove('hidden', 'interactive');
+    },
+    message(html) {
+      loadingEl.innerHTML = html;
+      loadingEl.classList.remove('hidden');
+      loadingEl.classList.add('interactive');
+    }
+  };
+
+  let currentRequest = 0;
+  let requestedPersonId = null;
+
+  async function showPerson(personId) {
+    const request = ++currentRequest;
+    const isCurrent = () => request === currentRequest;
+    requestedPersonId = personId;
+    const slowTimer = setTimeout(() => {
+      if (isCurrent() && loadingEl.classList.contains('hidden')) overlay.loading();
+    }, SLOW_LOAD_MS);
+    try {
+      const result = await treeView.loadPerson(personId);
+      if (!result || !isCurrent()) return; // superseded by a newer selection
+      personDetails.showPerson(result.person, result.relationships);
+      overlay.hide();
+    } catch (error) {
+      if (!isCurrent()) return;
+      console.error('Failed to load person', personId, error);
+      if (error instanceof PersonNotFoundError) {
+        overlay.message(`<p>Person not found.</p><p><a href="?person=${DEFAULT_PERSON_ID}">Go to the start of the tree</a></p>`);
+      } else {
+        overlay.message(`<p>Couldn't load this person.</p><p class="loading-error-detail">${escapeHtml(error.message)}</p><button type="button" class="loading-retry">Retry</button>`);
+        loadingEl.querySelector('.loading-retry').addEventListener('click', () => {
+          overlay.loading();
+          showPerson(personId);
+        });
+      }
+    } finally {
+      clearTimeout(slowTimer);
+    }
+  }
+
+  treeView.onPersonSelect(personId => {
+    if (personId === requestedPersonId) return; // double tap on the person already being shown
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.set('person', personId);
+    window.history.pushState({}, '', newUrl);
+    showPerson(personId);
+  });
+
+  window.addEventListener('popstate', () => showPerson(personIdFromUrl()));
+
+  overlay.loading('Loading family tree...');
+  showPerson(personIdFromUrl());
+}
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initApp);
 } else {

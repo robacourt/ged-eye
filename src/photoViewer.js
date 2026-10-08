@@ -1,3 +1,5 @@
+import { mediaUrl } from './media.js';
+
 /**
  * Full-screen photo viewer for viewing a person's photos
  */
@@ -121,7 +123,7 @@ export class PhotoViewer {
     this.isOpen = true;
 
     if (this.photos.length === 0) {
-      this.photos = [{ path: null, message: 'No photos available' }];
+      this.photos = [{ key: null, message: 'No photos available' }];
     }
 
     this.modal.classList.add('photo-viewer-open');
@@ -176,7 +178,7 @@ export class PhotoViewer {
     }
 
     // Handle no photo case
-    if (!currentPhoto || !currentPhoto.path) {
+    if (!currentPhoto || !currentPhoto.key) {
       this.loading.style.display = 'flex';
       this.loading.textContent = currentPhoto?.message || 'No photo available';
       this.image.style.opacity = '0';
@@ -186,22 +188,18 @@ export class PhotoViewer {
       return;
     }
 
-    // Extract filename from path
-    const pathParts = currentPhoto.path.split('/');
-    const fileName = pathParts[pathParts.length - 1];
+    const fileName = currentPhoto.fileName;
     this.filename.textContent = fileName;
 
-    // Check if file is an image
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg'];
-    const fileExtension = fileName.toLowerCase().substring(fileName.lastIndexOf('.'));
-    const isImage = imageExtensions.includes(fileExtension);
+    // Check if file is an image (only images get a thumbnail)
+    const isImage = Boolean(currentPhoto.thumbKey);
 
     if (isImage) {
       // Load new image
       this.loading.style.display = 'flex';
       this.loading.textContent = 'Loading...';
       this.image.style.opacity = '0';
-      this.image.src = `${import.meta.env.BASE_URL}${currentPhoto.path}`;
+      this.image.src = mediaUrl(currentPhoto.key);
       this.downloadContainer.style.display = 'none';
     } else {
       // Show download button for non-image files
@@ -210,7 +208,7 @@ export class PhotoViewer {
       this.loading.style.display = 'none';
       this.downloadContainer.style.display = 'flex';
       this.downloadFilename.textContent = fileName;
-      this.downloadButton.href = `${import.meta.env.BASE_URL}${currentPhoto.path}`;
+      this.downloadButton.href = mediaUrl(currentPhoto.key);
       this.downloadButton.download = fileName;
     }
   }

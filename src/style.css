@@ -55,6 +55,32 @@ body {
   display: none;
 }
 
+.loading.interactive {
+  pointer-events: auto;
+  text-align: center;
+  font-size: 18px;
+  max-width: min(90vw, 420px);
+}
+
+.loading a {
+  color: #9dc4ff;
+}
+
+.loading-error-detail {
+  font-size: 13px;
+  opacity: 0.7;
+  margin: 8px 0;
+}
+
+.loading-retry {
+  margin-top: 8px;
+  padding: 8px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 /* Photo Viewer */
 .photo-viewer {
   position: fixed;
