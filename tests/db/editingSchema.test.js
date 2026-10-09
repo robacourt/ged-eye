@@ -137,34 +137,45 @@ describe.skipIf(!url)('migration 006: editing schema (database)', () => {
     expect(deleted.rows[0].before).toMatchObject({ id: 'X1', given_name: 'Xena', birth_date: '1901' });
   });
 
+  // Y1 is a partner in FY1 and a child in F1. Each test that adds it removes it again.
+  const LINKED_PERSON = `
+    insert into person (id, given_name, surname) values ('Y1', 'Yan', 'Yu');
+    insert into family (id, partner1_id) values ('FY1', 'Y1');
+    insert into family_child (family_id, child_id, position) values ('F1', 'Y1', 1);
+  `;
+  const REMOVE_LINKED_PERSON = `delete from family where id = 'FY1'; delete from person where id = 'Y1'`;
+
   it('leaves the generated sort_key out of family snapshots and keys family_child by both columns', async () => {
-    const { rows } = await recorded(`
-      insert into person (id, given_name, surname) values ('Y1', 'Yan', 'Yu');
-      insert into family (id, partner1_id) values ('FY1', 'Y1');
-      insert into family_child (family_id, child_id, position) values ('F1', 'Y1', 1);
-    `);
-    expect(rows.map(r => [r.table_name, r.op, r.row_key])).toEqual([
-      ['family', 'insert', { id: 'FY1' }],
-      ['family_child', 'insert', { family_id: 'F1', child_id: 'Y1' }],
-      ['person', 'insert', { id: 'Y1' }]
-    ]);
-    expect(rows[0].after).toMatchObject({ id: 'FY1', partner1_id: 'Y1', partner2_id: null });
-    expect(rows[0].after).not.toHaveProperty('sort_key');
+    try {
+      const { rows } = await recorded(LINKED_PERSON);
+      expect(rows.map(r => [r.table_name, r.op, r.row_key])).toEqual([
+        ['family', 'insert', { id: 'FY1' }],
+        ['family_child', 'insert', { family_id: 'F1', child_id: 'Y1' }],
+        ['person', 'insert', { id: 'Y1' }]
+      ]);
+      expect(rows[0].after).toMatchObject({ id: 'FY1', partner1_id: 'Y1', partner2_id: null });
+      expect(rows[0].after).not.toHaveProperty('sort_key');
+    } finally {
+      await withChange(client, REMOVE_LINKED_PERSON);
+    }
   });
 
   it('records the cascades of deleting a person under the same change', async () => {
-    // Y1 (from the previous test) is a partner in FY1 and a child in F1.
-    const { id, rows } = await recorded(`delete from person where id = 'Y1'`);
-    expect(rows.map(r => [r.table_name, r.op, r.row_key])).toEqual([
-      ['family', 'update', { id: 'FY1' }],
-      ['family_child', 'delete', { family_id: 'F1', child_id: 'Y1' }],
-      ['person', 'delete', { id: 'Y1' }]
-    ]);
-    expect(rows[0].before).toMatchObject({ partner1_id: 'Y1' });
-    expect(rows[0].after).toMatchObject({ partner1_id: null });
-    expect(rows[1].after).toBeNull();
-    expect(await one('select count(*)::int as n from change_row where change_id = $1', [id])).toEqual({ n: 3 });
-    await withChange(client, `delete from family where id = 'FY1'`);
+    await withChange(client, LINKED_PERSON);
+    try {
+      const { id, rows } = await recorded(`delete from person where id = 'Y1'`);
+      expect(rows.map(r => [r.table_name, r.op, r.row_key])).toEqual([
+        ['family', 'update', { id: 'FY1' }],
+        ['family_child', 'delete', { family_id: 'F1', child_id: 'Y1' }],
+        ['person', 'delete', { id: 'Y1' }]
+      ]);
+      expect(rows[0].before).toMatchObject({ partner1_id: 'Y1' });
+      expect(rows[0].after).toMatchObject({ partner1_id: null });
+      expect(rows[1].after).toBeNull();
+      expect(await one('select count(*)::int as n from change_row where change_id = $1', [id])).toEqual({ n: 3 });
+    } finally {
+      await withChange(client, REMOVE_LINKED_PERSON);
+    }
   });
 
   it('refuses to truncate tree tables, even inside a change', async () => {

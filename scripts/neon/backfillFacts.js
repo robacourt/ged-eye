@@ -263,6 +263,9 @@ export async function applyPlan(client, plan, { direction = 'apply', batchSize =
   try {
     // A lock held by something else should fail this apply, not hang it.
     await client.query(`set local lock_timeout = '5s'`);
+    // After 006 this transaction holds the global write lock, so a stuck run must not block editors.
+    await client.query(`set local statement_timeout = '120s'`);
+    await client.query(`set local idle_in_transaction_session_timeout = '15s'`);
     await beginRecordedChange(client, direction);
     let updated = 0;
     for (let i = 0; i < pairs.length; i += batchSize) {

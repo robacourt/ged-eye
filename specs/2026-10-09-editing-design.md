@@ -196,7 +196,7 @@ create index change_row_key_idx on change_row (table_name, row_key, change_id de
 
 ### Undo and redo: `toggle_change(base bigint, direction text, author_email, author_name, via) returns bigint`
 
-This is plpgsql with `set timezone = 'UTC'`. `direction` is `'undo'` or `'redo'`. It raises custom SQLSTATEs: `GE001 not_found`, `GE002 wrong_state`, `GE003 conflict` (detail: JSON `{blocking: [ids], reason}`) and `GE004 no_change`.
+This is plpgsql with `set timezone = 'UTC'`. `direction` is `'undo'` or `'redo'`. It raises custom SQLSTATEs: `GE001 not_found`, `GE002 wrong_state` and `GE003 conflict` (detail: JSON `{blocking: [{id, action}], reason}`).
 
 1. **Open and check.**
    - Call `begin_change(…, kind = direction, …)`, which takes the global lock.

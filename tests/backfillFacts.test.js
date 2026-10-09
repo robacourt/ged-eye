@@ -203,18 +203,21 @@ describe('applyPlan', () => {
     };
     return { client, statements, beginChangeParams };
   };
+  // Five-word prefixes of the three set local statements that open the transaction.
+  const TIMEOUTS = ["set local lock_timeout = '5s'", "set local statement_timeout = '120s'",
+    "set local idle_in_transaction_session_timeout = '15s'"];
   const checksForBeginChange = expect.stringContaining("to_regprocedure('begin_change(text,text,text,text,text,jsonb,text[])')");
 
-  it('sets a lock timeout right after begin, so a stray lock fails instead of hanging', async () => {
+  it('sets lock, statement and idle timeouts right after begin, so a stray lock or stuck run fails instead of hanging', async () => {
     const { client, statements } = fakeClient({ recorded: false });
     expect(await applyPlan(client, plan)).toEqual({ updated: 1 });
-    expect(statements).toEqual(['begin', "set local lock_timeout = '5s'", checksForBeginChange, 'update person p set facts', 'commit']);
+    expect(statements).toEqual(['begin', ...TIMEOUTS, checksForBeginChange, 'update person p set facts', 'commit']);
   });
 
   it('records the write as a change once begin_change exists (migration 006), summarised by direction', async () => {
     const { client, statements, beginChangeParams } = fakeClient({ recorded: true });
     expect(await applyPlan(client, plan)).toEqual({ updated: 1 });
-    expect(statements).toEqual(['begin', "set local lock_timeout = '5s'", checksForBeginChange,
+    expect(statements).toEqual(['begin', ...TIMEOUTS, checksForBeginChange,
       expect.stringMatching(/^select begin_change\('backfill@ged-eye\.local', 'Facts backfill', 'backfill_facts',$/),
       'update person p set facts', 'commit']);
     await applyPlan(client, plan, { direction: 'rollback' });

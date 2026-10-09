@@ -54,7 +54,7 @@ create table change_row (
 create index change_row_change_idx on change_row (change_id);
 create index change_row_key_idx on change_row (table_name, row_key, change_id desc);
 
--- Catalog helpers. Table names only ever come from tree_tables(), via the capture trigger.
+-- Catalog helpers. Table names come from the capture trigger (tg_table_name) or are checked by tree_assert_table().
 create function tree_assert_table(p_table text) returns void
 language plpgsql stable as $$
 begin
