@@ -284,7 +284,9 @@
     // multiPageTiff([{ width: 40, height: 30 }, { width: 40, height: 30 }])
     ```
 
-  - **Unreadable files:** a JPEG header followed by garbage gives `ImagingError('unreadable')`, which is permanent. So does a multi-page TIFF with different page sizes, `multiPageTiff([{ width: 40, height: 30 }, { width: 20, height: 10 }])`, when it has to be re-encoded.
+  - **Unreadable files:**
+    - A JPEG header followed by garbage, passed to `processFile`, gives `ImagingError('unreadable')`, which is permanent.
+    - `reencodeWithoutMetadata(mixedTiff, TYPES.get('tif'), await sharp(mixedTiff).metadata())`, where `mixedTiff` is `multiPageTiff([{ width: 40, height: 30 }, { width: 20, height: 10 }])`, also gives `unreadable`. So the mapping to `unreadable` lives inside `reencodeWithoutMetadata` too, and its `limitInputPixels` defaults to `LIMIT_PIXELS`.
   - An animated GIF (`sharp({ create … }).gif()` with `pages` if supported; else skip) with no XMP is stored unchanged.
   - PDF: `display === null`, `thumb === null`, `width === null`, and `original.body` equals the input.
   - `renderAvatar(plainJpeg, { x: 0, y: 0.25, w: 1, h: 0.5 })` gives a 400×400 WebP with no EXIF. The oriented image is 200×400, so `w·W = 200` and `h·H = 200`, which is square.
@@ -488,7 +490,7 @@
     1. Check that `avatarKeyFor` already `exists`; if it does, return it.
     2. Otherwise, inside `queue.run`, `get` the original, check with `inspect` that it is an image, run `renderAvatar` and `putOnce`.
   - **`/sweep`:**
-    1. Call `parseTrigger(request)`, and require `trigger.name === 'sweep-incoming'`. The proxy strips client `x-neon-*` headers, but the body can still be forged, so this is a sanity check, not authentication. The sweep is harmless either way.
+    1. Call `parseTrigger(request)`, and require `trigger.name === 'sweep-incoming'`. Task 5 confirms this is the delivered name, from the logs of the first run or a manual trigger. The proxy strips client `x-neon-*` headers, but the body can still be forged, so this is a sanity check, not authentication. The sweep is harmless either way.
     2. Delete `listOlderThan('incoming/', now() - 1h)`.
     3. Return `{ deleted }`.
 - [ ] **Step 7: Implement `media/index.js`.** It mirrors `api/index.js`:
@@ -815,7 +817,8 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
   - At most two items are uploading or processing at once.
   - The states change in order, and `onChange` is called on each change.
   - `ready` carries `media`.
-  - A permanent processing error (`unsupported_type`, `heic_unsupported`, `too_large`, `empty`, `too_many_pixels`) gives `failed` with `retryable: false`.
+  - A permanent processing error (`unsupported_type`, `heic_unsupported`, `unreadable`, `too_large`, `empty`, `too_many_pixels`) gives `failed` with `retryable: false`.
+  - Each of these has a card message in `addPhotosDialog`. For example, `unreadable` shows "This file couldn't be read."
   - A network error or 503 gives `retryable: true`.
   - **`retry` of a failed upload:**
     - if the slot is under 14 minutes old, it reuses the slot;
@@ -899,7 +902,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 
   Behaviour (per the spec's front-end table and Error handling):
   - **Picker:** a hidden `<input type="file" accept="image/*,application/pdf" multiple>`, opened by an "Add more" button and, when no `files` are given, on open.
-    - iOS only opens a file picker from inside the tap's own event handler. So `openAddPhotosDialog` creates the input and calls `input.click()` synchronously, before any `await`.
+    - iOS only opens a file picker from inside the tap's own event handler. So `openAddPhotosDialog` creates the input, appends it to the sheet (a detached input is unreliable in some Safari versions), and calls `input.click()` synchronously, before any `await`.
     - The details panel's Add tile calls the hook directly from its click handler, and `main.js`'s hook must not `await` before calling `openAddPhotosDialog`. That holds because the editing chunk is already loaded whenever editor controls are shown.
   - **Cards:** one per file, with a preview, status, Caption, Date and "Shown for" (the person picker with the person fixed).
     - The preview is `URL.createObjectURL` for `image/*` types the browser can show, else a document icon. It switches to the thumbnail URL when ready.
@@ -966,6 +969,8 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
     const height = width * nat.naturalHeight / nat.naturalWidth;
     cropper.setCanvasData({ left: box.left - initialCrop.x * width, top: box.top - initialCrop.y * height, width });
     ```
+
+    `setCanvasData` fires no `zoom` event, so then set the slider's value from `width / nat.naturalWidth`.
   - **Circle:** CSS `.avatar-cropper .cropper-view-box, .avatar-cropper .cropper-face { border-radius: 50%; }`. The container is `touch-action: none` and `height: min(60vh, 100vw)`.
   - **Zoom slider:** an `<input type="range">` bound to `cropper.zoomTo`. Listen for the `zoom` event to keep the slider in sync with pinch zoom.
   - **Keyboard:** while the cropper has focus, arrow keys call `cropper.move(±10, 0)` and so on, and `+`/`-` call `cropper.zoom(±0.1)`.
@@ -1206,7 +1211,10 @@ This follows the spec's Rollout. Production steps are additive, and nothing is d
   - Check `neon triggers list --branch production` shows `sweep-incoming`.
 - [ ] **Step 4: Backfill rehearsal.**
   1. `neon branches create --name photos-backfill-rehearsal --parent production --no-secrets`.
-  2. Run the backfill there with that branch's credentials. The script needs `DATABASE_URL` and the `AWS_*` storage variables for that branch. Write them into a scratch env file under the scratchpad (never printed), for example by running `neon env pull` from a scratch directory whose `.neon` pins that branch. Then run `node --env-file=<that file> scripts/neon/backfillMedia.js`.
+  2. Run the backfill there with that branch's credentials. The script needs `DATABASE_URL` and the `AWS_*` storage variables for that branch.
+     - Get them with `neon env pull --branch photos-backfill-rehearsal --file <scratchpad>/rehearsal.env`, run from the scratchpad and never printed.
+     - Never run it from the worktree without `--file`: it would overwrite the worktree's `.env.local`.
+     - Then run `node --env-file=<scratchpad>/rehearsal.env scripts/neon/backfillMedia.js`.
   3. Check the counts match the dry run, and spot-check 3 display images.
 - [ ] **Step 5: Production backfill.**
   1. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillMedia.js --report-gps`, and record the count.
