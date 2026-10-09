@@ -221,6 +221,8 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 **Connection.** Uses `DATABASE_URL_UNPOOLED`, or `--database-url <url>` for the rehearsal branch. `host` is that URL's hostname.
 
+**Arguments.** Only `--database-url`, `--sha`, `--out`, `--apply`, `--rollback` and `--confirm` are accepted, each with a value. Anything else (an unknown flag, `--flag=value`, a missing value, a duplicate) is refused before anything is read. The plan file's shape is checked before connecting: host, rows, unique string ids, `before` and `after` objects that differ.
+
 **Plan (the default).** It runs inside `begin isolation level repeatable read, read only` … `rollback`, so the archive and the people come from one snapshot. It refuses to overwrite an existing plan file, because that file may be the only rollback for an apply already made.
 1. Load `gedcom_archive`. Exactly one row is required unless `--sha <sha256>` picks one. Recompute the sha256 of `content` and abort if it differs from the stored value.
 2. Parse the archive, call `gedToRows(parsed, { files: {}, avatars: {} }, new Map())`, and read `id, facts, updated_at <> created_at as edited` plus `CORE_COLUMNS` for every person.
@@ -231,7 +233,11 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 - Abort before connecting unless `--confirm` equals both the connection host and the plan's `host`.
 - A plan with no rows is reported and nothing is done.
 - Call `applyPlan`, then `verifyPlan`.
-- Print the updated count, or the stale or mismatching ids, and exit 1 in that case.
+- Print the direction, host and updated count.
+- If the write fails, classify every planned row as holding `before`, `after` or neither:
+  - If every row already holds the side being written, say so (with the plan's `createdAt` and archive sha, so a wrong plan file stands out) and exit 0.
+  - Otherwise report the three counts plus the original error, and exit 1.
+- If the commit happened but the check afterwards failed, say that, and exit 1.
 
 **Rollback** (`--rollback <planPath> --confirm <host>`). The same, with `direction: 'rollback'`.
 

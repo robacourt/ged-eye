@@ -2231,7 +2231,7 @@ Read the host with `node -p "require('<scratch>/plan-rehearsal.json').host"`. Be
 node --env-file=<scratch>/rehearsal.env scripts/neon/backfillFacts.js --apply <scratch>/plan-rehearsal.json --confirm <rehearsal host>
 ```
 
-Expect `{"direction":"apply","updated":1392,"verified":1392}`.
+Expect `{"direction":"apply","host":"<host>","updated":1392,"verified":1392}`.
 - [ ] **Step 4: Exercise the supported sequences.** Each re-plan writes its own file, so the Step 2 plan, which is the rollback, is never overwritten.
   1. Re-plan with `--out <scratch>/replan-after-apply.json`. Expect `unchanged 2994, changed 0`.
   2. Run `--rollback <scratch>/plan-rehearsal.json --confirm <rehearsal host>`. Expect `updated 1392, verified 1392`.
@@ -2331,7 +2331,7 @@ node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillFacts.js 
 node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillFacts.js --apply /Users/rob/src/ged_eye/.neon-import/facts-backfill-plan-production-2026-10-09.json --confirm <production host>
 ```
 
-Expect `{"direction":"apply","updated":1392,"verified":1392}`.
+Expect `{"direction":"apply","host":"<host>","updated":1392,"verified":1392}`.
 - [ ] **Step 8: Verify after the backfill.** Responses are `public, max-age=300`. If a curl or the verify-neon API sample shows pre-backfill data, wait 5 minutes and re-run before treating it as a failure.
   - Re-plan with `--out <scratch>/replan-production.json`. Expect `unchanged 2994, changed 0`.
   - Re-run the Step 4 verify-neon. Expect 0 unexplained.
