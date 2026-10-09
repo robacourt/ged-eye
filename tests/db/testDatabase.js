@@ -1,5 +1,5 @@
 /**
- * Shared setup for tests that need a real database: the dedicated Neon `test` branch in
+ * Shared setup for tests that need a real database: the dedicated Neon test branch in
  * DATABASE_URL_TEST, never production. Run via npm run test:db.
  */
 import pg from 'pg';

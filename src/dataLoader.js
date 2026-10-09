@@ -51,6 +51,9 @@ async function requestView(personId) {
   const url = apiUrl(`/person/${encodeURIComponent(personId)}`);
   let token = await editorToken();
   let refreshed = false;
+  // An editor's request that fails twice (a 5xx or the network) falls back to the public view, with a single
+  // attempt (`attempt = 1`, then the loop's increment makes it the last): if the API is down for everyone,
+  // retrying again only keeps the page waiting. The fallback is masked, so an editor isn't served it from the cache.
   for (let attempt = 1; ; attempt++) {
     // Anonymous requests send no headers, so they stay simple CORS requests, without a preflight.
     const init = { signal: timeoutSignal(REQUEST_TIMEOUT_MS) };
@@ -60,6 +63,11 @@ async function requestView(personId) {
       response = await fetch(url, init);
     } catch (error) {
       if (attempt < 2) continue;
+      if (token) {
+        token = null;
+        attempt = 1;
+        continue;
+      }
       throw error;
     }
     if (response.status === 401 && token) {
@@ -72,7 +80,14 @@ async function requestView(personId) {
     }
     if (response.status === 404 || response.status === 400) throw new PersonNotFoundError(personId);
     if (response.ok) return response.json();
-    if (response.status >= 500 && attempt < 2) continue;
+    if (response.status >= 500) {
+      if (attempt < 2) continue;
+      if (token) {
+        token = null;
+        attempt = 1;
+        continue;
+      }
+    }
     throw new Error(`Failed to load person ${personId}: HTTP ${response.status}`);
   }
 }

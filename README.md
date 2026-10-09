@@ -54,9 +54,9 @@ neon env pull    # refresh .env.local later
 neon deploy      # deploy the api Function and bucket declared in neon.ts
 ```
 
-### Importing the tree (one-off)
+### Importing the tree (one-off, retired)
 
-Neon is the master copy of the tree. `acourt.ged` was imported once; the steps are kept here for reference. Run them in this order:
+Neon is the master copy of the tree. `acourt.ged` was imported once, before editing arrived; the steps are kept here for reference. They ran in this order, against a database migrated only as far as 005:
 
 ```bash
 npm run upload-media   # originals, thumbnails and avatars → ged-eye-media bucket (resumable)
@@ -66,9 +66,9 @@ neon deploy            # deploy the api Function
 npm run verify-neon    # parity check against the old JSON files; exits non-zero on any unexplained difference
 ```
 
-- `import-ged` refuses to run if the database already has people. `npm run import-ged -- --replace --confirm <database host>` used to wipe and reload everything; since migration 006 the tree tables refuse `TRUNCATE`, so it no longer works (see [Editing](#editing)).
+- **After migration 006, `import-ged` is retired.** The tables' capture trigger refuses its inserts because they aren't recorded in a change, and `--replace` is refused by the `TRUNCATE` guard. Loading data again means writing a script that opens a change first (see [Editing](#editing)).
 - The old JSON files and avatars (the parity baseline) now live outside the repo in `ignore/legacy-data/`. `upload-media`, `import-ged` and `verify-neon` read them from there by default; pass `--legacy-root <dir>` to point elsewhere.
-- `scripts/generateAvatars.js` is legacy: it face-crops avatars from the old JSON files. It'll be reworked to read from Neon when editing arrives.
+- `scripts/generateAvatars.js` is legacy: it face-crops avatars from the old JSON files. It will be reworked for photo uploads.
 
 ### Backfilling facts (one-off, 2026-10)
 
@@ -165,11 +165,11 @@ Viewing stays public. Family members on the invite list can also sign in and edi
   - removing a link (×), and deleting a person
   - a couple's marriage and divorce details
 
-  Photos come next.
+  The Contact fields (email and phone) are shown to everyone who views the tree, not only to editors, so enter only what you're happy to make public. Photos come next.
 - **History:** every edit is kept forever, with who made it and when. **History** (in the account menu, or "History of this person" in the details panel) lists everyone's changes. **Revert** undoes any change and **Restore** puts it back; both are recorded too, so nothing is ever lost. If later edits depend on it (someone has since edited the same field, or added a child to a family it created), Revert is refused and links to the changes in the way.
 - **Undo and redo:** Ctrl/Cmd+Z undoes your own latest edit, and Ctrl/Cmd+Shift+Z (or Ctrl+Y) redoes it. The message after each edit also has an Undo button.
 - **Two people editing one person:** the second save is refused ("Someone else changed this person"); reload to see their changes.
-- **Browsers:** sign-in uses a partitioned cookie on Neon's domain. Current Chrome, Edge, Firefox and Safari are fine. Browsers without partitioned cookies, such as older iOS Safari, can view the tree but not edit; the sign-in dialog says the cookie was blocked.
+- **Browsers:** sign-in uses a partitioned cookie on Neon's domain. Current Chrome, Edge, Firefox and Safari are fine. Browsers without partitioned cookies, such as older iOS Safari, can view the tree but not edit; the sign-in dialog says the cookie was blocked. A browser that blocks site storage (`localStorage`) can sign in, but is signed out again when the page reloads.
 
 ### Developing the editing features
 
@@ -186,12 +186,12 @@ Viewing stays public. Family members on the invite list can also sign in and edi
   commit;
   ```
 
-  It then shows in History and can be reverted there (scripts are never Ctrl+Z targets). `backfill-facts` already does this.
+  It then shows in History, and a small script change can be reverted there (scripts are never Ctrl+Z targets). Undo a large one, such as a facts backfill touching thousands of rows, with the script's own rollback instead: a revert from History runs under the 10 s write timeout and may not finish. `backfill-facts` already opens a change and has `--rollback`.
 - `npm run verify-neon` still checks the read path against the old JSON. It skips everyone an edit has touched, along with their relatives, and skips the person count once anything has been edited.
 
 ### Releasing to production
 
-Follow the Rollout section of the [editing design](specs/2026-10-09-editing-design.md#rollout). In short: `npm run db:migrate`, `neon deploy`, disable email/password sign-in and add the `https://robacourt.github.io` trusted domain, `npm run verify-neon`, a smoke test, then sign-in tests on real devices (email code, Google, iPhone Safari), and only then merge the front end. Relatives are invited once the device tests pass.
+Follow the Rollout section of the [editing design](specs/2026-10-09-editing-design.md#rollout). Run every step from the **main checkout**, whose `.neon` and `.env.local` point at production (the `editing` worktree's point at the `editing` branch), once `editing` is merged into `main` there. In short: `git pull` and `npm ci`; `npm run db:migrate` (006 and 007), before the deploy because the new Function reads their tables; `neon deploy`; disable email/password sign-in and add the `https://robacourt.github.io` trusted domain; `npm run verify-neon` (it reads the production database and samples the production API); `npm run build` and commit `docs/`, which is the actual front-end release since Pages serves the committed `docs/` and merging alone changes nothing on the site; smoke tests and sign-in tests on real devices (email code, Google, iPhone Safari); and only then invite relatives.
 
 ## Tech Stack
 

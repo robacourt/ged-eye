@@ -427,7 +427,7 @@ Rules:
   - Existing DB test fixtures wrap their writes in `begin_change(…, via = 'script')`.
   - They insert `given_name`/`surname` instead of `display_name`.
   - They use `delete` (inside a change) instead of `truncate`.
-- **The full-facts backfill after 006** (`scripts/neon/backfillFacts.js`, PR #3): `applyPlan` calls `begin_change('backfill@ged-eye', 'Facts backfill', 'backfill_facts', 'script', …)` first, when that function exists (`to_regprocedure`). The backfill and its rollback are then recorded, and the backfill itself is undoable from History. Its DB test is updated to match.
+- **The full-facts backfill after 006** (`scripts/neon/backfillFacts.js`, PR #3): `applyPlan` calls `begin_change('backfill@ged-eye', 'Facts backfill', 'backfill_facts', 'script', …)` first, when that function exists (`to_regprocedure`). The backfill and its rollback are then recorded, and the backfill is listed in History. For thousands of rows, undo it with the script's own `--rollback`, not History: `toggle_change` may hit the 10 s statement timeout (see Rollout). Its DB test is updated to match.
 - **`verify-neon`:**
   - It drops `masked` before comparing API bodies.
   - Let T be every person referenced by any `change_row` (one query): person keys (and `person_media` person keys), `partner1_id`/`partner2_id` in family snapshots, `child_id`s in `family_child` snapshots, the people linked to a changed `media` row, and all current partners and children of touched families.
@@ -450,23 +450,30 @@ Rules:
 
 1. Development and all tests on the `editing` Neon branch.
 2. **Preconditions:** PR #3 is merged and its backfill applied (or abandoned), and this branch is rebased onto `main`.
-3. **Production:**
-   1. Run `npm run db:migrate` (006). It is additive and compatible with the old Function, which only reads.
-   2. `neon deploy` with `auth: true`: Auth already exists on production, and the Function is redeployed.
-   3. Check that email code and Google are available; Google uses shared credentials until the developer's OAuth client exists. Disable email/password with `neon neon-auth config email-password update`.
-   4. Add the trusted domain `https://robacourt.github.io`.
-   5. Run `npm run verify-neon`. The read path must be unchanged.
-   6. Smoke-test `/me` and one `update_person` plus revert against production with the developer's account. This leaves no net change, and both changes stay in history.
-   7. **Developer's manual test on real devices:**
-      - email-code sign-in (checks delivery and `emailVerified`)
-      - Google sign-in
-      - iPhone Safari: sign in, reload, then edit
-      Relatives are invited only after this passes.
-4. Merge the front end (one PR). Pages publishes it, and the Edit controls appear only for signed-in editors.
-5. **Rollback:**
-   - Revert the front-end merge.
+3. **Production.**
+   - **Where to run it.** Every command below runs from the **main checkout** (`/Users/rob/src/ged_eye`), after the `editing` branch has been merged into `main` there. Never run them from the `editing` worktree: its `.neon` and `.env.local` point at the `editing` branch. The main checkout's `.neon` and `.env.local` point at production, so `npm run db:migrate`, `neon deploy` and `npm run verify-neon` all act on production.
+   - **Production's Auth.** `.env.production`'s `VITE_NEON_AUTH_URL` (`ep-lucky-king-b29tolsz…`) was confirmed to be production's Neon Auth with `neon neon-auth status --branch production`.
+   - **Steps:**
+     1. `git pull`, then `npm ci`.
+     2. `npm run db:migrate` (006 and 007). It must run **before** the deploy: the new Function reads `change` and `schema_migrations`. The migrations are additive and compatible with the old Function, which only reads.
+     3. `neon deploy` with `auth: true`: Auth already exists on production, and the Function is redeployed.
+     4. Auth configuration:
+        - Check that email code and Google are available. Google uses shared credentials until the developer's OAuth client exists.
+        - Disable email/password with `neon neon-auth config email-password update`.
+        - Add the trusted domain `https://robacourt.github.io`.
+     5. `npm run verify-neon`. It reads the production database from that checkout's `.env.local` and samples the production API. The read path must be unchanged.
+     6. **The front-end release:** `npm run build`, then commit `docs/` and push. GitHub Pages serves the committed `docs/`, so merging the code changes nothing on the site until this commit. The Edit controls appear only for signed-in editors.
+     7. **Smoke tests and the developer's manual test on real devices:**
+        - `/me`, and one `update_person` plus its revert, against production with the developer's account. This leaves no net change, and both changes stay in history.
+        - email-code sign-in (checks delivery and `emailVerified`)
+        - Google sign-in
+        - iPhone Safari: sign in, reload, then edit
+     8. Only then invite relatives, by adding them to the editors list.
+4. **Rollback:**
+   - Revert the `docs/` commit and push, which restores the old front end.
    - The tables and triggers can stay, since they're harmless.
    - If needed, the edits themselves can be reverted from History before rolling back.
+5. **Large script changes** (for example the facts backfill, if it is applied after 006) are recorded as one change, so History can revert them. But `toggle_change` runs under the 10 s statement timeout, which thousands of rows can exceed. Undo such a change with the script's own rollback (`npm run backfill-facts -- --rollback <plan> --confirm <host>`), not from History.
 
 ## Next release: photos (design notes only)
 

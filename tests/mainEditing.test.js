@@ -4,11 +4,15 @@ import { PersonNotFoundError } from '../src/dataLoader.js';
 // The tree view draws with Cytoscape; the tests give initApp a fake one instead.
 vi.mock('../src/familyTreeView.js', () => ({ FamilyTreeView: class {} }));
 
-const { initApp, DEFAULT_PERSON_ID, shortcutFor } = await import('../src/main.js');
+const { initApp, DEFAULT_PERSON_ID, shortcutFor, WATCHED_API_CALLS } = await import('../src/main.js');
+const { createEditApi } = await import('../src/editApi.js');
 
 const apiError = (status, code, body = {}) => Object.assign(new Error(body.message ?? code), {
   name: 'ApiError', status, code, reason: body.reason ?? null, blocking: body.blocking ?? [], field: body.field ?? null, body
 });
+
+// What the dialogs get as `api`: the injected one with its calls watched (see "a removed editor" below).
+const anApi = expect.objectContaining({ runChange: expect.any(Function), undo: expect.any(Function), revert: expect.any(Function) });
 
 const RELS = { parents: [], spouses: [], children: [], siblings: [] };
 const EDITOR = { email: 'ann@example.com', name: 'Ann', role: 'editor' };
@@ -95,7 +99,7 @@ beforeEach(() => {
     listChanges: vi.fn(async () => [])
   };
   showToast = vi.fn(() => ({ dismiss: vi.fn() }));
-  signIn = { isOpen: vi.fn(() => false), destroy: vi.fn(), open: vi.fn() };
+  signIn = { isOpen: vi.fn(() => false), destroy: vi.fn(), open: vi.fn(), refreshAccount: vi.fn(async () => null) };
   mountSignIn = vi.fn((options) => {
     signInOptions = options;
     return signIn;
@@ -254,6 +258,105 @@ describe('initApp: sign-in state', () => {
   });
 });
 
+describe('initApp: a removed editor', () => {
+  const NOT_AN_EDITOR = () => apiError(403, 'not_an_editor', { email: 'ann@example.com' });
+  /** The api the person editor was opened with. */
+  let dialogApi;
+
+  beforeEach(async () => {
+    await start();
+    await signInAs(EDITOR);
+    shownOptions().onEdit(people.get('I7'));
+    await flush();
+    dialogApi = dialogs.openPersonEditor.mock.calls[0][0].api;
+    // /me now says she is not an editor.
+    signIn.refreshAccount.mockImplementation(async () => {
+      signInOptions.onSignedIn({ email: 'ann@example.com', name: null, role: null }, 'signed-in');
+      return null;
+    });
+    personDetails.showPerson.mockClear();
+  });
+
+  it('reads the account again when a save is refused, which takes the edit controls away', async () => {
+    api.runChange.mockRejectedValueOnce(NOT_AN_EDITOR());
+    await expect(dialogApi.runChange({ kind: 'update_person' })).rejects.toMatchObject({ code: 'not_an_editor', status: 403 });
+    await flush();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(shownId()).toBe('I7');
+    expect(shownOptions()).toEqual({ canEdit: false });
+  });
+
+  it('passes calls through unchanged: arguments, results and other failures', async () => {
+    api.runChange.mockResolvedValueOnce({ change: { id: 5 } });
+    await expect(dialogApi.runChange({ kind: 'update_person' }, 'x')).resolves.toEqual({ change: { id: 5 } });
+    expect(api.runChange).toHaveBeenCalledWith({ kind: 'update_person' }, 'x');
+
+    for (const error of [apiError(403, 'not_an_admin'), apiError(409, 'conflict'), apiError(500, 'server_error'),
+      apiError(401, 'unauthenticated'), apiError(0, 'network')]) {
+      api.runChange.mockRejectedValueOnce(error);
+      await expect(dialogApi.runChange({})).rejects.toBe(error);
+    }
+    await flush();
+    expect(signIn.refreshAccount).not.toHaveBeenCalled();
+    expect(personDetails.showPerson).not.toHaveBeenCalled(); // nothing was re-rendered
+  });
+
+  it('also does so for a refused keyboard undo, and closes History and Editors', async () => {
+    await signInAs(ADMIN);
+    signInOptions.openHistory();
+    signInOptions.openEditors();
+    await flush();
+    const history = dialogs.openHistoryPanel.mock.results[0].value;
+    const editors = dialogs.openEditorsDialog.mock.results[0].value;
+    api.undo.mockRejectedValueOnce(NOT_AN_EDITOR());
+    showToast.mockClear();
+    await press('z', { ctrlKey: true });
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(lastToast()).toEqual(["Your account can't edit the tree. Ask Rob for access.", { kind: 'error' }]);
+    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(history.close).toHaveBeenCalled();
+    expect(editors.close).toHaveBeenCalled();
+    // and Ctrl+Z no longer does anything
+    api.undo.mockClear();
+    await press('z', { ctrlKey: true });
+    expect(api.undo).not.toHaveBeenCalled();
+  });
+
+  it('also does so for a refused revert from History', async () => {
+    signInOptions.openHistory();
+    await flush();
+    const historyApi = dialogs.openHistoryPanel.mock.calls[0][0].api;
+    api.revert.mockRejectedValueOnce(NOT_AN_EDITOR());
+    await expect(historyApi.revert(12, 'history')).rejects.toMatchObject({ code: 'not_an_editor' });
+    await flush();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(shownOptions()).toEqual({ canEdit: false });
+  });
+
+  it('does not read the account again for someone who already cannot edit', async () => {
+    signInOptions.onSignedIn({ email: 'ann@example.com', name: null, role: null }, 'signed-in');
+    await flush();
+    api.runChange.mockRejectedValueOnce(NOT_AN_EDITOR());
+    await expect(dialogApi.runChange({})).rejects.toMatchObject({ code: 'not_an_editor' });
+    await flush();
+    expect(signIn.refreshAccount).not.toHaveBeenCalled();
+  });
+
+  it('keeps the edit controls when the account read fails', async () => {
+    signIn.refreshAccount.mockImplementation(async () => null); // /me unreachable: the menu shows the error
+    api.runChange.mockRejectedValueOnce(NOT_AN_EDITOR());
+    await expect(dialogApi.runChange({})).rejects.toBeTruthy();
+    await flush();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(personDetails.showPerson).not.toHaveBeenCalled();
+  });
+
+  it('watches every call the real API offers except me', () => {
+    const real = createEditApi({ getToken: async () => null });
+    expect(Object.keys(real).filter(name => name !== 'me').sort()).toEqual([...WATCHED_API_CALLS].sort());
+  });
+});
+
 describe('initApp: opening the editors', () => {
   beforeEach(async () => {
     await start();
@@ -264,7 +367,7 @@ describe('initApp: opening the editors', () => {
     shownOptions().onEdit(people.get('I7'));
     await flush();
     expect(dialogs.openPersonEditor).toHaveBeenCalledWith(expect.objectContaining({
-      person: people.get('I7'), masked: false, api, loader,
+      person: people.get('I7'), masked: false, api: anApi, loader,
       onSaved: expect.any(Function), onDeleted: expect.any(Function), onReloaded: expect.any(Function)
     }));
   });
@@ -273,17 +376,17 @@ describe('initApp: opening the editors', () => {
     const rose = people.get('I7');
     shownOptions().onAddRelative('child', rose);
     expect(dialogs.openRelativeDialog).toHaveBeenCalledWith(expect.objectContaining({
-      person: rose, relationships: RELS, relation: 'child', api, loader, onAdded: expect.any(Function), onReloaded: expect.any(Function)
+      person: rose, relationships: RELS, relation: 'child', api: anApi, loader, onAdded: expect.any(Function), onReloaded: expect.any(Function)
     }));
     shownOptions().onUnlink({ relation: 'parent', role: 'partner', personId: 'I1', familyId: 'F1' }, rose);
     expect(dialogs.openUnlinkConfirm).toHaveBeenCalledWith(expect.objectContaining({
-      person: rose, relationships: RELS, relation: 'parent', personId: 'I1', familyId: 'F1', api, loader,
+      person: rose, relationships: RELS, relation: 'parent', personId: 'I1', familyId: 'F1', api: anApi, loader,
       onUnlinked: expect.any(Function), onReloaded: expect.any(Function)
     }));
     const family = { familyId: 'F5', partners: [{ id: 'I7', name: 'Rose Smith' }] };
     shownOptions().onEditFamily(family, rose);
     expect(dialogs.openFamilyEditor).toHaveBeenCalledWith(expect.objectContaining({
-      family, api, focusId: 'I7', loader, onSaved: expect.any(Function), onReloaded: expect.any(Function)
+      family, api: anApi, focusId: 'I7', loader, onSaved: expect.any(Function), onReloaded: expect.any(Function)
     }));
   });
 
@@ -291,7 +394,7 @@ describe('initApp: opening the editors', () => {
     shownOptions().onShowHistory(people.get('I7'));
     await flush();
     expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({
-      api, personFilter: { id: 'I7', name: 'Rose Smith' }, onOpenPerson: expect.any(Function), onChanged: expect.any(Function)
+      api: anApi, personFilter: { id: 'I7', name: 'Rose Smith' }, onOpenPerson: expect.any(Function), onChanged: expect.any(Function)
     }));
   });
 
@@ -305,7 +408,7 @@ describe('initApp: opening the editors', () => {
     expect(first.close).toHaveBeenCalled();
     signInOptions.openEditors();
     await flush();
-    expect(dialogs.openEditorsDialog).toHaveBeenCalledWith(expect.objectContaining({ api, currentEmail: 'rob@example.com' }));
+    expect(dialogs.openEditorsDialog).toHaveBeenCalledWith(expect.objectContaining({ api: anApi, currentEmail: 'rob@example.com' }));
   });
 
   it('opens Editors only for admins', async () => {

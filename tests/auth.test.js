@@ -550,7 +550,19 @@ describe('auth default client', () => {
     expect(loaded).toHaveBeenCalled();
   });
 
-  it('checks for a session when storage cannot say (private mode)', async () => {
+  it('does not load the SDK on page load when storage is blocked, but still loads it to sign in', async () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new DOMException('denied', 'SecurityError'); });
+    const { loaded, client } = mockSdk(fakeClient({ server: sessionFor('rose@example.com') }));
+    const auth = await import('../src/auth.js');
+    expect(await auth.init()).toEqual({ user: null, role: null, cookieBlocked: false });
+    expect(loaded).not.toHaveBeenCalled();
+    expect(client.getSession).not.toHaveBeenCalled();
+    await auth.sendEmailCode('rose@example.com');
+    expect(loaded).toHaveBeenCalledTimes(1);
+  });
+
+  it('still restores the session when coming back from Google with storage blocked', async () => {
+    window.history.replaceState(null, '', '/?neon_auth_session_verifier=v123');
     vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new DOMException('denied', 'SecurityError'); });
     const { loaded } = mockSdk(fakeClient({ cached: sessionFor('rose@example.com') }));
     const auth = await import('../src/auth.js');

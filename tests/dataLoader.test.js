@@ -249,6 +249,84 @@ describe('dataLoader signed in', () => {
     expect(fetchMock.mock.calls[1][1].headers).toBeUndefined();
   });
 
+  const unavailable = () => ({ ok: false, status: 503, json: async () => ({}) });
+
+  it('falls back to the public view when the editor request gets a 5xx twice', async () => {
+    getRole.mockReturnValue('editor');
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(unavailable())
+      .mockResolvedValueOnce(unavailable())
+      .mockResolvedValueOnce(ok(masked('I1', true)));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await loadPersonWithFamily('I1');
+    expect(result.person.id).toBe('I1');
+    expect(result.masked).toBe(true);
+    expect(fetchMock.mock.calls.map(([, init]) => init.headers)).toEqual([
+      { authorization: 'Bearer jwt-1' },
+      { authorization: 'Bearer jwt-1' },
+      undefined
+    ]);
+  });
+
+  it('falls back to the public view when the editor request fails on the network twice', async () => {
+    getRole.mockReturnValue('admin');
+    const fetchMock = vi.fn()
+      .mockRejectedValueOnce(new TypeError('offline'))
+      .mockRejectedValueOnce(new TypeError('offline'))
+      .mockResolvedValueOnce(ok(masked('I1', true)));
+    vi.stubGlobal('fetch', fetchMock);
+    expect((await loadPersonWithFamily('I1')).masked).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(fetchMock.mock.calls[2][1].headers).toBeUndefined();
+  });
+
+  it('does not fall back while the editor request succeeds on its retry', async () => {
+    getRole.mockReturnValue('editor');
+    const fetchMock = vi.fn().mockResolvedValueOnce(unavailable()).mockResolvedValueOnce(ok(masked('I1', false)));
+    vi.stubGlobal('fetch', fetchMock);
+    expect((await loadPersonWithFamily('I1')).masked).toBe(false);
+    expect(fetchMock.mock.calls.map(([, init]) => init.headers)).toEqual([
+      { authorization: 'Bearer jwt-1' },
+      { authorization: 'Bearer jwt-1' }
+    ]);
+  });
+
+  it('tries the public fallback once, then fails with its error', async () => {
+    getRole.mockReturnValue('editor');
+    const fetchMock = vi.fn().mockResolvedValue(unavailable());
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).rejects.toThrow('HTTP 503');
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+    expect(fetchMock.mock.calls[2][1].headers).toBeUndefined();
+
+    resetDataLoaderForTests();
+    const offline = vi.fn().mockRejectedValue(new TypeError('offline'));
+    vi.stubGlobal('fetch', offline);
+    await expect(loadPersonWithFamily('I1')).rejects.toThrow('offline');
+    expect(offline).toHaveBeenCalledTimes(3);
+  });
+
+  it('does not serve a view loaded by the 5xx fallback to an editor from the cache', async () => {
+    getRole.mockReturnValue('editor');
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(unavailable())
+      .mockResolvedValueOnce(unavailable())
+      .mockResolvedValueOnce(ok(masked('I1', true)))
+      .mockResolvedValueOnce(ok(masked('I1', false)));
+    vi.stubGlobal('fetch', fetchMock);
+    expect((await loadPersonWithFamily('I1')).masked).toBe(true);
+    expect((await loadPersonWithFamily('I1')).masked).toBe(false);
+    expect(fetchMock).toHaveBeenCalledTimes(4);
+    expect(fetchMock.mock.calls[3][1].headers).toEqual({ authorization: 'Bearer jwt-1' });
+  });
+
+  it('does not use the public fallback for anyone who sent no token', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(unavailable());
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).rejects.toThrow('HTTP 503');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
   it('does not serve the fallback (masked) view to an editor from the cache', async () => {
     getRole.mockReturnValue('editor');
     const fetchMock = vi.fn()

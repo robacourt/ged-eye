@@ -15,12 +15,15 @@ const OAUTH_VERIFIER_PARAM = 'neon_auth_session_verifier';
 /** localStorage flag: '1' while this browser has a session, so page loads of everyone else skip the SDK. */
 export const SIGNED_IN_KEY = 'ged-eye.signedIn';
 
-/** Whether this browser may have a session. True when storage can't say (private mode, blocked storage). */
+/**
+ * Whether this browser may have a session. False when storage can't say (blocked storage, some private modes):
+ * such visitors don't load the SDK on page load, and the sign-in actions load it when they need it.
+ */
 function maybeSignedIn() {
   try {
     return globalThis.localStorage.getItem(SIGNED_IN_KEY) === '1';
   } catch {
-    return true;
+    return false;
   }
 }
 
@@ -29,7 +32,7 @@ function rememberSignedIn(signedIn) {
     if (signedIn) globalThis.localStorage.setItem(SIGNED_IN_KEY, '1');
     else globalThis.localStorage.removeItem(SIGNED_IN_KEY);
   } catch {
-    // Storage is unavailable, so maybeSignedIn() answers true and init() always checks.
+    // Storage is unavailable, so maybeSignedIn() answers false: the session is not restored on the next page load.
   }
 }
 

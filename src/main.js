@@ -33,6 +33,34 @@ function setUrlPerson(personId, { replace = false } = {}) {
 
 const isNotFound = (error) => error instanceof PersonNotFoundError || error?.name === 'PersonNotFoundError';
 
+/** Whether the server refused a call because the signed-in account is not (or no longer) on the editors list. */
+const isNotAnEditor = (error) => error?.status === 403 && error.code === 'not_an_editor';
+
+/** The editApi.js calls whose refusals are watched: all but `me`, which reads the account itself. */
+export const WATCHED_API_CALLS = ['authedFetch', 'runChange', 'revert', 'restore', 'undo', 'redo', 'listChanges',
+  'search', 'listEditors', 'addEditor', 'removeEditor'];
+
+/**
+ * `api` with its calls watched: a rejection that is a 403 `not_an_editor` is reported to `onNotAnEditor`
+ * (the editor was removed since /me was read), and still thrown to the caller, who words it as usual.
+ */
+function watchNotAnEditor(api, onNotAnEditor) {
+  const watched = { ...api };
+  for (const name of WATCHED_API_CALLS) {
+    const call = api[name];
+    if (typeof call !== 'function') continue;
+    watched[name] = async (...args) => {
+      try {
+        return await call(...args);
+      } catch (error) {
+        if (isNotAnEditor(error)) onNotAnEditor();
+        throw error;
+      }
+    };
+  }
+  return watched;
+}
+
 /** Logs a failure of work nobody waits for (a re-render after a change), instead of leaving it unhandled. */
 const settle = (promise) => Promise.resolve(promise).catch(error => console.error('Could not show the change', error));
 
@@ -76,13 +104,19 @@ export function initApp({
   treeView = new FamilyTreeView(document.getElementById('cy')),
   personDetails = new PersonDetails(document.getElementById('details')),
   auth = authModule,
-  api = editApi,
+  api: apiModule = editApi,
   loader = dataLoader,
   showToast = defaultShowToast,
   mountSignIn = defaultMountSignIn,
   loadEditing = defaultLoadEditing
 } = {}) {
   const loadingEl = document.getElementById('loading');
+
+  // Calls to the API from here and from the editing dialogs. An editor who has been removed since signing in
+  // learns it from the first refusal: the account is read again, which takes the edit controls away.
+  const api = watchNotAnEditor(apiModule, () => {
+    if (canEdit()) signIn.refreshAccount(); // never rejects: a failure shows in the account menu
+  });
 
   const overlay = {
     hide() {
@@ -374,9 +408,15 @@ export function initApp({
   const signIn = mountSignIn({
     container: document.getElementById('app') ?? document.body,
     auth,
-    api,
+    api: apiModule,
     onSignedIn(me) {
       account = me;
+      if (!canEdit()) {
+        // Signed in without editing access, or an editor who has been removed since (see watchNotAnEditor).
+        dropQueuedKeys();
+        historyPanel?.close();
+        editorsDialog?.close();
+      }
       loader.invalidateAll();
       showCurrentPerson();
       if (canEdit()) prepareEditing();

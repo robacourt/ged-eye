@@ -43,7 +43,7 @@ const LIFE_EVENT_TAGS = new Set(['BIRT', 'BAPM', 'DEAT', 'BURI']);
 const MULTI_LINE = /[\r\n]/;
 
 /** Where a server error about `facts.<key>` is shown: the section that edits that key. */
-const FACT_ERROR_SLOTS = {
+export const FACT_ERROR_SLOTS = {
   notes: 'notes', birthNotes: 'birth', baptismNotes: 'baptism', deathNotes: 'death', burialNotes: 'burial',
   causeOfDeath: 'cause_of_death', email: 'email', phone: 'phone',
   occupations: 'facts', otherFacts: 'facts', censusRecords: 'facts', residences: 'facts', religion: 'facts', education: 'facts'
