@@ -88,7 +88,7 @@ describe('gedToRows', () => {
       id: 'I1', given_name: 'Adam', surname: 'Smith', display_name: 'Adam Smith', sex: 'M',
       birth_date: '1900', birth_place: null, death_date: null, death_place: null,
       baptism_date: null, baptism_place: null, burial_date: null, burial_place: null,
-      facts: { occupations: ['Farmer'] }, avatar_key: 'avatars/sha-av.jpg'
+      facts: { occupations: [{ value: 'Farmer' }] }, avatar_key: 'avatars/sha-av.jpg'
     });
     expect(people.find(p => p.id === 'I7').sex).toBe('U');
   });

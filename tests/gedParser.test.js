@@ -95,3 +95,69 @@ describe('GEDCOM Parser', () => {
     expect(person.parentIds).toHaveLength(0);
   });
 });
+
+describe('GEDCOM parser stage 2', () => {
+  it('ignores SOUR, REPO and other level-0 records after the last family', () => {
+    const { families } = parseGedcom([
+      '0 @F1@ FAM', '1 HUSB @I1@', '1 WIFE @I2@', '1 CHIL @I3@', '1 MARR',
+      '0 @S1@ SOUR', '1 TITL 1851 Census', '1 NOTE Source note',
+      '0 @R1@ REPO', '1 NAME The Public Records Office', '1 PHON 0181 392 5271', '1 EMAIL a@b.c', '0 TRLR'
+    ].join('\n'));
+    expect(Object.keys(families.get('F1').data).sort()).toEqual(['CHIL', 'HUSB', 'MARR', 'WIFE']);
+  });
+
+  it('keeps the lines under untracked level-1 tags off the person', () => {
+    const { individuals } = parseGedcom([
+      '0 @I1@ INDI', '1 NAME A /B/', '1 OCCU Miller', '2 DATE 1881', '2 NOTE Occupation note',
+      '1 _MILT Militia', '2 NOTE Parish of Marnhull', '0 TRLR'
+    ].join('\n'));
+    expect(Object.keys(individuals.get('I1').data)).toEqual(['NAME']);
+    const person = extractPersonData({ individuals, families: new Map() }, 'I1');
+    expect(person.notes).toBeUndefined();
+    expect(person.occupations).toEqual([{ value: 'Miller', date: '1881', notes: ['Occupation note'] }]);
+    expect(person.otherFacts).toEqual([{ tag: '_MILT', value: 'Militia', notes: ['Parish of Marnhull'] }]);
+  });
+
+  it('treats level-1 OBJE and the first OBJE on a citation of an untracked tag as photos, like the legacy parser', () => {
+    const { individuals } = parseGedcom(String.raw`0 @I1@ INDI
+1 NAME A /B/
+1 EVEN
+2 SOUR @S48@
+3 OBJE
+4 FILE C:\BK\Data\Picture\first.pdf
+3 OBJE
+4 FILE C:\BK\Data\Picture\second.jpg
+1 CENS
+2 SOUR @S1@
+3 OBJE
+4 FILE C:\BK\Data\Picture\census.jpg
+1 BIRT
+2 SOUR @S1@
+3 OBJE
+4 FILE C:\BK\Data\Picture\birth.jpg
+1 OBJE
+2 FILE C:\BK\Data\Media\photo.jpg
+0 TRLR`);
+    const person = extractPersonData({ individuals, families: new Map() }, 'I1');
+    expect(person.photos).toEqual(['Data/Picture/first.pdf', 'Data/Media/photo.jpg']);
+  });
+
+  it('exposes each record\'s node tree', () => {
+    const { individuals } = parseGedcom('0 @I1@ INDI\n1 NAME A /B/\n0 TRLR');
+    expect(individuals.get('I1').node).toMatchObject({ tag: 'INDI', xref: 'I1', children: [{ tag: 'NAME' }] });
+  });
+
+  it('keeps full multi-line person notes', () => {
+    const { individuals } = parseGedcom('0 @I1@ INDI\n1 NAME A /B/\n1 NOTE First\n2 CONT Second\n2 CONC  half\n0 TRLR');
+    expect(extractPersonData({ individuals, families: new Map() }, 'I1').notes).toEqual(['First\nSecond half']);
+  });
+
+  it('lets the last occurrence win, as the legacy parser did', () => {
+    const { individuals } = parseGedcom([
+      '0 @I1@ INDI', '1 NAME First /Name/', '1 NAME Second /Name/', '1 SEX F', '1 SEX M',
+      '1 BIRT', '2 DATE 1800', '2 DATE 1801', '2 PLAC Here', '2 PLAC There', '0 TRLR'
+    ].join('\n'));
+    const person = extractPersonData({ individuals, families: new Map() }, 'I1');
+    expect(person).toMatchObject({ name: 'Second Name', sex: 'M', birthDate: '1801', birthPlace: 'There' });
+  });
+});

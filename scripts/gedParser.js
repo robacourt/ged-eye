@@ -1,134 +1,105 @@
 /**
- * Simple GEDCOM parser
+ * GEDCOM parser, stage 2: INDI and FAM records with the `data` the import reads, plus each
+ * record's node tree (stage 1, scripts/gedTree.js) for the facts.
  */
+import { parseGedcomTree, lastChild, text } from './gedTree.js';
+import { individualFacts } from './gedFacts.js';
 
-export function parseGedcom(gedcomText) {
-  const lines = gedcomText.split('\n');
-  const individuals = new Map();
-  const families = new Map();
+export { parseGedcomTree };
 
-  let currentRecord = null;
-  let currentLevel = -1;
-  let currentParent = null;
-  let stack = []; // Stack to track nested structures
+const pointer = (node) => text(node).replace(/@/g, '');
 
-  for (let line of lines) {
-    line = line.trim();  // Remove \r\n and whitespace
-    if (!line) continue;
+// Level-1 tags whose subtree the legacy parser kept to itself, so an OBJE inside never became a photo.
+const NO_PHOTO_TAGS = new Set(['BIRT', 'BAPM', 'DEAT', 'BURI', 'CENS', 'RESI', 'MARR', 'DIV']);
 
-    const match = line.match(/^(\d+)\s+(@[^@]+@\s+)?(.+)$/);
-    if (!match) continue;
+function eventData(node) {
+  const out = {};
+  const date = lastChild(node, 'DATE');
+  const place = lastChild(node, 'PLAC');
+  if (date) out.DATE = text(date);
+  if (place) out.PLAC = text(place);
+  return out;
+}
 
-    const level = parseInt(match[1]);
-    const tag = match[3].split(' ')[0];
-    const value = match[3].substring(tag.length).trim();
+function firstDescendant(node, tag) {
+  for (const child of node.children) {
+    if (child.tag === tag) return child;
+    const found = firstDescendant(child, tag);
+    if (found) return found;
+  }
+  return null;
+}
 
-    // Handle record start (level 0)
-    if (level === 0) {
-      if (tag === 'HEAD' || tag === 'TRLR') {
-        currentRecord = null;
-        continue;
-      }
-
-      const id = match[2]?.trim().replace(/@/g, '');
-
-      if (tag === 'INDI') {
-        currentRecord = { id, type: 'INDI', data: {} };
-        individuals.set(id, currentRecord);
-        stack = [currentRecord.data];
-      } else if (tag === 'FAM') {
-        currentRecord = { id, type: 'FAM', data: {} };
-        families.set(id, currentRecord);
-        stack = [currentRecord.data];
-      }
-      currentLevel = 0;
-      continue;
-    }
-
-    if (!currentRecord) continue;
-
-    // Maintain stack based on level
-    while (stack.length > level) {
-      stack.pop();
-    }
-
-    const parent = stack[stack.length - 1];
-
-    // Store data
-    if (tag === 'NAME') {
-      parent.NAME = value;
-    } else if (tag === 'SEX') {
-      parent.SEX = value;
-    } else if (tag === 'DATE') {
-      parent.DATE = value;
-    } else if (tag === 'PLAC') {
-      parent.PLAC = value;
-    } else if (tag === 'FILE') {
-      if (!parent.FILES) parent.FILES = [];
-      parent.FILES.push(value);
-    } else if (tag === 'NOTE') {
-      if (!parent.NOTE) parent.NOTE = [];
-      parent.NOTE.push(value);
-    } else if (tag === 'OCCU') {
-      if (!parent.OCCU) parent.OCCU = [];
-      parent.OCCU.push(value);
-    } else if (tag === 'EMAIL') {
-      parent.EMAIL = value;
-    } else if (tag === 'PHON') {
-      parent.PHON = value;
-    } else if (tag === 'BIRT') {
-      parent.BIRT = {};
-      stack.push(parent.BIRT);
-    } else if (tag === 'DEAT') {
-      parent.DEAT = {};
-      stack.push(parent.DEAT);
-    } else if (tag === 'BAPM') {
-      parent.BAPM = {};
-      stack.push(parent.BAPM);
-    } else if (tag === 'BURI') {
-      parent.BURI = {};
-      stack.push(parent.BURI);
-    } else if (tag === 'CENS') {
-      if (!parent.CENS) parent.CENS = [];
-      const censusRecord = {};
-      parent.CENS.push(censusRecord);
-      stack.push(censusRecord);
-    } else if (tag === 'RESI') {
-      if (!parent.RESI) parent.RESI = [];
-      const residenceRecord = {};
-      parent.RESI.push(residenceRecord);
-      stack.push(residenceRecord);
-    } else if (tag === 'MARR') {
-      parent.MARR = {};
-      stack.push(parent.MARR);
-    } else if (tag === 'DIV') {
-      parent.DIV = {};
-      stack.push(parent.DIV);
-    } else if (tag === 'RELI') {
-      parent.RELI = value;
-    } else if (tag === 'EDUC') {
-      parent.EDUC = value;
-    } else if (tag === 'OBJE') {
-      const obj = {};
-      if (!parent.OBJE) parent.OBJE = [];
-      parent.OBJE.push(obj);
-      stack.push(obj);
-    } else if (tag === 'FAMS') {
-      if (!parent.FAMS) parent.FAMS = [];
-      parent.FAMS.push(value.replace(/@/g, ''));
-    } else if (tag === 'FAMC') {
-      if (!parent.FAMC) parent.FAMC = [];
-      parent.FAMC.push(value.replace(/@/g, ''));
-    } else if (tag === 'HUSB') {
-      parent.HUSB = value.replace(/@/g, '');
-    } else if (tag === 'WIFE') {
-      parent.WIFE = value.replace(/@/g, '');
-    } else if (tag === 'CHIL') {
-      if (!parent.CHIL) parent.CHIL = [];
-      parent.CHIL.push(value.replace(/@/g, ''));
+/**
+ * The OBJE nodes the legacy parser treated as photos: each level-1 OBJE, plus the first OBJE
+ * anywhere under any other level-1 node it opened no frame for (in practice an OBJE on a source
+ * citation of an EVEN, OCCU or _MILT). That OBJE stayed open on the legacy stack until the next
+ * level-1 line, so later OBJEs in the same subtree nested inside it and were not photos.
+ */
+function photoNodes(indi) {
+  const out = [];
+  for (const child of indi.children) {
+    if (child.tag === 'OBJE') {
+      out.push(child);
+    } else if (!NO_PHOTO_TAGS.has(child.tag)) {
+      const obje = firstDescendant(child, 'OBJE');
+      if (obje) out.push(obje);
     }
   }
+  return out;
+}
 
+function individualData(node) {
+  const data = {};
+  for (const child of node.children) {
+    switch (child.tag) {
+      case 'NAME': case 'SEX': case 'EMAIL': case 'PHON':
+        data[child.tag] = text(child);
+        break;
+      case 'BIRT': case 'DEAT': case 'BAPM': case 'BURI':
+        data[child.tag] = eventData(child);
+        break;
+      case 'FAMS': case 'FAMC':
+        (data[child.tag] ??= []).push(pointer(child));
+        break;
+    }
+  }
+  const photos = photoNodes(node).map(obje => {
+    const files = obje.children.filter(child => child.tag === 'FILE').map(text);
+    return files.length ? { FILES: files } : {};
+  });
+  if (photos.length) data.OBJE = photos;
+  return data;
+}
+
+function familyData(node) {
+  const data = {};
+  for (const child of node.children) {
+    switch (child.tag) {
+      case 'HUSB': case 'WIFE':
+        data[child.tag] = pointer(child);
+        break;
+      case 'CHIL':
+        (data.CHIL ??= []).push(pointer(child));
+        break;
+      case 'MARR': case 'DIV':
+        data[child.tag] = eventData(child);
+        break;
+    }
+  }
+  return data;
+}
+
+export function parseGedcom(gedcomText) {
+  const individuals = new Map();
+  const families = new Map();
+  for (const node of parseGedcomTree(gedcomText)) {
+    if (node.tag === 'INDI') {
+      individuals.set(node.xref, { id: node.xref, type: 'INDI', data: individualData(node), node });
+    } else if (node.tag === 'FAM') {
+      families.set(node.xref, { id: node.xref, type: 'FAM', data: familyData(node), node });
+    }
+  }
   return { individuals, families };
 }
 
@@ -235,36 +206,16 @@ export function extractPersonData(parsedGed, personId) {
   if (data.BURI?.DATE) result.burialDate = data.BURI.DATE;
   if (data.BURI?.PLAC) result.burialPlace = data.BURI.PLAC;
 
-  if (data.OCCU && data.OCCU.length > 0) result.occupations = data.OCCU;
-
-  if (data.NOTE && data.NOTE.length > 0) result.notes = data.NOTE;
-
   if (data.EMAIL) result.email = data.EMAIL;
   if (data.PHON) result.phone = data.PHON;
-
-  if (data.RELI) result.religion = data.RELI;
-  if (data.EDUC) result.education = data.EDUC;
-
-  // Census records
-  if (data.CENS && data.CENS.length > 0) {
-    result.censusRecords = data.CENS.map(cens => ({
-      date: cens.DATE || null,
-      place: cens.PLAC || null
-    })).filter(c => c.date || c.place);
-  }
-
-  // Residences
-  if (data.RESI && data.RESI.length > 0) {
-    result.residences = data.RESI.map(resi => ({
-      date: resi.DATE || null,
-      place: resi.PLAC || null
-    })).filter(r => r.date || r.place);
-  }
 
   // Marriages
   if (marriages.length > 0) {
     result.marriages = marriages;
   }
+
+  // Notes, occupations, census records, residences, life-event notes and other facts
+  Object.assign(result, individualFacts(individual.node));
 
   return result;
 }
