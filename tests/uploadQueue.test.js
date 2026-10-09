@@ -92,6 +92,9 @@ function setup({ concurrency, now } = {}) {
   return { api, queue, changes };
 }
 
+/** The error add_photos gives when an upload's original is missing. */
+const missingUpload = () => new ApiError(400, 'missing_upload', { field: 'photos', index: 0 });
+
 const states = (items) => items.map((item) => item.state);
 const withoutRepeats = (list) => list.filter((value, i) => i === 0 || value !== list[i - 1]);
 const uploadIds = (mockFn, argIndex) => mockFn.mock.calls.map((args) => {
@@ -248,6 +251,79 @@ describe('createUploadQueue', () => {
       expect(item.state).toBe('ready');
       expect(api.processUpload).toHaveBeenCalledTimes(1);
     });
+
+    it('refuses to retry an item that is queued, uploading or processing', async () => {
+      const { api, queue } = setup({ concurrency: 1 });
+      const uploads = holdUploads(api);
+      hold(api.processUpload);
+      const [first, second] = queue.add([jpeg('1.jpg'), jpeg('2.jpg')]);
+      await flush();
+      expect(states([first, second])).toEqual(['uploading', 'queued']);
+      expect(queue.retry(first)).toBe(false);
+      expect(queue.retry(second)).toBe(false);
+
+      uploads[0].resolve();
+      await flush();
+      expect(first.state).toBe('processing');
+      expect(queue.retry(first)).toBe(false);
+      expect(states([first, second])).toEqual(['processing', 'queued']);
+      expect(api.requestUpload).toHaveBeenCalledTimes(1);
+      expect(api.processUpload).toHaveBeenCalledTimes(1);
+    });
+
+    it('queues a retried upload at 0%, and retried processing at 100%', async () => {
+      const api = fakeApi();
+      const seen = [];
+      const queue = createUploadQueue({
+        api,
+        onChange: (items) => seen.push(items.map(({ state, progress }) => `${state} ${progress}`))
+      });
+      api.uploadFile.mockImplementationOnce(async (slot, file, { onProgress }) => {
+        onProgress(0.5);
+        throw new ApiError(0, 'network');
+      });
+      api.processUpload.mockRejectedValueOnce(new ApiError(503, 'busy'));
+      const [uploadFailed, processFailed] = queue.add([jpeg('1.jpg'), jpeg('2.jpg')]);
+      await queue.allSettled();
+      expect(uploadFailed).toMatchObject({ state: 'failed', progress: 0.5 });
+      expect(processFailed).toMatchObject({ state: 'failed', progress: 1 });
+
+      seen.length = 0;
+      const uploads = holdUploads(api);
+      queue.retry(uploadFailed);
+      queue.retry(processFailed);
+      expect(seen[0]).toEqual(['queued 0', 'failed 1']);
+      expect(seen).toContainEqual(['uploading 0', 'queued 1']);
+      expect(processFailed).toMatchObject({ state: 'processing', progress: 1 });
+      uploads[0].resolve();
+      await queue.allSettled();
+      expect(states([uploadFailed, processFailed])).toEqual(['ready', 'ready']);
+    });
+
+    it('starts a retry made as soon as allSettled resolves', async () => {
+      const { api, queue } = setup({ concurrency: 1 });
+      api.uploadFile.mockRejectedValueOnce(new ApiError(0, 'network'));
+      const [item] = queue.add([jpeg()]);
+      await queue.allSettled();
+      holdUploads(api);
+      queue.retry(item);
+      expect(item.state).toBe('uploading');
+    });
+
+    it('keeps going when onChange throws', async () => {
+      const errors = vi.spyOn(console, 'error').mockImplementation(() => {});
+      try {
+        const api = fakeApi();
+        const queue = createUploadQueue({ api, onChange: () => { throw new Error('render failed'); } });
+        const [item] = queue.add([jpeg()]);
+        await queue.allSettled();
+        await flush();
+        expect(item).toMatchObject({ state: 'ready', error: null, media: mediaFor('a.jpg') });
+        expect(errors).toHaveBeenCalledWith('Upload queue onChange failed', expect.objectContaining({ message: 'render failed' }));
+      } finally {
+        errors.mockRestore();
+      }
+    });
   });
 
   describe('retrying a failed upload', () => {
@@ -372,13 +448,14 @@ describe('createUploadQueue', () => {
       const [item] = queue.add([jpeg()]);
       await queue.allSettled();
 
-      const error = new ApiError(409, 'missing_upload');
-      queue.markFailed(item, error);
+      const error = missingUpload();
+      expect(queue.markFailed(item, error)).toBe(true);
       expect(item).toMatchObject({ state: 'failed', error, retryable: true, media: null });
       expect(queue.hasActive()).toBe(false);
 
       api.processUpload.mockRejectedValueOnce(new ApiError(404, 'not_found'));
       queue.retry(item);
+      expect(item.progress).toBe(1);
       await queue.allSettled();
       expect(item).toMatchObject({ state: 'ready', error: null, media: mediaFor('a.jpg') });
       expect(uploadIds(api.processUpload, 0)).toEqual(['up-1', 'up-1', 'up-2']);
@@ -389,7 +466,8 @@ describe('createUploadQueue', () => {
       api.processUpload.mockRejectedValueOnce(new ApiError(400, 'unreadable'));
       const [item] = queue.add([jpeg()]);
       await queue.allSettled();
-      queue.markFailed(item, new ApiError(409, 'missing_upload'));
+      expect(queue.markFailed(item, missingUpload())).toBe(false);
+      expect(queue.markFailed({ id: 'not ours' }, missingUpload())).toBe(false);
       expect(item).toMatchObject({ state: 'failed', retryable: false });
       expect(item.error.code).toBe('unreadable');
     });
@@ -467,6 +545,41 @@ describe('createUploadQueue', () => {
       expect(second.state).toBe('uploading');
       expect(uploads).toHaveLength(2);
       expect(api.discardUpload).not.toHaveBeenCalled();
+    });
+
+    it('ignores an upload that finishes after the file was removed', async () => {
+      const { api, queue, changes } = setup();
+      const uploads = hold(api.uploadFile); // finishes regardless of the abort
+      const [item] = queue.add([jpeg()]);
+      await flush();
+      expect(item.state).toBe('uploading');
+
+      queue.remove(item);
+      const calls = changes.length;
+      uploads[0].resolve();
+      await flush();
+      expect(changes).toHaveLength(calls);
+      expect(item.state).toBe('uploading');
+      expect(api.processUpload).not.toHaveBeenCalled();
+      expect(api.discardUpload).not.toHaveBeenCalled();
+      expect(queue.items()).toEqual([]);
+    });
+
+    it('ignores a slot that arrives after the file was removed', async () => {
+      const { api, queue, changes } = setup();
+      const slots = hold(api.requestUpload);
+      const [item] = queue.add([jpeg()]);
+      await flush();
+      expect(slots).toHaveLength(1);
+
+      queue.remove(item);
+      const calls = changes.length;
+      slots[0].resolve({ uploadId: 'up-1', url: 'https://storage.test/incoming/up-1', headers: {} });
+      await flush();
+      expect(changes).toHaveLength(calls);
+      expect(api.uploadFile).not.toHaveBeenCalled();
+      expect(api.discardUpload).not.toHaveBeenCalled();
+      expect(queue.items()).toEqual([]);
     });
 
     it('drops a queued file before it starts', async () => {
@@ -568,8 +681,27 @@ describe('createUploadQueue', () => {
       const [first, copy] = queue.add([jpeg('a.jpg'), jpeg('copy of a.jpg')]);
       await queue.allSettled();
 
-      queue.markFailed(first, new ApiError(409, 'missing_upload'));
+      queue.markFailed(first, missingUpload());
       expect(copy).toMatchObject({ media: mediaFor('copy of a.jpg', 'sha-a'), duplicateOf: null });
+    });
+
+    it('makes a retried duplicate a duplicate again', async () => {
+      const { api, queue } = setup();
+      api.processUpload.mockImplementation(async (uploadId, fileName) => sameAsA(uploadId, fileName));
+      const [first, copy] = queue.add([jpeg('a.jpg'), jpeg('copy of a.jpg')]);
+      await queue.allSettled();
+      expect(copy.duplicateOf).toBe(first);
+      expect(queue.retry(copy)).toBe(false);
+
+      expect(queue.markFailed(copy, missingUpload())).toBe(true);
+      expect(copy).toMatchObject({ state: 'failed', media: null, duplicateOf: null });
+      expect(first).toMatchObject({ media: mediaFor('a.jpg', 'sha-a'), duplicateOf: null });
+
+      expect(queue.retry(copy)).toBe(true);
+      await queue.allSettled();
+      expect(copy).toMatchObject({ state: 'ready', media: null });
+      expect(copy.duplicateOf).toBe(first);
+      expect(first).toMatchObject({ media: mediaFor('a.jpg', 'sha-a'), duplicateOf: null });
     });
   });
 

@@ -48,7 +48,12 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
 
   function notify() {
     const list = items();
-    onChange(list);
+    // A throwing UI callback mustn't fail an upload, or leave the queue half updated.
+    try {
+      onChange(list);
+    } catch (error) {
+      console.error('Upload queue onChange failed', error);
+    }
     if (waiters.length && !hasActive()) {
       const settled = waiters;
       waiters = [];
@@ -136,25 +141,35 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
         }
         if (entry.removed) return;
         entry.incoming = false;
+        // Free the place before onChange and allSettled hear of it, so a retry from them can start at once.
+        release(entry);
         becomeReady(entry, media);
         return;
       }
     } catch (error) {
-      if (!entry.removed) becomeFailed(entry, error, isRetryable(error));
+      if (entry.removed) return;
+      release(entry);
+      becomeFailed(entry, error, isRetryable(error));
     }
+  }
+
+  /** Frees an entry's place among the `concurrency` running ones, once. */
+  function release(entry) {
+    if (!entry.running) return;
+    entry.running = false;
+    running -= 1;
   }
 
   function start(entry) {
     const controller = new AbortController();
     Object.assign(entry, { running: true, controller });
     running += 1;
-    run(entry, controller.signal).finally(() => {
-      if (entry.running) {
-        entry.running = false;
-        running -= 1;
-      }
-      pump();
-    });
+    run(entry, controller.signal)
+      .catch((error) => console.error('Upload queue failed', error)) // run() handles its own errors; a backstop
+      .finally(() => {
+        release(entry);
+        pump();
+      });
   }
 
   function pump() {
@@ -165,13 +180,14 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
     }
   }
 
-  /** Stops an entry's work, and deletes its upload if it was uploaded but not processed. */
+  /**
+   * Stops an entry's work, and deletes its upload if it was uploaded but not processed.
+   * Its place is freed at once, but processUpload takes no signal: a request already sent runs on, so one extra
+   * request can briefly overlap the next file's. That's harmless, because the Function runs image jobs one at a time.
+   */
   function drop(entry) {
     entry.removed = true;
-    if (entry.running) {
-      entry.running = false;
-      running -= 1;
-    }
+    release(entry);
     entry.controller?.abort();
     if (entry.incoming) {
       entry.incoming = false;
@@ -207,7 +223,8 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
     retry(item) {
       const entry = find(item);
       if (!entry || item.state !== 'failed' || !item.retryable) return false;
-      Object.assign(item, { state: 'queued', error: null, retryable: false });
+      const progress = entry.next === 'process' ? 1 : 0;
+      Object.assign(item, { state: 'queued', progress, error: null, retryable: false });
       notify();
       pump();
       return true;
@@ -215,13 +232,15 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
 
     /**
      * Fails a ready item with `error`, retryably, e.g. when saving reports `missing_upload`.
-     * Retrying it processes the file again, uploading it again if the upload is gone. Ignores other items.
+     * Retrying it processes the file again, uploading it again if the upload is gone.
+     * → whether it applied (false for an item that isn't ready, or isn't in the queue).
      */
     markFailed(item, error) {
       const entry = find(item);
-      if (!entry || item.state !== 'ready') return;
-      entry.next = 'process';
+      if (!entry || item.state !== 'ready') return false;
+      // A ready item was uploaded, so it already resumes at processing.
       becomeFailed(entry, error, true);
+      return true;
     },
 
     /** Drops one item: aborts its upload, or deletes its upload if it was uploaded but not yet processed. */
