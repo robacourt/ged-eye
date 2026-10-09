@@ -1,7 +1,8 @@
 /*
  * Editing UI for editors only: the person, family and relative dialogs, the unlink confirmation, the details
- * panel's edit controls, the History panel and the Editors dialog. It loads with their code (editing.js), so
- * viewers never download it. The shared dialog and form controls they build on are in editorStyles.css.
+ * panel's edit controls, the History panel, the Editors dialog, the person picker and the Add photos sheet. It
+ * loads with their code (editing.js), so viewers never download it. The shared dialog and form controls they build
+ * on are in editorStyles.css.
  */
 
 /* Person and family editors (personEditor.js, familyEditor.js) */
@@ -999,3 +1000,216 @@
 }
 
 /* ==== End of person picker ==== */
+
+/* ==== Add photos (addPhotosDialog.js) ==== */
+
+/* Mobile first. Below 768px the sheet is full screen (editorStyles.css); its actions sit in a bar stuck to the
+   bottom, which takes the home indicator's inset in place of the dialog. */
+.editor-dialog.add-photos-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(720px, 100%);
+  padding-bottom: 0;
+}
+
+/* The body and form fill a full-screen sheet, so the action bar sits at the bottom even when there's little above it. */
+.add-photos-dialog .editor-dialog-body {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.add-photos-form {
+  flex: 1 0 auto;
+}
+
+.add-photos-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-photos-empty {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.add-photos-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.add-photos-cards:empty {
+  display: none;
+}
+
+.add-photos-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.add-photos-card[data-state="failed"] {
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.add-photos-card:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.add-photos-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.add-photos-preview {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.add-photos-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-photos-doc {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.add-photos-card-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.add-photos-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.add-photos-file-name {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow-wrap: anywhere;
+}
+
+.add-photos-status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.add-photos-status-error {
+  color: #ff8a8a;
+}
+
+.add-photos-progress {
+  width: 100%;
+  height: 6px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.add-photos-progress::-webkit-progress-bar {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.add-photos-progress::-webkit-progress-value {
+  border-radius: 3px;
+  background: #00d4ff;
+}
+
+.add-photos-progress::-moz-progress-bar {
+  border-radius: 3px;
+  background: #00d4ff;
+}
+
+.add-photos-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.add-photos-card-actions .editor-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+.add-photos-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* A caption or date already in the tree is shared, so it is shown but not edited here. */
+.add-photos-fields .editor-input[readonly] {
+  border-style: dashed;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.add-photos-confirm-text {
+  margin: 8px 0;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+/* The action bar. Save gets a row of its own on phones, in easy reach of a thumb. */
+.add-photos-dialog .add-photos-actions {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+}
+
+.add-photos-save {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .add-photos-preview {
+    width: 120px;
+    height: 120px;
+  }
+
+  .add-photos-dialog .add-photos-actions {
+    padding-bottom: 16px;
+  }
+
+  .add-photos-save {
+    flex: 0 0 auto;
+  }
+}
+
+/* ==== End of Add photos ==== */
