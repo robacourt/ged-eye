@@ -870,3 +870,132 @@
 }
 
 /* ==== End of History panel and Editors dialog ==== */
+
+/* ==== Person picker (personPicker.js, personSearch.js) ==== */
+
+.person-picker,
+.person-search {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.person-picker-chips,
+.person-picker-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.person-picker-chips:empty,
+.person-picker-results:empty {
+  display: none;
+}
+
+.person-picker-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.person-picker-chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-height: 44px;
+  padding-left: 14px;
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  border-radius: 22px;
+  background: rgba(0, 212, 255, 0.12);
+  font-size: 15px;
+}
+
+.person-picker-chip-fixed {
+  padding-right: 14px;
+}
+
+.person-picker-chip-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.person-picker-remove {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: rgba(255, 255, 255, 0.7);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.person-picker-remove:hover {
+  color: #ff8a8a;
+}
+
+.person-picker-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.person-picker-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 0 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+.person-picker-result-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.person-picker-result-years {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.person-picker-add {
+  flex-shrink: 0;
+  align-self: stretch;
+  min-width: 72px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0 8px 8px 0;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.person-picker-add:hover:not([aria-disabled="true"]) {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.person-picker-add[aria-disabled="true"] {
+  color: rgba(255, 255, 255, 0.45);
+  cursor: default;
+}
+
+.person-picker-remove:focus-visible,
+.person-picker-add:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* ==== End of person picker ==== */
