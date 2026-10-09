@@ -24,3 +24,22 @@ export async function resetTestDatabase() {
   await migrate(TEST_DATABASE_URL, { log: () => {} });
   return client;
 }
+
+/**
+ * Runs `sql` (one or more statements) inside a recorded change, as tests and scripts must after 006.
+ * pg can't take params with multi-statement SQL, so call it once per statement when using params.
+ * It commits: tests that roll back instead call begin_change themselves right after their own begin.
+ * READ COMMITTED throughout: the global lock relies on each statement taking a fresh snapshot after it.
+ */
+export async function withChange(client, sql, params = []) {
+  await client.query('begin');
+  try {
+    await client.query(`select begin_change('test@example.test', 'Test', 'fixture', 'script', 'Test fixture', '{}', '{}')`);
+    const result = await client.query(sql, params);
+    await client.query('commit');
+    return result;
+  } catch (error) {
+    await client.query('rollback');
+    throw error;
+  }
+}
