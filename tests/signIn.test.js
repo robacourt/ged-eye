@@ -333,7 +333,9 @@ describe('mountSignIn', () => {
       headerButton().click();
       $('.signin-google').click();
       await settle();
-      expect(client.signIn.social).toHaveBeenCalledWith({ provider: 'google', callbackURL: window.location.href });
+      expect(client.signIn.social).toHaveBeenCalledWith({
+        provider: 'google', callbackURL: window.location.href, newUserCallbackURL: window.location.href
+      });
       expect(errorText($('.signin-step-email'))).toBeNull();
     });
 
