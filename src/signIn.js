@@ -12,6 +12,7 @@ export const COOKIE_BLOCKED_MESSAGE =
   'Your browser blocked the sign-in cookie. Editing needs a recent Safari/iOS, Chrome, Edge or Firefox.';
 
 const GENERIC_ERROR = 'Something went wrong. Try again.';
+const EXPIRED_TOAST_MS = 15_000;
 
 // Better Auth's error codes, and 429 from its rate limiter.
 const AUTH_MESSAGES = {
@@ -102,7 +103,7 @@ function dialogMarkup(id, dev) {
           <form class="signin-code-form" novalidate>
             <label class="editor-field">
               <span>6-digit code</span>
-              <input class="editor-input signin-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" aria-describedby="${id}-code-error">
+              <input class="editor-input signin-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" aria-describedby="${id}-code-error">
             </label>
             <p class="editor-error" id="${id}-code-error" role="alert" hidden></p>
             <button type="submit" class="editor-btn editor-btn-primary" data-label="Sign in">Sign in</button>
@@ -163,7 +164,7 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
 
   // Dialog.
   const backdrop = document.createElement('div');
-  backdrop.className = 'editor-dialog-backdrop';
+  backdrop.className = 'editor-dialog-backdrop signin-backdrop';
   backdrop.hidden = true;
   backdrop.innerHTML = dialogMarkup(id, dev);
   document.body.appendChild(backdrop);
@@ -435,7 +436,7 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     event.preventDefault();
     if (busy) return;
     clearErrors();
-    const code = codeInput.value.replace(/\s+/g, '');
+    const code = codeInput.value.replace(/[\s-]+/g, ''); // pasted codes may be spaced, like "123 456"
     if (!/^\d{6}$/.test(code)) return showError(codeError, 'Enter the 6-digit code from the email.', codeInput);
     const { stale, result, error } = await attempt(codeSubmit, 'Signing in…',
       signInTask(() => auth.verifyEmailCode(pendingEmail, code)));
@@ -505,6 +506,7 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     clearErrors();
     showStep('email');
     if (pendingEmail && !emailInput.value) emailInput.value = pendingEmail;
+    document.body.appendChild(backdrop); // last, so it's above any dialog already open
     backdrop.hidden = false;
     render();
     emailInput.focus();
@@ -544,18 +546,34 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     }
   }
 
+  /** Open dialogs, bottom to top: by z-index (the sign-in dialog's is highest), then document order. */
+  function openDialogs() {
+    const zIndex = (el) => Number.parseInt(getComputedStyle(el).zIndex, 10) || 0;
+    return [...document.querySelectorAll('.editor-dialog-backdrop')]
+      .filter(el => !el.hidden)
+      .map((el, order) => ({ el, order, z: zIndex(el) }))
+      .sort((a, b) => a.z - b.z || a.order - b.order)
+      .map(({ el }) => el);
+  }
+
+  const isTopmost = () => isOpen && openDialogs().at(-1) === backdrop;
+
+  // Registered in the capture phase, so an Escape that closes this dialog never reaches a dialog below it.
   function onKeyDown(event) {
     if (isOpen) {
+      if (!isTopmost()) return;
       if (event.key === 'Escape') {
         event.preventDefault();
+        event.stopPropagation();
         close();
       } else if (event.key === 'Tab') {
         trapTab(event);
       }
       return;
     }
-    if (menuIsOpen && event.key === 'Escape') {
+    if (menuIsOpen && event.key === 'Escape' && openDialogs().length === 0) {
       event.preventDefault();
+      event.stopPropagation();
       closeMenu();
       button.focus();
     }
@@ -565,25 +583,50 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     if (menuIsOpen && !wrapper.contains(event.target)) closeMenu();
   }
 
-  document.addEventListener('keydown', onKeyDown);
+  document.addEventListener('keydown', onKeyDown, true);
   document.addEventListener('click', onDocumentClick);
 
   // --- Auth events -----------------------------------------------------------------------------------------
 
+  let expiredToast = null;
+
+  function showExpiredToast() {
+    if (expiredToast?.element.isConnected) return;
+    expiredToast = showToast('Signed out — sign in again.', {
+      timeout: EXPIRED_TOAST_MS,
+      action: { label: 'Sign in', onClick: () => open() }
+    });
+  }
+
+  function dismissExpiredToast() {
+    expiredToast?.dismiss();
+    expiredToast = null;
+  }
+
   const unsubscribe = auth.onChange((state, reason) => {
-    if (state.user) {
-      loadAccount(reason === 'restored' ? 'restored' : 'signed-in');
-      return;
-    }
-    accountRequest = null;
-    account = { status: 'none' };
-    closeMenu();
-    render();
-    callSafely(onSignedOut, reason);
-    if (reason === 'expired') {
-      showToast('Signed out — sign in again.', { timeout: 0, action: { label: 'Sign in', onClick: () => open() } });
-    } else if (reason === 'cookie-blocked' && !isOpen) {
-      open();
+    switch (reason) {
+      case 'restored':
+      case 'signed-in':
+        if (!state.user) return;
+        dismissExpiredToast();
+        // Signed in by a restore or in another tab while the dialog sat idle. (A sign-in from the dialog
+        // keeps it busy until /me has answered, then closes it itself.)
+        if (isOpen && !busy) close();
+        loadAccount(reason);
+        return;
+      case 'signed-out':
+      case 'expired':
+      case 'cookie-blocked':
+        accountRequest = null;
+        account = { status: 'none' };
+        closeMenu();
+        render();
+        callSafely(onSignedOut, reason);
+        if (reason === 'expired') showExpiredToast();
+        else if (reason === 'cookie-blocked' && !isOpen) open();
+        return;
+      default:
+        // 'role': me() caching the role it just returned. The menu already shows /me's answer.
     }
   });
 
@@ -603,7 +646,8 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     getAccount: () => (account.status === 'ready' ? account.me : null),
     destroy() {
       unsubscribe();
-      document.removeEventListener('keydown', onKeyDown);
+      dismissExpiredToast();
+      document.removeEventListener('keydown', onKeyDown, true);
       document.removeEventListener('click', onDocumentClick);
       close({ restoreFocus: false });
       accountRequest = null;

@@ -3,14 +3,15 @@
  * Kept apart from style.css, which this file doesn't restyle.
  *
  * Stacking: the header button (1100) sits above the tree and the loading overlay (1000) but below the photo
- * viewer (10000); dialogs (10500) and toasts (10600) sit above everything.
+ * viewer (10000). Dialogs (10500) sit above everything; the sign-in dialog (10550) above them, since an
+ * editor whose session expired signs in again over their open form; toasts (10600) on top.
  */
 
 /* `hidden` must win over the display values below. */
 .signin [hidden],
 .editor-dialog-backdrop[hidden],
 .editor-dialog [hidden],
-.toast-container [hidden] {
+.toast-stack [hidden] {
   display: none !important;
 }
 
@@ -250,6 +251,10 @@
   padding: 16px 20px 24px;
 }
 
+.signin-backdrop {
+  z-index: 10550;
+}
+
 @media (max-width: 767px) {
   .editor-dialog-backdrop {
     align-items: stretch;
@@ -349,19 +354,21 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Toasts, bottom centre */
-.toast-container {
+/* Toasts, bottom centre: the polite region, then the alert region (both always present, maybe empty) */
+.toast-stack {
   position: fixed;
   left: 50%;
   bottom: calc(16px + env(safe-area-inset-bottom));
   z-index: 10600;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
   width: min(560px, calc(100vw - 24px));
   transform: translateX(-50%);
   pointer-events: none;
+}
+
+.toast-container,
+.toast-alerts {
+  display: flex;
+  flex-direction: column;
 }
 
 .toast {
@@ -369,6 +376,7 @@
   align-items: center;
   gap: 8px;
   width: 100%;
+  margin-top: 8px;
   padding: 6px 6px 6px 16px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;

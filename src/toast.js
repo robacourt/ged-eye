@@ -1,45 +1,56 @@
 /**
  * Transient messages at the bottom of the screen, with an optional action (such as Undo).
  * Messages and labels are set as text, never as HTML.
+ *
+ * Screen readers hear toasts through two live regions that are created once and then kept: a polite one
+ * (`.toast-container`) and an assertive one for errors (`.toast-alerts`). A toast's text is filled in just
+ * after the toast is added, so it reads as a change to a region the screen reader already knows.
  */
 
 const DEFAULT_TIMEOUT_MS = 6000;
 const MAX_VISIBLE = 3;
 
-let container = null;
+let regions = null; // { stack, polite, alerts }
+const visible = []; // dismiss functions, oldest first
 
-function getContainer() {
-  if (!container || !container.isConnected) {
-    container = document.createElement('div');
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-  }
-  return container;
+function getRegions() {
+  if (regions?.stack.isConnected) return regions;
+  const stack = document.createElement('div');
+  stack.className = 'toast-stack';
+  const polite = document.createElement('div');
+  polite.className = 'toast-container';
+  polite.setAttribute('aria-live', 'polite');
+  polite.setAttribute('aria-relevant', 'additions text');
+  const alerts = document.createElement('div');
+  alerts.className = 'toast-alerts';
+  alerts.setAttribute('role', 'alert');
+  alerts.setAttribute('aria-live', 'assertive');
+  alerts.setAttribute('aria-relevant', 'additions text');
+  stack.append(polite, alerts);
+  document.body.appendChild(stack);
+  visible.length = 0; // toasts in a removed stack are gone
+  regions = { stack, polite, alerts };
+  return regions;
 }
 
 /**
  * @param message  plain text
  * @param options.action   `{ label, onClick }`: a button that runs `onClick`, then dismisses the toast
  * @param options.timeout  milliseconds before it goes (paused while hovered or focused); 0 keeps it until dismissed
- * @param options.kind     'info' (a polite status) or 'error' (an alert)
+ * @param options.kind     'info' (announced politely) or 'error' (announced at once)
  * @returns `{ dismiss, element }`
  */
 export function showToast(message, { action = null, timeout = DEFAULT_TIMEOUT_MS, kind = 'info' } = {}) {
+  const isError = kind === 'error';
   const toast = document.createElement('div');
-  toast.className = `toast toast-${kind === 'error' ? 'error' : 'info'}`;
-  if (kind === 'error') {
-    toast.setAttribute('role', 'alert');
-  } else {
-    toast.setAttribute('role', 'status');
-    toast.setAttribute('aria-live', 'polite');
-  }
+  toast.className = `toast toast-${isError ? 'error' : 'info'}`;
 
   const text = document.createElement('span');
   text.className = 'toast-message';
-  text.textContent = String(message);
   toast.appendChild(text);
 
   let timer = null;
+  let fill = null;
   let dismissed = false;
   let hovered = false;
   let focused = false;
@@ -48,7 +59,10 @@ export function showToast(message, { action = null, timeout = DEFAULT_TIMEOUT_MS
     if (dismissed) return;
     dismissed = true;
     clearTimeout(timer);
+    clearTimeout(fill);
     toast.remove();
+    const index = visible.indexOf(dismiss);
+    if (index !== -1) visible.splice(index, 1);
   }
 
   function startTimer() {
@@ -95,9 +109,11 @@ export function showToast(message, { action = null, timeout = DEFAULT_TIMEOUT_MS
     startTimer();
   });
 
-  const parent = getContainer();
-  parent.appendChild(toast);
-  while (parent.children.length > MAX_VISIBLE) parent.firstElementChild.remove();
+  const { polite, alerts } = getRegions();
+  (isError ? alerts : polite).appendChild(toast);
+  visible.push(dismiss);
+  while (visible.length > MAX_VISIBLE) visible[0]();
+  fill = setTimeout(() => { text.textContent = String(message); }, 0);
   startTimer();
 
   return { dismiss, element: toast };

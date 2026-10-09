@@ -48,8 +48,16 @@ const ACCOUNTS = {
   viewer: { email: 'tom@example.com', name: null, role: null }
 };
 
+/** Like editApi's me(), it caches the role in auth (which tells listeners 'role'). `setup` sets `auth`. */
 function fakeApi(account = ACCOUNTS.editor) {
-  return { me: vi.fn(async () => ({ ...account })) };
+  const api = {
+    auth: null,
+    me: vi.fn(async () => {
+      api.auth?.setRole(account.role, account.email);
+      return { ...account };
+    })
+  };
+  return api;
 }
 
 /** A promise with its resolve and reject exposed, to hold a call in flight. */
@@ -69,6 +77,7 @@ let controller;
 
 function setup({ client = fakeClient(), dev = false, api = fakeApi(), auth = createAuth({ client, dev }) } = {}) {
   document.body.innerHTML = '<div id="header"></div>';
+  api.auth ??= auth;
   const callbacks = {
     onSignedIn: vi.fn(),
     onSignedOut: vi.fn(),
@@ -82,7 +91,7 @@ function setup({ client = fakeClient(), dev = false, api = fakeApi(), auth = cre
 const $ = (selector) => document.querySelector(selector);
 const headerButton = () => $('.signin-button');
 const dialog = () => $('.signin-dialog');
-const dialogOpen = () => !!dialog() && !$('.editor-dialog-backdrop').hidden;
+const dialogOpen = () => !!dialog() && !$('.signin-backdrop').hidden;
 const step = () => dialog().dataset.step;
 const menu = () => $('.account-menu');
 const menuOpen = () => !!menu() && !menu().hidden;
@@ -171,7 +180,7 @@ describe('mountSignIn', () => {
       const code = $('.signin-code-form input[name="code"]');
       expect(code.getAttribute('inputmode')).toBe('numeric');
       expect(code.getAttribute('autocomplete')).toBe('one-time-code');
-      expect(code.getAttribute('maxlength')).toBe('6');
+      expect(code.getAttribute('maxlength')).toBeNull(); // so a pasted "123 456" fits
       expect(document.activeElement).toBe(code);
       expect(visibleText('.signin-dialog button')).toEqual(expect.arrayContaining(['Sign in', 'Use a different email']));
 
@@ -454,6 +463,22 @@ describe('mountSignIn', () => {
       expect(headerButton().getAttribute('aria-expanded')).toBe('false');
     });
 
+    it("reads /me once when me() caches the role, which auth reports as a 'role' change", async () => {
+      const reasons = [];
+      const client = fakeClient({ session: sessionFor('rob@example.com') });
+      const auth = createAuth({ client });
+      auth.onChange((state, reason) => reasons.push(reason));
+      const { api, onSignedIn, onSignedOut } = setup({ client, auth, api: fakeApi(ACCOUNTS.admin) });
+      await auth.init();
+      await settle();
+      expect(reasons).toEqual(['restored', 'role']);
+      expect(auth.getRole()).toBe('admin');
+      expect(api.me).toHaveBeenCalledOnce();
+      expect(onSignedIn).toHaveBeenCalledOnce();
+      expect(onSignedIn).toHaveBeenCalledWith(ACCOUNTS.admin, 'restored');
+      expect(onSignedOut).not.toHaveBeenCalled();
+    });
+
     it('reads /me when mounted after the session was restored', async () => {
       const client = fakeClient({ session: sessionFor('rose@example.com') });
       const auth = createAuth({ client });
@@ -597,9 +622,20 @@ describe('mountSignIn', () => {
       expect(await auth.getToken({ force: true })).toBeNull();
       expect(onSignedOut).toHaveBeenCalledWith('expired');
       expect(headerButton().textContent).toBe('Sign in');
+      await settle();
       expect($('.toast-message').textContent).toBe('Signed out — sign in again.');
       $('.toast-action').click();
       expect(dialogOpen()).toBe(true);
+    });
+
+    it('removes the "sign in again" toast when someone signs in', async () => {
+      const { client, auth } = await signedInAs(ACCOUNTS.editor);
+      client.state.server = null;
+      await auth.getToken({ force: true });
+      expect(document.querySelectorAll('.toast')).toHaveLength(1);
+      await signInByCode();
+      expect(headerButton().textContent).toBe('R');
+      expect(document.querySelectorAll('.toast')).toHaveLength(0);
     });
 
     it('ignores a /me reply for someone who has since signed out', async () => {
@@ -612,6 +648,88 @@ describe('mountSignIn', () => {
       await settle();
       expect(onSignedIn).not.toHaveBeenCalled();
       expect(headerButton().textContent).toBe('Sign in');
+    });
+  });
+
+  describe('sign-in from elsewhere', () => {
+    it('closes an idle dialog when a session is restored', async () => {
+      const client = fakeClient({ session: sessionFor('rose@example.com') });
+      const { auth, api, onSignedIn } = setup({ client });
+      headerButton().click();
+      expect(dialogOpen()).toBe(true);
+      await auth.init();
+      await settle();
+      expect(dialogOpen()).toBe(false);
+      expect(api.me).toHaveBeenCalledOnce();
+      expect(onSignedIn).toHaveBeenCalledWith(ACCOUNTS.editor, 'restored');
+    });
+
+    it("keeps its own sign-in open and busy until /me answers, then closes", async () => {
+      const api = fakeApi();
+      const pending = deferred();
+      api.me.mockReturnValue(pending.promise);
+      const { onSignedIn } = setup({ api });
+      await signInByCode();
+      expect(headerButton().textContent).toBe('R'); // auth already signed in
+      expect(dialogOpen()).toBe(true);
+      expect(dialog().getAttribute('aria-busy')).toBe('true');
+      expect($('.signin-code-form button[type="submit"]').textContent).toBe('Signing in…');
+      pending.resolve(ACCOUNTS.editor);
+      await settle();
+      expect(dialogOpen()).toBe(false);
+      expect(api.me).toHaveBeenCalledOnce();
+      expect(onSignedIn).toHaveBeenCalledOnce();
+    });
+  });
+
+  describe('stacking', () => {
+    function otherDialog() {
+      const other = document.createElement('div');
+      other.className = 'editor-dialog-backdrop';
+      other.innerHTML = '<div class="editor-dialog" role="dialog"><button type="button">Other</button></div>';
+      document.body.appendChild(other);
+      return other;
+    }
+
+    it('goes on top of a dialog that is already open, and Escape closes only the sign-in dialog', () => {
+      setup();
+      const other = otherDialog();
+      const below = vi.fn();
+      document.addEventListener('keydown', below);
+      try {
+        headerButton().click();
+        expect(document.body.lastElementChild).toBe($('.signin-backdrop'));
+        key('Escape');
+        expect(dialogOpen()).toBe(false);
+        expect(other.isConnected).toBe(true);
+        expect(below).not.toHaveBeenCalled(); // the dialog below never hears it
+      } finally {
+        document.removeEventListener('keydown', below);
+      }
+    });
+
+    it('leaves Escape and Tab to a dialog above it', () => {
+      setup();
+      headerButton().click();
+      const other = otherDialog();
+      other.querySelector('button').focus();
+      const escape = key('Escape');
+      expect(escape.defaultPrevented).toBe(false);
+      expect(dialogOpen()).toBe(true);
+      expect(key('Tab').defaultPrevented).toBe(false);
+      expect(document.activeElement).toBe(other.querySelector('button'));
+    });
+
+    it('leaves Escape alone while the menu is closed and no dialog is open', async () => {
+      setup();
+      const below = vi.fn();
+      document.addEventListener('keydown', below);
+      try {
+        key('Escape');
+        expect(below).toHaveBeenCalledOnce();
+      } finally {
+        document.removeEventListener('keydown', below);
+      }
     });
   });
 
