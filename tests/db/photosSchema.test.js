@@ -2,10 +2,13 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
 
-// Alice (I1) and Bert (I2) are both tagged in m1; m2 is Alice's alone. Both of Alice's links are at
-// position 0, and m2's link is made first, so only the media_id tie-break puts m1 first.
+// Alice (I1) and Aaron (I2) are both tagged in m1; m2 is Alice's alone. Aaron's name sorts before
+// Alice's but his id sorts after hers, and m1's links are made in id order, so only ordering by
+// display_name lists Aaron first. Both of Alice's links are at position 0, broken by media_id. m2's
+// link is made first, so on this small table the scan order would likely put m2 first without the
+// tie-break, but that rests on the scan order and doesn't prove the tie-break on its own.
 const FIXTURE = `
-insert into person (id, given_name, surname) values ('I1', 'Alice', 'Ash'), ('I2', 'Bert', 'Birch');
+insert into person (id, given_name, surname) values ('I1', 'Alice', 'Ash'), ('I2', 'Aaron', 'Baker');
 insert into media (sha256, original_path, file_name, content_type, byte_size, object_key, thumb_key,
                    display_key, width, height, caption, date) values
   ('m1', 'upload/m1.jpg', 'm1.jpg', 'image/jpeg', 10, 'originals/m1.jpg', 'thumbs/m1.webp',
@@ -64,7 +67,7 @@ describe.skipIf(!url)('migration 008: photos schema (database)', () => {
       {
         id: m1, key: 'originals/m1.jpg', thumbKey: 'thumbs/m1.webp', displayKey: 'display/m1.webp',
         fileName: 'm1.jpg', contentType: 'image/jpeg', caption: 'At the beach', date: 'about 1923', width: 2000, height: 1500,
-        people: [{ id: 'I1', name: 'Alice Ash' }, { id: 'I2', name: 'Bert Birch' }]
+        people: [{ id: 'I2', name: 'Aaron Baker' }, { id: 'I1', name: 'Alice Ash' }]
       },
       {
         id: m2, key: 'originals/m2.pdf', thumbKey: null, displayKey: null,
@@ -74,7 +77,7 @@ describe.skipIf(!url)('migration 008: photos schema (database)', () => {
     ]);
     for (const photo of photos) expect(Object.keys(photo).sort()).toEqual([...PHOTO_KEYS].sort());
     expect((await record('I2')).photos.map(p => [p.id, p.people])).toEqual([
-      [m1, [{ id: 'I1', name: 'Alice Ash' }, { id: 'I2', name: 'Bert Birch' }]]
+      [m1, [{ id: 'I2', name: 'Aaron Baker' }, { id: 'I1', name: 'Alice Ash' }]]
     ]);
   });
 
