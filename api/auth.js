@@ -1,4 +1,5 @@
 import { createRemoteJWKSet, jwtVerify } from 'jose';
+import { ApiError } from './http.js';
 
 export class AuthError extends Error {
   constructor(status, code, message = code) {
@@ -73,6 +74,27 @@ export function createAuthenticator({ jwksUrl, issuer, getKey }) {
       name: typeof payload.name === 'string' && payload.name !== '' ? payload.name : null,
       sub: payload.sub
     };
+  };
+}
+
+/**
+ * The Function's authenticator, from the env vars Neon injects when Auth is enabled on the branch.
+ * Without them, requests with no Authorization header are anonymous (the public site still works),
+ * but a request with one is a 500: its token can't be checked, and must never be silently ignored.
+ * That misconfiguration is logged once, not per request.
+ */
+export function authenticatorFromEnv({ NEON_AUTH_JWKS_URL, NEON_AUTH_BASE_URL }, { log = console.error } = {}) {
+  if (NEON_AUTH_JWKS_URL && NEON_AUTH_BASE_URL) {
+    return createAuthenticator({ jwksUrl: NEON_AUTH_JWKS_URL, issuer: new URL(NEON_AUTH_BASE_URL).origin });
+  }
+  let logged = false;
+  return async function authenticate(request) {
+    if (request.headers.get('authorization') === null) return null;
+    if (!logged) {
+      logged = true;
+      log('Neon Auth is not configured (NEON_AUTH_JWKS_URL and NEON_AUTH_BASE_URL): requests with an Authorization header get 500');
+    }
+    throw new ApiError(500, 'internal');
   };
 }
 

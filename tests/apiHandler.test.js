@@ -2,9 +2,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import { createHandler, VIEW_VERSION } from '../api/handler.js';
 import { ApiError, MAX_BODY_BYTES } from '../api/http.js';
-import { AuthError } from '../api/auth.js';
+import { AuthError, authenticatorFromEnv } from '../api/auth.js';
 import { maskNoteEmails } from '../api/privacy.js';
-import { createDb, escapeLike, authenticatorFromEnv } from '../api/index.js';
+import { createDb, escapeLike, inTransaction } from '../api/db.js';
 
 const VIEW = {
   person: { id: 'I1', notes: ['Write to jo@example.org'] },
@@ -177,8 +177,15 @@ describe('GET /person/:id', () => {
     const res = await request('/person/I1', { token: 'expired' });
     expect(res.status).toBe(401);
     expect(await res.json()).toEqual({ error: 'unauthenticated' });
+    expect(res.headers.get('www-authenticate')).toBe('Bearer');
     expect(res.headers.get('cache-control')).toBe('no-store');
     expect(db.personView).not.toHaveBeenCalled();
+  });
+
+  it('checks the token before the id', async () => {
+    const { request } = setup();
+    expect((await request('/person/' + encodeURIComponent('I1; drop table'), { token: 'expired' })).status).toBe(401);
+    expect((await request('/person/%E0%A4%A', { token: 'expired' })).status).toBe(401);
   });
 
   it('returns 500 and logs when token verification fails for a reason other than the token', async () => {
@@ -286,9 +293,23 @@ describe('GET /search', () => {
     expect(db.search).not.toHaveBeenCalled();
   });
 
-  it('rejects an invalid token with 401', async () => {
+  it('counts characters as code points', async () => {
     const { request, db } = setup();
-    expect((await request('/search?q=Ann', { token: 'expired' })).status).toBe(401);
+    const emoji = '\u{1F600}'; // two UTF-16 units
+    expect((await request('/search?q=' + encodeURIComponent(emoji))).status).toBe(400);
+    expect((await request('/search?q=' + encodeURIComponent(emoji.repeat(2)))).status).toBe(200);
+    expect((await request('/search?q=' + encodeURIComponent(emoji.repeat(100)))).status).toBe(200);
+    expect((await request('/search?q=' + encodeURIComponent(emoji.repeat(101)))).status).toBe(400);
+    expect(db.search).toHaveBeenCalledTimes(2);
+  });
+
+  it('rejects an invalid token with 401, before validating the query', async () => {
+    const { request, db } = setup();
+    for (const query of ['?q=Ann', '?q=a', '?q=Ann&limit=x']) {
+      const res = await request('/search' + query, { token: 'expired' });
+      expect(res.status).toBe(401);
+      expect(res.headers.get('www-authenticate')).toBe('Bearer');
+    }
     expect(db.search).not.toHaveBeenCalled();
   });
 });
@@ -300,6 +321,7 @@ describe('GET /me', () => {
       const res = await request('/me', { token });
       expect(res.status).toBe(401);
       expect(await res.json()).toEqual({ error: 'unauthenticated' });
+      expect(res.headers.get('www-authenticate')).toBe('Bearer');
     }
   });
 
@@ -478,10 +500,14 @@ describe('write routes', () => {
   it('require an editor', async () => {
     const { request, db } = setup();
     for (const [path, method, body] of routes) {
-      expect((await request(path, { method, body })).status).toBe(401);
-      expect((await request(path, { method, body, token: 'expired' })).status).toBe(401);
+      for (const token of [undefined, 'expired']) {
+        const res = await request(path, { method, body, token });
+        expect(res.status).toBe(401);
+        expect(res.headers.get('www-authenticate')).toBe('Bearer');
+      }
       const res = await request(path, { method, body, token: 'viewer' });
       expect(res.status).toBe(403);
+      expect(res.headers.get('www-authenticate')).toBeNull();
       expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'viewer@example.test' });
     }
     for (const fn of ['runChange', 'listChanges', 'toggle', 'undoLast', 'redoLast']) expect(db[fn]).not.toHaveBeenCalled();
@@ -537,6 +563,12 @@ describe('write routes', () => {
       expect(res.status).toBe(status);
       expect(await res.json()).toEqual(body);
     }
+  });
+
+  it('does not log deliberate ApiErrors', async () => {
+    const { request, log } = setup({ runChange: vi.fn().mockRejectedValue(new ApiError(501, 'not_implemented')) });
+    expect((await request('/changes', { method: 'POST', token: 'editor', body: { kind: 'update_person', params: {} } })).status).toBe(501);
+    expect(log).not.toHaveBeenCalled();
   });
 
   it('returns 500 and logs unexpected database errors', async () => {
@@ -637,7 +669,7 @@ describe('write routes', () => {
   });
 });
 
-describe('database layer (api/index.js)', () => {
+describe('api/db.js', () => {
   function fakePool(rows) {
     const query = vi.fn(async () => ({ rows }));
     return { query, connect: vi.fn() };
@@ -659,12 +691,14 @@ describe('database layer (api/index.js)', () => {
     expect(params).toEqual(['I1']);
   });
 
-  it('searches by similarity or an escaped prefix', async () => {
+  it('searches by name or word prefix, escaped, or by word similarity', async () => {
     const pool = fakePool([{ id: 'I1', name: 'Ann Lee', birth_year: 1850, death_year: null }]);
     expect(await createDb(pool).search('50%_\\', 20)).toEqual([{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null }]);
     const [sql, params] = pool.query.mock.calls[0];
-    expect(sql).toMatch(/display_name % \$1/);
-    expect(sql).toMatch(/ilike \$2 escape '\\'/);
+    expect(sql).toMatch(/display_name ilike \$2::text escape '\\'/);
+    expect(sql).toMatch(/display_name ilike \('% ' \|\| \$2::text\) escape '\\'/);
+    expect(sql).toMatch(/\$1::text <% display_name/);
+    expect(sql).toMatch(/gedcom_year\(birth_date\)/);
     expect(params).toEqual(['50%_\\', '50\\%\\_\\\\%', 20]);
   });
 
@@ -684,13 +718,87 @@ describe('database layer (api/index.js)', () => {
     }
   });
 
-  it('treats every request as anonymous when Neon Auth is not configured', async () => {
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const authenticate = authenticatorFromEnv({});
-    const request = new Request('https://api.test/me', { headers: { authorization: 'Bearer anything' } });
-    expect(await authenticate(request)).toBeNull();
-    expect(warn).toHaveBeenCalled();
-    warn.mockRestore();
+  it('runs a transaction with the write timeouts and releases the client', async () => {
+    const client = { query: vi.fn(async () => ({ rows: [] })), release: vi.fn() };
+    const pool = { connect: vi.fn(async () => client) };
+    expect(await inTransaction(pool, async (tx) => { await tx.query('select 1'); return 'done'; })).toBe('done');
+    expect(client.query.mock.calls.map(([sql]) => sql)).toEqual([
+      'begin',
+      "set local statement_timeout = '10s'; set local idle_in_transaction_session_timeout = '15s'",
+      'select 1',
+      'commit'
+    ]);
+    expect(client.release).toHaveBeenCalledWith(undefined);
+  });
+
+  it('rolls back and rethrows on error, discarding the client if the rollback fails too', async () => {
+    const failure = new Error('boom');
+    const client = { query: vi.fn(async () => ({ rows: [] })), release: vi.fn() };
+    const pool = { connect: vi.fn(async () => client) };
+    await expect(inTransaction(pool, async () => { throw failure; })).rejects.toBe(failure);
+    expect(client.query).toHaveBeenLastCalledWith('rollback');
+    expect(client.release).toHaveBeenCalledWith(undefined);
+
+    const lost = new Error('connection lost');
+    const broken = { query: vi.fn(async (sql) => { if (sql === 'rollback') throw lost; return { rows: [] }; }), release: vi.fn() };
+    await expect(inTransaction({ connect: async () => broken }, async () => { throw failure; })).rejects.toBe(failure);
+    expect(broken.release).toHaveBeenCalledWith(lost);
+  });
+
+  it('imports without creating a pool or logging', async () => {
+    vi.resetModules();
+    const Pool = vi.fn();
+    vi.doMock('pg', () => ({ Pool, default: { Pool } }));
+    const spies = ['log', 'info', 'warn', 'error'].map((method) => vi.spyOn(console, method));
+    try {
+      await import('../api/db.js');
+      expect(Pool).not.toHaveBeenCalled();
+      for (const spy of spies) expect(spy).not.toHaveBeenCalled();
+    } finally {
+      for (const spy of spies) spy.mockRestore();
+      vi.doUnmock('pg');
+    }
+  });
+});
+
+describe('when Neon Auth is not configured', () => {
+  const unconfigured = () => {
+    const log = vi.fn();
+    const db = fakeDb();
+    const handler = createHandler({ db, authenticate: authenticatorFromEnv({}, { log }), log });
+    const request = (path, headers = {}) => handler(new Request(`https://api.test${path}`, { headers }));
+    return { log, db, request };
+  };
+
+  it('serves anonymous callers as usual', async () => {
+    const { request, log } = unconfigured();
+    const res = await request('/person/I1');
+    expect(res.status).toBe(200);
+    expect((await res.json()).masked).toBe(true);
+    expect((await request('/me')).status).toBe(401);
+    expect(log).not.toHaveBeenCalled();
+  });
+
+  it('answers any request with an Authorization header with 500, logging it once', async () => {
+    const { request, log, db } = unconfigured();
+    for (const path of ['/person/I1', '/me', '/search?q=Ann']) {
+      const res = await request(path, { authorization: 'Bearer anything' });
+      expect(res.status).toBe(500);
+      expect(await res.json()).toEqual({ error: 'internal' });
+    }
+    expect(log).toHaveBeenCalledTimes(1);
+    expect(log.mock.calls[0][0]).toMatch(/Neon Auth is not configured/);
+    expect(db.personView).not.toHaveBeenCalled();
+  });
+
+  it('uses the real authenticator when it is configured', async () => {
+    const authenticate = authenticatorFromEnv({
+      NEON_AUTH_JWKS_URL: 'https://auth.example.test/.well-known/jwks.json',
+      NEON_AUTH_BASE_URL: 'https://auth.example.test/neondb/auth'
+    });
+    expect(await authenticate(new Request('https://api.test/me'))).toBeNull();
+    await expect(authenticate(new Request('https://api.test/me', { headers: { authorization: 'Basic x' } })))
+      .rejects.toMatchObject({ status: 401, code: 'unauthenticated' });
   });
 });
 

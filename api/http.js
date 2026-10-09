@@ -34,8 +34,9 @@ export function json(status, body, headers = {}) {
   });
 }
 
-export function errorJson(error) {
-  return json(error.status, { error: error.code, ...error.extra });
+/** The response for an ApiError (or anything with status, code and extra); a 401 names the Bearer scheme. */
+export function errorJson({ status, code, extra = {} }) {
+  return json(status, { error: code, ...extra }, status === 401 ? { 'www-authenticate': 'Bearer' } : {});
 }
 
 export function notModified(headers) {

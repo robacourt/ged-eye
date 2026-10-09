@@ -66,7 +66,7 @@ function validateNewEditor(body) {
 /**
  * The api Function's router.
  *
- * @param db  {
+ * @param db  (api/db.js createDb in production) {
  *   personView(id) → { view | null, version: { changeId, migration } }  (one statement, one snapshot)
  *   search(q, limit) → [{ id, name, birthYear, deathYear }]
  *   lookupEditor(email) → { email, name, role } | null
@@ -77,8 +77,9 @@ function validateNewEditor(body) {
  *   toggle(editor, changeId, 'undo' | 'redo', via) → { id, summary, personIds }
  *   undoLast(editor), redoLast(editor) → { id, summary, personIds } | null
  *   listChanges({ before, limit, person }) → [change], newest first
- * }  Any of them may throw ApiError (mapped to its status and body); anything else is a logged 500.
- * @param authenticate  (request) → { email, name } | null; throws AuthError(401) for a bad token
+ * }  Any of them may throw ApiError (sent as its status and body, unlogged); anything else is a logged 500.
+ * @param authenticate  (request) → { email, name } | null; throws AuthError(401) for a bad token.
+ *   Every route but /health and preflight authenticates first, before validating its input.
  */
 export function createHandler({ db, authenticate, log = console.error }) {
   const lookupEditor = (email) => db.lookupEditor(email);
@@ -100,11 +101,11 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function getPerson({ request, params: [raw] }) {
+    // First, so a bad token is always a 401, never a silent anonymous view.
+    const user = await authenticate(request);
     const id = decode(raw, () => new ApiError(400, 'bad_id'));
     if (!PERSON_ID.test(id)) throw new ApiError(400, 'bad_id');
 
-    // A bad token is a 401, never a silent anonymous view.
-    const user = await authenticate(request);
     const [editor, { view, version }] = await Promise.all([
       user ? db.lookupEditor(user.email) : null,
       db.personView(id)
@@ -119,11 +120,12 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function search({ request, url }) {
-    const q = (url.searchParams.get('q') ?? '').trim();
-    if ([...q].length < SEARCH_MIN_CHARS) throw invalid('q', `Type at least ${SEARCH_MIN_CHARS} characters.`);
-    if (q.length > SEARCH_MAX_CHARS) throw invalid('q', `Search text must be at most ${SEARCH_MAX_CHARS} characters.`);
-    const limit = parseLimit(url, SEARCH_LIMIT);
     await authenticate(request);
+    const q = (url.searchParams.get('q') ?? '').trim();
+    const chars = [...q].length; // code points, so an emoji counts once
+    if (chars < SEARCH_MIN_CHARS) throw invalid('q', `Type at least ${SEARCH_MIN_CHARS} characters.`);
+    if (chars > SEARCH_MAX_CHARS) throw invalid('q', `Search text must be at most ${SEARCH_MAX_CHARS} characters.`);
+    const limit = parseLimit(url, SEARCH_LIMIT);
     return json(200, { results: await db.search(q, limit) });
   }
 
@@ -225,11 +227,10 @@ export function createHandler({ db, authenticate, log = console.error }) {
       }
       return json(404, { error: 'not_found' });
     } catch (error) {
-      if (error instanceof AuthError) return json(error.status, { error: error.code });
-      if (error instanceof ApiError) {
-        if (error.status >= 500) log('api error', request.method, url.pathname, error);
-        return errorJson(error);
-      }
+      // ApiErrors and AuthErrors are deliberate responses, not logged here; whoever throws a 5xx
+      // ApiError logs it. Anything else is unexpected: logged, and a 500.
+      if (error instanceof AuthError) return errorJson({ status: error.status, code: error.code });
+      if (error instanceof ApiError) return errorJson(error);
       log('request failed', request.method, url.pathname, error);
       return json(500, { error: 'internal' });
     }
