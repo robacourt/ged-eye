@@ -4,7 +4,7 @@ import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { ROOT, argValue, isMain, readJson } from './cli.js';
 import { readLegacyPeople } from './legacyData.js';
 import {
-  apiMatchesView, masksNoteEmails, canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
+  apiMatchesView, hasNoteEmailsToMask, canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
 } from './verifyCompare.js';
 import { BUCKET, MANIFEST_PATH } from './uploadMedia.js';
 import { WARNINGS_PATH } from './importGed.js';
@@ -73,7 +73,7 @@ async function main() {
   const timings = [];
   if (apiSample > 0) {
     // Always include a few people whose notes the Function masks, so the masking path is exercised.
-    const maskedIds = shuffled(ids.filter(id => masksNoteEmails(views.get(id)))).slice(0, 3);
+    const maskedIds = shuffled(ids.filter(id => hasNoteEmailsToMask(views.get(id)))).slice(0, 3);
     const sample = [...new Set([...shuffled(ids).slice(0, apiSample), ...maskedIds])];
     console.log(`API sample (${sample.length}): ${sample.join(' ')}`);
     for (const id of sample) {

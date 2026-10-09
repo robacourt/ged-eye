@@ -27,7 +27,7 @@ export function apiMatchesView(body, view) {
 }
 
 /** Whether the Function would serve this person_view() document differently once note emails are masked. */
-export function masksNoteEmails(view) {
+export function hasNoteEmailsToMask(view) {
   return canonical(maskNoteEmails(view)) !== canonical(view);
 }
 

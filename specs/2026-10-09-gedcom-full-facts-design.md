@@ -162,7 +162,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
 
 ## Email masking (`api/privacy.js`)
 
-- `maskNoteEmails(view)` returns a copy of the view. In it, every string inside a `notes` key or any key ending in `Notes`, at any depth in the view (today only `view.person` has notes), has each match of `/[\p{L}\p{N}._%+-]{1,64}@[\p{L}\p{N}.-]{1,253}\.[\p{L}]{2,63}/gu` replaced with `[email hidden]`. The regex is bounded, so it can't backtrack quadratically on long text, and it is Unicode-aware.
+- `maskNoteEmails(view)` returns a copy of the view. In it, every string inside a `notes` key or any key ending in `Notes`, at any depth in the view (today only `view.person` has notes), has each match of `/[\p{L}\p{M}\p{N}._%+-]{1,64}@[\p{L}\p{M}\p{N}.-]{1,253}\.\p{L}{2,63}/gu` replaced with `[email hidden]`. The regex is bounded, so it can't backtrack quadratically on long text, and it is Unicode-aware.
 - Nothing else is changed. The `email` contact field is a deliberate, separate field and is left alone.
 - `createHandler` applies it to every 200 response from `/person/:id`.
 - The stored data is never masked.
@@ -250,6 +250,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 - `scripts/neon/verifyCompare.js` drops `notes`, `occupations`, `censusRecords`, `residences`, `religion` and `education` from `SCALAR_KEYS`, with a comment. Those keys are re-derived by `backfill-facts` and checked by its own verification, so the old-parser JSON baseline no longer applies to them. Relationships, photos, avatars and the core fields are still compared.
 - `scripts/neon/verify.js` compares the API body with `person_view` read from the database. That comparison moves into a helper, `apiMatchesView(body, view)` in `verifyCompare.js`, which applies `maskNoteEmails` to the database view first. Masked people (I508, I711 and I1388 today, 18 after the backfill) therefore don't report "body differs from database".
+- When the API is sampled, `verify.js` always adds up to 3 people whose notes contain an address (`hasNoteEmailsToMask` in `verifyCompare.js`). A body equal to the *unmasked* view is reported as "note emails served unmasked", which points to an old Function still deployed.
 
 ## Front end
 

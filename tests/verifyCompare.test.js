@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes,
-  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, masksNoteEmails
+  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, hasNoteEmailsToMask
 } from '../scripts/neon/verifyCompare.js';
 
 const person = (id, extra) => ({
@@ -396,24 +396,24 @@ describe('apiMatchesView', () => {
   });
 });
 
-describe('masksNoteEmails', () => {
+describe('hasNoteEmailsToMask', () => {
   const emptyView = (person) => ({ person: { id: 'I1', ...person }, family: [], relationships: {} });
 
   it('is true when masking would change an address in note text', () => {
-    expect(masksNoteEmails(emptyView({ notes: ['Write to jo@example.com'] }))).toBe(true);
-    expect(masksNoteEmails(emptyView({ otherFacts: [{ tag: 'EVEN', notes: ['jo@example.com'] }] }))).toBe(true);
+    expect(hasNoteEmailsToMask(emptyView({ notes: ['Write to jo@example.com'] }))).toBe(true);
+    expect(hasNoteEmailsToMask(emptyView({ otherFacts: [{ tag: 'EVEN', notes: ['jo@example.com'] }] }))).toBe(true);
   });
 
   it('is false when there is nothing to mask', () => {
-    expect(masksNoteEmails(emptyView({ notes: ['No address here'] }))).toBe(false);
-    expect(masksNoteEmails(emptyView({}))).toBe(false);
+    expect(hasNoteEmailsToMask(emptyView({ notes: ['No address here'] }))).toBe(false);
+    expect(hasNoteEmailsToMask(emptyView({}))).toBe(false);
   });
 
   it('is false for addresses outside note text (the email field and other facts are served as is)', () => {
-    expect(masksNoteEmails(emptyView({ email: 'jo@example.com', birthPlace: 'jo@example.org' }))).toBe(false);
+    expect(hasNoteEmailsToMask(emptyView({ email: 'jo@example.com', birthPlace: 'jo@example.org' }))).toBe(false);
   });
 
   it('is false for a missing view', () => {
-    expect(masksNoteEmails(null)).toBe(false);
+    expect(hasNoteEmailsToMask(null)).toBe(false);
   });
 });

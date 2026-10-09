@@ -90,6 +90,11 @@ describe('email masking', () => {
     expect(masked.person.notes).toEqual(['Write to [email hidden] today']);
   });
 
+  it('masks addresses whose accents are decomposed (NFD), as text pasted from macOS can be', () => {
+    const masked = maskNoteEmails({ person: { id: 'I1', notes: ['Write to josé@example.org today'] } });
+    expect(masked.person.notes).toEqual(['Write to [email hidden] today']);
+  });
+
   it('does not backtrack quadratically on a long run of address characters', () => {
     const text = 'a'.repeat(30_000) + '@';
     const started = performance.now();

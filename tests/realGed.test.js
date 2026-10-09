@@ -148,7 +148,7 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     const servedStrings = (v, key) => typeof v === 'string' ? (key === 'email' ? [] : [v])
       : Array.isArray(v) ? v.flatMap(x => servedStrings(x, key))
       : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => servedStrings(x, k)) : [];
-    const addressLike = /[\p{L}\p{N}]@[\p{L}\p{N}]/u;
+    const addressLike = /[\p{L}\p{M}\p{N}]@[\p{L}\p{M}\p{N}]/u;
     // `current` is the post-backfill shape; `legacy` is what production serves until the backfill.
     for (const [label, ged, extract] of [['current', parsed, current.extractPersonData], ['legacy', legacyParsed, legacy.extractPersonData]]) {
       const leaks = [...ged.individuals.keys()].filter(id =>
