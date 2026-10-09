@@ -6,13 +6,7 @@ import * as authModule from './auth.js';
 import * as editApi from './editApi.js';
 import { mountSignIn as defaultMountSignIn } from './signIn.js';
 import { showToast as defaultShowToast } from './toast.js';
-import { openHistoryPanel, conflictMessage, toggleErrorMessage } from './historyPanel.js';
-import { openEditorsDialog } from './editorsDialog.js';
-import { openPersonEditor } from './personEditor.js';
-import { openFamilyEditor } from './familyEditor.js';
-import { openRelativeDialog } from './relativeDialog.js';
-import { openUnlinkConfirm } from './unlinkConfirm.js';
-import { isEditorDialogOpen } from './editorDialog.js';
+import { conflictMessage, toggleErrorMessage } from './changeMessages.js';
 import { escapeHtml } from './html.js';
 import './editorStyles.css';
 
@@ -20,11 +14,10 @@ export const DEFAULT_PERSON_ID = 'I122';
 const SLOW_LOAD_MS = 300;
 const EDITOR_ROLES = new Set(['editor', 'admin']);
 const CONFLICT_TOAST_MS = 15_000;
+const EDITING_UNAVAILABLE = "Couldn't load the editing tools. Check your connection, then reload the page.";
 
-const DEFAULT_DIALOGS = {
-  openHistoryPanel, openEditorsDialog, openPersonEditor, openFamilyEditor, openRelativeDialog, openUnlinkConfirm,
-  isEditorDialogOpen
-};
+/** The editors' dialogs, History and Editors, with their stylesheet: loaded only once someone can edit. */
+const defaultLoadEditing = () => import('./editing.js');
 
 function personIdFromUrl() {
   return new URLSearchParams(window.location.search).get('person') || DEFAULT_PERSON_ID;
@@ -40,12 +33,26 @@ function setUrlPerson(personId, { replace = false } = {}) {
 
 const isNotFound = (error) => error instanceof PersonNotFoundError || error?.name === 'PersonNotFoundError';
 
+/** Logs a failure of work nobody waits for (a re-render after a change), instead of leaving it unhandled. */
+const settle = (promise) => Promise.resolve(promise).catch(error => console.error('Could not show the change', error));
+
+/**
+ * The letter a key types: the layout's own letter when it is Latin (so QWERTZ's Z is Z), else, for layouts
+ * such as Cyrillic or Greek, the letter at that position on a US keyboard (`event.code`).
+ */
+function letterOf(event) {
+  const key = typeof event.key === 'string' ? event.key.toLowerCase() : '';
+  if (/^[a-z]$/.test(key)) return key;
+  const match = /^Key([A-Z])$/.exec(event.code ?? '');
+  return match ? match[1].toLowerCase() : key;
+}
+
 /** 'undo' for Ctrl/Cmd+Z, 'redo' for Ctrl/Cmd+Shift+Z or Ctrl+Y, else null. */
 export function shortcutFor(event) {
   if (event.altKey || !(event.ctrlKey || event.metaKey)) return null;
-  const key = event.key?.toLowerCase();
-  if (key === 'z') return event.shiftKey ? 'redo' : 'undo';
-  if (key === 'y' && event.ctrlKey && !event.metaKey && !event.shiftKey) return 'redo';
+  const letter = letterOf(event);
+  if (letter === 'z') return event.shiftKey ? 'redo' : 'undo';
+  if (letter === 'y' && event.ctrlKey && !event.metaKey && !event.shiftKey) return 'redo';
   return null;
 }
 
@@ -56,9 +63,13 @@ function isTyping(element) {
     element.isContentEditable === true;
 }
 
+const isPhotoViewerOpen = () => Boolean(document.querySelector('.photo-viewer.photo-viewer-open'));
+
 /**
  * Starts the app: the tree, the details panel, sign-in, and for editors the editing dialogs and Undo/Redo.
  * Everything it uses can be passed in (the tests do); by default the real modules are used.
+ * `loadEditing` resolves to the editing UI (editing.js): `{ openPersonEditor, openFamilyEditor,
+ * openRelativeDialog, openUnlinkConfirm, openHistoryPanel, openEditorsDialog, isEditorDialogOpen }`.
  * @returns `{ showPerson, destroy }`
  */
 export function initApp({
@@ -69,9 +80,8 @@ export function initApp({
   loader = dataLoader,
   showToast = defaultShowToast,
   mountSignIn = defaultMountSignIn,
-  dialogs: dialogOverrides = {}
+  loadEditing = defaultLoadEditing
 } = {}) {
-  const dialogs = { ...DEFAULT_DIALOGS, ...dialogOverrides };
   const loadingEl = document.getElementById('loading');
 
   const overlay = {
@@ -91,9 +101,12 @@ export function initApp({
   };
 
   let currentRequest = 0;
+  let settledRequest = 0; // the last showPerson request that finished
   let requestedPersonId = null;
-  let shown = null;    // { person, relationships } in the details panel
-  let account = null;  // /me: { email, name, role }, while signed in
+  let shown = null;       // { person, relationships } in the details panel
+  let account = null;     // /me: { email, name, role }, while signed in
+  let editing = null;     // the editing UI, once loaded
+  let editingLoad = null; // Promise of it, while loading (or loaded)
   let historyPanel = null;
   let editorsDialog = null;
 
@@ -129,34 +142,78 @@ export function initApp({
       }
     } finally {
       clearTimeout(slowTimer);
+      if (isCurrent()) settledRequest = request;
     }
   }
 
   /** Shows the person in the URL again, with fresh data (after a change, a sign-in or a sign-out). */
-  const showCurrentPerson = () => showPerson(personIdFromUrl());
+  const showCurrentPerson = () => settle(showPerson(personIdFromUrl()));
 
   function navigateTo(personId) {
     if (personId === personIdFromUrl()) return showCurrentPerson();
     setUrlPerson(personId);
-    return showPerson(personId);
+    return settle(showPerson(personId));
   }
 
-  // --- The details panel's edit controls ---------------------------------------------------------------------
+  // --- The editing UI, loaded on demand ----------------------------------------------------------------------
+
+  /** Loads the editing UI (once), then shows the edit controls on the person already on screen. */
+  function ensureEditing() {
+    editingLoad ??= Promise.resolve()
+      .then(() => loadEditing())
+      .then(
+        (module) => {
+          editing = module;
+          // A person load still running renders with the controls when it finishes.
+          if (canEdit() && shown && settledRequest === currentRequest) {
+            personDetails.showPerson(shown.person, shown.relationships, detailsOptions());
+          }
+          return module;
+        },
+        (error) => {
+          editingLoad = null; // a failed chunk load can be tried again
+          throw error;
+        });
+    return editingLoad;
+  }
+
+  /** For someone who can now edit: loads the editing UI, which then shows the edit controls. */
+  function prepareEditing() {
+    if (editing) return;
+    ensureEditing().catch((error) => {
+      console.error('Could not load the editing UI', error);
+      showToast(EDITING_UNAVAILABLE, { kind: 'error' });
+    });
+  }
+
+  /** The editing UI for a dialog someone asked for, or null (and a toast) when it can't be loaded. */
+  async function editingFor() {
+    try {
+      return await ensureEditing();
+    } catch (error) {
+      console.error('Could not load the editing UI', error);
+      showToast(EDITING_UNAVAILABLE, { kind: 'error' });
+      return null;
+    }
+  }
+
+  // --- The details panel's edit controls (only once the editing UI is loaded) --------------------------------
 
   function detailsOptions() {
-    if (!canEdit()) return { canEdit: false };
+    if (!canEdit() || !editing) return { canEdit: false };
     return {
       canEdit: true,
       onEdit: editPerson,
-      onAddRelative: (relation, person) => dialogs.openRelativeDialog({
-        person, relationships: shown?.relationships ?? null, relation, api, loader, onAdded: afterCommand, onReloaded
+      onAddRelative: (relation, person) => editing.openRelativeDialog({
+        person, relationships: shown?.relationships ?? null, relation, api, loader,
+        onAdded: (result) => afterCommand(result, person.id), onReloaded
       }),
-      onUnlink: ({ relation, personId, familyId }, person) => dialogs.openUnlinkConfirm({
+      onUnlink: ({ relation, personId, familyId }, person) => editing.openUnlinkConfirm({
         person, relationships: shown?.relationships ?? null, relation, personId, familyId, api, loader,
-        onUnlinked: afterCommand, onReloaded
+        onUnlinked: (result) => afterCommand(result, person.id), onReloaded
       }),
-      onEditFamily: (family, person) => dialogs.openFamilyEditor({
-        family, api, focusId: person.id, loader, onSaved: afterCommand, onReloaded
+      onEditFamily: (family, person) => editing.openFamilyEditor({
+        family, api, focusId: person.id, loader, onSaved: (result) => afterCommand(result, person.id), onReloaded
       }),
       onShowHistory: (person) => openHistory({ id: person.id, name: person.name })
     };
@@ -170,9 +227,9 @@ export function initApp({
     } catch (error) {
       console.warn('Could not read the person to edit from the cache', error);
     }
-    dialogs.openPersonEditor({
-      person: view?.person ?? person, masked: view?.masked, api, loader,
-      onSaved: afterCommand, onDeleted: afterCommand, onReloaded
+    const done = (result) => afterCommand(result, person.id);
+    editing.openPersonEditor({
+      person: view?.person ?? person, masked: view?.masked, api, loader, onSaved: done, onDeleted: done, onReloaded
     });
   }
 
@@ -197,14 +254,18 @@ export function initApp({
   }
 
   /**
-   * After any change: forget every cached view, then show the command's `view`, or the current person again.
-   * If they no longer exist (deleted, or an undone add), show the change's first person who still does, else
-   * the default person, in place of the current URL.
+   * After any change: forget every cached view, and bring an open History up to date. Then, if the person
+   * `from` (on screen when the change was asked for) is still in the URL, show the command's `view`, or that
+   * person again; if they no longer exist (deleted, or an undone add), the change's first person who still
+   * does, else the default person, in place of the current URL entry. Someone who went elsewhere meanwhile
+   * (Back during a save) is left where they are.
    */
-  async function afterChange({ change = null, view = null } = {}) {
+  async function afterChange({ change = null, view = null } = {}, { from = personIdFromUrl(), refreshHistory = true } = {}) {
     loader.invalidateAll();
     if (view) loader.cacheView(view);
+    if (refreshHistory && historyPanel?.isOpen()) settle(historyPanel.refresh?.({ change }));
     const current = personIdFromUrl();
+    if (current !== from) return;
     const candidates = view?.person?.id ? [view.person.id] : [current, ...(change?.personIds ?? [])];
     const target = await firstLoadable([...new Set(candidates)]);
     if (personIdFromUrl() !== current) return; // they went elsewhere meanwhile, which loads afresh anyway
@@ -212,10 +273,10 @@ export function initApp({
     await showPerson(target);
   }
 
-  /** After an editor's command (`{ change, view }`): show the result and offer Undo. */
-  function afterCommand(result) {
+  /** After an editor's command (`{ change, view }`) on person `from`: show the result and offer Undo. */
+  function afterCommand(result, from) {
     if (!result?.change) return;
-    afterChange(result);
+    settle(afterChange(result, { from }));
     showToast(result.change.summary, { action: { label: 'Undo', onClick: () => undoChange(result.change) } });
   }
 
@@ -224,6 +285,7 @@ export function initApp({
    * `action` is 'revert' (an undo) or 'restore' (a redo), for the words of a refusal.
    */
   async function runToggle(call, { action = 'revert', nothing = null } = {}) {
+    const from = personIdFromUrl();
     let change;
     try {
       change = await call();
@@ -236,57 +298,75 @@ export function initApp({
       return;
     }
     showToast(change.summary);
-    await afterChange({ change });
+    await afterChange({ change }, { from });
   }
 
   /** The toast's Undo: reverts that very change, as a keyboard undo (so Redo can bring it back). */
-  const undoChange = (change) => runToggle(() => api.revert(change.id, 'keyboard'));
+  const undoChange = (change) => settle(runToggle(() => api.revert(change.id, 'keyboard')));
 
   function reportToggleError(error, action) {
+    dropQueuedKeys(); // presses queued behind this one would only fail the same way
     if (error?.code === 'conflict') {
       showToast(conflictMessage(error, action), {
         kind: 'error',
         timeout: CONFLICT_TOAST_MS,
-        action: { label: 'Open History', onClick: () => openHistory(null, { conflict: error }) }
+        action: { label: 'Open History', onClick: () => openHistory(null, { conflict: error, conflictAction: action }) }
       });
       return;
     }
     if (error?.name !== 'ApiError' || error.status >= 500) console.error('Undo or redo failed', error);
     showToast(toggleErrorMessage(error), { kind: 'error' });
-    if (error?.code === 'wrong_state') afterChange();
+    if (error?.code === 'wrong_state') settle(afterChange());
   }
 
   // --- History and Editors -----------------------------------------------------------------------------------
 
-  function openHistory(personFilter = null, { conflict = null } = {}) {
+  async function openHistory(personFilter = null, { conflict = null, conflictAction = 'revert' } = {}) {
     if (!canEdit()) return;
+    const module = await editingFor();
+    if (!module || !canEdit()) return;
     historyPanel?.close();
-    historyPanel = dialogs.openHistoryPanel({
-      api, personFilter, conflict,
+    historyPanel = module.openHistoryPanel({
+      api, personFilter, conflict, conflictAction,
       onOpenPerson: navigateTo,
-      onChanged: ({ change }) => afterChange({ change })
+      // The panel has refreshed itself and toasted the summary.
+      onChanged: ({ change }) => settle(afterChange({ change }, { refreshHistory: false }))
     });
   }
 
-  function openEditors() {
+  async function openEditors() {
+    if (account?.role !== 'admin') return;
+    const module = await editingFor();
+    if (!module || account?.role !== 'admin') return;
     editorsDialog?.close();
-    editorsDialog = dialogs.openEditorsDialog({ api, currentEmail: account?.email ?? null });
+    editorsDialog = module.openEditorsDialog({ api, currentEmail: account.email ?? null });
   }
 
   // --- Keyboard Undo and Redo ----------------------------------------------------------------------------------
 
   let keyQueue = Promise.resolve();
+  let keyEpoch = 0; // bumped to drop the presses still queued
+
+  function dropQueuedKeys() {
+    keyEpoch++;
+  }
 
   function onKeyDown(event) {
     const action = shortcutFor(event);
-    if (!action || event.defaultPrevented || event.repeat || !canEdit()) return;
+    if (!action || event.defaultPrevented || event.repeat || !canEdit() || !editing) return;
     if (isTyping(event.target) || isTyping(document.activeElement)) return;
-    if (dialogs.isEditorDialogOpen() || signIn.isOpen()) return;
+    if (editing.isEditorDialogOpen() || signIn.isOpen() || isPhotoViewerOpen()) return;
     event.preventDefault();
+    const epoch = keyEpoch;
     // One at a time, so each toast and re-render follows its own press.
-    keyQueue = keyQueue.then(() => (action === 'undo'
-      ? runToggle(() => api.undo(), { nothing: 'Nothing to undo' })
-      : runToggle(() => api.redo(), { action: 'restore', nothing: 'Nothing to redo' })));
+    keyQueue = keyQueue
+      .then(() => {
+        if (epoch !== keyEpoch || !canEdit()) return undefined;
+        return action === 'undo'
+          ? runToggle(() => api.undo(), { nothing: 'Nothing to undo' })
+          : runToggle(() => api.redo(), { action: 'restore', nothing: 'Nothing to redo' });
+      })
+      .catch(error => console.error('Undo or redo failed', error));
   }
 
   // --- Sign-in -------------------------------------------------------------------------------------------------
@@ -299,9 +379,11 @@ export function initApp({
       account = me;
       loader.invalidateAll();
       showCurrentPerson();
+      if (canEdit()) prepareEditing();
     },
     onSignedOut() {
       account = null;
+      dropQueuedKeys();
       historyPanel?.close();
       editorsDialog?.close();
       loader.invalidateAll();
@@ -336,6 +418,7 @@ export function initApp({
     destroy() {
       window.removeEventListener('popstate', onPopState);
       document.removeEventListener('keydown', onKeyDown);
+      dropQueuedKeys();
       historyPanel?.close();
       editorsDialog?.close();
       signIn.destroy();

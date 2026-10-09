@@ -11,6 +11,9 @@
 import { showToast } from './toast.js';
 import { el, openEditorDialog, uniqueId, callSafely, setBusy, keepFocusInside } from './editorDialog.js';
 import { nameOf } from './familyLinks.js';
+import { conflictMessage, toggleErrorMessage } from './changeMessages.js';
+
+export { conflictMessage, toggleErrorMessage };
 
 /** Changes per page (the API's maximum). */
 export const PAGE_SIZE = 50;
@@ -24,8 +27,6 @@ const ACTIONS = {
   revert: { label: 'Revert', busy: 'Reverting…', already: 'Someone else has already reverted this change.' },
   restore: { label: 'Restore', busy: 'Restoring…', already: 'Someone else has already restored this change.' }
 };
-const GENERIC_ERROR = 'Something went wrong. Try again.';
-
 /** "just now", "3 min ago", "5 hours ago", "1 day ago", "3 days ago", then the date. */
 export function relativeTime(iso, now = Date.now()) {
   const time = Date.parse(iso);
@@ -47,39 +48,6 @@ function absoluteTime(iso) {
   return Number.isNaN(time) ? '' : new Date(time).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
 }
 
-/**
- * Why a revert, restore, undo or redo was refused (a 409 `conflict`), by its `reason`.
- * @param action  'revert' (also undo) or 'restore' (also redo), for the untracked wording
- */
-export function conflictMessage(error, action = 'revert') {
-  switch (error?.reason) {
-    case 'untracked':
-      return `This change can't be ${action === 'restore' ? 'restored' : 'undone'} automatically: ` +
-        "the data has changed in a way the history doesn't explain.";
-    case 'structure':
-      return "This can't be done: it would leave a family without any parents.";
-    case 'cycle':
-      return "This can't be done: it would make someone their own ancestor.";
-    case 'constraint':
-      return "This can't be done: it would clash with the rest of the tree.";
-    default: // precondition, cascade
-      return "This can't be done yet: later changes depend on it.";
-  }
-}
-
-/** Words for a failed revert, restore, undo or redo. */
-export function toggleErrorMessage(error) {
-  if (!error) return GENERIC_ERROR;
-  if (error.code === 'network' || error.code === 'busy') return error.message || GENERIC_ERROR;
-  if (error.status === 401) return "You're signed out. Sign in again, then try again.";
-  if (error.status === 403) return "Your account can't edit the tree. Ask Rob for access.";
-  if (error.code === 'conflict') return conflictMessage(error);
-  if (error.code === 'wrong_state') return 'Someone else has already undone or restored that change.';
-  if (error.code === 'not_found') return "Couldn't find that change.";
-  if (error.name === 'ApiError' || error.status) return `The server had a problem (${error.code}). Try again.`;
-  return error.message || GENERIC_ERROR;
-}
-
 const key = (id) => String(id);
 
 /**
@@ -87,12 +55,16 @@ const key = (id) => String(id);
  * @param api           `{ listChanges, revert, restore }` (editApi.js)
  * @param personFilter  optional `{ id, name }`: list only the changes to this person (the chip clears it)
  * @param conflict      optional: a conflict ApiError (from a keyboard undo or redo) to show above the list
- * @param onOpenPerson  (personId) from an entry's Open: the panel closes first
+ * @param conflictAction  what that conflict refused: 'revert' (an undo) or 'restore' (a redo)
+ * @param onOpenPerson  (personId) from an entry's person link: the panel closes first
  * @param onChanged     ({ change }) after a revert or restore succeeded (the panel has toasted its summary)
  * @param now           () → the time now, for tests
- * @returns `{ close, isOpen, element }`
+ * @returns `{ close, isOpen, element, refresh }`: `refresh({ change })` lists changes made elsewhere (a toast's
+ *          Undo, Ctrl+Z), showing at once the new state of the change a toggle `change` reverted or restored
  */
-export function openHistoryPanel({ api, personFilter = null, conflict = null, onOpenPerson, onChanged, now = Date.now }) {
+export function openHistoryPanel({
+  api, personFilter = null, conflict = null, conflictAction = 'revert', onOpenPerson, onChanged, now = Date.now
+}) {
   const dialog = openEditorDialog({ title: 'History', className: 'history-panel', onRequestClose: () => close() });
   dialog.backdrop.classList.add('history-backdrop');
   const { body } = dialog;
@@ -110,18 +82,20 @@ export function openHistoryPanel({ api, personFilter = null, conflict = null, on
   const filterText = el('span', { class: 'history-filter-text' });
   const clearFilter = el('button', { type: 'button', class: 'history-filter-clear', 'aria-label': 'Show all changes', text: '×' });
   const filterBar = el('div', { class: 'history-filter' }, filterText, clearFilter);
+  // Without a filter, the list's heading stands in the chip's place (and takes focus when the filter is cleared).
+  const heading = el('h3', { class: 'editor-section-title history-heading', tabindex: '-1', text: 'All changes' });
   const notice = el('div', { class: 'history-notice', hidden: true });
   const list = el('ol', { class: 'history-list', 'aria-label': 'Changes, newest first' });
   const sentinel = el('div', { class: 'history-sentinel', 'aria-hidden': 'true' });
   const status = el('p', { class: 'history-status', role: 'status' });
   const retryLoad = el('button', { type: 'button', class: 'editor-btn history-retry-load', text: 'Try again', hidden: true });
   const more = el('button', { type: 'button', class: 'editor-btn history-more', text: 'Load older changes', hidden: true });
-  body.append(filterBar, notice, list, sentinel, el('div', { class: 'history-footer' }, status, retryLoad, more));
+  body.append(filterBar, heading, notice, list, sentinel, el('div', { class: 'history-footer' }, status, retryLoad, more));
 
   clearFilter.addEventListener('click', () => {
     filter = null;
     restart();
-    keepFocusInside(dialog.dialog, more);
+    heading.focus();
   });
   retryLoad.addEventListener('click', () => loadMore());
   more.addEventListener('click', () => loadMore());
@@ -145,6 +119,7 @@ export function openHistoryPanel({ api, personFilter = null, conflict = null, on
 
   function renderFilter() {
     filterBar.hidden = !filter;
+    heading.hidden = Boolean(filter);
     filterText.textContent = filter ? `Changes to ${filter.name}` : '';
   }
 
@@ -184,18 +159,33 @@ export function openHistoryPanel({ api, personFilter = null, conflict = null, on
       });
       actions.append(entry.actionButton);
     }
-    const personId = change.personIds?.[0];
-    if (personId) {
-      const open = el('button', { type: 'button', class: 'editor-btn-link history-open', text: 'Open', 'aria-describedby': summaryId });
-      open.addEventListener('click', () => {
-        close();
-        callSafely(onOpenPerson, personId);
-      });
-      actions.append(open);
-    }
+    actions.append(...personLinks(change, summaryId));
     element.append(summary, meta, actions, message);
     applyState(entry);
     return entry;
+  }
+
+  /**
+   * A link to each person the change touched who still exists, by name. An API without `people` gives only
+   * ids, so then there is one "Open" link, for the first.
+   */
+  function personLinks(change, summaryId) {
+    const link = (id, text, label, className) => {
+      const button = el('button', { type: 'button', class: `editor-btn-link ${className}`, text, 'aria-label': label });
+      if (!label) button.setAttribute('aria-describedby', summaryId);
+      button.addEventListener('click', () => {
+        close();
+        callSafely(onOpenPerson, id);
+      });
+      return button;
+    };
+    if (!Array.isArray(change.people)) {
+      const first = change.personIds?.[0];
+      return first ? [link(first, 'Open', null, 'history-open')] : [];
+    }
+    return change.people
+      .filter(person => person?.id)
+      .map(person => link(person.id, nameOf(person), `Open ${nameOf(person)}`, 'history-person'));
   }
 
   /** Shows whether the entry's change is in effect: Revert, or greyed with Restore. */
@@ -429,13 +419,22 @@ export function openHistoryPanel({ api, personFilter = null, conflict = null, on
     dialog.close();
   }
 
+  /** After a change made outside the panel: its effect on a listed change at once, then the newest changes. */
+  function refresh({ change = null } = {}) {
+    if (!dialog.isOpen()) return Promise.resolve();
+    if (change && TOGGLE_KINDS.has(change.kind) && change.baseChangeId !== null && change.baseChangeId !== undefined) {
+      setUndone(change.baseChangeId, change.kind === 'undo');
+    }
+    return refreshNewest();
+  }
+
   if (conflict) {
-    showConflict(notice, conflict);
+    showConflict(notice, conflict, { action: conflictAction === 'restore' ? 'restore' : 'revert' });
     notice.hidden = false;
   }
   renderFilter();
   loadMore();
   dialog.dialog.focus();
 
-  return { close, isOpen: dialog.isOpen, element: dialog.dialog };
+  return { close, isOpen: dialog.isOpen, element: dialog.dialog, refresh };
 }

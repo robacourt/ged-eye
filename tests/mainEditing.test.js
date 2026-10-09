@@ -24,7 +24,8 @@ let showToast;
 let signIn;
 let signInOptions;
 let mountSignIn;
-let dialogs;
+let dialogs;     // the editing UI (editing.js) that loadEditing resolves to
+let loadEditing;
 let app;
 
 const flush = async (times = 5) => {
@@ -32,11 +33,11 @@ const flush = async (times = 5) => {
 };
 
 const person = (id, name) => ({ id, name, sex: 'F', parentFamilies: [], marriages: [], updatedAt: '2026-10-09T10:00:00Z' });
-const handle = () => ({ close: vi.fn(), isOpen: vi.fn(() => true) });
+const handle = () => ({ close: vi.fn(), isOpen: vi.fn(() => true), refresh: vi.fn(async () => {}) });
 
 function start(url = '/?person=I7') {
   window.history.replaceState({}, '', url);
-  app = initApp({ treeView, personDetails, auth, api, loader, showToast, mountSignIn, dialogs });
+  app = initApp({ treeView, personDetails, auth, api, loader, showToast, mountSignIn, loadEditing });
   return flush();
 }
 
@@ -108,6 +109,7 @@ beforeEach(() => {
     openUnlinkConfirm: vi.fn(handle),
     isEditorDialogOpen: vi.fn(() => false)
   };
+  loadEditing = vi.fn(async () => dialogs);
 });
 
 afterEach(() => {
@@ -125,6 +127,15 @@ describe('shortcutFor', () => {
     expect(key('Z', { ctrlKey: true, shiftKey: true })).toBe('redo');
     expect(key('Z', { metaKey: true, shiftKey: true })).toBe('redo');
     expect(key('y', { ctrlKey: true })).toBe('redo');
+  });
+
+  it('reads the key\'s position on layouts without Latin letters, and the letter on Latin ones', () => {
+    expect(key('я', { ctrlKey: true, code: 'KeyZ' })).toBe('undo');
+    expect(key('Я', { ctrlKey: true, shiftKey: true, code: 'KeyZ' })).toBe('redo');
+    expect(key('н', { ctrlKey: true, code: 'KeyY' })).toBe('redo');
+    expect(key('z', { ctrlKey: true, code: 'KeyY' })).toBe('undo'); // QWERTZ: its Z is where QWERTY's Y is
+    expect(key('y', { ctrlKey: true, code: 'KeyZ' })).toBe('redo');
+    expect(key('ч', { ctrlKey: true, code: 'KeyX' })).toBeNull();
   });
 
   it('ignores everything else', () => {
@@ -163,6 +174,46 @@ describe('initApp: start-up', () => {
   });
 });
 
+describe('initApp: loading the editing UI', () => {
+  it('never loads it for viewers or signed-in non-editors', async () => {
+    await start();
+    await signInAs({ email: 'tom@example.com', name: null, role: null });
+    signInOptions.openHistory();
+    await flush();
+    expect(loadEditing).not.toHaveBeenCalled();
+    expect(shownOptions()).toEqual({ canEdit: false });
+  });
+
+  it('loads it once someone can edit, and only then shows the edit controls', async () => {
+    let resolve;
+    loadEditing.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
+    await start();
+    await signInAs(EDITOR);
+    expect(loadEditing).toHaveBeenCalledTimes(1);
+    expect(shownOptions()).toEqual({ canEdit: false }); // not before the dialogs (and their styles) are here
+    resolve(dialogs);
+    await flush();
+    expect(shownId()).toBe('I7');
+    expect(shownOptions().canEdit).toBe(true);
+    await signInAs(EDITOR);
+    expect(loadEditing).toHaveBeenCalledTimes(1);
+  });
+
+  it('says so when it can\'t be loaded, and tries again when History is asked for', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    loadEditing.mockRejectedValueOnce(new Error('Failed to fetch dynamically imported module'));
+    await start();
+    await signInAs(EDITOR);
+    expect(lastToast()).toEqual([expect.stringMatching(/^Couldn't load the editing tools/), { kind: 'error' }]);
+    expect(shownOptions()).toEqual({ canEdit: false });
+    signInOptions.openHistory();
+    await flush();
+    expect(loadEditing).toHaveBeenCalledTimes(2);
+    expect(dialogs.openHistoryPanel).toHaveBeenCalled();
+    expect(shownOptions().canEdit).toBe(true);
+  });
+});
+
 describe('initApp: sign-in state', () => {
   it('on sign-in as an editor, forgets cached views and re-renders with the edit controls', async () => {
     await start();
@@ -190,6 +241,7 @@ describe('initApp: sign-in state', () => {
     await signInAs(ADMIN);
     signInOptions.openHistory();
     signInOptions.openEditors();
+    await flush();
     const history = dialogs.openHistoryPanel.mock.results[0].value;
     const editors = dialogs.openEditorsDialog.mock.results[0].value;
     loader.invalidateAll.mockClear();
@@ -235,26 +287,39 @@ describe('initApp: opening the editors', () => {
     }));
   });
 
-  it('"History of this person" opens History filtered to them', () => {
+  it('"History of this person" opens History filtered to them', async () => {
     shownOptions().onShowHistory(people.get('I7'));
+    await flush();
     expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({
       api, personFilter: { id: 'I7', name: 'Rose Smith' }, onOpenPerson: expect.any(Function), onChanged: expect.any(Function)
     }));
   });
 
-  it('the account menu opens History and Editors, replacing one already open', () => {
+  it('the account menu opens History and Editors, replacing one already open', async () => {
     signInOptions.openHistory();
+    await flush();
     expect(dialogs.openHistoryPanel).toHaveBeenLastCalledWith(expect.objectContaining({ personFilter: null }));
     const first = dialogs.openHistoryPanel.mock.results[0].value;
     signInOptions.openHistory();
+    await flush();
     expect(first.close).toHaveBeenCalled();
     signInOptions.openEditors();
+    await flush();
     expect(dialogs.openEditorsDialog).toHaveBeenCalledWith(expect.objectContaining({ api, currentEmail: 'rob@example.com' }));
   });
 
-  it('History\'s person links navigate, and its changes re-render without another toast', async () => {
+  it('opens Editors only for admins', async () => {
+    await signInAs(EDITOR);
+    signInOptions.openEditors();
+    await flush();
+    expect(dialogs.openEditorsDialog).not.toHaveBeenCalled();
+  });
+
+  it('History\'s person links navigate, and its changes re-render without another toast or refresh', async () => {
     signInOptions.openHistory();
+    await flush();
     const options = dialogs.openHistoryPanel.mock.calls[0][0];
+    const history = dialogs.openHistoryPanel.mock.results[0].value;
     options.onOpenPerson('I8');
     await flush();
     expect(urlPerson()).toBe('I8');
@@ -266,6 +331,7 @@ describe('initApp: opening the editors', () => {
     expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
     expect(shownId()).toBe('I8');
     expect(showToast).not.toHaveBeenCalled();
+    expect(history.refresh).not.toHaveBeenCalled();
   });
 
   it('re-renders when an editor reloaded the person', async () => {
@@ -308,6 +374,19 @@ describe('initApp: after a command', () => {
     expect(options.action.label).toBe('Undo');
   });
 
+  it('keeps an open History current after a command and its toast\'s Undo', async () => {
+    signInOptions.openHistory();
+    await flush();
+    const history = dialogs.openHistoryPanel.mock.results[0].value;
+    const change = { id: 12, summary: 'Edited Rose Smith (birth date)', personIds: ['I7'] };
+    saved.onSaved({ change, view: null });
+    await flush();
+    expect(history.refresh).toHaveBeenLastCalledWith({ change });
+    lastToast()[1].action.onClick();
+    await flush();
+    expect(history.refresh).toHaveBeenLastCalledWith({ change: { id: 23, summary: 'Undid: change 12', personIds: ['I7'] } });
+  });
+
   it('the toast\'s Undo reverts that change by keyboard, re-renders and toasts', async () => {
     saved.onSaved({ change: { id: 12, summary: 'Edited Rose Smith (birth date)', personIds: ['I7'] }, view: null });
     await flush();
@@ -334,7 +413,8 @@ describe('initApp: after a command', () => {
     expect(options.kind).toBe('error');
     expect(options.action.label).toBe('Open History');
     options.action.onClick();
-    expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({ personFilter: null, conflict }));
+    await flush();
+    expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({ personFilter: null, conflict, conflictAction: 'revert' }));
   });
 
   it('after a delete, shows the person the command returned, in place of the deleted one', async () => {
@@ -362,6 +442,37 @@ describe('initApp: after a command', () => {
     await flush();
     expect(urlPerson()).toBe(DEFAULT_PERSON_ID);
     expect(shownId()).toBe(DEFAULT_PERSON_ID);
+  });
+
+  it('after a save, leaves someone who went Back meanwhile where they are', async () => {
+    window.history.pushState({}, '', '/?person=I8');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    await flush();
+    expect(shownId()).toBe('I8');
+    const length = window.history.length;
+    personDetails.showPerson.mockClear();
+    loader.invalidateAll.mockClear();
+    const view = { person: { id: 'I7' } };
+    saved.onSaved({ change: { id: 12, summary: 'Edited Rose Smith (birth date)', personIds: ['I7'] }, view });
+    await flush();
+    expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
+    expect(loader.cacheView).toHaveBeenCalledWith(view);
+    expect(urlPerson()).toBe('I8');
+    expect(window.history.length).toBe(length);
+    expect(personDetails.showPerson).not.toHaveBeenCalled();
+    expect(lastToast()[1].action.label).toBe('Undo');
+  });
+
+  it('after a delete, leaves someone who went Back meanwhile where they are', async () => {
+    window.history.pushState({}, '', '/?person=I8');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    await flush();
+    people.delete('I7');
+    personDetails.showPerson.mockClear();
+    saved.onDeleted({ change: { id: 14, summary: 'Deleted Rose Smith', personIds: ['I7'] }, view: { person: { id: DEFAULT_PERSON_ID } } });
+    await flush();
+    expect(urlPerson()).toBe('I8');
+    expect(personDetails.showPerson).not.toHaveBeenCalled();
   });
 
   it('every editor\'s callback runs the same flow', async () => {
@@ -457,13 +568,85 @@ describe('initApp: keyboard undo and redo', () => {
     expect(message).toBe("This change can't be undone automatically: the data has changed in a way the history doesn't explain.");
     expect(options.kind).toBe('error');
     options.action.onClick();
-    expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({ conflict }));
+    await flush();
+    expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({ conflict, conflictAction: 'revert' }));
   });
 
-  it('words a blocked redo as a restore', async () => {
-    api.redo.mockRejectedValueOnce(apiError(409, 'conflict', { reason: 'untracked' }));
+  it('words a blocked redo as a restore, here and in History', async () => {
+    const conflict = apiError(409, 'conflict', { reason: 'untracked' });
+    api.redo.mockRejectedValueOnce(conflict);
     await press('y', { ctrlKey: true });
     expect(lastToast()[0]).toBe("This change can't be restored automatically: the data has changed in a way the history doesn't explain.");
+    lastToast()[1].action.onClick();
+    await flush();
+    expect(dialogs.openHistoryPanel).toHaveBeenCalledWith(expect.objectContaining({ conflict, conflictAction: 'restore' }));
+  });
+
+  it('drops presses queued behind a failure, so it is reported once', async () => {
+    const answers = [];
+    api.undo.mockImplementation(() => new Promise((resolve, reject) => answers.push({ resolve, reject })));
+    for (let i = 0; i < 3; i++) {
+      document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'z', ctrlKey: true, bubbles: true, cancelable: true }));
+    }
+    await flush();
+    expect(api.undo).toHaveBeenCalledTimes(1);
+    answers[0].reject(apiError(409, 'conflict', { reason: 'precondition' }));
+    await flush();
+    expect(api.undo).toHaveBeenCalledTimes(1);
+    expect(showToast.mock.calls.filter(([message]) => /can't be done/.test(message))).toHaveLength(1);
+    await press('z', { ctrlKey: true }); // a new press is heard again
+    expect(api.undo).toHaveBeenCalledTimes(2);
+  });
+
+  it('drops presses queued at sign-out, even after signing in again', async () => {
+    const answers = [];
+    api.undo.mockImplementation(() => new Promise(resolve => answers.push(resolve)));
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'z', ctrlKey: true, bubbles: true, cancelable: true }));
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'z', ctrlKey: true, bubbles: true, cancelable: true }));
+    await flush();
+    signInOptions.onSignedOut('expired');
+    await signInAs(EDITOR);
+    answers[0](null);
+    await flush();
+    expect(api.undo).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps going after a press whose re-render failed', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    loader.invalidateAll.mockImplementationOnce(() => { throw new Error('boom'); });
+    await press('z', { ctrlKey: true });
+    await press('z', { ctrlKey: true });
+    expect(api.undo).toHaveBeenCalledTimes(2);
+    expect(error).toHaveBeenCalled();
+    expect(shownId()).toBe('I7');
+  });
+
+  it('leaves a page someone went to while the undo ran alone', async () => {
+    let answer;
+    api.undo.mockImplementationOnce(() => new Promise(resolve => { answer = resolve; }));
+    document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'z', ctrlKey: true, bubbles: true, cancelable: true }));
+    await flush();
+    window.history.pushState({}, '', '/?person=I8');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    await flush();
+    personDetails.showPerson.mockClear();
+    loader.invalidateAll.mockClear();
+    answer({ id: 50, summary: 'Undid: Added Rose Smith', personIds: ['I7'] });
+    await flush();
+    expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
+    expect(urlPerson()).toBe('I8');
+    expect(personDetails.showPerson).not.toHaveBeenCalled();
+  });
+
+  it('keeps an open History current after a keyboard undo and a toast\'s Undo', async () => {
+    signInOptions.openHistory();
+    await flush();
+    const history = dialogs.openHistoryPanel.mock.results[0].value;
+    await press('z', { ctrlKey: true });
+    expect(history.refresh).toHaveBeenLastCalledWith({ change: { id: 21, summary: 'Undid: Edited Rose Smith (birth date)', personIds: ['I7'] } });
+    history.isOpen.mockReturnValue(false);
+    await press('z', { ctrlKey: true });
+    expect(history.refresh).toHaveBeenCalledTimes(1);
   });
 
   it('re-renders and says so when someone else already undid the change', async () => {
@@ -518,6 +701,16 @@ describe('initApp: keyboard undo and redo', () => {
     signIn.isOpen.mockReturnValue(true);
     expect((await press('z', { ctrlKey: true })).defaultPrevented).toBe(false);
     expect(api.undo).not.toHaveBeenCalled();
+  });
+
+  it('leaves the keys alone while the photo viewer is open', async () => {
+    const viewer = document.createElement('div');
+    viewer.className = 'photo-viewer photo-viewer-open';
+    document.body.appendChild(viewer);
+    expect((await press('z', { ctrlKey: true })).defaultPrevented).toBe(false);
+    viewer.classList.remove('photo-viewer-open');
+    expect((await press('z', { ctrlKey: true })).defaultPrevented).toBe(true);
+    expect(api.undo).toHaveBeenCalledTimes(1);
   });
 
   it('leaves the keys alone when held down, or already handled', async () => {

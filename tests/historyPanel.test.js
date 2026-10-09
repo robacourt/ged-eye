@@ -177,7 +177,26 @@ describe('openHistoryPanel: the list', () => {
     expect(entry(3).classList.contains('history-entry-undone')).toBe(false);
   });
 
-  it('links an entry to its first person, closing the panel', async () => {
+  it('links to each person the change touched who still exists, by name, closing the panel', async () => {
+    log = [
+      change(3, { personIds: ['I7', 'I8', 'I9'], people: [{ id: 'I7', name: 'Rose Smith' }, { id: 'I9', name: '' }] }),
+      change(2, { personIds: ['I8'], people: [] }),
+      change(1, { people: [{ id: 'I7', name: XSS }] })
+    ];
+    await open();
+    const links = [...entry(3).querySelectorAll('.history-person')];
+    expect(links.map(link => link.textContent)).toEqual(['Rose Smith', 'Unnamed person']);
+    expect(links.map(link => link.getAttribute('aria-label'))).toEqual(['Open Rose Smith', 'Open Unnamed person']);
+    expect(entry(3).querySelector('.history-open')).toBeNull();
+    expect(entry(2).querySelectorAll('.history-person, .history-open')).toHaveLength(0); // I8 was deleted
+    expect(entry(1).querySelector('.history-person').textContent).toBe(XSS);
+    expect(document.querySelector('img')).toBeNull();
+    links[1].click();
+    expect(onOpenPerson).toHaveBeenCalledWith('I9');
+    expect(panel.isOpen()).toBe(false);
+  });
+
+  it('links to the first person by id when the API names no people, closing the panel', async () => {
     log = [change(2, { personIds: ['I9', 'I7'] }), change(1, { personIds: [] })];
     await open();
     expect(entry(1).querySelector('.history-open')).toBeNull();
@@ -308,6 +327,7 @@ describe('openHistoryPanel: person filter', () => {
     await open({ personFilter: { id: 'I7', name: 'Rose Smith' } });
     expect(api.listChanges).toHaveBeenCalledWith({ before: undefined, limit: PAGE_SIZE, person: 'I7' });
     expect($('.history-filter').hidden).toBe(false);
+    expect($('.history-heading').hidden).toBe(true);
     expect($('.history-filter-text').textContent).toBe('Changes to Rose Smith');
     expect(entryIds()).toEqual([2, 1]);
     const clear = $('.history-filter-clear');
@@ -317,7 +337,9 @@ describe('openHistoryPanel: person filter', () => {
     expect(api.listChanges).toHaveBeenLastCalledWith({ before: undefined, limit: PAGE_SIZE, person: undefined });
     expect($('.history-filter').hidden).toBe(true);
     expect(entryIds()).toEqual([3, 2, 1]);
-    expect(root().contains(document.activeElement)).toBe(true);
+    expect($('.history-heading').hidden).toBe(false);
+    expect($('.history-heading').textContent).toBe('All changes');
+    expect(document.activeElement).toBe($('.history-heading'));
   });
 
   it('says when the person has no changes, and names unnamed people', async () => {
@@ -393,6 +415,32 @@ describe('openHistoryPanel: Revert and Restore', () => {
     await flush();
     expect(entry(2).querySelector('.history-entry-message').textContent).toBe('Someone else has already reverted this change.');
     expect(actionOf(2).textContent).toBe('Restore');
+  });
+});
+
+describe('openHistoryPanel: refresh', () => {
+  it('shows a change made elsewhere: the toggled change\'s state at once, then the new lines', async () => {
+    await open();
+    let answer;
+    api.listChanges.mockImplementationOnce(() => new Promise(resolve => { answer = resolve; }));
+    const done = panel.refresh({ change: { id: 4, summary: 'Undid: Change 2', personIds: ['I7'], baseChangeId: 2, kind: 'undo' } });
+    expect(actionOf(2).textContent).toBe('Restore');
+    expect(entry(2).classList.contains('history-entry-undone')).toBe(true);
+    answer([change(4, { kind: 'undo', summary: 'Undid: Change 2', baseChangeId: 2 }), change(3), change(2, { undone: true }), change(1)]);
+    await done;
+    expect(entryIds()).toEqual([4, 3, 2, 1]);
+    expect(api.listChanges).toHaveBeenLastCalledWith({ limit: PAGE_SIZE, person: undefined });
+  });
+
+  it('refreshes after a command too, and does nothing once closed', async () => {
+    await open();
+    log = [change(4, { summary: 'Added Jack' }), ...log];
+    await panel.refresh({ change: { id: 4, summary: 'Added Jack', personIds: ['I8'] } });
+    expect(entryIds()).toEqual([4, 3, 2, 1]);
+    panel.close();
+    const calls = api.listChanges.mock.calls.length;
+    await panel.refresh();
+    expect(api.listChanges.mock.calls.length).toBe(calls);
   });
 });
 
@@ -550,6 +598,12 @@ describe('openHistoryPanel: conflicts', () => {
     expect(onChanged).toHaveBeenCalledTimes(3);
     expect(entry(2).querySelector('.history-conflict')).toBeNull();
     expect(actionOf(2).textContent).toBe('Restore');
+  });
+
+  it('words a conflict it was opened with by its action (a blocked redo)', async () => {
+    await open({ conflict: blocked([], 'untracked'), conflictAction: 'restore' });
+    expect($('.history-notice .history-conflict-message').textContent)
+      .toBe("This change can't be restored automatically: the data has changed in a way the history doesn't explain.");
   });
 
   it('shows a conflict it was opened with (from a keyboard undo)', async () => {
