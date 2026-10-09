@@ -16,6 +16,8 @@ export const TYPES = new Map([
   ['pdf', { ext: 'pdf', contentType: 'application/pdf', image: false }]
 ]);
 
+for (const type of TYPES.values()) Object.freeze(type);
+
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 export const SHA256 = /^[0-9a-f]{64}$/;
 
@@ -26,6 +28,7 @@ const AVIF_BRANDS = new Set(['avif', 'avis']);
 const UNPAIRED_SURROGATE = /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/;
 const FORBIDDEN_IN_NAME = /[/\\\u0000-\u001f\u007f-\u009f]/;
 const MAX_FILE_NAME = 255;
+const MAX_FTYP_SCAN = 256; // real ftyp boxes are a few dozen bytes; don't walk a bogus size through a 50 MB file
 
 /** True when `bytes` has `signature` (an array of byte values) at `offset`. */
 function hasBytes(bytes, signature, offset = 0) {
@@ -37,12 +40,13 @@ const brandAt = (bytes, offset) => String.fromCharCode(bytes[offset], bytes[offs
 
 /**
  * The brands of an ISO-BMFF file's `ftyp` box: the major brand, then the compatible brands up to the box's
- * end (the big-endian u32 at 0, clamped to the bytes given). [] when `bytes` doesn't start with an `ftyp` box.
+ * end (the big-endian u32 at 0, clamped to the bytes given and to the first 256 bytes). [] when `bytes` doesn't
+ * start with an `ftyp` box.
  */
 function isoBrands(bytes) {
   if (bytes.length < 12 || !hasBytes(bytes, text('ftyp'), 4)) return [];
   const size = ((bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3]) >>> 0;
-  const end = Math.min(size, bytes.length);
+  const end = Math.min(size, bytes.length, MAX_FTYP_SCAN);
   const brands = [brandAt(bytes, 8)];
   for (let offset = 16; offset + 4 <= end; offset += 4) brands.push(brandAt(bytes, offset));
   return brands;
@@ -51,9 +55,10 @@ function isoBrands(bytes) {
 /**
  * The type of `bytes` (a Buffer or Uint8Array) from its magic numbers: a TYPES entry, 'heic' for the HEIF
  * family (which isn't accepted), or null. An ISO-BMFF file is AVIF if any brand in its `ftyp` box is `avif`
- * or `avis`, even when the major brand is `mif1`. Never throws.
+ * or `avis`, even when the major brand is `mif1`. Returns null for null or undefined. Never throws.
  */
 export function sniff(bytes) {
+  if (bytes === null || bytes === undefined) return null;
   if (hasBytes(bytes, [0xff, 0xd8, 0xff])) return TYPES.get('jpg');
   if (hasBytes(bytes, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) return TYPES.get('png');
   if (hasBytes(bytes, text('GIF87a')) || hasBytes(bytes, text('GIF89a'))) return TYPES.get('gif');

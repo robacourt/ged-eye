@@ -33,6 +33,14 @@ describe('media/types TYPES', () => {
     expect(TYPES.get('pdf')).toEqual({ ext: 'pdf', contentType: 'application/pdf', image: false });
     expect([...TYPES.values()].filter((t) => !t.image).map((t) => t.ext)).toEqual(['pdf']);
   });
+
+  it('has frozen entries, so no caller can change what another sees', () => {
+    for (const type of TYPES.values()) {
+      expect(Object.isFrozen(type)).toBe(true);
+      expect(() => { type.contentType = 'text/html'; }).toThrow(TypeError);
+    }
+    expect(TYPES.get('jpg').contentType).toBe('image/jpeg');
+  });
 });
 
 describe('media/types sniff', () => {
@@ -62,6 +70,11 @@ describe('media/types sniff', () => {
     expect(sniff(bytes(' %PDF-1.4'))).toBeNull();
     expect(sniff(bytes('%PDF'))).toBeNull();
     expect(sniff(bytes('<html><body>'))).toBeNull();
+  });
+
+  it('returns null for null and undefined, as for any other unknown input', () => {
+    expect(sniff(null)).toBeNull();
+    expect(sniff(undefined)).toBeNull();
   });
 
   it('handles empty and very short input without reading past the end', () => {
@@ -105,6 +118,23 @@ describe('media/types sniff', () => {
     expect(sniff(isoFile('heic', ['avif'], { size: 12 }))).toBe('heic');
     // A size past the end of the bytes given is clamped to what is there.
     expect(ext(isoFile('mif1', ['avif'], { size: 4096 }))).toBe('avif');
+  });
+
+  it('scans at most the first 256 bytes for brands', () => {
+    const brandsTo = (count, last) => Array.from({ length: count }, (_, i) => (i === count - 1 ? last : 'iso2'));
+    // The ftyp box is 16 + 4n bytes; the last brand sits at offset 16 + 4(n - 1).
+    expect(ext(isoFile('mif1', brandsTo(60, 'avif'), { size: 0xffffffff }))).toBe('avif'); // last brand at 252..256
+    expect(sniff(isoFile('mif1', brandsTo(61, 'avif'), { size: 0xffffffff }))).toBe('heic'); // last brand at 256..260
+    expect(sniff(isoFile('isom', brandsTo(61, 'avif'), { size: 0xffffffff }))).toBeNull();
+  });
+
+  it('returns quickly, with the right answer, for a huge ftyp size on a big file', () => {
+    const data = new Uint8Array(16 * 1024 * 1024);
+    data.set(isoFile('mif1', ['heic'], { size: 0xffffffff }));
+    data.set(ascii('avif'), 8 * 1024 * 1024); // far past the first 256 bytes: must not be seen
+    const started = performance.now();
+    expect(sniff(data)).toBe('heic');
+    expect(performance.now() - started).toBeLessThan(100);
   });
 });
 
@@ -182,6 +212,12 @@ describe('media/types cleanFileName', () => {
     expect(cleanFileName('a'.repeat(255))).toBe('a'.repeat(255));
     expect(cleanFileName('a'.repeat(256))).toBeNull();
     expect(cleanFileName(` ${'a'.repeat(255)} `)).toBe('a'.repeat(255));
+  });
+
+  it('counts UTF-16 code units, so an emoji is two characters', () => {
+    expect(cleanFileName('📷'.repeat(127))).toBe('📷'.repeat(127)); // 254 units
+    expect(cleanFileName(`${'📷'.repeat(127)}a`)).toBe(`${'📷'.repeat(127)}a`); // 255 units
+    expect(cleanFileName('📷'.repeat(128))).toBeNull(); // 256 units
   });
 
   it('allows emoji and other non-ASCII names', () => {

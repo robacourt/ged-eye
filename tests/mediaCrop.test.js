@@ -37,9 +37,13 @@ describe('media/crop validateCrop', () => {
   });
 
   it('never returns a negative zero', () => {
-    const c = validateCrop({ x: 0.00001, y: 0, w: 0.5, h: 0.5 });
+    const c = validateCrop({ x: -0, y: -0.00004, w: 0.5, h: 0.5 });
     expect(Object.is(c.x, 0)).toBe(true);
     expect(Object.is(c.y, 0)).toBe(true);
+  });
+
+  it('accepts a tiny negative x or y that rounds to zero', () => {
+    expect(validateCrop({ ...GOOD, x: -0.00004 }).x).toBe(0);
   });
 
   it('accepts a crop that touches the edge, to within 1.0001', () => {
@@ -91,7 +95,22 @@ describe('media/crop validateCrop', () => {
     expect(failure(() => validateCrop({ ...GOOD, y: 0.6 }))?.field).toBe('crop.h');
     expect(failure(() => validateCrop({ x: 0, y: 0, w: 1.0002, h: 1 }))?.field).toBe('crop.w');
     expect(failure(() => validateCrop({ x: 0, y: 0, w: 1, h: 1.0002 }))?.field).toBe('crop.h');
-    expect(failure(() => validateCrop({ x: 2, y: 0, w: 0.1, h: 0.1 }))?.field).toBe('crop.w');
+  });
+
+  it('names x or y when it alone is out of range', () => {
+    expect(failure(() => validateCrop({ x: 2, y: 0, w: 0.1, h: 0.1 }))?.field).toBe('crop.x');
+    expect(failure(() => validateCrop({ x: 0, y: 2, w: 0.1, h: 0.1 }))?.field).toBe('crop.y');
+    expect(failure(() => validateCrop({ ...GOOD, x: 1.0002 }))?.field).toBe('crop.x');
+  });
+
+  it('copes with huge finite numbers, which overflow when rounded', () => {
+    expect(failure(() => validateCrop({ ...GOOD, x: 1e305 }))?.field).toBe('crop.x');
+    expect(failure(() => validateCrop({ ...GOOD, y: 1e305 }))?.field).toBe('crop.y');
+    expect(failure(() => validateCrop({ ...GOOD, x: -1e305 }))?.field).toBe('crop.x');
+    expect(failure(() => validateCrop({ ...GOOD, w: 1e305 }))?.field).toBe('crop.w');
+    expect(failure(() => validateCrop({ ...GOOD, h: 1e305 }))?.field).toBe('crop.h');
+    expect(failure(() => validateCrop({ ...GOOD, w: Number.MAX_VALUE }))?.field).toBe('crop.w');
+    expect(failure(() => validateCrop({ ...GOOD, x: 1e300 }))?.field).toBe('crop.x');
   });
 
   it('gives each failure a readable message', () => {
@@ -113,6 +132,13 @@ describe('media/crop cropPixels', () => {
     expect(cropPixels({ x: 0, y: 0, w: 0.5, h: 0.5025 }, 2000, 2000)).toEqual({ left: 0, top: 0, size: 1000 });
   });
 
+  it('puts the 1% tolerance between h = 0.5050 and 0.5051 on a 2000x2000 image', () => {
+    expect(cropPixels({ x: 0, y: 0, w: 0.5, h: 0.505 }, 2000, 2000)).toEqual({ left: 0, top: 0, size: 1000 });
+    expect(cropPixels({ x: 0, y: 0, w: 0.505, h: 0.5 }, 2000, 2000)).toEqual({ left: 0, top: 0, size: 1000 });
+    expect(failure(() => cropPixels({ x: 0, y: 0, w: 0.5, h: 0.5051 }, 2000, 2000))?.field).toBe('crop');
+    expect(failure(() => cropPixels({ x: 0, y: 0, w: 0.5051, h: 0.5 }, 2000, 2000))?.field).toBe('crop');
+  });
+
   it('refuses a crop that is more than 1% off square', () => {
     const e = failure(() => cropPixels({ x: 0, y: 0, w: 0.5, h: 0.5 }, 4000, 3000));
     expect(e?.field).toBe('crop');
@@ -129,6 +155,14 @@ describe('media/crop cropPixels', () => {
 
   it('accepts exactly 32 pixels', () => {
     expect(cropPixels({ x: 0.5, y: 0.5, w: 0.008, h: 0.008 }, 4000, 4000)).toEqual({ left: 2000, top: 2000, size: 32 });
+  });
+
+  it('throws a RangeError, not a CropError, for an image size that is not positive whole numbers', () => {
+    const crop = { x: 0, y: 0, w: 0.5, h: 0.5 };
+    for (const [width, height] of [[0, 100], [100, 0], [-100, 100], [100.5, 100], [NaN, 100], [100, Infinity], ['100', 100], [undefined, 100]]) {
+      expect(() => cropPixels(crop, width, height)).toThrow(RangeError);
+    }
+    expect(() => cropPixels(crop, 0, 100)).toThrow(/width and height.*0 x 100/);
   });
 
   it('validates the crop first', () => {
@@ -183,5 +217,11 @@ describe('media/crop avatarKeyFor', () => {
 
   it('refuses an invalid crop', () => {
     expect(failure(() => avatarKeyFor(SHA, { x: 0, y: 0, w: 0, h: 1 }))?.field).toBe('crop.w');
+  });
+
+  it('refuses a sha256 that is not 64 lower-case hex digits', () => {
+    for (const bad of ['', 'ab', 'AB'.repeat(32), `${SHA}0`, `${'ab'.repeat(31)}zz`, '../etc/passwd', undefined, null, 7]) {
+      expect(failure(() => avatarKeyFor(bad, GOOD))?.field).toBe('sha256');
+    }
   });
 });
