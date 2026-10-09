@@ -31,6 +31,7 @@
     "@tensorflow/tfjs-node": "^4.22.0",
     "@vladmandic/face-api": "^1.7.0",
     "canvas": "^2.11.2",
+    "cropperjs": "^1.7.0",
     "cytoscape": "^3.30.0",
     "cytoscape-dagre": "^2.5.0",
     "dagre": "^0.8.5",
