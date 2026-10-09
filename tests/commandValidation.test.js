@@ -2,11 +2,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import { ApiError } from '../api/http.js';
 import {
-  validateFacts, validatePersonFields, validateFamilyFields, MAX_LINE, MAX_FACT_STRING, MAX_FACTS_BYTES
+  validateFacts, validatePersonFields, validateFamilyFields, optionalLine, MAX_LINE, MAX_FACT_STRING, MAX_FACTS_BYTES
 } from '../api/commands/validate.js';
 import { nameOf, relationPhrase, relationWord, possessive, listNames, UNNAMED } from '../api/commands/summary.js';
 import { commandFor, COMMANDS } from '../api/commands/index.js';
 import { mapDbError, runChange } from '../api/changes.js';
+import { avatarKeyFor } from '../media/crop.js';
 
 /** The ApiError a call throws, as { status, code, ...extra }. */
 function failure(call) {
@@ -90,6 +91,36 @@ describe('validateFamilyFields', () => {
     expect(invalidAt(() => validateFamilyFields({ marriage_place: 'x'.repeat(501) }))).toBe('marriage_place');
     expect(invalidAt(() => validateFamilyFields({ marriage_place: 'a\nb' }))).toBe('marriage_place');
     expect(invalidAt(() => validateFamilyFields('x'))).toBe('fields');
+  });
+});
+
+describe('optionalLine', () => {
+  it('trims text, and stores empty, blank or absent as null', () => {
+    expect(optionalLine('  At the beach ', 'caption')).toBe('At the beach');
+    for (const value of ['', '   ', null, undefined]) expect(optionalLine(value, 'caption')).toBeNull();
+    expect(optionalLine('Emoji 😀 and é', 'caption')).toBe('Emoji 😀 and é');
+  });
+
+  it('allows at most `max` characters after trimming, 500 by default', () => {
+    expect(optionalLine('x'.repeat(500), 'caption')).toBe('x'.repeat(500));
+    expect(invalidAt(() => optionalLine('x'.repeat(501), 'caption'))).toBe('caption');
+    expect(optionalLine(` ${'x'.repeat(100)} `, 'date', { max: 100 })).toBe('x'.repeat(100));
+    expect(invalidAt(() => optionalLine('x'.repeat(101), 'date', { max: 100 }))).toBe('date');
+  });
+
+  it('refuses non-text, line breaks, NUL characters and unpaired surrogates', () => {
+    for (const value of [3, true, ['a'], { a: 1 }]) expect(invalidAt(() => optionalLine(value, 'caption'))).toBe('caption');
+    expect(invalidAt(() => optionalLine('On the\npier', 'caption'))).toBe('caption');
+    expect(invalidAt(() => optionalLine('a\u0000b', 'caption'))).toBe('caption');
+    expect(invalidAt(() => optionalLine('a\ud800', 'caption'))).toBe('caption');
+  });
+
+  it('names the field, and words its messages with the label', () => {
+    expect(failure(() => optionalLine(3, 'photos.0.caption', { label: 'caption' })))
+      .toEqual({ status: 400, code: 'invalid', field: 'photos.0.caption', message: 'Caption must be text.' });
+    expect(failure(() => optionalLine('x'.repeat(101), 'photos.2.date', { max: 100, label: 'date' })))
+      .toEqual({ status: 400, code: 'invalid', field: 'photos.2.date', message: 'Date must be at most 100 characters.' });
+    expect(failure(() => optionalLine('a\nb', 'caption')).message).toBe('Caption must be a single line.');
   });
 });
 
@@ -215,8 +246,11 @@ describe('summary words', () => {
 });
 
 describe('command registry', () => {
-  it('registers the six commands by kind', () => {
-    expect([...COMMANDS.keys()].sort()).toEqual(['add_relative', 'delete_person', 'link_existing', 'unlink', 'update_family', 'update_person']);
+  it('registers the eleven commands by kind', () => {
+    expect([...COMMANDS.keys()].sort()).toEqual([
+      'add_photos', 'add_relative', 'clear_avatar', 'delete_person', 'link_existing', 'remove_photo', 'set_avatar',
+      'unlink', 'update_family', 'update_person', 'update_photo'
+    ]);
     for (const [kind, command] of COMMANDS) {
       expect(command.kind).toBe(kind);
       expect(typeof command.validate).toBe('function');
@@ -310,6 +344,276 @@ describe('command validation', () => {
   it('delete_person', () => {
     expect(v('delete_person', { expectedUpdatedAt: STAMP })).toBe('id');
     expect(v('delete_person', { id: 'I1' })).toBe('expectedUpdatedAt');
+  });
+
+  describe('photo commands', () => {
+    const SHA = 'a'.repeat(64);
+    const SHA2 = 'b'.repeat(64);
+    const upload = (sha256 = SHA, ext = 'jpg') => ({ sha256, ext, fileName: ` ${sha256.slice(0, 4)}.${ext} ` });
+    const CROP = { x: 0.1, y: 0.2, w: 0.3, h: 0.4 };
+    const KEY = avatarKeyFor(SHA, CROP);
+    const BAD_MEDIA_IDS = [0, -1, 1.5, '0', '07', '-3', '1e3', ' 7', '7 ', 'x', '', true, [7], { id: 7 }, Number.NaN,
+      Number.MAX_SAFE_INTEGER + 1, '9007199254740993'];
+
+    it('add_photos: accepts uploads and existing media ids, normalising them', () => {
+      const params = {
+        personId: 'I1',
+        photos: [
+          { upload: upload(), caption: ' At the beach ', date: ' about 1923 ', personIds: ['I2', 'I1'] },
+          { mediaId: '12', personIds: ['I1'] },
+          { mediaId: 13, caption: '', date: null, personIds: ['I1'] },
+          { upload: upload(SHA2, 'pdf'), personIds: ['I1'] }
+        ]
+      };
+      expect(commandFor('add_photos').validate(params)).toEqual({
+        personId: 'I1',
+        photos: [
+          { upload: { sha256: SHA, ext: 'jpg', fileName: 'aaaa.jpg' }, mediaId: null, caption: 'At the beach', date: 'about 1923', personIds: ['I2', 'I1'] },
+          { upload: null, mediaId: 12, caption: null, date: null, personIds: ['I1'] },
+          { upload: null, mediaId: 13, caption: null, date: null, personIds: ['I1'] },
+          { upload: { sha256: SHA2, ext: 'pdf', fileName: 'bbbb.pdf' }, mediaId: null, caption: null, date: null, personIds: ['I1'] }
+        ]
+      });
+    });
+
+    it('add_photos: 1 to 20 photos', () => {
+      const photo = (i) => ({ upload: upload(i.toString(16).padStart(64, '0')), personIds: ['I1'] });
+      const twenty = Array.from({ length: 20 }, (_, i) => photo(i));
+      expect(commandFor('add_photos').validate({ personId: 'I1', photos: twenty }).photos).toHaveLength(20);
+      for (const photos of [undefined, null, [], 'x', { 0: photo(0) }, [...twenty, photo(20)]]) {
+        expect(v('add_photos', { personId: 'I1', photos })).toBe('photos');
+      }
+      expect(v('add_photos', { photos: [photo(0)] })).toBe('personId');
+      expect(v('add_photos', { personId: 'I 1', photos: [photo(0)] })).toBe('personId');
+    });
+
+    it('add_photos: each photo has exactly one of upload and mediaId, both well formed', () => {
+      const add = (photo) => v('add_photos', { personId: 'I1', photos: [{ mediaId: 5, personIds: ['I1'] }, photo] });
+      expect(add({ personIds: ['I1'] })).toBe('photos.1');
+      expect(add({ upload: null, mediaId: null, personIds: ['I1'] })).toBe('photos.1');
+      expect(add({ upload: upload(), mediaId: 7, personIds: ['I1'] })).toBe('photos.1');
+      for (const photo of [null, 'x', [], 3]) expect(add(photo)).toBe('photos.1');
+      expect(add({ mediaId: 7, personIds: ['I1'], tags: [] })).toBe('photos.1.tags');
+      for (const mediaId of BAD_MEDIA_IDS) expect(add({ mediaId, personIds: ['I1'] })).toBe('photos.1.mediaId');
+      expect(add({ upload: 'x', personIds: ['I1'] })).toBe('photos.1.upload');
+      expect(add({ upload: { ...upload(), sha256: 'A'.repeat(64) }, personIds: ['I1'] })).toBe('photos.1.upload.sha256');
+      expect(add({ upload: { ...upload(), ext: 'heic' }, personIds: ['I1'] })).toBe('photos.1.upload.ext');
+      expect(add({ upload: { ...upload(), fileName: 'a/b.jpg' }, personIds: ['I1'] })).toBe('photos.1.upload.fileName');
+      expect(add({ upload: { ...upload(), objectKey: 'originals/x' }, personIds: ['I1'] })).toBe('photos.1.upload.objectKey');
+    });
+
+    it('add_photos: captions up to 500 characters, dates up to 100, both single lines', () => {
+      const add = (photo) => commandFor('add_photos').validate({ personId: 'I1', photos: [{ mediaId: 5, personIds: ['I1'], ...photo }] });
+      const bad = (photo) => v('add_photos', { personId: 'I1', photos: [{ mediaId: 5, personIds: ['I1'], ...photo }] });
+      expect(add({ caption: 'x'.repeat(500), date: 'y'.repeat(100) }).photos[0]).toMatchObject({ caption: 'x'.repeat(500), date: 'y'.repeat(100) });
+      expect(bad({ caption: 'x'.repeat(501) })).toBe('photos.0.caption');
+      expect(bad({ date: 'y'.repeat(101) })).toBe('photos.0.date');
+      expect(bad({ caption: 'a\nb' })).toBe('photos.0.caption');
+      expect(bad({ date: 1923 })).toBe('photos.0.date');
+      expect(bad({ caption: 'a\u0000' })).toBe('photos.0.caption');
+    });
+
+    it('add_photos: personIds is a non-empty list of distinct ids that includes personId', () => {
+      const bad = (personIds) => v('add_photos', { personId: 'I1', photos: [{ mediaId: 5, personIds }] });
+      for (const personIds of [undefined, null, [], 'I1', ['I1', 'I1'], ['I2'], ['I1', 'I 2'], ['I1', 3], ['I1', null]]) {
+        expect(bad(personIds)).toBe('photos.0.personIds');
+      }
+    });
+
+    it('add_photos: refuses a file or media id that appears twice in one batch', () => {
+      const twice = (a, b) => v('add_photos', { personId: 'I1', photos: [{ ...a, personIds: ['I1'] }, { ...b, personIds: ['I1'] }] });
+      expect(twice({ upload: upload() }, { upload: { ...upload(), fileName: 'other.jpg' } })).toBe('photos');
+      expect(twice({ upload: upload(SHA, 'jpg') }, { upload: upload(SHA, 'png') })).toBe('photos');
+      expect(twice({ mediaId: 7 }, { mediaId: '7' })).toBe('photos');
+    });
+
+    it('update_photo', () => {
+      const ok = {
+        mediaId: 7, caption: ' On the pier ', date: '', personIds: ['I1', 'I2'],
+        expected: { caption: 'At the beach ', date: null, personIds: ['I2'] }
+      };
+      expect(commandFor('update_photo').validate(ok)).toEqual({
+        mediaId: 7, caption: 'On the pier', date: null, personIds: ['I1', 'I2'],
+        expected: { caption: 'At the beach ', date: null, personIds: ['I2'] }, focusId: null
+      });
+      expect(commandFor('update_photo').validate({ ...ok, mediaId: '7', focusId: 'I2', expected: { ...ok.expected, personIds: [] } }))
+        .toMatchObject({ mediaId: 7, focusId: 'I2', expected: { personIds: [] } });
+      for (const mediaId of [...BAD_MEDIA_IDS, undefined]) expect(v('update_photo', { ...ok, mediaId })).toBe('mediaId');
+      expect(v('update_photo', { ...ok, caption: 'x'.repeat(501) })).toBe('caption');
+      expect(v('update_photo', { ...ok, date: 'x'.repeat(101) })).toBe('date');
+      for (const personIds of [undefined, [], ['I1', 'I1'], ['I 1'], 'I1']) expect(v('update_photo', { ...ok, personIds })).toBe('personIds');
+      expect(v('update_photo', { ...ok, focusId: 'a b' })).toBe('focusId');
+      for (const expected of [undefined, null, 'x', []]) expect(v('update_photo', { ...ok, expected })).toBe('expected');
+      for (const key of ['caption', 'date', 'personIds']) {
+        const { [key]: _omitted, ...rest } = ok.expected;
+        expect(v('update_photo', { ...ok, expected: rest })).toBe(`expected.${key}`);
+      }
+      expect(v('update_photo', { ...ok, expected: { ...ok.expected, people: [] } })).toBe('expected.people');
+      expect(v('update_photo', { ...ok, expected: { ...ok.expected, caption: 3 } })).toBe('expected.caption');
+      expect(v('update_photo', { ...ok, expected: { ...ok.expected, date: 'a\u0000' } })).toBe('expected.date');
+      for (const personIds of [null, 'I1', ['I 1'], ['I1', 'I1']]) {
+        expect(v('update_photo', { ...ok, expected: { ...ok.expected, personIds } })).toBe('expected.personIds');
+      }
+    });
+
+    it('remove_photo', () => {
+      expect(commandFor('remove_photo').validate({ personId: 'I1', mediaId: '7' })).toEqual({ personId: 'I1', mediaId: 7 });
+      expect(v('remove_photo', { mediaId: 7 })).toBe('personId');
+      for (const mediaId of [...BAD_MEDIA_IDS, undefined]) expect(v('remove_photo', { personId: 'I1', mediaId })).toBe('mediaId');
+    });
+
+    it('set_avatar: with mediaId or photo, a valid crop and a well-formed avatarKey', () => {
+      const ok = { personId: 'I1', mediaId: 7, crop: { x: 0.10004, y: 0.2, w: 0.3, h: 0.4 }, avatarKey: KEY };
+      expect(commandFor('set_avatar').validate(ok)).toEqual({ personId: 'I1', mediaId: 7, photo: null, crop: CROP, avatarKey: KEY });
+      const withPhoto = { personId: 'I1', photo: { upload: upload(), caption: ' Portrait ', personIds: ['I1', 'I2'] }, crop: CROP, avatarKey: KEY };
+      expect(commandFor('set_avatar').validate(withPhoto)).toEqual({
+        personId: 'I1', mediaId: null, crop: CROP, avatarKey: KEY,
+        photo: { upload: { sha256: SHA, ext: 'jpg', fileName: 'aaaa.jpg' }, mediaId: null, caption: 'Portrait', date: null, personIds: ['I1', 'I2'] }
+      });
+      expect(commandFor('set_avatar').validate({ ...withPhoto, photo: { mediaId: '9', personIds: ['I1'] } }).photo)
+        .toEqual({ upload: null, mediaId: 9, caption: null, date: null, personIds: ['I1'] });
+
+      expect(v('set_avatar', { ...ok, personId: undefined })).toBe('personId');
+      expect(v('set_avatar', { ...ok, photo: withPhoto.photo })).toBe('mediaId');
+      expect(v('set_avatar', { ...ok, mediaId: undefined })).toBe('mediaId');
+      for (const mediaId of BAD_MEDIA_IDS) expect(v('set_avatar', { ...ok, mediaId })).toBe('mediaId');
+      expect(v('set_avatar', { ...withPhoto, photo: 'x' })).toBe('photo');
+      expect(v('set_avatar', { ...withPhoto, photo: { ...withPhoto.photo, personIds: ['I2'] } })).toBe('photo.personIds');
+      expect(v('set_avatar', { ...withPhoto, photo: { ...withPhoto.photo, mediaId: 3 } })).toBe('photo');
+      expect(v('set_avatar', { ...withPhoto, photo: { ...withPhoto.photo, upload: { ...upload(), ext: 'exe' } } })).toBe('photo.upload.ext');
+    });
+
+    it('set_avatar: a crop failing validateCrop is invalid, naming its field', () => {
+      const ok = { personId: 'I1', mediaId: 7, crop: CROP, avatarKey: KEY };
+      expect(v('set_avatar', { ...ok, crop: undefined })).toBe('crop');
+      expect(v('set_avatar', { ...ok, crop: [0, 0, 1, 1] })).toBe('crop');
+      expect(v('set_avatar', { ...ok, crop: { ...CROP, x: '0.1' } })).toBe('crop.x');
+      expect(v('set_avatar', { ...ok, crop: { ...CROP, w: 0 } })).toBe('crop.w');
+      expect(v('set_avatar', { ...ok, crop: { ...CROP, y: 0.7 } })).toBe('crop.h');
+      expect(failure(() => commandFor('set_avatar').validate({ ...ok, crop: { ...CROP, w: -1 } })))
+        .toEqual({ status: 400, code: 'invalid', field: 'crop.w', message: "The crop's w must be greater than 0." });
+    });
+
+    it('set_avatar: avatarKey must be an avatars/<sha>-<crop12>.webp key, and match an uploaded photo and crop', () => {
+      const ok = { personId: 'I1', mediaId: 7, crop: CROP, avatarKey: KEY };
+      for (const avatarKey of [undefined, null, 3, '', `avatars/${SHA}.jpg`, `avatars/${SHA}-0123456789AB.webp`,
+        `avatars/${SHA}-0123456789a.webp`, `originals/${SHA}.jpg`, `avatars/${SHA}-0123456789ab.webp/x`, `/avatars/${SHA}-0123456789ab.webp`]) {
+        expect(v('set_avatar', { ...ok, avatarKey })).toBe('avatarKey');
+      }
+      // With mediaId, the key's sha can only be checked against the media row, in run.
+      expect(() => commandFor('set_avatar').validate({ ...ok, avatarKey: avatarKeyFor(SHA2, CROP) })).not.toThrow();
+      // With an upload, it is checked against the upload's sha and the crop straight away.
+      const withPhoto = { personId: 'I1', photo: { upload: upload(), personIds: ['I1'] }, crop: CROP };
+      expect(() => commandFor('set_avatar').validate({ ...withPhoto, avatarKey: KEY })).not.toThrow();
+      expect(v('set_avatar', { ...withPhoto, avatarKey: avatarKeyFor(SHA2, CROP) })).toBe('avatarKey');
+      expect(v('set_avatar', { ...withPhoto, avatarKey: avatarKeyFor(SHA, { ...CROP, x: 0.2 }) })).toBe('avatarKey');
+    });
+
+    it('clear_avatar', () => {
+      expect(commandFor('clear_avatar').validate({ personId: 'I1' })).toEqual({ personId: 'I1' });
+      expect(v('clear_avatar', {})).toBe('personId');
+      expect(v('clear_avatar', { personId: 'I1', avatarKey: null })).toBe('avatarKey');
+    });
+  });
+
+  describe('photo commands: prepare', () => {
+    const SHA = 'c'.repeat(64);
+    const SHA2 = 'd'.repeat(64);
+    const CROP = { x: 0, y: 0, w: 0.5, h: 0.5 };
+
+    /** A fake headObject: every key exists (as `contentType`) unless listed in `missing`; records the keys asked for. */
+    function fakeHead({ missing = [] } = {}) {
+      const keys = [];
+      const types = { jpg: 'image/jpeg', pdf: 'application/pdf', webp: 'image/webp' };
+      const headObject = vi.fn(async (key) => {
+        keys.push(key);
+        if (missing.includes(key)) return { status: 404 };
+        return { status: 200, contentType: types[key.split('.').pop()], contentLength: 1234, width: 4000, height: 3000 };
+      });
+      return { headObject, keys };
+    }
+
+    it('add_photos HEADs each upload (original and display image), giving null for media ids, in photo order', async () => {
+      const command = commandFor('add_photos');
+      const clean = command.validate({
+        personId: 'I1',
+        photos: [
+          { mediaId: 4, personIds: ['I1'] },
+          { upload: { sha256: SHA, ext: 'jpg', fileName: 'a.jpg' }, personIds: ['I1'] },
+          { upload: { sha256: SHA2, ext: 'pdf', fileName: 'b.pdf' }, personIds: ['I1'] }
+        ]
+      });
+      const { headObject, keys } = fakeHead();
+      expect(await command.prepare(clean, { headObject })).toEqual([
+        null,
+        { contentType: 'image/jpeg', byteSize: 1234, width: 4000, height: 3000 },
+        { contentType: 'application/pdf', byteSize: 1234, width: null, height: null }
+      ]);
+      expect(keys.sort()).toEqual([`display/${SHA}.webp`, `originals/${SHA}.jpg`, `originals/${SHA2}.pdf`]);
+    });
+
+    it('add_photos: a missing upload is missing_upload with the photo\'s index, field photos', async () => {
+      const command = commandFor('add_photos');
+      const clean = command.validate({
+        personId: 'I1',
+        photos: [
+          { mediaId: 4, personIds: ['I1'] },
+          { upload: { sha256: SHA, ext: 'jpg', fileName: 'a.jpg' }, personIds: ['I1'] }
+        ]
+      });
+      const { headObject } = fakeHead({ missing: [`display/${SHA}.webp`] });
+      await expect(command.prepare(clean, { headObject }))
+        .rejects.toMatchObject({ status: 400, code: 'missing_upload', extra: { index: 1, field: 'photos' } });
+    });
+
+    it('add_photos with only media ids HEADs nothing', async () => {
+      const command = commandFor('add_photos');
+      const { headObject } = fakeHead();
+      const clean = command.validate({ personId: 'I1', photos: [{ mediaId: 4, personIds: ['I1'] }] });
+      expect(await command.prepare(clean, { headObject })).toEqual([null]);
+      expect(headObject).not.toHaveBeenCalled();
+    });
+
+    it('set_avatar HEADs the avatar, and the photo\'s upload when there is one', async () => {
+      const command = commandFor('set_avatar');
+      const avatarKey = avatarKeyFor(SHA, CROP);
+      const byId = command.validate({ personId: 'I1', mediaId: 4, crop: CROP, avatarKey });
+      const first = fakeHead();
+      expect(await command.prepare(byId, { headObject: first.headObject })).toEqual({ head: null });
+      expect(first.keys).toEqual([avatarKey]);
+
+      const withPhoto = command.validate({
+        personId: 'I1', photo: { upload: { sha256: SHA, ext: 'jpg', fileName: 'a.jpg' }, personIds: ['I1'] }, crop: CROP, avatarKey
+      });
+      const second = fakeHead();
+      expect(await command.prepare(withPhoto, { headObject: second.headObject }))
+        .toEqual({ head: { contentType: 'image/jpeg', byteSize: 1234, width: 4000, height: 3000 } });
+      expect(second.keys.sort()).toEqual([avatarKey, `display/${SHA}.webp`, `originals/${SHA}.jpg`]);
+
+      const byMediaPhoto = command.validate({ personId: 'I1', photo: { mediaId: 4, personIds: ['I1'] }, crop: CROP, avatarKey });
+      const third = fakeHead();
+      expect(await command.prepare(byMediaPhoto, { headObject: third.headObject })).toEqual({ head: null });
+      expect(third.keys).toEqual([avatarKey]);
+    });
+
+    it('set_avatar: a missing avatar is missing_upload for avatarKey, and a missing photo for photo', async () => {
+      const command = commandFor('set_avatar');
+      const avatarKey = avatarKeyFor(SHA, CROP);
+      const clean = command.validate({ personId: 'I1', mediaId: 4, crop: CROP, avatarKey });
+      await expect(command.prepare(clean, fakeHead({ missing: [avatarKey] })))
+        .rejects.toMatchObject({ status: 400, code: 'missing_upload', extra: { field: 'avatarKey' } });
+
+      const withPhoto = command.validate({
+        personId: 'I1', photo: { upload: { sha256: SHA, ext: 'jpg', fileName: 'a.jpg' }, personIds: ['I1'] }, crop: CROP, avatarKey
+      });
+      await expect(command.prepare(withPhoto, fakeHead({ missing: [`originals/${SHA}.jpg`] })))
+        .rejects.toMatchObject({ status: 400, code: 'missing_upload', extra: { index: 0, field: 'photo' } });
+    });
+
+    it('only add_photos and set_avatar have a prepare step', () => {
+      expect([...COMMANDS.values()].filter((command) => command.prepare).map((command) => command.kind).sort())
+        .toEqual(['add_photos', 'set_avatar']);
+    });
   });
 
   it('every command refuses a non-object params, and any key it does not take', () => {
