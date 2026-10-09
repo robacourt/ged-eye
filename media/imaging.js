@@ -16,6 +16,8 @@ export const DISPLAY_SIZE = 2000;
 export const THUMB_SIZE = 320;
 export const AVATAR_SIZE = 400;
 
+const MAX_TIFF_IFDS = 64;
+
 /** A file we refuse. `status` 400 (413 for too_large); `permanent` means re-trying the same bytes can't help. */
 export class ImagingError extends Error {
   constructor(code, status = 400) {
@@ -26,31 +28,48 @@ export class ImagingError extends Error {
   }
 }
 
+/** `bytes` (a Buffer or Uint8Array) as a Buffer over the same memory, so Buffer methods like toString and includes work. */
+const asBuffer = (bytes) => (Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength));
+
 /** The hex sha256 of `buffer`. */
 export const sha256Hex = (buffer) => createHash('sha256').update(buffer).digest('hex');
 
 /**
- * Does sharp's metadata().exif (with or without its "Exif\0\0" prefix) have a GPSInfo pointer (0x8825) in IFD0?
- * Also works on a whole TIFF file, which is itself a TIFF/EXIF structure.
+ * Does the TIFF structure in `b` (an EXIF block without its prefix, or a whole TIFF file) have a GPSInfo pointer
+ * (0x8825) in any of its first `maxIfds` IFDs? Follows the next-IFD offsets, stopping at 0 or at an IFD already seen.
  */
-export function hasGps(exif) {
+function gpsPointerInIfds(b, maxIfds) {
   try {
-    if (!exif || exif.length < 8) return false;
-    let b = exif;
-    if (b.subarray(0, 6).toString('latin1') === 'Exif\0\0') b = b.subarray(6);
+    if (b.length < 8) return false;
     const order = b.subarray(0, 2).toString('latin1');
     if (order !== 'II' && order !== 'MM') return false;
     const le = order === 'II';
     const u16 = (o) => (le ? b.readUInt16LE(o) : b.readUInt16BE(o));
     const u32 = (o) => (le ? b.readUInt32LE(o) : b.readUInt32BE(o));
-    const ifd0 = u32(4);
-    const count = u16(ifd0);
-    for (let i = 0; i < count; i++) if (u16(ifd0 + 2 + i * 12) === 0x8825) return true;
+    const seen = new Set();
+    for (let ifd = u32(4); ifd !== 0 && !seen.has(ifd) && seen.size < maxIfds; ifd = u32(ifd + 2 + u16(ifd) * 12)) {
+      seen.add(ifd);
+      const count = u16(ifd);
+      for (let i = 0; i < count; i++) if (u16(ifd + 2 + i * 12) === 0x8825) return true;
+    }
     return false;
   } catch {
     return false; // a truncated block (RangeError) has no readable GPS pointer
   }
 }
+
+/** Does sharp's metadata().exif (with or without its "Exif\0\0" prefix) have a GPSInfo pointer (0x8825) in IFD0? */
+export function hasGps(exif) {
+  if (!exif || exif.length < 8) return false;
+  const b = asBuffer(exif);
+  return gpsPointerInIfds(b.subarray(0, 6).toString('latin1') === 'Exif\0\0' ? b.subarray(6) : b, 1);
+}
+
+/**
+ * Does any IFD of a whole TIFF file (each page has one) have a GPSInfo pointer? Reads at most MAX_TIFF_IFDS of them.
+ * sharp's metadata never shows a TIFF's EXIF, so this reads the file itself, which is a TIFF/EXIF structure.
+ */
+const tiffHasGps = (buffer) => gpsPointerInIfds(buffer, MAX_TIFF_IFDS);
 
 /** Does sharp's metadata show location data: a GPSInfo pointer in the EXIF, or XMP that mentions GPSLatitude? */
 export const hasLocation = (meta) => hasGps(meta.exif) || Boolean(meta.xmp && meta.xmp.toString('latin1').includes('GPSLatitude'));
@@ -62,10 +81,11 @@ export const hasLocation = (meta) => hasGps(meta.exif) || Boolean(meta.xmp && me
 export function inspect(buffer) {
   if (buffer.length === 0) throw new ImagingError('empty');
   if (buffer.length > MAX_UPLOAD_BYTES) throw new ImagingError('too_large', 413);
-  const type = sniff(buffer);
+  const bytes = asBuffer(buffer);
+  const type = sniff(bytes);
   if (type === 'heic') throw new ImagingError('heic_unsupported');
   if (!type) throw new ImagingError('unsupported_type');
-  return { sha256: sha256Hex(buffer), type };
+  return { sha256: sha256Hex(bytes), type };
 }
 
 /**
@@ -83,13 +103,13 @@ async function mapSharpErrors(operation) {
 }
 
 /**
- * Does the file carry location data? sharp 0.33.5 (libvips 8.15.3) never shows a TIFF's EXIF in metadata().exif
- * or a GIF's XMP in metadata().xmp, so those come from the file's own bytes: a TIFF's IFD0 is read with hasGps,
- * and a GIF counts if its bytes mention GPSLatitude.
+ * Does the file (a Buffer) carry location data? sharp 0.33.5 (libvips 8.15.3) never shows a TIFF's EXIF in
+ * metadata().exif or a GIF's XMP in metadata().xmp, so those come from the file's own bytes: every IFD of a TIFF is
+ * checked for a GPSInfo pointer, and a GIF counts if its bytes mention GPSLatitude.
  */
 function fileHasLocation(buffer, type, meta) {
   if (hasLocation(meta)) return true;
-  if (type.ext === 'tif') return hasGps(buffer);
+  if (type.ext === 'tif') return tiffHasGps(buffer);
   if (type.ext === 'gif') return buffer.includes('GPSLatitude');
   return false;
 }
@@ -119,14 +139,16 @@ async function displayAndThumb(buffer, meta, limitInputPixels) {
  * pages differ in size), and TypeError for a type that isn't an image.
  */
 export async function reencodeWithoutMetadata(buffer, type, meta, limitInputPixels = LIMIT_PIXELS) {
-  const open = (options) => sharp(buffer, { limitInputPixels, ...options });
+  const bytes = asBuffer(buffer);
+  const open = (options) => sharp(bytes, { limitInputPixels, ...options });
   const upright = () => open().rotate().keepIccProfile();
   const encoders = {
     jpg: () => upright().jpeg({ quality: 92 }),
     webp: () => upright().webp({ quality: 92 }),
     png: () => upright().png(),
     avif: () => upright().avif({ quality: 70 }),
-    // .rotate() can't turn a multi-page image, so a TIFF that needs rotating keeps only its first page.
+    // .rotate() can't turn a multi-page image, so a TIFF with an orientation above 1 is re-encoded upright as its
+    // first page only: pages 2 onwards are lost. Only TIFFs with location data are re-encoded, so that is rare.
     tif: () => (meta.orientation > 1 ? upright() : open({ pages: -1 }).keepIccProfile()).tiff({ compression: 'lzw' }),
     // GIFs have no EXIF orientation.
     gif: () => open({ animated: true }).gif()
@@ -138,18 +160,20 @@ export async function reencodeWithoutMetadata(buffer, type, meta, limitInputPixe
 
 /**
  * Checks and processes an upload. → { sha256, type, original: { body, reencoded }, display, thumb, width, height }
- * - `original.body` is `buffer` itself unless it has location data, when it is re-encoded without it.
+ * - `buffer` is a Buffer or Uint8Array. `original.body` is a Buffer of its bytes (`buffer` itself when that is a
+ *   Buffer) unless it has location data, when it is re-encoded without it.
  * - `display` and `thumb` are WebP; `width` and `height` are the oriented size. All four are null for PDFs.
  * Throws ImagingError: inspect's codes, 'too_many_pixels', or 'unreadable'.
  */
 export async function processFile(buffer, { limitInputPixels = LIMIT_PIXELS } = {}) {
-  const { sha256, type } = inspect(buffer);
-  if (!type.image) return { sha256, type, original: { body: buffer, reencoded: false }, display: null, thumb: null, width: null, height: null };
-  const meta = await readMetadata(buffer, limitInputPixels);
-  const original = fileHasLocation(buffer, type, meta)
-    ? { body: await reencodeWithoutMetadata(buffer, type, meta, limitInputPixels), reencoded: true }
-    : { body: buffer, reencoded: false };
-  const { display, thumb, width, height } = await displayAndThumb(buffer, meta, limitInputPixels);
+  const bytes = asBuffer(buffer);
+  const { sha256, type } = inspect(bytes);
+  if (!type.image) return { sha256, type, original: { body: bytes, reencoded: false }, display: null, thumb: null, width: null, height: null };
+  const meta = await readMetadata(bytes, limitInputPixels);
+  const original = fileHasLocation(bytes, type, meta)
+    ? { body: await reencodeWithoutMetadata(bytes, type, meta, limitInputPixels), reencoded: true }
+    : { body: bytes, reencoded: false };
+  const { display, thumb, width, height } = await displayAndThumb(bytes, meta, limitInputPixels);
   return { sha256, type, original, display, thumb, width, height };
 }
 
@@ -158,8 +182,9 @@ export async function processFile(buffer, { limitInputPixels = LIMIT_PIXELS } = 
  * to read it. → { display, thumb, width, height } (oriented size). Throws ImagingError 'too_many_pixels' or 'unreadable'.
  */
 export async function derivatives(buffer, { limitInputPixels = LIMIT_PIXELS } = {}) {
-  const meta = await readMetadata(buffer, limitInputPixels);
-  return displayAndThumb(buffer, meta, limitInputPixels);
+  const bytes = asBuffer(buffer);
+  const meta = await readMetadata(bytes, limitInputPixels);
+  return displayAndThumb(bytes, meta, limitInputPixels);
 }
 
 /**
@@ -169,8 +194,9 @@ export async function derivatives(buffer, { limitInputPixels = LIMIT_PIXELS } = 
  */
 export async function renderAvatar(buffer, crop, { limitInputPixels = LIMIT_PIXELS } = {}) {
   validateCrop(crop);
-  const { width, height } = orientedSize(await readMetadata(buffer, limitInputPixels));
+  const bytes = asBuffer(buffer);
+  const { width, height } = orientedSize(await readMetadata(bytes, limitInputPixels));
   const { left, top, size } = cropPixels(crop, width, height);
-  return mapSharpErrors(() => sharp(buffer, { limitInputPixels }).rotate()
+  return mapSharpErrors(() => sharp(bytes, { limitInputPixels }).rotate()
     .extract({ left, top, width: size, height: size }).resize(AVATAR_SIZE, AVATAR_SIZE).webp({ quality: 85 }).toBuffer());
 }
