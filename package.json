@@ -22,6 +22,7 @@
     "vitest": "^3.0.0"
   },
   "dependencies": {
+    "@aws-sdk/s3-request-presigner": "^3.1149.0",
     "@canvas/image": "^1.0.0",
     "@neon/config": "^1.8.6",
     "@neon/env": "^1.5.3",

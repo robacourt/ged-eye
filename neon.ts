@@ -9,5 +9,6 @@ export default defineConfig({
   },
   functions: {
     api: { name: "ged-eye api", source: "api/index.js" },
+    media: { name: "ged-eye media", source: "media/index.js", externalPackages: ["sharp"] },
   },
 });
