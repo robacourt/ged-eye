@@ -2282,6 +2282,7 @@ http.createServer(async (req, res) => {
     - I23: Military service under Other details, and notes free of "Parish of Marnhull"
     - I443: census transcription disclosures
     - I711: `[email hidden]`
+    - I248: `[email hidden]` for an address the GEDCOM wrote with `@@`
     - I777: a long note
     - I1208: the death row showing only a note
     - mobile width via `resize_window`. If notes or disclosures look wrong there, fix the CSS in a follow-up commit and re-run Task 14 Step 2.
@@ -2335,7 +2336,7 @@ Expect `{"direction":"apply","host":"<host>","updated":1392,"verified":1392}`.
 - [ ] **Step 8: Verify after the backfill.** Responses are `public, max-age=300`. If a curl or the verify-neon API sample shows pre-backfill data, wait 5 minutes and re-run before treating it as a failure.
   - Re-plan with `--out <scratch>/replan-production.json`. Expect `unchanged 2994, changed 0`.
   - Re-run the Step 4 verify-neon. Expect 0 unexplained.
-  - `curl` the live API for `/person/I1`, `I23`, `I443`, `I711` and `I777`, and check the new keys and the masking.
+  - `curl` the live API for `/person/I1`, `I23`, `I443`, `I711`, `I248` and `I777`, and check the new keys and the masking (no `@` outside `email`).
   - Look at the live site (`https://robacourt.github.io/ged-eye/?person=I1`) after Pages deploys.
 - [ ] **Step 9: Summarise.** Report what changed and the evidence. Give the rollback options:
 

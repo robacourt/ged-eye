@@ -221,7 +221,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 **Connection.** Uses `DATABASE_URL_UNPOOLED`, or `--database-url <url>`. `host` is that URL's hostname. For another branch, prefer a mode-600 env file holding `DATABASE_URL_UNPOOLED=<url>` and `node --env-file=<file> …`, because a URL on the command line (which carries the password) lands in shell history and `ps`.
 
-**Arguments.** Only `--database-url`, `--sha`, `--out`, `--apply`, `--rollback` and `--confirm` are accepted, each with a value. Anything else (an unknown flag, `--flag=value`, a missing value, a duplicate) is refused before anything is read. The plan file's shape is checked before connecting: host, rows, unique string ids, `before` and `after` objects that differ.
+**Arguments.** Only `--database-url`, `--sha`, `--out`, `--apply`, `--rollback` and `--confirm` are accepted, each with a value. Anything else (an unknown flag, `--flag=value`, a missing value, a duplicate) is refused before anything is read. The plan file's shape is checked before connecting: host, rows, unique string ids, `before` and `after` objects that differ. Flags must fit the mode: `--confirm` only with `--apply`/`--rollback`, and `--out`/`--sha` only when planning. An existing plan file at the output path is refused before connecting. `applyPlan` sets `lock_timeout = '5s'` so a stray lock fails the run instead of hanging it.
 
 **Plan (the default).** It runs inside `begin isolation level repeatable read, read only` … `rollback`, so the archive and the people come from one snapshot. It refuses to overwrite an existing plan file, because that file may be the only rollback for an apply already made.
 1. Load `gedcom_archive`. Exactly one row is required unless `--sha <sha256>` picks one. Recompute the sha256 of `content` and abort if it differs from the stored value.
@@ -295,7 +295,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
      - a re-plan with zero rows (re-plans write to their own `--out` file, so the first plan stays usable as the rollback)
      - rollback, re-plan and re-apply each behave as listed under Supported sequences
      - `verify-neon` against the branch (`--api-sample 0`) reporting 0 unexplained differences
-   - For a visual check, run a scratch `node:http` wrapper around `createHandler` with a `pg` Pool on the branch URL (not committed). Start the front end with `VITE_API_URL=http://localhost:<port> npm run dev`; process env takes priority over `.env.development`. Check I1, I23, I443, I711 and I777, including at mobile width.
+   - For a visual check, run a scratch `node:http` wrapper around `createHandler` with a `pg` Pool on the branch URL (not committed). Start the front end with `VITE_API_URL=http://localhost:<port> npm run dev`; process env takes priority over `.env.development`. Check I1, I23, I443, I711, I248 (an address written `@@` in GEDCOM) and I777, including at mobile width.
    - Delete the branch.
 4. **Production.**
    - Create the branch `pre-facts-backfill-2026-10-09` from `production` as the restore point.
