@@ -1,7 +1,7 @@
 # Photos: upload, captions, tagging and avatars: design
 
 **Date:** 2026-10-09
-**Status:** Revision 2, after one spec review and the step 0 spike. The developer approved the three design sections in conversation and asked for it to be written up and built.
+**Status:** Revision 3, approved by the second spec review, after the step 0 spike. The developer approved the three design sections in conversation and asked for it to be written up and built.
 **Follows:** [2026-10-09-editing-design.md](2026-10-09-editing-design.md). That release added sign-in, recorded changes, undo, and the "Next release: photos" notes this design builds on.
 
 ## Goals
@@ -45,7 +45,7 @@
 |---|---|---|
 | Neon branch | `photos` (`br-solitary-darkness-b2jjfmob`), a child of `editing`, so it has the dev accounts and the dev auth configuration. DB tests reuse `test-editing`, whose schema each run resets; this keeps the project under the free plan's branch limit. | `production` |
 | Functions | `neon.ts` gains:<br>• `media: { name: "ged-eye media", source: "media/index.js", externalPackages: ["sharp"] }`;<br>• the `sweep-incoming` schedule trigger.<br>`neon deploy` deploys both Functions to the branch. `@aws-sdk/client-s3` moves to `dependencies`, and `@aws-sdk/s3-request-presigner` is added. | `neon deploy --branch production --no-env-pull` |
-| Front-end env | `.env.development.local` (gitignored) gains `VITE_MEDIA_API_URL` for the `photos` branch, alongside the other three. | `.env.production` gains `VITE_MEDIA_API_URL`. |
+| Front-end env | `.env.development.local` (gitignored) points all four `VITE_*` values (`VITE_API_URL`, `VITE_MEDIA_BASE_URL`, `VITE_NEON_AUTH_URL`, `VITE_MEDIA_API_URL`) at the `photos` branch. Storage is per branch, so a stale `VITE_MEDIA_BASE_URL` would make new thumbnails 404. | `.env.production` gains `VITE_MEDIA_API_URL`. |
 
 The `media` Function reads `AWS_*` (storage), `DATABASE_URL`, `NEON_AUTH_BASE_URL` and `NEON_AUTH_JWKS_URL`, all of which are injected on its branch.
 
@@ -104,7 +104,7 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 `media/index.js` and `media/handler.js`, with the processing in `media/imaging.js` (pure functions of a buffer, shared with the backfill script).
 
 - It reuses `api/auth.js` (JWT and `requireEditor`), `api/http.js` (JSON, errors and CORS) and `api/db.js` (read-only queries).
-- Every route except `/health` and preflight requires an editor.
+- Every route except `/health`, preflight and `/sweep` (which takes a trigger delivery) requires an editor.
 - CORS matches `api`.
 
 | Method & path | Body | Result |
@@ -123,6 +123,9 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 - Set `sharp.cache(false)` and `sharp.concurrency(2)`. `limitInputPixels` stays at 100 MP: the spike's 79 MP JPEG peaked at 861 MB even with a full re-encode.
 - Make the thumbnail from the display image, not the original.
 - Run one image job at a time per isolate. Further requests wait their turn in an in-process queue; the platform adds isolates under load.
+  - The download from storage happens *inside* the queued job, so waiting requests hold no file buffers.
+  - `/avatars` goes through the same queue.
+  - If more than 4 jobs are already waiting, the request gets `503 busy`, which the client retries.
 
 1. **Size and type.**
    - Read the object and recheck its size (`too_large`, `empty`).
@@ -132,8 +135,9 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 3. **Images.**
    - Read metadata with `limitInputPixels: 100_000_000` (otherwise `too_many_pixels`).
    - Location is present when EXIF IFD0 has a GPSInfo pointer (tag `0x8825`) or the XMP mentions `GPSLatitude`.
-   - If it is present, the stored original is re-encoded in the same format: `.rotate()`, `.keepIccProfile()`, no other metadata, at JPEG/WebP quality 92, lossless PNG, LZW TIFF, AVIF quality 70, or GIF. GIFs are read with `animated: true`, so every frame is kept. Otherwise the bytes are stored unchanged.
-   - TIFFs get their own GPS fixture in the tests, because a TIFF's GPS IFD may not show up the same way in `metadata().exif`. If sharp can't see it, the TIFF is re-encoded unconditionally.
+   - If it is present, the stored original is re-encoded in the same format: `.rotate()`, `.keepIccProfile()`, no other metadata, at JPEG/WebP quality 92, lossless PNG, LZW TIFF (read with `pages: -1`, so multi-page scans keep every page), or AVIF quality 70. Otherwise the bytes are stored unchanged.
+   - GIFs have no EXIF orientation. One carrying location XMP is re-encoded with `animated: true` and no `.rotate()`, which keeps every frame.
+   - TIFFs get their own GPS fixture in the tests, because a TIFF's GPS IFD may not show up the same way in `metadata().exif`. If that fixture isn't detected, `imaging.js` re-encodes every TIFF, as above.
    - Write `display` and `thumbs`, taking the first frame of animated images.
    - `width` and `height` are the oriented size, swapped for EXIF orientations 5–8.
 4. **PDFs.** Stored unchanged, with no derivatives.
@@ -154,7 +158,7 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 - **HEAD checks:** it sends unauthenticated `HEAD`s of `${AWS_ENDPOINT_URL_S3}/ged-eye-media/<key>` for the original and, for images, the display image.
 - **Data taken from the objects, not the client:**
   - `content_type`, which must match `ext`, and `byte_size` come from the original's response;
-  - `width` and `height` come from its `x-amz-meta-*` headers.
+  - `width` and `height` come from its `x-amz-meta-*` headers. A public, anonymous HEAD does return these headers (checked on the `photos` branch). If an image original lacks them, `width` and `height` are stored as null.
 - **Timing:** commands get an optional async `prepare(params)` step, which `runChange` calls after `validate` and *before* `beginChange`. The HEADs therefore run in parallel (at most 8 at a time, 5 s timeout each) without holding the global lock or an open transaction, and `run` receives the results.
 - **Errors:** a missing object gives `400 missing_upload` (with the photo's index), and a timeout gives `503 busy`.
 - **Avatars:** `avatarKey` must match `^avatars/<sha of the chosen media>-[0-9a-f]{12}\.webp$` and equal the key `media/crop.js` computes from the crop. It is HEAD-checked the same way.
@@ -165,7 +169,7 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 |---|---|---|---|
 | `add_photos` | `{personId, photos: [{upload \| mediaId, caption, date, personIds}]}`, 1–20 photos. `personIds` is non-empty and includes `personId`. No sha or `mediaId` may appear twice in one batch (`400 invalid`); the dialog merges duplicates before saving. | Inserts `media` rows for new uploads; a sha that gained a row meanwhile is reused. For an existing row, `caption` and `date` only fill fields that are null and never overwrite a shared caption. Links every tagged person at the front; existing links are left alone. If nothing changes (every link already exists), it returns `400 no_change`, and the dialog closes with "Already shown for everyone selected". | "Added 2 photos for Alice Smith" |
 | `update_photo` | `{mediaId, caption, date, personIds, expected: {caption, date, personIds}, focusId?}`, where `personIds` is the full, non-empty set | Checks `expected` against the stored values (`409 stale` on any difference, as `update_family` does), then updates `caption` and `date` and adds or removes links to match. `focusId` chooses whose view is returned; it defaults to the first of `personIds`. | "Edited a photo of Alice Smith" |
-| `remove_photo` | `{personId, mediaId}` | Deletes that one link. The `media` row stays, even with no links left. | "Removed a photo from Alice Smith" |
+| `remove_photo` | `{personId, mediaId}` | Deletes that one link. The `media` row stays, even with no links left. If the link is already gone (another editor removed it), it returns `409 stale`. | "Removed a photo from Alice Smith" |
 | `set_avatar` | `{personId, mediaId \| photo, crop, avatarKey}`. `photo` is one `add_photos` item, used for an upload made in the avatar flow. | Requires the photo to be an image (with a display image) linked to the person; `photo` links it first. Sets `avatar_key` and `avatar_source`. It does not bump `person.updated_at` and takes no `expectedUpdatedAt`, so an open person editor isn't made stale; `toggle_change` bumps `updated_at` on undo and redo anyway. | "Changed the avatar of Bert Jones" |
 | `clear_avatar` | `{personId}` | Sets `avatar_key` and `avatar_source` to null. | "Removed the avatar of Bert Jones" |
 
@@ -273,7 +277,7 @@ Everything for editors lives in the lazy editing chunk, so viewers download no u
    - Report the GPS count to the developer.
 5. **Verify:**
    - Run `verify-neon`. `verifyCompare` needs no change: it compares only sha, `fileName` and `contentType` per photo. Two changes go into `verify.js` before the backfill:
-     - `EDITED_SQL` ignores `media` rows changed by `kind = 'backfill_media'` changes. Otherwise the backfill would mark everyone with a photo, and their relatives, as edited, and verification would skip them.
+     - `EDITED_SQL` ignores `media` rows changed by `kind = 'backfill_media'` changes, and by undo or redo changes whose `base_change_id` points at one. Otherwise the backfill would mark everyone with a photo, and their relatives, as edited, and verification would skip them.
      - The missing-bucket-objects check also covers `display_key`.
    - Spot-check the viewer on a TIFF and a large PNG.
 6. **Release:** build `docs/` and merge the PR.
