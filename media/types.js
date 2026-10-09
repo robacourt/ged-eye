@@ -1,5 +1,5 @@
 /**
- * The file types, name rules and identifier patterns shared by the media Function and the api Function.
+ * The file types, name rules, identifier patterns and refusal error shared by the media Function and the api Function.
  * Pure, with no dependencies, so both can import it.
  */
 
@@ -17,6 +17,16 @@ export const TYPES = new Map([
 ]);
 
 for (const type of TYPES.values()) Object.freeze(type);
+
+/** A file we refuse. `status` 400 (413 for too_large); `permanent` means re-trying the same bytes can't help. */
+export class ImagingError extends Error {
+  constructor(code, status = 400) {
+    super(code);
+    this.code = code;
+    this.status = status;
+    this.permanent = true;
+  }
+}
 
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 export const SHA256 = /^[0-9a-f]{64}$/;

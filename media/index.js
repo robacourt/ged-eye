@@ -8,7 +8,8 @@ import * as imaging from './imaging.js';
 import { createJobQueue } from './jobQueue.js';
 import { createStorage } from './storage.js';
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5, connectionTimeoutMillis: 10_000 });
+// query_timeout: a hung mediaBySha inside a queued job must not hold the one-at-a-time queue.
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5, connectionTimeoutMillis: 10_000, query_timeout: 10_000 });
 attachDatabasePool(pool);
 
 export default {

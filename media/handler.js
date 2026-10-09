@@ -6,9 +6,8 @@ import { randomUUID } from 'node:crypto';
 import { AuthError, requireEditor } from '../api/auth.js';
 import { ApiError, CORS_HEADERS, errorJson, invalid, json, preflight, readJson } from '../api/http.js';
 import { CropError, avatarKeyFor } from './crop.js';
-import { ImagingError } from './imaging.js';
 import { BusyError } from './jobQueue.js';
-import { MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition } from './types.js';
+import { ImagingError, MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition } from './types.js';
 
 /** Every stored key but incoming/ is immutable: written once, cached for a year. */
 export const IMMUTABLE = 'public, max-age=31536000, immutable';
@@ -228,8 +227,19 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
       throw new ApiError(400, 'unknown_trigger', { message: `Not the ${SWEEP_TRIGGER} trigger.` });
     }
     const keys = await storage.listOlderThan('incoming/', new Date(now().getTime() - INCOMING_MAX_AGE_MS));
-    for (const key of keys) await storage.remove(key);
-    return json(200, { deleted: keys.length });
+    let deleted = 0;
+    let failed = 0;
+    // One failed delete doesn't stop the rest; next hour's sweep tries it again.
+    for (const key of keys) {
+      try {
+        await storage.remove(key);
+        deleted++;
+      } catch (error) {
+        failed++;
+        log('sweep could not delete', key, error);
+      }
+    }
+    return json(200, { deleted, failed });
   }
 
   const routes = [

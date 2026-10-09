@@ -6,8 +6,7 @@ import {
   DeleteObjectCommand, GetObjectCommand, HeadObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { MAX_UPLOAD_BYTES } from './types.js';
-import { ImagingError } from './imaging.js';
+import { ImagingError, MAX_UPLOAD_BYTES } from './types.js';
 
 /** The bucket on every branch (storage branches with the database). */
 export const BUCKET = 'ged-eye-media';
@@ -42,13 +41,21 @@ function untilAborted(signal, promise, onAbort) {
 }
 
 /**
- * The bucket's operations. `client` defaults to the S3 client configured by the injected AWS_* env vars, with
- * checksums only where S3 requires them: otherwise a presigned PUT would carry the CRC32 of an empty body.
+ * The default S3 client's options; the endpoint, region and credentials come from the injected AWS_* env vars.
+ * - `requestChecksumCalculation: 'WHEN_REQUIRED'`: otherwise a presigned PUT carries the CRC32 of an empty body.
+ * - `maxAttempts: 1`: the SDK doesn't retry, so putOnce's withRetry is the only retry layer. Worst cases per call:
+ *   get, exists, remove and each LIST page are one try (60 s, 10 s, 10 s, 10 s); putOnce is at most 3 HEADs and
+ *   3 PUTs, 3 × 10 s + 3 × 60 s + 2 × (1 s + 2 s) of retry delays = 216 s.
+ */
+export const CLIENT_OPTIONS = Object.freeze({ forcePathStyle: true, requestChecksumCalculation: 'WHEN_REQUIRED', maxAttempts: 1 });
+
+/**
+ * The bucket's operations. `client` defaults to an S3Client with CLIENT_OPTIONS.
  * `timeouts` and `retryDelay(attempt)` (ms before retry `attempt`) are injectable for tests.
  * → { presignPut, get, exists, putOnce, remove, listOlderThan }
  */
 export function createStorage({
-  client = new S3Client({ forcePathStyle: true, requestChecksumCalculation: 'WHEN_REQUIRED' }),
+  client = new S3Client({ ...CLIENT_OPTIONS }),
   bucket = BUCKET,
   timeouts = TIMEOUTS,
   retryDelay = (attempt) => 500 * 2 ** attempt

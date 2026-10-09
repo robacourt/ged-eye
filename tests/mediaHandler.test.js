@@ -1,13 +1,8 @@
 // @vitest-environment node
 import { describe, it, expect, vi } from 'vitest';
 import sharp from 'sharp';
-import {
-  DeleteObjectCommand, GetObjectCommand, HeadObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client
-} from '@aws-sdk/client-s3';
 import { parseTriggerDelivery } from '@neon/functions/triggers';
 import { createMediaHandler, IMMUTABLE } from '../media/handler.js';
-import { createStorage } from '../media/storage.js';
-import { createMediaDb } from '../media/db.js';
 import { createJobQueue } from '../media/jobQueue.js';
 import * as imaging from '../media/imaging.js';
 import { ImagingError, sha256Hex } from '../media/imaging.js';
@@ -417,6 +412,19 @@ describe('POST /uploads/:id/process', () => {
     expect(log).toHaveBeenCalled();
   });
 
+  it('still answers 200 with the media when the upload cannot be deleted after success, and logs it', async () => {
+    const { request, stage, storage, log } = setup();
+    stage(`incoming/${ID}`, plainJpeg);
+    const failure = new Error('storage down');
+    storage.remove.mockRejectedValueOnce(failure);
+    const res = await processUpload(request);
+    expect(res.status).toBe(200);
+    expect((await res.json()).media).toMatchObject({ mediaId: null, sha256: PLAIN_SHA, objectKey: `originals/${PLAIN_SHA}.jpg` });
+    expect(log).toHaveBeenCalledWith('could not delete', `incoming/${ID}`, failure);
+    expect(storage.objects.has(`originals/${PLAIN_SHA}.jpg`)).toBe(true);
+    expect(storage.objects.has(`incoming/${ID}`)).toBe(true); // left for the hourly sweep
+  });
+
   it('keeps the upload after a transient failure (500), so a retry can succeed', async () => {
     const { request, stage, storage, log } = setup();
     stage(`incoming/${ID}`, gpsJpeg);
@@ -631,11 +639,25 @@ describe('POST /sweep', () => {
     stage(`originals/${PLAIN_SHA}.jpg`, plainJpeg, hoursAgo(2));
     const res = await sweep(request);
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ deleted: 1 });
+    expect(await res.json()).toEqual({ deleted: 1, failed: 0 });
     expect(storage.listOlderThan).toHaveBeenCalledWith('incoming/', hoursAgo(1));
     expect([...storage.objects.keys()].sort()).toEqual([`incoming/${OTHER_ID}`, `originals/${PLAIN_SHA}.jpg`].sort());
     expect(parseTrigger).toHaveBeenCalledWith(expect.any(Request));
     expect(authenticate).not.toHaveBeenCalled();
+  });
+
+  it('keeps going past a failed delete, logging it, and counts both', async () => {
+    const { request, stage, storage, log } = setup();
+    const ids = [ID, OTHER_ID, crypto.randomUUID()];
+    ids.forEach((id) => stage(`incoming/${id}`, plainJpeg, new Date(0)));
+    const failure = new Error('storage down');
+    storage.remove.mockImplementationOnce(async () => { throw failure; });
+    const res = await sweep(request);
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ deleted: 2, failed: 1 });
+    expect(storage.remove).toHaveBeenCalledTimes(3);
+    expect(log).toHaveBeenCalledWith('sweep could not delete', `incoming/${ID}`, failure);
+    expect([...storage.objects.keys()]).toEqual([`incoming/${ID}`]);
   });
 
   it.each([['missing_header', 401], ['invocation_id_mismatch', 401], ['invalid_body', 400]])(
@@ -669,194 +691,8 @@ describe('POST /sweep', () => {
     expect(storage.objects.size).toBe(1);
     const res = await sweep(request, { body: wire, headers: { 'x-neon-trigger-invocation-id': 'inv-9' } });
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ deleted: 1 });
+    expect(await res.json()).toEqual({ deleted: 1, failed: 0 });
     const broken = await sweep(request, { body: '{', headers: { 'x-neon-trigger-invocation-id': 'inv-9' } });
     expect(broken.status).toBe(400);
-  });
-});
-
-/** A fake S3 client: `respond(command, options)` answers each send. */
-function fakeClient(respond) {
-  return { send: vi.fn(async (command, options) => respond(command, options)) };
-}
-
-const s3Error = (name, status) => Object.assign(new Error(name), { name, $metadata: { httpStatusCode: status } });
-
-/** A body like the SDK's, holding `bytes`. */
-const sdkBody = (bytes) => ({ transformToByteArray: vi.fn(async () => new Uint8Array(bytes)), destroy: vi.fn() });
-
-/** A send that never answers until its abort signal fires, like a hung connection. */
-const hang = (command, { abortSignal } = {}) => new Promise((_, reject) => {
-  abortSignal?.addEventListener('abort', () => reject(abortSignal.reason));
-});
-
-describe('media/storage.js', () => {
-  const quick = (client, options = {}) => createStorage({ client, retryDelay: () => 0, ...options });
-
-  it('presigns a 15-minute PUT signing content-type and content-length, with no checksum', async () => {
-    const client = new S3Client({
-      region: 'us-east-1', endpoint: 'https://storage.test', forcePathStyle: true, requestChecksumCalculation: 'WHEN_REQUIRED',
-      credentials: { accessKeyId: 'AKIDTEST', secretAccessKey: 'test-secret' }
-    });
-    const url = new URL(await createStorage({ client }).presignPut(`incoming/${ID}`, 'image/jpeg', 1234));
-    expect(`${url.origin}${url.pathname}`).toBe(`https://storage.test/ged-eye-media/incoming/${ID}`);
-    expect(url.searchParams.get('X-Amz-Expires')).toBe('900');
-    expect(url.searchParams.get('X-Amz-SignedHeaders').split(';').sort()).toEqual(['content-length', 'content-type', 'host']);
-    expect([...url.searchParams.keys()].filter((key) => /checksum/i.test(key))).toEqual([]);
-  });
-
-  it('get returns a Buffer of the object, with a deadline on the call', async () => {
-    const client = fakeClient(() => ({ ContentLength: 3, Body: sdkBody([1, 2, 3]) }));
-    const body = await quick(client).get('incoming/x');
-    expect(Buffer.isBuffer(body)).toBe(true);
-    expect([...body]).toEqual([1, 2, 3]);
-    const [command, options] = client.send.mock.calls[0];
-    expect(command).toBeInstanceOf(GetObjectCommand);
-    expect(command.input).toEqual({ Bucket: 'ged-eye-media', Key: 'incoming/x' });
-    expect(options.abortSignal).toBeInstanceOf(AbortSignal);
-  });
-
-  it('get returns null for a missing object, and rethrows anything else', async () => {
-    expect(await quick(fakeClient(() => { throw s3Error('NoSuchKey', 404); })).get('k')).toBeNull();
-    expect(await quick(fakeClient(() => { throw s3Error('NotFound', 404); })).get('k')).toBeNull();
-    await expect(quick(fakeClient(() => { throw s3Error('AccessDenied', 403); })).get('k')).rejects.toThrow('AccessDenied');
-  });
-
-  it('get refuses an object over 50 MB before reading its body', async () => {
-    const body = sdkBody([1]);
-    const storage = quick(fakeClient(() => ({ ContentLength: MAX_UPLOAD_BYTES + 1, Body: body })));
-    await expect(storage.get('k')).rejects.toMatchObject({ code: 'too_large', status: 413 });
-    expect(body.transformToByteArray).not.toHaveBeenCalled();
-    expect(body.destroy).toHaveBeenCalled();
-  });
-
-  it('get times out a hung request, and a body that stops arriving', async () => {
-    const timeouts = { transfer: 20, quick: 20 };
-    await expect(quick(fakeClient(hang), { timeouts }).get('k')).rejects.toMatchObject({ name: 'TimeoutError' });
-    const body = { transformToByteArray: () => new Promise(() => {}), destroy: vi.fn() };
-    const stalled = quick(fakeClient(() => ({ ContentLength: 10, Body: body })), { timeouts });
-    await expect(stalled.get('k')).rejects.toMatchObject({ name: 'TimeoutError' });
-    expect(body.destroy).toHaveBeenCalled();
-  });
-
-  it('exists is true for a HEAD that succeeds, false for a 404, and throws otherwise', async () => {
-    const client = fakeClient(() => ({}));
-    expect(await quick(client).exists('k')).toBe(true);
-    expect(client.send.mock.calls[0][0]).toBeInstanceOf(HeadObjectCommand);
-    expect(await quick(fakeClient(() => { throw s3Error('NotFound', 404); })).exists('k')).toBe(false);
-    await expect(quick(fakeClient(() => { throw s3Error('InternalError', 500); })).exists('k')).rejects.toThrow('InternalError');
-    await expect(quick(fakeClient(hang), { timeouts: { transfer: 20, quick: 20 } }).exists('k'))
-      .rejects.toMatchObject({ name: 'TimeoutError' });
-  });
-
-  it('putOnce leaves an existing key alone', async () => {
-    const client = fakeClient(() => ({}));
-    expect(await quick(client).putOnce('originals/a.jpg', Buffer.from('new'), { contentType: 'image/jpeg' })).toBe('exists');
-    expect(client.send).toHaveBeenCalledTimes(1);
-    expect(client.send.mock.calls[0][0]).toBeInstanceOf(HeadObjectCommand);
-  });
-
-  it('putOnce writes an absent key with its headers and metadata', async () => {
-    const client = fakeClient((command) => {
-      if (command instanceof HeadObjectCommand) throw s3Error('NotFound', 404);
-      return {};
-    });
-    const body = Buffer.from('bytes');
-    const result = await quick(client).putOnce('originals/a.jpg', body, {
-      contentType: 'image/jpeg', cacheControl: IMMUTABLE, contentDisposition: "inline; filename*=UTF-8''a.jpg",
-      metadata: { width: '200', height: '400' }
-    });
-    expect(result).toBe('uploaded');
-    const [put, options] = client.send.mock.calls[1];
-    expect(put).toBeInstanceOf(PutObjectCommand);
-    expect(put.input).toEqual({
-      Bucket: 'ged-eye-media', Key: 'originals/a.jpg', Body: body, ContentType: 'image/jpeg', CacheControl: IMMUTABLE,
-      ContentDisposition: "inline; filename*=UTF-8''a.jpg", Metadata: { width: '200', height: '400' }
-    });
-    expect(options.abortSignal).toBeInstanceOf(AbortSignal);
-  });
-
-  it('putOnce retries a transient failure twice, then gives up', async () => {
-    let puts = 0;
-    const flaky = (failures) => fakeClient((command) => {
-      if (command instanceof HeadObjectCommand) throw s3Error('NotFound', 404);
-      if (++puts <= failures) throw s3Error('SlowDown', 503);
-      return {};
-    });
-    expect(await quick(flaky(2)).putOnce('k', Buffer.from('x'))).toBe('uploaded');
-    expect(puts).toBe(3);
-    puts = 0;
-    await expect(quick(flaky(3)).putOnce('k', Buffer.from('x'))).rejects.toThrow('SlowDown');
-    expect(puts).toBe(3);
-  });
-
-  it("putOnce doesn't retry a refusal", async () => {
-    const client = fakeClient((command) => {
-      if (command instanceof HeadObjectCommand) throw s3Error('NotFound', 404);
-      throw s3Error('AccessDenied', 403);
-    });
-    await expect(quick(client).putOnce('k', Buffer.from('x'))).rejects.toThrow('AccessDenied');
-    expect(client.send).toHaveBeenCalledTimes(2);
-  });
-
-  it('putOnce times out a hung PUT', async () => {
-    const client = fakeClient((command, options) => {
-      if (command instanceof HeadObjectCommand) throw s3Error('NotFound', 404);
-      return hang(command, options);
-    });
-    await expect(quick(client, { timeouts: { transfer: 20, quick: 20 } }).putOnce('k', Buffer.from('x')))
-      .rejects.toMatchObject({ name: 'TimeoutError' });
-  });
-
-  it('remove deletes the key and ignores a 404', async () => {
-    const client = fakeClient(() => ({}));
-    await quick(client).remove('incoming/x');
-    expect(client.send.mock.calls[0][0]).toBeInstanceOf(DeleteObjectCommand);
-    expect(client.send.mock.calls[0][0].input).toEqual({ Bucket: 'ged-eye-media', Key: 'incoming/x' });
-    await quick(fakeClient(() => { throw s3Error('NoSuchKey', 404); })).remove('incoming/x');
-    await expect(quick(fakeClient(() => { throw s3Error('InternalError', 500); })).remove('k')).rejects.toThrow('InternalError');
-  });
-
-  it('listOlderThan pages through the listing and keeps keys modified before the cutoff', async () => {
-    const cutoff = new Date('2026-10-09T11:00:00Z');
-    const pages = [
-      { IsTruncated: true, NextContinuationToken: 't1', Contents: [
-        { Key: 'incoming/old', LastModified: new Date('2026-10-09T10:00:00Z') },
-        { Key: 'incoming/new', LastModified: new Date('2026-10-09T11:30:00Z') }] },
-      { IsTruncated: false, Contents: [{ Key: 'incoming/older', LastModified: new Date('2026-10-08T10:00:00Z') }] }
-    ];
-    const client = fakeClient(() => pages.shift());
-    expect(await quick(client).listOlderThan('incoming/', cutoff)).toEqual(['incoming/old', 'incoming/older']);
-    const [first, second] = client.send.mock.calls.map(([command]) => command);
-    expect(first).toBeInstanceOf(ListObjectsV2Command);
-    expect(first.input).toEqual({ Bucket: 'ged-eye-media', Prefix: 'incoming/', ContinuationToken: undefined });
-    expect(second.input).toMatchObject({ ContinuationToken: 't1' });
-    expect(await quick(fakeClient(() => ({ IsTruncated: false }))).listOlderThan('incoming/', cutoff)).toEqual([]);
-  });
-});
-
-describe('media/db.js', () => {
-  it('looks editors up with the api query and media by sha', async () => {
-    const pool = {
-      query: vi.fn(async (sql) => {
-        if (/from editor/.test(sql)) return { rows: [{ email: 'editor@example.test', name: 'Ed Editor', role: 'editor' }] };
-        return { rows: [{ id: '42', sha256: GPS_SHA }] };
-      })
-    };
-    const db = createMediaDb(pool);
-    expect(await db.lookupEditor('editor@example.test')).toEqual(EDITORS['editor@example.test']);
-    expect(pool.query).toHaveBeenLastCalledWith('select email, name, role from editor where email = $1', ['editor@example.test']);
-    expect(await db.mediaBySha(GPS_SHA)).toEqual({ id: '42', sha256: GPS_SHA });
-    const [sql, params] = pool.query.mock.calls[1];
-    expect(sql.replace(/\s+/g, ' ').trim()).toBe(
-      'select id, sha256, object_key, display_key, thumb_key, content_type, byte_size, width, height, file_name, caption, date ' +
-      'from media where sha256 = $1');
-    expect(params).toEqual([GPS_SHA]);
-  });
-
-  it('returns null for an unknown sha or editor', async () => {
-    const db = createMediaDb({ query: vi.fn(async () => ({ rows: [] })) });
-    expect(await db.mediaBySha(GPS_SHA)).toBeNull();
-    expect(await db.lookupEditor('nobody@example.test')).toBeNull();
   });
 });

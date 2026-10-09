@@ -4,7 +4,7 @@
  */
 import sharp from 'sharp';
 import { createHash } from 'node:crypto';
-import { MAX_UPLOAD_BYTES, sniff } from './types.js';
+import { ImagingError, MAX_UPLOAD_BYTES, sniff } from './types.js';
 import { cropPixels, validateCrop } from './crop.js';
 
 // Spec "Memory rules": no operation cache (it held decoded images across requests), two libvips threads.
@@ -18,15 +18,8 @@ export const AVATAR_SIZE = 400;
 
 const MAX_TIFF_IFDS = 64;
 
-/** A file we refuse. `status` 400 (413 for too_large); `permanent` means re-trying the same bytes can't help. */
-export class ImagingError extends Error {
-  constructor(code, status = 400) {
-    super(code);
-    this.code = code;
-    this.status = status;
-    this.permanent = true;
-  }
-}
+// Defined in types.js so storage.js can throw it without loading sharp; re-exported for existing importers.
+export { ImagingError };
 
 /** `bytes` (a Buffer or Uint8Array) as a Buffer over the same memory, so Buffer methods like toString and includes work. */
 const asBuffer = (bytes) => (Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength));
