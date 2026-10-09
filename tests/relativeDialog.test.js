@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { openRelativeDialog, familyChoice } from '../src/relativeDialog.js';
 import { openUnlinkConfirm, unlinkConfirmText } from '../src/unlinkConfirm.js';
-import { familyOfChild, relativeBlocked } from '../src/familyLinks.js';
+import { childrenInFamily, familyOfChild, relativeBlocked } from '../src/familyLinks.js';
 import { isEditorDialogOpen } from '../src/editorDialog.js';
 
 vi.mock('../src/toast.js', () => ({ showToast: vi.fn() }));
@@ -28,9 +28,12 @@ const rels = (extra = {}) => ({ parents: [], spouses: [], children: [], siblings
 const BOTH_PARENTS = { familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I7', 'I8', 'I10'] };
 const ANN_ALONE = { familyId: 'F2', partnerIds: ['I2'], childIds: ['I7'] };
 const MARY_ALONE = { familyId: 'F3', partnerIds: ['I4'], childIds: ['I7'] };
-const WITH_JOHN = { spouseId: 'I3', familyId: 'F5', marriageDate: '1920' };
-const WITH_PAUL = { spouseId: 'I5', familyId: 'F6' };
-const NO_SPOUSE = { spouseId: null, familyId: 'F7' };
+// Rose's own families, as person views list them since migration 007 (with childIds).
+const WITH_JOHN = { spouseId: 'I3', familyId: 'F5', marriageDate: '1920', childIds: ['I11'] };
+const WITH_PAUL = { spouseId: 'I5', familyId: 'F6', childIds: [] };
+const NO_SPOUSE = { spouseId: null, familyId: 'F7', childIds: ['I12'] };
+// The same families in an older view, without childIds.
+const legacy = ({ childIds, ...marriage }) => marriage;
 
 let api;
 let loader;
@@ -322,6 +325,8 @@ describe('openRelativeDialog: existing person', () => {
     expect(api.search).toHaveBeenCalledTimes(1);
     expect(api.search).toHaveBeenCalledWith('Ann', { limit: 20 });
     expect(results()).toEqual(['Ann Jones 1850–1910', 'Ann Smith d. 1899', 'Ann Other b. 1801', 'Unnamed person']);
+    expect($('.relative-status').textContent).toBe('4 people found.');
+    expect($('.relative-status').getAttribute('aria-live')).toBe('polite');
   });
 
   it("doesn't search for fewer than two letters, and clears the results", async () => {
@@ -544,12 +549,53 @@ describe('openRelativeDialog: errors', () => {
 });
 
 describe('familyLinks', () => {
-  it('works out which of the person\'s families a child is in', () => {
-    const person = record({ marriages: [WITH_JOHN, NO_SPOUSE] });
+  it("finds which of the person's families a child is in from childIds", () => {
+    const person = record({ marriages: [WITH_JOHN, WITH_PAUL, NO_SPOUSE] });
     expect(familyOfChild(person, LILY)).toBe('F5');
     expect(familyOfChild(person, OLIVE)).toBe('F7');
-    expect(familyOfChild(record({ marriages: [WITH_JOHN] }), OLIVE)).toBe('F5');
-    expect(familyOfChild(record({ marriages: [WITH_JOHN, WITH_PAUL] }), OLIVE)).toBeNull();
+    expect(familyOfChild(person, JACK)).toBeNull(); // not Rose's child
+    expect(familyOfChild(person, { id: 'I11' })).toBe('F5'); // parentIds aren't needed
+  });
+
+  it('is exact where parentIds would mislead: a child whose other family has another spouse as a parent', () => {
+    // Max is Rose and Paul's (F6), but John is also his parent, through another family of John's.
+    const MAX = { id: 'I13', name: 'Max White', parentIds: ['I7', 'I5', 'I3'] };
+    const person = record({ marriages: [{ ...WITH_JOHN }, { ...WITH_PAUL, childIds: ['I13'] }] });
+    expect(familyOfChild(person, MAX)).toBe('F6');
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(WITH_PAUL)] }), MAX)).toBeNull();
+  });
+
+  it("is exact where parentIds would mislead: a child of the family without a spouse who is also a spouse's child", () => {
+    // Nell is in Rose's family without a spouse (F7), and John is her parent through another family.
+    const NELL = { id: 'I14', name: 'Nell Smith', parentIds: ['I7', 'I3', 'I15'] };
+    const person = record({ marriages: [WITH_JOHN, { ...NO_SPOUSE, childIds: ['I12', 'I14'] }] });
+    expect(familyOfChild(person, NELL)).toBe('F7');
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(NO_SPOUSE)] }), NELL)).toBeNull();
+  });
+
+  it("doesn't guess for a child in two of the person's families", () => {
+    const person = record({ marriages: [WITH_JOHN, { ...NO_SPOUSE, childIds: ['I11'] }] });
+    expect(familyOfChild(person, LILY)).toBeNull();
+  });
+
+  it('answers an older view only when exactly one family could hold the child', () => {
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN)] }), LILY)).toBe('F5');
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(WITH_PAUL)] }), LILY)).toBe('F5');
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(WITH_PAUL)] }), OLIVE)).toBeNull(); // in neither
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(NO_SPOUSE)] }), OLIVE)).toBe('F7');
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(NO_SPOUSE)] }), LILY)).toBeNull(); // F5 or F7
+    expect(familyOfChild(record({ marriages: [legacy(WITH_JOHN), legacy(WITH_PAUL)] }), { id: 'I11' })).toBeNull(); // no parentIds
+    expect(familyOfChild(record(), LILY)).toBeNull();
+  });
+
+  it("lists a family's children in order, or null when an older view can't tell", () => {
+    const relationships = rels({ children: [LILY, OLIVE] });
+    const person = record({ marriages: [{ ...WITH_JOHN, childIds: ['I11', 'I99'] }, NO_SPOUSE] });
+    expect(childrenInFamily(person, relationships, 'F5')).toEqual([LILY, { id: 'I99', name: '' }]);
+    expect(childrenInFamily(person, relationships, 'F7')).toEqual([OLIVE]);
+    expect(childrenInFamily(person, relationships, 'F404')).toEqual([]);
+    expect(childrenInFamily(record({ marriages: [legacy(WITH_JOHN), legacy(WITH_PAUL)] }), relationships, 'F6')).toBeNull();
+    expect(childrenInFamily(record({ marriages: [legacy(WITH_JOHN), legacy(WITH_PAUL)] }), rels({ children: [LILY] }), 'F6')).toEqual([]);
   });
 
   it('blocks a sibling without parents and a parent when the parents are complete', () => {
@@ -617,6 +663,39 @@ describe('unlink confirmation', () => {
     expect(alone.question).toBe('Remove Olive Smith as a child of Rose Smith?');
   });
 
+  it('says when removing the only child of a family without a spouse removes the family record', () => {
+    const person = record({ marriages: [WITH_JOHN, NO_SPOUSE] });
+    const text = unlinkConfirmText({ person, relationships: FAMILY_RELS, relation: 'child', personId: 'I12', familyId: 'F7' });
+    expect(text.details).toEqual([
+      'Olive Smith is the only child in this family and there is no other parent, so the family record will be removed too.'
+    ]);
+    const dated = record({ marriages: [{ ...NO_SPOUSE, marriageDate: '1925', marriagePlace: 'York' }] });
+    expect(unlinkConfirmText({ person: dated, relationships: FAMILY_RELS, relation: 'child', personId: 'I12', familyId: 'F7' }).details).toEqual([
+      'Olive Smith is the only child in this family and there is no other parent, ' +
+      'so the family record, with its marriage date and marriage place, will be removed too.'
+    ]);
+    // Not with a spouse, nor with other children.
+    expect(unlinkConfirmText({ person, relationships: FAMILY_RELS, relation: 'child', personId: 'I11', familyId: 'F5' }).details).toEqual([]);
+    const two = record({ marriages: [{ ...NO_SPOUSE, childIds: ['I12', 'I11'] }] });
+    expect(unlinkConfirmText({ person: two, relationships: FAMILY_RELS, relation: 'child', personId: 'I12', familyId: 'F7' }).details).toEqual([]);
+  });
+
+  it("says a spouse's children together lose them as a parent when an older view can't list them", () => {
+    const person = record({ marriages: [legacy(WITH_JOHN), legacy(NO_SPOUSE)] });
+    const text = unlinkConfirmText({ person, relationships: FAMILY_RELS, relation: 'spouse', personId: 'I3', familyId: 'F5' });
+    expect(text.details).toEqual(['John Brown will also no longer be a parent of their children together, if they have any.']);
+  });
+
+  it("explains, instead of asking, when the child's family isn't known", () => {
+    const text = unlinkConfirmText({ person: record(), relationships: FAMILY_RELS, relation: 'child', personId: 'I11', familyId: null });
+    expect(text).toEqual({
+      title: 'Remove a child',
+      question: "Can't tell which of Rose Smith's families Lily Brown is in, so this link can't be removed here.",
+      details: ['Reload this person, then try again.'],
+      blocked: true
+    });
+  });
+
   describe('openUnlinkConfirm', () => {
     let onUnlinked;
     const confirmDialog = () => document.querySelector('.unlink-confirm');
@@ -669,6 +748,32 @@ describe('unlink confirmation', () => {
       confirm$('.unlink-cancel').click();
       expect(confirmDialog()).toBeNull();
       expect(api.runChange).not.toHaveBeenCalled();
+    });
+
+    it("offers only Close and Reload when the child's family isn't known", async () => {
+      const fresh = { person: record(), relationships: rels(), masked: false };
+      loader.reload.mockResolvedValue(fresh);
+      openConfirm({ person: record({ marriages: [legacy(WITH_JOHN), legacy(NO_SPOUSE)] }), relation: 'child', personId: 'I11', familyId: null });
+      expect(confirm$('.unlink-question').textContent).toBe("Can't tell which of Rose Smith's families Lily Brown is in, so this link can't be removed here.");
+      expect(confirm$('.unlink-remove').hidden).toBe(true);
+      expect(confirm$('.unlink-cancel').textContent).toBe('Close');
+      expect(confirmDialog().textContent).not.toContain('undo');
+      expect(confirm$('.editor-reload').hidden).toBe(false);
+      expect(confirm$('.editor-form-message').hidden).toBe(false);
+      confirm$('.unlink-remove').click();
+      await flush();
+      expect(api.runChange).not.toHaveBeenCalled();
+      confirm$('.editor-reload').click();
+      await flush();
+      expect(loader.reload).toHaveBeenCalledWith('I7');
+      expect(onReloaded).toHaveBeenCalledWith(fresh);
+      expect(confirmDialog()).toBeNull();
+    });
+
+    it('offers only Close without a loader', () => {
+      openConfirm({ loader: undefined, relation: 'child', personId: 'I11', familyId: null });
+      expect(confirm$('.editor-reload').hidden).toBe(true);
+      expect(confirm$('.unlink-cancel').textContent).toBe('Close');
     });
 
     it('shows a stale error with Reload this person', async () => {

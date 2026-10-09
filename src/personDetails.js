@@ -96,10 +96,10 @@ class EditControls {
     return this.button('details-edit-person', 'Edit', `Edit ${nameOf(this.person)}`, () => this.hooks.onEdit?.(this.person));
   }
 
-  /** Edit and × for a marriage row; × only when the spouse is known. */
-  marriageActions(marriage, spouse) {
+  /** Edit and × for a marriage row, whose spouse is shown as `spouseName`; × only when there is a spouse. */
+  marriageActions(marriage, spouse, spouseName) {
     const partners = [{ id: this.person.id, name: this.person.name ?? '' }];
-    if (marriage.spouseId) partners.push({ id: marriage.spouseId, name: spouse?.name ?? '' });
+    if (marriage.spouseId) partners.push({ id: marriage.spouseId, name: spouse ? spouse.name ?? '' : spouseName });
     const family = {
       familyId: marriage.familyId, partners,
       marriageDate: marriage.marriageDate ?? null, marriagePlace: marriage.marriagePlace ?? null,
@@ -107,7 +107,7 @@ class EditControls {
     };
     const label = `Edit the marriage of ${partners.map(nameOf).join(' and ')}`;
     const edit = this.button('details-edit-family', 'Edit', label, () => this.call('onEditFamily', family));
-    const remove = marriage.spouseId ? this.unlink('spouse', marriage.spouseId, marriage.familyId, nameOf(spouse)) : '';
+    const remove = marriage.spouseId ? this.unlink('spouse', marriage.spouseId, marriage.familyId, spouseName) : '';
     return `<span class="details-row-actions">${edit}${remove}</span>`;
   }
 
@@ -123,9 +123,9 @@ class EditControls {
       }
     }
     for (const child of this.relationships?.children ?? []) {
-      const familyId = familyOfChild(this.person, child);
-      const remove = familyId ? `<span class="details-row-actions">${this.unlink('child', child.id, familyId, nameOf(child))}</span>` : '';
-      rows.push(labelledRow('Child', `<strong>${escapeHtml(nameOf(child))}</strong>${remove}`));
+      // familyId is null when the view can't say which family the child is in: the confirmation then explains.
+      const remove = this.unlink('child', child.id, familyOfChild(this.person, child), nameOf(child));
+      rows.push(labelledRow('Child', `<strong>${escapeHtml(nameOf(child))}</strong><span class="details-row-actions">${remove}</span>`));
     }
 
     const hints = [];
@@ -189,6 +189,7 @@ export class PersonDetails {
    * @param options  for editors: `{ canEdit, onEdit(person), onAddRelative(relation, person),
    *   onUnlink({ relation, role, personId, familyId }, person), onEditFamily(family, person), onShowHistory(person) }`.
    *   Without `canEdit` no edit control is rendered. `relation` is 'parent' | 'spouse' | 'child' | 'sibling';
+   *   onUnlink's `familyId` is null for a child whose family an older view can't tell (unlinkConfirm explains);
    *   `family` is openFamilyEditor's `{ familyId, partners: [{ id, name }], marriageDate, marriagePlace,
    *   divorceDate, divorcePlace }`.
    */
@@ -247,8 +248,10 @@ export class PersonDetails {
       const rows = [];
       for (const marriage of personData.marriages) {
         const spouse = this.relationships.spouses.find(s => s.id === marriage.spouseId);
-        const actions = edit ? edit.marriageActions(marriage, spouse) : '';
-        rows.push(labelledRow('Spouse', `<strong>${escapeHtml(spouse?.name || 'Unknown')}</strong>${actions}`));
+        // "Unknown" when no spouse is recorded; a spouse without a name is "Unnamed person", as everywhere else.
+        const spouseName = spouse ? nameOf(spouse) : 'Unknown';
+        const actions = edit ? edit.marriageActions(marriage, spouse, spouseName) : '';
+        rows.push(labelledRow('Spouse', `<strong>${escapeHtml(spouseName)}</strong>${actions}`));
         if (marriage.marriageDate || marriage.marriagePlace) {
           rows.push(factRow({ date: marriage.marriageDate, place: marriage.marriagePlace }, { label: 'Married' }));
         }

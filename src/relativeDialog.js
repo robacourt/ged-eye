@@ -78,6 +78,26 @@ export function familyChoice(person, relationships, relation) {
 }
 
 /**
+ * The command the dialog sends: `add_relative` for a new person, `link_existing` for an existing one.
+ * @param fields    the New person inputs' raw values by column; only the non-empty ones are sent, trimmed
+ * @param otherId   the existing person chosen
+ * @param familyId  the family chosen (or `familyChoice`'s value); never sent for a spouse
+ * @returns `{ kind, params }`
+ */
+export function relativeParams({ person, relation, tab, fields = {}, otherId = null, familyId = null }) {
+  const withFamily = relation !== 'spouse' && familyId ? { familyId } : {};
+  if (tab === 'existing') {
+    return { kind: 'link_existing', params: { anchorId: person.id, relation, otherId, ...withFamily } };
+  }
+  const filled = {};
+  for (const [field] of NEW_FIELDS) {
+    const value = String(fields[field] ?? '').trim();
+    if (value !== '') filled[field] = value;
+  }
+  return { kind: 'add_relative', params: { anchorId: person.id, relation, person: { fields: filled }, ...withFamily } };
+}
+
+/**
  * Opens the dialog.
  * @param person         the person record the relative is added to (the anchor)
  * @param relationships  the loader's `{ parents, spouses, children, siblings }`, for names
@@ -264,15 +284,6 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
     return choiceRadios.find(({ radio }) => radio.checked)?.radio.value ?? null;
   }
 
-  function newPersonFields() {
-    const fields = {};
-    for (const [field] of NEW_FIELDS) {
-      const value = inputs[field].value.trim();
-      if (value !== '') fields[field] = value;
-    }
-    return fields;
-  }
-
   async function submit() {
     if (busy || choice.blocked) return;
     clearMessages();
@@ -281,21 +292,13 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
       showFieldError('familyId', 'Choose one.');
       return;
     }
-    const withFamily = relation !== 'spouse' && familyId ? { familyId } : {};
-    let kind;
-    let params;
-    if (activeTab === 'new') {
-      kind = 'add_relative';
-      params = { anchorId: person.id, relation, person: { fields: newPersonFields() }, ...withFamily };
-    } else {
-      const otherId = results.querySelector('input:checked')?.value;
-      if (!otherId) {
-        showFieldError('otherId', 'Search for someone, then choose them.');
-        return;
-      }
-      kind = 'link_existing';
-      params = { anchorId: person.id, relation, otherId, ...withFamily };
+    const otherId = results.querySelector('input:checked')?.value ?? null;
+    if (activeTab === 'existing' && !otherId) {
+      showFieldError('otherId', 'Search for someone, then choose them.');
+      return;
     }
+    const fields = Object.fromEntries(Object.entries(inputs).map(([field, input]) => [field, input.value]));
+    const { kind, params } = relativeParams({ person, relation, tab: activeTab, fields, otherId, familyId });
 
     busy = true;
     setBusy(formElement, true, submitButton, activeTab === 'new' ? 'Adding…' : 'Linking…');
@@ -325,7 +328,8 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
         el('span', { class: 'relative-result-name', text: nameOf(someone) }),
         years ? el('span', { class: 'relative-result-years', text: years }) : null);
     }));
-    status.textContent = found.length ? '' : 'No one matches.';
+    status.textContent = found.length === 0 ? 'No one matches.'
+      : found.length === 1 ? '1 person found.' : `${found.length} people found.`;
     updateWarning();
   }
 

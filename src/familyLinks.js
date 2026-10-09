@@ -32,24 +32,43 @@ export function nameById(person, relationships, id) {
   return nameOf(id === person?.id ? person : relativeById(relationships, id));
 }
 
+/** Whether every one of the person's families lists its children (person views since migration 007). */
+const listsChildren = (marriages) => marriages.length > 0 && marriages.every(marriage => Array.isArray(marriage.childIds));
+
 /**
- * Which of the person's own families (`marriages`) `child` is in. The view doesn't say, so it is worked out
- * from the child's `parentIds`: the family with a spouse who is also the child's parent, else the person's
- * family without a spouse, else their only family. Null when it can't be told.
+ * Without `childIds` (an older view), whether `marriage` could hold `child`: a family with a spouse only
+ * holds children who have that spouse as a parent; one without a spouse could hold any of the person's.
+ */
+const couldHold = (marriage, child) =>
+  !marriage.spouseId || !Array.isArray(child.parentIds) || child.parentIds.includes(marriage.spouseId);
+
+/**
+ * Which of the person's own families (`marriages`) `child` is in, from each family's `childIds`. An older
+ * view without them is answered only when exactly one family could hold the child. Null when it can't be
+ * told (or the child is in several of them): the caller must not guess a family to unlink.
  */
 export function familyOfChild(person, child) {
   const marriages = person?.marriages ?? [];
-  const parentIds = child?.parentIds ?? [];
-  const withSpouse = marriages.find(marriage => marriage.spouseId && parentIds.includes(marriage.spouseId));
-  if (withSpouse) return withSpouse.familyId;
-  const alone = marriages.find(marriage => !marriage.spouseId);
-  if (alone) return alone.familyId;
-  return marriages.length === 1 ? marriages[0].familyId : null;
+  if (!child?.id) return null;
+  const candidates = listsChildren(marriages)
+    ? marriages.filter(marriage => marriage.childIds.includes(child.id))
+    : marriages.filter(marriage => couldHold(marriage, child));
+  return candidates.length === 1 ? candidates[0].familyId : null;
 }
 
-/** The person's children who are in their family `familyId`. */
+/**
+ * The children in the person's family `familyId`, in order, as relatives (`{ id, name }` for one not among
+ * `relationships`). Null when an older view can't tell; [] for an unknown family.
+ */
 export function childrenInFamily(person, relationships, familyId) {
-  return (relationships?.children ?? []).filter(child => familyOfChild(person, child) === familyId);
+  const marriage = (person?.marriages ?? []).find(candidate => candidate.familyId === familyId);
+  if (!marriage) return [];
+  if (Array.isArray(marriage.childIds)) {
+    return marriage.childIds.map(id => relativeById(relationships, id) ?? { id, name: '' });
+  }
+  const children = relationships?.children ?? [];
+  if (children.some(child => familyOfChild(person, child) === null)) return null;
+  return children.filter(child => familyOfChild(person, child) === familyId);
 }
 
 const parentFamiliesOf = (person) => person?.parentFamilies ?? [];

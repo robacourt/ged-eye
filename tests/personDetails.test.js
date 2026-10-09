@@ -282,8 +282,8 @@ describe('PersonDetails', () => {
       id: 'I7', name: 'Rose Smith', sex: 'F',
       parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I7', 'I8'] }],
       marriages: [
-        { spouseId: 'I3', familyId: 'F5', marriageDate: '1920', marriagePlace: 'Leeds' },
-        { spouseId: null, familyId: 'F7' }
+        { spouseId: 'I3', familyId: 'F5', marriageDate: '1920', marriagePlace: 'Leeds', childIds: ['I11'] },
+        { spouseId: null, familyId: 'F7', childIds: ['I12'] }
       ]
     };
     const RELS = {
@@ -376,11 +376,19 @@ describe('PersonDetails', () => {
       expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'child', role: 'child', personId: 'I12', familyId: 'F7' }, expect.anything());
     });
 
-    it('has no × for a child whose family can\'t be told', async () => {
-      const el = await renderEditable(
-        { ...ROSE, marriages: [{ spouseId: 'I3', familyId: 'F5' }, { spouseId: 'I5', familyId: 'F6' }] },
-        { ...RELS, children: [{ id: 'I12', name: 'Olive Smith', parentIds: ['I7'] }] });
-      expect(familyRow(el, 'Child', 'Olive Smith').querySelector('.details-unlink')).toBeNull();
+    it("finds a child's family from childIds even when parentIds would point elsewhere", async () => {
+      // Olive is in F7 (no spouse), though John is her parent through another family.
+      const el = await renderEditable(ROSE, { ...RELS, children: [{ id: 'I12', name: 'Olive Smith', parentIds: ['I7', 'I3', 'I20'] }] });
+      familyRow(el, 'Child', 'Olive Smith').querySelector('.details-unlink').click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'child', role: 'child', personId: 'I12', familyId: 'F7' }, expect.anything());
+    });
+
+    it("sends no familyId for a child whose family an older view can't tell, so the confirmation explains", async () => {
+      // Without childIds, Lily (Rose and John's) could be in F5 or in F7, the family without a spouse.
+      const older = { ...ROSE, marriages: ROSE.marriages.map(({ childIds, ...marriage }) => marriage) };
+      const el = await renderEditable(older);
+      familyRow(el, 'Child', 'Lily Brown').querySelector('.details-unlink').click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'child', role: 'child', personId: 'I11', familyId: null }, expect.anything());
     });
 
     it('puts × and Edit on marriage rows', async () => {
@@ -407,6 +415,20 @@ describe('PersonDetails', () => {
       expect(hooks.onEditFamily).toHaveBeenLastCalledWith(expect.objectContaining({ familyId: 'F7', partners: [{ id: 'I7', name: 'Rose Smith' }] }), expect.anything());
     });
 
+    it('names a spouse without a name "Unnamed person", and a missing spouse "Unknown", in the row and its controls', async () => {
+      const el = await renderEditable(
+        { ...ROSE, marriages: [{ spouseId: 'I3', familyId: 'F5', childIds: [] }, { spouseId: 'I9', familyId: 'F8', childIds: [] }] },
+        { ...RELS, spouses: [{ id: 'I3', name: '' }] });
+      const [unnamed, missing] = sectionRows(el, 'Marriages');
+      expect(unnamed.querySelector('strong').textContent).toBe('Unnamed person');
+      expect(unnamed.querySelector('.details-unlink').getAttribute('aria-label')).toBe('Remove Unnamed person as the spouse');
+      expect(unnamed.querySelector('.details-edit-family').getAttribute('aria-label')).toBe('Edit the marriage of Rose Smith and Unnamed person');
+      expect(missing.querySelector('strong').textContent).toBe('Unknown');
+      expect(missing.querySelector('.details-unlink').getAttribute('aria-label')).toBe('Remove Unknown as the spouse');
+      missing.querySelector('.details-edit-family').click();
+      expect(hooks.onEditFamily.mock.lastCall[0].partners).toEqual([{ id: 'I7', name: 'Rose Smith' }, { id: 'I9', name: 'Unknown' }]);
+    });
+
     it('has a Family section with + buttons even without relatives', async () => {
       const el = await renderEditable({ id: 'I9', name: 'Lone Person' }, { parents: [], spouses: [], children: [], siblings: [] });
       expect(sectionText(el, 'Family')).toContain('+ Parent');
@@ -415,7 +437,7 @@ describe('PersonDetails', () => {
 
     it('renders names in the edit controls as text', async () => {
       const el = await renderEditable({ ...ROSE, name: XSS }, {
-        ...RELS, parents: [{ id: 'I1', name: XSS }], spouses: [{ id: 'I3', name: XSS }], children: [{ id: 'I11', name: XSS, parentIds: ['I3'] }]
+        ...RELS, parents: [{ id: 'I1', name: XSS }], spouses: [{ id: 'I3', name: XSS }], children: [{ id: 'I11', name: XSS, parentIds: ['I7', 'I3'] }]
       });
       expect(el.querySelector('img')).toBeNull();
       expect(el.querySelector('[onerror]')).toBeNull();
