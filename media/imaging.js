@@ -16,14 +16,6 @@ export const DISPLAY_SIZE = 2000;
 export const THUMB_SIZE = 320;
 export const AVATAR_SIZE = 400;
 
-/**
- * Re-encode every TIFF, whether or not location data is found. sharp 0.33.5 (libvips 8.15.3) never puts a TIFF's
- * EXIF in metadata().exif: a TIFF whose IFD0 has a GPSInfo pointer (0x8825) reads as `exif: undefined`, so
- * hasLocation can't see its GPS (tests/mediaImaging.test.js builds one by hand to show this). The LZW re-encode
- * writes no EXIF, so the stored original has no GPS IFD.
- */
-export const ALWAYS_REENCODE_TIFF = true;
-
 /** A file we refuse. `status` 400 (413 for too_large); `permanent` means re-trying the same bytes can't help. */
 export class ImagingError extends Error {
   constructor(code, status = 400) {
@@ -37,7 +29,10 @@ export class ImagingError extends Error {
 /** The hex sha256 of `buffer`. */
 export const sha256Hex = (buffer) => createHash('sha256').update(buffer).digest('hex');
 
-/** Does sharp's metadata().exif (with or without its "Exif\0\0" prefix) have a GPSInfo pointer (0x8825) in IFD0? */
+/**
+ * Does sharp's metadata().exif (with or without its "Exif\0\0" prefix) have a GPSInfo pointer (0x8825) in IFD0?
+ * Also works on a whole TIFF file, which is itself a TIFF/EXIF structure.
+ */
 export function hasGps(exif) {
   try {
     if (!exif || exif.length < 8) return false;
@@ -87,6 +82,18 @@ async function mapSharpErrors(operation) {
   }
 }
 
+/**
+ * Does the file carry location data? sharp 0.33.5 (libvips 8.15.3) never shows a TIFF's EXIF in metadata().exif
+ * or a GIF's XMP in metadata().xmp, so those come from the file's own bytes: a TIFF's IFD0 is read with hasGps,
+ * and a GIF counts if its bytes mention GPSLatitude.
+ */
+function fileHasLocation(buffer, type, meta) {
+  if (hasLocation(meta)) return true;
+  if (type.ext === 'tif') return hasGps(buffer);
+  if (type.ext === 'gif') return buffer.includes('GPSLatitude');
+  return false;
+}
+
 /** sharp's metadata of `buffer`, read under the pixel limit. Throws ImagingError 'too_many_pixels' or 'unreadable'. */
 const readMetadata = (buffer, limitInputPixels) => mapSharpErrors(() => sharp(buffer, { limitInputPixels }).metadata());
 
@@ -131,7 +138,7 @@ export async function reencodeWithoutMetadata(buffer, type, meta, limitInputPixe
 
 /**
  * Checks and processes an upload. → { sha256, type, original: { body, reencoded }, display, thumb, width, height }
- * - `original.body` is `buffer` itself unless it has location data (or is a TIFF), when it is re-encoded without it.
+ * - `original.body` is `buffer` itself unless it has location data, when it is re-encoded without it.
  * - `display` and `thumb` are WebP; `width` and `height` are the oriented size. All four are null for PDFs.
  * Throws ImagingError: inspect's codes, 'too_many_pixels', or 'unreadable'.
  */
@@ -139,8 +146,7 @@ export async function processFile(buffer, { limitInputPixels = LIMIT_PIXELS } = 
   const { sha256, type } = inspect(buffer);
   if (!type.image) return { sha256, type, original: { body: buffer, reencoded: false }, display: null, thumb: null, width: null, height: null };
   const meta = await readMetadata(buffer, limitInputPixels);
-  const reencode = hasLocation(meta) || (type.ext === 'tif' && ALWAYS_REENCODE_TIFF);
-  const original = reencode
+  const original = fileHasLocation(buffer, type, meta)
     ? { body: await reencodeWithoutMetadata(buffer, type, meta, limitInputPixels), reencoded: true }
     : { body: buffer, reencoded: false };
   const { display, thumb, width, height } = await displayAndThumb(buffer, meta, limitInputPixels);

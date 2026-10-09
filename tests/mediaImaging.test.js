@@ -6,7 +6,7 @@ import { crc32, deflateSync } from 'node:zlib';
 import { MAX_UPLOAD_BYTES, TYPES, sniff } from '../media/types.js';
 import { CropError } from '../media/crop.js';
 import {
-  ALWAYS_REENCODE_TIFF, AVATAR_SIZE, DISPLAY_SIZE, ImagingError, LIMIT_PIXELS, THUMB_SIZE,
+  AVATAR_SIZE, DISPLAY_SIZE, ImagingError, LIMIT_PIXELS, THUMB_SIZE,
   derivatives, hasGps, hasLocation, inspect, processFile, reencodeWithoutMetadata, renderAvatar, sha256Hex
 } from '../media/imaging.js';
 
@@ -85,12 +85,24 @@ function tiffIfd0Tags(b) {
 }
 
 /** `jpeg` with an XMP packet spliced in after SOI, as an APP1 segment (sharp 0.33 can't write XMP). */
-function withXmp(jpeg, xmp) {
+function jpegWithXmp(jpeg, xmp) {
   const payload = Buffer.concat([Buffer.from('http://ns.adobe.com/xap/1.0/\0', 'latin1'), Buffer.from(xmp, 'utf8')]);
   const marker = Buffer.alloc(4);
   marker.writeUInt16BE(0xffe1, 0);
   marker.writeUInt16BE(payload.length + 2, 2);
   return Buffer.concat([jpeg.subarray(0, 2), marker, payload, jpeg.subarray(2)]);
+}
+
+/**
+ * `gif` with an XMP packet in an "XMP DataXMP" application extension after the global colour table, followed by the
+ * 258-byte "magic trailer" that lets GIF readers skip the packet as sub-blocks.
+ */
+function gifWithXmp(gif, xmp) {
+  const flags = gif[10];
+  const end = 13 + (flags & 0x80 ? 3 * 2 ** ((flags & 7) + 1) : 0);
+  const trailer = Buffer.from([1, ...Array.from({ length: 256 }, (_, i) => 255 - i), 0]);
+  const extension = Buffer.concat([Buffer.from([0x21, 0xff, 0x0b]), Buffer.from('XMP DataXMP', 'latin1'), Buffer.from(xmp, 'utf8'), trailer]);
+  return Buffer.concat([gif.subarray(0, end), extension, gif.subarray(end)]);
 }
 
 /** A PNG chunk: length, type, data and CRC. */
@@ -135,18 +147,22 @@ const red = () => sharp({ create: { width: 400, height: 200, channels: 3, backgr
 const gpsJpeg = await red().jpeg().withMetadata({ orientation: 6 })
   .withExif({ IFD3: { GPSLatitudeRef: 'N', GPSLatitude: '51/1 30/1 0/1' } }).toBuffer();
 const plainJpeg = await red().jpeg().withMetadata({ orientation: 6 }).toBuffer();
-const gpsTiff = await red().tiff().withExif({ IFD3: { GPSLatitudeRef: 'N', GPSLatitude: '51/1 30/1 0/1' } }).toBuffer();
+// sharp's TIFF output drops EXIF, so despite withExif this TIFF has no GPS; gpsTiffByHand() is the TIFF with GPS.
+const plainTiff = await red().tiff().withExif({ IFD3: { GPSLatitudeRef: 'N', GPSLatitude: '51/1 30/1 0/1' } }).toBuffer();
+const gpsTiff = gpsTiffByHand();
 const pdf = Buffer.from('%PDF-1.4\n1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n'
   + '2 0 obj << /Type /Pages /Kids [] /Count 0 >> endobj\ntrailer << /Root 1 0 R >>\n%%EOF\n', 'latin1');
 const plainPng = await red().png().toBuffer();
-const xmpJpeg = withXmp(await red().jpeg().toBuffer(), '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF '
+const locationXmp = '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF '
   + 'xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description '
-  + 'xmlns:exif="http://ns.adobe.com/exif/1.0/" exif:GPSLatitude="51,30.0N"/></rdf:RDF></x:xmpmeta>');
+  + 'xmlns:exif="http://ns.adobe.com/exif/1.0/" exif:GPSLatitude="51,30.0N"/></rdf:RDF></x:xmpmeta>';
+const xmpJpeg = jpegWithXmp(await red().jpeg().toBuffer(), locationXmp);
 const twoPageTiff = multiPageTiff([{ width: 40, height: 30 }, { width: 40, height: 30 }]);
 const mixedTiff = multiPageTiff([{ width: 40, height: 30 }, { width: 20, height: 10 }]);
 // sharp 0.33.5's `create` has no pages or pageHeight option, so the two frames come from a two-page TIFF read
 // with `pages: -1`, which sharp writes as an animated GIF.
 const animatedGif = await sharp(twoPageTiff, { pages: -1 }).gif().toBuffer();
+const xmpGif = gifWithXmp(animatedGif, locationXmp);
 const heic = Buffer.concat([Buffer.from([0, 0, 0, 0x18]), Buffer.from('ftypheic\0\0\0\0mif1heic', 'latin1')]);
 const notAnImage = Buffer.from('These bytes are not any type of file we accept.', 'latin1');
 const brokenJpeg = Buffer.concat([Buffer.from([0xff, 0xd8, 0xff, 0xe0]), Buffer.from('then nothing but garbage', 'latin1')]);
@@ -205,6 +221,11 @@ describe('media/imaging hasGps and hasLocation', () => {
     expect(gpsExif.subarray(0, 6).toString('latin1')).toBe('Exif\0\0');
     expect(hasGps(gpsExif)).toBe(true);
     expect(hasGps(gpsExif.subarray(6))).toBe(true);
+  });
+
+  it('reads a whole TIFF file, which is itself a TIFF/EXIF structure', () => {
+    expect(hasGps(gpsTiff)).toBe(true);
+    expect(hasGps(plainTiff)).toBe(false);
   });
 
   it('reads a big-endian block', () => {
@@ -286,27 +307,50 @@ describe('media/imaging processFile', () => {
     expect([thumb.width, thumb.height]).toEqual([THUMB_SIZE, THUMB_SIZE / 2]);
   });
 
-  it('re-encodes a TIFF with GPS', async () => {
-    // sharp's TIFF output drops EXIF, so this fixture's GPS never reaches the file, and a TIFF's EXIF never shows in
-    // metadata().exif anyway (see the next test). Only ALWAYS_REENCODE_TIFF makes this pass.
-    expect(ALWAYS_REENCODE_TIFF).toBe(true);
+  it("re-encodes a TIFF with GPS, found in the file's own IFD0, and the re-encode has no GPS IFD", async () => {
+    expect(tiffIfd0Tags(gpsTiff)).toContain(0x8825);
+    // sharp's metadata never shows a TIFF's EXIF, so this has to come from the bytes.
+    const meta = await metadata(gpsTiff);
+    expect(meta.exif).toBeUndefined();
+    expect(hasLocation(meta)).toBe(false);
     const result = await processFile(gpsTiff);
     expect(result.type).toBe(TYPES.get('tif'));
     expect(result.original.reencoded).toBe(true);
     expect(sniff(result.original.body)).toBe(TYPES.get('tif'));
-    expect([result.width, result.height]).toEqual([400, 200]);
-  });
-
-  it("can't see a TIFF's GPS IFD, so re-encodes every TIFF, and the re-encode drops the GPS IFD", async () => {
-    const tiff = gpsTiffByHand();
-    expect(tiffIfd0Tags(tiff)).toContain(0x8825);
-    const meta = await metadata(tiff);
-    expect(meta.exif).toBeUndefined();
-    expect(hasLocation(meta)).toBe(false);
-    const result = await processFile(tiff);
-    expect(result.original.reencoded).toBe(true);
     expect(tiffIfd0Tags(result.original.body)).not.toContain(0x8825);
     expect([result.width, result.height]).toEqual([4, 4]);
+  });
+
+  it('stores a TIFF without GPS byte for byte', async () => {
+    expect(tiffIfd0Tags(plainTiff)).not.toContain(0x8825);
+    const result = await processFile(plainTiff);
+    expect(result.type).toBe(TYPES.get('tif'));
+    expect(result.original).toEqual({ body: plainTiff, reencoded: false });
+    expect([result.width, result.height]).toEqual([400, 200]);
+    expect((await metadata(result.display)).format).toBe('webp');
+  });
+
+  it('stores a TIFF without GPS whose pages differ in size byte for byte, showing its first page', async () => {
+    const result = await processFile(mixedTiff);
+    expect(result.original).toEqual({ body: mixedTiff, reencoded: false });
+    expect([result.width, result.height]).toEqual([40, 30]);
+    const display = await metadata(result.display);
+    expect([display.width, display.height]).toEqual([40, 30]);
+  });
+
+  it('re-encodes a GIF whose bytes mention GPSLatitude, keeping both frames and dropping the XMP', async () => {
+    // sharp's metadata never shows a GIF's XMP, so this has to come from the bytes.
+    const meta = await metadata(xmpGif);
+    expect(meta.xmp).toBeUndefined();
+    expect(meta.pages).toBe(2);
+    expect(xmpGif.includes('GPSLatitude')).toBe(true);
+    const result = await processFile(xmpGif);
+    expect(result.type).toBe(TYPES.get('gif'));
+    expect(result.original.reencoded).toBe(true);
+    const original = await metadata(result.original.body);
+    expect([original.format, original.pages, original.width, original.height]).toEqual(['gif', 2, 40, 30]);
+    expect(result.original.body.includes('GPSLatitude')).toBe(false);
+    expect([result.width, result.height]).toEqual([40, 30]);
   });
 
   it('stores an animated GIF with no XMP unchanged, and makes the display image from its first frame', async () => {
