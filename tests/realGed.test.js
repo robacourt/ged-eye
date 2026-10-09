@@ -143,12 +143,17 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     expect(afterRollback.summary).toMatchObject({ unchanged: 1602, changed: 1392 });
   }, 30_000);
 
-  it('leaves no email address in any served note', () => {
-    const noteStrings = (value, inNote = false) => Array.isArray(value) ? value.flatMap(v => noteStrings(v, inNote))
-      : value && typeof value === 'object' ? Object.entries(value).flatMap(([k, v]) => noteStrings(v, inNote || k === 'notes' || k.endsWith('Notes')))
-      : inNote && typeof value === 'string' ? [value] : [];
-    const leaks = [...parsed.individuals.keys()].filter(id =>
-      noteStrings(maskNoteEmails({ person: current.extractPersonData(parsed, id) }).person).some(note => /\w@\w/.test(note)));
-    expect(leaks).toEqual([]);
+  it('leaves no email address in any served string', () => {
+    // Every string in the served person except the deliberate `email` contact field.
+    const servedStrings = (v, key) => typeof v === 'string' ? (key === 'email' ? [] : [v])
+      : Array.isArray(v) ? v.flatMap(x => servedStrings(x, key))
+      : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => servedStrings(x, k)) : [];
+    const addressLike = /[\p{L}\p{N}]@[\p{L}\p{N}]/u;
+    // `current` is the post-backfill shape; `legacy` is what production serves until the backfill.
+    for (const [label, ged, extract] of [['current', parsed, current.extractPersonData], ['legacy', legacyParsed, legacy.extractPersonData]]) {
+      const leaks = [...ged.individuals.keys()].filter(id =>
+        servedStrings(maskNoteEmails({ person: extract(ged, id) }).person).some(s => addressLike.test(s)));
+      expect(leaks, label).toEqual([]);
+    }
   });
 });

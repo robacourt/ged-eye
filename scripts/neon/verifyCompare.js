@@ -26,6 +26,11 @@ export function apiMatchesView(body, view) {
   return canonical(body) === canonical(maskNoteEmails(view));
 }
 
+/** Whether the Function would serve this person_view() document differently once note emails are masked. */
+export function masksNoteEmails(view) {
+  return canonical(maskNoteEmails(view)) !== canonical(view);
+}
+
 const unique = (items) => [...new Set(items)];
 const duplicatesIn = (items) => unique(items.filter((item, i) => items.indexOf(item) !== i));
 const naturalCompare = (a, b) => String(a).localeCompare(String(b), 'en', { numeric: true });

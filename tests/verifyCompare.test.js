@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes,
-  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView
+  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, masksNoteEmails
 } from '../scripts/neon/verifyCompare.js';
 
 const person = (id, extra) => ({
@@ -131,9 +131,9 @@ describe('diffView', () => {
   it('ignores the re-derived facts keys but still compares email and phone', () => {
     const diffs = diffsFor('C1', actual => {
       actual.person = { ...actual.person, notes: ['new'], occupations: [{ value: 'Miller' }], censusRecords: [{ date: '1851' }],
-        residences: [{ place: 'X' }], religion: 'Y', education: 'Z', email: 'new@example.com' };
+        residences: [{ place: 'X' }], religion: 'Y', education: 'Z', email: 'new@example.com', phone: '555 0100' };
     });
-    expect(diffs).toEqual(['email: expected null got "new@example.com"']);
+    expect(diffs).toEqual(['email: expected null got "new@example.com"', 'phone: expected null got "555 0100"']);
   });
 
   describe('photos', () => {
@@ -393,5 +393,27 @@ describe('apiMatchesView', () => {
   it('rejects a real difference, and an unmasked body', () => {
     expect(apiMatchesView({ ...view, person: { id: 'I1', notes: ['Something else'] } }, view)).toBe(false);
     expect(apiMatchesView(view, view)).toBe(false);
+  });
+});
+
+describe('masksNoteEmails', () => {
+  const emptyView = (person) => ({ person: { id: 'I1', ...person }, family: [], relationships: {} });
+
+  it('is true when masking would change an address in note text', () => {
+    expect(masksNoteEmails(emptyView({ notes: ['Write to jo@example.com'] }))).toBe(true);
+    expect(masksNoteEmails(emptyView({ otherFacts: [{ tag: 'EVEN', notes: ['jo@example.com'] }] }))).toBe(true);
+  });
+
+  it('is false when there is nothing to mask', () => {
+    expect(masksNoteEmails(emptyView({ notes: ['No address here'] }))).toBe(false);
+    expect(masksNoteEmails(emptyView({}))).toBe(false);
+  });
+
+  it('is false for addresses outside note text (the email field and other facts are served as is)', () => {
+    expect(masksNoteEmails(emptyView({ email: 'jo@example.com', birthPlace: 'jo@example.org' }))).toBe(false);
+  });
+
+  it('is false for a missing view', () => {
+    expect(masksNoteEmails(null)).toBe(false);
   });
 });

@@ -162,7 +162,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
 
 ## Email masking (`api/privacy.js`)
 
-- `maskNoteEmails(view)` returns a copy of the view. In it, every string inside a `notes` key or any key ending in `Notes`, at any depth under `view.person`, has each match of `/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g` replaced with `[email hidden]`.
+- `maskNoteEmails(view)` returns a copy of the view. In it, every string inside a `notes` key or any key ending in `Notes`, at any depth in the view (today only `view.person` has notes), has each match of `/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g` replaced with `[email hidden]`.
 - Nothing else is changed. The `email` contact field is a deliberate, separate field and is left alone.
 - `createHandler` applies it to every 200 response from `/person/:id`.
 - The stored data is never masked.
