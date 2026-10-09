@@ -116,8 +116,9 @@ function getView(personId) {
 }
 
 /**
- * Load a person and their immediate family.
- * @returns {Promise<{person, family, relationships: {parents, spouses, children, siblings}}>}
+ * Load a person and their immediate family. `masked` is whether the view's notes had email addresses masked
+ * (undefined from an older API); the person editor refuses to edit a masked view.
+ * @returns {Promise<{person, family, relationships: {parents, spouses, children, siblings}, masked}>}
  */
 export async function loadPersonWithFamily(personId) {
   const view = await getView(personId);
@@ -131,7 +132,8 @@ export async function loadPersonWithFamily(personId) {
       spouses: pick(view.relationships.spouses),
       children: pick(view.relationships.children),
       siblings: pick(view.relationships.siblings)
-    }
+    },
+    masked: view.masked
   };
 }
 

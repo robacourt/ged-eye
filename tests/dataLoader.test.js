@@ -43,6 +43,16 @@ describe('dataLoader', () => {
     expect(result.family).toHaveLength(2);
   });
 
+  it('says whether the view was masked', async () => {
+    vi.stubGlobal('fetch', vi.fn()
+      .mockResolvedValueOnce(ok({ ...view('I1'), masked: true }))
+      .mockResolvedValueOnce(ok({ ...view('I2'), masked: false }))
+      .mockResolvedValueOnce(ok(view('I3'))));
+    expect((await loadPersonWithFamily('I1')).masked).toBe(true);
+    expect((await loadPersonWithFamily('I2')).masked).toBe(false);
+    expect((await loadPersonWithFamily('I3')).masked).toBeUndefined();
+  });
+
   it('caches views', async () => {
     const fetchMock = vi.fn().mockResolvedValue(ok(view('I1')));
     vi.stubGlobal('fetch', fetchMock);

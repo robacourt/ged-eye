@@ -431,3 +431,207 @@
 .toast-close:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* Person and family editors (personEditor.js, familyEditor.js) */
+.editor-dialog-wide {
+  width: min(680px, 100%);
+}
+
+.family-editor {
+  width: min(520px, 100%);
+}
+
+.editor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color-scheme: dark; /* native select menus and date pickers match the dialog */
+}
+
+.person-editor-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.editor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor-section-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.editor-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.editor-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 14px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+
+.editor-fieldset legend {
+  padding: 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.editor-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.editor-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+select.editor-input {
+  cursor: pointer;
+}
+
+.editor-input option {
+  background: #1e1e2e;
+  color: #fff;
+}
+
+.editor-textarea {
+  min-height: 64px;
+  line-height: 1.45;
+  resize: vertical;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.editor-notes,
+.editor-notes-list,
+.fact-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editor-notes-list:empty {
+  display: none;
+}
+
+.editor-note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.editor-notes > .editor-btn-link,
+.editor-section > .editor-btn-link,
+.editor-row-actions {
+  align-self: flex-start;
+}
+
+.editor-note-remove,
+.fact-row-remove {
+  min-height: 36px;
+  padding: 6px 0;
+  font-size: 13px;
+  color: #ff8a8a;
+}
+
+.editor-btn-danger {
+  border-color: rgba(255, 107, 107, 0.6);
+  background: rgba(255, 107, 107, 0.08);
+  color: #ff8a8a;
+}
+
+.editor-btn-danger:hover:not(:disabled) {
+  background: rgba(255, 107, 107, 0.18);
+}
+
+.editor-btn-danger-solid {
+  border-color: #e05555;
+  background: #e05555;
+  color: #fff;
+  font-weight: 600;
+}
+
+.editor-btn-danger-solid:hover:not(:disabled) {
+  background: #ec6b6b;
+}
+
+.person-editor-confirm-text {
+  margin: 8px 0;
+  font-size: 17px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* The footer stays in view at the bottom of a long form. */
+.editor-dialog-wide .editor-dialog-body,
+.family-editor .editor-dialog-body {
+  padding-bottom: 0;
+}
+
+.editor-dialog-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 -20px;
+  padding: 12px 20px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: #1e1e2e;
+}
+
+.editor-form-message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.editor-form-message .editor-error {
+  flex: 1 1 220px;
+  margin: 0;
+}
+
+.editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.editor-actions-spacer {
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .editor-dialog-footer {
+    padding-bottom: 12px;
+  }
+}
