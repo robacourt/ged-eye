@@ -5,7 +5,8 @@
  */
 import { showToast } from './toast.js';
 import {
-  DATE_HINT, DATE_PLACEHOLDER, el, openEditorDialog, uniqueId, callSafely, fill, readFilled, setBusy, commandErrorMessage
+  DATE_HINT, DATE_PLACEHOLDER, el, openEditorDialog, reopenableHandle, uniqueId, callSafely, fill, readFilled, setBusy,
+  commandErrorMessage
 } from './editorDialog.js';
 
 /** update_family's fields, each with the marriage row key it is shown from (person view `marriages[]`). */
@@ -31,9 +32,16 @@ const partnerName = (partner) =>
  * @param loader      optional `{ reload }` (dataLoader.js): with `focusId`, a stale save offers Reload, which
  *                    reloads that person and reopens with their fresh marriage row
  * @param onReloaded  (loadPersonWithFamily result) after such a reload, so the panel can update
- * @returns `{ close, isOpen, element }`
+ * @returns `{ close, isOpen, element }`. After Reload the editor reopens with fresh data, and the same handle then
+ *          controls (and reports on) the new one.
  */
 export function openFamilyEditor(options) {
+  const { handle, slot } = reopenableHandle();
+  slot.editor = buildEditor(options, slot);
+  return handle;
+}
+
+function buildEditor(options, slot) {
   const { family, api, onSaved, focusId, loader, onReloaded } = options;
   const names = (family.partners ?? []).map(partnerName);
   const errorSlots = new Map(); // field -> { element, input }
@@ -155,25 +163,29 @@ export function openFamilyEditor(options) {
     busy = true;
     setBusy(formElement, true, reloadButton, 'Reloading…');
     let fresh;
+    let failure = null;
     try {
       fresh = await loader.reload(focusId);
     } catch (error) {
+      failure = error;
+    }
+    const marriage = failure ? null : (fresh?.person?.marriages ?? []).find(row => row.familyId === family.familyId);
+    if (!marriage) {
+      // The message first: it may hide Reload, and focus then goes to the next control rather than a hidden one.
+      if (failure && failure.name !== 'PersonNotFoundError') {
+        showMessage("Couldn't reload. Check your connection and try again.", { reload: true });
+      } else {
+        showMessage(MISSING_MESSAGE);
+      }
       busy = false;
       setBusy(formElement, false, reloadButton);
-      if (error?.name === 'PersonNotFoundError') showMessage(MISSING_MESSAGE);
-      else showMessage("Couldn't reload. Check your connection and try again.", { reload: true });
       return;
     }
     busy = false;
-    const marriage = (fresh?.person?.marriages ?? []).find(row => row.familyId === family.familyId);
-    if (!marriage) {
-      showMessage(MISSING_MESSAGE);
-      return;
-    }
     dialog.close();
     callSafely(onReloaded, fresh);
     const freshFields = Object.fromEntries(Object.values(FIELDS).map(key => [key, marriage[key] ?? null]));
-    openFamilyEditor({ ...options, family: { ...family, ...freshFields } });
+    slot.editor = buildEditor({ ...options, family: { ...family, ...freshFields } }, slot);
   }
 
   formElement.addEventListener('submit', (event) => {

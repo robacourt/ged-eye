@@ -31,8 +31,9 @@ let onSaved;
 let onDeleted;
 let onReloaded;
 
+// The views main.js passes in are unmasked for an editor; tests of masking override `masked`.
 async function open(extra = {}, options = {}) {
-  return openPersonEditor({ person: record(extra), api, loader, onSaved, onDeleted, onReloaded, ...options });
+  return openPersonEditor({ person: record(extra), masked: false, api, loader, onSaved, onDeleted, onReloaded, ...options });
 }
 
 const dialog = () => document.querySelector('.person-editor');
@@ -52,7 +53,11 @@ const save = async () => {
 };
 const sent = () => api.runChange.mock.calls.at(-1);
 const message = () => ($('.editor-form-message')?.hidden === false ? $('.editor-form-message .editor-error').textContent : null);
-const keydown = (target, key) => target.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
+const keydown = (target, key, init = {}) => {
+  const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true, ...init });
+  target.dispatchEvent(event);
+  return event;
+};
 
 beforeEach(() => {
   document.body.innerHTML = '<button id="opener">Edit</button>';
@@ -342,7 +347,7 @@ describe('openPersonEditor: errors', () => {
 
   it('offers Reload when someone else changed the person, reopening the editor with fresh data', async () => {
     api.runChange.mockRejectedValueOnce(apiError(409, 'stale'));
-    await open();
+    const editor = await open();
     change(field('given_name'), 'Rosa');
     await save();
     expect(message()).toBe('Someone else changed this person. Reload to see their changes.');
@@ -357,10 +362,29 @@ describe('openPersonEditor: errors', () => {
     expect(onReloaded).toHaveBeenCalledWith(fresh);
     expect(document.querySelectorAll('.person-editor')).toHaveLength(1);
     expect(field('given_name').value).toBe('Rosalind');
+    // The handle from the first open now stands for the reopened editor.
+    expect(editor.isOpen()).toBe(true);
+    expect(editor.element).toBe(dialog());
 
     change(field('given_name'), 'Rosa');
     await save();
     expect(sent()[1]).toEqual({ id: 'I7', expectedUpdatedAt: STAMP2, fields: { given_name: 'Rosa' } });
+    expect(editor.isOpen()).toBe(false);
+  });
+
+  it('leaves the handle closed when the reloaded view is masked', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    api.runChange.mockRejectedValueOnce(apiError(409, 'stale'));
+    const editor = await open();
+    change(field('given_name'), 'Rosa');
+    await save();
+    loader.reload.mockResolvedValue({ person: record(), masked: true });
+    $('.editor-reload').click();
+    await flush();
+    expect(dialog()).toBeNull();
+    expect(editor.isOpen()).toBe(false);
+    expect(showToast).toHaveBeenLastCalledWith(expect.stringMatching(/can't be edited/), { kind: 'error' });
+    console.error.mockRestore();
   });
 
   it('says so when the person was deleted meanwhile', async () => {
@@ -439,15 +463,30 @@ describe('openPersonEditor: masked views', () => {
     expect(onReloaded).toHaveBeenCalled();
   });
 
-  it('also notices `masked` on the person record', async () => {
+  it('also reads `masked` from the person record', async () => {
     loader.reload.mockResolvedValue(unmasked());
-    await open({ masked: true });
+    await open({ masked: true }, { masked: undefined });
     expect(loader.reload).toHaveBeenCalledWith('I7');
+    loader.reload.mockClear();
+    await open({ masked: false }, { masked: undefined });
+    expect(loader.reload).not.toHaveBeenCalled();
   });
 
-  it('does not reload an unmasked view', async () => {
+  it('does not reload a view known to be unmasked', async () => {
     await open({}, { masked: false });
     expect(loader.reload).not.toHaveBeenCalled();
+  });
+
+  it('fails closed: a view not known to be unmasked is reloaded, and refused unless that says masked: false', async () => {
+    loader.reload.mockResolvedValue(unmasked());
+    expect(await open({}, { masked: undefined })).not.toBeNull();
+    expect(loader.reload).toHaveBeenCalledTimes(1);
+    dialog().closest('.editor-dialog-backdrop').remove();
+
+    loader.reload.mockResolvedValue({ ...unmasked(), masked: undefined }); // an older API that doesn't say
+    expect(await open({}, { masked: undefined })).toBeNull();
+    expect(dialog()).toBeNull();
+    expect(showToast).toHaveBeenLastCalledWith(expect.stringMatching(/can't be edited/), { kind: 'error' });
   });
 
   it('refuses when the view is still masked, or cannot be reloaded', async () => {
@@ -463,5 +502,165 @@ describe('openPersonEditor: masked views', () => {
     expect(api.runChange).not.toHaveBeenCalled();
     expect(logged).toHaveBeenCalled();
     logged.mockRestore();
+  });
+});
+
+describe('openPersonEditor: odd stored values', () => {
+  const ODD = {
+    sex: 'X',
+    notes: ['crlf\r\nnote', '  indented'],
+    occupations: [' Farmer '],
+    otherFacts: [{ tag: 'EVEN', type: 'Letter', value: 'line one\nline two', place: 'Leeds\r\nYorkshire' }, { tag: ' RELI' }],
+    causeOfDeath: ' Fever ',
+    email: 'rose@example.test '
+  };
+
+  it('saves them back untouched when only a core field changed', async () => {
+    await open(ODD);
+    expect(field('sex').value).toBe('X');
+    change(field('given_name'), 'Rosa');
+    await save();
+    expect(sent()[1]).toEqual({ id: 'I7', expectedUpdatedAt: STAMP, fields: { given_name: 'Rosa' } });
+  });
+
+  it('edits a multi-line value in a textarea, keeping its line breaks', async () => {
+    await open(ODD);
+    const letter = rows().find(row => inRow(row, 'type')?.value === 'Letter');
+    const value = inRow(letter, 'value');
+    expect(value.tagName).toBe('TEXTAREA');
+    expect(inRow(letter, 'place').tagName).toBe('TEXTAREA');
+    expect(inRow(letter, 'date').tagName).toBe('INPUT');
+    change(value, 'line one\nline 2\n');
+    await save();
+    expect(sent()[1].facts.otherFacts[0]).toEqual({ tag: 'EVEN', type: 'Letter', value: 'line one\nline 2', place: 'Leeds\r\nYorkshire' });
+    expect(sent()[1].facts.notes).toEqual(['crlf\r\nnote', '  indented']);
+    expect(sent()[1].facts.causeOfDeath).toBe(' Fever ');
+  });
+});
+
+describe('openPersonEditor: fact rows', () => {
+  it('offers the life event tags only to stored facts that already have one', async () => {
+    await open({ otherFacts: [{ tag: 'BIRT', date: '1850' }] });
+    const stored = rows().find(row => inRow(row, 'tag').value === 'BIRT');
+    expect(stored.querySelector('[name="tag"]').selectedOptions[0].textContent).toBe('Birth');
+    $('.fact-add').click();
+    const tags = [...inRow(rows().at(-1), 'tag').options].map(option => option.value);
+    expect(tags).toContain('_MILT');
+    expect(tags).toContain('EVEN');
+    for (const tag of ['BIRT', 'BAPM', 'DEAT', 'BURI']) expect(tags).not.toContain(tag);
+    change(field('given_name'), 'Rosa');
+    await save();
+    expect(sent()[1]).not.toHaveProperty('facts');
+  });
+
+  it('gives each row a numbered legend that follows its kind', async () => {
+    await open();
+    const legends = () => rows().map(row => row.querySelector('legend').textContent);
+    expect(legends()).toEqual(['Fact 1: Occupation', 'Fact 2: Religion', 'Fact 3: Census']);
+    rows()[0].querySelector('.fact-row-remove').click();
+    expect(legends()).toEqual(['Fact 1: Religion', 'Fact 2: Census']);
+    change(inRow(rows()[1], 'kind'), 'residence');
+    $('.fact-add').click();
+    expect(legends()).toEqual(['Fact 1: Religion', 'Fact 2: Residence', 'Fact 3: Occupation']);
+  });
+});
+
+describe('openPersonEditor: focus and keys', () => {
+  it('can take focus itself, so a click on its background keeps focus inside', async () => {
+    await open();
+    expect(dialog().getAttribute('tabindex')).toBe('-1');
+  });
+
+  it('keeps Tab inside the dialog, also when focus has fallen to the page', async () => {
+    await open();
+    const close = $('.editor-dialog-close');
+    const saveButton = $('.person-editor-save');
+    saveButton.focus();
+    expect(keydown(saveButton, 'Tab').defaultPrevented).toBe(true);
+    expect(document.activeElement).toBe(close);
+    keydown(close, 'Tab', { shiftKey: true });
+    expect(document.activeElement).toBe(saveButton);
+    // In between, Tab is left to the browser.
+    field('surname').focus();
+    expect(keydown(field('surname'), 'Tab').defaultPrevented).toBe(false);
+
+    document.activeElement.blur();
+    expect(document.activeElement).toBe(document.body);
+    keydown(document.body, 'Tab');
+    expect(document.activeElement).toBe(close);
+    document.activeElement.blur();
+    keydown(document.body, 'Escape');
+    expect(dialog()).toBeNull();
+  });
+
+  it('leaves keys to a dialog on top of it, and to handlers that already took them', async () => {
+    await open();
+    const above = document.createElement('div');
+    above.className = 'editor-dialog-backdrop';
+    above.innerHTML = '<input id="above">';
+    document.body.appendChild(above);
+    const input = document.getElementById('above');
+    input.focus();
+    expect(keydown(input, 'Tab').defaultPrevented).toBe(false);
+    keydown(input, 'Escape');
+    expect(dialog()).not.toBeNull();
+    above.hidden = true; // e.g. the sign-in dialog, closed
+    field('surname').focus();
+
+    const takeIt = (event) => event.preventDefault();
+    window.addEventListener('keydown', takeIt, true);
+    keydown(field('surname'), 'Escape');
+    window.removeEventListener('keydown', takeIt, true);
+    expect(dialog()).not.toBeNull();
+    keydown(field('surname'), 'Escape');
+    expect(dialog()).toBeNull();
+  });
+
+  it('puts focus back on the button that started a failed save, if it fell out while busy', async () => {
+    let reject;
+    api.runChange.mockReturnValue(new Promise((_, r) => { reject = r; }));
+    await open();
+    change(field('given_name'), 'Rosa');
+    $('.person-editor-save').focus();
+    $('.person-editor-save').click();
+    document.activeElement.blur(); // what browsers do when the focused button is disabled
+    reject(apiError(0, 'network', { message: 'Offline.' }));
+    await flush();
+    expect(message()).toBe('Offline.');
+    expect(document.activeElement).toBe($('.person-editor-save'));
+  });
+
+  it('focuses the field with the error after a failed save', async () => {
+    api.runChange.mockRejectedValue(apiError(400, 'invalid', { field: 'surname', message: 'Too long.' }));
+    await open();
+    change(field('given_name'), 'Rosa');
+    $('.person-editor-save').focus();
+    await save();
+    expect(document.activeElement).toBe(field('surname'));
+  });
+
+  it('moves focus on when a failed reload hides the button that had it', async () => {
+    api.runChange.mockRejectedValueOnce(apiError(409, 'stale'));
+    await open();
+    change(field('given_name'), 'Rosa');
+    await save();
+    loader.reload.mockRejectedValue(Object.assign(new Error('gone'), { name: 'PersonNotFoundError' }));
+    $('.editor-reload').focus();
+    $('.editor-reload').click();
+    document.activeElement.blur();
+    await flush();
+    expect($('.editor-reload').hidden).toBe(true);
+    expect(dialog().contains(document.activeElement)).toBe(true);
+    expect(document.activeElement.disabled).toBe(false);
+  });
+
+  it('describes the delete confirmation', async () => {
+    await open();
+    $('.person-editor-delete').click();
+    const text = $('.person-editor-confirm-text');
+    expect(dialog().getAttribute('aria-describedby')).toBe(text.id);
+    expect($('.person-editor-confirm-delete').getAttribute('aria-describedby')).toBe(text.id);
+    $('.person-editor-confirm-cancel').click();
+    expect(dialog().hasAttribute('aria-describedby')).toBe(false);
   });
 });

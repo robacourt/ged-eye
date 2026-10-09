@@ -1,10 +1,11 @@
 /**
  * The modal dialog and form helpers the person and family editors share.
  *
- * The dialog uses editorStyles.css's `.editor-dialog` (centred, full screen below 768px). Focus moves into it
- * and Tab keeps it there; Escape and × ask to close; closing gives focus back. Keys are handled on the
- * backdrop, so the sign-in dialog, which may open over an editor, keeps its own keys.
+ * The dialog uses editorStyles.css's `.editor-dialog` (centred, full screen below 768px). Tab keeps focus inside
+ * it; Escape and × ask to close; closing gives focus back. Keys are taken in the capture phase, but only by the
+ * topmost dialog (dialogStack.js), so the sign-in dialog, which may open over an editor, keeps its own keys.
  */
+import { isTopmostDialog } from './dialogStack.js';
 
 /** Shown with every date field: dates are free text, as in GEDCOM. */
 export const DATE_HINT = 'e.g. 12 MAR 1890, ABT 1850, BEF 1900';
@@ -46,6 +47,10 @@ export function el(tag, props = {}, ...children) {
   return element;
 }
 
+/** Inline style that hides text visually but leaves it to screen readers (editorStyles.css has no class for it). */
+export const VISUALLY_HIDDEN = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;' +
+  'clip:rect(0,0,0,0);white-space:nowrap;border:0';
+
 /** Runs a caller's callback without letting its failure break the dialog. */
 export function callSafely(callback, ...args) {
   try {
@@ -55,19 +60,41 @@ export function callSafely(callback, ...args) {
   }
 }
 
+/** Whether focus could go to `element`, inside `scope`. */
+function isUsable(element, scope) {
+  return element instanceof HTMLElement && element !== scope && element.isConnected && scope.contains(element) &&
+    !element.disabled && !element.closest('[hidden]');
+}
+
+/** The enabled, visible controls in `scope`, in tab order (positive tabindex isn't used). */
+export function focusablesIn(scope) {
+  return [...scope.querySelectorAll(FOCUSABLE)].filter(element => isUsable(element, scope));
+}
+
+/**
+ * Puts focus back inside `scope` when it has left it (a focused button disabled while busy drops focus to the
+ * page): on `preferred` if it can take it, else the first control, else `scope` itself.
+ */
+export function keepFocusInside(scope, preferred = null) {
+  if (isUsable(document.activeElement, scope)) return;
+  const target = [preferred, ...focusablesIn(scope)].find(element => isUsable(element, scope)) ?? scope;
+  target.focus();
+}
+
 /**
  * Opens a dialog.
  * @param title           plain text
  * @param className       extra class for `.editor-dialog` (a literal, never data)
  * @param onRequestClose  () when Escape or × is pressed; defaults to closing
- * @returns `{ backdrop, dialog, body, setTitle, close, isOpen }`
+ * @returns `{ backdrop, dialog, body, setTitle, close, isOpen, focusables }`
  */
 export function openEditorDialog({ title = '', className = '', onRequestClose } = {}) {
   const id = uniqueId('editor-dialog');
   const backdrop = document.createElement('div');
   backdrop.className = 'editor-dialog-backdrop';
+  // tabindex -1: a click on a part of the dialog that isn't a control keeps focus in the dialog.
   backdrop.innerHTML = `
-    <div class="editor-dialog" role="dialog" aria-modal="true" aria-labelledby="${id}-title">
+    <div class="editor-dialog" role="dialog" aria-modal="true" aria-labelledby="${id}-title" tabindex="-1">
       <div class="editor-dialog-header">
         <h2 class="editor-dialog-title" id="${id}-title"></h2>
         <button type="button" class="editor-dialog-close" aria-label="Close">×</button>
@@ -86,33 +113,44 @@ export function openEditorDialog({ title = '', className = '', onRequestClose } 
   openBackdrops.add(backdrop);
 
   const requestClose = () => (onRequestClose ? onRequestClose() : close());
+  const focusables = () => focusablesIn(dialog);
 
-  function focusables() {
-    return [...dialog.querySelectorAll(FOCUSABLE)].filter(el => !el.disabled && !el.closest('[hidden]'));
+  function trapTab(event) {
+    const items = focusables();
+    if (items.length === 0) {
+      event.preventDefault();
+      dialog.focus();
+      return;
+    }
+    const first = items[0];
+    const last = items[items.length - 1];
+    const inside = isUsable(document.activeElement, dialog);
+    if (event.shiftKey && (!inside || document.activeElement === first)) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && (!inside || document.activeElement === last)) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
-  backdrop.addEventListener('keydown', (event) => {
+  // Capture phase, so Escape and Tab are seen even when focus has fallen to the page, and an Escape that
+  // closes this dialog never reaches anything below it.
+  function onKeyDown(event) {
+    if (!backdrop.isConnected) {
+      document.removeEventListener('keydown', onKeyDown, true); // removed from the page without being closed
+      return;
+    }
+    if (event.defaultPrevented || !isTopmostDialog(backdrop)) return;
     if (event.key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();
       requestClose();
     } else if (event.key === 'Tab') {
-      const items = focusables();
-      if (items.length === 0) {
-        event.preventDefault();
-        return;
-      }
-      const first = items[0];
-      const last = items[items.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
+      trapTab(event);
     }
-  });
+  }
+  document.addEventListener('keydown', onKeyDown, true);
   dialog.querySelector('.editor-dialog-close').addEventListener('click', requestClose);
 
   document.body.appendChild(backdrop);
@@ -121,6 +159,7 @@ export function openEditorDialog({ title = '', className = '', onRequestClose } 
     if (!open) return;
     open = false;
     openBackdrops.delete(backdrop);
+    document.removeEventListener('keydown', onKeyDown, true);
     backdrop.remove();
     if (returnFocus?.isConnected && !returnFocus.closest('[hidden]')) returnFocus.focus();
   }
@@ -134,6 +173,22 @@ export function openEditorDialog({ title = '', className = '', onRequestClose } 
     isOpen: () => open && backdrop.isConnected,
     focusables
   };
+}
+
+/**
+ * A handle that stays valid when an editor reopens itself (after Reload): `slot.editor` is the editor shown now.
+ * @returns `{ handle: { close, isOpen, element }, slot }`
+ */
+export function reopenableHandle() {
+  const slot = { editor: null };
+  const handle = {
+    close: () => slot.editor?.close(),
+    isOpen: () => Boolean(slot.editor?.isOpen()),
+    get element() {
+      return slot.editor?.element ?? null;
+    }
+  };
+  return { handle, slot };
 }
 
 // --- Inputs that remember what they were filled with ----------------------------------------------------------
@@ -163,9 +218,15 @@ export function readFilled(input, tidy = (text) => text.trim()) {
 
 // --- Busy state and messages -------------------------------------------------------------------------------
 
-/** Disables every control in `root` while busy, showing `label` on the button that started it. */
+const focusBeforeBusy = new WeakMap(); // root -> the element focused when it became busy
+
+/**
+ * Disables every control in `root` while busy, showing `label` on the button that started it. When it is no
+ * longer busy, focus goes back into the dialog if it fell out (to the control that had it, if it still can).
+ */
 export function setBusy(root, busy, button = null, label = '') {
   root.setAttribute('aria-busy', String(busy));
+  if (busy) focusBeforeBusy.set(root, document.activeElement);
   for (const control of root.querySelectorAll('button, input, select, textarea')) {
     if (busy) {
       control.dataset.wasDisabled = String(control.disabled);
@@ -183,6 +244,11 @@ export function setBusy(root, busy, button = null, label = '') {
       button.textContent = button.dataset.label;
       delete button.dataset.label;
     }
+  }
+  if (!busy) {
+    const preferred = focusBeforeBusy.get(root);
+    focusBeforeBusy.delete(root);
+    if (root.isConnected) keepFocusInside(root.closest('.editor-dialog') ?? root, preferred);
   }
 }
 

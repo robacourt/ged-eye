@@ -11,8 +11,10 @@ import { showToast } from './toast.js';
 import { factLabel, KNOWN_FACT_TAGS } from './factLabels.js';
 import { factsFromPerson, factsToForm, formToFacts, factsEqual, newRow, LIFE_EVENTS } from './factsForm.js';
 import {
-  DATE_HINT, DATE_PLACEHOLDER, el, openEditorDialog, uniqueId, callSafely, fill, readFilled, setBusy, commandErrorMessage
+  DATE_HINT, DATE_PLACEHOLDER, VISUALLY_HIDDEN, el, openEditorDialog, reopenableHandle, uniqueId, callSafely, fill,
+  readFilled, setBusy, commandErrorMessage
 } from './editorDialog.js';
+
 const UNNAMED = 'Unnamed person';
 const STALE_MESSAGE = 'Someone else changed this person. Reload to see their changes.';
 const MASKED_MESSAGE = "Couldn't load this person's full details, so they can't be edited. Sign in again, then try again.";
@@ -33,6 +35,12 @@ const CUSTOM_TAG = '__custom';
 // Event first (its Type says what happened), then the rest by label.
 const TAG_CHOICES = ['EVEN', ...KNOWN_FACT_TAGS.filter(tag => tag !== 'EVEN')
   .sort((a, b) => factLabel({ tag: a }).localeCompare(factLabel({ tag: b })))];
+// Earlier occurrences of a repeated birth, baptism, death or burial are kept as other facts with these tags,
+// but a new fact never gets one: those belong in the life events.
+const LIFE_EVENT_TAGS = new Set(['BIRT', 'BAPM', 'DEAT', 'BURI']);
+
+// Facts are free-form: a stored value may have line breaks, which a single-line input would drop once touched.
+const MULTI_LINE = /[\r\n]/;
 
 /** Where a server error about `facts.<key>` is shown: the section that edits that key. */
 const FACT_ERROR_SLOTS = {
@@ -48,13 +56,15 @@ export function displayName(person) {
   return name || UNNAMED;
 }
 
-const isMasked = (view) => (view?.masked ?? view?.person?.masked) === true;
+/** Only a view known to be unmasked may be edited: saving a masked one would write "[email hidden]" over notes. */
+const isUnmasked = (view) => (view?.masked ?? view?.person?.masked) === false;
 
 /**
  * Opens the editor for `person` (a person record from the person view, with `updatedAt`).
  *
- * A masked view (`masked`, or `person.masked`) would save the masked notes over the real ones, so it is
- * reloaded with the editor's token first; if it is still masked, the editor refuses with a toast.
+ * Unless the view is known to be unmasked (`masked: false`, or `person.masked === false`), it is reloaded with
+ * the editor's token first, since saving masked notes would overwrite the real ones. If the reloaded view isn't
+ * `masked: false` either, the editor refuses with a toast.
  *
  * @param person      the person record
  * @param masked      whether the view it came from was masked (defaults to `person.masked`)
@@ -63,28 +73,36 @@ const isMasked = (view) => (view?.masked ?? view?.person?.masked) === true;
  * @param onSaved     ({ change, view }) after update_person: the caller invalidates caches, re-renders, toasts
  * @param onDeleted   ({ change, view }) after delete_person (`view` is the next person to show, or null)
  * @param onReloaded  (loadPersonWithFamily result) when the editor reloaded the person, so the panel can update
- * @returns Promise of `{ close, isOpen, element }`, or null when it refused
+ * @returns Promise of `{ close, isOpen, element }`, or null when it refused. After "Reload this person" the
+ *          editor reopens with fresh data, and the same handle then controls (and reports on) the new one.
  */
 export async function openPersonEditor(options) {
+  const { handle, slot } = reopenableHandle();
+  return (await openInto(options, slot)) ? handle : null;
+}
+
+/** Opens the editor into `slot`, checking for a masked view first. Resolves to the editor, or null. */
+async function openInto(options, slot) {
   let { person } = options;
-  if (isMasked({ masked: options.masked, person })) {
+  if (!isUnmasked({ masked: options.masked, person })) {
     let fresh = null;
     try {
       fresh = await options.loader.reload(person.id);
     } catch (error) {
-      console.error('Reloading a masked person failed', error);
+      console.error('Reloading the person to edit failed', error);
     }
-    if (!fresh?.person || isMasked(fresh)) {
+    if (!fresh?.person || !isUnmasked(fresh)) {
       showToast(MASKED_MESSAGE, { kind: 'error' });
       return null;
     }
     callSafely(options.onReloaded, fresh);
     person = fresh.person;
   }
-  return buildEditor(options, person);
+  slot.editor = buildEditor(options, person, slot);
+  return slot.editor;
 }
 
-function buildEditor(options, person) {
+function buildEditor(options, person, slot) {
   const { api, loader, onSaved, onDeleted, onReloaded } = options;
   const name = displayName(person);
   const storedFacts = factsFromPerson(person);
@@ -123,6 +141,14 @@ function buildEditor(options, person) {
 
   const textInput = (name, { type = 'text', placeholder } = {}) =>
     el('input', { class: 'editor-input', type, name, autocomplete: 'off', placeholder });
+
+  /** A text input filled with a facts value, or a textarea when the value has line breaks. */
+  function factText(name, value, options = {}) {
+    const control = typeof value === 'string' && MULTI_LINE.test(value)
+      ? el('textarea', { class: 'editor-input editor-textarea', name, rows: String(Math.min(8, value.split('\n').length + 1)) })
+      : textInput(name, options);
+    return fill(control, value);
+  }
 
   const inputs = {};
   function coreField(label, field, { placeholder } = {}) {
@@ -184,19 +210,23 @@ function buildEditor(options, person) {
     for (const [value, label] of KIND_OPTIONS) kind.append(el('option', { value, text: label }));
     kind.value = row.kind;
 
+    // A stored fact keeps its life event tag; it just isn't offered for anything else.
+    const choices = TAG_CHOICES.filter(choice => !LIFE_EVENT_TAGS.has(choice) || choice === row.tag);
     const tag = el('select', { class: 'editor-input', name: 'tag' });
     tag.append(el('option', { value: '', text: 'Choose…' }));
-    for (const choice of TAG_CHOICES) tag.append(el('option', { value: choice, text: factLabel({ tag: choice }) }));
+    for (const choice of choices) tag.append(el('option', { value: choice, text: factLabel({ tag: choice }) }));
     tag.append(el('option', { value: CUSTOM_TAG, text: 'Another tag…' }));
-    const knownTag = row.tag === '' || TAG_CHOICES.includes(row.tag);
+    const knownTag = row.tag === '' || choices.includes(row.tag);
     tag.value = knownTag ? row.tag : CUSTOM_TAG;
-    const customTag = fill(textInput('custom_tag'), knownTag ? '' : row.tag);
+    const customTag = factText('custom_tag', knownTag ? '' : row.tag);
 
     const inputsOf = {};
     for (const name of ['type', 'value', 'date', 'place', 'cause']) {
-      inputsOf[name] = fill(textInput(name, { placeholder: name === 'date' ? DATE_PLACEHOLDER : undefined }), row[name]);
+      inputsOf[name] = factText(name, row[name], { placeholder: name === 'date' ? DATE_PLACEHOLDER : undefined });
     }
     const notes = notesEditor(row.notes);
+    const legend = el('legend', { class: 'fact-row-legend', style: VISUALLY_HIDDEN });
+    let number = 0;
 
     const kindField = labelled('Kind', kind);
     const tagField = labelled('Fact', tag);
@@ -207,6 +237,7 @@ function buildEditor(options, person) {
     const remove = el('button', { type: 'button', class: 'editor-btn-link fact-row-remove', text: 'Remove this fact' });
 
     const element = el('fieldset', { class: 'editor-fieldset fact-row' },
+      legend,
       el('div', { class: 'editor-grid' }, kindField.wrap, tagField.wrap, customField.wrap),
       el('div', { class: 'editor-grid' }, typeField.wrap, valueField.wrap),
       el('div', { class: 'editor-grid' }, labelled('Date', inputsOf.date).wrap, labelled('Place', inputsOf.place).wrap, causeField.wrap),
@@ -220,6 +251,10 @@ function buildEditor(options, person) {
       typeField.wrap.hidden = !other;
       causeField.wrap.hidden = !other;
       valueField.labelText.textContent = VALUE_LABELS[kind.value];
+      const what = other && tag.value && tag.value !== CUSTOM_TAG
+        ? factLabel({ tag: tag.value })
+        : kind.selectedOptions[0]?.textContent ?? '';
+      legend.textContent = `Fact ${number}: ${what}`;
     }
     kind.addEventListener('change', applyKind);
     tag.addEventListener('change', () => {
@@ -232,6 +267,10 @@ function buildEditor(options, person) {
     const editor = {
       element,
       focus: () => kind.focus(),
+      setNumber(value) {
+        number = value;
+        applyKind();
+      },
       read: () => ({
         kind: kind.value,
         tag: tag.value === CUSTOM_TAG ? readFilled(customTag).value : tag.value,
@@ -264,7 +303,7 @@ function buildEditor(options, person) {
       coreField('Surname', 'surname'),
       labelled('Sex', sex, 'sex').wrap));
 
-  const cause = fill(textInput('cause_of_death'), form.causeOfDeath);
+  const cause = factText('cause_of_death', form.causeOfDeath);
   const eventNotes = {};
   const events = LIFE_EVENTS.map((event) => {
     eventNotes[event] = notesEditor(form.lifeEvents[event].notes, {
@@ -283,14 +322,17 @@ function buildEditor(options, person) {
 
   const factRows = el('div', { class: 'fact-rows' });
   const rowEditors = [];
+  const renumber = () => rowEditors.forEach((editor, i) => editor.setNumber(i + 1));
   function addRow(row) {
     const editor = factRowEditor(row, (removed) => {
       rowEditors.splice(rowEditors.indexOf(removed), 1);
       removed.element.remove();
+      renumber();
       addFact.focus();
     });
     rowEditors.push(editor);
     factRows.append(editor.element);
+    editor.setNumber(rowEditors.length);
     return editor;
   }
   form.rows.forEach(addRow);
@@ -301,8 +343,8 @@ function buildEditor(options, person) {
   const personNotes = notesEditor(form.notes, { errorKey: 'notes', className: 'person-editor-notes' });
   const notesSection = section('Notes', 'person-editor-notes-section', personNotes.element);
 
-  const email = fill(textInput('email', { type: 'email' }), form.email);
-  const phone = fill(textInput('phone', { type: 'tel' }), form.phone);
+  const email = factText('email', form.email, { type: 'email' });
+  const phone = factText('phone', form.phone, { type: 'tel' });
   const contactSection = section('Contact', 'person-editor-contact',
     el('div', { class: 'editor-grid' }, labelled('Email', email, 'email').wrap, labelled('Phone', phone, 'phone').wrap));
 
@@ -315,8 +357,8 @@ function buildEditor(options, person) {
 
   // --- Delete confirmation, messages and buttons ---------------------------------------------------------
 
-  const confirm = el('div', { class: 'person-editor-confirm', hidden: true },
-    el('p', { class: 'person-editor-confirm-text', text: `Delete ${name}? You can undo this from History.` }));
+  const confirmText = el('p', { class: 'person-editor-confirm-text', id: uniqueId('editor-confirm'), text: `Delete ${name}? You can undo this from History.` });
+  const confirm = el('div', { class: 'person-editor-confirm', hidden: true }, confirmText);
 
   const messageText = el('p', { class: 'editor-error', role: 'alert' });
   const reloadButton = el('button', { type: 'button', class: 'editor-btn editor-reload', text: 'Reload this person', hidden: true });
@@ -329,7 +371,9 @@ function buildEditor(options, person) {
     deleteButton, el('span', { class: 'editor-actions-spacer' }), cancelButton, saveButton);
 
   const keepButton = el('button', { type: 'button', class: 'editor-btn person-editor-confirm-cancel', text: 'Cancel' });
-  const confirmDeleteButton = el('button', { type: 'button', class: 'editor-btn editor-btn-danger-solid person-editor-confirm-delete', text: 'Delete' });
+  const confirmDeleteButton = el('button', {
+    type: 'button', class: 'editor-btn editor-btn-danger-solid person-editor-confirm-delete', text: 'Delete', 'aria-describedby': confirmText.id
+  });
   const confirmActions = el('div', { class: 'editor-actions', hidden: true },
     el('span', { class: 'editor-actions-spacer' }), keepButton, confirmDeleteButton);
 
@@ -456,6 +500,7 @@ function buildEditor(options, person) {
     formActions.hidden = true;
     confirm.hidden = false;
     confirmActions.hidden = false;
+    dialog.dialog.setAttribute('aria-describedby', confirmText.id);
     dialog.dialog.scrollTop = 0;
     keepButton.focus();
   }
@@ -463,6 +508,7 @@ function buildEditor(options, person) {
   function showForm() {
     clearMessages();
     view = 'form';
+    dialog.dialog.removeAttribute('aria-describedby');
     confirm.hidden = true;
     confirmActions.hidden = true;
     fields.hidden = false;
@@ -478,16 +524,17 @@ function buildEditor(options, person) {
     try {
       fresh = await loader.reload(person.id);
     } catch (error) {
-      busy = false;
-      setBusy(formElement, false, reloadButton);
+      // The message first: it may hide Reload, and focus then goes to the next control rather than a hidden one.
       if (error?.name === 'PersonNotFoundError') showMessage(`${name} no longer exists: someone else deleted them.`);
       else showMessage("Couldn't reload this person. Check your connection and try again.", { reload: true });
+      busy = false;
+      setBusy(formElement, false, reloadButton);
       return;
     }
     busy = false;
     dialog.close();
     callSafely(onReloaded, fresh);
-    await openPersonEditor({ ...options, person: fresh.person, masked: fresh.masked });
+    await openInto({ ...options, person: fresh.person, masked: fresh.masked }, slot);
   }
 
   formElement.addEventListener('submit', (event) => {

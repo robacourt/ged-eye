@@ -133,7 +133,7 @@ describe('openFamilyEditor', () => {
 
   it('on a stale save, reloads the person and reopens with the fresh marriage', async () => {
     api.runChange.mockRejectedValueOnce(apiError(409, 'stale'));
-    open({ loader, focusId: 'I1', onReloaded });
+    const editor = open({ loader, focusId: 'I1', onReloaded });
     type(field('marriage_place'), 'Leeds');
     await save();
     expect(message()).toBe('Someone else changed this marriage. Reload to see their changes.');
@@ -150,6 +150,8 @@ describe('openFamilyEditor', () => {
     expect($('.editor-dialog-title').textContent).toBe('Edit the marriage of Tom Smith and Ann Jones');
     expect(field('marriage_date').value).toBe('1921');
     expect(field('marriage_place').value).toBe('York');
+    expect(editor.isOpen()).toBe(true); // the first handle now stands for the reopened editor
+    expect(editor.element).toBe(dialog());
 
     type(field('divorce_date'), '1930');
     await save();
@@ -164,9 +166,32 @@ describe('openFamilyEditor', () => {
     type(field('marriage_place'), 'Leeds');
     await save();
     loader.reload.mockResolvedValue({ person: { id: 'I1', marriages: [] }, masked: false });
+    $('.editor-reload').focus();
     $('.editor-reload').click();
+    expect($('.family-editor-save').disabled).toBe(true);
+    document.activeElement.blur(); // what browsers do when the focused button is disabled
     await flush();
     expect(message()).toBe('This marriage no longer exists: someone else removed it.');
+    // Usable again: not busy, controls enabled, focus back inside.
+    expect($('.editor-reload').hidden).toBe(true);
+    expect($('form').getAttribute('aria-busy')).toBe('false');
+    for (const control of dialog().querySelectorAll('input, button')) expect(control.disabled).toBe(false);
+    expect(dialog().contains(document.activeElement)).toBe(true);
+    $('.family-editor-cancel').click();
+    expect(dialog()).toBeNull();
+  });
+
+  it('offers Reload again when the reload itself failed', async () => {
+    api.runChange.mockRejectedValueOnce(apiError(409, 'stale'));
+    open({ loader, focusId: 'I1' });
+    type(field('marriage_place'), 'Leeds');
+    await save();
+    loader.reload.mockRejectedValue(new Error('offline'));
+    $('.editor-reload').click();
+    await flush();
+    expect(message()).toBe("Couldn't reload. Check your connection and try again.");
+    expect($('.editor-reload').hidden).toBe(false);
+    expect($('.editor-reload').disabled).toBe(false);
   });
 
   it('without a loader, says to reopen instead of offering Reload', async () => {
