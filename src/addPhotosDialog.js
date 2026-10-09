@@ -14,6 +14,10 @@ import { thumbUrl } from './media.js';
 import { createPersonPicker } from './personPicker.js';
 import { addPhotosParams, photoItem } from './photoParams.js';
 import { createUploadQueue } from './uploadQueue.js';
+import { uploadErrorMessage } from './uploadMessages.js';
+
+/** The words a card shows for a failed upload: see uploadMessages.js (re-exported for existing importers). */
+export { uploadErrorMessage };
 
 /** add_photos takes at most 20 photos, so the sheet holds at most 20 cards. */
 const MAX_PHOTOS = 20;
@@ -23,37 +27,12 @@ const MAX_DATE = 100;
 /** Types every supported browser can show from an object URL; anything else previews as a document. */
 const PREVIEWABLE = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif']);
 
-const TYPE_AND_SIZE = 'PDFs and images only, up to 50 MB.';
-/** What a card says for each refusal of the file itself, which retrying can't change. */
-const REFUSALS = new Map([
-  ['unsupported_type', TYPE_AND_SIZE],
-  ['too_large', TYPE_AND_SIZE],
-  ['heic_unsupported', "This HEIC file couldn't be read. Export it as JPEG and try again."],
-  ['unreadable', "This file couldn't be read."],
-  ['empty', 'This file is empty.'],
-  ['too_many_pixels', 'This image is too large to process. Make it smaller than 100 megapixels and try again.']
-]);
-
 const FAILED_FIRST = 'Retry or remove the photos that failed, then save.';
 const NO_PHOTOS = 'Choose some photos first.';
 
 const photosWord = (n) => (n === 1 ? '1 photo' : `${n} photos`);
-
-/**
- * The words a card shows for an upload queue item's error (an ApiError from mediaApi.js, or `missing_upload`
- * from saving). → plain text.
- */
-export function uploadErrorMessage(error) {
-  const code = error?.code;
-  if (REFUSALS.has(code)) return REFUSALS.get(code);
-  if (code === 'invalid') return error.message && error.message !== code ? error.message : "This file can't be uploaded.";
-  if (code === 'missing_upload') return 'This upload has gone missing. Retry to upload it again.';
-  if (code === 'busy') return 'The server is busy. Retry in a moment.';
-  if (error?.status === 401) return "You're signed out. Sign in again, then retry.";
-  if (error?.status === 403 && code !== 'upload_failed') return "Your account can't add photos. Ask Rob for access.";
-  if (code === 'network') return 'Upload failed. Check your connection, then retry.';
-  return 'Upload failed.';
-}
+/** `text` ending in a full stop, so announcements read out together stay apart. */
+const sentence = (text) => (/[.?!…]$/.test(text) ? text : `${text}.`);
 
 /**
  * Opens the sheet.
@@ -74,6 +53,9 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
   let view = 'form'; // or 'confirm' (stop uploading?)
   let closed = false;
   let warning = false; // whether the beforeunload warning is registered
+  let saveToken = 0; // a save waiting for uploads goes ahead only if this hasn't changed meanwhile
+  let announcements = []; // waiting to be read out together
+  let announceTimer = null;
 
   const dialog = openEditorDialog({ title: `Add photos for ${name}`, className: 'add-photos-dialog', onRequestClose: requestClose });
 
@@ -137,15 +119,29 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     }
   }
 
+  /** Reads out `text` politely, together with anything else announced in the same tick (cards settling at once). */
+  function announce(text) {
+    announcements.push(text);
+    if (announceTimer !== null) return;
+    announceTimer = setTimeout(() => {
+      announceTimer = null;
+      announcer.textContent = announcements.join(' ');
+      announcements = [];
+    }, 0);
+  }
+
   // --- Cards ----------------------------------------------------------------------------------------------
 
   function textField(label, fieldName, { maxlength, placeholder = null }) {
     const field = el('input', { class: 'editor-input', type: 'text', name: fieldName, autocomplete: 'off', maxlength, placeholder });
     const error = el('p', { class: 'editor-error', id: uniqueId('editor-error'), role: 'alert', 'data-error-for': fieldName, hidden: true });
-    field.setAttribute('aria-describedby', error.id);
+    // Filled in when the photo is already in the tree with a value here, which is shared and so read-only. Empty
+    // until then, because a description is read out even while hidden.
+    const shared = el('p', { class: 'editor-hint', id: uniqueId('add-photos-shared'), 'data-hint-for': fieldName, hidden: true });
+    field.setAttribute('aria-describedby', `${error.id} ${shared.id}`);
     const wrap = el('div', { class: 'editor-field-wrap' },
-      el('label', { class: 'editor-field' }, el('span', { text: label }), field), error);
-    return { input: field, error, wrap };
+      el('label', { class: 'editor-field' }, el('span', { text: label }), field), error, shared);
+    return { input: field, error, shared, wrap };
   }
 
   function createCard(item) {
@@ -180,7 +176,9 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
       date: dateField.input,
       errors: { caption: captionField, date: dateField },
       objectUrl: null,
+      localFailed: false, // the browser couldn't show the file itself
       thumbShown: false,
+      filledFor: null, // the media id whose shared caption and date are shown
       lastState: null,
       /** This card's add_photos photo; a read-only (shared) caption or date is left alone. */
       photo: () => photoItem(item.media, {
@@ -192,7 +190,7 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
 
     if (PREVIEWABLE.has(item.file.type) && typeof URL.createObjectURL === 'function') {
       card.objectUrl = URL.createObjectURL(item.file);
-      showImage(card, card.objectUrl);
+      showLocalPreview(card);
     } else {
       showDocument(card);
     }
@@ -214,13 +212,26 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     return card;
   }
 
-  function showImage(card, src) {
+  /** Shows `src` as the preview; `onError` runs if it won't load while it is still shown. → the image. */
+  function showImage(card, src, onError) {
     const image = el('img', { src, alt: '' });
-    // A type the browser can't show after all, or a thumbnail that won't load: show a document instead.
     image.addEventListener('error', () => {
-      if (card.preview.contains(image)) showDocument(card);
+      if (card.preview.contains(image)) onError();
     });
     card.preview.replaceChildren(image);
+    return image;
+  }
+
+  /** The file itself, or a document icon if the browser can't show it after all. */
+  function showLocalPreview(card) {
+    if (!card.objectUrl || card.localFailed) {
+      showDocument(card);
+      return;
+    }
+    showImage(card, card.objectUrl, () => {
+      card.localFailed = true;
+      showDocument(card);
+    });
   }
 
   function showDocument(card) {
@@ -233,7 +244,10 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     card.objectUrl = null;
   }
 
-  /** Swaps the preview for the server's thumbnail once there is one (a PDF has none). */
+  /**
+   * Swaps the preview for the server's thumbnail once there is one (a PDF has none). The file's own preview is let
+   * go only once the thumbnail has loaded, and comes back if it won't.
+   */
   function showThumbnail(card, media) {
     if (card.thumbShown || !media?.thumbKey) return;
     let url = null;
@@ -244,8 +258,8 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     }
     if (!url) return;
     card.thumbShown = true;
-    showImage(card, url);
-    revokePreview(card);
+    const image = showImage(card, url, () => showLocalPreview(card));
+    image.addEventListener('load', () => revokePreview(card));
   }
 
   function disposeCard(card) {
@@ -287,15 +301,21 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
       const media = item.media ?? item.duplicateOf?.media;
       showThumbnail(card, media);
       // Already in the tree: its caption and date are shared, so they are shown, and only an empty one is filled.
-      if (item.media?.mediaId && card.lastState !== 'ready') {
+      // Keyed by the media, not the state, so a copy that takes over from a removed photo shows them too.
+      const mediaId = item.media?.mediaId ?? null;
+      if (mediaId !== null && card.filledFor !== mediaId) {
+        card.filledFor = mediaId;
         for (const key of ['caption', 'date']) {
           if (item.media[key] === null || item.media[key] === undefined) continue;
           card[key].value = item.media[key];
           card[key].readOnly = true;
+          const { shared } = card.errors[key];
+          shared.textContent = `This photo is already in the tree; edit its ${key} from the photo.`;
+          shared.hidden = false;
         }
       }
     }
-    if (card.lastState !== item.state && (item.state === 'ready' || failed)) announcer.textContent = `Photo ${number}: ${text}`;
+    if (card.lastState !== item.state && (item.state === 'ready' || failed)) announce(sentence(`Photo ${number}: ${text}`));
     card.lastState = item.state;
   }
 
@@ -321,6 +341,20 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     });
     updateFooter(items);
     syncUnloadWarning();
+    if (view === 'confirm') updateConfirm(items);
+  }
+
+  /**
+   * Keeps "Stop uploading?" true: once nothing is uploading there's nothing to stop, so the sheet goes back to the
+   * photos rather than let Discard throw away ones that have just become ready.
+   */
+  function updateConfirm(items) {
+    if (queue.hasActive()) {
+      confirmText.textContent = `Stop uploading and discard ${photosWord(items.length)}?`;
+      return;
+    }
+    showForm();
+    announce('The uploads have finished.');
   }
 
   function updateFooter(items = queue.items()) {
@@ -360,8 +394,9 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     const kept = added.slice(0, room);
     if (kept.length < added.length) {
       showMessage(room === 0
-        ? `Up to ${MAX_PHOTOS} photos can be added at once. Save these, then add more.`
-        : `Up to ${MAX_PHOTOS} photos can be added at once, so only the first ${kept.length} ${kept.length === 1 ? 'was' : 'were'} kept.`);
+        ? `Up to ${MAX_PHOTOS} photos can be added at once. Save these first, or remove failed or duplicate photos to make room.`
+        : `Up to ${MAX_PHOTOS} photos can be added at once, so only the first ${kept.length} ${kept.length === 1 ? 'was' : 'were'} kept. ` +
+          'Remove failed or duplicate photos to make room.');
     }
     queue.add(kept);
   }
@@ -377,15 +412,15 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     if (queue.items().length === 0) return showMessage(NO_PHOTOS);
     if (failedItems().length > 0) return showMessage(FAILED_FIRST);
     if (queue.hasActive()) {
+      const token = ++saveToken;
       phase = 'waiting';
       updateFooter();
-      announcer.textContent = 'Saving once the uploads have finished.';
-      while (!closed && queue.hasActive()) await queue.allSettled();
+      announce('Saving once the uploads have finished.');
+      while (!closed && token === saveToken && queue.hasActive()) await queue.allSettled();
+      // Closed, or "Stop uploading?" was asked meanwhile: that called the save off, so Save must be pressed again.
+      if (closed || token !== saveToken) return;
       phase = 'idle';
-      if (closed) return;
       updateFooter();
-      // Asked to stop uploading meanwhile: leave the choice to them, and Save to be pressed again.
-      if (view !== 'form') return;
       if (queue.items().length === 0) return showMessage(NO_PHOTOS);
       if (failedItems().length > 0) return showMessage(FAILED_FIRST);
     }
@@ -465,6 +500,11 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
 
   function showConfirm() {
     clearMessages();
+    if (phase === 'waiting') {
+      saveToken++; // calls off the save waiting for uploads
+      phase = 'idle';
+      updateFooter();
+    }
     view = 'confirm';
     confirmText.textContent = `Stop uploading and discard ${photosWord(queue.items().length)}?`;
     main.hidden = true;
@@ -490,6 +530,7 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
   function finish() {
     if (closed) return;
     closed = true;
+    clearTimeout(announceTimer);
     queue.cancel();
     syncUnloadWarning();
     for (const card of cards.values()) disposeCard(card);

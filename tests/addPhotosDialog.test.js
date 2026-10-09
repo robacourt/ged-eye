@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { openAddPhotosDialog, uploadErrorMessage } from '../src/addPhotosDialog.js';
+import { openAddPhotosDialog, uploadErrorMessage as reexported } from '../src/addPhotosDialog.js';
+import { uploadErrorMessage } from '../src/uploadMessages.js';
 import { createUploadQueue } from '../src/uploadQueue.js';
 import { ApiError } from '../src/editApi.js';
 import { showToast } from '../src/toast.js';
@@ -224,18 +225,20 @@ describe('openAddPhotosDialog: opening', () => {
     choose(Array.from({ length: 22 }, (_, i) => file(`${i + 1}.jpg`)));
     expect(cards()).toHaveLength(20);
     expect(card(19).querySelector('.add-photos-file-name').textContent).toBe('20.jpg');
-    expect(message()).toBe('Up to 20 photos can be added at once, so only the first 20 were kept.');
+    expect(message()).toBe('Up to 20 photos can be added at once, so only the first 20 were kept. ' +
+      'Remove failed or duplicate photos to make room.');
 
     choose([file('21.jpg')]);
     expect(cards()).toHaveLength(20);
-    expect(message()).toBe('Up to 20 photos can be added at once. Save these, then add more.');
+    expect(message()).toBe('Up to 20 photos can be added at once. Save these first, or remove failed or duplicate photos to make room.');
   });
 
   it('counts the photos already in the sheet towards the 20', () => {
     open({ files: Array.from({ length: 18 }, (_, i) => file(`${i + 1}.jpg`)) });
     choose([file('a.jpg'), file('b.jpg'), file('c.jpg')]);
     expect(cards()).toHaveLength(20);
-    expect(message()).toBe('Up to 20 photos can be added at once, so only the first 2 were kept.');
+    expect(message()).toBe('Up to 20 photos can be added at once, so only the first 2 were kept. ' +
+      'Remove failed or duplicate photos to make room.');
   });
 
   it('shows file names as text', () => {
@@ -296,9 +299,22 @@ describe('openAddPhotosDialog: cards', () => {
     await settle();
 
     expect(preview(0).getAttribute('src')).toBe('https://media.test/bucket/thumbs/sha-a.jpg.webp');
+    expect(URL.revokeObjectURL).not.toHaveBeenCalled(); // not until the thumbnail has loaded
+    preview(0).dispatchEvent(new Event('load'));
     expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:a.jpg');
     expect(preview(1)).toBeNull();
     expect(preview(2).getAttribute('src')).toBe('https://media.test/bucket/thumbs/sha-c.tif.webp');
+  });
+
+  it("goes back to the file's own preview when the thumbnail won't load, else to a document icon", async () => {
+    open({ files: [file('a.jpg'), file('c.tif')] });
+    await settle();
+    preview(0).dispatchEvent(new Event('error'));
+    expect(preview(0).getAttribute('src')).toBe('blob:a.jpg');
+    expect(URL.revokeObjectURL).not.toHaveBeenCalled();
+    preview(1).dispatchEvent(new Event('error'));
+    expect(preview(1)).toBeNull();
+    expect(card(1).querySelector('.add-photos-doc')).not.toBeNull();
   });
 
   it('has Caption, Date and Shown for, with the person fixed', async () => {
@@ -319,6 +335,52 @@ describe('openAddPhotosDialog: cards', () => {
     expect(caption(0).value).toBe('At the church');
     expect(caption(0).readOnly).toBe(true);
     expect(date(0).readOnly).toBe(false);
+    const hint = card(0).querySelector('[data-hint-for="caption"]');
+    expect(hint.hidden).toBe(false);
+    expect(hint.textContent).toBe('This photo is already in the tree; edit its caption from the photo.');
+    expect(caption(0).getAttribute('aria-describedby').split(' ')).toContain(hint.id);
+    expect(card(0).querySelector('[data-hint-for="date"]').hidden).toBe(true);
+  });
+
+  it("replaces a caption typed before the file turned out to be in the tree, saying why", async () => {
+    const processing = hold(mediaApi.processUpload);
+    open({ files: [file('a.jpg')] });
+    await settle();
+    type(caption(0), 'My own words');
+    processing[0].resolve({ ...mediaFor('a.jpg'), mediaId: 9, caption: 'At the church', date: null });
+    await settle();
+    expect(caption(0).value).toBe('At the church');
+    expect(card(0).querySelector('[data-hint-for="caption"]').hidden).toBe(false);
+  });
+
+  it("shows the shared caption read-only on a copy of a file in the tree once it takes over from photo 1", async () => {
+    mediaApi.processUpload.mockImplementation(async (uploadId, fileName) =>
+      ({ ...mediaFor(fileName, 'same-sha'), mediaId: 9, caption: 'At the church', date: null }));
+    open({ files: [file('a.jpg'), file('copy of a.jpg')] });
+    await settle();
+    expect(status(1)).toBe('Same as photo 1');
+    removeButton(0).click();
+    expect(status(0)).toBe('Already in the tree');
+    expect(card(0).querySelector('.add-photos-fields').hidden).toBe(false);
+    expect(caption(0).value).toBe('At the church');
+    expect(caption(0).readOnly).toBe(true);
+    expect(card(0).querySelector('[data-hint-for="caption"]').hidden).toBe(false);
+    await save();
+    expect(api.runChange).toHaveBeenCalledWith('add_photos', {
+      personId: 'I7',
+      photos: [{ mediaId: 9, caption: null, date: null, personIds: ['I7'] }]
+    });
+  });
+
+  it('announces cards that settle together, all of them', async () => {
+    const processing = hold(mediaApi.processUpload);
+    open({ files: [file('a.jpg'), file('b.heic')] });
+    await settle();
+    processing[0].resolve(mediaFor('a.jpg'));
+    processing[1].reject(new ApiError(400, 'heic_unsupported'));
+    await settle();
+    expect($('.add-photos-announcer').textContent)
+      .toBe("Photo 1: Ready. Photo 2: This HEIC file couldn't be read. Export it as JPEG and try again.");
   });
 
   it('marks a later copy of the same file "Same as photo 1", without its own fields', async () => {
@@ -387,6 +449,10 @@ describe('openAddPhotosDialog: cards', () => {
 });
 
 describe('uploadErrorMessage', () => {
+  it('is re-exported by the sheet', () => {
+    expect(reexported).toBe(uploadErrorMessage);
+  });
+
   it.each([
     ['unsupported_type', 400, 'PDFs and images only, up to 50 MB.'],
     ['too_large', 413, 'PDFs and images only, up to 50 MB.'],
@@ -586,6 +652,35 @@ describe('openAddPhotosDialog: saving', () => {
     expect(onSaved).not.toHaveBeenCalled();
   });
 
+  it('says when the server is busy', async () => {
+    api.runChange.mockRejectedValue(new ApiError(503, 'busy', { message: "Couldn't check the uploaded files — please try again." }));
+    open({ files: [file('a.jpg')] });
+    await settle();
+    await save();
+    expect(message()).toBe('The server is busy. Try again in a moment.');
+  });
+
+  it('says when someone a photo is shown for was deleted meanwhile', async () => {
+    api.runChange.mockRejectedValue(new ApiError(404, 'not_found', { field: 'photos.1.personIds' }));
+    open({ files: [file('a.jpg'), file('b.jpg')] });
+    await settle();
+    await save();
+    expect(message()).toBe('Someone chosen for photo 2 no longer exists: someone else deleted them. Remove them, then save.');
+  });
+
+  it("names the photo for a refusal that has no field of its own on the card", async () => {
+    api.runChange.mockRejectedValue(new ApiError(400, 'invalid', {
+      field: 'photos.1.upload.ext', index: 1, message: "The stored file isn't a jpg."
+    }));
+    mediaApi.processUpload.mockImplementation(async (uploadId, fileName) =>
+      mediaFor(fileName, fileName === 'c.jpg' ? 'sha-c' : 'same-sha'));
+    // Photo 2 is a copy of photo 1, so it isn't sent: photos.1 is the third card.
+    open({ files: [file('a.jpg'), file('b.jpg'), file('c.jpg')] });
+    await settle();
+    await save();
+    expect(message()).toBe("Photo 3: The stored file isn't a jpg.");
+  });
+
   it('names the person when they were deleted meanwhile', async () => {
     api.runChange.mockRejectedValue(new ApiError(404, 'not_found', { field: 'personId' }));
     open({ files: [file('a.jpg')] });
@@ -650,6 +745,44 @@ describe('openAddPhotosDialog: closing', () => {
     expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:a.jpg');
     expect(URL.revokeObjectURL).toHaveBeenCalledWith('blob:b.jpg');
     processing[0]?.resolve(mediaFor('a.jpg'));
+  });
+
+  it('goes back to the photos, discarding nothing, when the uploads finish while it asks', async () => {
+    const processing = hold(mediaApi.processUpload);
+    const sheet = open({ files: [file('a.jpg'), file('b.jpg')] });
+    await settle();
+    escape();
+    expect($('.add-photos-confirm-text').textContent).toBe('Stop uploading and discard 2 photos?');
+    processing[0].resolve(mediaFor('a.jpg'));
+    await settle();
+    expect($('.add-photos-confirm').hidden).toBe(false); // b.jpg is still processing
+
+    processing[1].resolve(mediaFor('b.jpg'));
+    await settle();
+    expect($('.add-photos-confirm').hidden).toBe(true);
+    expect($('.add-photos-cards').closest('[hidden]')).toBeNull();
+    expect(document.activeElement).toBe($('.add-photos-cancel'));
+    expect($('.add-photos-announcer').textContent).toContain('The uploads have finished.');
+    expect(sheet.isOpen()).toBe(true);
+    expect(queue.cancel).not.toHaveBeenCalled();
+  });
+
+  it('calls off a save waiting for uploads when asked to stop', async () => {
+    const processing = hold(mediaApi.processUpload);
+    open({ files: [file('a.jpg')] });
+    await settle();
+    saveButton().click();
+    await settle();
+    expect(saveButton().textContent).toBe('Waiting for uploads…');
+    escape();
+    processing[0].resolve(mediaFor('a.jpg'));
+    await settle();
+    expect($('.add-photos-confirm').hidden).toBe(true); // back to the photos
+    expect(api.runChange).not.toHaveBeenCalled();
+    expect(saveButton().textContent).toBe('Save 1 photo');
+
+    await save();
+    expect(api.runChange).toHaveBeenCalledTimes(1);
   });
 
   it('closes at once when nothing is uploading', async () => {
