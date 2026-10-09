@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, vi } from 'vitest';
 import { createHandler } from '../api/handler.js';
+import { maskNoteEmails } from '../api/privacy.js';
 
 const VIEW = { person: { id: 'I1' }, family: [], relationships: { parents: [], spouses: [], children: [], siblings: [] } };
 const call = (handler, path, method = 'GET') => handler(new Request(`https://api.test${path}`, { method }));
@@ -48,5 +49,35 @@ describe('api handler', () => {
     expect(res.status).toBe(500);
     expect(await res.json()).toEqual({ error: 'internal' });
     expect(log).toHaveBeenCalled();
+  });
+});
+
+describe('email masking', () => {
+  const person = {
+    id: 'I1', email: 'keep@example.com', birthPlace: 'x@y.com',
+    notes: ['From: Jo <jo.smith@example.co.uk>\nSent: Monday'],
+    deathNotes: ['mail a.b@c.org'],
+    censusRecords: [{ date: '1851', notes: ['c@d.net and e@f.io'] }],
+    otherFacts: [{ tag: 'EVEN', value: 'v@w.com', notes: ['g@h.com'] }]
+  };
+  const view = { person, family: [{ id: 'I2', name: 'n@o.com' }], relationships: { parents: [], spouses: [], children: [], siblings: [] } };
+
+  it('masks addresses in note text only', async () => {
+    const res = await call(createHandler(vi.fn().mockResolvedValue(view)), '/person/I1');
+    const body = await res.json();
+    expect(body.person).toEqual({
+      ...person,
+      notes: ['From: Jo <[email hidden]>\nSent: Monday'],
+      deathNotes: ['mail [email hidden]'],
+      censusRecords: [{ date: '1851', notes: ['[email hidden] and [email hidden]'] }],
+      otherFacts: [{ tag: 'EVEN', value: 'v@w.com', notes: ['[email hidden]'] }]
+    });
+    expect(body.family).toEqual(view.family);
+  });
+
+  it('does not modify its input', () => {
+    const copy = structuredClone(view);
+    maskNoteEmails(view);
+    expect(view).toEqual(copy);
   });
 });

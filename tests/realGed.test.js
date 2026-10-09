@@ -9,6 +9,7 @@ import * as legacy from './fixtures/legacyGedParser.js';
 import { parseGedcomTree } from '../scripts/gedTree.js';
 import { gedToRows } from '../scripts/neon/gedToRows.js';
 import { planFacts } from '../scripts/neon/backfillFacts.js';
+import { maskNoteEmails } from '../api/privacy.js';
 
 // The real tree is gitignored, so worktrees lack it:
 // GED_PATH=/Users/rob/src/ged_eye/acourt.ged npx vitest run tests/realGed.test.js
@@ -128,4 +129,13 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     expect(summary).toMatchObject({ unchanged: 1602, changed: 1392, edited: [], onlyInDb: [], onlyInGed: [], columnDrift: [] });
     expect(rows).toHaveLength(1392);
   }, 30_000);
+
+  it('leaves no email address in any served note', () => {
+    const noteStrings = (value, inNote = false) => Array.isArray(value) ? value.flatMap(v => noteStrings(v, inNote))
+      : value && typeof value === 'object' ? Object.entries(value).flatMap(([k, v]) => noteStrings(v, inNote || k === 'notes' || k.endsWith('Notes')))
+      : inNote && typeof value === 'string' ? [value] : [];
+    const leaks = [...parsed.individuals.keys()].filter(id =>
+      noteStrings(maskNoteEmails({ person: current.extractPersonData(parsed, id) }).person).some(note => /\w@\w/.test(note)));
+    expect(leaks).toEqual([]);
+  });
 });
