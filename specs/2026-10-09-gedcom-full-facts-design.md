@@ -8,13 +8,15 @@
 
 `scripts/gedParser.js` keeps only the tags the site displays, and it has four bugs. Measured on the archived `acourt.ged` (sha256 `2e68efeb…`, 3,063,220 bytes, 2,994 people, 1,029 families):
 
-1. **CONT/CONC lines are ignored.** 150 people's own notes lose text: 160 have continuation lines, but for 10 of them those lines are blank. I1 is one example. Brother's Keeper splits long lines mid-word at about 250 characters, and all 352 CONC splits fall inside a word, so CONC joins with no separator.
+1. **CONT/CONC lines are ignored.** 160 people's own notes lose text: 150 have CONT lines and 10 have only CONC lines. I1 is one example. Brother's Keeper splits long lines mid-word at about 250 characters, and all 352 CONC splits fall inside a word, so CONC joins with no separator.
 2. **Non-INDI/FAM level-0 records bleed into the last family.** The parser never clears `currentRecord`, so the lines of all 211 SOUR and 77 REPO records land on F1029 as `NAME`, `EMAIL`, `PHON` and `NOTE`. This has no visible effect today.
 3. **Children of untracked level-1 tags bleed onto the person.** When a level-1 tag has no frame pushed for it (OCCU, EVEN, _MILT, PROB, EMIG, EDUC, CREM…), its descendants are applied to the person itself.
    - 92 people show event notes as their own notes. For example, I23's militia-list note "Parish of Marnhull".
    - 6 of those leaked notes are citation notes (OCCU>SOUR>NOTE ×3 and PROB>SOUR>NOTE ×3, on I86, I208, I726, I793, I824 among others).
    - The 873 occupation dates are lost.
-   - **Media leak too.** 14 files attached to citations of such tags (`1 EVEN` > `2 SOUR` > `3 OBJE` > `4 FILE`), on 11 people (I114, I118, I377, I417, I418, I422, I423, I458, I459, I1423, I2009), become those people's photos. They are in production's `person_media` and shown on the live site. This change **keeps** them; see the photo rule below.
+   - **Media leak too.** 13 files attached to citations of such tags (`1 EVEN` > `2 SOUR` > `3 OBJE` > `4 FILE`), on 11 people (I114, I118, I377, I417, I418, I422, I423, I458, I459, I1423, I2009), become those people's photos: 1,262 photos in total, against 1,249 from level-1 OBJE.
+     - There are 14 such OBJE nodes. The leaked OBJE stays open on the parser's stack until the next level-1 line, so I1423's second one (`Barnett 1A.jpg`) nests inside its first and is not a photo.
+     - These photos are in production's `person_media` and shown on the live site. This change **keeps** them; see the photo rule below.
 4. **`line.trim()` strips leading spaces** from values. Some notes are pasted web pages whose indentation carries meaning.
 
 What is dropped today:
@@ -30,7 +32,7 @@ What is dropped today:
 
 Per person, all notes together come to: median 0, p90 1.6 KB, p99 5 KB, maximum 30 KB (I777).
 
-19 notes on 19 people contain 17 distinct email addresses, mostly in pasted email threads. Today they are hidden because the notes are truncated, or because the browser swallows `<a@b.c>` as a tag (4 notes, e.g. I711).
+In the facts this change stores, 18 notes on 18 people contain 16 distinct email addresses, mostly in pasted email threads. On the live site today, I508 and I1388 already show an address in plain text, the browser swallows I711's (`<a@b.c>`) as a tag, and the rest are hidden by truncation.
 
 Production state, checked read-only on 2026-10-09: for all 2,994 people, `person.facts` equals what today's parser derives from `gedcom_archive`, and every row has `updated_at = created_at`. `facts` is about 209 KB as compact JSON (259 kB as stored jsonb); the database is 11 MB.
 
@@ -43,13 +45,13 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
   - the notes on every fact
   - occupation dates and places
   - every other level-1 fact the parser drops today
-- Backfill production's `person.facts` from `gedcom_archive`, touching only `facts` and `updated_at`. Use a reviewed plan and compare-and-swap writes, never overwrite a row edited since the import, and keep a rollback.
+- Backfill production's `person.facts` from `gedcom_archive`, touching only `facts`. Use a reviewed plan and compare-and-swap writes, never overwrite a row edited since the import, and keep a rollback.
 - Escape every data value the details panel interpolates into HTML.
 - Never publish email addresses found in note text.
 
 ## Non-goals
 
-- **Sources:** SOUR records, citations (PAGE, QUAY, DATA.TEXT), citation notes, and citation media other than the 14 legacy photos above (for example the 68 CENS>SOUR>OBJE census images). They need their own model, so they get a later phase. The 6 leaked citation notes therefore leave `notes` and come back with sources.
+- **Sources:** SOUR records, citations (PAGE, QUAY, DATA.TEXT), citation notes, and citation media other than the 13 legacy photos above (for example the 68 CENS>SOUR>OBJE census images). They need their own model, so they get a later phase. The 6 leaked citation notes therefore leave `notes` and come back with sources.
 - **Family-level data:** marriage notes (63), FAM NCHI/RESI/_SEPR, and media on families. These need a `family.facts` migration.
 - **Photo titles and notes** (1,081 OBJE.TITL). They belong to `media`/`person_media`.
 - **Name variants** (NAME._AKAN, NICK, _OTHN…), ASSO, REFN and CHAN.
@@ -67,6 +69,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
 | Long text | Collapsed by default: fact notes go behind `<details>`; long person notes get "Show more". |
 | Email addresses in notes | Masked as `[email hidden]` by the API Function, so they never leave the server. The stored facts keep the full text. |
 | Backfill | A reviewed plan file, then a compare-and-swap apply in one transaction, with rollback from the same plan. Edited rows are excluded. Production is branched first as a safety net. |
+| `updated_at` | It marks human edits. Import and backfill are re-derivations from the archive and leave it alone, so `updated_at <> created_at` always means "edited". Nothing reads it today. |
 | Rollout | The front end (which accepts both old and new shapes) and the masking Function ship before the backfill. |
 
 ## Parser (`scripts/gedParser.js`)
@@ -96,7 +99,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
   | INDI | `NAME`, `SEX`, `EMAIL`, `PHON` | The last level-1 node with that tag. |
   | INDI | `BIRT`, `DEAT`, `BAPM`, `BURI` | `{DATE?, PLAC?}` from the last level-1 node with that tag; `DATE`/`PLAC` come from that node's last direct child of that tag. |
   | INDI | `FAMS[]`, `FAMC[]` | Level-1 pointers, `@` removed. |
-  | INDI | `OBJE[]` (`{FILES[]}`) | **Photo rule:** every OBJE node anywhere in the INDI's subtree, in document order, except those inside a level-1 BIRT, BAPM, DEAT, BURI, CENS or RESI subtree. `FILES` holds the values of its FILE children. This reproduces today's photos, including the 14 citation files of bug 3. |
+  | INDI | `OBJE[]` (`{FILES[]}`) | **Photo rule**, in document order of the level-1 nodes. Each level-1 OBJE is a photo. For every other level-1 node except BIRT, BAPM, DEAT, BURI, CENS, RESI, MARR and DIV, the **first** OBJE descendant in document order (if any) is a photo; later OBJE descendants of that same level-1 node are not. `FILES` holds the values of the chosen OBJE's direct FILE children. This reproduces today's photos exactly, including the 13 citation files of bug 3, as verified on the real file. |
   | FAM | `HUSB`, `WIFE`, `CHIL[]` | Level-1 pointers, `@` removed. |
   | FAM | `MARR`, `DIV` | Like BIRT. |
 
@@ -160,14 +163,14 @@ This is pure functions plus thin DB helpers and a CLI, like `gedToRows` and `imp
 ### `planFacts(dbRows, derived)` (pure)
 
 **Inputs:**
-- `dbRows`: `[{ id, facts, created_at, updated_at, ...CORE_COLUMNS }]`.
+- `dbRows`: `[{ id, facts, edited, ...CORE_COLUMNS }]`. `edited` is a boolean the plan's SQL computes as `updated_at <> created_at`, so no timestamps reach JS.
 - `derived`: the `gedToRows` people rows from the archive.
 
 **`CORE_COLUMNS`** = `given_name`, `surname`, `display_name`, `sex`, `birth_date`, `birth_place`, `death_date`, `death_place`, `baptism_date`, `baptism_place`, `burial_date`, `burial_place`.
 
 **Classification, in this order,** for each id in both inputs, comparing facts with `canonical()` from `verifyCompare.js`:
 1. **unchanged:** the facts are equal.
-2. **edited:** `updated_at <> created_at`. The row is excluded and listed, because it may hold a human edit.
+2. **edited:** `edited` is true. The row is excluded and listed, because it may hold a human edit.
 3. **changed:** everything else.
 
 **Returns** `{ rows, summary }`:
@@ -184,16 +187,23 @@ This is pure functions plus thin DB helpers and a CLI, like `gedToRows` and `imp
 - `direction` is `'apply'` (write `after` where `facts = before`) or `'rollback'` (write `before` where `facts = after`).
 - It runs `begin`, then for each batch:
   ```sql
-  update person p set facts = r.new, updated_at = now()
+  update person p set facts = r.new
   from jsonb_to_recordset($1::jsonb) as r (id text, old jsonb, new jsonb)
   where p.id = r.id and p.facts = r.old
   returning p.id
   ```
+- `updated_at` is deliberately left unchanged (see Decisions).
 - If any batch returns fewer ids than it sent, it rolls back and throws `StalePlanError`, with `.ids` listing the batch's ids that were not returned. Otherwise it commits and returns `{ updated }`.
 
-### `verifyPlan(client, plan, direction)`
+### `verifyPlan(client, plan, { direction = 'apply' })`
 
 Re-reads the planned ids and returns the ids whose `facts` don't equal the expected side: `after` for an apply, `before` for a rollback.
+
+### Supported sequences (all before the editing phase)
+
+- **plan → apply → plan:** the second plan has zero rows.
+- **plan → apply → rollback → plan:** the second plan equals the first.
+- **plan → apply → parser fix → plan:** the new plan moves the applied rows from the old `after` to the corrected facts. No row counts as edited, because the backfill never touches `updated_at`.
 
 ### CLI
 
@@ -201,7 +211,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 **Plan (the default).** It runs inside `begin read only` … `rollback`.
 1. Load `gedcom_archive`. Exactly one row is required unless `--sha <sha256>` picks one. Recompute the sha256 of `content` and abort if it differs from the stored value.
-2. Parse the archive, call `gedToRows(parsed, { files: {}, avatars: {} }, new Map())`, and read `id, facts, created_at, updated_at` plus `CORE_COLUMNS` for every person.
+2. Parse the archive, call `gedToRows(parsed, { files: {}, avatars: {} }, new Map())`, and read `id, facts, updated_at <> created_at as edited` plus `CORE_COLUMNS` for every person.
 3. Call `planFacts` and write the plan, `{ createdAt, host, archiveSha, summary, rows }`, to `--out` (default `.neon-import/facts-backfill-plan-<host>.json`).
 4. Print the summary and three sample before/after diffs. I1, I23 and I443 are used when they are in the plan.
 
@@ -213,13 +223,14 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 **Rollback** (`--rollback <planPath> --confirm <host>`). The same, with `direction: 'rollback'`.
 
 **Guarantees:**
-- It never inserts, deletes, or writes any column but `facts` and `updated_at`.
+- It never inserts, deletes, or writes any column but `facts`.
 - An apply writes exactly the reviewed plan or nothing.
 - Re-planning after an apply finds every person unchanged.
 
 ### `verify-neon`
 
-`scripts/neon/verifyCompare.js` drops `notes`, `occupations`, `censusRecords`, `residences`, `religion` and `education` from `SCALAR_KEYS`, with a comment. Those keys are re-derived by `backfill-facts` and checked by its own verification, so the old-parser JSON baseline no longer applies to them. Relationships, photos, avatars and the core fields are still compared.
+- `scripts/neon/verifyCompare.js` drops `notes`, `occupations`, `censusRecords`, `residences`, `religion` and `education` from `SCALAR_KEYS`, with a comment. Those keys are re-derived by `backfill-facts` and checked by its own verification, so the old-parser JSON baseline no longer applies to them. Relationships, photos, avatars and the core fields are still compared.
+- `scripts/neon/verify.js` compares the API body with `person_view` read from the database. It now applies `maskNoteEmails` to the database view before that comparison, so masked people (I508, I711 and I1388 today, 18 after the backfill) don't report "body differs from database".
 
 ## Front end
 
@@ -245,19 +256,20 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 ## Rollout
 
-1. **PR.** It contains the parser, `personFacts`, `backfillFacts`, `api/privacy.js`, the `verifyCompare` change, the front end, tests, `npm run build` output in `docs/`, and README notes on `backfill-facts`. The developer approves the merge.
+1. **PR.** It contains the parser, `personFacts`, `backfillFacts`, `api/privacy.js`, the `verifyCompare` and `verify.js` changes, the front end, tests, `npm run build` output in `docs/`, and README notes on `backfill-facts`. The developer approves the merge.
 2. **Deploy before the backfill.**
    - Run `neon deploy`, so the masking Function is live. Merging lets Pages serve the new front end.
    - Against the still-old data, the visible changes are:
      - double spaces in notes are kept (95 people)
-     - text inside `<…>` is now shown; I711's email address shows as `[email hidden]`
+     - text inside `<…>` is now shown
+     - the email addresses in I508's, I711's and I1388's notes show as `[email hidden]`
      - "Personal" becomes "Other details"
    - A tab still running the old bundle during the backfill would show occupations as "[object Object]" until it is reloaded.
 3. **Rehearsal.**
    - Create the Neon branch `facts-backfill-rehearsal` from `production` and run plan, `--apply`, then plan again, with `--database-url`.
    - Expect:
      - `columnDrift`, `edited`, `onlyInDb` and `onlyInGed` all empty
-     - `changed` and `unchanged` equal to the offline figures recorded by the parity test (spec review simulated 1,392 and 1,602)
+     - `changed` = 1,392 and `unchanged` = 1,602, the constants asserted by the offline plan in `tests/realGed.test.js`
      - a re-plan with zero rows
    - For a visual check, run a scratch `node:http` wrapper around `createHandler` with a `pg` Pool on the branch URL (not committed). Start the front end with `VITE_API_URL=http://localhost:<port> npm run dev`; process env takes priority over `.env.development`. Check I1, I23, I443, I711 and I777, including at mobile width.
    - Delete the branch.
@@ -288,14 +300,14 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
   - leading spaces in note text preserved, and CRLF input
   - SOUR and REPO records after the last FAM leaving that family's `data` untouched
   - OCCU.DATE and OCCU.NOTE, and _MILT.NOTE, staying on their own fact rather than the person
-  - the photo rule: an OBJE under `EVEN` > `SOUR` is a photo, while an OBJE under `CENS` > `SOUR` or `BIRT` > `SOUR` is not
+  - the photo rule: the first OBJE under `EVEN` > `SOUR` is a photo, but a second OBJE under the same `EVEN` is not, and neither is an OBJE under `CENS` > `SOUR` or `BIRT` > `SOUR`
   - census entries with only a note being kept
   - birth and death notes, and cause of death
   - `otherFacts` order, EVEN TYPE, RELI/EDUC, a tag-only entry, and a repeated DEAT going to `otherFacts`
   - SOUR-citation notes being excluded
-- **`tests/realGed.test.js`** reads the GEDCOM from `GED_PATH` (default `acourt.ged` at the repo root) and now skips when that file is absent, where today it throws. When the file is present:
+- **`tests/realGed.test.js`** reads the GEDCOM from `GED_PATH` (default `acourt.ged` at the repo root) and now skips when that file is absent, where today it throws. In a worktree, where `acourt.ged` is absent, run it with `GED_PATH=/Users/rob/src/ged_eye/acourt.ged`. When the file is present:
   - **Parity with the frozen legacy parser:** for every person, every `extractPersonData` field except the facts keys is identical (including `photos`, in order); `gedToRows` `families`, `familyChildren` and `warnings` are identical; and every person row's columns other than `facts` are identical.
-  - **Offline plan:** `planFacts` with legacy-parser rows as `dbRows` (production equals them) and new-parser rows as `derived`. The test asserts and records the exact `changed`/`unchanged` counts and empty `columnDrift`.
+  - **Offline plan:** `planFacts` with legacy-parser rows (with `edited: false`) as `dbRows`, since production equals them, and new-parser rows as `derived`. The test asserts `changed` = 1,392, `unchanged` = 1,602, and empty `columnDrift`, `edited`, `onlyInDb` and `onlyInGed`.
   - **Spot checks:**
     - I1's note is the full multi-line thread
     - I23's notes do not contain "Parish of Marnhull", and its `_MILT` fact does
@@ -303,13 +315,15 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
     - no stage-1 node has a CONT or CONC child
 - **`tests/gedToRows.test.js`**: the existing facts expectation moves to the new occupations shape; `personFacts` omits empty keys.
 - **`tests/backfillFacts.test.js`** (new, pure): `planFacts` covering unchanged, changed and edited people, `onlyInDb`/`onlyInGed`, per-key added/removed/changed counts, `columnDrift`, and key-order-insensitive comparison.
-- **`tests/db/backfillFacts.test.js`** (new, test branch):
-  - `applyPlan` writes `after` and bumps `updated_at`
+- **`tests/db/backfillFacts.test.js`** (new, test branch). It reuses the production-host guard from `tests/db/personView.test.js`.
+  - `applyPlan` writes `after` and leaves `updated_at` unchanged
+  - the plan SQL's `edited` flag is true only for a row whose `updated_at` was changed
   - with `batchSize: 1`, a stale row in a later batch rolls back the earlier batches too and throws `StalePlanError` with that id
   - rollback restores `before`
   - no other column changes
   - `verifyPlan` reports mismatches
 - **`tests/apiHandler.test.js`** adds: emails are masked in `person.notes`, in `censusRecords[].notes` and in `deathNotes`; the `email` field and non-note strings are untouched.
+- **`tests/verifyCompare.test.js`** or a verify test covers the database view being masked before the API comparison.
 - **`tests/personDetails.test.js`** (new, jsdom). Fixtures avoid `thumbKey` photos, or the test stubs `VITE_MEDIA_BASE_URL`.
   - `<img src=x onerror=…>` in the name, a spouse name, a note, a place, an occupation, a cause, a census note, an unknown-tag label and the email renders as text, with no `img` element
   - note newlines are preserved in `textContent`
