@@ -74,9 +74,10 @@ function validateNewEditor(body) {
  *   addEditor({ email, name, role }, byEmail) → the new editor, or null if the email is already listed
  *   removeEditor(email, byEmail) → 'removed' | 'not_found' | 'last_admin' | 'not_an_admin'
  *   runChange(editor, kind, params) → { change: { id, summary, personIds }, view | null }
- *   toggle(editor, changeId, 'undo' | 'redo', via) → { id, summary, personIds }
- *   undoLast(editor), redoLast(editor) → { id, summary, personIds } | null
- *   listChanges({ before, limit, person }) → [change], newest first
+ *   toggle(editor, changeId, 'undo' | 'redo', via) → { id, summary, personIds, baseChangeId, kind }
+ *   undoLast(editor), redoLast(editor) → { id, summary, personIds, baseChangeId, kind } | null
+ *   listChanges({ before, limit, person }) → [{ id, createdAt, authorName, authorEmail, kind, via, summary,
+ *     personIds, baseChangeId, undone }], newest first
  * }  Any of them may throw ApiError (sent as its status and body, unlogged); anything else is a logged 500.
  * @param authenticate  (request) → { email, name } | null; throws AuthError(401) for a bad token.
  *   Every route but /health and preflight authenticates first, before validating its input.

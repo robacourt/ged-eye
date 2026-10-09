@@ -712,11 +712,196 @@ describe('api/db.js', () => {
     expect(await createDb(fakePool([])).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test')).toBeNull();
   });
 
-  it('leaves the history and toggle methods unimplemented for now', async () => {
-    const db = createDb(fakePool([]));
-    for (const call of [() => db.toggle(EDITOR, 1, 'undo', 'history'), () => db.undoLast(EDITOR), () => db.redoLast(EDITOR), () => db.listChanges({})]) {
-      await expect(call()).rejects.toMatchObject({ status: 501, code: 'not_implemented' });
+  describe('toggles and history', () => {
+    const CREATED = new Date('2026-10-09T10:00:00.123Z');
+    const TOGGLE_ROW = { id: '12', summary: 'Undid: Edited Rose Smith (birth date)', person_ids: ['I1'], base_change_id: '7', kind: 'undo' };
+    const TOGGLED = { id: 12, summary: 'Undid: Edited Rose Smith (birth date)', personIds: ['I1'], baseChangeId: 7, kind: 'undo' };
+    const pgError = (code, detail) => Object.assign(new Error(code), { code, detail });
+
+    /**
+     * A pool whose transaction client answers the toggle statement with `toggled` (a new change id,
+     * null, or an error to throw) and the read-back with TOGGLE_ROW; pool.query (used outside the
+     * transaction) answers with `rows`, or throws `rows` when it is an Error.
+     */
+    function togglePool(toggled, rows = []) {
+      const client = {
+        query: vi.fn(async (sql) => {
+          if (/toggle_change|undo_last|redo_last/.test(sql)) {
+            if (toggled instanceof Error) throw toggled;
+            return { rows: [{ id: toggled }] };
+          }
+          if (/from change where id = \$1/.test(sql)) return { rows: [TOGGLE_ROW] };
+          return { rows: [] };
+        }),
+        release: vi.fn()
+      };
+      const query = vi.fn(async () => {
+        if (rows instanceof Error) throw rows;
+        return { rows };
+      });
+      return { client, query, connect: vi.fn(async () => client) };
     }
+    const statements = (client) => client.query.mock.calls.map(([sql]) => sql);
+
+    async function rejection(promise) {
+      try {
+        await promise;
+      } catch (error) {
+        return error;
+      }
+      throw new Error('expected a rejection');
+    }
+
+    it('toggles a change in a write transaction and reads back the change it recorded', async () => {
+      const pool = togglePool('12');
+      expect(await createDb(pool).toggle(EDITOR, 7, 'undo', 'history')).toEqual(TOGGLED);
+      expect(statements(pool.client)).toEqual([
+        'begin',
+        "set local statement_timeout = '10s'; set local idle_in_transaction_session_timeout = '15s'",
+        'select toggle_change($1, $2, $3, $4, $5) as id',
+        'select id, summary, person_ids, base_change_id, kind from change where id = $1',
+        'commit'
+      ]);
+      expect(pool.client.query.mock.calls[2][1]).toEqual([7, 'undo', 'editor@example.test', 'Ed Editor', 'history']);
+      expect(pool.client.query.mock.calls[3][1]).toEqual(['12']);
+      expect(pool.client.release).toHaveBeenCalled();
+      expect(pool.query).not.toHaveBeenCalled();
+    });
+
+    it('undoes and redoes the editor\'s last change, passing a missing name as null', async () => {
+      const editor = { email: 'noname@example.test', name: null, role: 'editor' };
+      for (const [method, fn] of [['undoLast', 'undo_last'], ['redoLast', 'redo_last']]) {
+        const pool = togglePool('12');
+        expect(await createDb(pool)[method](editor)).toEqual(TOGGLED);
+        expect(pool.client.query.mock.calls[2]).toEqual([`select ${fn}($1, $2) as id`, ['noname@example.test', null]]);
+        expect(statements(pool.client).at(-1)).toBe('commit');
+      }
+    });
+
+    it('returns null from undo and redo when there is nothing to do, reading nothing back', async () => {
+      for (const method of ['undoLast', 'redoLast']) {
+        const pool = togglePool(null);
+        expect(await createDb(pool)[method](EDITOR)).toBeNull();
+        expect(statements(pool.client).filter((sql) => /from change/.test(sql))).toEqual([]);
+        expect(statements(pool.client).at(-1)).toBe('commit');
+      }
+    });
+
+    it('maps not_found and wrong_state, rolling back', async () => {
+      for (const [code, status, error] of [['GE001', 404, 'not_found'], ['GE002', 409, 'wrong_state']]) {
+        const pool = togglePool(pgError(code));
+        const thrown = await rejection(createDb(pool).toggle(EDITOR, 7, 'redo', 'history'));
+        expect(thrown).toBeInstanceOf(ApiError);
+        expect(thrown).toMatchObject({ status, code: error });
+        expect(statements(pool.client).at(-1)).toBe('rollback');
+        expect(pool.query).not.toHaveBeenCalled();
+      }
+    });
+
+    it('enriches a conflict\'s blocking changes in one query, keeping their order and actions', async () => {
+      const detail = JSON.stringify({ reason: 'precondition', blocking: [{ id: 9, action: 'revert' }, { id: 4, action: 'restore' }] });
+      const pool = togglePool(pgError('GE003', detail), [
+        { id: '4', summary: 'Added Ann Lee', author_name: null, created_at: CREATED },
+        { id: '9', summary: 'Edited Rose Smith (notes)', author_name: 'Ann', created_at: new Date('2026-10-09T11:00:00Z') }
+      ]);
+      const thrown = await rejection(createDb(pool).toggle(EDITOR, 7, 'undo', 'history'));
+      expect(thrown).toBeInstanceOf(ApiError);
+      expect(thrown.status).toBe(409);
+      expect(thrown.code).toBe('conflict');
+      expect(thrown.extra).toEqual({
+        reason: 'precondition',
+        blocking: [
+          { id: 9, action: 'revert', summary: 'Edited Rose Smith (notes)', authorName: 'Ann', createdAt: '2026-10-09T11:00:00.000Z' },
+          { id: 4, action: 'restore', summary: 'Added Ann Lee', authorName: null, createdAt: '2026-10-09T10:00:00.123Z' }
+        ]
+      });
+      expect(pool.query).toHaveBeenCalledTimes(1);
+      const [sql, params] = pool.query.mock.calls[0];
+      expect(sql).toMatch(/from change where id = any \(\$1::bigint\[\]\)/);
+      expect(params).toEqual([[9, 4]]);
+      expect(statements(pool.client).at(-1)).toBe('rollback');
+    });
+
+    it('enriches conflicts from undo and redo too', async () => {
+      const detail = JSON.stringify({ reason: 'cascade', blocking: [{ id: 9, action: 'revert' }] });
+      for (const method of ['undoLast', 'redoLast']) {
+        const pool = togglePool(pgError('GE003', detail), [{ id: '9', summary: 'Linked a child', author_name: 'Ann', created_at: CREATED }]);
+        const thrown = await rejection(createDb(pool)[method](EDITOR));
+        expect(thrown.extra).toEqual({
+          reason: 'cascade',
+          blocking: [{ id: 9, action: 'revert', summary: 'Linked a child', authorName: 'Ann', createdAt: '2026-10-09T10:00:00.123Z' }]
+        });
+      }
+    });
+
+    it('sends a conflict with no blocking changes without querying', async () => {
+      const pool = togglePool(pgError('GE003', JSON.stringify({ reason: 'constraint', blocking: [] })));
+      const thrown = await rejection(createDb(pool).toggle(EDITOR, 7, 'undo', 'history'));
+      expect(thrown).toMatchObject({ status: 409, code: 'conflict', extra: { reason: 'constraint', blocking: [] } });
+      expect(pool.query).not.toHaveBeenCalled();
+    });
+
+    it('still sends the conflict, logged and with null details, when the blocking changes can\'t be read', async () => {
+      const log = vi.fn();
+      const detail = JSON.stringify({ reason: 'structure', blocking: [{ id: 9, action: 'revert' }] });
+      const pool = togglePool(pgError('GE003', detail), new Error('connection reset'));
+      const thrown = await rejection(createDb(pool, { log }).toggle(EDITOR, 7, 'undo', 'history'));
+      expect(thrown).toMatchObject({ status: 409, code: 'conflict' });
+      expect(thrown.extra).toEqual({ reason: 'structure', blocking: [{ id: 9, action: 'revert', summary: null, authorName: null, createdAt: null }] });
+      expect(log).toHaveBeenCalledTimes(1);
+    });
+
+    it('maps a timeout to 503 busy and an integrity violation to a logged 500', async () => {
+      const log = vi.fn();
+      const busy = await rejection(createDb(togglePool(pgError('57014')), { log }).undoLast(EDITOR));
+      expect(busy).toMatchObject({ status: 503, code: 'busy' });
+      const broken = await rejection(createDb(togglePool(pgError('23503')), { log }).toggle(EDITOR, 7, 'undo', 'history'));
+      expect(broken).toMatchObject({ status: 500, code: 'internal' });
+      expect(log).toHaveBeenCalledTimes(2);
+    });
+
+    it('passes other errors through unchanged', async () => {
+      const failure = new Error('connection reset');
+      expect(await rejection(createDb(togglePool(failure)).toggle(EDITOR, 7, 'undo', 'history'))).toBe(failure);
+    });
+
+    const HISTORY_ROW = {
+      id: '12', created_at: CREATED, author_name: 'Ed Editor', author_email: 'editor@example.test', kind: 'undo',
+      via: 'keyboard', summary: 'Undid: Edited Rose Smith (birth date)', person_ids: ['I1'], base_change_id: '7', undone: false
+    };
+
+    it('lists changes newest first, with camelCase fields and ISO times', async () => {
+      const base = { ...HISTORY_ROW, id: '7', kind: 'update_person', via: 'edit', summary: 'Edited Rose Smith (birth date)', base_change_id: null, undone: true };
+      const pool = fakePool([HISTORY_ROW, base]);
+      expect(await createDb(pool).listChanges({ before: null, limit: 50, person: null })).toEqual([
+        { id: 12, createdAt: '2026-10-09T10:00:00.123Z', authorName: 'Ed Editor', authorEmail: 'editor@example.test', kind: 'undo',
+          via: 'keyboard', summary: 'Undid: Edited Rose Smith (birth date)', personIds: ['I1'], baseChangeId: 7, undone: false },
+        { id: 7, createdAt: '2026-10-09T10:00:00.123Z', authorName: 'Ed Editor', authorEmail: 'editor@example.test', kind: 'update_person',
+          via: 'edit', summary: 'Edited Rose Smith (birth date)', personIds: ['I1'], baseChangeId: null, undone: true }
+      ]);
+      const [sql, params] = pool.query.mock.calls[0];
+      expect(sql).not.toMatch(/where/);
+      expect(sql).toMatch(/order by id desc\s+limit \$1/);
+      expect(params).toEqual([50]);
+    });
+
+    it('filters by before and person, and caps the page at 50', async () => {
+      const pool = fakePool([]);
+      const db = createDb(pool);
+      await db.listChanges({ before: 100, limit: 10, person: 'I3' });
+      let [sql, params] = pool.query.mock.calls[0];
+      expect(sql).toMatch(/where id < \$1 and person_ids @> array\[\$2::text\]/);
+      expect(sql).toMatch(/limit \$3/);
+      expect(params).toEqual([100, 'I3', 10]);
+
+      await db.listChanges({ person: 'I3', limit: 500 });
+      [sql, params] = pool.query.mock.calls[1];
+      expect(sql).toMatch(/where person_ids @> array\[\$1::text\]/);
+      expect(params).toEqual(['I3', 50]);
+
+      await db.listChanges();
+      expect(pool.query.mock.calls[2][1]).toEqual([50]);
+    });
   });
 
   it('runs a transaction with the write timeouts and releases the client', async () => {

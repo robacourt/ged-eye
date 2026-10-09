@@ -3,8 +3,10 @@
  * Importing this module has no side effects: index.js creates the pool and passes it in.
  */
 import { ApiError } from './http.js';
-import { runChange } from './changes.js';
+import { mapDbError, runChange } from './changes.js';
 import { inTransaction } from './tx.js';
+
+const CHANGES_PAGE = 50;
 
 /** Escapes LIKE wildcards and the escape character itself, for use with `escape '\'`. */
 export function escapeLike(text) {
@@ -35,11 +37,83 @@ const EDITOR_COLUMNS = 'email, name, role, added_by, added_at';
 
 const editorFromRow = (row) => ({ email: row.email, name: row.name, role: row.role, addedBy: row.added_by, addedAt: row.added_at });
 
-const notImplemented = async () => {
-  throw new ApiError(501, 'not_implemented');
-};
+const iso = (value) => (value instanceof Date ? value.toISOString() : value);
+const idOrNull = (value) => (value === null || value === undefined ? null : Number(value));
 
-export function createDb(pool) {
+/** A toggle's own change row, as the toggle routes return it. */
+const toggledFromRow = (row) => ({
+  id: Number(row.id),
+  summary: row.summary,
+  personIds: row.person_ids,
+  baseChangeId: idOrNull(row.base_change_id),
+  kind: row.kind
+});
+
+const historyFromRow = (row) => ({
+  id: Number(row.id),
+  createdAt: iso(row.created_at),
+  authorName: row.author_name,
+  authorEmail: row.author_email,
+  kind: row.kind,
+  via: row.via,
+  summary: row.summary,
+  personIds: row.person_ids,
+  baseChangeId: idOrNull(row.base_change_id),
+  undone: row.undone
+});
+
+const HISTORY_COLUMNS = 'id, created_at, author_name, author_email, kind, via, summary, person_ids, base_change_id, undone';
+
+/**
+ * A 409 conflict with each blocking change ({ id, action }, from toggle_change) given the
+ * summary, author name and creation time the UI shows, in one query. The toggle's transaction
+ * has rolled back by now; blocking changes are committed, and change rows are never deleted.
+ * If they can't be read, the conflict is still sent, with those fields null.
+ */
+async function withBlockingDetails(pool, conflict, log) {
+  const { blocking } = conflict.extra;
+  if (blocking.length === 0) return conflict;
+  let byId = new Map();
+  try {
+    const { rows } = await pool.query(
+      'select id, summary, author_name, created_at from change where id = any ($1::bigint[])',
+      [blocking.map((entry) => entry.id)]);
+    byId = new Map(rows.map((row) => [Number(row.id), row]));
+  } catch (error) {
+    log('could not read the blocking changes of a conflict', error);
+  }
+  const enriched = blocking.map(({ id, action }) => {
+    const row = byId.get(Number(id));
+    return { id, action, summary: row?.summary ?? null, authorName: row?.author_name ?? null, createdAt: row ? iso(row.created_at) : null };
+  });
+  return new ApiError(409, 'conflict', { ...conflict.extra, blocking: enriched });
+}
+
+export function createDb(pool, { log = console.error } = {}) {
+  /**
+   * Runs one toggle statement (`sql` returns the new change's `id`, or null when there was nothing
+   * to do) in a write transaction, and reads back the change it recorded.
+   * → { id, summary, personIds, baseChangeId, kind } | null; database errors become ApiErrors
+   * (404 not_found, 409 wrong_state, 409 conflict with enriched blocking, 503 busy, 500 internal).
+   */
+  async function runToggle(sql, params) {
+    try {
+      return await inTransaction(pool, async (tx) => {
+        const { rows: [{ id }] } = await tx.query(sql, params);
+        if (id === null) return null;
+        const { rows: [row] } = await tx.query(
+          'select id, summary, person_ids, base_change_id, kind from change where id = $1', [id]);
+        return toggledFromRow(row);
+      });
+    } catch (error) {
+      const mapped = mapDbError(error, log);
+      if (mapped instanceof ApiError && mapped.status === 409 && mapped.code === 'conflict') {
+        throw await withBlockingDetails(pool, mapped, log);
+      }
+      throw mapped;
+    }
+  }
+
   return {
     /** → { view | null, version: { changeId (string), migration } } */
     async personView(id) {
@@ -94,10 +168,38 @@ export function createDb(pool) {
     /** → { change: { id, summary, personIds }, view | null }; see api/changes.js */
     runChange: (editor, kind, params) => runChange(pool, editor, kind, params),
 
-    // Task 8.
-    toggle: notImplemented,
-    undoLast: notImplemented,
-    redoLast: notImplemented,
-    listChanges: notImplemented
+    /** Reverts ('undo') or restores ('redo') change `id`; → the toggle's change (see runToggle). */
+    toggle: (editor, id, direction, via) => runToggle(
+      'select toggle_change($1, $2, $3, $4, $5) as id', [id, direction, editor.email, editor.name ?? null, via]),
+
+    /** Undoes the editor's latest edit still in effect (Ctrl+Z); → the toggle's change, or null. */
+    undoLast: (editor) => runToggle('select undo_last($1, $2) as id', [editor.email, editor.name ?? null]),
+
+    /** Redoes the editor's latest keyboard undo (Ctrl+Shift+Z); → the toggle's change, or null. */
+    redoLast: (editor) => runToggle('select redo_last($1, $2) as id', [editor.email, editor.name ?? null]),
+
+    /**
+     * → [{ id, createdAt (ISO), authorName, authorEmail, kind, via, summary, personIds, baseChangeId, undone }],
+     * newest first: at most `limit` (≤ 50) changes with ids below `before`, touching `person` if given.
+     */
+    async listChanges({ before = null, limit = CHANGES_PAGE, person = null } = {}) {
+      const where = [];
+      const params = [];
+      if (before !== null) {
+        params.push(before);
+        where.push(`id < $${params.length}`);
+      }
+      if (person !== null) {
+        params.push(person);
+        where.push(`person_ids @> array[$${params.length}::text]`);
+      }
+      params.push(Number.isInteger(limit) && limit > 0 ? Math.min(limit, CHANGES_PAGE) : CHANGES_PAGE);
+      const { rows } = await pool.query(
+        `select ${HISTORY_COLUMNS} from change
+         ${where.length > 0 ? `where ${where.join(' and ')}` : ''}
+         order by id desc
+         limit $${params.length}`, params);
+      return rows.map(historyFromRow);
+    }
   };
 }
