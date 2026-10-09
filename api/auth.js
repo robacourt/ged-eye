@@ -9,8 +9,9 @@ export class AuthError extends Error {
   }
 }
 
-// jose errors that mean "this token is no good". Anything else (JWKS timeout, network failure,
-// a malformed JWKS response) is our problem, not the caller's, and propagates as a 500.
+// jose errors that mean "this token is no good". Anything else is our problem, not the caller's,
+// and propagates as a 500: JWKS timeout, network failure, a malformed JWKS response, a malformed
+// JWK (ERR_JWK_INVALID, ERR_JWKS_INVALID) or duplicate kids in the JWKS (ERR_JWKS_MULTIPLE_MATCHING_KEYS).
 const TOKEN_ERROR_CODES = new Set([
   'ERR_JWT_CLAIM_VALIDATION_FAILED',
   'ERR_JWT_EXPIRED',
@@ -19,10 +20,12 @@ const TOKEN_ERROR_CODES = new Set([
   'ERR_JWS_SIGNATURE_VERIFICATION_FAILED',
   'ERR_JOSE_ALG_NOT_ALLOWED',
   'ERR_JOSE_NOT_SUPPORTED',
-  'ERR_JWKS_NO_MATCHING_KEY',
-  'ERR_JWKS_MULTIPLE_MATCHING_KEYS',
-  'ERR_JWK_INVALID'
+  'ERR_JWKS_NO_MATCHING_KEY'
 ]);
+
+// Asymmetric only. RFC 9864 renames EdDSA to Ed25519/Ed448; Neon Auth signs with EdDSA today.
+const ALGORITHMS = ['EdDSA', 'Ed25519'];
+const MAX_TOKEN_AGE = '1h';
 
 const BEARER = /^Bearer[ \t]+(\S+)$/i;
 
@@ -52,7 +55,10 @@ export function createAuthenticator({ jwksUrl, issuer, getKey }) {
       ({ payload } = await jwtVerify(match[1], keys, {
         issuer,
         audience: issuer,
-        algorithms: ['EdDSA']
+        algorithms: ALGORITHMS,
+        // jose does not require exp by default: without it a signed token would never expire.
+        requiredClaims: ['exp', 'sub'],
+        maxTokenAge: MAX_TOKEN_AGE
       }));
     } catch (error) {
       if (TOKEN_ERROR_CODES.has(error?.code)) throw unauthenticated(error.message);

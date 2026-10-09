@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import { createServer } from 'node:http';
 import { generateKeyPair, exportJWK, SignJWT } from 'jose';
 import { createAuthenticator, requireEditor, AuthError } from '../api/auth.js';
@@ -16,21 +16,32 @@ beforeAll(async () => {
   authenticate = createAuthenticator({ jwksUrl: JWKS_URL, issuer: ISSUER, getKey: async () => publicKey });
 });
 
+// expiresIn / issuedAt: undefined = default (15m from now / now), null = omit the claim,
+// a number = that absolute epoch-seconds value. subject: null omits `sub`.
 async function sign(claims = {}, {
   key = privateKey,
   alg = 'EdDSA',
   issuer = ISSUER,
   audience = ISSUER,
-  expiresIn = '15m'
+  subject = 'user-1',
+  issuedAt,
+  expiresIn
 } = {}) {
+  const now = Math.floor(Date.now() / 1000);
   const jwt = new SignJWT({ email: 'Rob@Example.com', emailVerified: true, name: 'Rob', ...claims })
     .setProtectedHeader({ alg, kid: 'test-key' })
-    .setSubject(claims.sub ?? 'user-1')
-    .setIssuedAt()
     .setIssuer(issuer)
     .setAudience(audience);
-  jwt.setExpirationTime(expiresIn);
+  if (subject !== null) jwt.setSubject(subject);
+  if (issuedAt !== null) jwt.setIssuedAt(issuedAt ?? now);
+  if (expiresIn !== null) jwt.setExpirationTime(expiresIn ?? now + 15 * 60);
   return jwt.sign(key);
+}
+
+// jose will not sign with alg "none", so build the unsecured JWT by hand.
+function unsecuredToken(payload) {
+  const part = (value) => Buffer.from(JSON.stringify(value)).toString('base64url');
+  return `${part({ alg: 'none' })}.${part(payload)}.`;
 }
 
 function req(authorization) {
@@ -71,7 +82,8 @@ describe('createAuthenticator', () => {
   });
 
   it('rejects an expired token with 401', async () => {
-    const token = await sign({}, { expiresIn: Math.floor(Date.now() / 1000) - 60 });
+    const now = Math.floor(Date.now() / 1000);
+    const token = await sign({}, { issuedAt: now - 120, expiresIn: now - 60 });
     const error = await rejection(authenticate(req(`Bearer ${token}`)));
     expect(error).toBeInstanceOf(AuthError);
     expect(error.status).toBe(401);
@@ -100,6 +112,52 @@ describe('createAuthenticator', () => {
     expect(error.status).toBe(401);
   });
 
+  it('accepts the Ed25519 algorithm name (RFC 9864 renames EdDSA)', async () => {
+    const token = await sign({}, { alg: 'Ed25519' });
+    const user = await authenticate(req(`Bearer ${token}`));
+    expect(user.email).toBe('rob@example.com');
+  });
+
+  it('rejects a token with no exp claim (it would be valid forever)', async () => {
+    const token = await sign({}, { expiresIn: null });
+    const error = await rejection(authenticate(req(`Bearer ${token}`)));
+    expect(error).toBeInstanceOf(AuthError);
+    expect(error.status).toBe(401);
+  });
+
+  it('rejects a token with no sub claim', async () => {
+    const token = await sign({}, { subject: null });
+    const error = await rejection(authenticate(req(`Bearer ${token}`)));
+    expect(error).toBeInstanceOf(AuthError);
+    expect(error.status).toBe(401);
+  });
+
+  it('rejects a token with no iat claim', async () => {
+    const token = await sign({}, { issuedAt: null });
+    const error = await rejection(authenticate(req(`Bearer ${token}`)));
+    expect(error).toBeInstanceOf(AuthError);
+    expect(error.status).toBe(401);
+  });
+
+  it('rejects a token issued more than an hour ago even if exp is in the future', async () => {
+    const now = Math.floor(Date.now() / 1000);
+    const token = await sign({}, { issuedAt: now - 2 * 60 * 60, expiresIn: now + 15 * 60 });
+    const error = await rejection(authenticate(req(`Bearer ${token}`)));
+    expect(error).toBeInstanceOf(AuthError);
+    expect(error.status).toBe(401);
+  });
+
+  it('rejects an unsecured (alg: none) token', async () => {
+    const now = Math.floor(Date.now() / 1000);
+    const token = unsecuredToken({
+      email: 'rob@example.com', emailVerified: true, name: 'Rob', sub: 'user-1',
+      iss: ISSUER, aud: ISSUER, iat: now, exp: now + 900
+    });
+    const error = await rejection(authenticate(req(`Bearer ${token}`)));
+    expect(error).toBeInstanceOf(AuthError);
+    expect(error.status).toBe(401);
+  });
+
   it('rejects an HS256-signed token (algorithm is pinned to EdDSA)', async () => {
     const secret = new TextEncoder().encode('x'.repeat(32));
     const token = await sign({}, { key: secret, alg: 'HS256' });
@@ -114,6 +172,16 @@ describe('createAuthenticator', () => {
     expect(error).toBeInstanceOf(AuthError);
     expect(error.status).toBe(401);
     expect(error.code).toBe('unauthenticated');
+  });
+
+  it.each([
+    ['the string "true"', 'true'],
+    ['the number 1', 1]
+  ])('rejects emailVerified as %s (it must be boolean true)', async (_label, value) => {
+    const token = await sign({ emailVerified: value });
+    const error = await rejection(authenticate(req(`Bearer ${token}`)));
+    expect(error).toBeInstanceOf(AuthError);
+    expect(error.status).toBe(401);
   });
 
   it('rejects a token with no emailVerified claim', async () => {
@@ -190,45 +258,113 @@ describe('createAuthenticator without getKey (remote JWKS)', () => {
   let server;
   let jwksUrl;
   let hits;
+  let goodJwk;
+  let respond;
+
+  // Each test gets a fresh authenticator (and so a fresh JWKS cache); `respond` picks what the
+  // JWKS endpoint says.
+  const serveKeys = (keys) => (response) => {
+    response.setHeader('content-type', 'application/json');
+    response.end(JSON.stringify({ keys }));
+  };
 
   beforeAll(async () => {
-    hits = 0;
-    const jwk = { ...(await exportJWK(publicKey)), kid: 'test-key', alg: 'EdDSA', use: 'sig' };
+    goodJwk = { ...(await exportJWK(publicKey)), kid: 'test-key', alg: 'EdDSA', use: 'sig' };
     server = createServer((request, response) => {
       hits += 1;
-      response.setHeader('content-type', 'application/json');
-      response.end(JSON.stringify({ keys: [jwk] }));
+      respond(response);
     });
     await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
     jwksUrl = `http://127.0.0.1:${server.address().port}/jwks.json`;
+  });
+
+  beforeEach(() => {
+    hits = 0;
+    respond = serveKeys([goodJwk]);
   });
 
   afterAll(() => new Promise((resolve) => server.close(resolve)));
 
   it('verifies against the JWKS endpoint and fetches it once per authenticator', async () => {
     const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
-    const before = hits;
     for (let i = 0; i < 3; i += 1) {
       const user = await remote(req(`Bearer ${await sign()}`));
       expect(user.email).toBe('rob@example.com');
     }
-    expect(hits - before).toBe(1);
+    expect(hits).toBe(1);
   });
 
   it('rejects a token whose kid is not in the JWKS with 401', async () => {
     const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
-    const jwt = new SignJWT({ email: 'rob@example.com', emailVerified: true })
+    const now = Math.floor(Date.now() / 1000);
+    const token = await new SignJWT({ email: 'rob@example.com', emailVerified: true })
       .setProtectedHeader({ alg: 'EdDSA', kid: 'unknown-key' })
+      .setSubject('user-1')
       .setIssuer(ISSUER)
       .setAudience(ISSUER)
-      .setExpirationTime('15m');
-    const error = await rejection(remote(req(`Bearer ${await jwt.sign(privateKey)}`)));
+      .setIssuedAt(now)
+      .setExpirationTime(now + 900)
+      .sign(privateKey);
+    const error = await rejection(remote(req(`Bearer ${token}`)));
     expect(error).toBeInstanceOf(AuthError);
     expect(error.status).toBe(401);
   });
 
-  it('does not report an unreachable JWKS endpoint as a bad token', async () => {
+  // The JWKS is ours to get right, not the caller's: these are server errors, never 401.
+  it('rethrows (does not 401) when the JWKS endpoint is unreachable', async () => {
     const remote = createAuthenticator({ jwksUrl: 'http://127.0.0.1:1/jwks.json', issuer: ISSUER });
+    const error = await rejection(remote(req(`Bearer ${await sign()}`)));
+    expect(error).not.toBeInstanceOf(AuthError);
+    expect(error).toBeInstanceOf(Error);
+    expect(error.name).toBe('TypeError'); // fetch failed, not a JOSE token error
+    expect(String(error.code ?? '')).not.toMatch(/^ERR_J/);
+  });
+
+  it('rethrows when the JWKS endpoint answers with an error status', async () => {
+    respond = (response) => {
+      response.statusCode = 503;
+      response.end('unavailable');
+    };
+    const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
+    const error = await rejection(remote(req(`Bearer ${await sign()}`)));
+    expect(error).not.toBeInstanceOf(AuthError);
+  });
+
+  it('rethrows when the JWKS body is not JSON', async () => {
+    respond = (response) => response.end('<html>not json</html>');
+    const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
+    const error = await rejection(remote(req(`Bearer ${await sign()}`)));
+    expect(error).not.toBeInstanceOf(AuthError);
+  });
+
+  it('rethrows ERR_JWKS_MULTIPLE_MATCHING_KEYS when the JWKS has duplicate kids', async () => {
+    respond = serveKeys([goodJwk, { ...goodJwk }]);
+    const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
+    const error = await rejection(remote(req(`Bearer ${await sign()}`)));
+    expect(error).not.toBeInstanceOf(AuthError);
+    expect(error.code).toBe('ERR_JWKS_MULTIPLE_MATCHING_KEYS');
+  });
+
+  it('rethrows ERR_JWKS_INVALID when the JWKS contains a private key', async () => {
+    const extractable = await generateKeyPair('EdDSA', { extractable: true });
+    respond = serveKeys([{ ...goodJwk, ...(await exportJWK(extractable.privateKey)) }]);
+    const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
+    const error = await rejection(remote(req(`Bearer ${await sign()}`)));
+    expect(error).not.toBeInstanceOf(AuthError);
+    expect(error.code).toBe('ERR_JWKS_INVALID');
+  });
+
+  it('rethrows ERR_JWKS_INVALID when the JWKS is not a key set', async () => {
+    respond = (response) => response.end(JSON.stringify({ keys: 'nope' }));
+    const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
+    const error = await rejection(remote(req(`Bearer ${await sign()}`)));
+    expect(error).not.toBeInstanceOf(AuthError);
+    expect(error.code).toBe('ERR_JWKS_INVALID');
+  });
+
+  it('rethrows when the matching JWK is malformed', async () => {
+    respond = serveKeys([{ ...goodJwk, x: 'AAAA' }]);
+    const remote = createAuthenticator({ jwksUrl, issuer: ISSUER });
     const error = await rejection(remote(req(`Bearer ${await sign()}`)));
     expect(error).not.toBeInstanceOf(AuthError);
   });
