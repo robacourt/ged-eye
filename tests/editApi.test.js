@@ -130,6 +130,13 @@ describe('editApi', () => {
       await expect(api.undo()).rejects.toThrow('VITE_API_URL is not configured');
       expect(() => apiUrl('/me')).toThrow('VITE_API_URL is not configured');
     });
+
+    it('builds URLs only from paths that start with /', () => {
+      expect(apiUrl('/me')).toBe('https://api.test/me');
+      expect(() => apiUrl('me')).toThrow('API paths start with /: me');
+      expect(() => apiUrl('https://evil.test/x')).toThrow('API paths start with /');
+      expect(() => apiUrl(undefined)).toThrow('API paths start with /');
+    });
   });
 
   describe('changes', () => {
@@ -182,6 +189,47 @@ describe('editApi', () => {
       getToken.mockResolvedValue(null);
       fetchMock.mockResolvedValue(respond(200, { results: [] }));
       await api.search('rose');
+      expect(call().headers).toEqual({});
+    });
+
+    it('searches without a token when the token and its refresh are both rejected', async () => {
+      getToken.mockImplementation(async ({ force } = {}) => (force ? 'jwt-2' : 'jwt-1'));
+      fetchMock
+        .mockResolvedValueOnce(respond(401, { error: 'unauthenticated' }))
+        .mockResolvedValueOnce(respond(401, { error: 'unauthenticated' }))
+        .mockResolvedValueOnce(respond(200, { results: [{ id: 'I1' }] }));
+      expect(await api.search('rose')).toEqual([{ id: 'I1' }]);
+      expect(fetchMock.mock.calls.map(([, init]) => init.headers)).toEqual([
+        { authorization: 'Bearer jwt-1' },
+        { authorization: 'Bearer jwt-2' },
+        {}
+      ]);
+    });
+
+    it('searches without a token when the refresh finds no session or fails', async () => {
+      getToken.mockImplementation(async ({ force } = {}) => (force ? null : 'jwt-1'));
+      fetchMock
+        .mockResolvedValueOnce(respond(401, { error: 'unauthenticated' }))
+        .mockResolvedValueOnce(respond(200, { results: [] }));
+      expect(await api.search('rose')).toEqual([]);
+      expect(call(1).headers).toEqual({});
+
+      fetchMock.mockReset();
+      getToken.mockImplementation(async ({ force } = {}) => {
+        if (force) throw new Error("Couldn't reach the sign-in service.");
+        return 'jwt-1';
+      });
+      fetchMock
+        .mockResolvedValueOnce(respond(401, { error: 'unauthenticated' }))
+        .mockResolvedValueOnce(respond(200, { results: [] }));
+      expect(await api.search('rose')).toEqual([]);
+      expect(call(1).headers).toEqual({});
+    });
+
+    it('searches without a token when the sign-in service is unreachable', async () => {
+      getToken.mockRejectedValue(new Error("Couldn't reach the sign-in service."));
+      fetchMock.mockResolvedValue(respond(200, { results: [] }));
+      expect(await api.search('rose')).toEqual([]);
       expect(call().headers).toEqual({});
     });
 

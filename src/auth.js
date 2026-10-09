@@ -12,6 +12,28 @@
 const REFRESH_MARGIN_S = 60;
 /** The Auth server appends this to the callback URL when an OAuth (Google) sign-in completes. */
 const OAUTH_VERIFIER_PARAM = 'neon_auth_session_verifier';
+/** localStorage flag: '1' while this browser has a session, so page loads of everyone else skip the SDK. */
+export const SIGNED_IN_KEY = 'ged-eye.signedIn';
+
+/** Whether this browser may have a session. True when storage can't say (private mode, blocked storage). */
+function maybeSignedIn() {
+  try {
+    return globalThis.localStorage.getItem(SIGNED_IN_KEY) === '1';
+  } catch {
+    return true;
+  }
+}
+
+function rememberSignedIn(signedIn) {
+  try {
+    if (signedIn) globalThis.localStorage.setItem(SIGNED_IN_KEY, '1');
+    else globalThis.localStorage.removeItem(SIGNED_IN_KEY);
+  } catch {
+    // Storage is unavailable, so maybeSignedIn() answers true and init() always checks.
+  }
+}
+
+const returningFromOAuth = () => new URLSearchParams(globalThis.location?.search ?? '').has(OAUTH_VERIFIER_PARAM);
 
 /** A sign-in failure: `message` is the Auth server's (or a network message), `code` 'network' when unreachable. */
 export class AuthClientError extends Error {
@@ -80,6 +102,7 @@ export function createAuth({ client, dev = import.meta.env.DEV }) {
     user = next ? { email: next.email, name: next.name ?? null } : null;
     role = null;
     if (next) cookieBlocked = false;
+    rememberSignedIn(Boolean(next));
     emit(reason);
   }
 
@@ -88,6 +111,7 @@ export function createAuth({ client, dev = import.meta.env.DEV }) {
     user = null;
     role = null;
     cookieBlocked = true;
+    rememberSignedIn(false);
     emit('cookie-blocked');
   }
 
@@ -147,14 +171,23 @@ export function createAuth({ client, dev = import.meta.env.DEV }) {
 
     getRole: () => role,
 
-    /** Caches the role from GET /me. Ignored unless `email` (when given) is the signed-in user's. */
+    /**
+     * Caches the role from GET /me, telling listeners ('role') when it changes. Ignored unless `email`
+     * (when given) is the signed-in user's.
+     */
     setRole(nextRole, email) {
       if (!user) return;
       if (email != null && !sameEmail(email, user.email)) return;
-      role = nextRole ?? null;
+      const next = nextRole ?? null;
+      if (next === role) return;
+      role = next;
+      emit('role');
     },
 
-    /** `listener(state, reason)`, reason one of restored, signed-in, signed-out, expired, cookie-blocked. Returns an unsubscribe function. */
+    /**
+     * `listener(state, reason)`, reason one of restored, signed-in, signed-out, expired, cookie-blocked, role.
+     * A change of user resets the role to null without a separate 'role' call. Returns an unsubscribe function.
+     */
     onChange(listener) {
       listeners.add(listener);
       return () => listeners.delete(listener);
@@ -165,18 +198,19 @@ export function createAuth({ client, dev = import.meta.env.DEV }) {
      * unreachable Auth service: viewing works signed out.
      */
     async init() {
-      const returningFromOAuth = new URLSearchParams(globalThis.location?.search ?? '').has(OAUTH_VERIFIER_PARAM);
+      const fromOAuth = returningFromOAuth();
       let session;
       try {
         session = await readSession(false);
         // The one-time verifier can yield a session even when the browser refused the cookie; check it stuck.
-        if (session && returningFromOAuth) session = await readSession(true);
+        if (session && fromOAuth) session = await readSession(true);
       } catch (error) {
         console.warn('Could not restore the sign-in session', error);
         return getState();
       }
-      if (session) setUser(session.user, returningFromOAuth ? 'signed-in' : 'restored');
-      else if (returningFromOAuth) reportCookieBlocked();
+      if (session) setUser(session.user, fromOAuth ? 'signed-in' : 'restored');
+      else if (fromOAuth) reportCookieBlocked();
+      else rememberSignedIn(false); // the session ended while the page was closed
       return getState();
     },
 
@@ -242,10 +276,15 @@ let instance = null; // once loaded
 let loading = null;  // Promise<instance>
 const listeners = new Set();
 
+function authUrl() {
+  const url = import.meta.env.VITE_NEON_AUTH_URL;
+  if (!url) throw new Error('VITE_NEON_AUTH_URL is not configured');
+  return url;
+}
+
 function defaultAuth() {
   loading ??= (async () => {
-    const url = import.meta.env.VITE_NEON_AUTH_URL;
-    if (!url) throw new Error('VITE_NEON_AUTH_URL is not configured');
+    const url = authUrl();
     const { createAuthClient } = await import('@neondatabase/auth');
     const auth = createAuth({ client: createAuthClient(url) });
     auth.onChange((state, reason) => {
@@ -266,8 +305,16 @@ function defaultAuth() {
   return loading;
 }
 
-/** Restores the session; call once on page load. The other sign-in calls load the client too if needed. */
-export async function init() { return (await defaultAuth()).init(); }
+/**
+ * Restores the session; call once on page load. Only a browser that was signed in (or is coming back from
+ * Google) loads the SDK and asks the Auth server; for everyone else this resolves at once, signed out.
+ * The sign-in calls below load the SDK when they need it.
+ */
+export async function init() {
+  authUrl();
+  if (!maybeSignedIn() && !returningFromOAuth()) return getState();
+  return (await defaultAuth()).init();
+}
 export async function sendEmailCode(email) { return (await defaultAuth()).sendEmailCode(email); }
 export async function verifyEmailCode(email, otp) { return (await defaultAuth()).verifyEmailCode(email, otp); }
 export async function signInWithGoogle() { return (await defaultAuth()).signInWithGoogle(); }

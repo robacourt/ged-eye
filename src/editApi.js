@@ -26,8 +26,9 @@ export class ApiError extends Error {
   }
 }
 
-/** The absolute URL of an API path. Throws when VITE_API_URL isn't configured. */
+/** The absolute URL of an API path (which starts with `/`). Throws when VITE_API_URL isn't configured. */
 export function apiUrl(path) {
+  if (typeof path !== 'string' || !path.startsWith('/')) throw new Error(`API paths start with /: ${path}`);
   const base = import.meta.env.VITE_API_URL;
   if (!base) throw new Error('VITE_API_URL is not configured');
   return `${base}${path}`;
@@ -57,10 +58,12 @@ const networkError = (message) => new ApiError(0, 'network', { message });
  * @param setRole   (role, email?) → void, caches the role from /me
  */
 export function createEditApi({ getToken, setRole = () => {} }) {
-  async function token(options) {
+  /** The bearer token. When it's optional, failing to get one just means calling without it. */
+  async function token(options, optional) {
     try {
       return await getToken(options);
     } catch (error) {
+      if (optional) return null;
       throw networkError(error?.message || "Couldn't reach the sign-in service.");
     }
   }
@@ -85,16 +88,18 @@ export function createEditApi({ getToken, setRole = () => {} }) {
   /**
    * Calls the API and returns the parsed JSON body. Adds the bearer token: `auth: 'required'` (the default)
    * fails with 401 `unauthenticated` when signed out, `'optional'` sends it only when signed in.
-   * A 401 is retried once with a force-refreshed token.
+   * A 401 is retried once with a force-refreshed token; with optional auth, then without a token.
    */
   async function authedFetch(path, { method = 'GET', body, auth = 'required' } = {}) {
     const url = apiUrl(path);
-    let bearer = await token();
-    if (!bearer && auth === 'required') throw new ApiError(401, 'unauthenticated', { message: 'Signed out. Sign in again.' });
+    const optional = auth === 'optional';
+    let bearer = await token(undefined, optional);
+    if (!bearer && !optional) throw new ApiError(401, 'unauthenticated', { message: 'Signed out. Sign in again.' });
     let response = await send(url, method, body, bearer);
     if (response.status === 401 && bearer) {
-      bearer = await token({ force: true });
+      bearer = await token({ force: true }, optional);
       if (bearer) response = await send(url, method, body, bearer);
+      if (optional && (!bearer || response.status === 401)) response = await send(url, method, body, null);
     }
     const parsed = await response.json().catch(() => null);
     if (response.ok) return parsed;

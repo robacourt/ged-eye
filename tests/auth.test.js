@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { createAuth, AuthClientError, jwtExpiry } from '../src/auth.js';
+import { createAuth, AuthClientError, jwtExpiry, SIGNED_IN_KEY } from '../src/auth.js';
 
 const FORCE = { fetchOptions: { headers: { 'X-Force-Fetch': 'true' } } };
 const b64url = (value) => Buffer.from(JSON.stringify(value)).toString('base64url');
@@ -34,10 +34,14 @@ function fakeClient({ cached = null, server = cached } = {}) {
   return client;
 }
 
+const signedInFlag = () => localStorage.getItem(SIGNED_IN_KEY);
+
 describe('auth', () => {
+  beforeEach(() => localStorage.clear());
   afterEach(() => {
     window.history.replaceState(null, '', '/');
     vi.restoreAllMocks();
+    localStorage.clear();
   });
 
   describe('init', () => {
@@ -404,6 +408,84 @@ describe('auth', () => {
     });
   });
 
+  describe('role changes', () => {
+    it('tells listeners when the role changes, and only then', async () => {
+      const client = fakeClient({ cached: sessionFor('rose@example.com') });
+      const auth = createAuth({ client });
+      await auth.init();
+      const listener = vi.fn();
+      auth.onChange(listener);
+      auth.setRole('editor', 'rose@example.com');
+      expect(listener).toHaveBeenCalledTimes(1);
+      expect(listener).toHaveBeenCalledWith({ user: { email: 'rose@example.com', name: 'Rose Smith' }, role: 'editor', cookieBlocked: false }, 'role');
+      auth.setRole('editor', 'rose@example.com');
+      auth.setRole('admin', 'tom@example.com');
+      expect(listener).toHaveBeenCalledTimes(1);
+      auth.setRole(undefined);
+      expect(listener).toHaveBeenCalledTimes(2);
+      expect(listener).toHaveBeenLastCalledWith(expect.objectContaining({ role: null }), 'role');
+      auth.setRole(null);
+      expect(listener).toHaveBeenCalledTimes(2);
+    });
+
+    it('says nothing about a role set while signed out', () => {
+      const auth = createAuth({ client: fakeClient() });
+      const listener = vi.fn();
+      auth.onChange(listener);
+      auth.setRole('editor');
+      expect(listener).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('signed-in flag', () => {
+    it('is set by a sign-in and cleared by a sign-out', async () => {
+      const client = fakeClient({ server: sessionFor('rose@example.com') });
+      const auth = createAuth({ client });
+      await auth.verifyEmailCode('rose@example.com', '123456');
+      expect(signedInFlag()).toBe('1');
+      await auth.signOut();
+      expect(signedInFlag()).toBeNull();
+    });
+
+    it('is set when a session is restored, and cleared when it is found to have ended', async () => {
+      const client = fakeClient({ cached: sessionFor('rose@example.com') });
+      await createAuth({ client }).init();
+      expect(signedInFlag()).toBe('1');
+      client.state.cached = null;
+      await createAuth({ client }).init();
+      expect(signedInFlag()).toBeNull();
+    });
+
+    it('is cleared when the session expires or the cookie is blocked', async () => {
+      const client = fakeClient({ cached: sessionFor('rose@example.com', jwt(10)), server: null });
+      const auth = createAuth({ client });
+      await auth.init();
+      expect(signedInFlag()).toBe('1');
+      await auth.getToken();
+      expect(signedInFlag()).toBeNull();
+
+      localStorage.setItem(SIGNED_IN_KEY, '1');
+      await createAuth({ client: fakeClient({ server: null }) }).verifyEmailCode('rose@example.com', '123456');
+      expect(signedInFlag()).toBeNull();
+    });
+
+    it('is kept when the auth service is unreachable', async () => {
+      localStorage.setItem(SIGNED_IN_KEY, '1');
+      const client = fakeClient();
+      client.getSession.mockRejectedValue(new TypeError('Failed to fetch'));
+      vi.spyOn(console, 'warn').mockImplementation(() => {});
+      await createAuth({ client }).init();
+      expect(signedInFlag()).toBe('1');
+    });
+
+    it('does not break sign-in when storage is unavailable', async () => {
+      vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new DOMException('denied', 'SecurityError'); });
+      const client = fakeClient({ server: sessionFor('rose@example.com') });
+      const state = await createAuth({ client }).verifyEmailCode('rose@example.com', '123456');
+      expect(state.user.email).toBe('rose@example.com');
+    });
+  });
+
   describe('jwtExpiry', () => {
     it('reads exp from a base64url payload, including non-ASCII claims', () => {
       expect(jwtExpiry(`${b64url({})}.${b64url({ exp: 1234, name: 'Zoë Ø' })}.sig`)).toBe(1234);
@@ -419,17 +501,66 @@ describe('auth', () => {
 });
 
 describe('auth default client', () => {
-  beforeEach(() => vi.resetModules());
+  beforeEach(() => {
+    vi.resetModules();
+    localStorage.clear();
+    vi.stubEnv('VITE_NEON_AUTH_URL', 'https://auth.test/neondb/auth');
+  });
   afterEach(() => {
     vi.unstubAllEnvs();
     vi.doUnmock('@neondatabase/auth');
+    vi.restoreAllMocks();
+    window.history.replaceState(null, '', '/');
+    localStorage.clear();
+  });
+
+  /** Mocks the SDK; `loaded` counts imports of it. */
+  function mockSdk(client = fakeClient()) {
+    const createAuthClient = vi.fn(() => client);
+    const loaded = vi.fn(() => ({ createAuthClient }));
+    vi.doMock('@neondatabase/auth', loaded);
+    return { createAuthClient, loaded, client };
+  }
+
+  it('does not load the SDK or ask the Auth server for a visitor who has never signed in', async () => {
+    const { loaded, client } = mockSdk();
+    const auth = await import('../src/auth.js');
+    expect(await auth.init()).toEqual({ user: null, role: null, cookieBlocked: false });
+    expect(loaded).not.toHaveBeenCalled();
+    expect(client.getSession).not.toHaveBeenCalled();
+  });
+
+  it('loads the SDK on demand to sign in, then remembers the sign-in for the next page load', async () => {
+    const { loaded, client } = mockSdk(fakeClient({ server: sessionFor('rose@example.com') }));
+    const auth = await import('../src/auth.js');
+    await auth.init();
+    await auth.sendEmailCode('rose@example.com');
+    expect(loaded).toHaveBeenCalledTimes(1);
+    await auth.verifyEmailCode('rose@example.com', '123456');
+    expect(auth.getState().user.email).toBe('rose@example.com');
+    expect(signedInFlag()).toBe('1');
+    expect(client.emailOtp.sendVerificationOtp).toHaveBeenCalled();
+  });
+
+  it('restores the session when coming back from Google, without the flag', async () => {
+    window.history.replaceState(null, '', '/?neon_auth_session_verifier=v123');
+    const { loaded } = mockSdk(fakeClient({ cached: sessionFor('rose@example.com') }));
+    const auth = await import('../src/auth.js');
+    expect((await auth.init()).user.email).toBe('rose@example.com');
+    expect(loaded).toHaveBeenCalled();
+  });
+
+  it('checks for a session when storage cannot say (private mode)', async () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new DOMException('denied', 'SecurityError'); });
+    const { loaded } = mockSdk(fakeClient({ cached: sessionFor('rose@example.com') }));
+    const auth = await import('../src/auth.js');
+    expect((await auth.init()).user.email).toBe('rose@example.com');
+    expect(loaded).toHaveBeenCalled();
   });
 
   it('is created lazily from VITE_NEON_AUTH_URL', async () => {
-    const client = fakeClient({ cached: sessionFor('rose@example.com') });
-    const createAuthClient = vi.fn(() => client);
-    vi.doMock('@neondatabase/auth', () => ({ createAuthClient }));
-    vi.stubEnv('VITE_NEON_AUTH_URL', 'https://auth.test/neondb/auth');
+    localStorage.setItem(SIGNED_IN_KEY, '1');
+    const { createAuthClient, client } = mockSdk(fakeClient({ cached: sessionFor('rose@example.com') }));
     const auth = await import('../src/auth.js');
     const listener = vi.fn();
     auth.onChange(listener);
@@ -443,23 +574,24 @@ describe('auth default client', () => {
     expect(listener).toHaveBeenCalledWith(auth.getState(), 'restored');
     auth.setRole('editor', 'rose@example.com');
     expect(auth.getRole()).toBe('editor');
+    expect(listener).toHaveBeenLastCalledWith(auth.getState(), 'role');
     expect(await auth.getToken()).toBe(client.state.cached.session.token);
     expect(typeof auth.signInWithPassword).toBe('function'); // vitest runs with import.meta.env.DEV
   });
 
   it('creates one client however many calls race to load it', async () => {
-    const createAuthClient = vi.fn(() => fakeClient());
-    vi.doMock('@neondatabase/auth', () => ({ createAuthClient }));
-    vi.stubEnv('VITE_NEON_AUTH_URL', 'https://auth.test/neondb/auth');
+    localStorage.setItem(SIGNED_IN_KEY, '1');
+    const { createAuthClient } = mockSdk();
     const auth = await import('../src/auth.js');
     await Promise.all([auth.init(), auth.sendEmailCode('rose@example.com'), auth.init()]);
     expect(createAuthClient).toHaveBeenCalledTimes(1);
   });
 
-  it('fails loudly when VITE_NEON_AUTH_URL is not configured', async () => {
-    vi.doMock('@neondatabase/auth', () => ({ createAuthClient: vi.fn() }));
+  it('fails loudly when VITE_NEON_AUTH_URL is not configured, even for a visitor who has never signed in', async () => {
+    mockSdk();
     vi.stubEnv('VITE_NEON_AUTH_URL', '');
     const auth = await import('../src/auth.js');
     await expect(auth.init()).rejects.toThrow('VITE_NEON_AUTH_URL is not configured');
+    await expect(auth.sendEmailCode('rose@example.com')).rejects.toThrow('VITE_NEON_AUTH_URL is not configured');
   });
 });
