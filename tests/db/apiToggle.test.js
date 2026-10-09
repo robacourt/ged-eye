@@ -5,8 +5,8 @@ import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testD
 import { createDb } from '../../api/db.js';
 import { ApiError } from '../../api/http.js';
 
-// Each test edits its own people, so the tests don't depend on each other's edits. Undo and redo
-// are per author, so the tests of the stack use their own editor.
+// Each test edits its own people, so no test depends on another's edits (or on running after it).
+// Undo and redo are per author, so the tests of the stack use their own editor.
 const PEOPLE = `
 insert into person (id, given_name, surname, birth_place) values
   ('I1', 'Rose', 'Smith', 'York'),
@@ -15,7 +15,12 @@ insert into person (id, given_name, surname, birth_place) values
   ('I4', 'Una', 'Doe', null),
   ('I5', 'Ivy', 'Hart', null),
   ('I6', 'Sam', 'Cole', null),
-  ('I7', 'Max', 'Reed', null);
+  ('I7', 'Max', 'Reed', null),
+  ('I8', 'Kim', 'Ross', 'R'),
+  ('I9', 'Lou', 'Park', null),
+  ('I10', 'Joe', 'Webb', null),
+  ('I11', 'Lee', 'Fox', null),
+  ('I12', 'Pat', 'Moss', null);
 `;
 
 const ED = { email: 'ed@example.test', name: 'Ed Itor', role: 'editor' };
@@ -95,7 +100,7 @@ describe.skipIf(!url)('api/db.js toggles and history (database)', { timeout: 300
 
     it('answers 404 not_found for an unknown change or a toggle of a toggle', async () => {
       expect(await failure(db.toggle(ED, 999999, 'undo', 'history'))).toEqual({ status: 404, code: 'not_found' });
-      const base = await setBirthPlace(ED, 'I2', 'Selby');
+      const base = await setBirthPlace(ED, 'I9', 'Selby');
       const reverted = await db.toggle(ED, base.id, 'undo', 'history');
       expect(await failure(db.toggle(ED, reverted.id, 'undo', 'history'))).toEqual({ status: 404, code: 'not_found' });
     });
@@ -118,18 +123,18 @@ describe.skipIf(!url)('api/db.js toggles and history (database)', { timeout: 300
     });
 
     it('names the base change, not its undo, when an undo blocks, with the action restore', async () => {
-      // I3 is 'R' (from the test above). X: R → S, Z: S → T, B: T → S; reverting X then leaves R,
-      // so reverting B (which needs S) is blocked by X's undo, and restoring X unblocks it.
-      const x = await setBirthPlace(ANN, 'I3', 'S');
-      await setBirthPlace(ANN, 'I3', 'T');
-      const b = await setBirthPlace(ED, 'I3', 'S');
+      // I8 starts as 'R'. X: R → S, Z: S → T, B: T → S; reverting X then leaves R, so reverting B
+      // (which needs S) is blocked by X's undo, and restoring X unblocks it.
+      const x = await setBirthPlace(ANN, 'I8', 'S');
+      await setBirthPlace(ANN, 'I8', 'T');
+      const b = await setBirthPlace(ED, 'I8', 'S');
       await db.toggle(ANN, x.id, 'undo', 'history');
-      expect(await birthPlace('I3')).toBe('R');
+      expect(await birthPlace('I8')).toBe('R');
 
       const conflict = await failure(db.toggle(ED, b.id, 'undo', 'history'));
       expect(conflict).toMatchObject({ status: 409, code: 'conflict', reason: 'precondition' });
       expect(conflict.blocking).toEqual([
-        { id: x.id, action: 'restore', summary: 'Edited Ann Lee (birth place)', authorName: 'Ann', createdAt: expect.any(String) }
+        { id: x.id, action: 'restore', summary: 'Edited Kim Ross (birth place)', authorName: 'Ann', createdAt: expect.any(String) }
       ]);
     });
   });
@@ -146,12 +151,12 @@ describe.skipIf(!url)('api/db.js toggles and history (database)', { timeout: 300
     it('undo the editor\'s latest edit, then redo it, from the keyboard', async () => {
       await setBirthPlace(UNA, 'I4', 'Ely');
       const base = await setBirthPlace(UNA, 'I4', 'Rye');
-      await setBirthPlace(ANN, 'I1', 'Bath'); // someone else's edit is not on Una's stack
+      await setBirthPlace(ANN, 'I10', 'Bath'); // someone else's edit is not on Una's stack
 
       const undone = await db.undoLast(UNA);
       expect(undone).toEqual({ id: expect.any(Number), summary: 'Undid: Edited Una Doe (birth place)', personIds: ['I4'], baseChangeId: base.id, kind: 'undo' });
       expect(await birthPlace('I4')).toBe('Ely');
-      expect(await birthPlace('I1')).toBe('Bath');
+      expect(await birthPlace('I10')).toBe('Bath');
 
       const redone = await db.redoLast(UNA);
       expect(redone).toEqual({ id: expect.any(Number), summary: 'Redid: Edited Una Doe (birth place)', personIds: ['I4'], baseChangeId: base.id, kind: 'redo' });
@@ -175,7 +180,7 @@ describe.skipIf(!url)('api/db.js toggles and history (database)', { timeout: 300
   });
 
   describe('listChanges', () => {
-    const SHAPE = ['authorEmail', 'authorName', 'baseChangeId', 'createdAt', 'id', 'kind', 'personIds', 'summary', 'undone', 'via'];
+    const SHAPE = ['authorEmail', 'authorName', 'baseChangeId', 'createdAt', 'id', 'kind', 'people', 'personIds', 'summary', 'undone', 'via'];
 
     it('filters by person, newest first, with the history fields', async () => {
       const base = await setBirthPlace(ED, 'I6', 'Ware');
@@ -187,15 +192,28 @@ describe.skipIf(!url)('api/db.js toggles and history (database)', { timeout: 300
       expect(changes).toEqual([
         {
           id: reverted.id, createdAt: expect.any(String), authorName: 'Ann', authorEmail: ANN.email, kind: 'undo', via: 'history',
-          summary: 'Undid: Edited Sam Cole (birth place)', personIds: ['I6'], baseChangeId: base.id, undone: false
+          summary: 'Undid: Edited Sam Cole (birth place)', personIds: ['I6'], people: [{ id: 'I6', name: 'Sam Cole' }],
+          baseChangeId: base.id, undone: false
         },
         {
           id: base.id, createdAt: createdAt.toISOString(), authorName: 'Ed Itor', authorEmail: ED.email, kind: 'update_person', via: 'edit',
-          summary: 'Edited Sam Cole (birth place)', personIds: ['I6'], baseChangeId: null, undone: true
+          summary: 'Edited Sam Cole (birth place)', personIds: ['I6'], people: [{ id: 'I6', name: 'Sam Cole' }],
+          baseChangeId: null, undone: true
         }
       ]);
       expect(Object.keys(changes[0]).sort()).toEqual(SHAPE);
       expect(await db.listChanges({ person: 'I999' })).toEqual([]);
+    });
+
+    it('names the people who still exist, in the change\'s order', async () => {
+      await client.query('begin');
+      const { rows: [{ id }] } = await client.query(
+        `select begin_change('fixture@example.test', 'Fixture', 'fixture', 'script', 'People', '{}', $1::text[]) as id`,
+        [['I12', 'I999', 'I11']]);
+      await client.query('commit');
+      const [change] = await db.listChanges({ before: Number(id) + 1, limit: 1 });
+      expect(change).toMatchObject({ id: Number(id), personIds: ['I12', 'I999', 'I11'] });
+      expect(change.people).toEqual([{ id: 'I12', name: 'Pat Moss' }, { id: 'I11', name: 'Lee Fox' }]);
     });
 
     it('pages newest first with before and limit, at most 50 a page', async () => {
@@ -209,7 +227,9 @@ describe.skipIf(!url)('api/db.js toggles and history (database)', { timeout: 300
 
       const first = await db.listChanges({ before: null, limit: 500, person: null });
       expect(first.map((change) => change.id)).toEqual(allIds.slice(0, 50));
-      expect(first[0]).toMatchObject({ kind: 'fixture', via: 'script', summary: expect.stringMatching(/^Filler /), personIds: [], baseChangeId: null, undone: false });
+      expect(first[0]).toMatchObject({
+        kind: 'fixture', via: 'script', summary: expect.stringMatching(/^Filler /), personIds: [], people: [], baseChangeId: null, undone: false
+      });
 
       const next = await db.listChanges({ before: first.at(-1).id, limit: 50, person: null });
       expect(next.map((change) => change.id)).toEqual(allIds.slice(50, 100));

@@ -834,6 +834,34 @@ describe('api/db.js', () => {
       }
     });
 
+    it('leaves out blocking entries that aren\'t objects', async () => {
+      const detail = JSON.stringify({ reason: 'precondition', blocking: [null, { id: 9, action: 'revert' }, 'x'] });
+      const pool = togglePool(pgError('GE003', detail), [{ id: '9', summary: 'Linked a child', author_name: 'Ann', created_at: CREATED }]);
+      const thrown = await rejection(createDb(pool).toggle(EDITOR, 7, 'undo', 'history'));
+      expect(thrown.extra.blocking).toEqual([
+        { id: 9, action: 'revert', summary: 'Linked a child', authorName: 'Ann', createdAt: '2026-10-09T10:00:00.123Z' }
+      ]);
+      expect(pool.query.mock.calls[0][1]).toEqual([[9]]);
+
+      const onlyNull = togglePool(pgError('GE003', JSON.stringify({ reason: 'cascade', blocking: [null] })));
+      const empty = await rejection(createDb(onlyNull).toggle(EDITOR, 7, 'undo', 'history'));
+      expect(empty).toMatchObject({ status: 409, code: 'conflict', extra: { reason: 'cascade', blocking: [] } });
+      expect(onlyNull.query).not.toHaveBeenCalled();
+    });
+
+    it('logs a command\'s database failure with the injected log', async () => {
+      const log = vi.fn();
+      const pool = togglePool(null);
+      pool.client.query.mockImplementation(async (sql) => {
+        if (/begin_change/.test(sql)) throw pgError('23503');
+        return { rows: [] };
+      });
+      const params = { id: 'I1', expectedUpdatedAt: '2026-10-09T10:00:00Z', fields: { birth_place: 'York' } };
+      const thrown = await rejection(createDb(pool, { log }).runChange(EDITOR, 'update_person', params));
+      expect(thrown).toMatchObject({ status: 500, code: 'internal' });
+      expect(log).toHaveBeenCalledTimes(1);
+    });
+
     it('sends a conflict with no blocking changes without querying', async () => {
       const pool = togglePool(pgError('GE003', JSON.stringify({ reason: 'constraint', blocking: [] })));
       const thrown = await rejection(createDb(pool).toggle(EDITOR, 7, 'undo', 'history'));
@@ -867,21 +895,31 @@ describe('api/db.js', () => {
 
     const HISTORY_ROW = {
       id: '12', created_at: CREATED, author_name: 'Ed Editor', author_email: 'editor@example.test', kind: 'undo',
-      via: 'keyboard', summary: 'Undid: Edited Rose Smith (birth date)', person_ids: ['I1'], base_change_id: '7', undone: false
+      via: 'keyboard', summary: 'Undid: Edited Rose Smith (birth date)', person_ids: ['I1', 'I9'], base_change_id: '7', undone: false,
+      people: [{ id: 'I1', name: 'Rose Smith' }]
     };
 
-    it('lists changes newest first, with camelCase fields and ISO times', async () => {
-      const base = { ...HISTORY_ROW, id: '7', kind: 'update_person', via: 'edit', summary: 'Edited Rose Smith (birth date)', base_change_id: null, undone: true };
+    it('lists changes newest first, with camelCase fields, ISO times and the people who still exist', async () => {
+      const base = {
+        ...HISTORY_ROW, id: '7', kind: 'update_person', via: 'edit', summary: 'Edited Rose Smith (birth date)', base_change_id: null,
+        undone: true, people: null
+      };
       const pool = fakePool([HISTORY_ROW, base]);
       expect(await createDb(pool).listChanges({ before: null, limit: 50, person: null })).toEqual([
         { id: 12, createdAt: '2026-10-09T10:00:00.123Z', authorName: 'Ed Editor', authorEmail: 'editor@example.test', kind: 'undo',
-          via: 'keyboard', summary: 'Undid: Edited Rose Smith (birth date)', personIds: ['I1'], baseChangeId: 7, undone: false },
+          via: 'keyboard', summary: 'Undid: Edited Rose Smith (birth date)', personIds: ['I1', 'I9'], people: [{ id: 'I1', name: 'Rose Smith' }],
+          baseChangeId: 7, undone: false },
         { id: 7, createdAt: '2026-10-09T10:00:00.123Z', authorName: 'Ed Editor', authorEmail: 'editor@example.test', kind: 'update_person',
-          via: 'edit', summary: 'Edited Rose Smith (birth date)', personIds: ['I1'], baseChangeId: null, undone: true }
+          via: 'edit', summary: 'Edited Rose Smith (birth date)', personIds: ['I1', 'I9'], people: [], baseChangeId: null, undone: true }
       ]);
       const [sql, params] = pool.query.mock.calls[0];
-      expect(sql).not.toMatch(/where/);
-      expect(sql).toMatch(/order by id desc\s+limit \$1/);
+      expect(sql).not.toMatch(/touched on true\s+where/); // no filter on the changes themselves
+      expect(sql).toMatch(/left join lateral/);
+      expect(sql).toMatch(/jsonb_build_object\('id', p\.id, 'name', p\.display_name\)/);
+      expect(sql).toMatch(/order by array_position\(c\.person_ids, p\.id\)/);
+      expect(sql).toMatch(/where p\.id = any \(c\.person_ids\)/);
+      expect(sql).toMatch(/coalesce\(touched\.people, '\[\]'::jsonb\) as people/);
+      expect(sql).toMatch(/order by c\.id desc\s+limit \$1/);
       expect(params).toEqual([50]);
     });
 
@@ -890,13 +928,13 @@ describe('api/db.js', () => {
       const db = createDb(pool);
       await db.listChanges({ before: 100, limit: 10, person: 'I3' });
       let [sql, params] = pool.query.mock.calls[0];
-      expect(sql).toMatch(/where id < \$1 and person_ids @> array\[\$2::text\]/);
+      expect(sql).toMatch(/where c\.id < \$1 and c\.person_ids @> array\[\$2::text\]/);
       expect(sql).toMatch(/limit \$3/);
       expect(params).toEqual([100, 'I3', 10]);
 
       await db.listChanges({ person: 'I3', limit: 500 });
       [sql, params] = pool.query.mock.calls[1];
-      expect(sql).toMatch(/where person_ids @> array\[\$1::text\]/);
+      expect(sql).toMatch(/where c\.person_ids @> array\[\$1::text\]/);
       expect(params).toEqual(['I3', 50]);
 
       await db.listChanges();

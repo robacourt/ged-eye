@@ -58,11 +58,23 @@ const historyFromRow = (row) => ({
   via: row.via,
   summary: row.summary,
   personIds: row.person_ids,
+  people: Array.isArray(row.people) ? row.people : [],
   baseChangeId: idOrNull(row.base_change_id),
   undone: row.undone
 });
 
-const HISTORY_COLUMNS = 'id, created_at, author_name, author_email, kind, via, summary, person_ids, base_change_id, undone';
+const HISTORY_COLUMNS = 'c.id, c.created_at, c.author_name, c.author_email, c.kind, c.via, c.summary, c.person_ids, ' +
+  'c.base_change_id, c.undone';
+
+// The people a change touched who still exist, in person_ids order, with their names now. Deleted
+// people are left out; the History panel links to the rest.
+const HISTORY_PEOPLE = `
+  left join lateral (
+    select jsonb_agg(jsonb_build_object('id', p.id, 'name', p.display_name)
+                     order by array_position(c.person_ids, p.id)) as people
+    from person p
+    where p.id = any (c.person_ids)
+  ) touched on true`;
 
 /**
  * A 409 conflict with each blocking change ({ id, action }, from toggle_change) given the
@@ -71,8 +83,9 @@ const HISTORY_COLUMNS = 'id, created_at, author_name, author_email, kind, via, s
  * If they can't be read, the conflict is still sent, with those fields null.
  */
 async function withBlockingDetails(pool, conflict, log) {
-  const { blocking } = conflict.extra;
-  if (blocking.length === 0) return conflict;
+  // Entries that aren't objects can't name a change; they are left out rather than failing the response.
+  const blocking = conflict.extra.blocking.filter((entry) => entry !== null && typeof entry === 'object');
+  if (blocking.length === 0) return new ApiError(409, 'conflict', { ...conflict.extra, blocking });
   let byId = new Map();
   try {
     const { rows } = await pool.query(
@@ -166,7 +179,7 @@ export function createDb(pool, { log = console.error } = {}) {
     },
 
     /** → { change: { id, summary, personIds }, view | null }; see api/changes.js */
-    runChange: (editor, kind, params) => runChange(pool, editor, kind, params),
+    runChange: (editor, kind, params) => runChange(pool, editor, kind, params, { log }),
 
     /** Reverts ('undo') or restores ('redo') change `id`; → the toggle's change (see runToggle). */
     toggle: (editor, id, direction, via) => runToggle(
@@ -179,25 +192,27 @@ export function createDb(pool, { log = console.error } = {}) {
     redoLast: (editor) => runToggle('select redo_last($1, $2) as id', [editor.email, editor.name ?? null]),
 
     /**
-     * → [{ id, createdAt (ISO), authorName, authorEmail, kind, via, summary, personIds, baseChangeId, undone }],
+     * → [{ id, createdAt (ISO), authorName, authorEmail, kind, via, summary, personIds, people, baseChangeId, undone }],
      * newest first: at most `limit` (≤ 50) changes with ids below `before`, touching `person` if given.
+     * `people` is `[{ id, name }]` for those of `personIds` who still exist, in the same order.
      */
     async listChanges({ before = null, limit = CHANGES_PAGE, person = null } = {}) {
       const where = [];
       const params = [];
       if (before !== null) {
         params.push(before);
-        where.push(`id < $${params.length}`);
+        where.push(`c.id < $${params.length}`);
       }
       if (person !== null) {
         params.push(person);
-        where.push(`person_ids @> array[$${params.length}::text]`);
+        where.push(`c.person_ids @> array[$${params.length}::text]`);
       }
       params.push(Number.isInteger(limit) && limit > 0 ? Math.min(limit, CHANGES_PAGE) : CHANGES_PAGE);
       const { rows } = await pool.query(
-        `select ${HISTORY_COLUMNS} from change
+        `select ${HISTORY_COLUMNS}, coalesce(touched.people, '[]'::jsonb) as people
+         from change c ${HISTORY_PEOPLE}
          ${where.length > 0 ? `where ${where.join(' and ')}` : ''}
-         order by id desc
+         order by c.id desc
          limit $${params.length}`, params);
       return rows.map(historyFromRow);
     }
