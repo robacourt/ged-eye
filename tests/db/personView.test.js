@@ -75,8 +75,14 @@ describe.skipIf(!url)('person_view (database)', () => {
       id: 'I3', name: 'Carl Smith', givenName: 'Carl', surname: 'Smith', sex: 'M',
       birthDate: 'ABT 1930', birthPlace: null, deathDate: null, deathPlace: null,
       photos: [
-        { key: 'originals/bbb.docx', thumbKey: null, fileName: 'b.docx', contentType: 'application/msword' },
-        { key: 'originals/aaa.jpg', thumbKey: 'thumbs/aaa.webp', fileName: 'a.jpg', contentType: 'image/jpeg' }
+        {
+          id: 2, key: 'originals/bbb.docx', thumbKey: null, displayKey: null, fileName: 'b.docx', contentType: 'application/msword',
+          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith' }]
+        },
+        {
+          id: 1, key: 'originals/aaa.jpg', thumbKey: 'thumbs/aaa.webp', displayKey: null, fileName: 'a.jpg', contentType: 'image/jpeg',
+          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith' }]
+        }
       ],
       parentIds: ['I1', 'I2'],
       spouseIds: ['I7', 'I9'],
