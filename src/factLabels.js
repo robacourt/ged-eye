@@ -19,3 +19,6 @@ export function factLabel(fact) {
   const bare = String(fact.tag ?? '').replace(/^_/, '');
   return bare ? bare.charAt(0).toUpperCase() + bare.slice(1).toLowerCase() : 'Other';
 }
+
+/** The tags with a known label, for picking one in the person editor. */
+export const KNOWN_FACT_TAGS = Object.freeze([...LABELS.keys()]);

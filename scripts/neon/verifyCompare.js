@@ -21,9 +21,15 @@ const LEGACY_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp
 export const canonical = (value) => JSON.stringify(value, (_, v) =>
   v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b))) : v);
 
-/** Whether an API body is what the Function should serve for this person_view() document. */
+/** An API body without the `masked` flag the Function adds, i.e. the (possibly masked) person_view() document. */
+export function apiBodyView(body) {
+  const { masked, ...view } = body;
+  return view;
+}
+
+/** Whether an API body is what the Function should serve an anonymous caller for this person_view() document. */
 export function apiMatchesView(body, view) {
-  return canonical(body) === canonical(maskNoteEmails(view));
+  return canonical(apiBodyView(body)) === canonical(maskNoteEmails(view));
 }
 
 /** Whether the Function would serve this person_view() document differently once note emails are masked. */
@@ -131,7 +137,9 @@ export function diffView(expected, actual, manifest, people) {
   sameSet('parentIds', p.parentIds, q.parentIds);
   sameSet('spouseIds', p.spouseIds, q.spouseIds);
   sameSet('childIds', p.childIds, q.childIds);
-  sameSet('marriages', (p.marriages ?? []).map(canonical), (q.marriages ?? []).map(canonical));
+  // Migration 007 added each marriage's childIds, which the legacy data never had.
+  const withoutChildIds = ({ childIds, ...marriage }) => marriage;
+  sameSet('marriages', (p.marriages ?? []).map(canonical), (q.marriages ?? []).map(withoutChildIds).map(canonical));
 
   const expectedPhotos = legacyPhotos(p, manifest);
   const expectedShas = expectedPhotos.map(e => e.sha);
@@ -169,6 +177,32 @@ export function diffView(expected, actual, manifest, people) {
     if (memberAvatar !== member.avatarKey) diffs.push(`family ${member.id}.avatarKey: expected ${memberAvatar} got ${member.avatarKey}`);
   }
   return diffs;
+}
+
+/**
+ * Whether an edit may have changed what person `id`'s view shows, so the legacy comparison no
+ * longer applies: they were edited themselves, or someone in their family list was (as the legacy
+ * view had it, or as the current one has it), since neighbours' views show edited names and links.
+ * @param {{familyIds: Set<string>}} expected legacyExpected() for the person
+ * @param {object|null} view the current person_view() (null once the person is deleted)
+ * @param {Set<string>} touched every person referenced by any change_row (T)
+ */
+export function touchedByEdits(id, expected, view, touched) {
+  if (touched.has(id)) return true;
+  if ([...expected.familyIds].some(fid => touched.has(fid))) return true;
+  return (view?.family ?? []).some(member => touched.has(member.id));
+}
+
+/**
+ * The person-count check. It only means something until the first recorded change: after that,
+ * edits add and delete people.
+ * @returns {{result: string, problem: string|null}}
+ */
+export function countCheck(count, legacyCount, changes) {
+  if (changes > 0) return { result: `skipped (${changes} changes)`, problem: null };
+  return count === legacyCount
+    ? { result: 'ok', problem: null }
+    : { result: 'failed', problem: `person count ${count} != legacy ${legacyCount}` };
 }
 
 /**

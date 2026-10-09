@@ -1,13 +1,12 @@
 import { Pool } from 'pg';
 import { attachDatabasePool } from '@neon/functions';
 import { createHandler } from './handler.js';
+import { authenticatorFromEnv } from './auth.js';
+import { createDb } from './db.js';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5, connectionTimeoutMillis: 10_000 });
 attachDatabasePool(pool);
 
-const handle = createHandler(async (id) => {
-  const { rows } = await pool.query('select person_view($1) as view', [id]);
-  return rows[0].view;
-});
-
-export default { fetch: handle };
+export default {
+  fetch: createHandler({ db: createDb(pool), authenticate: authenticatorFromEnv(process.env) })
+};

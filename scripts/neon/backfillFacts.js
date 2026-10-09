@@ -234,10 +234,27 @@ export async function readDbRows(client) {
   return rows;
 }
 
+const BACKFILL_SUMMARY = { apply: 'Backfilled full GEDCOM facts', rollback: 'Rolled back the full GEDCOM facts backfill' };
+
+/**
+ * After migration 006 every write to person must happen inside a recorded change (it can then be
+ * undone from History); before 006 there is no begin_change and nothing to record. The check is a
+ * separate query because Postgres resolves function names when it parses a statement, so a
+ * `select begin_change(…) where <exists>` would fail before 006 even when the condition is false.
+ */
+async function beginRecordedChange(client, direction) {
+  const { rows } = await client.query(
+    `select to_regprocedure('begin_change(text,text,text,text,text,jsonb,text[])') is not null as recorded`);
+  if (!rows[0]?.recorded) return;
+  await client.query(`select begin_change('backfill@ged-eye.local', 'Facts backfill', 'backfill_facts', 'script', $1, '{}', '{}')`,
+    [BACKFILL_SUMMARY[direction]]);
+}
+
 /**
  * Compare-and-swap the plan into person.facts in one transaction. Leaves updated_at alone: the
  * backfill re-derives the import, it is not an edit. Throws StalePlanError (and writes nothing)
  * if any row's facts no longer match the side being replaced, or the row was edited since the import.
+ * After migration 006 the transaction is one recorded change.
  */
 export async function applyPlan(client, plan, { direction = 'apply', batchSize = 500 } = {}) {
   const { from, to } = sides(direction);
@@ -246,6 +263,10 @@ export async function applyPlan(client, plan, { direction = 'apply', batchSize =
   try {
     // A lock held by something else should fail this apply, not hang it.
     await client.query(`set local lock_timeout = '5s'`);
+    // After 006 this transaction holds the global write lock, so a stuck run must not block editors.
+    await client.query(`set local statement_timeout = '120s'`);
+    await client.query(`set local idle_in_transaction_session_timeout = '15s'`);
+    await beginRecordedChange(client, direction);
     let updated = 0;
     for (let i = 0; i < pairs.length; i += batchSize) {
       const batch = pairs.slice(i, i + batchSize);
