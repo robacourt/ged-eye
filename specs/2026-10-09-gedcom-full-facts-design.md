@@ -77,7 +77,10 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
 ### Stage 1: `parseGedcomTree(text)` (new export)
 
 - Split on `\n` and strip a trailing `\r` from each line. Skip lines that are empty or only whitespace.
-- Match each line with `^\s*(\d+) (?:(@[^@]+@) )?(\S+)(?: (.*))?$`. Lines that don't match are skipped, as today.
+- Match each line with `^\s*(\d+) (?:(@[^@]+@) )?(\S+)(?: (.*))?$`. Lines that don't match are skipped.
+  - The regex is stricter than the legacy one about whitespace between level, xref and tag. Every line of the archived `acourt.ged` matches both.
+  - A skipped line's children attach to the previous open node.
+  - Neon is the master copy and no other GEDCOM will be imported, so this tolerance isn't extended.
 - **Node shape:** `{ level, xref, tag, value, children }`.
   - `xref` has its `@` signs removed, or is `null`.
   - `value` is everything after the single delimiter space, verbatim, or `''`.
@@ -104,6 +107,14 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
   | FAM | `MARR`, `DIV` | Like BIRT. |
 
 - **Removed keys.** `NOTE`, `OCCU`, `CENS`, `RESI`, `RELI`, `EDUC` and the stray keys leaked by bugs 2 and 3 are no longer put in `data`. Nothing outside `extractPersonData` reads them, and `extractPersonData` reads facts from `node`.
+- **Other GEDCOM files.** Parity is proven on the archived file only. On a different export, the fixed bleed could legitimately change columns:
+  - a citation's `DATA > DATE` no longer overwrites a birth date
+  - a PLAC with CONC now joins
+  - a SOUR record before an INDI no longer overwrites that person's NAME
+  - ADOP > FAMC no longer adds a parent
+  - pointer NOTEs (`@N1@`) would show as text
+
+  None of these occur in `acourt.ged`.
 
 ### `extractPersonData(parsedGed, id)`
 
