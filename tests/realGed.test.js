@@ -7,6 +7,7 @@ import { ROOT } from '../scripts/neon/cli.js';
 import * as current from '../scripts/gedParser.js';
 import * as legacy from './fixtures/legacyGedParser.js';
 import { parseGedcomTree } from '../scripts/gedTree.js';
+import { gedToRows } from '../scripts/neon/gedToRows.js';
 
 // The real tree is gitignored, so worktrees lack it:
 // GED_PATH=/Users/rob/src/ged_eye/acourt.ged npx vitest run tests/realGed.test.js
@@ -19,6 +20,20 @@ const omit = (object, keys) => Object.fromEntries(Object.entries(object).filter(
 const pick = (object, keys) => Object.fromEntries(keys.filter(key => object[key] !== undefined).map(key => [key, object[key]]));
 const eventOf = (event) => event && pick(event, ['DATE', 'PLAC']);
 const familyLinks = (d) => ({ HUSB: d.HUSB, WIFE: d.WIFE, CHIL: d.CHIL, MARR: eventOf(d.MARR), DIV: eventOf(d.DIV) });
+
+// Every photo path the parsers produce, mapped to a unique fake object, so personMedia positions are compared too.
+function syntheticManifest(parsedGeds) {
+  const files = {};
+  for (const [ged, extract] of parsedGeds) {
+    for (const id of ged.individuals.keys()) {
+      for (const photo of extract(ged, id).photos) {
+        files[photo] = { sha256: `sha-${photo}`, objectKey: `originals/${photo}`, thumbKey: null,
+          contentType: 'application/octet-stream', byteSize: 1, fileName: path.basename(photo) };
+      }
+    }
+  }
+  return { files, avatars: {} };
+}
 
 describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
   let text;
@@ -86,4 +101,20 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     expect(i1423Photos).toContain('Data/Picture/Picture/Barnett 1.jpg');
     expect(i1423Photos).not.toContain('Data/Picture/Picture/Barnett 1A.jpg');
   });
+
+  it('builds the same rows as the legacy parser, apart from facts', () => {
+    const manifest = syntheticManifest([[parsed, current.extractPersonData], [legacyParsed, legacy.extractPersonData]]);
+    const after = gedToRows(parsed, manifest, new Map());
+    const before = gedToRows(legacyParsed, manifest, new Map(), legacy.extractPersonData);
+    const withoutFacts = (rows) => rows.people.map(({ facts, ...row }) => row);
+    expect(withoutFacts(after)).toEqual(withoutFacts(before));
+    for (const key of ['families', 'familyChildren', 'media', 'personMedia', 'warnings']) {
+      expect(after[key], key).toEqual(before[key]);
+    }
+    const photos = [...parsed.individuals.keys()].reduce((n, id) => n + current.extractPersonData(parsed, id).photos.length, 0);
+    expect(photos).toBe(1262);
+    // I417 and I2616 each list one path twice; gedToRows keeps the first and warns duplicate_media.
+    expect(after.personMedia).toHaveLength(1260);
+    expect(after.warnings.filter(w => w.type === 'duplicate_media').map(w => w.personId)).toEqual(['I417', 'I2616']);
+  }, 30_000);
 });

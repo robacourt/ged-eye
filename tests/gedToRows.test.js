@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { parseGedcom } from '../scripts/gedParser.js';
-import { gedToRows } from '../scripts/neon/gedToRows.js';
+import { gedToRows, personFacts } from '../scripts/neon/gedToRows.js';
 
 const GED = String.raw`0 HEAD
 0 @I1@ INDI
@@ -158,5 +158,11 @@ describe('gedToRows', () => {
     const { warnings } = gedToRows(parseGedcom(ged), { files: {}, avatars: {} }, new Map());
     expect(warnings).toContainEqual({ type: 'fams_mismatch', personId: 'I1', detail: 'FAMS F1; family records ' });
     expect(warnings).toContainEqual({ type: 'famc_mismatch', personId: 'I1', detail: 'FAMC F2; family records ' });
+  });
+
+  it('personFacts keeps exactly the facts keys a person has', () => {
+    expect(personFacts({ id: 'I1', name: 'A', notes: ['n'], otherFacts: [{ tag: '_MILT' }], causeOfDeath: 'Fever', religion: 'old key' }))
+      .toEqual({ notes: ['n'], otherFacts: [{ tag: '_MILT' }], causeOfDeath: 'Fever' });
+    expect(personFacts({ id: 'I2', name: 'B' })).toEqual({});
   });
 });
