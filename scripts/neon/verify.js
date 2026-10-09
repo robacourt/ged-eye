@@ -4,7 +4,7 @@ import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { ROOT, argValue, isMain, readJson } from './cli.js';
 import { readLegacyPeople } from './legacyData.js';
 import {
-  canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
+  apiMatchesView, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
 } from './verifyCompare.js';
 import { BUCKET, MANIFEST_PATH } from './uploadMedia.js';
 import { WARNINGS_PATH } from './importGed.js';
@@ -96,7 +96,7 @@ async function main() {
         problems.push(`api ${id}: status ${res.status} but body is not valid JSON (${error.message})`);
         continue;
       }
-      if (canonical(body) !== canonical(views.get(id))) problems.push(`api ${id}: body differs from database`);
+      if (!apiMatchesView(body, views.get(id))) problems.push(`api ${id}: body differs from database`);
     }
   }
   await pool.end();
