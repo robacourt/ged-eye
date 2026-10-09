@@ -7,18 +7,30 @@ export function nameOf(person) {
   return (person?.display_name ?? '').trim() || UNNAMED;
 }
 
-// What B is to A, by B's sex where known.
+// What B is to A, by B's sex where known, and the article a summary uses with it.
 const RELATION_WORDS = {
-  parent: { F: 'the mother', M: 'the father', other: 'a parent' },
-  child: { F: 'a daughter', M: 'a son', other: 'a child' },
-  spouse: { F: 'the wife', M: 'the husband', other: 'the spouse' },
-  sibling: { F: 'a sister', M: 'a brother', other: 'a sibling' }
+  parent: { F: 'mother', M: 'father', other: 'parent', article: 'a' },
+  child: { F: 'daughter', M: 'son', other: 'child', article: 'a' },
+  spouse: { F: 'wife', M: 'husband', other: 'spouse', article: 'the' },
+  sibling: { F: 'sister', M: 'brother', other: 'sibling', article: 'a' }
 };
 
-/** "the mother", "a son", "the spouse", ... for `relation` ('parent' | 'child' | 'spouse' | 'sibling'). */
-export function relationPhrase(relation, sex) {
+/** "mother", "son", "spouse", ... for `relation` ('parent' | 'child' | 'spouse' | 'sibling'). */
+export function relationWord(relation, sex) {
   const words = RELATION_WORDS[relation];
   return sex === 'F' || sex === 'M' ? words[sex] : words.other;
+}
+
+/** "the mother", "a son", "the spouse", ...: a parent or spouse of known sex takes "the". */
+export function relationPhrase(relation, sex) {
+  const known = sex === 'F' || sex === 'M';
+  const article = relation === 'parent' && known ? 'the' : RELATION_WORDS[relation].article;
+  return `${article} ${relationWord(relation, sex)}`;
+}
+
+/** "his", "her" or "their", by sex. */
+export function possessive(sex) {
+  return sex === 'M' ? 'his' : sex === 'F' ? 'her' : 'their';
 }
 
 /** "A", "A and B", "A, B and C", or "A, B and 2 others" beyond three. */

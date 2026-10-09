@@ -29,7 +29,7 @@ const gone = (what) => stale(`${what} Reload to see the latest.`);
 async function summarise(tx, family, person, role) {
   const otherPartners = await peopleByIds(tx, partnersOf(family).filter((id) => id !== person.id));
   if (role === 'child') {
-    if (otherPartners.length === 0) return `Removed ${nameOf(person)} from family ${family.id}`;
+    if (otherPartners.length === 0) return `Removed ${nameOf(person)} from a family with no parents`; // legacy only
     return `Removed ${nameOf(person)} as ${relationPhrase('child', person.sex)} of ${listNames(otherPartners.map(nameOf))}`;
   }
   if (otherPartners.length > 0) {
@@ -37,7 +37,7 @@ async function summarise(tx, family, person, role) {
   }
   const { rows } = await tx.query('select child_id from family_child where family_id = $1 order by position', [family.id]);
   const children = await peopleByIds(tx, rows.map((row) => row.child_id));
-  if (children.length === 0) return `Removed ${nameOf(person)} from family ${family.id}`;
+  if (children.length === 0) return `Removed ${nameOf(person)} from an empty family`;
   return `Removed ${nameOf(person)} as ${relationPhrase('parent', person.sex)} of ${listNames(children.map(nameOf))}`;
 }
 

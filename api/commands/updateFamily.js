@@ -28,7 +28,7 @@ export async function run(tx, { id, expected, fields, focusId }) {
   const family = await findFamily(tx, id);
   if (!family) throw stale('That family no longer exists. Reload to see the latest.');
   const partners = await peopleByIds(tx, partnersOf(family));
-  const couple = partners.length > 0 ? listNames(partners.map(nameOf)) : `family ${id}`; // no partners: legacy only
+  const couple = partners.length > 0 ? listNames(partners.map(nameOf)) : 'an empty family'; // no partners: legacy only
   if (!FAMILY_FIELDS.every((name) => same(family[name], expected[name]))) {
     throw stale(`Someone else changed the marriage of ${couple} since you opened it. Reload to see their changes.`);
   }

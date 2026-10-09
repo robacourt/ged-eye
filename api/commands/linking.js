@@ -4,7 +4,7 @@
  * global write lock (begin_change), so what it reads can't change before it writes.
  */
 import { ApiError, invalid } from '../http.js';
-import { nameOf } from './summary.js';
+import { nameOf, possessive, relationWord } from './summary.js';
 
 /** person.updated_at exactly as person_record sends it (`updatedAt`), for optimistic concurrency. */
 const UPDATED_AT_TEXT = `to_char(updated_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"')`;
@@ -156,6 +156,58 @@ async function appendChild(tx, familyId, childId) {
 const cycle = (field, b) => invalid(field, `That would make ${nameOf(b)} their own ancestor.`);
 
 /**
+ * "That would make Ann both Tom's wife and his daughter": the error for partners `highId` and
+ * `lowId` (an ancestor and a descendant). `direct` says the link makes `lowId` a child of `highId`.
+ */
+async function partnersRelated(tx, highId, lowId, field, direct) {
+  const [high, low] = await peopleByIds(tx, [highId, lowId]);
+  let child = direct;
+  if (!child) {
+    const { rows } = await tx.query(
+      `select 1 from family_child fc join family f on f.id = fc.family_id
+       where fc.child_id = $2 and $1 in (f.partner1_id, f.partner2_id)`, [highId, lowId]);
+    child = rows.length > 0;
+  }
+  const kin = child ? relationWord('child', low.sex) : 'descendant';
+  return invalid(field,
+    `That would make ${nameOf(low)} both ${nameOf(high)}'s ${relationWord('spouse', low.sex)} and ${possessive(high.sex)} ${kin}.`);
+}
+
+/**
+ * A new parent→child edge X→Y makes X and X's ancestors ancestors of Y and Y's descendants. Refuses
+ * it if two partners of any family would end up on either side: one in {X} ∪ ancestors(X), the
+ * other in {Y} ∪ descendants(Y). Checked before the write, after the cycle check.
+ */
+async function checkEdgeKeepsPartnersUnrelated(tx, parentId, childId, field) {
+  const { rows: [hit] } = await tx.query(
+    `with up as (select $1::text as id union select id from ancestors_of($1)),
+          down as (select $2::text as id union select id from descendants_of($2))
+     select u.id as high_id, d.id as low_id
+     from family f
+     join up u on u.id in (f.partner1_id, f.partner2_id)
+     join down d on d.id in (f.partner1_id, f.partner2_id)
+     where u.id <> d.id
+     limit 1`, [parentId, childId]);
+  if (hit) throw await partnersRelated(tx, hit.high_id, hit.low_id, field, hit.high_id === parentId && hit.low_id === childId);
+}
+
+/**
+ * The spouse rules for a new couple (a new spouse family, or a parent filling the free slot of a
+ * family): `aId` and `bId` mustn't already be partners in a family, and neither may be the other's
+ * ancestor. `elsewhere` words the duplicate for a parent, whose couple is already in another family.
+ */
+async function checkNewCouple(tx, aId, bId, field, { elsewhere = false } = {}) {
+  const { rows } = await tx.query(
+    `select 1 from family where (partner1_id = $1 and partner2_id = $2) or (partner1_id = $2 and partner2_id = $1)`, [aId, bId]);
+  if (rows.length > 0) {
+    const [a, b] = await peopleByIds(tx, [aId, bId]);
+    throw invalid(field, `${nameOf(a)} and ${nameOf(b)} are already partners${elsewhere ? ' in another family' : ''}.`);
+  }
+  if (await isAncestor(tx, aId, bId)) throw await partnersRelated(tx, aId, bId, field, false);
+  if (await isAncestor(tx, bId, aId)) throw await partnersRelated(tx, bId, aId, field, false);
+}
+
+/**
  * P for "+ Parent" and "+ Sibling": `familyId` if given (one of A's parent families), else A's
  * only parent family; null when A has none.
  */
@@ -175,6 +227,7 @@ async function linkParent(tx, a, b, familyId, field) {
   const family = await chooseParentFamily(tx, a, familyId);
   if (!family) {
     if (await isDescendantOrSelfOfAny(tx, b.id, [a.id])) throw cycle(field, b);
+    await checkEdgeKeepsPartnersUnrelated(tx, b.id, a.id, field);
     const id = await createFamily(tx, b, null);
     await appendChild(tx, id, a.id);
     return id;
@@ -183,18 +236,18 @@ async function linkParent(tx, a, b, familyId, field) {
   const slot = family.partner1_id === null ? 'partner1_id' : family.partner2_id === null ? 'partner2_id' : null;
   if (!slot) throw invalid('familyId', `${nameOf(a)} already has two parents in that family.`);
   // B becomes a parent of all of P's children, so B must not be one of them or their descendant.
-  if (await isDescendantOrSelfOfAny(tx, b.id, await childIdsOf(tx, family.id))) throw cycle(field, b);
+  const childIds = await childIdsOf(tx, family.id);
+  if (await isDescendantOrSelfOfAny(tx, b.id, childIds)) throw cycle(field, b);
+  // B becomes the partner of P's other parent (the spouse rules apply), and a parent of each child.
+  for (const partnerId of partnersOf(family)) await checkNewCouple(tx, b.id, partnerId, field, { elsewhere: true });
+  for (const childId of childIds) await checkEdgeKeepsPartnersUnrelated(tx, b.id, childId, field);
   await tx.query(`update family set ${slot} = $2 where id = $1`, [family.id, b.id]);
   return family.id;
 }
 
 /** B becomes a partner of A in a new family. */
 async function linkSpouse(tx, a, b, field) {
-  const shared = (await partnerFamiliesOf(tx, a.id)).some((family) => partnersOf(family).includes(b.id));
-  if (shared) throw invalid(field, `${nameOf(a)} and ${nameOf(b)} are already partners.`);
-  if (await isAncestor(tx, b.id, a.id) || await isAncestor(tx, a.id, b.id)) {
-    throw invalid(field, `${nameOf(a)} and ${nameOf(b)} are directly related: one is the other's ancestor.`);
-  }
+  await checkNewCouple(tx, a.id, b.id, field);
   return createFamily(tx, a, b);
 }
 
@@ -204,6 +257,7 @@ async function addChildTo(tx, a, b, family, field) {
   if (family && await isChildIn(tx, family.id, b.id)) throw invalid(field, `${nameOf(b)} is already a child in that family.`);
   // B becomes a child of every partner of P, so B must not be one of them or their ancestor.
   if (await isAncestorOrSelfOfAny(tx, b.id, partnerIds)) throw cycle(field, b);
+  for (const partnerId of partnerIds) await checkEdgeKeepsPartnersUnrelated(tx, partnerId, b.id, field);
   const id = family?.id ?? await createFamily(tx, a, null);
   await appendChild(tx, id, b.id);
   return id;

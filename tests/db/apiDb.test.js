@@ -2,7 +2,8 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import pg from 'pg';
 import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
-import { createDb, inTransaction } from '../../api/db.js';
+import { createDb } from '../../api/db.js';
+import { inTransaction } from '../../api/tx.js';
 
 // I5 and I6 have LIKE wildcards in their names, to show search matches them literally.
 // I8 and I9 have a punctuation-only word, which trigrams ignore, so only the prefix clauses find it.

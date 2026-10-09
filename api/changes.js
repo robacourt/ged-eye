@@ -2,14 +2,20 @@
  * Runs edit commands (api/commands) as recorded changes, and maps database errors to API errors.
  */
 import { ApiError, invalid, isObject } from './http.js';
-import { inTransaction } from './db.js';
+import { inTransaction } from './tx.js';
 import { COMMANDS } from './commands/index.js';
+
+const BUSY_MESSAGE = 'The family tree is busy — please try again.';
 
 /**
  * A database error as the API error it stands for, or the error itself when it has no mapping.
- * GE001–GE003 come from toggle_change; GE005–GE007 (an unrecorded write, a truncate, a primary-key
- * change) mean a bug, so they are logged 500s. Integrity violations (SQLSTATE class 23) can't come
- * from a race, since every write holds the global lock, so they are logged too.
+ * - GE001–GE003 come from toggle_change, which reports its own integrity violations as GE003
+ *   with reason 'constraint' (a 409 conflict).
+ * - GE005–GE007 (an unrecorded write, a truncate, a primary-key change) and raw integrity
+ *   violations (SQLSTATE class 23) mean a bug: every write holds the global lock, so no race can
+ *   cause them. They are logged 500s.
+ * - A statement timeout (57014, for example while queued on the global lock) or a lock wait
+ *   (55P03) is a 503 busy.
  */
 export function mapDbError(error, log = console.error) {
   if (error instanceof ApiError) return error;
@@ -29,18 +35,23 @@ export function mapDbError(error, log = console.error) {
         blocking: Array.isArray(detail?.blocking) ? detail.blocking : []
       });
     }
+    // Nothing raises GE004 today (toggle_change records even an empty toggle); kept for safety.
     case 'GE004': return new ApiError(400, 'no_change');
     case 'GE005':
     case 'GE006':
     case 'GE007':
       log('edit refused by the database', code, error.message);
       return new ApiError(500, 'internal');
+    case '57014':
+    case '55P03':
+      log('edit timed out', code, error.message);
+      return new ApiError(503, 'busy', { message: BUSY_MESSAGE });
     default:
       break;
   }
   if (code.startsWith('23')) {
     log('edit hit an integrity constraint', code, error.message, error.detail);
-    return new ApiError(409, 'conflict', { reason: 'constraint', blocking: [] });
+    return new ApiError(500, 'internal');
   }
   return error;
 }
@@ -71,7 +82,7 @@ async function beginChange(tx, user, kind, params) {
  * sees every change committed before the lock was granted.
  *
  * → { change: { id, summary, personIds }, view: unmasked person_view of the focus, or null }
- * Throws ApiError (400 invalid / no_change, 404, 409 stale / conflict, 500 internal) or a raw error.
+ * Throws ApiError (400 invalid / no_change, 404, 409 stale, 500 internal, 503 busy) or a raw error.
  * `commands` and `log` are injectable for tests.
  */
 export async function runChange(pool, user, kind, params, { commands = COMMANDS, log = console.error } = {}) {

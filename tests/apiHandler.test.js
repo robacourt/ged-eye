@@ -4,7 +4,8 @@ import { createHandler, VIEW_VERSION } from '../api/handler.js';
 import { ApiError, MAX_BODY_BYTES } from '../api/http.js';
 import { AuthError, authenticatorFromEnv } from '../api/auth.js';
 import { maskNoteEmails } from '../api/privacy.js';
-import { createDb, escapeLike, inTransaction } from '../api/db.js';
+import { createDb, escapeLike } from '../api/db.js';
+import { inTransaction } from '../api/tx.js';
 
 const VIEW = {
   person: { id: 'I1', notes: ['Write to jo@example.org'] },

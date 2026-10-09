@@ -215,7 +215,7 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
       expect(log).toHaveBeenCalledTimes(1);
     });
 
-    it('maps an integrity violation (class 23) to 409 conflict with reason constraint', async () => {
+    it('maps an integrity violation (class 23), which only a bug could cause, to a logged 500 internal', async () => {
       const t = await seed({ people: { rose: ['Rose', 'Smith', 'F'] } });
       const duplicate = {
         kind: 'duplicate',
@@ -225,9 +225,26 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
           return { summary: 'x', personIds: [], focusId: null };
         }
       };
+      const log = vi.fn();
       const result = await expectNothingWritten(() =>
-        failure(runChange(pool, ED, 'duplicate', {}, { commands: new Map([['duplicate', duplicate]]), log: () => {} })));
-      expect(result).toEqual({ status: 409, code: 'conflict', reason: 'constraint', blocking: [] });
+        failure(runChange(pool, ED, 'duplicate', {}, { commands: new Map([['duplicate', duplicate]]), log })));
+      expect(result).toEqual({ status: 500, code: 'internal' });
+      expect(log).toHaveBeenCalledTimes(1);
+    });
+
+    it('maps a statement timeout to 503 busy', async () => {
+      const slow = {
+        kind: 'slow',
+        validate: (params) => params,
+        run: async (tx) => {
+          await tx.query("set local statement_timeout = '50ms'");
+          await tx.query('select pg_sleep(1)');
+          return { summary: 'x', personIds: [], focusId: null };
+        }
+      };
+      const result = await expectNothingWritten(() =>
+        failure(runChange(pool, ED, 'slow', {}, { commands: new Map([['slow', slow]]), log: () => {} })));
+      expect(result).toEqual({ status: 503, code: 'busy', message: 'The family tree is busy — please try again.' });
     });
 
     it('refuses an unknown kind', async () => {
@@ -618,6 +635,16 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
       expect(await expectNothingWritten(() => invalidField('link_existing', { relation: 'parent', anchorId: t.rose, otherId: t.ann, familyId: t.roses }))).toBe('familyId');
     });
 
+    it("parent: filling a free slot applies the spouse rules to the new couple", async () => {
+      const t = await seed({
+        people: { tom: ['Tom', 'Smith', 'M'], ann: ['Ann', 'Jones', 'F'], rose: ['Rose', 'Smith', 'F'] },
+        families: { couple: ['tom', 'ann'], roses: ['tom', null, ['rose']] }
+      });
+      // Tom and Ann are already a couple elsewhere: Rose should be linked to that family instead.
+      expect(await expectNothingWritten(() => failure(run('link_existing', { relation: 'parent', anchorId: t.rose, otherId: t.ann }))))
+        .toMatchObject({ status: 400, code: 'invalid', field: 'otherId', message: 'Ann Jones and Tom Smith are already partners in another family.' });
+    });
+
     it('parent: refuses B who is already a partner in that family', async () => {
       const t = await seed({ people: { tom: ['Tom', 'Smith', 'M'], rose: ['Rose', 'Smith', 'F'] }, families: { f: ['tom', null, ['rose']] } });
       expect(await expectNothingWritten(() => invalidField('link_existing', { relation: 'parent', anchorId: t.rose, otherId: t.tom }))).toBe('otherId');
@@ -645,6 +672,56 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
       expect(await link(t.lone, t.lonesGrandkid)).toBe('otherId'); // no parent family: B is A's descendant
     });
 
+    it("refuses a child link that would make a partner their spouse's child or descendant", async () => {
+      const t = await seed({
+        people: { tom: ['Tom', 'Smith', 'M'], ann: ['Ann', 'Jones', 'F'], jack: ['Jack', 'Smith', 'M'], kim: ['Kim', 'Lee', 'F'] },
+        families: { marriage: ['tom', 'ann'], second: ['tom', 'kim'], first: ['tom', null, ['jack']] }
+      });
+      const refuse = (params) => expectNothingWritten(() => failure(run('link_existing', params)));
+      // In their own family, Ann would be her own ancestor (the cycle check).
+      expect(await refuse({ relation: 'child', anchorId: t.tom, otherId: t.ann, familyId: t.marriage })).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: 'That would make Ann Jones their own ancestor.'
+      });
+      // In Tom's single-parent family ('new' reuses `first`), she would be his wife and his daughter.
+      expect(await refuse({ relation: 'child', anchorId: t.tom, otherId: t.ann, familyId: 'new' })).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: "That would make Ann Jones both Tom Smith's wife and his daughter."
+      });
+      // A grandchild: Kim as a child of Tom's son Jack.
+      expect(await refuse({ relation: 'child', anchorId: t.jack, otherId: t.kim, familyId: 'new' })).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: "That would make Kim Lee both Tom Smith's wife and his descendant."
+      });
+      // A sibling of Tom's son is Tom's child.
+      expect(await refuse({ relation: 'sibling', anchorId: t.jack, otherId: t.kim })).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: "That would make Kim Lee both Tom Smith's wife and his daughter."
+      });
+    });
+
+    it("refuses a parent link that would make a partner their spouse's parent or ancestor", async () => {
+      const t = await seed({
+        people: {
+          tom: ['Tom', 'Smith', 'M'], ann: ['Ann', 'Jones', 'F'], gran: ['Gran', 'Smith', 'F'], rose: ['Rose', 'Smith', 'F'],
+          oldBob: ['Old', 'Bob', 'M'], youngBob: ['Young', 'Bob', 'M'], lily: ['Lily', 'May', 'F']
+        },
+        families: {
+          marriage: ['tom', 'ann'], grans: [null, 'gran', ['tom']], toms: ['tom', null, ['rose']],
+          bobs: ['oldBob', null, ['youngBob']], lilyAndBob: ['oldBob', 'lily']
+        }
+      });
+      const refuse = (anchorId, otherId) => expectNothingWritten(() => failure(run('link_existing', { relation: 'parent', anchorId, otherId })));
+      // Ann filling the free slot of her husband Tom's parent family.
+      expect(await refuse(t.tom, t.ann)).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: "That would make Tom Smith both Ann Jones's husband and her son."
+      });
+      // Lily has no parent family, so F(Young Bob, none) would be created: Old Bob, her husband, would be her grandfather.
+      expect(await refuse(t.lily, t.youngBob)).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: "That would make Lily May both Old Bob's wife and his descendant."
+      });
+      // Filling Rose's free parent slot with Gran would make Gran the partner of her own son Tom.
+      expect(await refuse(t.rose, t.gran)).toMatchObject({
+        status: 400, code: 'invalid', field: 'otherId', message: "That would make Tom Smith both Gran Smith's husband and her son."
+      });
+    });
+
     it('spouse: creates F(A, B), even when B is already married to someone else', async () => {
       const t = await seed({
         people: { tom: ['Tom', 'Smith', 'M'], ann: ['Ann', 'Jones', 'F'], kim: ['Kim', 'Lee', 'F'] },
@@ -668,6 +745,10 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
       expect(await link(t.gus, t.tom)).toBe('otherId'); // a grandparent
       expect(await link(t.tom, t.gus)).toBe('otherId'); // a grandchild
       expect(await link(t.rose, t.ann)).toBe('otherId'); // a parent
+      expect(await failure(run('link_existing', { relation: 'spouse', anchorId: t.gus, otherId: t.tom })))
+        .toMatchObject({ message: "That would make Gus Smith both Tom Smith's husband and his descendant." });
+      expect(await failure(run('link_existing', { relation: 'spouse', anchorId: t.ann, otherId: t.rose })))
+        .toMatchObject({ message: "That would make Rose Smith both Ann Jones's wife and her daughter." });
     });
 
     it('child: links B who already has parents, giving them a second parent family', async () => {
@@ -861,7 +942,7 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
     it('cleanup: removing the only partner of an empty family deletes it', async () => {
       const t = await seed({ people: { kim: ['Kim', 'Lee', 'U'] }, families: { f: ['kim', null] } });
       const { change } = await run('unlink', { familyId: t.f, personId: t.kim, role: 'partner' });
-      expect(change.summary).toBe(`Removed Kim Lee from family ${t.f}`);
+      expect(change.summary).toBe('Removed Kim Lee from an empty family');
       expect(await family(t.f)).toBeUndefined();
     });
 

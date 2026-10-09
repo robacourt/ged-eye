@@ -4,7 +4,7 @@ import { ApiError } from '../api/http.js';
 import {
   validateFacts, validatePersonFields, validateFamilyFields, MAX_LINE, MAX_FACT_STRING, MAX_FACTS_BYTES
 } from '../api/commands/validate.js';
-import { nameOf, relationPhrase, listNames, UNNAMED } from '../api/commands/summary.js';
+import { nameOf, relationPhrase, relationWord, possessive, listNames, UNNAMED } from '../api/commands/summary.js';
 import { commandFor, COMMANDS } from '../api/commands/index.js';
 import { mapDbError, runChange } from '../api/changes.js';
 
@@ -199,6 +199,12 @@ describe('summary words', () => {
     }
   });
 
+  it('has bare relation words and possessives by sex, for validation messages', () => {
+    expect(['F', 'M', 'U', null].map((sex) => relationWord('child', sex))).toEqual(['daughter', 'son', 'child', 'child']);
+    expect(['F', 'M', 'U', null].map((sex) => relationWord('spouse', sex))).toEqual(['wife', 'husband', 'spouse', 'spouse']);
+    expect(['F', 'M', 'U', null].map(possessive)).toEqual(['her', 'his', 'their', 'their']);
+  });
+
   it('lists names', () => {
     expect(listNames([])).toBe('');
     expect(listNames(['A'])).toBe('A');
@@ -332,9 +338,15 @@ describe('api/changes.js', () => {
     expect(log).not.toHaveBeenCalled();
     for (const code of ['GE005', 'GE006', 'GE007']) expect(mapped(pg(code))).toEqual({ status: 500, code: 'internal' });
     expect(log).toHaveBeenCalledTimes(3);
-    expect(mapped(pg('23505'))).toEqual({ status: 409, code: 'conflict', reason: 'constraint', blocking: [] });
-    expect(mapped(pg('23503'))).toEqual({ status: 409, code: 'conflict', reason: 'constraint', blocking: [] });
-    const other = pg('57014');
+    // A command can't hit an integrity violation except through a bug: every write holds the global lock.
+    expect(mapped(pg('23505'))).toEqual({ status: 500, code: 'internal' });
+    expect(mapped(pg('23503'))).toEqual({ status: 500, code: 'internal' });
+    expect(log).toHaveBeenCalledTimes(5);
+    // A statement timeout (for example while queued on the global lock) or a lock wait.
+    const busy = { status: 503, code: 'busy', message: 'The family tree is busy — please try again.' };
+    expect(mapped(pg('57014'))).toEqual(busy);
+    expect(mapped(pg('55P03'))).toEqual(busy);
+    const other = pg('08006');
     expect(mapDbError(other, log)).toBe(other);
     const api = new ApiError(400, 'no_change');
     expect(mapDbError(api, log)).toBe(api);
