@@ -4,7 +4,8 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import {
-  planFacts, formatSummary, describeRow, checkConfirm, parseArgs, checkPlanFile, readPlanFile, StalePlanError, CORE_COLUMNS
+  planFacts, formatSummary, describeRow, checkConfirm, parseArgs, checkPlanFile, readPlanFile, StalePlanError, CORE_COLUMNS,
+  plural, nextStepLines
 } from '../scripts/neon/backfillFacts.js';
 
 const CORE = Object.fromEntries(CORE_COLUMNS.map(column => [column, null]));
@@ -156,6 +157,13 @@ describe('checkPlanFile', () => {
   ])('rejects %s', (_name, make, mention) => {
     expect(() => checkPlanFile(make())).toThrow(mention);
   });
+
+  it('rejects a row whose before and after are the same facts, whatever their key order', () => {
+    const plan = good();
+    plan.rows.push({ id: 'I9', before: { a: 1, b: { c: 2, d: 3 } }, after: { b: { d: 3, c: 2 }, a: 1 } });
+    expect(() => checkPlanFile(plan)).toThrow(new Error('Plan row 2 (I9) has identical before and after'));
+    expect(() => checkPlanFile({ host: 'h', rows: [{ id: 'I1', before: {}, after: {} }] })).toThrow('Plan row 0 (I1) has identical before and after');
+  });
 });
 
 describe('readPlanFile', () => {
@@ -190,12 +198,40 @@ describe('readPlanFile', () => {
   });
 });
 
+describe('plural', () => {
+  it('puts an s on every count but one', () => {
+    expect([0, 1, 2, 500].map(n => plural(n, 'row'))).toEqual(['0 rows', '1 row', '2 rows', '500 rows']);
+  });
+});
+
+describe('nextStepLines', () => {
+  it('prints the flags only, for the apply and for the rollback', () => {
+    expect(nextStepLines('/work/.neon-import/plan.json', 'ep-x.neon.tech')).toEqual([
+      'apply with: --apply /work/.neon-import/plan.json --confirm ep-x.neon.tech',
+      'keep this file: it is the rollback (--rollback /work/.neon-import/plan.json --confirm ep-x.neon.tech)'
+    ]);
+  });
+
+  it('single-quotes a path with a space in it, escaping any quote inside', () => {
+    expect(nextStepLines('/my files/plan.json', 'h')).toEqual([
+      "apply with: --apply '/my files/plan.json' --confirm h",
+      "keep this file: it is the rollback (--rollback '/my files/plan.json' --confirm h)"
+    ]);
+    expect(nextStepLines("/it's here/plan.json", 'h')[0]).toBe(`apply with: --apply '/it'\\''s here/plan.json' --confirm h`);
+  });
+});
+
 describe('StalePlanError', () => {
   it('names the batch and how many of its rows were stale', () => {
     const error = new StalePlanError(['I2', 'I3'], 3, 500);
-    expect(error.message).toBe('batch 3: 2 of 500 rows changed or were edited since the plan (I2, I3); nothing was written');
+    expect(error.message).toBe('batch 3: 2 of 500 rows were changed or edited since the plan (I2, I3); nothing was written');
     expect(error.ids).toEqual(['I2', 'I3']);
     expect(error.name).toBe('StalePlanError');
+  });
+
+  it('agrees with a single stale row, and with a single-row batch', () => {
+    expect(new StalePlanError(['I2'], 1, 500).message).toBe('batch 1: 1 of 500 rows was changed or edited since the plan (I2); nothing was written');
+    expect(new StalePlanError(['I3'], 3, 1).message).toBe('batch 3: 1 of 1 row was changed or edited since the plan (I3); nothing was written');
   });
 
   it('lists only the first 20 ids in the message, keeping all of them on .ids', () => {

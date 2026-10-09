@@ -20,6 +20,9 @@ import { ROOT, isMain, readJson, writeJson } from './cli.js';
 export const CORE_COLUMNS = ['given_name', 'surname', 'display_name', 'sex', 'birth_date', 'birth_place',
   'death_date', 'death_place', 'baptism_date', 'baptism_place', 'burial_date', 'burial_place'];
 
+/** "1 row", "2 rows". */
+export const plural = (count, noun) => `${count} ${noun}${count === 1 ? '' : 's'}`;
+
 function countKeys(keys, before, after) {
   for (const key of new Set([...Object.keys(before), ...Object.keys(after)])) {
     const kind = !(key in before) ? 'added' : !(key in after) ? 'removed'
@@ -128,7 +131,7 @@ export function parseArgs(argv) {
 
 const isPlainObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 
-/** Throws unless a parsed plan file has the shape this script wrote: host, and rows of unique id + before + after objects. */
+/** Throws unless a parsed plan file has the shape this script wrote: host, and rows of unique id + before + after objects that differ. */
 export function checkPlanFile(plan) {
   if (!isPlainObject(plan)) throw new Error('The plan file is not a plan: expected a JSON object');
   if (typeof plan.host !== 'string') throw new Error('The plan has no host (a string)');
@@ -137,6 +140,7 @@ export function checkPlanFile(plan) {
   plan.rows.forEach((row, index) => {
     if (!isPlainObject(row) || typeof row.id !== 'string') throw new Error(`Plan row ${index} has no string id`);
     if (!isPlainObject(row.before) || !isPlainObject(row.after)) throw new Error(`Plan row ${index} (${row.id}) needs before and after objects`);
+    if (canonical(row.before) === canonical(row.after)) throw new Error(`Plan row ${index} (${row.id}) has identical before and after`);
     if (seen.has(row.id)) throw new Error(`The plan lists ${row.id} more than once`);
     seen.add(row.id);
   });
@@ -173,7 +177,7 @@ export class StalePlanError extends Error {
   constructor(ids, batchNumber, batchSize) {
     const shown = ids.slice(0, MAX_LISTED).join(', ');
     const more = ids.length > MAX_LISTED ? `, … and ${ids.length - MAX_LISTED} more` : '';
-    super(`batch ${batchNumber}: ${ids.length} of ${batchSize} rows changed or were edited since the plan (${shown}${more}); nothing was written`);
+    super(`batch ${batchNumber}: ${ids.length} of ${plural(batchSize, 'row')} ${ids.length === 1 ? 'was' : 'were'} changed or edited since the plan (${shown}${more}); nothing was written`);
     this.name = 'StalePlanError';
     this.ids = ids;
   }
@@ -234,13 +238,13 @@ export async function applyPlan(client, plan, { direction = 'apply', batchSize =
   }
 }
 
-/** Planned ids whose facts don't equal the side the given direction writes. */
+/** The ids of a planState() that hold the side the given direction writes. */
+const writtenBy = (state, direction) => (sides(direction).to === 'after' ? state.atAfter : state.atBefore);
+
+/** Planned ids (in plan order) whose facts don't equal the side the given direction writes. */
 export async function verifyPlan(client, plan, { direction = 'apply' } = {}) {
-  const { to } = sides(direction);
-  const ids = plan.rows.map(row => row.id);
-  const { rows } = await client.query('select id, facts from person where id = any($1)', [ids]);
-  const actual = new Map(rows.map(row => [row.id, row.facts]));
-  return plan.rows.filter(row => !actual.has(row.id) || canonical(actual.get(row.id)) !== canonical(row[to])).map(row => row.id);
+  const written = new Set(writtenBy(await planState(client, plan), direction));
+  return plan.rows.map(row => row.id).filter(id => !written.has(id));
 }
 
 /**
@@ -264,6 +268,16 @@ export async function planState(client, plan) {
 
 const SAMPLE_IDS = ['I1', 'I23', 'I443'];
 
+// Bare if it is plain, otherwise in single quotes (a quote inside is closed, escaped and reopened).
+const shellWord = (text) => (/^[\w@%+=:,./-]+$/.test(text) ? text : `'${text.replaceAll("'", `'\\''`)}'`);
+
+/** The flags to pass the script next, to apply the plan just written and to keep it as the rollback. */
+export function nextStepLines(planPath, host) {
+  const [file, confirm] = [shellWord(planPath), shellWord(host)];
+  return [`apply with: --apply ${file} --confirm ${confirm}`,
+    `keep this file: it is the rollback (--rollback ${file} --confirm ${confirm})`];
+}
+
 async function makePlan(client, host, { out: outArg, sha }) {
   const out = path.resolve(outArg ?? path.join(ROOT, '.neon-import', `facts-backfill-plan-${host}.json`));
   // An earlier plan may be the only rollback for an apply already made, so never overwrite one.
@@ -284,19 +298,17 @@ async function makePlan(client, host, { out: outArg, sha }) {
   writeJson(out, { createdAt: new Date().toISOString(), host, archiveSha: archive.sha256, summary, rows });
   console.log(formatSummary(summary).join('\n'));
   for (const row of rows.filter(r => SAMPLE_IDS.includes(r.id))) console.log(describeRow(row).join('\n'));
-  console.log(`plan for ${host} (archive ${archive.sha256.slice(0, 12)}): ${out}, ${rows.length} rows`);
-  if (rows.length > 0) {
-    console.log(`apply with: npm run backfill-facts -- --apply ${out} --confirm ${host}`);
-    console.log(`keep this file: it is the rollback (--rollback ${out} --confirm ${host})`);
-  }
+  console.log(`plan for ${host} (archive ${archive.sha256.slice(0, 12)}): ${out}, ${plural(rows.length, 'row')}`);
+  if (rows.length > 0) console.log(nextStepLines(out, host).join('\n'));
 }
 
 const sampleIds = (ids) => `${ids.slice(0, 3).join(' ')}${ids.length > 3 ? ' …' : ''}`;
 
 /**
- * Applies (or rolls back) a plan and verifies it. If that fails, looks at where the rows stand:
- * a plan already at the side being written is reported and returns normally (a re-run, or a commit
- * that went through before the connection failed); otherwise throws saying what the rows hold.
+ * Applies (or rolls back) a plan and verifies it. If the write fails, looks at where the rows stand:
+ * rows all at the side being written are reported and it returns normally (a re-run, or a commit
+ * that went through before the connection failed); otherwise it throws saying what the rows hold.
+ * If the write committed but the check afterwards fails or disagrees, it throws saying so.
  */
 export async function writePlan(client, planFile, direction, host, log = console.log) {
   if (planFile.rows.length === 0) {
@@ -312,26 +324,51 @@ export async function writePlan(client, planFile, direction, host, log = console
       state = await planState(client, planFile);
     } catch (checkError) {
       throw rethrown(error, `${direction} failed and the database could not be checked afterwards (${checkError.message}); ` +
-        'run the same command again to see where the plan stands');
+        're-running the same command may carry out the write (guarded by compare-and-swap), ' +
+        `while re-planning with a new --out is the read-only way to see where the plan stands. ${error.message}`);
     }
-    const written = direction === 'apply' ? state.atAfter : state.atBefore;
-    if (written.length === planFile.rows.length) {
-      log(`This plan is already ${direction === 'apply' ? 'applied' : 'rolled back'} on ${host}; nothing to do.`);
+    if (writtenBy(state, direction).length === planFile.rows.length) {
+      log(alreadyHold(planFile, direction, host));
       return;
     }
     const first = Object.entries({ before: state.atBefore, after: state.atAfter, neither: state.neither })
       .filter(([, ids]) => ids.length).map(([side, ids]) => `${side} ${sampleIds(ids)}`).join('; ');
-    throw rethrown(error, `${direction} wrote nothing: ${state.atBefore.length} rows hold the plan's before, ` +
-      `${state.atAfter.length} its after, ${state.neither.length} neither (first ids: ${first})`);
+    const holding = state.atBefore.length;
+    throw rethrown(error, `${direction} wrote nothing: ${plural(holding, 'row')} ${holding === 1 ? 'holds' : 'hold'} the plan's before, ` +
+      `${state.atAfter.length} its after, ${state.neither.length} neither (first ids: ${first}). ${error.message}`);
   }
-  const mismatched = await verifyPlan(client, planFile, { direction });
-  if (mismatched.length) throw new Error(`${direction} committed ${updated} rows, but ${mismatched.length} don't match the plan: ${mismatched.join(', ')}`);
+  let mismatched;
+  try {
+    mismatched = await verifyPlan(client, planFile, { direction });
+  } catch (error) {
+    // The commit went through; say so, so nobody retries or rolls back believing nothing happened.
+    throw rethrown(error, `${direction} committed ${plural(updated, 'row')} on ${host}, but the check afterwards failed (${error.message}); ` +
+      're-plan with a new --out (read-only) or re-run the same command to confirm');
+  }
+  if (mismatched.length) {
+    throw new Error(`${direction} committed ${plural(updated, 'row')}, but ${mismatched.length} ${mismatched.length === 1 ? "doesn't" : "don't"} match the plan: ${mismatched.join(', ')}`);
+  }
   log(JSON.stringify({ direction, host, updated, verified: planFile.rows.length }));
 }
 
-/** A new error saying `what` followed by the original message, keeping the original's detail and cause. */
-function rethrown(error, what) {
-  const wrapped = new Error(`${what}. ${error.message}`, { cause: error });
+/**
+ * What to say when every planned row already holds the side the direction writes. The tool only
+ * knows the rows are there, not whether this plan put them there, so it doesn't say "already applied".
+ */
+function alreadyHold(planFile, direction, host) {
+  const n = planFile.rows.length;
+  const parts = [];
+  if (typeof planFile.createdAt === 'string') parts.push(`plan created ${planFile.createdAt}`);
+  if (typeof planFile.archiveSha === 'string') parts.push(`archive ${planFile.archiveSha.slice(0, 12)}`);
+  const origin = parts.length ? ` (${parts.join(', ')})` : '';
+  const subject = n === 1 ? 'The only planned row' : `All ${n} planned rows`;
+  return `${subject} on ${host} already ${n === 1 ? 'holds' : 'hold'} this plan's ${direction === 'apply' ? 'after' : 'before'}${origin}; nothing to do. ` +
+    `If you expected a change, check this is the plan you ${direction === 'apply' ? 'meant to apply' : 'applied'}.`;
+}
+
+/** A new error with `message` that keeps the original's detail and cause. */
+function rethrown(error, message) {
+  const wrapped = new Error(message, { cause: error });
   if (error.detail) wrapped.detail = error.detail;
   return wrapped;
 }

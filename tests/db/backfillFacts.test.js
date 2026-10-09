@@ -53,7 +53,7 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
     const error = await applyPlan(client, PLAN).catch(e => e);
     expect(error).toBeInstanceOf(StalePlanError);
     expect(error.ids).toEqual(['I2']);
-    expect(error.message).toBe('batch 1: 1 of 3 rows changed or were edited since the plan (I2); nothing was written');
+    expect(error.message).toBe('batch 1: 1 of 3 rows was changed or edited since the plan (I2); nothing was written');
     expect(await factsOf()).toEqual({ I1: { notes: ['old 1'] }, I2: { occupations: ['Miller'] }, I3: {} });
   });
 
@@ -62,7 +62,7 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
     const error = await applyPlan(client, PLAN, { batchSize: 1 }).catch(e => e);
     expect(error).toBeInstanceOf(StalePlanError);
     expect(error.ids).toEqual(['I3']);
-    expect(error.message).toMatch(/^batch 3: 1 of 1 rows /);
+    expect(error.message).toMatch(/^batch 3: 1 of 1 row was /);
     expect(await factsOf()).toEqual({ I1: { notes: ['old 1'] }, I2: { occupations: ['Miller'] }, I3: { notes: ['edited'] } });
   });
 
@@ -111,17 +111,45 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
       expect(await factsOf()).toEqual({ I1: PLAN.rows[0].after, I2: PLAN.rows[1].after, I3: PLAN.rows[2].after });
     });
 
-    it('reports a plan that is already applied, and exits normally', async () => {
+    const SHA = 'abcdef0123456789'.repeat(4);
+    const CREATED = '2026-10-09T10:00:00.000Z';
+    const FACTS_AFTER_APPLY = { I1: PLAN.rows[0].after, I2: PLAN.rows[1].after, I3: PLAN.rows[2].after };
+    const FACTS_BEFORE = { I1: { notes: ['old 1'] }, I2: { occupations: ['Miller'] }, I3: {} };
+
+    it('reports a plan whose rows all hold its after, and exits normally', async () => {
       await run('apply');
-      expect(await run('apply')).toEqual(['This plan is already applied on test; nothing to do.']);
-      expect(await factsOf()).toEqual({ I1: PLAN.rows[0].after, I2: PLAN.rows[1].after, I3: PLAN.rows[2].after });
+      expect(await run('apply', { ...PLAN, createdAt: CREATED, archiveSha: SHA })).toEqual([
+        `All 3 planned rows on test already hold this plan's after (plan created ${CREATED}, archive abcdef012345); ` +
+        'nothing to do. If you expected a change, check this is the plan you meant to apply.'
+      ]);
+      expect(await factsOf()).toEqual(FACTS_AFTER_APPLY);
     });
 
-    it('reports a plan that is already rolled back, and exits normally', async () => {
+    it('reports a plan whose rows all hold its before, and exits normally', async () => {
       await run('apply');
       await run('rollback');
-      expect(await run('rollback')).toEqual(['This plan is already rolled back on test; nothing to do.']);
-      expect(await factsOf()).toEqual({ I1: { notes: ['old 1'] }, I2: { occupations: ['Miller'] }, I3: {} });
+      expect(await run('rollback', { ...PLAN, createdAt: CREATED, archiveSha: SHA })).toEqual([
+        `All 3 planned rows on test already hold this plan's before (plan created ${CREATED}, archive abcdef012345); ` +
+        'nothing to do. If you expected a change, check this is the plan you applied.'
+      ]);
+      expect(await factsOf()).toEqual(FACTS_BEFORE);
+    });
+
+    it('leaves out whatever the plan file does not say about itself, and agrees with a single row', async () => {
+      await run('apply');
+      const nothingToDo = ' already hold this plan\'s after';
+      const tail = '; nothing to do. If you expected a change, check this is the plan you meant to apply.';
+      expect(await run('apply')).toEqual([`All 3 planned rows on test${nothingToDo}${tail}`]);
+      expect(await run('apply', { ...PLAN, createdAt: CREATED })).toEqual([`All 3 planned rows on test${nothingToDo} (plan created ${CREATED})${tail}`]);
+      expect(await run('apply', { ...PLAN, archiveSha: SHA })).toEqual([`All 3 planned rows on test${nothingToDo} (archive abcdef012345)${tail}`]);
+      expect(await run('apply', { host: 'test', rows: [PLAN.rows[1]] })).toEqual([`The only planned row on test already holds this plan's after${tail}`]);
+    });
+
+    it('does not report a plan as done while some of its rows still hold the before', async () => {
+      await run('apply');
+      await client.query(`update person set facts = '{"occupations": ["Miller"]}' where id = 'I2'`);
+      const error = await run('apply').catch(e => e);
+      expect(error.message).toMatch(/^apply wrote nothing: 1 row holds the plan's before, 2 its after, 0 neither /);
     });
 
     it('explains an apply that wrote nothing because a row holds neither side', async () => {
@@ -130,7 +158,7 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
       const error = await run('apply').catch(e => e);
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toMatch(/^apply wrote nothing: 0 rows hold the plan's before, 2 its after, 1 neither \(first ids: .*I2.*\)/);
-      expect(error.message).toContain('batch 1: 3 of 3 rows changed or were edited since the plan');
+      expect(error.message).toContain('batch 1: 3 of 3 rows were changed or edited since the plan');
     });
 
     it('reports an edited row as still holding the plan\'s before', async () => {
@@ -145,6 +173,61 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
       const error = await writePlan(failing, PLAN, 'apply', 'test', () => {}).catch(e => e);
       expect(error.message).toContain('boom');
       expect(error.detail).toBe('the detail');
+    });
+
+    it('says a re-run may write, and a new plan is the read-only check, when the database cannot be checked after a failure', async () => {
+      const failing = { query: async (sql) => { throw new Error(sql === 'begin' ? 'boom' : 'connection lost'); } };
+      const error = await writePlan(failing, PLAN, 'apply', 'test', () => {}).catch(e => e);
+      expect(error.message).toBe(
+        'apply failed and the database could not be checked afterwards (connection lost); ' +
+        're-running the same command may carry out the write (guarded by compare-and-swap), ' +
+        'while re-planning with a new --out is the read-only way to see where the plan stands. boom');
+    });
+
+    // A client that behaves like `client` until the commit, then answers each select of person with `handler(sql, params)`.
+    const afterCommit = (handler) => {
+      let committed = false;
+      return {
+        query: async (sql, params) => {
+          if (committed && sql.startsWith('select id, facts from person')) return handler(sql, params);
+          const result = await client.query(sql, params);
+          if (sql === 'commit') committed = true;
+          return result;
+        }
+      };
+    };
+
+    it('says the commit happened when the check afterwards fails', async () => {
+      const lost = afterCommit(() => { throw Object.assign(new Error('connection lost'), { detail: 'the detail' }); });
+      const error = await writePlan(lost, PLAN, 'apply', 'test', () => {}).catch(e => e);
+      expect(error.message).toBe('apply committed 3 rows on test, but the check afterwards failed (connection lost); ' +
+        're-plan with a new --out (read-only) or re-run the same command to confirm');
+      expect(error.detail).toBe('the detail');
+      expect(error.cause.message).toBe('connection lost');
+      expect(await factsOf()).toEqual(FACTS_AFTER_APPLY);
+      // The re-run it suggests finds nothing left to do.
+      expect((await run('apply'))[0]).toMatch(/^All 3 planned rows on test already hold this plan's after/);
+    });
+
+    it('says the commit happened, in the singular, for a rollback of one row', async () => {
+      const one = { host: 'test', rows: [PLAN.rows[0]] };
+      await run('apply', one);
+      const lost = afterCommit(() => { throw new Error('connection lost'); });
+      const error = await writePlan(lost, one, 'rollback', 'test', () => {}).catch(e => e);
+      expect(error.message).toMatch(/^rollback committed 1 row on test, but the check afterwards failed \(connection lost\);/);
+    });
+
+    it('names the rows that do not match after a commit, in the singular and the plural', async () => {
+      const wrong = (ids) => afterCommit(async (sql, params) => {
+        const { rows } = await client.query(sql, params);
+        return { rows: rows.map(row => (ids.includes(row.id) ? { ...row, facts: { notes: ['somebody else'] } } : row)) };
+      });
+      const one = await writePlan(wrong(['I2']), PLAN, 'apply', 'test', () => {}).catch(e => e);
+      expect(one.message).toBe(`apply committed 3 rows, but 1 doesn't match the plan: I2`);
+      await client.query('truncate person cascade');
+      await client.query(PEOPLE);
+      const two = await writePlan(wrong(['I1', 'I3']), { host: 'test', rows: [PLAN.rows[0], PLAN.rows[2]] }, 'apply', 'test', () => {}).catch(e => e);
+      expect(two.message).toBe(`apply committed 2 rows, but 2 don't match the plan: I1, I3`);
     });
   });
 
