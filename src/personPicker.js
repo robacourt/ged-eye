@@ -4,7 +4,7 @@
  *
  * Every data value is set with `textContent` or as an attribute, never as HTML.
  */
-import { el, callSafely } from './editorDialog.js';
+import { el, callSafely, VISUALLY_HIDDEN } from './editorDialog.js';
 import { nameOf } from './familyLinks.js';
 import { createPersonSearch, lifeYears } from './personSearch.js';
 
@@ -25,39 +25,41 @@ export function createPersonPicker({ api, chosen = [], fixedIds = [], onChange, 
   }
   const isChosen = (id) => people.some(someone => someone.id === id);
   let rows = []; // the results shown: { someone, button, row }
+  const removeButtons = new Map(); // id -> its chip's × button
 
   const chips = el('ul', { class: 'person-picker-chips', 'aria-label': 'Chosen people' });
   const results = el('ul', { class: 'person-picker-results', 'aria-label': 'People found' });
+  const announcer = el('p', { class: 'person-picker-announcer', 'aria-live': 'polite', style: VISUALLY_HIDDEN });
   const element = el('div', { class: 'person-picker' });
   const search = createPersonSearch({ api, label, isActive: () => element.isConnected, onResults: showResults });
-  element.append(chips, search.element, results);
+  element.append(chips, search.element, results, announcer);
 
-  function changed() {
+  function changed(announcement) {
     renderChips();
     updateButtons();
+    announcer.textContent = announcement;
     callSafely(onChange, people.map(someone => ({ ...someone })));
   }
 
   function add(someone) {
     if (isChosen(someone.id)) return;
     people.push({ id: someone.id, name: someone.name ?? '' });
-    changed();
+    changed(`Added ${nameOf(someone)}`);
   }
 
   function remove(id) {
     const index = people.findIndex(someone => someone.id === id);
     if (index === -1 || fixed.has(id)) return;
-    people.splice(index, 1);
-    changed();
+    const [removed] = people.splice(index, 1);
+    changed(`Removed ${nameOf(removed)}`);
     // The × that was pressed has gone: focus the next one, else the one before, else the search box.
     const removable = (someone) => !fixed.has(someone.id);
     const next = people.slice(index).find(removable) ?? people.slice(0, index).reverse().find(removable);
-    const button = next && [...chips.querySelectorAll('.person-picker-remove')]
-      .find(candidate => candidate.closest('.person-picker-chip').dataset.id === next.id);
-    (button ?? search.input).focus();
+    (removeButtons.get(next?.id) ?? search.input).focus();
   }
 
   function renderChips() {
+    removeButtons.clear();
     chips.replaceChildren(...people.map(someone => {
       const name = nameOf(someone);
       const chip = el('li', { class: fixed.has(someone.id) ? 'person-picker-chip person-picker-chip-fixed' : 'person-picker-chip', 'data-id': someone.id },
@@ -65,6 +67,7 @@ export function createPersonPicker({ api, chosen = [], fixedIds = [], onChange, 
       if (!fixed.has(someone.id)) {
         const button = el('button', { type: 'button', class: 'person-picker-remove', 'aria-label': `Remove ${name}`, text: '×' });
         button.addEventListener('click', () => remove(someone.id));
+        removeButtons.set(someone.id, button);
         chip.append(button);
       }
       return chip;
@@ -87,17 +90,21 @@ export function createPersonPicker({ api, chosen = [], fixedIds = [], onChange, 
     updateButtons();
   }
 
-  /** "Add", or "Added" for someone already chosen. It stays focusable (aria-disabled), so focus isn't lost. */
+  /**
+   * "Add", or "Added" for someone already chosen. It stays focusable (aria-disabled), so focus isn't lost. Its
+   * label has the years too, so namesakes can be told apart.
+   */
   function updateButtons() {
     for (const { someone, button } of rows) {
-      const name = nameOf(someone);
+      const years = lifeYears(someone);
+      const who = years ? `${nameOf(someone)}, ${years}` : nameOf(someone);
       if (isChosen(someone.id)) {
         button.textContent = 'Added';
-        button.setAttribute('aria-label', `Added ${name}`);
+        button.setAttribute('aria-label', `Added ${who}`);
         button.setAttribute('aria-disabled', 'true');
       } else {
         button.textContent = 'Add';
-        button.setAttribute('aria-label', `Add ${name}`);
+        button.setAttribute('aria-label', `Add ${who}`);
         button.removeAttribute('aria-disabled');
       }
     }

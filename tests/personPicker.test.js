@@ -23,6 +23,7 @@ const removeButton = (name) => $(`.person-picker-remove[aria-label="Remove ${nam
 const results = () => $$('.person-picker-result').map(result => result.querySelector('.person-picker-result-label').textContent);
 const addButton = (id) => $(`.person-picker-result[data-id="${id}"] .person-picker-add`);
 const status = () => $('.person-search-status').textContent;
+const announced = () => $('.person-picker-announcer').textContent;
 
 function open(options = {}) {
   vi.useFakeTimers();
@@ -69,7 +70,16 @@ describe('createPersonPicker', () => {
     expect(results()).toEqual(['Ann Jones (1850–1910)', 'Rose Smith (b. 1890)', 'Ann Smith (d. 1899)', 'Unnamed person']);
     expect(status()).toBe('4 people found.');
     expect(addButton('I2').textContent).toBe('Add');
-    expect(addButton('I2').getAttribute('aria-label')).toBe('Add Ann Jones');
+  });
+
+  it("labels each Add button with the person's years, so namesakes can be told apart", async () => {
+    open({ chosen: [] });
+    await search('Ann');
+    expect(addButton('I2').getAttribute('aria-label')).toBe('Add Ann Jones, 1850–1910');
+    expect(addButton('I20').getAttribute('aria-label')).toBe('Add Ann Smith, d. 1899');
+    expect(addButton('I22').getAttribute('aria-label')).toBe('Add Unnamed person');
+    addButton('I2').click();
+    expect(addButton('I2').getAttribute('aria-label')).toBe('Added Ann Jones, 1850–1910');
   });
 
   it('adds someone from the results as a chip, firing onChange', async () => {
@@ -108,6 +118,20 @@ describe('createPersonPicker', () => {
     expect(picker.chosen()).toEqual([TOM]);
     expect(addButton('I7').textContent).toBe('Add');
     expect(addButton('I7').hasAttribute('aria-disabled')).toBe(false);
+  });
+
+  it('announces each add and removal in a polite live region', async () => {
+    open({ chosen: [ROSE, TOM] });
+    const region = $('.person-picker-announcer');
+    expect(region.getAttribute('aria-live')).toBe('polite');
+    expect(announced()).toBe('');
+    await search('Ann');
+    addButton('I2').click();
+    expect(announced()).toBe('Added Ann Jones');
+    removeButton('Tom Smith').click();
+    expect(announced()).toBe('Removed Tom Smith');
+    addButton('I22').click();
+    expect(announced()).toBe('Added Unnamed person');
   });
 
   it('moves focus to the next ×, else the previous, else the search box, when a chip is removed', () => {
@@ -164,7 +188,7 @@ describe('createPersonPicker', () => {
     answer(RESULTS);
     await vi.advanceTimersByTimeAsync(0);
     expect(results()).toEqual([]);
-    expect(status()).toBe('Searching…');
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('ignores a search that answers once the picker has left the page', async () => {
@@ -222,6 +246,35 @@ describe('createPersonSearch', () => {
     active = false;
     await vi.advanceTimersByTimeAsync(250);
     expect(api.search).not.toHaveBeenCalled();
+  });
+
+  it('destroy() stops a waiting search and ignores one under way', async () => {
+    let answer;
+    api.search.mockImplementationOnce(() => new Promise(resolve => { answer = resolve; }));
+    const onResults = vi.fn();
+    const search = createPersonSearch({ api, onResults });
+    search.input.value = 'Ann';
+    search.runNow();
+    search.input.dispatchEvent(new Event('input'));
+    search.destroy();
+    answer(RESULTS);
+    await vi.advanceTimersByTimeAsync(250);
+    expect(api.search).toHaveBeenCalledTimes(1);
+    expect(onResults).not.toHaveBeenCalled();
+  });
+
+  it("keeps working when onResults throws, without an unhandled rejection", async () => {
+    const logged = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const onResults = vi.fn(() => { throw new Error('boom'); });
+    const search = createPersonSearch({ api, onResults });
+    search.input.value = 'Ann';
+    search.input.dispatchEvent(new Event('input'));
+    await vi.advanceTimersByTimeAsync(250);
+    expect(onResults).toHaveBeenCalledWith(RESULTS);
+    expect(search.status.textContent).toBe('4 people found.');
+    expect(logged).toHaveBeenCalled();
+    logged.mockRestore();
+    search.destroy();
   });
 
   it('clear() empties the box and the results, and forgets a search under way', async () => {

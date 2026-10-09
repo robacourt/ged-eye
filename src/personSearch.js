@@ -4,7 +4,7 @@
  *
  * Every data value is set with `textContent`, never as HTML.
  */
-import { el } from './editorDialog.js';
+import { el, callSafely } from './editorDialog.js';
 
 const SEARCH_DELAY_MS = 250;
 const SEARCH_MIN_CHARS = 2;
@@ -48,7 +48,7 @@ export function createPersonSearch({ api, isActive = () => true, onResults, filt
   const active = () => !destroyed && isActive();
 
   function show(people, text) {
-    onResults?.(people);
+    callSafely(onResults, people); // a failing callback can't break the box, or reject from the timer
     status.textContent = text;
   }
 
