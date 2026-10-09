@@ -1,5 +1,61 @@
 import { PhotoViewer } from './photoViewer.js';
 import { thumbUrl } from './media.js';
+import { escapeHtml } from './html.js';
+import { factLabel } from './factLabels.js';
+
+// Person notes longer than this are clamped to about NOTE_CLAMP_LINES lines behind "Show more".
+const NOTE_CLAMP_LINES = 6;
+const NOTE_CLAMP_CHARS = 500;
+
+/** A fact's notes behind a native disclosure; summaryWord is "Note" or "Transcription". */
+function notesDisclosure(notes, summaryWord = 'Note') {
+  if (!notes?.length) return '';
+  const summary = notes.length === 1 ? summaryWord : `${summaryWord}s (${notes.length})`;
+  const bodies = notes.map(note => `<div class="note-text">${escapeHtml(note)}</div>`).join('');
+  return `<details class="detail-notes"><summary>${escapeHtml(summary)}</summary>${bodies}</details>`;
+}
+
+/**
+ * The one structure every row shares: an optional label, then the value. The label is escaped here;
+ * valueHtml is already-escaped markup. With no value the label stands alone, without its colon.
+ */
+function labelledRow(label, valueHtml) {
+  const labelHtml = label ? `<span class="detail-label">${escapeHtml(label)}${valueHtml ? ':' : ''}</span>` : '';
+  const valueDiv = valueHtml ? `<div class="detail-value">${valueHtml}</div>` : '';
+  return `<div class="detail-item">${labelHtml}${valueDiv}</div>`;
+}
+
+/**
+ * One fact: "label: value • date • place", an optional cause, and its notes. Every field is optional.
+ * The fact is data (it may be a stored object spread in); label and summaryWord are the caller's own.
+ */
+function factRow({ value, date, place, cause, notes }, { label, summaryWord } = {}) {
+  const parts = [];
+  if (value) parts.push(`<span class="detail-fact">${escapeHtml(value)}</span>`);
+  if (date) parts.push(`<span class="detail-date">${escapeHtml(date)}</span>`);
+  if (place) parts.push(`<span class="detail-place">${escapeHtml(place)}</span>`);
+  let valueHtml = parts.join(' • ');
+  if (cause) valueHtml += `<div class="detail-cause">Cause: ${escapeHtml(cause)}</div>`;
+  valueHtml += notesDisclosure(notes, summaryWord);
+  return labelledRow(label, valueHtml);
+}
+
+function personNote(note) {
+  const long = note.length > NOTE_CLAMP_CHARS || note.split('\n').length > NOTE_CLAMP_LINES;
+  if (!long) return `<div class="person-note"><div class="note-text">${escapeHtml(note)}</div></div>`;
+  return `<div class="person-note"><div class="note-text note-clamped">${escapeHtml(note)}</div>` +
+    '<button type="button" class="note-toggle" aria-expanded="false">Show more</button></div>';
+}
+
+// title is always a literal from the caller, never data, so it is not escaped.
+function section(title, rows) {
+  return rows.length ? `<div class="person-details-section"><h3>${title}</h3>${rows.join('')}</div>` : '';
+}
+
+const SEX_LABELS = new Map([['M', 'Male'], ['F', 'Female']]);
+
+// Occupations were plain strings before the 2026-10 facts backfill.
+const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry);
 
 /**
  * Person details panel component
@@ -39,11 +95,11 @@ export class PersonDetails {
     // Reset scroll position to top
     this.content.scrollTop = 0;
 
-    // Build the details HTML
+    const sexLabel = SEX_LABELS.get(personData.sex);
     let html = `
       <div class="person-details-header">
-        <h2>${personData.name || 'Unknown'}</h2>
-        ${personData.sex ? `<span class="person-sex">${personData.sex === 'M' ? 'Male' : 'Female'}</span>` : ''}
+        <h2>${escapeHtml(personData.name || 'Unknown')}</h2>
+        ${sexLabel ? `<span class="person-sex">${sexLabel}</span>` : ''}
       </div>
     `;
 
@@ -56,7 +112,7 @@ export class PersonDetails {
         if (photo.thumbKey) {
           html += `
             <div class="person-photo-thumbnail" data-photo-index="${i}">
-              <img src="${thumbUrl(photo)}" alt="Photo ${i + 1}" />
+              <img src="${escapeHtml(thumbUrl(photo))}" alt="Photo ${i + 1}" />
             </div>
           `;
         } else {
@@ -70,184 +126,50 @@ export class PersonDetails {
       html += '</div>';
     }
 
-    html += `
-      <div class="person-details-sections">
-    `;
+    html += '<div class="person-details-sections">';
 
-    // Life events section
-    const lifeEvents = [];
-    if (personData.birthDate || personData.birthPlace) {
-      lifeEvents.push({
-        label: 'Birth',
-        date: personData.birthDate,
-        place: personData.birthPlace
-      });
-    }
-    if (personData.baptismDate || personData.baptismPlace) {
-      lifeEvents.push({
-        label: 'Baptism',
-        date: personData.baptismDate,
-        place: personData.baptismPlace
-      });
-    }
-    if (personData.deathDate || personData.deathPlace) {
-      lifeEvents.push({
-        label: 'Death',
-        date: personData.deathDate,
-        place: personData.deathPlace
-      });
-    }
-    if (personData.burialDate || personData.burialPlace) {
-      lifeEvents.push({
-        label: 'Burial',
-        date: personData.burialDate,
-        place: personData.burialPlace
-      });
-    }
+    const lifeEvents = [
+      { label: 'Birth', date: personData.birthDate, place: personData.birthPlace, notes: personData.birthNotes },
+      { label: 'Baptism', date: personData.baptismDate, place: personData.baptismPlace, notes: personData.baptismNotes },
+      { label: 'Death', date: personData.deathDate, place: personData.deathPlace, notes: personData.deathNotes, cause: personData.causeOfDeath },
+      { label: 'Burial', date: personData.burialDate, place: personData.burialPlace, notes: personData.burialNotes }
+    ].filter(event => event.date || event.place || event.notes?.length || event.cause);
+    html += section('Life Events', lifeEvents.map(event => factRow(event, { label: event.label })));
 
-    if (lifeEvents.length > 0) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Life Events</h3>';
-      lifeEvents.forEach(event => {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-label">${event.label}:</span>`;
-        html += `<span class="detail-value">`;
-        if (event.date) html += `<span class="detail-date">${event.date}</span>`;
-        if (event.date && event.place) html += ' • ';
-        if (event.place) html += `<span class="detail-place">${event.place}</span>`;
-        html += `</span>`;
-        html += `</div>`;
-      });
-      html += '</div>';
-    }
-
-    // Marriages
-    if (personData.marriages && personData.marriages.length > 0 && this.relationships?.spouses) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Marriages</h3>';
-      personData.marriages.forEach(marriage => {
+    if (personData.marriages?.length && this.relationships?.spouses) {
+      const rows = [];
+      for (const marriage of personData.marriages) {
         const spouse = this.relationships.spouses.find(s => s.id === marriage.spouseId);
-        const spouseName = spouse ? spouse.name : 'Unknown';
-
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-label">Spouse:</span>`;
-        html += `<span class="detail-value"><strong>${spouseName}</strong></span>`;
-        html += `</div>`;
-
+        rows.push(labelledRow('Spouse', `<strong>${escapeHtml(spouse?.name || 'Unknown')}</strong>`));
         if (marriage.marriageDate || marriage.marriagePlace) {
-          html += `<div class="detail-item">`;
-          html += `<span class="detail-label">Married:</span>`;
-          html += `<span class="detail-value">`;
-          if (marriage.marriageDate) html += `<span class="detail-date">${marriage.marriageDate}</span>`;
-          if (marriage.marriageDate && marriage.marriagePlace) html += ' • ';
-          if (marriage.marriagePlace) html += `<span class="detail-place">${marriage.marriagePlace}</span>`;
-          html += `</span>`;
-          html += `</div>`;
+          rows.push(factRow({ date: marriage.marriageDate, place: marriage.marriagePlace }, { label: 'Married' }));
         }
-
         if (marriage.divorceDate || marriage.divorcePlace) {
-          html += `<div class="detail-item">`;
-          html += `<span class="detail-label">Divorced:</span>`;
-          html += `<span class="detail-value">`;
-          if (marriage.divorceDate) html += `<span class="detail-date">${marriage.divorceDate}</span>`;
-          if (marriage.divorceDate && marriage.divorcePlace) html += ' • ';
-          if (marriage.divorcePlace) html += `<span class="detail-place">${marriage.divorcePlace}</span>`;
-          html += `</span>`;
-          html += `</div>`;
+          rows.push(factRow({ date: marriage.divorceDate, place: marriage.divorcePlace }, { label: 'Divorced' }));
         }
-      });
-      html += '</div>';
-    }
-
-    // Occupations
-    if (personData.occupations && personData.occupations.length > 0) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Occupations</h3>';
-      personData.occupations.forEach(occ => {
-        html += `<div class="detail-item"><span class="detail-value">${occ}</span></div>`;
-      });
-      html += '</div>';
-    }
-
-    // Religion & Education
-    if (personData.religion || personData.education) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Personal</h3>';
-      if (personData.religion) {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-label">Religion:</span>`;
-        html += `<span class="detail-value">${personData.religion}</span>`;
-        html += `</div>`;
       }
-      if (personData.education) {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-label">Education:</span>`;
-        html += `<span class="detail-value">${personData.education}</span>`;
-        html += `</div>`;
-      }
-      html += '</div>';
+      html += section('Marriages', rows);
     }
 
-    // Census records
-    if (personData.censusRecords && personData.censusRecords.length > 0) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Census Records</h3>';
-      personData.censusRecords.forEach(census => {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-value">`;
-        if (census.date) html += `<span class="detail-date">${census.date}</span>`;
-        if (census.date && census.place) html += ' • ';
-        if (census.place) html += `<span class="detail-place">${census.place}</span>`;
-        html += `</span>`;
-        html += `</div>`;
-      });
-      html += '</div>';
-    }
+    html += section('Occupations', (personData.occupations ?? []).map(entry => factRow(asFact(entry))));
 
-    // Residences
-    if (personData.residences && personData.residences.length > 0) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Residences</h3>';
-      personData.residences.forEach(residence => {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-value">`;
-        if (residence.date) html += `<span class="detail-date">${residence.date}</span>`;
-        if (residence.date && residence.place) html += ' • ';
-        if (residence.place) html += `<span class="detail-place">${residence.place}</span>`;
-        html += `</span>`;
-        html += `</div>`;
-      });
-      html += '</div>';
-    }
+    const otherRows = (personData.otherFacts ?? []).map(fact => factRow(fact, { label: factLabel(fact) }));
+    if (personData.religion) otherRows.push(factRow({ value: personData.religion }, { label: 'Religion' }));
+    if (personData.education) otherRows.push(factRow({ value: personData.education }, { label: 'Education' }));
+    html += section('Other details', otherRows);
 
-    // Notes
-    if (personData.notes && personData.notes.length > 0) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Notes</h3>';
-      personData.notes.forEach(note => {
-        html += `<div class="detail-item"><span class="detail-value">${note}</span></div>`;
-      });
-      html += '</div>';
-    }
+    html += section('Census Records', (personData.censusRecords ?? []).map(census => factRow(census, { summaryWord: 'Transcription' })));
+    html += section('Residences', (personData.residences ?? []).map(residence => factRow(residence)));
+    html += section('Notes', (personData.notes ?? []).map(personNote));
 
-    // Contact info (for living people)
-    if (personData.email || personData.phone) {
-      html += '<div class="person-details-section">';
-      html += '<h3>Contact</h3>';
-      if (personData.email) {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-label">Email:</span>`;
-        html += `<span class="detail-value"><a href="mailto:${personData.email}">${personData.email}</a></span>`;
-        html += `</div>`;
-      }
-      if (personData.phone) {
-        html += `<div class="detail-item">`;
-        html += `<span class="detail-label">Phone:</span>`;
-        html += `<span class="detail-value"><a href="tel:${personData.phone}">${personData.phone}</a></span>`;
-        html += `</div>`;
-      }
-      html += '</div>';
+    const contact = [];
+    if (personData.email) {
+      contact.push(labelledRow('Email', `<a href="mailto:${escapeHtml(personData.email)}">${escapeHtml(personData.email)}</a>`));
     }
+    if (personData.phone) {
+      contact.push(labelledRow('Phone', `<a href="tel:${escapeHtml(personData.phone)}">${escapeHtml(personData.phone)}</a>`));
+    }
+    html += section('Contact', contact);
 
     html += '</div>'; // Close sections
 
@@ -259,6 +181,27 @@ export class PersonDetails {
       thumbnail.addEventListener('click', () => {
         const photoIndex = parseInt(thumbnail.getAttribute('data-photo-index'));
         this.openPhotoViewer(photoIndex);
+      });
+    });
+
+    // A note that is long by the rules above may still fit in the clamped box (wide panel, few wrapped
+    // lines). Those need no clamp or button. A height of 0 means nothing has been laid out (jsdom, or a
+    // panel that is not displayed), so the note is left as rendered.
+    this.content.querySelectorAll('.note-clamped').forEach(text => {
+      if (text.clientHeight && text.scrollHeight <= text.clientHeight + 1) {
+        text.classList.remove('note-clamped');
+        text.parentElement.querySelector('.note-toggle')?.remove();
+      }
+    });
+
+    this.content.querySelectorAll('.note-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const text = button.parentElement.querySelector('.note-text');
+        const expanded = !text.classList.toggle('note-clamped');
+        button.textContent = expanded ? 'Show less' : 'Show more';
+        button.setAttribute('aria-expanded', String(expanded));
+        // Collapsing a long note can leave the page scrolled past its start.
+        if (!expanded) text.scrollIntoView?.({ block: 'nearest' });
       });
     });
   }

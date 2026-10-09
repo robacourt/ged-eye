@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes,
-  legacyIsImage, shuffled, canonical, ORDER_FIELDS
+  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, hasNoteEmailsToMask
 } from '../scripts/neon/verifyCompare.js';
 
 const person = (id, extra) => ({
@@ -126,6 +126,14 @@ describe('diffView', () => {
       actual.relationships.parents = ['P1', 'P2', 'P2'];
     });
     expect(diffs).toEqual(['parents: duplicate ids in actual [P2]']);
+  });
+
+  it('ignores the re-derived facts keys but still compares email and phone', () => {
+    const diffs = diffsFor('C1', actual => {
+      actual.person = { ...actual.person, notes: ['new'], occupations: [{ value: 'Miller' }], censusRecords: [{ date: '1851' }],
+        residences: [{ place: 'X' }], religion: 'Y', education: 'Z', email: 'new@example.com', phone: '555 0100' };
+    });
+    expect(diffs).toEqual(['email: expected null got "new@example.com"', 'phone: expected null got "555 0100"']);
   });
 
   describe('photos', () => {
@@ -372,5 +380,40 @@ describe('shuffled', () => {
       }
     }
     expect(seen.size).toBe(6);
+  });
+});
+
+describe('apiMatchesView', () => {
+  const view = { person: { id: 'I1', notes: ['Write to jo@example.com'] }, family: [], relationships: {} };
+
+  it('accepts the masked body the Function serves', () => {
+    expect(apiMatchesView({ ...view, person: { id: 'I1', notes: ['Write to [email hidden]'] } }, view)).toBe(true);
+  });
+
+  it('rejects a real difference, and an unmasked body', () => {
+    expect(apiMatchesView({ ...view, person: { id: 'I1', notes: ['Something else'] } }, view)).toBe(false);
+    expect(apiMatchesView(view, view)).toBe(false);
+  });
+});
+
+describe('hasNoteEmailsToMask', () => {
+  const emptyView = (person) => ({ person: { id: 'I1', ...person }, family: [], relationships: {} });
+
+  it('is true when masking would change an address in note text', () => {
+    expect(hasNoteEmailsToMask(emptyView({ notes: ['Write to jo@example.com'] }))).toBe(true);
+    expect(hasNoteEmailsToMask(emptyView({ otherFacts: [{ tag: 'EVEN', notes: ['jo@example.com'] }] }))).toBe(true);
+  });
+
+  it('is false when there is nothing to mask', () => {
+    expect(hasNoteEmailsToMask(emptyView({ notes: ['No address here'] }))).toBe(false);
+    expect(hasNoteEmailsToMask(emptyView({}))).toBe(false);
+  });
+
+  it('is false for addresses outside note text (the email field and other facts are served as is)', () => {
+    expect(hasNoteEmailsToMask(emptyView({ email: 'jo@example.com', birthPlace: 'jo@example.org' }))).toBe(false);
+  });
+
+  it('is false for a missing view', () => {
+    expect(hasNoteEmailsToMask(null)).toBe(false);
   });
 });

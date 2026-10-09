@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, vi } from 'vitest';
 import { createHandler } from '../api/handler.js';
+import { maskNoteEmails } from '../api/privacy.js';
 
 const VIEW = { person: { id: 'I1' }, family: [], relationships: { parents: [], spouses: [], children: [], siblings: [] } };
 const call = (handler, path, method = 'GET') => handler(new Request(`https://api.test${path}`, { method }));
@@ -48,5 +49,68 @@ describe('api handler', () => {
     expect(res.status).toBe(500);
     expect(await res.json()).toEqual({ error: 'internal' });
     expect(log).toHaveBeenCalled();
+  });
+});
+
+describe('email masking', () => {
+  const person = {
+    id: 'I1', email: 'keep@example.com', birthPlace: 'x@example.net',
+    notes: ['From: Jo <jo.smith@mail.example.test>\nSent: Monday'],
+    deathNotes: ['mail a.b@example.org'],
+    censusRecords: [{ date: '1851', notes: ['c@example.net and e@example.com'] }],
+    otherFacts: [{ tag: 'EVEN', value: 'v@example.com', notes: ['g@example.org'] }]
+  };
+  const view = { person, family: [{ id: 'I2', name: 'n@example.com' }], relationships: { parents: [], spouses: [], children: [], siblings: [] } };
+
+  it('masks addresses in note text only', async () => {
+    const res = await call(createHandler(vi.fn().mockResolvedValue(view)), '/person/I1');
+    const body = await res.json();
+    expect(body.person).toEqual({
+      ...person,
+      notes: ['From: Jo <[email hidden]>\nSent: Monday'],
+      deathNotes: ['mail [email hidden]'],
+      censusRecords: [{ date: '1851', notes: ['[email hidden] and [email hidden]'] }],
+      otherFacts: [{ tag: 'EVEN', value: 'v@example.com', notes: ['[email hidden]'] }]
+    });
+    expect(body.family).toEqual(view.family);
+  });
+
+  it('masks note keys anywhere in the view, not only under person', () => {
+    const masked = maskNoteEmails({ person: { id: 'I1' }, family: [{ id: 'I2', notes: ['n@example.com'], name: 'n@example.com' }] });
+    expect(masked.family).toEqual([{ id: 'I2', notes: ['[email hidden]'], name: 'n@example.com' }]);
+  });
+
+  it('returns a missing view as is', () => {
+    expect(maskNoteEmails(null)).toBeNull();
+    expect(maskNoteEmails(undefined)).toBeUndefined();
+  });
+
+  it('masks addresses with non-ASCII letters', () => {
+    const masked = maskNoteEmails({ person: { id: 'I1', notes: ['Write to josé@exämple.org today'] } });
+    expect(masked.person.notes).toEqual(['Write to [email hidden] today']);
+  });
+
+  it('masks addresses whose accents are decomposed (NFD), as text pasted from macOS can be', () => {
+    const masked = maskNoteEmails({ person: { id: 'I1', notes: ['Write to josé@example.org today'] } });
+    expect(masked.person.notes).toEqual(['Write to [email hidden] today']);
+  });
+
+  it('masks an address stored with the GEDCOM @@ escape too', () => {
+    const masked = maskNoteEmails({ person: { id: 'I1', notes: ['Write to jo@@example.org'] } });
+    expect(masked.person.notes).toEqual(['Write to [email hidden]']);
+  });
+
+  it('does not backtrack quadratically on a long run of address characters', () => {
+    const text = 'a'.repeat(30_000) + '@';
+    const started = performance.now();
+    const masked = maskNoteEmails({ person: { id: 'I1', notes: [text] } });
+    expect(performance.now() - started).toBeLessThan(100);
+    expect(masked.person.notes).toEqual([text]);
+  });
+
+  it('does not modify its input', () => {
+    const copy = structuredClone(view);
+    maskNoteEmails(view);
+    expect(view).toEqual(copy);
   });
 });

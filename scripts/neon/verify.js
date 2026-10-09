@@ -4,7 +4,7 @@ import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { ROOT, argValue, isMain, readJson } from './cli.js';
 import { readLegacyPeople } from './legacyData.js';
 import {
-  canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
+  apiMatchesView, hasNoteEmailsToMask, canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes, shuffled
 } from './verifyCompare.js';
 import { BUCKET, MANIFEST_PATH } from './uploadMedia.js';
 import { WARNINGS_PATH } from './importGed.js';
@@ -72,7 +72,9 @@ async function main() {
   const apiBase = (process.env.NEON_FUNCTION_API_BASE_URL || 'https://br-green-bonus-b26abimr-api.compute.c-6.eu-central-1.aws.neon.tech').replace(/\/$/, '');
   const timings = [];
   if (apiSample > 0) {
-    const sample = shuffled(ids).slice(0, apiSample);
+    // Always include a few people whose notes the Function masks, so the masking path is exercised.
+    const maskedIds = shuffled(ids.filter(id => hasNoteEmailsToMask(views.get(id)))).slice(0, 3);
+    const sample = [...new Set([...shuffled(ids).slice(0, apiSample), ...maskedIds])];
     console.log(`API sample (${sample.length}): ${sample.join(' ')}`);
     for (const id of sample) {
       const started = Date.now();
@@ -96,7 +98,12 @@ async function main() {
         problems.push(`api ${id}: status ${res.status} but body is not valid JSON (${error.message})`);
         continue;
       }
-      if (canonical(body) !== canonical(views.get(id))) problems.push(`api ${id}: body differs from database`);
+      const view = views.get(id);
+      if (!apiMatchesView(body, view)) {
+        problems.push(canonical(body) === canonical(view)
+          ? `api ${id}: note emails served unmasked`
+          : `api ${id}: body differs from database`);
+      }
     }
   }
   await pool.end();

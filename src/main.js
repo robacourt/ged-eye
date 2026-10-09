@@ -1,16 +1,13 @@
 import { FamilyTreeView } from './familyTreeView.js';
 import { PersonDetails } from './personDetails.js';
 import { PersonNotFoundError } from './dataLoader.js';
+import { escapeHtml } from './html.js';
 
 const DEFAULT_PERSON_ID = 'I122';
 const SLOW_LOAD_MS = 300;
 
 function personIdFromUrl() {
   return new URLSearchParams(window.location.search).get('person') || DEFAULT_PERSON_ID;
-}
-
-function escapeHtml(text) {
-  return String(text).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
 function initApp() {

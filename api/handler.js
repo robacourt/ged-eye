@@ -1,3 +1,5 @@
+import { maskNoteEmails } from './privacy.js';
+
 const ID_PATTERN = /^[A-Za-z0-9_-]{1,32}$/;
 const PERSON_PATH = /^\/person\/([^/]+)$/;
 const CORS = {
@@ -39,7 +41,7 @@ export function createHandler(queryPersonView, { log = console.error } = {}) {
     try {
       const view = await queryPersonView(id);
       if (!view) return json(404, { error: 'not_found' });
-      return json(200, view, 'public, max-age=300');
+      return json(200, maskNoteEmails(view), 'public, max-age=300');
     } catch (error) {
       log('person_view failed', id, error);
       return json(500, { error: 'internal' });

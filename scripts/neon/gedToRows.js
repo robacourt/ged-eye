@@ -1,6 +1,18 @@
 import { extractPersonData } from '../gedParser.js';
 
-const FACT_KEYS = ['occupations', 'notes', 'email', 'phone', 'religion', 'education', 'censusRecords', 'residences'];
+/** The extractPersonData() keys stored in person.facts (spec: Facts model). */
+export const FACT_KEYS = ['occupations', 'notes', 'email', 'phone', 'censusRecords', 'residences',
+  'birthNotes', 'baptismNotes', 'deathNotes', 'burialNotes', 'causeOfDeath', 'otherFacts'];
+
+/** person.facts for one extractPersonData() result: the facts keys it has, nothing else. */
+export function personFacts(p) {
+  const facts = {};
+  for (const key of FACT_KEYS) {
+    if (p[key] !== undefined) facts[key] = p[key];
+  }
+  return facts;
+}
+
 const SEXES = new Set(['M', 'F', 'U']);
 
 /**
@@ -8,8 +20,9 @@ const SEXES = new Set(['M', 'F', 'U']);
  * @param parsedGed result of parseGedcom()
  * @param manifest  { files: { [originalPath]: {sha256, objectKey, thumbKey, contentType, byteSize, fileName} }, avatars: { [avatarPath]: objectKey } }
  * @param avatarMap Map<personId, avatarPath>
+ * @param extract  person extractor; the parity test passes the legacy parser's
  */
-export function gedToRows(parsedGed, manifest, avatarMap) {
+export function gedToRows(parsedGed, manifest, avatarMap, extract = extractPersonData) {
   const warnings = [];
   const people = [];
   const personMedia = [];
@@ -17,12 +30,8 @@ export function gedToRows(parsedGed, manifest, avatarMap) {
   const individuals = parsedGed.individuals;
 
   for (const [id] of individuals) {
-    const p = extractPersonData(parsedGed, id);
-
-    const facts = {};
-    for (const key of FACT_KEYS) {
-      if (p[key] !== undefined) facts[key] = p[key];
-    }
+    const p = extract(parsedGed, id);
+    const facts = personFacts(p);
 
     let sex = p.sex;
     if (sex !== null && !SEXES.has(sex)) {

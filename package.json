@@ -12,7 +12,8 @@
     "db:migrate": "node --env-file=.env.local scripts/neon/migrate.js",
     "import-ged": "node --env-file=.env.local scripts/neon/importGed.js",
     "verify-neon": "node --env-file=.env.local scripts/neon/verify.js",
-    "test:db": "node --env-file=.env.local --env-file=.env.test.local node_modules/vitest/vitest.mjs run tests/db"
+    "backfill-facts": "node --env-file=.env.local scripts/neon/backfillFacts.js",
+    "test:db": "node --env-file=.env.local --env-file=.env.test.local node_modules/vitest/vitest.mjs run tests/db --no-file-parallelism"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.1148.0",

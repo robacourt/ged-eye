@@ -1,6 +1,10 @@
+import { maskNoteEmails } from '../../api/privacy.js';
+
+// notes, occupations, censusRecords, residences, religion and education are left out: since the
+// 2026-10 facts backfill they are re-derived from gedcom_archive by the full parser and checked by
+// backfill-facts itself, so the old-parser JSON is no longer their baseline.
 const SCALAR_KEYS = ['id', 'name', 'givenName', 'surname', 'sex', 'birthDate', 'birthPlace', 'deathDate', 'deathPlace',
-  'baptismDate', 'baptismPlace', 'burialDate', 'burialPlace', 'occupations', 'notes', 'email', 'phone', 'religion',
-  'education', 'censusRecords', 'residences'];
+  'baptismDate', 'baptismPlace', 'burialDate', 'burialPlace', 'email', 'phone'];
 
 /** Prefix of the one difference line that import warnings can explain (the photo sha list). */
 export const PHOTOS_DIFF_PREFIX = 'photos: ';
@@ -16,6 +20,16 @@ const LEGACY_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp
 
 export const canonical = (value) => JSON.stringify(value, (_, v) =>
   v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b))) : v);
+
+/** Whether an API body is what the Function should serve for this person_view() document. */
+export function apiMatchesView(body, view) {
+  return canonical(body) === canonical(maskNoteEmails(view));
+}
+
+/** Whether the Function would serve this person_view() document differently once note emails are masked. */
+export function hasNoteEmailsToMask(view) {
+  return canonical(maskNoteEmails(view)) !== canonical(view);
+}
 
 const unique = (items) => [...new Set(items)];
 const duplicatesIn = (items) => unique(items.filter((item, i) => items.indexOf(item) !== i));

@@ -70,6 +70,22 @@ npm run verify-neon    # parity check against the old JSON files; exits non-zero
 - The old JSON files and avatars (the parity baseline) now live outside the repo in `ignore/legacy-data/`. `upload-media`, `import-ged` and `verify-neon` read them from there by default; pass `--legacy-root <dir>` to point elsewhere.
 - `scripts/generateAvatars.js` is legacy: it face-crops avatars from the old JSON files. It'll be reworked to read from Neon when editing arrives.
 
+### Backfilling facts (one-off, 2026-10)
+
+The first import used a parser that dropped continuation lines, census transcriptions and most events. `backfill-facts` re-derives `person.facts` from the archived GEDCOM with the full parser, without touching anything else:
+
+```bash
+npm run backfill-facts                                         # read-only plan → .neon-import/facts-backfill-plan-<host>.json, plus a summary
+npm run backfill-facts -- --apply <plan> --confirm <host>      # compare-and-swap the plan in, in one transaction
+npm run backfill-facts -- --rollback <plan> --confirm <host>   # put the plan's "before" back
+```
+
+- It only writes `person.facts`. It skips (and lists) anyone edited since the import, i.e. anyone whose `updated_at` has moved; the backfill itself never changes `updated_at`.
+- An apply writes exactly the reviewed plan or nothing. If any planned row has changed since the plan was made, nothing is written.
+- **Keep the plan file: it is the rollback.** The CLI never overwrites an existing plan file; pass `--out <path>` for a new one.
+- Rollback has the same guard. Once editing starts, rows edited after the backfill can only be restored from the `pre-facts-backfill-2026-10-09` Neon branch.
+- To run it against another branch (the rehearsal used one), put `DATABASE_URL_UNPOOLED=<url>` in a mode-600 env file and run `node --env-file=<file> scripts/neon/backfillFacts.js …`. `--database-url <url>` also works, but it puts the password in shell history. `--sha <sha256>` picks an archive row if there is ever more than one.
+
 ### Configuration
 
 | File | Committed | What's in it |
@@ -89,18 +105,23 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 ├── neon.ts                 # Neon resources: api Function + ged-eye-media bucket
 ├── api/
 │   ├── index.js            # Neon Function entry: Postgres pool
-│   └── handler.js          # Routes: GET /person/:id, GET /health
+│   ├── handler.js          # Routes: GET /person/:id, GET /health
+│   └── privacy.js          # Masks email addresses found in note text
 ├── db/migrations/          # Schema and the person_view() Postgres function
 ├── scripts/
-│   ├── gedParser.js        # GEDCOM parser
+│   ├── gedTree.js          # GEDCOM lines → node tree (CONT/CONC folded in)
+│   ├── gedParser.js        # INDI/FAM records and extractPersonData
+│   ├── gedFacts.js         # A person's notes, occupations, census records and other facts
 │   ├── generateAvatars.js  # Legacy avatar face-cropper (reads the old JSON)
-│   └── neon/               # One-off import: upload, migrate, import, verify
+│   └── neon/               # One-off import: upload, migrate, import, verify, backfill-facts
 ├── src/
 │   ├── main.js             # App entry point (DEFAULT_PERSON_ID)
 │   ├── dataLoader.js       # Fetches, caches and prefetches person views
 │   ├── media.js            # Bucket URLs for photos and avatars
 │   ├── familyTreeView.js   # Cytoscape graph visualization
 │   ├── personDetails.js    # Details panel
+│   ├── factLabels.js       # Labels for GEDCOM fact tags (_MILT → Military service)
+│   ├── html.js             # escapeHtml
 │   ├── photoViewer.js      # Photo viewer
 │   └── style.css           # Styles
 ├── public/placeholders/    # Default avatars
@@ -112,13 +133,13 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 
 1. **Data in Neon**: People, families and photo records live in Neon Postgres. The Postgres function `person_view(id)` gathers a person plus their parents, spouses, children and siblings into one JSON document.
 
-2. **One API call per person**: The `api` Neon Function answers `GET /person/:id` by calling `person_view`. The browser caches each answer and quietly prefetches the relatives you're likely to click next.
+2. **One API call per person**: The `api` Neon Function answers `GET /person/:id` by calling `person_view`. The browser caches each answer and quietly prefetches the relatives you're likely to click next. Notes include pasted email threads, so the Function masks any email address in note text before it leaves the server.
 
 3. **Media from a bucket**: Photos, thumbnails and face-cropped avatars sit in the public `ged-eye-media` bucket and load straight into the browser.
 
 4. **Graph Visualization**: Cytoscape.js renders the family as a graph with the selected person in the center, parents above, children below, and spouses to the sides.
 
-The site itself is plain static files on GitHub Pages. Neon is the master copy of the data, and the original GEDCOM is archived byte for byte in the `gedcom_archive` table, so anything the parser skips today can be recovered later.
+The site itself is plain static files on GitHub Pages. Neon is the master copy of the data, and the original GEDCOM is archived byte for byte in the `gedcom_archive` table. Sources and citations, family-level facts (such as marriage notes) and photo titles are still only in that archive, ready to be parsed later.
 
 ## Tech Stack
 
@@ -136,6 +157,12 @@ npm run test:db    # person_view tests against a real database
 ```
 
 `npm run test:db` needs `DATABASE_URL_TEST` in `.env.test.local`, pointing at a Neon branch named `test`. It wipes that branch's `public` schema on every run, and refuses to run against production.
+
+`tests/realGed.test.js` checks the parser against the real tree, including exact parity with a frozen copy of the original parser for everything except facts. It reads `acourt.ged` from the repo root, or from `GED_PATH`, and skips when the file isn't there (as in a git worktree):
+
+```bash
+GED_PATH=/path/to/acourt.ged npx vitest run tests/realGed.test.js
+```
 
 ## Changing the Default Person
 
