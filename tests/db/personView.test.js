@@ -68,13 +68,14 @@ describe.skipIf(!url)('person_view (database)', () => {
 
   it('returns relationships in order, including half siblings and their other parent', async () => {
     const v = await view('I3');
+    // F10 (married 1955) comes before F9 (undated), although F9 has the lower id.
     expect(v.relationships).toEqual({
       parents: ['I1', 'I2'],
-      spouses: ['I9', 'I7'],
+      spouses: ['I7', 'I9'],
       children: ['I8'],
       siblings: ['I4', 'I6']
     });
-    expect(v.family.map(m => m.id)).toEqual(['I1', 'I2', 'I9', 'I7', 'I8', 'I4', 'I6', 'I5']);
+    expect(v.family.map(m => m.id)).toEqual(['I1', 'I2', 'I7', 'I9', 'I8', 'I4', 'I6', 'I5']);
   });
 
   it('returns the full person record with facts, photos, avatar and marriages', async () => {
@@ -87,12 +88,12 @@ describe.skipIf(!url)('person_view (database)', () => {
         { key: 'originals/aaa.jpg', thumbKey: 'thumbs/aaa.webp', fileName: 'a.jpg', contentType: 'image/jpeg' }
       ],
       parentIds: ['I1', 'I2'],
-      spouseIds: ['I9', 'I7'],
+      spouseIds: ['I7', 'I9'],
       childIds: ['I8'],
       avatarKey: 'avatars/c.jpg',
       marriages: [
-        { spouseId: 'I9', familyId: 'F9' },
-        { spouseId: 'I7', familyId: 'F10', marriageDate: '1955' }
+        { spouseId: 'I7', familyId: 'F10', marriageDate: '1955' },
+        { spouseId: 'I9', familyId: 'F9' }
       ],
       occupations: ['Farmer'],
       notes: ['A note']
@@ -165,7 +166,89 @@ describe.skipIf(!url)('person_view (database)', () => {
       `);
       const carl = await view('I3');
       expect(carl.relationships.siblings).toEqual(['I4', 'I6', 'I14']);
-      expect(carl.family.map(m => m.id)).toEqual(['I1', 'I2', 'I9', 'I7', 'I8', 'I4', 'I6', 'I14', 'I13', 'I5']);
+      expect(carl.family.map(m => m.id)).toEqual(['I1', 'I2', 'I7', 'I9', 'I8', 'I4', 'I6', 'I14', 'I13', 'I5']);
+    } finally {
+      await client.query('rollback');
+    }
+  });
+
+  it('reads the year from GEDCOM date text', async () => {
+    const years = {
+      '28 SEP 1940': 1940, 'ABT 1850': 1850, 'BEF 1900': 1900, '21 MAR1813': 1813, '12.2.1877': 1877,
+      '11 FEB 1671/72': 1671, 'BET. 1924 - 1939': 1924, 'BEF 30 MAY 185': null, '18 ___ 19 ?': null, 'yes': null,
+      '１９４０': null // fullwidth digits: no year rather than a failed cast
+    };
+    const { rows } = await client.query('select d, gedcom_year(d) as year from unnest($1::text[]) as d', [Object.keys(years)]);
+    expect(Object.fromEntries(rows.map(r => [r.d, r.year]))).toEqual(years);
+    expect((await client.query('select gedcom_year(null) as year')).rows[0].year).toBeNull();
+  });
+
+  // Paul (I20) married seven times; his family ids are not in chronological order.
+  // F97 has no marriage date; its children were born 1860 and baptised 1850, so it dates from 1850.
+  // F101's marriage date has no year ('yes'), so its child's 1870 birth dates it (not his 1890 adult baptism).
+  // F96 and F102 have no marriage year and no dated children, so they go last.
+  const REMARRIAGES = `
+    insert into person (id, display_name, sex, birth_date, baptism_date) values
+      ('I20', 'Paul Long', 'M', null, null), ('I21', 'Ann Long', 'F', null, null), ('I22', 'Bea Long', 'F', null, null),
+      ('I23', 'Cleo Long', 'F', null, null), ('I24', 'Dee Long', 'F', null, null), ('I25', 'Eve Long', 'F', '1849', null),
+      ('I26', 'Finn Long', 'M', null, null), ('I27', 'Gus Long', 'M', null, null), ('I28', 'Hal Long', 'M', '1860', null),
+      ('I29', 'Ida Long', 'F', null, null), ('I30', 'Jo Long', 'F', null, null), ('I31', 'Kit Long', 'M', null, null),
+      ('I32', 'Lou Long', 'M', null, '3 MAR 1850'), ('I33', 'Max Long', 'M', '2 JAN 1870', '1890'), ('I34', 'Nan Long', 'F', null, null);
+    insert into family (id, partner1_id, partner2_id, marriage_date) values
+      ('F96', 'I20', 'I30', null),
+      ('F97', 'I20', 'I23', null),
+      ('F98', 'I20', 'I21', '22 JUL 1885'),
+      ('F99', 'I20', 'I22', 'BEF 1856'),
+      ('F100', 'I20', 'I24', '29 SEP 1856'),
+      ('F101', 'I20', 'I29', 'yes'),
+      ('F102', 'I20', 'I34', null);
+    insert into family_child (family_id, child_id, position) values
+      ('F96', 'I31', 0), ('F97', 'I28', 0), ('F97', 'I32', 1), ('F98', 'I25', 0), ('F99', 'I26', 0), ('F100', 'I27', 0),
+      ('F101', 'I33', 0);
+  `;
+
+  it('orders a person\'s families by marriage year, else eldest child\'s birth year, then undated by family id', async () => {
+    await client.query('begin');
+    try {
+      await client.query(REMARRIAGES);
+      const paul = await view('I20');
+      // F99 and F100 are both 1856, and F96 and F102 are both undated, so the numeric id decides
+      // (as text, 'F100' < 'F99' and 'F102' < 'F96').
+      // F98 stays at 1885 although Eve (I25) was born in 1849: a marriage year always wins.
+      expect(paul.person.marriages.map(m => m.familyId)).toEqual(['F97', 'F99', 'F100', 'F101', 'F98', 'F96', 'F102']);
+      expect(paul.relationships.spouses).toEqual(['I23', 'I22', 'I24', 'I29', 'I21', 'I30', 'I34']);
+      expect(paul.person.spouseIds).toEqual(['I23', 'I22', 'I24', 'I29', 'I21', 'I30', 'I34']);
+      expect(paul.relationships.children).toEqual(['I28', 'I32', 'I26', 'I27', 'I33', 'I25', 'I31']);
+      expect(paul.person.childIds).toEqual(['I28', 'I32', 'I26', 'I27', 'I33', 'I25', 'I31']);
+      expect(paul.family.map(m => m.id)).toEqual([
+        'I23', 'I22', 'I24', 'I29', 'I21', 'I30', 'I34', 'I28', 'I32', 'I26', 'I27', 'I33', 'I25', 'I31'
+      ]);
+    } finally {
+      await client.query('rollback');
+    }
+  });
+
+  it('orders siblings by their parents\' families, chronologically', async () => {
+    await client.query('begin');
+    try {
+      await client.query(REMARRIAGES);
+      const eve = await view('I25');
+      expect(eve.relationships.siblings).toEqual(['I28', 'I32', 'I26', 'I27', 'I33', 'I31']);
+    } finally {
+      await client.query('rollback');
+    }
+  });
+
+  it('orders parents from several families chronologically', async () => {
+    await client.query('begin');
+    try {
+      // Hugo (I8) is also recorded as a child of F9 (I3 + I9, undated); F10 (I3 + I7) was 1955.
+      await client.query(`insert into family_child (family_id, child_id, position) values ('F9', 'I8', 0)`);
+      const hugo = await view('I8');
+      expect(hugo.relationships.parents).toEqual(['I3', 'I7', 'I9']);
+      expect(hugo.person.parentIds).toEqual(['I3', 'I7', 'I9']);
+      const carl = await view('I3');
+      expect(carl.family.find(m => m.id === 'I8').parentIds).toEqual(['I3', 'I7', 'I9']);
     } finally {
       await client.query('rollback');
     }
