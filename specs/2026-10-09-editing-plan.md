@@ -46,7 +46,7 @@
 
   `.env.test.local` is gitignored. Check that the host differs from `DATABASE_URL`'s in `.env.local`.
 
-- [ ] **Step 2: Add `withChange` to `tests/db/testDatabase.js`.** Fixtures and tests use it to wrap writes once 006 exists:
+- [ ] **Step 2: Add `withChange` to `tests/db/testDatabase.js`.** Fixtures and tests use it to wrap writes once 006 exists. After seeding, fixtures also call `select sync_id_sequences()` (defined in 006), so new ids don't collide with fixture ids:
 
   ```js
   /** Runs `sql` (one or more statements) inside a recorded change, as tests and scripts must after 006. */
@@ -64,7 +64,10 @@
   }
   ```
 
-  Note that `pg` can't take params with multi-statement SQL; call it once per statement when using params.
+  Notes:
+  - `pg` can't take params with multi-statement SQL, so call `withChange` once per statement when using params.
+  - **Tests that rely on `begin … rollback`** must not use `withChange`, because it commits. Instead they add `select begin_change('test@example.test','Test','fixture','script','Test','{}','{}')` right after their own `begin`. This applies to `personView.test.js`'s facts-overwrite, half-siblings and remarriages tests.
+  - **All of this code is READ COMMITTED.** It never uses REPEATABLE READ: the global lock relies on each statement taking a fresh snapshot after the lock.
 
 - [ ] **Step 3: Leave the fixtures as they are for now.** They are updated in Task 2, Step 5, once 006 exists. Until then `withChange` is unused.
 
@@ -84,7 +87,9 @@
     - `delete from person` of someone with a family and a child link records the cascaded `family` update (partner set null) and the `family_child` delete under the same `change_id`.
   - **Truncate guard:** `truncate person cascade` fails with `GE006`, even inside a change.
   - **`display_name`** is generated: inserting `given_name 'Ann', surname 'Lee'` gives `'Ann Lee'`; an empty surname gives `'Ann'`.
-  - **Sequences:** `nextval('person_number_seq')` is greater than the largest numeric part of existing person ids; the same for families.
+  - **Sequences:** after seeding and `select sync_id_sequences()`, `nextval('person_number_seq')` is greater than the largest numeric part of existing person ids; the same for families.
+  - **Primary keys can't change:** `update person set id = 'X2' where id = 'X1'` inside a change fails with `GE007`.
+  - **The display-name guard:** in a scratch transaction, before 006 (or by re-running the guard `do` block), a mismatching row makes the guard raise.
   - **`editor`** contains `saintderanged@gmail.com` as `admin`.
   - **`person_record`** has:
     - `updatedAt` matching `^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}Z$`
@@ -102,7 +107,14 @@
 -- records before/after snapshots per row in change_row, and toggle_change() (part 2) uses
 -- them to undo or redo any change.
 
--- display_name is derived from the name parts (every existing row already equals this).
+-- display_name is derived from the name parts. Every existing row already equals this; check
+-- before dropping, since Neon is the master copy.
+do $$
+begin
+  if exists (select 1 from person where display_name is distinct from btrim(given_name || ' ' || surname)) then
+    raise exception '006: display_name differs from btrim(given_name || '' '' || surname) for some people';
+  end if;
+end $$;
 alter table person drop column display_name;
 alter table person add column display_name text
   generated always as (btrim(given_name || ' ' || surname)) stored;
@@ -148,7 +160,7 @@ create index change_row_key_idx on change_row (table_name, row_key, change_id de
 
 -- Catalog helpers. Table names only ever come from tree_tables(), via the capture trigger.
 create function tree_assert_table(p_table text) returns void
-language plpgsql immutable as $$
+language plpgsql stable as $$
 begin
   if p_table is null or p_table <> all (array['person', 'family', 'family_child', 'media', 'person_media']) then
     raise exception 'not a tree table: %', p_table;
@@ -261,6 +273,9 @@ begin
   if tg_op = 'UPDATE' and (v_old - 'updated_at') = (v_new - 'updated_at') then
     return null;
   end if;
+  if tg_op = 'UPDATE' and tree_row_key(tg_table_name, v_old) <> tree_row_key(tg_table_name, v_new) then
+    raise exception 'primary keys of tree tables cannot change' using errcode = 'GE007';
+  end if;
   insert into change_row (change_id, table_name, row_key, op, before, after)
   values (v_change::bigint, tg_table_name, tree_row_key(tg_table_name, coalesce(v_new, v_old)),
           lower(tg_op), v_old, v_new);
@@ -286,9 +301,15 @@ create trigger refuse_truncate before truncate on media for each statement execu
 create trigger refuse_truncate before truncate on person_media for each statement execute function refuse_truncate();
 
 create sequence person_number_seq;
-select setval('person_number_seq', coalesce((select max(substring(id from '[0-9]+')::bigint) from person), 0) + 1, false);
 create sequence family_number_seq;
-select setval('family_number_seq', coalesce((select max(substring(id from '[0-9]+')::bigint) from family), 0) + 1, false);
+-- Moves both sequences past the largest existing numeric id. Called here and by test fixtures after seeding.
+create function sync_id_sequences() returns void
+language plpgsql volatile as $$
+begin
+  perform setval('person_number_seq', coalesce((select max(substring(id from '[0-9]+')::bigint) from person), 0) + 1, false);
+  perform setval('family_number_seq', coalesce((select max(substring(id from '[0-9]+')::bigint) from family), 0) + 1, false);
+end $$;
+select sync_id_sequences();
 
 create extension if not exists pg_trgm;
 create index person_name_trgm_idx on person using gin (display_name gin_trgm_ops);
@@ -330,7 +351,7 @@ language sql stable as $$
 $$;
 ```
 
-Then append the replacement for `person_record`: copy the whole `create or replace function person_record` from `005_family_chronological_order.sql` verbatim, and add two keys to its `jsonb_build_object` (after `'avatarKey', p.avatar_key`):
+Then append the replacement for `person_record`: copy the whole `create or replace function person_record` from `005_family_chronological_order.sql` verbatim, and add two keys to its `jsonb_build_object`. Add a **comma after `'avatarKey', p.avatar_key`**, then:
 
 ```sql
       'updatedAt', to_char(p.updated_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"'),
@@ -350,14 +371,16 @@ Then append the replacement for `person_record`: copy the whole `create or repla
 - [ ] **Step 4: Run it.** `npm run test:db -- tests/db/editingSchema.test.js` passes.
 
 - [ ] **Step 5: Update the existing DB fixtures for 006.**
-  - In `tests/db/personView.test.js` and `tests/db/backfillFacts.test.js`, remove `display_name` from every `insert into person` column list.
+  - **Names:** in `tests/db/personView.test.js` and `tests/db/backfillFacts.test.js`, replace `display_name` in every `insert into person` with `given_name, surname`, splitting the names (for example `'Mark', 'Hill'`). Removing only the column would break the value counts and the name assertions.
+  - **Truncates:** `backfillFacts.test.js`'s `truncate person cascade` becomes `withChange(client, 'delete from person_media; delete from media; delete from family_child; delete from family; delete from person')`. Keep `truncate gedcom_archive`, which isn't a tree table.
+  - **`scripts/neon/backfillFacts.js`:** in `applyPlan`, right after `set local lock_timeout`, add `select begin_change('backfill@ged-eye.local', 'Facts backfill', 'backfill_facts', 'script', 'Backfilled full GEDCOM facts', '{}', '{}') where to_regprocedure('begin_change(text,text,text,text,text,jsonb,text[])') is not null`. The backfill and its rollback are then recorded after 006, and still work before it. Add it to this task's commit.
   - Run every fixture or test write through `withChange(client, sql)`, or wrap a `begin; select begin_change(...); … commit;` around multi-statement fixtures. `pg` accepts multi-statement text when there are no params.
   - Tests that expect migration lists or checksums (the migrate tests in `personView.test.js`) must still pass with 006 present.
   - Run the whole DB suite: `npm run test:db` passes.
 
 - [ ] **Step 6: Update `scripts/neon/importGed.js`.** Remove `display_name` from the `person` insert column list. The import is retired (its truncate is now refused), but the code should stay consistent. Run `npx vitest run` (unit tests) and check it passes.
 
-- [ ] **Step 7: Commit** `db/migrations/006_editing.sql`, `tests/db/*`, `scripts/neon/importGed.js` with the message "006 part 1: change log capture, editors, generated display_name, sequences, search, person_record additions".
+- [ ] **Step 7: Commit** `db/migrations/006_editing.sql`, `tests/db/*`, `scripts/neon/importGed.js`, `scripts/neon/backfillFacts.js` with the message "006 part 1: change log capture, editors, generated display_name, sequences, search, person_record additions".
 
 ### Task 3: Migration 006, part 2 (`toggle_change`, `undo_last`, `redo_last`)
 
@@ -380,12 +403,12 @@ Then append the replacement for `person_record`: copy the whole `create or repla
      - Undo restores the person, the partner slots and every link, and the `media` row keeps its id.
      - Then redo deletes again.
   6. **Unlink, then delete.** Base T unlinks partner B from F; later L deletes B. Undoing T raises `GE003`, and `blocking` includes L (the missing referenced row).
-  7. **Structure.** A toggle that would leave a family with no partner raises `GE003` with `reason: 'structure'`. Use the spec's F5/I10/I12 scenario.
-  8. **Cycle.** The spec's B-child-of-A / unlink / A-child-of-B scenario: undoing the unlink raises `reason: 'cycle'`.
+  7. **Structure.** F has partner1 P1 and child K. Base B fills partner2 = P2. Later L sets partner1 = null. Undoing B raises `GE003` with `reason: 'structure'` and `blocking: [{id: L, action: 'revert'}]`.
+  8. **Cycle.** F has partner1 A and child B. Base U deletes `family_child(F,B)` and F (cleanup). Later L creates F′ with partner1 B and child A. Undoing U raises `reason: 'cycle'`, with L among the blockers.
   9. **State checks.**
      - `wrong_state` (`GE002`): undo an undone change, or redo one that's in effect.
      - `not_found` (`GE001`): a missing id, or toggling an undo change.
-     - `no_change` (`GE004`): a base whose only rows were no-ops. Simulate this with a change whose `change_row`s you insert by hand with `before = after`.
+     - **No net effect:** a base whose net effect is empty (simulate it with a change whose `change_row`s you insert by hand with `before = after`) toggles without error. It records an undo change with no rows and flips `undone`, so Ctrl+Z can't get stuck.
   10. **`undo_last` / `redo_last`** for one author, with base changes E1 and E2 (`via='edit'`):
       - `undo_last` undoes E2, and again undoes E1.
       - `redo_last` redoes E1, and again redoes E2. **Undo, undo, redo, redo.**
@@ -396,6 +419,8 @@ Then append the replacement for `person_record`: copy the whole `create or repla
   11. **History revert, then Ctrl+Z.** A History revert (`via='history'`) of my E2, then `undo_last`, undoes E1, because E2 is already undone.
   12. **Undo, redo, undo, undo.** Bookkeeping stays correct: after the final undo, the base is `undone = true` and a further undo raises `GE002`.
   13. **The global lock.** Two connections each run `select begin_change(...)` inside open transactions. The second blocks until the first commits. Assert this by timing, or with `pg_locks` from a third connection.
+  13b. **History revert of a redone change.** Undo E, then redo E, then a History revert (`via='history'`): E is undone, and redo by History restores it.
+  13c. **Every base edit in these tests really changes data.** A no-op edit is rolled back by commands, so it never exists.
   14. **Generated and identity columns.** Undoing an insert of `media` and redoing it keeps `media.id`. Snapshots and updates never touch `display_name` or `sort_key`.
 
 - [ ] **Step 2: Run it.** It fails, because the functions don't exist yet.
@@ -470,6 +495,7 @@ declare
   fk record;
   v_ref_key jsonb;
   v_ins_cols text[];
+  v_cyclic text[];
 begin
   if p_direction not in ('undo', 'redo') then
     raise exception 'direction must be undo or redo';
@@ -539,9 +565,8 @@ begin
     end if;
   end loop;
 
-  if jsonb_array_length(v_ops) = 0 then
-    raise exception 'no_change' using errcode = 'GE004';
-  end if;
+  -- An empty net effect (e.g. a later migration dropped the only changed column) still toggles,
+  -- applying nothing, so Ctrl+Z can never get stuck on it.
 
   -- 2. Referenced rows of the to-state must exist, or be created by this toggle.
   for op in select value from jsonb_array_elements(v_ops) where value ->> 'op' in ('create', 'modify') loop
@@ -600,7 +625,8 @@ begin
     perform raise_toggle_conflict('cascade', toggle_blockers(p_base, v_id, v_extra));
   end if;
 
-  select coalesce(jsonb_agg(jsonb_build_object('table', 'family', 'key', jsonb_build_object('id', f.id), 'columns', null)), '[]')
+  select coalesce(jsonb_agg(jsonb_build_object('table', 'family', 'key', jsonb_build_object('id', f.id),
+                                                'columns', jsonb_build_array('partner1_id', 'partner2_id'))), '[]')
     into v_extra
   from family f
   where f.partner1_id is null and f.partner2_id is null
@@ -612,18 +638,35 @@ begin
     perform raise_toggle_conflict('structure', toggle_blockers(p_base, v_id, v_extra));
   end if;
 
-  if exists (
-    select 1
-    from (select coalesce(cr.after, cr.before) ->> 'child_id' as id
-          from change_row cr where cr.change_id = v_id and cr.table_name = 'family_child'
-          union
-          select fc.child_id from change_row cr
-          join family_child fc on fc.family_id = cr.row_key ->> 'id'
-          where cr.change_id = v_id and cr.table_name = 'family') touched
-    where touched.id is not null
-      and exists (select 1 from ancestors_of(touched.id) a where a.id = touched.id)
-  ) then
-    perform raise_toggle_conflict('cycle', '[]'::jsonb);
+  select array_agg(distinct touched.id) into v_cyclic
+  from (select coalesce(cr.after, cr.before) ->> 'child_id' as id
+        from change_row cr where cr.change_id = v_id and cr.table_name = 'family_child'
+        union
+        select fc.child_id from change_row cr
+        join family_child fc on fc.family_id = cr.row_key ->> 'id'
+        where cr.change_id = v_id and cr.table_name = 'family') touched
+  where touched.id is not null
+    and exists (select 1 from ancestors_of(touched.id) a where a.id = touched.id);
+  if v_cyclic is not null then
+    -- Offending keys: the links among the cycle's members (P, plus ancestors of P that have P as an ancestor).
+    with members as (
+      select c.id as m from unnest(v_cyclic) as c (id)
+      union
+      select a.id from unnest(v_cyclic) as c (id) cross join lateral ancestors_of(c.id) a
+      where exists (select 1 from ancestors_of(a.id) b where b.id = c.id)
+    )
+    select coalesce(jsonb_agg(x), '[]') into v_extra
+    from (
+      select jsonb_build_object('table', 'family_child',
+                                'key', jsonb_build_object('family_id', fc.family_id, 'child_id', fc.child_id),
+                                'columns', null) as x
+      from family_child fc where fc.child_id in (select m from members)
+      union all
+      select jsonb_build_object('table', 'family', 'key', jsonb_build_object('id', f.id),
+                                'columns', jsonb_build_array('partner1_id', 'partner2_id'))
+      from family f where f.partner1_id in (select m from members) or f.partner2_id in (select m from members)
+    ) s;
+    perform raise_toggle_conflict('cycle', toggle_blockers(p_base, v_id, v_extra));
   end if;
 
   -- 5. Bookkeeping.
@@ -787,7 +830,7 @@ The Function code lives in `api/`. Keep the pure request handling (routing, vali
   6. `update change set summary, person_ids`
   7. `commit`, then read `person_view(focusId)` (unmasked) and return `{ change: {id, summary, personIds}, view }`
 
-  Map `GE001`–`GE004` and class `23` errors to `ApiError`s. Release the client in `finally`.
+  Map `GE001`–`GE007` and class `23` errors to `ApiError`s. Release the client in `finally`. It stays at the default READ COMMITTED isolation; add a comment saying never to change it, because the global lock relies on it.
 - [ ] **Commands:** each module exports `{ kind, validate, run }` and implements the spec's Commands table, Linking rules (with the "Always invalid" cases), Cleanup and Validation exactly. Use the SQL helpers `ancestors_of`/`descendants_of` for cycle checks, the sequences for new ids, and `facts` validation per the spec (lenient: old and new shapes).
 - [ ] **Summaries:** use display names, with "Unnamed person" when empty. Relation words are by sex where known (daughter/son/child, mother/father/parent, wife/husband/spouse, sister/brother/sibling).
 - [ ] **DB tests** (`tests/db/commands.test.js`): every rule in the spec's Linking rules, Cleanup and Validation, including every invalid case. Also:
@@ -868,7 +911,7 @@ The Function code lives in `api/`. Keep the pure request handling (routing, vali
   - Old-shape values (plain occupation strings, `religion`, `education`) round-trip unchanged unless edited.
   - **Tests:**
     - round trip on hand-made old-shape and new-shape facts
-    - **every real person**: load facts from the `editing` branch via the public API or `person_view`. Run this from a node test, skipped without `.env.local`, and assert `formToFacts(factsToForm(f))` deep-equals `f`.
+    - **every real person**: load facts from the `editing` branch by calling `person_view` directly in SQL (the public API masks emails). Run this from a node test, skipped without `.env.local`, and assert `formToFacts(factsToForm(f))` deep-equals `f`.
 - [ ] **`personEditor.js`:**
   - It renders the form into the details panel, using fields per the spec.
   - Save builds `update_person` with only the changed `fields` and, when changed, `facts`, plus `expectedUpdatedAt`.
@@ -930,7 +973,7 @@ The Function code lives in `api/`. Keep the pure request handling (routing, vali
   - `dev-admin` adds and removes an editor
   - phone width
   - no console errors
-- [ ] **`verify-neon` tweaks** from the spec's Testing section (drop `masked`, skip referenced people, skip the count check once changes exist). Re-run it against `editing`.
+- [ ] **`verify-neon` tweaks** from the spec's Testing section: drop `masked`; skip any person Z who is in T or whose legacy `familyIds` or current `view.family` intersect T; skip the count check once changes exist. Re-run it against `editing`.
 - [ ] **README:** an "Editing" section covering sign-in, editors, History/Undo, the dev setup, and the release steps.
 - [ ] **Final code review** of the whole branch (superpowers:code-reviewer), then fix the findings.
 - [ ] **Stop here** and report to the developer. The release steps (spec "Rollout", step 3 onwards) need the PR #3 preconditions plus the developer's real-device tests.

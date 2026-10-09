@@ -1,7 +1,7 @@
 # Editing with sign-in and infinite undo: design
 
 **Date:** 2026-10-09
-**Status:** Revision 3, after two spec reviews. The undo mechanism is reworked: base changes are toggled by undo/redo changes, conflicts are checked per column, cascades are checked, and every write takes one advisory lock. The developer approved the design sections in conversation and asked for it to be built without further review gates.
+**Status:** Revision 4, after three spec reviews. The undo mechanism is reworked: base changes are toggled by undo/redo changes, conflicts are checked per column, cascades are checked, and every write takes one advisory lock. The developer approved the design sections in conversation and asked for it to be built without further review gates.
 **Follows:** [2026-10-08-neon-migration-design.md](2026-10-08-neon-migration-design.md) (the Neon backend) and [2026-10-09-gedcom-full-facts-design.md](2026-10-09-gedcom-full-facts-design.md) (PR #3: the full facts model, `escapeHtml`, note email masking).
 
 ## Goals
@@ -160,9 +160,10 @@ create index change_row_key_idx on change_row (table_name, row_key, change_id de
 - **Row trigger.** `capture_change()` is a plpgsql `AFTER INSERT OR UPDATE OR DELETE FOR EACH ROW` trigger on `person`, `family`, `family_child`, `media` and `person_media`.
   - It is declared `set timezone = 'UTC'` so timestamp text in snapshots is stable.
   - It reads `current_setting('ged.change_id', true)`. If that is null or empty, it raises `tree tables can only be changed inside a recorded change (call begin_change)`.
+- **Primary keys never change.** An `UPDATE` that changes a row's primary key raises `GE007`. Commands never do this, and toggles depend on it.
 - **Truncate guard.** A `BEFORE TRUNCATE` statement trigger on the same tables raises unconditionally. `import-ged --replace` therefore stops working, which is intended: Neon is the master copy, and the import is retired.
 - **Snapshots.**
-  - A snapshot is `to_jsonb(row)` minus generated columns: every column with `attgenerated <> ''`, looked up in `pg_attribute`. Today that is only `family.sort_key`.
+  - A snapshot is `to_jsonb(row)` minus generated columns: every column with `attgenerated <> ''`, looked up in `pg_attribute`. After 006 those are `family.sort_key` and `person.display_name`.
   - `row_key` is built from the table's primary key columns.
 - **No-op updates.** An `UPDATE` whose new snapshot equals the old one, ignoring `updated_at`, is not recorded.
 - **Cascades.** Rows changed by FK cascades fire the same trigger in the same transaction, so they land in the same change.
@@ -172,7 +173,7 @@ create index change_row_key_idx on change_row (table_name, row_key, change_id de
 
 `alter table person drop column display_name, add column display_name text generated always as (btrim(given_name || ' ' || surname)) stored;`
 
-- This is safe: today every row already equals this formula.
+- This is safe: today every row already equals this formula. 006 checks it first and aborts if any row differs, so the drop can't lose data on any branch.
 - Being generated, it is excluded from snapshots and from conflict checks, so a given-name edit and a later surname edit can each be undone independently.
 - The functions that read `p.display_name` keep working, because SQL function bodies aren't dependency-tracked.
 - The trigram index is created after this.
@@ -216,7 +217,7 @@ This is plpgsql with `set timezone = 'UTC'`. `direction` is `'undo'` or `'redo'`
    | row → row (modify) | The row exists. On the columns C where `initial` ≠ `final`, it equals `from`. | `UPDATE` setting only C to `to`, and `updated_at = now()` when the table has it. Key, identity and generated columns are never in C. |
 
    - **Per-column checks.** These are per column, so a later edit to *other* columns of the same row (for example someone's notes) doesn't block undoing an earlier birth-date edit.
-   - **Skipped keys.** A key whose net op is null → null, or a modify with an empty C, is skipped. If every key is skipped, the toggle raises `GE004 no_change`.
+   - **Skipped keys.** A key whose net op is null → null, or a modify with an empty C, is skipped. If every key is skipped (for example, a later migration dropped the only column the base changed), the toggle still records itself and flips `undone`, with nothing applied. So Ctrl+Z can never get stuck on such a change.
    - **Referenced rows.** The foreign keys of re-created rows, and the FK columns within C of modified rows, must reference rows that exist or that this toggle re-creates:
      - `family.partner1_id` and `partner2_id` → `person`
      - `family_child.family_id` → `family`, and `child_id` → `person`
@@ -224,10 +225,14 @@ This is plpgsql with `set timezone = 'UTC'`. `direction` is `'undo'` or `'redo'`
    - **Order.** Re-creates run in rank order: `person` and `media` (1), `family` (2), `family_child` and `person_media` (3). Then modifies. Then removes in reverse rank order.
 4. **Post-apply checks.**
    - **Cascades.** Every `change_row` written under this toggle must have a key in the base's key set. An extra key means a delete cascaded into a later change, for example a child linked into a family that the undo removes. Raises `conflict` with `reason: 'cascade'`.
-   - **Structure.** Every family touched by the toggle must still have at least one partner. Otherwise it raises `conflict` with `reason: 'structure'`. Families with one partner and no children are allowed, because 18 exist in the imported data.
-   - **Cycles.** No person whose parent links were touched may be their own ancestor. Otherwise it raises `conflict` with `reason: 'cycle'`.
+   - **Structure.** Every family touched by the toggle (its own `family` rows, plus the families of touched `family_child` rows) must still have at least one partner. Otherwise it raises `conflict` with `reason: 'structure'`.
+     - The offending keys are those families, columns `partner1_id`, `partner2_id`.
+     - Families with one partner and no children are allowed, because 18 exist in the imported data.
+   - **Cycles.** "Touched people" are the `child_id` of every touched `family_child` row, plus every child of a family whose row was touched (a re-filled partner slot changes parents without touching `family_child`). No touched person may be their own ancestor; otherwise it raises `conflict` with `reason: 'cycle'`.
+     - The offending keys are the `family_child` rows linking members of the cycle, and their `family` rows.
+     - A cycle member is P, plus every ancestor of P that has P as an ancestor.
    - All ancestry queries are cycle-safe recursive CTEs (`UNION`, not `UNION ALL`), under the statement timeout.
-5. **Blocking changes.** For any failed check, `blocking` lists up to 5 changes that last touched the offending keys or columns after the base. Each comes with the action that would unblock it:
+5. **Blocking changes.** For a failed precondition, cascade, structure or cycle check, `blocking` lists up to 5 changes that last touched the offending keys or columns after the base. A `constraint` conflict lists none. Each comes with the action that would unblock it:
    - The last toucher is a base change that is in effect: `{id, action: 'revert'}`.
    - The last toucher is an undo or redo of base X: `{id: X, action: X.undone ? 'restore' : 'revert'}`.
    - If none can be found (for example the data changed outside the history, or after a schema change), `blocking` is empty and `reason` is `untracked`. The UI then says: "This change can't be undone automatically: the data has changed in a way the history doesn't explain."
@@ -365,7 +370,7 @@ Shared rules:
 | File | Responsibility |
 |---|---|
 | `src/auth.js` (new) | Creates the `@neondatabase/auth` client (`createAuthClient(VITE_NEON_AUTH_URL)`). Provides `sendEmailCode(email)` (`emailOtp.sendVerificationOtp({email, type: 'sign-in'})`), `verifyEmailCode(email, otp)` (`signIn.emailOtp`), `signInWithGoogle()` (`signIn.social({provider: 'google', callbackURL: location.href})`), a dev-only `signInWithPassword`, `signOut()`, `onChange(listener)`, and `getToken()`. `getToken()` returns `session.token` from `getSession()`, forcing a fresh fetch (`fetchOptions.headers['X-Force-Fetch']`) when the cached JWT's `exp` is within 60 s. On load, it restores the session and calls `GET /me` to learn the role. |
-| `src/editApi.js` (new) | `authedFetch` adds the bearer token and maps errors to `ApiError {status, code, blocking}`. Exposes `runChange(kind, params)`, `revert(id)`, `undo()`, `redo()`, `listChanges({before, person})`, `search(q)`, and the editors calls. |
+| `src/editApi.js` (new) | `authedFetch` adds the bearer token and maps errors to `ApiError {status, code, reason, blocking, field}`. Exposes `runChange(kind, params)`, `revert(id, via = 'history')`, `restore(id)`, `undo()`, `redo()`, `listChanges({before, person})`, `search(q)`, `me()`, and the editors calls. |
 | `src/dataLoader.js` | Sends the bearer token when signed in as an editor, so it gets unmasked views. Adds `invalidateAll()`: it clears the cache and `prefetched`, and bumps a generation counter so in-flight responses from before the call are discarded. It is called on sign-in, sign-out and after every change. Adds a 5-minute TTL on cached views. |
 | `src/signIn.js` (new) | Header button, sign-in dialog (email → code; Google), and account menu (History, Editors, Sign out). |
 | `src/personEditor.js` (new) | Edit form for the selected person: core fields, the four life events with notes, cause of death, person notes, a facts list, email and phone. It also has Delete. It builds `update_person` and `delete_person`. **Facts list rows** have a kind (Occupation, Residence, Census, or Other with a `tag` chosen from `factLabels`' list plus free text), value, date, place, notes, and for Other also `type` and `cause`. Old-shape values (plain occupation strings, `religion`/`education`) are shown and saved back in their original shape unless edited. It refuses to open a view with `masked: true`, reloading it with the token first. |
@@ -416,10 +421,15 @@ Rules:
 - **API unit tests:** routing, CORS and preflight, and auth with locally signed EdDSA tokens (valid, expired, wrong issuer, unverified email, not an editor, admin-only routes), using fake DB functions. Masking applies to every non-editor caller (anonymous, or signed in without editor access).
 - **Front-end unit tests (jsdom):** `editApi` error mapping, token refresh, the relative dialog's family choice, the history panel's rendering and button states, and `dataLoader` invalidation discarding in-flight responses.
 - **Facts round trip:** for every real person on the `editing` branch, facts → form → facts is the identity, and the result passes validation.
-- **Fixtures:** existing DB test fixtures (`tests/db/personView.test.js`) wrap their inserts in `begin_change(…, via = 'script')`.
+- **Fixtures:**
+  - Existing DB test fixtures wrap their writes in `begin_change(…, via = 'script')`.
+  - They insert `given_name`/`surname` instead of `display_name`.
+  - They use `delete` (inside a change) instead of `truncate`.
+- **The full-facts backfill after 006** (`scripts/neon/backfillFacts.js`, PR #3): `applyPlan` calls `begin_change('backfill@ged-eye', 'Facts backfill', 'backfill_facts', 'script', …)` first, when that function exists (`to_regprocedure`). The backfill and its rollback are then recorded, and the backfill itself is undoable from History. Its DB test is updated to match.
 - **`verify-neon`:**
   - It drops `masked` before comparing API bodies.
-  - It skips every person referenced by any `change_row`: person keys, `partner1_id`/`partner2_id` in family snapshots, `child_id`s, and all partners and children of touched families.
+  - Let T be every person referenced by any `change_row`: person keys, `partner1_id`/`partner2_id` in family snapshots, `child_id`s, and all partners and children of touched families.
+  - It skips person Z when Z is in T, or when any id in Z's legacy `familyIds` or current `view.family` is in T. Neighbours' views show edited names and relationships.
   - It skips the person-count check once any change exists.
 - **Manual (browser, `editing` branch):**
   - sign in by email code and with Google
