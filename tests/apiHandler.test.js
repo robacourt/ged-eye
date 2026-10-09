@@ -711,9 +711,9 @@ describe('api/db.js', () => {
     expect(await createDb(fakePool([])).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test')).toBeNull();
   });
 
-  it('leaves the write methods unimplemented for now', async () => {
+  it('leaves the history and toggle methods unimplemented for now', async () => {
     const db = createDb(fakePool([]));
-    for (const call of [() => db.runChange(EDITOR, 'k', {}), () => db.toggle(EDITOR, 1, 'undo', 'history'), () => db.undoLast(EDITOR), () => db.redoLast(EDITOR), () => db.listChanges({})]) {
+    for (const call of [() => db.toggle(EDITOR, 1, 'undo', 'history'), () => db.undoLast(EDITOR), () => db.redoLast(EDITOR), () => db.listChanges({})]) {
       await expect(call()).rejects.toMatchObject({ status: 501, code: 'not_implemented' });
     }
   });

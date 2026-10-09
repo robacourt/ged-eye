@@ -3,6 +3,7 @@
  * Importing this module has no side effects: index.js creates the pool and passes it in.
  */
 import { ApiError } from './http.js';
+import { runChange } from './changes.js';
 
 /** Escapes LIKE wildcards and the escape character itself, for use with `escape '\'`. */
 export function escapeLike(text) {
@@ -114,8 +115,10 @@ export function createDb(pool) {
       });
     },
 
-    // Tasks 7 and 8.
-    runChange: notImplemented,
+    /** → { change: { id, summary, personIds }, view | null }; see api/changes.js */
+    runChange: (editor, kind, params) => runChange(pool, editor, kind, params),
+
+    // Task 8.
     toggle: notImplemented,
     undoLast: notImplemented,
     redoLast: notImplemented,
