@@ -32,7 +32,7 @@ What is dropped today:
 
 Per person, all notes together come to: median 0, p90 1.6 KB, p99 5 KB, maximum 30 KB (I777).
 
-In the facts this change stores, 18 notes on 18 people contain 16 distinct email addresses, mostly in pasted email threads. On the live site today, I508 and I1388 already show an address in plain text, the browser swallows I711's (`<a@b.c>`) as a tag, and the rest are hidden by truncation.
+In the facts this change stores, 24 notes on 24 people contain 17 distinct email addresses, mostly in pasted email threads. Six of them are written in the GEDCOM-escaped form `name@@domain`. On the live site today, I508 and I1388 already show an address in plain text, the browser swallows I711's (`<a@b.c>`) as a tag, and the rest are hidden by truncation.
 
 Production state, checked read-only on 2026-10-09: for all 2,994 people, `person.facts` equals what today's parser derives from `gedcom_archive`, and every row has `updated_at = created_at`. `facts` is about 209 KB as compact JSON (259 kB as stored jsonb); the database is 11 MB.
 
@@ -83,7 +83,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
   - Neon is the master copy and no other GEDCOM will be imported, so this tolerance isn't extended.
 - **Node shape:** `{ level, xref, tag, value, children }`.
   - `xref` has its `@` signs removed, or is `null`.
-  - `value` is everything after the single delimiter space, verbatim, or `''`.
+  - `value` is everything after the single delimiter space, verbatim, or `''`, except that the GEDCOM escape `@@` is decoded to `@`. In `acourt.ged` only 6 note continuation lines use it, each for an email address.
 - **Placement:**
   - A level-0 node starts a new root.
   - Any other node becomes a child of the nearest open node with a lower level. GEDCOM forbids level jumps and the file has none.
@@ -129,7 +129,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
 - `date` and `place` come from the node's last direct `DATE` and `PLAC` children, trimmed.
 - `notes` is a `string[]` built from the node's direct `NOTE` children. NOTEs under SOUR citations are excluded.
 
-**Note text** is the folded NOTE value, kept verbatim (leading spaces, internal spacing and blank lines), with only `trimEnd()` applied to the whole note. A note that is empty after that is dropped.
+**Note text** is the folded NOTE value, kept verbatim (leading spaces, internal spacing and blank lines), with only `trimEnd()` applied to the whole note. A note that is empty after that is dropped. One repair is applied: Brother's Keeper stored some Windows-1252 punctuation as C1 code points (126 of them, all in note text), so U+0091–U+0097 become ‘ ’ “ ” • – —.
 
 | Key | Shape | Source |
 |---|---|---|
@@ -162,7 +162,7 @@ Production state, checked read-only on 2026-10-09: for all 2,994 people, `person
 
 ## Email masking (`api/privacy.js`)
 
-- `maskNoteEmails(view)` returns a copy of the view. In it, every string inside a `notes` key or any key ending in `Notes`, at any depth in the view (today only `view.person` has notes), has each match of `/[\p{L}\p{M}\p{N}._%+-]{1,64}@[\p{L}\p{M}\p{N}.-]{1,253}\.\p{L}{2,63}/gu` replaced with `[email hidden]`. The regex is bounded, so it can't backtrack quadratically on long text, and it is Unicode-aware.
+- `maskNoteEmails(view)` returns a copy of the view. In it, every string inside a `notes` key or any key ending in `Notes`, at any depth in the view (today only `view.person` has notes), has each match of `/[\p{L}\p{M}\p{N}._%+-]{1,64}@@?[\p{L}\p{M}\p{N}.-]{1,253}\.\p{L}{2,63}/gu` replaced with `[email hidden]`. The regex is bounded, so it can't backtrack quadratically on long text, and it is Unicode-aware. `@@?` also masks the GEDCOM `@@` form, as a backstop to the parser decoding it.
 - Nothing else is changed. The `email` contact field is a deliberate, separate field and is left alone.
 - `createHandler` applies it to every 200 response from `/person/:id`.
 - The stored data is never masked.
@@ -219,7 +219,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 ### CLI
 
-**Connection.** Uses `DATABASE_URL_UNPOOLED`, or `--database-url <url>` for the rehearsal branch. `host` is that URL's hostname.
+**Connection.** Uses `DATABASE_URL_UNPOOLED`, or `--database-url <url>`. `host` is that URL's hostname. For another branch, prefer a mode-600 env file holding `DATABASE_URL_UNPOOLED=<url>` and `node --env-file=<file> …`, because a URL on the command line (which carries the password) lands in shell history and `ps`.
 
 **Arguments.** Only `--database-url`, `--sha`, `--out`, `--apply`, `--rollback` and `--confirm` are accepted, each with a value. Anything else (an unknown flag, `--flag=value`, a missing value, a duplicate) is refused before anything is read. The plan file's shape is checked before connecting: host, rows, unique string ids, `before` and `after` objects that differ.
 
@@ -249,7 +249,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 ### `verify-neon`
 
 - `scripts/neon/verifyCompare.js` drops `notes`, `occupations`, `censusRecords`, `residences`, `religion` and `education` from `SCALAR_KEYS`, with a comment. Those keys are re-derived by `backfill-facts` and checked by its own verification, so the old-parser JSON baseline no longer applies to them. Relationships, photos, avatars and the core fields are still compared.
-- `scripts/neon/verify.js` compares the API body with `person_view` read from the database. That comparison moves into a helper, `apiMatchesView(body, view)` in `verifyCompare.js`, which applies `maskNoteEmails` to the database view first. Masked people (I508, I711 and I1388 today, 18 after the backfill) therefore don't report "body differs from database".
+- `scripts/neon/verify.js` compares the API body with `person_view` read from the database. That comparison moves into a helper, `apiMatchesView(body, view)` in `verifyCompare.js`, which applies `maskNoteEmails` to the database view first. Masked people (I508, I711 and I1388 today, 24 after the backfill) therefore don't report "body differs from database".
 - When the API is sampled, `verify.js` always adds up to 3 people whose notes contain an address (`hasNoteEmailsToMask` in `verifyCompare.js`). A body equal to the *unmasked* view is reported as "note emails served unmasked", which points to an old Function still deployed.
 
 ## Front end

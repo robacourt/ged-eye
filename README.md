@@ -84,7 +84,7 @@ npm run backfill-facts -- --rollback <plan> --confirm <host>   # put the plan's 
 - An apply writes exactly the reviewed plan or nothing. If any planned row has changed since the plan was made, nothing is written.
 - **Keep the plan file: it is the rollback.** The CLI never overwrites an existing plan file; pass `--out <path>` for a new one.
 - Rollback has the same guard. Once editing starts, rows edited after the backfill can only be restored from the `pre-facts-backfill-2026-10-09` Neon branch.
-- `--database-url <url>` points it at another branch (the rehearsal used one), and `--sha <sha256>` picks an archive row if there is ever more than one.
+- To run it against another branch (the rehearsal used one), put `DATABASE_URL_UNPOOLED=<url>` in a mode-600 env file and run `node --env-file=<file> scripts/neon/backfillFacts.js …`. `--database-url <url>` also works, but it puts the password in shell history. `--sha <sha256>` picks an archive row if there is ever more than one.
 
 ### Configuration
 
