@@ -2,6 +2,7 @@ import { FamilyTreeView } from './familyTreeView.js';
 import { PersonDetails } from './personDetails.js';
 import { PersonNotFoundError } from './dataLoader.js';
 import { escapeHtml } from './html.js';
+import './editorStyles.css';
 
 const DEFAULT_PERSON_ID = 'I122';
 const SLOW_LOAD_MS = 300;

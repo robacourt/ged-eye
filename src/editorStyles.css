@@ -1,0 +1,425 @@
+/*
+ * Editing UI: the sign-in button and dialog, the account menu, shared dialog and form controls, and toasts.
+ * Kept apart from style.css, which this file doesn't restyle.
+ *
+ * Stacking: the header button (1100) sits above the tree and the loading overlay (1000) but below the photo
+ * viewer (10000); dialogs (10500) and toasts (10600) sit above everything.
+ */
+
+/* `hidden` must win over the display values below. */
+.signin [hidden],
+.editor-dialog-backdrop[hidden],
+.editor-dialog [hidden],
+.toast-container [hidden] {
+  display: none !important;
+}
+
+/* Shared controls */
+.editor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editor-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.editor-btn-primary {
+  border-color: #00d4ff;
+  background: #00d4ff;
+  color: #0f0f1a;
+  font-weight: 600;
+}
+
+.editor-btn-primary:hover:not(:disabled) {
+  background: #4de1ff;
+}
+
+.editor-btn-link {
+  padding: 8px 0;
+  border: none;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor-btn-link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.editor-btn:disabled,
+.editor-btn-link:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.editor-btn:focus-visible,
+.editor-btn-link:focus-visible,
+.editor-input:focus-visible,
+.editor-dialog-close:focus-visible,
+.signin-button:focus-visible,
+.toast button:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.editor-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font: inherit;
+  font-size: 16px; /* 16px stops iOS zooming into the field */
+}
+
+.editor-input:disabled {
+  opacity: 0.6;
+}
+
+.editor-input[aria-invalid="true"] {
+  border-color: #ff6b6b;
+}
+
+.editor-error {
+  color: #ff8a8a;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Header button, fixed over the top right of the tree */
+.signin {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  z-index: 1100;
+}
+
+.signin-button {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background: rgba(15, 15, 26, 0.85);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.signin-button:hover {
+  background: rgba(40, 40, 60, 0.95);
+}
+
+.signin-button-account {
+  width: 40px;
+  padding: 0;
+  border-color: #00d4ff;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Account menu */
+.account-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(300px, calc(100vw - 24px));
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: #1e1e2e;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.account-email {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.account-role {
+  margin-top: 2px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.account-note {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  overflow-wrap: anywhere;
+}
+
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Dialogs: centred on wider screens, full screen below 768px */
+.editor-dialog-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.editor-dialog {
+  width: min(420px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: #1e1e2e;
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.editor-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 0 20px;
+}
+
+.editor-dialog-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.editor-dialog-close {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.editor-dialog-close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.editor-dialog-body {
+  padding: 16px 20px 24px;
+}
+
+@media (max-width: 767px) {
+  .editor-dialog-backdrop {
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .editor-dialog {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border: none;
+    border-radius: 0;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Sign-in dialog */
+.signin-notice {
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 170, 0, 0.5);
+  border-radius: 8px;
+  background: rgba(255, 170, 0, 0.12);
+  color: #ffd28a;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.signin-email-form,
+.signin-code-form,
+.signin-password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.signin-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.signin-or::before,
+.signin-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.signin-google {
+  width: 100%;
+}
+
+.signin-google-error {
+  margin-top: 8px;
+}
+
+.signin-sent {
+  margin-bottom: 14px;
+  font-size: 15px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.signin-code {
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.signin-code-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.signin-dev {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.signin-dev-title {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Toasts, bottom centre */
+.toast-container {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 10600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(560px, calc(100vw - 24px));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 6px 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  background: #2a2a3d;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.toast-error {
+  border-color: rgba(255, 107, 107, 0.6);
+  background: #3a2026;
+}
+
+.toast-message {
+  flex: 1;
+  padding: 6px 0;
+  overflow-wrap: anywhere;
+}
+
+.toast-action {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.toast-action:hover {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.toast-close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.toast-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
