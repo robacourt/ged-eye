@@ -645,6 +645,7 @@ body {
   .note-toggle,
   .detail-notes summary {
     padding: 4px 0;
+    min-height: 24px;
   }
 
   .person-photo-thumbnail {

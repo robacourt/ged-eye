@@ -268,9 +268,10 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 - **Life Events.** A Birth, Baptism, Death or Burial row appears when it has a date, a place, notes, or (for death) a cause. I1208's death, for example, has only the note "Died as an infant". Each row shows its notes; Death also shows `Cause: …`.
 - **Occupations.** Each entry is shown as `value • date • place`, plus its notes. A string entry (the old shape) renders as its value.
 - **Census Records and Residences.** Each entry gains its notes.
-- **Other details** (replaces "Personal"). Each entry is shown as `label: value • date • place` (plus `Cause: …` when present) with its notes. Legacy `religion`/`education` strings, if present, are shown here as Religion and Education.
-- **Notes.** Each note is shown in full in `.note-text`. A note over 6 lines or 500 characters is clamped to about 6 lines with a "Show more"/"Show less" button. The button toggles a class and is wired up after `innerHTML` is set, like the photo thumbnails.
+- **Other details** (replaces "Personal"). Each entry is shown as `label: value • date • place` (plus `Cause: …` when present) with its notes. A tag-only fact (e.g. `_NMAR`) shows just its label, "Never married". Legacy `religion`/`education` strings, if present, are shown here as Religion and Education.
+- **Notes.** Each note is shown in full in `.note-text`. A note over 6 lines or 500 characters is clamped to about 6 lines with a "Show more"/"Show less" button, unless after rendering it turns out to fit in that box anyway (a wide desktop column), in which case it is shown unclamped with no button. The button toggles a class and is wired up after `innerHTML` is set, like the photo thumbnails.
 - **Empty sections are omitted**, as today.
+- **Sex badge.** Only `M` (Male) and `F` (Female) get a badge; `U` or anything else gets none. Previously everything that wasn't `M` showed as Female.
 
 `photoViewer.js` already uses `textContent` and needs no change. `familyTreeView.js` draws names in Cytoscape (canvas), not HTML.
 
