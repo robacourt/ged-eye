@@ -7,6 +7,7 @@
  *   npm run backfill-facts -- --rollback <plan> --confirm <host>
  * Options: --database-url <url> (default DATABASE_URL_UNPOOLED), --sha <sha256>, --out <path>.
  */
+import crypto from 'crypto';
 import { canonical } from './verifyCompare.js';
 
 export const CORE_COLUMNS = ['given_name', 'surname', 'display_name', 'sex', 'birth_date', 'birth_place',
@@ -88,4 +89,84 @@ export function describeRow(row, width = 160) {
 export function checkConfirm({ host, planHost, confirm, direction }) {
   if (planHost !== host) throw new Error(`The plan was made against ${planHost}, but this connection is ${host}`);
   if (confirm !== host) throw new Error(`Refusing to ${direction} on ${host}: pass --confirm ${host}`);
+}
+
+// Compare-and-swap: only rows whose facts still equal the side being replaced, and that nobody has
+// edited since the import (the backfill itself never touches updated_at).
+const UPDATE_SQL = `
+  update person p set facts = r.replacement
+  from jsonb_to_recordset($1::jsonb) as r (id text, expected jsonb, replacement jsonb)
+  where p.id = r.id and p.facts = r.expected and p.updated_at = p.created_at
+  returning p.id`;
+
+export class StalePlanError extends Error {
+  constructor(ids) {
+    super(`${ids.length} people changed or were edited since the plan (${ids.join(', ')}); nothing was written`);
+    this.name = 'StalePlanError';
+    this.ids = ids;
+  }
+}
+
+const sides = (direction) => {
+  if (direction === 'apply') return { from: 'before', to: 'after' };
+  if (direction === 'rollback') return { from: 'after', to: 'before' };
+  throw new Error(`direction must be apply or rollback, not ${direction}`);
+};
+
+/** The gedcom_archive row (the only one, or the one with `sha`), with its content hash checked. */
+export async function loadArchive(client, sha) {
+  const { rows } = sha
+    ? await client.query('select sha256, content from gedcom_archive where sha256 = $1', [sha])
+    : await client.query('select sha256, content from gedcom_archive');
+  if (rows.length !== 1) {
+    throw new Error(sha ? `No gedcom_archive row has sha256 ${sha}` : `Expected exactly one gedcom_archive row, found ${rows.length}; pass --sha <sha256>`);
+  }
+  const [{ sha256, content }] = rows;
+  const actual = crypto.createHash('sha256').update(content).digest('hex');
+  if (actual !== sha256) throw new Error(`gedcom_archive content hashes to ${actual}, but its row says ${sha256}`);
+  return { sha256, content };
+}
+
+/** Every person's facts, edited flag (updated_at moved since the import) and CORE_COLUMNS. */
+export async function readDbRows(client) {
+  const { rows } = await client.query(
+    `select id, facts, updated_at <> created_at as edited, ${CORE_COLUMNS.join(', ')} from person order by id`);
+  return rows;
+}
+
+/**
+ * Compare-and-swap the plan into person.facts in one transaction. Leaves updated_at alone: the
+ * backfill re-derives the import, it is not an edit. Throws StalePlanError (and writes nothing)
+ * if any row's facts no longer match the side being replaced, or the row was edited since the import.
+ */
+export async function applyPlan(client, plan, { direction = 'apply', batchSize = 500 } = {}) {
+  const { from, to } = sides(direction);
+  const pairs = plan.rows.map(row => ({ id: row.id, expected: row[from], replacement: row[to] }));
+  await client.query('begin');
+  try {
+    let updated = 0;
+    for (let i = 0; i < pairs.length; i += batchSize) {
+      const batch = pairs.slice(i, i + batchSize);
+      const { rows } = await client.query(UPDATE_SQL, [JSON.stringify(batch)]);
+      if (rows.length !== batch.length) {
+        const done = new Set(rows.map(row => row.id));
+        throw new StalePlanError(batch.map(pair => pair.id).filter(id => !done.has(id)));
+      }
+      updated += rows.length;
+    }
+    await client.query('commit');
+    return { updated };
+  } catch (error) {
+    await client.query('rollback').catch(() => {});
+    throw error;
+  }
+}
+
+/** Planned ids whose facts don't equal the side the given direction writes. */
+export async function verifyPlan(client, plan, { direction = 'apply' } = {}) {
+  const { to } = sides(direction);
+  const ids = plan.rows.map(row => row.id);
+  const { rows } = await client.query('select id, facts from person where id = any($1)', [ids]);
+  const actual = new Map(rows.map(row => [row.id, row.facts]));
+  return plan.rows.filter(row => !actual.has(row.id) || canonical(actual.get(row.id)) !== canonical(row[to])).map(row => row.id);
 }

@@ -3,19 +3,9 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
-import pg from 'pg';
 import { ROOT } from '../../scripts/neon/cli.js';
 import { migrate, migrationChecksum } from '../../scripts/neon/migrate.js';
-
-const url = process.env.DATABASE_URL_TEST;
-const host = (u) => new URL(u).hostname.replace('-pooler', '');
-const productionHosts = [process.env.DATABASE_URL, process.env.DATABASE_URL_UNPOOLED].filter(Boolean).map(host);
-if (url && productionHosts.length === 0) {
-  throw new Error('DATABASE_URL_TEST is set but DATABASE_URL and DATABASE_URL_UNPOOLED are not, so it cannot be checked against production; run via npm run test:db');
-}
-if (url && productionHosts.includes(host(url))) {
-  throw new Error('DATABASE_URL_TEST points at the production branch; refusing to reset it');
-}
+import { TEST_DATABASE_URL as url, resetTestDatabase } from './testDatabase.js';
 
 const FIXTURE = `
 insert into person (id, given_name, surname, display_name, sex, birth_date, burial_date, facts, avatar_key) values
@@ -51,10 +41,7 @@ describe.skipIf(!url)('person_view (database)', () => {
   const view = async (id) => (await client.query('select person_view($1) as v', [id])).rows[0].v;
 
   beforeAll(async () => {
-    client = new pg.Client({ connectionString: url });
-    await client.connect();
-    await client.query('drop schema public cascade; create schema public;');
-    await migrate(url, { log: () => {} });
+    client = await resetTestDatabase();
     await client.query(FIXTURE);
   }, 60000);
 
