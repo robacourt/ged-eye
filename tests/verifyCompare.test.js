@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes,
-  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, hasNoteEmailsToMask
+  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, apiBodyView, hasNoteEmailsToMask, touchedByEdits, countCheck
 } from '../scripts/neon/verifyCompare.js';
 
 const person = (id, extra) => ({
@@ -405,6 +405,59 @@ describe('apiMatchesView', () => {
   it('rejects a real difference, and an unmasked body', () => {
     expect(apiMatchesView({ ...view, person: { id: 'I1', notes: ['Something else'] } }, view)).toBe(false);
     expect(apiMatchesView(view, view)).toBe(false);
+  });
+
+  it('ignores the masked flag the Function adds to the view, but still checks the masking', () => {
+    const served = { ...view, person: { id: 'I1', notes: ['Write to [email hidden]'] }, masked: true };
+    expect(apiMatchesView(served, view)).toBe(true);
+    expect(apiMatchesView({ ...view, masked: true }, view)).toBe(false);
+  });
+});
+
+describe('apiBodyView', () => {
+  it('drops masked and keeps everything else', () => {
+    const view = { person: { id: 'I1' }, family: [], relationships: {} };
+    expect(apiBodyView({ ...view, masked: true })).toEqual(view);
+    expect(apiBodyView({ ...view, masked: false })).toEqual(view);
+    expect(apiBodyView(view)).toEqual(view);
+  });
+});
+
+describe('touchedByEdits', () => {
+  const expected = { familyIds: new Set(['P1', 'C2']) };
+  const view = { family: [{ id: 'P1' }, { id: 'N9' }] };
+
+  it('is true for a person who was edited themselves', () => {
+    expect(touchedByEdits('Z', expected, view, new Set(['Z']))).toBe(true);
+  });
+
+  it('is true when a legacy relative was edited, even one no longer in the view', () => {
+    expect(touchedByEdits('Z', expected, view, new Set(['C2']))).toBe(true);
+  });
+
+  it('is true when a current relative was edited, even one the legacy data never had', () => {
+    expect(touchedByEdits('Z', expected, view, new Set(['N9']))).toBe(true);
+  });
+
+  it('is false when nobody in either view was edited', () => {
+    expect(touchedByEdits('Z', expected, view, new Set(['X1', 'X2']))).toBe(false);
+    expect(touchedByEdits('Z', expected, view, new Set())).toBe(false);
+  });
+
+  it('copes with a deleted person (no view)', () => {
+    expect(touchedByEdits('Z', expected, null, new Set(['Z']))).toBe(true);
+    expect(touchedByEdits('Z', expected, null, new Set(['X1']))).toBe(false);
+  });
+});
+
+describe('countCheck', () => {
+  it('compares the counts while nothing has been edited', () => {
+    expect(countCheck(10, 10, 0)).toEqual({ result: 'ok', problem: null });
+    expect(countCheck(9, 10, 0)).toEqual({ result: 'failed', problem: 'person count 9 != legacy 10' });
+  });
+
+  it('is skipped once any change exists, since edits add and delete people', () => {
+    expect(countCheck(12, 10, 3)).toEqual({ result: 'skipped (3 changes)', problem: null });
   });
 });
 

@@ -66,7 +66,7 @@ neon deploy            # deploy the api Function
 npm run verify-neon    # parity check against the old JSON files; exits non-zero on any unexplained difference
 ```
 
-- `import-ged` refuses to run if the database already has people. `npm run import-ged -- --replace --confirm <database host>` wipes and reloads everything, throwing away any edits made in Neon since.
+- `import-ged` refuses to run if the database already has people. `npm run import-ged -- --replace --confirm <database host>` used to wipe and reload everything; since migration 006 the tree tables refuse `TRUNCATE`, so it no longer works (see [Editing](#editing)).
 - The old JSON files and avatars (the parity baseline) now live outside the repo in `ignore/legacy-data/`. `upload-media`, `import-ged` and `verify-neon` read them from there by default; pass `--legacy-root <dir>` to point elsewhere.
 - `scripts/generateAvatars.js` is legacy: it face-crops avatars from the old JSON files. It'll be reworked to read from Neon when editing arrives.
 
@@ -90,10 +90,12 @@ npm run backfill-facts -- --rollback <plan> --confirm <host>   # put the plan's 
 
 | File | Committed | What's in it |
 |---|---|---|
-| `.env.development`, `.env.production` | yes | `VITE_API_URL` (the Function) and `VITE_MEDIA_BASE_URL` (the bucket). Public values that end up in the JS bundle anyway. |
+| `.env.development`, `.env.production` | yes | `VITE_API_URL` (the Function), `VITE_MEDIA_BASE_URL` (the bucket) and `VITE_NEON_AUTH_URL` (sign-in). Public values that end up in the JS bundle anyway. |
+| `.env.development.local` | no | Overrides of the three `VITE_*` values, to point `npm run dev` at a development branch such as `editing`. |
 | `.env.local` | no | Secrets written by `neon link` / `neon env pull`: database URLs and bucket keys. |
 | `.env.test.local` | no | `DATABASE_URL_TEST`, for `npm run test:db`. |
-| `neon.ts` | yes | Neon resources: the `api` Function and the `ged-eye-media` bucket. |
+| `.env.dev-accounts.local` | no | Passwords of the development accounts on the `editing` branch. Never commit it. |
+| `neon.ts` | yes | Neon resources: Auth, the `api` Function and the `ged-eye-media` bucket. |
 
 There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` whenever that file exists.
 
@@ -105,7 +107,11 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 ├── neon.ts                 # Neon resources: api Function + ged-eye-media bucket
 ├── api/
 │   ├── index.js            # Neon Function entry: Postgres pool
-│   ├── handler.js          # Routes: GET /person/:id, GET /health
+│   ├── handler.js          # Routes: person, search, me, changes, undo/redo, editors
+│   ├── auth.js             # Verifies Neon Auth tokens
+│   ├── changes.js          # Runs edit commands as recorded changes
+│   ├── commands/           # One module per edit command (update_person, add_relative, …)
+│   ├── db.js, tx.js        # The handler's database calls; the write transaction
 │   └── privacy.js          # Masks email addresses found in note text
 ├── db/migrations/          # Schema and the person_view() Postgres function
 ├── scripts/
@@ -123,7 +129,13 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 │   ├── factLabels.js       # Labels for GEDCOM fact tags (_MILT → Military service)
 │   ├── html.js             # escapeHtml
 │   ├── photoViewer.js      # Photo viewer
-│   └── style.css           # Styles
+│   ├── auth.js, signIn.js  # Neon Auth client; sign-in dialog and account menu
+│   ├── editApi.js          # Calls to the write API, with the sign-in token
+│   ├── personEditor.js     # Edit dialogs (also relativeDialog.js, familyEditor.js)
+│   ├── historyPanel.js     # History, with Revert and Restore
+│   ├── editorsDialog.js    # Admins manage the editors list
+│   ├── toast.js            # Messages, with Undo after an edit
+│   └── style.css           # Styles (editorStyles.css for the editing UI)
 ├── public/placeholders/    # Default avatars
 ├── docs/                   # Built site, served by GitHub Pages
 └── tests/                  # Unit tests (tests/db needs a database)
@@ -141,6 +153,46 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 
 The site itself is plain static files on GitHub Pages. Neon is the master copy of the data, and the original GEDCOM is archived byte for byte in the `gedcom_archive` table. Sources and citations, family-level facts (such as marriage notes) and photo titles are still only in that archive, ready to be parsed later.
 
+## Editing
+
+Viewing stays public. Family members on the invite list can also sign in and edit the tree from the website, and every edit can be undone.
+
+- **Who can edit:** only people on the editors list. Admins manage it in the app (account menu → Editors): add someone by email as an editor or an admin, or remove them. An admin can't remove themselves, and the last admin can't be removed. Anyone can sign in, but someone who isn't on the list just sees the tree, with a note asking them to ask me for access.
+- **Signing in:** **Sign in** in the header, then a one-time code sent by email, or Google (Neon Auth). Only verified email addresses are accepted.
+- **What can be edited:**
+  - a person's details: names, sex, birth, baptism, death and burial (with their notes), cause of death, notes, occupations, residences, census records, other facts, email and phone
+  - adding a parent, spouse, child or sibling, as a new person or by linking someone already in the tree
+  - removing a link (×), and deleting a person
+  - a couple's marriage and divorce details
+
+  Photos come next.
+- **History:** every edit is kept forever, with who made it and when. **History** (in the account menu, or "History of this person" in the details panel) lists everyone's changes. **Revert** undoes any change and **Restore** puts it back; both are recorded too, so nothing is ever lost. If later edits depend on it (someone has since edited the same field, or added a child to a family it created), Revert is refused and links to the changes in the way.
+- **Undo and redo:** Ctrl/Cmd+Z undoes your own latest edit, and Ctrl/Cmd+Shift+Z (or Ctrl+Y) redoes it. The message after each edit also has an Undo button.
+- **Two people editing one person:** the second save is refused ("Someone else changed this person"); reload to see their changes.
+- **Browsers:** sign-in uses a partitioned cookie on Neon's domain. Current Chrome, Edge, Firefox and Safari are fine. Browsers without partitioned cookies, such as older iOS Safari, can view the tree but not edit; the sign-in dialog says the cookie was blocked.
+
+### Developing the editing features
+
+- Work against the Neon branch **`editing`** (a copy of production with its own Function, Auth and bucket), never production. Its credentials are in `.env.local` (`neon checkout editing --env .env.local`), and `.env.development.local` points `npm run dev` at its Function, bucket and Auth.
+- Development accounts exist on `editing` only: `dev-admin@example.test`, `dev-editor@example.test` and `dev-viewer@example.test` (not an editor). Their passwords are in `.env.dev-accounts.local`, which must never be committed. The sign-in dialog shows a password form only in dev builds.
+- `npm run test:db` runs against the Neon branch **`test-editing`** (`DATABASE_URL_TEST` in `.env.test.local`). It wipes that branch, so never run two at once.
+- **Migrations:** `006_editing.sql` adds the editors list, the change log (`change`, with before/after snapshots of every row in `change_row`), the triggers that record them, undo/redo (`toggle_change`, `undo_last`, `redo_last`), id sequences and name search. `007_marriage_children.sql` adds each marriage's `childIds` to `person_view`.
+- **Every write must go through `begin_change`.** Since 006, `person`, `family`, `family_child`, `media` and `person_media` refuse any write outside a recorded change, and refuse `TRUNCATE`. A script or data migration opens one first, in the same transaction, with `via = 'script'`:
+
+  ```sql
+  begin;
+  select begin_change('you@example.com', 'Your name', 'my_script', 'script', 'What it did', '{}', '{}');
+  -- writes …
+  commit;
+  ```
+
+  It then shows in History and can be reverted there (scripts are never Ctrl+Z targets). `backfill-facts` already does this.
+- `npm run verify-neon` still checks the read path against the old JSON. It skips everyone an edit has touched, along with their relatives, and skips the person count once anything has been edited.
+
+### Releasing to production
+
+Follow the Rollout section of the [editing design](specs/2026-10-09-editing-design.md#rollout). In short: `npm run db:migrate`, `neon deploy`, disable email/password sign-in and add the `https://robacourt.github.io` trusted domain, `npm run verify-neon`, a smoke test, then sign-in tests on real devices (email code, Google, iPhone Safari), and only then merge the front end. Relatives are invited once the device tests pass.
+
 ## Tech Stack
 
 - **Vanilla JavaScript** - No framework bloat, just modern ES6+
@@ -156,7 +208,7 @@ npx vitest run     # unit tests (npm test runs them in watch mode)
 npm run test:db    # person_view tests against a real database
 ```
 
-`npm run test:db` needs `DATABASE_URL_TEST` in `.env.test.local`, pointing at a Neon branch named `test`. It wipes that branch's `public` schema on every run, and refuses to run against production.
+`npm run test:db` needs `DATABASE_URL_TEST` in `.env.test.local`, pointing at a Neon test branch (`test-editing` for the editing work). It wipes that branch's `public` schema on every run, so runs must not overlap, and it refuses to run against production.
 
 `tests/realGed.test.js` checks the parser against the real tree, including exact parity with a frozen copy of the original parser for everything except facts. It reads `acourt.ged` from the repo root, or from `GED_PATH`, and skips when the file isn't there (as in a git worktree):
 
@@ -176,7 +228,8 @@ Edit `DEFAULT_PERSON_ID` in `src/main.js` (it's `'I122'`). You can also link str
 - [ ] Search functionality
 - [ ] Info panel with detailed person information
 - [ ] Export visualizations
-- [ ] Editing people and photos, for signed-in family members
+- [x] Editing people and relationships, for signed-in family members ([Editing](#editing))
+- [ ] Editing photos
 
 ## Credits
 

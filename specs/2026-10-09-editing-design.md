@@ -192,6 +192,8 @@ create index change_row_key_idx on change_row (table_name, row_key, change_id de
 
 `family` gets no new column, so 005's `dated_family` view needs no change.
 
+**Migration `007_marriage_children.sql`** replaces `person_record` again, copying 006's version, so that each `marriages[]` entry also has **`childIds`**: that family's children in `family_child` position order (`[]` when childless, always present). The details panel uses it to know which family a child row belongs to, so × sends `unlink` with the right `familyId` instead of guessing from the children's `parentIds`. `verify-neon` ignores `childIds` when comparing marriages with the legacy data, which never had it.
+
 **Search:** `create extension if not exists pg_trgm; create index person_name_trgm_idx on person using gin (display_name gin_trgm_ops);`
 
 ### Undo and redo: `toggle_change(base bigint, direction text, author_email, author_name, via) returns bigint`
@@ -282,17 +284,17 @@ Both functions first take the global lock (`pg_advisory_xact_lock(7262021)`, whi
   - The latest migration filename, the latest change id and the view are all read in **one** statement (`select person_view($1), (select max(id) from change), (select max(filename) from schema_migrations)`), so they come from one snapshot. `If-None-Match` is answered with 304 for non-editors only. **Editors** (valid token) always get a fresh 200 with the unmasked view and `Cache-Control: private, no-store`. A request with an invalid or expired token gets 401, never a silent anonymous view. |
 | `GET /search?q=&limit=` | public | Up to 20 `{id, name, birthYear, deathYear}`. `q` is at least 2 characters; matching is by trigram similarity plus prefix on `display_name`. |
 | `GET /me` | signed in | `{email, name, role}`, or 403 `not_an_editor`. |
-| `POST /changes` | editor | Body `{kind, params}`. Runs the command; returns `{change: {id, summary}, view}`, where `view` is the unmasked `person_view` of the command's focus person (null after `delete_person`). |
-| `GET /changes?before=&limit=&person=` | editor | Newest first, 50 per page: `{id, createdAt, authorName, authorEmail, kind, via, summary, personIds, baseChangeId, undone}`. |
-| `POST /changes/:id/revert`, `POST /changes/:id/restore` | editor | `toggle_change(id, 'undo' / 'redo', …, via)`, where `via` is `'history'` by default or `'keyboard'` from the toast. Returns `{change: {id, summary, personIds}}`, or 409 `{error: 'conflict', reason, blocking: [{id, action, summary, authorName, createdAt}]}`, or 409 `{error: 'wrong_state'}`. |
-| `POST /undo`, `POST /redo` | editor | `undo_last` / `redo_last`. Returns `{change}`, or `{change: null}` when there is nothing to do; 409 on conflict, as above. |
-| `GET /editors`, `POST /editors`, `DELETE /editors/:email` | admin | List; add `{email, name, role}`; remove. An admin cannot remove themselves, and the last admin cannot be removed. |
+| `POST /changes` | editor | Body `{kind, params}`. Runs the command; returns `{change: {id, summary, personIds}, view}`, where `view` is the unmasked `person_view` of the command's focus person (null after `delete_person`). |
+| `GET /changes?before=&limit=&person=` | editor | Newest first, 50 per page: `{changes: [{id, createdAt, authorName, authorEmail, kind, via, summary, personIds, people, baseChangeId, undone}]}`. `people` is `[{id, name}]`: those of `personIds` who still exist, in the same order, with their current names (the History panel links to them). |
+| `POST /changes/:id/revert`, `POST /changes/:id/restore` | editor | `toggle_change(id, 'undo' / 'redo', …, via)`, where `via` is `'history'` by default or `'keyboard'` from the toast. Returns `{change: {id, summary, personIds, baseChangeId, kind}}` (the new undo or redo change), or 409 `{error: 'conflict', reason, blocking: [{id, action, summary, authorName, createdAt}]}`, or 409 `{error: 'wrong_state'}`. |
+| `POST /undo`, `POST /redo` | editor | `undo_last` / `redo_last`. Returns `{change: {id, summary, personIds, baseChangeId, kind}}`, or `{change: null}` when there is nothing to do; 409 on conflict, as above. |
+| `GET /editors`, `POST /editors`, `DELETE /editors/:email` | admin | List; add `{email, name, role}` (201, or 409 `already_an_editor`); remove (404 `not_found` if not listed). An admin cannot remove themselves (409 `cannot_remove_self`), and the last admin cannot be removed (409 `last_admin`). A non-admin gets 403 `not_an_admin`. |
 
 **CORS:** `Access-Control-Allow-Origin: *` (bearer tokens, no cookies), allowed methods `GET, POST, DELETE, OPTIONS`, allowed headers `authorization, content-type, if-none-match`, `Access-Control-Max-Age: 86400`.
 
 **Request bodies** are limited to 1 MB (`413`). Search escapes `%`, `_` and `\` in the prefix match.
 
-**Errors:** `400 {error: 'invalid', field, message}` for validation, `400 no_change`, 401, 403, `404 not_found`, `409 conflict | stale | wrong_state`, `413`, and `500 internal` (logged). Postgres `GE00x` SQLSTATEs map to these.
+**Errors:** `400 {error: 'invalid', field, message}` for validation, `400 no_change`, 401, `403 not_an_editor | not_an_admin`, `404 not_found`, `409 conflict | stale | wrong_state | already_an_editor | cannot_remove_self | last_admin`, `413 too_large`, `500 internal` (logged), and `503 busy` ("The family tree is busy — please try again") when a write times out, for example while queued on the global lock (SQLSTATE `57014` or `55P03`). Postgres `GE00x` SQLSTATEs map to these: `GE001`–`GE003` to 404, 409 `wrong_state` and 409 `conflict`; `GE005`–`GE007` and raw integrity violations mean a bug and are logged 500s.
 
 ### Commands (`api/commands/*.js`)
 
@@ -428,9 +430,10 @@ Rules:
 - **The full-facts backfill after 006** (`scripts/neon/backfillFacts.js`, PR #3): `applyPlan` calls `begin_change('backfill@ged-eye', 'Facts backfill', 'backfill_facts', 'script', …)` first, when that function exists (`to_regprocedure`). The backfill and its rollback are then recorded, and the backfill itself is undoable from History. Its DB test is updated to match.
 - **`verify-neon`:**
   - It drops `masked` before comparing API bodies.
-  - Let T be every person referenced by any `change_row`: person keys, `partner1_id`/`partner2_id` in family snapshots, `child_id`s, and all partners and children of touched families.
-  - It skips person Z when Z is in T, or when any id in Z's legacy `familyIds` or current `view.family` is in T. Neighbours' views show edited names and relationships.
-  - It skips the person-count check once any change exists.
+  - Let T be every person referenced by any `change_row` (one query): person keys (and `person_media` person keys), `partner1_id`/`partner2_id` in family snapshots, `child_id`s in `family_child` snapshots, the people linked to a changed `media` row, and all current partners and children of touched families.
+  - It skips person Z when Z is in T, or when any id in Z's legacy `familyIds` or current `view.family` is in T. Neighbours' views show edited names and relationships. The summary reports the count as `skippedEdited`. The API sample still covers everyone who still exists, since it compares the Function with the database.
+  - It skips the person-count check once any change exists (`countCheck: 'skipped (N changes)'`).
+  - With nothing edited it behaves as before; on a database from before 006 there is no change log and T is empty.
 - **Manual (browser, `editing` branch):**
   - sign in by email code and with Google
   - session survives a reload
