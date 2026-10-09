@@ -131,6 +131,19 @@ describe('editApi', () => {
       expect(() => apiUrl('/me')).toThrow('VITE_API_URL is not configured');
     });
 
+    it('gives each request 30 s by default, or the timeoutMs of the call, on the retry too', async () => {
+      const timeout = vi.spyOn(AbortSignal, 'timeout');
+      await api.undo();
+      await api.authedFetch('/slow', { method: 'POST', timeoutMs: 120_000 });
+      expect(timeout.mock.calls).toEqual([[30_000], [120_000]]);
+      timeout.mockClear();
+      getToken.mockImplementation(async ({ force } = {}) => (force ? 'jwt-2' : 'jwt-1'));
+      fetchMock.mockResolvedValueOnce(respond(401, { error: 'unauthenticated' })).mockResolvedValueOnce(respond(200, {}));
+      await api.authedFetch('/slow', { method: 'POST', timeoutMs: 120_000 });
+      expect(timeout.mock.calls).toEqual([[120_000], [120_000]]);
+      timeout.mockRestore();
+    });
+
     it('builds URLs only from paths that start with /', () => {
       expect(apiUrl('/me')).toBe('https://api.test/me');
       expect(() => apiUrl('me')).toThrow('API paths start with /: me');

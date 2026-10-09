@@ -72,16 +72,16 @@ export function createEditApi(options) {
   };
 
   /** The bearer token. When it's optional, failing to get one just means calling without it. */
-  async function token(options, optional) {
+  async function token(tokenOptions, optional) {
     try {
-      return await getToken(options);
+      return await getToken(tokenOptions);
     } catch (error) {
       if (optional) return null;
       throw networkError(error?.message || "Couldn't reach the sign-in service.");
     }
   }
 
-  async function send(url, method, body, bearer) {
+  async function send(url, method, body, bearer, timeoutMs) {
     const headers = {};
     if (bearer) headers.authorization = `Bearer ${bearer}`;
     if (body !== undefined) headers['content-type'] = 'application/json';
@@ -90,7 +90,7 @@ export function createEditApi(options) {
         method,
         headers,
         body: body === undefined ? undefined : JSON.stringify(body),
-        signal: timeoutSignal(REQUEST_TIMEOUT_MS)
+        signal: timeoutSignal(timeoutMs)
       });
     } catch (error) {
       const timedOut = error?.name === 'TimeoutError' || error?.name === 'AbortError';
@@ -102,17 +102,18 @@ export function createEditApi(options) {
    * Calls the API and returns the parsed JSON body. Adds the bearer token: `auth: 'required'` (the default)
    * fails with 401 `unauthenticated` when signed out, `'optional'` sends it only when signed in.
    * A 401 is retried once with a force-refreshed token; with optional auth, then without a token.
+   * Each request gives up after `timeoutMs` (30 s by default) with a `network` error.
    */
-  async function authedFetch(path, { method = 'GET', body, auth = 'required' } = {}) {
+  async function authedFetch(path, { method = 'GET', body, auth = 'required', timeoutMs = REQUEST_TIMEOUT_MS } = {}) {
     const url = apiUrl(path, resolveBase(), baseUrlName);
     const optional = auth === 'optional';
     let bearer = await token(undefined, optional);
     if (!bearer && !optional) throw new ApiError(401, 'unauthenticated', { message: 'Signed out. Sign in again.' });
-    let response = await send(url, method, body, bearer);
+    let response = await send(url, method, body, bearer, timeoutMs);
     if (response.status === 401 && bearer) {
       bearer = await token({ force: true }, optional);
-      if (bearer) response = await send(url, method, body, bearer);
-      if (optional && (!bearer || response.status === 401)) response = await send(url, method, body, null);
+      if (bearer) response = await send(url, method, body, bearer, timeoutMs);
+      if (optional && (!bearer || response.status === 401)) response = await send(url, method, body, null, timeoutMs);
     }
     const parsed = await response.json().catch(() => null);
     if (response.ok) return parsed;

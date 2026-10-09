@@ -7,6 +7,9 @@ import { ApiError, mediaClient } from './editApi.js';
 
 const uploadPath = (uploadId) => `/uploads/${encodeURIComponent(uploadId)}`;
 
+// Processing a large photo, or rendering a crop, can wait behind another job in the Function's one-at-a-time queue.
+const IMAGE_JOB_TIMEOUT_MS = 120_000;
+
 /**
  * Asks for a presigned slot to upload one file to.
  * → `{ uploadId, url, headers }`: PUT the file to `url` with exactly `headers` (see uploadFile).
@@ -36,9 +39,6 @@ export function uploadFile(slot, file, { onProgress, signal } = {}) {
       settle(value);
     };
 
-    xhr.open('PUT', slot.url);
-    for (const [name, value] of Object.entries(slot.headers ?? {})) xhr.setRequestHeader(name, value);
-
     xhr.upload.addEventListener('progress', (event) => {
       if (event.lengthComputable && event.total > 0) onProgress?.(Math.min(1, event.loaded / event.total));
     });
@@ -61,7 +61,13 @@ export function uploadFile(slot, file, { onProgress, signal } = {}) {
     });
 
     signal?.addEventListener('abort', abort, { once: true });
-    xhr.send(file);
+    try {
+      xhr.open('PUT', slot.url);
+      for (const [name, value] of Object.entries(slot.headers ?? {})) xhr.setRequestHeader(name, value);
+      xhr.send(file);
+    } catch {
+      finish(reject, new ApiError(0, 'network', { message: "Couldn't upload the file. Check your connection." }));
+    }
   });
 }
 
@@ -73,7 +79,11 @@ export function uploadFile(slot, file, { onProgress, signal } = {}) {
  * `heic_unsupported`, `unsupported_type`, `too_large`, `busy` (retry later), ...
  */
 export const processUpload = async (uploadId, fileName) =>
-  (await mediaClient.authedFetch(`${uploadPath(uploadId)}/process`, { method: 'POST', body: { fileName } })).media;
+  (await mediaClient.authedFetch(`${uploadPath(uploadId)}/process`, {
+    method: 'POST',
+    body: { fileName },
+    timeoutMs: IMAGE_JOB_TIMEOUT_MS
+  })).media;
 
 /**
  * Deletes an upload that won't be processed (cancelled, or its card removed). Never rejects: a failure is
@@ -92,4 +102,8 @@ export async function discardUpload(uploadId) {
  * → the avatar's key. Rejects with ApiError (`invalid`, `not_found`, `busy`, ...).
  */
 export const renderAvatar = async (objectKey, crop) =>
-  (await mediaClient.authedFetch('/avatars', { method: 'POST', body: { objectKey, crop } })).avatarKey;
+  (await mediaClient.authedFetch('/avatars', {
+    method: 'POST',
+    body: { objectKey, crop },
+    timeoutMs: IMAGE_JOB_TIMEOUT_MS
+  })).avatarKey;

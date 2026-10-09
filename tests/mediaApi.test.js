@@ -83,6 +83,25 @@ describe('mediaApi requests', () => {
     });
   });
 
+  describe('timeouts', () => {
+    it('gives processing and avatar rendering 120 s, since they can queue behind another image job', async () => {
+      const timeout = vi.spyOn(AbortSignal, 'timeout');
+      fetchMock.mockResolvedValueOnce(respond(200, { media: {} })).mockResolvedValueOnce(respond(200, { avatarKey: 'avatars/x.webp' }));
+      await processUpload(UPLOAD_ID, 'rose.jpg');
+      await renderAvatar('originals/x.jpg', { x: 0, y: 0, w: 1, h: 1 });
+      expect(timeout.mock.calls).toEqual([[120_000], [120_000]]);
+    });
+
+    it('keeps the 30 s default for the quick calls', async () => {
+      const timeout = vi.spyOn(AbortSignal, 'timeout');
+      fetchMock.mockResolvedValue(respond(200, { uploadId: UPLOAD_ID }));
+      await requestUpload({ fileName: 'a.jpg', contentType: 'image/jpeg', byteSize: 1 });
+      fetchMock.mockResolvedValue(respond(204));
+      await discardUpload(UPLOAD_ID);
+      expect(timeout.mock.calls).toEqual([[30_000], [30_000]]);
+    });
+  });
+
   describe('discardUpload', () => {
     it('deletes the incoming upload', async () => {
       fetchMock.mockResolvedValue(respond(204));
@@ -256,6 +275,28 @@ describe('uploadFile', () => {
     await done;
     controller.abort();
     expect(xhr().aborted).toBe(false);
+  });
+
+  it('rejects with network when the request cannot be started, and stops listening to the signal', async () => {
+    const send = vi.spyOn(FakeXHR.prototype, 'send').mockImplementation(() => {
+      throw new DOMException('The object is in an invalid state.', 'InvalidStateError');
+    });
+    const controller = new AbortController();
+    const done = uploadFile(slot, file, { signal: controller.signal });
+    const error = await done.catch(e => e);
+    expect(error).toBeInstanceOf(ApiError);
+    expect(error).toMatchObject({ status: 0, code: 'network' });
+    controller.abort();
+    expect(xhr().aborted).toBe(false);
+    send.mockRestore();
+  });
+
+  it('rejects with network when opening the request throws', async () => {
+    const open = vi.spyOn(FakeXHR.prototype, 'open').mockImplementation(() => {
+      throw new SyntaxError('Invalid URL');
+    });
+    await expect(uploadFile({ ...slot, url: 'not a url' }, file)).rejects.toMatchObject({ status: 0, code: 'network' });
+    open.mockRestore();
   });
 
   it('settles once: a late error after an abort changes nothing', async () => {
