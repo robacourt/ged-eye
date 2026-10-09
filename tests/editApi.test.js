@@ -139,6 +139,46 @@ describe('editApi', () => {
     });
   });
 
+  describe('base URL', () => {
+    it('builds a URL on a base given explicitly, and names the env var in the error', () => {
+      expect(apiUrl('/uploads', 'https://media.test')).toBe('https://media.test/uploads');
+      expect(() => apiUrl('/uploads', '', 'VITE_MEDIA_API_URL')).toThrow('VITE_MEDIA_API_URL is not configured');
+      expect(() => apiUrl('/uploads', undefined, 'VITE_MEDIA_API_URL')).not.toThrow();
+      expect(() => apiUrl('/me', '')).toThrow('VITE_API_URL is not configured');
+    });
+
+    it('sends every call of a client to its own baseUrl', async () => {
+      const other = createEditApi({ getToken, baseUrl: 'https://other.test' });
+      await other.undo();
+      await other.authedFetch('/uploads', { method: 'POST', body: { fileName: 'a.jpg' } });
+      expect(call(0).url).toBe('https://other.test/undo');
+      expect(call(1)).toMatchObject({ url: 'https://other.test/uploads', method: 'POST', body: { fileName: 'a.jpg' } });
+    });
+
+    it('reads a function baseUrl on each call, and fails with the configured name when it is empty', async () => {
+      let base = '';
+      const other = createEditApi({ getToken, baseUrl: () => base, baseUrlName: 'VITE_MEDIA_API_URL' });
+      await expect(other.undo()).rejects.toThrow('VITE_MEDIA_API_URL is not configured');
+      expect(fetchMock).not.toHaveBeenCalled();
+      base = 'https://later.test';
+      await other.undo();
+      expect(call().url).toBe('https://later.test/undo');
+    });
+
+    it('never falls back to VITE_API_URL once a baseUrl is given, even an undefined one', async () => {
+      const other = createEditApi({ getToken, baseUrl: undefined, baseUrlName: 'VITE_MEDIA_API_URL' });
+      await expect(other.undo()).rejects.toThrow('VITE_MEDIA_API_URL is not configured');
+      expect(fetchMock).not.toHaveBeenCalled();
+    });
+
+    it('still follows VITE_API_URL, read on each call, when no baseUrl is given', async () => {
+      await api.undo();
+      vi.stubEnv('VITE_API_URL', 'https://moved.test');
+      await api.undo();
+      expect([call(0).url, call(1).url]).toEqual(['https://api.test/undo', 'https://moved.test/undo']);
+    });
+  });
+
   describe('changes', () => {
     it('reverts from History by default, or from the keyboard toast, and returns the change', async () => {
       fetchMock.mockResolvedValue(respond(200, { change: { id: 21, summary: 'Undid: Edited Rose', personIds: ['I1'] } }));
@@ -296,5 +336,34 @@ describe('editApi default client', () => {
     await editApi.me();
     expect(fetchMock.mock.calls[0][1].headers.authorization).toBe('Bearer default-token');
     expect(auth.setRole).toHaveBeenCalledWith('editor', 'rose@example.com');
+  });
+});
+
+describe('editApi media client', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  it('calls the media Function with the signed-in token, leaving the api client on VITE_API_URL', async () => {
+    vi.stubEnv('VITE_API_URL', 'https://api.test');
+    vi.stubEnv('VITE_MEDIA_API_URL', 'https://media-fn.test');
+    const fetchMock = vi.fn(async () => respond(200, { uploadId: 'u1' }));
+    vi.stubGlobal('fetch', fetchMock);
+    expect(Object.keys(editApi.mediaClient)).toEqual(['authedFetch']);
+    await editApi.mediaClient.authedFetch('/uploads', { method: 'POST', body: { fileName: 'a.jpg' } });
+    await editApi.undo();
+    expect(fetchMock.mock.calls[0][0]).toBe('https://media-fn.test/uploads');
+    expect(fetchMock.mock.calls[0][1].headers.authorization).toBe('Bearer default-token');
+    expect(fetchMock.mock.calls[1][0]).toBe('https://api.test/undo');
+  });
+
+  it('fails lazily, naming VITE_MEDIA_API_URL, when it is not configured', async () => {
+    vi.stubEnv('VITE_API_URL', 'https://api.test');
+    vi.stubEnv('VITE_MEDIA_API_URL', '');
+    const fetchMock = vi.fn(async () => respond(200, {}));
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(editApi.mediaClient.authedFetch('/uploads', { method: 'POST' })).rejects.toThrow('VITE_MEDIA_API_URL is not configured');
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
