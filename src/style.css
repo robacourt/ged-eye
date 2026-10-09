@@ -519,6 +519,61 @@ body {
   font-style: italic;
 }
 
+.detail-cause {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-notes {
+  margin-top: 4px;
+}
+
+.detail-notes summary {
+  cursor: pointer;
+  color: #00d4ff;
+  font-size: 13px;
+}
+
+.detail-notes .note-text {
+  margin-top: 6px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+
+.detail-note {
+  margin-bottom: 12px;
+}
+
+.detail-note:last-child {
+  margin-bottom: 0;
+}
+
+.note-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.note-clamped {
+  max-height: calc(1.5em * 6);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+}
+
+.note-toggle {
+  margin-top: 4px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 /* Mobile responsive styles for person details */
 @media (max-width: 768px) {
   #details {
@@ -581,6 +636,10 @@ body {
   .detail-value {
     font-size: 13px;
     padding-left: 0;
+  }
+
+  .detail-notes .note-text {
+    padding: 6px 8px;
   }
 
   .person-photo-thumbnail {
