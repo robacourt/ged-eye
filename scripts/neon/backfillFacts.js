@@ -8,7 +8,13 @@
  * Options: --database-url <url> (default DATABASE_URL_UNPOOLED), --sha <sha256>, --out <path>.
  */
 import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
+import pg from 'pg';
 import { canonical } from './verifyCompare.js';
+import { parseGedcom } from '../gedParser.js';
+import { gedToRows } from './gedToRows.js';
+import { ROOT, argValue, isMain, readJson, writeJson } from './cli.js';
 
 export const CORE_COLUMNS = ['given_name', 'surname', 'display_name', 'sex', 'birth_date', 'birth_place',
   'death_date', 'death_place', 'baptism_date', 'baptism_place', 'burial_date', 'burial_place'];
@@ -169,4 +175,72 @@ export async function verifyPlan(client, plan, { direction = 'apply' } = {}) {
   const { rows } = await client.query('select id, facts from person where id = any($1)', [ids]);
   const actual = new Map(rows.map(row => [row.id, row.facts]));
   return plan.rows.filter(row => !actual.has(row.id) || canonical(actual.get(row.id)) !== canonical(row[to])).map(row => row.id);
+}
+
+const SAMPLE_IDS = ['I1', 'I23', 'I443'];
+
+async function plan(client, host) {
+  const out = path.resolve(argValue('--out') ?? path.join(ROOT, '.neon-import', `facts-backfill-plan-${host}.json`));
+  // An earlier plan may be the only rollback for an apply already made, so never overwrite one.
+  if (fs.existsSync(out)) throw new Error(`${out} already exists (it may be the rollback for an apply); move it or pass --out <path>`);
+  // One snapshot for the archive and the people, read-only.
+  await client.query('begin isolation level repeatable read, read only');
+  let archive;
+  let dbRows;
+  try {
+    archive = await loadArchive(client, argValue('--sha'));
+    dbRows = await readDbRows(client);
+  } finally {
+    await client.query('rollback');
+  }
+  const { people } = gedToRows(parseGedcom(archive.content.toString('utf-8')), { files: {}, avatars: {} }, new Map());
+  const { rows, summary } = planFacts(dbRows, people);
+  writeJson(out, { createdAt: new Date().toISOString(), host, archiveSha: archive.sha256, summary, rows });
+  console.log(formatSummary(summary).join('\n'));
+  for (const row of rows.filter(r => SAMPLE_IDS.includes(r.id))) console.log(describeRow(row).join('\n'));
+  console.log(`plan: ${out} (${rows.length} rows)`);
+}
+
+async function write(client, planFile, direction) {
+  if (planFile.rows.length === 0) {
+    console.log(`The plan has no rows; nothing to ${direction}.`);
+    return;
+  }
+  const { updated } = await applyPlan(client, planFile, { direction });
+  const mismatched = await verifyPlan(client, planFile, { direction });
+  if (mismatched.length) throw new Error(`${direction} committed ${updated} rows, but ${mismatched.length} don't match the plan: ${mismatched.join(', ')}`);
+  console.log(JSON.stringify({ direction, updated, verified: planFile.rows.length }));
+}
+
+async function main() {
+  const url = argValue('--database-url', process.env.DATABASE_URL_UNPOOLED);
+  if (!url) throw new Error('DATABASE_URL_UNPOOLED is not set (run via npm run backfill-facts, or pass --database-url)');
+  const host = new URL(url).hostname;
+  const applyPath = argValue('--apply');
+  const rollbackPath = argValue('--rollback');
+  if (applyPath && rollbackPath) throw new Error('Pass --apply or --rollback, not both');
+  const direction = applyPath ? 'apply' : rollbackPath ? 'rollback' : null;
+  let planFile = null;
+  if (direction) {
+    const planPath = path.resolve(applyPath ?? rollbackPath);
+    planFile = readJson(planPath, null);
+    if (!planFile) throw new Error(`No plan at ${planPath}`);
+    checkConfirm({ host, planHost: planFile.host, confirm: argValue('--confirm'), direction });
+  }
+  const client = new pg.Client({ connectionString: url });
+  await client.connect();
+  try {
+    if (direction) await write(client, planFile, direction);
+    else await plan(client, host);
+  } finally {
+    await client.end();
+  }
+}
+
+if (isMain(import.meta.url)) {
+  main().catch(error => {
+    console.error(error.message);
+    if (error.detail) console.error(`detail: ${error.detail}`);
+    process.exit(1);
+  });
 }
