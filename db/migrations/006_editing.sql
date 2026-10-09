@@ -506,7 +506,14 @@ begin
   end;
 
   -- 4. Post-apply checks.
-  select coalesce(jsonb_agg(jsonb_build_object('table', cr.table_name, 'key', cr.row_key, 'columns', null)), '[]')
+  -- A cascaded update (ON DELETE SET NULL) names the columns it changed, so the blocker is the
+  -- change that set them rather than whichever change last touched some other column of the row.
+  select coalesce(jsonb_agg(jsonb_build_object(
+           'table', cr.table_name, 'key', cr.row_key,
+           'columns', case when cr.op = 'update' then
+                        (select jsonb_agg(k) from jsonb_object_keys(cr.before || cr.after) as k
+                         where k <> 'updated_at' and (cr.before -> k) is distinct from (cr.after -> k))
+                      end)), '[]')
     into v_extra
   from change_row cr
   where cr.change_id = v_id

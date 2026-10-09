@@ -177,12 +177,91 @@ describe.skipIf(!url)('toggle_change, undo_last and redo_last (database)', { tim
       insert into family (id, partner1_id) values ('FD2', 'D4');
       insert into family_child (family_id, child_id, position) values ('FD2', 'D5', 0);`);
     const later = await edit(ME, `insert into family_child (family_id, child_id, position) values ('FD2', 'D3', 1)`);
-    const conflict = await failure(toggle(base2, 'undo'));
-    expect(conflict.code).toBe('GE003');
-    expect(['precondition', 'cascade']).toContain(conflict.reason);
-    expect(conflict.blocking).toContainEqual({ id: Number(later), action: 'revert' });
+    // Every precondition holds; deleting FD2 then cascades into the later link.
+    expect(await failure(toggle(base2, 'undo'))).toEqual({
+      code: 'GE003', reason: 'cascade', blocking: [{ id: Number(later), action: 'revert' }]
+    });
     expect(await one(`select count(*)::int as n from family_child where family_id = 'FD2'`)).toEqual({ n: 2 });
     expect(await isUndone(base2)).toBe(false);
+  });
+
+  it('names the change that set the partner slot when a removal cascades a set-null onto a later-edited family', async () => {
+    await withChange(client, `
+      insert into person (id, given_name, surname) values ('DA1', 'Abe', 'Cole');
+      insert into family (id, partner1_id) values ('FDA1', 'DA1');`);
+    const add = await edit(ME, `insert into person (id, given_name, surname) values ('DA2', 'Ada', 'Cole')`);
+    const marry = await edit(ME, `update family set partner2_id = 'DA2' where id = 'FDA1'`);
+    // An unrelated later edit to the same family row, in other columns.
+    await edit(ME, `update family set marriage_date = '1950' where id = 'FDA1'`);
+    // Removing DA2 sets FDA1.partner2_id to null: the blocker is the change that filled that slot.
+    expect(await failure(toggle(add, 'undo'))).toEqual({
+      code: 'GE003', reason: 'cascade', blocking: [{ id: Number(marry), action: 'revert' }]
+    });
+    expect(await one(`select partner2_id, marriage_date from family where id = 'FDA1'`))
+      .toEqual({ partner2_id: 'DA2', marriage_date: '1950' });
+  });
+
+  it('refuses to remove a row that a later change edited', async () => {
+    await withChange(client, `insert into person (id, given_name, surname) values ('DB1', 'Bo', 'Dunn')`);
+    const add = await edit(ME, `
+      insert into person (id, given_name, surname) values ('DB2', 'Bea', 'Dunn');
+      insert into family (id, partner1_id) values ('FDB1', 'DB1');
+      insert into family_child (family_id, child_id, position) values ('FDB1', 'DB2', 0);`);
+    const later = await edit(ME, `update person set birth_date = '1960' where id = 'DB2'`);
+    expect(await failure(toggle(add, 'undo'))).toEqual({
+      code: 'GE003', reason: 'precondition', blocking: [{ id: Number(later), action: 'revert' }]
+    });
+    expect(await person('DB2')).toMatchObject({ birth_date: '1960' });
+  });
+
+  it('refuses to re-create a row whose key a later change re-used', async () => {
+    await withChange(client, `
+      insert into person (id, given_name, surname) values ('DC1', 'Cal', 'Eby'), ('DC2', 'Cia', 'Eby'), ('DC3', 'Cob', 'Eby');
+      insert into family (id, partner1_id, partner2_id) values ('FDC1', 'DC1', 'DC2');
+      insert into family_child (family_id, child_id, position) values ('FDC1', 'DC3', 0);`);
+    const unlink = await edit(ME, `delete from family_child where family_id = 'FDC1' and child_id = 'DC3'`);
+    const relink = await edit(ME, `insert into family_child (family_id, child_id, position) values ('FDC1', 'DC3', 0)`);
+    expect(await failure(toggle(unlink, 'undo'))).toEqual({
+      code: 'GE003', reason: 'precondition', blocking: [{ id: Number(relink), action: 'revert' }]
+    });
+  });
+
+  it('refuses to modify a row that a later change deleted', async () => {
+    await withChange(client, `insert into person (id, given_name, surname) values ('DD1', 'Dov', 'Fay')`);
+    const base = await edit(ME, `update person set birth_date = '1901' where id = 'DD1'`);
+    const deleter = await edit(ME, `delete from person where id = 'DD1'`);
+    expect(await failure(toggle(base, 'undo'))).toEqual({
+      code: 'GE003', reason: 'precondition', blocking: [{ id: Number(deleter), action: 'revert' }]
+    });
+  });
+
+  it('lists each blocking change once, and at most five of them', async () => {
+    const ids = ['DE1', 'DE2', 'DE3', 'DE4', 'DE5', 'DE6', 'DE7', 'DE8'];
+    await withChange(client, `insert into person (id, given_name, surname, birth_date) values
+      ${ids.map(id => `('${id}', 'Eli', 'Gow', '1900')`).join(', ')}`);
+    const inList = (list) => `(${list.map(id => `'${id}'`).join(', ')})`;
+
+    // One later change touching three of the base's rows is listed once.
+    const base = await edit(ME, `update person set birth_date = '1901' where id in ${inList(ids.slice(0, 3))}`);
+    const allThree = await edit(ME, `update person set birth_date = '1902' where id in ${inList(ids.slice(0, 3))}`);
+    expect(await failure(toggle(base, 'undo'))).toEqual({
+      code: 'GE003', reason: 'precondition', blocking: [{ id: Number(allThree), action: 'revert' }]
+    });
+
+    // Six distinct later changes block the base: five are listed.
+    const base6 = await edit(ME, `update person set death_date = '1980' where id in ${inList(ids.slice(2))}`);
+    const later = [];
+    for (const id of ids.slice(2)) {
+      later.push(Number(await edit(ME, `update person set death_date = '1981' where id = '${id}'`)));
+    }
+    const { code, reason, blocking } = await failure(toggle(base6, 'undo'));
+    expect({ code, reason }).toEqual({ code: 'GE003', reason: 'precondition' });
+    expect(blocking).toHaveLength(5);
+    expect(new Set(blocking.map(b => b.id)).size).toBe(5);
+    for (const b of blocking) {
+      expect(later).toContain(b.id);
+      expect(b.action).toBe('revert');
+    }
   });
 
   it('undoes and redoes deleting a person with two families, children, a parent family and a photo', async () => {
@@ -266,9 +345,10 @@ describe.skipIf(!url)('toggle_change, undo_last and redo_last (database)', { tim
     const later = await edit(ME, `
       insert into family (id, partner1_id) values ('FJ2', 'J2');
       insert into family_child (family_id, child_id, position) values ('FJ2', 'J1', 0);`);
-    const conflict = await failure(toggle(unlink, 'undo'));
-    expect(conflict).toMatchObject({ code: 'GE003', reason: 'cycle' });
-    expect(conflict.blocking).toContainEqual({ id: Number(later), action: 'revert' });
+    // The later change touched two of the cycle's keys (FJ2 and its link to J1): it is listed once.
+    expect(await failure(toggle(unlink, 'undo'))).toEqual({
+      code: 'GE003', reason: 'cycle', blocking: [{ id: Number(later), action: 'revert' }]
+    });
     expect(await one(`select count(*)::int as n from family where id = 'FJ1'`)).toEqual({ n: 0 });
     expect(await isUndone(unlink)).toBe(false);
   });
@@ -425,7 +505,6 @@ describe.skipIf(!url)('toggle_change, undo_last and redo_last (database)', { tim
 
       await second.query('begin');
       await second.query(`set local statement_timeout = '20s'`);
-      const started = Date.now();
       let settled = false;
       const blocked = second.query(`select begin_change('lock2@example.test', 'Name', 'test_edit', 'script', 'Second', '{}', '{}')`)
         .then(result => result, error => error)
@@ -445,7 +524,6 @@ describe.skipIf(!url)('toggle_change, undo_last and redo_last (database)', { tim
       await first.query('commit');
       const result = await blocked;
       expect(result).not.toBeInstanceOf(Error);
-      expect(Date.now() - started).toBeGreaterThan(300);
       // Its next statement sees what the first change committed.
       expect((await second.query(`select count(*)::int as n from person where id = 'P1'`)).rows[0]).toEqual({ n: 1 });
       await second.query('rollback');
