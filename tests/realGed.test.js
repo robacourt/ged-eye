@@ -8,6 +8,7 @@ import * as current from '../scripts/gedParser.js';
 import * as legacy from './fixtures/legacyGedParser.js';
 import { parseGedcomTree } from '../scripts/gedTree.js';
 import { gedToRows } from '../scripts/neon/gedToRows.js';
+import { planFacts } from '../scripts/neon/backfillFacts.js';
 
 // The real tree is gitignored, so worktrees lack it:
 // GED_PATH=/Users/rob/src/ged_eye/acourt.ged npx vitest run tests/realGed.test.js
@@ -116,5 +117,15 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     // I417 and I2616 each list one path twice; gedToRows keeps the first and warns duplicate_media.
     expect(after.personMedia).toHaveLength(1260);
     expect(after.warnings.filter(w => w.type === 'duplicate_media').map(w => w.personId)).toEqual(['I417', 'I2616']);
+  }, 30_000);
+
+  it('plans the production backfill exactly (production facts equal the legacy parser output)', () => {
+    const empty = { files: {}, avatars: {} };
+    const production = gedToRows(legacyParsed, empty, new Map(), legacy.extractPersonData).people.map(row => ({
+      ...row, edited: false, facts: pick(legacy.extractPersonData(legacyParsed, row.id), LEGACY_FACT_KEYS)
+    }));
+    const { rows, summary } = planFacts(production, gedToRows(parsed, empty, new Map()).people);
+    expect(summary).toMatchObject({ unchanged: 1602, changed: 1392, edited: [], onlyInDb: [], onlyInGed: [], columnDrift: [] });
+    expect(rows).toHaveLength(1392);
   }, 30_000);
 });
