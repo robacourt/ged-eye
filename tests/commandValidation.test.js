@@ -361,4 +361,100 @@ describe('api/changes.js', () => {
     expect(pool.connect).not.toHaveBeenCalled();
     expect(pool.query).not.toHaveBeenCalled();
   });
+
+  describe('prepare', () => {
+    const editor = { email: 'ed@example.test', name: 'Ed', role: 'editor' };
+    const VIEW = { person: { id: 'I1' } };
+
+    /** A pool whose transaction answers runChange's statements, recording 'connect', 'begin' and 'commit' in `calls`. */
+    function fakePool(calls) {
+      const client = {
+        query: vi.fn(async (sql) => {
+          if (sql === 'begin' || sql === 'commit' || sql === 'rollback') calls.push(sql);
+          if (/begin_change/.test(sql)) return { rows: [{ id: '5' }] };
+          if (/from change_row/.test(sql)) return { rows: [{ n: 1 }] };
+          if (/person_view/.test(sql)) return { rows: [{ view: VIEW }] };
+          return { rows: [] };
+        }),
+        release: vi.fn()
+      };
+      return {
+        client,
+        query: vi.fn(),
+        connect: vi.fn(async () => {
+          calls.push('connect');
+          return client;
+        })
+      };
+    }
+
+    /** A command that records each step in `calls`; `prepare` returns `prepared`, or throws it when it is an Error. */
+    function fakeCommand(calls, prepared, { withPrepare = true } = {}) {
+      const command = {
+        kind: 'fake',
+        validate: vi.fn((params) => {
+          calls.push('validate');
+          return { ...params, clean: true };
+        }),
+        run: vi.fn(async () => {
+          calls.push('run');
+          return { summary: 'Did a fake thing', personIds: ['I1'], focusId: 'I1' };
+        })
+      };
+      if (withPrepare) {
+        command.prepare = vi.fn(async () => {
+          calls.push('prepare');
+          if (prepared instanceof Error) throw prepared;
+          return prepared;
+        });
+      }
+      return command;
+    }
+
+    it('runs prepare after validate and before the transaction, and passes its result to run', async () => {
+      const calls = [];
+      const pool = fakePool(calls);
+      const prepared = [{ contentType: 'image/jpeg', byteSize: 10, width: 4, height: 3 }];
+      const command = fakeCommand(calls, prepared);
+      const context = { headObject: vi.fn() };
+      const result = await runChange(pool, editor, 'fake', { a: 1 }, { commands: new Map([['fake', command]]), context });
+
+      expect(calls).toEqual(['validate', 'prepare', 'connect', 'begin', 'run', 'commit']);
+      expect(command.prepare).toHaveBeenCalledWith({ a: 1, clean: true }, context);
+      expect(command.run).toHaveBeenCalledWith(pool.client, { a: 1, clean: true }, editor, prepared);
+      expect(result).toEqual({ change: { id: 5, summary: 'Did a fake thing', personIds: ['I1'] }, view: VIEW });
+      // The recorded params are the ones the client sent, not prepare's results.
+      const beginChange = pool.client.query.mock.calls.find(([sql]) => /begin_change/.test(sql));
+      expect(beginChange[1][3]).toBe(JSON.stringify({ a: 1 }));
+    });
+
+    it('gives prepare an empty context by default', async () => {
+      const calls = [];
+      const command = fakeCommand(calls, 'ready');
+      await runChange(fakePool(calls), editor, 'fake', {}, { commands: new Map([['fake', command]]) });
+      expect(command.prepare).toHaveBeenCalledWith({ clean: true }, {});
+      expect(command.run.mock.calls[0][3]).toBe('ready');
+    });
+
+    it('never opens the transaction when prepare throws, and passes its error through unchanged', async () => {
+      const calls = [];
+      const pool = fakePool(calls);
+      const missing = new ApiError(400, 'missing_upload', { index: 0, field: 'upload' });
+      const command = fakeCommand(calls, missing);
+      await expect(runChange(pool, editor, 'fake', {}, { commands: new Map([['fake', command]]) })).rejects.toBe(missing);
+      expect(calls).toEqual(['validate', 'prepare']);
+      expect(pool.connect).not.toHaveBeenCalled();
+      expect(command.run).not.toHaveBeenCalled();
+    });
+
+    it('runs a command without prepare with undefined as the fourth argument', async () => {
+      const calls = [];
+      const pool = fakePool(calls);
+      const command = fakeCommand(calls, null, { withPrepare: false });
+      await runChange(pool, editor, 'fake', {}, { commands: new Map([['fake', command]]), context: { headObject: vi.fn() } });
+      expect(calls).toEqual(['validate', 'connect', 'begin', 'run', 'commit']);
+      expect(command.run.mock.calls[0]).toHaveLength(4);
+      expect(command.run.mock.calls[0][3]).toBeUndefined();
+    });
+  });
 });

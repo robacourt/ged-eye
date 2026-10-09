@@ -1,7 +1,8 @@
 /**
  * The edit commands, by kind. Each module exports { kind, validate(params) → clean params (or throws
- * ApiError 400 invalid), run(tx, params, user) → { summary, personIds, focusId } }; api/changes.js
- * runs them inside a recorded change.
+ * ApiError 400 invalid), run(tx, params, user, prepared) → { summary, personIds, focusId } }, and
+ * optionally prepare(params, context) → prepared, for network checks made before the lock;
+ * api/changes.js runs them inside a recorded change.
  */
 import * as updatePerson from './updatePerson.js';
 import * as addRelative from './addRelative.js';

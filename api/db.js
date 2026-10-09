@@ -102,7 +102,11 @@ async function withBlockingDetails(pool, conflict, log) {
   return new ApiError(409, 'conflict', { ...conflict.extra, blocking: enriched });
 }
 
-export function createDb(pool, { log = console.error } = {}) {
+/**
+ * The handler's db over `pool`. `log` records unexpected failures; `context` ({ headObject }, see
+ * api/uploads.js) is passed to each command's prepare step.
+ */
+export function createDb(pool, { log = console.error, context = {} } = {}) {
   /**
    * Runs one toggle statement (`sql` returns the new change's `id`, or null when there was nothing
    * to do) in a write transaction, and reads back the change it recorded.
@@ -179,7 +183,7 @@ export function createDb(pool, { log = console.error } = {}) {
     },
 
     /** → { change: { id, summary, personIds }, view | null }; see api/changes.js */
-    runChange: (editor, kind, params) => runChange(pool, editor, kind, params, { log }),
+    runChange: (editor, kind, params) => runChange(pool, editor, kind, params, { log, context }),
 
     /** Reverts ('undo') or restores ('redo') change `id`; → the toggle's change (see runToggle). */
     toggle: (editor, id, direction, via) => runToggle(

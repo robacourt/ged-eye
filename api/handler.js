@@ -3,7 +3,7 @@ import { AuthError, requireEditor } from './auth.js';
 import { ApiError, errorJson, invalid, isObject, json, notModified, preflight, readJson } from './http.js';
 
 /** Bump whenever masking or response shaping changes, so cached person views revalidate as new. */
-export const VIEW_VERSION = 2;
+export const VIEW_VERSION = 3;
 
 const PERSON_ID = /^[A-Za-z0-9_-]{1,32}$/;
 const CHANGE_ID = /^[1-9][0-9]{0,14}$/;
