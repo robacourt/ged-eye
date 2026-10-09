@@ -21,9 +21,13 @@ const busy = () => new ApiError(503, 'busy', { message: BUSY_MESSAGE });
 /**
  * The keys of an upload: originals/<sha>.<ext>, plus display/ and thumbs/ for images.
  * → { objectKey, displayKey | null, thumbKey | null, type (the TYPES entry) }.
- * Throws TypeError for an ext outside TYPES; validateUpload rules that out.
+ * Throws TypeError unless `sha256` is 64 lower-case hex digits and `ext` is in TYPES, so a key can never point
+ * outside its folder; validateUpload rules both out.
  */
 export function keysFor({ sha256, ext }) {
+  if (typeof sha256 !== 'string' || !SHA256.test(sha256)) {
+    throw new TypeError('sha256 must be 64 lower-case hex digits.');
+  }
   const type = TYPES.get(ext);
   if (!type) throw new TypeError(`Not an accepted file type: ${ext}.`);
   return {
@@ -62,42 +66,76 @@ export function validateUpload(upload, field) {
 const mediaType = (type) => (typeof type === 'string' ? type.split(';')[0].trim().toLowerCase() : null);
 
 /**
- * `start(signal)`, rejected with a TimeoutError (and `signal` aborted) when it takes longer than `ms`.
- * A synchronous throw from `start` becomes a rejection.
+ * `start(signal)`, rejected with `signal`'s reason as soon as `signal` aborts: after `ms` (a TimeoutError) or
+ * when `outer` aborts. `start` isn't called if `outer` has already aborted, and a synchronous throw from it
+ * becomes a rejection. Its timer is cleared however it ends.
  */
-function withTimeout(start, ms) {
-  const controller = new AbortController();
-  let timer;
-  const timedOut = new Promise((resolve, reject) => {
-    timer = setTimeout(() => {
-      const error = new DOMException('The upload check timed out.', 'TimeoutError');
-      controller.abort(error);
-      reject(error);
-    }, ms);
+async function withTimeout(start, ms, outer) {
+  outer?.throwIfAborted();
+  const timeout = new AbortController();
+  const signal = outer ? AbortSignal.any([outer, timeout.signal]) : timeout.signal;
+  const timer = setTimeout(() => timeout.abort(new DOMException('The upload check timed out.', 'TimeoutError')), ms);
+  let onAbort;
+  const aborted = new Promise((resolve, reject) => {
+    onAbort = () => reject(signal.reason);
+    signal.addEventListener('abort', onAbort, { once: true });
   });
-  const started = new Promise((resolve) => resolve(start(controller.signal)));
-  return Promise.race([started, timedOut]).finally(() => clearTimeout(timer));
+  try {
+    return await Promise.race([start(signal), aborted]);
+  } finally {
+    clearTimeout(timer);
+    signal.removeEventListener('abort', onAbort);
+  }
 }
 
 /**
- * Runs `run(task)` for every task, at most `limit` at a time. Rejects with the first failure, after which no
- * further task starts.
+ * HEADs one object: `headObject(key, { signal })`, with a 5 s timeout, stopped early if `signal` aborts.
+ * → headObject's result ({ status, contentType, contentLength, width, height }) when the status is 2xx.
+ * Throws ApiError 400 missing_upload { field, index? } for 404 or 403 (a bucket that refuses anonymous listing
+ * answers 403 for a missing key), and 503 busy, logged with `log`, on a timeout, an abort, a network error or
+ * any other status. An ApiError thrown by `headObject` passes through unchanged. When `pattern` is given,
+ * throws TypeError, without a HEAD, unless `key` matches it.
  */
-async function runLimited(tasks, limit, run) {
+export async function headKey(key, headObject, { field = 'upload', index, log = console.error, pattern, signal } = {}) {
+  if (pattern && !pattern.test(key)) throw new TypeError('The key does not match the pattern it must have.');
+  let head;
+  try {
+    head = await withTimeout((combined) => headObject(key, { signal: combined }), HEAD_TIMEOUT_MS, signal);
+  } catch (error) {
+    if (error instanceof ApiError) throw error;
+    log('upload check failed', key, error?.message ?? error);
+    throw busy();
+  }
+  if (head.status === 404 || head.status === 403) {
+    throw new ApiError(400, 'missing_upload', index === undefined ? { field } : { index, field });
+  }
+  if (!(head.status >= 200 && head.status < 300)) {
+    log('upload check failed', key, `status ${head.status}`);
+    throw busy();
+  }
+  return head;
+}
+
+/**
+ * Runs `run(task)` for every task, at most `limit` at a time. On the first failure it aborts `stop` and rejects
+ * with that failure; no further task starts.
+ */
+async function runLimited(tasks, limit, run, stop) {
   let next = 0;
-  let failed = false;
   async function worker() {
-    while (!failed && next < tasks.length) {
+    while (!stop.signal.aborted && next < tasks.length) {
       try {
         await run(tasks[next++]);
       } catch (error) {
-        failed = true;
+        stop.abort(new DOMException('Another upload check failed.', 'AbortError'));
         throw error;
       }
     }
   }
   await Promise.all(Array.from({ length: Math.min(limit, tasks.length) }, worker));
 }
+
+const isSize = (value) => Number.isSafeInteger(value) && value >= 0;
 
 /**
  * HEADs each upload's original and, for images, its display image: in parallel, at most 8 at a time, each with
@@ -106,9 +144,10 @@ async function runLimited(tasks, limit, run) {
  * list. `contentType` and `byteSize` come from the original's response; `width` and `height` from its
  * x-amz-meta-* headers (both null unless both are present, and always null for PDFs).
  * Throws ApiError 400 missing_upload { index, field } when an object is absent (404/403), 400 invalid when the
- * stored content type doesn't match ext, and 503 busy on a timeout, a network error or a storage error status.
- * `index` is the upload's position in `uploads`, and `field` the `field` option ('upload' by default).
- * An ApiError thrown by `headObject` passes through unchanged. A 503 is logged with `log`, once per call.
+ * stored content type doesn't match ext, and 503 busy on a timeout, a network error, a storage error status or
+ * an original without a readable size. `index` is the upload's position in `uploads`, and `field` the `field`
+ * option ('upload' by default). An ApiError thrown by `headObject` passes through unchanged.
+ * The first failure aborts every HEAD still in flight; a 503 is logged with `log`, at most once per call.
  */
 export async function headUploads(uploads, headObject, { field = 'upload', log = console.error } = {}) {
   const found = uploads.map(() => null);
@@ -120,31 +159,27 @@ export async function headUploads(uploads, headObject, { field = 'upload', log =
     if (displayKey) tasks.push({ index, key: displayKey, type, original: false });
   });
 
-  // HEADs already in flight may fail too once one has; the response is one 503, so one log line.
+  // Once the call has failed, HEADs it aborts fail too; the response is one error, so at most one log line.
+  const stop = new AbortController();
   let logged = false;
-  const unavailable = (key, reason) => {
-    if (!logged) {
-      logged = true;
-      log('upload check failed', key, reason);
-    }
-    return busy();
+  const logOnce = (...args) => {
+    if (logged || stop.signal.aborted) return;
+    logged = true;
+    log(...args);
   };
 
   async function check({ index, key, type, original }) {
-    let head;
-    try {
-      head = await withTimeout((signal) => headObject(key, { signal }), HEAD_TIMEOUT_MS);
-    } catch (error) {
-      if (error instanceof ApiError) throw error;
-      throw unavailable(key, error?.message ?? error);
-    }
-    if (head.status === 404 || head.status === 403) throw new ApiError(400, 'missing_upload', { index, field });
-    if (!(head.status >= 200 && head.status < 300)) throw unavailable(key, `status ${head.status}`);
+    const head = await headKey(key, headObject, { field, index, log: logOnce, signal: stop.signal });
     if (!original) return;
     if (mediaType(head.contentType) !== type.contentType) {
       throw new ApiError(400, 'invalid', {
         field: `${field}.ext`, index, message: `The stored file is not of type ${type.ext}.`
       });
+    }
+    // media.byte_size is not null: an original without a readable size is storage misbehaving, not the client.
+    if (!isSize(head.contentLength)) {
+      logOnce('upload check failed', key, 'no readable content-length');
+      throw busy();
     }
     const sized = type.image && head.width != null && head.height != null;
     found[index] = {
@@ -155,7 +190,7 @@ export async function headUploads(uploads, headObject, { field = 'upload', log =
     };
   }
 
-  await runLimited(tasks, MAX_PARALLEL_HEADS, check);
+  await runLimited(tasks, MAX_PARALLEL_HEADS, check, stop);
   return found;
 }
 
@@ -170,13 +205,14 @@ function headerNumber(headers, name, pattern) {
  * HEAD of the public URL `<baseUrl>/<key>`, with a 5 s timeout (and aborted early if `signal` aborts).
  * `width` and `height` are the x-amz-meta-width and -height headers as integers, and any missing or unreadable
  * header gives null. A missing object is reported by its status (404, or 403 from a bucket that refuses
- * anonymous listing); a network error or timeout rejects.
+ * anonymous listing); a network error, a redirect or a timeout rejects.
  */
 export function publicHead(baseUrl, fetchImpl = fetch) {
   return async (key, { signal } = {}) => {
     const timeout = AbortSignal.timeout(HEAD_TIMEOUT_MS);
     const response = await fetchImpl(`${baseUrl}/${key}`, {
       method: 'HEAD',
+      redirect: 'error', // a public object is answered directly; never follow a HEAD anywhere else
       signal: signal ? AbortSignal.any([signal, timeout]) : timeout
     });
     const { headers } = response;

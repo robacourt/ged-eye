@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { afterEach, describe, it, expect, vi } from 'vitest';
 import { ApiError } from '../api/http.js';
-import { headObjectFromEnv, headUploads, keysFor, publicHead, validateUpload } from '../api/uploads.js';
+import { headKey, headObjectFromEnv, headUploads, keysFor, publicHead, validateUpload } from '../api/uploads.js';
 
 const SHA_A = 'a'.repeat(64);
 const SHA_B = 'b'.repeat(64);
@@ -46,6 +46,11 @@ function fakeHead(overrides = {}) {
   return vi.fn(async (key) => overrides[key] ?? stored(key));
 }
 
+/** Lets pending promise callbacks run. */
+async function flush() {
+  for (let i = 0; i < 20; i += 1) await Promise.resolve();
+}
+
 afterEach(() => {
   vi.useRealTimers();
 });
@@ -71,6 +76,12 @@ describe('keysFor', () => {
 
   it('throws for an extension that is not one of the accepted types', () => {
     expect(() => keysFor({ sha256: SHA_A, ext: 'heic' })).toThrow(TypeError);
+  });
+
+  it('throws for anything but a sha256, so a key can never point outside its folder', () => {
+    for (const sha256 of ['../../other/x?', `${SHA_A}/../x`, 'A'.repeat(64), 'a'.repeat(63), undefined, null, 7]) {
+      expect(() => keysFor({ sha256, ext: 'jpg' })).toThrow(TypeError);
+    }
   });
 });
 
@@ -202,6 +213,15 @@ describe('headUploads', () => {
     expect((await headUploads([JPG], head))[0].contentType).toBe('image/jpeg');
   });
 
+  it('gives 503 busy, logged, when an original\'s size is missing or unreadable', async () => {
+    for (const contentLength of [null, undefined, -1, 1.5, '12345']) {
+      const log = vi.fn();
+      const head = fakeHead({ [`originals/${SHA_A}.jpg`]: { ...stored(`originals/${SHA_A}.jpg`), contentLength } });
+      expect(await failure(headUploads([JPG], head, { log }))).toMatchObject({ status: 503, code: 'busy' });
+      expect(log).toHaveBeenCalledTimes(1);
+    }
+  });
+
   it('gives null width and height when the original lacks either x-amz-meta header', async () => {
     const original = stored(`originals/${SHA_A}.jpg`);
     for (const missing of [{ width: null }, { height: null }]) {
@@ -248,11 +268,140 @@ describe('headUploads', () => {
     expect(log).not.toHaveBeenCalled();
   });
 
+  it('aborts the HEADs still in flight as soon as one fails, logging once', async () => {
+    vi.useFakeTimers();
+    const log = vi.fn();
+    const signals = new Map();
+    const head = vi.fn((key, { signal }) => {
+      signals.set(key, signal);
+      if (key.includes(SHA_A)) return Promise.reject(new TypeError('fetch failed'));
+      return new Promise(() => {}); // hangs until aborted
+    });
+    const uploads = [{ ...PDF, sha256: SHA_A }, PDF];
+    expect(await failure(headUploads(uploads, head, { log }))).toMatchObject({ status: 503, code: 'busy' });
+    expect(head).toHaveBeenCalledTimes(2);
+    expect(signals.get(`originals/${SHA_B}.pdf`).aborted).toBe(true);
+    await flush();
+    expect(vi.getTimerCount()).toBe(0);
+    expect(log).toHaveBeenCalledTimes(1);
+    expect(log.mock.calls[0][1]).toBe(`originals/${SHA_A}.pdf`);
+  });
+
+  it('aborts the HEADs still in flight when one finds a missing upload, without logging', async () => {
+    const log = vi.fn();
+    const signals = [];
+    const head = vi.fn((key, { signal }) => {
+      signals.push(signal);
+      return key.includes(SHA_A) ? Promise.resolve({ status: 404 }) : new Promise(() => {});
+    });
+    expect(await failure(headUploads([{ ...PDF, sha256: SHA_A }, PDF], head, { log })))
+      .toEqual({ status: 400, code: 'missing_upload', index: 0, field: 'upload' });
+    expect(signals.map((signal) => signal.aborted)).toEqual([true, true]);
+    await flush();
+    expect(log).not.toHaveBeenCalled();
+  });
+
+  it('leaves no timer behind after a successful check', async () => {
+    vi.useFakeTimers();
+    expect(await headUploads([JPG, PDF], fakeHead())).toHaveLength(2);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
   it('starts no more HEADs once one has failed', async () => {
     const head = vi.fn(async (key) => (key.startsWith('originals/0') ? { status: 404 } : stored(key)));
     const uploads = Array.from({ length: 10 }, (_, i) => ({ ...PDF, sha256: i.toString(16).repeat(64) }));
     expect(await failure(headUploads(uploads, head))).toMatchObject({ code: 'missing_upload', index: 0 });
     expect(head.mock.calls.length).toBeLessThanOrEqual(8);
+  });
+});
+
+describe('headKey', () => {
+  const AVATAR = /^avatars\/[0-9a-f]{64}-[0-9a-f]{12}\.webp$/;
+  const avatarKey = `avatars/${SHA_A}-${'c'.repeat(12)}.webp`;
+  const found = { status: 200, contentType: 'image/webp', contentLength: 100, width: null, height: null };
+
+  it('returns the HEAD result of an object that exists', async () => {
+    const head = vi.fn(async () => found);
+    expect(await headKey(avatarKey, head, { field: 'avatarKey', pattern: AVATAR })).toBe(found);
+    expect(head).toHaveBeenCalledWith(avatarKey, { signal: expect.any(AbortSignal) });
+  });
+
+  it('gives missing_upload with the field, and the index when given, for 404 or 403', async () => {
+    for (const status of [403, 404]) {
+      const head = vi.fn(async () => ({ status }));
+      expect(await failure(headKey(avatarKey, head, { field: 'avatarKey' }))).toEqual({ status: 400, code: 'missing_upload', field: 'avatarKey' });
+      expect(await failure(headKey(avatarKey, head, { field: 'photos.upload', index: 3 })))
+        .toEqual({ status: 400, code: 'missing_upload', field: 'photos.upload', index: 3 });
+    }
+  });
+
+  it('gives 503 busy, logged, on a storage error status or a network error', async () => {
+    const log = vi.fn();
+    expect(await failure(headKey(avatarKey, vi.fn(async () => ({ status: 500 })), { field: 'avatarKey', log })))
+      .toEqual({ status: 503, code: 'busy', message: expect.any(String) });
+    expect(await failure(headKey(avatarKey, vi.fn(async () => { throw new TypeError('fetch failed'); }), { field: 'avatarKey', log })))
+      .toMatchObject({ status: 503, code: 'busy' });
+    expect(await failure(headKey(avatarKey, vi.fn(async () => ({ status: 301 })), { field: 'avatarKey', log })))
+      .toMatchObject({ status: 503, code: 'busy' });
+    expect(log).toHaveBeenCalledTimes(3);
+  });
+
+  it('gives 503 busy after 5 seconds, aborting the HEAD and leaving no timer', async () => {
+    vi.useFakeTimers();
+    const log = vi.fn();
+    let signal;
+    const head = vi.fn((key, options) => {
+      signal = options.signal;
+      return new Promise(() => {});
+    });
+    const result = failure(headKey(avatarKey, head, { field: 'avatarKey', log }));
+    await vi.advanceTimersByTimeAsync(4999);
+    expect(signal.aborted).toBe(false);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(await result).toMatchObject({ status: 503, code: 'busy' });
+    expect(signal.aborted).toBe(true);
+    expect(vi.getTimerCount()).toBe(0);
+    expect(log).toHaveBeenCalledTimes(1);
+  });
+
+  it('stops at once when the caller\'s signal aborts, and never starts once it has', async () => {
+    vi.useFakeTimers();
+    const controller = new AbortController();
+    let signal;
+    const head = vi.fn((key, options) => {
+      signal = options.signal;
+      return new Promise(() => {});
+    });
+    const result = failure(headKey(avatarKey, head, { field: 'avatarKey', signal: controller.signal, log: vi.fn() }));
+    controller.abort();
+    expect(await result).toMatchObject({ status: 503, code: 'busy' });
+    expect(signal.aborted).toBe(true);
+    expect(vi.getTimerCount()).toBe(0);
+    const unstarted = vi.fn();
+    expect(await failure(headKey(avatarKey, unstarted, { field: 'avatarKey', signal: controller.signal, log: vi.fn() })))
+      .toMatchObject({ status: 503, code: 'busy' });
+    expect(unstarted).not.toHaveBeenCalled();
+  });
+
+  it('leaves no timer behind after a successful HEAD', async () => {
+    vi.useFakeTimers();
+    await headKey(avatarKey, vi.fn(async () => found), { field: 'avatarKey' });
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it('refuses, without a HEAD, a key that does not match the pattern it is given', async () => {
+    const head = vi.fn(async () => found);
+    for (const key of [`avatars/${SHA_A}.webp`, `originals/${SHA_A}.jpg`, `avatars/../${SHA_A}-${'c'.repeat(12)}.webp`]) {
+      await expect(headKey(key, head, { field: 'avatarKey', pattern: AVATAR })).rejects.toThrow(TypeError);
+    }
+    expect(head).not.toHaveBeenCalled();
+  });
+
+  it('passes an ApiError from headObject through unchanged, unlogged', async () => {
+    const log = vi.fn();
+    const internal = new ApiError(500, 'internal');
+    await expect(headKey(avatarKey, vi.fn(async () => { throw internal; }), { field: 'avatarKey', log })).rejects.toBe(internal);
+    expect(log).not.toHaveBeenCalled();
   });
 });
 
@@ -270,6 +419,7 @@ describe('publicHead', () => {
     const [url, init] = fetchImpl.mock.calls[0];
     expect(url).toBe(`https://storage.example.test/ged-eye-media/originals/${SHA_A}.jpg`);
     expect(init.method).toBe('HEAD');
+    expect(init.redirect).toBe('error');
     expect(init.signal).toBeInstanceOf(AbortSignal);
   });
 
