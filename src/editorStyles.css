@@ -635,3 +635,277 @@ select.editor-input {
     padding-bottom: 12px;
   }
 }
+
+/* ==== Relative dialog, unlink confirmation and details-panel edit controls (relativeDialog.js,
+   unlinkConfirm.js, personDetails.js) ==== */
+
+/* Details panel, for editors */
+.details-edit-person {
+  margin-left: auto;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid rgba(0, 212, 255, 0.6);
+  border-radius: 18px;
+  background: rgba(0, 212, 255, 0.12);
+  color: #00d4ff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.details-edit-person:hover {
+  background: rgba(0, 212, 255, 0.22);
+}
+
+.details-row-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.details-unlink {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: rgba(255, 255, 255, 0.55);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.details-unlink:hover {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff8a8a;
+}
+
+.details-edit-family,
+.details-history {
+  padding: 6px 4px;
+  border: none;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.details-edit-family:hover,
+.details-history:hover {
+  text-decoration: underline;
+}
+
+.details-add-relatives {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.details-family h3 + .details-add-relatives {
+  margin-top: 0;
+}
+
+.details-add {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  border-radius: 18px;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.details-add:hover:not(:disabled) {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.details-add:disabled {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: default;
+}
+
+.details-add-hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.details-history-row {
+  margin-top: 10px;
+}
+
+.details-history {
+  padding-left: 0;
+}
+
+.details-edit-person:focus-visible,
+.details-unlink:focus-visible,
+.details-edit-family:focus-visible,
+.details-add:focus-visible,
+.details-history:focus-visible,
+.relative-tab:focus-visible,
+.relative-choice input:focus-visible,
+.relative-result input:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* Relative dialog */
+.relative-dialog {
+  width: min(540px, 100%);
+}
+
+.relative-dialog .editor-dialog-body {
+  padding-bottom: 0;
+}
+
+.relative-choosers,
+.relative-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.relative-blocked {
+  margin: 0;
+}
+
+.relative-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.relative-choice input,
+.relative-result input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #00d4ff;
+}
+
+.relative-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.relative-tab {
+  flex: 1;
+  min-height: 44px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: rgba(255, 255, 255, 0.6);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.relative-tab[aria-selected="true"] {
+  border-bottom-color: #00d4ff;
+  color: #fff;
+}
+
+.relative-tab:disabled {
+  cursor: default;
+}
+
+.relative-status:empty {
+  display: none;
+}
+
+.relative-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.relative-results:empty {
+  display: none;
+}
+
+.relative-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.relative-result:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.relative-result:has(input:checked) {
+  border-color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.relative-result-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.relative-result-years {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.relative-warning {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 170, 0, 0.5);
+  border-radius: 8px;
+  background: rgba(255, 170, 0, 0.12);
+  color: #ffd28a;
+  font-size: 14px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+/* Unlink confirmation */
+.unlink-confirm {
+  width: min(460px, 100%);
+}
+
+.unlink-form {
+  gap: 16px;
+}
+
+.unlink-confirm-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.unlink-question {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+/* ==== End of relative dialog, unlink and details-panel edit controls ==== */

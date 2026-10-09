@@ -2,6 +2,7 @@ import { PhotoViewer } from './photoViewer.js';
 import { thumbUrl } from './media.js';
 import { escapeHtml } from './html.js';
 import { factLabel } from './factLabels.js';
+import { familyOfChild, nameOf, relativeBlocked } from './familyLinks.js';
 
 // Person notes longer than this are clamped to about NOTE_CLAMP_LINES lines behind "Show more".
 const NOTE_CLAMP_LINES = 6;
@@ -54,6 +55,105 @@ function section(title, rows) {
 
 const SEX_LABELS = new Map([['M', 'Male'], ['F', 'Female']]);
 
+const ADD_RELATIVES = [['parent', '+ Parent'], ['spouse', '+ Spouse'], ['child', '+ Child'], ['sibling', '+ Sibling']];
+let nextHintId = 0;
+
+/**
+ * The editors' controls, when `canEdit`: each control gets a `data-edit-action` index into `actions`, and
+ * showPerson() wires the clicks once the HTML is in place. Every label is escaped here.
+ */
+class EditControls {
+  constructor(person, relationships, hooks) {
+    this.person = person;
+    this.relationships = relationships;
+    this.hooks = hooks;
+    this.actions = [];
+  }
+
+  /** A button that runs `run` when clicked. `text` and `label` are escaped; `className` is a literal. */
+  button(className, text, label, run, { disabled = false, describedBy = null } = {}) {
+    this.actions.push(run);
+    const attributes = [
+      `type="button"`, `class="${className}"`, `data-edit-action="${this.actions.length - 1}"`,
+      label ? `aria-label="${escapeHtml(label)}"` : '', disabled ? 'disabled' : '',
+      describedBy ? `aria-describedby="${describedBy}"` : ''
+    ].filter(Boolean);
+    return `<button ${attributes.join(' ')}>${escapeHtml(text)}</button>`;
+  }
+
+  call(name, ...args) {
+    this.hooks[name]?.(...args, this.person);
+  }
+
+  unlink(relation, personId, familyId, name) {
+    const what = { parent: 'a parent', spouse: 'the spouse', child: 'a child' }[relation];
+    const target = { relation, role: relation === 'child' ? 'child' : 'partner', personId, familyId };
+    return this.button('details-unlink', '×', `Remove ${name} as ${what}`, () => this.call('onUnlink', target));
+  }
+
+  /** The Edit button in the header. */
+  editPerson() {
+    return this.button('details-edit-person', 'Edit', `Edit ${nameOf(this.person)}`, () => this.hooks.onEdit?.(this.person));
+  }
+
+  /** Edit and × for a marriage row; × only when the spouse is known. */
+  marriageActions(marriage, spouse) {
+    const partners = [{ id: this.person.id, name: this.person.name ?? '' }];
+    if (marriage.spouseId) partners.push({ id: marriage.spouseId, name: spouse?.name ?? '' });
+    const family = {
+      familyId: marriage.familyId, partners,
+      marriageDate: marriage.marriageDate ?? null, marriagePlace: marriage.marriagePlace ?? null,
+      divorceDate: marriage.divorceDate ?? null, divorcePlace: marriage.divorcePlace ?? null
+    };
+    const label = `Edit the marriage of ${partners.map(nameOf).join(' and ')}`;
+    const edit = this.button('details-edit-family', 'Edit', label, () => this.call('onEditFamily', family));
+    const remove = marriage.spouseId ? this.unlink('spouse', marriage.spouseId, marriage.familyId, nameOf(spouse)) : '';
+    return `<span class="details-row-actions">${edit}${remove}</span>`;
+  }
+
+  /** The Family section: parents and children with ×, the + relative buttons, and the History link. */
+  familySection() {
+    const rows = [];
+    const byId = new Map((this.relationships?.parents ?? []).map(parent => [parent.id, parent]));
+    for (const family of this.person.parentFamilies ?? []) {
+      for (const parentId of family.partnerIds ?? []) {
+        const name = nameOf(byId.get(parentId));
+        rows.push(labelledRow('Parent', `<strong>${escapeHtml(name)}</strong>` +
+          `<span class="details-row-actions">${this.unlink('parent', parentId, family.familyId, name)}</span>`));
+      }
+    }
+    for (const child of this.relationships?.children ?? []) {
+      const familyId = familyOfChild(this.person, child);
+      const remove = familyId ? `<span class="details-row-actions">${this.unlink('child', child.id, familyId, nameOf(child))}</span>` : '';
+      rows.push(labelledRow('Child', `<strong>${escapeHtml(nameOf(child))}</strong>${remove}`));
+    }
+
+    const hints = [];
+    const buttons = ADD_RELATIVES.map(([relation, text]) => {
+      const blocked = relativeBlocked(this.person, relation);
+      let describedBy = null;
+      if (blocked) {
+        describedBy = `details-add-hint-${++nextHintId}`;
+        hints.push(`<p class="details-add-hint" id="${describedBy}">${escapeHtml(blocked)}</p>`);
+      }
+      return this.button('details-add', text, null, () => this.call('onAddRelative', relation), { disabled: Boolean(blocked), describedBy });
+    });
+
+    return '<div class="person-details-section details-family"><h3>Family</h3>' + rows.join('') +
+      `<div class="details-add-relatives">${buttons.join('')}</div>${hints.join('')}` +
+      `<div class="details-history-row">${this.button('details-history', 'History of this person', null, () => this.hooks.onShowHistory?.(this.person))}</div>` +
+      '</div>';
+  }
+
+  /** Wires every control rendered into `root`. */
+  wire(root) {
+    root.querySelectorAll('[data-edit-action]').forEach(control => {
+      const run = this.actions[Number(control.dataset.editAction)];
+      control.addEventListener('click', () => run?.());
+    });
+  }
+}
+
 // Occupations were plain strings before the 2026-10 facts backfill.
 const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry);
 
@@ -85,12 +185,18 @@ export class PersonDetails {
   }
 
   /**
-   * Display details for a person
+   * Display details for a person.
+   * @param options  for editors: `{ canEdit, onEdit(person), onAddRelative(relation, person),
+   *   onUnlink({ relation, role, personId, familyId }, person), onEditFamily(family, person), onShowHistory(person) }`.
+   *   Without `canEdit` no edit control is rendered. `relation` is 'parent' | 'spouse' | 'child' | 'sibling';
+   *   `family` is openFamilyEditor's `{ familyId, partners: [{ id, name }], marriageDate, marriagePlace,
+   *   divorceDate, divorcePlace }`.
    */
-  async showPerson(personData, relationships = null) {
+  async showPerson(personData, relationships = null, options = {}) {
     this.currentPerson = personData;
     this.relationships = relationships;
     this.emptyState.style.display = 'none';
+    const edit = options?.canEdit ? new EditControls(personData, relationships, options) : null;
 
     // Reset scroll position to top
     this.content.scrollTop = 0;
@@ -100,6 +206,7 @@ export class PersonDetails {
       <div class="person-details-header">
         <h2>${escapeHtml(personData.name || 'Unknown')}</h2>
         ${sexLabel ? `<span class="person-sex">${sexLabel}</span>` : ''}
+        ${edit ? edit.editPerson() : ''}
       </div>
     `;
 
@@ -140,7 +247,8 @@ export class PersonDetails {
       const rows = [];
       for (const marriage of personData.marriages) {
         const spouse = this.relationships.spouses.find(s => s.id === marriage.spouseId);
-        rows.push(labelledRow('Spouse', `<strong>${escapeHtml(spouse?.name || 'Unknown')}</strong>`));
+        const actions = edit ? edit.marriageActions(marriage, spouse) : '';
+        rows.push(labelledRow('Spouse', `<strong>${escapeHtml(spouse?.name || 'Unknown')}</strong>${actions}`));
         if (marriage.marriageDate || marriage.marriagePlace) {
           rows.push(factRow({ date: marriage.marriageDate, place: marriage.marriagePlace }, { label: 'Married' }));
         }
@@ -150,6 +258,8 @@ export class PersonDetails {
       }
       html += section('Marriages', rows);
     }
+
+    if (edit) html += edit.familySection();
 
     html += section('Occupations', (personData.occupations ?? []).map(entry => factRow(asFact(entry))));
 
@@ -174,6 +284,7 @@ export class PersonDetails {
     html += '</div>'; // Close sections
 
     this.content.innerHTML = html;
+    edit?.wire(this.content);
 
     // Add click handlers to photo thumbnails
     const thumbnails = this.content.querySelectorAll('.person-photo-thumbnail');

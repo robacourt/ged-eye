@@ -1,12 +1,14 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { PersonDetails } from '../src/personDetails.js';
 
 const XSS = '<img src=x onerror="window.__xss = 1">';
 
-async function render(person, relationships = null) {
+async function render(person, relationships = null, options = undefined) {
   document.body.innerHTML = '<div id="details"></div>';
   const details = new PersonDetails(document.getElementById('details'));
-  await details.showPerson({ id: 'I1', name: 'Test Person', sex: 'M', photos: [], ...person }, relationships);
+  const args = [{ id: 'I1', name: 'Test Person', sex: 'M', photos: [], ...person }, relationships];
+  if (options !== undefined) args.push(options);
+  await details.showPerson(...args);
   return document.getElementById('details');
 }
 
@@ -272,5 +274,164 @@ describe('PersonDetails', () => {
   it('omits empty sections', async () => {
     const el = await render({});
     expect(el.querySelectorAll('h3')).toHaveLength(0);
+  });
+
+  describe('edit hooks', () => {
+    // Rose (I7): parents Tom and Ann (F1), spouses John (F5, with Lily) and none (F7, with Olive).
+    const ROSE = {
+      id: 'I7', name: 'Rose Smith', sex: 'F',
+      parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I7', 'I8'] }],
+      marriages: [
+        { spouseId: 'I3', familyId: 'F5', marriageDate: '1920', marriagePlace: 'Leeds' },
+        { spouseId: null, familyId: 'F7' }
+      ]
+    };
+    const RELS = {
+      parents: [{ id: 'I1', name: 'Tom Smith' }, { id: 'I2', name: 'Ann Jones' }],
+      spouses: [{ id: 'I3', name: 'John Brown' }],
+      children: [{ id: 'I11', name: 'Lily Brown', parentIds: ['I7', 'I3'] }, { id: 'I12', name: 'Olive Smith', parentIds: ['I7'] }],
+      siblings: [{ id: 'I8', name: 'Jack Smith' }]
+    };
+    const EDIT_CONTROLS = '.details-edit-person, .details-family, .details-unlink, .details-edit-family, .details-add, .details-history';
+
+    let hooks;
+    beforeEach(() => {
+      hooks = {
+        canEdit: true, onEdit: vi.fn(), onAddRelative: vi.fn(), onUnlink: vi.fn(), onEditFamily: vi.fn(), onShowHistory: vi.fn()
+      };
+    });
+
+    const renderEditable = (person = ROSE, relationships = RELS, options = hooks) => render(person, relationships, options);
+    const button = (el, text) => [...el.querySelectorAll('button')].find(b => b.textContent === text);
+    const familyRow = (el, label, name) =>
+      [...el.querySelectorAll('.details-family .detail-item')].find(row =>
+        row.querySelector('.detail-label')?.textContent === `${label}:` && row.querySelector('strong')?.textContent === name);
+
+    it('renders no edit controls without canEdit, even with callbacks', async () => {
+      for (const options of [undefined, {}, { ...hooks, canEdit: false }]) {
+        const el = await render(ROSE, RELS, options);
+        expect(el.querySelectorAll(EDIT_CONTROLS)).toHaveLength(0);
+        expect(sectionText(el, 'Family')).toBeUndefined();
+        expect(rowText(el, 'Marriages', 'Spouse:')).toBe('Spouse:John Brown');
+      }
+    });
+
+    it('has an Edit button and a History link for the person', async () => {
+      const el = await renderEditable();
+      const edit = el.querySelector('.person-details-header .details-edit-person');
+      expect(edit.textContent).toBe('Edit');
+      expect(edit.getAttribute('aria-label')).toBe('Edit Rose Smith');
+      edit.click();
+      expect(hooks.onEdit).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }));
+      const history = el.querySelector('.details-history');
+      expect(history.textContent).toBe('History of this person');
+      history.click();
+      expect(hooks.onShowHistory).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }));
+    });
+
+    it('has + Parent, + Spouse, + Child and + Sibling buttons', async () => {
+      const el = await renderEditable({ ...ROSE, parentFamilies: [{ familyId: 'F2', partnerIds: ['I2'], childIds: ['I7'] }] });
+      expect([...el.querySelectorAll('.details-add')].map(b => b.textContent)).toEqual(['+ Parent', '+ Spouse', '+ Child', '+ Sibling']);
+      for (const [text, relation] of [['+ Parent', 'parent'], ['+ Spouse', 'spouse'], ['+ Child', 'child'], ['+ Sibling', 'sibling']]) {
+        const add = button(el, text);
+        expect(add.disabled).toBe(false);
+        add.click();
+        expect(hooks.onAddRelative).toHaveBeenLastCalledWith(relation, expect.objectContaining({ id: 'I7' }));
+      }
+      expect(el.querySelector('.details-add-hint')).toBeNull();
+    });
+
+    it('disables + Sibling with "Add a parent first" when there are no parents', async () => {
+      const el = await renderEditable({ ...ROSE, parentFamilies: [] });
+      const sibling = button(el, '+ Sibling');
+      expect(sibling.disabled).toBe(true);
+      const hint = el.querySelector(`#${sibling.getAttribute('aria-describedby')}`);
+      expect(hint.textContent).toBe('Add a parent first');
+      expect(button(el, '+ Parent').disabled).toBe(false);
+    });
+
+    it('disables + Parent when the parents are complete', async () => {
+      const el = await renderEditable();
+      const parent = button(el, '+ Parent');
+      expect(parent.disabled).toBe(true);
+      expect(el.querySelector(`#${parent.getAttribute('aria-describedby')}`).textContent).toBe('Already has two parents');
+      expect(button(el, '+ Sibling').disabled).toBe(false);
+    });
+
+    it('lists parents and children with × that unlinks them from the right family', async () => {
+      const el = await renderEditable();
+      const tom = familyRow(el, 'Parent', 'Tom Smith').querySelector('.details-unlink');
+      expect(tom.textContent).toBe('×');
+      expect(tom.getAttribute('aria-label')).toBe('Remove Tom Smith as a parent');
+      tom.click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith(
+        { relation: 'parent', role: 'partner', personId: 'I1', familyId: 'F1' }, expect.objectContaining({ id: 'I7' }));
+      familyRow(el, 'Parent', 'Ann Jones').querySelector('.details-unlink').click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'parent', role: 'partner', personId: 'I2', familyId: 'F1' }, expect.anything());
+      const lily = familyRow(el, 'Child', 'Lily Brown').querySelector('.details-unlink');
+      expect(lily.getAttribute('aria-label')).toBe('Remove Lily Brown as a child');
+      lily.click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'child', role: 'child', personId: 'I11', familyId: 'F5' }, expect.anything());
+      familyRow(el, 'Child', 'Olive Smith').querySelector('.details-unlink').click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'child', role: 'child', personId: 'I12', familyId: 'F7' }, expect.anything());
+    });
+
+    it('has no × for a child whose family can\'t be told', async () => {
+      const el = await renderEditable(
+        { ...ROSE, marriages: [{ spouseId: 'I3', familyId: 'F5' }, { spouseId: 'I5', familyId: 'F6' }] },
+        { ...RELS, children: [{ id: 'I12', name: 'Olive Smith', parentIds: ['I7'] }] });
+      expect(familyRow(el, 'Child', 'Olive Smith').querySelector('.details-unlink')).toBeNull();
+    });
+
+    it('puts × and Edit on marriage rows', async () => {
+      const el = await renderEditable();
+      const spouseRows = sectionRows(el, 'Marriages').filter(row => row.querySelector('.detail-label').textContent === 'Spouse:');
+      expect(spouseRows).toHaveLength(2);
+      const [john, unknown] = spouseRows;
+      expect(john.querySelector('strong').textContent).toBe('John Brown');
+      const remove = john.querySelector('.details-unlink');
+      expect(remove.getAttribute('aria-label')).toBe('Remove John Brown as the spouse');
+      remove.click();
+      expect(hooks.onUnlink).toHaveBeenLastCalledWith({ relation: 'spouse', role: 'partner', personId: 'I3', familyId: 'F5' }, expect.anything());
+      const edit = john.querySelector('.details-edit-family');
+      expect(edit.textContent).toBe('Edit');
+      expect(edit.getAttribute('aria-label')).toBe('Edit the marriage of Rose Smith and John Brown');
+      edit.click();
+      expect(hooks.onEditFamily).toHaveBeenLastCalledWith({
+        familyId: 'F5', partners: [{ id: 'I7', name: 'Rose Smith' }, { id: 'I3', name: 'John Brown' }],
+        marriageDate: '1920', marriagePlace: 'Leeds', divorceDate: null, divorcePlace: null
+      }, expect.objectContaining({ id: 'I7' }));
+      // An unknown spouse can't be removed, but the marriage can still be edited.
+      expect(unknown.querySelector('.details-unlink')).toBeNull();
+      unknown.querySelector('.details-edit-family').click();
+      expect(hooks.onEditFamily).toHaveBeenLastCalledWith(expect.objectContaining({ familyId: 'F7', partners: [{ id: 'I7', name: 'Rose Smith' }] }), expect.anything());
+    });
+
+    it('has a Family section with + buttons even without relatives', async () => {
+      const el = await renderEditable({ id: 'I9', name: 'Lone Person' }, { parents: [], spouses: [], children: [], siblings: [] });
+      expect(sectionText(el, 'Family')).toContain('+ Parent');
+      expect(el.querySelectorAll('.details-family .detail-item')).toHaveLength(0);
+    });
+
+    it('renders names in the edit controls as text', async () => {
+      const el = await renderEditable({ ...ROSE, name: XSS }, {
+        ...RELS, parents: [{ id: 'I1', name: XSS }], spouses: [{ id: 'I3', name: XSS }], children: [{ id: 'I11', name: XSS, parentIds: ['I3'] }]
+      });
+      expect(el.querySelector('img')).toBeNull();
+      expect(el.querySelector('[onerror]')).toBeNull();
+      expect(familyRow(el, 'Parent', XSS).querySelector('.details-unlink').getAttribute('aria-label')).toBe(`Remove ${XSS} as a parent`);
+      expect(familyRow(el, 'Child', XSS)).toBeDefined();
+      expect(el.querySelector('.details-edit-person').getAttribute('aria-label')).toBe(`Edit ${XSS}`);
+      expect(el.querySelector('.details-edit-family').getAttribute('aria-label')).toBe(`Edit the marriage of ${XSS} and ${XSS}`);
+    });
+
+    it("doesn't break when a callback is missing", async () => {
+      const el = await renderEditable(ROSE, RELS, { canEdit: true });
+      expect(() => {
+        el.querySelector('.details-edit-person').click();
+        button(el, '+ Spouse').click();
+        el.querySelector('.details-unlink').click();
+      }).not.toThrow();
+    });
   });
 });
