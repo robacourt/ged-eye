@@ -12,4 +12,11 @@ describe('factLabel', () => {
     expect(factLabel({ tag: 'XYZW' })).toBe('Xyzw');
     expect(factLabel({})).toBe('Other');
   });
+
+  it('is not fooled by tags that are also properties of every object', () => {
+    expect(factLabel({ tag: '__proto__' })).toBe('_proto__');
+    expect(factLabel({ tag: 'constructor' })).toBe('Constructor');
+    expect(factLabel({ tag: 'toString' })).toBe('Tostring');
+    expect(factLabel({ tag: 'hasOwnProperty' })).toBe('Hasownproperty');
+  });
 });

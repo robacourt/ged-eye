@@ -540,11 +540,11 @@ body {
   border-radius: 6px;
 }
 
-.detail-note {
+.person-note {
   margin-bottom: 12px;
 }
 
-.detail-note:last-child {
+.person-note:last-child {
   margin-bottom: 0;
 }
 
@@ -640,6 +640,11 @@ body {
 
   .detail-notes .note-text {
     padding: 6px 8px;
+  }
+
+  .note-toggle,
+  .detail-notes summary {
+    padding: 4px 0;
   }
 
   .person-photo-thumbnail {

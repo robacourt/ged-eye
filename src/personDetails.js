@@ -16,6 +16,16 @@ function notesDisclosure(notes, summaryWord = 'Note') {
 }
 
 /**
+ * The one structure every row shares: an optional label, then the value. The label is escaped here;
+ * valueHtml is already-escaped markup. With no value the label stands alone, without its colon.
+ */
+function labelledRow(label, valueHtml) {
+  const labelHtml = label ? `<span class="detail-label">${escapeHtml(label)}${valueHtml ? ':' : ''}</span>` : '';
+  const valueDiv = valueHtml ? `<div class="detail-value">${valueHtml}</div>` : '';
+  return `<div class="detail-item">${labelHtml}${valueDiv}</div>`;
+}
+
+/**
  * One fact: "label: value • date • place", an optional cause, and its notes. Every field is optional.
  * The fact is data (it may be a stored object spread in); label and summaryWord are the caller's own.
  */
@@ -24,25 +34,25 @@ function factRow({ value, date, place, cause, notes }, { label, summaryWord } = 
   if (value) parts.push(`<span class="detail-fact">${escapeHtml(value)}</span>`);
   if (date) parts.push(`<span class="detail-date">${escapeHtml(date)}</span>`);
   if (place) parts.push(`<span class="detail-place">${escapeHtml(place)}</span>`);
-  let html = '<div class="detail-item">';
-  if (label) html += `<span class="detail-label">${escapeHtml(label)}:</span>`;
-  html += `<div class="detail-value">${parts.join(' • ')}`;
-  if (cause) html += `<div class="detail-cause">Cause: ${escapeHtml(cause)}</div>`;
-  html += notesDisclosure(notes, summaryWord);
-  html += '</div></div>';
-  return html;
+  let valueHtml = parts.join(' • ');
+  if (cause) valueHtml += `<div class="detail-cause">Cause: ${escapeHtml(cause)}</div>`;
+  valueHtml += notesDisclosure(notes, summaryWord);
+  return labelledRow(label, valueHtml);
 }
 
 function personNote(note) {
   const long = note.length > NOTE_CLAMP_CHARS || note.split('\n').length > NOTE_CLAMP_LINES;
-  if (!long) return `<div class="detail-note"><div class="note-text">${escapeHtml(note)}</div></div>`;
-  return `<div class="detail-note"><div class="note-text note-clamped">${escapeHtml(note)}</div>` +
+  if (!long) return `<div class="person-note"><div class="note-text">${escapeHtml(note)}</div></div>`;
+  return `<div class="person-note"><div class="note-text note-clamped">${escapeHtml(note)}</div>` +
     '<button type="button" class="note-toggle" aria-expanded="false">Show more</button></div>';
 }
 
+// title is always a literal from the caller, never data, so it is not escaped.
 function section(title, rows) {
   return rows.length ? `<div class="person-details-section"><h3>${title}</h3>${rows.join('')}</div>` : '';
 }
+
+const SEX_LABELS = new Map([['M', 'Male'], ['F', 'Female']]);
 
 // Occupations were plain strings before the 2026-10 facts backfill.
 const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry);
@@ -85,10 +95,11 @@ export class PersonDetails {
     // Reset scroll position to top
     this.content.scrollTop = 0;
 
+    const sexLabel = SEX_LABELS.get(personData.sex);
     let html = `
       <div class="person-details-header">
         <h2>${escapeHtml(personData.name || 'Unknown')}</h2>
-        ${personData.sex ? `<span class="person-sex">${personData.sex === 'M' ? 'Male' : 'Female'}</span>` : ''}
+        ${sexLabel ? `<span class="person-sex">${sexLabel}</span>` : ''}
       </div>
     `;
 
@@ -129,8 +140,7 @@ export class PersonDetails {
       const rows = [];
       for (const marriage of personData.marriages) {
         const spouse = this.relationships.spouses.find(s => s.id === marriage.spouseId);
-        rows.push('<div class="detail-item"><span class="detail-label">Spouse:</span>' +
-          `<span class="detail-value"><strong>${escapeHtml(spouse?.name || 'Unknown')}</strong></span></div>`);
+        rows.push(labelledRow('Spouse', `<strong>${escapeHtml(spouse?.name || 'Unknown')}</strong>`));
         if (marriage.marriageDate || marriage.marriagePlace) {
           rows.push(factRow({ date: marriage.marriageDate, place: marriage.marriagePlace }, { label: 'Married' }));
         }
@@ -154,12 +164,10 @@ export class PersonDetails {
 
     const contact = [];
     if (personData.email) {
-      contact.push('<div class="detail-item"><span class="detail-label">Email:</span>' +
-        `<span class="detail-value"><a href="mailto:${escapeHtml(personData.email)}">${escapeHtml(personData.email)}</a></span></div>`);
+      contact.push(labelledRow('Email', `<a href="mailto:${escapeHtml(personData.email)}">${escapeHtml(personData.email)}</a>`));
     }
     if (personData.phone) {
-      contact.push('<div class="detail-item"><span class="detail-label">Phone:</span>' +
-        `<span class="detail-value"><a href="tel:${escapeHtml(personData.phone)}">${escapeHtml(personData.phone)}</a></span></div>`);
+      contact.push(labelledRow('Phone', `<a href="tel:${escapeHtml(personData.phone)}">${escapeHtml(personData.phone)}</a>`));
     }
     html += section('Contact', contact);
 
@@ -176,11 +184,24 @@ export class PersonDetails {
       });
     });
 
+    // A note that is long by the rules above may still fit in the clamped box (wide panel, few wrapped
+    // lines). Those need no clamp or button. A height of 0 means nothing has been laid out (jsdom, or a
+    // panel that is not displayed), so the note is left as rendered.
+    this.content.querySelectorAll('.note-clamped').forEach(text => {
+      if (text.clientHeight && text.scrollHeight <= text.clientHeight + 1) {
+        text.classList.remove('note-clamped');
+        text.parentElement.querySelector('.note-toggle')?.remove();
+      }
+    });
+
     this.content.querySelectorAll('.note-toggle').forEach(button => {
       button.addEventListener('click', () => {
-        const expanded = !button.previousElementSibling.classList.toggle('note-clamped');
+        const text = button.parentElement.querySelector('.note-text');
+        const expanded = !text.classList.toggle('note-clamped');
         button.textContent = expanded ? 'Show less' : 'Show more';
         button.setAttribute('aria-expanded', String(expanded));
+        // Collapsing a long note can leave the page scrolled past its start.
+        if (!expanded) text.scrollIntoView?.({ block: 'nearest' });
       });
     });
   }
