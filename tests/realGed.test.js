@@ -128,6 +128,19 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     const { rows, summary } = planFacts(production, gedToRows(parsed, empty, new Map()).people);
     expect(summary).toMatchObject({ unchanged: 1602, changed: 1392, edited: [], onlyInDb: [], onlyInGed: [], columnDrift: [] });
     expect(rows).toHaveLength(1392);
+
+    // The supported sequences, in memory, with jsonb-like round trips: apply, then rollback.
+    const people = gedToRows(parsed, empty, new Map()).people;
+    const roundTrip = (value) => JSON.parse(JSON.stringify(value));
+    const planned = new Map(rows.map(row => [row.id, row]));
+    const withFacts = (dbRows, side) => dbRows.map(row => planned.has(row.id) ? { ...row, facts: roundTrip(planned.get(row.id)[side]) } : row);
+    const applied = withFacts(production, 'after');
+    const afterApply = planFacts(applied, people);
+    expect(afterApply.rows).toHaveLength(0);
+    expect(afterApply.summary).toMatchObject({ unchanged: 2994, changed: 0, edited: [], columnDrift: [] });
+    const afterRollback = planFacts(withFacts(applied, 'before'), people);
+    expect(afterRollback.rows).toEqual(rows);
+    expect(afterRollback.summary).toMatchObject({ unchanged: 1602, changed: 1392 });
   }, 30_000);
 
   it('leaves no email address in any served note', () => {
