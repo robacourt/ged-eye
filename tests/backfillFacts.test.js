@@ -4,8 +4,8 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import {
-  planFacts, formatSummary, describeRow, checkConfirm, parseArgs, checkPlanFile, readPlanFile, StalePlanError, CORE_COLUMNS,
-  plural, nextStepLines
+  planFacts, formatSummary, describeRow, checkConfirm, parseArgs, checkModeFlags, planOutPath, checkPlanFile, readPlanFile,
+  applyPlan, StalePlanError, CORE_COLUMNS, plural, nextStepLines
 } from '../scripts/neon/backfillFacts.js';
 
 const CORE = Object.fromEntries(CORE_COLUMNS.map(column => [column, null]));
@@ -127,6 +127,86 @@ describe('parseArgs', () => {
 
   it('rejects an option given twice', () => {
     expect(() => parseArgs(['--apply', 'a.json', '--apply', 'b.json'])).toThrow('Duplicate argument: --apply');
+  });
+});
+
+describe('checkModeFlags', () => {
+  it('names the mode: plan with no --apply/--rollback, otherwise the direction', () => {
+    expect(checkModeFlags({})).toBeNull();
+    expect(checkModeFlags({ out: 'p.json', sha: 'abc', databaseUrl: 'postgres://h/db' })).toBeNull();
+    expect(checkModeFlags({ apply: 'p.json', confirm: 'h', databaseUrl: 'postgres://h/db' })).toBe('apply');
+    expect(checkModeFlags({ rollback: 'p.json', confirm: 'h' })).toBe('rollback');
+    expect(checkModeFlags({ apply: 'p.json' })).toBe('apply');
+  });
+
+  it.each([
+    [{ confirm: 'h' }, '--confirm only applies to --apply/--rollback'],
+    [{ confirm: 'h', out: 'p.json' }, '--confirm only applies to --apply/--rollback'],
+    [{ apply: 'p.json', out: 'o.json' }, '--out only applies to plan'],
+    [{ rollback: 'p.json', out: 'o.json', confirm: 'h' }, '--out only applies to plan'],
+    [{ apply: 'p.json', sha: 'abc', confirm: 'h' }, '--sha only applies to plan'],
+    [{ rollback: 'p.json', sha: 'abc' }, '--sha only applies to plan']
+  ])('rejects %j', (args, message) => {
+    expect(() => checkModeFlags(args)).toThrow(new Error(message));
+  });
+
+  it('rejects --apply together with --rollback', () => {
+    expect(() => checkModeFlags({ apply: 'a.json', rollback: 'b.json' })).toThrow('Pass --apply or --rollback, not both');
+  });
+});
+
+describe('planOutPath', () => {
+  const inTempDir = (fn) => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'plan-out-test-'));
+    try {
+      return fn(dir);
+    } finally {
+      fs.rmSync(dir, { recursive: true });
+    }
+  };
+
+  it('resolves --out, and defaults to a file named for the host under .neon-import', () => {
+    inTempDir((dir) => {
+      expect(planOutPath(path.join(dir, 'plan.json'), 'h')).toBe(path.join(dir, 'plan.json'));
+      expect(planOutPath(path.relative(process.cwd(), path.join(dir, 'plan.json')), 'h')).toBe(path.join(dir, 'plan.json'));
+    });
+    expect(planOutPath(undefined, 'ep-x.invalid')).toMatch(/[\\/]\.neon-import[\\/]facts-backfill-plan-ep-x\.invalid\.json$/);
+  });
+
+  it('refuses a path where a plan already is (it may be the rollback for an apply), before anything is connected', () => {
+    inTempDir((dir) => {
+      const file = path.join(dir, 'plan.json');
+      fs.writeFileSync(file, '{}');
+      expect(() => planOutPath(file, 'h')).toThrow(`${file} already exists (it may be the rollback for an apply); move it or pass --out <path>`);
+    });
+  });
+});
+
+describe('applyPlan', () => {
+  it('sets a lock timeout right after begin, so a stray lock fails instead of hanging', async () => {
+    const statements = [];
+    const client = {
+      query: async (sql, params) => {
+        statements.push(sql.trim().replace(/\s+/g, ' ').split(' ').slice(0, 5).join(' '));
+        return { rows: params ? JSON.parse(params[0]).map(pair => ({ id: pair.id })) : [] };
+      }
+    };
+    const plan = { host: 'h', rows: [{ id: 'I1', before: {}, after: { notes: ['n'] } }] };
+    expect(await applyPlan(client, plan)).toEqual({ updated: 1 });
+    expect(statements).toEqual(['begin', "set local lock_timeout = '5s'", 'update person p set facts', 'commit']);
+  });
+
+  it('rolls back when the lock timeout cannot be set', async () => {
+    const statements = [];
+    const client = {
+      query: async (sql) => {
+        statements.push(sql);
+        if (sql.startsWith('set local')) throw new Error('boom');
+        return { rows: [] };
+      }
+    };
+    await expect(applyPlan(client, { host: 'h', rows: [{ id: 'I1', before: {}, after: { notes: ['n'] } }] })).rejects.toThrow('boom');
+    expect(statements.at(-1)).toBe('rollback');
   });
 });
 

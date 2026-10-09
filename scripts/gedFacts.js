@@ -9,9 +9,16 @@ const HANDLED = new Set(['NAME', 'SEX', 'BIRT', 'BAPM', 'DEAT', 'BURI', 'CENS', 
 const IGNORED = new Set(['CHAN', 'SOUR', 'REFN', 'ASSO']);
 const LIFE_EVENT_NOTES = new Map([['BIRT', 'birthNotes'], ['BAPM', 'baptismNotes'], ['DEAT', 'deathNotes'], ['BURI', 'burialNotes']]);
 
-/** A node's own notes (not those on its source citations), verbatim apart from trailing whitespace. */
+// Brother's Keeper stored Windows-1252 punctuation as C1 code points (U+0091-U+0097): quotes, bullet, dashes.
+const CP1252_PUNCTUATION = new Map([['\u0091', '\u2018'], ['\u0092', '\u2019'], ['\u0093', '\u201C'], ['\u0094', '\u201D'],
+  ['\u0095', '\u2022'], ['\u0096', '\u2013'], ['\u0097', '\u2014']]);
+const C1_PUNCTUATION = /[\u0091-\u0097]/g;
+
+/** A node's own notes (not those on its source citations), verbatim apart from trailing whitespace and C1 punctuation. */
 function noteTexts(node) {
-  return node.children.filter(child => child.tag === 'NOTE').map(note => note.value.trimEnd()).filter(Boolean);
+  return node.children.filter(child => child.tag === 'NOTE')
+    .map(note => note.value.trimEnd().replace(C1_PUNCTUATION, char => CP1252_PUNCTUATION.get(char)))
+    .filter(Boolean);
 }
 
 /** {value?, date?, place?, notes?} for one fact node; each key only when non-empty. */

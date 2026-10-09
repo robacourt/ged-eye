@@ -23,6 +23,11 @@ describe('parseGedcomTree', () => {
     expect(indi.children[0].value).toBe(' Message Boards  Login\n      Search:');
   });
 
+  it('decodes the GEDCOM @@ escape in every value, continuations included, but not pointers', () => {
+    const [indi] = parseGedcomTree('0 @I1@ INDI\n1 NOTE mail jo@@example.org\n2 CONT and a@@b.test\n1 FAMS @F1@');
+    expect(indi.children.map(c => [c.tag, c.value])).toEqual([['NOTE', 'mail jo@example.org\nand a@b.test'], ['FAMS', '@F1@']]);
+  });
+
   it('folds a continuation into its parent even after a sibling subtree', () => {
     const [indi] = parseGedcomTree('0 @I1@ INDI\n1 NOTE a\n2 SOUR @S1@\n3 PAGE p\n2 CONT b');
     expect(indi.children[0].value).toBe('a\nb');

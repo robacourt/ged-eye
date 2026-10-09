@@ -95,6 +95,11 @@ describe('email masking', () => {
     expect(masked.person.notes).toEqual(['Write to [email hidden] today']);
   });
 
+  it('masks an address stored with the GEDCOM @@ escape too', () => {
+    const masked = maskNoteEmails({ person: { id: 'I1', notes: ['Write to jo@@example.org'] } });
+    expect(masked.person.notes).toEqual(['Write to [email hidden]']);
+  });
+
   it('does not backtrack quadratically on a long run of address characters', () => {
     const text = 'a'.repeat(30_000) + '@';
     const started = performance.now();

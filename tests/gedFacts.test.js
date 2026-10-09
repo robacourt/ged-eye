@@ -17,6 +17,16 @@ describe('individualFacts', () => {
     ].join('\n'))).toMatchObject({ notes: [' Indented first line\nsecond'] });
   });
 
+  it('repairs Windows-1252 punctuation stored as C1 code points in note text, and only there', () => {
+    const c1 = '\u0091a\u0092 \u0093b\u0094 \u0095 c \u0096 d \u0097';
+    const repaired = '\u2018a\u2019 \u201Cb\u201D \u2022 c \u2013 d \u2014';
+    const result = facts(`1 NOTE ${c1}\n1 OCCU Mill${'\u0092'}er\n2 NOTE ${c1}\n1 BIRT\n2 NOTE ${c1}\n1 RELI A${'\u0092'}b`);
+    expect(result.notes).toEqual([repaired]);
+    expect(result.occupations).toEqual([{ value: 'Mill\u0092er', notes: [repaired] }]);
+    expect(result.birthNotes).toEqual([repaired]);
+    expect(result.otherFacts).toEqual([{ tag: 'RELI', value: 'A\u0092b' }]);
+  });
+
   it('gives occupations their date, place and notes', () => {
     expect(facts('1 OCCU Miller\n2 DATE 1881\n2 PLAC Stalbridge\n2 NOTE Employs 2 men\n1 OCCU \n1 OCCU \n2 NOTE Only a note').occupations).toEqual([
       { value: 'Miller', date: '1881', place: 'Stalbridge', notes: ['Employs 2 men'] },

@@ -148,11 +148,12 @@ describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
     const servedStrings = (v, key) => typeof v === 'string' ? (key === 'email' ? [] : [v])
       : Array.isArray(v) ? v.flatMap(x => servedStrings(x, key))
       : v && typeof v === 'object' ? Object.entries(v).flatMap(([k, x]) => servedStrings(x, k)) : [];
-    const addressLike = /[\p{L}\p{M}\p{N}]@[\p{L}\p{M}\p{N}]/u;
+    // Stricter than address-shaped: after masking, no served string contains an `@` at all (this also
+    // covers the GEDCOM `@@` form). Ids only on failure, never the strings.
     // `current` is the post-backfill shape; `legacy` is what production serves until the backfill.
     for (const [label, ged, extract] of [['current', parsed, current.extractPersonData], ['legacy', legacyParsed, legacy.extractPersonData]]) {
       const leaks = [...ged.individuals.keys()].filter(id =>
-        servedStrings(maskNoteEmails({ person: extract(ged, id) }).person).some(s => addressLike.test(s)));
+        servedStrings(maskNoteEmails({ person: extract(ged, id) }).person).some(s => s.includes('@')));
       expect(leaks, label).toEqual([]);
     }
   });

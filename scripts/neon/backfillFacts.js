@@ -5,8 +5,14 @@
  *   npm run backfill-facts                                     # plan (read-only) → .neon-import/facts-backfill-plan-<host>.json
  *   npm run backfill-facts -- --apply <plan> --confirm <host>  # compare-and-swap the plan in
  *   npm run backfill-facts -- --rollback <plan> --confirm <host>
- * Options: --database-url <url> (default DATABASE_URL_UNPOOLED), --sha <sha256>, --out <path>.
+ * Options: --sha <sha256> and --out <path> (plan only), --confirm <host> (--apply/--rollback only), and
+ * --database-url <url> (default DATABASE_URL_UNPOOLED).
  * Every option takes its value as the next argument (no --option=value); anything else is rejected.
+ *
+ * Connection: a connection string on the command line lands in shell history and `ps`. Put
+ * DATABASE_URL_UNPOOLED=<url> in a mode-600 file and run
+ *   node --env-file=<file> scripts/neon/backfillFacts.js [options]
+ * (npm run backfill-facts reads .env.local the same way). --database-url still works, for throwaway URLs.
  */
 import crypto from 'crypto';
 import fs from 'fs';
@@ -129,6 +135,24 @@ export function parseArgs(argv) {
   return args;
 }
 
+/**
+ * Which mode the parsed options ask for, refusing options that don't belong to it (before anything
+ * is read or connected to): --confirm needs --apply/--rollback; --out and --sha are for plans only.
+ * @returns {'apply'|'rollback'|null} the direction, or null for a plan
+ */
+export function checkModeFlags(args) {
+  if (args.apply !== undefined && args.rollback !== undefined) throw new Error('Pass --apply or --rollback, not both');
+  const direction = args.apply !== undefined ? 'apply' : args.rollback !== undefined ? 'rollback' : null;
+  if (direction) {
+    for (const flag of ['out', 'sha']) {
+      if (args[flag] !== undefined) throw new Error(`--${flag} only applies to plan`);
+    }
+  } else if (args.confirm !== undefined) {
+    throw new Error('--confirm only applies to --apply/--rollback');
+  }
+  return direction;
+}
+
 const isPlainObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 
 /** Throws unless a parsed plan file has the shape this script wrote: host, and rows of unique id + before + after objects that differ. */
@@ -220,6 +244,8 @@ export async function applyPlan(client, plan, { direction = 'apply', batchSize =
   const pairs = plan.rows.map(row => ({ id: row.id, expected: row[from], replacement: row[to] }));
   await client.query('begin');
   try {
+    // A lock held by something else should fail this apply, not hang it.
+    await client.query(`set local lock_timeout = '5s'`);
     let updated = 0;
     for (let i = 0; i < pairs.length; i += batchSize) {
       const batch = pairs.slice(i, i + batchSize);
@@ -278,10 +304,19 @@ export function nextStepLines(planPath, host) {
     `keep this file: it is the rollback (--rollback ${file} --confirm ${confirm})`];
 }
 
-async function makePlan(client, host, { out: outArg, sha }) {
-  const out = path.resolve(outArg ?? path.join(ROOT, '.neon-import', `facts-backfill-plan-${host}.json`));
-  // An earlier plan may be the only rollback for an apply already made, so never overwrite one.
+// An earlier plan may be the only rollback for an apply already made, so never overwrite one.
+function assertNoPlanAt(out) {
   if (fs.existsSync(out)) throw new Error(`${out} already exists (it may be the rollback for an apply); move it or pass --out <path>`);
+}
+
+/** Where a plan is written: --out, or .neon-import/facts-backfill-plan-<host>.json. Throws if a file is already there. */
+export function planOutPath(outArg, host) {
+  const out = path.resolve(outArg ?? path.join(ROOT, '.neon-import', `facts-backfill-plan-${host}.json`));
+  assertNoPlanAt(out);
+  return out;
+}
+
+async function makePlan(client, host, { out, sha }) {
   // One snapshot for the archive and the people, read-only.
   await client.query('begin isolation level repeatable read, read only');
   let archive;
@@ -295,6 +330,7 @@ async function makePlan(client, host, { out: outArg, sha }) {
   }
   const { people } = gedToRows(parseGedcom(archive.content.toString('utf-8')), { files: {}, avatars: {} }, new Map());
   const { rows, summary } = planFacts(dbRows, people);
+  assertNoPlanAt(out); // main() checked before connecting; check again right before writing, in case one appeared meanwhile
   writeJson(out, { createdAt: new Date().toISOString(), host, archiveSha: archive.sha256, summary, rows });
   console.log(formatSummary(summary).join('\n'));
   for (const row of rows.filter(r => SAMPLE_IDS.includes(r.id))) console.log(describeRow(row).join('\n'));
@@ -375,12 +411,12 @@ function rethrown(error, message) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  const direction = checkModeFlags(args);
   const url = args.databaseUrl ?? process.env.DATABASE_URL_UNPOOLED;
   if (!url) throw new Error('DATABASE_URL_UNPOOLED is not set (run via npm run backfill-facts, or pass --database-url)');
   const host = new URL(url).hostname;
-  if (args.apply !== undefined && args.rollback !== undefined) throw new Error('Pass --apply or --rollback, not both');
-  const direction = args.apply !== undefined ? 'apply' : args.rollback !== undefined ? 'rollback' : null;
   let planFile = null;
+  let out = null;
   if (direction) {
     const planPath = path.resolve(args.apply ?? args.rollback);
     planFile = readPlanFile(planPath);
@@ -390,12 +426,14 @@ async function main() {
       throw new Error(`${planPath} is not a valid plan: ${error.message}`);
     }
     checkConfirm({ host, planHost: planFile.host, confirm: args.confirm, direction });
+  } else {
+    out = planOutPath(args.out, host); // before connecting: refuse to overwrite an earlier plan
   }
   const client = new pg.Client({ connectionString: url });
   await client.connect();
   try {
     if (direction) await writePlan(client, planFile, direction, host);
-    else await makePlan(client, host, args);
+    else await makePlan(client, host, { out, sha: args.sha });
   } finally {
     await client.end();
   }

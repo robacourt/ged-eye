@@ -1,7 +1,8 @@
 /**
  * Stage 1 of the GEDCOM parser: lines → node tree.
  * CONT and CONC lines are folded into their parent's value (CONT adds a newline, CONC joins
- * directly) and never appear as nodes. Values are kept verbatim apart from the line ending.
+ * directly) and never appear as nodes. Values are kept verbatim apart from the line ending and the
+ * GEDCOM `@@` escape (a literal `@` in a value is written `@@`; GEDCOM 5.5.1).
  */
 
 const LINE = /^\s*(\d+) (?:(@[^@]+@) )?(\S+)(?: (.*))?$/;
@@ -20,7 +21,7 @@ export function parseGedcomTree(gedcomText) {
     if (!match) continue;
     const level = Number(match[1]);
     const tag = match[3];
-    const value = match[4] ?? '';
+    const value = (match[4] ?? '').replaceAll('@@', '@');
     while (open.length && open[open.length - 1].level >= level) open.pop();
     const parent = open[open.length - 1];
     if (level > 0 && !parent) continue;

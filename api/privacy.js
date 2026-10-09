@@ -4,7 +4,8 @@
  */
 // Bounded to the RFC length limits (local part 64, domain 253, TLD 63) so a long run of address
 // characters cannot make the match quadratic. Unicode letters/digits cover internationalised addresses.
-const EMAIL = /[\p{L}\p{M}\p{N}._%+-]{1,64}@[\p{L}\p{M}\p{N}.-]{1,253}\.\p{L}{2,63}/gu;
+// `@@?` also catches the GEDCOM-escaped form, in case a stored value was never decoded.
+const EMAIL = /[\p{L}\p{M}\p{N}._%+-]{1,64}@@?[\p{L}\p{M}\p{N}.-]{1,253}\.\p{L}{2,63}/gu;
 export const EMAIL_MASK = '[email hidden]';
 
 const isNoteKey = (key) => key === 'notes' || key.endsWith('Notes');
