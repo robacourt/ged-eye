@@ -131,7 +131,9 @@ export function diffView(expected, actual, manifest, people) {
   sameSet('parentIds', p.parentIds, q.parentIds);
   sameSet('spouseIds', p.spouseIds, q.spouseIds);
   sameSet('childIds', p.childIds, q.childIds);
-  sameSet('marriages', (p.marriages ?? []).map(canonical), (q.marriages ?? []).map(canonical));
+  // Migration 007 added each marriage's childIds, which the legacy data never had.
+  const withoutChildIds = ({ childIds, ...marriage }) => marriage;
+  sameSet('marriages', (p.marriages ?? []).map(canonical), (q.marriages ?? []).map(withoutChildIds).map(canonical));
 
   const expectedPhotos = legacyPhotos(p, manifest);
   const expectedShas = expectedPhotos.map(e => e.sha);

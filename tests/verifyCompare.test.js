@@ -128,6 +128,18 @@ describe('diffView', () => {
     expect(diffs).toEqual(['parents: duplicate ids in actual [P2]']);
   });
 
+  it("ignores each marriage's childIds (migration 007) but still compares the rest of the marriage", () => {
+    const marriage = { spouseId: 'P2', familyId: 'F1', marriageDate: '1880' };
+    const people = new Map(PEOPLE);
+    people.set('P1', { ...PEOPLE.get('P1'), marriages: [marriage] });
+    const e = legacyExpected(people, 'P1');
+    const actual = actualFor(e, people);
+    actual.person.marriages = [{ ...marriage, childIds: ['C1', 'C2'] }];
+    expect(diffView(e, actual, MANIFEST, people)).toEqual([]);
+    actual.person.marriages = [{ ...marriage, marriageDate: '1881', childIds: [] }];
+    expect(diffView(e, actual, MANIFEST, people).filter(d => d.startsWith('marriages'))).toHaveLength(1);
+  });
+
   it('ignores the re-derived facts keys but still compares email and phone', () => {
     const diffs = diffsFor('C1', actual => {
       actual.person = { ...actual.person, notes: ['new'], occupations: [{ value: 'Miller' }], censusRecords: [{ date: '1851' }],

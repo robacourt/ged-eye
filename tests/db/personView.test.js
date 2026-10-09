@@ -85,8 +85,8 @@ describe.skipIf(!url)('person_view (database)', () => {
       updatedAt: expect.stringMatching(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}Z$/),
       parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I4', 'I3'] }],
       marriages: [
-        { spouseId: 'I7', familyId: 'F10', marriageDate: '1955' },
-        { spouseId: 'I9', familyId: 'F9' }
+        { spouseId: 'I7', familyId: 'F10', marriageDate: '1955', childIds: ['I8'] },
+        { spouseId: 'I9', familyId: 'F9', childIds: [] }
       ],
       occupations: ['Farmer'],
       notes: ['A note']
@@ -108,7 +108,7 @@ describe.skipIf(!url)('person_view (database)', () => {
     const jack = await view('I10');
     expect(jack.relationships.children).toEqual(['I11']);
     expect(jack.relationships.spouses).toEqual([]);
-    expect(jack.person.marriages).toEqual([{ spouseId: null, familyId: 'F5' }]);
+    expect(jack.person.marriages).toEqual([{ spouseId: null, familyId: 'F5', childIds: ['I11'] }]);
 
     const liam = await view('I12');
     expect(liam.family).toEqual([]);
@@ -122,8 +122,8 @@ describe.skipIf(!url)('person_view (database)', () => {
     expect(adam.person.burialDate).toBe('1980');
     expect('baptismDate' in adam.person).toBe(false);
     expect(adam.person.marriages).toEqual([
-      { spouseId: 'I2', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil' },
-      { spouseId: 'I5', familyId: 'F2', divorceDate: '1935' }
+      { spouseId: 'I2', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil', childIds: ['I4', 'I3'] },
+      { spouseId: 'I5', familyId: 'F2', divorceDate: '1935', childIds: ['I6'] }
     ]);
   });
 
@@ -132,7 +132,7 @@ describe.skipIf(!url)('person_view (database)', () => {
     expect(beth.relationships).toEqual({ parents: [], spouses: ['I1'], children: ['I4', 'I3'], siblings: [] });
     expect(beth.family.map(m => m.id)).toEqual(['I1', 'I4', 'I3']);
     expect(beth.person.marriages).toEqual([
-      { spouseId: 'I1', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil' }
+      { spouseId: 'I1', familyId: 'F1', marriageDate: '1925', marriagePlace: 'Yeovil', childIds: ['I4', 'I3'] }
     ]);
   });
 

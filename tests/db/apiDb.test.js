@@ -1,6 +1,9 @@
 // @vitest-environment node
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs';
+import path from 'path';
 import pg from 'pg';
+import { ROOT } from '../../scripts/neon/cli.js';
 import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
 import { createDb } from '../../api/db.js';
 import { inTransaction } from '../../api/tx.js';
@@ -48,7 +51,9 @@ describe.skipIf(!url)('api/db.js (database)', { timeout: 30000 }, () => {
       const { id: latest } = (await client.query('select max(id)::text as id from change')).rows[0];
       const { view, version } = await db.personView('I1');
       expect(view.person.id).toBe('I1');
-      expect(version).toEqual({ changeId: latest, migration: '006_editing.sql' });
+      const lastMigration = fs.readdirSync(path.join(ROOT, 'db', 'migrations')).filter(f => f.endsWith('.sql')).sort().at(-1);
+      expect(lastMigration).toMatch(/^0\d\d_/);
+      expect(version).toEqual({ changeId: latest, migration: lastMigration });
     });
 
     it('returns a null view for an unknown person', async () => {
