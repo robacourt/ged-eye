@@ -1,15 +1,17 @@
 // @vitest-environment node
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import crypto from 'crypto';
-import { TEST_DATABASE_URL as url, resetTestDatabase } from './testDatabase.js';
+import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
 import { applyPlan, verifyPlan, planState, writePlan, readDbRows, loadArchive, StalePlanError } from '../../scripts/neon/backfillFacts.js';
 
 const PEOPLE = `
-insert into person (id, given_name, surname, display_name, sex, birth_date, facts) values
-  ('I1', 'Adam', 'Smith', 'Adam Smith', 'M', '1900', '{"notes": ["old 1"]}'),
-  ('I2', 'Beth', 'Jones', 'Beth Jones', 'F', null, '{"occupations": ["Miller"]}'),
-  ('I3', 'Carl', 'Smith', 'Carl Smith', 'M', null, '{}');
+insert into person (id, given_name, surname, sex, birth_date, facts) values
+  ('I1', 'Adam', 'Smith', 'M', '1900', '{"notes": ["old 1"]}'),
+  ('I2', 'Beth', 'Jones', 'F', null, '{"occupations": ["Miller"]}'),
+  ('I3', 'Carl', 'Smith', 'M', null, '{}');
 `;
+// Tree tables can't be truncated after 006, and every write to them is a recorded change.
+const CLEAR_TREE = 'delete from person_media; delete from media; delete from family_child; delete from family; delete from person';
 const PLAN = {
   host: 'test',
   rows: [
@@ -29,8 +31,10 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
   }, 60000);
 
   beforeEach(async () => {
-    await client.query('truncate person cascade; truncate gedcom_archive;');
-    await client.query(PEOPLE);
+    await client.query('truncate gedcom_archive');
+    await withChange(client, CLEAR_TREE);
+    await withChange(client, PEOPLE);
+    await client.query('select sync_id_sequences()');
   });
 
   afterAll(async () => {
@@ -48,8 +52,29 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
     expect(await verifyPlan(client, PLAN)).toEqual([]);
   });
 
+  it('records the apply and its rollback as changes (migration 006)', async () => {
+    const { last } = (await client.query('select coalesce(max(id), 0) as last from change')).rows[0];
+    await applyPlan(client, PLAN);
+    await applyPlan(client, PLAN, { direction: 'rollback' });
+    const { rows } = await client.query(`
+      select c.author_email, c.kind, c.via, c.summary,
+             jsonb_object_agg(r.row_key ->> 'id',
+                              jsonb_build_object('op', r.op, 'before', r.before -> 'facts', 'after', r.after -> 'facts')) as rows
+      from change c
+      join change_row r on r.change_id = c.id
+      where c.id > $1
+      group by c.id
+      order by c.id`, [last]);
+    const recorded = { author_email: 'backfill@ged-eye.local', kind: 'backfill_facts', via: 'script' };
+    const facts = (from, to) => Object.fromEntries(PLAN.rows.map(row => [row.id, { op: 'update', before: row[from], after: row[to] }]));
+    expect(rows).toEqual([
+      { ...recorded, summary: 'Backfilled full GEDCOM facts', rows: facts('before', 'after') },
+      { ...recorded, summary: 'Rolled back the full GEDCOM facts backfill', rows: facts('after', 'before') }
+    ]);
+  });
+
   it('refuses a row edited since the import even when its facts still match', async () => {
-    await client.query(`update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
+    await withChange(client, `update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
     const error = await applyPlan(client, PLAN).catch(e => e);
     expect(error).toBeInstanceOf(StalePlanError);
     expect(error.ids).toEqual(['I2']);
@@ -58,7 +83,7 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
   });
 
   it('rolls the whole apply back when a later batch is stale', async () => {
-    await client.query(`update person set facts = '{"notes": ["edited"]}' where id = 'I3'`);
+    await withChange(client, `update person set facts = '{"notes": ["edited"]}' where id = 'I3'`);
     const error = await applyPlan(client, PLAN, { batchSize: 1 }).catch(e => e);
     expect(error).toBeInstanceOf(StalePlanError);
     expect(error.ids).toEqual(['I3']);
@@ -68,7 +93,7 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
 
   it('refuses to roll back a row whose facts drifted from the plan\'s after', async () => {
     await applyPlan(client, PLAN);
-    await client.query(`update person set facts = '{"notes": ["changed since the apply"]}' where id = 'I2'`);
+    await withChange(client, `update person set facts = '{"notes": ["changed since the apply"]}' where id = 'I2'`);
     const error = await applyPlan(client, PLAN, { direction: 'rollback' }).catch(e => e);
     expect(error).toBeInstanceOf(StalePlanError);
     expect(error.ids).toEqual(['I2']);
@@ -92,9 +117,9 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
     expect(await planState(client, PLAN)).toEqual({ atBefore: ['I1', 'I2', 'I3'], atAfter: [], neither: [] });
     await applyPlan(client, PLAN);
     expect(await planState(client, PLAN)).toEqual({ atBefore: [], atAfter: ['I1', 'I2', 'I3'], neither: [] });
-    await client.query(`update person set facts = '{"notes": ["tampered"]}' where id = 'I2'`);
+    await withChange(client, `update person set facts = '{"notes": ["tampered"]}' where id = 'I2'`);
     expect(await planState(client, PLAN)).toEqual({ atBefore: [], atAfter: ['I1', 'I3'], neither: ['I2'] });
-    await client.query(`delete from person where id = 'I3'`);
+    await withChange(client, `delete from person where id = 'I3'`);
     expect(await planState(client, PLAN)).toEqual({ atBefore: [], atAfter: ['I1'], neither: ['I2', 'I3'] });
   });
 
@@ -147,14 +172,14 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
 
     it('does not report a plan as done while some of its rows still hold the before', async () => {
       await run('apply');
-      await client.query(`update person set facts = '{"occupations": ["Miller"]}' where id = 'I2'`);
+      await withChange(client, `update person set facts = '{"occupations": ["Miller"]}' where id = 'I2'`);
       const error = await run('apply').catch(e => e);
       expect(error.message).toMatch(/^apply wrote nothing: 1 row holds the plan's before, 2 its after, 0 neither /);
     });
 
     it('explains an apply that wrote nothing because a row holds neither side', async () => {
       await run('apply');
-      await client.query(`update person set facts = '{"notes": ["tampered"]}' where id = 'I2'`);
+      await withChange(client, `update person set facts = '{"notes": ["tampered"]}' where id = 'I2'`);
       const error = await run('apply').catch(e => e);
       expect(error).toBeInstanceOf(Error);
       expect(error.message).toMatch(/^apply wrote nothing: 0 rows hold the plan's before, 2 its after, 1 neither \(first ids: .*I2.*\)/);
@@ -162,7 +187,7 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
     });
 
     it('reports an edited row as still holding the plan\'s before', async () => {
-      await client.query(`update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
+      await withChange(client, `update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
       const error = await run('apply').catch(e => e);
       expect(error.message).toMatch(/^apply wrote nothing: 3 rows hold the plan's before, 0 its after, 0 neither /);
       expect(await factsOf()).toEqual({ I1: { notes: ['old 1'] }, I2: { occupations: ['Miller'] }, I3: {} });
@@ -224,15 +249,15 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
       });
       const one = await writePlan(wrong(['I2']), PLAN, 'apply', 'test', () => {}).catch(e => e);
       expect(one.message).toBe(`apply committed 3 rows, but 1 doesn't match the plan: I2`);
-      await client.query('truncate person cascade');
-      await client.query(PEOPLE);
+      await withChange(client, CLEAR_TREE);
+      await withChange(client, PEOPLE);
       const two = await writePlan(wrong(['I1', 'I3']), { host: 'test', rows: [PLAN.rows[0], PLAN.rows[2]] }, 'apply', 'test', () => {}).catch(e => e);
       expect(two.message).toBe(`apply committed 2 rows, but 2 don't match the plan: I1, I3`);
     });
   });
 
   it('flags only rows whose updated_at moved as edited', async () => {
-    await client.query(`update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
+    await withChange(client, `update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
     const rows = await readDbRows(client);
     expect(rows.map(r => [r.id, r.edited])).toEqual([['I1', false], ['I2', true], ['I3', false]]);
     expect(rows[0]).toMatchObject({ given_name: 'Adam', birth_date: '1900', facts: { notes: ['old 1'] } });

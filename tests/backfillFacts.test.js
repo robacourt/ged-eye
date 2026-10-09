@@ -183,17 +183,42 @@ describe('planOutPath', () => {
 });
 
 describe('applyPlan', () => {
-  it('sets a lock timeout right after begin, so a stray lock fails instead of hanging', async () => {
+  const plan = { host: 'h', rows: [{ id: 'I1', before: {}, after: { notes: ['n'] } }] };
+
+  // Keeps the first five words of each statement and begin_change's params, answers whether
+  // begin_change exists (migration 006), and updates every row it is asked to.
+  const fakeClient = ({ recorded }) => {
     const statements = [];
+    const beginChangeParams = [];
     const client = {
       query: async (sql, params) => {
         statements.push(sql.trim().replace(/\s+/g, ' ').split(' ').slice(0, 5).join(' '));
+        if (sql.includes('to_regprocedure(')) return { rows: [{ recorded }] };
+        if (sql.startsWith('select begin_change(')) {
+          beginChangeParams.push(params);
+          return { rows: [{ begin_change: '1' }] };
+        }
         return { rows: params ? JSON.parse(params[0]).map(pair => ({ id: pair.id })) : [] };
       }
     };
-    const plan = { host: 'h', rows: [{ id: 'I1', before: {}, after: { notes: ['n'] } }] };
+    return { client, statements, beginChangeParams };
+  };
+  const checksForBeginChange = expect.stringContaining("to_regprocedure('begin_change(text,text,text,text,text,jsonb,text[])')");
+
+  it('sets a lock timeout right after begin, so a stray lock fails instead of hanging', async () => {
+    const { client, statements } = fakeClient({ recorded: false });
     expect(await applyPlan(client, plan)).toEqual({ updated: 1 });
-    expect(statements).toEqual(['begin', "set local lock_timeout = '5s'", 'update person p set facts', 'commit']);
+    expect(statements).toEqual(['begin', "set local lock_timeout = '5s'", checksForBeginChange, 'update person p set facts', 'commit']);
+  });
+
+  it('records the write as a change once begin_change exists (migration 006), summarised by direction', async () => {
+    const { client, statements, beginChangeParams } = fakeClient({ recorded: true });
+    expect(await applyPlan(client, plan)).toEqual({ updated: 1 });
+    expect(statements).toEqual(['begin', "set local lock_timeout = '5s'", checksForBeginChange,
+      expect.stringMatching(/^select begin_change\('backfill@ged-eye\.local', 'Facts backfill', 'backfill_facts',$/),
+      'update person p set facts', 'commit']);
+    await applyPlan(client, plan, { direction: 'rollback' });
+    expect(beginChangeParams).toEqual([['Backfilled full GEDCOM facts'], ['Rolled back the full GEDCOM facts backfill']]);
   });
 
   it('rolls back when the lock timeout cannot be set', async () => {

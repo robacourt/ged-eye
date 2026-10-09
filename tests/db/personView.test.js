@@ -5,22 +5,25 @@ import fs from 'fs';
 import path from 'path';
 import { ROOT } from '../../scripts/neon/cli.js';
 import { migrate, migrationChecksum } from '../../scripts/neon/migrate.js';
-import { TEST_DATABASE_URL as url, resetTestDatabase } from './testDatabase.js';
+import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
+
+// Tests that roll back can't use withChange (it commits): they open their own change after begin.
+const BEGIN_CHANGE = `select begin_change('test@example.test', 'Test', 'fixture', 'script', 'Test', '{}', '{}')`;
 
 const FIXTURE = `
-insert into person (id, given_name, surname, display_name, sex, birth_date, burial_date, facts, avatar_key) values
-  ('I1', 'Adam', 'Smith', 'Adam Smith', 'M', '1900', '1980', '{}', null),
-  ('I2', 'Beth', 'Jones', 'Beth Jones', 'F', null, null, '{}', null),
-  ('I3', 'Carl', 'Smith', 'Carl Smith', 'M', 'ABT 1930', null, '{"occupations": ["Farmer"], "notes": ["A note"]}', 'avatars/c.jpg'),
-  ('I4', 'Dora', 'Smith', 'Dora Smith', 'F', null, null, '{}', null),
-  ('I5', 'Erin', 'Brown', 'Erin Brown', 'F', null, null, '{}', null),
-  ('I6', 'Fred', 'Smith', 'Fred Smith', 'M', null, null, '{}', null),
-  ('I7', 'Gina', 'Green', 'Gina Green', 'F', null, null, '{}', null),
-  ('I8', 'Hugo', 'Smith', 'Hugo Smith', 'M', null, null, '{}', null),
-  ('I9', 'Iris', 'White', 'Iris White', 'F', null, null, '{}', null),
-  ('I10', 'Jack', 'Black', 'Jack Black', 'M', null, null, '{}', null),
-  ('I11', 'Kate', 'Black', 'Kate Black', 'F', null, null, '{}', null),
-  ('I12', 'Liam', 'Gray', 'Liam Gray', 'U', null, null, '{}', null);
+insert into person (id, given_name, surname, sex, birth_date, burial_date, facts, avatar_key) values
+  ('I1', 'Adam', 'Smith', 'M', '1900', '1980', '{}', null),
+  ('I2', 'Beth', 'Jones', 'F', null, null, '{}', null),
+  ('I3', 'Carl', 'Smith', 'M', 'ABT 1930', null, '{"occupations": ["Farmer"], "notes": ["A note"]}', 'avatars/c.jpg'),
+  ('I4', 'Dora', 'Smith', 'F', null, null, '{}', null),
+  ('I5', 'Erin', 'Brown', 'F', null, null, '{}', null),
+  ('I6', 'Fred', 'Smith', 'M', null, null, '{}', null),
+  ('I7', 'Gina', 'Green', 'F', null, null, '{}', null),
+  ('I8', 'Hugo', 'Smith', 'M', null, null, '{}', null),
+  ('I9', 'Iris', 'White', 'F', null, null, '{}', null),
+  ('I10', 'Jack', 'Black', 'M', null, null, '{}', null),
+  ('I11', 'Kate', 'Black', 'F', null, null, '{}', null),
+  ('I12', 'Liam', 'Gray', 'U', null, null, '{}', null);
 insert into family (id, partner1_id, partner2_id, marriage_date, marriage_place, divorce_date) values
   ('F1', 'I1', 'I2', '1925', 'Yeovil', null),
   ('F2', 'I1', 'I5', null, null, '1935'),
@@ -42,7 +45,8 @@ describe.skipIf(!url)('person_view (database)', () => {
 
   beforeAll(async () => {
     client = await resetTestDatabase();
-    await client.query(FIXTURE);
+    await withChange(client, FIXTURE);
+    await client.query('select sync_id_sequences()');
   }, 60000);
 
   afterAll(async () => {
@@ -78,6 +82,8 @@ describe.skipIf(!url)('person_view (database)', () => {
       spouseIds: ['I7', 'I9'],
       childIds: ['I8'],
       avatarKey: 'avatars/c.jpg',
+      updatedAt: expect.stringMatching(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}Z$/),
+      parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I4', 'I3'] }],
       marriages: [
         { spouseId: 'I7', familyId: 'F10', marriageDate: '1955' },
         { spouseId: 'I9', familyId: 'F9' }
@@ -133,21 +139,23 @@ describe.skipIf(!url)('person_view (database)', () => {
   it('never lets facts overwrite core fields, and requires facts to be an object', async () => {
     await client.query('begin');
     try {
-      await client.query(`update person set facts = '{"id": "X", "name": "Bogus", "parentIds": ["I1"], "occupations": ["Smith"]}' where id = 'I12'`);
+      await client.query(BEGIN_CHANGE);
+      await client.query(`update person set facts = '{"id": "X", "name": "Bogus", "parentIds": ["I1"], "parentFamilies": ["F1"], "occupations": ["Smith"]}' where id = 'I12'`);
       const { person } = await view('I12');
-      expect(person).toMatchObject({ id: 'I12', name: 'Liam Gray', parentIds: [], occupations: ['Smith'] });
+      expect(person).toMatchObject({ id: 'I12', name: 'Liam Gray', parentIds: [], parentFamilies: [], occupations: ['Smith'] });
     } finally {
       await client.query('rollback');
     }
-    await expect(client.query(`update person set facts = '[]' where id = 'I12'`)).rejects.toThrow(/person_facts_is_object/);
+    await expect(withChange(client, `update person set facts = '[]' where id = 'I12'`)).rejects.toThrow(/person_facts_is_object/);
   });
 
   it('finds maternal half siblings and their other parent', async () => {
     await client.query('begin');
     try {
+      await client.query(BEGIN_CHANGE);
       // F3 reaches I3 only through partner2 (I2, I3's mother).
       await client.query(`
-        insert into person (id, display_name, sex) values ('I13', 'Mark Hill', 'M'), ('I14', 'Nora Hill', 'F');
+        insert into person (id, given_name, surname, sex) values ('I13', 'Mark', 'Hill', 'M'), ('I14', 'Nora', 'Hill', 'F');
         insert into family (id, partner1_id, partner2_id) values ('F3', 'I13', 'I2');
         insert into family_child (family_id, child_id, position) values ('F3', 'I14', 0);
       `);
@@ -175,12 +183,12 @@ describe.skipIf(!url)('person_view (database)', () => {
   // F101's marriage date has no year ('yes'), so its child's 1870 birth dates it (not his 1890 adult baptism).
   // F96 and F102 have no marriage year and no dated children, so they go last.
   const REMARRIAGES = `
-    insert into person (id, display_name, sex, birth_date, baptism_date) values
-      ('I20', 'Paul Long', 'M', null, null), ('I21', 'Ann Long', 'F', null, null), ('I22', 'Bea Long', 'F', null, null),
-      ('I23', 'Cleo Long', 'F', null, null), ('I24', 'Dee Long', 'F', null, null), ('I25', 'Eve Long', 'F', '1849', null),
-      ('I26', 'Finn Long', 'M', null, null), ('I27', 'Gus Long', 'M', null, null), ('I28', 'Hal Long', 'M', '1860', null),
-      ('I29', 'Ida Long', 'F', null, null), ('I30', 'Jo Long', 'F', null, null), ('I31', 'Kit Long', 'M', null, null),
-      ('I32', 'Lou Long', 'M', null, '3 MAR 1850'), ('I33', 'Max Long', 'M', '2 JAN 1870', '1890'), ('I34', 'Nan Long', 'F', null, null);
+    insert into person (id, given_name, surname, sex, birth_date, baptism_date) values
+      ('I20', 'Paul', 'Long', 'M', null, null), ('I21', 'Ann', 'Long', 'F', null, null), ('I22', 'Bea', 'Long', 'F', null, null),
+      ('I23', 'Cleo', 'Long', 'F', null, null), ('I24', 'Dee', 'Long', 'F', null, null), ('I25', 'Eve', 'Long', 'F', '1849', null),
+      ('I26', 'Finn', 'Long', 'M', null, null), ('I27', 'Gus', 'Long', 'M', null, null), ('I28', 'Hal', 'Long', 'M', '1860', null),
+      ('I29', 'Ida', 'Long', 'F', null, null), ('I30', 'Jo', 'Long', 'F', null, null), ('I31', 'Kit', 'Long', 'M', null, null),
+      ('I32', 'Lou', 'Long', 'M', null, '3 MAR 1850'), ('I33', 'Max', 'Long', 'M', '2 JAN 1870', '1890'), ('I34', 'Nan', 'Long', 'F', null, null);
     insert into family (id, partner1_id, partner2_id, marriage_date) values
       ('F96', 'I20', 'I30', null),
       ('F97', 'I20', 'I23', null),
@@ -197,6 +205,7 @@ describe.skipIf(!url)('person_view (database)', () => {
   it('orders a person\'s families by marriage year, else eldest child\'s birth year, then undated by family id', async () => {
     await client.query('begin');
     try {
+      await client.query(BEGIN_CHANGE);
       await client.query(REMARRIAGES);
       const paul = await view('I20');
       // F99 and F100 are both 1856, and F96 and F102 are both undated, so the numeric id decides
@@ -218,6 +227,7 @@ describe.skipIf(!url)('person_view (database)', () => {
   it('orders siblings by their parents\' families, chronologically', async () => {
     await client.query('begin');
     try {
+      await client.query(BEGIN_CHANGE);
       await client.query(REMARRIAGES);
       const eve = await view('I25');
       expect(eve.relationships.siblings).toEqual(['I28', 'I32', 'I26', 'I27', 'I33', 'I31']);
@@ -229,6 +239,7 @@ describe.skipIf(!url)('person_view (database)', () => {
   it('orders parents from several families chronologically', async () => {
     await client.query('begin');
     try {
+      await client.query(BEGIN_CHANGE);
       // Hugo (I8) is also recorded as a child of F9 (I3 + I9, undated); F10 (I3 + I7) was 1955.
       await client.query(`insert into family_child (family_id, child_id, position) values ('F9', 'I8', 0)`);
       const hugo = await view('I8');

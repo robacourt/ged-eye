@@ -51,7 +51,7 @@ async function main() {
 
     await client.query('begin');
     if (replace) await client.query('truncate person_media, media, family_child, family, person restart identity');
-    await insertRows(client, 'person', ['id', 'given_name', 'surname', 'display_name', 'sex', 'birth_date', 'birth_place',
+    await insertRows(client, 'person', ['id', 'given_name', 'surname', 'sex', 'birth_date', 'birth_place',
       'death_date', 'death_place', 'baptism_date', 'baptism_place', 'burial_date', 'burial_place', 'facts', 'avatar_key'], people);
     await insertRows(client, 'family', ['id', 'partner1_id', 'partner2_id', 'marriage_date', 'marriage_place',
       'divorce_date', 'divorce_place'], rows.families);
