@@ -1,6 +1,13 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { loadPersonWithFamily, prefetchFamily, PersonNotFoundError, resetDataLoaderForTests } from '../src/dataLoader.js';
+import { loadPersonWithFamily, prefetchFamily, invalidateAll, cacheView, PersonNotFoundError, resetDataLoaderForTests } from '../src/dataLoader.js';
 import { mediaUrl, thumbUrl } from '../src/media.js';
+import { getRole, getToken } from '../src/auth.js';
+
+vi.mock('../src/auth.js', () => ({
+  getRole: vi.fn(() => null),
+  getToken: vi.fn(async () => null),
+  setRole: vi.fn()
+}));
 
 const view = (id, familyIds = []) => ({
   person: { id, name: id, parentIds: [], spouseIds: [], childIds: [], photos: [] },
@@ -16,10 +23,13 @@ describe('dataLoader', () => {
     vi.stubEnv('VITE_MEDIA_BASE_URL', 'https://media.test/bucket');
     resetDataLoaderForTests();
     vi.stubGlobal('requestIdleCallback', (cb) => cb());
+    getRole.mockReturnValue(null);
+    getToken.mockResolvedValue(null);
   });
   afterEach(() => {
     vi.unstubAllEnvs();
     vi.unstubAllGlobals();
+    vi.useRealTimers();
   });
 
   it('loads a view and maps relationship ids to records', async () => {
@@ -152,6 +162,192 @@ describe('dataLoader', () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
     resolveI5();
     await pending;
+  });
+});
+
+describe('dataLoader signed in', () => {
+  beforeEach(() => {
+    vi.stubEnv('VITE_API_URL', 'https://api.test');
+    resetDataLoaderForTests();
+    vi.stubGlobal('requestIdleCallback', (cb) => cb());
+    vi.clearAllMocks();
+    getRole.mockReturnValue(null);
+    getToken.mockResolvedValue('jwt-1');
+  });
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+  });
+
+  it('sends the bearer token when the cached role is editor or admin', async () => {
+    const fetchMock = vi.fn(async (url) => ok(view(url.split('/').pop())));
+    vi.stubGlobal('fetch', fetchMock);
+    getRole.mockReturnValue('editor');
+    await loadPersonWithFamily('I1');
+    getRole.mockReturnValue('admin');
+    await loadPersonWithFamily('I2');
+    expect(fetchMock.mock.calls.map(([, init]) => init.headers)).toEqual([
+      { authorization: 'Bearer jwt-1' },
+      { authorization: 'Bearer jwt-1' }
+    ]);
+  });
+
+  it('sends no token, so the request stays simple (no CORS preflight), for viewers and non-editors', async () => {
+    const fetchMock = vi.fn(async () => ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await loadPersonWithFamily('I1');
+    expect(fetchMock.mock.calls[0][1].headers).toBeUndefined();
+    expect(getToken).not.toHaveBeenCalled();
+  });
+
+  it('falls back to the public view when the token is rejected', async () => {
+    getRole.mockReturnValue('editor');
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 401, json: async () => ({ error: 'unauthenticated' }) })
+      .mockResolvedValueOnce(ok({ ...view('I1'), masked: true }));
+    vi.stubGlobal('fetch', fetchMock);
+    const result = await loadPersonWithFamily('I1');
+    expect(result.person.id).toBe('I1');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock.mock.calls[1][1].headers).toBeUndefined();
+  });
+
+  it('loads the public view when the token cannot be fetched', async () => {
+    getRole.mockReturnValue('editor');
+    getToken.mockRejectedValue(new Error("Couldn't reach the sign-in service."));
+    const fetchMock = vi.fn(async () => ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(loadPersonWithFamily('I1')).resolves.toBeTruthy();
+    expect(fetchMock.mock.calls[0][1].headers).toBeUndefined();
+  });
+});
+
+describe('dataLoader invalidation and expiry', () => {
+  beforeEach(() => {
+    vi.stubEnv('VITE_API_URL', 'https://api.test');
+    resetDataLoaderForTests();
+    vi.stubGlobal('requestIdleCallback', (cb) => cb());
+    getRole.mockReturnValue(null);
+    getToken.mockResolvedValue(null);
+  });
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.unstubAllGlobals();
+    vi.useRealTimers();
+  });
+
+  const named = (id, name) => ({ ...view(id), person: { ...view(id).person, name } });
+
+  it('clears cached views', async () => {
+    const fetchMock = vi.fn(async () => ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await loadPersonWithFamily('I1');
+    invalidateAll();
+    await loadPersonWithFamily('I1');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('discards a response that was in flight when it was called, and loads again', async () => {
+    const resolvers = [];
+    const fetchMock = vi.fn(() => new Promise(resolve => resolvers.push(resolve)));
+    vi.stubGlobal('fetch', fetchMock);
+    const pending = loadPersonWithFamily('I1');
+    await flush();
+    invalidateAll();
+    resolvers[0](ok(named('I1', 'Before the edit')));
+    await flush();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    resolvers[1](ok(named('I1', 'After the edit')));
+    expect((await pending).person.name).toBe('After the edit');
+    // Only the fresh view was cached.
+    expect((await loadPersonWithFamily('I1')).person.name).toBe('After the edit');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('starts a new request for a load made after it, instead of joining the old one', async () => {
+    const resolvers = [];
+    const fetchMock = vi.fn(() => new Promise(resolve => resolvers.push(resolve)));
+    vi.stubGlobal('fetch', fetchMock);
+    const before = loadPersonWithFamily('I1');
+    await flush();
+    invalidateAll();
+    const after = loadPersonWithFamily('I1');
+    await flush();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    resolvers[1](ok(named('I1', 'After the edit')));
+    resolvers[0](ok(named('I1', 'Before the edit')));
+    expect((await after).person.name).toBe('After the edit');
+    expect((await before).person.name).toBe('After the edit');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('retries a failure that was in flight when it was called', async () => {
+    const resolvers = [];
+    const fetchMock = vi.fn(() => new Promise(resolve => resolvers.push(resolve)));
+    vi.stubGlobal('fetch', fetchMock);
+    const pending = loadPersonWithFamily('I1');
+    await flush();
+    invalidateAll();
+    resolvers[0]({ ok: false, status: 404, json: async () => ({ error: 'not_found' }) });
+    await flush();
+    resolvers[1](ok(view('I1')));
+    await expect(pending).resolves.toBeTruthy();
+  });
+
+  it('forgets prefetched relatives, and stops a prefetch queued before it', async () => {
+    const idle = [];
+    vi.stubGlobal('requestIdleCallback', (cb) => idle.push(cb));
+    const fetchMock = vi.fn(async (url) => ok(view(url.split('/').pop())));
+    vi.stubGlobal('fetch', fetchMock);
+    prefetchFamily({ family: [{ id: 'I2' }, { id: 'I3' }] });
+    invalidateAll();
+    idle.shift()();
+    await flush();
+    expect(fetchMock).not.toHaveBeenCalled();
+    prefetchFamily({ family: [{ id: 'I2' }, { id: 'I3' }] });
+    idle.shift()();
+    await flush();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('expires cached views after 5 minutes', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-10-09T12:00:00Z'));
+    const fetchMock = vi.fn(async () => ok(view('I1')));
+    vi.stubGlobal('fetch', fetchMock);
+    await loadPersonWithFamily('I1');
+    vi.setSystemTime(new Date('2026-10-09T12:04:59Z'));
+    await loadPersonWithFamily('I1');
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    vi.setSystemTime(new Date('2026-10-09T12:05:01Z'));
+    await loadPersonWithFamily('I1');
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('prefetches an expired relative again', async () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date('2026-10-09T12:00:00Z'));
+    const fetchMock = vi.fn(async (url) => ok(view(url.split('/').pop())));
+    vi.stubGlobal('fetch', fetchMock);
+    prefetchFamily({ family: [{ id: 'I2' }] });
+    await flush();
+    vi.setSystemTime(new Date('2026-10-09T12:04:00Z'));
+    prefetchFamily({ family: [{ id: 'I2' }] });
+    await flush();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    vi.setSystemTime(new Date('2026-10-09T12:06:00Z'));
+    prefetchFamily({ family: [{ id: 'I2' }] });
+    await flush();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('caches a view returned by a command, so showing it needs no request', async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal('fetch', fetchMock);
+    invalidateAll();
+    cacheView(named('I1', 'Saved'));
+    expect((await loadPersonWithFamily('I1')).person.name).toBe('Saved');
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });
 
