@@ -449,7 +449,7 @@ export function individualFacts(indi) {
 - [ ] **Step 4: Run it to check that it passes**
 
 Run: `npx vitest run tests/gedFacts.test.js`
-Expected: PASS (6 tests). If the `toEqual` in the life-events test fails only on key order, that's fine: `toEqual` ignores key order. Investigate any other failure.
+Expected: PASS (6 tests).
 
 - [ ] **Step 5: Commit**
 
@@ -525,13 +525,25 @@ describe('GEDCOM parser stage 2', () => {
     const { individuals } = parseGedcom('0 @I1@ INDI\n1 NAME A /B/\n1 NOTE First\n2 CONT Second\n2 CONC  half\n0 TRLR');
     expect(extractPersonData({ individuals, families: new Map() }, 'I1').notes).toEqual(['First\nSecond half']);
   });
+
+  it('lets the last occurrence win, as the legacy parser did', () => {
+    const { individuals } = parseGedcom([
+      '0 @I1@ INDI', '1 NAME First /Name/', '1 NAME Second /Name/', '1 SEX F', '1 SEX M',
+      '1 BIRT', '2 DATE 1800', '2 DATE 1801', '2 PLAC Here', '2 PLAC There', '0 TRLR'
+    ].join('\n'));
+    const person = extractPersonData({ individuals, families: new Map() }, 'I1');
+    expect(person).toMatchObject({ name: 'Second Name', sex: 'M', birthDate: '1801', birthPlace: 'There' });
+  });
 });
 ```
 
 - [ ] **Step 2: Run it to check that it fails**
 
 Run: `npx vitest run tests/gedParser.test.js`
-Expected: the 3 original tests pass; the new ones fail (old bleed, no `node`, notes truncated).
+Expected: 4 failed, 5 passed.
+- The 3 original tests pass.
+- The photo-rule and last-occurrence tests also pass, because they pin legacy behaviour and so pass both before and after.
+- The SOUR/REPO, untracked-tag, `node` and multi-line-notes tests fail.
 
 - [ ] **Step 3: Replace the top of `scripts/gedParser.js`** (from the file header through the end of `parseGedcom`) with:
 
@@ -719,6 +731,9 @@ Then add these tests inside the `describe`:
     const i1 = current.extractPersonData(parsed, 'I1');
     expect(i1.notes).toHaveLength(1);
     expect(i1.notes[0]).toContain('Copyright © 1998-2001 MyFamily.com');
+    const i1423Photos = current.extractPersonData(parsed, 'I1423').photos;
+    expect(i1423Photos).toContain('Data/Picture/Picture/Barnett 1.jpg');
+    expect(i1423Photos).not.toContain('Data/Picture/Picture/Barnett 1A.jpg');
   });
 ```
 
@@ -733,7 +748,7 @@ Expected: PASS (5 tests).
 - [ ] **Step 9: Run the whole unit suite**
 
 Run: `npx vitest run`
-Expected: everything passes, and `realGed` is skipped without `GED_PATH`.
+Expected: everything passes. `realGed` is skipped without `GED_PATH`, and `tests/db/personView.test.js` is skipped without `DATABASE_URL_TEST`.
 
 - [ ] **Step 10: Commit**
 
@@ -770,7 +785,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 Run: `npx vitest run tests/gedToRows.test.js`
 Expected: FAIL, because `personFacts` is not exported.
 
-- [ ] **Step 2: Implement.** In `scripts/neon/gedToRows.js`, replace the `FACT_KEYS` constant and the facts loop:
+- [ ] **Step 2: Implement.** In `scripts/neon/gedToRows.js`, replace the module-level `FACT_KEYS` constant with these two module-level declarations:
 
 ```js
 /** The extractPersonData() keys stored in person.facts (spec: Facts model). */
@@ -824,12 +839,16 @@ Then add this test inside the `describe`:
     for (const key of ['families', 'familyChildren', 'media', 'personMedia', 'warnings']) {
       expect(after[key], key).toEqual(before[key]);
     }
-    expect(after.personMedia).toHaveLength(1262);
+    const photos = [...parsed.individuals.keys()].reduce((n, id) => n + current.extractPersonData(parsed, id).photos.length, 0);
+    expect(photos).toBe(1262);
+    // I417 and I2616 each list one path twice; gedToRows keeps the first and warns duplicate_media.
+    expect(after.personMedia).toHaveLength(1260);
+    expect(after.warnings.filter(w => w.type === 'duplicate_media').map(w => w.personId)).toEqual(['I417', 'I2616']);
   }, 30_000);
 ```
 
 Run: `GED_PATH=/Users/rob/src/ged_eye/acourt.ged npx vitest run tests/realGed.test.js`
-Expected: PASS (6 tests). If the `personMedia` length differs from 1,262, check against the spec's Background (1,249 level-1 plus 13 citation photos) before changing anything.
+Expected: PASS (6 tests). The 1,262 photo paths are the spec's 1,249 level-1 plus 13 citation photos. If a count differs, find out why before changing anything.
 
 - [ ] **Step 5: Commit**
 
@@ -1114,7 +1133,7 @@ In `tests/db/personView.test.js`:
 - Delete the `host`/`productionHosts` lines and the two `if (url && …) throw` blocks.
 - Replace `const url = process.env.DATABASE_URL_TEST;` with `import { TEST_DATABASE_URL as url, resetTestDatabase } from './testDatabase.js';`, placed with the other imports.
 - In `beforeAll`, replace the four lines from `client = new pg.Client(...)` through `await migrate(url, ...)` with `client = await resetTestDatabase();`. Keep `await client.query(FIXTURE);`.
-- Keep the `pg` import only if something else still uses it; otherwise remove it. Keep every other import (`crypto`, `fs`, `path`, `ROOT`, `migrate`, `migrationChecksum`), because the migration tests use them.
+- Remove the `pg` import, whose only use was the replaced `new pg.Client` line. Keep every other import (`crypto`, `fs`, `path`, `ROOT`, `migrate`, `migrationChecksum`), because the migration tests use them.
 
 In `package.json`, append ` --no-file-parallelism` to the `test:db` script, because both DB test files reset the same schema:
 
@@ -1177,6 +1196,14 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
     expect(await verifyPlan(client, PLAN)).toEqual([]);
   });
 
+  it('refuses a row edited since the import even when its facts still match', async () => {
+    await client.query(`update person set updated_at = updated_at + interval '1 second' where id = 'I2'`);
+    const error = await applyPlan(client, PLAN).catch(e => e);
+    expect(error).toBeInstanceOf(StalePlanError);
+    expect(error.ids).toEqual(['I2']);
+    expect(await factsOf()).toEqual({ I1: { notes: ['old 1'] }, I2: { occupations: ['Miller'] }, I3: {} });
+  });
+
   it('rolls the whole apply back when a later batch is stale', async () => {
     await client.query(`update person set facts = '{"notes": ["edited"]}' where id = 'I3'`);
     const error = await applyPlan(client, PLAN, { batchSize: 1 }).catch(e => e);
@@ -1204,13 +1231,18 @@ describe.skipIf(!url)('backfillFacts (database)', () => {
   it('loads the single archive row and checks its hash', async () => {
     const content = Buffer.from('0 HEAD\n0 TRLR\n');
     const sha = crypto.createHash('sha256').update(content).digest('hex');
-    await expect(loadArchive(client)).rejects.toThrow('found 0');
-    await client.query('insert into gedcom_archive (file_name, sha256, content) values ($1, $2, $3)', ['t.ged', sha, content]);
-    expect((await loadArchive(client)).content.equals(content)).toBe(true);
-    expect((await loadArchive(client, sha)).sha256).toBe(sha);
-    await client.query('insert into gedcom_archive (file_name, sha256, content) values ($1, $2, $3)', ['u.ged', 'f'.repeat(64), content]);
-    await expect(loadArchive(client)).rejects.toThrow('pass --sha');
-    await expect(loadArchive(client, 'f'.repeat(64))).rejects.toThrow('hashes to');
+    try {
+      await expect(loadArchive(client)).rejects.toThrow('found 0');
+      await client.query('insert into gedcom_archive (file_name, sha256, content) values ($1, $2, $3)', ['t.ged', sha, content]);
+      expect((await loadArchive(client)).content.equals(content)).toBe(true);
+      expect((await loadArchive(client, sha)).sha256).toBe(sha);
+      await client.query('insert into gedcom_archive (file_name, sha256, content) values ($1, $2, $3)', ['u.ged', 'f'.repeat(64), content]);
+      await expect(loadArchive(client)).rejects.toThrow('pass --sha');
+      await expect(loadArchive(client, 'f'.repeat(64))).rejects.toThrow('hashes to');
+    } finally {
+      // Leave the test branch with no archive, so the Task 8 smoke test sees "found 0".
+      await client.query('truncate gedcom_archive');
+    }
   });
 });
 ```
@@ -1221,15 +1253,17 @@ Expected: the new file FAILS, because the exports don't exist yet; personView st
 - [ ] **Step 3: Implement the DB helpers.** Append to `scripts/neon/backfillFacts.js` (and add `import crypto from 'crypto';` at the top):
 
 ```js
+// Compare-and-swap: only rows whose facts still equal the side being replaced, and that nobody has
+// edited since the import (the backfill itself never touches updated_at).
 const UPDATE_SQL = `
   update person p set facts = r.replacement
   from jsonb_to_recordset($1::jsonb) as r (id text, expected jsonb, replacement jsonb)
-  where p.id = r.id and p.facts = r.expected
+  where p.id = r.id and p.facts = r.expected and p.updated_at = p.created_at
   returning p.id`;
 
 export class StalePlanError extends Error {
   constructor(ids) {
-    super(`facts changed since the plan for ${ids.length} people (${ids.join(', ')}); nothing was written`);
+    super(`${ids.length} people changed or were edited since the plan (${ids.join(', ')}); nothing was written`);
     this.name = 'StalePlanError';
     this.ids = ids;
   }
@@ -1265,7 +1299,7 @@ export async function readDbRows(client) {
 /**
  * Compare-and-swap the plan into person.facts in one transaction. Leaves updated_at alone: the
  * backfill re-derives the import, it is not an edit. Throws StalePlanError (and writes nothing)
- * if any row's facts no longer match the side being replaced.
+ * if any row's facts no longer match the side being replaced, or the row was edited since the import.
  */
 export async function applyPlan(client, plan, { direction = 'apply', batchSize = 500 } = {}) {
   const { from, to } = sides(direction);
@@ -1325,6 +1359,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - [ ] **Step 1: Add the CLI.** Add these imports at the top of `scripts/neon/backfillFacts.js`:
 
 ```js
+import fs from 'fs';
 import path from 'path';
 import pg from 'pg';
 import { parseGedcom } from '../gedParser.js';
@@ -1338,7 +1373,11 @@ Then append:
 const SAMPLE_IDS = ['I1', 'I23', 'I443'];
 
 async function plan(client, host) {
-  await client.query('begin read only');
+  const out = path.resolve(argValue('--out') ?? path.join(ROOT, '.neon-import', `facts-backfill-plan-${host}.json`));
+  // An earlier plan may be the only rollback for an apply already made, so never overwrite one.
+  if (fs.existsSync(out)) throw new Error(`${out} already exists (it may be the rollback for an apply); move it or pass --out <path>`);
+  // One snapshot for the archive and the people, read-only.
+  await client.query('begin isolation level repeatable read, read only');
   let archive;
   let dbRows;
   try {
@@ -1349,17 +1388,17 @@ async function plan(client, host) {
   }
   const { people } = gedToRows(parseGedcom(archive.content.toString('utf-8')), { files: {}, avatars: {} }, new Map());
   const { rows, summary } = planFacts(dbRows, people);
-  const out = path.resolve(ROOT, argValue('--out', path.join('.neon-import', `facts-backfill-plan-${host}.json`)));
   writeJson(out, { createdAt: new Date().toISOString(), host, archiveSha: archive.sha256, summary, rows });
   console.log(formatSummary(summary).join('\n'));
   for (const row of rows.filter(r => SAMPLE_IDS.includes(r.id))) console.log(describeRow(row).join('\n'));
   console.log(`plan: ${out} (${rows.length} rows)`);
 }
 
-async function write(client, host, planPath, direction) {
-  const planFile = readJson(path.resolve(planPath), null);
-  if (!planFile) throw new Error(`No plan at ${planPath}`);
-  checkConfirm({ host, planHost: planFile.host, confirm: argValue('--confirm'), direction });
+async function write(client, planFile, direction) {
+  if (planFile.rows.length === 0) {
+    console.log(`The plan has no rows; nothing to ${direction}.`);
+    return;
+  }
   const { updated } = await applyPlan(client, planFile, { direction });
   const mismatched = await verifyPlan(client, planFile, { direction });
   if (mismatched.length) throw new Error(`${direction} committed ${updated} rows, but ${mismatched.length} don't match the plan: ${mismatched.join(', ')}`);
@@ -1373,11 +1412,18 @@ async function main() {
   const applyPath = argValue('--apply');
   const rollbackPath = argValue('--rollback');
   if (applyPath && rollbackPath) throw new Error('Pass --apply or --rollback, not both');
+  const direction = applyPath ? 'apply' : rollbackPath ? 'rollback' : null;
+  let planFile = null;
+  if (direction) {
+    const planPath = path.resolve(applyPath ?? rollbackPath);
+    planFile = readJson(planPath, null);
+    if (!planFile) throw new Error(`No plan at ${planPath}`);
+    checkConfirm({ host, planHost: planFile.host, confirm: argValue('--confirm'), direction });
+  }
   const client = new pg.Client({ connectionString: url });
   await client.connect();
   try {
-    if (applyPath) await write(client, host, applyPath, 'apply');
-    else if (rollbackPath) await write(client, host, rollbackPath, 'rollback');
+    if (direction) await write(client, planFile, direction);
     else await plan(client, host);
   } finally {
     await client.end();
@@ -1387,12 +1433,13 @@ async function main() {
 if (isMain(import.meta.url)) {
   main().catch(error => {
     console.error(error.message);
+    if (error.detail) console.error(`detail: ${error.detail}`);
     process.exit(1);
   });
 }
 ```
 
-`checkConfirm` runs inside `write` before any `update`, which satisfies "abort before writing". The connection only reads at that point.
+`--confirm` is checked before the script connects. `--out`, `--apply` and `--rollback` paths resolve against the current directory; the default plan path is under the repo root.
 
 - [ ] **Step 2: Add the npm script** to `package.json`, after `verify-neon`:
 
@@ -1400,16 +1447,16 @@ if (isMain(import.meta.url)) {
 "backfill-facts": "node --env-file=.env.local scripts/neon/backfillFacts.js",
 ```
 
-- [ ] **Step 3: Smoke-test against the test branch**, which the DB tests left with the fixture people and no archive:
+- [ ] **Step 3: Smoke-test against the test branch.** After Task 7's DB tests, the test branch has people and no archive. This command loads only the test env file and passes its URL to the CLI:
 
-Run: `node --env-file=/Users/rob/src/ged_eye/.env.local --env-file=/Users/rob/src/ged_eye/.env.test.local -e "process.argv.push('--database-url', process.env.DATABASE_URL_TEST)" scripts/neon/backfillFacts.js 2>&1 | tail -2`
+```bash
+node --env-file=/Users/rob/src/ged_eye/.env.test.local -e "process.argv.splice(1, 0, 'scripts/neon/backfillFacts.js', '--database-url', process.env.DATABASE_URL_TEST); import('./scripts/neon/backfillFacts.js')"; echo "exit $?"
+```
 
-If the `-e` trick doesn't pass argv, run:
-`node --env-file=/Users/rob/src/ged_eye/.env.test.local scripts/neon/backfillFacts.js --database-url "$(grep ^DATABASE_URL_TEST= /Users/rob/src/ged_eye/.env.test.local | cut -d= -f2-)"`
-
-Expected: it exits 1 with `Expected exactly one gedcom_archive row, found 0; pass --sha <sha256>`. That proves the CLI wiring and the read-only plan path. The full run happens in the rehearsal (Task 15).
-
-Then run `npx vitest run tests/backfillFacts.test.js` (still PASS) and `node -e "import('./scripts/neon/backfillFacts.js')"` (imports cleanly, does nothing).
+Expected:
+- `Expected exactly one gedcom_archive row, found 0; pass --sha <sha256>`, then `exit 1`. That proves the CLI wiring and the read-only plan path. The full run happens in the rehearsal (Task 15).
+- `node scripts/neon/backfillFacts.js --apply /nonexistent.json --database-url postgres://u:p@example.invalid/db; echo "exit $?"` prints `No plan at /nonexistent.json` and `exit 1` without trying to connect.
+- `npx vitest run tests/backfillFacts.test.js` still passes, and `node -e "import('./scripts/neon/backfillFacts.js')"` imports cleanly and does nothing.
 
 - [ ] **Step 4: Commit**
 
@@ -1516,6 +1563,22 @@ export function maskNoteEmails(view) {
 Run: `npx vitest run tests/apiHandler.test.js`
 Expected: PASS, including the existing route tests.
 
+Then add a real-file check to `tests/realGed.test.js` (import `{ maskNoteEmails }` from `'../api/privacy.js'`):
+
+```js
+  it('leaves no email address in any served note', () => {
+    const noteStrings = (value, inNote = false) => Array.isArray(value) ? value.flatMap(v => noteStrings(v, inNote))
+      : value && typeof value === 'object' ? Object.entries(value).flatMap(([k, v]) => noteStrings(v, inNote || k === 'notes' || k.endsWith('Notes')))
+      : inNote && typeof value === 'string' ? [value] : [];
+    const leaks = [...parsed.individuals.keys()].filter(id =>
+      noteStrings(maskNoteEmails({ person: current.extractPersonData(parsed, id) }).person).some(note => /\w@\w/.test(note)));
+    expect(leaks).toEqual([]);
+  });
+```
+
+Run: `GED_PATH=/Users/rob/src/ged_eye/acourt.ged npx vitest run tests/realGed.test.js`
+Expected: PASS (8 tests). On 2026-10-09 no note had a `word@word` left after masking.
+
 - [ ] **Step 5: Commit**
 
 ```bash
@@ -1549,8 +1612,20 @@ describe('apiMatchesView', () => {
 });
 ```
 
+Also add this inside the existing `describe('diffView', ...)`, which already has a `diffsFor` helper:
+
+```js
+  it('ignores the re-derived facts keys but still compares email and phone', () => {
+    const diffs = diffsFor('C1', actual => {
+      actual.person = { ...actual.person, notes: ['new'], occupations: [{ value: 'Miller' }], censusRecords: [{ date: '1851' }],
+        residences: [{ place: 'X' }], religion: 'Y', education: 'Z', email: 'new@example.com' };
+    });
+    expect(diffs).toEqual(['email: expected null got "new@example.com"']);
+  });
+```
+
 Run: `npx vitest run tests/verifyCompare.test.js`
-Expected: FAIL, because `apiMatchesView` is not exported.
+Expected: FAIL. `apiMatchesView` is not exported, and the new diffView test reports the six removed keys.
 
 - [ ] **Step 2: Implement.** In `scripts/neon/verifyCompare.js`, replace `SCALAR_KEYS` with:
 
@@ -1583,7 +1658,7 @@ with
       if (!apiMatchesView(body, views.get(id))) problems.push(`api ${id}: body differs from database`);
 ```
 
-If `canonical` is now unused in `verify.js`, remove it from that import.
+`canonical` is then unused in `verify.js`; remove it from that import (lines 6-8).
 
 - [ ] **Step 3: Run the tests**
 
@@ -1639,7 +1714,7 @@ In `src/main.js`, delete the local `escapeHtml` function and add `import { escap
 
 - [ ] **Step 3: Run the tests**
 
-Run: `npx vitest run tests/html.test.js tests/dataLoader.test.js`. Expected: PASS.
+Run: `npx vitest run tests/html.test.js tests/dataLoader.test.js && node --check src/main.js`. Expected: PASS, with no syntax error. Nothing tests `main.js` directly; Task 14's build also covers it.
 
 - [ ] **Step 4: Commit**
 
@@ -1753,6 +1828,13 @@ describe('PersonDetails', () => {
     expect(el.textContent.split(XSS).length - 1).toBeGreaterThanOrEqual(15);
   });
 
+  it('never takes a label or summary word from the data', async () => {
+    const el = await render({ residences: [{ place: 'p', notes: ['n'], label: XSS, summaryWord: XSS }] });
+    expect(el.querySelector('img')).toBeNull();
+    expect(sectionText(el, 'Residences')).not.toContain(XSS);
+    expect(el.querySelector('details summary').textContent).toBe('Note');
+  });
+
   it('keeps note line breaks and indentation', async () => {
     const el = await render({ notes: ['Line one\n  indented'] });
     expect(el.querySelector('.note-text').textContent).toBe('Line one\n  indented');
@@ -1837,11 +1919,14 @@ function notesDisclosure(notes, summaryWord = 'Note') {
   if (!notes?.length) return '';
   const summary = notes.length === 1 ? summaryWord : `${summaryWord}s (${notes.length})`;
   const bodies = notes.map(note => `<div class="note-text">${escapeHtml(note)}</div>`).join('');
-  return `<details class="detail-notes"><summary>${summary}</summary>${bodies}</details>`;
+  return `<details class="detail-notes"><summary>${escapeHtml(summary)}</summary>${bodies}</details>`;
 }
 
-/** One fact: "label: value • date • place", an optional cause, and its notes. Every field is optional. */
-function factRow({ label, value, date, place, cause, notes, summaryWord }) {
+/**
+ * One fact: "label: value • date • place", an optional cause, and its notes. Every field is optional.
+ * The fact is data (it may be a stored object spread in); label and summaryWord are the caller's own.
+ */
+function factRow({ value, date, place, cause, notes }, { label, summaryWord } = {}) {
   const parts = [];
   if (value) parts.push(`<span class="detail-fact">${escapeHtml(value)}</span>`);
   if (date) parts.push(`<span class="detail-date">${escapeHtml(date)}</span>`);
@@ -1920,7 +2005,7 @@ const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry)
       { label: 'Death', date: personData.deathDate, place: personData.deathPlace, notes: personData.deathNotes, cause: personData.causeOfDeath },
       { label: 'Burial', date: personData.burialDate, place: personData.burialPlace, notes: personData.burialNotes }
     ].filter(event => event.date || event.place || event.notes?.length || event.cause);
-    html += section('Life Events', lifeEvents.map(event => factRow(event)));
+    html += section('Life Events', lifeEvents.map(event => factRow(event, { label: event.label })));
 
     if (personData.marriages?.length && this.relationships?.spouses) {
       const rows = [];
@@ -1929,10 +2014,10 @@ const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry)
         rows.push('<div class="detail-item"><span class="detail-label">Spouse:</span>' +
           `<span class="detail-value"><strong>${escapeHtml(spouse?.name || 'Unknown')}</strong></span></div>`);
         if (marriage.marriageDate || marriage.marriagePlace) {
-          rows.push(factRow({ label: 'Married', date: marriage.marriageDate, place: marriage.marriagePlace }));
+          rows.push(factRow({ date: marriage.marriageDate, place: marriage.marriagePlace }, { label: 'Married' }));
         }
         if (marriage.divorceDate || marriage.divorcePlace) {
-          rows.push(factRow({ label: 'Divorced', date: marriage.divorceDate, place: marriage.divorcePlace }));
+          rows.push(factRow({ date: marriage.divorceDate, place: marriage.divorcePlace }, { label: 'Divorced' }));
         }
       }
       html += section('Marriages', rows);
@@ -1940,12 +2025,12 @@ const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry)
 
     html += section('Occupations', (personData.occupations ?? []).map(entry => factRow(asFact(entry))));
 
-    const otherRows = (personData.otherFacts ?? []).map(fact => factRow({ ...fact, label: factLabel(fact) }));
-    if (personData.religion) otherRows.push(factRow({ label: 'Religion', value: personData.religion }));
-    if (personData.education) otherRows.push(factRow({ label: 'Education', value: personData.education }));
+    const otherRows = (personData.otherFacts ?? []).map(fact => factRow(fact, { label: factLabel(fact) }));
+    if (personData.religion) otherRows.push(factRow({ value: personData.religion }, { label: 'Religion' }));
+    if (personData.education) otherRows.push(factRow({ value: personData.education }, { label: 'Education' }));
     html += section('Other details', otherRows);
 
-    html += section('Census Records', (personData.censusRecords ?? []).map(census => factRow({ ...census, summaryWord: 'Transcription' })));
+    html += section('Census Records', (personData.censusRecords ?? []).map(census => factRow(census, { summaryWord: 'Transcription' })));
     html += section('Residences', (personData.residences ?? []).map(residence => factRow(residence)));
     html += section('Notes', (personData.notes ?? []).map(personNote));
 
@@ -2042,10 +2127,18 @@ const asFact = (entry) => (typeof entry === 'string' ? { value: entry } : entry)
 }
 ```
 
+Inside the existing `@media (max-width: 768px)` block, after its `.detail-value` rule, add:
+
+```css
+  .detail-notes .note-text {
+    padding: 6px 8px;
+  }
+```
+
 - [ ] **Step 4: Run the tests**
 
 Run: `npx vitest run tests/personDetails.test.js`
-Expected: PASS (8 tests).
+Expected: PASS (9 tests).
 
 Run: `npx vitest run`
 Expected: everything passes.
@@ -2070,7 +2163,12 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 - Rebuild: `docs/`
 
 - [ ] **Step 1: Update `README.md`.**
-  - **Project Structure:** add `gedTree.js` (stage-1 tree), `gedFacts.js` (person facts) next to `gedParser.js`, `api/privacy.js` (masks emails in notes) and `neon/backfillFacts.js`.
+  - **Project Structure:** add:
+    - `gedTree.js` (stage-1 tree) and `gedFacts.js` (person facts), next to `gedParser.js`
+    - `api/privacy.js` (masks emails in notes)
+    - `neon/backfillFacts.js`
+    - `src/html.js` (escaping) and `src/factLabels.js`
+  - **Testing:** mention `GED_PATH`, which the real-file parity tests need when `acourt.ged` is not at the repo root.
   - **"How it Works":** item 2 gains one sentence: the Function masks email addresses found in note text.
   - **New subsection** after "Importing the tree (one-off)", titled `### Backfilling facts (one-off, 2026-10)`, explaining:
     - `npm run backfill-facts` writes a read-only plan to `.neon-import/facts-backfill-plan-<host>.json` and prints a summary.
@@ -2111,42 +2209,132 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 
 ### Task 15: Rehearsal on a Neon branch
 
-No commits. Scratch files go in the session scratchpad.
+No commits. Scratch files go in the session scratchpad, written below as `<scratch>`. Never print a connection string in chat or logs.
 
-- [ ] **Step 1: Create the branch.** Use the Neon MCP `create_branch` tool: project `calm-band-80930621`, parent `production`, name `facts-backfill-rehearsal`, with an expiry a few days out if the tool supports one. Get its direct (unpooled) connection string with `get_connection_string`, and save it to a scratch env file as `REHEARSAL_URL=…`.
-- [ ] **Step 2: Plan.** Run `node --env-file=<scratch>/rehearsal.env scripts/neon/backfillFacts.js --database-url "$REHEARSAL_URL"`, or pass the URL inline. Expect:
-  - `unchanged 1602, changed 1392, edited 0, only in database 0, only in GEDCOM 0, column drift 0`
-  - samples for I1, I23 and I443 that look right
-- [ ] **Step 3: Apply.** Run with `--apply .neon-import/facts-backfill-plan-<rehearsal host>.json --confirm <rehearsal host>`. Expect `{"direction":"apply","updated":1392,"verified":1392}`.
-- [ ] **Step 4: Re-plan.** Expect `unchanged 2994, changed 0`. Then test rollback and re-apply once each: rollback, then a plan matching Step 2, then apply again.
-- [ ] **Step 5: Visual check.**
-  - Write `<scratch>/devApi.mjs`: a `node:http` server on port 8787 that wraps `createHandler` from the worktree's `api/handler.js`, with a `pg.Pool` on `REHEARSAL_URL`. It converts each request to a `Request` and writes back the `Response` status, headers and body.
-  - Add both servers to `.claude/launch.json` (gitignored):
-    - `rehearsal-api`: `node --env-file=<scratch>/rehearsal.env <scratch>/devApi.mjs`, port 8787
-    - `web-rehearsal`: runtimeExecutable `env`, args `["VITE_API_URL=http://localhost:8787", "npm", "run", "dev"]`, port 5173
-  - Start them with `preview_start`.
-  - Open `http://localhost:5173/ged-eye/?person=I1`, then I23, I443, I711 (`[email hidden]`) and I777. Check:
-    - the Notes clamp and Show more
-    - census disclosures (I443)
-    - Other details (I23's Military service)
-    - I1208's death note
-    - mobile width via `resize_window`
+- [ ] **Step 1: Create the branch.** Use the Neon MCP `create_branch` tool: project `calm-band-80930621`, parent `production`, name `facts-backfill-rehearsal`, with an expiry a few days out if the tool supports one.
+  - Get its direct (unpooled) connection string with `get_connection_string`.
+  - Write `<scratch>/rehearsal.env` (mode 600) with two lines, `DATABASE_URL=<url>` and `DATABASE_URL_UNPOOLED=<url>`, both the same direct URL. The scripts read these names, so no `--database-url` is needed.
+- [ ] **Step 2: Plan.** Run:
+
+```bash
+node --env-file=<scratch>/rehearsal.env scripts/neon/backfillFacts.js --out <scratch>/plan-rehearsal.json
+```
+
+Expect `unchanged 1602, changed 1392, edited 0, only in database 0, only in GEDCOM 0, column drift 0`, with I1, I23 and I443 samples that look right. Read the host with `node -p "require('<scratch>/plan-rehearsal.json').host"`.
+- [ ] **Step 3: Apply.** Run:
+
+```bash
+node --env-file=<scratch>/rehearsal.env scripts/neon/backfillFacts.js --apply <scratch>/plan-rehearsal.json --confirm <rehearsal host>
+```
+
+Expect `{"direction":"apply","updated":1392,"verified":1392}`.
+- [ ] **Step 4: Exercise the supported sequences.** Each re-plan writes its own file, so the Step 2 plan, which is the rollback, is never overwritten.
+  1. Re-plan with `--out <scratch>/replan-after-apply.json`. Expect `unchanged 2994, changed 0`.
+  2. Run `--rollback <scratch>/plan-rehearsal.json --confirm <rehearsal host>`. Expect `updated 1392, verified 1392`.
+  3. Re-plan with `--out <scratch>/replan-after-rollback.json`. Its `summary` and `rows` must equal `plan-rehearsal.json`'s; compare with `node -e` using `canonical`, ignoring `createdAt`.
+  4. Apply `<scratch>/plan-rehearsal.json` again. Expect `updated 1392`.
+- [ ] **Step 5: Run verify-neon against the backfilled branch.**
+  - Copy the import artifacts it needs into the worktree's gitignored `.neon-import/`:
+
+```bash
+cp /Users/rob/src/ged_eye/.neon-import/media-manifest.json /Users/rob/src/ged_eye/.neon-import/import-warnings.json .neon-import/
+```
+
+  - Then run:
+
+```bash
+node --env-file=/Users/rob/src/ged_eye/.env.local --env-file=<scratch>/rehearsal.env scripts/neon/verify.js --api-sample 0 --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data
+```
+
+  - Later `--env-file` files override earlier ones, so the branch URL wins. First confirm with `node --env-file=/Users/rob/src/ged_eye/.env.local --env-file=<scratch>/rehearsal.env -p "new URL(process.env.DATABASE_URL).hostname"`; it must be the rehearsal host, not production.
+  - Expect 0 unexplained differences. That proves relationships, photos, avatars and core fields survive the backfill.
+- [ ] **Step 6: Visual check.**
+  - Write `<scratch>/devApi.mjs`:
+
+```js
+import http from 'node:http';
+import { createRequire } from 'node:module';
+const WORKTREE = '/Users/rob/src/ged_eye/.claude/worktrees/great-proskuriakova-4710ff';
+const { Pool } = createRequire(`${WORKTREE}/package.json`)('pg');
+const { createHandler } = await import(`${WORKTREE}/api/handler.js`);
+if (!process.env.DATABASE_URL_UNPOOLED) throw new Error('DATABASE_URL_UNPOOLED is not set');
+const pool = new Pool({ connectionString: process.env.DATABASE_URL_UNPOOLED, max: 5 });
+const handle = createHandler(async (id) => (await pool.query('select person_view($1) as view', [id])).rows[0].view);
+const port = Number(process.env.PORT ?? 8787);
+http.createServer(async (req, res) => {
+  const response = await handle(new Request(`http://localhost:${port}${req.url}`, { method: req.method }));
+  res.writeHead(response.status, Object.fromEntries(response.headers));
+  res.end(Buffer.from(await response.arrayBuffer()));
+}).listen(port, () => console.log(`rehearsal api on :${port}`));
+```
+
+  - Add two entries to `.claude/launch.json` (gitignored; keep any existing entries):
+    - `rehearsal-api`: runtimeExecutable `node`, args `["--env-file=<scratch>/rehearsal.env", "<scratch>/devApi.mjs"]`, port 8787
+    - `web-rehearsal`: runtimeExecutable `env`, args `["VITE_API_URL=http://localhost:8787", "npm", "run", "dev", "--", "--port", "5174", "--strictPort"]`, port 5174
+  - Start both with `preview_start`.
+  - Open `http://localhost:5174/ged-eye/?person=I1` and confirm with `read_network_requests` that `/person/` calls go to `localhost:8787`.
+  - Then check:
+    - I1: the full note, clamped, with Show more working
+    - I23: Military service under Other details, and notes free of "Parish of Marnhull"
+    - I443: census transcription disclosures
+    - I711: `[email hidden]`
+    - I777: a long note
+    - I1208: the death row showing only a note
+    - mobile width via `resize_window`. If notes or disclosures look wrong there, fix the CSS in a follow-up commit and re-run Task 14 Step 2.
   - Take screenshots as evidence.
-- [ ] **Step 6: Stop the preview servers.** Leave the rehearsal branch for the developer to delete (or let it expire). Deleting is destructive, so ask first.
+- [ ] **Step 7: Clean up.**
+  - Stop both preview servers and remove the two `launch.json` entries.
+  - Delete `<scratch>/rehearsal.env`.
+  - Leave the rehearsal branch for the developer to delete (or let it expire). Deleting is destructive, so ask first.
 
 ### Task 16: Production (only after the developer says yes)
 
-- [ ] **Step 1:** Ask the developer to approve:
+Every command below runs from this worktree. The worktree has no `.env.local`, so the commands name `/Users/rob/src/ged_eye/.env.local` explicitly; the npm scripts would not find it.
+
+- [ ] **Step 1: Ask the developer** to approve, in one message:
+  - deploying the masking Function
   - merging the PR
-  - `neon deploy` (the masking Function)
   - the production backfill
 
   Show the rehearsal numbers and screenshots.
-- [ ] **Step 2: Deploy.** After approval, merge the PR, then run `neon deploy` from a checkout of the merged `main`. This worktree, fast-forwarded, works with `.neon` copied in. Then:
-  - Run `verify-neon` with `.neon-import/media-manifest.json` and `import-warnings.json` available (copy them from `/Users/rob/src/ged_eye/.neon-import/`), plus `--legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`.
-  - Expect 0 unexplained differences, including the API sample now that bodies are masked.
-- [ ] **Step 3: Safety branch.** Create the Neon branch `pre-facts-backfill-2026-10-09` from `production`.
-- [ ] **Step 4: Plan against production.** Run `npm run backfill-facts`, with the main checkout's `.env.local` for the URL. The summary must equal the rehearsal's Step 2.
-- [ ] **Step 5: Apply.** Run `--apply <plan> --confirm <production host>`. Expect `updated 1392, verified 1392`.
-- [ ] **Step 6: Spot-check the live API.** `curl` `/person/I1`, `I23`, `I443`, `I711` and `I777`. Check the new keys and the masking, then look at the live site after Pages deploys.
-- [ ] **Step 7: Summarise.** Report what changed, the evidence, the rollback commands (`--rollback <plan> --confirm <host>`, or restore from `pre-facts-backfill-2026-10-09`), and the branches left for the developer to delete.
+- [ ] **Step 2: Deploy the Function first, from the approved PR head.** If the PR merged first, Pages could serve the new bundle, which escapes `<…>`, while the old unmasking Function is still live, so I711's address would show.
+  - Run `cp /Users/rob/src/ged_eye/.neon .`. It is gitignored and links project `calm-band-80930621`, branch `production`.
+  - Run `neon deploy`.
+  - Check that `curl -s https://br-green-bonus-b26abimr-api.compute.c-6.eu-central-1.aws.neon.tech/person/I711` returns `[email hidden]` in its notes, and that `/health` is OK.
+- [ ] **Step 3: Merge the PR** with `gh pr merge --squash`, as PR #2 was.
+  - Run `git fetch origin` and confirm `git diff HEAD origin/main -- api/` is empty, so the deployed Function equals `main`.
+  - Wait for Pages to publish.
+- [ ] **Step 4: Run verify-neon against production, before the backfill.** The `.neon-import` artifacts were copied in Task 15:
+
+```bash
+node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/verify.js --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data
+```
+
+Expect 0 unexplained differences, with the API sample comparing masked bodies.
+- [ ] **Step 5: Create the safety branch.** Use the Neon MCP to create `pre-facts-backfill-2026-10-09` from `production`, with no expiry.
+- [ ] **Step 6: Plan against production.** Write the plan outside the worktree, so it survives worktree clean-up:
+
+```bash
+node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillFacts.js --out /Users/rob/src/ged_eye/.neon-import/facts-backfill-plan-production-2026-10-09.json
+```
+
+**Stop rule:** the summary must equal the rehearsal's Step 2 summary: the same counts, the same per-key numbers, and empty `edited`, `onlyInDb`, `onlyInGed` and `columnDrift`. If anything differs, stop and report to the developer. Do not apply.
+- [ ] **Step 7: Apply.** Run:
+
+```bash
+node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillFacts.js --apply /Users/rob/src/ged_eye/.neon-import/facts-backfill-plan-production-2026-10-09.json --confirm <production host>
+```
+
+Expect `{"direction":"apply","updated":1392,"verified":1392}`.
+- [ ] **Step 8: Verify after the backfill.**
+  - Re-plan with `--out <scratch>/replan-production.json`. Expect `unchanged 2994, changed 0`.
+  - Re-run the Step 4 verify-neon. Expect 0 unexplained.
+  - `curl` the live API for `/person/I1`, `I23`, `I443`, `I711` and `I777`, and check the new keys and the masking.
+  - Look at the live site (`https://robacourt.github.io/ged-eye/?person=I1`) after Pages deploys.
+- [ ] **Step 9: Summarise.** Report what changed and the evidence. Give the rollback options:
+
+```bash
+node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillFacts.js --rollback /Users/rob/src/ged_eye/.neon-import/facts-backfill-plan-production-2026-10-09.json --confirm <production host>
+```
+
+  or restoring from `pre-facts-backfill-2026-10-09`. Also list the branches left for the developer to delete.

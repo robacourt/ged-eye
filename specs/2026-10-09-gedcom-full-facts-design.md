@@ -187,12 +187,13 @@ This is pure functions plus thin DB helpers and a CLI, like `gedToRows` and `imp
 - `direction` is `'apply'` (write `after` where `facts = before`) or `'rollback'` (write `before` where `facts = after`).
 - It runs `begin`, then for each batch:
   ```sql
-  update person p set facts = r.new
-  from jsonb_to_recordset($1::jsonb) as r (id text, old jsonb, new jsonb)
-  where p.id = r.id and p.facts = r.old
+  update person p set facts = r.replacement
+  from jsonb_to_recordset($1::jsonb) as r (id text, expected jsonb, replacement jsonb)
+  where p.id = r.id and p.facts = r.expected and p.updated_at = p.created_at
   returning p.id
   ```
 - `updated_at` is deliberately left unchanged (see Decisions).
+- The `updated_at = created_at` condition means a row edited between plan and apply is never written either.
 - If any batch returns fewer ids than it sent, it rolls back and throws `StalePlanError`, with `.ids` listing the batch's ids that were not returned. Otherwise it commits and returns `{ updated }`.
 
 ### `verifyPlan(client, plan, { direction = 'apply' })`
@@ -209,14 +210,15 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 **Connection.** Uses `DATABASE_URL_UNPOOLED`, or `--database-url <url>` for the rehearsal branch. `host` is that URL's hostname.
 
-**Plan (the default).** It runs inside `begin read only` … `rollback`.
+**Plan (the default).** It runs inside `begin isolation level repeatable read, read only` … `rollback`, so the archive and the people come from one snapshot. It refuses to overwrite an existing plan file, because that file may be the only rollback for an apply already made.
 1. Load `gedcom_archive`. Exactly one row is required unless `--sha <sha256>` picks one. Recompute the sha256 of `content` and abort if it differs from the stored value.
 2. Parse the archive, call `gedToRows(parsed, { files: {}, avatars: {} }, new Map())`, and read `id, facts, updated_at <> created_at as edited` plus `CORE_COLUMNS` for every person.
 3. Call `planFacts` and write the plan, `{ createdAt, host, archiveSha, summary, rows }`, to `--out` (default `.neon-import/facts-backfill-plan-<host>.json`).
 4. Print the summary and three sample before/after diffs. I1, I23 and I443 are used when they are in the plan.
 
 **Apply** (`--apply <planPath> --confirm <host>`).
-- Abort before writing unless `--confirm` equals both the connection host and the plan's `host`.
+- Abort before connecting unless `--confirm` equals both the connection host and the plan's `host`.
+- A plan with no rows is reported and nothing is done.
 - Call `applyPlan`, then `verifyPlan`.
 - Print the updated count, or the stale or mismatching ids, and exit 1 in that case.
 
@@ -258,7 +260,8 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 
 1. **PR.** It contains the parser, `personFacts`, `backfillFacts`, `api/privacy.js`, the `verifyCompare` and `verify.js` changes, the front end, tests, `npm run build` output in `docs/`, and README notes on `backfill-facts`. The developer approves the merge.
 2. **Deploy before the backfill.**
-   - Run `neon deploy`, so the masking Function is live. Merging lets Pages serve the new front end.
+   - Run `neon deploy` from the approved PR head **before** merging. Otherwise Pages could serve the new escaping bundle while the old, unmasking Function is still live.
+   - Then merge, which lets Pages serve the new front end.
    - Against the still-old data, the visible changes are:
      - double spaces in notes are kept (95 people)
      - text inside `<…>` is now shown
@@ -270,7 +273,9 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
    - Expect:
      - `columnDrift`, `edited`, `onlyInDb` and `onlyInGed` all empty
      - `changed` = 1,392 and `unchanged` = 1,602, the constants asserted by the offline plan in `tests/realGed.test.js`
-     - a re-plan with zero rows
+     - a re-plan with zero rows (re-plans write to their own `--out` file, so the first plan stays usable as the rollback)
+     - rollback, re-plan and re-apply each behave as listed under Supported sequences
+     - `verify-neon` against the branch (`--api-sample 0`) reporting 0 unexplained differences
    - For a visual check, run a scratch `node:http` wrapper around `createHandler` with a `pg` Pool on the branch URL (not committed). Start the front end with `VITE_API_URL=http://localhost:<port> npm run dev`; process env takes priority over `.env.development`. Check I1, I23, I443, I711 and I777, including at mobile width.
    - Delete the branch.
 4. **Production.**
