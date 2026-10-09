@@ -202,7 +202,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 ### Supported sequences (all before the editing phase)
 
 - **plan → apply → plan:** the second plan has zero rows.
-- **plan → apply → rollback → plan:** the second plan equals the first.
+- **plan → apply → rollback → plan:** the second plan's `rows` and `summary` equal the first's.
 - **plan → apply → parser fix → plan:** the new plan moves the applied rows from the old `after` to the corrected facts. No row counts as edited, because the backfill never touches `updated_at`.
 
 ### CLI
@@ -230,7 +230,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
 ### `verify-neon`
 
 - `scripts/neon/verifyCompare.js` drops `notes`, `occupations`, `censusRecords`, `residences`, `religion` and `education` from `SCALAR_KEYS`, with a comment. Those keys are re-derived by `backfill-facts` and checked by its own verification, so the old-parser JSON baseline no longer applies to them. Relationships, photos, avatars and the core fields are still compared.
-- `scripts/neon/verify.js` compares the API body with `person_view` read from the database. It now applies `maskNoteEmails` to the database view before that comparison, so masked people (I508, I711 and I1388 today, 18 after the backfill) don't report "body differs from database".
+- `scripts/neon/verify.js` compares the API body with `person_view` read from the database. That comparison moves into a helper, `apiMatchesView(body, view)` in `verifyCompare.js`, which applies `maskNoteEmails` to the database view first. Masked people (I508, I711 and I1388 today, 18 after the backfill) therefore don't report "body differs from database".
 
 ## Front end
 
@@ -323,7 +323,7 @@ Re-reads the planned ids and returns the ids whose `facts` don't equal the expec
   - no other column changes
   - `verifyPlan` reports mismatches
 - **`tests/apiHandler.test.js`** adds: emails are masked in `person.notes`, in `censusRecords[].notes` and in `deathNotes`; the `email` field and non-note strings are untouched.
-- **`tests/verifyCompare.test.js`** or a verify test covers the database view being masked before the API comparison.
+- **`tests/verifyCompare.test.js`** covers `apiMatchesView`: a masked API body matches an unmasked database view, and a real difference still fails.
 - **`tests/personDetails.test.js`** (new, jsdom). Fixtures avoid `thumbKey` photos, or the test stubs `VITE_MEDIA_BASE_URL`.
   - `<img src=x onerror=…>` in the name, a spouse name, a note, a place, an occupation, a cause, a census note, an unknown-tag label and the email renders as text, with no `img` element
   - note newlines are preserved in `textContent`
