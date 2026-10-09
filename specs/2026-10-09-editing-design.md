@@ -53,25 +53,38 @@
 |---|---|---|
 | Neon branch | `neon checkout editing --create --env .env.local`: a copy-on-write copy of production with Function, bucket and Auth provisioned from `neon.ts`. | `production` |
 | Auth | `neon.ts` gets `auth: true`; `neon deploy` enables Managed Better Auth per branch. | the same |
-| Email code | Enable the Email OTP plugin (`neon neon-auth plugins` / Console). Neon's shared SMTP is fine for a handful of relatives; it is rate limited, so a custom SMTP provider is a later option. | the same |
+| Email code | Part of Managed Auth's fixed plugin set; there is no separate switch. Neon's shared SMTP is fine for a handful of relatives; it is rate limited, so a custom SMTP provider is a later option. | the same |
+| Email/password | Left on, for development accounts only. | Disabled. |
 | Google | Neon's shared development Google credentials. | The developer creates a Google OAuth client (Google Cloud Console → Credentials → OAuth client ID, web). The redirect URI is `{NEON_AUTH_BASE_URL}/callback/google`, set with `neon neon-auth oauth-provider`. Until then the shared credentials keep working, but the consent screen names Neon. |
 | Trusted domains | localhost is allowed by default. | `https://robacourt.github.io` |
 | Front-end env | `.env.development.local` (gitignored) overrides `VITE_API_URL`, `VITE_MEDIA_BASE_URL` and `VITE_NEON_AUTH_URL` with the `editing` branch's values. | `.env.production` gains `VITE_NEON_AUTH_URL`. |
 
 The Function gets `NEON_AUTH_BASE_URL` and `NEON_AUTH_JWKS_URL` injected when Auth is enabled on its branch.
 
-## Step 0: spike (throwaway, on the `editing` branch)
+## Step 0: spike (done 2026-10-09, on the `editing` branch)
 
-The front end is served from `github.io` (and `localhost`), while the Auth service lives on a Neon domain, so session cookies are third-party. The spike verifies, before anything else is built:
+The front end is served from `github.io` (and `localhost`), while Auth lives on a Neon domain, so the session cookie is cross-site.
 
-| # | Check | Fallback if it fails |
+| # | Check | Result |
 |---|---|---|
-| 1 | Email-code sign-in from the page completes; `authClient.token()` returns a JWT. | — |
-| 2 | Google sign-in completes (popup or redirect) and returns to the page signed in. | Email code only, until fixed. |
-| 3 | The session survives a reload in Chromium, and in Safari (iOS Simulator Safari or macOS Safari against the dev server). | Keep the session token in `localStorage` via the SDK's bearer mode if it has one, or ask the developer about a custom auth domain. Ship email-code + Chromium first if needed. |
-| 4 | The Function verifies the JWT with `jose` against `NEON_AUTH_JWKS_URL` (EdDSA, issuer = origin of `NEON_AUTH_BASE_URL`), and the payload has `email` and `emailVerified`. | — |
+| 1 | Sign-in from the page and get a JWT | ✅ Password sign-up and sign-in (enabled by default on a new Auth branch) work from `localhost:5174`. The JWT is **not** in the sign-in response. It comes from the `set-auth-jwt` header of `GET /get-session`, which the SDK copies into `session.token`. So `(await auth.getSession()).data.session.token` is the API token; `auth.token()` returns `{data: {session, user}}`. Email-code delivery can't be tested without a real mailbox; it's left to the developer's manual test. |
+| 2 | Google sign-in | Not tested: it needs the developer's Google account. The branch already lists Google with Neon's shared credentials. This is left to the manual test. |
+| 3 | Session survives a reload | ✅ in Chromium. The session cookie is `__Secure-neon-auth.session_token`, set `HttpOnly; Secure; SameSite=None; Partitioned` (CHIPS). It works cross-site wherever partitioned cookies are supported: Chrome, Edge, Firefox, and recent Safari. The raw session token is **not** accepted as a bearer credential, and no JWT is issued without the cookie. So a browser that blocks the cookie can view but cannot edit. |
+| 4 | Function-side verification | ✅ `jose.jwtVerify(token, createRemoteJWKSet(NEON_AUTH_JWKS_URL), { issuer, audience: issuer })` with `issuer = new URL(NEON_AUTH_BASE_URL).origin`. The header is `EdDSA` with a `kid`. The payload has `email`, `emailVerified`, `name`, `sub`, `role: "authenticated"` (the Data API role, not ours), `iat`, `exp` (15 minutes), `iss` and `aud`. A tampered token is rejected. |
 
-The results are recorded in this spec's Step 0 table before implementation continues.
+**Decisions from the spike:**
+- **Browser support for editing.** Editing needs partitioned-cookie support. If a sign-in completes but `getSession()` comes back empty, the UI says: "Your browser blocked the sign-in cookie. Editing needs a recent Safari/iOS, Chrome, Edge or Firefox." Viewing is unaffected.
+  - The developer confirms iPhone Safari during the manual test.
+  - A custom domain shared by the site and Auth would remove the dependency; that is a later option.
+- **`emailVerified` is mandatory.**
+  - Email/password sign-up is on by default and doesn't verify the address, so anyone could register a password account under an editor's email. The API therefore requires `emailVerified === true`.
+  - In production, email/password is disabled (`neon neon-auth config email-password update`), leaving email code and Google.
+  - The `editing` branch keeps it, for development accounts.
+- **Development accounts.**
+  - `dev-admin@example.test`, `dev-editor@example.test` and `dev-viewer@example.test` are created by password sign-up on the `editing` branch only.
+  - They are marked verified with `update neon_auth."user" set "emailVerified" = true where email like 'dev-%@example.test'`, and dev-admin and dev-editor are added to `editor` on that branch.
+  - A password sign-in form appears only when `import.meta.env.DEV` is true.
+- **Production Auth already exists.** Neon Auth was enabled on `production` at 2026-10-09 09:13 UTC, outside this work. Release only adds plugins, trusted domains and config.
 
 ## Data model (migration `006_editing.sql`)
 
@@ -194,7 +207,7 @@ Search: `create extension if not exists pg_trgm; create index person_name_trgm_i
 
 - `authenticate(request)`:
   - reads `Authorization: Bearer <jwt>`
-  - verifies it with `jose.jwtVerify` against `createRemoteJWKSet(new URL(NEON_AUTH_JWKS_URL))`, with `issuer = new URL(NEON_AUTH_BASE_URL).origin`
+  - verifies it with `jose.jwtVerify` against `createRemoteJWKSet(new URL(NEON_AUTH_JWKS_URL))`, with `issuer` and `audience` both `new URL(NEON_AUTH_BASE_URL).origin`
   - requires `emailVerified === true` (Google sign-ins are verified)
   - returns `{ email: lower(email), name }`
 - A missing or invalid token gives `401 {error: 'unauthenticated'}`.
@@ -277,7 +290,7 @@ Shared rules:
 
 | File | Responsibility |
 |---|---|
-| `src/auth.js` (new) | Creates the `@neondatabase/auth` client from `VITE_NEON_AUTH_URL`. Provides `signInWithEmailCode(email)`, `verifyEmailCode(email, code)`, `signInWithGoogle()`, `signOut()`, `getToken()` (a cached JWT refreshed before its 15-minute expiry), and `onChange(listener)`. On load, it restores the session and calls `GET /me` to learn the role. |
+| `src/auth.js` (new) | Creates the `@neondatabase/auth` client (`createAuthClient(VITE_NEON_AUTH_URL)`). Provides `sendEmailCode(email)` (`emailOtp.sendVerificationOtp({email, type: 'sign-in'})`), `verifyEmailCode(email, otp)` (`signIn.emailOtp`), `signInWithGoogle()` (`signIn.social({provider: 'google', callbackURL: location.href})`), a dev-only `signInWithPassword`, `signOut()`, `onChange(listener)`, and `getToken()`. `getToken()` returns `session.token` from `getSession()`, forcing a fresh fetch (`fetchOptions.headers['X-Force-Fetch']`) when the cached JWT's `exp` is within 60 s. On load, it restores the session and calls `GET /me` to learn the role. |
 | `src/editApi.js` (new) | `authedFetch` adds the bearer token and maps errors to `ApiError {status, code, blocking}`. Exposes `runChange(kind, params)`, `revert(id)`, `undo()`, `redo()`, `listChanges({before, person})`, `search(q)`, and the editors calls. |
 | `src/dataLoader.js` | Sends the bearer token when signed in as an editor, so it gets unmasked views. Adds `invalidateAll()` and a 5-minute TTL on cached views. |
 | `src/signIn.js` (new) | Header button, sign-in dialog (email → code; Google), and account menu (History, Editors, Sign out). |
@@ -340,11 +353,16 @@ Rules:
 2. **Preconditions:** PR #3 is merged and its backfill applied (or abandoned), and this branch is rebased onto `main`.
 3. **Production:**
    1. `neon deploy` with `auth: true`: enables Auth and redeploys the Function.
-   2. Enable the Email OTP plugin, and Google with shared credentials until the developer's OAuth client exists.
+   2. Check that email code and Google are available; Google uses shared credentials until the developer's OAuth client exists. Disable email/password with `neon neon-auth config email-password update`.
    3. Add the trusted domain `https://robacourt.github.io`.
    4. Run `npm run db:migrate` (006).
    5. Run `npm run verify-neon`. The read path must be unchanged.
    6. Smoke-test `/me` and one `update_person` plus revert against production with the developer's account. This leaves no net change, and both changes stay in history.
+   7. **Developer's manual test on real devices:**
+      - email-code sign-in (checks delivery and `emailVerified`)
+      - Google sign-in
+      - iPhone Safari: sign in, reload, then edit
+      Relatives are invited only after this passes.
 4. Merge the front end (one PR). Pages publishes it, and the Edit controls appear only for signed-in editors.
 5. **Rollback:**
    - Revert the front-end merge.
