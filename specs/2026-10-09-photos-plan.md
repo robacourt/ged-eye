@@ -27,6 +27,7 @@
 - **DB tests** run on the Neon branch **`test-editing`** via `.env.test.local` (`DATABASE_URL_TEST`), with `npm run test:db`. Each run resets that branch's schema.
   - Never run two `test:db` runs at once.
   - `npm run test:db` loads `.env.local` (the `photos` branch) only so `testDatabase.js` can refuse to run against it.
+  - It always runs the whole `tests/db` suite, even when given a file. That's fine.
 - **Conventions:**
   - ESM, 2-space indent, semicolons, single quotes.
   - Node-side tests start with `// @vitest-environment node`.
@@ -84,6 +85,8 @@
     add column caption text,
     add column date    text;
   alter table person add column avatar_source jsonb;
+  -- person_record's 'people' and verify.js look links up by media.
+  create index person_media_media_idx on person_media (media_id);
 
   create or replace function person_record(p_id text) returns jsonb
   language sql stable as $$
@@ -241,7 +244,47 @@
   - `processFile(plainJpeg)`: `original.reencoded === false`, `original.body` equals the input byte for byte, and `width === 200` and `height === 400` (orientation 6 swaps them).
   - **TIFF with GPS:** run `processFile(gpsTiff)` and assert `reencoded === true`.
     - **If the TIFF's GPS isn't visible** in `metadata().exif`, `hasLocation` alone can't pass this test. Then set `export const ALWAYS_REENCODE_TIFF = true` in `imaging.js` (re-encode every TIFF), say so in a comment, and keep the test.
-  - A two-page TIFF (built with `sharp(…).joinChannel`, or with two `create` images and `tiff({ … })`; skip this case if sharp can't write multi-page) keeps 2 pages after a re-encode.
+  - **A two-page TIFF keeps both pages after a re-encode.**
+    - Build it by hand with the helper below.
+    - Call `reencodeWithoutMetadata(buffer, TYPES.get('tif'), await sharp(buffer).metadata())`, exported for this test.
+    - Assert `(await sharp(out, { pages: -1 }).metadata()).pages === 2`.
+
+    ```js
+    /** A minimal uncompressed 8-bit greyscale TIFF, one page per { width, height }. */
+    function multiPageTiff(pages) {
+      const entries = 9;
+      const ifdSize = 2 + entries * 12 + 4;
+      let size = 8;
+      const layout = pages.map(({ width, height }) => {
+        const ifd = size;
+        const data = ifd + ifdSize;
+        size = data + width * height;
+        return { width, height, ifd, data };
+      });
+      const b = Buffer.alloc(size);
+      b.write('II', 0, 'latin1');
+      b.writeUInt16LE(42, 2);
+      b.writeUInt32LE(layout[0].ifd, 4);
+      layout.forEach(({ width, height, ifd, data }, i) => {
+        const tags = [[256, 3, width], [257, 3, height], [258, 3, 8], [259, 3, 1], [262, 3, 1],
+          [273, 4, data], [277, 3, 1], [278, 3, height], [279, 4, width * height]];
+        b.writeUInt16LE(entries, ifd);
+        tags.forEach(([tag, type, value], j) => {
+          const o = ifd + 2 + j * 12;
+          b.writeUInt16LE(tag, o);
+          b.writeUInt16LE(type, o + 2);
+          b.writeUInt32LE(1, o + 4);
+          if (type === 3) b.writeUInt16LE(value, o + 8); else b.writeUInt32LE(value, o + 8);
+        });
+        b.writeUInt32LE(layout[i + 1]?.ifd ?? 0, ifd + 2 + entries * 12);
+        b.fill(i === 0 ? 64 : 192, data, data + width * height);
+      });
+      return b;
+    }
+    // multiPageTiff([{ width: 40, height: 30 }, { width: 40, height: 30 }])
+    ```
+
+  - **Unreadable files:** a JPEG header followed by garbage gives `ImagingError('unreadable')`, which is permanent. So does a multi-page TIFF with different page sizes, `multiPageTiff([{ width: 40, height: 30 }, { width: 20, height: 10 }])`, when it has to be re-encoded.
   - An animated GIF (`sharp({ create … }).gif()` with `pages` if supported; else skip) with no XMP is stored unchanged.
   - PDF: `display === null`, `thumb === null`, `width === null`, and `original.body` equals the input.
   - `renderAvatar(plainJpeg, { x: 0, y: 0.25, w: 1, h: 0.5 })` gives a 400×400 WebP with no EXIF. The oriented image is 200×400, so `w·W = 200` and `h·H = 200`, which is square.
@@ -250,7 +293,7 @@
   `jobQueue` tests:
   - `run` executes jobs one at a time, in order.
   - A rejected job doesn't stop the next one.
-  - When `maxWaiting` jobs are already waiting, `run` throws `BusyError` without queueing.
+  - When `maxWaiting` (4) jobs are already waiting, `run` throws `BusyError` without queueing. That matches the spec: 4 waiting means the next request is refused.
 - [ ] **Step 2: Run them and check they fail.**
 - [ ] **Step 3: Implement `media/jobQueue.js`.**
 
@@ -297,8 +340,25 @@
 
   export const sha256Hex = (buffer) => createHash('sha256').update(buffer).digest('hex');
 
-  /** Does sharp's metadata().exif (with or without its "Exif\0\0" prefix) have a GPSInfo pointer in IFD0? */
-  export function hasGps(exif) { … } // the spike's IFD0 scan for tag 0x8825; false on any malformed block
+  /** Does sharp's metadata().exif (with or without its "Exif\0\0" prefix) have a GPSInfo pointer (0x8825) in IFD0? */
+  export function hasGps(exif) {
+    try {
+      if (!exif || exif.length < 8) return false;
+      let b = exif;
+      if (b.subarray(0, 6).toString('latin1') === 'Exif\0\0') b = b.subarray(6);
+      const order = b.subarray(0, 2).toString('latin1');
+      if (order !== 'II' && order !== 'MM') return false;
+      const le = order === 'II';
+      const u16 = (o) => (le ? b.readUInt16LE(o) : b.readUInt16BE(o));
+      const u32 = (o) => (le ? b.readUInt32LE(o) : b.readUInt32BE(o));
+      const ifd0 = u32(4);
+      const count = u16(ifd0);
+      for (let i = 0; i < count; i++) if (u16(ifd0 + 2 + i * 12) === 0x8825) return true;
+      return false;
+    } catch {
+      return false; // a truncated block (RangeError) has no readable GPS pointer
+    }
+  }
 
   export const hasLocation = (meta) => hasGps(meta.exif) || Boolean(meta.xmp && meta.xmp.toString('latin1').includes('GPSLatitude'));
 
@@ -321,7 +381,7 @@
     const width = swap ? meta.height : meta.width;
     const height = swap ? meta.width : meta.height;
     const reencode = hasLocation(meta) || (type.ext === 'tif' && ALWAYS_REENCODE_TIFF);
-    const original = reencode ? { body: await stripped(buffer, type, meta, limitInputPixels), reencoded: true } : { body: buffer, reencoded: false };
+    const original = reencode ? { body: await reencodeWithoutMetadata(buffer, type, meta, limitInputPixels), reencoded: true } : { body: buffer, reencoded: false };
     const display = await sharp(buffer, { limitInputPixels }).rotate()
       .resize(DISPLAY_SIZE, DISPLAY_SIZE, { fit: 'inside', withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
     const thumb = await sharp(display).resize(THUMB_SIZE, THUMB_SIZE, { fit: 'inside', withoutEnlargement: true }).webp({ quality: 75 }).toBuffer();
@@ -329,7 +389,8 @@
   }
   ```
 
-  - **`stripped(buffer, type, meta, limitInputPixels)`** re-encodes in the same format, keeping the ICC profile and no other metadata:
+  - **Unreadable input:** any sharp decode error, other than the pixel limit, becomes `ImagingError('unreadable')` (permanent, 400). This includes a re-encode that fails, such as a multi-page TIFF whose pages differ in size. So Retry is never offered for a file that can never succeed.
+  - **`reencodeWithoutMetadata(buffer, type, meta, limitInputPixels)`** (exported for tests; `processFile` calls it) re-encodes in the same format, keeping the ICC profile and no other metadata:
     - **jpg:** `.rotate().keepIccProfile().jpeg({ quality: 92 })`
     - **webp:** `.rotate().keepIccProfile().webp({ quality: 92 })`
     - **png:** `.rotate().keepIccProfile().png()`
@@ -355,7 +416,7 @@
 - Test: `tests/mediaHandler.test.js` (node environment).
 
 - [ ] **Step 1: Dependencies.** Move `@aws-sdk/client-s3` from `devDependencies` to `dependencies`, and keep `@aws-sdk/s3-request-presigner` (added during the spike) in `dependencies`. Run `npm install`.
-- [ ] **Step 2: Write the failing handler tests**, in the style of `tests/apiHandler.test.js`. Reuse its Ed25519 token helper; if it isn't exported, copy the small helper. Fakes:
+- [ ] **Step 2: Write the failing handler tests**, in the style of `tests/apiHandler.test.js`. Use a fake `authenticate`, as that file's `fakeAuthenticate` does; real JWT verification is already covered by `tests/apiAuth.test.js`. Fakes:
   - `storage`: an in-memory `Map` of key → `{ body, contentType, metadata, cacheControl, contentDisposition, lastModified }`, with `presignPut`, `get`, `exists`, `putOnce`, `remove` and `listOlderThan`.
   - `db`: `lookupEditor` and `mediaBySha`.
   - `imaging`: the real module.
@@ -389,6 +450,7 @@
     - On success, writes `avatarKeyFor(sha, crop)` once and returns `{ avatarKey }`. A second identical call doesn't render again; spy on `imaging.renderAvatar`.
   - **`POST /sweep`:**
     - A failed `parseTrigger` gives 401, or 400 for `invalid_body`.
+    - A delivery whose `trigger.name` isn't `sweep-incoming` gives 400.
     - With a valid delivery, it deletes only `incoming/` objects older than 1 hour (with `now` injected) and returns `{ deleted: n }`.
 - [ ] **Step 3: Run them and check they fail.**
 - [ ] **Step 4: Implement `media/storage.js`.** `createStorage({ client = new S3Client({ forcePathStyle: true }), bucket = 'ged-eye-media' })` returns:
@@ -426,7 +488,7 @@
     1. Check that `avatarKeyFor` already `exists`; if it does, return it.
     2. Otherwise, inside `queue.run`, `get` the original, check with `inspect` that it is an image, run `renderAvatar` and `putOnce`.
   - **`/sweep`:**
-    1. Call `parseTrigger(request)`.
+    1. Call `parseTrigger(request)`, and require `trigger.name === 'sweep-incoming'`. The proxy strips client `x-neon-*` headers, but the body can still be forged, so this is a sanity check, not authentication. The sweep is harmless either way.
     2. Delete `listOlderThan('incoming/', now() - 1h)`.
     3. Return `{ deleted }`.
 - [ ] **Step 7: Implement `media/index.js`.** It mirrors `api/index.js`:
@@ -454,10 +516,11 @@
 
 - [ ] **Step 1: Deploy.** Run `ASDF_NODEJS_VERSION=24.11.1 neon deploy --no-env-pull`, retrying on "Could not reach the Neon API".
   - Expect `~ function media`, `~ function api` and the trigger `sweep-incoming` to be applied.
+  - Note the `media` URL printed under "Function URLs". Task 9 needs it.
   - If the trigger is refused with `404 function triggers not available`, deploy without it and note this in the spec's spike findings.
 - [ ] **Step 2: Write `scripts/neon/smokeMedia.js`.**
   - **Getting a JWT:** use a dev account, read only via `--env-file=.env.dev-accounts.local` and never printed.
-    1. Copy that file from the `editing` worktree with `cp`, without reading it.
+    1. Copy it with `cp /Users/rob/src/ged_eye/.claude/worktrees/editing/.env.dev-accounts.local .env.dev-accounts.local`, without reading it.
     2. Sign in with a password on the `photos` branch's Auth.
     3. Call `GET /get-session` and take the `set-auth-jwt` header.
     4. Check with `GET /me` on `photos`'s `api` that the account is an editor on `photos`, which is a child of `editing`.
@@ -513,7 +576,7 @@
   - a missing `x-amz-meta-width` giving null width.
 
   `publicHead` is tested against a stub `fetch`. It reads the `x-amz-meta-width` and `x-amz-meta-height` headers as integers, or null when missing.
-- [ ] **Step 2: Write the failing `runChange` test**, in the existing unit tests of `api/changes.js`, or in `tests/apiHandler.test.js` if that's where the runner is exercised with fakes.
+- [ ] **Step 2: Write the failing `runChange` test** in `tests/commandValidation.test.js`, in its `describe('api/changes.js')` block. That block already exercises the runner with a fake pool.
   - A fake command with `prepare` records the call order.
   - `prepare` is called after `validate` and before the fake pool's `connect`/`begin`.
   - Its result is passed to `run` as the fourth argument.
@@ -550,7 +613,7 @@
     ```
 
     Add a test that a view's `photos[0].caption` with an email address is masked and a `fileName` isn't.
-  - **Cache version.** Bump `VIEW_VERSION` in `api/handler.js` to 3.
+  - **Cache version.** Bump `VIEW_VERSION` in `api/handler.js` to 3. Then update `tests/apiHandler.test.js` to match: its `ETAG` constant `'W/"2.…"'` becomes `'W/"3.…"'`, and `expect(VIEW_VERSION).toBe(2)` becomes `toBe(3)`.
 - [ ] **Step 5: Run the tests** and expect PASS. Then run `npx vitest run` and expect everything to pass.
 - [ ] **Step 6: Commit** with the message "api: upload HEAD checks before the lock; captions masked".
 
@@ -590,7 +653,7 @@
     - re-linking an existing sha;
     - a caption on an existing media fills only null fields;
     - `no_change` when every link exists;
-    - `update_photo` stale on each of caption, date and personIds, and on deleted media;
+    - `update_photo` stale on each of caption, date and personIds, and 404 `not_found` on media that no longer exists (as the spec says for any unknown media);
     - `remove_photo` stale when already unlinked;
     - `set_avatar`:
       - with `mediaId` and with `photo`;
@@ -677,9 +740,9 @@
   2. `add_photos` for `I1`, tagged with one relative.
   3. Check `GET /person/I1` (as editor): the photo is first, has `displayKey`, `people` has both, and the caption is set.
   4. Check an anonymous `GET /person/I1`: a caption containing `a@b.com` is masked.
-  5. `update_photo`: change the caption, with a stale `expected`, giving 409.
+  5. `update_photo`: a successful caption change. Then the same call again with the old `expected`, giving 409 `stale`.
   6. `/avatars`, then `set_avatar`: the view's `avatarKey` equals the returned key.
-  7. `POST /undo` twice: the avatar and caption edits are reverted.
+  7. `POST /undo` twice: the avatar edit and then the caption edit are reverted. Check both in the view.
   8. `POST /redo`.
   9. `remove_photo`.
   10. `clear_avatar`.
@@ -697,7 +760,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 
 **Files:**
 - Modify `src/media.js`, `src/editApi.js` and `.env.development`, then create `src/mediaApi.js`.
-- Modify `.env.development.local` (not committed): add `VITE_MEDIA_API_URL=https://br-solitary-darkness-b2jjfmob-media.compute.c-6.eu-central-1.aws.neon.tech`.
+- Modify `.env.development.local` (not committed): add `VITE_MEDIA_API_URL=<the media URL from Task 5's deploy output>`. The spike's deploy printed `https://br-solitary-darkness-b2jjfmob-media.compute.c-6.eu-central-1.aws.neon.tech`.
 - Tests: `tests/media.test.js` (new or extended), `tests/editApi.test.js` (extend) and `tests/mediaApi.test.js` (new).
 
 - [ ] **Step 1: `src/media.js`.**
@@ -803,11 +866,27 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
   - names go through `textContent`.
 - [ ] **Step 3: Run the tests** and **commit** with the message "Front end: shared person search and multi-person picker".
 
-### Task 12: Add photos sheet
+### Task 12: Photo command params and the Add photos sheet
 
 **Files:**
-- Create `src/addPhotosDialog.js` and modify `src/editingStyles.css`.
-- Test: `tests/addPhotosDialog.test.js`.
+- Create `src/photoParams.js` and `src/addPhotosDialog.js`, and modify `src/editingStyles.css`.
+- Tests: `tests/photoParams.test.js` and `tests/addPhotosDialog.test.js`.
+
+- [ ] **Step 0: `src/photoParams.js`.** This is a pure module: no DOM, and no imports of `cropperjs` or of dialogs. The dialogs and `main.js` build every photo command's params here, and Task 15's contract test runs them through the server validators in the node environment.
+
+  ```js
+  /** One add_photos item from a ready upload-queue item: { mediaId } for a dedupe hit, else { upload: { sha256, ext, fileName } }. */
+  export function photoItem(media, { caption, date, personIds }) { … }
+  export const addPhotosParams = (personId, items) => ({ personId, photos: items });
+  export const updatePhotoParams = (photo, { caption, date, personIds }, focusId) => ({ mediaId: photo.id, caption, date, personIds,
+    expected: { caption: photo.caption, date: photo.date, personIds: photo.people.map((p) => p.id) }, focusId });
+  export const removePhotoParams = (personId, photo) => ({ personId, mediaId: photo.id });
+  /** `source` is { mediaId } for an existing photo, or { media } for a fresh upload (photoItem decides upload vs mediaId). */
+  export function setAvatarParams(personId, source, crop, avatarKey) { … }
+  export const clearAvatarParams = (personId) => ({ personId });
+  ```
+
+  Unit-test each builder.
 
 - [ ] **Step 1: Write the failing tests** for this interface:
 
@@ -820,6 +899,8 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 
   Behaviour (per the spec's front-end table and Error handling):
   - **Picker:** a hidden `<input type="file" accept="image/*,application/pdf" multiple>`, opened by an "Add more" button and, when no `files` are given, on open.
+    - iOS only opens a file picker from inside the tap's own event handler. So `openAddPhotosDialog` creates the input and calls `input.click()` synchronously, before any `await`.
+    - The details panel's Add tile calls the hook directly from its click handler, and `main.js`'s hook must not `await` before calling `openAddPhotosDialog`. That holds because the editing chunk is already loaded whenever editor controls are shown.
   - **Cards:** one per file, with a preview, status, Caption, Date and "Shown for" (the person picker with the person fixed).
     - The preview is `URL.createObjectURL` for `image/*` types the browser can show, else a document icon. It switches to the thumbnail URL when ready.
     - The status is a progress bar with "Uploading 62%", or "Processing…", "Ready", or the error with Retry or Remove.
@@ -828,7 +909,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
   - **Save** is labelled "Save N photos" and stays enabled.
     - If any card is still uploading or processing, it says "Waiting for uploads…" and saves when they finish.
     - Failed cards must be removed or retried first; the inline message says so.
-    - It then sends one `add_photos`. Items with `media.mediaId` send `{ mediaId }`; otherwise they send `{ upload: { sha256, ext, fileName } }`.
+    - It then sends one `add_photos`, built with `addPhotosParams` and `photoItem`.
   - **Save responses:**
     - `no_change` closes the sheet with the toast "Already shown for everyone selected".
     - `missing_upload` marks that card failed and retryable.
@@ -853,7 +934,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 - [ ] **Step 1: Install Cropper.js** with `npm install cropperjs@1.7.0`. Import `cropperjs/dist/cropper.css` from `src/avatarCropper.js`, so it lands in the editing chunk.
 - [ ] **Step 2: Write the failing tests** for the pure helpers in `avatarCropper.js`:
   - `toFractions(cropData, naturalWidth, naturalHeight)` converts Cropper's `getData(true)` (pixels of the loaded display image) into `{x,y,w,h}` fractions, rounded to 4 decimal places.
-  - `fromFractions(crop, naturalWidth, naturalHeight)` is its inverse, for `setData`.
+  - `fromFractions(crop, naturalWidth, naturalHeight)` is its inverse; the tests use it to check the round trip.
   - `defaultCrop(width, height)` returns a centred square, 80% of the shorter side, as fractions.
 
   The display image has the same aspect ratio as the oriented original, so the fractions carry over.
@@ -868,18 +949,31 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
     viewMode: 1, dragMode: 'move', aspectRatio: 1, autoCropArea: 0.8,
     cropBoxMovable: false, cropBoxResizable: false, toggleDragModeOnDblclick: false,
     guides: false, center: false, highlight: false, background: false, restore: false,
-    ready() { if (initialCrop) this.cropper.setData(fromFractions(initialCrop, …)); onReady?.(); }
+    checkOrientation: false,
+    ready() { if (initialCrop) placeAt(this.cropper, initialCrop); onReady?.(); }
   });
   ```
 
-  - **Image loading:** `img.crossOrigin = 'anonymous'`, so Cropper can read the bucket's image. The bucket sends `Access-Control-Allow-Origin: *` on GET.
+  - **Options:**
+    - Add `checkOrientation: false`. Display images are already upright, and leaving it on makes Cropper re-download the image through XHR with a cache-busting query.
+    - The canvas is never read, so `crossOrigin` isn't needed.
+  - **Reopening at a saved crop:** keep the fixed circle centred. Instead of `setData`, move and scale the image under it in `ready()`:
+
+    ```js
+    const box = cropper.getCropBoxData();
+    const nat = cropper.getImageData();
+    const width = box.width / initialCrop.w;
+    const height = width * nat.naturalHeight / nat.naturalWidth;
+    cropper.setCanvasData({ left: box.left - initialCrop.x * width, top: box.top - initialCrop.y * height, width });
+    ```
   - **Circle:** CSS `.avatar-cropper .cropper-view-box, .avatar-cropper .cropper-face { border-radius: 50%; }`. The container is `touch-action: none` and `height: min(60vh, 100vw)`.
   - **Zoom slider:** an `<input type="range">` bound to `cropper.zoomTo`. Listen for the `zoom` event to keep the slider in sync with pinch zoom.
   - **Keyboard:** while the cropper has focus, arrow keys call `cropper.move(±10, 0)` and so on, and `+`/`-` call `cropper.zoom(±0.1)`.
 - [ ] **Step 4: Write the failing `avatarDialog` tests,** then implement it.
 
   ```js
-  /** openAvatarDialog({ person, api, mediaApi, onSaved(result) }) */
+  /** openAvatarDialog({ person, api, mediaApi, startWith?: photo, onSaved(result) })
+   *  `startWith` opens straight at the crop step for that photo, from the viewer's Avatar button. */
   ```
 
   - **Step 1 of the dialog, the picker:**
@@ -891,9 +985,12 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
     - the cropper on `displayUrl(photo)`, starting from `avatarSource.crop` when its `mediaId` is chosen;
     - Back, and "Use as avatar".
   - **Save:**
-    1. `renderAvatar(photo.key, crop)`.
-    2. `set_avatar` with `{ personId, mediaId, crop, avatarKey }`. For a new upload, send `photo: { upload: {...}, caption: null, date: null, personIds: [person.id] }` instead of `mediaId`.
+    1. `renderAvatar(objectKey, crop)`: `photo.key` for an existing photo, or the processed `media.objectKey` for a new upload.
+    2. `set_avatar`, with params from `setAvatarParams`:
+       - an existing photo sends `mediaId`;
+       - a new upload sends `photo`, built by `photoItem(media, { caption: null, date: null, personIds: [person.id] })`. A dedupe hit therefore sends `{ mediaId }` rather than `upload`; a legacy row may have no display image to HEAD.
     3. Call `onSaved`.
+  - **`no_change`** (re-saving the same crop) closes the dialog with the toast "Avatar unchanged".
   - **Errors:** shown inline, with Retry.
   - **Tests:** stub `createAvatarCropper` through an injectable factory, because jsdom has no layout.
 - [ ] **Step 5: Run the tests** and **commit** with the message "Front end: avatar cropper and Change avatar".
@@ -911,7 +1008,8 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
   ```
 
   - Caption, Date, and the person picker. Its chosen people are `photo.people`, and none are fixed.
-  - Save sends `update_photo` with `{ mediaId: photo.id, caption, date, personIds, expected: { caption: photo.caption, date: photo.date, personIds: photo.people.map(p => p.id) }, focusId: person.id }`.
+  - Save sends `update_photo` with params from `updatePhotoParams(photo, fields, person.id)`.
+  - `no_change` closes the dialog quietly.
   - Removing every person is refused inline: "A photo must be shown for at least one person."
   - A 409 `stale` shows "Someone else changed this photo. Reload to see their changes", with a Reload button that calls `onSaved(null)` to make the caller reload.
 - [ ] **Step 2: Write the failing viewer tests,** then change `photoViewer.js`.
@@ -922,9 +1020,10 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
   - **"Download original":** an `<a href={mediaUrl(photo.key)} target="_blank" rel="noopener">`. Cross-origin `download` attributes are ignored, and the object's `Content-Disposition` names it.
   - **Editor actions:** `setEditorHooks({ onEdit, onUseAsAvatar, onRemove } | null)` renders Caption, Avatar, People and Remove buttons when set.
     - Caption and People both call `onEdit(photo)`.
-    - Avatar calls `onUseAsAvatar(photo)`, which opens the avatar dialog straight at the crop step for the current person. If the photo is tagged with several people, it asks "Use as avatar for…" with the tagged people first.
+    - Avatar calls `onUseAsAvatar(photo)`, which opens the avatar dialog for the current person with `startWith: photo`. The current person is always tagged on photos shown in their viewer, so `set_avatar` accepts it.
     - Remove confirms ("Remove this photo from Alice Smith? It stays for anyone else it's shown for."), then calls `onRemove(photo)`.
-    - Hide Avatar for photos without `displayKey`.
+    - Hide Avatar for photos without `displayKey`, and when `VITE_MEDIA_API_URL` is empty.
+    - **The viewer closes before calling any hook**, and before showing Remove's confirmation. The editor dialogs sit above the viewer and stop Escape but not the arrow keys, and the details panel re-renders after a change anyway.
   - **Escaping:** everything interpolated goes through `textContent` or `escapeHtml`.
 - [ ] **Step 3: Run the tests** and **commit** with the message "Front end: photo captions, tags and editor actions in the viewer".
 
@@ -938,14 +1037,19 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
   - **Header:** a 52px avatar circle (`avatarUrl(person)`) before the name, for everyone.
   - **When `canEdit`:**
     - The avatar is a button labelled "Change avatar for X", with a camera badge, calling `options.onChangeAvatar(person)`.
-    - The photo row ends with an Add tile, calling `options.onAddPhotos(person)`. It is hidden when `import.meta.env.VITE_MEDIA_API_URL` is empty.
+    - The photo row ends with an Add tile, calling `options.onAddPhotos(person)`. Editors get the row, holding just the Add tile, even when the person has no photos. Today the row only renders when `photos.length > 0`.
+    - When `import.meta.env.VITE_MEDIA_API_URL` is empty, the Add tile, the avatar badge, the drop zone and the viewer's Avatar button are all hidden.
     - `dragover`/`drop` on the panel calls `options.onAddPhotos(person, files)`, with a dashed outline while dragging.
   - **Photo row:** when there are more than 4 photos, the 4th thumbnail gets a "+N" overlay, and clicking it opens the viewer at index 3.
   - **Viewer wiring:**
     - Pass `options.onOpenPerson` to `this.photoViewer.onOpenPerson`.
     - When `canEdit`, call `this.photoViewer.setEditorHooks({ onEdit, onUseAsAvatar, onRemove })` wrapping `options.onEditPhoto`, `options.onUseAsAvatar` and `options.onRemovePhoto`. Otherwise call `setEditorHooks(null)`.
   - **Tests:** viewers see the avatar but no badge, Add tile or drop zone; editors get all three. Also test the "+N" overlay and that each hook is called with the person.
-- [ ] **Step 2: `editing.js`.** Export `openAddPhotosDialog`, `openAvatarDialog`, `openPhotoEditDialog` and `createUploadQueue`. Also export `mediaApi` by re-exporting `src/mediaApi.js`, so viewers never load it.
+- [ ] **Step 2: `editing.js`.** Export:
+  - `openAddPhotosDialog`, `openAvatarDialog`, `openPhotoEditDialog` and `createUploadQueue`;
+  - `mediaApi`, by re-exporting `src/mediaApi.js`, so viewers never load it;
+  - `commandErrorMessage` from `editorDialog.js`;
+  - `removePhotoParams` from `photoParams.js`.
 - [ ] **Step 3: `main.js` `detailsOptions()`.**
   - Both branches return `onOpenPerson: navigateTo`.
   - The editor branch also adds:
@@ -959,15 +1063,33 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
       onSaved: (result) => result ? afterCommand(result, person.id) : afterChange({}, { from: person.id }) }),
     onUseAsAvatar: (photo, person) => editing.openAvatarDialog({ person, api, mediaApi: editing.mediaApi, startWith: photo,
       onSaved: (result) => afterCommand(result, person.id) }),
-    onRemovePhoto: async (photo, person) => afterCommand(await api.runChange('remove_photo', { personId: person.id, mediaId: photo.id }), person.id)
+    onRemovePhoto: (photo, person) => removePhoto(photo, person)
     ```
 
-  - `onRemovePhoto` shows errors as a toast, as the other inline commands do; look at how `unlinkConfirm` reports failures and match it.
-  - Close the photo viewer before `afterCommand` re-renders.
+  - **`removePhoto`:** there is no dialog to show an error in, so failures are toasts.
+
+    ```js
+    async function removePhoto(photo, person) {
+      let result;
+      try {
+        result = await api.runChange('remove_photo', editing.removePhotoParams(person.id, photo));
+      } catch (error) {
+        const message = error?.code === 'stale'
+          ? 'That photo was already removed. Reloading.'
+          : editing.commandErrorMessage(error);
+        showToast(message, { kind: 'error' });
+        if (error?.code === 'stale') await afterChange({}, { from: person.id });
+        return;
+      }
+      await afterCommand(result, person.id);
+    }
+    ```
+
+  - The viewer has already closed itself before calling any hook (Task 14).
   - The existing toast after a command offers Undo.
   - `mainEditing.test.js` gets a case for each new hook with fakes.
-- [ ] **Step 4: Contract test.** In `tests/editContract.test.js`, extend the existing test, which runs front-end-built params through the server validators. Add the five photo commands, building their params with the real dialog param builders. Export small pure `…Params` builders from the dialogs for this, as `relativeDialog` does with `relativeParams`.
-- [ ] **Step 5: Run everything.** Run `npx vitest run` and expect everything to pass. Then run `npm run build` and check two things in `dist/assets`:
+- [ ] **Step 4: Contract test.** In `tests/editContract.test.js`, extend the existing test, which runs front-end-built params through the server validators. Add the five photo commands, building their params with `src/photoParams.js` (Task 12). It has no DOM or `cropperjs` imports, so it runs in the node environment.
+- [ ] **Step 5: Run everything.** Run `npx vitest run` and expect everything to pass. Then build into a scratch folder, **not** `docs/` (`npm run build` writes the tracked `docs/`, which only changes in Task 18): `npx vite build --outDir /private/tmp/claude-501/-Users-rob-src-ged-eye/ecf33951-ec53-4feb-ae73-cb10bae6e18b/scratchpad/build --emptyOutDir`. Check two things in its `assets/`:
   - the main chunk has no `cropper`, and grepping the entry chunk for `Cropper` finds nothing;
   - the editing chunk includes it.
 - [ ] **Step 6: Commit** with the message "Front end: avatar in the details header, Add photos, viewer actions, wiring".
@@ -981,7 +1103,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 **Files:**
 - Modify `scripts/neon/verify.js` and `package.json` (script `backfill-media`).
 - Create `scripts/neon/backfillMedia.js`.
-- Tests: `tests/db/backfillMedia.test.js` (new) and `tests/verifyEdited.test.js`. If `EDITED_SQL` already has a DB test, extend that instead.
+- Tests: `tests/db/backfillMedia.test.js` (new) and `tests/db/verifyEdited.test.js` (new, with `describe.skipIf(!TEST_DATABASE_URL)` as the other DB tests do). If `EDITED_SQL` already has a DB test, extend that instead.
 
 - [ ] **Step 1: Change `verify.js`.**
   - **`EDITED_SQL`:** replace the media line with:
@@ -1013,7 +1135,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
     2. `derivatives(buffer)` from `media/imaging.js`. On failure, log it and skip that row; for example, sharp can't read BMP.
     3. `putOnce` `display/<sha>.webp`, plus `thumbs/<sha>.webp` when `thumb_key` is null.
     4. Collect `{ id, display_key, thumb_key, width, height }`.
-  - **Phase 2, one short transaction:**
+  - **Phase 2, one short transaction.** Skip it entirely when Phase 1 collected nothing, so a re-run records no empty change.
 
     ```sql
     begin;
@@ -1025,16 +1147,17 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
     ```
 
     `begin_change`'s argument order matches `backfillFacts.js`'s call.
-  - **`--report-gps`:** in Phase 1, also run `hasLocation(await sharp(buffer).metadata())` per original and print the count and the media ids, never coordinates.
+  - **`--report-gps`:** read-only. It downloads every image original (not just those without a display image), runs `hasLocation(await sharp(buffer).metadata())` on each, and prints the count and the media ids, never coordinates. It writes nothing, even without `--dry-run`.
   - **`npm run backfill-media`:** `node --env-file=.env.local scripts/neon/backfillMedia.js`.
   - **DB test** (`tests/db/backfillMedia.test.js`): run `apply` with a fake storage on `test-editing`'s fixture. Check that:
     - the rows are updated in one change of kind `backfill_media`;
-    - a second run does nothing;
+    - a second run does nothing and records no new `change` row;
     - a failing image is skipped and reported.
 - [ ] **Step 3: Run it on `photos`.**
-  1. `npm run backfill-media -- --dry-run --report-gps`, and record the counts.
-  2. `npm run backfill-media`.
-  3. `npm run verify-neon`: expect 0 unexplained.
+  1. `npm run backfill-media -- --dry-run`, and record the counts.
+  2. `npm run backfill-media -- --report-gps`, and record the GPS count.
+  3. `npm run backfill-media`.
+  4. `npm run verify-neon -- --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`. The worktree has no `ignore/` folder; the media manifest comes through the `.neon-import` symlink. Expect 0 unexplained.
 - [ ] **Step 4: Commit** with the message "Backfill display images for existing photos; verify ignores the backfill".
 
 ### Task 17: End-to-end check on `photos`
@@ -1072,17 +1195,26 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 This follows the spec's Rollout. Production steps are additive, and nothing is deleted.
 
 - [ ] **Step 1: Safety branch.** `neon branches create --name pre-photos-2026-10-09 --parent production --no-secrets`. Use the actual date.
-- [ ] **Step 2: Migration 008 on production.** Use the main checkout's production credentials, as in earlier releases: `node --env-file=<production env> scripts/neon/migrate.js`, from the worktree, with production's `DATABASE_URL`. Expect `008_photos.sql` to be applied.
-- [ ] **Step 3: Deploy both Functions** with `neon deploy --branch production --no-env-pull`.
+- [ ] **Step 2: Migration 008 on production.**
+  - The main checkout's `/Users/rob/src/ged_eye/.env.local` holds production's credentials.
+  - From the worktree, run `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/migrate.js`. `migrate.js` reads `DATABASE_URL_UNPOOLED`.
+  - Expect `008_photos.sql` to be applied.
+  - Never use the `npm run` scripts for production steps: they are hard-wired to the worktree's `.env.local`, which is the `photos` branch.
+- [ ] **Step 3: Deploy both Functions** with `neon deploy --branch production --no-env-pull`. If production is a protected branch and the CLI asks to confirm, re-run with the flags it names (such as `--allow-protected -y`), never interactively.
   - Note the new `media` URL from the output.
-  - Smoke-test `GET <media>/health`, then run `smokeMedia.js` steps 1–2 against production, with no uploads to production.
+  - **Smoke-test:** `GET <media>/health` gives `{ok:true}`, and an unauthenticated `POST <media>/uploads` gives 401. The dev accounts aren't production editors, so there are no uploads to production.
+  - Check `neon triggers list --branch production` shows `sweep-incoming`.
 - [ ] **Step 4: Backfill rehearsal.**
   1. `neon branches create --name photos-backfill-rehearsal --parent production --no-secrets`.
-  2. Run the backfill there with that branch's credentials (from `neon connection-string` and `neon env pull` into a scratch env file under the scratchpad, never printed).
+  2. Run the backfill there with that branch's credentials. The script needs `DATABASE_URL` and the `AWS_*` storage variables for that branch. Write them into a scratch env file under the scratchpad (never printed), for example by running `neon env pull` from a scratch directory whose `.neon` pins that branch. Then run `node --env-file=<that file> scripts/neon/backfillMedia.js`.
   3. Check the counts match the dry run, and spot-check 3 display images.
-- [ ] **Step 5: Production backfill.** Run `npm run backfill-media -- --report-gps`, then the real run, with production credentials. Then `verify-neon` against production: 0 unexplained.
+- [ ] **Step 5: Production backfill.**
+  1. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillMedia.js --report-gps`, and record the count.
+  2. The same command without the flag, for the real run.
+  3. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/verify.js --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`: expect 0 unexplained.
 - [ ] **Step 6: Front-end env.** Add `VITE_MEDIA_API_URL=<production media URL>` to `.env.production`.
 - [ ] **Step 7: Build the site.** Run `npm run build` into `docs/`, as in earlier releases (check `vite.config.js` for `outDir`).
+- [ ] **Step 7b: Commit and push.** Commit `.env.production` and `docs/` with the message "Release photos: production media URL and site build", then push the `photos` branch.
 - [ ] **Step 8: Pull request.**
   - Create a PR with `gh pr create`, ending the body with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
   - Its description states what was done on production and the GPS report count.

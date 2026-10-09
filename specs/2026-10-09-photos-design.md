@@ -85,6 +85,7 @@ alter table media
   add column caption text,
   add column date    text;      -- free text, like the facts' dates ("about 1923", "JUN 1923")
 alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": {"x":…, "y":…, "w":…, "h":…}}
+create index person_media_media_idx on person_media (media_id);  -- the photos' people, and verify.js
 ```
 
 - **Change log.** Both tables are already captured by 006's triggers, and `toggle_change` compares changes column by column, so the new columns are recorded and undoable with no change to 006's functions.
@@ -125,7 +126,7 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 - Run one image job at a time per isolate. Further requests wait their turn in an in-process queue; the platform adds isolates under load.
   - The download from storage happens *inside* the queued job, so waiting requests hold no file buffers.
   - `/avatars` goes through the same queue.
-  - If more than 4 jobs are already waiting, the request gets `503 busy`, which the client retries.
+  - If 4 jobs are already waiting, the next request gets `503 busy`, which the client retries.
 
 1. **Size and type.**
    - Read the object and recheck its size (`too_large`, `empty`).
@@ -148,7 +149,7 @@ alter table person add column avatar_source jsonb;  -- {"mediaId": 123, "crop": 
 - **Validity:** `0 ≤ x, y`, `w, h > 0`, `x + w ≤ 1.0001` and `y + h ≤ 1.0001`. The pixel crop must be square to within 1%, and at least 32px.
 - **Rendering:** the server takes the side as `round(min(w·W, h·H))` from the oriented original, then resizes to 400×400.
 
-**Errors:** `400 invalid`, `400 unsupported_type`, `400 heic_unsupported`, `413 too_large`, `400 empty`, `400 too_many_pixels`, `404 not_found` (an expired or unknown upload), `401`, `403 not_an_editor`, and `500 internal` (logged).
+**Errors:** `400 invalid`, `400 unsupported_type`, `400 heic_unsupported`, `400 unreadable` (sharp can't decode or re-encode the file), `413 too_large`, `400 empty`, `400 too_many_pixels`, `404 not_found` (an expired or unknown upload), `401`, `403 not_an_editor`, and `500 internal` (logged).
 
 ## API changes (Function `api`)
 
