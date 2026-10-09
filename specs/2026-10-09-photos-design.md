@@ -138,7 +138,10 @@ create index person_media_media_idx on person_media (media_id);  -- the photos' 
    - Location is present when EXIF IFD0 has a GPSInfo pointer (tag `0x8825`) or the XMP mentions `GPSLatitude`.
    - If it is present, the stored original is re-encoded in the same format: `.rotate()`, `.keepIccProfile()`, no other metadata, at JPEG/WebP quality 92, lossless PNG, LZW TIFF (read with `pages: -1`, so multi-page scans keep every page), or AVIF quality 70. Otherwise the bytes are stored unchanged.
    - GIFs have no EXIF orientation. One carrying location XMP is re-encoded with `animated: true` and no `.rotate()`, which keeps every frame.
-   - TIFFs get their own GPS fixture in the tests, because a TIFF's GPS IFD may not show up the same way in `metadata().exif`. If that fixture isn't detected, `imaging.js` re-encodes every TIFF, as above.
+   - **TIFF and GIF location** is read from the file's own bytes, because sharp 0.33.5 exposes neither a TIFF's EXIF nor a GIF's XMP (found in Task 3).
+     - A TIFF is itself a TIFF/EXIF structure, so `hasGps(buffer)` finds a GPSInfo pointer in its first IFD.
+     - A GIF counts as having location when its bytes contain `GPSLatitude`.
+     - TIFFs and GIFs without location are stored byte for byte.
    - Write `display` and `thumbs`, taking the first frame of animated images.
    - `width` and `height` are the oriented size, swapped for EXIF orientations 5–8.
 4. **PDFs.** Stored unchanged, with no derivatives.
