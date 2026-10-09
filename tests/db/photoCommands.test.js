@@ -54,8 +54,9 @@ describe.skipIf(!url)('photo commands (database)', { timeout: 60000 }, () => {
   /**
    * Seeds people, media and links in one recorded fixture change, taking person ids from the sequence.
    * people: { key: [given, surname, { other person columns }?] }
-   * media:  { key: { ext = 'jpg', caption, date, width = 4000, height = 3000, display = true } }; a PDF has no
-   *         thumbnail, display image or size, and `display: false` is an image not yet backfilled.
+   * media:  { key: { ext = 'jpg', caption, date, display, width, height } }; by default an image has a thumbnail
+   *         and display image and is 4000 × 3000, and a PDF has none of them. `display: false` is an image not
+   *         yet backfilled.
    * links:  [[personKey, mediaKey, position = 0]]
    * Returns { key: id } (media ids as numbers), plus `sha: { mediaKey: sha256 }`.
    */
@@ -73,16 +74,16 @@ describe.skipIf(!url)('photo commands (database)', { timeout: 60000 }, () => {
            values ('I' || nextval('person_number_seq'), ${names.map((_, i) => `$${i + 1}`).join(', ')}) returning id`, values);
         t[key] = id;
       }
-      for (const [key, { ext = 'jpg', caption = null, date = null, width = 4000, height = 3000, display = true }] of Object.entries(media)) {
+      for (const [key, spec] of Object.entries(media)) {
+        const { ext = 'jpg', caption = null, date = null, display = ext !== 'pdf' } = spec;
+        const { width = ext !== 'pdf' ? 4000 : null, height = ext !== 'pdf' ? 3000 : null } = spec;
         const sha = newSha();
-        const image = ext !== 'pdf';
         const { id } = await one(
           `insert into media (sha256, original_path, file_name, content_type, byte_size, object_key, thumb_key,
                               display_key, width, height, caption, date)
            values ($1, $2, $3, $4, 1000, $5, $6, $7, $8, $9, $10, $11) returning id`,
           [sha, `Data/Media/${key}.${ext}`, `${key}.${ext}`, CONTENT_TYPES[ext], `originals/${sha}.${ext}`,
-            image ? `thumbs/${sha}.webp` : null, image && display ? `display/${sha}.webp` : null,
-            image ? width : null, image ? height : null, caption, date]);
+            ext !== 'pdf' ? `thumbs/${sha}.webp` : null, display ? `display/${sha}.webp` : null, width, height, caption, date]);
         t[key] = Number(id);
         t.sha[key] = sha;
       }
@@ -263,17 +264,66 @@ describe.skipIf(!url)('photo commands (database)', { timeout: 60000 }, () => {
         links: [['alice', 'beach', 3], ['alice', 'other', 1]]
       });
       const { change } = await runUndoRedo('add_photos', { personId: t.alice, photos: [{ mediaId: t.beach, personIds: [t.alice, t.bob] }] });
-      expect(change).toEqual({ id: expect.any(Number), summary: 'Added a photo for Alice Ash', personIds: [t.alice, t.bob] });
+      // Nothing new is shown for Alice: her photo is now shown for Bob too.
+      expect(change).toEqual({ id: expect.any(Number), summary: 'Edited a photo of Alice Ash', personIds: [t.alice, t.bob] });
       expect(await linksOf(t.alice)).toEqual([[t.other, 1], [t.beach, 3]]);
       expect(await linksOf(t.bob)).toEqual([[t.beach, -1]]);
     });
 
-    it('is no_change when every link already exists, even with a caption to fill', async () => {
+    it('counts only the photos newly shown for the person', async () => {
       const t = await seed({ people: { alice: ['Alice', 'Ash'] }, media: { beach: {} }, links: [['alice', 'beach']] });
+      const { change } = await run('add_photos', {
+        personId: t.alice, photos: [{ mediaId: t.beach, personIds: [t.alice] }, { upload: upload(newSha()), personIds: [t.alice] }]
+      });
+      expect(change.summary).toBe('Added a photo for Alice Ash');
+    });
+
+    it('takes an upload and a media id of the same file in one batch as one photo', async () => {
+      const t = await seed({
+        people: { alice: ['Alice', 'Ash'], bob: ['Bob', 'Birch'], cara: ['Cara', 'Cole'] },
+        media: { beach: {} },
+        links: [['bob', 'beach']]
+      });
+      const count = await mediaCount();
+      const { change } = await runUndoRedo('add_photos', {
+        personId: t.alice,
+        photos: [
+          { upload: upload(t.sha.beach, 'jpg', 'again.jpg'), caption: 'Beach', personIds: [t.alice] },
+          { mediaId: t.beach, personIds: [t.alice, t.cara] }
+        ]
+      });
+      expect(change).toEqual({ id: expect.any(Number), summary: 'Added a photo for Alice Ash', personIds: [t.alice, t.cara] });
+      expect(await mediaCount()).toBe(count);
+      expect(await mediaRow(t.beach)).toMatchObject({ caption: 'Beach' });
+      expect(await linksOf(t.alice)).toEqual([[t.beach, -1]]);
+      expect(await linksOf(t.cara)).toEqual([[t.beach, -1]]);
+      expect(await peopleOf(t.beach)).toEqual([t.alice, t.bob, t.cara].sort());
+    });
+
+    it('is no_change when every link already exists and there is no caption or date', async () => {
+      const t = await seed({ people: { alice: ['Alice', 'Ash'] }, media: { beach: {} }, links: [['alice', 'beach']] });
+      const result = await expectNothingWritten(() => failure(run('add_photos', {
+        personId: t.alice, photos: [{ mediaId: t.beach, caption: '', personIds: [t.alice] }]
+      })));
+      expect(result).toEqual({ status: 400, code: 'no_change' });
+    });
+
+    it('records a caption filled into an existing photo\'s null caption, though every link exists', async () => {
+      const t = await seed({ people: { alice: ['Alice', 'Ash'] }, media: { beach: { date: '1923' } }, links: [['alice', 'beach']] });
+      const { change } = await runUndoRedo('add_photos', {
+        personId: t.alice, photos: [{ mediaId: t.beach, caption: 'New', date: 'Other', personIds: [t.alice] }]
+      });
+      expect(change).toEqual({ id: expect.any(Number), summary: 'Edited a photo of Alice Ash', personIds: [t.alice] });
+      expect(await mediaRow(t.beach)).toMatchObject({ caption: 'New', date: '1923' });
+    });
+
+    it('is no_change when every link already exists and the photo already has a caption', async () => {
+      const t = await seed({ people: { alice: ['Alice', 'Ash'] }, media: { beach: { caption: 'Old' } }, links: [['alice', 'beach']] });
       const result = await expectNothingWritten(() => failure(run('add_photos', {
         personId: t.alice, photos: [{ mediaId: t.beach, caption: 'New', personIds: [t.alice] }]
       })));
       expect(result).toEqual({ status: 400, code: 'no_change' });
+      expect(await mediaRow(t.beach)).toMatchObject({ caption: 'Old' });
     });
 
     it('stores a null width and height for an image whose original has no size metadata', async () => {
@@ -506,18 +556,42 @@ describe.skipIf(!url)('photo commands (database)', { timeout: 60000 }, () => {
       expect(await person(t.alice)).toMatchObject({ avatar_key: avatarKey, avatar_source: { mediaId: t.shared, crop: CROP } });
     });
 
-    it('refuses a PDF, an unlinked photo, a photo without a display image, and an avatarKey for another photo or crop', async () => {
+    it('refuses a PDF, a photo not linked to the person, and a photo without a display image, each for its reason', async () => {
+      // Each differs from `portrait`, which is accepted, in just one way.
       const t = await seed({
-        people: { alice: ['Alice', 'Ash'], bob: ['Bob', 'Birch'] },
-        media: { letter: { ext: 'pdf' }, bobs: {}, legacy: { display: false }, portrait: {} },
-        links: [['alice', 'letter'], ['bob', 'bobs'], ['alice', 'legacy'], ['alice', 'portrait']]
+        people: { alice: ['Alice', 'Ash'] },
+        media: { portrait: {}, pdf: { ext: 'pdf', display: true, width: 4000, height: 3000 }, unlinked: {}, undisplayed: { display: false } },
+        links: [['alice', 'portrait'], ['alice', 'pdf'], ['alice', 'undisplayed']]
       });
-      const field = async (mediaId, avatarKey) => (await refused('set_avatar', { personId: t.alice, mediaId, crop: CROP, avatarKey })).field;
-      expect(await field(t.letter, avatarKeyFor(t.sha.letter, CROP))).toBe('mediaId');
-      expect(await field(t.bobs, avatarKeyFor(t.sha.bobs, CROP))).toBe('mediaId');
-      expect(await field(t.legacy, avatarKeyFor(t.sha.legacy, CROP))).toBe('mediaId');
-      expect(await field(t.portrait, avatarKeyFor(t.sha.legacy, CROP))).toBe('avatarKey');
-      expect(await field(t.portrait, avatarKeyFor(t.sha.portrait, { ...CROP, x: 0.2 }))).toBe('avatarKey');
+      const reason = async (key) => {
+        const { field, message } = await refused('set_avatar', { personId: t.alice, mediaId: t[key], crop: CROP, avatarKey: avatarKeyFor(t.sha[key], CROP) });
+        return [field, message];
+      };
+      expect(await reason('pdf')).toEqual(['mediaId', "A PDF can't be an avatar: choose a photo."]);
+      expect(await reason('unlinked')).toEqual(['mediaId', "That photo isn't one of Alice Ash's photos."]);
+      expect(await reason('undisplayed')).toEqual(['mediaId', "That photo hasn't been prepared for viewing yet, so it can't be an avatar."]);
+      const { change } = await run('set_avatar', { personId: t.alice, mediaId: t.portrait, crop: CROP, avatarKey: avatarKeyFor(t.sha.portrait, CROP) });
+      expect(change.summary).toBe('Changed the avatar of Alice Ash');
+    });
+
+    it('refuses an avatarKey made from another photo or another crop', async () => {
+      const t = await seed({
+        people: { alice: ['Alice', 'Ash'] },
+        media: { portrait: {}, other: {} },
+        links: [['alice', 'portrait'], ['alice', 'other']]
+      });
+      for (const avatarKey of [avatarKeyFor(t.sha.other, CROP), avatarKeyFor(t.sha.portrait, { ...CROP, x: 0.2 })]) {
+        const { field, message } = await refused('set_avatar', { personId: t.alice, mediaId: t.portrait, crop: CROP, avatarKey });
+        expect([field, message]).toEqual(['avatarKey', "The avatar wasn't made from this photo and crop. Make it again."]);
+      }
+    });
+
+    it('is no_change when the same crop of the same photo is saved again', async () => {
+      const t = await seed({ people: { alice: ['Alice', 'Ash'] }, media: { portrait: {} }, links: [['alice', 'portrait']] });
+      const params = { personId: t.alice, mediaId: t.portrait, crop: CROP, avatarKey: avatarKeyFor(t.sha.portrait, CROP) };
+      await run('set_avatar', params);
+      expect(await expectNothingWritten(() => failure(run('set_avatar', { ...params, crop: { ...CROP, x: 0.10001 } }))))
+        .toEqual({ status: 400, code: 'no_change' });
     });
 
     it('refuses a crop that is not square, or too small, in the photo\'s pixels; unknown sizes are not checked', async () => {

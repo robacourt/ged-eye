@@ -3,7 +3,7 @@ import { invalid } from '../http.js';
 import { headUploads } from '../uploads.js';
 import { requireId, requireParams } from './validate.js';
 import { nameOf } from './summary.js';
-import { noChange, notFound, peopleByIds, requirePerson, unique } from './linking.js';
+import { notFound, peopleByIds, requirePerson, unique } from './linking.js';
 import { MAX_PHOTOS, linkAtFront, mediaForPhoto, validatePhoto } from './photos.js';
 
 export const kind = 'add_photos';
@@ -28,16 +28,22 @@ export function validate(params) {
 
 /**
  * HEADs every upload before the lock. → [{ contentType, byteSize, width, height } | null], by photo (null for a
- * media id). A missing upload is 400 missing_upload { index (the photo's), field: 'photos' }; see headUploads.
+ * media id). A missing upload is 400 missing_upload { index (the photo's), field: 'photos' }, and a stored type
+ * that doesn't match ext 400 invalid { field: 'photos.<index>.upload.ext' }; see headUploads.
  */
 export function prepare({ photos }, { headObject }) {
-  return headUploads(photos.map((photo) => photo.upload ?? null), headObject, { field: 'photos' });
+  return headUploads(photos.map((photo) => photo.upload ?? null), headObject,
+    { field: 'photos', uploadField: (index) => `photos.${index}.upload` });
 }
+
+const photosWord = (n) => (n === 1 ? 'a photo' : `${n} photos`);
 
 /**
  * Inserts a media row for each new upload (or reuses the row its sha gained meanwhile), fills only the null
  * caption and date of existing rows, and links each photo to everyone tagged, at the front, in batch order.
- * Existing links are left alone; when every link already exists, nothing changes (400 no_change).
+ * Existing links are left alone, so when every link exists and no caption or date is filled, nothing changes
+ * and runChange refuses it as no_change. The summary counts the photos newly shown for the person ("Added 2
+ * photos for X"), or, when there are none, the photos otherwise changed ("Edited a photo of X").
  */
 export async function run(tx, { personId, photos }, user, heads) {
   const person = await requirePerson(tx, personId, 'personId');
@@ -48,19 +54,19 @@ export async function run(tx, { personId, photos }, user, heads) {
     if (missing !== undefined) throw notFound(`photos.${i}.personIds`, missing);
   }
 
-  // Each tagged person's new photos, in batch order (a Map keeps the order people first appear in).
-  const byPerson = new Map();
+  const links = [];
+  const filled = [];
   for (const [i, photo] of photos.entries()) {
-    const mediaId = await mediaForPhoto(tx, photo, heads?.[i], `photos.${i}`);
-    for (const id of photo.personIds) byPerson.set(id, [...(byPerson.get(id) ?? []), mediaId]);
+    const media = await mediaForPhoto(tx, photo, heads?.[i], `photos.${i}`);
+    if (media.filled) filled.push(media.id);
+    for (const id of photo.personIds) links.push({ personId: id, mediaId: media.id });
   }
-  let linked = 0;
-  for (const [id, mediaIds] of byPerson) linked += await linkAtFront(tx, id, mediaIds);
-  if (linked === 0) throw noChange();
+  const linked = await linkAtFront(tx, links);
 
-  const what = photos.length === 1 ? 'a photo' : `${photos.length} photos`;
+  const added = linked.filter((link) => link.personId === personId).length;
+  const changed = new Set([...filled, ...linked.map((link) => link.mediaId)]).size;
   return {
-    summary: `Added ${what} for ${nameOf(person)}`,
+    summary: added > 0 ? `Added ${photosWord(added)} for ${nameOf(person)}` : `Edited ${photosWord(changed)} of ${nameOf(person)}`,
     personIds: unique([personId, ...tagged]),
     focusId: personId
   };

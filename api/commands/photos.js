@@ -6,11 +6,12 @@
 import { invalid } from '../http.js';
 import { keysFor, validateUpload } from '../uploads.js';
 import { optionalLine, requireId, requireKeys } from './validate.js';
-import { notFound, peopleByIds, unique } from './linking.js';
+import { notFound, peopleByIds } from './linking.js';
 
 export const MAX_CAPTION = 500;
 export const MAX_DATE = 100;
 export const MAX_PHOTOS = 20;
+export const MAX_PEOPLE = 100;
 
 /** An avatar rendered by the media Function: avatars/<sha of the photo>-<first 12 hex of the crop's hash>.webp. */
 export const AVATAR_KEY = /^avatars\/[0-9a-f]{64}-[0-9a-f]{12}\.webp$/;
@@ -18,7 +19,8 @@ export const AVATAR_KEY = /^avatars\/[0-9a-f]{64}-[0-9a-f]{12}\.webp$/;
 const MEDIA_ID = /^[1-9][0-9]{0,15}$/;
 const PHOTO_KEYS = ['upload', 'mediaId', 'caption', 'date', 'personIds'];
 
-const isGiven = (value) => value !== undefined && value !== null;
+/** True unless `value` is undefined or null. */
+export const isGiven = (value) => value !== undefined && value !== null;
 
 /**
  * A media id: a positive whole number, sent as a number (as person_record gives it) or a numeric string.
@@ -31,13 +33,14 @@ export function requireMediaId(value, field) {
 }
 
 /**
- * A list of distinct person ids, non-empty unless `allowEmpty`. → the list. Throws ApiError 400 invalid naming
- * `field`.
+ * A list of at most 100 distinct person ids, non-empty unless `allowEmpty`. → the list. Throws ApiError 400
+ * invalid naming `field`.
  */
 export function requirePersonIds(value, field, { allowEmpty = false } = {}) {
   if (!Array.isArray(value) || (!allowEmpty && value.length === 0)) {
     throw invalid(field, `${field} must be a list of${allowEmpty ? '' : ' one or more'} person ids.`);
   }
+  if (value.length > MAX_PEOPLE) throw invalid(field, `A photo can be shown for at most ${MAX_PEOPLE} people at once.`);
   for (const id of value) requireId(id, field);
   if (new Set(value).size !== value.length) throw invalid(field, `${field} lists someone twice.`);
   return value;
@@ -93,34 +96,45 @@ export async function requirePeople(tx, ids, field) {
 }
 
 /**
- * Links `mediaIds` (in order) to `personId` at the front: positions min(position) - n … min(position) - 1, so
- * the first comes first and existing photos keep their order. Existing links are left alone (on conflict do
- * nothing). → the number of links made.
+ * Makes the `links` ([{ personId, mediaId }], in order) in one statement, each at the front of its person's
+ * photos: a person given n new photos gets them at positions min(position) - n … min(position) - 1, in the
+ * order given, so the first comes first and existing photos keep their order. Links that already exist (or are
+ * repeated) are left alone. → the links made, as [{ personId, mediaId }].
  */
-export async function linkAtFront(tx, personId, mediaIds) {
-  const ids = unique(mediaIds);
-  if (ids.length === 0) return 0;
-  const { rowCount } = await tx.query(
+export async function linkAtFront(tx, links) {
+  if (links.length === 0) return [];
+  const { rows } = await tx.query(
     `insert into person_media (person_id, media_id, position)
-     select $1::text, m.id, low.position - $3::int + m.ord::int - 1
-     from unnest($2::bigint[]) with ordinality as m (id, ord)
-     cross join (select coalesce(min(position), 0) as position from person_media where person_id = $1::text) low
-     order by m.ord
-     on conflict (person_id, media_id) do nothing`, [personId, ids, ids.length]);
-  return rowCount;
+     select l.person_id, l.media_id,
+            (coalesce(low.position, 0) - count(*) over (partition by l.person_id)
+             + row_number() over (partition by l.person_id order by l.ord) - 1)::int
+     from (select distinct on (person_id, media_id) person_id, media_id, ord
+           from unnest($1::text[], $2::bigint[]) with ordinality as given (person_id, media_id, ord)
+           order by person_id, media_id, ord) l
+     left join lateral (select min(pm.position) as position from person_media pm where pm.person_id = l.person_id) low on true
+     where not exists (select 1 from person_media pm where pm.person_id = l.person_id and pm.media_id = l.media_id)
+     order by l.ord
+     on conflict (person_id, media_id) do nothing
+     returning person_id, media_id`,
+    [links.map((link) => link.personId), links.map((link) => link.mediaId)]);
+  return rows.map((row) => ({ personId: row.person_id, mediaId: Number(row.media_id) }));
 }
 
-/** Sets caption and/or date only where the row's are null. */
+/** Sets caption and/or date only where the row's are null. → whether that changed the row. */
 export async function fillCaption(tx, mediaId, { caption, date }) {
-  if (caption === null && date === null) return;
-  await tx.query('update media set caption = coalesce(caption, $2), date = coalesce(date, $3) where id = $1',
+  if (caption === null && date === null) return false;
+  const { rowCount } = await tx.query(
+    `update media set caption = coalesce(caption, $2), date = coalesce(date, $3)
+     where id = $1 and (caption is null and $2::text is not null or date is null and $3::text is not null)`,
     [mediaId, caption, date]);
+  return rowCount > 0;
 }
 
 /**
- * The media id for an uploaded file: a new row from the upload and its HEAD results (`head`, from
- * headUploads), or the existing row with this sha (another editor's upload since /process), whose null
- * caption/date are filled in. Throws TypeError without `head`, which prepare always provides for an upload.
+ * The media for an uploaded file: a new row from the upload and its HEAD results (`head`, from headUploads), or
+ * the existing row with this sha (another editor's upload since /process), whose null caption/date are filled
+ * in. → { id, filled (whether an existing row's caption or date was filled) }. Throws TypeError without `head`,
+ * which prepare always provides for an upload.
  */
 export async function mediaForUpload(tx, upload, head, { caption, date }) {
   if (!head) throw new TypeError(`No upload check for ${upload.sha256}.`);
@@ -133,19 +147,18 @@ export async function mediaForUpload(tx, upload, head, { caption, date }) {
      returning id`,
     [upload.sha256, `upload/${upload.fileName}`, upload.fileName, head.contentType, head.byteSize, objectKey, thumbKey,
       displayKey, head.width, head.height, caption, date]);
-  if (inserted) return Number(inserted.id);
+  if (inserted) return { id: Number(inserted.id), filled: false };
   const { rows: [existing] } = await tx.query('select id from media where sha256 = $1', [upload.sha256]);
-  await fillCaption(tx, existing.id, { caption, date });
-  return Number(existing.id);
+  return { id: Number(existing.id), filled: await fillCaption(tx, existing.id, { caption, date }) };
 }
 
 /**
- * The media id for a validated photo (see validatePhoto): its upload's row (mediaForUpload, given its HEAD
- * results), or its existing media, whose null caption/date are filled in (404 not_found, `<field>.mediaId`).
+ * The media for a validated photo (see validatePhoto): its upload's row (mediaForUpload, given its HEAD results),
+ * or its existing media, whose null caption/date are filled in (404 not_found, `<field>.mediaId`).
+ * → { id, filled }, as mediaForUpload.
  */
 export async function mediaForPhoto(tx, photo, head, field) {
   if (photo.upload) return mediaForUpload(tx, photo.upload, head, photo);
   const media = await requireMedia(tx, photo.mediaId, `${field}.mediaId`);
-  await fillCaption(tx, media.id, photo);
-  return media.id;
+  return { id: media.id, filled: await fillCaption(tx, media.id, photo) };
 }

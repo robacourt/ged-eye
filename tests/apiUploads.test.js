@@ -208,6 +208,14 @@ describe('headUploads', () => {
     expect(await failure(headUploads([JPG], missingType))).toMatchObject({ status: 400, code: 'invalid', field: 'upload.ext', index: 0 });
   });
 
+  it('names a content type mismatch by uploadField, as validation names the upload', async () => {
+    const head = fakeHead({ [`originals/${SHA_A}.jpg`]: { ...stored(`originals/${SHA_A}.jpg`), contentType: 'application/pdf' } });
+    expect(await failure(headUploads([PDF, JPG], head, { field: 'photos', uploadField: (i) => `photos.${i}.upload` })))
+      .toMatchObject({ status: 400, code: 'invalid', field: 'photos.1.upload.ext', index: 1 });
+    expect(await failure(headUploads([JPG], head, { field: 'photo', uploadField: () => 'photo.upload' })))
+      .toMatchObject({ status: 400, code: 'invalid', field: 'photo.upload.ext', index: 0 });
+  });
+
   it('accepts a content type with parameters or in another case', async () => {
     const head = fakeHead({ [`originals/${SHA_A}.jpg`]: { ...stored(`originals/${SHA_A}.jpg`), contentType: 'Image/JPEG; charset=binary' } });
     expect((await headUploads([JPG], head))[0].contentType).toBe('image/jpeg');

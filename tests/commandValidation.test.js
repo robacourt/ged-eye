@@ -420,6 +420,22 @@ describe('command validation', () => {
       }
     });
 
+    it('caps every list of people at 100', () => {
+      const people = (n) => ['I1', ...Array.from({ length: n - 1 }, (_, i) => `I${i + 2}`)];
+      const add = (personIds) => ({ personId: 'I1', photos: [{ mediaId: 5, personIds }] });
+      expect(commandFor('add_photos').validate(add(people(100))).photos[0].personIds).toHaveLength(100);
+      expect(v('add_photos', add(people(101)))).toBe('photos.0.personIds');
+
+      const update = { mediaId: 7, caption: null, date: null, personIds: ['I1'], expected: { caption: null, date: null, personIds: ['I1'] } };
+      expect(() => commandFor('update_photo').validate({ ...update, personIds: people(100), expected: { ...update.expected, personIds: people(100) } })).not.toThrow();
+      expect(v('update_photo', { ...update, personIds: people(101) })).toBe('personIds');
+      expect(v('update_photo', { ...update, expected: { ...update.expected, personIds: people(101) } })).toBe('expected.personIds');
+
+      const avatar = { personId: 'I1', crop: CROP, avatarKey: KEY, photo: { upload: upload(), personIds: people(100) } };
+      expect(() => commandFor('set_avatar').validate(avatar)).not.toThrow();
+      expect(v('set_avatar', { ...avatar, photo: { ...avatar.photo, personIds: people(101) } })).toBe('photo.personIds');
+    });
+
     it('add_photos: refuses a file or media id that appears twice in one batch', () => {
       const twice = (a, b) => v('add_photos', { personId: 'I1', photos: [{ ...a, personIds: ['I1'] }, { ...b, personIds: ['I1'] }] });
       expect(twice({ upload: upload() }, { upload: { ...upload(), fileName: 'other.jpg' } })).toBe('photos');
@@ -483,6 +499,15 @@ describe('command validation', () => {
       expect(v('set_avatar', { ...withPhoto, photo: { ...withPhoto.photo, upload: { ...upload(), ext: 'exe' } } })).toBe('photo.upload.ext');
     });
 
+    it('set_avatar: refuses an upload that is not an image (a PDF) before anything is checked or stored', () => {
+      const pdf = { personId: 'I1', photo: { upload: upload(SHA, 'pdf'), personIds: ['I1'] }, crop: CROP, avatarKey: KEY };
+      expect(failure(() => commandFor('set_avatar').validate(pdf)))
+        .toEqual({ status: 400, code: 'invalid', field: 'photo.upload.ext', message: "A PDF can't be an avatar: choose a photo." });
+      for (const ext of ['jpg', 'png', 'webp', 'gif', 'tif', 'avif']) {
+        expect(() => commandFor('set_avatar').validate({ ...pdf, photo: { ...pdf.photo, upload: upload(SHA, ext) } })).not.toThrow();
+      }
+    });
+
     it('set_avatar: a crop failing validateCrop is invalid, naming its field', () => {
       const ok = { personId: 'I1', mediaId: 7, crop: CROP, avatarKey: KEY };
       expect(v('set_avatar', { ...ok, crop: undefined })).toBe('crop');
@@ -521,14 +546,18 @@ describe('command validation', () => {
     const SHA2 = 'd'.repeat(64);
     const CROP = { x: 0, y: 0, w: 0.5, h: 0.5 };
 
-    /** A fake headObject: every key exists (as `contentType`) unless listed in `missing`; records the keys asked for. */
-    function fakeHead({ missing = [] } = {}) {
+    /**
+     * A fake headObject: every key exists, with its extension's content type (or `stored[key]`), unless listed in
+     * `missing`; records the keys asked for.
+     */
+    function fakeHead({ missing = [], stored = {} } = {}) {
       const keys = [];
       const types = { jpg: 'image/jpeg', pdf: 'application/pdf', webp: 'image/webp' };
       const headObject = vi.fn(async (key) => {
         keys.push(key);
         if (missing.includes(key)) return { status: 404 };
-        return { status: 200, contentType: types[key.split('.').pop()], contentLength: 1234, width: 4000, height: 3000 };
+        const contentType = stored[key] ?? types[key.split('.').pop()];
+        return { status: 200, contentType, contentLength: 1234, width: 4000, height: 3000 };
       });
       return { headObject, keys };
     }
@@ -564,6 +593,20 @@ describe('command validation', () => {
       const { headObject } = fakeHead({ missing: [`display/${SHA}.webp`] });
       await expect(command.prepare(clean, { headObject }))
         .rejects.toMatchObject({ status: 400, code: 'missing_upload', extra: { index: 1, field: 'photos' } });
+    });
+
+    it('add_photos: an upload stored as another type is invalid, naming photos.<index>.upload.ext', async () => {
+      const command = commandFor('add_photos');
+      const clean = command.validate({
+        personId: 'I1',
+        photos: [
+          { upload: { sha256: SHA2, ext: 'pdf', fileName: 'b.pdf' }, personIds: ['I1'] },
+          { upload: { sha256: SHA, ext: 'jpg', fileName: 'a.jpg' }, personIds: ['I1'] }
+        ]
+      });
+      const { headObject } = fakeHead({ stored: { [`originals/${SHA}.jpg`]: 'application/pdf' } });
+      await expect(command.prepare(clean, { headObject }))
+        .rejects.toMatchObject({ status: 400, code: 'invalid', extra: { field: 'photos.1.upload.ext', index: 1 } });
     });
 
     it('add_photos with only media ids HEADs nothing', async () => {
@@ -608,6 +651,8 @@ describe('command validation', () => {
       });
       await expect(command.prepare(withPhoto, fakeHead({ missing: [`originals/${SHA}.jpg`] })))
         .rejects.toMatchObject({ status: 400, code: 'missing_upload', extra: { index: 0, field: 'photo' } });
+      await expect(command.prepare(withPhoto, fakeHead({ stored: { [`originals/${SHA}.jpg`]: 'image/png' } })))
+        .rejects.toMatchObject({ status: 400, code: 'invalid', extra: { field: 'photo.upload.ext' } });
     });
 
     it('only add_photos and set_avatar have a prepare step', () => {

@@ -11,8 +11,8 @@ const EXPECTED_KEYS = ['caption', 'date', 'personIds'];
 
 /**
  * params: { mediaId, caption, date, personIds, expected: { caption, date, personIds }, focusId? }
- * personIds is the full, non-empty set of people the photo is shown for. `expected` holds exactly the three
- * values as the client saw them, for a compare-and-swap (not trimmed: they must match what is stored).
+ * personIds is the full, non-empty set of people the photo is shown for (at most 100). `expected` holds exactly
+ * the three values as the client saw them, for a compare-and-swap (not trimmed: they must match what is stored).
  * focusId picks whose view to return while they are still linked; else the first of personIds.
  */
 export function validate(params) {
@@ -55,7 +55,7 @@ export async function run(tx, { mediaId, caption, date, personIds, expected, foc
   if (removed.length > 0) {
     await tx.query('delete from person_media where media_id = $1 and person_id = any ($2::text[])', [mediaId, removed]);
   }
-  for (const id of added) await linkAtFront(tx, id, [mediaId]);
+  await linkAtFront(tx, added.map((id) => ({ personId: id, mediaId })));
 
   const focus = personIds.includes(focusId) ? focusId : personIds[0];
   return {

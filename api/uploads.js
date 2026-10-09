@@ -143,13 +143,15 @@ const isSize = (value) => Number.isSafeInteger(value) && value >= 0;
  * `uploads` are validated uploads; a null entry is skipped and gives null, so indices can follow the caller's
  * list. `contentType` and `byteSize` come from the original's response; `width` and `height` from its
  * x-amz-meta-* headers (both null unless both are present, and always null for PDFs).
- * Throws ApiError 400 missing_upload { index, field } when an object is absent (404/403), 400 invalid when the
- * stored content type doesn't match ext, and 503 busy on a timeout, a network error, a storage error status or
- * an original without a readable size. `index` is the upload's position in `uploads`, and `field` the `field`
- * option ('upload' by default). An ApiError thrown by `headObject` passes through unchanged.
+ * Throws ApiError 400 missing_upload { index, field } when an object is absent (404/403), 400 invalid
+ * { field: `<uploadField(index)>.ext`, index } when the stored content type doesn't match ext, and 503 busy on a
+ * timeout, a network error, a storage error status or an original without a readable size. `index` is the
+ * upload's position in `uploads`; `field` (the `field` option, 'upload' by default) names the list, and
+ * `uploadField(index)` the upload itself, as validation names it (by default `field`; for example
+ * (i) => `photos.${i}.upload`). An ApiError thrown by `headObject` passes through unchanged.
  * The first failure aborts every HEAD still in flight; a 503 is logged with `log`, at most once per call.
  */
-export async function headUploads(uploads, headObject, { field = 'upload', log = console.error } = {}) {
+export async function headUploads(uploads, headObject, { field = 'upload', uploadField = () => field, log = console.error } = {}) {
   const found = uploads.map(() => null);
   const tasks = [];
   uploads.forEach((upload, index) => {
@@ -173,7 +175,7 @@ export async function headUploads(uploads, headObject, { field = 'upload', log =
     if (!original) return;
     if (mediaType(head.contentType) !== type.contentType) {
       throw new ApiError(400, 'invalid', {
-        field: `${field}.ext`, index, message: `The stored file is not of type ${type.ext}.`
+        field: `${uploadField(index)}.ext`, index, message: `The stored file is not of type ${type.ext}.`
       });
     }
     // media.byte_size is not null: an original without a readable size is storage misbehaving, not the client.
