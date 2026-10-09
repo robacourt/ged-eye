@@ -1582,7 +1582,7 @@ Expected: PASS (8 tests). On 2026-10-09 no note had a `word@word` left after mas
 - [ ] **Step 5: Commit**
 
 ```bash
-git add api/privacy.js api/handler.js tests/apiHandler.test.js
+git add api/privacy.js api/handler.js tests/apiHandler.test.js tests/realGed.test.js
 git commit -m "Mask email addresses in note text before the API serves a person
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
@@ -2175,6 +2175,8 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
     - `-- --apply <plan> --confirm <host>` compare-and-swaps it in.
     - `-- --rollback <plan> --confirm <host>` undoes it.
     - It only writes `person.facts`, and skips anyone edited since the import.
+    - Rollback has the same guard, so once editing starts, rows edited after the backfill can only be restored from the `pre-facts-backfill-2026-10-09` branch.
+    - The CLI never overwrites an existing plan file; pass `--out <path>` for a new one.
   - **Last paragraph of "How it Works"** ("anything the parser skips today can be recovered later"): say that sources, family facts and photo titles are still only in the archive.
 
 - [ ] **Step 2: Full verification**
@@ -2203,7 +2205,7 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
   - a summary
   - the parity evidence (test names and counts)
   - the rollout steps from the spec
-  - a note that the backfill and `neon deploy` happen after merge, with the developer's OK
+  - a note that `neon deploy` runs from the approved PR head just before the merge, and the backfill runs after it, both only with the developer's OK
 
   End it with the Claude Code attribution line. Don't merge.
 
@@ -2220,7 +2222,9 @@ No commits. Scratch files go in the session scratchpad, written below as `<scrat
 node --env-file=<scratch>/rehearsal.env scripts/neon/backfillFacts.js --out <scratch>/plan-rehearsal.json
 ```
 
-Expect `unchanged 1602, changed 1392, edited 0, only in database 0, only in GEDCOM 0, column drift 0`, with I1, I23 and I443 samples that look right. Read the host with `node -p "require('<scratch>/plan-rehearsal.json').host"`.
+Expect `unchanged 1602, changed 1392, edited 0, only in database 0, only in GEDCOM 0, column drift 0`, with I1, I23 and I443 samples that look right.
+
+Read the host with `node -p "require('<scratch>/plan-rehearsal.json').host"`. Before Step 3, confirm that it equals the endpoint host from `get_connection_string`, and that it differs from production's host, `node --env-file=/Users/rob/src/ged_eye/.env.local -p "new URL(process.env.DATABASE_URL_UNPOOLED).hostname"`.
 - [ ] **Step 3: Apply.** Run:
 
 ```bash
@@ -2237,7 +2241,7 @@ Expect `{"direction":"apply","updated":1392,"verified":1392}`.
   - Copy the import artifacts it needs into the worktree's gitignored `.neon-import/`:
 
 ```bash
-cp /Users/rob/src/ged_eye/.neon-import/media-manifest.json /Users/rob/src/ged_eye/.neon-import/import-warnings.json .neon-import/
+mkdir -p .neon-import && cp /Users/rob/src/ged_eye/.neon-import/media-manifest.json /Users/rob/src/ged_eye/.neon-import/import-warnings.json .neon-import/
 ```
 
   - Then run:
@@ -2282,6 +2286,7 @@ http.createServer(async (req, res) => {
     - I1208: the death row showing only a note
     - mobile width via `resize_window`. If notes or disclosures look wrong there, fix the CSS in a follow-up commit and re-run Task 14 Step 2.
   - Take screenshots as evidence.
+  - If anything needed a fix, commit it, re-run Task 14 Step 2 (which rebuilds `docs/`), and push to the PR before Task 16.
 - [ ] **Step 7: Clean up.**
   - Stop both preview servers and remove the two `launch.json` entries.
   - Delete `<scratch>/rehearsal.env`.
@@ -2298,6 +2303,7 @@ Every command below runs from this worktree. The worktree has no `.env.local`, s
 
   Show the rehearsal numbers and screenshots.
 - [ ] **Step 2: Deploy the Function first, from the approved PR head.** If the PR merged first, Pages could serve the new bundle, which escapes `<…>`, while the old unmasking Function is still live, so I711's address would show.
+  - Confirm `git status --short` is empty, and that `git rev-parse HEAD` equals `gh pr view --json headRefOid -q .headRefOid`.
   - Run `cp /Users/rob/src/ged_eye/.neon .`. It is gitignored and links project `calm-band-80930621`, branch `production`.
   - Run `neon deploy`.
   - Check that `curl -s https://br-green-bonus-b26abimr-api.compute.c-6.eu-central-1.aws.neon.tech/person/I711` returns `[email hidden]` in its notes, and that `/health` is OK.
@@ -2326,7 +2332,7 @@ node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillFacts.js 
 ```
 
 Expect `{"direction":"apply","updated":1392,"verified":1392}`.
-- [ ] **Step 8: Verify after the backfill.**
+- [ ] **Step 8: Verify after the backfill.** Responses are `public, max-age=300`. If a curl or the verify-neon API sample shows pre-backfill data, wait 5 minutes and re-run before treating it as a failure.
   - Re-plan with `--out <scratch>/replan-production.json`. Expect `unchanged 2994, changed 0`.
   - Re-run the Step 4 verify-neon. Expect 0 unexplained.
   - `curl` the live API for `/person/I1`, `I23`, `I443`, `I711` and `I777`, and check the new keys and the masking.
