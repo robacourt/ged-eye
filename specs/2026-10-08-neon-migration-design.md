@@ -168,8 +168,12 @@ create table person_media (
 **Ordering rules:**
 
 - Parents are ordered partner1 then partner2.
-- A person's families (and so their spouses, marriages and per-family child grouping) are ordered by the numeric part of the family ID. This approximates creation order in Brother's Keeper.
-  - It differs from today's per-person FAMS order for 9 people. Their partnership colours and marriage order may change; this is an intended change.
+- A person's families (and so their parents, spouses, marriages, per-family child grouping and siblings) are ordered by when each family started (`db/migrations/005_family_chronological_order.sql`, 2026-10-09):
+  - the marriage year, or failing that the birth year of the eldest child (the baptism year stands in for a missing birth year);
+  - families with neither come last;
+  - ties are broken by the numeric part of the family ID (`sort_key`), which approximates creation order in Brother's Keeper.
+  - A year is the first standalone four-digit number in the raw GEDCOM date text, so `ABT 1850`, `21 MAR1813` and `12.2.1877` all count.
+  - Migrations 002–004 ordered by `sort_key` alone. Brother's Keeper's per-person FAMS order wasn't chronological either (I1253 lists an 1892 marriage before an 1878 one), so `verify-neon` now reports order differences from the legacy JSON for 16 people's spouses, 7 people's children and 35 people's siblings. Partnership colours and marriage order change for those people; this is an intended change.
 - Children within a family are ordered by `position`.
 - Photos are ordered by `person_media.position`.
 
@@ -187,7 +191,7 @@ create table person_media (
 
 ## `person_view` function
 
-`db/migrations/002_person_view.sql`, with `person_view` and `person_record` later replaced by `004_person_view_indexed.sql`. Version 004 computes the parent IDs once, so the sibling lookup is a BitmapOr over the two partner indexes; it takes about 0.8 ms on a 200,000-person tree. It also merges `facts` first and requires `facts` to be a JSON object.
+`db/migrations/002_person_view.sql`, with `person_view` and `person_record` later replaced by `004_person_view_indexed.sql`. Version 004 computes the parent IDs once, so the sibling lookup is a BitmapOr over the two partner indexes; it takes about 0.8 ms on a 200,000-person tree. It also merges `facts` first and requires `facts` to be a JSON object. Version 005 changes only the family order (see Ordering rules). Families are read through the `dated_family` view, which adds `start_year` and only looks up children when there's no marriage year. Every lookup stays index-backed, adding about 0.3 ms (median) on the real tree.
 
 ```sql
 create or replace function person_view(p_id text) returns jsonb
