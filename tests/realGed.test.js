@@ -1,28 +1,29 @@
-import { describe, it, expect } from 'vitest';
+// @vitest-environment node
+import { describe, it, expect, beforeAll } from 'vitest';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { parseGedcom } from '../scripts/gedParser.js';
+import { ROOT } from '../scripts/neon/cli.js';
+import * as current from '../scripts/gedParser.js';
+import * as legacy from './fixtures/legacyGedParser.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// The real tree is gitignored, so worktrees lack it:
+// GED_PATH=/Users/rob/src/ged_eye/acourt.ged npx vitest run tests/realGed.test.js
+const GED_PATH = process.env.GED_PATH || path.join(ROOT, 'acourt.ged');
 
-describe('Real GEDCOM File', () => {
-  it('should parse actual acourt.ged file', () => {
-    const gedPath = path.join(__dirname, '..', 'acourt.ged');
-    const gedContent = fs.readFileSync(gedPath, 'utf-8');
+describe.skipIf(!fs.existsSync(GED_PATH))('real GEDCOM file', () => {
+  let text;
+  let parsed;
+  let legacyParsed;
 
-    // Just test first 100 lines to debug
-    const first100Lines = gedContent.split('\n').slice(0, 100).join('\n');
+  beforeAll(() => {
+    text = fs.readFileSync(GED_PATH, 'utf-8');
+    parsed = current.parseGedcom(text);
+    legacyParsed = legacy.parseGedcom(text);
+  });
 
-    console.log('First few lines:', gedContent.split('\n').slice(0, 20));
-
-    const result = parseGedcom(gedContent);
-
-    console.log('Parsed individuals:', result.individuals.size);
-    console.log('Parsed families:', result.families.size);
-    console.log('First 5 individual IDs:', Array.from(result.individuals.keys()).slice(0, 5));
-
-    expect(result.individuals.size).toBeGreaterThan(0);
+  it('parses every person and family', () => {
+    expect(parsed.individuals.size).toBe(2994);
+    expect(parsed.families.size).toBe(1029);
+    expect(legacyParsed.individuals.size).toBe(2994);
   });
 });
