@@ -299,6 +299,93 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
+/* The header's avatar as a button that opens Change avatar, with a camera badge on its corner. */
+.person-avatar-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.person-avatar-button:hover .person-avatar-image {
+  border-color: #00d4ff;
+}
+
+.person-avatar-button:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+}
+
+.person-avatar-badge {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #0f0f1a;
+  border-radius: 50%;
+  background: #00d4ff;
+  color: #0f0f1a;
+}
+
+/* The Add tile at the end of the photo row: the thumbnails' size (80px, 70px on phones). */
+.person-photo-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 2px solid rgba(0, 212, 255, 0.45);
+  border-radius: 8px;
+  background: rgba(0, 212, 255, 0.08);
+  color: #00d4ff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.person-photo-add:hover {
+  background: rgba(0, 212, 255, 0.18);
+}
+
+.person-photo-add:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.person-photo-add-plus {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* On phones the panel is full width, with 15px padding and 8px gaps: four thumbnails and the Add tile share one
+   row, down to 44px on the narrowest screens. */
+@media (max-width: 768px) {
+  .person-photos-row-editing > .person-photo-thumbnail,
+  .person-photos-row-editing > .person-photo-add {
+    width: min(70px, calc((100vw - 62px) / 5));
+    height: min(70px, calc((100vw - 62px) / 5));
+  }
+}
+
+/* Files dragged over the details panel: a dashed outline only while dragging (personDetails.js). */
+.person-details.person-details-dropping {
+  outline: 2px dashed #00d4ff;
+  outline-offset: -6px;
+  background: rgba(0, 212, 255, 0.05);
+}
+
 .details-history-row {
   margin-top: 10px;
 }

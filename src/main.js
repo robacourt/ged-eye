@@ -16,7 +16,7 @@ const EDITOR_ROLES = new Set(['editor', 'admin']);
 const CONFLICT_TOAST_MS = 15_000;
 const EDITING_UNAVAILABLE = "Couldn't load the editing tools. Check your connection, then reload the page.";
 
-/** The editors' dialogs, History and Editors, with their stylesheet: loaded only once someone can edit. */
+/** The editors' dialogs, History, Editors and the photo dialogs, with their stylesheet: loaded only once someone can edit. */
 const defaultLoadEditing = () => import('./editing.js');
 
 function personIdFromUrl() {
@@ -97,7 +97,8 @@ const isPhotoViewerOpen = () => Boolean(document.querySelector('.photo-viewer.ph
  * Starts the app: the tree, the details panel, sign-in, and for editors the editing dialogs and Undo/Redo.
  * Everything it uses can be passed in (the tests do); by default the real modules are used.
  * `loadEditing` resolves to the editing UI (editing.js): `{ openPersonEditor, openFamilyEditor,
- * openRelativeDialog, openUnlinkConfirm, openHistoryPanel, openEditorsDialog, isEditorDialogOpen }`.
+ * openRelativeDialog, openUnlinkConfirm, openHistoryPanel, openEditorsDialog, isEditorDialogOpen,
+ * openAddPhotosDialog, openAvatarDialog, openPhotoEditDialog, mediaApi, commandErrorMessage, removePhotoParams }`.
  * @returns `{ showPerson, destroy }`
  */
 export function initApp({
@@ -233,10 +234,17 @@ export function initApp({
 
   // --- The details panel's edit controls (only once the editing UI is loaded) --------------------------------
 
+  /**
+   * The details panel's options: for everyone, onOpenPerson (the photo viewer's "Shown for" links); for editors,
+   * once the editing UI is here, the edit controls. The photo hooks open their dialogs synchronously: Add photos
+   * opens the file picker from inside the tap, which iOS requires. The viewer has closed itself before calling
+   * onEditPhoto, onUseAsAvatar or onRemovePhoto.
+   */
   function detailsOptions() {
-    if (!canEdit() || !editing) return { canEdit: false };
+    if (!canEdit() || !editing) return { canEdit: false, onOpenPerson: navigateTo };
     return {
       canEdit: true,
+      onOpenPerson: navigateTo,
       onEdit: editPerson,
       onAddRelative: (relation, person) => editing.openRelativeDialog({
         person, relationships: shown?.relationships ?? null, relation, api, loader,
@@ -249,8 +257,41 @@ export function initApp({
       onEditFamily: (family, person) => editing.openFamilyEditor({
         family, api, focusId: person.id, loader, onSaved: (result) => afterCommand(result, person.id), onReloaded
       }),
-      onShowHistory: (person) => openHistory({ id: person.id, name: person.name })
+      onShowHistory: (person) => openHistory({ id: person.id, name: person.name }),
+      onAddPhotos: (person, files) => editing.openAddPhotosDialog({
+        person, files, api, mediaApi: editing.mediaApi, onSaved: (result) => afterCommand(result, person.id)
+      }),
+      onChangeAvatar: (person) => editing.openAvatarDialog({
+        person, api, mediaApi: editing.mediaApi, onSaved: (result) => afterCommand(result, person.id)
+      }),
+      // onSaved(null) is the photo editor's Reload, after someone else changed or removed the photo.
+      onEditPhoto: (photo, person) => editing.openPhotoEditDialog({
+        photo, person, api,
+        onSaved: (result) => (result ? afterCommand(result, person.id) : settle(afterChange({}, { from: person.id })))
+      }),
+      onUseAsAvatar: (photo, person) => editing.openAvatarDialog({
+        person, api, mediaApi: editing.mediaApi, startWith: photo, onSaved: (result) => afterCommand(result, person.id)
+      }),
+      onRemovePhoto: (photo, person) => settle(removePhoto(photo, person))
     };
+  }
+
+  /**
+   * The viewer's Remove, already confirmed: sends remove_photo, then shows the result with Undo. There is no
+   * dialog to show a failure in, so failures are toasts; a photo someone else already removed reloads the person.
+   */
+  async function removePhoto(photo, person) {
+    let result;
+    try {
+      result = await api.runChange('remove_photo', editing.removePhotoParams(person.id, photo));
+    } catch (error) {
+      const stale = error?.code === 'stale';
+      if (!stale && (error?.name !== 'ApiError' || error.status >= 500)) console.error('Could not remove the photo', error);
+      showToast(stale ? 'That photo was already removed. Reloading.' : editing.commandErrorMessage(error), { kind: 'error' });
+      if (stale) await afterChange({}, { from: person.id });
+      return;
+    }
+    afterCommand(result, person.id);
   }
 
   async function editPerson(person) {

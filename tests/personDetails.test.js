@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { PersonDetails } from '../src/personDetails.js';
 
 const XSS = '<img src=x onerror="window.__xss = 1">';
@@ -34,6 +34,8 @@ const rowText = (el, title, label) =>
   sectionRows(el, title).find(row => row.querySelector('.detail-label')?.textContent.startsWith(label))?.textContent;
 const occurrences = (text, needle) => (text === undefined ? 0 : text.split(needle).length - 1);
 const lines = (count) => Array.from({ length: count }, (_, i) => `line ${i}`).join('\n');
+/** Every image in the panel, by class: the header's avatar is the only one a person without photos has. */
+const images = (el) => [...el.querySelectorAll('img')].map(img => img.className);
 
 describe('PersonDetails', () => {
   it('renders every data value as text, in every section', async () => {
@@ -43,7 +45,7 @@ describe('PersonDetails', () => {
       residences: [{ date: XSS }], otherFacts: [{ tag: XSS, value: XSS }], email: XSS, phone: XSS,
       marriages: [{ spouseId: 'I2', marriagePlace: XSS }]
     }, { spouses: [{ id: 'I2', name: XSS }] });
-    expect(el.querySelector('img')).toBeNull();
+    expect(images(el)).toEqual(['person-avatar-image']);
     expect(el.querySelector('[onerror]')).toBeNull();
     expect(el.querySelector('h2').textContent).toBe(XSS);
     const titles = ['Life Events', 'Marriages', 'Occupations', 'Other details', 'Census Records', 'Residences', 'Notes', 'Contact'];
@@ -62,7 +64,7 @@ describe('PersonDetails', () => {
 
   it('never takes a label or summary word from the data', async () => {
     const el = await render({ residences: [{ place: 'p', notes: ['n'], label: XSS, summaryWord: XSS }] });
-    expect(el.querySelector('img')).toBeNull();
+    expect(images(el)).toEqual(['person-avatar-image']);
     expect(sectionText(el, 'Residences')).not.toContain(XSS);
     expect(el.querySelector('details summary').textContent).toBe('Note');
   });
@@ -439,7 +441,7 @@ describe('PersonDetails', () => {
       const el = await renderEditable({ ...ROSE, name: XSS }, {
         ...RELS, parents: [{ id: 'I1', name: XSS }], spouses: [{ id: 'I3', name: XSS }], children: [{ id: 'I11', name: XSS, parentIds: ['I7', 'I3'] }]
       });
-      expect(el.querySelector('img')).toBeNull();
+      expect(images(el)).toEqual(['person-avatar-image']);
       expect(el.querySelector('[onerror]')).toBeNull();
       expect(familyRow(el, 'Parent', XSS).querySelector('.details-unlink').getAttribute('aria-label')).toBe(`Remove ${XSS} as a parent`);
       expect(familyRow(el, 'Child', XSS)).toBeDefined();
@@ -454,6 +456,390 @@ describe('PersonDetails', () => {
         button(el, '+ Spouse').click();
         el.querySelector('.details-unlink').click();
       }).not.toThrow();
+    });
+  });
+
+  describe('photos and the avatar', () => {
+    const BASE = 'https://media.test/bucket';
+    const DROPPING = 'person-details-dropping';
+    const photo = (id, extra = {}) => ({
+      id, key: `originals/${id}.jpg`, thumbKey: `thumbs/${id}.webp`, displayKey: `display/${id}.webp`, fileName: `${id}.jpg`,
+      contentType: 'image/jpeg', caption: null, date: null, width: 400, height: 300, people: [{ id: 'I7', name: 'Rose Smith' }],
+      ...extra
+    });
+    const LETTER = photo(9, { key: 'originals/9.pdf', thumbKey: null, displayKey: null, fileName: 'letter.pdf', contentType: 'application/pdf' });
+    const ROSE = { id: 'I7', name: 'Rose Smith', sex: 'F', photos: [photo(1), LETTER] };
+    const FILES = [new File(['x'], 'a.jpg', { type: 'image/jpeg' }), new File(['y'], 'b.pdf', { type: 'application/pdf' })];
+
+    let details;
+    let hooks;
+
+    beforeEach(() => {
+      vi.stubEnv('VITE_MEDIA_BASE_URL', BASE);
+      vi.stubEnv('VITE_MEDIA_API_URL', 'https://media-api.test');
+      hooks = {
+        canEdit: true, onAddPhotos: vi.fn(), onChangeAvatar: vi.fn(), onEditPhoto: vi.fn(), onUseAsAvatar: vi.fn(),
+        onRemovePhoto: vi.fn(), onOpenPerson: vi.fn()
+      };
+    });
+
+    afterEach(() => {
+      details?.photoViewer.destroy();
+      details = null;
+      vi.unstubAllEnvs();
+      vi.restoreAllMocks();
+    });
+
+    /** Renders `person` in a new panel, with the viewer's open and setEditorHooks watched. → the container. */
+    async function show(person, options) {
+      details?.photoViewer.destroy();
+      document.body.innerHTML = '<div id="details"></div>';
+      details = new PersonDetails(document.getElementById('details'));
+      vi.spyOn(details.photoViewer, 'open');
+      vi.spyOn(details.photoViewer, 'setEditorHooks');
+      await details.showPerson(person, null, options);
+      return document.getElementById('details');
+    }
+
+    /** Fires a drag event on `target`, carrying `files` (during a drag, browsers list only the types). → the event. */
+    function drag(target, type, { files = [], types = ['Files'] } = {}) {
+      const event = new Event(type, { bubbles: true, cancelable: true });
+      Object.defineProperty(event, 'dataTransfer', { value: { types, files, dropEffect: 'none' } });
+      target.dispatchEvent(event);
+      return event;
+    }
+
+    const panelOf = (el) => el.querySelector('.person-details');
+    const thumbnails = (el) => [...el.querySelectorAll('.person-photo-thumbnail')];
+
+    /** Whether the panel takes dropped files: a drag over it is accepted and outlined, and a drop adds them. */
+    function takesDrops(el) {
+      const panel = panelOf(el);
+      const entered = drag(panel, 'dragenter');
+      const over = drag(panel, 'dragover');
+      const outlined = panel.classList.contains(DROPPING);
+      const calls = hooks.onAddPhotos.mock.calls.length;
+      const dropped = drag(panel, 'drop', { files: FILES });
+      const added = hooks.onAddPhotos.mock.calls.length > calls;
+      return { entered: entered.defaultPrevented, over: over.defaultPrevented, outlined, dropped: dropped.defaultPrevented, added };
+    }
+    const NO_DROPS = { entered: false, over: false, outlined: false, dropped: false, added: false };
+
+    describe('the avatar', () => {
+      it('comes before the name for everyone, from the avatar key', async () => {
+        for (const options of [{}, { canEdit: false }, hooks]) {
+          const el = await show({ ...ROSE, avatarKey: 'avatars/abc-0123456789ab.webp' }, options);
+          const header = el.querySelector('.person-details-header');
+          expect(header.firstElementChild.classList.contains('person-avatar')).toBe(true);
+          expect(header.querySelector('.person-avatar-image').getAttribute('src')).toBe(`${BASE}/avatars/abc-0123456789ab.webp`);
+          expect(header.querySelector('.person-avatar-image').getAttribute('alt')).toBe('');
+          expect(header.querySelector('h2').textContent).toBe('Rose Smith');
+        }
+      });
+
+      it("is fetched with CORS, as the tree's copy is, so neither is served the other's cached response", async () => {
+        // The bucket sends Access-Control-Allow-Origin (and Vary: Origin) only to requests with an Origin, and the
+        // tree (Cytoscape) loads avatars with crossorigin="anonymous": a plain <img> would cache a response the
+        // tree's request then can't use.
+        for (const options of [{}, hooks]) {
+          const el = await show({ ...ROSE, avatarKey: 'avatars/abc-0123456789ab.webp' }, options);
+          expect(el.querySelector('.person-avatar-image').getAttribute('crossorigin')).toBe('anonymous');
+        }
+      });
+
+      it('is the placeholder for someone without one', async () => {
+        const src = async (sex) => (await show({ ...ROSE, sex }, {})).querySelector('.person-avatar-image').getAttribute('src');
+        expect(await src('F')).toMatch(/\/placeholders\/woman\.png$/);
+        expect(await src('M')).toMatch(/\/placeholders\/man\.png$/);
+        expect(await src('U')).toMatch(/\/placeholders\/man\.png$/);
+      });
+
+      it('is a picture for viewers, with no camera badge', async () => {
+        for (const options of [{}, { ...hooks, canEdit: false }]) {
+          const el = await show(ROSE, options);
+          const avatar = el.querySelector('.person-avatar');
+          expect(avatar.tagName).toBe('SPAN');
+          expect(el.querySelector('.person-avatar-badge')).toBeNull();
+          avatar.click();
+          expect(hooks.onChangeAvatar).not.toHaveBeenCalled();
+        }
+      });
+
+      it('is a "Change avatar" button with a camera badge for editors', async () => {
+        const el = await show(ROSE, hooks);
+        const avatar = el.querySelector('.person-details-header .person-avatar');
+        expect(avatar.tagName).toBe('BUTTON');
+        expect(avatar.type).toBe('button');
+        expect(avatar.getAttribute('aria-label')).toBe('Change avatar for Rose Smith');
+        expect(avatar.querySelector('.person-avatar-badge').getAttribute('aria-hidden')).toBe('true');
+        avatar.click();
+        expect(hooks.onChangeAvatar).toHaveBeenCalledTimes(1);
+        expect(hooks.onChangeAvatar).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }));
+      });
+
+      it('names someone without a name "Unnamed person" in its label', async () => {
+        const el = await show({ ...ROSE, name: '' }, hooks);
+        expect(el.querySelector('.person-avatar').getAttribute('aria-label')).toBe('Change avatar for Unnamed person');
+      });
+    });
+
+    describe('the photo row', () => {
+      it('shows up to 4 thumbnails, each opening the viewer at that photo', async () => {
+        const el = await show(ROSE, {});
+        const [image, letter] = thumbnails(el);
+        expect(thumbnails(el)).toHaveLength(2);
+        expect(image.tagName).toBe('BUTTON');
+        expect(image.getAttribute('aria-label')).toBe('Photo 1');
+        expect(image.querySelector('img').getAttribute('src')).toBe(`${BASE}/thumbs/1.webp`);
+        expect(letter.classList.contains('person-photo-file')).toBe(true);
+        expect(letter.querySelector('img')).toBeNull();
+        letter.click();
+        expect(details.photoViewer.open).toHaveBeenLastCalledWith('Rose Smith', ROSE.photos, 1);
+        image.click();
+        expect(details.photoViewer.open).toHaveBeenLastCalledWith('Rose Smith', ROSE.photos, 0);
+        expect(details.photoViewer.currentIndex).toBe(0);
+      });
+
+      it('puts "+N" on the 4th thumbnail when there are more than 4 photos, which opens the viewer there', async () => {
+        const photos = [1, 2, 3, 4, 5, 6].map(id => photo(id));
+        const el = await show({ ...ROSE, photos }, {});
+        const shown = thumbnails(el);
+        expect(shown).toHaveLength(4);
+        expect(shown.map(thumb => thumb.querySelector('.person-photo-more')?.textContent ?? null)).toEqual([null, null, null, '+2']);
+        expect(shown[3].getAttribute('aria-label')).toBe('Photo 4, and 2 more');
+        expect(shown[3].querySelector('.person-photo-more').getAttribute('aria-hidden')).toBe('true');
+        shown[3].click();
+        expect(details.photoViewer.open).toHaveBeenCalledWith('Rose Smith', photos, 3);
+        expect(details.photoViewer.currentIndex).toBe(3);
+      });
+
+      it('shows "+1" for 5 photos, and no "+N" for 4', async () => {
+        const more = async (count) => [...(await show({ ...ROSE, photos: Array.from({ length: count }, (_, i) => photo(i + 1)) }, {}))
+          .querySelectorAll('.person-photo-more')].map(overlay => overlay.textContent);
+        expect(await more(5)).toEqual(['+1']);
+        expect(await more(4)).toEqual([]);
+      });
+
+      it('has no row for viewers when there are no photos', async () => {
+        expect((await show({ ...ROSE, photos: [] }, {})).querySelector('.person-photos-row')).toBeNull();
+        expect((await show({ ...ROSE, photos: undefined }, {})).querySelector('.person-photos-row')).toBeNull();
+      });
+
+      it('has no Add tile for viewers', async () => {
+        for (const options of [{}, { ...hooks, canEdit: false }]) {
+          const el = await show(ROSE, options);
+          expect(el.querySelector('.person-photo-add')).toBeNull();
+          expect(el.querySelector('.person-photos-row').className).toBe('person-photos-row');
+        }
+      });
+
+      it('ends with an Add tile for editors, which opens Add photos straight away', async () => {
+        const el = await show(ROSE, hooks);
+        const add = el.querySelector('.person-photos-row').lastElementChild;
+        expect(add.classList.contains('person-photo-add')).toBe(true);
+        expect(add.tagName).toBe('BUTTON');
+        expect(add.getAttribute('aria-label')).toBe('Add photos for Rose Smith');
+        add.click();
+        // At once, inside the tap: the sheet opens the file picker from it, which iOS only allows there.
+        expect(hooks.onAddPhotos).toHaveBeenCalledTimes(1);
+        expect(hooks.onAddPhotos).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }));
+      });
+
+      it('holds just the Add tile for an editor when the person has no photos', async () => {
+        const el = await show({ ...ROSE, photos: [] }, hooks);
+        const row = el.querySelector('.person-photos-row');
+        expect([...row.children].map(child => child.className)).toEqual(['person-photo-add']);
+        expect(row.classList.contains('person-photos-row-editing')).toBe(true);
+      });
+
+      it('keeps the Add tile after a 4th thumbnail with "+N"', async () => {
+        const el = await show({ ...ROSE, photos: [1, 2, 3, 4, 5].map(id => photo(id)) }, hooks);
+        const row = el.querySelector('.person-photos-row');
+        expect(row.children).toHaveLength(5);
+        expect(row.lastElementChild.classList.contains('person-photo-add')).toBe(true);
+      });
+    });
+
+    describe('dropping files on the panel', () => {
+      it('is not offered to viewers', async () => {
+        for (const options of [{}, { ...hooks, canEdit: false }]) {
+          expect(takesDrops(await show(ROSE, options))).toEqual(NO_DROPS);
+        }
+        expect(hooks.onAddPhotos).not.toHaveBeenCalled();
+      });
+
+      it('adds the files for editors, with a dashed outline only while dragging', async () => {
+        const el = await show(ROSE, hooks);
+        const panel = panelOf(el);
+        const name = el.querySelector('.person-details-header h2');
+        expect(panel.classList.contains(DROPPING)).toBe(false);
+        expect(drag(panel, 'dragenter').defaultPrevented).toBe(true);
+        expect(panel.classList.contains(DROPPING)).toBe(true);
+        // Moving onto a child enters it before leaving the panel: still over the panel.
+        drag(name, 'dragenter');
+        drag(panel, 'dragleave');
+        expect(panel.classList.contains(DROPPING)).toBe(true);
+        const over = drag(name, 'dragover');
+        expect(over.defaultPrevented).toBe(true);
+        expect(over.dataTransfer.dropEffect).toBe('copy');
+        const dropped = drag(name, 'drop', { files: FILES });
+        expect(dropped.defaultPrevented).toBe(true);
+        expect(panel.classList.contains(DROPPING)).toBe(false);
+        expect(hooks.onAddPhotos).toHaveBeenCalledTimes(1);
+        expect(hooks.onAddPhotos).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }), FILES);
+      });
+
+      it('drops the outline when the drag leaves the panel', async () => {
+        const el = await show(ROSE, hooks);
+        const panel = panelOf(el);
+        const name = el.querySelector('.person-details-header h2');
+        drag(panel, 'dragenter');
+        drag(name, 'dragenter');
+        drag(panel, 'dragleave');
+        drag(name, 'dragleave');
+        expect(panel.classList.contains(DROPPING)).toBe(false);
+        expect(hooks.onAddPhotos).not.toHaveBeenCalled();
+      });
+
+      it('leaves drags of anything but files alone', async () => {
+        const el = await show(ROSE, hooks);
+        const panel = panelOf(el);
+        expect(drag(panel, 'dragenter', { types: ['text/plain'] }).defaultPrevented).toBe(false);
+        expect(drag(panel, 'dragover', { types: ['text/plain'] }).defaultPrevented).toBe(false);
+        expect(panel.classList.contains(DROPPING)).toBe(false);
+        expect(drag(panel, 'drop', { types: ['text/plain'] }).defaultPrevented).toBe(false);
+        expect(hooks.onAddPhotos).not.toHaveBeenCalled();
+      });
+
+      it('ignores a drop with no files in it', async () => {
+        const el = await show(ROSE, hooks);
+        drag(panelOf(el), 'drop', { files: [] });
+        expect(hooks.onAddPhotos).not.toHaveBeenCalled();
+      });
+
+      it('adds them for the person shown now, once, after re-rendering', async () => {
+        const el = await show(ROSE, hooks);
+        await details.showPerson({ ...ROSE, id: 'I8', name: 'Jack Smith' }, null, hooks);
+        drag(panelOf(el), 'drop', { files: FILES });
+        expect(hooks.onAddPhotos).toHaveBeenCalledTimes(1);
+        expect(hooks.onAddPhotos).toHaveBeenCalledWith(expect.objectContaining({ id: 'I8' }), FILES);
+      });
+
+      it('stops once the panel is re-rendered for a viewer, or cleared', async () => {
+        const el = await show(ROSE, hooks);
+        drag(panelOf(el), 'dragenter');
+        await details.showPerson(ROSE, null, { canEdit: false });
+        expect(panelOf(el).classList.contains(DROPPING)).toBe(false);
+        expect(takesDrops(el)).toEqual(NO_DROPS);
+        await details.showPerson(ROSE, null, hooks);
+        details.clear();
+        expect(takesDrops(el)).toEqual(NO_DROPS);
+      });
+    });
+
+    describe('without the media service (no VITE_MEDIA_API_URL)', () => {
+      beforeEach(() => vi.stubEnv('VITE_MEDIA_API_URL', ''));
+
+      it('gives editors no Add tile, camera badge or drop zone', async () => {
+        const el = await show(ROSE, hooks);
+        expect(el.querySelector('.person-avatar').tagName).toBe('SPAN');
+        expect(el.querySelector('.person-avatar-badge')).toBeNull();
+        expect(el.querySelector('.person-photo-add')).toBeNull();
+        expect(thumbnails(el)).toHaveLength(2);
+        expect(takesDrops(el)).toEqual(NO_DROPS);
+        expect(el.querySelector('.details-edit-person')).not.toBeNull(); // the other edit controls stay
+      });
+
+      it('has no row for an editor when there are no photos', async () => {
+        expect((await show({ ...ROSE, photos: [] }, hooks)).querySelector('.person-photos-row')).toBeNull();
+      });
+    });
+
+    describe('the viewer', () => {
+      it("gets onOpenPerson, for everyone", async () => {
+        for (const options of [{ onOpenPerson: hooks.onOpenPerson }, hooks]) {
+          await show(ROSE, options);
+          expect(details.photoViewer.onOpenPerson).toBe(hooks.onOpenPerson);
+        }
+        await show(ROSE, {});
+        expect(details.photoViewer.onOpenPerson).toBeNull();
+      });
+
+      it('gets no editor hooks for viewers', async () => {
+        for (const options of [{}, { ...hooks, canEdit: false }]) {
+          await show(ROSE, options);
+          expect(details.photoViewer.setEditorHooks).toHaveBeenLastCalledWith(null);
+        }
+      });
+
+      it("gets editor hooks that call the panel's with the photo and the person", async () => {
+        await show(ROSE, hooks);
+        const viewerHooks = details.photoViewer.setEditorHooks.mock.lastCall[0];
+        expect(Object.keys(viewerHooks).sort()).toEqual(['onEdit', 'onRemove', 'onUseAsAvatar']);
+        const [first] = ROSE.photos;
+        for (const [hook, option] of [['onEdit', 'onEditPhoto'], ['onUseAsAvatar', 'onUseAsAvatar'], ['onRemove', 'onRemovePhoto']]) {
+          viewerHooks[hook](first);
+          expect(hooks[option]).toHaveBeenCalledTimes(1);
+          expect(hooks[option]).toHaveBeenCalledWith(first, expect.objectContaining({ id: 'I7' }));
+        }
+      });
+
+      it('passes on only the hooks the panel was given', async () => {
+        await show(ROSE, { canEdit: true, onEditPhoto: hooks.onEditPhoto });
+        expect(Object.keys(details.photoViewer.setEditorHooks.mock.lastCall[0])).toEqual(['onEdit']);
+      });
+
+      it("takes the editor hooks away when the panel is re-rendered for a viewer", async () => {
+        await show(ROSE, hooks);
+        await details.showPerson(ROSE, null, { canEdit: false });
+        expect(details.photoViewer.setEditorHooks).toHaveBeenLastCalledWith(null);
+      });
+
+      it("reaches the panel's hooks from its own buttons", async () => {
+        const el = await show(ROSE, hooks);
+        thumbnails(el)[0].click();
+        const action = (name) => details.photoViewer.modal.querySelector(`.photo-viewer-action[data-action="${name}"]`);
+        action('people').click();
+        expect(hooks.onEditPhoto).toHaveBeenCalledWith(ROSE.photos[0], expect.objectContaining({ id: 'I7' }));
+        expect(details.photoViewer.isOpen).toBe(false);
+        thumbnails(el)[0].click();
+        action('avatar').click();
+        expect(hooks.onUseAsAvatar).toHaveBeenCalledWith(ROSE.photos[0], expect.objectContaining({ id: 'I7' }));
+        vi.spyOn(window, 'confirm').mockReturnValue(true);
+        thumbnails(el)[0].click();
+        action('remove').click();
+        expect(hooks.onRemovePhoto).toHaveBeenCalledWith(ROSE.photos[0], expect.objectContaining({ id: 'I7' }));
+      });
+
+      it('closes when the panel goes on to someone else, so its buttons never act for the wrong person', async () => {
+        const el = await show(ROSE, hooks);
+        thumbnails(el)[0].click();
+        await details.showPerson(ROSE, null, hooks); // the same person again, after a change: stays open
+        expect(details.photoViewer.isOpen).toBe(true);
+        await details.showPerson({ ...ROSE, id: 'I8', name: 'Jack Smith' }, null, hooks);
+        expect(details.photoViewer.isOpen).toBe(false);
+      });
+    });
+
+    it('renders names and photo fields in the photo controls as text', async () => {
+      const el = await show({
+        ...ROSE, name: XSS, avatarKey: `avatars/${XSS}.webp`,
+        photos: [photo(1, { caption: XSS, fileName: XSS, thumbKey: `thumbs/${XSS}.webp` })]
+      }, hooks);
+      expect(el.querySelector('[onerror]')).toBeNull();
+      expect(images(el)).toEqual(['person-avatar-image', '']);
+      expect(el.querySelector('.person-avatar').getAttribute('aria-label')).toBe(`Change avatar for ${XSS}`);
+      expect(el.querySelector('.person-photo-add').getAttribute('aria-label')).toBe(`Add photos for ${XSS}`);
+      expect(el.querySelector('.person-avatar-image').getAttribute('src')).toBe(`${BASE}/avatars/${encodeURIComponent(`${XSS}.webp`)}`);
+    });
+
+    it("doesn't break when a photo callback is missing", async () => {
+      const el = await show(ROSE, { canEdit: true });
+      expect(() => {
+        el.querySelector('.person-avatar').click();
+        el.querySelector('.person-photo-add').click();
+      }).not.toThrow();
+      expect(drag(panelOf(el), 'dragover').defaultPrevented).toBe(false); // nothing to take a drop
     });
   });
 });
