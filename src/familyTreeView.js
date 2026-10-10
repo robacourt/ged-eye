@@ -14,6 +14,45 @@ const ADD_EDGE_ID = 'add-relative-edge';
 const MIN_TARGET_PX = 44;
 /** The cytoscape events after which the "+" node is drawn somewhere else. */
 const VIEWPORT_EVENTS = 'pan zoom resize';
+/** The space between the "+" node and the person beside it, and between it and the next node in their row. */
+const ADD_GAP = 40;
+/** On a tree wider than the screen, the selected person's distance from the left (fitToHeight). */
+const SELECTED_LEFT_PX = 100;
+/** The least room left of a "+" button placed on the person's left, on a tree wider than the screen. */
+const ADD_LEFT_MIN_PX = 16;
+
+/**
+ * Where the "+" node goes, beside the selected person in their row (graph units): on their left when they have
+ * spouses and none is on their left, so it never sits between a couple; else on their right. The nodes of the
+ * row on that side move outward to make room.
+ * @param selected  `{ x, y, width }`: the selected person's centre and outer width
+ * @param addWidth  the "+" node's outer width
+ * @param spouseXs  the x of each spouse (the nodes sharing a partnership node with them)
+ * @param row       `[{ id, x }]`: the other nodes in their row
+ * @returns `{ add: { x, y }, moves: [{ id, x }] }`
+ */
+export function placeBeside({ selected, addWidth, spouseXs = [], row = [] }) {
+  const side = spouseXs.length > 0 && !spouseXs.some(x => x < selected.x) ? -1 : 1;
+  const add = { x: selected.x + side * (selected.width / 2 + ADD_GAP + addWidth / 2), y: selected.y };
+  const shift = side * (addWidth + ADD_GAP);
+  const moves = row.filter(node => (node.x - selected.x) * side > 0).map(node => ({ id: node.id, x: node.x + shift }));
+  return { add, moves };
+}
+
+/**
+ * The tree's horizontal pan (fitToHeight): centred when it fits the width `width`. A wider tree has the
+ * selected person SELECTED_LEFT_PX from the left, and when the "+" node (`add`: `{ x, width }` in graph units)
+ * is on their left, is moved right if need be so its button (at least MIN_TARGET_PX) starts ADD_LEFT_MIN_PX in.
+ * Without `add` (viewers) it is as it always was.
+ */
+export function horizontalPan({ bb, zoom, width, selectedX = null, add = null }) {
+  const graphWidth = bb.w * zoom;
+  if (graphWidth <= width || selectedX === null) return (width - graphWidth) / 2 - bb.x1 * zoom;
+  const panX = SELECTED_LEFT_PX - selectedX * zoom;
+  if (!add || add.x >= selectedX) return panX;
+  const left = add.x * zoom + panX - Math.max(MIN_TARGET_PX, add.width * zoom) / 2;
+  return left < ADD_LEFT_MIN_PX ? panX + (ADD_LEFT_MIN_PX - left) : panX;
+}
 
 export class FamilyTreeView {
   constructor(containerElement) {
@@ -645,20 +684,12 @@ export class FamilyTreeView {
     }
 
 
-    // For editors, the "+" node, joined to the selected person like another relative. Below a person with a
-    // partnership row (an edge from them to a partnership node), it goes two ranks down, into the children's
-    // row, rather than swelling the partnership row and sitting on the children's connector line.
+    // For editors, the "+" node, joined to the selected person (placed beside them after the layout)
     if (this.addRelativeHandler) {
-      const partnershipIds = new Set(elements.filter(e => e.data.type === 'partnership').map(e => e.data.id));
-      const hasPartnershipRow = elements.some(e =>
-        e.group === 'edges' && e.data.source === selectedPerson.id && partnershipIds.has(e.data.target));
       elements.push({ group: 'nodes', data: { id: ADD_NODE_ID, type: 'add' } });
       elements.push({
         group: 'edges',
-        data: {
-          id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add',
-          ...(hasPartnershipRow ? { minLen: 2 } : {})
-        }
+        data: { id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add' }
       });
     }
 
@@ -676,15 +707,15 @@ export class FamilyTreeView {
     // Add all new elements
     this.cy.add(elements);
 
-    // Run layout to calculate positions
-    const layout = this.cy.layout({
+    // Run layout to calculate positions, without the "+" node and its edge (placeAddNode puts it beside the
+    // selected person afterwards)
+    const layout = this.cy.elements().not('[type="add"]').layout({
       name: 'dagre',
       rankDir: 'TB',
       nodeSep: 40,
       rankSep: 80,
       padding: 30,
       ranker: 'network-simplex',
-      minLen: (edge) => edge.data('minLen') ?? 1, // the "+" node's edge may ask for 2 (buildGraph)
       animate: false
     });
 
@@ -699,9 +730,32 @@ export class FamilyTreeView {
       }
     });
 
+    this.placeAddNode();
+
     // Fit to fill height and center horizontally
     this.fitToHeight();
     this.placeAddButton();
+  }
+
+  /** Puts the "+" node (laid out apart) beside the selected person, making room in their row (placeBeside). */
+  placeAddNode() {
+    const add = this.cy.getElementById(ADD_NODE_ID);
+    const selected = this.cy.nodes('[type="selected"]');
+    if (add.empty() || selected.length === 0) return;
+    const { x, y } = selected.position();
+    const spouses = selected.outgoers('node[type="partnership"]').incomers('node').not(selected);
+    const row = this.cy.nodes().not(add).not(selected).filter(node => Math.abs(node.position().y - y) < 1);
+    const placed = placeBeside({
+      selected: { x, y, width: selected.outerWidth() },
+      addWidth: add.outerWidth(),
+      spouseXs: spouses.map(node => node.position().x),
+      row: row.map(node => ({ id: node.id(), x: node.position().x }))
+    });
+    add.position(placed.add);
+    for (const move of placed.moves) {
+      const node = this.cy.getElementById(move.id);
+      node.position({ x: move.x, y: node.position().y });
+    }
   }
 
   /**
@@ -725,24 +779,15 @@ export class FamilyTreeView {
     const maxZoom = 1.0;
     zoom = Math.min(zoom, maxZoom);
 
-    // Get the selected person's position
+    // Centred when the graph fits the width; else the selected person on the left with a margin, and an
+    // editor's "+" on their left kept in view
     const selectedNode = cy.nodes('[type="selected"]');
-    let panX;
-
-    const graphWidth = bb.w * zoom;
-
-    if (graphWidth <= w) {
-      // Graph fits within viewport - center it horizontally
-      panX = (w - graphWidth) / 2 - bb.x1 * zoom;
-    } else if (selectedNode.length > 0) {
-      // Graph is wider than viewport - position selected person on left with margin
-      const selectedPos = selectedNode.position();
-      const horizontalMargin = 100;
-      panX = horizontalMargin - selectedPos.x * zoom;
-    } else {
-      // Fallback: center horizontally
-      panX = (w - graphWidth) / 2 - bb.x1 * zoom;
-    }
+    const addNode = cy.getElementById(ADD_NODE_ID);
+    const panX = horizontalPan({
+      bb, zoom, width: w,
+      selectedX: selectedNode.length > 0 ? selectedNode.position().x : null,
+      add: selectedNode.length > 0 && !addNode.empty() ? { x: addNode.position().x, width: addNode.outerWidth() } : null
+    });
 
     const pan = {
       x: panX,

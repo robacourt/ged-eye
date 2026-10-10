@@ -22,11 +22,16 @@ vi.mock('cytoscape', () => {
         for (const handler of listeners.get(name) ?? []) handler(event);
       },
       add(added) { elements = added; },
-      elements: () => ({ remove() { elements = []; }, boundingBox: () => ({ x1: 0, y1: 0, w: 400, h: 400 }) }),
-      layout(layoutOptions) {
-        cy.layoutOptions = layoutOptions;
-        return { run() {} };
-      },
+      elements: () => ({
+        remove() { elements = []; },
+        boundingBox: () => ({ x1: 0, y1: 0, w: 400, h: 400 }),
+        // Only what the tree uses: all but the elements of one type, to lay out (recorded as `laidOut`).
+        not(selector) {
+          const type = /^\[type="(\w+)"\]$/.exec(selector)[1];
+          const kept = elements.filter(element => element.data.type !== type);
+          return { layout: () => ({ run() { cy.laidOut = kept; } }) };
+        }
+      }),
       nodes: () => ({ length: 0, forEach() {} }),
       width: () => 800,
       height: () => 500,
@@ -50,7 +55,7 @@ vi.mock('cytoscape', () => {
 vi.mock('cytoscape-dagre', () => ({ default: () => {} }));
 vi.mock('../src/dataLoader.js', () => ({ loadPersonWithFamily: vi.fn(), prefetchFamily: vi.fn() }));
 
-const { FamilyTreeView } = await import('../src/familyTreeView.js');
+const { FamilyTreeView, placeBeside, horizontalPan } = await import('../src/familyTreeView.js');
 const { loadPersonWithFamily } = await import('../src/dataLoader.js');
 
 const XSS = '<img src=x onerror="window.__xss = 1">';
@@ -92,9 +97,10 @@ afterEach(() => {
 });
 
 describe('FamilyTreeView: the add node', () => {
-  it('is not in the tree without a handler, and there is no button', async () => {
+  it('is not in the tree without a handler (viewers), and there is no button', async () => {
     await view.loadPerson('I7');
     expect(fake.cy.added().length).toBeGreaterThan(0);
+    expect(fake.cy.laidOut).toEqual(fake.cy.added()); // the whole tree is laid out, as before
     expect(addNode()).toBeUndefined();
     expect(addEdge()).toBeUndefined();
     expect(button()).toBeNull();
@@ -130,48 +136,13 @@ describe('FamilyTreeView: the add node', () => {
     expect(fake.cy.added().filter(element => element.data.id === 'add-relative')).toHaveLength(1);
   });
 
-  it('goes two ranks down, into the children\'s row, when the person has a partnership row below them', async () => {
-    vi.spyOn(console, 'log').mockImplementation(() => {}); // buildGraph logs the partnerships it makes
-    people.set('I9', person('I9', 'Tom Brown'));
-    people.set('I7', person('I7', 'Rose Smith', { spouseIds: ['I9'] }));
-    loadPersonWithFamily.mockImplementation(async (id) => ({
-      person: people.get(id), family: id === 'I7' ? [people.get('I9')] : [], relationships: RELS
-    }));
+  it('is laid out apart: dagre lays out the tree without the node and its edge', async () => {
     view.setAddRelative(vi.fn());
     await view.loadPerson('I7');
-    expect(fake.cy.added().some(element => element.data.type === 'partnership')).toBe(true);
-    expect(addEdge().data.minLen).toBe(2);
-
-    // A partnership made from a child's parents, though the partner isn't among the person's spouses.
-    people.set('I10', person('I10', 'Amy Smith', { parentIds: ['I8', 'I12'] }));
-    people.set('I12', person('I12', 'Ann Jones'));
-    loadPersonWithFamily.mockImplementation(async (id) => ({
-      person: people.get(id),
-      family: id === 'I8' ? [people.get('I10'), people.get('I12')] : [],
-      relationships: id === 'I8' ? { ...RELS, children: [people.get('I10')] } : RELS
-    }));
-    await view.loadPerson('I8');
-    expect(addEdge().data.minLen).toBe(2);
-  });
-
-  it('stays in the next rank for a person without a partnership row: no spouse, or one not in the tree', async () => {
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-    view.setAddRelative(vi.fn());
-    await view.loadPerson('I7'); // parents above (their partnership is above her), no spouse
-    expect(addEdge().data).not.toHaveProperty('minLen');
-    people.set('I8', person('I8', 'Jack Smith', { spouseIds: ['I99'] })); // spouse not loaded, no children
-    await view.loadPerson('I8');
-    expect(fake.cy.added().some(element => element.data.type === 'partnership')).toBe(false);
-    expect(addEdge().data).not.toHaveProperty('minLen');
-  });
-
-  it('passes each edge\'s minLen to dagre, 1 by default', async () => {
-    await view.loadPerson('I7');
-    const { name, minLen } = fake.cy.layoutOptions;
-    expect(name).toBe('dagre');
-    const edge = (data) => ({ data: (key) => data[key] });
-    expect(minLen(edge({ minLen: 2 }))).toBe(2);
-    expect(minLen(edge({}))).toBe(1);
+    expect(addNode()).toBeDefined();
+    expect(fake.cy.laidOut.some(element => element.data.type === 'add')).toBe(false);
+    expect(fake.cy.laidOut).toEqual(fake.cy.added().filter(element => element.data.type !== 'add'));
+    expect(fake.cy.laidOut.some(element => element.data.id === 'I7')).toBe(true);
   });
 
   it('is never selected: taps on it do nothing, as on partnership nodes', async () => {
@@ -325,5 +296,62 @@ describe('FamilyTreeView: the add button', () => {
     button().click();
     view.setAddRelative(null);
     expect(menus[2].close).toHaveBeenCalled();
+  });
+});
+
+describe('placeBeside', () => {
+  // Rose at 0, 186 wide with her border; the "+" 114 wide; a relative either side of her in her row.
+  const selected = { x: 0, y: 100, width: 186 };
+  const row = [{ id: 'L', x: -250 }, { id: 'R', x: 250 }];
+  const place = (spouseXs) => placeBeside({ selected, addWidth: 114, spouseXs, row });
+  // 93 + 40 + 57 from her centre; the row on that side moves out by 114 + 40.
+
+  it('puts the "+" on the right of someone without a spouse, moving the right of the row out', () => {
+    expect(place([])).toEqual({ add: { x: 190, y: 100 }, moves: [{ id: 'R', x: 404 }] });
+  });
+
+  it('puts it on the left when the spouses are all on the right, so it isn\'t between the couple', () => {
+    expect(place([250])).toEqual({ add: { x: -190, y: 100 }, moves: [{ id: 'L', x: -404 }] });
+  });
+
+  it('puts it on the right when a spouse is on the left', () => {
+    expect(place([-250])).toEqual({ add: { x: 190, y: 100 }, moves: [{ id: 'R', x: 404 }] });
+  });
+
+  it('puts it on the right when there are spouses on both sides', () => {
+    expect(place([-250, 250])).toEqual({ add: { x: 190, y: 100 }, moves: [{ id: 'R', x: 404 }] });
+  });
+
+  it('moves every node on that side of the row, and only those', () => {
+    const wide = [{ id: 'L2', x: -500 }, { id: 'L1', x: -250 }, { id: 'R1', x: 250 }, { id: 'R2', x: 600 }];
+    expect(placeBeside({ selected, addWidth: 114, spouseXs: [], row: wide }).moves)
+      .toEqual([{ id: 'R1', x: 404 }, { id: 'R2', x: 754 }]);
+    expect(placeBeside({ selected, addWidth: 114, spouseXs: [250], row: wide }).moves)
+      .toEqual([{ id: 'L2', x: -654 }, { id: 'L1', x: -404 }]);
+  });
+});
+
+describe('horizontalPan', () => {
+  const wide = { x1: 0, w: 2000 }; // 1000px wide at zoom 0.5: wider than a 375px phone
+
+  it('centres a tree that fits, wherever the "+" is', () => {
+    const bb = { x1: -100, w: 400 };
+    expect(horizontalPan({ bb, zoom: 0.5, width: 375, selectedX: 0, add: { x: -190, width: 114 } })).toBe(137.5);
+    expect(horizontalPan({ bb, zoom: 0.5, width: 375, selectedX: 0 })).toBe(137.5);
+  });
+
+  it('keeps the selected person 100px from the left of a wider tree, for viewers and a "+" on the right', () => {
+    expect(horizontalPan({ bb: wide, zoom: 0.5, width: 375, selectedX: 400 })).toBe(-100);
+    expect(horizontalPan({ bb: wide, zoom: 0.5, width: 375, selectedX: 400, add: { x: 590, width: 114 } })).toBe(-100);
+  });
+
+  it('moves the tree right so a "+" on the left keeps its button 16px in', () => {
+    // At pan -100 the "+" (centre 210) would start at 105 - 100 - 28.5 = -23.5px: 39.5px more.
+    expect(horizontalPan({ bb: wide, zoom: 0.5, width: 375, selectedX: 400, add: { x: 210, width: 114 } })).toBe(-60.5);
+  });
+
+  it('leaves a "+" on the left alone when it is already far enough in, counting the 44px button', () => {
+    // zoom 0.2: pan 20; the button is 44px (the node only 22.8), so it starts at 42 + 20 - 22 = 40px.
+    expect(horizontalPan({ bb: wide, zoom: 0.2, width: 375, selectedX: 400, add: { x: 210, width: 114 } })).toBe(20);
   });
 });

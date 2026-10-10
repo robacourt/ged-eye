@@ -16,8 +16,14 @@ For editors, the family tree shows a "+" node joined to the highlighted person, 
 - **The node:**
   - id `add-relative`, `type: 'add'`;
   - a dashed circle with a "+", slightly smaller than a relative node;
-  - joined to the highlighted person by a dashed edge (`type: 'add'`), from the person to the node.
-- **Layout:** the node and edge are part of the dagre layout, so the node takes a place of its own in the row below the person. It moves with whoever is highlighted, and it is rebuilt whenever the tree is rebuilt.
+  - joined to the highlighted person by a short dashed edge (`type: 'add'`), from the person to the node;
+  - beside the person, in their own row.
+- **Layout:**
+  - The node and edge are left out of the dagre layout. After the layout, the node is placed beside the highlighted person, at the same height, 40px clear of them at full size.
+  - **Which side:** on the left when the person has spouses (the nodes sharing a partnership node with them) and none of them is on the left, so it never sits between a couple. Otherwise it goes on the right.
+  - The nodes in the person's row on that side move outward by the node's width plus 40px to make room. Their edges re-route themselves.
+  - On a tree wider than the screen, the person is kept 100px from the left as before. If the "+" is on their left, the view moves right as needed so its button starts at least 16px in. Viewers' trees are unchanged.
+  - It moves with whoever is highlighted, and it is rebuilt whenever the tree is rebuilt.
 - **The control:** an HTML `<button>` sits over the node, kept in step with the node's rendered position on every pan, zoom, resize and layout.
   - It is at least 44×44px, whatever the zoom.
   - It can take keyboard focus.
