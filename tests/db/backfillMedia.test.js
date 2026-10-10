@@ -2,9 +2,14 @@
 // The media backfill against the test branch, with a fake bucket in memory and images made by sharp.
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import { createHash } from 'node:crypto';
+import pg from 'pg';
 import sharp from 'sharp';
 import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
-import { IMMUTABLE, apply, reportGps } from '../../scripts/neon/backfillMedia.js';
+import { apply, reportGps } from '../../scripts/neon/backfillMedia.js';
+
+const IMMUTABLE = 'public, max-age=31536000, immutable';
+// begin_change's global write lock (006): pg_advisory_xact_lock(7262021).
+const WRITE_LOCK = 7262021;
 
 const sha = (buffer) => createHash('sha256').update(buffer).digest('hex');
 const solid = (width, height) => sharp({ create: { width, height, channels: 3, background: '#c33' } });
@@ -24,23 +29,36 @@ const IMAGES = {
 for (const image of Object.values(IMAGES)) image.sha = sha(image.body);
 const originalKey = ({ sha: s, ext }) => `originals/${s}.${ext}`;
 
-const FIXTURE = `insert into media (sha256, original_path, file_name, content_type, byte_size, object_key, thumb_key, display_key,
-                                    width, height) values ${Object.entries(IMAGES).map(([name, image]) => `(
+/** An insert of a media row for each of `images` ({ name: image }). */
+const insertImages = (images) => `insert into media (sha256, original_path, file_name, content_type, byte_size, object_key,
+                                                      thumb_key, display_key, width, height) values ${Object.entries(images).map(([name, image]) => `(
   '${image.sha}', 'Data/Media/${name}.${image.ext}', '${name}.${image.ext}', '${image.type}', ${image.body.length},
   '${originalKey(image)}', ${image.thumb ? `'thumbs/${image.sha}.webp'` : 'null'},
   ${image.display ? `'display/${image.sha}.webp', 200, 100` : 'null, null, null'})`).join(',')}`;
+const FIXTURE = insertImages(IMAGES);
 // Tree tables can't be truncated after 006, and every write to them is a recorded change.
 const CLEAR_TREE = 'delete from person_media; delete from media; delete from family_child; delete from family; delete from person';
 
-/** A bucket in memory holding the originals, with putOnce's semantics; `onGet(key)` runs before each read. */
-function fakeStorage({ onGet } = {}) {
-  const objects = new Map(Object.values(IMAGES).filter(image => !image.absent).map(image => [originalKey(image), image.body]));
+/**
+ * A bucket in memory holding the originals of IMAGES and `extra`, with putOnce's semantics. `onGet(key)` runs before
+ * each read, and each read takes `delayMs`; `downloads.most` is the most reads that were ever under way at once.
+ */
+function fakeStorage({ onGet, extra = {}, delayMs = 0 } = {}) {
+  const objects = new Map(Object.values({ ...IMAGES, ...extra }).filter(image => !image.absent).map(image => [originalKey(image), image.body]));
   const puts = [];
+  const downloads = { now: 0, most: 0 };
   return {
     puts,
+    downloads,
     async get(key) {
-      await onGet?.(key);
-      return objects.get(key) ?? null;
+      downloads.most = Math.max(downloads.most, ++downloads.now);
+      try {
+        await onGet?.(key);
+        if (delayMs) await new Promise(resolve => setTimeout(resolve, delayMs));
+        return objects.get(key) ?? null;
+      } finally {
+        downloads.now--;
+      }
     },
     async putOnce(key, body, options) {
       if (objects.has(key)) return 'exists';
@@ -63,6 +81,16 @@ describe.skipIf(!url)('backfillMedia (database)', { timeout: 60000 }, () => {
   const quiet = () => {
     const lines = [];
     return { lines, log: (line) => lines.push(line) };
+  };
+  const busy = (line) => /write lock is busy/.test(line);
+
+  /** A second session holding begin_change's write lock in an open transaction, as an editor's command would. */
+  const holdWriteLock = async () => {
+    const blocker = new pg.Client({ connectionString: url });
+    await blocker.connect();
+    await blocker.query('begin');
+    await blocker.query('select pg_advisory_xact_lock($1)', [WRITE_LOCK]);
+    return blocker;
   };
 
   beforeAll(async () => {
@@ -172,5 +200,90 @@ describe.skipIf(!url)('backfillMedia (database)', { timeout: 60000 }, () => {
     expect(storage.puts).toEqual([]);
     expect(await changesSince()).toEqual([]);
     expect(await media('turned')).toMatchObject({ display_key: null, width: null });
+  });
+
+  it('downloads at most 4 originals at once', async () => {
+    const extra = {};
+    for (let i = 0; i < 6; i++) {
+      const body = await solid(20 + i, 20).jpeg().toBuffer();
+      extra[`more${i}`] = { ext: 'jpg', type: 'image/jpeg', body, sha: sha(body), thumb: true };
+    }
+    await withChange(client, insertImages(extra));
+    const storage = fakeStorage({ extra, delayMs: 50 });
+
+    expect(await apply(client, storage, quiet())).toMatchObject({ pending: 10, updated: 8 });
+    expect(storage.downloads.most).toBe(4);
+  });
+
+  it('holds no change, transaction or write lock open while it makes the images', async () => {
+    const seen = [];
+    const storage = fakeStorage({
+      onGet: async () => {
+        // On apply's own connection. Outside a transaction each statement is its own, with its own transaction id.
+        const state = await one(`select coalesce(current_setting('ged.change_id', true), '') as change, txid_current()::text as xid,
+          (select count(*)::int from pg_locks where locktype = 'advisory' and classid = 0 and objid = $1) as write_locks`, [WRITE_LOCK]);
+        const { xid } = await one('select txid_current()::text as xid');
+        seen.push({ change: state.change, write_locks: state.write_locks, own_transactions: state.xid !== xid });
+      }
+    });
+
+    expect(await apply(client, storage, quiet())).toMatchObject({ updated: 2 });
+    expect(seen).toHaveLength(4);
+    for (const state of seen) expect(state).toEqual({ change: '', write_locks: 0, own_transactions: true });
+  });
+
+  it('retries a busy write lock, keeping the images it made', async () => {
+    const blocker = await holdWriteLock();
+    let freed = null;
+    const lines = [];
+    const log = (line) => {
+      lines.push(line);
+      if (busy(line) && !freed) freed = blocker.query('commit'); // the editor finishes
+    };
+    try {
+      const result = await apply(client, fakeStorage(), { log, lockTimeout: '300ms', retryDelay: () => 1000 });
+      expect(result).toMatchObject({ updated: 2 });
+      expect(lines.filter(busy).length).toBeGreaterThanOrEqual(1);
+      expect((await changesSince()).map(change => change.kind)).toEqual(['backfill_media']);
+    } finally {
+      await (freed ?? blocker.query('rollback'));
+      await blocker.end();
+    }
+  });
+
+  it('gives up after 3 retries of a write lock that stays busy, recording nothing', async () => {
+    const blocker = await holdWriteLock();
+    const lines = [];
+    let error;
+    try {
+      error = await apply(client, fakeStorage(), { log: (line) => lines.push(line), lockTimeout: '100ms', retryDelay: () => 10 })
+        .catch(e => e);
+    } finally {
+      await blocker.query('rollback');
+      await blocker.end();
+    }
+    expect(error.code).toBe('55P03');
+    expect(lines.filter(busy)).toHaveLength(3);
+    expect(await changesSince()).toEqual([]);
+    expect((await media('turned')).display_key).toBeNull();
+  });
+
+  it("doesn't crash on a database connection error while it makes the images, and records nothing", async () => {
+    const listeners = client.listenerCount('error');
+    let failed = false;
+    const storage = fakeStorage({
+      onGet: async () => {
+        if (failed) return;
+        failed = true;
+        client.emit('error', new Error('Connection terminated unexpectedly')); // throws if nobody listens
+      }
+    });
+
+    const error = await apply(client, storage, quiet()).catch(e => e);
+    expect(error).toBeInstanceOf(Error);
+    expect(error.message).toMatch(/Connection terminated unexpectedly.*re-run/);
+    expect(storage.puts).toHaveLength(3); // the images were still made and uploaded
+    expect(await changesSince()).toEqual([]);
+    expect(client.listenerCount('error')).toBe(listeners);
   });
 });

@@ -100,7 +100,7 @@ async function mapSharpErrors(operation) {
  * metadata().exif or a GIF's XMP in metadata().xmp, so those come from the file's own bytes: every IFD of a TIFF is
  * checked for a GPSInfo pointer, and a GIF counts if its bytes mention GPSLatitude.
  */
-function fileHasLocation(buffer, type, meta) {
+function locationIn(buffer, type, meta) {
   if (hasLocation(meta)) return true;
   if (type.ext === 'tif') return tiffHasGps(buffer);
   if (type.ext === 'gif') return buffer.includes('GPSLatitude');
@@ -152,6 +152,18 @@ export async function reencodeWithoutMetadata(buffer, type, meta, limitInputPixe
 }
 
 /**
+ * Does the file carry location data, by processFile's rule (so exactly the files it re-encodes)? Reads the metadata
+ * and, for a TIFF or GIF, the file's own bytes, without decoding the image. `buffer` is a Buffer or Uint8Array.
+ * → false for a PDF. Throws ImagingError: inspect's codes, 'too_many_pixels', or 'unreadable'.
+ */
+export async function fileHasLocation(buffer, { limitInputPixels = LIMIT_PIXELS } = {}) {
+  const bytes = asBuffer(buffer);
+  const { type } = inspect(bytes);
+  if (!type.image) return false;
+  return locationIn(bytes, type, await readMetadata(bytes, limitInputPixels));
+}
+
+/**
  * Checks and processes an upload. → { sha256, type, original: { body, reencoded }, display, thumb, width, height }
  * - `buffer` is a Buffer or Uint8Array. `original.body` is a Buffer of its bytes (`buffer` itself when that is a
  *   Buffer) unless it has location data, when it is re-encoded without it.
@@ -163,7 +175,7 @@ export async function processFile(buffer, { limitInputPixels = LIMIT_PIXELS } = 
   const { sha256, type } = inspect(bytes);
   if (!type.image) return { sha256, type, original: { body: bytes, reencoded: false }, display: null, thumb: null, width: null, height: null };
   const meta = await readMetadata(bytes, limitInputPixels);
-  const original = fileHasLocation(bytes, type, meta)
+  const original = locationIn(bytes, type, meta)
     ? { body: await reencodeWithoutMetadata(bytes, type, meta, limitInputPixels), reencoded: true }
     : { body: bytes, reencoded: false };
   const { display, thumb, width, height } = await displayAndThumb(bytes, meta, limitInputPixels);

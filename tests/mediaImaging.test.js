@@ -7,7 +7,7 @@ import { MAX_UPLOAD_BYTES, TYPES, sniff } from '../media/types.js';
 import { CropError } from '../media/crop.js';
 import {
   AVATAR_SIZE, DISPLAY_SIZE, ImagingError, LIMIT_PIXELS, THUMB_SIZE,
-  derivatives, hasGps, hasLocation, inspect, processFile, reencodeWithoutMetadata, renderAvatar, sha256Hex
+  derivatives, fileHasLocation, hasGps, hasLocation, inspect, processFile, reencodeWithoutMetadata, renderAvatar, sha256Hex
 } from '../media/imaging.js';
 
 /** A minimal uncompressed 8-bit greyscale TIFF, one page per { width, height }. */
@@ -292,6 +292,33 @@ describe('media/imaging hasGps and hasLocation', () => {
     expect(hasLocation({ xmp: Buffer.from('<rdf:Description exif:GPSLatitude="51,30.0N"/>') })).toBe(true);
     expect(hasLocation({ xmp: Buffer.from('<rdf:Description dc:title="Ian"/>') })).toBe(false);
     expect(hasLocation({})).toBe(false);
+  });
+});
+
+describe('media/imaging fileHasLocation', () => {
+  const withLocation = { gpsJpeg, iccGpsJpeg, gpsPng, xmpJpeg, gpsTiff, gpsOnPage2Tiff, turnedGpsTiff, xmpGif };
+  const without = { plainJpeg, plainPng, plainTiff, twoPageTiff, mixedTiff, animatedGif, pdf };
+
+  it('finds location data in EXIF, XMP, any TIFF page and GIF bytes, and none elsewhere', async () => {
+    for (const [name, file] of Object.entries(withLocation)) expect(await fileHasLocation(file), name).toBe(true);
+    for (const [name, file] of Object.entries(without)) expect(await fileHasLocation(file), name).toBe(false);
+  });
+
+  it('agrees with processFile, which re-encodes exactly the files with location data', async () => {
+    for (const [name, file] of Object.entries({ ...withLocation, ...without })) {
+      expect(await fileHasLocation(file), name).toBe((await processFile(file)).original.reencoded);
+    }
+  });
+
+  it('accepts a Uint8Array', async () => {
+    expect(await fileHasLocation(new Uint8Array(gpsJpeg))).toBe(true);
+  });
+
+  it("throws processFile's ImagingError for a file it would refuse or can't read", async () => {
+    expect((await imagingError(() => fileHasLocation(notAnImage))).code).toBe('unsupported_type');
+    expect((await imagingError(() => fileHasLocation(heic))).code).toBe('heic_unsupported');
+    expect((await imagingError(() => fileHasLocation(brokenJpeg))).code).toBe('unreadable');
+    expect((await imagingError(() => fileHasLocation(gpsJpeg, { limitInputPixels: 100 }))).code).toBe('too_many_pixels');
   });
 });
 

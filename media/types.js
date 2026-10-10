@@ -5,6 +5,9 @@
 
 export const MAX_UPLOAD_BYTES = 52_428_800;
 
+/** The Cache-Control of every stored key but incoming/: immutable keys are written once and cached for a year. */
+export const IMMUTABLE = 'public, max-age=31536000, immutable';
+
 /** The accepted types, by the extension stored in originals/<sha>.<ext>. */
 export const TYPES = new Map([
   ['jpg', { ext: 'jpg', contentType: 'image/jpeg', image: true }],

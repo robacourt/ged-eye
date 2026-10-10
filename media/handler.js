@@ -7,10 +7,10 @@ import { AuthError, requireEditor } from '../api/auth.js';
 import { ApiError, CORS_HEADERS, errorJson, invalid, json, preflight, readJson } from '../api/http.js';
 import { CropError, avatarKeyFor } from './crop.js';
 import { BusyError } from './jobQueue.js';
-import { ImagingError, MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition } from './types.js';
+import { IMMUTABLE, ImagingError, MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition } from './types.js';
 
-/** Every stored key but incoming/ is immutable: written once, cached for a year. */
-export const IMMUTABLE = 'public, max-age=31536000, immutable';
+// Defined in types.js, which the backfill script shares; re-exported for existing importers.
+export { IMMUTABLE };
 /** The schedule trigger declared in neon.ts that POSTs to /sweep. */
 export const SWEEP_TRIGGER = 'sweep-incoming';
 
