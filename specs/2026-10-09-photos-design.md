@@ -198,7 +198,7 @@ Everything for editors lives in the lazy editing chunk, so viewers download no u
 | `src/photoEditDialog.js` (new) | Caption, date and people for one photo. It sends `update_photo` with `expected` set to the values it opened with, and a 409 `stale` offers "Reload". |
 | `src/photoViewer.js` | Shows the display image, the caption and date, and the tagged people as links (opening that person closes the viewer), plus "Download original". Takes optional editor hooks `{onEdit, onUseAsAvatar, onRemove}`, which render Caption, Avatar, People and Remove. Remove confirms first; the toast offers Undo. |
 | `src/personDetails.js` | The header shows the avatar, or the placeholder, beside the name. For editors it has a camera badge that opens Change avatar. The photo row shows "+N" on the 4th thumbnail when there are more, and an Add tile for editors. Editors can also drop files onto the panel. |
-| `src/editing.js`, `src/main.js` | Wire up the new dialogs and the viewer hooks, and invalidate and reload after each change, as existing commands do. |
+| `src/editing.js`, `src/main.js` | Wire up the new dialogs and the viewer hooks, and invalidate and reload after each change, as existing commands do. Before the photo editor opens, a person whose cached view is masked is reloaded unmasked, as for the person editor, so a masked caption is never edited or sent as `expected`. |
 
 **Mobile behaviour**
 

@@ -15,6 +15,8 @@ const SLOW_LOAD_MS = 300;
 const EDITOR_ROLES = new Set(['editor', 'admin']);
 const CONFLICT_TOAST_MS = 15_000;
 const EDITING_UNAVAILABLE = "Couldn't load the editing tools. Check your connection, then reload the page.";
+const PHOTO_MASKED = "Couldn't load this photo's full caption, so it can't be edited. Sign in again, then try again.";
+const PHOTO_GONE = 'That photo is no longer shown for this person.';
 
 /** The editors' dialogs, History, Editors and the photo dialogs, with their stylesheet: loaded only once someone can edit. */
 const defaultLoadEditing = () => import('./editing.js');
@@ -236,9 +238,9 @@ export function initApp({
 
   /**
    * The details panel's options: for everyone, onOpenPerson (the photo viewer's "Shown for" links); for editors,
-   * once the editing UI is here, the edit controls. The photo hooks open their dialogs synchronously: Add photos
-   * opens the file picker from inside the tap, which iOS requires. The viewer has closed itself before calling
-   * onEditPhoto, onUseAsAvatar or onRemovePhoto.
+   * once the editing UI is here, the edit controls. The photo hooks open their dialogs synchronously (Add photos
+   * opens the file picker from inside the tap, which iOS requires), except the photo editor, which may first
+   * reload a masked person. The viewer has closed itself before calling onEditPhoto, onUseAsAvatar or onRemovePhoto.
    */
   function detailsOptions() {
     if (!canEdit() || !editing) return { canEdit: false, onOpenPerson: navigateTo };
@@ -264,11 +266,7 @@ export function initApp({
       onChangeAvatar: (person) => editing.openAvatarDialog({
         person, api, mediaApi: editing.mediaApi, onSaved: (result) => afterCommand(result, person.id)
       }),
-      // onSaved(null) is the photo editor's Reload, after someone else changed or removed the photo.
-      onEditPhoto: (photo, person) => editing.openPhotoEditDialog({
-        photo, person, api,
-        onSaved: (result) => (result ? afterCommand(result, person.id) : settle(afterChange({}, { from: person.id })))
-      }),
+      onEditPhoto: (photo, person) => settle(editPhoto(photo, person)),
       onUseAsAvatar: (photo, person) => editing.openAvatarDialog({
         person, api, mediaApi: editing.mediaApi, startWith: photo, onSaved: (result) => afterCommand(result, person.id)
       }),
@@ -292,6 +290,47 @@ export function initApp({
       return;
     }
     afterCommand(result, person.id);
+  }
+
+  /**
+   * The viewer's Caption and People: opens the photo editor. A masked view's caption has "[email hidden]" in
+   * place of addresses, which the editor would show, save and send as the compare-and-swap's expected value. So,
+   * as for the person editor, a person whose cached view is masked is reloaded unmasked first, and the editor gets
+   * the reloaded copy of the photo; when that can't be had, a toast says so instead.
+   */
+  async function editPhoto(photo, person) {
+    let view = null;
+    try {
+      view = await loader.loadPersonWithFamily(person.id);
+    } catch (error) {
+      console.warn('Could not read the person from the cache', error);
+    }
+    let target = { photo, person };
+    if (view?.masked === true) {
+      let fresh = null;
+      try {
+        fresh = await loader.reload(person.id);
+      } catch (error) {
+        console.error('Reloading the person to edit a photo failed', error);
+      }
+      if (!fresh?.person || fresh.masked !== false) {
+        showToast(PHOTO_MASKED, { kind: 'error' });
+        return;
+      }
+      onReloaded(fresh);
+      const freshPhoto = (fresh.person.photos ?? []).find((candidate) => candidate.id === photo.id);
+      if (!freshPhoto) {
+        showToast(PHOTO_GONE, { kind: 'error' });
+        return;
+      }
+      target = { photo: freshPhoto, person: fresh.person };
+    }
+    if (!canEdit() || !editing) return; // signed out meanwhile
+    editing.openPhotoEditDialog({
+      ...target, api,
+      // onSaved(null) is the photo editor's Reload, after someone else changed or removed the photo.
+      onSaved: (result) => (result ? afterCommand(result, person.id) : settle(afterChange({}, { from: person.id })))
+    });
   }
 
   async function editPerson(person) {

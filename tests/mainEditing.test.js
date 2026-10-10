@@ -690,14 +690,67 @@ describe('initApp: photos', () => {
 
   it("the viewer's Caption and People open the photo editor, and its save runs the command flow", async () => {
     options.onEditPhoto(PHOTO, rose);
+    await flush();
     expect(dialogs.openPhotoEditDialog).toHaveBeenCalledWith({ photo: PHOTO, person: rose, api: anApi, onSaved: expect.any(Function) });
+    expect(loader.reload).not.toHaveBeenCalled(); // the cached view is unmasked
     await expectCommandFlow(dialogs.openPhotoEditDialog.mock.calls[0][0].onSaved,
       { change: { id: 43, summary: 'Edited a photo of Rose Smith', personIds: ['I7', 'I8'] }, view: { person: { id: 'I7' } } });
     expect(loader.cacheView).toHaveBeenCalledWith({ person: { id: 'I7' } });
   });
 
+  describe('the photo editor from a masked view', () => {
+    const MASKED_PHOTO = { ...PHOTO, caption: 'Write to [email hidden]' };
+    const FRESH_PHOTO = { ...PHOTO, caption: 'Write to rose@example.com' };
+    const MASKED_MESSAGE = "Couldn't load this photo's full caption, so it can't be edited. Sign in again, then try again.";
+    const view = (personRecord, masked) => ({ person: personRecord, family: [], relationships: RELS, masked });
+
+    beforeEach(() => {
+      loader.loadPersonWithFamily.mockResolvedValueOnce(view({ ...rose, photos: [MASKED_PHOTO] }, true));
+    });
+
+    it('reloads the person unmasked first, then opens the editor on the reloaded photo', async () => {
+      const fresh = { ...rose, photos: [{ ...PHOTO, id: 7 }, FRESH_PHOTO] };
+      loader.reload.mockResolvedValueOnce(view(fresh, false));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(loader.reload).toHaveBeenCalledWith('I7');
+      expect(dialogs.openPhotoEditDialog).toHaveBeenCalledTimes(1);
+      expect(dialogs.openPhotoEditDialog).toHaveBeenCalledWith({
+        photo: FRESH_PHOTO, person: fresh, api: anApi, onSaved: expect.any(Function)
+      });
+      expect(personDetails.showPerson).toHaveBeenCalled(); // the panel shows the reloaded person
+      expect(shownId()).toBe('I7');
+      expect(showToast).not.toHaveBeenCalled();
+    });
+
+    it('refuses with a toast when the reload is masked too, or fails', async () => {
+      const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+      loader.reload.mockResolvedValueOnce(view({ ...rose, photos: [MASKED_PHOTO] }, true));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(lastToast()).toEqual([MASKED_MESSAGE, { kind: 'error' }]);
+
+      loader.loadPersonWithFamily.mockResolvedValueOnce(view({ ...rose, photos: [MASKED_PHOTO] }, true));
+      loader.reload.mockRejectedValueOnce(new Error('offline'));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(lastToast()).toEqual([MASKED_MESSAGE, { kind: 'error' }]);
+      expect(error).toHaveBeenCalledTimes(1);
+      expect(dialogs.openPhotoEditDialog).not.toHaveBeenCalled();
+    });
+
+    it('says so when the reloaded person no longer has the photo', async () => {
+      loader.reload.mockResolvedValueOnce(view({ ...rose, photos: [] }, false));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(lastToast()).toEqual(['That photo is no longer shown for this person.', { kind: 'error' }]);
+      expect(dialogs.openPhotoEditDialog).not.toHaveBeenCalled();
+    });
+  });
+
   it("the photo editor's Reload reloads the person, without a toast", async () => {
     options.onEditPhoto(PHOTO, rose);
+    await flush();
     dialogs.openPhotoEditDialog.mock.calls[0][0].onSaved(null);
     await flush();
     expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
