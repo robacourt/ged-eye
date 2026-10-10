@@ -49,6 +49,15 @@ const key = (name) => document.dispatchEvent(new KeyboardEvent('keydown', { key:
 const openState = () => ({ isOpen: viewer.isOpen, shown: viewer.modal.classList.contains('photo-viewer-open') });
 const CLOSED = { isOpen: false, shown: false };
 
+/** A focused button standing in for the details panel's thumbnail that opens the viewer. → it. */
+function thumbnail() {
+  const button = document.createElement('button');
+  button.textContent = 'Photo 1';
+  document.body.append(button);
+  button.focus();
+  return button;
+}
+
 function open(photos = [PHOTO, LETTER], { name = 'Alice Smith', start = 0 } = {}) {
   viewer.open(name, photos, start);
 }
@@ -62,7 +71,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  viewer.close();
+  viewer.destroy();
   vi.unstubAllEnvs();
   vi.restoreAllMocks();
   delete window.__xss;
@@ -324,7 +333,7 @@ describe('PhotoViewer', () => {
       expect(viewer.isOpen).toBe(true);
     });
 
-    it('takes focus out of the viewer as it closes, so a dialog opened next does not return focus into it', () => {
+    it('takes focus out of the viewer as it closes for a hook, so a dialog opened next does not return focus into it', () => {
       viewer.setEditorHooks(hooks);
       open();
       action('caption').focus();
@@ -333,6 +342,95 @@ describe('PhotoViewer', () => {
       hooks.onEdit.mockImplementation(() => focusInside.push(viewer.modal.contains(document.activeElement)));
       action('caption').click();
       expect(focusInside).toEqual([false]);
+    });
+
+    it('Remove, cancelled, puts focus back on Remove, and a plain close still returns to the opener', () => {
+      vi.spyOn(window, 'confirm').mockReturnValue(false);
+      const opener = thumbnail();
+      viewer.setEditorHooks(hooks);
+      open();
+      action('remove').click();
+      expect(document.activeElement).toBe(action('remove'));
+      $('.photo-viewer-close').click();
+      expect(document.activeElement).toBe(opener);
+    });
+  });
+
+  describe('focus and keys', () => {
+    it('is a modal dialog named for the person, which takes focus to its close button', () => {
+      thumbnail();
+      open();
+      expect(viewer.modal.getAttribute('role')).toBe('dialog');
+      expect(viewer.modal.getAttribute('aria-modal')).toBe('true');
+      expect(viewer.modal.getAttribute('aria-label')).toBe('Photos of Alice Smith');
+      expect(document.activeElement).toBe($('.photo-viewer-close'));
+    });
+
+    it.each([
+      ['×', () => $('.photo-viewer-close').click()],
+      ['Escape', () => key('Escape')],
+      ['the overlay', () => $('.photo-viewer-overlay').click()]
+    ])('gives focus back to what opened it on a plain close, by %s', (_, closeIt) => {
+      const opener = thumbnail();
+      open();
+      $('.photo-viewer-next').focus();
+      closeIt();
+      expect(viewer.isOpen).toBe(false);
+      expect(document.activeElement).toBe(opener);
+    });
+
+    it('leaves focus out of the viewer when nothing focusable opened it, or the opener has gone', () => {
+      open();
+      $('.photo-viewer-close').click();
+      expect(viewer.modal.contains(document.activeElement)).toBe(false);
+
+      const opener = thumbnail();
+      open();
+      opener.remove();
+      key('Escape');
+      expect(viewer.modal.contains(document.activeElement)).toBe(false);
+    });
+
+    it('does not give focus back to the opener when closing for a hook or a person link', () => {
+      const opener = thumbnail();
+      viewer.setEditorHooks(hooks);
+      open();
+      action('caption').click();
+      expect(document.activeElement).not.toBe(opener);
+
+      opener.focus();
+      open();
+      $('.photo-viewer-person').click();
+      expect(document.activeElement).not.toBe(opener);
+    });
+
+    it('ignores arrow keys and Escape once it has closed for a hook', () => {
+      const opener = thumbnail();
+      viewer.setEditorHooks(hooks);
+      open();
+      action('caption').click();
+      key('ArrowRight');
+      key('ArrowLeft');
+      key('ArrowRight');
+      expect(viewer.currentIndex).toBe(0);
+      expect($('.photo-viewer-counter').textContent).toBe('Photo 1 of 2');
+      key('Escape');
+      expect(viewer.isOpen).toBe(false);
+      expect(document.activeElement).not.toBe(opener);
+      expect(hooks.onEdit).toHaveBeenCalledTimes(1);
+    });
+
+    it('destroy() removes the viewer and its key listener', () => {
+      const add = vi.spyOn(document, 'addEventListener');
+      const remove = vi.spyOn(document, 'removeEventListener');
+      const other = new PhotoViewer();
+      const listener = add.mock.calls.find(([type]) => type === 'keydown')[1];
+      other.open('Alice Smith', [PHOTO]);
+      other.destroy();
+      expect(remove).toHaveBeenCalledWith('keydown', listener);
+      expect(other.modal.isConnected).toBe(false);
+      expect(other.isOpen).toBe(false);
+      expect(document.body.style.overflow).toBe('');
     });
   });
 });

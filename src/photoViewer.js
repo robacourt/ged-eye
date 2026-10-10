@@ -45,6 +45,10 @@ const hasId = (photo) => photo?.id !== undefined && photo?.id !== null;
  * Remove (setEditorHooks). Every data value is set with `textContent` or as a property, never as HTML.
  *
  * `onOpenPerson` (personId), set by the details panel, opens someone from the "Shown for" links.
+ *
+ * It is a modal dialog: opening it moves focus to its close button, and a plain close (×, Escape, the overlay)
+ * gives focus back to whatever had it. Closing for an editor hook or a person link doesn't: what opens next
+ * takes over.
  */
 export class PhotoViewer {
   constructor() {
@@ -55,6 +59,7 @@ export class PhotoViewer {
     /** (personId) → void: opens a person from a "Shown for" link, after the viewer has closed. */
     this.onOpenPerson = null;
     this.editorHooks = null;
+    this.opener = null; // the element focused when the viewer opened, given focus back on a plain close
 
     this.createViewer();
     this.attachEventListeners();
@@ -65,6 +70,9 @@ export class PhotoViewer {
     const modal = document.createElement('div');
     modal.id = 'photo-viewer';
     modal.className = 'photo-viewer';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Photos');
     modal.innerHTML = `
       <div class="photo-viewer-overlay"></div>
       <div class="photo-viewer-content">
@@ -75,7 +83,7 @@ export class PhotoViewer {
         </div>
         <div class="photo-viewer-main">
           <div class="photo-viewer-image-wrapper">
-            <button class="photo-viewer-nav photo-viewer-prev photo-viewer-nav-desktop" aria-label="Previous photo">‹</button>
+            <button class="photo-viewer-nav photo-viewer-prev" aria-label="Previous photo">‹</button>
             <div class="photo-viewer-image-container">
               <img class="photo-viewer-image" alt="Person photo" />
               <div class="photo-viewer-loading">Loading...</div>
@@ -85,10 +93,6 @@ export class PhotoViewer {
                 <a class="photo-viewer-download-button" target="_blank" rel="noopener" download>Download File</a>
               </div>
             </div>
-            <button class="photo-viewer-nav photo-viewer-next photo-viewer-nav-desktop" aria-label="Next photo">›</button>
-          </div>
-          <div class="photo-viewer-nav-mobile">
-            <button class="photo-viewer-nav photo-viewer-prev" aria-label="Previous photo">‹</button>
             <button class="photo-viewer-nav photo-viewer-next" aria-label="Next photo">›</button>
           </div>
         </div>
@@ -112,6 +116,7 @@ export class PhotoViewer {
 
     document.body.appendChild(modal);
     this.modal = modal;
+    this.closeButton = modal.querySelector('.photo-viewer-close');
     this.image = modal.querySelector('.photo-viewer-image');
     this.title = modal.querySelector('.photo-viewer-title');
     this.counter = modal.querySelector('.photo-viewer-counter');
@@ -134,7 +139,7 @@ export class PhotoViewer {
 
   attachEventListeners() {
     // Close button
-    this.modal.querySelector('.photo-viewer-close').addEventListener('click', () => {
+    this.closeButton.addEventListener('click', () => {
       this.close();
     });
 
@@ -151,8 +156,8 @@ export class PhotoViewer {
       btn.addEventListener('click', () => this.showNext());
     });
 
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
+    // Keyboard navigation (removed by destroy)
+    this.onKeyDown = (e) => {
       if (!this.isOpen) return;
 
       switch (e.key) {
@@ -166,7 +171,8 @@ export class PhotoViewer {
           this.showNext();
           break;
       }
-    });
+    };
+    document.addEventListener('keydown', this.onKeyDown);
 
     // Image load event
     this.image.addEventListener('load', () => {
@@ -180,9 +186,13 @@ export class PhotoViewer {
   }
 
   /**
-   * Opens the viewer on a person's photos (person_record's `photos`), at `startIndex`.
+   * Opens the viewer on a person's photos (person_record's `photos`), at `startIndex`, and moves focus into it.
    */
   open(personName, photos, startIndex = 0) {
+    if (!this.isOpen) {
+      const active = document.activeElement;
+      this.opener = active && active !== document.body && !this.modal.contains(active) ? active : null;
+    }
     this.personName = personName;
     this.photos = photos || [];
     this.isOpen = true;
@@ -193,20 +203,40 @@ export class PhotoViewer {
     const index = Number.isInteger(startIndex) ? startIndex : 0;
     this.currentIndex = Math.min(Math.max(index, 0), this.photos.length - 1);
 
+    this.modal.setAttribute('aria-label', `Photos of ${nameOf({ name: personName })}`);
     this.modal.classList.add('photo-viewer-open');
     document.body.style.overflow = 'hidden'; // Prevent scrolling
 
     this.updateDisplay();
+    this.closeButton.focus();
   }
 
   /**
-   * Closes the viewer. Focus leaves it, so a dialog opened next doesn't hand focus back to a hidden button.
+   * Closes the viewer and gives focus back to the element that opened it, if it is still on the page.
    */
   close() {
+    const opener = this.opener;
+    this.hide();
+    if (opener?.isConnected && !opener.closest('[hidden]')) opener.focus();
+  }
+
+  /**
+   * Closes the viewer for an editor hook or a person link, without giving focus back: what opens next takes over.
+   * Focus leaves the viewer, so a dialog opened next doesn't hand focus back to a hidden button.
+   */
+  hide() {
     this.isOpen = false;
+    this.opener = null;
     this.modal.classList.remove('photo-viewer-open');
     document.body.style.overflow = ''; // Restore scrolling
     if (this.modal.contains(document.activeElement)) document.activeElement.blur();
+  }
+
+  /** Removes the viewer from the page and stops it listening for keys. */
+  destroy() {
+    if (this.isOpen) this.hide();
+    document.removeEventListener('keydown', this.onKeyDown);
+    this.modal.remove();
   }
 
   /**
@@ -358,25 +388,26 @@ export class PhotoViewer {
 
   /** Closes the viewer, then opens `personId`. */
   openPerson(personId) {
-    this.close();
+    this.hide();
     callSafely(this.onOpenPerson, personId);
   }
 
   /** Closes the viewer, then calls the editor hook `name` with `photo`: its dialog opens over the page. */
   runHook(name, photo) {
     const hook = this.editorHooks?.[name];
-    this.close();
+    this.hide();
     callSafely(hook, photo);
   }
 
-  /** Closes the viewer and asks first; Cancel goes back to the photo. */
+  /** Closes the viewer and asks first; Cancel goes back to the photo, with focus on Remove. */
   confirmRemove(photo) {
     const hook = this.editorHooks?.onRemove;
-    const { personName, photos, currentIndex } = this;
-    this.close();
+    const { personName, photos, currentIndex, opener } = this;
+    this.hide();
     const question = `Remove this photo from ${nameOf({ name: personName })}? It stays for anyone else it's shown for.`;
     if (!window.confirm(question)) {
       this.open(personName, photos, currentIndex);
+      this.opener = opener; // a plain close still goes back to what first opened the viewer
       this.modal.querySelector('.photo-viewer-action[data-action="remove"]')?.focus();
       return;
     }

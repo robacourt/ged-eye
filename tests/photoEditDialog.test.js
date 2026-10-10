@@ -214,6 +214,17 @@ describe('openPhotoEditDialog', () => {
     expect(dialog()).toBeNull();
   });
 
+  it('shows a server refusal of the people under the picker', async () => {
+    api.runChange.mockRejectedValue(apiError(400, 'invalid', { field: 'personIds', message: 'A photo can be shown for at most 100 people at once.' }));
+    open();
+    await save();
+    expect(peopleError().hidden).toBe(false);
+    expect(peopleError().textContent).toBe('A photo can be shown for at most 100 people at once.');
+    expect(document.activeElement).toBe($('.person-picker input[type="search"]'));
+    expect(message()).toBeNull();
+    expect(dialog()).not.toBeNull();
+  });
+
   it('names someone chosen who no longer exists', async () => {
     api.runChange.mockRejectedValue(apiError(404, 'not_found', { field: 'personIds', id: 'I1' }));
     open();
