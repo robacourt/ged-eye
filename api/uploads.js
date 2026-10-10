@@ -4,7 +4,7 @@
  * on the public bucket URL) to confirm they exist and to read their type, size and oriented pixel size.
  * The HEADs run in a command's `prepare` step, before begin_change, so they never hold the global lock.
  */
-import { SHA256, TYPES, cleanFileName } from '../media/types.js';
+import { SHA256, TYPES, cleanFileName, keysFor } from '../media/types.js';
 import { ApiError, invalid, isObject } from './http.js';
 
 const BUCKET = 'ged-eye-media';
@@ -17,26 +17,6 @@ const POSITIVE_INT = /^[1-9][0-9]{0,8}$/;
 const SIZE = /^[0-9]{1,15}$/;
 
 const busy = () => new ApiError(503, 'busy', { message: BUSY_MESSAGE });
-
-/**
- * The keys of an upload: originals/<sha>.<ext>, plus display/ and thumbs/ for images.
- * → { objectKey, displayKey | null, thumbKey | null, type (the TYPES entry) }.
- * Throws TypeError unless `sha256` is 64 lower-case hex digits and `ext` is in TYPES, so a key can never point
- * outside its folder; validateUpload rules both out.
- */
-export function keysFor({ sha256, ext }) {
-  if (typeof sha256 !== 'string' || !SHA256.test(sha256)) {
-    throw new TypeError('sha256 must be 64 lower-case hex digits.');
-  }
-  const type = TYPES.get(ext);
-  if (!type) throw new TypeError(`Not an accepted file type: ${ext}.`);
-  return {
-    objectKey: `originals/${sha256}.${type.ext}`,
-    displayKey: type.image ? `display/${sha256}.webp` : null,
-    thumbKey: type.image ? `thumbs/${sha256}.webp` : null,
-    type
-  };
-}
 
 /**
  * Validates `upload: { sha256, ext, fileName }` from a command's params, where `field` names it (for example
@@ -156,6 +136,7 @@ export async function headUploads(uploads, headObject, { field = 'upload', uploa
   const tasks = [];
   uploads.forEach((upload, index) => {
     if (upload === null || upload === undefined) return;
+    // media/types.js keysFor: the keys media stored the upload under. validateUpload has checked sha256 and ext.
     const { objectKey, displayKey, type } = keysFor(upload);
     tasks.push({ index, key: objectKey, type, original: true });
     if (displayKey) tasks.push({ index, key: displayKey, type, original: false });

@@ -4,7 +4,8 @@
  * functions take the command's transaction client, which already holds the global write lock (begin_change).
  */
 import { invalid } from '../http.js';
-import { keysFor, validateUpload } from '../uploads.js';
+import { keysFor } from '../../media/types.js';
+import { validateUpload } from '../uploads.js';
 import { optionalLine, requireId, requireKeys } from './validate.js';
 import { notFound, peopleByIds } from './linking.js';
 

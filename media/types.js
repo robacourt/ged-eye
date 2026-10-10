@@ -1,6 +1,6 @@
 /**
- * The file types, name rules, identifier patterns and refusal error shared by the media Function and the api Function.
- * Pure, with no dependencies, so both can import it.
+ * The file types, storage keys, name rules, identifier patterns and refusal error shared by the media Function and
+ * the api Function. Pure, with no dependencies, so both can import it.
  */
 
 export const MAX_UPLOAD_BYTES = 52_428_800;
@@ -33,6 +33,28 @@ export class ImagingError extends Error {
 
 export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 export const SHA256 = /^[0-9a-f]{64}$/;
+
+/**
+ * The keys a file is stored under, from its sha256 and stored extension: originals/<sha>.<ext>, plus
+ * display/<sha>.webp and thumbs/<sha>.webp for images. The one rule for both Functions: media stores under these
+ * keys, and api derives them rather than trusting keys from the client.
+ * → { objectKey, displayKey | null, thumbKey | null, type (the TYPES entry) }.
+ * Throws TypeError unless `sha256` is 64 lower-case hex digits and `ext` is in TYPES, so a key can never point
+ * outside its folder.
+ */
+export function keysFor({ sha256, ext }) {
+  if (typeof sha256 !== 'string' || !SHA256.test(sha256)) {
+    throw new TypeError('sha256 must be 64 lower-case hex digits.');
+  }
+  const type = TYPES.get(ext);
+  if (!type) throw new TypeError(`Not an accepted file type: ${ext}.`);
+  return {
+    objectKey: `originals/${sha256}.${type.ext}`,
+    displayKey: type.image ? `display/${sha256}.webp` : null,
+    thumbKey: type.image ? `thumbs/${sha256}.webp` : null,
+    type
+  };
+}
 
 const ACCEPTED_CONTENT_TYPES = new Set([...TYPES.values()].map((type) => type.contentType));
 const HEIC_BRANDS = new Set(['heic', 'heix', 'hevc', 'hevx', 'heim', 'heis', 'mif1', 'msf1']);

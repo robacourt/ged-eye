@@ -7,7 +7,9 @@ import { AuthError, requireEditor } from '../api/auth.js';
 import { ApiError, CORS_HEADERS, errorJson, invalid, json, preflight, readJson } from '../api/http.js';
 import { CropError, avatarKeyFor } from './crop.js';
 import { BusyError } from './jobQueue.js';
-import { IMMUTABLE, ImagingError, MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition } from './types.js';
+import {
+  IMMUTABLE, ImagingError, MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition, keysFor
+} from './types.js';
 
 // Defined in types.js, which the backfill script shares; re-exported for existing importers.
 export { IMMUTABLE };
@@ -52,15 +54,6 @@ const mediaFromRow = (row) => ({
   caption: row.caption,
   date: row.date
 });
-
-/** The keys a processed upload is stored under (display and thumb are null for PDFs). */
-function keysOf({ sha256, type }) {
-  return {
-    objectKey: `originals/${sha256}.${type.ext}`,
-    displayKey: type.image ? `display/${sha256}.webp` : null,
-    thumbKey: type.image ? `thumbs/${sha256}.webp` : null
-  };
-}
 
 /** The response for an error we answer deliberately (unlogged), or null for anything unexpected. */
 function deliberateResponse(error) {
@@ -128,8 +121,8 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
 
   /** Stores a processed upload's original, display image and thumbnail, each only if absent. */
   async function store(processed, fileName) {
-    const { type, original, display, thumb, width, height } = processed;
-    const { objectKey, displayKey, thumbKey } = keysOf(processed);
+    const { sha256, type, original, display, thumb, width, height } = processed;
+    const { objectKey, displayKey, thumbKey } = keysFor({ sha256, ext: type.ext });
     const puts = [storage.putOnce(objectKey, original.body, {
       contentType: type.contentType,
       cacheControl: IMMUTABLE,
@@ -164,11 +157,14 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
       await store(processed, fileName);
       await discard(key);
       const { type, original, width, height } = processed;
+      const { objectKey, displayKey, thumbKey } = keysFor({ sha256: processed.sha256, ext: type.ext });
       return {
         mediaId: null,
         sha256,
         ext: type.ext,
-        ...keysOf(processed),
+        objectKey,
+        displayKey,
+        thumbKey,
         contentType: type.contentType,
         byteSize: original.body.length,
         width,

@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import {
-  MAX_UPLOAD_BYTES, TYPES, UUID, SHA256, sniff, declaredType, cleanFileName, inlineDisposition
+  MAX_UPLOAD_BYTES, TYPES, UUID, SHA256, sniff, declaredType, cleanFileName, inlineDisposition, keysFor
 } from '../media/types.js';
 
 const ascii = (text) => [...text].map((c) => c.charCodeAt(0));
@@ -276,5 +276,38 @@ describe('media/types UUID and SHA256', () => {
     expect(SHA256.test('A'.repeat(64))).toBe(false);
     expect(SHA256.test(`${'a'.repeat(63)}g`)).toBe(false);
     expect(SHA256.test(`${'a'.repeat(64)}\n`)).toBe(false);
+  });
+});
+
+describe('media/types keysFor', () => {
+  const SHA_A = 'a'.repeat(64);
+  const SHA_B = 'b'.repeat(64);
+
+  it('derives the original, display and thumbnail keys of an image', () => {
+    expect(keysFor({ sha256: SHA_A, ext: 'jpg' })).toEqual({
+      objectKey: `originals/${SHA_A}.jpg`,
+      displayKey: `display/${SHA_A}.webp`,
+      thumbKey: `thumbs/${SHA_A}.webp`,
+      type: { ext: 'jpg', contentType: 'image/jpeg', image: true }
+    });
+  });
+
+  it('gives a PDF no display image or thumbnail', () => {
+    expect(keysFor({ sha256: SHA_B, ext: 'pdf' })).toEqual({
+      objectKey: `originals/${SHA_B}.pdf`,
+      displayKey: null,
+      thumbKey: null,
+      type: { ext: 'pdf', contentType: 'application/pdf', image: false }
+    });
+  });
+
+  it('throws for an extension that is not one of the accepted types', () => {
+    expect(() => keysFor({ sha256: SHA_A, ext: 'heic' })).toThrow(TypeError);
+  });
+
+  it('throws for anything but a sha256, so a key can never point outside its folder', () => {
+    for (const sha256 of ['../../other/x?', `${SHA_A}/../x`, 'A'.repeat(64), 'a'.repeat(63), undefined, null, 7]) {
+      expect(() => keysFor({ sha256, ext: 'jpg' })).toThrow(TypeError);
+    }
   });
 });
