@@ -1,5 +1,5 @@
 import { maskNoteEmails } from './privacy.js';
-import { AuthError, requireEditor } from './auth.js';
+import { AuthError, requireEditorOf } from './auth.js';
 import { ApiError, errorJson, invalid, isObject, json, notModified, preflight, readJson } from './http.js';
 
 /** Bump whenever masking or response shaping changes, so cached person views revalidate as new. */
@@ -84,19 +84,10 @@ function validateNewEditor(body) {
  */
 export function createHandler({ db, authenticate, log = console.error }) {
   const lookupEditor = (email) => db.lookupEditor(email);
-
-  async function requireEditorOf(request) {
-    const user = await authenticate(request);
-    try {
-      return await requireEditor(user, lookupEditor);
-    } catch (error) {
-      if (error instanceof AuthError && error.status === 403) throw new ApiError(403, 'not_an_editor', { email: user.email });
-      throw error;
-    }
-  }
+  const editorOf = (request) => requireEditorOf(request, authenticate, lookupEditor);
 
   async function requireAdminOf(request) {
-    const editor = await requireEditorOf(request);
+    const editor = await editorOf(request);
     if (editor.role !== 'admin') throw new ApiError(403, 'not_an_admin');
     return editor;
   }
@@ -131,7 +122,7 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function me({ request }) {
-    const { email, name, role } = await requireEditorOf(request);
+    const { email, name, role } = await editorOf(request);
     return json(200, { email, name, role });
   }
 
@@ -164,7 +155,7 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function runChange({ request }) {
-    const editor = await requireEditorOf(request);
+    const editor = await editorOf(request);
     const { kind, params } = await readJson(request);
     if (typeof kind !== 'string' || kind === '' || kind.length > MAX_KIND) throw invalid('kind', 'kind is required.');
     if (!isObject(params)) throw invalid('params', 'params must be an object.');
@@ -173,7 +164,7 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function listChanges({ request, url }) {
-    await requireEditorOf(request);
+    await editorOf(request);
     const before = queryParam(url, 'before');
     if (before !== null && !CHANGE_ID.test(before)) throw invalid('before', 'before must be a change id.');
     const person = queryParam(url, 'person');
@@ -184,7 +175,7 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function toggle({ request, params: [rawId, action] }) {
-    const editor = await requireEditorOf(request);
+    const editor = await editorOf(request);
     if (!CHANGE_ID.test(rawId)) throw invalid('id', 'Not a change id.');
     const { via = 'history' } = await readJson(request);
     if (!TOGGLE_VIAS.has(via)) throw invalid('via', 'via must be history or keyboard.');
@@ -193,12 +184,12 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function undo({ request }) {
-    const editor = await requireEditorOf(request);
+    const editor = await editorOf(request);
     return json(200, { change: (await db.undoLast(editor)) ?? null });
   }
 
   async function redo({ request }) {
-    const editor = await requireEditorOf(request);
+    const editor = await editorOf(request);
     return json(200, { change: (await db.redoLast(editor)) ?? null });
   }
 

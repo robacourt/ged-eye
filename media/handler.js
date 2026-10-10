@@ -3,7 +3,7 @@
  * thumbnails, avatar crops, and the hourly sweep of abandoned uploads. See the photos design, "Function `media`".
  */
 import { randomUUID } from 'node:crypto';
-import { AuthError, requireEditor } from '../api/auth.js';
+import { AuthError, requireEditorOf } from '../api/auth.js';
 import { ApiError, CORS_HEADERS, errorJson, invalid, json, preflight, readJson } from '../api/http.js';
 import { CropError, avatarKeyFor } from './crop.js';
 import { BusyError } from './jobQueue.js';
@@ -78,15 +78,7 @@ function deliberateResponse(error) {
  * Deliberate errors are answered unlogged; anything else is logged and a 500 internal.
  */
 export function createMediaHandler({ storage, db, authenticate, imaging, queue, parseTrigger, now = () => new Date(), log = console.error }) {
-  async function requireEditorOf(request) {
-    const user = await authenticate(request);
-    try {
-      return await requireEditor(user, (email) => db.lookupEditor(email));
-    } catch (error) {
-      if (error instanceof AuthError && error.status === 403) throw new ApiError(403, 'not_an_editor', { email: user.email });
-      throw error;
-    }
-  }
+  const editorOf = (request) => requireEditorOf(request, authenticate, (email) => db.lookupEditor(email));
 
   /** Deletes an upload we are done with. A failure is only logged: the hourly sweep deletes it anyway. */
   async function discard(key) {
@@ -98,7 +90,7 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
   }
 
   async function createUpload({ request }) {
-    await requireEditorOf(request);
+    await editorOf(request);
     const body = await readJson(request);
     fileNameOf(body);
     let contentType;
@@ -180,7 +172,7 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
   }
 
   async function processUpload({ request, params: [raw] }) {
-    await requireEditorOf(request);
+    await editorOf(request);
     const key = incomingKey(raw);
     const fileName = fileNameOf(await readJson(request));
     const media = await queue.run(() => processIncoming(key, fileName));
@@ -188,7 +180,7 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
   }
 
   async function deleteUpload({ request, params: [raw] }) {
-    await requireEditorOf(request);
+    await editorOf(request);
     await storage.remove(incomingKey(raw));
     return noContent();
   }
@@ -203,7 +195,7 @@ export function createMediaHandler({ storage, db, authenticate, imaging, queue, 
   }
 
   async function createAvatar({ request }) {
-    await requireEditorOf(request);
+    await editorOf(request);
     const { objectKey, crop } = await readJson(request);
     const match = typeof objectKey === 'string' ? ORIGINAL_KEY.exec(objectKey) : null;
     if (!match) throw invalid('objectKey', 'objectKey must be an original: originals/<sha256>.<ext>.');
