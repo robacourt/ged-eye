@@ -90,7 +90,8 @@ beforeEach(() => {
       const result = await loader.loadPersonWithFamily(id);
       return { person: result.person, relationships: result.relationships };
     }),
-    onPersonSelect: vi.fn()
+    onPersonSelect: vi.fn(),
+    setAddRelative: vi.fn()
   };
   personDetails = { showPerson: vi.fn() };
   auth = { init: vi.fn(async () => ({ user: null })), getState: vi.fn(() => ({ user: null })), onChange: vi.fn() };
@@ -118,6 +119,7 @@ beforeEach(() => {
     openAddPhotosDialog: vi.fn(handle),
     openAvatarDialog: vi.fn(handle),
     openPhotoEditDialog: vi.fn(handle),
+    openAddRelativeMenu: vi.fn(handle),
     isEditorDialogOpen: vi.fn(() => false),
     mediaApi: { requestUpload: vi.fn(), uploadFile: vi.fn(), processUpload: vi.fn(), discardUpload: vi.fn(), renderAvatar: vi.fn() },
     commandErrorMessage,
@@ -267,6 +269,91 @@ describe('initApp: sign-in state', () => {
     expect(shownOptions()).toEqual(VIEWING);
     expect(history.close).toHaveBeenCalled();
     expect(editors.close).toHaveBeenCalled();
+  });
+});
+
+describe('initApp: the tree\'s "+" node', () => {
+  /** The handler last given to the tree: a function for editors, null for everyone else. */
+  const treeHandler = () => treeView.setAddRelative.mock.calls.at(-1)?.[0];
+
+  it('is never given to viewers or signed-in non-editors', async () => {
+    await start();
+    expect(treeView.setAddRelative).toHaveBeenCalled();
+    expect(treeHandler()).toBeNull();
+    await signInAs({ email: 'tom@example.com', name: null, role: null });
+    expect(treeHandler()).toBeNull();
+    expect(treeView.setAddRelative.mock.calls.every(([handler]) => handler === null)).toBe(true);
+  });
+
+  it('is given to editors once the editing UI is loaded', async () => {
+    let resolve;
+    loadEditing.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
+    await start();
+    await signInAs(EDITOR);
+    expect(treeHandler()).toBeNull(); // not before the menu's code is here
+    resolve(dialogs);
+    await flush();
+    expect(treeHandler()).toEqual(expect.any(Function));
+  });
+
+  it('is taken away on sign-out, and from an editor who is no longer one', async () => {
+    await start();
+    await signInAs(EDITOR);
+    expect(treeHandler()).toEqual(expect.any(Function));
+    signInOptions.onSignedOut('signed-out');
+    await flush();
+    expect(treeHandler()).toBeNull();
+    await signInAs(ADMIN);
+    expect(treeHandler()).toEqual(expect.any(Function));
+    await signInAs({ email: 'rob@example.com', name: 'Rob', role: null });
+    expect(treeHandler()).toBeNull();
+  });
+
+  it('opens the add-relative menu for the person it was pressed for, and returns it', async () => {
+    await start();
+    await signInAs(EDITOR);
+    const anchor = document.createElement('button');
+    const rose = people.get('I7');
+    const menu = treeHandler()({ anchor, person: rose });
+    expect(dialogs.openAddRelativeMenu).toHaveBeenCalledWith({ anchor, person: rose, onChoose: expect.any(Function) });
+    expect(menu).toBe(dialogs.openAddRelativeMenu.mock.results[0].value);
+  });
+
+  it('opens the relative dialog for the menu\'s choice, as the details panel\'s buttons do', async () => {
+    await start();
+    await signInAs(EDITOR);
+    const rose = people.get('I7');
+    treeHandler()({ anchor: document.createElement('button'), person: rose });
+    const { onChoose } = dialogs.openAddRelativeMenu.mock.calls[0][0];
+    onChoose('parent');
+    expect(dialogs.openRelativeDialog).toHaveBeenCalledWith(expect.objectContaining({
+      person: rose, relationships: RELS, relation: 'parent', api: anApi, loader, onAdded: expect.any(Function), onReloaded: expect.any(Function)
+    }));
+
+    const { onAdded } = dialogs.openRelativeDialog.mock.calls[0][0];
+    onAdded({ change: { id: 16, summary: 'Added Ada Smith as a parent of Rose Smith', personIds: ['I9', 'I7'] }, view: null });
+    await flush();
+    expect(lastToast()[0]).toBe('Added Ada Smith as a parent of Rose Smith');
+    expect(lastToast()[1].action.label).toBe('Undo');
+  });
+
+  it('does nothing for a choice made after signing out', async () => {
+    await start();
+    await signInAs(EDITOR);
+    treeHandler()({ anchor: document.createElement('button'), person: people.get('I7') });
+    const { onChoose } = dialogs.openAddRelativeMenu.mock.calls[0][0];
+    signInOptions.onSignedOut('signed-out');
+    await flush();
+    onChoose('child');
+    expect(dialogs.openRelativeDialog).not.toHaveBeenCalled();
+  });
+
+  it('is cleared when the app is destroyed', async () => {
+    await start();
+    await signInAs(EDITOR);
+    app.destroy();
+    app = null;
+    expect(treeHandler()).toBeNull();
   });
 });
 
@@ -825,7 +912,7 @@ describe('editing.js', () => {
     const editing = await import('../src/editing.js');
     for (const name of ['openPersonEditor', 'openFamilyEditor', 'openRelativeDialog', 'openUnlinkConfirm', 'openHistoryPanel',
       'openEditorsDialog', 'isEditorDialogOpen', 'openAddPhotosDialog', 'openAvatarDialog', 'openPhotoEditDialog',
-      'createUploadQueue', 'commandErrorMessage', 'removePhotoParams']) {
+      'openAddRelativeMenu', 'createUploadQueue', 'commandErrorMessage', 'removePhotoParams']) {
       expect(typeof editing[name], name).toBe('function');
     }
     for (const name of ['requestUpload', 'uploadFile', 'processUpload', 'discardUpload', 'renderAvatar']) {

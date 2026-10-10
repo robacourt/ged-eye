@@ -100,7 +100,8 @@ const isPhotoViewerOpen = () => Boolean(document.querySelector('.photo-viewer.ph
  * Everything it uses can be passed in (the tests do); by default the real modules are used.
  * `loadEditing` resolves to the editing UI (editing.js): `{ openPersonEditor, openFamilyEditor,
  * openRelativeDialog, openUnlinkConfirm, openHistoryPanel, openEditorsDialog, isEditorDialogOpen,
- * openAddPhotosDialog, openAvatarDialog, openPhotoEditDialog, mediaApi, commandErrorMessage, removePhotoParams }`.
+ * openAddPhotosDialog, openAvatarDialog, openPhotoEditDialog, openAddRelativeMenu, mediaApi, commandErrorMessage,
+ * removePhotoParams }`.
  * @returns `{ showPerson, destroy }`
  */
 export function initApp({
@@ -201,6 +202,7 @@ export function initApp({
       .then(
         (module) => {
           editing = module;
+          syncTreeAddRelative();
           // A person load still running renders with the controls when it finishes.
           if (canEdit() && shown && settledRequest === currentRequest) {
             personDetails.showPerson(shown.person, shown.relationships, detailsOptions());
@@ -275,6 +277,24 @@ export function initApp({
       }),
       onRemovePhoto: (photo, person) => settle(removePhoto(photo, person))
     };
+  }
+
+  // --- The tree's "+" node (editors only, once the editing UI is loaded) -------------------------------------
+
+  /**
+   * The tree's "+" button, pressed for `person`: opens the add-relative menu by it, whose choice takes the
+   * details panel's path (the relative dialog, then the toast with Undo). Returns the menu, which the tree closes.
+   */
+  function openAddRelativeMenu({ anchor, person }) {
+    if (!canEdit() || !editing) return null;
+    return editing.openAddRelativeMenu({
+      anchor, person, onChoose: (relation) => detailsOptions().onAddRelative?.(relation, person)
+    });
+  }
+
+  /** Gives the tree its "+" node while someone can edit and the editing UI is here, and takes it away otherwise. */
+  function syncTreeAddRelative() {
+    treeView.setAddRelative(canEdit() && editing ? openAddRelativeMenu : null);
   }
 
   /**
@@ -494,6 +514,7 @@ export function initApp({
     api: apiModule,
     onSignedIn(me) {
       account = me;
+      syncTreeAddRelative();
       if (!canEdit()) {
         // Signed in without editing access, or an editor who has been removed since (see watchNotAnEditor).
         dropQueuedKeys();
@@ -506,6 +527,7 @@ export function initApp({
     },
     onSignedOut() {
       account = null;
+      syncTreeAddRelative();
       dropQueuedKeys();
       historyPanel?.close();
       editorsDialog?.close();
@@ -528,6 +550,7 @@ export function initApp({
   window.addEventListener('popstate', onPopState);
   document.addEventListener('keydown', onKeyDown);
 
+  syncTreeAddRelative(); // none until an editor signs in
   overlay.loading('Loading family tree...');
   showPerson(personIdFromUrl());
 
@@ -542,6 +565,7 @@ export function initApp({
       window.removeEventListener('popstate', onPopState);
       document.removeEventListener('keydown', onKeyDown);
       dropQueuedKeys();
+      treeView.setAddRelative(null);
       historyPanel?.close();
       editorsDialog?.close();
       signIn.destroy();

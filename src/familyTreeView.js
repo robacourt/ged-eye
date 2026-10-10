@@ -2,9 +2,17 @@ import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
 import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
 import { avatarUrl } from './media.js';
+import { nameOf } from './familyLinks.js';
+import { MIN_TARGET_PX, chooseZoom, horizontalPan, placeBeside } from './treePlacement.js';
 
 // Register the dagre layout
 cytoscape.use(dagre);
+
+/** The editors' "+" node, joined to the highlighted person, and the edge to it. */
+const ADD_NODE_ID = 'add-relative';
+const ADD_EDGE_ID = 'add-relative-edge';
+/** The cytoscape events after which the "+" node is drawn somewhere else. */
+const VIEWPORT_EVENTS = 'pan zoom resize';
 
 export class FamilyTreeView {
   constructor(containerElement) {
@@ -12,6 +20,12 @@ export class FamilyTreeView {
     this.cy = null;
     this.selectedPersonId = null;
     this.onPersonSelectCallback = null;
+    this.shownPerson = null;        // the highlighted person's record, from the last buildGraph
+    this.graphData = null;          // buildGraph's arguments, to rebuild when the "+" node comes or goes
+    this.addRelativeHandler = null; // ({ anchor, person }) → menu handle, for editors; null for everyone else
+    this.addButton = null;          // the button over the "+" node, while there is a handler
+    this.addMenu = null;            // what the handler returned (the open menu), until it is closed
+    this.placeAddButton = this.placeAddButton.bind(this);
 
     this.init();
   }
@@ -92,6 +106,27 @@ export class FamilyTreeView {
             'background-color': '#aaa'
           }
         },
+        // The editors' "+" node (setAddRelative): a dashed circle, a little smaller than a relative.
+        {
+          selector: 'node[type="add"]',
+          style: {
+            'width': 110,
+            'height': 110,
+            'background-color': '#1e1e2e',
+            'background-image': 'none',
+            'border-width': 4,
+            'border-style': 'dashed',
+            'border-color': '#00d4ff',
+            'label': '+',
+            'color': '#00d4ff',
+            'font-size': '72px',
+            'font-weight': '300',
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'text-margin-y': 0,
+            'text-background-opacity': 0
+          }
+        },
         // Edge styles
         {
           selector: 'edge',
@@ -144,6 +179,16 @@ export class FamilyTreeView {
             'target-arrow-color': '#8ab4f8'
           }
         },
+        {
+          selector: 'edge[type="add"]',
+          style: {
+            'line-color': '#00d4ff',
+            'line-style': 'dashed',
+            'width': 2.5,
+            'opacity': 0.7,
+            'curve-style': 'straight'
+          }
+        },
         // Hover effects
         {
           selector: 'edge:active',
@@ -177,8 +222,9 @@ export class FamilyTreeView {
       const node = event.target;
       const personId = node.data('id');
 
-      // Skip partnership nodes
-      if (node.data('type') === 'partnership') {
+      // Skip partnership nodes, and the "+" node (its button over it takes the taps)
+      const type = node.data('type');
+      if (type === 'partnership' || type === 'add') {
         return;
       }
 
@@ -220,6 +266,9 @@ export class FamilyTreeView {
    * Build the Cytoscape graph from person and family data
    */
   buildGraph(selectedPerson, familyMembers, relationships) {
+    this.closeAddMenu();
+    this.shownPerson = selectedPerson;
+    this.graphData = [selectedPerson, familyMembers, relationships];
     const elements = [];
 
     // Create a map of person IDs to names for debugging
@@ -595,6 +644,15 @@ export class FamilyTreeView {
     }
 
 
+    // For editors, the "+" node, joined to the selected person (placed beside them after the layout)
+    if (this.addRelativeHandler) {
+      elements.push({ group: 'nodes', data: { id: ADD_NODE_ID, type: 'add' } });
+      elements.push({
+        group: 'edges',
+        data: { id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add' }
+      });
+    }
+
     // Update graph without animation
     this.updateGraph(elements);
   }
@@ -609,8 +667,9 @@ export class FamilyTreeView {
     // Add all new elements
     this.cy.add(elements);
 
-    // Run layout to calculate positions
-    const layout = this.cy.layout({
+    // Run layout to calculate positions, without the "+" node and its edge (placeAddNode puts it beside the
+    // selected person afterwards)
+    const layout = this.cy.elements().not('[type="add"]').layout({
       name: 'dagre',
       rankDir: 'TB',
       nodeSep: 40,
@@ -631,8 +690,32 @@ export class FamilyTreeView {
       }
     });
 
+    this.placeAddNode();
+
     // Fit to fill height and center horizontally
     this.fitToHeight();
+    this.placeAddButton();
+  }
+
+  /** Puts the "+" node (laid out apart) beside the selected person, making room in their row (placeBeside). */
+  placeAddNode() {
+    const add = this.cy.getElementById(ADD_NODE_ID);
+    const selected = this.cy.nodes('[type="selected"]');
+    if (add.empty() || selected.length === 0) return;
+    const { x, y } = selected.position();
+    const spouses = selected.outgoers('node[type="partnership"]').incomers('node').not(selected);
+    const row = this.cy.nodes().not(add).not(selected).filter(node => Math.abs(node.position().y - y) < 1);
+    const placed = placeBeside({
+      selected: { x, y, width: selected.outerWidth() },
+      addWidth: add.outerWidth(),
+      spouseXs: spouses.map(node => node.position().x),
+      row: row.map(node => ({ id: node.id(), x: node.position().x }))
+    });
+    add.position(placed.add);
+    for (const move of placed.moves) {
+      const node = this.cy.getElementById(move.id);
+      node.position({ x: move.x, y: node.position().y });
+    }
   }
 
   /**
@@ -646,34 +729,23 @@ export class FamilyTreeView {
 
     // Calculate vertical margins (top and bottom)
     const verticalMargin = 20;
-    const availableHeight = h - (2 * verticalMargin);
-
-    // Calculate zoom to fit height
-    let zoom = availableHeight / bb.h;
 
     // Cap zoom to prevent nodes from being too large when there are fewer generations
     // Maximum zoom of 1.0 keeps nodes at their natural size (135-180px)
     const maxZoom = 1.0;
-    zoom = Math.min(zoom, maxZoom);
 
-    // Get the selected person's position
+    // Zoom to fit the height; an editor's tree, widened by the "+", may zoom out a little to fit the width
+    const addNode = cy.getElementById(ADD_NODE_ID);
+    const zoom = chooseZoom({ bb, width: w, height: h, margin: verticalMargin, maxZoom, hasAdd: !addNode.empty() });
+
+    // Centred when the graph fits the width; else the selected person on the left with a margin, and an
+    // editor's "+" on their left kept in view
     const selectedNode = cy.nodes('[type="selected"]');
-    let panX;
-
-    const graphWidth = bb.w * zoom;
-
-    if (graphWidth <= w) {
-      // Graph fits within viewport - center it horizontally
-      panX = (w - graphWidth) / 2 - bb.x1 * zoom;
-    } else if (selectedNode.length > 0) {
-      // Graph is wider than viewport - position selected person on left with margin
-      const selectedPos = selectedNode.position();
-      const horizontalMargin = 100;
-      panX = horizontalMargin - selectedPos.x * zoom;
-    } else {
-      // Fallback: center horizontally
-      panX = (w - graphWidth) / 2 - bb.x1 * zoom;
-    }
+    const panX = horizontalPan({
+      bb, zoom, width: w,
+      selectedX: selectedNode.length > 0 ? selectedNode.position().x : null,
+      add: selectedNode.length > 0 && !addNode.empty() ? { x: addNode.position().x, width: addNode.outerWidth() } : null
+    });
 
     const pan = {
       x: panX,
@@ -791,5 +863,95 @@ export class FamilyTreeView {
    */
   onPersonSelect(callback) {
     this.onPersonSelectCallback = callback;
+  }
+
+  /**
+   * For editors, a "+" node joined to the highlighted person, with a button over it that calls
+   * `handler({ anchor: button, person })` (person: the record shown when it was pressed). What the handler
+   * returns (the menu it opened, `{ close, isOpen }`) is closed when the tree is rebuilt, when the handler is
+   * cleared, or on a second press. With null (viewers, signed out) there is no node and no button. The tree
+   * already shown is rebuilt when the node comes or goes.
+   */
+  setAddRelative(handler) {
+    const next = typeof handler === 'function' ? handler : null;
+    const changed = Boolean(next) !== Boolean(this.addRelativeHandler);
+    this.addRelativeHandler = next;
+    if (!changed) return;
+    if (next) {
+      this.createAddButton();
+    } else {
+      this.closeAddMenu();
+      this.removeAddButton();
+    }
+    if (this.graphData) this.buildGraph(...this.graphData);
+  }
+
+  /** The button over the "+" node: a real button, so it can take focus and has a name, kept over the node. */
+  createAddButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'tree-add-relative';
+    button.hidden = true; // until there is a node to sit over
+    button.setAttribute('aria-haspopup', 'menu');
+    button.setAttribute('aria-expanded', 'false');
+    // Cytoscape listens on its container, which holds the button: it would take a press here for a tap on the
+    // node or the start of a pan, and its touch handling would cancel the click.
+    for (const type of ['pointerdown', 'mousedown', 'touchstart']) {
+      button.addEventListener(type, (event) => event.stopPropagation());
+    }
+    button.addEventListener('click', () => {
+      if (this.addMenu?.isOpen?.()) {
+        this.closeAddMenu();
+        return;
+      }
+      if (!this.addRelativeHandler || !this.shownPerson) return;
+      this.addMenu = this.addRelativeHandler({ anchor: button, person: this.shownPerson }) ?? null;
+    });
+    this.container.appendChild(button);
+    this.addButton = button;
+    this.cy.on(VIEWPORT_EVENTS, this.placeAddButton);
+  }
+
+  removeAddButton() {
+    this.cy.off(VIEWPORT_EVENTS, this.placeAddButton);
+    const button = this.addButton;
+    this.addButton = null;
+    if (!button) return;
+    // Focus on the button (or given back to it by its closing menu) would fall to the page when it goes, as on
+    // signing out: it goes to the tree instead, focusable by script only.
+    if (button.contains(document.activeElement)) {
+      if (!this.container.hasAttribute('tabindex')) this.container.tabIndex = -1;
+      this.container.focus({ preventScroll: true });
+    }
+    button.remove();
+  }
+
+  closeAddMenu() {
+    const menu = this.addMenu;
+    this.addMenu = null;
+    menu?.close?.();
+  }
+
+  /**
+   * Puts the button over the "+" node as drawn now, at least MIN_TARGET_PX square, with the person's name;
+   * hidden while there is no node, or the node is panned out of the tree.
+   */
+  placeAddButton() {
+    const button = this.addButton;
+    if (!button) return;
+    const node = this.cy.getElementById(ADD_NODE_ID);
+    if (!this.shownPerson || node.empty()) {
+      button.hidden = true;
+      return;
+    }
+    button.setAttribute('aria-label', `Add a relative to ${nameOf(this.shownPerson)}`);
+    const { x, y } = node.renderedPosition();
+    const size = Math.max(MIN_TARGET_PX, node.renderedOuterWidth(), node.renderedOuterHeight());
+    const half = size / 2;
+    button.hidden = x + half < 0 || y + half < 0 || x - half > this.cy.width() || y - half > this.cy.height();
+    button.style.left = `${x - half}px`;
+    button.style.top = `${y - half}px`;
+    button.style.width = `${size}px`;
+    button.style.height = `${size}px`;
   }
 }
