@@ -202,7 +202,10 @@ Everything for editors lives in the lazy editing chunk, so viewers download no u
 
 **Mobile behaviour**
 
-- The file input is `accept="image/*,application/pdf" multiple`, with no `capture` attribute, so the phone offers library, camera and files.
+- There are two pickers, each `multiple` and with no `capture` attribute.
+  - The photo picker uses `accept="image/*"`. Android only shows its photo picker, which includes Google Photos, when `accept` lists nothing but images (found 2026-10-10). Otherwise it shows the file browser.
+  - PDFs have their own `accept="application/pdf"` picker, behind "Add a PDF".
+  - iPhones offer the photo library, the camera and Files for the photo picker.
 - Sheets are full screen below 768px (the existing rule). The action bar sticks to the bottom with `env(safe-area-inset-bottom)` padding.
 - The crop area is `touch-action: none`, at most `min(60vh, 100%)` tall. Buttons are at least 44px.
 - `beforeunload` warns while uploads are in flight.
