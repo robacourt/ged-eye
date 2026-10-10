@@ -8,8 +8,10 @@ import { TYPES } from '../media/types.js';
 import { familyChoice, relativeParams } from '../src/relativeDialog.js';
 import { unlinkParams } from '../src/unlinkConfirm.js';
 import {
+  MAX_CAPTION, MAX_DATE, MAX_PHOTOS,
   photoItem, addPhotosParams, updatePhotoParams, removePhotoParams, setAvatarParams, clearAvatarParams
 } from '../src/photoParams.js';
+import * as serverPhotos from '../api/commands/photos.js';
 
 const validate = (kind, params) => commandFor(kind).validate(params);
 
@@ -137,6 +139,12 @@ describe('photo command params', () => {
   /** What validatePhoto keeps of a photoItem: exactly what was sent. */
   const kept = (item) => ({
     upload: item.upload ?? null, mediaId: item.mediaId ?? null, caption: item.caption, date: item.date, personIds: item.personIds
+  });
+
+  it('limits captions, dates and photos per batch as the server does', () => {
+    expect({ MAX_CAPTION, MAX_DATE, MAX_PHOTOS }).toEqual({
+      MAX_CAPTION: serverPhotos.MAX_CAPTION, MAX_DATE: serverPhotos.MAX_DATE, MAX_PHOTOS: serverPhotos.MAX_PHOTOS
+    });
   });
 
   describe('add_photos', () => {

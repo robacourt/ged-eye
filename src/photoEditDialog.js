@@ -10,10 +10,7 @@ import {
 import { nameOf } from './familyLinks.js';
 import { thumbUrl } from './media.js';
 import { createPersonPicker } from './personPicker.js';
-import { updatePhotoParams } from './photoParams.js';
-
-const MAX_CAPTION = 500;
-const MAX_DATE = 100;
+import { MAX_CAPTION, MAX_DATE, updatePhotoParams } from './photoParams.js';
 
 const NOBODY = 'A photo must be shown for at least one person.';
 const STALE_MESSAGE = 'Someone else changed this photo. Reload to see their changes.';

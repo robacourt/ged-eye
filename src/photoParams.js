@@ -7,6 +7,13 @@
  * `{ sha256, ext, fileName }`: the client never sends object keys.
  */
 
+/** The longest caption, in characters, that update_photo and add_photos take (api/commands/photos.js). */
+export const MAX_CAPTION = 500;
+/** The longest date, in characters (free text, such as "about 1923"). */
+export const MAX_DATE = 100;
+/** The most photos one add_photos takes, so the most cards the Add photos sheet holds. */
+export const MAX_PHOTOS = 20;
+
 /** A caption or date as sent: trimmed text, or null for empty or missing. */
 const text = (value) => {
   const trimmed = String(value ?? '').trim();

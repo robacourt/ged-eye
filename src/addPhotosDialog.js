@@ -12,17 +12,12 @@ import {
 import { nameOf } from './familyLinks.js';
 import { thumbUrl } from './media.js';
 import { createPersonPicker } from './personPicker.js';
-import { addPhotosParams, photoItem } from './photoParams.js';
+import { MAX_CAPTION, MAX_DATE, MAX_PHOTOS, addPhotosParams, photoItem } from './photoParams.js';
 import { createUploadQueue } from './uploadQueue.js';
 import { uploadErrorMessage } from './uploadMessages.js';
 
 /** The words a card shows for a failed upload: see uploadMessages.js (re-exported for existing importers). */
 export { uploadErrorMessage };
-
-/** add_photos takes at most 20 photos, so the sheet holds at most 20 cards. */
-const MAX_PHOTOS = 20;
-const MAX_CAPTION = 500;
-const MAX_DATE = 100;
 
 /** Types every supported browser can show from an object URL; anything else previews as a document. */
 const PREVIEWABLE = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif']);
