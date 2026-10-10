@@ -14,7 +14,8 @@ export class CropError extends Error {
 }
 
 const MAX_EXTENT = 1.0001; // x + w and y + h may overshoot 1 by a rounding error
-const MIN_SIDE_PX = 32;
+/** The smallest side of a crop, in pixels of the original. */
+export const MIN_SIDE_PX = 32;
 const MAX_SIDE_DIFFERENCE = 0.01;
 
 const round4 = (n) => Math.round(n * 10_000) / 10_000 + 0; // + 0 turns -0 into 0

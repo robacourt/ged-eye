@@ -536,6 +536,43 @@ describe('openAvatarDialog: Upload new', () => {
       .toBe("This photo is already in the tree but hasn't been prepared for viewing yet, so it can't be an avatar.");
   });
 
+  it('fails a new upload that went missing while saving, and Retry uploads it again, starting from the same crop', async () => {
+    open();
+    choose([file('Rose.jpg')]);
+    await settle();
+    lastCropper().ready();
+    api.runChange.mockRejectedValueOnce(new ApiError(400, 'missing_upload', { index: 0, field: 'photo' }));
+    await save();
+    expect(croppers[0].destroy).toHaveBeenCalled();
+    expect(visible('.avatar-upload')).toBe(true);
+    expect($('.avatar-upload-status').textContent).toBe('This upload has gone missing. Retry to upload it again.');
+    expect(visible('.avatar-upload-retry')).toBe(true);
+    expect(message()).toBeNull();
+    expect(document.activeElement).toBe($('.avatar-upload'));
+
+    $('.avatar-upload-retry').click();
+    await settle();
+    expect(mediaApi.processUpload).toHaveBeenCalledTimes(2);
+    expect(visible('.avatar-crop-area')).toBe(true);
+    expect(lastCropper().options.initialCrop).toEqual(CROP);
+    lastCropper().ready();
+    await save();
+    expect(api.runChange).toHaveBeenCalledTimes(2);
+    expect(onSaved).toHaveBeenCalledWith(RESULT);
+  });
+
+  it('saves again on Retry when the rendered avatar went missing', async () => {
+    api.runChange.mockRejectedValueOnce(new ApiError(400, 'missing_upload', { field: 'avatarKey' }));
+    open();
+    crop(11);
+    await save();
+    expect(message()).toBe('The avatar went missing while it was saved. Try again.');
+    $('.avatar-retry').click();
+    await settle();
+    expect(mediaApi.renderAvatar).toHaveBeenCalledTimes(2);
+    expect(onSaved).toHaveBeenCalledWith(RESULT);
+  });
+
   it('shows why an upload failed, and Retry resumes it', async () => {
     mediaApi.uploadFile.mockRejectedValueOnce(new ApiError(0, 'network'));
     open();
@@ -619,6 +656,19 @@ describe('openAvatarDialog: Upload new', () => {
     $('.avatar-confirm-no').click();
     expect(visible('.avatar-crop-area')).toBe(true);
     expect(croppers).toHaveLength(1);
+  });
+
+  it('stops listening for leaving the page once taken off it without closing', async () => {
+    hold(mediaApi.processUpload);
+    open();
+    choose([file('Rose.jpg')]);
+    await settle();
+    dialog().closest('.editor-dialog-backdrop').remove();
+    const removeListener = vi.spyOn(window, 'removeEventListener');
+    const event = new Event('beforeunload', { cancelable: true });
+    window.dispatchEvent(event);
+    expect(event.defaultPrevented).toBe(false);
+    expect(removeListener).toHaveBeenCalledWith('beforeunload', expect.any(Function));
   });
 
   it('warns before leaving the page only while uploading', async () => {

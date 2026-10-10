@@ -10,8 +10,13 @@ import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 import { el, uniqueId } from './editorDialog.js';
 
-/** The media Function refuses a crop under 32 pixels of the original, which is at least as big as the display image. */
-const MIN_SIDE_PX = 32;
+/**
+ * How far in the photo may be zoomed: until the circle covers this many pixels of the display image. The media
+ * Function refuses a crop under 32 pixels of the original (MIN_SIDE_PX in media/crop.js, which can't be imported
+ * here: it needs node:crypto). The original is at least as big as the display image, and 2 more pixels leave room
+ * for rounding the crop's fractions.
+ */
+export const MIN_CROP_PX = 34;
 /** How far an arrow key moves the photo, in screen pixels, and how much + and − zoom by (as Cropper's zoom(0.1)). */
 const MOVE_STEP = 10;
 const ZOOM_STEP = 0.1;
@@ -20,9 +25,9 @@ const round4 = (n) => Math.round(n * 10_000) / 10_000 + 0; // + 0 turns -0 into 
 const clamp = (n, low, high) => Math.min(Math.max(n, low), high);
 
 /**
- * Cropper's `getData(true)` (`{ x, y, width, height }` in pixels of the loaded image, `naturalWidth` x
+ * Cropper's `getData()` (`{ x, y, width, height }` in pixels of the loaded image, `naturalWidth` x
  * `naturalHeight`) as fractions `{ x, y, w, h }` of it, each rounded to 4 decimal places. The crop box is square,
- * so a side that getData's rounding left a pixel longer takes the shorter one's length.
+ * so a side that came out longer (by a rounding error, or a pixel from `getData(true)`) takes the shorter's length.
  */
 export function toFractions({ x, y, width, height }, naturalWidth, naturalHeight) {
   const side = Math.min(width, height);
@@ -48,11 +53,11 @@ export function defaultCrop(width, height) {
 /**
  * How far the photo (`naturalWidth` x `naturalHeight`) may zoom under the crop box `{ width, height }`, as
  * Cropper's ratio (shown width / natural width): out until it just covers the box, as viewMode 1 allows, and in
- * until the box covers 32 of its pixels. → `{ min, max }`, with max never below min.
+ * until the box covers MIN_CROP_PX of its pixels. → `{ min, max }`, with max never below min.
  */
 export function zoomLimits(box, naturalWidth, naturalHeight) {
   const min = Math.max(box.width / naturalWidth, box.height / naturalHeight);
-  return { min, max: Math.max(min, box.width / MIN_SIDE_PX) };
+  return { min, max: Math.max(min, box.width / MIN_CROP_PX) };
 }
 
 /** The slider's 0..100 for the zoom `ratio`, between `min` and `max` on a log scale, so each step zooms by the same factor. */
@@ -104,6 +109,7 @@ export function createAvatarCropper({ imageUrl, initialCrop = null, onReady, onE
   let ready = false;
   let destroyed = false;
   let sliding = false; // the slider is zooming, so it mustn't be moved under the pointer
+  let pendingCrop = null; // the crop to put back after a resize, until the next frame does
 
   /** The zoom ratio's limits for the current crop box (see zoomLimits). */
   function limits() {
@@ -116,23 +122,25 @@ export function createAvatarCropper({ imageUrl, initialCrop = null, onReady, onE
     return canvas.width / canvas.naturalWidth;
   };
 
-  /** The middle of the circle, in the container's coordinates, so zooming keeps what's in it centred. */
-  function pivot() {
-    const box = cropper.getCropBoxData();
-    return { x: box.left + box.width / 2, y: box.top + box.height / 2 };
-  }
-
+  /** Zooms to `target` within the limits, about the circle (zoomAroundCenter: it sits in the middle). */
   function zoomTo(target) {
     const { min, max } = limits();
-    cropper.zoomTo(clamp(target, min, max), pivot());
+    cropper.zoomTo(clamp(target, min, max));
   }
 
-  /** Zooms in (positive `step`) or out as Cropper's zoom(step) does, but about the circle. */
+  /** Zooms in (positive `step`) or out, as Cropper's zoom(step) does. */
   const zoomBy = (step) => zoomTo(ratio() * (step > 0 ? 1 + step : 1 / (1 - step)));
+
+  /** Says the zoom as a percentage of the least, where the photo just covers the circle. */
+  function describeZoom() {
+    slider.setAttribute('aria-valuetext', `Zoom ${Math.round((100 * ratio()) / limits().min)}%`);
+  }
 
   /** Shows the current zoom on the slider: after every change, whether from pinching, the wheel or a resize. */
   function syncSlider() {
-    if (!ready || sliding) return;
+    if (!ready) return;
+    describeZoom();
+    if (sliding) return;
     const { min, max } = limits();
     slider.value = String(sliderValue(ratio(), min, max));
   }
@@ -159,6 +167,8 @@ export function createAvatarCropper({ imageUrl, initialCrop = null, onReady, onE
     highlight: false,
     background: false,
     restore: false,
+    // The circle sits in the middle, so the wheel and pinching zoom about it, keeping what's in it in view.
+    zoomAroundCenter: true,
     // Display images are already upright; checking would download the photo again through XHR.
     checkOrientation: false,
     // The canvas is never read, so the photo needn't be fetched again with CORS (and a cache-busting query).
@@ -175,22 +185,33 @@ export function createAvatarCropper({ imageUrl, initialCrop = null, onReady, onE
       onReady?.();
     },
     zoom(event) {
-      // Pinching and the wheel can't zoom in past the 32-pixel limit.
+      // A pinch or wheel step that would zoom in past the limit stops at it instead.
+      if (!ready) return;
       const { ratio: next, oldRatio } = event.detail;
-      if (ready && next > oldRatio && next > limits().max * (1 + 1e-9)) event.preventDefault();
+      const { max } = limits();
+      if (!(next > oldRatio && next > max * (1 + 1e-9))) return;
+      event.preventDefault();
+      if (oldRatio < max) cropper.zoomTo(max); // fires this again, at the limit, which lets it through
     },
     crop: syncSlider
   });
 
   // With `restore: false`, Cropper.js resets the crop when its area changes size (a phone turned round). This
-  // listener is added before Cropper's own (which it adds once the photo loads), so it sees the crop first, and
-  // puts it back before the next frame is drawn.
+  // listener is added before Cropper's own (which it adds once the photo loads; Cropper.js is pinned to 1.7.0 for
+  // that order), so it sees the crop first, and puts it back before the next frame is drawn. Until then, later
+  // resizes keep the crop already taken: by then Cropper.js has reset it.
   function onResize() {
-    if (!ready || destroyed) return;
+    if (!element.isConnected) {
+      destroy(); // taken off the page without being destroyed: stop listening to the window
+      return;
+    }
+    if (!ready || destroyed || pendingCrop) return;
     const { naturalWidth, naturalHeight } = cropper.getImageData();
-    const crop = toFractions(cropper.getData(), naturalWidth, naturalHeight);
+    pendingCrop = toFractions(cropper.getData(), naturalWidth, naturalHeight);
     requestAnimationFrame(() => {
-      if (destroyed) return;
+      const crop = pendingCrop;
+      pendingCrop = null;
+      if (destroyed || !crop) return;
       placeAt(crop);
       syncSlider();
     });
@@ -228,19 +249,23 @@ export function createAvatarCropper({ imageUrl, initialCrop = null, onReady, onE
     event.preventDefault();
   });
 
+  function destroy() {
+    if (destroyed) return;
+    destroyed = true;
+    pendingCrop = null;
+    window.removeEventListener('resize', onResize);
+    cropper.destroy(); // and Cropper.js's own listeners
+    element.remove();
+  }
+
   return {
     element,
     getCrop() {
       if (!ready || destroyed) return null;
       const { naturalWidth, naturalHeight } = cropper.getImageData();
-      return toFractions(cropper.getData(true), naturalWidth, naturalHeight);
+      // Unrounded: getData(true) can make a side a pixel shorter, which matters at the smallest crops.
+      return toFractions(cropper.getData(), naturalWidth, naturalHeight);
     },
-    destroy() {
-      if (destroyed) return;
-      destroyed = true;
-      window.removeEventListener('resize', onResize);
-      cropper.destroy();
-      element.remove();
-    }
+    destroy
   };
 }

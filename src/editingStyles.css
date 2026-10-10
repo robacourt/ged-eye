@@ -1489,6 +1489,11 @@
   text-align: center;
 }
 
+/* Gone once the photo has loaded, wherever the cropper is (it would cover the photo and take its touches). */
+.avatar-cropper-status[hidden] {
+  display: none;
+}
+
 .avatar-cropper .cropper-view-box,
 .avatar-cropper .cropper-face {
   border-radius: 50%;

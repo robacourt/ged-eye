@@ -72,6 +72,7 @@ export function openAvatarDialog({
   let cropReady = false;
   let retryAction = null;
   let lastUploadState = null;
+  let keptCrop = null; // the crop of a new upload that has to be uploaded again, to start from once it's back
 
   const dialog = openEditorDialog({ title: `Change avatar for ${name}`, className: 'avatar-dialog', onRequestClose: requestClose });
 
@@ -207,13 +208,9 @@ export function openAvatarDialog({
 
   function cropUpload(media) {
     const current = saved !== null && media.mediaId !== null && media.mediaId !== undefined && media.mediaId === saved.mediaId;
-    startCrop({
-      source: { media },
-      objectKey: media.objectKey,
-      imageUrl: displayUrl(media),
-      initialCrop: current ? saved.crop ?? null : null,
-      returnFocus: uploadTile
-    });
+    const initialCrop = keptCrop ?? (current ? saved.crop ?? null : null);
+    keptCrop = null;
+    startCrop({ source: { media }, objectKey: media.objectKey, imageUrl: displayUrl(media), initialCrop, returnFocus: uploadTile });
   }
 
   function startCrop(next) {
@@ -261,6 +258,7 @@ export function openAvatarDialog({
     unmountCropper();
     queue.cancel();
     choice = null;
+    keptCrop = null;
     showView('pick');
     focus.focus();
   }
@@ -271,6 +269,7 @@ export function openAvatarDialog({
     clearMessage();
     queue.cancel();
     lastUploadState = null;
+    keptCrop = null;
     uploadName.textContent = file.name;
     showView('upload');
     uploadView.focus();
@@ -296,7 +295,12 @@ export function openAvatarDialog({
   }
 
   function onBeforeUnload(event) {
-    if (!dialog.isOpen() || !queue.hasActive()) return; // closed, or removed from the page without closing
+    if (!dialog.isOpen()) { // removed from the page without closing: stop listening
+      window.removeEventListener('beforeunload', onBeforeUnload);
+      warning = false;
+      return;
+    }
+    if (!queue.hasActive()) return;
     event.preventDefault();
     event.returnValue = ''; // older browsers
   }
@@ -318,13 +322,28 @@ export function openAvatarDialog({
       return error.message && error.message !== error.code ? error.message : "This photo can't be used as an avatar.";
     }
     if (error?.code === 'busy') return 'The server is busy. Try again in a moment.';
-    if (error?.code === 'missing_upload') return 'The photo has gone missing. Go back and choose it again.';
+    if (error?.code === 'missing_upload') return 'The avatar went missing while it was saved. Try again.';
     if (error?.code === 'not_found') {
       return error.field === 'personId'
         ? `${name} no longer exists: someone else deleted them.`
         : 'This photo no longer exists: someone else deleted it.';
     }
     return commandErrorMessage(error);
+  }
+
+  /**
+   * The new upload has gone from storage (set_avatar's missing_upload for `photo`): it fails, back in the upload
+   * view, so that Retry uploads it again, and the crop starts where it was once it's back. → whether it did.
+   */
+  function uploadAgain(error, crop) {
+    const [item] = queue.items();
+    if (item?.state !== 'ready') return false;
+    unmountCropper();
+    keptCrop = crop;
+    showView('upload');
+    queue.markFailed(item, error); // renders the failure, with Retry
+    uploadView.focus();
+    return true;
   }
 
   /** Renders the crop of the original, then makes it the avatar with set_avatar. */
@@ -349,6 +368,7 @@ export function openAvatarDialog({
         finish();
         return;
       }
+      if (error?.code === 'missing_upload' && source.media && error.field !== 'avatarKey' && uploadAgain(error, crop)) return;
       showMessage(saveErrorMessage(error), save);
       return;
     }
