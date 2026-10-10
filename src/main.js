@@ -263,6 +263,9 @@ export function initApp({
       onAddPhotos: (person, files) => editing.openAddPhotosDialog({
         person, files, api, mediaApi: editing.mediaApi, onSaved: (result) => afterCommand(result, person.id)
       }),
+      onAddPdf: (person) => editing.openAddPhotosDialog({
+        person, pick: 'pdf', api, mediaApi: editing.mediaApi, onSaved: (result) => afterCommand(result, person.id)
+      }),
       onChangeAvatar: (person) => editing.openAvatarDialog({
         person, api, mediaApi: editing.mediaApi, onSaved: (result) => afterCommand(result, person.id)
       }),

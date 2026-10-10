@@ -240,7 +240,7 @@ describe('initApp: sign-in state', () => {
     expect(shownOptions()).toEqual(expect.objectContaining({
       canEdit: true, onEdit: expect.any(Function), onAddRelative: expect.any(Function), onUnlink: expect.any(Function),
       onEditFamily: expect.any(Function), onShowHistory: expect.any(Function), onOpenPerson: expect.any(Function),
-      onAddPhotos: expect.any(Function), onChangeAvatar: expect.any(Function), onEditPhoto: expect.any(Function),
+      onAddPhotos: expect.any(Function), onAddPdf: expect.any(Function), onChangeAvatar: expect.any(Function), onEditPhoto: expect.any(Function),
       onUseAsAvatar: expect.any(Function), onRemovePhoto: expect.any(Function)
     }));
   });
@@ -667,6 +667,16 @@ describe('initApp: photos', () => {
     const files = [new File(['x'], 'a.jpg', { type: 'image/jpeg' })];
     options.onAddPhotos(rose, files);
     expect(dialogs.openAddPhotosDialog).toHaveBeenLastCalledWith(expect.objectContaining({ person: rose, files }));
+    await expectCommandFlow(dialogs.openAddPhotosDialog.mock.calls[0][0].onSaved);
+  });
+
+  it('Add a PDF opens the sheet at once at its PDF picker, and its save runs the command flow', async () => {
+    options.onAddPdf(rose);
+    // No await before it: the sheet opens the PDF picker from inside the tap.
+    expect(dialogs.openAddPhotosDialog).toHaveBeenCalledTimes(1);
+    expect(dialogs.openAddPhotosDialog).toHaveBeenCalledWith({
+      person: rose, pick: 'pdf', api: anApi, mediaApi: dialogs.mediaApi, onSaved: expect.any(Function)
+    });
     await expectCommandFlow(dialogs.openAddPhotosDialog.mock.calls[0][0].onSaved);
   });
 

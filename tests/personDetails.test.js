@@ -478,7 +478,7 @@ describe('PersonDetails', () => {
       vi.stubEnv('VITE_MEDIA_BASE_URL', BASE);
       vi.stubEnv('VITE_MEDIA_API_URL', 'https://media-api.test');
       hooks = {
-        canEdit: true, onAddPhotos: vi.fn(), onChangeAvatar: vi.fn(), onEditPhoto: vi.fn(), onUseAsAvatar: vi.fn(),
+        canEdit: true, onAddPhotos: vi.fn(), onAddPdf: vi.fn(), onChangeAvatar: vi.fn(), onEditPhoto: vi.fn(), onUseAsAvatar: vi.fn(),
         onRemovePhoto: vi.fn(), onOpenPerson: vi.fn()
       };
     });
@@ -643,7 +643,7 @@ describe('PersonDetails', () => {
 
       it('ends with an Add tile for editors, which opens Add photos straight away', async () => {
         const el = await show(ROSE, hooks);
-        const add = el.querySelector('.person-photos-row').lastElementChild;
+        const add = el.querySelector('.person-photos-row').lastElementChild.previousElementSibling;
         expect(add.classList.contains('person-photo-add')).toBe(true);
         expect(add.tagName).toBe('BUTTON');
         expect(add.getAttribute('aria-label')).toBe('Add photos for Rose Smith');
@@ -653,18 +653,32 @@ describe('PersonDetails', () => {
         expect(hooks.onAddPhotos).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }));
       });
 
-      it('holds just the Add tile for an editor when the person has no photos', async () => {
+      it('ends with a PDF tile after Add, which opens Add photos at the PDF picker straight away', async () => {
+        const el = await show(ROSE, hooks);
+        const pdf = el.querySelector('.person-photos-row').lastElementChild;
+        expect(pdf.className).toBe('person-photo-add person-photo-add-pdf');
+        expect(pdf.tagName).toBe('BUTTON');
+        expect(pdf.getAttribute('aria-label')).toBe('Add a PDF for Rose Smith');
+        expect(pdf.textContent).toContain('PDF');
+        pdf.click();
+        // At once, inside the tap, like Add: the sheet opens the PDF picker from it.
+        expect(hooks.onAddPdf).toHaveBeenCalledTimes(1);
+        expect(hooks.onAddPdf).toHaveBeenCalledWith(expect.objectContaining({ id: 'I7' }));
+        expect(hooks.onAddPhotos).not.toHaveBeenCalled();
+      });
+
+      it('holds just the Add and PDF tiles for an editor when the person has no photos', async () => {
         const el = await show({ ...ROSE, photos: [] }, hooks);
         const row = el.querySelector('.person-photos-row');
-        expect([...row.children].map(child => child.className)).toEqual(['person-photo-add']);
+        expect([...row.children].map(child => child.className)).toEqual(['person-photo-add', 'person-photo-add person-photo-add-pdf']);
         expect(row.classList.contains('person-photos-row-editing')).toBe(true);
       });
 
       it('keeps the Add tile after a 4th thumbnail with "+N"', async () => {
         const el = await show({ ...ROSE, photos: [1, 2, 3, 4, 5].map(id => photo(id)) }, hooks);
         const row = el.querySelector('.person-photos-row');
-        expect(row.children).toHaveLength(5);
-        expect(row.lastElementChild.classList.contains('person-photo-add')).toBe(true);
+        expect(row.children).toHaveLength(6);
+        expect([...row.children].slice(-2).map(child => child.className)).toEqual(['person-photo-add', 'person-photo-add person-photo-add-pdf']);
       });
     });
 

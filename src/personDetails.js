@@ -70,6 +70,10 @@ const CAMERA_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none"
   'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
   '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>';
 
+const DOCUMENT_ICON = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" ' +
+  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+  '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>';
+
 /**
  * Whether the media Function is configured (VITE_MEDIA_API_URL). Without it nothing can be uploaded or cropped,
  * so editors get no Add tile, camera badge or drop zone (the viewer hides its own Avatar button).
@@ -162,6 +166,16 @@ class EditControls {
   addPhotosTile() {
     const content = '<span class="person-photo-add-plus" aria-hidden="true">+</span><span class="person-photo-add-text">Add</span>';
     return this.control('person-photo-add', content, `Add photos for ${nameOf(this.person)}`, () => this.call('onAddPhotos'));
+  }
+
+  /**
+   * The PDF tile after Add. Add opens the photo picker at once, which hides the sheet's own "Add a PDF" until a
+   * photo is chosen, so PDFs get their own way in; like Add, its click calls onAddPdf inside the tap.
+   */
+  addPdfTile() {
+    const content = `<span class="person-photo-add-icon" aria-hidden="true">${DOCUMENT_ICON}</span><span class="person-photo-add-text">PDF</span>`;
+    return this.control('person-photo-add person-photo-add-pdf', content, `Add a PDF for ${nameOf(this.person)}`,
+      () => this.call('onAddPdf'));
   }
 
   /** The viewer's editor hooks, for the options given: each calls the panel's with the photo and this person. */
@@ -309,15 +323,15 @@ export class PersonDetails {
    * @param options  for everyone: `{ onOpenPerson(personId) }`, for the photo viewer's "Shown for" links.
    *   For editors also: `{ canEdit, onEdit(person), onAddRelative(relation, person),
    *   onUnlink({ relation, role, personId, familyId }, person), onEditFamily(family, person), onShowHistory(person),
-   *   onAddPhotos(person, files?), onChangeAvatar(person), onEditPhoto(photo, person), onUseAsAvatar(photo, person),
+   *   onAddPhotos(person, files?), onAddPdf(person), onChangeAvatar(person), onEditPhoto(photo, person), onUseAsAvatar(photo, person),
    *   onRemovePhoto(photo, person) }`.
    *   Without `canEdit` no edit control is rendered. `relation` is 'parent' | 'spouse' | 'child' | 'sibling';
    *   onUnlink's `familyId` is null for a child whose family an older view can't tell (unlinkConfirm explains);
    *   `family` is openFamilyEditor's `{ familyId, partners: [{ id, name }], marriageDate, marriagePlace,
    *   divorceDate, divorcePlace }`. onAddPhotos is called inside the Add tile's click, with no files (the sheet
-   *   opens the file picker), or with the files dropped on the panel. The photo hooks are the viewer's editor
+   *   opens the file picker), or with the files dropped on the panel; onAddPdf inside the PDF tile's click. The photo hooks are the viewer's editor
    *   hooks, called after it has closed; `photo` is one of person_record's `photos`.
-   *   Without VITE_MEDIA_API_URL there is no Add tile, camera badge or drop zone.
+   *   Without VITE_MEDIA_API_URL there are no Add or PDF tiles, camera badge or drop zone.
    */
   async showPerson(personData, relationships = null, options = {}) {
     const previous = this.currentPerson;
@@ -349,7 +363,7 @@ export class PersonDetails {
       const thumbnails = photos.slice(0, MAX_THUMBNAILS)
         .map((photo, i) => photoThumbnail(photo, i, i === MAX_THUMBNAILS - 1 ? more : 0));
       const row = canUpload ? 'person-photos-row person-photos-row-editing' : 'person-photos-row';
-      html += `<div class="${row}">${thumbnails.join('')}${canUpload ? edit.addPhotosTile() : ''}</div>`;
+      html += `<div class="${row}">${thumbnails.join('')}${canUpload ? edit.addPhotosTile() + edit.addPdfTile() : ''}</div>`;
     }
 
     html += '<div class="person-details-sections">';

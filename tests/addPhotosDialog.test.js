@@ -211,6 +211,15 @@ describe('openAddPhotosDialog: opening', () => {
     expect(sheet.isOpen()).toBe(false);
   });
 
+  it('opens at the PDF picker instead with pick: pdf, and closes when that picker is dismissed with nothing chosen', () => {
+    const sheet = open({ pick: 'pdf' });
+    expect(clicks).toEqual([{ input: pdfInput(), connected: true, inSheet: true }]);
+    fileInput().dispatchEvent(new Event('cancel'));
+    expect(sheet.isOpen()).toBe(true);
+    pdfInput().dispatchEvent(new Event('cancel'));
+    expect(sheet.isOpen()).toBe(false);
+  });
+
   it('starts uploading dropped files at once, without opening the picker', () => {
     const files = [file('a.jpg'), file('b.pdf')];
     open({ files });

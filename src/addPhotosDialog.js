@@ -30,15 +30,16 @@ const sentence = (text) => (/[.?!…]$/.test(text) ? text : `${text}.`);
  * Opens the sheet.
  * @param person       the person record the photos are added for (shown for them, and anyone else chosen)
  * @param files        optional Files (a FileList or array), e.g. from a drop: they start uploading at once.
- *                     Without them the file picker opens straight away, so call this from inside the tap's own
+ *                     Without them a file picker opens straight away, so call this from inside the tap's own
  *                     event handler, with no `await` before it: iOS only opens a picker from there.
+ * @param pick         which picker opens without files: 'photos' (the default) or 'pdf'
  * @param api          `{ runChange, search }` (editApi.js)
  * @param mediaApi     `{ requestUpload, uploadFile, processUpload, discardUpload }` (mediaApi.js), for the queue
  * @param createQueue  makes the upload queue, as createUploadQueue({ api, onChange }) does (the default)
  * @param onSaved      ({ change, view }) after add_photos: the caller invalidates caches, re-renders and toasts
  * @returns `{ close, isOpen, element }`; `close()` discards any uploads, without asking
  */
-export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue = createUploadQueue, onSaved }) {
+export function openAddPhotosDialog({ person, files, pick = 'photos', api, mediaApi, createQueue = createUploadQueue, onSaved }) {
   const name = nameOf(person);
   const cards = new Map(); // item id -> card
   let phase = 'idle'; // or 'waiting' (for uploads to finish, then saving) or 'sending'
@@ -542,8 +543,9 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
       picker.value = ''; // so choosing the same file again is a change
     });
   }
-  // The photo picker, opened with the sheet, was dismissed: with nothing chosen yet, there's nothing to do here.
-  input.addEventListener('cancel', () => {
+  // The picker opened with the sheet was dismissed: with nothing chosen yet, there's nothing to do here.
+  const firstPicker = pick === 'pdf' ? pdfInput : input;
+  firstPicker.addEventListener('cancel', () => {
     if (!closed && phase === 'idle' && queue.items().length === 0) finish();
   });
   moreButton.addEventListener('click', () => {
@@ -563,7 +565,7 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
   updateFooter([]);
   dialog.dialog.focus();
   if (files && files.length > 0) addFiles(files);
-  else input.click(); // synchronously, still inside the tap's event handler (see above)
+  else firstPicker.click(); // synchronously, still inside the tap's event handler (see above)
 
   return { close: finish, isOpen: () => !closed && dialog.isOpen(), element: dialog.dialog };
 }
