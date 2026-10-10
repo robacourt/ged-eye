@@ -2,7 +2,7 @@
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import pg from 'pg';
 import { TEST_DATABASE_URL as url, resetTestDatabase } from './testDatabase.js';
-import { createDb } from '../../api/db.js';
+import { ACCESS_REQUEST_LOCK, createDb } from '../../api/db.js';
 
 const OWNER = 'saintderanged@gmail.com'; // seeded as admin by migration 006
 const ADMIN2 = 'admin2@example.test';
@@ -402,15 +402,30 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
       expect(await statusOf(id)).toEqual({ status: 'granted', resolved_by: OWNER });
     });
 
-    it('does not deadlock with a grant of the same request', async () => {
+    it('takes the request row before the editor, as a grant does, so the two never deadlock', async () => {
       const { id } = await insertRequest(ASKER);
-      const [grant, added] = await Promise.all([
-        db.resolveAccessRequest(id, 'grant', ADMIN2),
-        db.addEditor({ email: ASKER, name: null, role: 'editor' }, OWNER)
-      ]);
+      const blocker = await pool.connect();
+      let results;
+      try {
+        // Hold the request, so the grant (admin row locked) and then addEditor both queue behind it. Were
+        // addEditor to insert the editor before locking the request, the grant would then wait on that
+        // insert while addEditor waited on the grant: a deadlock, which Postgres would abort.
+        await blocker.query('begin');
+        await blocker.query('select id from access_request where id = $1 for update', [id]);
+        const grant = db.resolveAccessRequest(id, 'grant', ADMIN2);
+        await waitForLockWaiters(1, '%from access_request%for update%');
+        const added = db.addEditor({ email: ASKER, name: null, role: 'editor' }, OWNER);
+        await waitForLockWaiters(1, '%update access_request%');
+        await blocker.query('commit');
+        results = await Promise.all([grant, added]);
+      } finally {
+        await blocker.query('rollback').catch(() => {});
+        blocker.release();
+      }
+      const [grant, added] = results;
       expect(await count('select count(*)::int as n from editor where email = $1', [ASKER])).toBe(1);
       expect((await statusOf(id)).status).toBe('granted');
-      // Whichever went first added the editor and resolved the request; the other found both done.
+      // Whichever got the request first added the editor and resolved it; the other found both done.
       if (grant.outcome === 'granted') {
         expect(grant.wasEditor).toBe(false);
         expect(added).toBeNull();
@@ -418,6 +433,44 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
         expect(grant.outcome).toBe('already_resolved');
         expect(added).toMatchObject({ email: ASKER, addedBy: OWNER });
       }
+    });
+
+    it('takes the request lock first, so a request made meanwhile is granted, not left pending', async () => {
+      const holder = await pool.connect();
+      try {
+        // As createAccessRequest does: take the lock, find no editor, insert a pending request.
+        await holder.query('begin');
+        await holder.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
+        const added = db.addEditor({ email: ASKER, name: null, role: 'editor' }, OWNER);
+        await waitForLockWaiters(1, '%pg_advisory_xact_lock%');
+        expect(await db.lookupEditor(ASKER)).toBeNull();
+        await holder.query('insert into access_request (email) values ($1)', [ASKER]);
+        await holder.query('commit');
+        expect(await added).toMatchObject({ email: ASKER, addedBy: OWNER });
+      } finally {
+        await holder.query('rollback').catch(() => {});
+        holder.release();
+      }
+      expect(await count("select count(*)::int as n from access_request where status = 'pending'")).toBe(0);
+      expect(await db.latestAccessRequest(ASKER)).toMatchObject({ status: 'granted', resolvedBy: OWNER });
+    });
+
+    it('makes a request that waited on it find the new editor', async () => {
+      const holder = await pool.connect();
+      try {
+        // Hold the lock as addEditor would, with the editor inserted but not yet committed.
+        await holder.query('begin');
+        await holder.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
+        await holder.query("insert into editor (email, name, role, added_by) values ($1, null, 'editor', $2)", [ASKER, OWNER]);
+        const asked = db.createAccessRequest({ email: ASKER, name: null, note: null });
+        await waitForLockWaiters(1, '%pg_advisory_xact_lock%');
+        await holder.query('commit');
+        expect(await asked).toEqual({ outcome: 'editor', request: null });
+      } finally {
+        await holder.query('rollback').catch(() => {});
+        holder.release();
+      }
+      expect(await count('select count(*)::int as n from access_request')).toBe(0);
     });
   });
 });

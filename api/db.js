@@ -49,9 +49,10 @@ const REQUEST_COLUMNS = `id, email, name, note, created_at, status, resolved_by,
 const PER_EMAIL_LIMIT = 3;
 const GLOBAL_LIMIT = 10;
 const REQUESTS_LISTED = 100;
-// pg_advisory_xact_lock key serialising new requests, so the rate limits hold under concurrency.
+// pg_advisory_xact_lock key serialising new requests with each other, so the rate limits hold under
+// concurrency, and with addEditor, so a request can't slip in while someone is being added.
 // Distinct from begin_change's 7262021.
-const ACCESS_REQUEST_LOCK = 7262022;
+export const ACCESS_REQUEST_LOCK = 7262022;
 
 const requestFromRow = (row) => ({
   id: Number(row.id),
@@ -195,10 +196,13 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
     /**
      * → the new editor, or null when the email is already listed (an existing editor is never changed).
      * Either way, a pending access request for the email is marked granted by `by`, in the same
-     * transaction, so nothing is left pending.
+     * transaction, holding the request lock (as createAccessRequest does), so nothing is left pending.
      */
     addEditor({ email, name, role }, by) {
       return inTransaction(pool, async (client) => {
+        // The request lock first: a request being made now either commits before this update (and is
+        // granted by it) or waits and finds the editor, never landing between the update and the insert.
+        await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
         // The request row first, then the editor: the order resolveAccessRequest locks them in.
         await client.query(
           `update access_request set status = 'granted', resolved_by = $2, resolved_at = now()

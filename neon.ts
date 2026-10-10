@@ -1,7 +1,9 @@
 import { defineConfig } from "@neon/config/v1";
 
 // The api Function's mail credentials (api/mailer.js), passed only when both are set, so a deploy
-// without them sends no `env` and leaves any deployed values alone. They come from their own file
+// without them sends no `env` and leaves any deployed values alone: checked on `photos` (2026-10-10),
+// where a plain deploy after one with dummy values still gave /health `mail: 'smtp'`. Empty values
+// would delete them, so they are left out too. They come from their own file
 // (`neon deploy --env .env.mail.local`), never .env.local: a dev branch copies the real admin list.
 const { SMTP_USER, SMTP_PASS } = process.env;
 if (Boolean(SMTP_USER) !== Boolean(SMTP_PASS)) {

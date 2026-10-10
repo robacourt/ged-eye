@@ -4,7 +4,7 @@ import { createHandler, VIEW_VERSION } from '../api/handler.js';
 import { ApiError, MAX_BODY_BYTES } from '../api/http.js';
 import { AuthError, authenticatorFromEnv } from '../api/auth.js';
 import { maskNoteEmails } from '../api/privacy.js';
-import { createDb, escapeLike } from '../api/db.js';
+import { ACCESS_REQUEST_LOCK, createDb, escapeLike } from '../api/db.js';
 import { inTransaction } from '../api/tx.js';
 import { SITE_URL, grantedEmail, requestEmail, sanitizeName } from '../api/mailer.js';
 
@@ -1041,9 +1041,12 @@ describe('api/db.js', () => {
     const statements = client.query.mock.calls.map(([sql]) => sql);
     expect(statements[0]).toBe('begin');
     expect(statements.at(-1)).toBe('commit');
+    const lock = statements.findIndex((sql) => /pg_advisory_xact_lock/.test(sql));
     const resolve = statements.findIndex((sql) => /update access_request/.test(sql));
     const insert = statements.findIndex((sql) => /insert into editor/.test(sql));
-    expect(resolve).toBeGreaterThan(0);
+    expect(lock).toBeGreaterThan(0);
+    expect(client.query.mock.calls[lock][1]).toEqual([ACCESS_REQUEST_LOCK]);
+    expect(resolve).toBeGreaterThan(lock);
     expect(insert).toBeGreaterThan(resolve); // the request row is locked first, as resolveAccessRequest does
     expect(client.query.mock.calls[resolve][1]).toEqual(['editor@example.test', 'admin@example.test']);
     expect(pool.query).not.toHaveBeenCalled();

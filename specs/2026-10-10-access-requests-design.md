@@ -94,7 +94,7 @@ create index access_request_email_created on access_request (email, created_at);
   - `neon.ts` declares `env: { SMTP_USER, SMTP_PASS }` for `api` **only when both are present** in `process.env`.
   - They live in their own gitignored file, `.env.mail.local` in the main checkout, not in `.env.local`. `neon env pull` writes `.env.local`, and a dev-branch deploy must never pick up the real credentials: a branch copies the real admin list, so real admins would be emailed.
   - Neither value is ever printed, committed or seen by Claude.
-  - **Unverified:** whether a later deploy without `--env .env.mail.local` keeps or wipes the live keys. This is checked after building, with dummy values on the `photos` branch through `/health`'s `mail`. If keys are wiped, the README says every production deploy must pass the file. Either way, the failure is graceful: mail falls back to being logged, and requests still show in the app.
+  - **Checked (2026-10-10, on `photos`):** a later deploy without `--env .env.mail.local` **keeps** the live keys. After a deploy with dummy values (`/health`: `mail: 'smtp'`), a plain `neon deploy --no-env-pull` still gave `smtp` five minutes later (deployment 12). So the secrets are deployed once, and the README says so. Deploying empty values deletes them, which is how the dummies were cleared.
 - **Spike (2026-10-10):** a Neon Function on the `photos` branch reached `smtp.gmail.com` on 465 (TLS) and 587, and both answered `220`.
 
 ## Front end

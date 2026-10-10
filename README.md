@@ -210,6 +210,8 @@ neon deploy --branch production --no-env-pull --env .env.mail.local
 
 Until then mail is only logged, and requests still show in the app. `GET <api URL>/health` says which: `mail: 'log'` or `mail: 'smtp'`.
 
+The secrets only need deploying once: a later `neon deploy` without the file keeps them (checked on `photos`, 2026-10-10). Deploying empty values deletes them. `neon.ts` leaves empty values out, so do that with `neon functions deploy api --branch production --src api/index.js --env SMTP_USER= --env SMTP_PASS=`.
+
 ### Releasing to production
 
 Follow the Rollout section of the [editing design](specs/2026-10-09-editing-design.md#rollout). Run every step from the **main checkout**, whose `.neon` and `.env.local` point at production (the `editing` worktree's point at the `editing` branch), once `editing` is merged into `main` there. In short: `git pull` and `npm ci`; `npm run db:migrate` (006 and 007), before the deploy because the new Function reads their tables; `neon deploy`; disable email/password sign-in and add the `https://robacourt.github.io` trusted domain; `npm run verify-neon` (it reads the production database and samples the production API); `npm run build` and commit `docs/`, which is the actual front-end release since Pages serves the committed `docs/` and merging alone changes nothing on the site; smoke tests and sign-in tests on real devices (email code, Google, iPhone Safari); and only then invite relatives.
