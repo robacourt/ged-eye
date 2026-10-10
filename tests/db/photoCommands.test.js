@@ -397,24 +397,40 @@ describe.skipIf(!url)('photo commands (database)', { timeout: 60000 }, () => {
       expect(await mediaRow(t.beach)).toMatchObject({ caption: null, date: '1923' });
     });
 
-    it('focuses on focusId while it is still linked, else on the first of personIds', async () => {
+    it('returns the view of focusId even when the edit untags them, so the editor stays on their page', async () => {
       const t = await seed({
         people: { alice: ['Alice', 'Ash'], bob: ['Bob', 'Birch'] },
         media: { beach: {} },
         links: [['alice', 'beach'], ['bob', 'beach']]
       });
-      const moved = await run('update_photo', {
+      const untagged = await runUndoRedo('update_photo', {
         mediaId: t.beach, caption: null, date: null, personIds: [t.bob],
         expected: { caption: null, date: null, personIds: [t.alice, t.bob] }, focusId: t.alice
       });
-      expect(moved.change).toEqual({ id: expect.any(Number), summary: 'Edited a photo of Bob Birch', personIds: [t.bob, t.alice] });
-      expect(moved.view.person.id).toBe(t.bob);
+      expect(untagged.change).toEqual({ id: expect.any(Number), summary: 'Edited a photo of Alice Ash', personIds: [t.alice, t.bob] });
+      expect(untagged.view.person.id).toBe(t.alice);
+      expect(untagged.view.person.photos).toEqual([]);
+      expect(await peopleOf(t.beach)).toEqual([t.bob]);
+    });
 
+    it('focuses on the first of personIds when focusId is not given, or no longer exists', async () => {
+      const t = await seed({
+        people: { alice: ['Alice', 'Ash'], bob: ['Bob', 'Birch'] },
+        media: { beach: {} },
+        links: [['alice', 'beach']]
+      });
       const captioned = await run('update_photo', {
-        mediaId: t.beach, caption: 'Beach', date: null, personIds: [t.bob, t.alice], expected: { caption: '', date: '', personIds: [t.bob] }
+        mediaId: t.beach, caption: 'Beach', date: null, personIds: [t.bob, t.alice], expected: { caption: '', date: '', personIds: [t.alice] }
       });
       expect(captioned.change).toEqual({ id: expect.any(Number), summary: 'Edited a photo of Bob Birch', personIds: [t.bob, t.alice] });
       expect(captioned.view.person.id).toBe(t.bob);
+
+      const gone = await run('update_photo', {
+        mediaId: t.beach, caption: 'Beach', date: null, personIds: [t.alice],
+        expected: { caption: 'Beach', date: null, personIds: [t.alice, t.bob] }, focusId: 'I999999'
+      });
+      expect(gone.change).toEqual({ id: expect.any(Number), summary: 'Edited a photo of Alice Ash', personIds: [t.alice, t.bob] });
+      expect(gone.view.person.id).toBe(t.alice);
     });
 
     it('is stale (409) when the caption, date or people changed since it was read, writing nothing', async () => {
