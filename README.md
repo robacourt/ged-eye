@@ -210,7 +210,7 @@ neon deploy --branch production --no-env-pull --env .env.mail.local
 
 Until then mail is only logged, and requests still show in the app. `GET <api URL>/health` says which: `mail: 'log'` or `mail: 'smtp'`.
 
-The secrets only need deploying once: a later `neon deploy` without the file keeps them (checked on `photos`, 2026-10-10). Deploying empty values deletes them. `neon.ts` leaves empty values out, so do that with `neon functions deploy api --branch production --src api/index.js --env SMTP_USER= --env SMTP_PASS=`.
+The secrets only need deploying once: a later `neon deploy` without the file keeps them (checked on `photos`, 2026-10-10). Deploying empty values deletes them. `neon.ts` normally leaves empty values out, so to remove the secrets, temporarily change its `mailEnv` line to `const mailEnv = { env: { SMTP_USER: "", SMTP_PASS: "" } };`, run `neon deploy --branch production --no-env-pull`, then revert the line. This is how the dummy values were cleared on `photos`; `/health` then shows `mail: 'log'`.
 
 ### Releasing to production
 
