@@ -72,29 +72,35 @@ async function beginChange(tx, user, kind, params) {
 
 /**
  * Runs the command `kind` for `user` ({ email, name }) as one recorded change, via 'edit':
- * validate (before connecting, so bad input never takes the lock), then in one transaction
- * begin_change (the global write lock), run, refuse an empty change as no_change, record the
- * summary and person ids, and read the focus person's view, then commit.
- * The view is read before commit so a failure can't report an error for an edit that was saved.
+ * validate (before connecting, so bad input never takes the lock), then the command's optional
+ * prepare(clean, context) (network checks such as the upload HEADs, also before the lock), then in
+ * one transaction begin_change (the global write lock), run (given prepare's result), refuse an
+ * empty change as no_change, record the summary and person ids, and read the focus person's view,
+ * then commit. The view is read before commit so a failure can't report an error for an edit that
+ * was saved.
  *
  * The transaction (inTransaction) stays at the default READ COMMITTED isolation. Never change it:
  * the global lock in begin_change relies on each later statement taking a fresh snapshot, so it
  * sees every change committed before the lock was granted.
  *
  * → { change: { id, summary, personIds }, view: unmasked person_view of the focus, or null }
- * Throws ApiError (400 invalid / no_change, 404, 409 stale, 500 internal, 503 busy) or a raw error.
- * `commands` and `log` are injectable for tests.
+ * Throws ApiError (400 invalid / no_change / missing_upload, 404, 409 stale, 500 internal, 503 busy)
+ * or a raw error; prepare's errors pass through unchanged.
+ * `context` ({ headObject }, see api/uploads.js) is what prepare is given. `commands` and `log` are
+ * injectable for tests.
  */
-export async function runChange(pool, user, kind, params, { commands = COMMANDS, log = console.error } = {}) {
+export async function runChange(pool, user, kind, params, { commands = COMMANDS, log = console.error, context = {} } = {}) {
   const command = typeof kind === 'string' ? commands.get(kind) : undefined;
   if (!command) throw invalid('kind', `Unknown command: ${kind}.`);
   if (!isObject(params)) throw invalid('params', 'params must be an object.');
   const clean = command.validate(params);
+  // Before the lock: network checks (HEADs of uploads) must never hold begin_change's global lock.
+  const prepared = command.prepare ? await command.prepare(clean, context) : undefined;
 
   try {
     return await inTransaction(pool, async (tx) => {
       const id = await beginChange(tx, user, kind, params);
-      const { summary, personIds, focusId } = await command.run(tx, clean, user);
+      const { summary, personIds, focusId } = await command.run(tx, clean, user, prepared);
 
       const { rows: [{ n }] } = await tx.query('select count(*)::int as n from change_row where change_id = $1', [id]);
       if (n === 0) throw new ApiError(400, 'no_change');

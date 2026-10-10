@@ -1,7 +1,7 @@
 import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
 import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
-import { mediaUrl } from './media.js';
+import { avatarUrl } from './media.js';
 
 // Register the dagre layout
 cytoscape.use(dagre);
@@ -763,11 +763,7 @@ export class FamilyTreeView {
    * Get avatar path for a person, with fallback to man.png or woman.png
    */
   getAvatarPath(person) {
-    if (person.avatarKey) {
-      return mediaUrl(person.avatarKey);
-    }
-    const placeholder = person.sex === 'F' ? 'woman.png' : 'man.png';
-    return `${import.meta.env.BASE_URL}placeholders/${placeholder}`;
+    return avatarUrl(person);
   }
 
   /**

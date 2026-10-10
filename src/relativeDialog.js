@@ -10,10 +10,7 @@ import {
   DATE_HINT, DATE_PLACEHOLDER, el, openEditorDialog, uniqueId, callSafely, setBusy, commandErrorMessage
 } from './editorDialog.js';
 import { listNames, nameById, nameOf, relativeBlocked } from './familyLinks.js';
-
-const SEARCH_DELAY_MS = 250;
-const SEARCH_MIN_CHARS = 2;
-const SEARCH_LIMIT = 20;
+import { createPersonSearch, lifeYears } from './personSearch.js';
 
 const RELATION_WORDS = { parent: 'a parent', spouse: 'a spouse', child: 'a child', sibling: 'a sibling' };
 const SEX_OPTIONS = [['', 'Not recorded'], ['M', 'Male'], ['F', 'Female'], ['U', 'Unknown']];
@@ -22,16 +19,6 @@ const NEW_FIELDS = [
   ['birth_date', 'Birth date'], ['birth_place', 'Birth place'], ['death_date', 'Death date']
 ];
 const LEGENDS = { child: 'With which partner?', parent: 'Alongside which parent?', sibling: 'Through which parents?' };
-
-/** "1850–1910", "b. 1850", "d. 1910" or "". */
-function lifeYears({ birthYear, deathYear }) {
-  const born = birthYear ?? '';
-  const died = deathYear ?? '';
-  if (born !== '' && died !== '') return `${born}–${died}`;
-  if (born !== '') return `b. ${born}`;
-  if (died !== '') return `d. ${died}`;
-  return '';
-}
 
 /**
  * Which family the new relative goes in.
@@ -167,16 +154,18 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
 
   // --- Existing person -----------------------------------------------------------------------------------
 
-  const searchInput = el('input', {
-    class: 'editor-input', type: 'search', name: 'search', autocomplete: 'off', placeholder: 'Type a name'
+  const search = createPersonSearch({
+    api,
+    isActive: () => dialog.isOpen(),
+    onResults: showResults,
+    filter: someone => someone.id !== person.id
   });
+  const searchInput = search.input;
+  search.status.classList.add('relative-status');
   const resultsName = uniqueId('relative-result');
-  const status = el('p', { class: 'editor-hint relative-status', 'aria-live': 'polite', text: 'Type at least 2 letters of their name.' });
   const results = el('div', { class: 'relative-results', role: 'radiogroup', 'aria-label': 'People found' });
   const warning = el('p', { class: 'relative-warning', hidden: true });
   let found = []; // the results shown
-  let searchTimer = null;
-  let searchNumber = 0;
 
   const tabIds = { new: uniqueId('relative-tab'), existing: uniqueId('relative-tab') };
   const panelIds = { new: uniqueId('relative-panel'), existing: uniqueId('relative-panel') };
@@ -192,7 +181,7 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
     existing: el('div', { class: 'relative-panel', role: 'tabpanel', id: panelIds.existing, 'data-panel': 'existing', 'aria-labelledby': tabIds.existing },
       el('div', { class: 'editor-field-wrap' },
         el('label', { class: 'editor-field' }, el('span', { text: 'Search the tree' }), searchInput), errorLine('otherId', searchInput)),
-      status, results, warning)
+      search.status, results, warning)
   };
 
   // --- Messages and buttons ------------------------------------------------------------------------------
@@ -312,13 +301,13 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
       return;
     }
     busy = false;
-    clearTimeout(searchTimer);
+    search.destroy();
     dialog.close();
     callSafely(onAdded, result);
   }
 
   function showResults(people) {
-    found = people.filter(someone => someone.id !== person.id);
+    found = people;
     const chosen = results.querySelector('input:checked')?.value;
     results.replaceChildren(...found.map(someone => {
       const radio = el('input', { type: 'radio', name: resultsName, value: someone.id });
@@ -328,8 +317,6 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
         el('span', { class: 'relative-result-name', text: nameOf(someone) }),
         years ? el('span', { class: 'relative-result-years', text: years }) : null);
     }));
-    status.textContent = found.length === 0 ? 'No one matches.'
-      : found.length === 1 ? '1 person found.' : `${found.length} people found.`;
     updateWarning();
   }
 
@@ -340,40 +327,6 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
     warning.textContent = warning.hidden ? '' : `If ${nameOf(chosen)} already has parents, they will have two sets of parents.`;
   }
 
-  async function runSearch() {
-    clearTimeout(searchTimer);
-    if (!dialog.isOpen()) return; // closed with Escape or × while the search was waiting
-    const text = searchInput.value.trim();
-    const number = ++searchNumber;
-    if ([...text].length < SEARCH_MIN_CHARS) {
-      showResults([]);
-      status.textContent = 'Type at least 2 letters of their name.';
-      return;
-    }
-    status.textContent = 'Searching…';
-    let people;
-    try {
-      people = await api.search(text, { limit: SEARCH_LIMIT });
-    } catch (error) {
-      if (number !== searchNumber) return;
-      console.error('Search failed', error);
-      showResults([]);
-      status.textContent = "Couldn't search. Check your connection and try again.";
-      return;
-    }
-    if (number !== searchNumber || !dialog.isOpen()) return; // a newer search has started, or the dialog closed
-    showResults(Array.isArray(people) ? people : []);
-  }
-
-  searchInput.addEventListener('input', () => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(runSearch, SEARCH_DELAY_MS);
-  });
-  searchInput.addEventListener('keydown', (event) => {
-    if (event.key !== 'Enter') return;
-    event.preventDefault(); // search now rather than submit
-    runSearch();
-  });
   results.addEventListener('change', () => {
     errorSlots.get('otherId').element.hidden = true;
     searchInput.removeAttribute('aria-invalid');
@@ -403,7 +356,7 @@ export function openRelativeDialog({ person, relationships, relation, api, onAdd
   });
   cancelButton.addEventListener('click', () => {
     if (busy) return;
-    clearTimeout(searchTimer);
+    search.destroy();
     dialog.close();
   });
   reloadButton.addEventListener('click', async () => {

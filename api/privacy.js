@@ -1,6 +1,7 @@
 /**
  * Note text in the GEDCOM includes pasted email threads. The stored facts keep it verbatim
- * (Neon is the master copy); the public API never serves addresses found in note text.
+ * (Neon is the master copy); the public API never serves addresses found in note text, or in
+ * photo captions, which editors write and may paste into the same way.
  */
 // Bounded to the RFC length limits (local part 64, domain 253, TLD 63) so a long run of address
 // characters cannot make the match quadratic. Unicode letters/digits cover internationalised addresses.
@@ -8,7 +9,7 @@
 const EMAIL = /[\p{L}\p{M}\p{N}._%+-]{1,64}@@?[\p{L}\p{M}\p{N}.-]{1,253}\.\p{L}{2,63}/gu;
 export const EMAIL_MASK = '[email hidden]';
 
-const isNoteKey = (key) => key === 'notes' || key.endsWith('Notes');
+const isNoteKey = (key) => key === 'notes' || key.endsWith('Notes') || key === 'caption';
 
 /** Copies `value`, masking addresses in every string under a note key (`inNote` once inside one). */
 function mask(value, inNote = false) {
@@ -20,7 +21,7 @@ function mask(value, inNote = false) {
   return value;
 }
 
-/** A copy of a person_view() document with email addresses in note text, anywhere in the view, masked. */
+/** A copy of a person_view() document with email addresses in note text and captions, anywhere in the view, masked. */
 export function maskNoteEmails(view) {
   return view ? mask(view) : view;
 }

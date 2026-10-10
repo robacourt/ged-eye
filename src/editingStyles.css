@@ -1,7 +1,8 @@
 /*
  * Editing UI for editors only: the person, family and relative dialogs, the unlink confirmation, the details
- * panel's edit controls, the History panel and the Editors dialog. It loads with their code (editing.js), so
- * viewers never download it. The shared dialog and form controls they build on are in editorStyles.css.
+ * panel's edit controls, the History panel, the Editors dialog, the person picker, the Add photos sheet, the photo
+ * editor and Change avatar (with its cropper). It loads with their code (editing.js), so viewers never download it.
+ * The shared dialog and form controls they build on are in editorStyles.css.
  */
 
 /* Person and family editors (personEditor.js, familyEditor.js) */
@@ -296,6 +297,94 @@
   margin: 6px 0 0;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.55);
+}
+
+/* The header's avatar as a button that opens Change avatar, with a camera badge on its corner. */
+.person-avatar-button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.person-avatar-button:hover .person-avatar-image {
+  border-color: #00d4ff;
+}
+
+.person-avatar-button:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+}
+
+.person-avatar-badge {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #0f0f1a;
+  border-radius: 50%;
+  background: #00d4ff;
+  color: #0f0f1a;
+}
+
+/* The Add tile at the end of the photo row: the thumbnails' size (80px, 70px on phones). */
+.person-photo-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 2px solid rgba(0, 212, 255, 0.45);
+  border-radius: 8px;
+  background: rgba(0, 212, 255, 0.08);
+  color: #00d4ff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.person-photo-add:hover {
+  background: rgba(0, 212, 255, 0.18);
+}
+
+.person-photo-add:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.person-photo-add-plus {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* On phones the panel is full width, with 15px padding and 8px gaps: four thumbnails and the Add tile share one
+   row, shrinking from 70px to fit. They never go below 44px (a 282px-wide screen); narrower than that, the row
+   wraps. */
+@media (max-width: 768px) {
+  .person-photos-row-editing > .person-photo-thumbnail,
+  .person-photos-row-editing > .person-photo-add {
+    width: max(44px, min(70px, calc((100vw - 62px) / 5)));
+    height: max(44px, min(70px, calc((100vw - 62px) / 5)));
+  }
+}
+
+/* Files dragged over the details panel: a dashed outline only while dragging (personDetails.js). */
+.person-details.person-details-dropping {
+  outline: 2px dashed #00d4ff;
+  outline-offset: -6px;
+  background: rgba(0, 212, 255, 0.05);
 }
 
 .details-history-row {
@@ -870,3 +959,697 @@
 }
 
 /* ==== End of History panel and Editors dialog ==== */
+
+/* ==== Person picker (personPicker.js, personSearch.js) ==== */
+
+.person-picker,
+.person-search {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.person-picker-chips,
+.person-picker-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.person-picker-chips:empty,
+.person-picker-results:empty {
+  display: none;
+}
+
+.person-picker-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.person-picker-chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-height: 44px;
+  padding-left: 14px;
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  border-radius: 22px;
+  background: rgba(0, 212, 255, 0.12);
+  font-size: 15px;
+}
+
+.person-picker-chip-fixed {
+  padding-right: 14px;
+}
+
+.person-picker-chip-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.person-picker-remove {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: rgba(255, 255, 255, 0.7);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.person-picker-remove:hover {
+  color: #ff8a8a;
+}
+
+.person-picker-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.person-picker-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 0 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+
+.person-picker-result-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.person-picker-result-years {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.person-picker-add {
+  flex-shrink: 0;
+  align-self: stretch;
+  min-width: 72px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0 8px 8px 0;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.person-picker-add:hover:not([aria-disabled="true"]) {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.person-picker-add[aria-disabled="true"] {
+  color: rgba(255, 255, 255, 0.45);
+  cursor: default;
+}
+
+.person-picker-remove:focus-visible,
+.person-picker-add:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* ==== End of person picker ==== */
+
+/* ==== Add photos (addPhotosDialog.js) ==== */
+
+/* Mobile first. Below 768px the sheet is full screen (editorStyles.css); its actions sit in a bar stuck to the
+   bottom, which takes the home indicator's inset in place of the dialog. */
+.editor-dialog.add-photos-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(720px, 100%);
+  padding-bottom: 0;
+}
+
+/* The body and form fill a full-screen sheet, so the action bar sits at the bottom even when there's little above it. */
+.add-photos-dialog .editor-dialog-body {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.add-photos-form {
+  flex: 1 0 auto;
+}
+
+.add-photos-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-photos-empty {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.add-photos-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.add-photos-cards:empty {
+  display: none;
+}
+
+.add-photos-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.add-photos-card[data-state="failed"] {
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.add-photos-card:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.add-photos-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.add-photos-preview {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.add-photos-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.add-photos-doc {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.add-photos-card-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.add-photos-card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.add-photos-file-name {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  overflow-wrap: anywhere;
+}
+
+.add-photos-status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.add-photos-status-error {
+  color: #ff8a8a;
+}
+
+.add-photos-progress {
+  width: 100%;
+  height: 6px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.add-photos-progress::-webkit-progress-bar {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.add-photos-progress::-webkit-progress-value {
+  border-radius: 3px;
+  background: #00d4ff;
+}
+
+.add-photos-progress::-moz-progress-bar {
+  border-radius: 3px;
+  background: #00d4ff;
+}
+
+.add-photos-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.add-photos-card-actions .editor-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+.add-photos-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* A caption or date already in the tree is shared, so it is shown but not edited here. */
+.add-photos-fields .editor-input[readonly] {
+  border-style: dashed;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.add-photos-confirm-text {
+  margin: 8px 0;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+/* The action bar. Save gets a row of its own on phones, in easy reach of a thumb. */
+.add-photos-dialog .add-photos-actions {
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+}
+
+.add-photos-save {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .add-photos-preview {
+    width: 120px;
+    height: 120px;
+  }
+
+  .add-photos-dialog .add-photos-actions {
+    padding-bottom: 16px;
+  }
+
+  .add-photos-save {
+    flex: 0 0 auto;
+  }
+}
+
+/* ==== End of Add photos ==== */
+
+/* ==== Photo editor (photoEditDialog.js) ==== */
+
+.photo-edit-dialog {
+  width: min(560px, 100%);
+}
+
+/* The footer stays in view at the bottom of the form. */
+.photo-edit-dialog .editor-dialog-body {
+  padding-bottom: 0;
+}
+
+.photo-edit-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.photo-edit-preview {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.photo-edit-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-edit-doc {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.photo-edit-file-name {
+  margin: 0;
+  min-width: 0;
+  font-family: monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  overflow-wrap: anywhere;
+}
+
+.photo-edit-people > .editor-error {
+  margin: 0;
+}
+
+.photo-edit-dialog .editor-dialog-footer {
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ==== End of Photo editor ==== */
+
+/* ==== Avatar (avatarDialog.js, avatarCropper.js) ==== */
+
+/* Like the Add photos sheet: full screen below 768px (editorStyles.css), with the actions in a bar stuck to the
+   bottom, which takes the home indicator's inset in place of the dialog. */
+.editor-dialog.avatar-dialog {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.avatar-dialog .editor-dialog-body {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.avatar-form {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.avatar-dialog .avatar-actions {
+  margin-top: auto;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Step 1: the photos, and Upload new */
+.avatar-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.avatar-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.avatar-photo,
+.avatar-upload-tile {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  aspect-ratio: 1;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.avatar-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-photo:hover:not(:disabled),
+.avatar-upload-tile:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.avatar-photo:focus-visible,
+.avatar-upload-tile:focus-visible,
+.avatar-upload:focus-visible,
+.avatar-cropper-area:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.avatar-photo-is-current {
+  border-color: #00d4ff;
+}
+
+.avatar-photo-current {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #00d4ff;
+  color: #0f0f1a;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.avatar-upload-tile {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+}
+
+.avatar-upload-plus {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Uploading a new photo */
+.avatar-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.avatar-upload-name {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.avatar-upload-status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.avatar-upload-status-error {
+  color: #ff8a8a;
+}
+
+.avatar-upload-progress {
+  width: 100%;
+  height: 6px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.avatar-upload-progress::-webkit-progress-bar {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.avatar-upload-progress::-webkit-progress-value {
+  border-radius: 3px;
+  background: #00d4ff;
+}
+
+.avatar-upload-progress::-moz-progress-bar {
+  border-radius: 3px;
+  background: #00d4ff;
+}
+
+.avatar-upload-retry {
+  align-self: flex-start;
+}
+
+/* Step 2: the crop. The circle stays put in the middle while the photo is dragged and zoomed under it, so the
+   area takes every touch (no scrolling or page zoom from it). */
+.avatar-cropper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cropper.js measures this area as the photo loads, while it briefly adds the full-size photo to the page to read
+   its size. On Android that widens the layout viewport, and with it the full-screen sheet, so the width is also
+   capped by the screen's, which doesn't change (40px is the sheet's side padding). */
+.avatar-cropper-area {
+  position: relative;
+  max-width: calc(100vw - 40px);
+  height: min(60vh, 100vw);
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+  touch-action: none;
+}
+
+/* Cropper.js hides this and shows its own copy once the photo has loaded. */
+.avatar-cropper-image {
+  display: block;
+  max-width: 100%;
+  visibility: hidden;
+}
+
+.avatar-cropper-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 16px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  text-align: center;
+}
+
+/* Gone once the photo has loaded, wherever the cropper is (it would cover the photo and take its touches). */
+.avatar-cropper-status[hidden] {
+  display: none;
+}
+
+.avatar-cropper .cropper-view-box,
+.avatar-cropper .cropper-face {
+  border-radius: 50%;
+}
+
+/* A ring round the circle, as a shadow: Safari 15 draws outlines square, whatever the border radius. */
+.avatar-cropper .cropper-view-box {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+.avatar-cropper .cropper-modal {
+  opacity: 0.6;
+}
+
+.avatar-cropper-hint {
+  margin: 0;
+}
+
+.avatar-zoom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar-zoom .editor-btn {
+  flex: 0 0 44px;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.avatar-zoom-slider {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  accent-color: #00d4ff;
+  cursor: pointer;
+}
+
+.avatar-zoom-slider:disabled {
+  cursor: default;
+}
+
+.avatar-zoom-slider:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+/* Remove avatar, and stop uploading? */
+.avatar-confirm-text {
+  margin: 8px 0;
+  font-size: 17px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+  .editor-dialog.avatar-dialog {
+    width: min(560px, 100%);
+  }
+
+  .avatar-dialog .avatar-actions {
+    padding-bottom: 16px;
+  }
+}
+
+/* ==== End of Avatar ==== */

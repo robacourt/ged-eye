@@ -14,7 +14,9 @@ import { WARNINGS_PATH } from './importGed.js';
 // partners and children from the before/after snapshots, the people linked to a changed media row,
 // and the current partners and children of every family a change touched (a re-filled partner slot
 // changes a child's parents without a family_child row). Their legacy views no longer apply, nor
-// do those of anyone whose view shows them (see touchedByEdits).
+// do those of anyone whose view shows them (see touchedByEdits). The media backfill (and its undo
+// or redo) only adds display and thumbnail keys and sizes, which the comparison doesn't check, so it
+// marks nobody: otherwise everyone with a photo, and their relatives, would be skipped.
 export const EDITED_SQL = `
   with touched_family as (
     select row_key ->> 'id' as id from change_row where table_name = 'family'
@@ -38,7 +40,12 @@ export const EDITED_SQL = `
         where cr.table_name = 'family_child'
       union all
       select pm.person_id from person_media pm
-        where pm.media_id in (select (row_key ->> 'id')::bigint from change_row where table_name = 'media')
+        where pm.media_id in (
+          select (cr.row_key ->> 'id')::bigint from change_row cr join change c on c.id = cr.change_id
+          where cr.table_name = 'media'
+            and c.kind <> 'backfill_media'
+            and not (c.kind in ('undo', 'redo') and exists (
+                  select 1 from change b where b.id = c.base_change_id and b.kind = 'backfill_media')))
       union all
       select unnest(array[f.partner1_id, f.partner2_id]) from family f join touched_family t on t.id = f.id
       union all
@@ -117,6 +124,7 @@ async function main() {
   const { rows: keyRows } = await pool.query(`
     select object_key as key from media
     union all select thumb_key from media where thumb_key is not null
+    union all select display_key from media where display_key is not null
     union all select avatar_key from person where avatar_key is not null`);
   const missingKeys = keyRows.map(r => r.key).filter(key => !keys.has(key));
   if (missingKeys.length) problems.push(`missing bucket objects: ${missingKeys.slice(0, 20).join(', ')} (${missingKeys.length} total)`);
