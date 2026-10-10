@@ -70,9 +70,15 @@ const CAMERA_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none"
   'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
   '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>';
 
-const DOCUMENT_ICON = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" ' +
-  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
-  '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>';
+// The Add tiles' icons, each with a + so they read as "add a photo" and "add a PDF" (Tabler's photo-plus and
+// file-plus outlines, MIT).
+const tileIcon = (paths) => '<svg class="person-photo-add-svg" viewBox="0 0 24 24" width="26" height="26" fill="none" ' +
+  'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+  paths.map((d) => `<path d="${d}"/>`).join('') + '</svg>';
+const PHOTO_PLUS_ICON = tileIcon(['M15 8h.01', 'M12.5 21h-6.5a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6.5',
+  'M3 16l5 -5c.928 -.893 2.072 -.893 3 0l4 4', 'M14 14l1 -1c.67 -.644 1.45 -.824 2.182 -.54', 'M16 19h6', 'M19 16v6']);
+const FILE_PLUS_ICON = tileIcon(['M14 3v4a1 1 0 0 0 1 1h4',
+  'M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z', 'M12 11v6', 'M9 14h6']);
 
 /**
  * Whether the media Function is configured (VITE_MEDIA_API_URL). Without it nothing can be uploaded or cropped,
@@ -164,7 +170,7 @@ class EditControls {
    * sheet can open the file picker (iOS opens one only from there).
    */
   addPhotosTile() {
-    const content = '<span class="person-photo-add-plus" aria-hidden="true">+</span><span class="person-photo-add-text">Add</span>';
+    const content = `<span class="person-photo-add-icon" aria-hidden="true">${PHOTO_PLUS_ICON}</span><span class="person-photo-add-text">Photos</span>`;
     return this.control('person-photo-add', content, `Add photos for ${nameOf(this.person)}`, () => this.call('onAddPhotos'));
   }
 
@@ -173,7 +179,7 @@ class EditControls {
    * photo is chosen, so PDFs get their own way in; like Add, its click calls onAddPdf inside the tap.
    */
   addPdfTile() {
-    const content = `<span class="person-photo-add-icon" aria-hidden="true">${DOCUMENT_ICON}</span><span class="person-photo-add-text">PDF</span>`;
+    const content = `<span class="person-photo-add-icon" aria-hidden="true">${FILE_PLUS_ICON}</span><span class="person-photo-add-text">PDF</span>`;
     return this.control('person-photo-add person-photo-add-pdf', content, `Add a PDF for ${nameOf(this.person)}`,
       () => this.call('onAddPdf'));
   }
