@@ -66,10 +66,11 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
   const messageText = el('p', { class: 'editor-error', role: 'alert' });
   const message = el('div', { class: 'editor-form-message', hidden: true }, messageText);
   const moreButton = el('button', { type: 'button', class: 'editor-btn add-photos-more' });
+  const pdfButton = el('button', { type: 'button', class: 'editor-btn add-photos-pdf', text: 'Add a PDF' });
   const cancelButton = el('button', { type: 'button', class: 'editor-btn add-photos-cancel', text: 'Cancel' });
   const saveButton = el('button', { type: 'submit', class: 'editor-btn editor-btn-primary add-photos-save' });
   const formActions = el('div', { class: 'editor-actions' },
-    moreButton, el('span', { class: 'editor-actions-spacer' }), cancelButton, saveButton);
+    moreButton, pdfButton, el('span', { class: 'editor-actions-spacer' }), cancelButton, saveButton);
   const keepButton = el('button', { type: 'button', class: 'editor-btn add-photos-keep', text: 'Keep uploading' });
   const discardButton = el('button', {
     type: 'button', class: 'editor-btn editor-btn-danger-solid add-photos-discard', text: 'Discard', 'aria-describedby': confirmText.id
@@ -82,13 +83,16 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
     el('div', { class: 'editor-dialog-footer add-photos-actions' }, message, formActions, confirmActions));
   dialog.body.append(formElement);
 
-  // The picker's input lives in the sheet (a detached input is unreliable in some Safari versions), outside the
-  // dialog itself so the focus trap never lands on it; "Add more" is its accessible control.
-  const input = el('input', {
-    type: 'file', class: 'add-photos-input', accept: 'image/*,application/pdf', multiple: true,
-    tabindex: '-1', 'aria-hidden': 'true', style: VISUALLY_HIDDEN
+  // The pickers' inputs live in the sheet (a detached input is unreliable in some Safari versions), outside the
+  // dialog itself so the focus trap never lands on them; "Add more" and "Add a PDF" are their accessible controls.
+  // Photos and PDFs have separate pickers: Android shows its photo picker (with Google Photos) only when `accept`
+  // lists nothing but images, and its file browser otherwise.
+  const pickerInput = (className, accept) => el('input', {
+    type: 'file', class: className, accept, multiple: true, tabindex: '-1', 'aria-hidden': 'true', style: VISUALLY_HIDDEN
   });
-  dialog.backdrop.append(input);
+  const input = pickerInput('add-photos-input', 'image/*');
+  const pdfInput = pickerInput('add-photos-pdf-input', 'application/pdf');
+  dialog.backdrop.append(input, pdfInput);
 
   const queue = createQueue({ api: mediaApi, onChange: render });
 
@@ -532,16 +536,21 @@ export function openAddPhotosDialog({ person, files, api, mediaApi, createQueue 
 
   // --- Wiring ---------------------------------------------------------------------------------------------------
 
-  input.addEventListener('change', () => {
-    addFiles(input.files);
-    input.value = ''; // so choosing the same file again is a change
-  });
-  // The picker was dismissed: with nothing chosen yet, there's nothing to do here.
+  for (const picker of [input, pdfInput]) {
+    picker.addEventListener('change', () => {
+      addFiles(picker.files);
+      picker.value = ''; // so choosing the same file again is a change
+    });
+  }
+  // The photo picker, opened with the sheet, was dismissed: with nothing chosen yet, there's nothing to do here.
   input.addEventListener('cancel', () => {
     if (!closed && phase === 'idle' && queue.items().length === 0) finish();
   });
   moreButton.addEventListener('click', () => {
     if (!closed && phase !== 'sending') input.click();
+  });
+  pdfButton.addEventListener('click', () => {
+    if (!closed && phase !== 'sending') pdfInput.click();
   });
   formElement.addEventListener('submit', (event) => {
     event.preventDefault();

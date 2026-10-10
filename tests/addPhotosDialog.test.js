@@ -117,6 +117,7 @@ function open(options = {}) {
 const dialog = () => document.querySelector('.add-photos-dialog');
 const $ = (selector) => dialog().querySelector(selector);
 const fileInput = () => document.querySelector('.add-photos-input');
+const pdfInput = () => document.querySelector('.add-photos-pdf-input');
 const cards = () => [...document.querySelectorAll('.add-photos-card')];
 const card = (n) => cards()[n];
 const status = (n) => card(n).querySelector('.add-photos-status').textContent;
@@ -137,10 +138,10 @@ const save = async () => {
   await settle();
 };
 
-/** Chooses `files` in the sheet's file picker. */
-function choose(files) {
-  Object.defineProperty(fileInput(), 'files', { value: files, configurable: true });
-  fileInput().dispatchEvent(new Event('change', { bubbles: true }));
+/** Chooses `files` in the sheet's photo picker (or, with `input`, another of its pickers). */
+function choose(files, input = fileInput()) {
+  Object.defineProperty(input, 'files', { value: files, configurable: true });
+  input.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
 beforeEach(() => {
@@ -176,11 +177,38 @@ describe('openAddPhotosDialog: opening', () => {
     // Clicked before openAddPhotosDialog returned (no await before it), on an input in the page, inside the sheet.
     expect(clicks).toEqual([{ input: fileInput(), connected: true, inSheet: true }]);
     expect(fileInput().type).toBe('file');
-    expect(fileInput().accept).toBe('image/*,application/pdf');
+    // Images only: anything else in `accept` makes Android show its file browser instead of the photo picker
+    // (with Google Photos). PDFs have their own picker, behind "Add a PDF".
+    expect(fileInput().accept).toBe('image/*');
     expect(fileInput().multiple).toBe(true);
     expect(fileInput().hasAttribute('capture')).toBe(false);
     expect(cards()).toHaveLength(0);
     expect($('.add-photos-more').textContent).toBe('Choose photos');
+  });
+
+  it('has a separate PDF picker, behind Add a PDF, that adds cards like the photo picker', () => {
+    open();
+    expect(pdfInput().type).toBe('file');
+    expect(pdfInput().accept).toBe('application/pdf');
+    expect(pdfInput().multiple).toBe(true);
+    expect(pdfInput().closest('.editor-dialog-backdrop')).not.toBeNull();
+    clicks = [];
+    $('.add-photos-pdf').click();
+    expect($('.add-photos-pdf').textContent).toBe('Add a PDF');
+    expect(clicks).toEqual([{ input: pdfInput(), connected: true, inSheet: true }]);
+    choose([file('certificate.pdf')], pdfInput());
+    expect(cards()).toHaveLength(1);
+    expect(card(0).querySelector('.add-photos-file-name').textContent).toBe('certificate.pdf');
+    expect(mediaApi.requestUpload).toHaveBeenCalledWith({ fileName: 'certificate.pdf', contentType: 'application/pdf', byteSize: expect.any(Number) });
+  });
+
+  it('closes when the first photo picker is dismissed with nothing chosen, but not when the PDF picker is', () => {
+    const sheet = open();
+    $('.add-photos-pdf').click();
+    pdfInput().dispatchEvent(new Event('cancel'));
+    expect(sheet.isOpen()).toBe(true);
+    fileInput().dispatchEvent(new Event('cancel'));
+    expect(sheet.isOpen()).toBe(false);
   });
 
   it('starts uploading dropped files at once, without opening the picker', () => {
