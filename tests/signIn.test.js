@@ -339,6 +339,26 @@ describe('mountSignIn', () => {
       expect(errorText($('.signin-step-email'))).toBeNull();
     });
 
+    it('comes back to the URL it was opened with, read when Google is chosen', async () => {
+      const { client, controller: c } = setup();
+      let back = 'http://localhost:3000/?person=I7&access-requests=';
+      c.open({ googleCallbackURL: () => back });
+      back = 'http://localhost:3000/?person=I8&access-requests=';
+      $('.signin-google').click();
+      await settle();
+      expect(client.signIn.social).toHaveBeenCalledWith({ provider: 'google', callbackURL: back, newUserCallbackURL: back });
+    });
+
+    it('comes back to the current page when opened again without one', async () => {
+      const { client, controller: c } = setup();
+      c.open({ googleCallbackURL: () => 'http://localhost:3000/?access-requests=' });
+      c.close();
+      headerButton().click();
+      $('.signin-google').click();
+      await settle();
+      expect(client.signIn.social).toHaveBeenCalledWith(expect.objectContaining({ callbackURL: window.location.href }));
+    });
+
     it('shows a failure inline', async () => {
       const client = fakeClient();
       client.signIn.social.mockRejectedValue(new TypeError('Failed to fetch'));
@@ -517,15 +537,15 @@ describe('mountSignIn', () => {
       expect(menuButtons()).toEqual(['History', 'Sign out']);
     });
 
-    it('for a signed-in non-editor: the "ask Rob" note and Sign out only', async () => {
+    it('for a signed-in non-editor: a note, Request edit access and Sign out', async () => {
       await signedInAs(ACCOUNTS.viewer);
       expect(headerButton().textContent).toBe('T');
       headerButton().click();
       expect(menu().querySelector('.account-role').textContent).toBe('Not an editor');
       expect(visibleText('.account-note')).toEqual([
-        "You're signed in as tom@example.com but not on the editors list — ask Rob to add you."
+        "You're signed in as tom@example.com but not on the editors list."
       ]);
-      expect(menuButtons()).toEqual(['Sign out']);
+      expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
     });
 
     it('shows names and emails as text', async () => {
@@ -640,6 +660,117 @@ describe('mountSignIn', () => {
       expect(document.querySelectorAll('.toast')).toHaveLength(0);
     });
 
+    describe('edit access requests', () => {
+      // This year, so the date shows without one.
+      const OCT_10 = new Date(new Date().getFullYear(), 9, 10, 12).toISOString();
+      const asked = (status, createdAt = OCT_10) => ({ ...ACCOUNTS.viewer, accessRequest: { status, createdAt } });
+
+      it('offers the request button again after a dismissal, without mentioning it', async () => {
+        await signedInAs(asked('dismissed'));
+        headerButton().click();
+        expect(visibleText('.account-note')).toEqual(["You're signed in as tom@example.com but not on the editors list."]);
+        expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+      });
+
+      it('says when a request is pending, with no button', async () => {
+        await signedInAs(asked('pending'));
+        headerButton().click();
+        expect(menu().querySelector('.account-role').textContent).toBe('Not an editor');
+        expect(visibleText('.account-note')).toEqual(['You asked for edit access on 10 Oct.']);
+        expect(menuButtons()).toEqual(['Sign out']);
+      });
+
+      it('reads /me once more when a request was granted but the role is still null', async () => {
+        const api = fakeApi(asked('granted'));
+        api.me.mockImplementationOnce(async () => ({ ...asked('granted') }));
+        api.me.mockImplementationOnce(async () => {
+          api.auth.setRole('editor', 'tom@example.com');
+          return { ...ACCOUNTS.viewer, role: 'editor' };
+        });
+        const { onSignedIn } = await signedInAs(ACCOUNTS.viewer, { api });
+        expect(api.me).toHaveBeenCalledTimes(2);
+        expect(onSignedIn).toHaveBeenCalledOnce();
+        expect(onSignedIn).toHaveBeenCalledWith({ ...ACCOUNTS.viewer, role: 'editor' }, 'restored');
+        headerButton().click();
+        expect(menuButtons()).toEqual(['History', 'Sign out']);
+      });
+
+      it('reads /me only once more, then offers the button', async () => {
+        const api = fakeApi(asked('granted'));
+        const { onSignedIn } = await signedInAs(ACCOUNTS.viewer, { api });
+        expect(api.me).toHaveBeenCalledTimes(2);
+        expect(onSignedIn).toHaveBeenCalledOnce();
+        headerButton().click();
+        expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+      });
+
+      it('opens the request dialog from the menu, and shows the request once sent', async () => {
+        const api = fakeApi(ACCOUNTS.viewer);
+        api.requestAccess = vi.fn(async () => ({ request: { id: 7, status: 'pending', createdAt: OCT_10 }, created: true }));
+        const { onSignedIn } = await signedInAs(ACCOUNTS.viewer, { api });
+        headerButton().click();
+        $('.account-request').click();
+        expect(menuOpen()).toBe(false);
+        const requestDialog = $('.access-request-dialog');
+        expect(requestDialog).not.toBeNull();
+        expect(requestDialog.querySelector('.access-request-intro').textContent).toContain('tom@example.com');
+        type(requestDialog.querySelector('textarea'), 'Hello');
+        submit(requestDialog.querySelector('form'));
+        await settle();
+        expect(api.requestAccess).toHaveBeenCalledWith('Hello');
+        expect($('.access-request-dialog')).toBeNull();
+        expect($('.toast-message').textContent).toBe("Request sent. You'll get an email when an admin grants it.");
+        expect(document.activeElement).toBe(headerButton());
+        headerButton().click();
+        expect(visibleText('.account-note')).toEqual(['You asked for edit access on 10 Oct.']);
+        expect(menuButtons()).toEqual(['Sign out']);
+        expect(api.me).toHaveBeenCalledOnce(); // the menu used the request it got back
+        expect(onSignedIn).toHaveBeenCalledOnce();
+      });
+
+      it('refreshes the account when the request finds them already an editor', async () => {
+        const api = fakeApi(ACCOUNTS.viewer);
+        api.requestAccess = vi.fn(async () => {
+          throw new ApiError(409, 'already_an_editor', {});
+        });
+        const { onSignedIn } = await signedInAs(ACCOUNTS.viewer, { api });
+        api.me.mockImplementation(async () => ({ ...ACCOUNTS.viewer, role: 'editor' }));
+        headerButton().click();
+        $('.account-request').click();
+        submit($('.access-request-dialog form'));
+        await settle();
+        expect($('.access-request-dialog')).toBeNull();
+        expect(api.me).toHaveBeenCalledTimes(2);
+        expect(onSignedIn).toHaveBeenLastCalledWith({ ...ACCOUNTS.viewer, role: 'editor' }, 'restored');
+        headerButton().click();
+        expect(menuButtons()).toEqual(['History', 'Sign out']);
+      });
+
+      it('for an admin with pending requests: "Access requests (N)", which opens the Editors dialog', async () => {
+        const { openEditors } = await signedInAs({ ...ACCOUNTS.admin, pendingRequests: 2 });
+        headerButton().click();
+        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors', 'Sign out']);
+        $('.account-requests').click();
+        expect(openEditors).toHaveBeenCalledOnce();
+        expect(menuOpen()).toBe(false);
+      });
+
+      it('for an admin with none pending: no "Access requests"', async () => {
+        await signedInAs({ ...ACCOUNTS.admin, pendingRequests: 0 });
+        headerButton().click();
+        expect(menuButtons()).toEqual(['History', 'Editors', 'Sign out']);
+      });
+
+      it('shows the new count after refreshAccount', async () => {
+        const api = fakeApi({ ...ACCOUNTS.admin, pendingRequests: 1 });
+        const { controller: c } = await signedInAs(ACCOUNTS.admin, { api });
+        api.me.mockImplementation(async () => ({ ...ACCOUNTS.admin, pendingRequests: 0 }));
+        await c.refreshAccount();
+        headerButton().click();
+        expect(menuButtons()).toEqual(['History', 'Editors', 'Sign out']);
+      });
+    });
+
     it('ignores a /me reply for someone who has since signed out', async () => {
       const api = fakeApi();
       const pending = deferred();
@@ -745,6 +876,33 @@ describe('mountSignIn', () => {
       expect(dialogOpen()).toBe(false);
       await signInByCode();
       expect(c.getAccount()).toEqual(ACCOUNTS.editor);
+    });
+
+    it("calls open's onCancel when the dialog closes without a sign-in, and not after one", async () => {
+      const { controller: c } = setup();
+      const onCancel = vi.fn();
+      c.open({ onCancel });
+      key('Escape');
+      expect(onCancel).toHaveBeenCalledOnce();
+      c.open({ onCancel });
+      await signInByCode(); // the header button finds the dialog open already
+      expect(dialogOpen()).toBe(false);
+      expect(onCancel).toHaveBeenCalledOnce();
+    });
+
+    it('keeps the options of a dialog that was already open, unless new ones are given', () => {
+      const { controller: c } = setup();
+      const first = vi.fn();
+      const second = vi.fn();
+      c.open({ onCancel: first });
+      c.open();
+      c.close();
+      expect(first).toHaveBeenCalledOnce();
+      c.open();
+      c.open({ onCancel: second });
+      c.close();
+      expect(second).toHaveBeenCalledOnce();
+      expect(first).toHaveBeenCalledOnce();
     });
 
     it('removes everything and stops listening on destroy', async () => {

@@ -249,12 +249,13 @@ export function createAuth({ client, dev = import.meta.env.DEV }) {
     },
 
     /**
-     * Navigates to Google; `init()` picks up the session when the browser comes back to this page.
+     * Navigates to Google; `init()` picks up the session when the browser comes back to this page, or to
+     * `callbackURL` when given (this page's URL with something added, such as `?access-requests`).
      * newUserCallbackURL too: Neon Auth sends a first-time Google user there, and without it to the bare
      * origin (https://robacourt.github.io/, a 404), not to callbackURL.
      */
-    async signInWithGoogle() {
-      const here = globalThis.location.href;
+    async signInWithGoogle({ callbackURL } = {}) {
+      const here = callbackURL || globalThis.location.href;
       await call(() => client.signIn.social({ provider: 'google', callbackURL: here, newUserCallbackURL: here }));
     },
 
@@ -325,7 +326,7 @@ export async function init() {
 }
 export async function sendEmailCode(email) { return (await defaultAuth()).sendEmailCode(email); }
 export async function verifyEmailCode(email, otp) { return (await defaultAuth()).verifyEmailCode(email, otp); }
-export async function signInWithGoogle() { return (await defaultAuth()).signInWithGoogle(); }
+export async function signInWithGoogle(options) { return (await defaultAuth()).signInWithGoogle(options); }
 export async function signOut() { return (await defaultAuth()).signOut(); }
 export const signInWithPassword = import.meta.env.DEV
   ? async (email, password) => (await defaultAuth()).signInWithPassword(email, password)

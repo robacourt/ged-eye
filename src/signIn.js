@@ -1,12 +1,14 @@
 /**
  * The header's sign-in button, the sign-in dialog (email code, Google, and a password form in development),
- * and the account menu (email, role, History, Editors, Sign out).
+ * and the account menu (email, role, History, Editors, Sign out; for admins, "Access requests (N)"; for a
+ * non-editor, Request edit access, or when they asked).
  *
  * It owns reading `/me` after every sign-in (including a restored session), and reports the result through
  * `onSignedIn(me, reason)`; every sign-out (including an expired session) is reported through `onSignedOut(reason)`.
  * User-provided strings are only ever set with `textContent`.
  */
 import { showToast } from './toast.js';
+import { openAccessRequestDialog, shortDate } from './accessRequestDialog.js';
 
 export const COOKIE_BLOCKED_MESSAGE =
   'Your browser blocked the sign-in cookie. Editing needs a recent Safari/iOS, Chrome, Edge or Firefox.';
@@ -125,6 +127,8 @@ function menuMarkup(menuId) {
       <p class="account-note" hidden></p>
       <div class="account-actions">
         <button type="button" class="editor-btn account-retry" hidden>Try again</button>
+        <button type="button" class="editor-btn editor-btn-primary account-request" hidden>Request edit access</button>
+        <button type="button" class="editor-btn editor-btn-primary account-requests" hidden></button>
         <button type="button" class="editor-btn account-history" hidden>History</button>
         <button type="button" class="editor-btn account-editors" hidden>Editors</button>
         <button type="button" class="editor-btn account-signout">Sign out</button>
@@ -135,12 +139,13 @@ function menuMarkup(menuId) {
 /**
  * @param container     where the header button goes (it is fixed to the top right)
  * @param auth          auth.js's module, or a `createAuth()` instance
- * @param api           has `me()` (editApi.js)
+ * @param api           has `me()` and `requestAccess(note)` (editApi.js)
  * @param onSignedIn    (me, reason) after `/me` answers for a newly signed-in or restored user;
- *                      `me` is `{ email, name, role }`, role null for a non-editor; reason 'signed-in' | 'restored'
+ *                      `me` is `{ email, name, role }` (plus `pendingRequests` for an admin), role null for a
+ *                      non-editor (with `accessRequest`); reason 'signed-in' | 'restored'
  * @param onSignedOut   (reason): 'signed-out' | 'expired' | 'cookie-blocked'
  * @param openHistory   () from the menu's History
- * @param openEditors   () from the menu's Editors (admins only)
+ * @param openEditors   () from the menu's Editors and "Access requests (N)" (admins only)
  * @returns `{ open, close, isOpen, openMenu, closeMenu, refreshAccount, getAccount, destroy }`
  */
 export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, openHistory, openEditors }) {
@@ -158,6 +163,8 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
   const menuRole = menu.querySelector('.account-role');
   const menuNote = menu.querySelector('.account-note');
   const retryButton = menu.querySelector('.account-retry');
+  const requestButton = menu.querySelector('.account-request');
+  const requestsButton = menu.querySelector('.account-requests');
   const historyButton = menu.querySelector('.account-history');
   const editorsButton = menu.querySelector('.account-editors');
   const signOutButton = menu.querySelector('.account-signout');
@@ -197,10 +204,16 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
   let busy = false;
   let pendingEmail = '';
   let returnFocus = null;
+  let openOptions = {};             // the current open()'s { googleCallbackURL, onCancel }
+  let requestDialog = null;         // the Request edit access dialog, once opened
 
   // --- Account ---------------------------------------------------------------------------------------------
 
-  function loadAccount(reason) {
+  /**
+   * Reads `/me`. A request granted while it was being read can come back as granted with the role still null:
+   * then `/me` is read once more (`recheckGranted`), and only that answer is reported.
+   */
+  function loadAccount(reason, { recheckGranted = true } = {}) {
     const email = auth.getState().user?.email;
     if (!email) return Promise.resolve(null);
     const request = { email, reason };
@@ -218,6 +231,9 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
         return null;
       }
       if (accountRequest !== request) return null;
+      if (recheckGranted && !me?.role && me?.accessRequest?.status === 'granted') {
+        return loadAccount(reason, { recheckGranted: false });
+      }
       account = { status: 'ready', me };
       render();
       callSafely(onSignedIn, me, reason);
@@ -225,6 +241,19 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     })();
     return request.promise;
   }
+
+  const refreshAccount = () => loadAccount(accountRequest?.reason ?? 'signed-in');
+
+  /** A request just sent (or already pending) for `email`: the menu says so, without reading `/me` again. */
+  function showRequested(email, request) {
+    if (account.status !== 'ready' || account.me.role || account.me.email !== email) return;
+    const accessRequest = { status: request?.status ?? 'pending', createdAt: request?.createdAt ?? new Date().toISOString() };
+    account = { status: 'ready', me: { ...account.me, accessRequest } };
+    render();
+  }
+
+  /** An admin's count of pending requests, from `/me`; 0 when missing. */
+  const pendingRequests = (me) => (Number.isInteger(me?.pendingRequests) && me.pendingRequests > 0 ? me.pendingRequests : 0);
 
   /** The /me already started for `email` by the sign-in event, or a new one. */
   function accountFor(email) {
@@ -262,6 +291,8 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     menuEmail.textContent = email;
     menuNote.hidden = true;
     retryButton.hidden = true;
+    requestButton.hidden = true;
+    requestsButton.hidden = true;
     historyButton.hidden = true;
     editorsButton.hidden = true;
     if (account.status === 'ready') {
@@ -269,9 +300,18 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
       if (me.role) {
         historyButton.hidden = false;
         editorsButton.hidden = me.role !== 'admin';
-      } else {
-        menuNote.textContent = `You're signed in as ${email} but not on the editors list — ask Rob to add you.`;
+        const pending = me.role === 'admin' ? pendingRequests(me) : 0;
+        requestsButton.textContent = `Access requests (${pending})`;
+        requestsButton.hidden = pending === 0;
+      } else if (me.accessRequest?.status === 'pending') {
+        // A dismissed request is never mentioned; a granted one with no role was read again (loadAccount).
+        const date = shortDate(me.accessRequest.createdAt);
+        menuNote.textContent = date ? `You asked for edit access on ${date}.` : 'You asked for edit access.';
         menuNote.hidden = false;
+      } else {
+        menuNote.textContent = `You're signed in as ${email} but not on the editors list.`;
+        menuNote.hidden = false;
+        requestButton.hidden = false;
       }
     } else if (account.status === 'error') {
       menuRole.textContent = '';
@@ -306,7 +346,29 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     else openMenu();
   });
 
-  retryButton.addEventListener('click', () => loadAccount(accountRequest?.reason ?? 'signed-in'));
+  retryButton.addEventListener('click', refreshAccount);
+
+  requestButton.addEventListener('click', () => {
+    const me = account.status === 'ready' ? account.me : null;
+    if (!me || me.role) return;
+    closeMenu();
+    button.focus(); // where focus goes back when the dialog closes
+    requestDialog?.close();
+    const email = me.email;
+    requestDialog = openAccessRequestDialog({
+      api,
+      email,
+      onSent: (request) => showRequested(email, request),
+      onAlreadyAnEditor: () => {
+        if (auth.getState().user?.email === email) refreshAccount();
+      }
+    });
+  });
+
+  requestsButton.addEventListener('click', () => {
+    closeMenu();
+    callSafely(openEditors);
+  });
 
   historyButton.addEventListener('click', () => {
     closeMenu();
@@ -463,9 +525,17 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     emailInput.focus();
   });
 
+  /** Where Google should send the browser back to: the URL open() was given, else (undefined) this page. */
+  function googleOptions() {
+    const { googleCallbackURL } = openOptions;
+    const callbackURL = typeof googleCallbackURL === 'function' ? googleCallbackURL() : googleCallbackURL;
+    return callbackURL ? { callbackURL } : undefined;
+  }
+
   googleButton.addEventListener('click', async () => {
     if (busy) return;
-    const { stale, error } = await attempt(googleButton, 'Opening Google…', () => auth.signInWithGoogle());
+    const options = googleOptions();
+    const { stale, error } = await attempt(googleButton, 'Opening Google…', () => auth.signInWithGoogle(options));
     if (stale) return;
     if (error) return showError(googleError, friendlyError(error), googleButton);
     setBusy(googleButton, 'Opening Google…'); // the browser is on its way to Google
@@ -495,8 +565,17 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
 
   closeButton.addEventListener('click', () => close());
 
-  function open() {
-    if (isOpen) return;
+  /**
+   * Opens the sign-in dialog. Options, for this opening only (a call while it is open replaces them, if given):
+   * `googleCallbackURL` (a URL, or a function giving one when Google is chosen) is where Google sends the browser
+   * back to, instead of this page; `onCancel` () runs if the dialog closes without anyone signed in.
+   */
+  function open(options = {}) {
+    if (isOpen) {
+      if (Object.keys(options).length > 0) openOptions = options;
+      return;
+    }
+    openOptions = options;
     closeMenu();
     session++;
     isOpen = true;
@@ -518,6 +597,9 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     isOpen = false;
     busy = false;
     backdrop.hidden = true;
+    const { onCancel } = openOptions;
+    openOptions = {};
+    if (!auth.getState().user) callSafely(onCancel);
     if (!restoreFocus) return;
     const target = returnFocus?.isConnected && !returnFocus.closest('[hidden]') ? returnFocus : button;
     returnFocus = null;
@@ -619,6 +701,7 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
       case 'cookie-blocked':
         accountRequest = null;
         account = { status: 'none' };
+        requestDialog?.close();
         closeMenu();
         render();
         callSafely(onSignedOut, reason);
@@ -640,15 +723,19 @@ export function mountSignIn({ container, auth, api, onSignedIn, onSignedOut, ope
     isOpen: () => isOpen,
     openMenu,
     closeMenu,
-    /** Reads `/me` again (for example after an admin changed roles). Resolves to `me`, or null on failure. */
-    refreshAccount: () => loadAccount(accountRequest?.reason ?? 'signed-in'),
-    /** `{ email, name, role }` once `/me` has answered for the signed-in user, else null. */
+    /**
+     * Reads `/me` again (for example after an admin changed roles, or acted on access requests).
+     * Resolves to `me`, or null on failure.
+     */
+    refreshAccount,
+    /** `{ email, name, role, ... }` once `/me` has answered for the signed-in user, else null. */
     getAccount: () => (account.status === 'ready' ? account.me : null),
     destroy() {
       unsubscribe();
       dismissExpiredToast();
       document.removeEventListener('keydown', onKeyDown, true);
       document.removeEventListener('click', onDocumentClick);
+      requestDialog?.close();
       close({ restoreFocus: false });
       accountRequest = null;
       wrapper.remove();

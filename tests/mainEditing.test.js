@@ -101,7 +101,8 @@ beforeEach(() => {
     revert: vi.fn(async (id) => ({ id: 23, summary: `Undid: change ${id}`, personIds: ['I7'] })),
     restore: vi.fn(),
     runChange: vi.fn(),
-    listChanges: vi.fn(async () => [])
+    listChanges: vi.fn(async () => []),
+    grantAccessRequest: vi.fn(async () => ({}))
   };
   showToast = vi.fn(() => ({ dismiss: vi.fn() }));
   signIn = { isOpen: vi.fn(() => false), destroy: vi.fn(), open: vi.fn(), refreshAccount: vi.fn(async () => null) };
@@ -453,6 +454,20 @@ describe('initApp: a removed editor', () => {
   it('watches every call the real API offers except me', () => {
     const real = createEditApi({ getToken: async () => null });
     expect(Object.keys(real).filter(name => name !== 'me').sort()).toEqual([...WATCHED_API_CALLS].sort());
+    expect(WATCHED_API_CALLS).toEqual(expect.arrayContaining([
+      'requestAccess', 'listAccessRequests', 'grantAccessRequest', 'dismissAccessRequest'
+    ]));
+  });
+
+  it('also does so for a refused grant from the Editors dialog', async () => {
+    await signInAs(ADMIN);
+    signInOptions.openEditors();
+    await flush();
+    const editorsApi = dialogs.openEditorsDialog.mock.calls[0][0].api;
+    api.grantAccessRequest.mockRejectedValueOnce(NOT_AN_EDITOR());
+    await expect(editorsApi.grantAccessRequest(7)).rejects.toMatchObject({ code: 'not_an_editor' });
+    await flush();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -517,6 +532,15 @@ describe('initApp: opening the editors', () => {
     expect(dialogs.openEditorsDialog).not.toHaveBeenCalled();
   });
 
+  it('the Editors dialog refreshes the account menu (its request count) after a change', async () => {
+    signInOptions.openEditors();
+    await flush();
+    const { onChanged } = dialogs.openEditorsDialog.mock.calls[0][0];
+    expect(signIn.refreshAccount).not.toHaveBeenCalled();
+    onChanged();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+  });
+
   it('History\'s person links navigate, and its changes re-render without another toast or refresh', async () => {
     signInOptions.openHistory();
     await flush();
@@ -545,6 +569,102 @@ describe('initApp: opening the editors', () => {
     onReloaded({ person: people.get('I7'), relationships: RELS });
     await flush();
     expect(lastShown()[0].name).toBe('Rose Brown');
+  });
+});
+
+describe('initApp: the ?access-requests link', () => {
+  const editorsOpened = () => dialogs.openEditorsDialog.mock.calls.length;
+  /** The session auth.init() restores. */
+  const restores = (email) => auth.getState.mockReturnValue({ user: { email } });
+
+  it('removes only that parameter, in place, before the session is restored', async () => {
+    let searchAtInit = null;
+    auth.init.mockImplementation(async () => {
+      searchAtInit = window.location.search;
+      return { user: null };
+    });
+    const length = window.history.length;
+    await start('/?person=I8&access-requests&neon_auth_session_verifier=v1');
+    expect(window.location.search).toBe('?person=I8&neon_auth_session_verifier=v1');
+    expect(searchAtInit).toBe('?person=I8&neon_auth_session_verifier=v1');
+    expect(window.history.length).toBe(length);
+    expect(shownId()).toBe('I8');
+  });
+
+  it('opens the Editors dialog for an admin once /me answers, and only once', async () => {
+    restores('rob@example.com');
+    await start('/?person=I7&access-requests');
+    expect(signIn.open).not.toHaveBeenCalled();
+    expect(editorsOpened()).toBe(0);
+    await signInAs(ADMIN);
+    expect(dialogs.openEditorsDialog).toHaveBeenCalledWith(expect.objectContaining({ api: anApi, currentEmail: 'rob@example.com' }));
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(1);
+  });
+
+  it('waits for the session restore to finish when /me answers first', async () => {
+    restores('rob@example.com');
+    let finishInit;
+    auth.init.mockImplementation(() => new Promise(resolve => { finishInit = resolve; }));
+    await start('/?access-requests');
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
+    finishInit({ user: { email: 'rob@example.com' } });
+    await flush();
+    expect(editorsOpened()).toBe(1);
+  });
+
+  it('opens sign-in for someone signed out, then the Editors dialog when they turn out to be an admin', async () => {
+    await start('/?person=I7&access-requests');
+    expect(signIn.open).toHaveBeenCalledOnce();
+    expect(editorsOpened()).toBe(0);
+    // Google sign-in comes back to a URL that has the parameter again, so the link is followed after the redirect.
+    const back = new URL(signIn.open.mock.calls[0][0].googleCallbackURL());
+    expect(back.searchParams.has('access-requests')).toBe(true);
+    expect(back.searchParams.get('person')).toBe('I7');
+    expect(window.location.search).toBe('?person=I7');
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(1);
+  });
+
+  it('drops it quietly when someone signs in who is not an admin', async () => {
+    await start('/?access-requests');
+    await signInAs(EDITOR);
+    expect(editorsOpened()).toBe(0);
+    await signInAs(ADMIN); // later, as someone else: not because of the link
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('drops it quietly when sign-in is cancelled', async () => {
+    await start('/?access-requests');
+    signIn.open.mock.calls[0][0].onCancel();
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('drops it quietly for someone signed in who is not an admin', async () => {
+    restores('ann@example.com');
+    await start('/?access-requests');
+    await signInAs(EDITOR);
+    expect(signIn.open).not.toHaveBeenCalled();
+    expect(editorsOpened()).toBe(0);
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('drops it when signed out while /me was being read', async () => {
+    restores('rob@example.com');
+    await start('/?access-requests');
+    signInOptions.onSignedOut('expired');
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('does nothing without the parameter', async () => {
+    await start('/?person=I7');
+    expect(signIn.open).not.toHaveBeenCalled();
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
   });
 });
 

@@ -337,6 +337,14 @@ describe('auth', () => {
       expect(new URL(newUserCallbackURL).searchParams.get('person')).toBe('I7');
     });
 
+    it('comes back to a URL given by the caller instead', async () => {
+      window.history.replaceState(null, '', '/ged-eye/?person=I7');
+      const client = fakeClient();
+      const back = `${window.location.origin}/ged-eye/?person=I7&access-requests=`;
+      await createAuth({ client }).signInWithGoogle({ callbackURL: back });
+      expect(client.signIn.social).toHaveBeenCalledWith({ provider: 'google', callbackURL: back, newUserCallbackURL: back });
+    });
+
     it('reports a failure to start', async () => {
       const client = fakeClient();
       client.signIn.social.mockResolvedValue({ data: null, error: { message: 'Provider not found', status: 404 } });

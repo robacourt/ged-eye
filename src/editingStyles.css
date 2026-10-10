@@ -1019,6 +1019,109 @@
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+/* Requests for edit access, above the editors */
+.editors-requests {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.editors-requests-status {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.editors-requests-status:empty {
+  display: none;
+}
+
+.editors-requests-retry {
+  align-self: flex-start;
+}
+
+.editors-requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.editors-requests-list:empty {
+  display: none;
+}
+
+.editors-request {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.editors-request-who {
+  display: flex;
+  flex: 1 1 200px;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.editors-request-name {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.editors-request-email {
+  overflow-wrap: anywhere;
+}
+
+.editors-request-name + .editors-request-email,
+.editors-request-date {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.editors-request-note {
+  flex-basis: 100%;
+  padding: 8px 10px;
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.editors-request-actions {
+  display: flex;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.editors-request-actions .editor-btn {
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+.editors-request-resolved {
+  flex-basis: 100%;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.editors-request-error {
+  flex-basis: 100%;
+}
+
 /* Full screen below 768px. The shared rule in editorStyles.css does this for every dialog, but the widths
    above would win over it, so they are undone here, after all of them. */
 @media (max-width: 767px) {

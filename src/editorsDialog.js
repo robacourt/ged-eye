@@ -1,10 +1,12 @@
 /**
- * The Editors dialog, for admins: who may edit the tree (email, name, role), adding someone, and removing
- * someone after a confirmation. The server's refusals (already an editor, removing yourself, the last admin,
- * not an admin) are shown where they happened. Every data value is set with `value` or `textContent`.
+ * The Editors dialog, for admins: pending requests for edit access (Grant or Dismiss), who may edit the tree
+ * (email, name, role), adding someone, and removing someone after a confirmation. The server's refusals (already
+ * an editor, removing yourself, the last admin, not an admin, a request another admin already dealt with) are
+ * shown where they happened. Every data value is set with `value` or `textContent`.
  */
 import { showToast } from './toast.js';
-import { el, openEditorDialog, uniqueId, setBusy, keepFocusInside } from './editorDialog.js';
+import { el, openEditorDialog, uniqueId, setBusy, keepFocusInside, callSafely } from './editorDialog.js';
+import { shortDate } from './accessRequestDialog.js';
 
 const ROLE_LABELS = { admin: 'Admin', editor: 'Editor' };
 const ROLE_OPTIONS = [['editor', 'Editor: can edit the tree'], ['admin', 'Admin: can also manage editors']];
@@ -43,13 +45,24 @@ function validateEmail(email) {
 
 const sameEmail = (a, b) => typeof a === 'string' && typeof b === 'string' && a.toLowerCase() === b.toLowerCase();
 
+/** "Granted by Ann", from a 409 already_resolved's `{ status, resolvedBy }`. */
+function resolvedText({ status, resolvedBy } = {}) {
+  const by = typeof resolvedBy === 'string' && resolvedBy ? resolvedBy : null;
+  if (status === 'granted') return by ? `Granted by ${by}` : 'Already granted';
+  if (status === 'dismissed') return by ? `Dismissed by ${by}` : 'Already dismissed';
+  return 'Another admin has already dealt with this request.';
+}
+
 /**
- * Opens the dialog and loads the list.
- * @param api           `{ listEditors, addEditor, removeEditor }` (editApi.js)
+ * Opens the dialog and loads both lists.
+ * @param api           `{ listEditors, addEditor, removeEditor, listAccessRequests, grantAccessRequest,
+ *                      dismissAccessRequest }` (editApi.js)
  * @param currentEmail  the signed-in admin's email, marked "(you)"
+ * @param onChanged     () after the pending requests changed here (granted, dismissed, already resolved, or the
+ *                      person added directly), so the account menu's count can be read again
  * @returns `{ close, isOpen, element }`
  */
-export function openEditorsDialog({ api, currentEmail = null }) {
+export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
   let busy = false;
   const dialog = openEditorDialog({
     title: 'Editors',
@@ -60,6 +73,14 @@ export function openEditorsDialog({ api, currentEmail = null }) {
   });
 
   // --- Layout ----------------------------------------------------------------------------------------------
+
+  // Requests: shown only once there are some (or they couldn't be loaded).
+  const requestsTitle = el('h3', { class: 'editor-section-title', id: uniqueId('editors-requests'), text: 'Requests' });
+  const requestsStatus = el('p', { class: 'editors-requests-status', role: 'status' });
+  const requestsRetry = el('button', { type: 'button', class: 'editor-btn editors-requests-retry', text: 'Try again', hidden: true });
+  const requestsList = el('ul', { class: 'editors-requests-list', 'aria-label': 'Access requests' });
+  const requestsSection = el('section', { class: 'editors-requests', 'aria-labelledby': requestsTitle.id, hidden: true },
+    requestsTitle, requestsStatus, requestsRetry, requestsList);
 
   const intro = el('p', { class: 'editors-intro', text: 'People on this list can sign in and edit the tree.' });
   const status = el('p', { class: 'editors-status', role: 'status' });
@@ -88,7 +109,150 @@ export function openEditorsDialog({ api, currentEmail = null }) {
     addError,
     el('div', { class: 'editor-actions' }, el('span', { class: 'editor-actions-spacer' }), addButton));
 
-  dialog.body.append(intro, status, retry, list, form);
+  dialog.body.append(requestsSection, intro, status, retry, list, form);
+
+  // --- Requests --------------------------------------------------------------------------------------------
+
+  const requestRows = () => [...requestsList.children];
+
+  function updateRequestsSection() {
+    requestsSection.hidden = requestsList.children.length === 0 && !requestsStatus.textContent;
+  }
+
+  /** Takes `item` out of the list, keeping focus in the dialog (on the next request's Grant, if any). */
+  function dropRequestRow(item) {
+    const next = item.nextElementSibling ?? item.previousElementSibling;
+    item.remove();
+    updateRequestsSection();
+    keepFocusInside(dialog.dialog, next?.querySelector('.editors-request-grant') ?? emailInput);
+  }
+
+  function requestRow(request) {
+    const who = el('div', { class: 'editors-request-who' },
+      request.name ? el('span', { class: 'editors-request-name', text: request.name }) : null,
+      el('span', { class: 'editors-request-email', text: request.email }));
+    const date = shortDate(request.createdAt);
+    const when = el('time', { class: 'editors-request-date', datetime: request.createdAt, text: date ? `Asked ${date}` : '' });
+    // textContent, and `white-space: pre-wrap` in the stylesheet, keep the note's line breaks.
+    const note = request.note ? el('p', { class: 'editors-request-note', text: request.note }) : null;
+    const grant = el('button', {
+      type: 'button', class: 'editor-btn editor-btn-primary editors-request-grant', text: 'Grant',
+      'aria-label': `Grant ${request.email} edit access`
+    });
+    const dismiss = el('button', {
+      type: 'button', class: 'editor-btn editors-request-dismiss', text: 'Dismiss',
+      'aria-label': `Dismiss the request from ${request.email}`
+    });
+    const actions = el('div', { class: 'editors-request-actions' }, grant, dismiss);
+    const resolved = el('p', { class: 'editors-request-resolved', role: 'status', hidden: true });
+    const error = el('p', { class: 'editor-error editors-request-error', role: 'alert', hidden: true });
+    const item = el('li', { class: 'editors-request', 'data-id': String(request.id), 'data-email': request.email },
+      who, when, note, actions, resolved, error);
+
+    /** Runs Grant or Dismiss with the dialog busy. → `{ result }` or `{ failure }`; null if the dialog closed. */
+    async function run(button, busyLabel, call) {
+      busy = true;
+      error.hidden = true;
+      setBusy(dialog.body, true, button, busyLabel);
+      let outcome;
+      try {
+        outcome = { result: await call(request.id) };
+      } catch (failure) {
+        outcome = { failure };
+      }
+      busy = false;
+      setBusy(dialog.body, false, button);
+      return dialog.isOpen() ? outcome : null;
+    }
+
+    /** Shows a failure in the row, or what became of a request someone else dealt with (or that no longer exists). */
+    function showFailure(failure, button) {
+      if (failure.code === 'not_found') {
+        dropRequestRow(item);
+        callSafely(onChanged);
+        return;
+      }
+      if (failure.code === 'already_resolved') {
+        resolved.textContent = resolvedText(failure.body);
+        resolved.hidden = false;
+        actions.remove();
+        if (failure.body?.status === 'granted') load(); // someone new to list
+        keepFocusInside(dialog.dialog, item.nextElementSibling?.querySelector('.editors-request-grant') ?? emailInput);
+        callSafely(onChanged);
+        return;
+      }
+      error.textContent = editorsErrorMessage(failure);
+      error.hidden = false;
+      keepFocusInside(dialog.dialog, button);
+    }
+
+    grant.addEventListener('click', async () => {
+      if (busy) return;
+      const outcome = await run(grant, 'Granting…', api.grantAccessRequest);
+      if (!outcome) return;
+      if (outcome.failure) {
+        showFailure(outcome.failure, grant);
+        return;
+      }
+      showToast(`Granted ${request.email} edit access.`);
+      dropRequestRow(item);
+      loadRequests();
+      load();
+      callSafely(onChanged);
+    });
+
+    dismiss.addEventListener('click', async () => {
+      if (busy) return;
+      const outcome = await run(dismiss, 'Dismissing…', api.dismissAccessRequest);
+      if (!outcome) return;
+      if (outcome.failure) {
+        showFailure(outcome.failure, dismiss);
+        return;
+      }
+      showToast(`Dismissed the request from ${request.email}.`);
+      dropRequestRow(item);
+      callSafely(onChanged);
+    });
+
+    return item;
+  }
+
+  /**
+   * Shows `requests`: rows already shown for them are kept as they are (so focus stays put), rows for requests
+   * no longer pending go, and new ones are added at the end (the list is oldest first).
+   */
+  function showRequests(requests) {
+    const ids = new Set(requests.map(request => String(request.id)));
+    for (const item of requestRows()) {
+      if (!ids.has(item.dataset.id)) item.remove();
+    }
+    const shown = new Set(requestRows().map(item => item.dataset.id));
+    requestsList.append(...requests.filter(request => !shown.has(String(request.id))).map(requestRow));
+    updateRequestsSection();
+  }
+
+  let requestsLoad = 0; // bumped per load, so only the latest answer is shown
+
+  async function loadRequests() {
+    if (typeof api.listAccessRequests !== 'function') return;
+    const current = ++requestsLoad;
+    requestsRetry.hidden = true;
+    let requests;
+    try {
+      requests = await api.listAccessRequests();
+    } catch (error) {
+      if (!dialog.isOpen() || current !== requestsLoad) return;
+      requestsStatus.textContent = `Couldn't load the access requests. ${editorsErrorMessage(error)}`;
+      requestsRetry.hidden = false;
+      updateRequestsSection();
+      return;
+    }
+    if (!dialog.isOpen() || current !== requestsLoad) return;
+    requestsStatus.textContent = '';
+    showRequests(Array.isArray(requests) ? requests : []);
+  }
+
+  requestsRetry.addEventListener('click', loadRequests);
 
   // --- List ------------------------------------------------------------------------------------------------
 
@@ -234,9 +398,15 @@ export function openEditorsDialog({ api, currentEmail = null }) {
     showToast(`Added ${editor.email} as ${editor.role === 'admin' ? 'an admin' : 'an editor'}.`);
     form.reset();
     emailInput.focus();
+    // Adding someone grants their pending request too (on the server), so it leaves the list.
+    if (requestRows().some(item => sameEmail(item.dataset.email, editor.email))) {
+      loadRequests();
+      callSafely(onChanged);
+    }
   });
 
   load();
+  loadRequests();
   emailInput.focus();
 
   return { close: () => dialog.close(), isOpen: dialog.isOpen, element: dialog.dialog };
