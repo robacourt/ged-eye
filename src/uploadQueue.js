@@ -5,7 +5,8 @@
  *
  * Each file gets an upload slot from the `media` Function, is PUT straight to object storage, then processed.
  * A failed file can be retried from where it stopped: the upload again (reusing its slot while it's fresh) or the
- * processing again (uploading the file again if the Function says the upload is gone).
+ * processing again (uploading the file again if the Function says the upload is gone). A `busy` answer (the
+ * Function's image queue is full) is retried once by itself, after about 3 seconds, before the file fails.
  */
 
 /** Upload slots expire after 15 minutes; one older than this is replaced rather than reused. */
@@ -18,8 +19,31 @@ const PERMANENT_CODES = new Set([
 
 const ACTIVE_STATES = new Set(['queued', 'uploading', 'processing']);
 
+/** How long to wait before the one automatic retry of a call the media Function answered 503 `busy`. */
+export const BUSY_RETRY_MS = 3000;
+
 const isRetryable = (error) => !PERMANENT_CODES.has(error?.code);
 const isGone = (error) => error?.status === 404;
+const isBusy = (error) => error?.code === 'busy';
+
+/** Resolves after `ms`, or as soon as `signal` aborts (clearing the timer). */
+function pause(ms, signal) {
+  return new Promise((resolve) => {
+    if (signal.aborted) {
+      resolve();
+      return;
+    }
+    const onAbort = () => {
+      clearTimeout(timer);
+      resolve();
+    };
+    const timer = setTimeout(() => {
+      signal.removeEventListener('abort', onAbort);
+      resolve();
+    }, ms);
+    signal.addEventListener('abort', onAbort, { once: true });
+  });
+}
 
 /**
  * Creates an upload queue.
@@ -32,7 +56,9 @@ const isGone = (error) => error?.status === 404;
  * Items are live objects, updated in place: `{ id, file, state, progress, media, error, retryable, duplicateOf }`.
  * - `state` is 'queued', 'uploading', 'processing', 'ready' or 'failed'; `progress` is the upload's 0..1.
  * - `media` is processUpload's result once ready (see src/mediaApi.js).
- * - `error` is the ApiError a failed item stopped on, and `retryable` says whether `retry` can help.
+ * - `error` is the ApiError a failed item stopped on, and `retryable` says whether `retry` can help. An item
+ *   answered `busy` keeps its state and its place for BUSY_RETRY_MS, then tries that step once more; only a second
+ *   `busy` fails it (retryably).
  * - `duplicateOf` is the earlier ready item with the same sha256. A duplicate is ready, with `media: null`.
  */
 export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, now = () => Date.now() }) {
@@ -114,11 +140,15 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
     Object.assign(entry, { uploadId: entry.slot.uploadId, incoming: true, slot: null, next: 'process' });
   }
 
-  /** Runs one entry from where it stopped until it is ready, fails or is removed. */
+  /**
+   * Runs one entry from where it stopped until it is ready, fails or is removed. A first `busy` is waited out
+   * (BUSY_RETRY_MS, keeping the entry's place) and the step tried again; a second one fails the entry.
+   */
   async function run(entry, signal) {
     let uploadedNow = false;
-    try {
-      for (;;) {
+    let busyRetried = false;
+    for (;;) {
+      try {
         if (entry.next === 'upload') {
           await upload(entry, signal);
           if (entry.removed) return;
@@ -145,11 +175,18 @@ export function createUploadQueue({ api, concurrency = 2, onChange = () => {}, n
         release(entry);
         becomeReady(entry, media);
         return;
+      } catch (error) {
+        if (entry.removed) return;
+        if (isBusy(error) && !busyRetried) {
+          busyRetried = true;
+          await pause(BUSY_RETRY_MS, signal);
+          if (entry.removed) return;
+          continue;
+        }
+        release(entry);
+        becomeFailed(entry, error, isRetryable(error));
+        return;
       }
-    } catch (error) {
-      if (entry.removed) return;
-      release(entry);
-      becomeFailed(entry, error, isRetryable(error));
     }
   }
 

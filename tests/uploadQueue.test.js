@@ -1,6 +1,6 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { ApiError } from '../src/editApi.js';
-import { createUploadQueue } from '../src/uploadQueue.js';
+import { BUSY_RETRY_MS, createUploadQueue } from '../src/uploadQueue.js';
 
 const MINUTE = 60_000;
 
@@ -224,7 +224,6 @@ describe('createUploadQueue', () => {
       ['a network failure during the upload', 'uploadFile', new ApiError(0, 'network')],
       ['storage failing the upload', 'uploadFile', new ApiError(500, 'upload_failed')],
       ['storage refusing an expired slot', 'uploadFile', new ApiError(403, 'upload_failed')],
-      ['a busy media Function', 'processUpload', new ApiError(503, 'busy')],
       ['a server error while processing', 'processUpload', new ApiError(500, 'internal')],
       ['a network failure while processing', 'processUpload', new ApiError(0, 'network')],
       ['being signed out', 'requestUpload', new ApiError(401, 'unauthenticated')]
@@ -282,7 +281,7 @@ describe('createUploadQueue', () => {
         onProgress(0.5);
         throw new ApiError(0, 'network');
       });
-      api.processUpload.mockRejectedValueOnce(new ApiError(503, 'busy'));
+      api.processUpload.mockRejectedValueOnce(new ApiError(500, 'internal'));
       const [uploadFailed, processFailed] = queue.add([jpeg('1.jpg'), jpeg('2.jpg')]);
       await queue.allSettled();
       expect(uploadFailed).toMatchObject({ state: 'failed', progress: 0.5 });
@@ -323,6 +322,93 @@ describe('createUploadQueue', () => {
       } finally {
         errors.mockRestore();
       }
+    });
+  });
+
+  describe('a busy media Function (503 busy)', () => {
+    const busy = () => new ApiError(503, 'busy', { message: 'Busy processing photos. Try again in a moment.' });
+
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it('waits about 3 seconds, processing, then processes the file once more by itself', async () => {
+      const { api, queue, changes } = setup();
+      api.processUpload.mockRejectedValueOnce(busy());
+      const [item] = queue.add([jpeg()]);
+      await vi.advanceTimersByTimeAsync(0);
+      expect(BUSY_RETRY_MS).toBe(3000);
+      expect(api.processUpload).toHaveBeenCalledTimes(1);
+      expect(item).toMatchObject({ state: 'processing', error: null });
+      expect(queue.hasActive()).toBe(true);
+
+      await vi.advanceTimersByTimeAsync(BUSY_RETRY_MS - 1);
+      expect(api.processUpload).toHaveBeenCalledTimes(1);
+      await vi.advanceTimersByTimeAsync(1);
+      await queue.allSettled();
+      expect(item).toMatchObject({ state: 'ready', error: null, retryable: false, media: mediaFor('a.jpg') });
+      expect(uploadIds(api.processUpload, 0)).toEqual(['up-1', 'up-1']);
+      expect(api.requestUpload).toHaveBeenCalledTimes(1);
+      expect(api.uploadFile).toHaveBeenCalledTimes(1);
+      expect(withoutRepeats(changes.map(([state]) => state))).toEqual(['queued', 'uploading', 'processing', 'ready']);
+    });
+
+    it('also waits out a busy answer while asking for an upload slot', async () => {
+      const { api, queue } = setup();
+      api.requestUpload.mockRejectedValueOnce(busy());
+      const [item] = queue.add([jpeg()]);
+      await vi.advanceTimersByTimeAsync(0);
+      expect(item.state).toBe('uploading');
+      await vi.advanceTimersByTimeAsync(BUSY_RETRY_MS);
+      await queue.allSettled();
+      expect(item.state).toBe('ready');
+      expect(api.requestUpload).toHaveBeenCalledTimes(2);
+    });
+
+    it('fails, retryably, when it is still busy the second time; Retry processes it again', async () => {
+      const { api, queue } = setup();
+      const second = busy();
+      api.processUpload.mockRejectedValueOnce(busy()).mockRejectedValueOnce(second);
+      const [item] = queue.add([jpeg()]);
+      await vi.advanceTimersByTimeAsync(BUSY_RETRY_MS);
+      await queue.allSettled();
+      expect(item).toMatchObject({ state: 'failed', error: second, retryable: true, media: null });
+      expect(api.processUpload).toHaveBeenCalledTimes(2);
+
+      expect(queue.retry(item)).toBe(true);
+      await vi.advanceTimersByTimeAsync(0);
+      await queue.allSettled();
+      expect(item.state).toBe('ready');
+      expect(uploadIds(api.processUpload, 0)).toEqual(['up-1', 'up-1', 'up-1']);
+      expect(api.uploadFile).toHaveBeenCalledTimes(1);
+    });
+
+    it('keeps its place while it waits, so the next file waits too', async () => {
+      const { api, queue } = setup({ concurrency: 1 });
+      api.processUpload.mockRejectedValueOnce(busy());
+      const [first, second] = queue.add([jpeg('1.jpg'), jpeg('2.jpg')]);
+      await vi.advanceTimersByTimeAsync(BUSY_RETRY_MS - 1);
+      expect(states([first, second])).toEqual(['processing', 'queued']);
+      await vi.advanceTimersByTimeAsync(1);
+      await queue.allSettled();
+      expect(states([first, second])).toEqual(['ready', 'ready']);
+    });
+
+    it('stops waiting when the file is removed, discarding its upload and trying nothing more', async () => {
+      const { api, queue } = setup();
+      api.processUpload.mockRejectedValueOnce(busy());
+      const [item] = queue.add([jpeg()]);
+      await vi.advanceTimersByTimeAsync(0);
+      queue.remove(item);
+      expect(api.discardUpload.mock.calls).toEqual([['up-1']]);
+      expect(vi.getTimerCount()).toBe(0);
+      await vi.advanceTimersByTimeAsync(BUSY_RETRY_MS);
+      expect(api.processUpload).toHaveBeenCalledTimes(1);
+      expect(queue.items()).toEqual([]);
     });
   });
 
@@ -391,7 +477,7 @@ describe('createUploadQueue', () => {
   describe('retrying after processing failed', () => {
     it('processes the uploaded file again without uploading it again', async () => {
       const { api, queue, changes } = setup();
-      api.processUpload.mockRejectedValueOnce(new ApiError(503, 'busy'));
+      api.processUpload.mockRejectedValueOnce(new ApiError(500, 'internal'));
       const [item] = queue.add([jpeg()]);
       await queue.allSettled();
       changes.length = 0;
@@ -408,7 +494,7 @@ describe('createUploadQueue', () => {
     it('uploads the file again with a new slot when the upload is gone (404)', async () => {
       const { api, queue, changes } = setup();
       api.processUpload
-        .mockRejectedValueOnce(new ApiError(503, 'busy'))
+        .mockRejectedValueOnce(new ApiError(500, 'internal'))
         .mockRejectedValueOnce(new ApiError(404, 'not_found'));
       const [item] = queue.add([jpeg()]);
       await queue.allSettled();
@@ -506,17 +592,17 @@ describe('createUploadQueue', () => {
         if (file.name === 'offline.jpg') throw new ApiError(0, 'network');
       });
       api.processUpload.mockImplementation(async (uploadId, fileName) => {
-        if (fileName === 'busy.jpg') throw new ApiError(503, 'busy');
+        if (fileName === 'broken.jpg') throw new ApiError(500, 'internal');
         if (fileName === 'bad.jpg') throw new ApiError(400, 'unreadable');
         return mediaFor(fileName);
       });
-      const items = queue.add([jpeg('ok.jpg'), jpeg('busy.jpg'), jpeg('bad.jpg'), jpeg('offline.jpg')]);
+      const items = queue.add([jpeg('ok.jpg'), jpeg('broken.jpg'), jpeg('bad.jpg'), jpeg('offline.jpg')]);
       await queue.allSettled();
       expect(states(items)).toEqual(['ready', 'failed', 'failed', 'failed']);
 
       queue.cancel();
-      const busyUpload = api.processUpload.mock.calls.find(([, fileName]) => fileName === 'busy.jpg')[0];
-      expect(api.discardUpload.mock.calls).toEqual([[busyUpload]]);
+      const brokenUpload = api.processUpload.mock.calls.find(([, fileName]) => fileName === 'broken.jpg')[0];
+      expect(api.discardUpload.mock.calls).toEqual([[brokenUpload]]);
       expect(queue.items()).toEqual([]);
     });
 
@@ -613,7 +699,7 @@ describe('createUploadQueue', () => {
 
     it('discards the upload of a file whose processing failed', async () => {
       const { api, queue } = setup();
-      api.processUpload.mockRejectedValueOnce(new ApiError(503, 'busy'));
+      api.processUpload.mockRejectedValueOnce(new ApiError(500, 'internal'));
       const [item] = queue.add([jpeg()]);
       await queue.allSettled();
       queue.remove(item);
