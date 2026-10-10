@@ -1161,7 +1161,7 @@ All new UI lives in new modules, loaded with the editing chunk (`src/editing.js`
 - [ ] **Step 3: Run it on `photos`.**
   1. `npm run backfill-media -- --dry-run`, and record the counts.
   2. `npm run backfill-media -- --report-gps`, and record the GPS count.
-  3. `npm run backfill-media`.
+  3. `npm run backfill-media -- --confirm <database host>`.
   4. `npm run verify-neon -- --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`. The worktree has no `ignore/` folder; the media manifest comes through the `.neon-import` symlink. Expect 0 unexplained.
 - [ ] **Step 4: Commit** with the message "Backfill display images for existing photos; verify ignores the backfill".
 
@@ -1214,11 +1214,12 @@ This follows the spec's Rollout. Production steps are additive, and nothing is d
   2. Run the backfill there with that branch's credentials. The script needs `DATABASE_URL` and the `AWS_*` storage variables for that branch.
      - Get them with `neon env pull --branch photos-backfill-rehearsal --file <scratchpad>/rehearsal.env`, run from the scratchpad and never printed.
      - Never run it from the worktree without `--file`: it would overwrite the worktree's `.env.local`.
-     - Then run `node --env-file=<scratchpad>/rehearsal.env scripts/neon/backfillMedia.js`.
+     - The script reads `DATABASE_URL_UNPOOLED` and the `AWS_*` variables. It checks that the database and storage belong to the same branch, and needs `--confirm <database host>`, the host it prints first, for a real run.
+     - Then run `node --env-file=<scratchpad>/rehearsal.env scripts/neon/backfillMedia.js --dry-run`, then the same command with `--confirm <host>`.
   3. Check the counts match the dry run, and spot-check 3 display images.
 - [ ] **Step 5: Production backfill.**
   1. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillMedia.js --report-gps`, and record the count.
-  2. The same command without the flag, for the real run.
+  2. The same command with `--dry-run`, then with `--confirm <production database host>` (printed by the dry run) for the real run.
   3. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/verify.js --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`: expect 0 unexplained.
 - [ ] **Step 6: Front-end env.** Add `VITE_MEDIA_API_URL=<production media URL>` to `.env.production`.
 - [ ] **Step 7: Build the site.** Run `npm run build` into `docs/`, as in earlier releases (check `vite.config.js` for `outDir`).
