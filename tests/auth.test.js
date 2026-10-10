@@ -320,8 +320,21 @@ describe('auth', () => {
       window.history.replaceState(null, '', '/ged-eye/?person=I7');
       const client = fakeClient();
       await createAuth({ client }).signInWithGoogle();
-      expect(client.signIn.social).toHaveBeenCalledWith({ provider: 'google', callbackURL: window.location.href });
+      expect(client.signIn.social).toHaveBeenCalledWith({
+        provider: 'google', callbackURL: window.location.href, newUserCallbackURL: window.location.href
+      });
       expect(client.signIn.social.mock.calls[0][0].callbackURL).toContain('person=I7');
+    });
+
+    // Neon Auth sends a first-time Google user to newUserCallbackURL, and without one it used the bare origin
+    // (https://robacourt.github.io/), which 404s because the site lives under /ged-eye/.
+    it('sends a first-time Google user back to the current page, path included', async () => {
+      window.history.replaceState(null, '', '/ged-eye/?person=I7');
+      const client = fakeClient();
+      await createAuth({ client }).signInWithGoogle();
+      const { newUserCallbackURL } = client.signIn.social.mock.calls[0][0];
+      expect(new URL(newUserCallbackURL).pathname).toBe('/ged-eye/');
+      expect(new URL(newUserCallbackURL).searchParams.get('person')).toBe('I7');
     });
 
     it('reports a failure to start', async () => {

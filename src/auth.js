@@ -248,9 +248,14 @@ export function createAuth({ client, dev = import.meta.env.DEV }) {
       return completeSignIn();
     },
 
-    /** Navigates to Google; `init()` picks up the session when the browser comes back to this page. */
+    /**
+     * Navigates to Google; `init()` picks up the session when the browser comes back to this page.
+     * newUserCallbackURL too: Neon Auth sends a first-time Google user there, and without it to the bare
+     * origin (https://robacourt.github.io/, a 404), not to callbackURL.
+     */
     async signInWithGoogle() {
-      await call(() => client.signIn.social({ provider: 'google', callbackURL: globalThis.location.href }));
+      const here = globalThis.location.href;
+      await call(() => client.signIn.social({ provider: 'google', callbackURL: here, newUserCallbackURL: here }));
     },
 
     /** Signs out locally even when the server call fails (which is then rethrown). */
