@@ -13,6 +13,7 @@
     "import-ged": "node --env-file=.env.local scripts/neon/importGed.js",
     "verify-neon": "node --env-file=.env.local scripts/neon/verify.js",
     "backfill-facts": "node --env-file=.env.local scripts/neon/backfillFacts.js",
+    "backfill-media": "node --env-file=.env.local scripts/neon/backfillMedia.js",
     "test:db": "node --env-file=.env.local --env-file=.env.test.local node_modules/vitest/vitest.mjs run tests/db --no-file-parallelism"
   },
   "devDependencies": {
