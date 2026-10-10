@@ -1,9 +1,10 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { spawnSync } from 'node:child_process';
+import { EventEmitter } from 'node:events';
 import { fileURLToPath } from 'node:url';
 import {
-  Refusal, checkBranch, checkNpmFlags, checkSettings, describeSettings, formatPlan, parseArgs, plan, settingsFrom
+  Refusal, checkBranch, checkNpmFlags, checkSettings, describeSettings, formatPlan, parseArgs, plan, settingsFrom, watchConnection
 } from '../scripts/neon/backfillMedia.js';
 
 const SCRIPT = fileURLToPath(new URL('../scripts/neon/backfillMedia.js', import.meta.url));
@@ -101,25 +102,54 @@ describe('backfillMedia settings', () => {
 });
 
 describe('backfillMedia checkBranch', () => {
-  it("passes when the database's own branch id is the storage endpoint's", () => {
-    expect(checkBranch({ databaseBranch: 'br-quiet-lake-a1b2c3d4', storageHost: STORAGE_HOST, branchName: null }))
-      .toBe('database and bucket are both on br-quiet-lake-a1b2c3d4');
-  });
+  const MODES = { real: true, readOnly: false };
 
-  it('refuses when they differ, whatever NEON_BRANCH says', () => {
-    expect(refusal(() => checkBranch({ databaseBranch: 'br-other-b9c8d7e6', storageHost: STORAGE_HOST, branchName: 'photos' })))
-      .toMatch(/br-other-b9c8d7e6.*br-quiet-lake-a1b2c3d4/);
-  });
-
-  it("falls back on NEON_BRANCH when either branch id can't be read, and refuses without it", () => {
-    const unknown = [
-      { databaseBranch: null, storageHost: STORAGE_HOST },
-      { databaseBranch: 'br-quiet-lake-a1b2c3d4', storageHost: 'storage.example.test' }
-    ];
-    for (const sides of unknown) {
-      expect(checkBranch({ ...sides, branchName: 'photos' })).toMatch(/NEON_BRANCH=photos/);
-      expect(refusal(() => checkBranch({ ...sides, branchName: null }))).toMatch(/NEON_BRANCH/);
+  it("passes, in every mode, when the database's own branch id is the storage endpoint's", () => {
+    for (const realRun of Object.values(MODES)) {
+      expect(checkBranch({ databaseBranch: 'br-quiet-lake-a1b2c3d4', storageHost: STORAGE_HOST, branchName: null, realRun }))
+        .toBe('database and bucket are both on br-quiet-lake-a1b2c3d4');
     }
+  });
+
+  it('refuses, in every mode, when they differ, whatever NEON_BRANCH says', () => {
+    for (const realRun of Object.values(MODES)) {
+      expect(refusal(() => checkBranch({ databaseBranch: 'br-other-b9c8d7e6', storageHost: STORAGE_HOST, branchName: 'photos', realRun })))
+        .toMatch(/br-other-b9c8d7e6.*br-quiet-lake-a1b2c3d4/);
+    }
+  });
+
+  const unknown = [
+    { databaseBranch: null, storageHost: STORAGE_HOST },
+    { databaseBranch: '', storageHost: STORAGE_HOST },
+    { databaseBranch: 'br-quiet-lake-a1b2c3d4', storageHost: 'storage.example.test' }
+  ];
+
+  it("refuses a real run when either branch id can't be read, even with NEON_BRANCH set", () => {
+    for (const sides of unknown) {
+      expect(refusal(() => checkBranch({ ...sides, branchName: 'photos', realRun: true }))).toMatch(/real run needs .*br-/);
+    }
+  });
+
+  it("lets a dry run or report go on by NEON_BRANCH, with a warning, when either id can't be read; never without it", () => {
+    for (const sides of unknown) {
+      expect(checkBranch({ ...sides, branchName: 'photos', realRun: false })).toMatch(/^warning: .*NEON_BRANCH=photos/);
+      expect(refusal(() => checkBranch({ ...sides, branchName: null, realRun: false }))).toMatch(/NEON_BRANCH/);
+    }
+  });
+});
+
+describe('backfillMedia watchConnection', () => {
+  it("logs and keeps the client's first error instead of crashing, until stopped", () => {
+    const client = new EventEmitter();
+    const lines = [];
+    const watch = watchConnection(client, (line) => lines.push(line));
+    expect(watch.failure()).toBeNull();
+    client.emit('error', new Error('Connection terminated unexpectedly'));
+    client.emit('error', new Error('again'));
+    expect(watch.failure().message).toBe('Connection terminated unexpectedly');
+    expect(lines).toEqual(['the database connection failed: Connection terminated unexpectedly', 'the database connection failed: again']);
+    watch.stop();
+    expect(client.listenerCount('error')).toBe(0);
   });
 });
 

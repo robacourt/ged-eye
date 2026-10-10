@@ -150,10 +150,12 @@ export function checkSettings(settings, env, args) {
 
 /**
  * Checks the database and the bucket are on the same branch: the database's own neon.branch_id against the bucket
- * endpoint's first label (br-…). When either can't be read, it goes by NEON_BRANCH (`branchName`), which must be
- * set. → the line to print. Throws Refusal when the ids differ, or neither check is possible.
+ * endpoint's first label (br-…). A real run (`realRun`) must pass that comparison. When either id can't be read, a
+ * dry run or report goes on by NEON_BRANCH (`branchName`), which must be set, with a warning.
+ * → the line to print. Throws Refusal when the ids differ, or when they can't be compared on a real run or without
+ * NEON_BRANCH.
  */
-export function checkBranch({ databaseBranch, storageHost, branchName }) {
+export function checkBranch({ databaseBranch, storageHost, branchName, realRun }) {
   const storageBranch = storageHost?.split('.')[0] ?? null;
   if (BRANCH_ID.test(databaseBranch ?? '') && BRANCH_ID.test(storageBranch ?? '')) {
     if (databaseBranch !== storageBranch) {
@@ -162,9 +164,12 @@ export function checkBranch({ databaseBranch, storageHost, branchName }) {
     }
     return `database and bucket are both on ${databaseBranch}`;
   }
-  const unknown = `can't compare branch ids (database ${databaseBranch ?? 'not reported'}, bucket ${storageHost})`;
+  const unknown = `can't compare branch ids (database ${databaseBranch || 'not reported'}, bucket ${storageHost})`;
+  if (realRun) {
+    throw new Refusal(`${unknown}: a real run needs the database's neon.branch_id to equal the bucket endpoint's br-… id`);
+  }
   if (!branchName) throw new Refusal(`${unknown}: set NEON_BRANCH to the branch this env file is for`);
-  return `${unknown}; going by NEON_BRANCH=${branchName}`;
+  return `warning: ${unknown}; going by NEON_BRANCH=${branchName}, which only a read-only run may do`;
 }
 
 /**
@@ -231,21 +236,18 @@ async function eachOriginal(items, storage, work, { log, concurrency }) {
 }
 
 /**
- * Runs `phase` while the client sits idle, listening for its 'error' event (a dropped connection), which would
- * otherwise crash the process. → { result: what `phase` returned, failure: the client's error, or null }
+ * Listens for the client's 'error' event (a connection dropped while idle: during phase 1, a report's downloads or
+ * a retry's wait), which would otherwise crash the process. Each one is logged; the next query on the client then
+ * fails, and main() says what happened. → { failure(): the first error, or null; stop(): stop listening }
  */
-async function whileIdle(client, log, phase) {
-  let failure = null;
+export function watchConnection(client, log) {
+  let first = null;
   const onError = (error) => {
-    failure ??= error;
+    first ??= error;
     log(`the database connection failed: ${error.message}`);
   };
   client.on('error', onError);
-  try {
-    return { result: await phase(), failure };
-  } finally {
-    client.off('error', onError);
-  }
+  return { failure: () => first, stop: () => client.off('error', onError) };
 }
 
 /** Makes one item's display image (and thumbnail, if planned) and uploads them. → its row update */
@@ -308,19 +310,15 @@ async function recordRetrying(client, updates, { log, lockTimeout, retryDelay })
  * @param storage { get, putOnce } as media/storage.js's createStorage()
  * Options: `log`, `concurrency` (4), `lockTimeout` (Postgres interval text, '5s') and `retryDelay(retry)` (ms).
  * @returns {{ pending, updated, changeId: string|null, skipped: {id, objectKey, reason}[] }}
- * Throws when the connection fails during phase 1, or phase 2 fails (after the retries, for a busy lock).
+ * Throws when phase 2 fails (after the retries, for a busy lock), including when the connection has dropped.
  */
 export async function apply(client, storage, {
   log = console.log, concurrency = CONCURRENCY, lockTimeout = '5s', retryDelay = (retry) => 2000 * retry
 } = {}) {
   const items = await pending(client);
   log(formatPlan(items).join('\n'));
-  const { result: { results, skipped }, failure } = await whileIdle(client, log, () =>
-    eachOriginal(items, storage, (item, original) => backfillOne(storage, item, original), { log, concurrency }));
-  if (failure) {
-    throw new Error(`The database connection failed while the images were made (${failure.message}); ` +
-      `${plural(results.length, 'image')} ${results.length === 1 ? 'is' : 'are'} uploaded, so re-run to record them`, { cause: failure });
-  }
+  const { results, skipped } = await eachOriginal(items, storage, (item, original) => backfillOne(storage, item, original),
+    { log, concurrency });
   const { updated, changeId } = results.length
     ? await recordRetrying(client, results, { log, lockTimeout, retryDelay })
     : { updated: 0, changeId: null };
@@ -336,8 +334,8 @@ export async function apply(client, storage, {
 export async function reportGps(client, storage, { log = console.log, concurrency = CONCURRENCY } = {}) {
   const items = (await client.query(IMAGES_SQL)).rows.map(row => ({ id: row.id, objectKey: row.object_key }));
   log(`checking ${plural(items.length, 'image original')} for location data`);
-  const { result: { results, skipped } } = await whileIdle(client, log, () => eachOriginal(items, storage,
-    async (item, original) => ({ id: item.id, location: await fileHasLocation(original) }), { log, concurrency }));
+  const { results, skipped } = await eachOriginal(items, storage,
+    async (item, original) => ({ id: item.id, location: await fileHasLocation(original) }), { log, concurrency });
   return { checked: results.length, withLocation: results.filter(result => result.location).map(result => result.id), skipped };
 }
 
@@ -350,10 +348,13 @@ async function main() {
   console.log(describeSettings(settings));
   checkSettings(settings, process.env, args);
   const client = new pg.Client({ connectionString: settings.databaseUrl });
+  const connection = watchConnection(client, console.error); // every phase, including the retries' waits
   await client.connect();
   try {
     const { rows: [{ branch }] } = await client.query(`select current_setting('neon.branch_id', true) as branch`);
-    console.log(checkBranch({ databaseBranch: branch, storageHost: settings.storageHost, branchName: settings.branchName }));
+    console.log(checkBranch({
+      databaseBranch: branch, storageHost: settings.storageHost, branchName: settings.branchName, realRun: !args.dryRun && !args.reportGps
+    }));
     if (args.dryRun) {
       console.log('dry run: nothing is downloaded or written');
       console.log(formatPlan(await pending(client)).join('\n'));
@@ -380,6 +381,12 @@ async function main() {
       console.log(`skipped ${result.skipped.length} of ${result.pending}:\n${skippedLines(result.skipped).join('\n')}`);
       process.exitCode = 1;
     }
+  } catch (error) {
+    const dropped = connection.failure();
+    if (!dropped || error instanceof Refusal) throw error;
+    // Uploaded derivatives stay (their keys come from the sha), so a re-run only has to record them.
+    throw new Error(`The database connection failed (${dropped.message}), so nothing more was recorded; ` +
+      `re-run to finish. ${error.message}`, { cause: error });
   } finally {
     await client.end().catch(() => {}); // after a dropped connection, keep the error that says what happened
   }

@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import pg from 'pg';
 import sharp from 'sharp';
 import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testDatabase.js';
-import { apply, reportGps } from '../../scripts/neon/backfillMedia.js';
+import { apply, reportGps, watchConnection } from '../../scripts/neon/backfillMedia.js';
 
 const IMMUTABLE = 'public, max-age=31536000, immutable';
 // begin_change's global write lock (006): pg_advisory_xact_lock(7262021).
@@ -268,22 +268,41 @@ describe.skipIf(!url)('backfillMedia (database)', { timeout: 60000 }, () => {
     expect((await media('turned')).display_key).toBeNull();
   });
 
-  it("doesn't crash on a database connection error while it makes the images, and records nothing", async () => {
+  it("with the connection watched (as main() does), a client error in phase 1 or a retry's wait doesn't crash it", async () => {
     const listeners = client.listenerCount('error');
+    const lines = [];
+    const log = (line) => lines.push(line);
+    const watch = watchConnection(client, log);
+    const blocker = await holdWriteLock();
+    let freed = null;
+    // Each emit throws if nobody listens: in phase 1 that would skip the image, in the retry's wait it would end the run.
     let failed = false;
     const storage = fakeStorage({
       onGet: async () => {
         if (failed) return;
         failed = true;
-        client.emit('error', new Error('Connection terminated unexpectedly')); // throws if nobody listens
+        client.emit('error', new Error('dropped in phase 1'));
       }
     });
-
-    const error = await apply(client, storage, quiet()).catch(e => e);
-    expect(error).toBeInstanceOf(Error);
-    expect(error.message).toMatch(/Connection terminated unexpectedly.*re-run/);
-    expect(storage.puts).toHaveLength(3); // the images were still made and uploaded
-    expect(await changesSince()).toEqual([]);
+    const retryLog = (line) => {
+      log(line);
+      if (busy(line) && !freed) {
+        client.emit('error', new Error('dropped while waiting to retry'));
+        freed = blocker.query('commit');
+      }
+    };
+    try {
+      const result = await apply(client, storage, { log: retryLog, lockTimeout: '300ms', retryDelay: () => 1000 });
+      expect(result).toMatchObject({ updated: 2, skipped: [{ id: ids.broken }, { id: ids.missing }].sort((a, b) => a.id - b.id) });
+    } finally {
+      watch.stop();
+      await (freed ?? blocker.query('rollback'));
+      await blocker.end();
+    }
+    expect(watch.failure().message).toBe('dropped in phase 1');
+    expect(lines).toEqual(expect.arrayContaining([
+      'the database connection failed: dropped in phase 1', 'the database connection failed: dropped while waiting to retry'
+    ]));
     expect(client.listenerCount('error')).toBe(listeners);
   });
 });
