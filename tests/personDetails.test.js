@@ -647,6 +647,9 @@ describe('PersonDetails', () => {
         expect(add.classList.contains('person-photo-add')).toBe(true);
         expect(add.tagName).toBe('BUTTON');
         expect(add.getAttribute('aria-label')).toBe('Add photos for Rose Smith');
+        // Labelled for what it adds, with a picture-and-+ icon, so it reads as "add photos" next to "add a PDF".
+        expect(add.textContent.trim()).toBe('Photos');
+        expect(add.querySelector('svg.person-photo-add-svg')).not.toBeNull();
         add.click();
         // At once, inside the tap: the sheet opens the file picker from it, which iOS only allows there.
         expect(hooks.onAddPhotos).toHaveBeenCalledTimes(1);
@@ -659,7 +662,8 @@ describe('PersonDetails', () => {
         expect(pdf.className).toBe('person-photo-add person-photo-add-pdf');
         expect(pdf.tagName).toBe('BUTTON');
         expect(pdf.getAttribute('aria-label')).toBe('Add a PDF for Rose Smith');
-        expect(pdf.textContent).toContain('PDF');
+        expect(pdf.textContent.trim()).toBe('PDF');
+        expect(pdf.querySelector('svg.person-photo-add-svg')).not.toBeNull(); // a document with a +
         pdf.click();
         // At once, inside the tap, like Add: the sheet opens the PDF picker from it.
         expect(hooks.onAddPdf).toHaveBeenCalledTimes(1);

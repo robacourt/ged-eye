@@ -363,12 +363,6 @@
   outline-offset: 2px;
 }
 
-.person-photo-add-plus {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 1;
-}
-
 .person-photo-add-icon {
   display: flex;
   height: 28px;
@@ -383,6 +377,18 @@
   .person-photos-row-editing > .person-photo-add {
     width: max(44px, min(70px, calc((100vw - 70px) / 6)));
     height: max(44px, min(70px, calc((100vw - 70px) / 6)));
+  }
+}
+
+/* On the narrowest phones the tiles reach 44px: a smaller label and icon so "Photos" still fits. */
+@media (max-width: 360px) {
+  .person-photos-row-editing .person-photo-add-text {
+    font-size: 11px;
+  }
+
+  .person-photos-row-editing .person-photo-add-svg {
+    width: 22px;
+    height: 22px;
   }
 }
 
