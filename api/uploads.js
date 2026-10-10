@@ -1,13 +1,13 @@
 /**
  * Upload checks for the photo commands. The client never sends object keys: an upload is
- * `{ sha256, ext, fileName }`, its keys are derived here, and the stored objects are HEADed (unauthenticated,
- * on the public bucket URL) to confirm they exist and to read their type, size and oriented pixel size.
+ * `{ sha256, ext, fileName }`, its keys are derived from it (media/types.js keysFor), and the stored objects
+ * are HEADed (unauthenticated, on the public bucket URL) to confirm they exist and to read their type, size and
+ * oriented pixel size.
  * The HEADs run in a command's `prepare` step, before begin_change, so they never hold the global lock.
  */
-import { SHA256, TYPES, cleanFileName, keysFor } from '../media/types.js';
+import { BUCKET, SHA256, TYPES, cleanFileName, keysFor } from '../media/types.js';
 import { ApiError, invalid, isObject } from './http.js';
 
-const BUCKET = 'ged-eye-media';
 const HEAD_TIMEOUT_MS = 5000;
 const MAX_PARALLEL_HEADS = 8;
 

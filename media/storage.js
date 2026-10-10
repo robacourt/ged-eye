@@ -6,10 +6,8 @@ import {
   DeleteObjectCommand, GetObjectCommand, HeadObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { ImagingError, MAX_UPLOAD_BYTES } from './types.js';
+import { BUCKET, ImagingError, MAX_UPLOAD_BYTES } from './types.js';
 
-/** The bucket on every branch (storage branches with the database). */
-export const BUCKET = 'ged-eye-media';
 const PRESIGN_SECONDS = 900;
 const ATTEMPTS = 3; // putOnce: the first try and two retries, as uploadMedia.js's withRetry
 /** Milliseconds allowed per call: `transfer` for a GET or PUT (up to 50 MB), `quick` for a HEAD, DELETE or LIST page. */

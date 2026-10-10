@@ -3,6 +3,9 @@
  * the api Function. Pure, with no dependencies, so both can import it.
  */
 
+/** The bucket every key lives in, the same name on every branch (storage branches with the database). */
+export const BUCKET = 'ged-eye-media';
+
 export const MAX_UPLOAD_BYTES = 52_428_800;
 
 /** The Cache-Control of every stored key but incoming/: immutable keys are written once and cached for a year. */

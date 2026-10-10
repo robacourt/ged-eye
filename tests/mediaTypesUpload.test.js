@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import {
-  MAX_UPLOAD_BYTES, TYPES, UUID, SHA256, sniff, declaredType, cleanFileName, inlineDisposition, keysFor
+  BUCKET, MAX_UPLOAD_BYTES, TYPES, UUID, SHA256, sniff, declaredType, cleanFileName, inlineDisposition, keysFor
 } from '../media/types.js';
 
 const ascii = (text) => [...text].map((c) => c.charCodeAt(0));
@@ -282,6 +282,10 @@ describe('media/types UUID and SHA256', () => {
 describe('media/types keysFor', () => {
   const SHA_A = 'a'.repeat(64);
   const SHA_B = 'b'.repeat(64);
+
+  it('names the one bucket every key lives in', () => {
+    expect(BUCKET).toBe('ged-eye-media');
+  });
 
   it('derives the original, display and thumbnail keys of an image', () => {
     expect(keysFor({ sha256: SHA_A, ext: 'jpg' })).toEqual({
