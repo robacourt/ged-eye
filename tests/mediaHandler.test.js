@@ -2,12 +2,12 @@
 import { describe, it, expect, vi } from 'vitest';
 import sharp from 'sharp';
 import { parseTriggerDelivery } from '@neon/functions/triggers';
-import { createMediaHandler, IMMUTABLE } from '../media/handler.js';
+import { createMediaHandler } from '../media/handler.js';
 import { createJobQueue } from '../media/jobQueue.js';
 import * as imaging from '../media/imaging.js';
-import { ImagingError, sha256Hex } from '../media/imaging.js';
+import { sha256Hex } from '../media/imaging.js';
 import { avatarKeyFor } from '../media/crop.js';
-import { MAX_UPLOAD_BYTES, UUID, inlineDisposition } from '../media/types.js';
+import { IMMUTABLE, ImagingError, MAX_UPLOAD_BYTES, UUID, inlineDisposition } from '../media/types.js';
 import { AuthError } from '../api/auth.js';
 
 const NOW = new Date('2026-10-09T12:00:00.000Z');

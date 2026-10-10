@@ -16,9 +16,6 @@ import { MAX_CAPTION, MAX_DATE, MAX_PHOTOS, addPhotosParams, photoItem } from '.
 import { createUploadQueue } from './uploadQueue.js';
 import { uploadErrorMessage } from './uploadMessages.js';
 
-/** The words a card shows for a failed upload: see uploadMessages.js (re-exported for existing importers). */
-export { uploadErrorMessage };
-
 /** Types every supported browser can show from an object URL; anything else previews as a document. */
 const PREVIEWABLE = new Set(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/avif']);
 

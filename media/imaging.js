@@ -18,9 +18,6 @@ export const AVATAR_SIZE = 400;
 
 const MAX_TIFF_IFDS = 64;
 
-// Defined in types.js so storage.js can throw it without loading sharp; re-exported for existing importers.
-export { ImagingError };
-
 /** `bytes` (a Buffer or Uint8Array) as a Buffer over the same memory, so Buffer methods like toString and includes work. */
 const asBuffer = (bytes) => (Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength));
 

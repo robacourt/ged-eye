@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { openAddPhotosDialog, uploadErrorMessage as reexported } from '../src/addPhotosDialog.js';
+import { openAddPhotosDialog } from '../src/addPhotosDialog.js';
 import { uploadErrorMessage } from '../src/uploadMessages.js';
 import { createUploadQueue } from '../src/uploadQueue.js';
 import { ApiError } from '../src/editApi.js';
@@ -449,10 +449,6 @@ describe('openAddPhotosDialog: cards', () => {
 });
 
 describe('uploadErrorMessage', () => {
-  it('is re-exported by the sheet', () => {
-    expect(reexported).toBe(uploadErrorMessage);
-  });
-
   it.each([
     ['unsupported_type', 400, 'PDFs and images only, up to 50 MB.'],
     ['too_large', 413, 'PDFs and images only, up to 50 MB.'],

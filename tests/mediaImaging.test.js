@@ -3,10 +3,10 @@ import { describe, it, expect } from 'vitest';
 import sharp from 'sharp';
 import { createHash } from 'node:crypto';
 import { crc32, deflateSync } from 'node:zlib';
-import { MAX_UPLOAD_BYTES, TYPES, sniff } from '../media/types.js';
+import { ImagingError, MAX_UPLOAD_BYTES, TYPES, sniff } from '../media/types.js';
 import { CropError } from '../media/crop.js';
 import {
-  AVATAR_SIZE, DISPLAY_SIZE, ImagingError, LIMIT_PIXELS, THUMB_SIZE,
+  AVATAR_SIZE, DISPLAY_SIZE, LIMIT_PIXELS, THUMB_SIZE,
   derivatives, fileHasLocation, hasGps, hasLocation, inspect, processFile, reencodeWithoutMetadata, renderAvatar, sha256Hex
 } from '../media/imaging.js';
 

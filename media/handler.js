@@ -11,8 +11,6 @@ import {
   IMMUTABLE, ImagingError, MAX_UPLOAD_BYTES, UUID, cleanFileName, declaredType, inlineDisposition, keysFor
 } from './types.js';
 
-// Defined in types.js, which the backfill script shares; re-exported for existing importers.
-export { IMMUTABLE };
 /** The schedule trigger declared in neon.ts that POSTs to /sweep. */
 export const SWEEP_TRIGGER = 'sweep-incoming';
 
