@@ -19,3 +19,4 @@ export { createUploadQueue } from './uploadQueue.js';
 export { removePhotoParams } from './photoParams.js';
 /** The media Function's client (mediaApi.js): `{ requestUpload, uploadFile, processUpload, discardUpload, renderAvatar }`. */
 export * as mediaApi from './mediaApi.js';
+export { openAddRelativeMenu } from './addRelativeMenu.js';

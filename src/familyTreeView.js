@@ -2,9 +2,18 @@ import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
 import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
 import { avatarUrl } from './media.js';
+import { nameOf } from './familyLinks.js';
 
 // Register the dagre layout
 cytoscape.use(dagre);
+
+/** The editors' "+" node, joined to the highlighted person, and the edge to it. */
+const ADD_NODE_ID = 'add-relative';
+const ADD_EDGE_ID = 'add-relative-edge';
+/** The smallest the button over the "+" node gets, at any zoom: a comfortable touch target. */
+const MIN_TARGET_PX = 44;
+/** The cytoscape events after which the "+" node is drawn somewhere else. */
+const VIEWPORT_EVENTS = 'pan zoom resize';
 
 export class FamilyTreeView {
   constructor(containerElement) {
@@ -12,6 +21,12 @@ export class FamilyTreeView {
     this.cy = null;
     this.selectedPersonId = null;
     this.onPersonSelectCallback = null;
+    this.shownPerson = null;        // the highlighted person's record, from the last buildGraph
+    this.graphData = null;          // buildGraph's arguments, to rebuild when the "+" node comes or goes
+    this.addRelativeHandler = null; // ({ anchor, person }) → menu handle, for editors; null for everyone else
+    this.addButton = null;          // the button over the "+" node, while there is a handler
+    this.addMenu = null;            // what the handler returned (the open menu), until it is closed
+    this.placeAddButton = this.placeAddButton.bind(this);
 
     this.init();
   }
@@ -92,6 +107,27 @@ export class FamilyTreeView {
             'background-color': '#aaa'
           }
         },
+        // The editors' "+" node (setAddRelative): a dashed circle, a little smaller than a relative.
+        {
+          selector: 'node[type="add"]',
+          style: {
+            'width': 110,
+            'height': 110,
+            'background-color': '#1e1e2e',
+            'background-image': 'none',
+            'border-width': 4,
+            'border-style': 'dashed',
+            'border-color': '#00d4ff',
+            'label': '+',
+            'color': '#00d4ff',
+            'font-size': '72px',
+            'font-weight': '300',
+            'text-valign': 'center',
+            'text-halign': 'center',
+            'text-margin-y': 0,
+            'text-background-opacity': 0
+          }
+        },
         // Edge styles
         {
           selector: 'edge',
@@ -144,6 +180,16 @@ export class FamilyTreeView {
             'target-arrow-color': '#8ab4f8'
           }
         },
+        {
+          selector: 'edge[type="add"]',
+          style: {
+            'line-color': '#00d4ff',
+            'line-style': 'dashed',
+            'width': 2.5,
+            'opacity': 0.7,
+            'curve-style': 'straight'
+          }
+        },
         // Hover effects
         {
           selector: 'edge:active',
@@ -177,8 +223,9 @@ export class FamilyTreeView {
       const node = event.target;
       const personId = node.data('id');
 
-      // Skip partnership nodes
-      if (node.data('type') === 'partnership') {
+      // Skip partnership nodes, and the "+" node (its button over it takes the taps)
+      const type = node.data('type');
+      if (type === 'partnership' || type === 'add') {
         return;
       }
 
@@ -220,6 +267,9 @@ export class FamilyTreeView {
    * Build the Cytoscape graph from person and family data
    */
   buildGraph(selectedPerson, familyMembers, relationships) {
+    this.closeAddMenu();
+    this.shownPerson = selectedPerson;
+    this.graphData = [selectedPerson, familyMembers, relationships];
     const elements = [];
 
     // Create a map of person IDs to names for debugging
@@ -595,6 +645,15 @@ export class FamilyTreeView {
     }
 
 
+    // For editors, the "+" node, joined to the selected person like another relative
+    if (this.addRelativeHandler) {
+      elements.push({ group: 'nodes', data: { id: ADD_NODE_ID, type: 'add' } });
+      elements.push({
+        group: 'edges',
+        data: { id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add' }
+      });
+    }
+
     // Update graph without animation
     this.updateGraph(elements);
   }
@@ -633,6 +692,7 @@ export class FamilyTreeView {
 
     // Fit to fill height and center horizontally
     this.fitToHeight();
+    this.placeAddButton();
   }
 
   /**
@@ -791,5 +851,87 @@ export class FamilyTreeView {
    */
   onPersonSelect(callback) {
     this.onPersonSelectCallback = callback;
+  }
+
+  /**
+   * For editors, a "+" node joined to the highlighted person, with a button over it that calls
+   * `handler({ anchor: button, person })` (person: the record shown when it was pressed). What the handler
+   * returns (the menu it opened, `{ close, isOpen }`) is closed when the tree is rebuilt, when the handler is
+   * cleared, or on a second press. With null (viewers, signed out) there is no node and no button. The tree
+   * already shown is rebuilt when the node comes or goes.
+   */
+  setAddRelative(handler) {
+    const next = typeof handler === 'function' ? handler : null;
+    const changed = Boolean(next) !== Boolean(this.addRelativeHandler);
+    this.addRelativeHandler = next;
+    if (!changed) return;
+    if (next) {
+      this.createAddButton();
+    } else {
+      this.closeAddMenu();
+      this.removeAddButton();
+    }
+    if (this.graphData) this.buildGraph(...this.graphData);
+  }
+
+  /** The button over the "+" node: a real button, so it can take focus and has a name, kept over the node. */
+  createAddButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'tree-add-relative';
+    button.hidden = true; // until there is a node to sit over
+    button.setAttribute('aria-haspopup', 'menu');
+    button.setAttribute('aria-expanded', 'false');
+    // Cytoscape listens on its container, which holds the button: it would take a press here for a tap on the
+    // node or the start of a pan, and its touch handling would cancel the click.
+    for (const type of ['pointerdown', 'mousedown', 'touchstart']) {
+      button.addEventListener(type, (event) => event.stopPropagation());
+    }
+    button.addEventListener('click', () => {
+      if (this.addMenu?.isOpen?.()) {
+        this.closeAddMenu();
+        return;
+      }
+      if (!this.addRelativeHandler || !this.shownPerson) return;
+      this.addMenu = this.addRelativeHandler({ anchor: button, person: this.shownPerson }) ?? null;
+    });
+    this.container.appendChild(button);
+    this.addButton = button;
+    this.cy.on(VIEWPORT_EVENTS, this.placeAddButton);
+  }
+
+  removeAddButton() {
+    this.cy.off(VIEWPORT_EVENTS, this.placeAddButton);
+    this.addButton?.remove();
+    this.addButton = null;
+  }
+
+  closeAddMenu() {
+    const menu = this.addMenu;
+    this.addMenu = null;
+    menu?.close?.();
+  }
+
+  /**
+   * Puts the button over the "+" node as drawn now, at least MIN_TARGET_PX square, with the person's name;
+   * hidden while there is no node, or the node is panned out of the tree.
+   */
+  placeAddButton() {
+    const button = this.addButton;
+    if (!button) return;
+    const node = this.cy.getElementById(ADD_NODE_ID);
+    if (!this.shownPerson || node.empty()) {
+      button.hidden = true;
+      return;
+    }
+    button.setAttribute('aria-label', `Add a relative to ${nameOf(this.shownPerson)}`);
+    const { x, y } = node.renderedPosition();
+    const size = Math.max(MIN_TARGET_PX, node.renderedOuterWidth(), node.renderedOuterHeight());
+    const half = size / 2;
+    button.hidden = x + half < 0 || y + half < 0 || x - half > this.cy.width() || y - half > this.cy.height();
+    button.style.left = `${x - half}px`;
+    button.style.top = `${y - half}px`;
+    button.style.width = `${size}px`;
+    button.style.height = `${size}px`;
   }
 }

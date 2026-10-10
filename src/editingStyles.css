@@ -419,6 +419,69 @@
   outline-offset: 2px;
 }
 
+/* The tree's add-relative menu (addRelativeMenu.js), by the "+" node: over the tree, the details panel and the
+   sign-in button, under dialogs and toasts. Its place is set in JS, inside the viewport. */
+.add-relative-menu {
+  position: fixed;
+  z-index: 1200;
+  width: max-content;
+  min-width: 200px;
+  max-width: min(320px, calc(100vw - 24px));
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: #1e1e2e;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  outline: none;
+}
+
+.add-relative-menu-title {
+  padding: 8px 12px 6px;
+  overflow: hidden;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.add-relative-menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.add-relative-menu-item:hover,
+.add-relative-menu-item:focus {
+  background: rgba(0, 212, 255, 0.15);
+}
+
+.add-relative-menu-item:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: -2px;
+}
+
+.add-relative-menu-item[aria-disabled="true"] {
+  color: rgba(255, 255, 255, 0.4);
+  cursor: default;
+}
+
+.add-relative-menu-item[aria-disabled="true"]:hover {
+  background: none;
+}
+
+.add-relative-menu-reason {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 /* Relative dialog */
 .relative-dialog {
   width: min(540px, 100%);
