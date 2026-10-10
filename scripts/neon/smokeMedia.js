@@ -95,18 +95,18 @@ export function gpsJpeg() {
 }
 
 /**
- * Signs the dev editor in on the branch's Auth (Managed Better Auth) and takes the JWT that get-session sends
- * in set-auth-jwt. → the JWT, or null after a FAIL.
+ * Signs a dev account (the dev editor by default) in on the branch's Auth (Managed Better Auth) and takes the
+ * JWT that get-session sends in set-auth-jwt. → the JWT, or null after a FAIL.
  */
-export async function signIn(authBase, password) {
+export async function signIn(authBase, password, email = EDITOR_EMAIL) {
   const response = await fetch(`${authBase}/sign-in/email`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', origin: ORIGIN },
-    body: JSON.stringify({ email: EDITOR_EMAIL, password }),
+    body: JSON.stringify({ email, password }),
     signal: AbortSignal.timeout(TIMEOUT_MS)
   });
   const body = await response.json().catch(() => null); // holds the session token: read only for an error code
-  if (!check(`sign in as ${EDITOR_EMAIL}`, response.ok, `${response.status}${response.ok ? '' : ` ${body?.code ?? ''}`}`)) {
+  if (!check(`sign in as ${email}`, response.ok, `${response.status}${response.ok ? '' : ` ${body?.code ?? ''}`}`)) {
     return null;
   }
   const cookie = response.headers.getSetCookie().map((setCookie) => setCookie.split(';')[0]).join('; ');

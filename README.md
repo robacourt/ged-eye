@@ -235,6 +235,7 @@ Editors can add photos to the tree from the website, on a phone or a computer. E
   ```bash
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeMedia.js    # health, auth, presigned PUT, processing, dedupe, avatars, the trigger
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePhotos.js   # the photo commands through both Functions, then undoes them
+  node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeAccess.js   # an access request by dev-viewer, granted by dev-admin, with mail logged; then removes dev-viewer again
   ```
 
   Each prints a PASS or FAIL line per check and exits non-zero on a failure. They leave their test objects in the branch's bucket, and `smokePhotos.js` leaves its changes in History.
