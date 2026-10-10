@@ -710,8 +710,19 @@ describe('api/db.js', () => {
     expect(await createDb(fakePool([])).lookupEditor('nobody@example.test')).toBeNull();
   });
 
-  it('returns null when adding an editor who already exists', async () => {
-    expect(await createDb(fakePool([])).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test')).toBeNull();
+  it('returns null when adding an editor who already exists, resolving any pending request first, in one transaction', async () => {
+    const client = { query: vi.fn(async () => ({ rows: [] })), release: vi.fn() };
+    const pool = { query: vi.fn(), connect: vi.fn(async () => client) };
+    expect(await createDb(pool).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test')).toBeNull();
+    const statements = client.query.mock.calls.map(([sql]) => sql);
+    expect(statements[0]).toBe('begin');
+    expect(statements.at(-1)).toBe('commit');
+    const resolve = statements.findIndex((sql) => /update access_request/.test(sql));
+    const insert = statements.findIndex((sql) => /insert into editor/.test(sql));
+    expect(resolve).toBeGreaterThan(0);
+    expect(insert).toBeGreaterThan(resolve); // the request row is locked first, as resolveAccessRequest does
+    expect(client.query.mock.calls[resolve][1]).toEqual(['editor@example.test', 'admin@example.test']);
+    expect(pool.query).not.toHaveBeenCalled();
   });
 
   it('passes its log and context (the upload checks\' headObject) to runChange', async () => {
