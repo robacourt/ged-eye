@@ -191,6 +191,9 @@ body {
   position: relative;
   max-width: 90%;
   max-height: 100%;
+  /* Stretched to the wrapper's height, so the image's max-height has a height to fit, beside the caption. */
+  align-self: stretch;
+  min-height: 0;
 }
 
 .photo-viewer-image {
@@ -249,15 +252,153 @@ body {
 }
 
 .photo-viewer-footer {
-  padding: 20px 80px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 80px 24px;
   text-align: center;
 }
 
+/* Parts the photo hasn't got (a caption, people, editor actions) are hidden with the attribute. */
+.photo-viewer [hidden] {
+  display: none !important;
+}
+
+/* The caption, date and "Shown for": a long caption or many people scroll here, leaving room for the photo. */
+.photo-viewer-caption-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 720px;
+  max-height: 30vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.photo-viewer-caption {
+  font-size: 17px;
+  line-height: 1.4;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.photo-viewer-date {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.photo-viewer-people {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0 4px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.photo-viewer-people-list {
+  display: contents;
+}
+
+.photo-viewer-person {
+  min-height: 36px;
+  padding: 4px 6px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: #00d4ff;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.photo-viewer-person:hover {
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.photo-viewer-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 100%;
+}
+
+/* One line, shortened with an ellipsis, so the file row never takes room from the photo. */
 .photo-viewer-filename {
+  min-width: 0;
+  overflow: hidden;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   font-family: monospace;
-  word-break: break-all;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photo-viewer-original {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  min-height: 44px;
+  color: #00d4ff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Editors' actions: a row of icon-over-label buttons, sized to share a 375px phone screen. */
+.photo-viewer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.photo-viewer-action {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.photo-viewer-action svg {
+  flex-shrink: 0;
+}
+
+.photo-viewer-action:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.photo-viewer-action-remove {
+  color: #ff8a8a;
+}
+
+.photo-viewer-person:focus-visible,
+.photo-viewer-original:focus-visible,
+.photo-viewer-action:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
 }
 
 .photo-viewer-download {
@@ -350,7 +491,38 @@ body {
   }
 
   .photo-viewer-footer {
-    padding: 10px 20px 20px;
+    gap: 8px;
+    padding: 8px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .photo-viewer-caption-block {
+    max-height: 22vh;
+  }
+
+  .photo-viewer-caption {
+    font-size: 15px;
+  }
+
+  .photo-viewer-file {
+    gap: 0 12px;
+  }
+
+  .photo-viewer-filename {
+    font-size: 12px;
+  }
+
+  .photo-viewer-nav-mobile {
+    margin-top: 8px;
+  }
+
+  .photo-viewer-nav-mobile .photo-viewer-nav {
+    width: 48px;
+    height: 48px;
+    font-size: 36px;
+  }
+
+  .photo-viewer-action {
+    min-height: 52px;
   }
 
   .photo-viewer-close {
