@@ -1,6 +1,6 @@
 /*
  * Editing UI that every visitor may need: the sign-in button and dialog, the account menu, the shared dialog
- * and form controls, and toasts. The editors' own dialogs are styled in editingStyles.css, which loads with
+ * and form controls, the request for edit access, and toasts. The editors' own dialogs are styled in editingStyles.css, which loads with
  * their code. Kept apart from style.css, which this file doesn't restyle.
  *
  * Stacking: the header button (1100) sits above the tree and the loading overlay (1000) but below the photo
@@ -366,6 +366,44 @@ select.editor-input {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* Request edit access (accessRequestDialog.js), for signed-in non-editors */
+.access-request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.access-request-intro {
+  font-size: 15px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.access-request-note {
+  min-height: 104px;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.access-request-count {
+  margin-top: -6px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.access-request-count-over {
+  color: #ff8a8a;
+}
+
+.access-request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 /* Toasts, bottom centre: the polite region, then the alert region (both always present, maybe empty) */

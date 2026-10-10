@@ -38,6 +38,43 @@ const EDITOR_COLUMNS = 'email, name, role, added_by, added_at';
 const editorFromRow = (row) => ({ email: row.email, name: row.name, role: row.role, addedBy: row.added_by, addedAt: row.added_at });
 
 const iso = (value) => (value instanceof Date ? value.toISOString() : value);
+
+// Access requests (migration 009). The rate limits: at most 3 per email in any 24 hours, and at most
+// 10 from everyone in any hour. At most 100 are listed.
+// resolved_by_name: the resolving admin's editor name, or their email when they have none (or are no
+// longer an editor). A scalar subquery, so it also works in RETURNING.
+const REQUEST_COLUMNS = `id, email, name, note, created_at, status, resolved_by, resolved_at,
+  coalesce((select nullif(e.name, '') from editor e where e.email = access_request.resolved_by),
+           access_request.resolved_by) as resolved_by_name`;
+const PER_EMAIL_LIMIT = 3;
+const GLOBAL_LIMIT = 10;
+const REQUESTS_LISTED = 100;
+// pg_advisory_xact_lock key serialising new requests with each other, so the rate limits hold under
+// concurrency, and with addEditor, so a request can't slip in while someone is being added.
+// Distinct from begin_change's 7262021.
+export const ACCESS_REQUEST_LOCK = 7262022;
+
+const requestFromRow = (row) => ({
+  id: Number(row.id),
+  email: row.email,
+  name: row.name,
+  note: row.note,
+  status: row.status,
+  createdAt: iso(row.created_at),
+  resolvedBy: row.resolved_by,
+  resolvedByName: row.resolved_by_name,
+  resolvedAt: row.resolved_at === null ? null : iso(row.resolved_at)
+});
+
+// Pending requests from people who aren't editors: the ones an admin still has to look at.
+const OPEN_REQUESTS = `
+  from access_request r
+  where r.status = 'pending'
+    and not exists (select 1 from editor e where e.email = r.email)`;
+
+const LATEST_REQUEST = `select ${REQUEST_COLUMNS} from access_request where email = $1 order by created_at desc, id desc limit 1`;
+
+const NO_RESOLUTION = { request: null, editor: null, wasEditor: false };
 const idOrNull = (value) => (value === null || value === undefined ? null : Number(value));
 
 /** A toggle's own change row, as the toggle routes return it. */
@@ -156,15 +193,29 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
       return rows.map(editorFromRow);
     },
 
-    /** → the new editor, or null when the email is already listed (an existing editor is never changed) */
-    async addEditor({ email, name, role }, by) {
-      const { rows: [row] } = await pool.query(
-        `insert into editor (email, name, role, added_by) values ($1, $2, $3, $4)
-         on conflict (email) do nothing
-         returning ${EDITOR_COLUMNS}`,
-        [email, name, role, by]
-      );
-      return row ? editorFromRow(row) : null;
+    /**
+     * → the new editor, or null when the email is already listed (an existing editor is never changed).
+     * Either way, a pending access request for the email is marked granted by `by`, in the same
+     * transaction, holding the request lock (as createAccessRequest does), so nothing is left pending.
+     */
+    addEditor({ email, name, role }, by) {
+      return inTransaction(pool, async (client) => {
+        // The request lock first: a request being made now either commits before this update (and is
+        // granted by it) or waits and finds the editor, never landing between the update and the insert.
+        await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
+        // The request row first, then the editor: the order resolveAccessRequest locks them in.
+        await client.query(
+          `update access_request set status = 'granted', resolved_by = $2, resolved_at = now()
+           where email = $1 and status = 'pending'`,
+          [email, by]);
+        const { rows: [row] } = await client.query(
+          `insert into editor (email, name, role, added_by) values ($1, $2, $3, $4)
+           on conflict (email) do nothing
+           returning ${EDITOR_COLUMNS}`,
+          [email, name, role, by]
+        );
+        return row ? editorFromRow(row) : null;
+      });
     },
 
     /** → 'removed' | 'not_found' | 'not_an_admin' (`by` isn't, or is no longer, an admin) | 'last_admin' */
@@ -180,6 +231,116 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
         await client.query('delete from editor where email = $1', [email]);
         return 'removed';
       });
+    },
+
+    /**
+     * The newest access request from `email`.
+     * → { id, email, name, note, status, createdAt, resolvedBy, resolvedByName, resolvedAt } | null, where
+     * resolvedBy is the resolving admin's email and resolvedByName their editor name, or their email
+     * when they have none (both null while pending)
+     */
+    async latestAccessRequest(email) {
+      const { rows: [row] } = await pool.query(LATEST_REQUEST, [email]);
+      return row ? requestFromRow(row) : null;
+    },
+
+    /** → how many pending requests there are from people who aren't editors */
+    async pendingRequestCount() {
+      const { rows: [{ count }] } = await pool.query(`select count(*)::int as count ${OPEN_REQUESTS}`);
+      return count;
+    },
+
+    /**
+     * Asks for edit access for `email`. Checks, in this order: already an editor ('editor'); a pending
+     * request ('pending', with it); the rate limits ('limited'); then inserts ('created', with it). New
+     * requests are serialised by an advisory lock, so the limits hold; if a pending request appears
+     * anyway (the insert's `on conflict … do nothing`), that one is returned as 'pending'.
+     * → { outcome: 'created' | 'pending' | 'editor' | 'limited', request (as latestAccessRequest) | null }
+     */
+    createAccessRequest({ email, name, note }) {
+      return inTransaction(pool, async (client) => {
+        await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
+        const { rows: [editor] } = await client.query('select 1 from editor where email = $1', [email]);
+        if (editor) return { outcome: 'editor', request: null };
+        const { rows: [pending] } = await client.query(
+          `select ${REQUEST_COLUMNS} from access_request where email = $1 and status = 'pending'`, [email]);
+        if (pending) return { outcome: 'pending', request: requestFromRow(pending) };
+        const { rows: [{ mine, everyone }] } = await client.query(
+          `select count(*) filter (where email = $1 and created_at > now() - interval '24 hours')::int as mine,
+                  count(*) filter (where created_at > now() - interval '1 hour')::int as everyone
+           from access_request
+           where created_at > now() - interval '24 hours'`, [email]);
+        if (mine >= PER_EMAIL_LIMIT || everyone >= GLOBAL_LIMIT) return { outcome: 'limited', request: null };
+        const { rows: [created] } = await client.query(
+          `insert into access_request (email, name, note) values ($1, $2, $3)
+           on conflict (email) where status = 'pending' do nothing
+           returning ${REQUEST_COLUMNS}`,
+          [email, name, note]);
+        if (created) return { outcome: 'created', request: requestFromRow(created) };
+        const { rows: [other] } = await client.query(LATEST_REQUEST, [email]);
+        return { outcome: 'pending', request: other ? requestFromRow(other) : null };
+      });
+    },
+
+    /** → [{ id, email, name, note, createdAt }]: pending requests from people who aren't editors, oldest first, at most 100 */
+    async listAccessRequests() {
+      const { rows } = await pool.query(
+        `select r.id, r.email, r.name, r.note, r.created_at ${OPEN_REQUESTS}
+         order by r.created_at, r.id
+         limit $1`, [REQUESTS_LISTED]);
+      return rows.map((row) => ({ id: Number(row.id), email: row.email, name: row.name, note: row.note, createdAt: iso(row.created_at) }));
+    },
+
+    /**
+     * Grants ('grant') or dismisses ('dismiss') request `id` as `admin` (an email), in one transaction:
+     * re-checks that `admin` is still an admin, locks the request, and for a grant adds the requester as
+     * an editor (unless they already are) before marking the request resolved.
+     * → { outcome: 'granted' | 'dismissed' | 'already_resolved' | 'not_found' | 'not_an_admin',
+     *     request (as latestAccessRequest; for already_resolved, as it was resolved) | null,
+     *     editor (granted: the new or existing editor, as addEditor) | null,
+     *     wasEditor (granted: true when the requester was already an editor, so nothing changed for them) }
+     */
+    async resolveAccessRequest(id, action, admin) {
+      if (action !== 'grant' && action !== 'dismiss') throw new Error(`resolveAccessRequest: unknown action ${action}`);
+      return inTransaction(pool, async (client) => {
+        // A share lock on the admin's own row: removeEditor locks admin rows for update, so a removal
+        // waits for this to commit, and this waits for a removal in progress, then finds no row.
+        const { rows: [stillAdmin] } = await client.query(
+          "select 1 from editor where email = $1 and role = 'admin' for share", [admin]);
+        if (!stillAdmin) return { outcome: 'not_an_admin', ...NO_RESOLUTION };
+        const { rows: [row] } = await client.query(`select ${REQUEST_COLUMNS} from access_request where id = $1 for update`, [id]);
+        if (!row) return { outcome: 'not_found', ...NO_RESOLUTION };
+        if (row.status !== 'pending') return { outcome: 'already_resolved', ...NO_RESOLUTION, request: requestFromRow(row) };
+
+        let editor = null;
+        let wasEditor = false;
+        if (action === 'grant') {
+          const { rows: [added] } = await client.query(
+            `insert into editor (email, name, role, added_by) values ($1, $2, 'editor', $3)
+             on conflict (email) do nothing
+             returning ${EDITOR_COLUMNS}`,
+            [row.email, row.name, admin]);
+          if (added) {
+            editor = editorFromRow(added);
+          } else {
+            const { rows: [existing] } = await client.query(`select ${EDITOR_COLUMNS} from editor where email = $1`, [row.email]);
+            editor = editorFromRow(existing);
+            wasEditor = true;
+          }
+        }
+        const { rows: [resolved] } = await client.query(
+          `update access_request set status = $2, resolved_by = $3, resolved_at = now()
+           where id = $1
+           returning ${REQUEST_COLUMNS}`,
+          [id, action === 'grant' ? 'granted' : 'dismissed', admin]);
+        return { outcome: action === 'grant' ? 'granted' : 'dismissed', request: requestFromRow(resolved), editor, wasEditor };
+      });
+    },
+
+    /** → the admins' emails, in order */
+    async listAdminEmails() {
+      const { rows } = await pool.query("select email from editor where role = 'admin' order by email");
+      return rows.map((row) => row.email);
     },
 
     /** → { change: { id, summary, personIds }, view | null }; see api/changes.js */

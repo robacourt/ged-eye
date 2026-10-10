@@ -497,7 +497,7 @@ describe('uploadErrorMessage', () => {
     ['missing_upload', 400, 'This upload has gone missing. Retry to upload it again.'],
     ['busy', 503, 'The server is busy. Retry in a moment.'],
     ['unauthenticated', 401, "You're signed out. Sign in again, then retry."],
-    ['not_an_editor', 403, "Your account can't add photos. Ask Rob for access."],
+    ['not_an_editor', 403, "You're not on the editors list. Use \"Request edit access\" in your account menu."],
     ['network', 0, 'Upload failed. Check your connection, then retry.'],
     ['upload_failed', 403, 'Upload failed.'],
     ['internal', 500, 'Upload failed.']

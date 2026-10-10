@@ -33,6 +33,28 @@ function setUrlPerson(personId, { replace = false } = {}) {
   else window.history.pushState({}, '', url);
 }
 
+/** The admins' email link, `<site>/?access-requests`: open the Editors dialog, where the requests are. */
+const ACCESS_REQUESTS_PARAM = 'access-requests';
+
+/**
+ * Whether the URL has `?access-requests`. If so, removes it (only it: `person` and Google's
+ * `neon_auth_session_verifier` stay) from the current history entry, so it never sticks to later URLs.
+ */
+function takeAccessRequestsParam() {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has(ACCESS_REQUESTS_PARAM)) return false;
+  url.searchParams.delete(ACCESS_REQUESTS_PARAM);
+  window.history.replaceState(window.history.state, '', url);
+  return true;
+}
+
+/** This page's URL with `?access-requests` back in it: where Google sign-in returns to, to follow the link then. */
+function urlWithAccessRequests() {
+  const url = new URL(window.location.href);
+  url.searchParams.set(ACCESS_REQUESTS_PARAM, '');
+  return url.href;
+}
+
 const isNotFound = (error) => error instanceof PersonNotFoundError || error?.name === 'PersonNotFoundError';
 
 /** Whether the server refused a call because the signed-in account is not (or no longer) on the editors list. */
@@ -40,7 +62,8 @@ const isNotAnEditor = (error) => error?.status === 403 && error.code === 'not_an
 
 /** The editApi.js calls whose refusals are watched: all but `me`, which reads the account itself. */
 export const WATCHED_API_CALLS = ['authedFetch', 'runChange', 'revert', 'restore', 'undo', 'redo', 'listChanges',
-  'search', 'listEditors', 'addEditor', 'removeEditor'];
+  'search', 'listEditors', 'addEditor', 'removeEditor', 'requestAccess', 'listAccessRequests', 'grantAccessRequest',
+  'dismissAccessRequest'];
 
 /**
  * `api` with its calls watched: a rejection that is a 403 `not_an_editor` is reported to `onNotAnEditor`
@@ -115,6 +138,11 @@ export function initApp({
   loadEditing = defaultLoadEditing
 } = {}) {
   const loadingEl = document.getElementById('loading');
+
+  // The admins' email link, read once and held here: null, or where following it has got to. 'starting' until
+  // auth.init() resolves; then 'account' while /me is read for someone signed in, or 'signing-in' while the
+  // sign-in it opened is open. It opens the Editors dialog only for an admin, and is dropped quietly otherwise.
+  let accessRequestsLink = takeAccessRequestsParam() ? 'starting' : null;
 
   // Calls to the API from here and from the editing dialogs. An editor who has been removed since signing in
   // learns it from the first refusal: the account is read again, which takes the edit controls away.
@@ -476,7 +504,39 @@ export function initApp({
     const module = await editingFor();
     if (!module || account?.role !== 'admin') return;
     editorsDialog?.close();
-    editorsDialog = module.openEditorsDialog({ api, currentEmail: account.email ?? null });
+    editorsDialog = module.openEditorsDialog({
+      api, currentEmail: account.email ?? null,
+      // A request granted or dismissed: the account menu's "Access requests (N)" is read again, without the
+      // reload a full refresh would do (onSignedIn runs only if the role changed).
+      onChanged: () => signIn.refreshAccount({ quiet: true })
+    });
+  }
+
+  // --- The admins' email link (?access-requests) ---------------------------------------------------------------
+
+  /** Follows the link for `me`, now that /me has answered: the Editors dialog for an admin, else nothing. */
+  function followAccessRequestsLink(me) {
+    accessRequestsLink = null;
+    if (me?.role === 'admin') openEditors();
+  }
+
+  /** Once auth.init() has resolved: follow the link now, once /me answers, or after a sign-in it opens. */
+  function startAccessRequestsLink() {
+    if (accessRequestsLink !== 'starting') return;
+    if (account) {
+      followAccessRequestsLink(account);
+    } else if (auth.getState().user) {
+      accessRequestsLink = 'account';
+    } else {
+      accessRequestsLink = 'signing-in';
+      signIn.open({
+        // Google sign-in leaves the page, so it comes back with the link to follow again.
+        googleCallbackURL: urlWithAccessRequests,
+        onCancel: () => {
+          if (accessRequestsLink === 'signing-in') accessRequestsLink = null;
+        }
+      });
+    }
   }
 
   // --- Keyboard Undo and Redo ----------------------------------------------------------------------------------
@@ -524,15 +584,21 @@ export function initApp({
       loader.invalidateAll();
       showCurrentPerson();
       if (canEdit()) prepareEditing();
+      if (accessRequestsLink === 'account' || accessRequestsLink === 'signing-in') followAccessRequestsLink(me);
     },
     onSignedOut() {
       account = null;
+      if (accessRequestsLink === 'account') accessRequestsLink = null; // a sign-in it opened may still finish
       syncTreeAddRelative();
       dropQueuedKeys();
       historyPanel?.close();
       editorsDialog?.close();
       loader.invalidateAll();
       showCurrentPerson();
+    },
+    onAccountError() {
+      // /me failed while the link waited for it: drop it, so a later Try again doesn't open Editors out of the blue.
+      accessRequestsLink = null;
     },
     openHistory: () => openHistory(),
     openEditors
@@ -557,7 +623,13 @@ export function initApp({
   // Viewing doesn't wait for this: signed-in editors get their controls when /me answers (onSignedIn).
   Promise.resolve()
     .then(() => auth.init())
-    .catch(error => console.warn('Sign-in is unavailable', error));
+    .then(
+      () => startAccessRequestsLink(),
+      (error) => {
+        accessRequestsLink = null;
+        console.warn('Sign-in is unavailable', error);
+      })
+    .catch(error => console.error('Could not follow the access requests link', error));
 
   return {
     showPerson,

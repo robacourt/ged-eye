@@ -1,6 +1,6 @@
 /**
- * Client for the API's editing routes (api/handler.js): commands, history, undo/redo, search, /me and editors.
- * Errors come back as ApiError, with the server's `{ error: code, ... }` body spread onto it.
+ * Client for the API's editing routes (api/handler.js): commands, history, undo/redo, search, /me, editors and
+ * edit access requests. Errors come back as ApiError, with the server's `{ error: code, ... }` body spread onto it.
  */
 import { getToken as authGetToken, setRole as authSetRole } from './auth.js';
 
@@ -98,13 +98,8 @@ export function createEditApi(options) {
     }
   }
 
-  /**
-   * Calls the API and returns the parsed JSON body. Adds the bearer token: `auth: 'required'` (the default)
-   * fails with 401 `unauthenticated` when signed out, `'optional'` sends it only when signed in.
-   * A 401 is retried once with a force-refreshed token; with optional auth, then without a token.
-   * Each request gives up after `timeoutMs` (30 s by default) with a `network` error.
-   */
-  async function authedFetch(path, { method = 'GET', body, auth = 'required', timeoutMs = REQUEST_TIMEOUT_MS } = {}) {
+  /** As `authedFetch`, but resolves to `{ status, data }`, for routes whose success status means something. */
+  async function fetchWithStatus(path, { method = 'GET', body, auth = 'required', timeoutMs = REQUEST_TIMEOUT_MS } = {}) {
     const url = apiUrl(path, resolveBase(), baseUrlName);
     const optional = auth === 'optional';
     let bearer = await token(undefined, optional);
@@ -116,13 +111,22 @@ export function createEditApi(options) {
       if (optional && (!bearer || response.status === 401)) response = await send(url, method, body, null, timeoutMs);
     }
     const parsed = await response.json().catch(() => null);
-    if (response.ok) return parsed;
+    if (response.ok) return { status: response.status, data: parsed };
     const details = parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
     throw new ApiError(response.status, typeof details.error === 'string' ? details.error : `http_${response.status}`, details);
   }
 
+  /**
+   * Calls the API and returns the parsed JSON body. Adds the bearer token: `auth: 'required'` (the default)
+   * fails with 401 `unauthenticated` when signed out, `'optional'` sends it only when signed in.
+   * A 401 is retried once with a force-refreshed token; with optional auth, then without a token.
+   * Each request gives up after `timeoutMs` (30 s by default) with a `network` error.
+   */
+  const authedFetch = async (path, options) => (await fetchWithStatus(path, options)).data;
+
   const post = (path, body) => authedFetch(path, { method: 'POST', body });
   const changePath = (id, action) => `/changes/${encodeURIComponent(id)}/${action}`;
+  const accessRequestPath = (id, action) => `/access-requests/${encodeURIComponent(id)}/${action}`;
 
   return {
     authedFetch,
@@ -154,7 +158,8 @@ export function createEditApi(options) {
     },
 
     /**
-     * → `{ email, name, role }`, with `role: null` (and `name: null`) for a signed-in non-editor.
+     * → `{ email, name, role }`, plus `pendingRequests` (a count) for an admin. A signed-in non-editor gets
+     * `role: null` (and `name: null`), with `accessRequest`: their latest request `{ status, createdAt }`, or null.
      * Caches the role in auth, for the data loader. Throws ApiError 401 when signed out.
      */
     async me() {
@@ -166,7 +171,7 @@ export function createEditApi(options) {
         if (error instanceof ApiError && error.status === 403 && error.code === 'not_an_editor') {
           const email = error.body.email ?? null;
           setRole(null, email);
-          return { email, name: null, role: null };
+          return { email, name: null, role: null, accessRequest: error.body.accessRequest ?? null };
         }
         if (error instanceof ApiError && error.status === 401) setRole(null);
         throw error;
@@ -182,7 +187,26 @@ export function createEditApi(options) {
     /** Admins only. */
     async removeEditor(email) {
       await authedFetch(`/editors/${encodeURIComponent(email)}`, { method: 'DELETE' });
-    }
+    },
+
+    /**
+     * Signed-in non-editors: asks the admins for edit access, with an optional note (sent only when there is one).
+     * → `{ request, created }`: `created` is false when a request was already pending (200 rather than 201).
+     */
+    async requestAccess(note) {
+      const body = typeof note === 'string' && note !== '' ? { note } : {};
+      const { status, data } = await fetchWithStatus('/access-requests', { method: 'POST', body });
+      return { request: data?.request ?? null, created: status === 201 };
+    },
+
+    /** Admins only. Pending requests, oldest first: `[{ id, email, name, note, createdAt }]`. */
+    listAccessRequests: async () => (await authedFetch('/access-requests')).requests,
+
+    /** Admins only. → `{ request, editor }`; 409 `already_resolved` carries `{ status, resolvedBy, resolvedByName }`. */
+    grantAccessRequest: (id) => post(accessRequestPath(id, 'grant')),
+
+    /** Admins only. → `{ request }`; 409 `already_resolved` as for grant. */
+    dismissAccessRequest: (id) => post(accessRequestPath(id, 'dismiss'))
   };
 }
 
@@ -215,5 +239,9 @@ export const {
   me,
   listEditors,
   addEditor,
-  removeEditor
+  removeEditor,
+  requestAccess,
+  listAccessRequests,
+  grantAccessRequest,
+  dismissAccessRequest
 } = api;

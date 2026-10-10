@@ -14,15 +14,21 @@ const ROB = { email: 'rob@example.com', name: 'Rob', role: 'admin', addedBy: 'mi
 const ANN = { email: 'ann@example.com', name: 'Ann Jones', role: 'editor', addedBy: 'rob@example.com', addedAt: '2026-10-09T11:00:00Z' };
 const TOM = { email: 'tom@example.com', name: null, role: 'editor', addedBy: 'rob@example.com', addedAt: '2026-10-09T11:30:00Z' };
 
+// This year, so the date shows without one.
+const OCT_10 = new Date(new Date().getFullYear(), 9, 10, 12).toISOString();
+const TOM_ASKS = { id: 7, email: 'tom@example.com', name: 'Tom Acourt', note: "I'm Rose's grandson.\nPlease add me.", createdAt: OCT_10 };
+const SUE_ASKS = { id: 9, email: 'sue@example.com', name: null, note: null, createdAt: OCT_10 };
+
 let api;
 let dialog;
+let onChanged;
 
 const flush = async (times = 3) => {
   for (let i = 0; i < times; i++) await new Promise(resolve => setTimeout(resolve, 0));
 };
 
 async function open(options = {}) {
-  dialog = openEditorsDialog({ api, currentEmail: 'rob@example.com', ...options });
+  dialog = openEditorsDialog({ api, currentEmail: 'rob@example.com', onChanged, ...options });
   await flush();
   return dialog;
 }
@@ -57,8 +63,15 @@ beforeEach(() => {
     addEditor: vi.fn(async ({ email, name, role }) => ({
       email: email.trim().toLowerCase(), name: name || null, role, addedBy: 'rob@example.com', addedAt: '2026-10-09T12:00:00Z'
     })),
-    removeEditor: vi.fn(async () => {})
+    removeEditor: vi.fn(async () => {}),
+    listAccessRequests: vi.fn(async () => []),
+    grantAccessRequest: vi.fn(async (id) => ({
+      request: { id, status: 'granted' },
+      editor: { email: 'tom@example.com', name: 'Tom Acourt', role: 'editor', addedBy: 'rob@example.com', addedAt: OCT_10 }
+    })),
+    dismissAccessRequest: vi.fn(async (id) => ({ request: { id, status: 'dismissed' } }))
   };
+  onChanged = vi.fn();
   showToast.mockClear();
 });
 
@@ -241,5 +254,219 @@ describe('openEditorsDialog: removing', () => {
     row('ann@example.com').querySelector('.editors-confirm-remove').click();
     await flush();
     expect(row('ann@example.com')).toBeUndefined();
+  });
+});
+
+describe('openEditorsDialog: access requests', () => {
+  const section = () => $('.editors-requests');
+  const request = (id) => $$('.editors-request').find(element => element.dataset.id === String(id));
+  const requests = () => $$('.editors-request').map(element => ({
+    name: element.querySelector('.editors-request-name')?.textContent ?? null,
+    email: element.querySelector('.editors-request-email').textContent,
+    note: element.querySelector('.editors-request-note')?.textContent ?? null,
+    date: element.querySelector('.editors-request-date').textContent
+  }));
+  const buttons = (id) => [...request(id).querySelectorAll('button')].filter(b => !b.hidden).map(b => b.textContent);
+  const visible = (element) => Boolean(element) && !element.closest('[hidden]');
+
+  beforeEach(() => {
+    api.listAccessRequests.mockResolvedValue([TOM_ASKS, SUE_ASKS]);
+  });
+
+  it('lists pending requests above the editors: name, email, note, date, Grant and Dismiss', async () => {
+    await open();
+    expect(api.listAccessRequests).toHaveBeenCalledOnce();
+    expect(visible(section())).toBe(true);
+    expect(section().querySelector('h3').textContent).toBe('Requests');
+    expect(section().compareDocumentPosition($('.editors-list')) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(requests()).toEqual([
+      { name: 'Tom Acourt', email: 'tom@example.com', note: "I'm Rose's grandson.\nPlease add me.", date: 'Asked 10 Oct' },
+      { name: null, email: 'sue@example.com', note: null, date: 'Asked 10 Oct' }
+    ]);
+    expect(request(7).querySelector('.editors-request-date').getAttribute('datetime')).toBe(OCT_10);
+    expect(buttons(7)).toEqual(['Grant', 'Dismiss']);
+    expect(request(7).querySelector('.editors-request-grant').getAttribute('aria-label')).toBe('Grant tom@example.com edit access');
+    expect(request(7).querySelector('.editors-request-dismiss').getAttribute('aria-label')).toBe('Dismiss the request from tom@example.com');
+    expect(rows()).toHaveLength(3);
+  });
+
+  it('shows nothing at all when there are no requests', async () => {
+    api.listAccessRequests.mockResolvedValue([]);
+    await open();
+    expect(visible(section())).toBe(false);
+    expect([...root().querySelectorAll('h3')].filter(visible).map(h => h.textContent)).toEqual(['Add an editor']);
+    expect(rows()).toHaveLength(3);
+  });
+
+  it('shows names, emails and notes as text, keeping line breaks', async () => {
+    api.listAccessRequests.mockResolvedValue([{ ...TOM_ASKS, name: XSS, email: `${XSS}@example.com`, note: `${XSS}\n\nline 3` }]);
+    await open();
+    expect(requests()[0]).toMatchObject({ name: XSS, email: `${XSS}@example.com`, note: `${XSS}\n\nline 3` });
+    expect(document.querySelector('img')).toBeNull();
+  });
+
+  it('grants: busy while it runs, then both lists and the account menu are refreshed', async () => {
+    await open();
+    let resolve;
+    api.grantAccessRequest.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
+    const grant = request(7).querySelector('.editors-request-grant');
+    grant.click();
+    await flush();
+    expect(api.grantAccessRequest).toHaveBeenCalledWith(7);
+    expect(grant.disabled).toBe(true);
+    expect(grant.textContent).toBe('Granting…');
+    expect(request(9).querySelector('.editors-request-dismiss').disabled).toBe(true);
+    request(9).querySelector('.editors-request-grant').click(); // ignored while busy
+    expect(api.grantAccessRequest).toHaveBeenCalledOnce();
+
+    api.listAccessRequests.mockResolvedValue([SUE_ASKS]);
+    api.listEditors.mockResolvedValue([ROB, ANN, TOM, { email: 'tom@example.com', name: 'Tom Acourt', role: 'editor' }]);
+    resolve({ request: { id: 7, status: 'granted' }, editor: { email: 'tom@example.com', name: 'Tom Acourt', role: 'editor' } });
+    await flush();
+    expect(showToast).toHaveBeenCalledWith('Granted tom@example.com edit access.');
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(2);
+    expect(api.listEditors).toHaveBeenCalledTimes(2);
+    expect(request(7)).toBeUndefined();
+    expect(requests().map(r => r.email)).toEqual(['sue@example.com']);
+    expect(rows()).toHaveLength(4);
+    expect(onChanged).toHaveBeenCalledOnce();
+    expect(request(9).querySelector('.editors-request-dismiss').disabled).toBe(false);
+    expect(root().contains(document.activeElement)).toBe(true);
+  });
+
+  it('dismisses: busy while it runs, then the requests are reloaded, and the section goes with the last one', async () => {
+    await open();
+    let resolve;
+    api.dismissAccessRequest.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
+    const dismiss = request(9).querySelector('.editors-request-dismiss');
+    dismiss.click();
+    await flush();
+    expect(api.dismissAccessRequest).toHaveBeenCalledWith(9);
+    expect(dismiss.disabled).toBe(true);
+    expect(dismiss.textContent).toBe('Dismissing…');
+    const NEW_ASKS = { id: 12, email: 'kim@example.com', name: 'Kim', note: null, createdAt: OCT_10 };
+    api.listAccessRequests.mockResolvedValue([TOM_ASKS, NEW_ASKS]); // one more arrived meanwhile
+    resolve({ request: { id: 9, status: 'dismissed' } });
+    await flush();
+    expect(showToast).toHaveBeenCalledWith('Dismissed the request from sue@example.com.');
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(2);
+    expect(request(9)).toBeUndefined();
+    expect(requests().map(r => r.email)).toEqual(['tom@example.com', 'kim@example.com']);
+    expect(api.listEditors).toHaveBeenCalledOnce(); // nobody new to list
+    expect(api.grantAccessRequest).not.toHaveBeenCalled();
+    expect(onChanged).toHaveBeenCalledOnce();
+    expect(root().contains(document.activeElement)).toBe(true);
+
+    api.listAccessRequests.mockResolvedValue([NEW_ASKS]);
+    request(7).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(requests().map(r => r.email)).toEqual(['kim@example.com']);
+    api.listAccessRequests.mockResolvedValue([]);
+    request(12).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(4);
+    expect(requests()).toEqual([]);
+    expect(visible(section())).toBe(false);
+    expect(onChanged).toHaveBeenCalledTimes(3);
+  });
+
+  it.each([
+    ['granted', 'Granted by Ann Jones'],
+    ['dismissed', 'Dismissed by Ann Jones']
+  ])('says who got there first, by name, when the request was already %s', async (status, text) => {
+    await open();
+    api.grantAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', {
+      status, resolvedBy: 'ann@example.com', resolvedByName: 'Ann Jones'
+    }));
+    request(7).querySelector('.editors-request-grant').click();
+    await flush();
+    expect(request(7).querySelector('.editors-request-resolved').textContent).toBe(text);
+    expect(buttons(7)).toEqual([]);
+    expect(request(7).querySelector('.editors-request-error').hidden).toBe(true);
+    expect(onChanged).toHaveBeenCalledOnce();
+    expect(api.listEditors).toHaveBeenCalledTimes(status === 'granted' ? 2 : 1); // a new editor to show
+    expect(root().contains(document.activeElement)).toBe(true);
+  });
+
+  it('says who got there first on a Dismiss too, as text', async () => {
+    await open();
+    api.dismissAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', {
+      status: 'granted', resolvedBy: 'ann@example.com', resolvedByName: XSS
+    }));
+    request(9).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(request(9).querySelector('.editors-request-resolved').textContent).toBe(`Granted by ${XSS}`);
+    expect(document.querySelector('img')).toBeNull();
+  });
+
+  it('falls back to the email without a name, and to "Already …" without either', async () => {
+    await open();
+    api.dismissAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', {
+      status: 'dismissed', resolvedBy: 'ann@example.com', resolvedByName: null
+    }));
+    request(9).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(request(9).querySelector('.editors-request-resolved').textContent).toBe('Dismissed by ann@example.com');
+
+    api.grantAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', { status: 'dismissed' }));
+    request(7).querySelector('.editors-request-grant').click();
+    await flush();
+    expect(request(7).querySelector('.editors-request-resolved').textContent).toBe('Already dismissed');
+  });
+
+  it('drops a request that no longer exists', async () => {
+    await open();
+    api.grantAccessRequest.mockRejectedValueOnce(apiError(404, 'not_found'));
+    request(7).querySelector('.editors-request-grant').click();
+    await flush();
+    expect(request(7)).toBeUndefined();
+    expect(onChanged).toHaveBeenCalledOnce();
+  });
+
+  it('shows other failures in the row, and keeps the buttons', async () => {
+    await open();
+    api.grantAccessRequest.mockRejectedValueOnce(apiError(403, 'not_an_admin'));
+    request(7).querySelector('.editors-request-grant').click();
+    await flush();
+    const error = request(7).querySelector('.editors-request-error');
+    expect(error.hidden).toBe(false);
+    expect(error.textContent).toBe('Only admins can change the editors list.');
+    expect(buttons(7)).toEqual(['Grant', 'Dismiss']);
+    expect(request(7).querySelector('.editors-request-grant').disabled).toBe(false);
+    expect(onChanged).not.toHaveBeenCalled();
+
+    api.dismissAccessRequest.mockRejectedValueOnce(apiError(0, 'network', { message: "Couldn't reach the server." }));
+    request(7).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(error.textContent).toBe("Couldn't reach the server.");
+  });
+
+  it('shows a failure to load the requests, with Try again, and still lists the editors', async () => {
+    api.listAccessRequests.mockRejectedValueOnce(apiError(500, 'internal'));
+    await open();
+    expect(visible(section())).toBe(true);
+    expect(section().querySelector('.editors-requests-status').textContent)
+      .toBe("Couldn't load the access requests. The server had a problem (internal). Try again.");
+    expect(rows()).toHaveLength(3);
+    section().querySelector('.editors-requests-retry').click();
+    await flush();
+    expect(requests()).toHaveLength(2);
+    expect(section().querySelector('.editors-requests-retry').hidden).toBe(true);
+    expect(section().querySelector('.editors-requests-status').textContent).toBe('');
+  });
+
+  it('refreshes the requests and the menu after adding someone who had asked', async () => {
+    await open();
+    api.listAccessRequests.mockResolvedValue([SUE_ASKS]);
+    type(field('email'), 'Tom@Example.com');
+    await submitAdd();
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(2);
+    expect(requests().map(r => r.email)).toEqual(['sue@example.com']);
+    expect(onChanged).toHaveBeenCalledOnce();
+
+    type(field('email'), 'jill@example.com'); // who hadn't asked
+    await submitAdd();
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(2);
+    expect(onChanged).toHaveBeenCalledOnce();
   });
 });

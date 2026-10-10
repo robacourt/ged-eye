@@ -138,10 +138,11 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 │   ├── addPhotosDialog.js  # Add photos sheet (also photoEditDialog.js, personPicker.js)
 │   ├── avatarDialog.js     # Change avatar (crop with avatarCropper.js)
 │   ├── auth.js, signIn.js  # Neon Auth client; sign-in dialog and account menu
+│   ├── accessRequestDialog.js # Request edit access, for signed-in non-editors
 │   ├── editApi.js          # Calls to the write API, with the sign-in token
 │   ├── personEditor.js     # Edit dialogs (also relativeDialog.js, familyEditor.js)
 │   ├── historyPanel.js     # History, with Revert and Restore
-│   ├── editorsDialog.js    # Admins manage the editors list
+│   ├── editorsDialog.js    # Admins manage the editors list and access requests
 │   ├── toast.js            # Messages, with Undo after an edit
 │   └── style.css           # Styles (editorStyles.css for the editing UI)
 ├── public/placeholders/    # Default avatars
@@ -165,7 +166,8 @@ The site itself is plain static files on GitHub Pages. Neon is the master copy o
 
 Viewing stays public. Family members on the invite list can also sign in and edit the tree from the website, and every edit can be undone.
 
-- **Who can edit:** only people on the editors list. Admins manage it in the app (account menu → Editors): add someone by email as an editor or an admin, or remove them. An admin can't remove themselves, and the last admin can't be removed. Anyone can sign in, but someone who isn't on the list just sees the tree, with a note asking them to ask me for access.
+- **Who can edit:** only people on the editors list. Admins manage it in the app (account menu → Editors): add someone by email as an editor or an admin, or remove them. An admin can't remove themselves, and the last admin can't be removed. Anyone can sign in, but someone who isn't on the list just sees the tree.
+- **Asking for access:** someone signed in who isn't on the list can choose **Request edit access** in the account menu, with an optional note. Every admin gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Editors dialog, after sign-in if needed. Admins also see "Access requests (N)" in the account menu. The **Requests** section at the top of the Editors dialog has **Grant** and **Dismiss** for each request, and the requester is emailed when access is granted.
 - **Signing in:** **Sign in** in the header, then a one-time code sent by email, or Google (Neon Auth). Only verified email addresses are accepted.
 - **What can be edited:**
   - a person's details: names, sex, birth, baptism, death and burial (with their notes), cause of death, notes, occupations, residences, census records, other facts, email and phone
@@ -197,6 +199,18 @@ Viewing stays public. Family members on the invite list can also sign in and edi
 
   It then shows in History, and a small script change can be reverted there (scripts are never Ctrl+Z targets). Undo a large one, such as a facts backfill touching thousands of rows, with the script's own rollback instead: a revert from History runs under the 10 s write timeout and may not finish. `backfill-facts` already opens a change and has `--rollback`.
 - `npm run verify-neon` still checks the read path against the old JSON. It skips everyone an edit has touched, along with their relatives, and skips the person count once anything has been edited.
+
+### Access request emails
+
+They are sent from the site's Gmail account through SMTP, once `SMTP_USER` and `SMTP_PASS` are deployed from `.env.mail.local` (gitignored, in the main checkout):
+
+```bash
+neon deploy --branch production --no-env-pull --env .env.mail.local
+```
+
+Until then mail is only logged, and requests still show in the app. `GET <api URL>/health` says which: `mail: 'log'` or `mail: 'smtp'`.
+
+The secrets only need deploying once: a later `neon deploy` without the file keeps them (checked on `photos`, 2026-10-10). Deploying empty values deletes them. `neon.ts` normally leaves empty values out, so to remove the secrets, temporarily change its `mailEnv` line to `const mailEnv = { env: { SMTP_USER: "", SMTP_PASS: "" } };`, run `neon deploy --branch production --no-env-pull`, then revert the line. This is how the dummy values were cleared on `photos`; `/health` then shows `mail: 'log'`.
 
 ### Releasing to production
 
@@ -235,6 +249,7 @@ Editors can add photos to the tree from the website, on a phone or a computer. E
   ```bash
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeMedia.js    # health, auth, presigned PUT, processing, dedupe, avatars, the trigger
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePhotos.js   # the photo commands through both Functions, then undoes them
+  node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeAccess.js   # an access request by dev-viewer, granted by dev-admin, with mail logged; then removes dev-viewer again
   ```
 
   Each prints a PASS or FAIL line per check and exits non-zero on a failure. They leave their test objects in the branch's bucket, and `smokePhotos.js` leaves its changes in History.

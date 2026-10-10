@@ -6,6 +6,7 @@
  * topmost dialog (dialogStack.js), so the sign-in dialog, which may open over an editor, keeps its own keys.
  */
 import { isTopmostDialog } from './dialogStack.js';
+import { NOT_AN_EDITOR_MESSAGE } from './changeMessages.js';
 
 /** Shown with every date field: dates are free text, as in GEDCOM. */
 export const DATE_HINT = 'e.g. 12 MAR 1890, ABT 1850, BEF 1900';
@@ -257,7 +258,7 @@ export function commandErrorMessage(error, { missing = 'This was deleted by some
   if (!error) return 'Something went wrong. Try again.';
   if (error.code === 'network') return error.message;
   if (error.status === 401) return "You're signed out. Sign in again, then try again. Your changes are still here.";
-  if (error.status === 403) return "Your account can't edit the tree. Ask Rob for access.";
+  if (error.status === 403) return NOT_AN_EDITOR_MESSAGE;
   if (error.code === 'not_found') return missing;
   if (error.code === 'conflict') return "This can't be done: it would conflict with other changes.";
   if (error.status === 413) return 'This is too large to save.';

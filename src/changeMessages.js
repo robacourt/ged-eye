@@ -5,6 +5,9 @@
 
 const GENERIC_ERROR = 'Something went wrong. Try again.';
 
+/** For a 403: the account is not (or no longer) on the editors list. Also used by editorDialog.js and uploadMessages.js. */
+export const NOT_AN_EDITOR_MESSAGE = `You're not on the editors list. Use "Request edit access" in your account menu.`;
+
 /**
  * Why a revert, restore, undo or redo was refused (a 409 `conflict`), by its `reason`.
  * @param action  'revert' (also undo) or 'restore' (also redo), for the untracked wording
@@ -30,7 +33,7 @@ export function toggleErrorMessage(error) {
   if (!error) return GENERIC_ERROR;
   if (error.code === 'network' || error.code === 'busy') return error.message || GENERIC_ERROR;
   if (error.status === 401) return "You're signed out. Sign in again, then try again.";
-  if (error.status === 403) return "Your account can't edit the tree. Ask Rob for access.";
+  if (error.status === 403) return NOT_AN_EDITOR_MESSAGE;
   if (error.code === 'conflict') return conflictMessage(error);
   if (error.code === 'wrong_state') return 'Someone else has already undone or restored that change.';
   if (error.code === 'not_found') return "Couldn't find that change.";

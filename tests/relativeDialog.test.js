@@ -521,7 +521,7 @@ describe('openRelativeDialog: errors', () => {
     expect(message()).toBe("Couldn't reach the server. Check your connection.");
     api.runChange.mockRejectedValueOnce(apiError(403, 'not_an_editor'));
     await submit();
-    expect(message()).toBe("Your account can't edit the tree. Ask Rob for access.");
+    expect(message()).toBe("You're not on the editors list. Use \"Request edit access\" in your account menu.");
   });
 
   it('is busy while saving and closes with Cancel or Escape', async () => {

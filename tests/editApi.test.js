@@ -303,8 +303,19 @@ describe('editApi', () => {
 
     it('returns a null role for a signed-in non-editor', async () => {
       fetchMock.mockResolvedValue(respond(403, { error: 'not_an_editor', email: 'tom@example.com' }));
-      expect(await api.me()).toEqual({ email: 'tom@example.com', name: null, role: null });
+      expect(await api.me()).toEqual({ email: 'tom@example.com', name: null, role: null, accessRequest: null });
       expect(setRole).toHaveBeenCalledWith(null, 'tom@example.com');
+    });
+
+    it("keeps a non-editor's latest access request from the 403 body", async () => {
+      const accessRequest = { status: 'pending', createdAt: '2026-10-10T12:00:00Z' };
+      fetchMock.mockResolvedValue(respond(403, { error: 'not_an_editor', email: 'tom@example.com', accessRequest }));
+      expect(await api.me()).toEqual({ email: 'tom@example.com', name: null, role: null, accessRequest });
+    });
+
+    it("passes an admin's pendingRequests through", async () => {
+      fetchMock.mockResolvedValue(respond(200, { email: 'rob@example.com', name: 'Rob', role: 'admin', pendingRequests: 2 }));
+      expect(await api.me()).toEqual({ email: 'rob@example.com', name: 'Rob', role: 'admin', pendingRequests: 2 });
     });
 
     it('drops the role and rethrows when signed out', async () => {
@@ -332,6 +343,62 @@ describe('editApi', () => {
       expect(call(0)).toMatchObject({ url: 'https://api.test/editors', method: 'GET' });
       expect(call(1)).toMatchObject({ url: 'https://api.test/editors', method: 'POST', body: { email: 'ann@example.com', name: 'Ann', role: 'editor' } });
       expect(call(2)).toMatchObject({ url: 'https://api.test/editors/ann%2Bfamily%40example.com', method: 'DELETE', body: undefined });
+    });
+  });
+
+  describe('access requests', () => {
+    const REQUEST = { id: 7, email: 'tom@example.com', status: 'pending', createdAt: '2026-10-10T12:00:00Z' };
+
+    it('asks for access with a note, and says whether a new request was made (201) or one was pending (200)', async () => {
+      fetchMock.mockResolvedValueOnce(respond(201, { request: REQUEST })).mockResolvedValueOnce(respond(200, { request: REQUEST }));
+      expect(await api.requestAccess('I am Tom, Rose\'s grandson.\nHi!')).toEqual({ request: REQUEST, created: true });
+      expect(call(0)).toMatchObject({
+        url: 'https://api.test/access-requests', method: 'POST', body: { note: 'I am Tom, Rose\'s grandson.\nHi!' },
+        headers: { authorization: 'Bearer jwt-1', 'content-type': 'application/json' }
+      });
+      expect(await api.requestAccess('Again')).toEqual({ request: REQUEST, created: false });
+    });
+
+    it('sends no note when there is none', async () => {
+      fetchMock.mockResolvedValue(respond(201, { request: REQUEST }));
+      await api.requestAccess('');
+      await api.requestAccess();
+      await api.requestAccess(null);
+      expect([call(0).body, call(1).body, call(2).body]).toEqual([{}, {}, {}]);
+    });
+
+    it('rejects with the server\'s refusals', async () => {
+      fetchMock
+        .mockResolvedValueOnce(respond(409, { error: 'already_an_editor' }))
+        .mockResolvedValueOnce(respond(429, { error: 'too_many_requests' }))
+        .mockResolvedValueOnce(respond(400, { error: 'invalid', field: 'note', message: 'The note must be at most 500 characters.' }));
+      await expect(api.requestAccess('x')).rejects.toMatchObject({ status: 409, code: 'already_an_editor' });
+      await expect(api.requestAccess('x')).rejects.toMatchObject({ status: 429, code: 'too_many_requests' });
+      await expect(api.requestAccess('x')).rejects.toMatchObject({ status: 400, code: 'invalid', field: 'note' });
+    });
+
+    it('lists, grants and dismisses requests', async () => {
+      const requests = [{ id: 7, email: 'tom@example.com', name: 'Tom', note: 'Hi', createdAt: '2026-10-10T12:00:00Z' }];
+      const editor = { email: 'tom@example.com', name: 'Tom', role: 'editor' };
+      fetchMock
+        .mockResolvedValueOnce(respond(200, { requests }))
+        .mockResolvedValueOnce(respond(200, { request: { ...REQUEST, status: 'granted' }, editor }))
+        .mockResolvedValueOnce(respond(200, { request: { ...REQUEST, id: 8, status: 'dismissed' } }));
+      expect(await api.listAccessRequests()).toEqual(requests);
+      expect(await api.grantAccessRequest(7)).toEqual({ request: { ...REQUEST, status: 'granted' }, editor });
+      expect(await api.dismissAccessRequest(8)).toEqual({ request: { ...REQUEST, id: 8, status: 'dismissed' } });
+      expect(call(0)).toMatchObject({ url: 'https://api.test/access-requests', method: 'GET', body: undefined });
+      expect(call(1)).toMatchObject({ url: 'https://api.test/access-requests/7/grant', method: 'POST' });
+      expect(call(2)).toMatchObject({ url: 'https://api.test/access-requests/8/dismiss', method: 'POST' });
+    });
+
+    it('keeps who resolved a request first, and escapes the id in the path', async () => {
+      fetchMock.mockResolvedValue(respond(409, { error: 'already_resolved', status: 'dismissed', resolvedBy: 'ann@example.com' }));
+      const error = await api.grantAccessRequest(7).catch(e => e);
+      expect(error).toMatchObject({ status: 409, code: 'already_resolved' });
+      expect(error.body).toMatchObject({ status: 'dismissed', resolvedBy: 'ann@example.com' });
+      await api.dismissAccessRequest('../editors').catch(() => {});
+      expect(call(1).url).toBe('https://api.test/access-requests/..%2Feditors/dismiss');
     });
   });
 });
