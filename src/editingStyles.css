@@ -369,14 +369,20 @@
   line-height: 1;
 }
 
-/* On phones the panel is full width, with 15px padding and 8px gaps: four thumbnails and the Add tile share one
-   row, shrinking from 70px to fit. They never go below 44px (a 282px-wide screen); narrower than that, the row
-   wraps. */
+.person-photo-add-icon {
+  display: flex;
+  height: 28px;
+  align-items: center;
+}
+
+/* On phones the panel is full width, with 15px padding and 8px gaps: four thumbnails and the Add and PDF tiles
+   share one row, shrinking from 70px to fit. They never go below 44px (a 334px-wide screen); narrower than that,
+   the row wraps. */
 @media (max-width: 768px) {
   .person-photos-row-editing > .person-photo-thumbnail,
   .person-photos-row-editing > .person-photo-add {
-    width: max(44px, min(70px, calc((100vw - 62px) / 5)));
-    height: max(44px, min(70px, calc((100vw - 62px) / 5)));
+    width: max(44px, min(70px, calc((100vw - 70px) / 6)));
+    height: max(44px, min(70px, calc((100vw - 70px) / 6)));
   }
 }
 
