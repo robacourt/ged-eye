@@ -1,12 +1,14 @@
 import { maskNoteEmails } from './privacy.js';
 import { AuthError, requireEditorOf } from './auth.js';
 import { ApiError, errorJson, invalid, isObject, json, notModified, preflight, readJson } from './http.js';
+import { createMailer, grantedEmail, requestEmail, sanitizeName, SITE_URL } from './mailer.js';
 
 /** Bump whenever masking or response shaping changes, so cached person views revalidate as new. */
 export const VIEW_VERSION = 3;
 
 const PERSON_ID = /^[A-Za-z0-9_-]{1,32}$/;
 const CHANGE_ID = /^[1-9][0-9]{0,14}$/;
+const REQUEST_ID = CHANGE_ID;
 const POSITIVE_INTEGER = /^[1-9][0-9]{0,5}$/;
 const EMAIL = /^[^\s@]+@[^\s@]+$/;
 const ROLES = new Set(['admin', 'editor']);
@@ -16,6 +18,7 @@ const SEARCH_MAX_CHARS = 100;
 const SEARCH_LIMIT = 20;
 const CHANGES_PAGE = 50;
 const MAX_TEXT = 500;
+const MAX_NOTE = 500;
 const MAX_EMAIL = 254;
 const MAX_KIND = 64;
 
@@ -63,6 +66,17 @@ function validateNewEditor(body) {
   return { email: address, name: trimmedName, role };
 }
 
+/** An access request's optional note: trimmed, at most 500 characters (code points), no NUL. → the note, or null */
+function validateNote(body) {
+  const { note = null } = body;
+  if (note === null) return null;
+  if (typeof note !== 'string') throw invalid('note', 'note must be text.');
+  const trimmed = note.trim();
+  if (trimmed.includes('\u0000')) throw invalid('note', 'The note has a character that can\'t be stored.');
+  if ([...trimmed].length > MAX_NOTE) throw invalid('note', `Keep the note to ${MAX_NOTE} characters or fewer.`);
+  return trimmed === '' ? null : trimmed;
+}
+
 /**
  * The api Function's router.
  *
@@ -71,8 +85,20 @@ function validateNewEditor(body) {
  *   search(q, limit) → [{ id, name, birthYear, deathYear }]
  *   lookupEditor(email) → { email, name, role } | null
  *   listEditors() → [{ email, name, role, addedBy, addedAt }]
- *   addEditor({ email, name, role }, byEmail) → the new editor, or null if the email is already listed
+ *   addEditor({ email, name, role }, byEmail) → the new editor, or null if the email is already listed;
+ *     either way, marks a pending access request for the email granted by byEmail
  *   removeEditor(email, byEmail) → 'removed' | 'not_found' | 'last_admin' | 'not_an_admin'
+ *   latestAccessRequest(email) → request | null, the newest, where a request is { id, email, name, note,
+ *     status: 'pending' | 'granted' | 'dismissed', createdAt, resolvedBy, resolvedByName, resolvedAt }
+ *     (resolvedBy: the resolving admin's email; resolvedByName: their editor name, else their email)
+ *   pendingRequestCount() → the number of pending requests from people who aren't editors
+ *   createAccessRequest({ email, name, note }) → { outcome: 'created' | 'pending' | 'editor' | 'limited', request | null }
+ *     (checked in that order: an editor, a pending request, the rate limits; then inserted)
+ *   listAccessRequests() → [{ id, email, name, note, createdAt }]: pending, from non-editors, oldest first, ≤ 100
+ *   resolveAccessRequest(id, 'grant' | 'dismiss', adminEmail) → { outcome: 'granted' | 'dismissed' |
+ *     'already_resolved' | 'not_found' | 'not_an_admin', request | null, editor | null, wasEditor }
+ *     (one transaction; re-checks that adminEmail is an admin; a grant adds the requester as an editor)
+ *   listAdminEmails() → [email]
  *   runChange(editor, kind, params) → { change: { id, summary, personIds }, view | null }
  *   toggle(editor, changeId, 'undo' | 'redo', via) → { id, summary, personIds, baseChangeId, kind }
  *   undoLast(editor), redoLast(editor) → { id, summary, personIds, baseChangeId, kind } | null
@@ -81,10 +107,44 @@ function validateNewEditor(body) {
  * }  Any of them may throw ApiError (sent as its status and body, unlogged); anything else is a logged 500.
  * @param authenticate  (request) → { email, name } | null; throws AuthError(401) for a bad token.
  *   Every route but /health and preflight authenticates first, before validating its input.
+ * @param mailer  (api/mailer.js createMailer) { mode: 'smtp' | 'log', send({ to, subject, text }) → Promise };
+ *   by default it only logs.
+ * @param waitUntil  (promise) → void: keeps the invocation alive after the response until `promise`
+ *   settles (@neon/functions in production). Mail is sent only through it, never awaited by a response,
+ *   and its promise never rejects: failures are logged.
  */
-export function createHandler({ db, authenticate, log = console.error }) {
+export function createHandler({ db, authenticate, mailer = createMailer({}), waitUntil = () => {}, log = console.error }) {
   const lookupEditor = (email) => db.lookupEditor(email);
   const editorOf = (request) => requireEditorOf(request, authenticate, lookupEditor);
+
+  /**
+   * After the response, sends `build(to)` (→ { to, subject, text }; may throw) to each address that
+   * `recipients()` (→ a promise of [to]) gives, one message each, in turn. Any failure is logged and
+   * skipped; the response never waits for any of it.
+   */
+  function sendLater(what, recipients, build) {
+    const sending = (async () => {
+      let addresses;
+      try {
+        addresses = await recipients();
+      } catch (error) {
+        log(`could not find who to send the ${what} mail to`, error);
+        return;
+      }
+      for (const to of addresses) {
+        try {
+          await mailer.send(build(to));
+        } catch (error) {
+          log(`could not send the ${what} mail to`, to, error);
+        }
+      }
+    })();
+    try {
+      waitUntil(sending);
+    } catch (error) {
+      log('waitUntil failed, so the mail may be cut short', error);
+    }
+  }
 
   async function requireAdminOf(request) {
     const editor = await editorOf(request);
@@ -122,8 +182,64 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   async function me({ request }) {
-    const { email, name, role } = await editorOf(request);
-    return json(200, { email, name, role });
+    let editor;
+    try {
+      editor = await editorOf(request);
+    } catch (error) {
+      // A signed-in non-editor also learns where their latest access request stands.
+      if (!(error instanceof ApiError && error.code === 'not_an_editor')) throw error;
+      const latest = await db.latestAccessRequest(error.extra.email);
+      throw new ApiError(403, 'not_an_editor', {
+        ...error.extra,
+        accessRequest: latest ? { status: latest.status, createdAt: latest.createdAt } : null
+      });
+    }
+    const { email, name, role } = editor;
+    if (role !== 'admin') return json(200, { email, name, role });
+    return json(200, { email, name, role, pendingRequests: await db.pendingRequestCount() });
+  }
+
+  async function requestAccess({ request }) {
+    const user = await authenticate(request);
+    if (!user) throw new AuthError(401, 'unauthenticated');
+    const note = validateNote(await readJson(request));
+    const { outcome, request: saved } = await db.createAccessRequest({ email: user.email, name: sanitizeName(user.name), note });
+    switch (outcome) {
+      case 'created':
+        sendLater('access request', () => db.listAdminEmails(), (to) => requestEmail({ to, request: saved, siteUrl: SITE_URL }));
+        return json(201, { request: saved });
+      case 'pending': return json(200, { request: saved });
+      case 'editor': throw new ApiError(409, 'already_an_editor', { email: user.email });
+      case 'limited': throw new ApiError(429, 'too_many_requests');
+      default: throw new Error(`createAccessRequest returned ${outcome}`);
+    }
+  }
+
+  async function listAccessRequests({ request }) {
+    await requireAdminOf(request);
+    return json(200, { requests: await db.listAccessRequests() });
+  }
+
+  async function resolveAccessRequest({ request, params: [rawId, action] }) {
+    const admin = await requireAdminOf(request);
+    if (!REQUEST_ID.test(rawId)) throw invalid('id', 'Not a request id.');
+    const result = await db.resolveAccessRequest(Number(rawId), action, admin.email);
+    switch (result.outcome) {
+      case 'granted':
+        if (!result.wasEditor) {
+          const to = result.request.email;
+          sendLater('access granted', async () => [to], () => grantedEmail({ to, siteUrl: SITE_URL }));
+        }
+        return json(200, { request: result.request, editor: result.editor });
+      case 'dismissed': return json(200, { request: result.request });
+      case 'already_resolved':
+        throw new ApiError(409, 'already_resolved', {
+          status: result.request.status, resolvedBy: result.request.resolvedBy, resolvedByName: result.request.resolvedByName
+        });
+      case 'not_found': throw new ApiError(404, 'not_found');
+      case 'not_an_admin': throw new ApiError(403, 'not_an_admin');
+      default: throw new Error(`resolveAccessRequest returned ${result.outcome}`);
+    }
   }
 
   async function listEditors({ request }) {
@@ -194,13 +310,17 @@ export function createHandler({ db, authenticate, log = console.error }) {
   }
 
   const routes = [
-    ['GET', /^\/health$/, async () => json(200, { ok: true })],
+    // `mail` says only whether SMTP credentials are configured ('smtp') or mail is logged ('log').
+    ['GET', /^\/health$/, async () => json(200, { ok: true, mail: mailer.mode })],
     ['GET', /^\/person\/([^/]+)$/, getPerson],
     ['GET', /^\/search$/, search],
     ['GET', /^\/me$/, me],
     ['GET', /^\/editors$/, listEditors],
     ['POST', /^\/editors$/, addEditor],
     ['DELETE', /^\/editors\/([^/]+)$/, removeEditor],
+    ['POST', /^\/access-requests$/, requestAccess],
+    ['GET', /^\/access-requests$/, listAccessRequests],
+    ['POST', /^\/access-requests\/([^/]+)\/(grant|dismiss)$/, resolveAccessRequest],
     ['POST', /^\/changes$/, runChange],
     ['GET', /^\/changes$/, listChanges],
     ['POST', /^\/changes\/([^/]+)\/(revert|restore)$/, toggle],

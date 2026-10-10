@@ -6,6 +6,7 @@ import { AuthError, authenticatorFromEnv } from '../api/auth.js';
 import { maskNoteEmails } from '../api/privacy.js';
 import { createDb, escapeLike } from '../api/db.js';
 import { inTransaction } from '../api/tx.js';
+import { SITE_URL, grantedEmail, requestEmail, sanitizeName } from '../api/mailer.js';
 
 const VIEW = {
   person: { id: 'I1', notes: ['Write to jo@example.org'] },
@@ -24,11 +25,24 @@ const TOKENS = {
   admin: { email: 'admin@example.test', name: 'Ada', sub: 'u1' },
   editor: { email: 'editor@example.test', name: 'Ed', sub: 'u2' },
   noname: { email: 'noname@example.test', name: 'Token Name', sub: 'u3' },
-  viewer: { email: 'viewer@example.test', name: 'Vi', sub: 'u4' }
+  viewer: { email: 'viewer@example.test', name: 'Vi', sub: 'u4' },
+  anonymous: { email: 'anon@example.test', name: null, sub: 'u5' },
+  unruly: { email: 'unruly@example.test', name: '\u202Eevil\r\nBcc: x@example.test ' + 'n'.repeat(200), sub: 'u6' }
 };
 const ADMIN = { email: 'admin@example.test', name: 'Ada Admin', role: 'admin' };
 const EDITOR = { email: 'editor@example.test', name: 'Ed Editor', role: 'editor' };
 const CHANGE = { id: 7, summary: 'Edited Rose Smith (birth date)', personIds: ['I1'] };
+const ADMIN_EMAILS = ['admin@example.test', 'second-admin@example.test'];
+const CREATED_AT = '2026-10-10T13:05:00.000Z';
+const PENDING = {
+  id: 5, email: 'viewer@example.test', name: 'Vi', note: 'Please add me', status: 'pending', createdAt: CREATED_AT,
+  resolvedBy: null, resolvedByName: null, resolvedAt: null
+};
+const GRANTED = {
+  ...PENDING, status: 'granted', resolvedBy: 'admin@example.test', resolvedByName: 'Ada Admin', resolvedAt: '2026-10-10T14:00:00.000Z'
+};
+const DISMISSED = { ...GRANTED, status: 'dismissed' };
+const NEW_EDITOR = { email: 'viewer@example.test', name: 'Vi', role: 'editor', addedBy: 'admin@example.test', addedAt: '2026-10-10T14:00:00.000Z' };
 
 // Stands in for api/auth.js: no header → null, a known token → its user, 'outage' → a JWKS failure,
 // anything else → AuthError(401).
@@ -54,22 +68,40 @@ function fakeDb(overrides = {}) {
     undoLast: vi.fn(async () => CHANGE),
     redoLast: vi.fn(async () => CHANGE),
     listChanges: vi.fn(async () => [{ id: 7 }]),
+    latestAccessRequest: vi.fn(async () => null),
+    pendingRequestCount: vi.fn(async () => 2),
+    createAccessRequest: vi.fn(async ({ email, name, note }) => ({ outcome: 'created', request: { ...PENDING, email, name, note } })),
+    listAccessRequests: vi.fn(async () => [{ id: 5, email: 'viewer@example.test', name: 'Vi', note: 'Please add me', createdAt: CREATED_AT }]),
+    resolveAccessRequest: vi.fn(async (id, action) => (action === 'grant'
+      ? { outcome: 'granted', request: GRANTED, editor: NEW_EDITOR, wasEditor: false }
+      : { outcome: 'dismissed', request: DISMISSED, editor: null, wasEditor: false })),
+    listAdminEmails: vi.fn(async () => ADMIN_EMAILS),
     ...overrides
   };
 }
 
-function setup(overrides) {
+function setup(overrides, { mode = 'log' } = {}) {
   const db = fakeDb(overrides);
   const log = vi.fn();
   const authenticate = vi.fn(fakeAuthenticate);
-  const handler = createHandler({ db, authenticate, log });
+  const mailer = { mode, send: vi.fn(async () => ({})) };
+  const waitUntil = vi.fn();
+  const handler = createHandler({ db, authenticate, log, mailer, waitUntil });
   const request = (path, { method = 'GET', token, headers = {}, body } = {}) => {
     const init = { method, headers: { ...headers } };
     if (token) init.headers.authorization = `Bearer ${token}`;
     if (body !== undefined) init.body = typeof body === 'string' ? body : JSON.stringify(body);
     return handler(new Request(`https://api.test${path}`, init));
   };
-  return { db, log, authenticate, handler, request };
+  return { db, log, authenticate, mailer, waitUntil, handler, request };
+}
+
+/** The one promise the handler gave waitUntil, awaited: the mail it schedules has then been sent. */
+async function scheduledMail(waitUntil) {
+  expect(waitUntil).toHaveBeenCalledTimes(1);
+  const [promise] = waitUntil.mock.calls[0];
+  expect(promise).toBeInstanceOf(Promise);
+  await promise;
 }
 
 describe('GET /person/:id', () => {
@@ -219,8 +251,18 @@ describe('health, unknown routes and preflight', () => {
     const { request, authenticate } = setup();
     const res = await request('/health', { token: 'expired' });
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ ok: true });
+    expect(await res.json()).toEqual({ ok: true, mail: 'log' });
     expect(authenticate).not.toHaveBeenCalled();
+  });
+
+  it('says whether mail is sent or only logged', async () => {
+    const { request } = setup({}, { mode: 'smtp' });
+    expect(await (await request('/health')).json()).toEqual({ ok: true, mail: 'smtp' });
+  });
+
+  it('reports mail as logged when no mailer is given', async () => {
+    const handler = createHandler({ db: fakeDb(), authenticate: fakeAuthenticate, log: vi.fn() });
+    expect(await (await handler(new Request('https://api.test/health'))).json()).toEqual({ ok: true, mail: 'log' });
   });
 
   it('returns 404 for unknown paths and methods', async () => {
@@ -328,11 +370,39 @@ describe('GET /me', () => {
     }
   });
 
-  it('returns 403 with the email for a signed-in non-editor', async () => {
-    const { request } = setup();
+  it('returns 403 with the email and no access request for a signed-in non-editor who has not asked', async () => {
+    const { request, db } = setup();
     const res = await request('/me', { token: 'viewer' });
     expect(res.status).toBe(403);
-    expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'viewer@example.test' });
+    expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'viewer@example.test', accessRequest: null });
+    expect(db.latestAccessRequest).toHaveBeenCalledWith('viewer@example.test');
+  });
+
+  it('gives a non-editor the status and time of their latest request, and nothing else of it', async () => {
+    for (const latest of [PENDING, GRANTED, DISMISSED]) {
+      const { request } = setup({ latestAccessRequest: vi.fn().mockResolvedValue(latest) });
+      const res = await request('/me', { token: 'viewer' });
+      expect(res.status).toBe(403);
+      expect(await res.json()).toEqual({
+        error: 'not_an_editor', email: 'viewer@example.test', accessRequest: { status: latest.status, createdAt: CREATED_AT }
+      });
+    }
+  });
+
+  it('gives admins the number of pending requests, and editors nothing more', async () => {
+    const { request, db } = setup();
+    expect(await (await request('/me', { token: 'admin' })).json()).toEqual({ ...ADMIN, pendingRequests: 2 });
+    expect(db.pendingRequestCount).toHaveBeenCalledTimes(1);
+    expect(await (await request('/me', { token: 'editor' })).json()).toEqual(EDITOR);
+    expect(db.pendingRequestCount).toHaveBeenCalledTimes(1);
+    expect(db.latestAccessRequest).not.toHaveBeenCalled();
+  });
+
+  it('returns 500 when the latest request or the count can\'t be read', async () => {
+    const failing = setup({ latestAccessRequest: vi.fn().mockRejectedValue(new Error('boom')), pendingRequestCount: vi.fn().mockRejectedValue(new Error('boom')) });
+    expect((await failing.request('/me', { token: 'viewer' })).status).toBe(500);
+    expect((await failing.request('/me', { token: 'admin' })).status).toBe(500);
+    expect(failing.log).toHaveBeenCalledTimes(2);
   });
 
   it('returns the editor, preferring the editor list name over the token name', async () => {
@@ -458,6 +528,260 @@ describe('editors routes', () => {
     expect(res.status).toBe(400);
     expect(await res.json()).toMatchObject({ error: 'invalid', field: 'email' });
     expect(db.removeEditor).not.toHaveBeenCalled();
+  });
+});
+
+describe('POST /access-requests', () => {
+  it('requires a signed-in caller, checked before the body', async () => {
+    const { request, db, waitUntil } = setup();
+    for (const token of [undefined, 'expired']) {
+      for (const body of [{ note: 'hi' }, { note: 42 }, 'nope']) {
+        const res = await request('/access-requests', { method: 'POST', token, body });
+        expect(res.status).toBe(401);
+        expect(res.headers.get('www-authenticate')).toBe('Bearer');
+      }
+    }
+    expect(db.createAccessRequest).not.toHaveBeenCalled();
+    expect(waitUntil).not.toHaveBeenCalled();
+  });
+
+  it('creates a request with the trimmed note and the token\'s name, and mails every admin, one message each', async () => {
+    const { request, db, mailer, waitUntil } = setup();
+    const res = await request('/access-requests', { method: 'POST', token: 'viewer', body: { note: '  Please add me \n' } });
+    expect(res.status).toBe(201);
+    expect(res.headers.get('cache-control')).toBe('no-store');
+    expect(await res.json()).toEqual({ request: PENDING });
+    expect(db.createAccessRequest).toHaveBeenCalledWith({ email: 'viewer@example.test', name: 'Vi', note: 'Please add me' });
+    await scheduledMail(waitUntil);
+    expect(db.listAdminEmails).toHaveBeenCalledTimes(1);
+    expect(mailer.send.mock.calls).toEqual(ADMIN_EMAILS.map((to) => [requestEmail({ to, request: PENDING, siteUrl: SITE_URL })]));
+  });
+
+  it('accepts no body, an empty object, a null or blank note, and a note of 500 characters', async () => {
+    const { request, db } = setup();
+    const emoji = '\u{1F600}';
+    for (const [body, note] of [[undefined, null], [{}, null], [{ note: null }, null], [{ note: ' \n ' }, null], [{ note: emoji.repeat(500) }, emoji.repeat(500)]]) {
+      const res = await request('/access-requests', { method: 'POST', token: 'viewer', body });
+      expect(res.status).toBe(201);
+      expect(db.createAccessRequest).toHaveBeenLastCalledWith({ email: 'viewer@example.test', name: 'Vi', note });
+    }
+  });
+
+  it('validates the note: text, at most 500 characters after trimming, no NUL', async () => {
+    const { request, db, waitUntil } = setup();
+    for (const note of [42, ['a'], { text: 'a' }, true, 'n'.repeat(501), `  ${'\u{1F600}'.repeat(501)}  `, 'a\u0000b']) {
+      const res = await request('/access-requests', { method: 'POST', token: 'viewer', body: { note } });
+      expect(res.status).toBe(400);
+      expect(await res.json()).toMatchObject({ error: 'invalid', field: 'note' });
+    }
+    expect(await (await request('/access-requests', { method: 'POST', token: 'viewer', body: 'nope' })).json()).toMatchObject({ field: 'body' });
+    expect(db.createAccessRequest).not.toHaveBeenCalled();
+    expect(waitUntil).not.toHaveBeenCalled();
+  });
+
+  it('stores a missing name as null, and a token name with control characters cleaned and cut to 100', async () => {
+    const { request, db } = setup();
+    await request('/access-requests', { method: 'POST', token: 'anonymous' });
+    expect(db.createAccessRequest).toHaveBeenLastCalledWith({ email: 'anon@example.test', name: null, note: null });
+    await request('/access-requests', { method: 'POST', token: 'unruly' });
+    const { name } = db.createAccessRequest.mock.lastCall[0];
+    expect(name).toBe(sanitizeName(TOKENS.unruly.name));
+    expect(name).not.toMatch(/[\r\n\u202E]/);
+    expect([...name]).toHaveLength(100);
+  });
+
+  it('answers 200 with the pending request, sending no mail, when one is already pending', async () => {
+    const { request, waitUntil, mailer } = setup({ createAccessRequest: vi.fn().mockResolvedValue({ outcome: 'pending', request: PENDING }) });
+    const res = await request('/access-requests', { method: 'POST', token: 'viewer', body: { note: 'again' } });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ request: PENDING });
+    expect(waitUntil).not.toHaveBeenCalled();
+    expect(mailer.send).not.toHaveBeenCalled();
+  });
+
+  it('answers 409 already_an_editor for an editor, sending no mail', async () => {
+    const { request, waitUntil, mailer } = setup({ createAccessRequest: vi.fn().mockResolvedValue({ outcome: 'editor', request: null }) });
+    const res = await request('/access-requests', { method: 'POST', token: 'editor' });
+    expect(res.status).toBe(409);
+    expect(await res.json()).toEqual({ error: 'already_an_editor', email: 'editor@example.test' });
+    expect(waitUntil).not.toHaveBeenCalled();
+    expect(mailer.send).not.toHaveBeenCalled();
+  });
+
+  it('answers 429 too_many_requests over a rate limit, sending no mail', async () => {
+    const { request, waitUntil, mailer } = setup({ createAccessRequest: vi.fn().mockResolvedValue({ outcome: 'limited', request: null }) });
+    const res = await request('/access-requests', { method: 'POST', token: 'viewer' });
+    expect(res.status).toBe(429);
+    expect(await res.json()).toEqual({ error: 'too_many_requests' });
+    expect(waitUntil).not.toHaveBeenCalled();
+    expect(mailer.send).not.toHaveBeenCalled();
+  });
+
+  it('returns 500 for an outcome it doesn\'t know, and when the database fails', async () => {
+    for (const createAccessRequest of [vi.fn().mockResolvedValue({ outcome: 'odd', request: null }), vi.fn().mockRejectedValue(new Error('boom'))]) {
+      const { request, log, waitUntil } = setup({ createAccessRequest });
+      expect((await request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(500);
+      expect(log).toHaveBeenCalled();
+      expect(waitUntil).not.toHaveBeenCalled();
+    }
+  });
+
+  it('never waits for the mail: the response is sent while it is still going', async () => {
+    const { request, mailer, waitUntil } = setup();
+    mailer.send.mockReturnValue(new Promise(() => {}));
+    const res = await request('/access-requests', { method: 'POST', token: 'viewer' });
+    expect(res.status).toBe(201);
+    expect(waitUntil).toHaveBeenCalledTimes(1);
+  });
+
+  it('logs and swallows a failed send, still mailing the other admins', async () => {
+    const { request, mailer, waitUntil, log } = setup();
+    mailer.send.mockRejectedValueOnce(new Error('Greeting never received'));
+    expect((await request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
+    await scheduledMail(waitUntil);
+    expect(mailer.send).toHaveBeenCalledTimes(2);
+    expect(log).toHaveBeenCalledTimes(1);
+    expect(log.mock.calls[0].join(' ')).toMatch(/admin@example\.test/);
+  });
+
+  it('logs and swallows a failure to read the admins, or to build a message', async () => {
+    const failing = setup({ listAdminEmails: vi.fn().mockRejectedValue(new Error('boom')) });
+    expect((await failing.request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
+    await scheduledMail(failing.waitUntil);
+    expect(failing.mailer.send).not.toHaveBeenCalled();
+    expect(failing.log).toHaveBeenCalledTimes(1);
+
+    const unsafe = setup({ listAdminEmails: vi.fn().mockResolvedValue(['bad address@example.test', 'admin@example.test']) });
+    expect((await unsafe.request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
+    await scheduledMail(unsafe.waitUntil);
+    expect(unsafe.mailer.send).toHaveBeenCalledTimes(1);
+    expect(unsafe.mailer.send.mock.calls[0][0].to).toBe('admin@example.test');
+    expect(unsafe.log).toHaveBeenCalledTimes(1);
+  });
+
+  it('still answers when waitUntil itself throws', async () => {
+    const { request, waitUntil, log } = setup();
+    waitUntil.mockImplementation(() => { throw new TypeError('no context'); });
+    expect((await request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
+    expect(log).toHaveBeenCalled();
+  });
+});
+
+describe('admin access-request routes', () => {
+  const routes = [
+    ['/access-requests', 'GET'],
+    ['/access-requests/5/grant', 'POST'],
+    ['/access-requests/5/dismiss', 'POST'],
+    ['/access-requests/abc/grant', 'POST']
+  ];
+
+  it('are for admins only, checked before the id', async () => {
+    const { request, db, waitUntil } = setup();
+    for (const [path, method] of routes) {
+      for (const token of [undefined, 'expired']) expect((await request(path, { method, token })).status).toBe(401);
+      const viewer = await request(path, { method, token: 'viewer' });
+      expect(viewer.status).toBe(403);
+      expect(await viewer.json()).toEqual({ error: 'not_an_editor', email: 'viewer@example.test' });
+      const editor = await request(path, { method, token: 'editor' });
+      expect(editor.status).toBe(403);
+      expect(await editor.json()).toEqual({ error: 'not_an_admin' });
+    }
+    expect(db.listAccessRequests).not.toHaveBeenCalled();
+    expect(db.resolveAccessRequest).not.toHaveBeenCalled();
+    expect(waitUntil).not.toHaveBeenCalled();
+  });
+
+  it('GET /access-requests lists the pending requests', async () => {
+    const { request } = setup();
+    const res = await request('/access-requests', { token: 'admin' });
+    expect(res.status).toBe(200);
+    expect(res.headers.get('cache-control')).toBe('no-store');
+    expect(await res.json()).toEqual({ requests: [{ id: 5, email: 'viewer@example.test', name: 'Vi', note: 'Please add me', createdAt: CREATED_AT }] });
+  });
+
+  it('validates the id', async () => {
+    const { request, db } = setup();
+    for (const id of ['abc', '0', '01', '-1', '1e3', '1.5', '1234567890123456', '%20']) {
+      const res = await request(`/access-requests/${id}/grant`, { method: 'POST', token: 'admin' });
+      expect(res.status).toBe(400);
+      expect(await res.json()).toMatchObject({ error: 'invalid', field: 'id' });
+    }
+    expect((await request('/access-requests/123456789012345/dismiss', { method: 'POST', token: 'admin' })).status).toBe(200);
+    expect(db.resolveAccessRequest).toHaveBeenCalledTimes(1);
+    expect(db.resolveAccessRequest).toHaveBeenCalledWith(123456789012345, 'dismiss', 'admin@example.test');
+  });
+
+  it('has no other actions or methods', async () => {
+    const { request } = setup();
+    for (const [path, method] of [['/access-requests/5/approve', 'POST'], ['/access-requests/5/grant', 'GET'], ['/access-requests', 'DELETE'], ['/access-requests/5', 'POST']]) {
+      expect((await request(path, { method, token: 'admin' })).status).toBe(404);
+    }
+  });
+
+  it('grants, then mails the requester', async () => {
+    const { request, db, mailer, waitUntil } = setup();
+    const res = await request('/access-requests/5/grant', { method: 'POST', token: 'admin' });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ request: GRANTED, editor: NEW_EDITOR });
+    expect(db.resolveAccessRequest).toHaveBeenCalledWith(5, 'grant', 'admin@example.test');
+    await scheduledMail(waitUntil);
+    expect(mailer.send.mock.calls).toEqual([[grantedEmail({ to: 'viewer@example.test', siteUrl: SITE_URL })]]);
+    expect(db.listAdminEmails).not.toHaveBeenCalled();
+  });
+
+  it('sends no mail when the requester was already an editor', async () => {
+    const { request, waitUntil, mailer } = setup({
+      resolveAccessRequest: vi.fn().mockResolvedValue({ outcome: 'granted', request: GRANTED, editor: NEW_EDITOR, wasEditor: true })
+    });
+    const res = await request('/access-requests/5/grant', { method: 'POST', token: 'admin' });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ request: GRANTED, editor: NEW_EDITOR });
+    expect(waitUntil).not.toHaveBeenCalled();
+    expect(mailer.send).not.toHaveBeenCalled();
+  });
+
+  it('dismisses, sending no mail', async () => {
+    const { request, db, waitUntil } = setup();
+    const res = await request('/access-requests/5/dismiss', { method: 'POST', token: 'admin' });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ request: DISMISSED });
+    expect(db.resolveAccessRequest).toHaveBeenCalledWith(5, 'dismiss', 'admin@example.test');
+    expect(waitUntil).not.toHaveBeenCalled();
+  });
+
+  it('maps the database refusals, sending no mail', async () => {
+    const cases = [
+      [{ outcome: 'already_resolved', request: DISMISSED, editor: null, wasEditor: false }, 409,
+        { error: 'already_resolved', status: 'dismissed', resolvedBy: 'admin@example.test', resolvedByName: 'Ada Admin' }],
+      [{ outcome: 'not_found', request: null, editor: null, wasEditor: false }, 404, { error: 'not_found' }],
+      [{ outcome: 'not_an_admin', request: null, editor: null, wasEditor: false }, 403, { error: 'not_an_admin' }]
+    ];
+    for (const [result, status, body] of cases) {
+      for (const action of ['grant', 'dismiss']) {
+        const { request, waitUntil } = setup({ resolveAccessRequest: vi.fn().mockResolvedValue(result) });
+        const res = await request(`/access-requests/5/${action}`, { method: 'POST', token: 'admin' });
+        expect(res.status).toBe(status);
+        expect(await res.json()).toEqual(body);
+        expect(waitUntil).not.toHaveBeenCalled();
+      }
+    }
+  });
+
+  it('returns 500 for an outcome it doesn\'t know', async () => {
+    const { request, log } = setup({ resolveAccessRequest: vi.fn().mockResolvedValue({ outcome: 'odd', request: null, editor: null, wasEditor: false }) });
+    expect((await request('/access-requests/5/grant', { method: 'POST', token: 'admin' })).status).toBe(500);
+    expect(log).toHaveBeenCalled();
+  });
+
+  it('never waits for the granted mail, and logs a failed send', async () => {
+    const { request, mailer, waitUntil, log } = setup();
+    let fail;
+    mailer.send.mockReturnValue(new Promise((resolve, reject) => { fail = reject; }));
+    expect((await request('/access-requests/5/grant', { method: 'POST', token: 'admin' })).status).toBe(200);
+    expect(log).not.toHaveBeenCalled();
+    fail(new Error('Greeting never received'));
+    await scheduledMail(waitUntil);
+    expect(log).toHaveBeenCalledTimes(1);
   });
 });
 
