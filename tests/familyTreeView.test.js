@@ -23,7 +23,10 @@ vi.mock('cytoscape', () => {
       },
       add(added) { elements = added; },
       elements: () => ({ remove() { elements = []; }, boundingBox: () => ({ x1: 0, y1: 0, w: 400, h: 400 }) }),
-      layout: () => ({ run() {} }),
+      layout(layoutOptions) {
+        cy.layoutOptions = layoutOptions;
+        return { run() {} };
+      },
       nodes: () => ({ length: 0, forEach() {} }),
       width: () => 800,
       height: () => 500,
@@ -85,6 +88,7 @@ beforeEach(() => {
 afterEach(() => {
   delete window.__xss;
   vi.clearAllMocks();
+  vi.restoreAllMocks();
 });
 
 describe('FamilyTreeView: the add node', () => {
@@ -124,6 +128,50 @@ describe('FamilyTreeView: the add node', () => {
     await view.loadPerson('I8');
     expect(addEdge().data.source).toBe('I8');
     expect(fake.cy.added().filter(element => element.data.id === 'add-relative')).toHaveLength(1);
+  });
+
+  it('goes two ranks down, into the children\'s row, when the person has a partnership row below them', async () => {
+    vi.spyOn(console, 'log').mockImplementation(() => {}); // buildGraph logs the partnerships it makes
+    people.set('I9', person('I9', 'Tom Brown'));
+    people.set('I7', person('I7', 'Rose Smith', { spouseIds: ['I9'] }));
+    loadPersonWithFamily.mockImplementation(async (id) => ({
+      person: people.get(id), family: id === 'I7' ? [people.get('I9')] : [], relationships: RELS
+    }));
+    view.setAddRelative(vi.fn());
+    await view.loadPerson('I7');
+    expect(fake.cy.added().some(element => element.data.type === 'partnership')).toBe(true);
+    expect(addEdge().data.minLen).toBe(2);
+
+    // A partnership made from a child's parents, though the partner isn't among the person's spouses.
+    people.set('I10', person('I10', 'Amy Smith', { parentIds: ['I8', 'I12'] }));
+    people.set('I12', person('I12', 'Ann Jones'));
+    loadPersonWithFamily.mockImplementation(async (id) => ({
+      person: people.get(id),
+      family: id === 'I8' ? [people.get('I10'), people.get('I12')] : [],
+      relationships: id === 'I8' ? { ...RELS, children: [people.get('I10')] } : RELS
+    }));
+    await view.loadPerson('I8');
+    expect(addEdge().data.minLen).toBe(2);
+  });
+
+  it('stays in the next rank for a person without a partnership row: no spouse, or one not in the tree', async () => {
+    vi.spyOn(console, 'log').mockImplementation(() => {});
+    view.setAddRelative(vi.fn());
+    await view.loadPerson('I7'); // parents above (their partnership is above her), no spouse
+    expect(addEdge().data).not.toHaveProperty('minLen');
+    people.set('I8', person('I8', 'Jack Smith', { spouseIds: ['I99'] })); // spouse not loaded, no children
+    await view.loadPerson('I8');
+    expect(fake.cy.added().some(element => element.data.type === 'partnership')).toBe(false);
+    expect(addEdge().data).not.toHaveProperty('minLen');
+  });
+
+  it('passes each edge\'s minLen to dagre, 1 by default', async () => {
+    await view.loadPerson('I7');
+    const { name, minLen } = fake.cy.layoutOptions;
+    expect(name).toBe('dagre');
+    const edge = (data) => ({ data: (key) => data[key] });
+    expect(minLen(edge({ minLen: 2 }))).toBe(2);
+    expect(minLen(edge({}))).toBe(1);
   });
 
   it('is never selected: taps on it do nothing, as on partnership nodes', async () => {

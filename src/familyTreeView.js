@@ -645,12 +645,20 @@ export class FamilyTreeView {
     }
 
 
-    // For editors, the "+" node, joined to the selected person like another relative
+    // For editors, the "+" node, joined to the selected person like another relative. Below a person with a
+    // partnership row (an edge from them to a partnership node), it goes two ranks down, into the children's
+    // row, rather than swelling the partnership row and sitting on the children's connector line.
     if (this.addRelativeHandler) {
+      const partnershipIds = new Set(elements.filter(e => e.data.type === 'partnership').map(e => e.data.id));
+      const hasPartnershipRow = elements.some(e =>
+        e.group === 'edges' && e.data.source === selectedPerson.id && partnershipIds.has(e.data.target));
       elements.push({ group: 'nodes', data: { id: ADD_NODE_ID, type: 'add' } });
       elements.push({
         group: 'edges',
-        data: { id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add' }
+        data: {
+          id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add',
+          ...(hasPartnershipRow ? { minLen: 2 } : {})
+        }
       });
     }
 
@@ -676,6 +684,7 @@ export class FamilyTreeView {
       rankSep: 80,
       padding: 30,
       ranker: 'network-simplex',
+      minLen: (edge) => edge.data('minLen') ?? 1, // the "+" node's edge may ask for 2 (buildGraph)
       animate: false
     });
 
