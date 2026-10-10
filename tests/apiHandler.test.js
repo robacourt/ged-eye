@@ -13,7 +13,7 @@ const VIEW = {
   relationships: { parents: [], spouses: [], children: [], siblings: [] }
 };
 const VERSION = { changeId: '42', migration: '006_editing.sql' };
-const ETAG = 'W/"2.006_editing.sql.42.I1"';
+const ETAG = 'W/"3.006_editing.sql.42.I1"';
 
 const EDITORS = {
   'admin@example.test': { email: 'admin@example.test', name: 'Ada Admin', role: 'admin' },
@@ -87,7 +87,7 @@ describe('GET /person/:id', () => {
   });
 
   it('builds the ETag from the view version, latest migration, latest change id and person id', async () => {
-    expect(VIEW_VERSION).toBe(2);
+    expect(VIEW_VERSION).toBe(3);
     const { request } = setup({
       personView: async () => ({ view: VIEW, version: { changeId: '0', migration: '007_next.sql' } })
     });
@@ -130,7 +130,7 @@ describe('GET /person/:id', () => {
 
   it('matches If-None-Match lists, strong forms of the tag, and *', async () => {
     const { request } = setup();
-    for (const header of [`"other", ${ETAG}`, '"2.006_editing.sql.42.I1"', '*']) {
+    for (const header of [`"other", ${ETAG}`, '"3.006_editing.sql.42.I1"', '*']) {
       expect((await request('/person/I1', { headers: { 'if-none-match': header } })).status).toBe(304);
     }
   });
@@ -141,11 +141,13 @@ describe('GET /person/:id', () => {
     expect(res.status).toBe(304);
   });
 
-  it('sends a fresh 200 when If-None-Match is stale', async () => {
+  it('sends a fresh 200 when If-None-Match is stale, or from an older view version', async () => {
     const { request } = setup();
-    const res = await request('/person/I1', { headers: { 'if-none-match': 'W/"2.006_editing.sql.41.I1"' } });
-    expect(res.status).toBe(200);
-    expect((await res.json()).masked).toBe(true);
+    for (const stale of ['W/"3.006_editing.sql.41.I1"', 'W/"2.006_editing.sql.42.I1"']) {
+      const res = await request('/person/I1', { headers: { 'if-none-match': stale } });
+      expect(res.status).toBe(200);
+      expect((await res.json()).masked).toBe(true);
+    }
   });
 
   it('never answers editors with 304', async () => {
@@ -712,6 +714,26 @@ describe('api/db.js', () => {
     expect(await createDb(fakePool([])).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test')).toBeNull();
   });
 
+  it('passes its log and context (the upload checks\' headObject) to runChange', async () => {
+    const runChange = vi.fn(async () => ({ change: CHANGE, view: VIEW }));
+    vi.resetModules();
+    vi.doMock('../api/changes.js', async (importOriginal) => ({ ...(await importOriginal()), runChange }));
+    try {
+      const { createDb: createMockedDb } = await import('../api/db.js');
+      const pool = fakePool([]);
+      const log = vi.fn();
+      const context = { headObject: vi.fn() };
+      const params = { id: 'I1' };
+      expect(await createMockedDb(pool, { log, context }).runChange(EDITOR, 'update_person', params)).toEqual({ change: CHANGE, view: VIEW });
+      expect(runChange).toHaveBeenCalledWith(pool, EDITOR, 'update_person', params, { log, context });
+      await createMockedDb(pool).runChange(EDITOR, 'update_person', params);
+      expect(runChange.mock.lastCall[4]).toEqual({ log: console.error, context: {} });
+    } finally {
+      vi.doUnmock('../api/changes.js');
+      vi.resetModules();
+    }
+  });
+
   describe('toggles and history', () => {
     const CREATED = new Date('2026-10-09T10:00:00.123Z');
     const TOGGLE_ROW = { id: '12', summary: 'Undid: Edited Rose Smith (birth date)', person_ids: ['I1'], base_change_id: '7', kind: 'undo' };
@@ -1052,6 +1074,17 @@ describe('email masking', () => {
   it('masks note keys anywhere in the view, not only under person', () => {
     const masked = maskNoteEmails({ person: { id: 'I1' }, family: [{ id: 'I2', notes: ['n@example.com'], name: 'n@example.com' }] });
     expect(masked.family).toEqual([{ id: 'I2', notes: ['[email hidden]'], name: 'n@example.com' }]);
+  });
+
+  it('masks addresses in photo captions, but not in file names', async () => {
+    const photo = {
+      id: 1, key: 'originals/a.jpg', fileName: 'from jo@example.org.jpg', caption: 'Sent by jo@example.org in 1923', date: null,
+      people: [{ id: 'I1', name: 'Ann Lee' }]
+    };
+    const withPhotos = { ...view, person: { ...person, photos: [photo, { ...photo, id: 2, caption: null }] } };
+    const { request } = setup({ personView: async () => ({ view: withPhotos, version: VERSION }) });
+    const body = await (await request('/person/I1')).json();
+    expect(body.person.photos).toEqual([{ ...photo, caption: 'Sent by [email hidden] in 1923' }, { ...photo, id: 2, caption: null }]);
   });
 
   it('returns a missing view as is', () => {

@@ -26,11 +26,13 @@ export class ApiError extends Error {
   }
 }
 
-/** The absolute URL of an API path (which starts with `/`). Throws when VITE_API_URL isn't configured. */
-export function apiUrl(path) {
+/**
+ * The absolute URL of an API path (which starts with `/`) on `base`, which is VITE_API_URL unless given.
+ * Throws when the base isn't configured, naming `name` (the setting it came from) in the message.
+ */
+export function apiUrl(path, base = import.meta.env.VITE_API_URL, name = 'VITE_API_URL') {
   if (typeof path !== 'string' || !path.startsWith('/')) throw new Error(`API paths start with /: ${path}`);
-  const base = import.meta.env.VITE_API_URL;
-  if (!base) throw new Error('VITE_API_URL is not configured');
+  if (!base) throw new Error(`${name} is not configured`);
   return `${base}${path}`;
 }
 
@@ -54,21 +56,32 @@ function query(params) {
 const networkError = (message) => new ApiError(0, 'network', { message });
 
 /**
- * @param getToken  ({ force }?) → Promise<jwt | null>
- * @param setRole   (role, email?) → void, caches the role from /me
+ * A client for one Function, with the caller's bearer token on every call.
+ * @param getToken     ({ force }?) → Promise<jwt | null>
+ * @param setRole      (role, email?) → void, caches the role from /me
+ * @param baseUrl      The Function's URL, or a function returning it (read on each call, so a missing setting only
+ *                     fails when used). Leave it out for VITE_API_URL. Once given, an empty value is an error:
+ *                     it never falls back to VITE_API_URL.
+ * @param baseUrlName  The setting `baseUrl` comes from, for the "is not configured" error.
  */
-export function createEditApi({ getToken, setRole = () => {} }) {
+export function createEditApi(options) {
+  const { getToken, setRole = () => {}, baseUrlName = 'VITE_API_URL' } = options;
+  const resolveBase = () => {
+    if (!('baseUrl' in options)) return import.meta.env.VITE_API_URL;
+    return (typeof options.baseUrl === 'function' ? options.baseUrl() : options.baseUrl) || '';
+  };
+
   /** The bearer token. When it's optional, failing to get one just means calling without it. */
-  async function token(options, optional) {
+  async function token(tokenOptions, optional) {
     try {
-      return await getToken(options);
+      return await getToken(tokenOptions);
     } catch (error) {
       if (optional) return null;
       throw networkError(error?.message || "Couldn't reach the sign-in service.");
     }
   }
 
-  async function send(url, method, body, bearer) {
+  async function send(url, method, body, bearer, timeoutMs) {
     const headers = {};
     if (bearer) headers.authorization = `Bearer ${bearer}`;
     if (body !== undefined) headers['content-type'] = 'application/json';
@@ -77,7 +90,7 @@ export function createEditApi({ getToken, setRole = () => {} }) {
         method,
         headers,
         body: body === undefined ? undefined : JSON.stringify(body),
-        signal: timeoutSignal(REQUEST_TIMEOUT_MS)
+        signal: timeoutSignal(timeoutMs)
       });
     } catch (error) {
       const timedOut = error?.name === 'TimeoutError' || error?.name === 'AbortError';
@@ -89,17 +102,18 @@ export function createEditApi({ getToken, setRole = () => {} }) {
    * Calls the API and returns the parsed JSON body. Adds the bearer token: `auth: 'required'` (the default)
    * fails with 401 `unauthenticated` when signed out, `'optional'` sends it only when signed in.
    * A 401 is retried once with a force-refreshed token; with optional auth, then without a token.
+   * Each request gives up after `timeoutMs` (30 s by default) with a `network` error.
    */
-  async function authedFetch(path, { method = 'GET', body, auth = 'required' } = {}) {
-    const url = apiUrl(path);
+  async function authedFetch(path, { method = 'GET', body, auth = 'required', timeoutMs = REQUEST_TIMEOUT_MS } = {}) {
+    const url = apiUrl(path, resolveBase(), baseUrlName);
     const optional = auth === 'optional';
     let bearer = await token(undefined, optional);
     if (!bearer && !optional) throw new ApiError(401, 'unauthenticated', { message: 'Signed out. Sign in again.' });
-    let response = await send(url, method, body, bearer);
+    let response = await send(url, method, body, bearer, timeoutMs);
     if (response.status === 401 && bearer) {
       bearer = await token({ force: true }, optional);
-      if (bearer) response = await send(url, method, body, bearer);
-      if (optional && (!bearer || response.status === 401)) response = await send(url, method, body, null);
+      if (bearer) response = await send(url, method, body, bearer, timeoutMs);
+      if (optional && (!bearer || response.status === 401)) response = await send(url, method, body, null, timeoutMs);
     }
     const parsed = await response.json().catch(() => null);
     if (response.ok) return parsed;
@@ -176,6 +190,18 @@ const api = createEditApi({
   getToken: (options) => authGetToken(options),
   setRole: (role, email) => authSetRole(role, email)
 });
+
+/**
+ * Authenticated calls to the `media` Function (src/mediaApi.js), with the same token, retry and error mapping as
+ * `api`. Fails with "VITE_MEDIA_API_URL is not configured" on first use, not at import.
+ */
+export const mediaClient = {
+  authedFetch: createEditApi({
+    getToken: (options) => authGetToken(options),
+    baseUrl: () => import.meta.env.VITE_MEDIA_API_URL,
+    baseUrlName: 'VITE_MEDIA_API_URL'
+  }).authedFetch
+};
 
 export const {
   authedFetch,

@@ -1,5 +1,5 @@
 import { PhotoViewer } from './photoViewer.js';
-import { thumbUrl } from './media.js';
+import { avatarUrl, thumbUrl } from './media.js';
 import { escapeHtml } from './html.js';
 import { factLabel } from './factLabels.js';
 import { familyOfChild, nameOf, relativeBlocked } from './familyLinks.js';
@@ -58,6 +58,53 @@ const SEX_LABELS = new Map([['M', 'Male'], ['F', 'Female']]);
 const ADD_RELATIVES = [['parent', '+ Parent'], ['spouse', '+ Spouse'], ['child', '+ Child'], ['sibling', '+ Sibling']];
 let nextHintId = 0;
 
+// The photo row shows this many thumbnails; with more photos, the last gets a "+N" for the rest.
+const MAX_THUMBNAILS = 4;
+// The panel's class while files are dragged over it, for editors: a dashed outline.
+const DROPPING = 'person-details-dropping';
+
+// The viewer's editor hooks and the panel options they call, each with the photo and then the person.
+const VIEWER_HOOKS = [['onEdit', 'onEditPhoto'], ['onUseAsAvatar', 'onUseAsAvatar'], ['onRemove', 'onRemovePhoto']];
+
+const CAMERA_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+  '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>';
+
+/**
+ * Whether the media Function is configured (VITE_MEDIA_API_URL). Without it nothing can be uploaded or cropped,
+ * so editors get no Add tile, camera badge or drop zone (the viewer hides its own Avatar button).
+ */
+const mediaServiceReady = () => Boolean(import.meta.env.VITE_MEDIA_API_URL);
+
+/**
+ * The header's avatar image, or the placeholder; decorative, since the name is beside it. It is fetched with CORS,
+ * as the tree (Cytoscape) fetches the same URL: the bucket sends Access-Control-Allow-Origin and Vary: Origin only
+ * to requests with an Origin, so a plain fetch would cache an immutable response the tree's CORS request then
+ * fails on.
+ */
+const avatarImage = (person) =>
+  `<img class="person-avatar-image" src="${escapeHtml(avatarUrl(person))}" alt="" crossorigin="anonymous" />`;
+
+/**
+ * One photo's thumbnail, a button that opens the viewer at `index`; a document (no thumbnail) shows an icon.
+ * It is named "Photo 2", or "Photo 2: <caption>". `more` (> 0) puts "+more" over it, for the photos the row has
+ * no room for, and ", and <more> more" on its name.
+ */
+function photoThumbnail(photo, index, more) {
+  const src = thumbUrl(photo);
+  const caption = typeof photo.caption === 'string' && photo.caption.trim() ? `: ${photo.caption.trim()}` : '';
+  const label = `Photo ${index + 1}${caption}${more > 0 ? `, and ${more} more` : ''}`;
+  const picture = src ? `<img src="${escapeHtml(src)}" alt="" />` : '<span class="file-icon" aria-hidden="true">📄</span>';
+  const overlay = more > 0 ? `<span class="person-photo-more" aria-hidden="true">+${more}</span>` : '';
+  return `<button type="button" class="person-photo-thumbnail${src ? '' : ' person-photo-file'}" data-photo-index="${index}" ` +
+    `aria-label="${escapeHtml(label)}">${picture}${overlay}</button>`;
+}
+
+const hasId = (photo) => photo?.id !== undefined && photo?.id !== null;
+
+/** Whether two of person_record's photos are the same one: by id, or by key for photos from an older view. */
+const samePhoto = (a, b) => (hasId(a) && hasId(b) ? a.id === b.id : Boolean(a?.key) && a.key === b?.key);
+
 /**
  * The editors' controls, when `canEdit`: each control gets a `data-edit-action` index into `actions`, and
  * showPerson() wires the clicks once the HTML is in place. Every label is escaped here.
@@ -71,14 +118,19 @@ class EditControls {
   }
 
   /** A button that runs `run` when clicked. `text` and `label` are escaped; `className` is a literal. */
-  button(className, text, label, run, { disabled = false, describedBy = null } = {}) {
+  button(className, text, label, run, options = {}) {
+    return this.control(className, escapeHtml(text), label, run, options);
+  }
+
+  /** A button holding `contentHtml`, already-escaped markup, that runs `run`; `label` is escaped. */
+  control(className, contentHtml, label, run, { disabled = false, describedBy = null } = {}) {
     this.actions.push(run);
     const attributes = [
       `type="button"`, `class="${className}"`, `data-edit-action="${this.actions.length - 1}"`,
       label ? `aria-label="${escapeHtml(label)}"` : '', disabled ? 'disabled' : '',
       describedBy ? `aria-describedby="${describedBy}"` : ''
     ].filter(Boolean);
-    return `<button ${attributes.join(' ')}>${escapeHtml(text)}</button>`;
+    return `<button ${attributes.join(' ')}>${contentHtml}</button>`;
   }
 
   call(name, ...args) {
@@ -94,6 +146,31 @@ class EditControls {
   /** The Edit button in the header. */
   editPerson() {
     return this.button('details-edit-person', 'Edit', `Edit ${nameOf(this.person)}`, () => this.hooks.onEdit?.(this.person));
+  }
+
+  /** The header's avatar as a button, with a camera badge, that opens Change avatar. */
+  avatarButton() {
+    const content = `${avatarImage(this.person)}<span class="person-avatar-badge" aria-hidden="true">${CAMERA_ICON}</span>`;
+    return this.control('person-avatar person-avatar-button', content, `Change avatar for ${nameOf(this.person)}`,
+      () => this.call('onChangeAvatar'));
+  }
+
+  /**
+   * The Add tile at the end of the photo row. Its click calls onAddPhotos straight away, inside the tap, so the
+   * sheet can open the file picker (iOS opens one only from there).
+   */
+  addPhotosTile() {
+    const content = '<span class="person-photo-add-plus" aria-hidden="true">+</span><span class="person-photo-add-text">Add</span>';
+    return this.control('person-photo-add', content, `Add photos for ${nameOf(this.person)}`, () => this.call('onAddPhotos'));
+  }
+
+  /** The viewer's editor hooks, for the options given: each calls the panel's with the photo and this person. */
+  viewerHooks() {
+    const hooks = {};
+    for (const [hook, option] of VIEWER_HOOKS) {
+      if (typeof this.hooks[option] === 'function') hooks[hook] = (photo) => this.call(option, photo);
+    }
+    return hooks;
   }
 
   /** Edit and × for a marriage row, whose spouse is shown as `spouseName`; × only when there is a spouse. */
@@ -165,7 +242,10 @@ export class PersonDetails {
     this.container = containerElement;
     this.currentPerson = null;
     this.photoViewer = new PhotoViewer();
+    this.onDropFiles = null; // (files) → void while an editor can drop files on the panel, else null
+    this.dragDepth = 0;
     this.createPanel();
+    this.listenForDrops();
   }
 
   createPanel() {
@@ -185,53 +265,91 @@ export class PersonDetails {
   }
 
   /**
+   * Files dragged over the panel, while `onDropFiles` is set (for editors): outlined while over it, and added
+   * when dropped. The listeners stay for the panel's life; each render only changes `onDropFiles`. Drags of
+   * anything but files, and every drag for viewers, are left to the browser.
+   */
+  listenForDrops() {
+    const accepts = (event) => Boolean(this.onDropFiles) && Array.from(event.dataTransfer?.types ?? []).includes('Files');
+    // Entering a child fires before leaving its parent, so the outline goes only once every enter has left.
+    this.panel.addEventListener('dragenter', (event) => {
+      if (!accepts(event)) return;
+      event.preventDefault();
+      this.dragDepth++;
+      this.panel.classList.add(DROPPING);
+    });
+    this.panel.addEventListener('dragover', (event) => {
+      if (!accepts(event)) return;
+      event.preventDefault(); // allows the drop
+      event.dataTransfer.dropEffect = 'copy';
+      this.panel.classList.add(DROPPING);
+    });
+    this.panel.addEventListener('dragleave', (event) => {
+      if (!accepts(event)) return;
+      this.dragDepth = Math.max(0, this.dragDepth - 1);
+      if (this.dragDepth === 0) this.panel.classList.remove(DROPPING);
+    });
+    this.panel.addEventListener('drop', (event) => {
+      if (!accepts(event)) return;
+      event.preventDefault(); // instead of the browser opening the file
+      const add = this.onDropFiles;
+      this.endDrag();
+      const files = Array.from(event.dataTransfer.files ?? []);
+      if (files.length > 0) add(files);
+    });
+  }
+
+  endDrag() {
+    this.dragDepth = 0;
+    this.panel.classList.remove(DROPPING);
+  }
+
+  /**
    * Display details for a person.
-   * @param options  for editors: `{ canEdit, onEdit(person), onAddRelative(relation, person),
-   *   onUnlink({ relation, role, personId, familyId }, person), onEditFamily(family, person), onShowHistory(person) }`.
+   * @param options  for everyone: `{ onOpenPerson(personId) }`, for the photo viewer's "Shown for" links.
+   *   For editors also: `{ canEdit, onEdit(person), onAddRelative(relation, person),
+   *   onUnlink({ relation, role, personId, familyId }, person), onEditFamily(family, person), onShowHistory(person),
+   *   onAddPhotos(person, files?), onChangeAvatar(person), onEditPhoto(photo, person), onUseAsAvatar(photo, person),
+   *   onRemovePhoto(photo, person) }`.
    *   Without `canEdit` no edit control is rendered. `relation` is 'parent' | 'spouse' | 'child' | 'sibling';
    *   onUnlink's `familyId` is null for a child whose family an older view can't tell (unlinkConfirm explains);
    *   `family` is openFamilyEditor's `{ familyId, partners: [{ id, name }], marriageDate, marriagePlace,
-   *   divorceDate, divorcePlace }`.
+   *   divorceDate, divorcePlace }`. onAddPhotos is called inside the Add tile's click, with no files (the sheet
+   *   opens the file picker), or with the files dropped on the panel. The photo hooks are the viewer's editor
+   *   hooks, called after it has closed; `photo` is one of person_record's `photos`.
+   *   Without VITE_MEDIA_API_URL there is no Add tile, camera badge or drop zone.
    */
   async showPerson(personData, relationships = null, options = {}) {
+    const previous = this.currentPerson;
     this.currentPerson = personData;
     this.relationships = relationships;
     this.emptyState.style.display = 'none';
     const edit = options?.canEdit ? new EditControls(personData, relationships, options) : null;
+    const canUpload = Boolean(edit) && mediaServiceReady();
 
     // Reset scroll position to top
     this.content.scrollTop = 0;
 
     const sexLabel = SEX_LABELS.get(personData.sex);
+    const avatar = canUpload ? edit.avatarButton() : `<span class="person-avatar">${avatarImage(personData)}</span>`;
     let html = `
       <div class="person-details-header">
+        ${avatar}
         <h2>${escapeHtml(personData.name || 'Unknown')}</h2>
         ${sexLabel ? `<span class="person-sex">${sexLabel}</span>` : ''}
         ${edit ? edit.editPerson() : ''}
       </div>
     `;
 
-    // Add photo thumbnails if available (max 4)
-    if (personData.photos && personData.photos.length > 0) {
-      const maxThumbnails = Math.min(4, personData.photos.length);
-      html += '<div class="person-photos-row">';
-      for (let i = 0; i < maxThumbnails; i++) {
-        const photo = personData.photos[i];
-        if (photo.thumbKey) {
-          html += `
-            <div class="person-photo-thumbnail" data-photo-index="${i}">
-              <img src="${escapeHtml(thumbUrl(photo))}" alt="Photo ${i + 1}" />
-            </div>
-          `;
-        } else {
-          html += `
-            <div class="person-photo-thumbnail person-photo-file" data-photo-index="${i}">
-              <div class="file-icon">📄</div>
-            </div>
-          `;
-        }
-      }
-      html += '</div>';
+    // Up to 4 thumbnails, the 4th with "+N" when there are more; editors who can upload also get the Add tile,
+    // even when there are no photos yet.
+    const photos = personData.photos ?? [];
+    if (photos.length > 0 || canUpload) {
+      const more = photos.length - MAX_THUMBNAILS;
+      const thumbnails = photos.slice(0, MAX_THUMBNAILS)
+        .map((photo, i) => photoThumbnail(photo, i, i === MAX_THUMBNAILS - 1 ? more : 0));
+      const row = canUpload ? 'person-photos-row person-photos-row-editing' : 'person-photos-row';
+      html += `<div class="${row}">${thumbnails.join('')}${canUpload ? edit.addPhotosTile() : ''}</div>`;
     }
 
     html += '<div class="person-details-sections">';
@@ -289,6 +407,14 @@ export class PersonDetails {
     this.content.innerHTML = html;
     edit?.wire(this.content);
 
+    this.endDrag();
+    this.onDropFiles = canUpload && typeof options.onAddPhotos === 'function'
+      ? (files) => options.onAddPhotos(personData, files)
+      : null;
+    this.photoViewer.onOpenPerson = typeof options?.onOpenPerson === 'function' ? options.onOpenPerson : null;
+    this.photoViewer.setEditorHooks(edit ? edit.viewerHooks() : null);
+    this.syncViewer(previous, personData);
+
     // Add click handlers to photo thumbnails
     const thumbnails = this.content.querySelectorAll('.person-photo-thumbnail');
     thumbnails.forEach(thumbnail => {
@@ -321,17 +447,28 @@ export class PersonDetails {
   }
 
   /**
+   * Keeps an open viewer in step with the person now shown, since its buttons act for them. Someone else closes it.
+   * The same person again (after a change, such as a toast's Undo) shows their new photos, staying on the photo it
+   * was showing, or closes when that photo is gone.
+   */
+  syncViewer(previous, person) {
+    const viewer = this.photoViewer;
+    if (!viewer.isOpen) return;
+    const shown = viewer.photos[viewer.currentIndex];
+    const photos = person.photos ?? [];
+    const index = previous?.id === person.id ? photos.findIndex(photo => samePhoto(photo, shown)) : -1;
+    if (index === -1) viewer.hide();
+    else viewer.open(person.name, photos, index);
+  }
+
+  /**
    * Open photo viewer at a specific photo index
    */
   openPhotoViewer(startIndex = 0) {
     if (!this.currentPerson || !this.currentPerson.photos || this.currentPerson.photos.length === 0) {
       return;
     }
-
-    // Open viewer and set to the specified index
-    this.photoViewer.open(this.currentPerson.name, this.currentPerson.photos);
-    this.photoViewer.currentIndex = startIndex;
-    this.photoViewer.updateDisplay();
+    this.photoViewer.open(this.currentPerson.name, this.currentPerson.photos, startIndex);
   }
 
   /**
@@ -339,6 +476,9 @@ export class PersonDetails {
    */
   clear() {
     this.currentPerson = null;
+    this.onDropFiles = null;
+    this.endDrag();
+    this.photoViewer.setEditorHooks(null);
     this.content.innerHTML = '';
     this.emptyState.style.display = 'flex';
   }

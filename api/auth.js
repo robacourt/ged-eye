@@ -109,3 +109,21 @@ export async function requireEditor(user, lookupEditor) {
   if (!editor) throw new AuthError(403, 'not_an_editor');
   return { email: user.email, name: editor.name ?? user.name, role: editor.role };
 }
+
+/**
+ * The editor making `request`, for a Function's routes (api and media share it).
+ * @param request       the incoming Request
+ * @param authenticate  (request) → { email, name } | null; throws AuthError(401) for a bad token
+ * @param lookupEditor  (email) => Promise<{ email, name, role } | null>
+ * @returns { email, name, role }, as requireEditor does. Throws AuthError 401 unauthenticated for no user, and
+ *   ApiError 403 not_an_editor, carrying the account's `email`, for a signed-in account not on the editors list.
+ */
+export async function requireEditorOf(request, authenticate, lookupEditor) {
+  const user = await authenticate(request);
+  try {
+    return await requireEditor(user, lookupEditor);
+  } catch (error) {
+    if (error instanceof AuthError && error.status === 403) throw new ApiError(403, 'not_an_editor', { email: user.email });
+    throw error;
+  }
+}

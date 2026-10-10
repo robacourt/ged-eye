@@ -2,7 +2,8 @@
 import { describe, it, expect, beforeAll, beforeEach, afterAll } from 'vitest';
 import { createServer } from 'node:http';
 import { generateKeyPair, exportJWK, SignJWT } from 'jose';
-import { createAuthenticator, requireEditor, AuthError } from '../api/auth.js';
+import { createAuthenticator, requireEditor, requireEditorOf, AuthError } from '../api/auth.js';
+import { ApiError } from '../api/http.js';
 
 const ISSUER = 'https://auth.example.test';
 const JWKS_URL = `${ISSUER}/.well-known/jwks.json`;
@@ -251,6 +252,36 @@ describe('requireEditor', () => {
     expect(error.status).toBe(401);
     expect(error.code).toBe('unauthenticated');
     expect(called).toBe(false);
+  });
+});
+
+describe('requireEditorOf', () => {
+  const request = new Request('https://api.test/changes');
+  const signedIn = async () => ({ email: 'rob@example.com', name: 'Token Rob', sub: 'user-1' });
+
+  it('authenticates the request and returns the editor', async () => {
+    const seen = [];
+    const authenticate = async (req) => {
+      seen.push(req);
+      return signedIn();
+    };
+    const lookup = async (email) => ({ email, name: 'Rob', role: 'admin' });
+    expect(await requireEditorOf(request, authenticate, lookup)).toEqual({ email: 'rob@example.com', name: 'Rob', role: 'admin' });
+    expect(seen).toEqual([request]);
+  });
+
+  it('turns an unlisted account into ApiError 403 not_an_editor, carrying its email', async () => {
+    const error = await rejection(requireEditorOf(request, signedIn, async () => null));
+    expect(error).toBeInstanceOf(ApiError);
+    expect(error).toMatchObject({ status: 403, code: 'not_an_editor', extra: { email: 'rob@example.com' } });
+  });
+
+  it('lets 401 unauthenticated through, for no user or a bad token', async () => {
+    const anonymous = await rejection(requireEditorOf(request, async () => null, async () => null));
+    expect(anonymous).toBeInstanceOf(AuthError);
+    expect(anonymous).toMatchObject({ status: 401, code: 'unauthenticated' });
+    const badToken = new AuthError(401, 'unauthenticated', 'expired');
+    expect(await rejection(requireEditorOf(request, async () => { throw badToken; }, async () => null))).toBe(badToken);
   });
 });
 

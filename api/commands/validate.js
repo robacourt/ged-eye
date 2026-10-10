@@ -3,7 +3,8 @@
  * ApiError(400, 'invalid', { field, message }) and returns the value normalised for storage.
  *
  * Fields are named by their column (`birth_place`), facts by `facts.<key>`, and other parameters by
- * their name (`anchorId`, `familyId`, `expected.marriage_date`).
+ * their name (`anchorId`, `familyId`, `expected.marriage_date`), with a list item's index
+ * (`photos.0.caption`).
  */
 import { invalid, isObject } from '../http.js';
 import { FIELD_LABELS, FACT_LABELS, capitalise } from './summary.js';
@@ -32,8 +33,6 @@ const MAX_STAMP = 64;
 const LINE_BREAK = /[\r\n]/;
 // Text Postgres can't store: NUL anywhere, and (in jsonb, where params and facts go) unpaired UTF-16 surrogates.
 const UNSTORABLE = /\u0000|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/;
-
-const label = (field) => capitalise(FIELD_LABELS[field] ?? field);
 
 /** Throws unless `text` can be stored (no NUL, no unpaired surrogate). */
 function requireStorable(text, field, what) {
@@ -70,8 +69,8 @@ export function requireStamp(value, field = 'expectedUpdatedAt') {
   return value;
 }
 
-/** Throws unless `value` is an object with only `allowed` keys. */
-function requireKeys(value, allowed, field, prefix = '') {
+/** Throws unless `value` is an object with only `allowed` keys; an unknown key is named `<prefix><key>`. */
+export function requireKeys(value, allowed, field, prefix = '') {
   if (!isObject(value)) throw invalid(field, `${field} must be an object.`);
   for (const key of Object.keys(value)) {
     if (!allowed.includes(key)) throw invalid(prefix + key, `${key} can't be set here.`);
@@ -80,17 +79,27 @@ function requireKeys(value, allowed, field, prefix = '') {
 }
 
 /**
+ * Optional single-line text: trimmed, at most `max` characters, storable; '' and absent → null.
+ * Messages name it by `label` (capitalised), errors by `field`. Throws ApiError 400 invalid.
+ */
+export function optionalLine(value, field, { max = MAX_LINE, label: name = field } = {}) {
+  if (value === null || value === undefined) return null;
+  const what = capitalise(name);
+  if (typeof value !== 'string') throw invalid(field, `${what} must be text.`);
+  const text = value.trim();
+  if (LINE_BREAK.test(text)) throw invalid(field, `${what} must be a single line.`);
+  requireStorable(text, field, what);
+  if (text.length > max) throw invalid(field, `${what} must be at most ${max} characters.`);
+  return text === '' ? null : text;
+}
+
+/**
  * A single-line text column: trimmed, at most 500 characters. Empty is '' for the name columns
  * and null for the rest.
  */
 function line(value, field) {
-  if (value === null || value === undefined) return NAME_FIELDS.has(field) ? '' : null;
-  if (typeof value !== 'string') throw invalid(field, `${label(field)} must be text.`);
-  const text = value.trim();
-  if (LINE_BREAK.test(text)) throw invalid(field, `${label(field)} must be a single line.`);
-  requireStorable(text, field, label(field));
-  if (text.length > MAX_LINE) throw invalid(field, `${label(field)} must be at most ${MAX_LINE} characters.`);
-  return text === '' && !NAME_FIELDS.has(field) ? null : text;
+  const text = optionalLine(value, field, { label: FIELD_LABELS[field] ?? field });
+  return text === null && NAME_FIELDS.has(field) ? '' : text;
 }
 
 function sex(value) {
@@ -121,12 +130,18 @@ export function validateFamilyFields(fields, field = 'fields') {
  */
 export function validateExpectedFamily(expected, field = 'expected') {
   requireKeys(expected, FAMILY_FIELDS, field, `${field}.`);
-  return Object.fromEntries(FAMILY_FIELDS.map((name) => {
-    const value = expected[name] ?? null;
-    if (value !== null && typeof value !== 'string') throw invalid(`${field}.${name}`, `${field}.${name} must be text or null.`);
-    if (value !== null) requireStorable(value, `${field}.${name}`, `${field}.${name}`);
-    return [name, value];
-  }));
+  return Object.fromEntries(FAMILY_FIELDS.map((name) => [name, expectedText(expected[name], `${field}.${name}`)]));
+}
+
+/**
+ * A text value as the client saw it, for a compare-and-swap: text or null (absent is null), storable, and not
+ * trimmed, because it must match what is stored. Throws ApiError 400 invalid naming `field`.
+ */
+export function expectedText(value, field) {
+  const text = value ?? null;
+  if (text !== null && typeof text !== 'string') throw invalid(field, `${field} must be text or null.`);
+  if (text !== null) requireStorable(text, field, field);
+  return text;
 }
 
 function factString(value, field) {

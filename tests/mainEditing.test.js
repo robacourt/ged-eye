@@ -6,6 +6,8 @@ vi.mock('../src/familyTreeView.js', () => ({ FamilyTreeView: class {} }));
 
 const { initApp, DEFAULT_PERSON_ID, shortcutFor, WATCHED_API_CALLS } = await import('../src/main.js');
 const { createEditApi } = await import('../src/editApi.js');
+const { commandErrorMessage } = await import('../src/editorDialog.js');
+const { removePhotoParams } = await import('../src/photoParams.js');
 
 const apiError = (status, code, body = {}) => Object.assign(new Error(body.message ?? code), {
   name: 'ApiError', status, code, reason: body.reason ?? null, blocking: body.blocking ?? [], field: body.field ?? null, body
@@ -15,6 +17,8 @@ const apiError = (status, code, body = {}) => Object.assign(new Error(body.messa
 const anApi = expect.objectContaining({ runChange: expect.any(Function), undo: expect.any(Function), revert: expect.any(Function) });
 
 const RELS = { parents: [], spouses: [], children: [], siblings: [] };
+/** The details panel's options for someone who can't edit: no edit controls, but the viewer's person links. */
+const VIEWING = { canEdit: false, onOpenPerson: expect.any(Function) };
 const EDITOR = { email: 'ann@example.com', name: 'Ann', role: 'editor' };
 const ADMIN = { email: 'rob@example.com', name: 'Rob', role: 'admin' };
 
@@ -111,7 +115,13 @@ beforeEach(() => {
     openFamilyEditor: vi.fn(handle),
     openRelativeDialog: vi.fn(handle),
     openUnlinkConfirm: vi.fn(handle),
-    isEditorDialogOpen: vi.fn(() => false)
+    openAddPhotosDialog: vi.fn(handle),
+    openAvatarDialog: vi.fn(handle),
+    openPhotoEditDialog: vi.fn(handle),
+    isEditorDialogOpen: vi.fn(() => false),
+    mediaApi: { requestUpload: vi.fn(), uploadFile: vi.fn(), processUpload: vi.fn(), discardUpload: vi.fn(), renderAvatar: vi.fn() },
+    commandErrorMessage,
+    removePhotoParams
   };
   loadEditing = vi.fn(async () => dialogs);
 });
@@ -160,7 +170,7 @@ describe('initApp: start-up', () => {
     }));
     expect(auth.init).toHaveBeenCalledTimes(1);
     expect(mountSignIn.mock.invocationCallOrder[0]).toBeLessThan(auth.init.mock.invocationCallOrder[0]);
-    expect(lastShown()).toEqual([people.get('I7'), RELS, { canEdit: false }]);
+    expect(lastShown()).toEqual([people.get('I7'), RELS, VIEWING]);
   });
 
   it('shows the person without waiting for the session', async () => {
@@ -185,7 +195,7 @@ describe('initApp: loading the editing UI', () => {
     signInOptions.openHistory();
     await flush();
     expect(loadEditing).not.toHaveBeenCalled();
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
   });
 
   it('loads it once someone can edit, and only then shows the edit controls', async () => {
@@ -194,7 +204,7 @@ describe('initApp: loading the editing UI', () => {
     await start();
     await signInAs(EDITOR);
     expect(loadEditing).toHaveBeenCalledTimes(1);
-    expect(shownOptions()).toEqual({ canEdit: false }); // not before the dialogs (and their styles) are here
+    expect(shownOptions()).toEqual(VIEWING); // not before the dialogs (and their styles) are here
     resolve(dialogs);
     await flush();
     expect(shownId()).toBe('I7');
@@ -209,7 +219,7 @@ describe('initApp: loading the editing UI', () => {
     await start();
     await signInAs(EDITOR);
     expect(lastToast()).toEqual([expect.stringMatching(/^Couldn't load the editing tools/), { kind: 'error' }]);
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
     signInOptions.openHistory();
     await flush();
     expect(loadEditing).toHaveBeenCalledTimes(2);
@@ -229,7 +239,9 @@ describe('initApp: sign-in state', () => {
     expect(shownId()).toBe('I7');
     expect(shownOptions()).toEqual(expect.objectContaining({
       canEdit: true, onEdit: expect.any(Function), onAddRelative: expect.any(Function), onUnlink: expect.any(Function),
-      onEditFamily: expect.any(Function), onShowHistory: expect.any(Function)
+      onEditFamily: expect.any(Function), onShowHistory: expect.any(Function), onOpenPerson: expect.any(Function),
+      onAddPhotos: expect.any(Function), onChangeAvatar: expect.any(Function), onEditPhoto: expect.any(Function),
+      onUseAsAvatar: expect.any(Function), onRemovePhoto: expect.any(Function)
     }));
   });
 
@@ -237,7 +249,7 @@ describe('initApp: sign-in state', () => {
     await start();
     await signInAs({ email: 'tom@example.com', name: null, role: null });
     expect(loader.invalidateAll).toHaveBeenCalled();
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
   });
 
   it('on sign-out, forgets cached views, re-renders without edit controls and closes History and Editors', async () => {
@@ -252,7 +264,7 @@ describe('initApp: sign-in state', () => {
     signInOptions.onSignedOut('signed-out');
     await flush();
     expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
     expect(history.close).toHaveBeenCalled();
     expect(editors.close).toHaveBeenCalled();
   });
@@ -283,7 +295,7 @@ describe('initApp: a removed editor', () => {
     await flush();
     expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
     expect(shownId()).toBe('I7');
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
   });
 
   it('passes calls through unchanged: arguments, results and other failures', async () => {
@@ -313,7 +325,7 @@ describe('initApp: a removed editor', () => {
     await press('z', { ctrlKey: true });
     expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
     expect(lastToast()).toEqual(["Your account can't edit the tree. Ask Rob for access.", { kind: 'error' }]);
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
     expect(history.close).toHaveBeenCalled();
     expect(editors.close).toHaveBeenCalled();
     // and Ctrl+Z no longer does anything
@@ -330,7 +342,7 @@ describe('initApp: a removed editor', () => {
     await expect(historyApi.revert(12, 'history')).rejects.toMatchObject({ code: 'not_an_editor' });
     await flush();
     expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
-    expect(shownOptions()).toEqual({ canEdit: false });
+    expect(shownOptions()).toEqual(VIEWING);
   });
 
   it('does not read the account again for someone who already cannot edit', async () => {
@@ -598,6 +610,216 @@ describe('initApp: after a command', () => {
       expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
       expect(lastToast()[0]).toBe('Added Jack Smith as a son of Rose Smith');
       expect(lastToast()[1].action.label).toBe('Undo');
+    }
+  });
+});
+
+describe('initApp: photos', () => {
+  const PHOTO = {
+    id: 42, key: 'originals/abc.jpg', thumbKey: 'thumbs/abc.webp', displayKey: 'display/abc.webp', fileName: 'wedding.jpg',
+    caption: 'The wedding', date: null, people: [{ id: 'I7', name: 'Rose Smith' }]
+  };
+  const RESULT = { change: { id: 40, summary: 'Added 2 photos for Rose Smith', personIds: ['I7'] }, view: null };
+  let rose;
+  let options; // the details panel's, for an editor
+
+  beforeEach(async () => {
+    await start();
+    await signInAs(EDITOR);
+    rose = people.get('I7');
+    options = shownOptions();
+    loader.invalidateAll.mockClear();
+    personDetails.showPerson.mockClear();
+    showToast.mockClear();
+  });
+
+  /** Runs a dialog's onSaved with `result`, then checks the usual flow: reload, re-render and a toast with Undo. */
+  async function expectCommandFlow(onSaved, result = RESULT) {
+    onSaved(result);
+    await flush();
+    expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
+    expect(shownId()).toBe('I7');
+    expect(lastToast()[0]).toBe(result.change.summary);
+    expect(lastToast()[1].action.label).toBe('Undo');
+  }
+
+  it('gives viewers and editors onOpenPerson, which opens that person', async () => {
+    options.onOpenPerson('I8');
+    await flush();
+    expect(urlPerson()).toBe('I8');
+    expect(shownId()).toBe('I8');
+    signInOptions.onSignedOut('signed-out');
+    await flush();
+    expect(shownOptions()).toEqual(VIEWING);
+    shownOptions().onOpenPerson('I7');
+    await flush();
+    expect(urlPerson()).toBe('I7');
+    expect(shownId()).toBe('I7');
+  });
+
+  it('Add photos opens the sheet at once, with any dropped files, and its save runs the command flow', async () => {
+    options.onAddPhotos(rose);
+    // No await before it: the sheet opens the file picker from inside the tap.
+    expect(dialogs.openAddPhotosDialog).toHaveBeenCalledTimes(1);
+    expect(dialogs.openAddPhotosDialog).toHaveBeenCalledWith({
+      person: rose, files: undefined, api: anApi, mediaApi: dialogs.mediaApi, onSaved: expect.any(Function)
+    });
+    const files = [new File(['x'], 'a.jpg', { type: 'image/jpeg' })];
+    options.onAddPhotos(rose, files);
+    expect(dialogs.openAddPhotosDialog).toHaveBeenLastCalledWith(expect.objectContaining({ person: rose, files }));
+    await expectCommandFlow(dialogs.openAddPhotosDialog.mock.calls[0][0].onSaved);
+  });
+
+  it('Change avatar opens the avatar dialog, and its save runs the command flow', async () => {
+    options.onChangeAvatar(rose);
+    expect(dialogs.openAvatarDialog).toHaveBeenCalledWith({
+      person: rose, api: anApi, mediaApi: dialogs.mediaApi, onSaved: expect.any(Function)
+    });
+    await expectCommandFlow(dialogs.openAvatarDialog.mock.calls[0][0].onSaved,
+      { change: { id: 41, summary: 'Changed the avatar of Rose Smith', personIds: ['I7'] }, view: null });
+  });
+
+  it("the viewer's Avatar opens the avatar dialog at that photo", async () => {
+    options.onUseAsAvatar(PHOTO, rose);
+    expect(dialogs.openAvatarDialog).toHaveBeenCalledWith({
+      person: rose, api: anApi, mediaApi: dialogs.mediaApi, startWith: PHOTO, onSaved: expect.any(Function)
+    });
+    await expectCommandFlow(dialogs.openAvatarDialog.mock.calls[0][0].onSaved,
+      { change: { id: 42, summary: 'Changed the avatar of Rose Smith', personIds: ['I7'] }, view: null });
+  });
+
+  it("the viewer's Caption and People open the photo editor, and its save runs the command flow", async () => {
+    options.onEditPhoto(PHOTO, rose);
+    await flush();
+    expect(dialogs.openPhotoEditDialog).toHaveBeenCalledWith({ photo: PHOTO, person: rose, api: anApi, onSaved: expect.any(Function) });
+    expect(loader.reload).not.toHaveBeenCalled(); // the cached view is unmasked
+    await expectCommandFlow(dialogs.openPhotoEditDialog.mock.calls[0][0].onSaved,
+      { change: { id: 43, summary: 'Edited a photo of Rose Smith', personIds: ['I7', 'I8'] }, view: { person: { id: 'I7' } } });
+    expect(loader.cacheView).toHaveBeenCalledWith({ person: { id: 'I7' } });
+  });
+
+  describe('the photo editor from a masked view', () => {
+    const MASKED_PHOTO = { ...PHOTO, caption: 'Write to [email hidden]' };
+    const FRESH_PHOTO = { ...PHOTO, caption: 'Write to rose@example.com' };
+    const MASKED_MESSAGE = "Couldn't load this photo's full caption, so it can't be edited. Sign in again, then try again.";
+    const view = (personRecord, masked) => ({ person: personRecord, family: [], relationships: RELS, masked });
+
+    beforeEach(() => {
+      loader.loadPersonWithFamily.mockResolvedValueOnce(view({ ...rose, photos: [MASKED_PHOTO] }, true));
+    });
+
+    it('reloads the person unmasked first, then opens the editor on the reloaded photo', async () => {
+      const fresh = { ...rose, photos: [{ ...PHOTO, id: 7 }, FRESH_PHOTO] };
+      loader.reload.mockResolvedValueOnce(view(fresh, false));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(loader.reload).toHaveBeenCalledWith('I7');
+      expect(dialogs.openPhotoEditDialog).toHaveBeenCalledTimes(1);
+      expect(dialogs.openPhotoEditDialog).toHaveBeenCalledWith({
+        photo: FRESH_PHOTO, person: fresh, api: anApi, onSaved: expect.any(Function)
+      });
+      expect(personDetails.showPerson).toHaveBeenCalled(); // the panel shows the reloaded person
+      expect(shownId()).toBe('I7');
+      expect(showToast).not.toHaveBeenCalled();
+    });
+
+    it('refuses with a toast when the reload is masked too, or fails', async () => {
+      const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+      loader.reload.mockResolvedValueOnce(view({ ...rose, photos: [MASKED_PHOTO] }, true));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(lastToast()).toEqual([MASKED_MESSAGE, { kind: 'error' }]);
+
+      loader.loadPersonWithFamily.mockResolvedValueOnce(view({ ...rose, photos: [MASKED_PHOTO] }, true));
+      loader.reload.mockRejectedValueOnce(new Error('offline'));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(lastToast()).toEqual([MASKED_MESSAGE, { kind: 'error' }]);
+      expect(error).toHaveBeenCalledTimes(1);
+      expect(dialogs.openPhotoEditDialog).not.toHaveBeenCalled();
+    });
+
+    it('says so when the reloaded person no longer has the photo', async () => {
+      loader.reload.mockResolvedValueOnce(view({ ...rose, photos: [] }, false));
+      options.onEditPhoto(MASKED_PHOTO, rose);
+      await flush();
+      expect(lastToast()).toEqual(['That photo is no longer shown for this person.', { kind: 'error' }]);
+      expect(dialogs.openPhotoEditDialog).not.toHaveBeenCalled();
+    });
+  });
+
+  it("the photo editor's Reload reloads the person, without a toast", async () => {
+    options.onEditPhoto(PHOTO, rose);
+    await flush();
+    dialogs.openPhotoEditDialog.mock.calls[0][0].onSaved(null);
+    await flush();
+    expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
+    expect(shownId()).toBe('I7');
+    expect(showToast).not.toHaveBeenCalled();
+  });
+
+  it("the viewer's Remove runs remove_photo and offers Undo", async () => {
+    api.runChange.mockResolvedValueOnce({ change: { id: 44, summary: 'Removed a photo from Rose Smith', personIds: ['I7'] }, view: null });
+    options.onRemovePhoto(PHOTO, rose);
+    await flush();
+    expect(api.runChange).toHaveBeenCalledWith('remove_photo', { personId: 'I7', mediaId: 42 });
+    expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
+    expect(shownId()).toBe('I7');
+    expect(lastToast()[0]).toBe('Removed a photo from Rose Smith');
+    expect(lastToast()[1].action.label).toBe('Undo');
+    lastToast()[1].action.onClick();
+    await flush();
+    expect(api.revert).toHaveBeenCalledWith(44, 'keyboard');
+  });
+
+  it('a photo someone else already removed is said so, and the person reloaded', async () => {
+    api.runChange.mockRejectedValueOnce(apiError(409, 'stale'));
+    options.onRemovePhoto(PHOTO, rose);
+    await flush();
+    expect(lastToast()).toEqual(['That photo was already removed. Reloading.', { kind: 'error' }]);
+    expect(loader.invalidateAll).toHaveBeenCalledTimes(1);
+    expect(shownId()).toBe('I7');
+  });
+
+  it("other failures to remove a photo are toasted in the editors' words, without reloading", async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    api.runChange.mockRejectedValueOnce(apiError(0, 'network', { message: "Couldn't reach the server." }));
+    options.onRemovePhoto(PHOTO, rose);
+    await flush();
+    expect(lastToast()).toEqual(["Couldn't reach the server.", { kind: 'error' }]);
+    expect(error).not.toHaveBeenCalled();
+    api.runChange.mockRejectedValueOnce(apiError(500, 'internal'));
+    options.onRemovePhoto(PHOTO, rose);
+    await flush();
+    expect(lastToast()).toEqual(['The server had a problem (internal). Try again.', { kind: 'error' }]);
+    expect(error).toHaveBeenCalledTimes(1); // a server fault is logged too
+    expect(loader.invalidateAll).not.toHaveBeenCalled();
+    expect(personDetails.showPerson).not.toHaveBeenCalled();
+  });
+
+  it('a refused removal from a removed editor takes the edit controls away', async () => {
+    signIn.refreshAccount.mockImplementation(async () => {
+      signInOptions.onSignedIn({ email: 'ann@example.com', name: null, role: null }, 'signed-in');
+      return null;
+    });
+    api.runChange.mockRejectedValueOnce(apiError(403, 'not_an_editor'));
+    options.onRemovePhoto(PHOTO, rose);
+    await flush();
+    expect(lastToast()).toEqual(["Your account can't edit the tree. Ask Rob for access.", { kind: 'error' }]);
+    expect(shownOptions()).toEqual(VIEWING);
+  });
+});
+
+describe('editing.js', () => {
+  it('offers everything main.js uses, with the media client for the photo dialogs', async () => {
+    const editing = await import('../src/editing.js');
+    for (const name of ['openPersonEditor', 'openFamilyEditor', 'openRelativeDialog', 'openUnlinkConfirm', 'openHistoryPanel',
+      'openEditorsDialog', 'isEditorDialogOpen', 'openAddPhotosDialog', 'openAvatarDialog', 'openPhotoEditDialog',
+      'createUploadQueue', 'commandErrorMessage', 'removePhotoParams']) {
+      expect(typeof editing[name], name).toBe('function');
+    }
+    for (const name of ['requestUpload', 'uploadFile', 'processUpload', 'discardUpload', 'renderAvatar']) {
+      expect(typeof editing.mediaApi[name], name).toBe('function');
     }
   });
 });
