@@ -620,6 +620,14 @@ describe('PersonDetails', () => {
         expect(await more(4)).toEqual([]);
       });
 
+      it('names each thumbnail by its caption, when it has one', async () => {
+        const photos = [photo(1), photo(2, { caption: 'Wedding of Alice and Bert' }), photo(3), photo(4, { caption: 'The farm' }), photo(5)];
+        const el = await show({ ...ROSE, photos }, {});
+        expect(thumbnails(el).map(thumb => thumb.getAttribute('aria-label'))).toEqual([
+          'Photo 1', 'Photo 2: Wedding of Alice and Bert', 'Photo 3', 'Photo 4: The farm, and 1 more'
+        ]);
+      });
+
       it('has no row for viewers when there are no photos', async () => {
         expect((await show({ ...ROSE, photos: [] }, {})).querySelector('.person-photos-row')).toBeNull();
         expect((await show({ ...ROSE, photos: undefined }, {})).querySelector('.person-photos-row')).toBeNull();
@@ -811,6 +819,33 @@ describe('PersonDetails', () => {
         expect(hooks.onRemovePhoto).toHaveBeenCalledWith(ROSE.photos[0], expect.objectContaining({ id: 'I7' }));
       });
 
+      it('shows the new photos when the same person is re-rendered, staying on the photo it was showing', async () => {
+        const el = await show({ ...ROSE, photos: [photo(1), photo(2), photo(3)] }, hooks);
+        thumbnails(el)[1].click();
+        // An Undo from a toast, say: a photo comes back first, and photo 2's caption has changed meanwhile.
+        const photos = [photo(7), photo(1), photo(2, { caption: 'Wedding of Alice and Bert' }), photo(3)];
+        await details.showPerson({ ...ROSE, photos }, null, hooks);
+        const viewer = details.photoViewer;
+        expect(viewer.isOpen).toBe(true);
+        expect(viewer.photos).toBe(photos);
+        expect(viewer.currentIndex).toBe(2);
+        expect(viewer.modal.querySelector('.photo-viewer-counter').textContent).toBe('Photo 3 of 4');
+        expect(viewer.modal.querySelector('.photo-viewer-caption').textContent).toBe('Wedding of Alice and Bert');
+        // Its buttons act on the fresh photo.
+        viewer.modal.querySelector('.photo-viewer-action[data-action="caption"]').click();
+        expect(hooks.onEditPhoto).toHaveBeenCalledWith(photos[2], expect.objectContaining({ id: 'I7' }));
+      });
+
+      it('closes when the photo it was showing is gone from the re-rendered person', async () => {
+        const el = await show({ ...ROSE, photos: [photo(1), photo(2), photo(3)] }, hooks);
+        thumbnails(el)[1].click();
+        await details.showPerson({ ...ROSE, photos: [photo(1), photo(3)] }, null, hooks);
+        expect(details.photoViewer.isOpen).toBe(false);
+        thumbnails(el)[0].click();
+        await details.showPerson({ ...ROSE, photos: [] }, null, hooks);
+        expect(details.photoViewer.isOpen).toBe(false);
+      });
+
       it('closes when the panel goes on to someone else, so its buttons never act for the wrong person', async () => {
         const el = await show(ROSE, hooks);
         thumbnails(el)[0].click();
@@ -830,6 +865,7 @@ describe('PersonDetails', () => {
       expect(images(el)).toEqual(['person-avatar-image', '']);
       expect(el.querySelector('.person-avatar').getAttribute('aria-label')).toBe(`Change avatar for ${XSS}`);
       expect(el.querySelector('.person-photo-add').getAttribute('aria-label')).toBe(`Add photos for ${XSS}`);
+      expect(el.querySelector('.person-photo-thumbnail').getAttribute('aria-label')).toBe(`Photo 1: ${XSS}`);
       expect(el.querySelector('.person-avatar-image').getAttribute('src')).toBe(`${BASE}/avatars/${encodeURIComponent(`${XSS}.webp`)}`);
     });
 

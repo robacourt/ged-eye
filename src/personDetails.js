@@ -87,16 +87,23 @@ const avatarImage = (person) =>
 
 /**
  * One photo's thumbnail, a button that opens the viewer at `index`; a document (no thumbnail) shows an icon.
- * `more` (> 0) puts "+more" over it, for the photos the row has no room for.
+ * It is named "Photo 2", or "Photo 2: <caption>". `more` (> 0) puts "+more" over it, for the photos the row has
+ * no room for, and ", and <more> more" on its name.
  */
 function photoThumbnail(photo, index, more) {
   const src = thumbUrl(photo);
-  const label = more > 0 ? `Photo ${index + 1}, and ${more} more` : `Photo ${index + 1}`;
+  const caption = typeof photo.caption === 'string' && photo.caption.trim() ? `: ${photo.caption.trim()}` : '';
+  const label = `Photo ${index + 1}${caption}${more > 0 ? `, and ${more} more` : ''}`;
   const picture = src ? `<img src="${escapeHtml(src)}" alt="" />` : '<span class="file-icon" aria-hidden="true">📄</span>';
   const overlay = more > 0 ? `<span class="person-photo-more" aria-hidden="true">+${more}</span>` : '';
   return `<button type="button" class="person-photo-thumbnail${src ? '' : ' person-photo-file'}" data-photo-index="${index}" ` +
     `aria-label="${escapeHtml(label)}">${picture}${overlay}</button>`;
 }
+
+const hasId = (photo) => photo?.id !== undefined && photo?.id !== null;
+
+/** Whether two of person_record's photos are the same one: by id, or by key for photos from an older view. */
+const samePhoto = (a, b) => (hasId(a) && hasId(b) ? a.id === b.id : Boolean(a?.key) && a.key === b?.key);
 
 /**
  * The editors' controls, when `canEdit`: each control gets a `data-edit-action` index into `actions`, and
@@ -313,8 +320,7 @@ export class PersonDetails {
    *   Without VITE_MEDIA_API_URL there is no Add tile, camera badge or drop zone.
    */
   async showPerson(personData, relationships = null, options = {}) {
-    // The viewer's buttons act for the person shown: going on to someone else closes it.
-    if (this.photoViewer.isOpen && this.currentPerson?.id !== personData.id) this.photoViewer.hide();
+    const previous = this.currentPerson;
     this.currentPerson = personData;
     this.relationships = relationships;
     this.emptyState.style.display = 'none';
@@ -407,6 +413,7 @@ export class PersonDetails {
       : null;
     this.photoViewer.onOpenPerson = typeof options?.onOpenPerson === 'function' ? options.onOpenPerson : null;
     this.photoViewer.setEditorHooks(edit ? edit.viewerHooks() : null);
+    this.syncViewer(previous, personData);
 
     // Add click handlers to photo thumbnails
     const thumbnails = this.content.querySelectorAll('.person-photo-thumbnail');
@@ -437,6 +444,21 @@ export class PersonDetails {
         if (!expanded) text.scrollIntoView?.({ block: 'nearest' });
       });
     });
+  }
+
+  /**
+   * Keeps an open viewer in step with the person now shown, since its buttons act for them. Someone else closes it.
+   * The same person again (after a change, such as a toast's Undo) shows their new photos, staying on the photo it
+   * was showing, or closes when that photo is gone.
+   */
+  syncViewer(previous, person) {
+    const viewer = this.photoViewer;
+    if (!viewer.isOpen) return;
+    const shown = viewer.photos[viewer.currentIndex];
+    const photos = person.photos ?? [];
+    const index = previous?.id === person.id ? photos.findIndex(photo => samePhoto(photo, shown)) : -1;
+    if (index === -1) viewer.hide();
+    else viewer.open(person.name, photos, index);
   }
 
   /**
