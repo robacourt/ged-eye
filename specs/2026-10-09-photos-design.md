@@ -270,23 +270,24 @@ Everything for editors lives in the lazy editing chunk, so viewers download no u
 
 ## Rollout
 
+The new front end goes live **before** the backfill. The live front end ignores the fields migration 008 adds, but it takes any photo with a `thumbKey` to be an image and shows its original in an `<img>`. The backfill fills `thumb_key` for the 5 TIFF scans, so with the old front end still live they would become `.tif` images that most browsers can't show.
+
 1. **Safety branch:** create `pre-photos-<date>` from production.
-2. **Migration:** apply 008 to production. It is additive, and the old Functions and front end ignore the new fields.
-3. **Functions:**
-   - Deploy `media` to production, smoke-test it (sharp loads), and put its URL in `.env.production`.
-   - Deploy `api`.
-4. **Backfill:**
-   - Rehearse on a branch copied from production, and check the counts and a sample of images.
-   - Run it on production.
-   - Report the GPS count to the developer.
-5. **Verify:**
+2. **Migration:** apply 008 to production. It is additive: the live Functions pass `person_record`'s new fields through and the live front end ignores them, and no column they read changes until the backfill (step 6).
+3. **Functions:** deploy `media` and `api` to production, and smoke-check them: `media`'s `/health`, a 401 for an unauthenticated upload, and the `sweep-incoming` trigger.
+4. **Front-end env:** put `media`'s production URL in `.env.production` as `VITE_MEDIA_API_URL`.
+5. **Front end:** build `docs/`, commit it, then merge the PR. GitHub Pages serves `main`'s `docs/`, so the new front end is live once the PR is merged. Until the backfill it shows imported images from their originals, as now, and the TIFFs as documents.
+6. **Backfill** on production:
+   - Report the GPS count (`--report-gps`) to the developer.
+   - A dry run, then the real run with `--confirm`.
+   - There is no separate rehearsal branch. The backfill was rehearsed on the `photos` development branch, which has the same 544 images as production, and this keeps the project within the free plan's 10 branches.
+7. **Verify:**
    - Run `verify-neon`. `verifyCompare` needs no change: it compares only sha, `fileName` and `contentType` per photo. Two changes go into `verify.js` before the backfill:
      - `EDITED_SQL` ignores `media` rows changed by `kind = 'backfill_media'` changes, and by undo or redo changes whose `base_change_id` points at one. Otherwise the backfill would mark everyone with a photo, and their relatives, as edited, and verification would skip them.
      - The missing-bucket-objects check also covers `display_key`.
    - Spot-check the viewer on a TIFF and a large PNG.
-6. **Release:** build `docs/` and merge the PR.
 
-**Rollback:** redeploy the previous Functions and front end. Migration 008's columns can stay. No object is ever deleted, so nothing has to be restored.
+**Rollback:** redeploy the previous Functions and front end. Migration 008's columns can stay. No object is ever deleted, so nothing has to be restored. After the backfill, though, the previous front end would show the 5 TIFF scans as broken images.
 
 ## Spike findings (2026-10-09, `photos` branch)
 

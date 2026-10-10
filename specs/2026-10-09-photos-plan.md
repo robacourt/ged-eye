@@ -1209,27 +1209,23 @@ This follows the spec's Rollout. Production steps are additive, and nothing is d
   - Note the new `media` URL from the output.
   - **Smoke-test:** `GET <media>/health` gives `{ok:true}`, and an unauthenticated `POST <media>/uploads` gives 401. The dev accounts aren't production editors, so there are no uploads to production.
   - Check `neon triggers list --branch production` shows `sweep-incoming`.
-- [ ] **Step 4: Backfill rehearsal.**
-  1. `neon branches create --name photos-backfill-rehearsal --parent production --no-secrets`.
-  2. Run the backfill there with that branch's credentials. The script needs `DATABASE_URL` and the `AWS_*` storage variables for that branch.
-     - Get them with `neon env pull --branch photos-backfill-rehearsal --file <scratchpad>/rehearsal.env`, run from the scratchpad and never printed.
-     - Never run it from the worktree without `--file`: it would overwrite the worktree's `.env.local`.
-     - The script reads `DATABASE_URL_UNPOOLED` and the `AWS_*` variables. It checks that the database and storage belong to the same branch, and needs `--confirm <database host>`, the host it prints first, for a real run.
-     - Then run `node --env-file=<scratchpad>/rehearsal.env scripts/neon/backfillMedia.js --dry-run`, then the same command with `--confirm <host>`.
-  3. Check the counts match the dry run, and spot-check 3 display images.
-- [ ] **Step 5: Production backfill.**
-  1. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillMedia.js --report-gps`, and record the count.
-  2. The same command with `--dry-run`, then with `--confirm <production database host>` (printed by the dry run) for the real run.
-  3. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/verify.js --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`: expect 0 unexplained.
-- [ ] **Step 6: Front-end env.** Add `VITE_MEDIA_API_URL=<production media URL>` to `.env.production`.
-- [ ] **Step 7: Build the site.** Run `npm run build` into `docs/`, as in earlier releases (check `vite.config.js` for `outDir`).
-- [ ] **Step 7b: Commit and push.** Commit `.env.production` and `docs/` with the message "Release photos: production media URL and site build", then push the `photos` branch.
-- [ ] **Step 8: Pull request.**
+- [ ] **Step 4: No backfill rehearsal branch.** There is no separate rehearsal on a copy of production. The backfill was rehearsed on the `photos` development branch (Task 16 Step 3), which has the same 544 images as production, and this keeps the project within the free plan's 10 branches.
+- [ ] **Step 5: Front-end env.** Add `VITE_MEDIA_API_URL=<production media URL>` to `.env.production`.
+- [ ] **Step 6: Build the site.** Run `npm run build` into `docs/`, as in earlier releases (check `vite.config.js` for `outDir`).
+- [ ] **Step 6b: Commit and push.** Commit `.env.production` and `docs/` with the message "Release photos: production media URL and site build", then push the `photos` branch.
+- [ ] **Step 7: Pull request.**
   - Create a PR with `gh pr create`, ending the body with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
-  - Its description states what was done on production and the GPS report count.
+  - Its description states what was done on production so far, and that the backfill runs once the new front end is live.
   - Merge with a squash.
-- [ ] **Step 9: Live check.** On https://robacourt.github.io/ged-eye/, confirm the viewer uses display images and viewers load no editing chunk.
-- [ ] **Step 10: Report.**
+- [ ] **Step 8: Live check, before the backfill.** GitHub Pages serves `main`'s `docs/`. On https://robacourt.github.io/ged-eye/, confirm the new front end is live (viewers load no editing chunk) before going on. The old front end takes a photo with a `thumbKey` to be an image and would show the 5 TIFF originals in an `<img>` once the backfill gives them thumbnails, so the backfill must not run until this check passes.
+- [ ] **Step 9: Production backfill.**
+  - The script reads `DATABASE_URL_UNPOOLED` and the `AWS_*` variables. It checks that the database and storage belong to the same branch, and needs `--confirm <database host>`, the host it prints first, for a real run.
+  1. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/backfillMedia.js --report-gps`, and record the count.
+  2. The same command with `--dry-run`, then with `--confirm <production database host>` (printed by the dry run) for the real run. Check the counts match the dry run.
+- [ ] **Step 10: Verify.**
+  1. `node --env-file=/Users/rob/src/ged_eye/.env.local scripts/neon/verify.js --legacy-root /Users/rob/src/ged_eye/ignore/legacy-data`: expect 0 unexplained.
+  2. On the live site, confirm the viewer uses display images, and open a TIFF and a large PNG.
+- [ ] **Step 11: Report.**
   - Tell the developer what changed, the evidence, the rollback path (redeploy the previous Functions and front end), and the GPS count.
   - Ask them to try uploading from their iPhone (library and camera).
-  - List the branches they may delete: `photos-backfill-rehearsal`, and later `pre-photos-…`.
+  - List the branch they may delete later: `pre-photos-…`.

@@ -257,22 +257,23 @@ npm run backfill-media -- --confirm <database host>    # the backfill; <database
 
 ### Releasing photo changes
 
-Run in this order. Every step is additive, and the old Functions and front end ignore the new columns. The `npm run` scripts read the checkout's own `.env.local`, which on a development branch's worktree is that branch's, so aim each script at production with `--env-file`:
+Run in this order. The new front end must be live **before** the backfill runs. The live front end ignores the fields the migration adds (display key, size, caption, date, tagged people, avatar source), but it takes any photo with a `thumbKey` to be an image and shows its original in an `<img>`. The backfill gives the 5 TIFF scans their first `thumb_key`, so with the old front end still live they would become `.tif` images that most browsers can't show. The new front end shows their display images instead.
+
+The `npm run` scripts read the checkout's own `.env.local`, which on a development branch's worktree is that branch's, so aim each script at production with `--env-file`:
 
 ```bash
 PROD_ENV=<main checkout>/.env.local    # production's credentials
 ```
 
 1. **Safety branch:** `neon branches create --name pre-photos-<date> --parent production --no-secrets`.
-2. **Migration:** `node --env-file=$PROD_ENV scripts/neon/migrate.js` applies `008_photos.sql`. Do it before the deploy, because the new `api` reads its columns.
-3. **Deploy both Functions:** `neon deploy --branch production --no-env-pull`. Check that `GET <media URL>/health` gives `{"ok":true}`, that an unauthenticated `POST <media URL>/uploads` gives 401, and that `neon triggers list --branch production` shows `sweep-incoming`. Put the production media URL (in the deploy output; the `api` URL with `-api.` replaced by `-media.`) in `.env.production` as `VITE_MEDIA_API_URL`.
-4. **Backfill, rehearsed first:**
-   1. Copy production with `neon branches create --name photos-backfill-rehearsal --parent production --no-secrets`, pull its credentials into an env file (see above), and run `--dry-run` then `--confirm` there. Check that the counts match the dry run, and look at a few display images.
-   2. On production, run `node --env-file=$PROD_ENV scripts/neon/backfillMedia.js` with `--report-gps` (note how many originals have location data), then `--dry-run`, then `--confirm <production database host>`.
-5. **Verify:** `node --env-file=$PROD_ENV scripts/neon/verify.js --legacy-root <main checkout>/ignore/legacy-data` (the `verify-neon` check: it reads the production database and samples the production API). It ignores the backfill's change, so expect no unexplained differences. Open a TIFF and a large PNG in the viewer.
-6. **Build:** `npm run build` and commit `docs/` together with `.env.production`. Pages serves the committed `docs/`, so merging alone changes nothing on the site.
+2. **Migration:** `node --env-file=$PROD_ENV scripts/neon/migrate.js` applies `008_photos.sql`. It is additive, and no column the live Functions and front end read changes until the backfill. Do it before the deploy, because the new `api` reads its columns.
+3. **Deploy both Functions:** `neon deploy --branch production --no-env-pull`. Check that `GET <media URL>/health` gives `{"ok":true}`, that an unauthenticated `POST <media URL>/uploads` gives 401, and that `neon triggers list --branch production` shows `sweep-incoming`.
+4. **Front-end env:** put the production media URL (in the deploy output; the `api` URL with `-api.` replaced by `-media.`) in `.env.production` as `VITE_MEDIA_API_URL`.
+5. **Release the front end:** `npm run build`, commit `docs/` together with `.env.production`, then merge the PR. GitHub Pages serves `main`'s committed `docs/`, so the new front end is live only once the PR is merged: check the live site before going on. Until the backfill, it shows imported images from their originals, and the TIFFs as documents, as now.
+6. **Backfill on production:** `node --env-file=$PROD_ENV scripts/neon/backfillMedia.js --report-gps` (note how many originals have location data), then the same with `--dry-run`, then the real run with `--confirm <production database host>`. There is no separate rehearsal branch: the backfill was rehearsed on the `photos` development branch, which has the same 544 images as production, and that keeps the project within the free plan's 10 branches.
+7. **Verify:** `node --env-file=$PROD_ENV scripts/neon/verify.js --legacy-root <main checkout>/ignore/legacy-data` (the `verify-neon` check: it reads the production database and samples the production API). It ignores the backfill's change, so expect no unexplained differences. Open a TIFF and a large PNG in the viewer.
 
-**Rollback:** redeploy the previous Functions and front end. The new columns can stay, and no object was deleted, so nothing has to be restored.
+**Rollback:** redeploy the previous Functions and front end. The new columns can stay, and no object was deleted, so nothing has to be restored. After the backfill, though, the previous front end would show the 5 TIFF scans as broken images, for the reason above.
 
 ## Tech Stack
 
