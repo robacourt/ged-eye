@@ -214,6 +214,7 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
       }
       showToast(`Dismissed the request from ${request.email}.`);
       dropRequestRow(item);
+      loadRequests();
       callSafely(onChanged);
     });
 

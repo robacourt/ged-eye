@@ -506,8 +506,9 @@ export function initApp({
     editorsDialog?.close();
     editorsDialog = module.openEditorsDialog({
       api, currentEmail: account.email ?? null,
-      // A request granted or dismissed: the account menu's "Access requests (N)" is read again.
-      onChanged: () => signIn.refreshAccount()
+      // A request granted or dismissed: the account menu's "Access requests (N)" is read again, without the
+      // reload a full refresh would do (onSignedIn runs only if the role changed).
+      onChanged: () => signIn.refreshAccount({ quiet: true })
     });
   }
 
@@ -594,6 +595,10 @@ export function initApp({
       editorsDialog?.close();
       loader.invalidateAll();
       showCurrentPerson();
+    },
+    onAccountError() {
+      // /me failed while the link waited for it: drop it, so a later Try again doesn't open Editors out of the blue.
+      accessRequestsLink = null;
     },
     openHistory: () => openHistory(),
     openEditors

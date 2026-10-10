@@ -532,13 +532,21 @@ describe('initApp: opening the editors', () => {
     expect(dialogs.openEditorsDialog).not.toHaveBeenCalled();
   });
 
-  it('the Editors dialog refreshes the account menu (its request count) after a change', async () => {
+  it('the Editors dialog refreshes only the account menu (its request count) after a change, without a reload', async () => {
     signInOptions.openEditors();
     await flush();
     const { onChanged } = dialogs.openEditorsDialog.mock.calls[0][0];
     expect(signIn.refreshAccount).not.toHaveBeenCalled();
+    loader.invalidateAll.mockClear();
+    personDetails.showPerson.mockClear();
+    treeView.loadPerson.mockClear();
     onChanged();
+    await flush();
     expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(signIn.refreshAccount).toHaveBeenCalledWith({ quiet: true });
+    expect(loader.invalidateAll).not.toHaveBeenCalled();
+    expect(treeView.loadPerson).not.toHaveBeenCalled();
+    expect(personDetails.showPerson).not.toHaveBeenCalled();
   });
 
   it('History\'s person links navigate, and its changes re-render without another toast or refresh', async () => {
@@ -648,6 +656,34 @@ describe('initApp: the ?access-requests link', () => {
     await signInAs(EDITOR);
     expect(signIn.open).not.toHaveBeenCalled();
     expect(editorsOpened()).toBe(0);
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('drops it when /me fails while it waits, so a later "Try again" opens nothing', async () => {
+    restores('rob@example.com');
+    await start('/?access-requests');
+    signInOptions.onAccountError(apiError(0, 'network'));
+    await signInAs(ADMIN); // the menu's Try again
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('drops it when /me failed before the session restore finished', async () => {
+    restores('rob@example.com');
+    let finishInit;
+    auth.init.mockImplementation(() => new Promise(resolve => { finishInit = resolve; }));
+    await start('/?access-requests');
+    signInOptions.onAccountError(apiError(500, 'internal'));
+    finishInit({ user: { email: 'rob@example.com' } });
+    await flush();
+    await signInAs(ADMIN);
+    expect(editorsOpened()).toBe(0);
+  });
+
+  it('drops it when /me fails after the sign-in it opened', async () => {
+    await start('/?access-requests');
+    expect(signIn.open).toHaveBeenCalledOnce();
+    signInOptions.onAccountError(apiError(0, 'network'));
     await signInAs(ADMIN);
     expect(editorsOpened()).toBe(0);
   });

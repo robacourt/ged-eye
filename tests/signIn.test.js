@@ -81,6 +81,7 @@ function setup({ client = fakeClient(), dev = false, api = fakeApi(), auth = cre
   const callbacks = {
     onSignedIn: vi.fn(),
     onSignedOut: vi.fn(),
+    onAccountError: vi.fn(),
     openHistory: vi.fn(),
     openEditors: vi.fn()
   };
@@ -769,6 +770,55 @@ describe('mountSignIn', () => {
         headerButton().click();
         expect(menuButtons()).toEqual(['History', 'Editors', 'Sign out']);
       });
+
+      it('a quiet refresh updates the count in place, without reporting an unchanged account', async () => {
+        const api = fakeApi({ ...ACCOUNTS.admin, pendingRequests: 2 });
+        const { controller: c, onSignedIn } = await signedInAs(ACCOUNTS.admin, { api });
+        expect(onSignedIn).toHaveBeenCalledOnce();
+        headerButton().click();
+        const pending = deferred();
+        api.me.mockReturnValueOnce(pending.promise);
+        const refreshed = c.refreshAccount({ quiet: true });
+        // The menu keeps showing the account while /me is read again.
+        expect(menu().querySelector('.account-role').textContent).toBe('Admin');
+        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors', 'Sign out']);
+        pending.resolve({ ...ACCOUNTS.admin, pendingRequests: 1 });
+        expect(await refreshed).toEqual({ ...ACCOUNTS.admin, pendingRequests: 1 });
+        expect(menuButtons()).toEqual(['Access requests (1)', 'History', 'Editors', 'Sign out']);
+        expect(c.getAccount()).toEqual({ ...ACCOUNTS.admin, pendingRequests: 1 });
+        expect(onSignedIn).toHaveBeenCalledOnce();
+      });
+
+      it('a quiet refresh reports an account whose role changed', async () => {
+        const api = fakeApi({ ...ACCOUNTS.admin, pendingRequests: 2 });
+        const { controller: c, onSignedIn } = await signedInAs(ACCOUNTS.admin, { api });
+        api.me.mockImplementation(async () => ({ ...ACCOUNTS.admin, role: 'editor' }));
+        await c.refreshAccount({ quiet: true });
+        expect(onSignedIn).toHaveBeenCalledTimes(2);
+        expect(onSignedIn).toHaveBeenLastCalledWith({ ...ACCOUNTS.admin, role: 'editor' }, 'restored');
+      });
+
+      it('a quiet refresh that fails leaves the menu as it was, and reports nothing', async () => {
+        const api = fakeApi({ ...ACCOUNTS.admin, pendingRequests: 2 });
+        const { controller: c, onSignedIn, onAccountError } = await signedInAs(ACCOUNTS.admin, { api });
+        api.me.mockRejectedValueOnce(new ApiError(500, 'internal', {}));
+        expect(await c.refreshAccount({ quiet: true })).toBeNull();
+        headerButton().click();
+        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors', 'Sign out']);
+        expect(visibleText('.account-note')).toEqual([]);
+        expect(onSignedIn).toHaveBeenCalledOnce();
+        expect(onAccountError).not.toHaveBeenCalled();
+      });
+    });
+
+    it('reports a failed /me to onAccountError', async () => {
+      const api = fakeApi();
+      const failure = new ApiError(500, 'internal', {});
+      api.me.mockRejectedValueOnce(failure);
+      const { onAccountError, onSignedIn } = await signedInAs(ACCOUNTS.editor, { api });
+      expect(onAccountError).toHaveBeenCalledOnce();
+      expect(onAccountError).toHaveBeenCalledWith(failure);
+      expect(onSignedIn).not.toHaveBeenCalled();
     });
 
     it('ignores a /me reply for someone who has since signed out', async () => {

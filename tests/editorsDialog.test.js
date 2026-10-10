@@ -334,7 +334,7 @@ describe('openEditorsDialog: access requests', () => {
     expect(root().contains(document.activeElement)).toBe(true);
   });
 
-  it('dismisses: busy while it runs, then the row goes, and the section with the last one', async () => {
+  it('dismisses: busy while it runs, then the requests are reloaded, and the section goes with the last one', async () => {
     await open();
     let resolve;
     api.dismissAccessRequest.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
@@ -344,19 +344,30 @@ describe('openEditorsDialog: access requests', () => {
     expect(api.dismissAccessRequest).toHaveBeenCalledWith(9);
     expect(dismiss.disabled).toBe(true);
     expect(dismiss.textContent).toBe('Dismissing…');
+    const NEW_ASKS = { id: 12, email: 'kim@example.com', name: 'Kim', note: null, createdAt: OCT_10 };
+    api.listAccessRequests.mockResolvedValue([TOM_ASKS, NEW_ASKS]); // one more arrived meanwhile
     resolve({ request: { id: 9, status: 'dismissed' } });
     await flush();
     expect(showToast).toHaveBeenCalledWith('Dismissed the request from sue@example.com.');
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(2);
     expect(request(9)).toBeUndefined();
+    expect(requests().map(r => r.email)).toEqual(['tom@example.com', 'kim@example.com']);
+    expect(api.listEditors).toHaveBeenCalledOnce(); // nobody new to list
     expect(api.grantAccessRequest).not.toHaveBeenCalled();
     expect(onChanged).toHaveBeenCalledOnce();
     expect(root().contains(document.activeElement)).toBe(true);
 
+    api.listAccessRequests.mockResolvedValue([NEW_ASKS]);
     request(7).querySelector('.editors-request-dismiss').click();
     await flush();
+    expect(requests().map(r => r.email)).toEqual(['kim@example.com']);
+    api.listAccessRequests.mockResolvedValue([]);
+    request(12).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(api.listAccessRequests).toHaveBeenCalledTimes(4);
     expect(requests()).toEqual([]);
     expect(visible(section())).toBe(false);
-    expect(onChanged).toHaveBeenCalledTimes(2);
+    expect(onChanged).toHaveBeenCalledTimes(3);
   });
 
   it.each([
