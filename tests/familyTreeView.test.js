@@ -55,7 +55,7 @@ vi.mock('cytoscape', () => {
 vi.mock('cytoscape-dagre', () => ({ default: () => {} }));
 vi.mock('../src/dataLoader.js', () => ({ loadPersonWithFamily: vi.fn(), prefetchFamily: vi.fn() }));
 
-const { FamilyTreeView, placeBeside, horizontalPan } = await import('../src/familyTreeView.js');
+const { FamilyTreeView, placeBeside, horizontalPan, chooseZoom } = await import('../src/familyTreeView.js');
 const { loadPersonWithFamily } = await import('../src/dataLoader.js');
 
 const XSS = '<img src=x onerror="window.__xss = 1">';
@@ -353,5 +353,38 @@ describe('horizontalPan', () => {
   it('leaves a "+" on the left alone when it is already far enough in, counting the 44px button', () => {
     // zoom 0.2: pan 20; the button is 44px (the node only 22.8), so it starts at 42 + 20 - 22 = 40px.
     expect(horizontalPan({ bb: wide, zoom: 0.2, width: 375, selectedX: 400, add: { x: 210, width: 114 } })).toBe(20);
+  });
+});
+
+describe('chooseZoom', () => {
+  // A phone's tree: 375 by 541, 20px margins. A tree 1000 high fits the height at (541 - 40) / 1000 = 0.501.
+  const phone = { width: 375, height: 541, margin: 20, maxZoom: 1 };
+  const zoomFor = (w, hasAdd) => chooseZoom({ ...phone, bb: { w, h: 1000 }, hasAdd });
+
+  it('leaves a tree that fits the width at the height-fitting zoom', () => {
+    expect(zoomFor(300, true)).toBeCloseTo(0.501);
+  });
+
+  it('zooms an editor\'s slightly wide tree out to fit the width, inside the margins', () => {
+    const zoom = zoomFor(800, true);
+    expect(zoom).toBeCloseTo((375 - 40) / 800); // 0.419, above the floor of 0.376
+    expect(800 * zoom).toBeLessThanOrEqual(375);
+  });
+
+  it('stops at 75% of the height-fitting zoom for a very wide tree, which stays wider than the screen', () => {
+    const zoom = zoomFor(2000, true);
+    expect(zoom).toBeCloseTo(0.75 * 0.501);
+    expect(2000 * zoom).toBeGreaterThan(375);
+  });
+
+  it('never zooms in past the height-fitting zoom or the maximum', () => {
+    expect(chooseZoom({ ...phone, bb: { w: 500, h: 300 }, hasAdd: true })).toBeCloseTo(0.75); // 1 (capped), then 0.75
+    expect(chooseZoom({ ...phone, bb: { w: 200, h: 300 }, hasAdd: true })).toBe(1);
+  });
+
+  it('leaves viewers (no "+" node) at the height-fitting zoom, however wide', () => {
+    expect(zoomFor(800, false)).toBeCloseTo(0.501);
+    expect(zoomFor(2000, false)).toBeCloseTo(0.501);
+    expect(chooseZoom({ ...phone, bb: { w: 500, h: 300 }, hasAdd: false })).toBe(1);
   });
 });

@@ -20,6 +20,8 @@ const ADD_GAP = 40;
 const SELECTED_LEFT_PX = 100;
 /** The least room left of a "+" button placed on the person's left, on a tree wider than the screen. */
 const ADD_LEFT_MIN_PX = 16;
+/** How far an editor's tree may zoom out to fit the width, as a share of the zoom that fits the height. */
+const ADD_MIN_ZOOM_SHARE = 0.75;
 
 /**
  * Where the "+" node goes, beside the selected person in their row (graph units): on their left when they have
@@ -37,6 +39,19 @@ export function placeBeside({ selected, addWidth, spouseXs = [], row = [] }) {
   const shift = side * (addWidth + ADD_GAP);
   const moves = row.filter(node => (node.x - selected.x) * side > 0).map(node => ({ id: node.id, x: node.x + shift }));
   return { add, moves };
+}
+
+/**
+ * The tree's zoom (fitToHeight): the zoom that fits the height `height` inside `margin`, at most `maxZoom`.
+ * An editor's tree (`hasAdd`: with the "+" node, which widens the person's row) wider than `width` at that zoom
+ * zooms out just enough to fit the width inside the same margin, but never below ADD_MIN_ZOOM_SHARE of it.
+ * Viewers' trees are as they always were.
+ */
+export function chooseZoom({ bb, width, height, margin, maxZoom, hasAdd = false }) {
+  const heightZoom = Math.min((height - 2 * margin) / bb.h, maxZoom);
+  if (!hasAdd || bb.w * heightZoom <= width) return heightZoom;
+  const widthZoom = (width - 2 * margin) / bb.w;
+  return Math.min(heightZoom, Math.max(widthZoom, ADD_MIN_ZOOM_SHARE * heightZoom));
 }
 
 /**
@@ -769,20 +784,18 @@ export class FamilyTreeView {
 
     // Calculate vertical margins (top and bottom)
     const verticalMargin = 20;
-    const availableHeight = h - (2 * verticalMargin);
-
-    // Calculate zoom to fit height
-    let zoom = availableHeight / bb.h;
 
     // Cap zoom to prevent nodes from being too large when there are fewer generations
     // Maximum zoom of 1.0 keeps nodes at their natural size (135-180px)
     const maxZoom = 1.0;
-    zoom = Math.min(zoom, maxZoom);
+
+    // Zoom to fit the height; an editor's tree, widened by the "+", may zoom out a little to fit the width
+    const addNode = cy.getElementById(ADD_NODE_ID);
+    const zoom = chooseZoom({ bb, width: w, height: h, margin: verticalMargin, maxZoom, hasAdd: !addNode.empty() });
 
     // Centred when the graph fits the width; else the selected person on the left with a margin, and an
     // editor's "+" on their left kept in view
     const selectedNode = cy.nodes('[type="selected"]');
-    const addNode = cy.getElementById(ADD_NODE_ID);
     const panX = horizontalPan({
       bb, zoom, width: w,
       selectedX: selectedNode.length > 0 ? selectedNode.position().x : null,
