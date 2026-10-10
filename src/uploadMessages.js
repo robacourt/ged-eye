@@ -2,6 +2,7 @@
  * The words shown for an upload that failed, shared by everything that runs the upload queue (the Add photos sheet,
  * Change avatar's "Upload new"). Plain text, with no DOM.
  */
+import { NOT_AN_EDITOR_MESSAGE } from './changeMessages.js';
 
 const TYPE_AND_SIZE = 'PDFs and images only, up to 50 MB.';
 
@@ -26,7 +27,7 @@ export function uploadErrorMessage(error) {
   if (code === 'missing_upload') return 'This upload has gone missing. Retry to upload it again.';
   if (code === 'busy') return 'The server is busy. Retry in a moment.';
   if (error?.status === 401) return "You're signed out. Sign in again, then retry.";
-  if (error?.status === 403 && code !== 'upload_failed') return "Your account can't add photos. Ask Rob for access.";
+  if (error?.status === 403 && code !== 'upload_failed') return NOT_AN_EDITOR_MESSAGE;
   if (code === 'network') return 'Upload failed. Check your connection, then retry.';
   return 'Upload failed.';
 }

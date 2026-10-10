@@ -362,9 +362,11 @@ describe('openEditorsDialog: access requests', () => {
   it.each([
     ['granted', 'Granted by Ann Jones'],
     ['dismissed', 'Dismissed by Ann Jones']
-  ])('says who got there first when the request was already %s', async (status, text) => {
+  ])('says who got there first, by name, when the request was already %s', async (status, text) => {
     await open();
-    api.grantAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', { status, resolvedBy: 'Ann Jones' }));
+    api.grantAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', {
+      status, resolvedBy: 'ann@example.com', resolvedByName: 'Ann Jones'
+    }));
     request(7).querySelector('.editors-request-grant').click();
     await flush();
     expect(request(7).querySelector('.editors-request-resolved').textContent).toBe(text);
@@ -375,13 +377,25 @@ describe('openEditorsDialog: access requests', () => {
     expect(root().contains(document.activeElement)).toBe(true);
   });
 
-  it('says who got there first on a Dismiss too, as text, even without a name', async () => {
+  it('says who got there first on a Dismiss too, as text', async () => {
     await open();
-    api.dismissAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', { status: 'granted', resolvedBy: XSS }));
+    api.dismissAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', {
+      status: 'granted', resolvedBy: 'ann@example.com', resolvedByName: XSS
+    }));
     request(9).querySelector('.editors-request-dismiss').click();
     await flush();
     expect(request(9).querySelector('.editors-request-resolved').textContent).toBe(`Granted by ${XSS}`);
     expect(document.querySelector('img')).toBeNull();
+  });
+
+  it('falls back to the email without a name, and to "Already …" without either', async () => {
+    await open();
+    api.dismissAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', {
+      status: 'dismissed', resolvedBy: 'ann@example.com', resolvedByName: null
+    }));
+    request(9).querySelector('.editors-request-dismiss').click();
+    await flush();
+    expect(request(9).querySelector('.editors-request-resolved').textContent).toBe('Dismissed by ann@example.com');
 
     api.grantAccessRequest.mockRejectedValueOnce(apiError(409, 'already_resolved', { status: 'dismissed' }));
     request(7).querySelector('.editors-request-grant').click();

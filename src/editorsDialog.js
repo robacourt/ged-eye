@@ -45,9 +45,12 @@ function validateEmail(email) {
 
 const sameEmail = (a, b) => typeof a === 'string' && typeof b === 'string' && a.toLowerCase() === b.toLowerCase();
 
-/** "Granted by Ann", from a 409 already_resolved's `{ status, resolvedBy }`. */
-function resolvedText({ status, resolvedBy } = {}) {
-  const by = typeof resolvedBy === 'string' && resolvedBy ? resolvedBy : null;
+/**
+ * "Granted by Ann Jones", from a 409 already_resolved's `{ status, resolvedByName, resolvedBy }`: the admin's
+ * name, else their email.
+ */
+function resolvedText({ status, resolvedBy, resolvedByName } = {}) {
+  const by = [resolvedByName, resolvedBy].find(value => typeof value === 'string' && value.trim() !== '') ?? null;
   if (status === 'granted') return by ? `Granted by ${by}` : 'Already granted';
   if (status === 'dismissed') return by ? `Dismissed by ${by}` : 'Already dismissed';
   return 'Another admin has already dealt with this request.';

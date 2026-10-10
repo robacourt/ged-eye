@@ -202,7 +202,7 @@ export function createEditApi(options) {
     /** Admins only. Pending requests, oldest first: `[{ id, email, name, note, createdAt }]`. */
     listAccessRequests: async () => (await authedFetch('/access-requests')).requests,
 
-    /** Admins only. → `{ request, editor }`; 409 `already_resolved` carries `{ status, resolvedBy }`. */
+    /** Admins only. → `{ request, editor }`; 409 `already_resolved` carries `{ status, resolvedBy, resolvedByName }`. */
     grantAccessRequest: (id) => post(accessRequestPath(id, 'grant')),
 
     /** Admins only. → `{ request }`; 409 `already_resolved` as for grant. */
