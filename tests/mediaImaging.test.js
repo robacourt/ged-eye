@@ -168,6 +168,9 @@ const gpsJpeg = await red().jpeg().withMetadata({ orientation: 6 }).withExif(GPS
 const plainJpeg = await red().jpeg().withMetadata({ orientation: 6 }).toBuffer();
 const iccGpsJpeg = await red().jpeg().withIccProfile('p3').withExif(GPS).toBuffer();
 const gpsPng = await red().png().withExif(GPS).toBuffer();
+const gpsWebp = await red().webp().withMetadata({ orientation: 6 }).withExif(GPS).toBuffer();
+// sharp writes no EXIF orientation into an AVIF (HEIF), so this one stays landscape.
+const gpsAvif = await red().avif().withExif(GPS).toBuffer();
 // sharp's TIFF output drops EXIF, so despite withExif this TIFF has no GPS; gpsTiff is the TIFF with GPS.
 const plainTiff = await red().tiff().withExif(GPS).toBuffer();
 const gpsTiff = tiffByHand([{ width: 4, height: 4, gps: true }]);
@@ -296,7 +299,9 @@ describe('media/imaging hasGps and hasLocation', () => {
 });
 
 describe('media/imaging fileHasLocation', () => {
-  const withLocation = { gpsJpeg, iccGpsJpeg, gpsPng, xmpJpeg, gpsTiff, gpsOnPage2Tiff, turnedGpsTiff, xmpGif };
+  const withLocation = {
+    gpsJpeg, iccGpsJpeg, gpsPng, gpsWebp, gpsAvif, xmpJpeg, gpsTiff, gpsOnPage2Tiff, turnedGpsTiff, xmpGif
+  };
   const without = { plainJpeg, plainPng, plainTiff, twoPageTiff, mixedTiff, animatedGif, pdf };
 
   it('finds location data in EXIF, XMP, any TIFF page and GIF bytes, and none elsewhere', async () => {
@@ -384,6 +389,38 @@ describe('media/imaging processFile', () => {
     expect([original.format, original.width, original.height]).toEqual(['png', 400, 200]);
     expect(original.exif).toBeUndefined();
     expect(result.original.body.includes('eXIf')).toBe(false);
+  });
+
+  it('re-encodes a WebP with GPS EXIF as a WebP: no EXIF, so no GPS, and upright', async () => {
+    const before = await metadata(gpsWebp);
+    expect([before.format, before.orientation, hasGps(before.exif)]).toEqual(['webp', 6, true]);
+    const result = await processFile(gpsWebp);
+    expect(result.type).toBe(TYPES.get('webp'));
+    expect(result.original.reencoded).toBe(true);
+    const original = await metadata(result.original.body);
+    expect([original.format, original.width, original.height]).toEqual(['webp', 200, 400]);
+    expect(original.exif).toBeUndefined();
+    expect(original.orientation).toBeUndefined();
+    expect(sniff(result.original.body)).toBe(TYPES.get('webp'));
+    expect(await fileHasLocation(result.original.body)).toBe(false);
+    expect([result.width, result.height]).toEqual([200, 400]);
+    expect((await metadata(result.display)).format).toBe('webp');
+  });
+
+  it('re-encodes an AVIF with GPS EXIF as an AVIF, with no EXIF, so no GPS', async () => {
+    const before = await metadata(gpsAvif);
+    expect([before.format, hasGps(before.exif)]).toEqual(['heif', true]);
+    expect(sniff(gpsAvif)).toBe(TYPES.get('avif'));
+    const result = await processFile(gpsAvif);
+    expect(result.type).toBe(TYPES.get('avif'));
+    expect(result.original.reencoded).toBe(true);
+    const original = await metadata(result.original.body);
+    expect([original.format, original.width, original.height]).toEqual(['heif', 400, 200]);
+    expect(original.exif).toBeUndefined();
+    expect(sniff(result.original.body)).toBe(TYPES.get('avif'));
+    expect(await fileHasLocation(result.original.body)).toBe(false);
+    expect([result.width, result.height]).toEqual([400, 200]);
+    expect((await metadata(result.display)).format).toBe('webp');
   });
 
   it('shrinks the display image to DISPLAY_SIZE on the long edge, and the thumbnail to THUMB_SIZE', async () => {
