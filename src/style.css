@@ -30,6 +30,11 @@ body {
   background: transparent;
 }
 
+/* The tree takes focus only from script, when the "+" button goes from under it (signing out): no ring. */
+#cy:focus {
+  outline: none;
+}
+
 /* The editors' "+" button (familyTreeView.js), over the tree's "+" node, which draws the circle and the "+":
    the button is the touch target (at least 44px, sized in JS) and shows hover, focus and an open menu. */
 .tree-add-relative {
