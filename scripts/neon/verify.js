@@ -4,7 +4,7 @@ import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { ROOT, argValue, isMain, readJson } from './cli.js';
 import { readLegacyPeople } from './legacyData.js';
 import {
-  apiMatchesView, apiBodyView, hasNoteEmailsToMask, canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes,
+  apiMatchesView, apiBodyView, hasNoteEmailsToMask, livingLeaks, canonical, legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes,
   summarizeNotes, formatNotes, shuffled, touchedByEdits, countCheck
 } from './verifyCompare.js';
 import { BUCKET, MANIFEST_PATH } from './uploadMedia.js';
@@ -136,7 +136,11 @@ async function main() {
     const live = ids.filter(id => views.get(id));
     // Always include a few people whose notes the Function masks, so the masking path is exercised.
     const maskedIds = shuffled(live.filter(id => hasNoteEmailsToMask(views.get(id)))).slice(0, 3);
-    const sample = [...new Set([...shuffled(live).slice(0, apiSample), ...maskedIds])];
+    // And a few living people, and deceased people with photos of living relatives, so redaction is too (010).
+    const livingIds = shuffled(live.filter(id => views.get(id).person.living !== false)).slice(0, 3);
+    const sharedPhotoIds = shuffled(live.filter(id => views.get(id).person.living === false
+      && views.get(id).person.photos.some(photo => photo.people.some(p => p.living !== false)))).slice(0, 2);
+    const sample = [...new Set([...shuffled(live).slice(0, apiSample), ...maskedIds, ...livingIds, ...sharedPhotoIds])];
     console.log(`API sample (${sample.length}): ${sample.join(' ')}`);
     for (const id of sample) {
       const started = Date.now();
@@ -161,6 +165,7 @@ async function main() {
         continue;
       }
       const view = views.get(id);
+      for (const leak of livingLeaks(body, view)) problems.push(`api ${id}: ${leak}`);
       if (!apiMatchesView(body, view)) {
         problems.push(canonical(apiBodyView(body)) === canonical(view)
           ? `api ${id}: note emails served unmasked`

@@ -1,4 +1,4 @@
-import { maskNoteEmails } from '../../api/privacy.js';
+import { maskNoteEmails, redactLiving } from '../../api/privacy.js';
 
 // notes, occupations, censusRecords, residences, religion and education are left out: since the
 // 2026-10 facts backfill they are re-derived from gedcom_archive by the full parser and checked by
@@ -29,7 +29,54 @@ export function apiBodyView(body) {
 
 /** Whether an API body is what the Function should serve an anonymous caller for this person_view() document. */
 export function apiMatchesView(body, view) {
-  return canonical(apiBodyView(body)) === canonical(maskNoteEmails(view));
+  return canonical(apiBodyView(body)) === canonical(redactLiving(maskNoteEmails(view)));
+}
+
+// What a public body may show of a living person, written out here rather than taken from api/privacy.js,
+// so a mistake there is not repeated on both sides of the comparison.
+const PUBLIC_LIVING_PERSON = new Set(['id', 'name', 'givenName', 'surname', 'sex', 'parentIds', 'spouseIds', 'childIds',
+  'parentFamilies', 'marriages', 'photos', 'avatarKey', 'living', 'private']);
+const PUBLIC_LIVING_RELATIVE = new Set(['id', 'name', 'sex', 'parentIds', 'avatarKey', 'living', 'private']);
+const PUBLIC_PRIVATE_MARRIAGE = new Set(['spouseId', 'familyId', 'childIds']);
+
+/**
+ * Details of living people (by the database's own `living` flags in `view`) that an anonymous API body shows:
+ * [] when there are none. Checks the focus person, their relatives and every served photo independently of
+ * the redaction code.
+ */
+export function livingLeaks(body, view) {
+  const leaks = [];
+  const living = new Set([view.person, ...view.family].filter((record) => record.living !== false).map((record) => record.id));
+  const extra = (record, allowed) => Object.keys(record).filter((key) => !allowed.has(key)).sort();
+  const person = body.person ?? {};
+  if (living.has(view.person.id)) {
+    const shown = extra(person, PUBLIC_LIVING_PERSON);
+    if (shown.length) leaks.push(`living person shows ${shown.join(', ')}`);
+    if ((person.photos ?? []).length) leaks.push('living person shows photos');
+    if (person.avatarKey != null) leaks.push('living person shows an avatar');
+    for (const marriage of person.marriages ?? []) {
+      const dated = extra(marriage, PUBLIC_PRIVATE_MARRIAGE);
+      if (dated.length) leaks.push(`living person's marriage ${marriage.familyId} shows ${dated.join(', ')}`);
+    }
+  } else {
+    for (const marriage of person.marriages ?? []) {
+      if (marriage.spouseId == null || (!living.has(marriage.spouseId) && view.family.some((r) => r.id === marriage.spouseId))) continue;
+      const dated = extra(marriage, PUBLIC_PRIVATE_MARRIAGE);
+      if (dated.length) leaks.push(`marriage ${marriage.familyId} to a living spouse shows ${dated.join(', ')}`);
+    }
+  }
+  for (const relative of body.family ?? []) {
+    if (!living.has(relative.id)) continue;
+    const shown = extra(relative, PUBLIC_LIVING_RELATIVE);
+    if (shown.length) leaks.push(`living relative ${relative.id} shows ${shown.join(', ')}`);
+    if (relative.avatarKey != null) leaks.push(`living relative ${relative.id} shows an avatar`);
+  }
+  for (const photo of person.photos ?? []) {
+    const people = (view.person.photos ?? []).find((p) => p.id === photo.id)?.people ?? [];
+    const shownLiving = people.filter((p) => p.living !== false).map((p) => p.id);
+    if (shownLiving.length) leaks.push(`photo ${photo.id} shows living ${shownLiving.join(', ')}`);
+  }
+  return leaks;
 }
 
 /** Whether the Function would serve this person_view() document differently once note emails are masked. */
