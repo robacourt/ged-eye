@@ -330,7 +330,7 @@ function buildEditor(options, person, slot) {
   const eventsSection = section('Life events', 'person-editor-events',
     el('p', { class: 'editor-hint', text: `Dates are free text, ${DATE_HINT}.` }), ...events,
     el('div', { class: 'editor-grid' }, labelled('Living status', livingStatus, 'living_override').wrap),
-    el('p', { class: 'editor-hint', text: "The public sees only the names of living people. \"Work it out\" goes by the dates: anyone with no death record, born in the last 100 years or with no dates at all, counts as living." }));
+    el('p', { class: 'editor-hint', text: "The public sees only the names of living people. \"Work it out\" counts someone as living unless they have a death or burial record, or were born more than 100 years ago (estimated from close relatives when there's no birth date)." }));
 
   const factRows = el('div', { class: 'fact-rows' });
   const rowEditors = [];
