@@ -52,6 +52,19 @@ describe('validatePersonFields', () => {
     for (const sex of ['X', 'm', 'male', 1, true]) expect(invalidAt(() => validatePersonFields({ sex }))).toBe('sex');
   });
 
+  it('accepts living_override living, deceased or null, and an empty one as null', () => {
+    for (const living_override of ['living', 'deceased', null]) {
+      expect(validatePersonFields({ living_override })).toEqual({ living_override });
+    }
+    expect(validatePersonFields({ living_override: '' })).toEqual({ living_override: null });
+  });
+
+  it('refuses any other living_override', () => {
+    for (const living_override of ['Living', 'alive', 'dead', 1, true, ['living']]) {
+      expect(invalidAt(() => validatePersonFields({ living_override }))).toBe('living_override');
+    }
+  });
+
   it('refuses unknown fields, including the generated display_name', () => {
     expect(invalidAt(() => validatePersonFields({ display_name: 'X' }))).toBe('display_name');
     expect(invalidAt(() => validatePersonFields({ facts: {} }))).toBe('facts');
