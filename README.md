@@ -17,6 +17,7 @@ GedEye takes GEDCOM genealogy files and turns them into a beautiful, interactive
 - 🎯 **Interactive visualization** - Click any person to make them the focus
 - 🚀 **One request per person** - A Neon Function returns a person and their whole immediate family in a single call, and relatives are prefetched while you look
 - 🖼️ **Photos and avatars** - Served straight from a public Neon Object Storage bucket. Editors can upload photos, caption and tag them, and crop avatars ([Photos](#photos))
+- 🔒 **Privacy for living people** - The public sees living people by name only ([Living people](#living-people))
 - 🎨 **Modern UI** - Built with Cytoscape.js for smooth graph rendering
 - ⚡ **Fast** - Handles thousands of people without breaking a sweat
 - 🎭 **Gender color coding** - Blue for males, pink for females
@@ -177,10 +178,17 @@ Viewing stays public. Family members on the invite list can also sign in and edi
 
   The Contact fields (email and phone) are shown to everyone who views the tree, not only to editors, so enter only what you're happy to make public.
 - **Photos:** uploading, captions, tagging and avatars are covered under [Photos](#photos).
+- **Living status:** the person editor's **Living status** is "Work it out" by default, which shows what the site has worked out; choose Living or Deceased to override it ([Living people](#living-people)).
 - **History:** every edit is kept forever, with who made it and when. **History** (in the account menu, or "History of this person" in the details panel) lists everyone's changes. **Revert** undoes any change and **Restore** puts it back; both are recorded too, so nothing is ever lost. If later edits depend on it (someone has since edited the same field, or added a child to a family it created), Revert is refused and links to the changes in the way.
 - **Undo and redo:** Ctrl/Cmd+Z undoes your own latest edit, and Ctrl/Cmd+Shift+Z (or Ctrl+Y) redoes it. The message after each edit also has an Undo button.
 - **Two people editing one person:** the second save is refused ("Someone else changed this person"); reload to see their changes.
 - **Browsers:** sign-in uses a partitioned cookie on Neon's domain. Current Chrome, Edge, Firefox and Safari are fine. Browsers without partitioned cookies, such as older iOS Safari, can view the tree but not edit; the sign-in dialog says the cookie was blocked. A browser that blocks site storage (`localStorage`) can sign in, but is signed out again when the page reloads.
+
+### Living people
+
+Anyone who isn't an editor, signed in or not, sees a living person's name, sex and relationships, and "Details of living people are private." Dates, places, notes, facts, contact details, photos and avatar are hidden, and so are their birth date and avatar as someone else's relative, their years in search, any photo that shows them (on anyone's page), and the date and place of a marriage to them. Editors see everything. The `api` Function does this (`api/privacy.js`), from the `living` flags migration `010_living_privacy.sql` adds to each person view (spec: `specs/2026-10-10-living-privacy-design.md`).
+
+Someone counts as living unless an editor has set their Living status, they have any death or burial record, or they were born (or baptised) more than 100 years ago. Without a year, it is estimated from the nearest relatives with one, up to 3 steps away (25 years a generation), and someone with nothing to go on counts as living. Two things it doesn't cover: names of living people mentioned in a deceased person's notes or captions, and the pre-Neon data in this repository's git history.
 
 ### Developing the editing features
 
@@ -250,6 +258,7 @@ Editors can add photos to the tree from the website, on a phone or a computer. E
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeMedia.js    # health, auth, presigned PUT, processing, dedupe, avatars, the trigger
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePhotos.js   # the photo commands through both Functions, then undoes them
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeAccess.js   # an access request by dev-viewer, granted by dev-admin, with mail logged; then removes dev-viewer again
+  node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePrivacy.js  # a living person by name only for anonymous and dev-viewer, in full for dev-editor; search years; shared photos
   ```
 
   Each prints a PASS or FAIL line per check and exits non-zero on a failure. They leave their test objects in the branch's bucket, and `smokePhotos.js` leaves its changes in History.
