@@ -1,7 +1,7 @@
 /**
  * Smoke test of invites and access levels (spec: specs/2026-10-11-invites-design.md) against the api Function
  * deployed on a development branch, with mail only logged (deployed without the SMTP secrets). Signs in as the dev
- * admin and the dev viewer (not an editor), waits for the Function with the role route (old instances can serve for
+ * admin and the dev viewer (not an editor), waits for this version of the Function (old instances can serve for
  * some minutes after a deploy), then checks:
  *   - the admin invites the viewer as an editor, with a message: 201;
  *   - the viewer's /me is then 200 as an editor, and a second invite is 409 already_an_editor;
@@ -47,12 +47,15 @@ function branchApi() {
   return { env, api, auth: trimSlash(env.NEON_AUTH_BASE_URL) };
 }
 
-/** Waits until the admin's own role change is refused as cannot_change_self (old Functions have no such route: 404). */
-async function waitForRoleRoute(api, admin) {
+/**
+ * Waits until the Function is this version: an unknown path answers 404 no_route (older ones said not_found).
+ * → the last answer
+ */
+async function waitForFunction(api) {
   const started = Date.now();
   for (;;) {
-    const probe = await call('POST', rolePath(api, ADMIN), { token: admin, body: { role: 'admin' } });
-    if (probe.status === 409 || Date.now() - started > CONVERGE_WAIT_MS) return probe;
+    const probe = await call('GET', `${api}/no-such-route`);
+    if (probe.body?.error === 'no_route' || Date.now() - started > CONVERGE_WAIT_MS) return probe;
     console.log(`waiting for the new Function (${probe.status} ${codeOf(probe)})…`);
     await sleep(POLL_MS);
   }
@@ -96,9 +99,12 @@ async function main() {
   const admin = await signIn(auth, env.DEV_ADMIN_PASSWORD, ADMIN);
   if (!viewer || !admin) return;
 
-  const probe = await waitForRoleRoute(api, admin);
-  if (!check("the admin's own role change is 409 cannot_change_self", probe.status === 409 && probe.body?.error === 'cannot_change_self',
-    `${probe.status} ${codeOf(probe)}`)) return;
+  const version = await waitForFunction(api);
+  if (!check('an unknown path is 404 no_route (the Function is this version)', version.status === 404 && version.body?.error === 'no_route',
+    `${version.status} ${codeOf(version)}`)) return;
+  const self = await call('POST', rolePath(api, ADMIN), { token: admin, body: { role: 'admin' } });
+  if (!check("the admin's own role change is 409 cannot_change_self", self.status === 409 && self.body?.error === 'cannot_change_self',
+    `${self.status} ${codeOf(self)}`)) return;
 
   const before = await call('GET', `${api}/me`, { token: viewer });
   if (!check('viewer GET /me is 403 not_an_editor to start with', before.status === 403 && before.body?.error === 'not_an_editor', meDetail(before))) return;
