@@ -77,17 +77,19 @@ describe.skipIf(!url)('person_view (database)', () => {
       photos: [
         {
           id: 2, key: 'originals/bbb.docx', thumbKey: null, displayKey: null, fileName: 'b.docx', contentType: 'application/msword',
-          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith' }]
+          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith', living: true }]
         },
         {
           id: 1, key: 'originals/aaa.jpg', thumbKey: 'thumbs/aaa.webp', displayKey: null, fileName: 'a.jpg', contentType: 'image/jpeg',
-          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith' }]
+          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith', living: true }]
         }
       ],
       parentIds: ['I1', 'I2'],
       spouseIds: ['I7', 'I9'],
       childIds: ['I8'],
       avatarKey: 'avatars/c.jpg',
+      living: true, // born about 1930
+      livingEstimate: true,
       updatedAt: expect.stringMatching(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}Z$/),
       parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I4', 'I3'] }],
       marriages: [
@@ -102,7 +104,8 @@ describe.skipIf(!url)('person_view (database)', () => {
   it('returns slim relative records', async () => {
     const { family } = await view('I3');
     expect(family.find(m => m.id === 'I6')).toEqual({
-      id: 'I6', name: 'Fred Smith', sex: 'M', birthDate: null, avatarKey: null, parentIds: ['I1', 'I5']
+      id: 'I6', name: 'Fred Smith', sex: 'M', birthDate: null, avatarKey: null, parentIds: ['I1', 'I5'],
+      living: false // estimated from his father, born 1900
     });
   });
 
