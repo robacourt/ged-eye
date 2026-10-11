@@ -28,6 +28,8 @@ const CORE_FIELDS = {
 
 const EVENT_LABELS = { birth: 'Birth', baptism: 'Baptism', death: 'Death', burial: 'Burial' };
 const SEX_OPTIONS = [['', 'Not recorded'], ['M', 'Male'], ['F', 'Female'], ['U', 'Unknown']];
+/** "Work it out" is null: the server decides from the dates (person_living_estimate); the others override it. */
+const LIVING_ESTIMATE_LABELS = { true: 'Living', false: 'Deceased' };
 const KIND_OPTIONS = [['occupation', 'Occupation'], ['residence', 'Residence'], ['census', 'Census'], ['other', 'Other']];
 const VALUE_LABELS = { occupation: 'Occupation', residence: 'Address', census: 'Details', other: 'Details' };
 
@@ -317,8 +319,18 @@ function buildEditor(options, person, slot) {
         event === 'death' ? labelled('Cause of death', cause, 'cause_of_death').wrap : null),
       eventNotes[event].element);
   });
+  // Whether someone counts as living decides what the public sees of them (api/privacy.js).
+  const livingStatus = el('select', { class: 'editor-input', name: 'living_override' });
+  const estimate = LIVING_ESTIMATE_LABELS[person.livingEstimate];
+  for (const [value, label] of [['', estimate ? `Work it out (currently: ${estimate})` : 'Work it out'],
+    ['living', 'Living'], ['deceased', 'Deceased']]) {
+    livingStatus.append(el('option', { value, text: label }));
+  }
+  livingStatus.value = person.livingOverride ?? '';
   const eventsSection = section('Life events', 'person-editor-events',
-    el('p', { class: 'editor-hint', text: `Dates are free text, ${DATE_HINT}.` }), ...events);
+    el('p', { class: 'editor-hint', text: `Dates are free text, ${DATE_HINT}.` }), ...events,
+    el('div', { class: 'editor-grid' }, labelled('Living status', livingStatus, 'living_override').wrap),
+    el('p', { class: 'editor-hint', text: "The public sees only the names of living people. \"Work it out\" goes by the dates: anyone with no death record, born in the last 100 years or with no dates at all, counts as living." }));
 
   const factRows = el('div', { class: 'fact-rows' });
   const rowEditors = [];
@@ -462,6 +474,7 @@ function buildEditor(options, person, slot) {
       const { touched, value } = readFilled(inputs[field]);
       if (touched && value !== (before ?? '')) changed[field] = value;
     }
+    if ((livingStatus.value || null) !== (person.livingOverride || null)) changed.living_override = livingStatus.value || null;
     return changed;
   }
 

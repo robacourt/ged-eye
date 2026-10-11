@@ -166,6 +166,49 @@ describe('openPersonEditor: saving', () => {
     expect(sent()[1].fields).toEqual({ sex: null });
   });
 
+  describe('living status', () => {
+    const options = () => [...field('living_override').options].map(option => [option.value, option.textContent]);
+
+    it('offers "work it out" with the current estimate, Living and Deceased', async () => {
+      await open({ livingEstimate: false });
+      expect(options()).toEqual([['', 'Work it out (currently: Deceased)'], ['living', 'Living'], ['deceased', 'Deceased']]);
+      expect(field('living_override').value).toBe('');
+    });
+
+    it('starts from the override, still labelling "work it out" with the estimate', async () => {
+      await open({ livingEstimate: true, livingOverride: 'deceased' });
+      expect(options()[0][1]).toBe('Work it out (currently: Living)');
+      expect(field('living_override').value).toBe('deceased');
+    });
+
+    it('says only "work it out" when the view has no estimate', async () => {
+      await open();
+      expect(options()[0]).toEqual(['', 'Work it out']);
+    });
+
+    it('sends living_override only when it changed, with null for "work it out"', async () => {
+      await open({ livingEstimate: true });
+      change(field('living_override'), 'deceased');
+      await save();
+      expect(sent()[1].fields).toEqual({ living_override: 'deceased' });
+
+    });
+
+    it('sends null when an override is put back to "work it out"', async () => {
+      await open({ livingEstimate: true, livingOverride: 'living' });
+      change(field('living_override'), '');
+      await save();
+      expect(sent()[1].fields).toEqual({ living_override: null });
+    });
+
+    it('sends nothing for it when it is unchanged', async () => {
+      await open({ livingEstimate: true, livingOverride: 'living' });
+      change(field('given_name'), 'Rosie');
+      await save();
+      expect(sent()[1].fields).toEqual({ given_name: 'Rosie' });
+    });
+  });
+
   it('sends the whole facts object when a fact changed, keeping the untouched old shapes', async () => {
     await open();
     change($('.person-editor-notes .editor-note textarea'), 'A changed note\n\n');

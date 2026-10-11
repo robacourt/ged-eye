@@ -754,6 +754,14 @@ body {
   text-transform: uppercase;
 }
 
+/* A living person's details are hidden from the public (api/privacy.js); this says so under the name. */
+.person-private-note {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+}
+
 .person-photos-row {
   display: flex;
   gap: 10px;

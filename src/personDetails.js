@@ -360,6 +360,8 @@ export class PersonDetails {
         ${edit ? edit.editPerson() : ''}
       </div>
     `;
+    // The API hides a living person's details from anyone who isn't an editor (api/privacy.js redactLiving).
+    if (personData.private) html += '<p class="person-private-note">Details of living people are private.</p>';
 
     // Up to 4 thumbnails, the 4th with "+N" when there are more; editors who can upload also get the Add tile,
     // even when there are no photos yet.

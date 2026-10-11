@@ -244,3 +244,18 @@ describe('photo command params', () => {
     expect(() => validate('remove_photo', removePhotoParams('I7', { key: 'originals/x.jpg' }))).toThrow(/mediaId/);
   });
 });
+
+// The person editor's living status: the values its select sends (personEditor.js), as update_person's field.
+describe('update_person: living status', () => {
+  const params = (living_override) => ({ id: 'I7', expectedUpdatedAt: '2026-10-09T12:00:00.123456Z', fields: { living_override } });
+
+  it('accepts each value the editor sends: living, deceased, and null for "work it out"', () => {
+    for (const value of ['living', 'deceased', null]) {
+      expect(validate('update_person', params(value)).fields).toEqual({ living_override: value });
+    }
+  });
+
+  it('refuses anything else', () => {
+    expect(() => validate('update_person', params('alive'))).toThrow();
+  });
+});
