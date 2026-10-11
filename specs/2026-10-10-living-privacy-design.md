@@ -35,6 +35,8 @@ Migration 010 redefines two functions, each a verbatim copy of its latest versio
 
 So every record in a view carries `living`: the focus, their relatives, and the people tagged in photos.
 
+**Revision 3 (code review, 2026-10-11), migration 011:** for the 100-year line, a date's year is its **latest** year (`living_year()`: 'BET 1920 AND 1935' gives 1935), and a date that is only a lower bound ('AFT 1920', 'FROM 1920') gives no year, so relatives decide. Half-siblings from a parent's other family count at the **first** step, with the parents. `gedcom_year()` (earliest year) still orders families.
+
 ## What the public sees
 
 The `api` Function applies a new `redactLiving(view)` in `api/privacy.js` to every non-editor response, after `maskNoteEmails`.

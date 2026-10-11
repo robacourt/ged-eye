@@ -23,6 +23,12 @@ const PEOPLE = [
   ['Y0', { birth_date: `ABT ${CUTOFF - 1}` }],
   ['Y1', { birth_date: `1 JAN ${CUTOFF}` }],
   ['BAP', { baptism_date: String(CUTOFF - 1) }],
+  // Ranges go by their latest year (011); a lower bound alone is no year, so relatives decide.
+  ['RANGE', { birth_date: `BET ${CUTOFF - 10} AND ${CUTOFF + 5}` }],
+  ['FROMTO', { birth_date: `FROM ${CUTOFF - 10} TO ${CUTOFF}` }],
+  ['BEFORE', { birth_date: `BEF ${CUTOFF - 1}` }],
+  ['AFTER', { birth_date: '1800' }], ['AFTKID', { birth_date: 'AFT 1820' }],
+  ['AFTALONE', { birth_date: 'AFT 1800' }],
   // No data, and nobody near.
   ['NONE', {}],
   // Estimates at distance 1: parent (+25), child (-25), spouse and sibling (0).
@@ -41,8 +47,9 @@ const PEOPLE = [
   ['MUM', { birth_date: '1800' }], ['DAD', { birth_date: String(CUTOFF - 20) }], ['LATE', {}],
   // The nearest level wins over a later year further out.
   ['NPAR', { birth_date: '1850' }], ['NEAR', {}], ['NSIB', {}], ['NNIECE', { birth_date: '2000' }],
-  // Half-sibling (other child of a parent's other family), found at distance 2.
+  // Half-siblings (other children of a parent's other family) count at the first step, with the parents (011).
   ['HP', {}], ['HM1', {}], ['HM2', {}], ['HALF', {}], ['HALFSIB', { birth_date: String(CUTOFF - 1) }],
+  ['OLDDAD', { birth_date: String(CUTOFF - 80) }], ['MUM1', {}], ['MUM2', {}], ['YOUNGEST', {}], ['HALFY', { birth_date: String(CUTOFF + 10) }],
   // Photo people and relatives in a view.
   ['PH', { birth_date: '1850', death_date: '1920' }]
 ];
@@ -60,7 +67,9 @@ const FAMILIES = [
   ['F_GGG', 'GGG', null, ['GG4']], ['F_GG4', 'GG4', null, ['G4']], ['F_G4', 'G4', null, ['P4']], ['F_P4', 'P4', null, ['ME4']],
   ['F_LATE', 'DAD', 'MUM', ['LATE']],
   ['F_NEAR', 'NPAR', null, ['NEAR', 'NSIB']], ['F_NSIB', 'NSIB', null, ['NNIECE']],
-  ['F_H1', 'HP', 'HM1', ['HALF']], ['F_H2', 'HP', 'HM2', ['HALFSIB']]
+  ['F_H1', 'HP', 'HM1', ['HALF']], ['F_H2', 'HP', 'HM2', ['HALFSIB']],
+  ['F_OD1', 'OLDDAD', 'MUM1', ['YOUNGEST']], ['F_OD2', 'OLDDAD', 'MUM2', ['HALFY']],
+  ['F_AFTER', 'AFTER', null, ['AFTKID']]
 ];
 
 function fixtureSql() {
@@ -117,6 +126,24 @@ describe.skipIf(!url)('living people (database)', () => {
     expect(await living('BAP')).toBe(false);
   });
 
+  it('goes by the latest year of a range, and estimates from relatives when the date is only a lower bound', async () => {
+    expect(await living('RANGE')).toBe(true);
+    expect(await living('FROMTO')).toBe(true);
+    expect(await living('BEFORE')).toBe(false);
+    expect(await living('AFTKID')).toBe(false); // 'AFT 1820': its parent, born 1800, gives 1825
+    expect(await living('AFTALONE')).toBe(true); // 'AFT 1800' with nobody near: nothing to go on
+  });
+
+  it('reads living years from date text: the latest year, none for a lower bound', async () => {
+    const year = async (d) => (await client.query('select living_year($1) as y', [d])).rows[0].y;
+    const cases = [
+      ['12 MAR 1901', 1901], ['BET 1855 AND 1856', 1856], ['FROM 1920 TO 1930', 1930], ['BEF 1935', 1935],
+      ['ABT 1850', 1850], ['12.2.1877', 1877], ['11 FEB 1671/72', 1671], ['AFT 1920', null], ['aft 1920', null],
+      ['FROM 1920', null], ['yes', null], [null, null]
+    ];
+    for (const [d, y] of cases) expect([d, await year(d)]).toEqual([d, y]);
+  });
+
   it('counts someone with nothing to go on as living', async () => {
     expect(await living('NONE')).toBe(true);
   });
@@ -142,8 +169,10 @@ describe.skipIf(!url)('living people (database)', () => {
     expect(await living('NEAR')).toBe(false); // parent 1850 at 1 beats a niece born 2000 at 2
   });
 
-  it('reaches a half-sibling through the shared parent', async () => {
+  it('counts half-siblings at the first step, with the parents', async () => {
     expect(await living('HALF')).toBe(false);
+    // Father CUTOFF-80 gives CUTOFF-55; a half-sibling born CUTOFF+10 at the same step is later, so living.
+    expect(await living('YOUNGEST')).toBe(true);
   });
 
   it('adds living, livingEstimate and livingOverride to person_record', async () => {
