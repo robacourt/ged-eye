@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, vi } from 'vitest';
 import nodemailer from 'nodemailer';
-import { SITE_URL, createMailer, grantedEmail, isSafeAddress, requestEmail, sanitizeName } from '../api/mailer.js';
+import { SITE_URL, createMailer, grantedEmail, inviteEmail, isSafeAddress, requestEmail, sanitizeName } from '../api/mailer.js';
 
 const REQUEST = {
   id: 5,
@@ -133,6 +133,44 @@ describe('grantedEmail', () => {
 
   it('refuses an unsafe recipient', () => {
     expect(() => grantedEmail({ to: 'a@example.test, b@example.test' })).toThrow(/address/);
+  });
+});
+
+describe('inviteEmail', () => {
+  const inviter = { email: 'admin@example.test', name: 'Ada Admin' };
+
+  it('says who invited them, as what, with what it allows, and how to sign in', () => {
+    expect(inviteEmail({ to: 'ann@example.test', role: 'editor', inviter, siteUrl: SITE_URL })).toEqual({
+      to: 'ann@example.test',
+      subject: "You're invited to the A'Court family tree",
+      text: [
+        "Ada Admin (admin@example.test) has invited you to the A'Court family tree, as an editor.",
+        'You can add and change people, relationships and photos. Every change is kept and can be undone.',
+        '',
+        "To start, sign in as ann@example.test: with Google if it's a Google account, or with a code we email to that address.",
+        `${SITE_URL}?invite`,
+        ''
+      ].join('\n')
+    });
+  });
+
+  it('describes the admin level, and includes the message as written', () => {
+    const { text } = inviteEmail({ to: 'ann@example.test', role: 'admin', inviter, message: 'Welcome aboard!\nLove, Ada' });
+    expect(text).toContain('as an admin.\nYou can add and change people, relationships and photos, and invite people and change their access too.');
+    expect(text).toContain('Their message, as written by them:\nWelcome aboard!\nLove, Ada\n\nTo start');
+  });
+
+  it('names the inviter by email alone when they have no usable name, and cleans a name', () => {
+    expect(inviteEmail({ to: 'ann@example.test', role: 'editor', inviter: { email: 'admin@example.test', name: null } }).text)
+      .toMatch(/^admin@example\.test has invited you/);
+    expect(inviteEmail({ to: 'ann@example.test', role: 'editor', inviter: { email: 'admin@example.test', name: 'Ada\r\nBcc: x@example.test' } }).text)
+      .toMatch(/^Ada Bcc: x@example\.test \(admin@example\.test\) has invited you/);
+  });
+
+  it('refuses unsafe addresses and unknown levels', () => {
+    expect(() => inviteEmail({ to: 'a@example.test, b@example.test', role: 'editor', inviter })).toThrow(/address/);
+    expect(() => inviteEmail({ to: 'ann@example.test', role: 'editor', inviter: { email: '<x@example.test>' } })).toThrow(/address/);
+    expect(() => inviteEmail({ to: 'ann@example.test', role: 'owner', inviter })).toThrow(/level/);
   });
 });
 

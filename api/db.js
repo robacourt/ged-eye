@@ -223,6 +223,25 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
       });
     },
 
+    /**
+     * Sets an editor's role. → { outcome: 'changed' | 'unchanged' | 'not_found' | 'not_an_admin' (`by` isn't, or
+     * is no longer, an admin) | 'last_admin', editor: the editor after (changed or unchanged), else null }
+     */
+    changeEditorRole(email, role, by) {
+      return inTransaction(pool, async (client) => {
+        // The admin rows locked in a fixed order, as removeEditor does, so two admins can't demote each other at once.
+        const { rows: admins } = await client.query("select email from editor where role = 'admin' order by email for update");
+        if (!admins.some((row) => row.email === by)) return { outcome: 'not_an_admin', editor: null };
+        const { rows: [target] } = await client.query(`select ${EDITOR_COLUMNS} from editor where email = $1 for update`, [email]);
+        if (!target) return { outcome: 'not_found', editor: null };
+        if (target.role === role) return { outcome: 'unchanged', editor: editorFromRow(target) };
+        if (target.role === 'admin' && admins.length <= 1) return { outcome: 'last_admin', editor: null };
+        const { rows: [row] } = await client.query(
+          `update editor set role = $2 where email = $1 returning ${EDITOR_COLUMNS}`, [email, role]);
+        return { outcome: 'changed', editor: editorFromRow(row) };
+      });
+    },
+
     /** → 'removed' | 'not_found' | 'not_an_admin' (`by` isn't, or is no longer, an admin) | 'last_admin' */
     removeEditor(email, by) {
       return inTransaction(pool, async (client) => {

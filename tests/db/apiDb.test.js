@@ -173,6 +173,59 @@ describe.skipIf(!url)('api/db.js (database)', { timeout: 30000 }, () => {
       const left = await Promise.all(['a@example.test', 'b@example.test'].map((email) => db.lookupEditor(email)));
       expect(left.filter(Boolean)).toHaveLength(1);
     });
+
+    describe('changeEditorRole', () => {
+      const outcome = async (...args) => (await db.changeEditorRole(...args)).outcome;
+
+      it('changes a role both ways, and answers the same role as unchanged', async () => {
+        const promoted = await db.changeEditorRole('ed@example.test', 'admin', OWNER);
+        expect(promoted).toMatchObject({ outcome: 'changed', editor: { email: 'ed@example.test', name: 'Ed', role: 'admin', addedBy: OWNER } });
+        expect((await db.lookupEditor('ed@example.test')).role).toBe('admin');
+        expect(await db.changeEditorRole('ed@example.test', 'admin', OWNER)).toMatchObject({ outcome: 'unchanged', editor: { role: 'admin' } });
+        expect(await outcome('ed@example.test', 'editor', OWNER)).toBe('changed');
+        expect((await db.lookupEditor('ed@example.test')).role).toBe('editor');
+      });
+
+      it('reports an unknown editor, and refuses a changer who is not an admin', async () => {
+        expect(await db.changeEditorRole('nobody@example.test', 'admin', OWNER)).toEqual({ outcome: 'not_found', editor: null });
+        expect(await outcome('ed@example.test', 'admin', 'ed@example.test')).toBe('not_an_admin');
+        expect(await outcome('ed@example.test', 'admin', 'nobody@example.test')).toBe('not_an_admin');
+        expect((await db.lookupEditor('ed@example.test')).role).toBe('editor');
+      });
+
+      it('never makes the last admin an editor', async () => {
+        for (const email of ['a@example.test', 'b@example.test']) {
+          if (await db.lookupEditor(email)) expect(await db.removeEditor(email, OWNER)).toBe('removed');
+        }
+        expect(await outcome(OWNER, 'editor', OWNER)).toBe('last_admin');
+        expect((await db.lookupEditor(OWNER)).role).toBe('admin');
+      });
+
+      it('lets exactly one of two admins demoting each other at once succeed, without deadlock', async () => {
+        await db.addEditor({ email: 'c@example.test', name: 'C', role: 'admin' }, OWNER);
+        await db.addEditor({ email: 'd@example.test', name: 'D', role: 'admin' }, OWNER);
+        const blocker = await pool.connect();
+        try {
+          await blocker.query('begin');
+          await blocker.query("select email from editor where role = 'admin' for update");
+          const changes = Promise.all([outcome('d@example.test', 'editor', 'c@example.test'), outcome('c@example.test', 'editor', 'd@example.test')]);
+          for (let waited = 0; ; waited += 50) {
+            const { n } = (await client.query(`select count(*)::int as n from pg_stat_activity
+              where datname = current_database() and wait_event_type = 'Lock' and query like '%for update%'`)).rows[0];
+            if (n === 2) break;
+            if (waited > 10000) throw new Error(`expected 2 changes waiting on the lock, saw ${n}`);
+            await sleep(50);
+          }
+          await blocker.query('commit');
+          expect((await changes).sort()).toEqual(['changed', 'not_an_admin']);
+        } finally {
+          await blocker.query('rollback').catch(() => {});
+          blocker.release();
+        }
+        const roles = await Promise.all(['c@example.test', 'd@example.test'].map(async (email) => (await db.lookupEditor(email)).role));
+        expect(roles.sort()).toEqual(['admin', 'editor']);
+      });
+    });
   });
 
   describe('inTransaction', () => {

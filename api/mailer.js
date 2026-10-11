@@ -1,7 +1,8 @@
 /**
- * Mail for edit access requests (spec: specs/2026-10-10-access-requests-design.md, "Mail"): the message
- * builders, which are pure, and createMailer, which sends through Gmail when SMTP_USER and SMTP_PASS are
- * set and otherwise only logs. Importing this module has no side effects.
+ * Mail for edit access requests (spec: specs/2026-10-10-access-requests-design.md, "Mail") and invites
+ * (specs/2026-10-11-invites-design.md): the message builders, which are pure, and createMailer, which sends
+ * through Gmail when SMTP_USER and SMTP_PASS are set and otherwise only logs. Importing this module has no
+ * side effects.
  *
  * Every message is plain text. Headers are built only from fixed text and addresses that pass
  * isSafeAddress, so nothing a user typed (a name or note) can reach them.
@@ -93,6 +94,37 @@ export function grantedEmail({ to, siteUrl = SITE_URL }) {
     ''
   ].join('\n');
   return { to, subject: `You can now edit ${TREE}`, text };
+}
+
+/** What each access level allows, for the invite. */
+const LEVELS = {
+  editor: { name: 'an editor', allows: 'You can add and change people, relationships and photos. Every change is kept and can be undone.' },
+  admin: { name: 'an admin', allows: 'You can add and change people, relationships and photos, and invite people and change their access too.' }
+};
+
+/**
+ * The invite to someone just added to the editors list. `inviter` is the admin ({ email, name }), `role` the
+ * invited person's ('editor' | 'admin'), `message` the admin's optional note. → { to, subject, text }; throws for
+ * an unsafe address or an unknown role.
+ */
+export function inviteEmail({ to, role, inviter, message = null, siteUrl = SITE_URL }) {
+  assertSafeAddress(to);
+  assertSafeAddress(inviter.email);
+  const level = LEVELS[role];
+  if (!level) throw new Error('mail: unknown access level');
+  const name = sanitizeName(inviter.name);
+  const lines = [
+    `${name ? `${name} (${inviter.email})` : inviter.email} has invited you to ${TREE}, as ${level.name}.`,
+    level.allows,
+    ''
+  ];
+  if (message) lines.push('Their message, as written by them:', message, '');
+  lines.push(
+    `To start, sign in as ${to}: with Google if it's a Google account, or with a code we email to that address.`,
+    new URL('?invite', siteUrl).href,
+    ''
+  );
+  return { to, subject: `You're invited to ${TREE}`, text: lines.join('\n') };
 }
 
 /**

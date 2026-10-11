@@ -6,7 +6,7 @@ import { AuthError, authenticatorFromEnv } from '../api/auth.js';
 import { maskNoteEmails, redactLiving, redactSearchResult } from '../api/privacy.js';
 import { ACCESS_REQUEST_LOCK, createDb, escapeLike } from '../api/db.js';
 import { inTransaction } from '../api/tx.js';
-import { SITE_URL, grantedEmail, requestEmail, sanitizeName } from '../api/mailer.js';
+import { SITE_URL, grantedEmail, inviteEmail, requestEmail, sanitizeName } from '../api/mailer.js';
 
 const VIEW = {
   person: { id: 'I1', notes: ['Write to jo@example.org'], living: false },
@@ -63,6 +63,7 @@ function fakeDb(overrides = {}) {
     listEditors: vi.fn(async () => Object.values(EDITORS)),
     addEditor: vi.fn(async (editor, by) => ({ ...editor, addedBy: by, addedAt: '2026-10-09T10:00:00.000Z' })),
     removeEditor: vi.fn(async () => 'removed'),
+    changeEditorRole: vi.fn(async (email, role) => ({ outcome: 'changed', editor: { ...EDITORS[email], role } })),
     runChange: vi.fn(async () => ({ change: CHANGE, view: VIEW })),
     toggle: vi.fn(async () => CHANGE),
     undoLast: vi.fn(async () => CHANGE),
@@ -426,7 +427,8 @@ describe('editors routes', () => {
   const routes = [
     ['/editors', 'GET'],
     ['/editors', 'POST', { email: 'new@example.test' }],
-    ['/editors/editor%40example.test', 'DELETE']
+    ['/editors/editor%40example.test', 'DELETE'],
+    ['/editors/editor%40example.test/role', 'POST', { role: 'admin' }]
   ];
 
   it('are for admins only', async () => {
@@ -443,6 +445,7 @@ describe('editors routes', () => {
     expect(db.listEditors).not.toHaveBeenCalled();
     expect(db.addEditor).not.toHaveBeenCalled();
     expect(db.removeEditor).not.toHaveBeenCalled();
+    expect(db.changeEditorRole).not.toHaveBeenCalled();
   });
 
   it('lists editors', async () => {
@@ -489,11 +492,120 @@ describe('editors routes', () => {
     expect(db.addEditor).not.toHaveBeenCalled();
   });
 
-  it('refuses to add someone who is already an editor', async () => {
-    const { request } = setup({ addEditor: vi.fn().mockResolvedValue(null) });
+  it('refuses to add someone who is already an editor, and emails nobody', async () => {
+    const { request, waitUntil } = setup({ addEditor: vi.fn().mockResolvedValue(null) });
     const res = await request('/editors', { method: 'POST', token: 'admin', body: { email: 'editor@example.test' } });
     expect(res.status).toBe(409);
     expect(await res.json()).toEqual({ error: 'already_an_editor', email: 'editor@example.test' });
+    expect(waitUntil).not.toHaveBeenCalled();
+  });
+
+  describe('invites', () => {
+    it('emails the person invited, after the response, from the inviting admin, with their message', async () => {
+      const { request, mailer, waitUntil } = setup();
+      const res = await request('/editors', {
+        method: 'POST', token: 'admin', body: { email: 'New@example.test', role: 'admin', message: '  Welcome!\nAda  ' }
+      });
+      expect(res.status).toBe(201);
+      await scheduledMail(waitUntil);
+      expect(mailer.send).toHaveBeenCalledTimes(1);
+      expect(mailer.send).toHaveBeenCalledWith(inviteEmail({
+        to: 'new@example.test', role: 'admin', inviter: { email: 'admin@example.test', name: 'Ada Admin' }, message: 'Welcome!\nAda'
+      }));
+    });
+
+    it('sends no message line without a message, and treats a blank one as none', async () => {
+      for (const message of [undefined, null, '   ']) {
+        const { request, mailer, waitUntil } = setup();
+        await request('/editors', { method: 'POST', token: 'admin', body: { email: 'new@example.test', message } });
+        await scheduledMail(waitUntil);
+        expect(mailer.send.mock.calls[0][0].text).not.toContain('Their message');
+      }
+    });
+
+    it('logs a failed invite without failing the response', async () => {
+      const { request, mailer, waitUntil, log } = setup();
+      mailer.send.mockRejectedValue(new Error('smtp down'));
+      const res = await request('/editors', { method: 'POST', token: 'admin', body: { email: 'new@example.test' } });
+      expect(res.status).toBe(201);
+      await scheduledMail(waitUntil);
+      expect(log).toHaveBeenCalledWith('could not send the invite mail to', 'new@example.test', expect.any(Error));
+    });
+
+    it('validates the message, and refuses addresses the mailer would not send to', async () => {
+      const { request, db } = setup();
+      const cases = [
+        [{ email: 'x@example.test', message: 7 }, 'message'],
+        [{ email: 'x@example.test', message: 'm'.repeat(501) }, 'message'],
+        [{ email: 'x@example.test', message: 'a\u0000b' }, 'message'],
+        [{ email: 'a"b@example.test' }, 'email'],
+        [{ email: 'a<b@example.test' }, 'email']
+      ];
+      for (const [body, field] of cases) {
+        const res = await request('/editors', { method: 'POST', token: 'admin', body });
+        expect(res.status).toBe(400);
+        expect(await res.json()).toMatchObject({ error: 'invalid', field });
+      }
+      expect(db.addEditor).not.toHaveBeenCalled();
+      expect((await request('/editors', { method: 'POST', token: 'admin', body: { email: 'x@example.test', message: 'm'.repeat(500) } })).status).toBe(201);
+    });
+  });
+
+  describe('changing access', () => {
+    const change = (request, email, body, token = 'admin') =>
+      request(`/editors/${encodeURIComponent(email)}/role`, { method: 'POST', token, body });
+
+    it("changes someone's role, normalising the email in the path", async () => {
+      const { request, db, waitUntil } = setup();
+      const res = await change(request, 'Editor@Example.test', { role: 'admin' });
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({ editor: { ...EDITORS['editor@example.test'], role: 'admin' } });
+      expect(db.changeEditorRole).toHaveBeenCalledWith('editor@example.test', 'admin', 'admin@example.test');
+      expect(waitUntil).not.toHaveBeenCalled(); // no email for a change of level
+    });
+
+    it('answers an unchanged role with the editor as they are', async () => {
+      const { request } = setup({ changeEditorRole: vi.fn().mockResolvedValue({ outcome: 'unchanged', editor: EDITORS['editor@example.test'] }) });
+      const res = await change(request, 'editor@example.test', { role: 'editor' });
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual({ editor: EDITORS['editor@example.test'] });
+    });
+
+    it('refuses an unknown role, or none', async () => {
+      const { request, db } = setup();
+      for (const body of [{ role: 'owner' }, {}, { role: null }]) {
+        const res = await change(request, 'editor@example.test', body);
+        expect(res.status).toBe(400);
+        expect(await res.json()).toMatchObject({ error: 'invalid', field: 'role' });
+      }
+      expect(db.changeEditorRole).not.toHaveBeenCalled();
+    });
+
+    it("does not let an admin change their own access", async () => {
+      const { request, db } = setup();
+      const res = await change(request, 'ADMIN@example.test', { role: 'editor' });
+      expect(res.status).toBe(409);
+      expect(await res.json()).toEqual({ error: 'cannot_change_self', message: "You can't change your own access." });
+      expect(db.changeEditorRole).not.toHaveBeenCalled();
+    });
+
+    it('maps the database refusals: last admin, unknown editor, no longer an admin', async () => {
+      const cases = [['last_admin', 409, 'last_admin'], ['not_found', 404, 'not_found'], ['not_an_admin', 403, 'not_an_admin']];
+      for (const [outcome, status, error] of cases) {
+        const { request } = setup({ changeEditorRole: vi.fn().mockResolvedValue({ outcome, editor: null }) });
+        const res = await change(request, 'other-admin@example.test', { role: 'editor' });
+        expect(res.status).toBe(status);
+        expect(await res.json()).toMatchObject({ error });
+      }
+    });
+
+    it('rejects a malformed email in the path', async () => {
+      const { request, db } = setup();
+      const res = await request('/editors/%E0%A4%A/role', { method: 'POST', token: 'admin', body: { role: 'admin' } });
+      expect(res.status).toBe(400);
+      expect(await res.json()).toMatchObject({ error: 'invalid', field: 'email' });
+      expect(db.changeEditorRole).not.toHaveBeenCalled();
+    });
   });
 
   it('removes an editor', async () => {
