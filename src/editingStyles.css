@@ -997,6 +997,13 @@
   font-size: 14px;
 }
 
+/* Someone else's access level, changed in place (16px, from .editor-input, so iOS doesn't zoom in). */
+.editors-role-select {
+  width: auto;
+  min-height: 36px;
+  padding: 4px 8px;
+}
+
 .editors-confirm,
 .editors-row-error {
   flex-basis: 100%;

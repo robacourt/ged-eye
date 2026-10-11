@@ -181,8 +181,17 @@ export function createEditApi(options) {
     /** Admins only. → `[{ email, name, role, addedBy, addedAt }]`. */
     listEditors: async () => (await authedFetch('/editors')).editors,
 
-    /** Admins only. → the new editor. */
-    addEditor: async ({ email, name, role }) => (await post('/editors', { email, name, role })).editor,
+    /**
+     * Admins only: invites someone, adding them to the editors list; the server emails them, with `message` if
+     * there is one (sent only then). → the new editor.
+     */
+    async addEditor({ email, name, role, message }) {
+      const body = { email, name, role, ...(typeof message === 'string' && message !== '' ? { message } : {}) };
+      return (await post('/editors', body)).editor;
+    },
+
+    /** Admins only: sets an editor's role ('editor' | 'admin'). → the editor after. */
+    changeEditorRole: async (email, role) => (await post(`/editors/${encodeURIComponent(email)}/role`, { role })).editor,
 
     /** Admins only. */
     async removeEditor(email) {
@@ -239,6 +248,7 @@ export const {
   me,
   listEditors,
   addEditor,
+  changeEditorRole,
   removeEditor,
   requestAccess,
   listAccessRequests,

@@ -1,7 +1,7 @@
 import { maskNoteEmails, redactLiving, redactSearchResult } from './privacy.js';
 import { AuthError, requireEditorOf } from './auth.js';
 import { ApiError, errorJson, invalid, isObject, json, notModified, preflight, readJson } from './http.js';
-import { createMailer, grantedEmail, requestEmail, sanitizeName, SITE_URL } from './mailer.js';
+import { createMailer, grantedEmail, inviteEmail, isSafeAddress, requestEmail, sanitizeName, SITE_URL } from './mailer.js';
 
 /** Bump whenever masking or response shaping changes, so cached person views revalidate as new. */
 export const VIEW_VERSION = 4;
@@ -21,6 +21,9 @@ const MAX_TEXT = 500;
 const MAX_NOTE = 500;
 const MAX_EMAIL = 254;
 const MAX_KIND = 64;
+// Invites per admin per hour, counted per Function instance: a brake on mail sent in the site's name, not a quota.
+const INVITE_LIMIT = 20;
+const INVITE_WINDOW_MS = 60 * 60 * 1000;
 
 const PUBLIC_REVALIDATE = 'public, max-age=0, must-revalidate';
 const VARY_AUTH = { vary: 'Authorization' };
@@ -54,28 +57,34 @@ function etagMatches(header, etag) {
   return header.split(',').some((tag) => tag.trim() === '*' || opaque(tag) === target);
 }
 
+/**
+ * An invite (POST /editors): { email, name, role, message }, where the address must also be one the mailer will
+ * send to, so an invite can't be added and never sent. → { email, name, role, message }
+ */
 function validateNewEditor(body) {
   const { email, name = null, role = 'editor' } = body;
   if (typeof email !== 'string') throw invalid('email', 'Enter an email address.');
   const address = email.trim().toLowerCase();
-  if (address.length > MAX_EMAIL || !EMAIL.test(address)) throw invalid('email', 'Enter an email address.');
+  if (address.length > MAX_EMAIL || !EMAIL.test(address) || !isSafeAddress(address)) throw invalid('email', 'Enter an email address.');
   if (name !== null && typeof name !== 'string') throw invalid('name', 'name must be text.');
   const trimmedName = name?.trim() || null;
   if (trimmedName !== null && trimmedName.length > MAX_TEXT) throw invalid('name', `name must be at most ${MAX_TEXT} characters.`);
   if (!ROLES.has(role)) throw invalid('role', 'role must be admin or editor.');
-  return { email: address, name: trimmedName, role };
+  return { email: address, name: trimmedName, role, message: optionalNote(body.message ?? null, 'message') };
 }
 
-/** An access request's optional note: trimmed, at most 500 characters (code points), no NUL. → the note, or null */
-function validateNote(body) {
-  const { note = null } = body;
-  if (note === null) return null;
-  if (typeof note !== 'string') throw invalid('note', 'note must be text.');
-  const trimmed = note.trim();
-  if (trimmed.includes('\u0000')) throw invalid('note', 'The note has a character that can\'t be stored.');
-  if ([...trimmed].length > MAX_NOTE) throw invalid('note', `Keep the note to ${MAX_NOTE} characters or fewer.`);
+/** Optional text someone writes to someone else: trimmed, at most 500 characters (code points), no NUL. → the text, or null */
+function optionalNote(value, field) {
+  if (value === null) return null;
+  if (typeof value !== 'string') throw invalid(field, `${field} must be text.`);
+  const trimmed = value.trim();
+  if (trimmed.includes('\u0000')) throw invalid(field, `The ${field} has a character that can't be stored.`);
+  if ([...trimmed].length > MAX_NOTE) throw invalid(field, `Keep the ${field} to ${MAX_NOTE} characters or fewer.`);
   return trimmed === '' ? null : trimmed;
 }
+
+/** An access request's optional note (see optionalNote). */
+const validateNote = (body) => optionalNote(body.note ?? null, 'note');
 
 /**
  * The api Function's router.
@@ -85,9 +94,11 @@ function validateNote(body) {
  *   search(q, limit) → [{ id, name, birthYear, deathYear, living }]
  *   lookupEditor(email) → { email, name, role } | null
  *   listEditors() → [{ email, name, role, addedBy, addedAt }]
- *   addEditor({ email, name, role }, byEmail) → the new editor, or null if the email is already listed;
- *     either way, marks a pending access request for the email granted by byEmail
+ *   addEditor({ email, name, role }, byEmail) → { outcome: 'added' | 'listed' (already on the list) |
+ *     'not_an_admin', editor | null }; when added or listed, marks a pending access request for the email granted
  *   removeEditor(email, byEmail) → 'removed' | 'not_found' | 'last_admin' | 'not_an_admin'
+ *   changeEditorRole(email, role, byEmail) → { outcome: 'changed' | 'unchanged' | 'not_found' | 'last_admin' |
+ *     'not_an_admin', editor | null }
  *   latestAccessRequest(email) → request | null, the newest, where a request is { id, email, name, note,
  *     status: 'pending' | 'granted' | 'dismissed', createdAt, resolvedBy, resolvedByName, resolvedAt }
  *     (resolvedBy: the resolving admin's email; resolvedByName: their editor name, else their email)
@@ -115,6 +126,15 @@ function validateNote(body) {
  */
 export function createHandler({ db, authenticate, mailer = createMailer({}), waitUntil = () => {}, log = console.error }) {
   const lookupEditor = (email) => db.lookupEditor(email);
+  const invitesSent = new Map(); // admin email → times of their invites in the last hour, on this instance
+
+  /** The admin's invites still in the window (pruned). */
+  function recentInvites(email, now) {
+    const times = (invitesSent.get(email) ?? []).filter((time) => now - time < INVITE_WINDOW_MS);
+    if (times.length) invitesSent.set(email, times);
+    else invitesSent.delete(email);
+    return times;
+  }
   const editorOf = (request) => requireEditorOf(request, authenticate, lookupEditor);
 
   /**
@@ -249,12 +269,40 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     return json(200, { editors: await db.listEditors() });
   }
 
+  /** Invites someone: adds them to the editors list, then emails them (after the response) how to sign in. */
   async function addEditor({ request }) {
     const admin = await requireAdminOf(request);
-    const editor = validateNewEditor(await readJson(request));
-    const added = await db.addEditor(editor, admin.email);
-    if (!added) throw new ApiError(409, 'already_an_editor', { email: editor.email });
+    const { message, ...editor } = validateNewEditor(await readJson(request));
+    if (recentInvites(admin.email, Date.now()).length >= INVITE_LIMIT) throw new ApiError(429, 'too_many_invites');
+    const { outcome, editor: added } = await db.addEditor(editor, admin.email);
+    switch (outcome) {
+      case 'added': break;
+      case 'listed': throw new ApiError(409, 'already_an_editor', { email: editor.email });
+      case 'not_an_admin': throw new ApiError(403, 'not_an_admin');
+      default: throw new Error(`addEditor returned ${outcome}`);
+    }
+    invitesSent.set(admin.email, [...recentInvites(admin.email, Date.now()), Date.now()]);
+    sendLater('invite', async () => [added.email],
+      (to) => inviteEmail({ to, role: added.role, inviter: { email: admin.email, name: admin.name }, message }));
     return json(201, { editor: added });
+  }
+
+  async function changeEditorRole({ request, params: [raw] }) {
+    const admin = await requireAdminOf(request);
+    const email = decode(raw, () => invalid('email', 'Malformed email address.')).trim().toLowerCase();
+    const { role } = await readJson(request);
+    if (!ROLES.has(role)) throw invalid('role', 'role must be admin or editor.');
+    if (email === admin.email) throw new ApiError(409, 'cannot_change_self', { message: "You can't change your own access." });
+    // The database re-checks under a lock, as for removal, so two admins can't demote each other at once.
+    const { outcome, editor } = await db.changeEditorRole(email, role, admin.email);
+    switch (outcome) {
+      case 'changed':
+      case 'unchanged': return json(200, { editor });
+      case 'not_found': throw new ApiError(404, 'not_found');
+      case 'not_an_admin': throw new ApiError(403, 'not_an_admin');
+      case 'last_admin': throw new ApiError(409, 'last_admin', { message: "The last admin can't be made an editor." });
+      default: throw new Error(`changeEditorRole returned ${outcome}`);
+    }
   }
 
   async function removeEditor({ request, params: [raw] }) {
@@ -320,6 +368,7 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     ['GET', /^\/editors$/, listEditors],
     ['POST', /^\/editors$/, addEditor],
     ['DELETE', /^\/editors\/([^/]+)$/, removeEditor],
+    ['POST', /^\/editors\/([^/]+)\/role$/, changeEditorRole],
     ['POST', /^\/access-requests$/, requestAccess],
     ['GET', /^\/access-requests$/, listAccessRequests],
     ['POST', /^\/access-requests\/([^/]+)\/(grant|dismiss)$/, resolveAccessRequest],
@@ -339,7 +388,8 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
         const match = pattern.exec(url.pathname);
         if (match) return await run({ request, url, params: match.slice(1) });
       }
-      return json(404, { error: 'not_found' });
+      // Not `not_found`, which callers read as "no such person or editor".
+      return json(404, { error: 'no_route' });
     } catch (error) {
       // ApiErrors and AuthErrors are deliberate responses, not logged here; whoever throws a 5xx
       // ApiError logs it. Anything else is unexpected: logged, and a 500.

@@ -167,7 +167,12 @@ The site itself is plain static files on GitHub Pages. Neon is the master copy o
 
 Viewing stays public. Family members on the invite list can also sign in and edit the tree from the website, and every edit can be undone.
 
-- **Who can edit:** only people on the editors list. Admins manage it in the app (account menu → Editors): add someone by email as an editor or an admin, or remove them. An admin can't remove themselves, and the last admin can't be removed. Anyone can sign in, but someone who isn't on the list just sees the tree.
+- **Who can edit:** only people on the editors list. Admins manage it in the app (account menu → Editors):
+  - **Invite someone** by email as an editor or an admin, with an optional message. They get access straight away, and an email from the site's Gmail account saying who invited them, what they can do, and how to sign in (a `<site>/?invite` link, which opens sign-in).
+  - **Change someone's access** with the Access select on their row.
+  - **Remove someone.**
+
+  An admin can't change their own access or remove themselves, and the last admin can't be made an editor or removed. Anyone can sign in, but someone who isn't on the list just sees the tree.
 - **Asking for access:** someone signed in who isn't on the list can choose **Request edit access** in the account menu, with an optional note. Every admin gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Editors dialog, after sign-in if needed. Admins also see "Access requests (N)" in the account menu. The **Requests** section at the top of the Editors dialog has **Grant** and **Dismiss** for each request, and the requester is emailed when access is granted.
 - **Signing in:** **Sign in** in the header, then a one-time code sent by email, or Google (Neon Auth). Only verified email addresses are accepted.
 - **What can be edited:**
@@ -208,15 +213,15 @@ Someone counts as living unless an editor has set their Living status, they have
   It then shows in History, and a small script change can be reverted there (scripts are never Ctrl+Z targets). Undo a large one, such as a facts backfill touching thousands of rows, with the script's own rollback instead: a revert from History runs under the 10 s write timeout and may not finish. `backfill-facts` already opens a change and has `--rollback`.
 - `npm run verify-neon` still checks the read path against the old JSON. It skips everyone an edit has touched, along with their relatives, and skips the person count once anything has been edited.
 
-### Access request emails
+### Access request and invite emails
 
-They are sent from the site's Gmail account through SMTP, once `SMTP_USER` and `SMTP_PASS` are deployed from `.env.mail.local` (gitignored, in the main checkout):
+Access requests, grants and invites are sent from the site's Gmail account through SMTP, once `SMTP_USER` and `SMTP_PASS` are deployed from `.env.mail.local` (gitignored, in the main checkout):
 
 ```bash
 neon deploy --branch production --no-env-pull --env .env.mail.local
 ```
 
-Until then mail is only logged, and requests still show in the app. `GET <api URL>/health` says which: `mail: 'log'` or `mail: 'smtp'`.
+Until then mail is only logged: requests still show in the app, and invited people still get access, but nobody is emailed. `GET <api URL>/health` says which: `mail: 'log'` or `mail: 'smtp'`.
 
 The secrets only need deploying once: a later `neon deploy` without the file keeps them (checked on `photos`, 2026-10-10). Deploying empty values deletes them. `neon.ts` normally leaves empty values out, so to remove the secrets, temporarily change its `mailEnv` line to `const mailEnv = { env: { SMTP_USER: "", SMTP_PASS: "" } };`, run `neon deploy --branch production --no-env-pull`, then revert the line. This is how the dummy values were cleared on `photos`; `/health` then shows `mail: 'log'`.
 
@@ -259,6 +264,7 @@ Editors can add photos to the tree from the website, on a phone or a computer. E
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePhotos.js   # the photo commands through both Functions, then undoes them
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeAccess.js   # an access request by dev-viewer, granted by dev-admin, with mail logged; then removes dev-viewer again
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePrivacy.js  # a living person by name only for anonymous and dev-viewer, in full for dev-editor; search years; shared photos
+  node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeInvites.js  # dev-admin invites dev-viewer (mail logged), changes their access both ways, then removes them
   ```
 
   Each prints a PASS or FAIL line per check and exits non-zero on a failure. They leave their test objects in the branch's bucket, and `smokePhotos.js` leaves its changes in History.

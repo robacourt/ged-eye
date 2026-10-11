@@ -37,10 +37,15 @@ const root = () => document.querySelector('.editors-dialog');
 const $ = (selector) => root().querySelector(selector);
 const $$ = (selector) => [...root().querySelectorAll(selector)];
 const row = (email) => $$('.editors-row').find(element => element.dataset.email === email);
+// A row's access: the label on your own row, else the Access select's chosen option.
+const roleOf = (element) => {
+  const select = element.querySelector('.editors-role-select');
+  return select ? select.selectedOptions[0].textContent : element.querySelector('.editors-role').textContent;
+};
 const rows = () => $$('.editors-row').map(element => ({
   email: element.querySelector('.editors-email').textContent,
   name: element.querySelector('.editors-name')?.textContent ?? null,
-  role: element.querySelector('.editors-role').textContent
+  role: roleOf(element)
 }));
 const field = (name) => $(`.editors-add [name="${name}"]`);
 const type = (input, value) => {
@@ -64,6 +69,7 @@ beforeEach(() => {
       email: email.trim().toLowerCase(), name: name || null, role, addedBy: 'rob@example.com', addedAt: '2026-10-09T12:00:00Z'
     })),
     removeEditor: vi.fn(async () => {}),
+    changeEditorRole: vi.fn(async (email, role) => ({ ...[ROB, ANN, TOM].find(editor => editor.email === email), role })),
     listAccessRequests: vi.fn(async () => []),
     grantAccessRequest: vi.fn(async (id) => ({
       request: { id, status: 'granted' },
@@ -82,7 +88,15 @@ afterEach(() => {
 
 describe('editorsErrorMessage', () => {
   it('words the server\'s errors', () => {
-    expect(editorsErrorMessage(apiError(409, 'already_an_editor', { email: 'ann@example.com' }))).toBe('ann@example.com is already an editor.');
+    expect(editorsErrorMessage(apiError(409, 'already_an_editor', { email: 'ann@example.com' })))
+      .toBe('ann@example.com already has access. You can change their access in the list.');
+    expect(editorsErrorMessage(apiError(409, 'cannot_change_self', { message: "You can't change your own access." })))
+      .toBe("You can't change your own access.");
+    expect(editorsErrorMessage(apiError(409, 'last_admin', { message: "The last admin can't be made an editor." })))
+      .toBe("The last admin can't be made an editor.");
+    expect(editorsErrorMessage(apiError(409, 'last_admin'))).toBe("The last admin can't be removed.");
+    expect(editorsErrorMessage(apiError(429, 'too_many_invites'))).toBe("You've sent a lot of invites in the last hour. Try again later.");
+    expect(editorsErrorMessage(apiError(404, 'no_route'))).toBe('The server had a problem (no_route). Try again.');
     expect(editorsErrorMessage(apiError(409, 'cannot_remove_self', { message: "You can't remove yourself." }))).toBe("You can't remove yourself.");
     expect(editorsErrorMessage(apiError(409, 'last_admin', { message: "The last admin can't be removed." }))).toBe("The last admin can't be removed.");
     expect(editorsErrorMessage(apiError(403, 'not_an_admin'))).toBe('Only admins can change the editors list.');
@@ -129,26 +143,40 @@ describe('openEditorsDialog: the list', () => {
   });
 });
 
-describe('openEditorsDialog: adding', () => {
-  it('adds an editor and lists them', async () => {
+describe('openEditorsDialog: inviting', () => {
+  it('invites someone with a message, lists them and says they were emailed', async () => {
     await open();
+    expect($('.editors-add .editor-section-title').textContent).toBe('Invite someone');
     type(field('email'), '  Jill@Example.com ');
     type(field('name'), ' Jill Smith ');
     type(field('role'), 'admin');
+    type(field('message'), '  Welcome, Jill!\nRob  ');
     await submitAdd();
-    expect(api.addEditor).toHaveBeenCalledWith({ email: 'Jill@Example.com', name: 'Jill Smith', role: 'admin' });
+    expect(api.addEditor).toHaveBeenCalledWith({ email: 'Jill@Example.com', name: 'Jill Smith', role: 'admin', message: 'Welcome, Jill!\nRob' });
     expect(rows().at(-1)).toEqual({ email: 'jill@example.com', name: 'Jill Smith', role: 'Admin' });
-    expect(showToast).toHaveBeenCalledWith('Added jill@example.com as an admin.');
+    expect(showToast).toHaveBeenCalledWith("Invited jill@example.com as an admin. They've been emailed.");
     expect(field('email').value).toBe('');
     expect(field('name').value).toBe('');
+    expect(field('message').value).toBe('');
     expect(field('role').value).toBe('editor');
   });
 
-  it('defaults to the editor role and sends no empty name', async () => {
+  it('defaults to the editor role and sends no empty name or message', async () => {
     await open();
     type(field('email'), 'jill@example.com');
+    type(field('message'), '   ');
     await submitAdd();
-    expect(api.addEditor).toHaveBeenCalledWith({ email: 'jill@example.com', name: null, role: 'editor' });
+    expect(api.addEditor).toHaveBeenCalledWith({ email: 'jill@example.com', name: null, role: 'editor', message: '' });
+  });
+
+  it('keeps the message to 500 characters', async () => {
+    await open();
+    expect(field('message').getAttribute('maxlength')).toBe('500');
+    type(field('email'), 'jill@example.com');
+    type(field('message'), 'm'.repeat(501));
+    await submitAdd();
+    expect(errorFor('message')).toBe('Keep the message to 500 characters or fewer.');
+    expect(api.addEditor).not.toHaveBeenCalled();
   });
 
   it('checks the email before asking', async () => {
@@ -167,7 +195,7 @@ describe('openEditorsDialog: adding', () => {
     api.addEditor.mockRejectedValueOnce(apiError(409, 'already_an_editor', { email: 'ann@example.com' }));
     type(field('email'), 'ANN@example.com');
     await submitAdd();
-    expect(errorFor('email')).toBe('ann@example.com is already an editor.');
+    expect(errorFor('email')).toBe('ann@example.com already has access. You can change their access in the list.');
     expect(rows()).toHaveLength(3);
   });
 
@@ -188,7 +216,7 @@ describe('openEditorsDialog: adding', () => {
     expect(field('email').value).toBe('jill@example.com');
   });
 
-  it('is busy while adding', async () => {
+  it('is busy while inviting', async () => {
     await open();
     let resolve;
     api.addEditor.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
@@ -196,13 +224,71 @@ describe('openEditorsDialog: adding', () => {
     await submitAdd();
     const button = $('.editors-add button[type="submit"]');
     expect(button.disabled).toBe(true);
-    expect(button.textContent).toBe('Adding…');
+    expect(button.textContent).toBe('Sending…');
     await submitAdd();
     expect(api.addEditor).toHaveBeenCalledTimes(1);
     resolve({ email: 'jill@example.com', name: null, role: 'editor' });
     await flush();
     expect(button.disabled).toBe(false);
-    expect(button.textContent).toBe('Add editor');
+    expect(button.textContent).toBe('Send invite');
+  });
+});
+
+describe('openEditorsDialog: changing access', () => {
+  const select = (email) => row(email).querySelector('.editors-role-select');
+  const rowError = (email) => {
+    const element = row(email).querySelector('.editors-row-error');
+    return element.hidden ? null : element.textContent;
+  };
+
+  it('has an Access select for everyone but you', async () => {
+    await open();
+    expect(row('rob@example.com').querySelector('.editors-role-select')).toBeNull();
+    expect(row('rob@example.com').querySelector('.editors-role').textContent).toBe('Admin');
+    expect(select('ann@example.com').value).toBe('editor');
+    expect(select('ann@example.com').getAttribute('aria-label')).toBe('Access for ann@example.com');
+    expect([...select('ann@example.com').options].map(option => [option.value, option.textContent]))
+      .toEqual([['admin', 'Admin'], ['editor', 'Editor']]);
+  });
+
+  it('saves a change straight away, busy while it runs', async () => {
+    await open();
+    let resolve;
+    api.changeEditorRole.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
+    type(select('ann@example.com'), 'admin');
+    expect(api.changeEditorRole).toHaveBeenCalledWith('ann@example.com', 'admin');
+    expect(select('tom@example.com').disabled).toBe(true);
+    expect($('.editors-add button[type="submit"]').disabled).toBe(true);
+    resolve({ ...ANN, role: 'admin' });
+    await flush();
+    expect(select('ann@example.com').value).toBe('admin');
+    expect(select('tom@example.com').disabled).toBe(false);
+    expect(showToast).toHaveBeenCalledWith('ann@example.com is now an admin.');
+    type(select('ann@example.com'), 'editor');
+    await flush();
+    expect(showToast).toHaveBeenLastCalledWith('ann@example.com is now an editor.');
+  });
+
+  it('puts the old access back and says why when the change is refused', async () => {
+    await open();
+    api.changeEditorRole.mockRejectedValueOnce(apiError(409, 'last_admin', { message: "The last admin can't be made an editor." }));
+    type(select('ann@example.com'), 'admin');
+    await flush();
+    expect(select('ann@example.com').value).toBe('editor');
+    expect(rowError('ann@example.com')).toBe("The last admin can't be made an editor.");
+    expect(showToast).not.toHaveBeenCalled();
+    // The next change clears it.
+    type(select('ann@example.com'), 'admin');
+    await flush();
+    expect(rowError('ann@example.com')).toBeNull();
+  });
+
+  it('drops someone another admin has removed meanwhile', async () => {
+    await open();
+    api.changeEditorRole.mockRejectedValueOnce(apiError(404, 'not_found'));
+    type(select('tom@example.com'), 'admin');
+    await flush();
+    expect(row('tom@example.com')).toBeUndefined();
   });
 });
 
@@ -294,7 +380,7 @@ describe('openEditorsDialog: access requests', () => {
     api.listAccessRequests.mockResolvedValue([]);
     await open();
     expect(visible(section())).toBe(false);
-    expect([...root().querySelectorAll('h3')].filter(visible).map(h => h.textContent)).toEqual(['Add an editor']);
+    expect([...root().querySelectorAll('h3')].filter(visible).map(h => h.textContent)).toEqual(['Invite someone']);
     expect(rows()).toHaveLength(3);
   });
 
