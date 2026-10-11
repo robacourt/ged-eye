@@ -1,10 +1,10 @@
-import { maskNoteEmails } from './privacy.js';
+import { maskNoteEmails, redactLiving, redactSearchResult } from './privacy.js';
 import { AuthError, requireEditorOf } from './auth.js';
 import { ApiError, errorJson, invalid, isObject, json, notModified, preflight, readJson } from './http.js';
 import { createMailer, grantedEmail, requestEmail, sanitizeName, SITE_URL } from './mailer.js';
 
 /** Bump whenever masking or response shaping changes, so cached person views revalidate as new. */
-export const VIEW_VERSION = 3;
+export const VIEW_VERSION = 4;
 
 const PERSON_ID = /^[A-Za-z0-9_-]{1,32}$/;
 const CHANGE_ID = /^[1-9][0-9]{0,14}$/;
@@ -82,7 +82,7 @@ function validateNote(body) {
  *
  * @param db  (api/db.js createDb in production) {
  *   personView(id) → { view | null, version: { changeId, migration } }  (one statement, one snapshot)
- *   search(q, limit) → [{ id, name, birthYear, deathYear }]
+ *   search(q, limit) → [{ id, name, birthYear, deathYear, living }]
  *   lookupEditor(email) → { email, name, role } | null
  *   listEditors() → [{ email, name, role, addedBy, addedAt }]
  *   addEditor({ email, name, role }, byEmail) → the new editor, or null if the email is already listed;
@@ -168,17 +168,19 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     const etag = `W/"${VIEW_VERSION}.${version.migration}.${version.changeId}.${id}"`;
     const headers = { ...VARY_AUTH, 'cache-control': PUBLIC_REVALIDATE, etag };
     if (etagMatches(request.headers.get('if-none-match'), etag)) return notModified(headers);
-    return json(200, { ...maskNoteEmails(view), masked: true }, headers);
+    return json(200, { ...redactLiving(maskNoteEmails(view)), masked: true }, headers);
   }
 
   async function search({ request, url }) {
-    await authenticate(request);
+    const user = await authenticate(request);
     const q = (url.searchParams.get('q') ?? '').trim();
     const chars = [...q].length; // code points, so an emoji counts once
     if (chars < SEARCH_MIN_CHARS) throw invalid('q', `Type at least ${SEARCH_MIN_CHARS} characters.`);
     if (chars > SEARCH_MAX_CHARS) throw invalid('q', `Search text must be at most ${SEARCH_MAX_CHARS} characters.`);
     const limit = parseLimit(url, SEARCH_LIMIT);
-    return json(200, { results: await db.search(q, limit) });
+    const [editor, results] = await Promise.all([user ? db.lookupEditor(user.email) : null, db.search(q, limit)]);
+    // Only editors see living people's years.
+    return json(200, { results: editor ? results : results.map(redactSearchResult) }, VARY_AUTH);
   }
 
   async function me({ request }) {

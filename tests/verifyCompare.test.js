@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   legacyExpected, diffView, splitDiffs, noteView, createNotes, collectNotes, summarizeNotes, formatNotes,
-  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, apiBodyView, hasNoteEmailsToMask, touchedByEdits, countCheck
+  legacyIsImage, shuffled, canonical, ORDER_FIELDS, apiMatchesView, apiBodyView, hasNoteEmailsToMask, livingLeaks, touchedByEdits, countCheck
 } from '../scripts/neon/verifyCompare.js';
 
 const person = (id, extra) => ({
@@ -396,21 +396,87 @@ describe('shuffled', () => {
 });
 
 describe('apiMatchesView', () => {
-  const view = { person: { id: 'I1', notes: ['Write to jo@example.com'] }, family: [], relationships: {} };
+  const view = { person: { id: 'I1', notes: ['Write to jo@example.com'], living: false }, family: [], relationships: {} };
+  const masked = { id: 'I1', notes: ['Write to [email hidden]'], living: false };
 
   it('accepts the masked body the Function serves', () => {
-    expect(apiMatchesView({ ...view, person: { id: 'I1', notes: ['Write to [email hidden]'] } }, view)).toBe(true);
+    expect(apiMatchesView({ ...view, person: masked }, view)).toBe(true);
   });
 
   it('rejects a real difference, and an unmasked body', () => {
-    expect(apiMatchesView({ ...view, person: { id: 'I1', notes: ['Something else'] } }, view)).toBe(false);
+    expect(apiMatchesView({ ...view, person: { ...masked, notes: ['Something else'] } }, view)).toBe(false);
     expect(apiMatchesView(view, view)).toBe(false);
   });
 
   it('ignores the masked flag the Function adds to the view, but still checks the masking', () => {
-    const served = { ...view, person: { id: 'I1', notes: ['Write to [email hidden]'] }, masked: true };
+    const served = { ...view, person: masked, masked: true };
     expect(apiMatchesView(served, view)).toBe(true);
     expect(apiMatchesView({ ...view, masked: true }, view)).toBe(false);
+  });
+
+  it('expects a living person redacted', () => {
+    const living = { person: { id: 'I1', name: 'Ann', birthDate: '1990', photos: [], living: true }, family: [], relationships: {} };
+    expect(apiMatchesView({ ...living, person: { id: 'I1', name: 'Ann', photos: [], avatarKey: null, living: true, private: true } }, living)).toBe(true);
+    expect(apiMatchesView(living, living)).toBe(false);
+  });
+});
+
+describe('livingLeaks', () => {
+  const photo = (id, people) => ({ id, key: `originals/${id}.jpg`, people });
+  const view = {
+    person: {
+      id: 'I1', name: 'Ann', birthDate: '1990', notes: ['n'], avatarKey: 'a.webp', living: true,
+      photos: [photo(1, [{ id: 'I1', living: true }])],
+      marriages: [{ spouseId: 'I2', familyId: 'F1', childIds: [], marriageDate: '2015' }]
+    },
+    family: [
+      { id: 'I2', name: 'Bob', birthDate: '1950', avatarKey: 'b.webp', parentIds: [], living: false },
+      { id: 'I3', name: 'Cat', birthDate: '2015', avatarKey: 'c.webp', parentIds: ['I1', 'I2'], living: true }
+    ],
+    relationships: {}
+  };
+
+  it('finds nothing in a properly redacted body', () => {
+    const body = {
+      person: { id: 'I1', name: 'Ann', photos: [], avatarKey: null, living: true, private: true, marriages: [{ spouseId: 'I2', familyId: 'F1', childIds: [] }] },
+      family: [view.family[0], { id: 'I3', name: 'Cat', parentIds: ['I1', 'I2'], avatarKey: null, living: true, private: true }],
+      masked: true
+    };
+    expect(livingLeaks(body, view)).toEqual([]);
+  });
+
+  it("names a living person's and living relatives' details, avatars, photos and marriage dates", () => {
+    expect(livingLeaks(view, view)).toEqual([
+      'living person shows birthDate, notes',
+      'living person shows photos',
+      'living person shows an avatar',
+      "living person's marriage F1 shows marriageDate",
+      'living relative I3 shows birthDate',
+      'living relative I3 shows an avatar',
+      'photo 1 shows living I1'
+    ]);
+  });
+
+  it("checks a deceased person's photos and marriages to living or unknown spouses", () => {
+    const bob = {
+      person: {
+        id: 'I2', name: 'Bob', living: false,
+        photos: [photo(1, [{ id: 'I2', living: false }]), photo(2, [{ id: 'I2', living: false }, { id: 'I3', living: true }])],
+        marriages: [
+          { spouseId: 'I1', familyId: 'F1', childIds: [], marriageDate: '2015' },
+          { spouseId: 'I4', familyId: 'F2', childIds: [], marriagePlace: 'York' },
+          { spouseId: 'I5', familyId: 'F3', childIds: [], marriageDate: '1950' },
+          { spouseId: null, familyId: 'F4', childIds: [], marriageDate: '1940' }
+        ]
+      },
+      family: [{ id: 'I1', name: 'Ann', living: true }, { id: 'I4', name: 'Dee', living: false }],
+      relationships: {}
+    };
+    expect(livingLeaks(bob, bob)).toEqual([
+      'marriage F1 to a living spouse shows marriageDate',
+      'marriage F3 to a living spouse shows marriageDate', // I5 isn't in the view
+      'photo 2 shows living I3'
+    ]);
   });
 });
 

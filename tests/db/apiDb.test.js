@@ -64,13 +64,15 @@ describe.skipIf(!url)('api/db.js (database)', { timeout: 30000 }, () => {
   describe('search', () => {
     it('finds an exact name first, with years from the GEDCOM dates', async () => {
       const results = await db.search('John Smith', 20);
-      expect(results[0]).toEqual({ id: 'I1', name: 'John Smith', birthYear: 1850, deathYear: 1901 });
+      expect(results[0]).toEqual({ id: 'I1', name: 'John Smith', birthYear: 1850, deathYear: 1901, living: false });
       expect(ids(results)).toContain('I2');
+      // Nothing to go on, so counted as living (010).
+      expect(results.find((result) => result.id === 'I2').living).toBe(true);
     });
 
     it('finds a given-name prefix', async () => {
       expect(ids(await db.search('Mar', 20))).toEqual(['I3']);
-      expect((await db.search('Mar', 20))[0]).toEqual({ id: 'I3', name: 'Mary Jones', birthYear: 1855, deathYear: null });
+      expect((await db.search('Mar', 20))[0]).toEqual({ id: 'I3', name: 'Mary Jones', birthYear: 1855, deathYear: null, living: false });
     });
 
     it('finds a surname prefix', async () => {

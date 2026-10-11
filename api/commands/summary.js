@@ -53,6 +53,7 @@ export const FIELD_LABELS = {
   baptism_place: 'baptism place',
   burial_date: 'burial date',
   burial_place: 'burial place',
+  living_override: 'living status',
   marriage_date: 'marriage date',
   marriage_place: 'marriage place',
   divorce_date: 'divorce date',

@@ -67,17 +67,17 @@ describe.skipIf(!url)('migration 008: photos schema (database)', () => {
       {
         id: m1, key: 'originals/m1.jpg', thumbKey: 'thumbs/m1.webp', displayKey: 'display/m1.webp',
         fileName: 'm1.jpg', contentType: 'image/jpeg', caption: 'At the beach', date: 'about 1923', width: 2000, height: 1500,
-        people: [{ id: 'I2', name: 'Aaron Baker' }, { id: 'I1', name: 'Alice Ash' }]
+        people: [{ id: 'I2', name: 'Aaron Baker', living: true }, { id: 'I1', name: 'Alice Ash', living: true }]
       },
       {
         id: m2, key: 'originals/m2.pdf', thumbKey: null, displayKey: null,
         fileName: 'm2.pdf', contentType: 'application/pdf', caption: null, date: null, width: null, height: null,
-        people: [{ id: 'I1', name: 'Alice Ash' }]
+        people: [{ id: 'I1', name: 'Alice Ash', living: true }]
       }
     ]);
     for (const photo of photos) expect(Object.keys(photo).sort()).toEqual([...PHOTO_KEYS].sort());
     expect((await record('I2')).photos.map(p => [p.id, p.people])).toEqual([
-      [m1, [{ id: 'I2', name: 'Aaron Baker' }, { id: 'I1', name: 'Alice Ash' }]]
+      [m1, [{ id: 'I2', name: 'Aaron Baker', living: true }, { id: 'I1', name: 'Alice Ash', living: true }]]
     ]);
   });
 

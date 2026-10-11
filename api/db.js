@@ -22,16 +22,21 @@ const PERSON_VIEW_SQL = `
 // $1 is the query text, $2 its LIKE-escaped prefix pattern. Matches a prefix of the whole name or
 // of any later word ("Smi" finds "John Smith"), or a fuzzy match of the query against a word run
 // in the name (word similarity, which the trigram index serves).
+// person_is_living (010) runs only on the matches kept, after the limit.
 const SEARCH_SQL = `
-  select id, display_name as name,
-         gedcom_year(birth_date) as birth_year,
-         gedcom_year(death_date) as death_year
-  from person
-  where display_name ilike $2::text escape '\\'
-     or display_name ilike ('% ' || $2::text) escape '\\'
-     or $1::text <% display_name
-  order by greatest(similarity(display_name, $1), word_similarity($1, display_name)) desc, display_name, id
-  limit $3`;
+  select id, name, gedcom_year(birth_date) as birth_year, gedcom_year(death_date) as death_year,
+         person_is_living(id) as living
+  from (
+    select id, display_name as name, birth_date, death_date,
+           greatest(similarity(display_name, $1), word_similarity($1, display_name)) as score
+    from person
+    where display_name ilike $2::text escape '\\'
+       or display_name ilike ('% ' || $2::text) escape '\\'
+       or $1::text <% display_name
+    order by score desc, display_name, id
+    limit $3
+  ) matches
+  order by score desc, name, id`;
 
 const EDITOR_COLUMNS = 'email, name, role, added_by, added_at';
 
@@ -175,10 +180,10 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
       return { view: row.view, version: { changeId: String(row.change_id), migration: row.migration } };
     },
 
-    /** → [{ id, name, birthYear, deathYear }], best match first */
+    /** → [{ id, name, birthYear, deathYear, living }], best match first */
     async search(q, limit) {
       const { rows } = await pool.query(SEARCH_SQL, [q, `${escapeLike(q)}%`, limit]);
-      return rows.map((row) => ({ id: row.id, name: row.name, birthYear: row.birth_year, deathYear: row.death_year }));
+      return rows.map((row) => ({ id: row.id, name: row.name, birthYear: row.birth_year, deathYear: row.death_year, living: row.living }));
     },
 
     /** → { email, name, role } | null */

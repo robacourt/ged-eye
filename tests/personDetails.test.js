@@ -91,6 +91,31 @@ describe('PersonDetails', () => {
     expect(el.querySelector('details .note-text').textContent).toBe('Age 59');
   });
 
+  describe('living people', () => {
+    it('says the details are private for a record the API marked private', async () => {
+      // As the API sends a living person to the public: names and relationships only.
+      const el = await render({ id: 'I9', name: 'Jo Living', sex: 'F', private: true, photos: [], parentIds: ['I1'], spouseIds: [], childIds: [] });
+      const note = el.querySelector('.person-private-note');
+      expect(note).not.toBeNull();
+      expect(note.textContent).toBe('Details of living people are private.');
+      // Just under the header, before any sections.
+      expect(note.previousElementSibling.classList.contains('person-details-header')).toBe(true);
+      expect(el.querySelector('h2').textContent).toBe('Jo Living');
+      expect(sectionText(el, 'Life Events')).toBeUndefined();
+    });
+
+    it('copes with a private record missing photos, dates and facts altogether', async () => {
+      const el = await render({ id: 'I9', name: 'Jo Living', private: true, photos: undefined });
+      expect(el.querySelector('.person-private-note')).not.toBeNull();
+      expect(el.querySelector('.person-photos-row')).toBeNull();
+    });
+
+    it('shows no note for anyone else', async () => {
+      const el = await render({ birthDate: '1900' });
+      expect(el.querySelector('.person-private-note')).toBeNull();
+    });
+  });
+
   describe('person notes', () => {
     it('clamps only long person notes, with a working Show more', async () => {
       const scrollIntoView = vi.fn();

@@ -10,6 +10,8 @@ import { TEST_DATABASE_URL as url, resetTestDatabase, withChange } from './testD
 // Tests that roll back can't use withChange (it commits): they open their own change after begin.
 const BEGIN_CHANGE = `select begin_change('test@example.test', 'Test', 'fixture', 'script', 'Test', '{}', '{}')`;
 
+const bornInLast100Years = (year) => year >= new Date().getFullYear() - 100;
+
 const FIXTURE = `
 insert into person (id, given_name, surname, sex, birth_date, burial_date, facts, avatar_key) values
   ('I1', 'Adam', 'Smith', 'M', '1900', '1980', '{}', null),
@@ -77,17 +79,19 @@ describe.skipIf(!url)('person_view (database)', () => {
       photos: [
         {
           id: 2, key: 'originals/bbb.docx', thumbKey: null, displayKey: null, fileName: 'b.docx', contentType: 'application/msword',
-          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith' }]
+          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith', living: bornInLast100Years(1930) }]
         },
         {
           id: 1, key: 'originals/aaa.jpg', thumbKey: 'thumbs/aaa.webp', displayKey: null, fileName: 'a.jpg', contentType: 'image/jpeg',
-          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith' }]
+          caption: null, date: null, width: null, height: null, people: [{ id: 'I3', name: 'Carl Smith', living: bornInLast100Years(1930) }]
         }
       ],
       parentIds: ['I1', 'I2'],
       spouseIds: ['I7', 'I9'],
       childIds: ['I8'],
       avatarKey: 'avatars/c.jpg',
+      living: bornInLast100Years(1930), // born about 1930
+      livingEstimate: bornInLast100Years(1930),
       updatedAt: expect.stringMatching(/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}Z$/),
       parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I4', 'I3'] }],
       marriages: [
@@ -102,7 +106,8 @@ describe.skipIf(!url)('person_view (database)', () => {
   it('returns slim relative records', async () => {
     const { family } = await view('I3');
     expect(family.find(m => m.id === 'I6')).toEqual({
-      id: 'I6', name: 'Fred Smith', sex: 'M', birthDate: null, avatarKey: null, parentIds: ['I1', 'I5']
+      id: 'I6', name: 'Fred Smith', sex: 'M', birthDate: null, avatarKey: null, parentIds: ['I1', 'I5'],
+      living: bornInLast100Years(1930) // his half-brother I3, born about 1930, is later than his father (1900 + 25)
     });
   });
 

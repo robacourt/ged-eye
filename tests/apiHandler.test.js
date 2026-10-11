@@ -3,18 +3,18 @@ import { describe, it, expect, vi } from 'vitest';
 import { createHandler, VIEW_VERSION } from '../api/handler.js';
 import { ApiError, MAX_BODY_BYTES } from '../api/http.js';
 import { AuthError, authenticatorFromEnv } from '../api/auth.js';
-import { maskNoteEmails } from '../api/privacy.js';
+import { maskNoteEmails, redactLiving, redactSearchResult } from '../api/privacy.js';
 import { ACCESS_REQUEST_LOCK, createDb, escapeLike } from '../api/db.js';
 import { inTransaction } from '../api/tx.js';
 import { SITE_URL, grantedEmail, requestEmail, sanitizeName } from '../api/mailer.js';
 
 const VIEW = {
-  person: { id: 'I1', notes: ['Write to jo@example.org'] },
+  person: { id: 'I1', notes: ['Write to jo@example.org'], living: false },
   family: [],
   relationships: { parents: [], spouses: [], children: [], siblings: [] }
 };
 const VERSION = { changeId: '42', migration: '006_editing.sql' };
-const ETAG = 'W/"3.006_editing.sql.42.I1"';
+const ETAG = 'W/"4.006_editing.sql.42.I1"';
 
 const EDITORS = {
   'admin@example.test': { email: 'admin@example.test', name: 'Ada Admin', role: 'admin' },
@@ -58,7 +58,7 @@ async function fakeAuthenticate(request) {
 function fakeDb(overrides = {}) {
   return {
     personView: vi.fn(async (id) => ({ view: id === 'I1' ? VIEW : null, version: VERSION })),
-    search: vi.fn(async () => [{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null }]),
+    search: vi.fn(async () => [{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null, living: false }]),
     lookupEditor: vi.fn(async (email) => EDITORS[email] ?? null),
     listEditors: vi.fn(async () => Object.values(EDITORS)),
     addEditor: vi.fn(async (editor, by) => ({ ...editor, addedBy: by, addedAt: '2026-10-09T10:00:00.000Z' })),
@@ -119,7 +119,7 @@ describe('GET /person/:id', () => {
   });
 
   it('builds the ETag from the view version, latest migration, latest change id and person id', async () => {
-    expect(VIEW_VERSION).toBe(3);
+    expect(VIEW_VERSION).toBe(4);
     const { request } = setup({
       personView: async () => ({ view: VIEW, version: { changeId: '0', migration: '007_next.sql' } })
     });
@@ -162,7 +162,7 @@ describe('GET /person/:id', () => {
 
   it('matches If-None-Match lists, strong forms of the tag, and *', async () => {
     const { request } = setup();
-    for (const header of [`"other", ${ETAG}`, '"3.006_editing.sql.42.I1"', '*']) {
+    for (const header of [`"other", ${ETAG}`, '"4.006_editing.sql.42.I1"', '*']) {
       expect((await request('/person/I1', { headers: { 'if-none-match': header } })).status).toBe(304);
     }
   });
@@ -175,7 +175,7 @@ describe('GET /person/:id', () => {
 
   it('sends a fresh 200 when If-None-Match is stale, or from an older view version', async () => {
     const { request } = setup();
-    for (const stale of ['W/"3.006_editing.sql.41.I1"', 'W/"2.006_editing.sql.42.I1"']) {
+    for (const stale of ['W/"4.006_editing.sql.41.I1"', 'W/"3.006_editing.sql.42.I1"']) {
       const res = await request('/person/I1', { headers: { 'if-none-match': stale } });
       expect(res.status).toBe(200);
       expect((await res.json()).masked).toBe(true);
@@ -298,7 +298,7 @@ describe('GET /search', () => {
     const { request, db } = setup();
     const res = await request('/search?q=%20Ann%20');
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ results: [{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null }] });
+    expect(await res.json()).toEqual({ results: [{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null, living: false }] });
     expect(db.search).toHaveBeenCalledWith('Ann', 20);
     expect(res.headers.get('cache-control')).toBe('no-store');
   });
@@ -1019,13 +1019,14 @@ describe('api/db.js', () => {
   });
 
   it('searches by name or word prefix, escaped, or by word similarity', async () => {
-    const pool = fakePool([{ id: 'I1', name: 'Ann Lee', birth_year: 1850, death_year: null }]);
-    expect(await createDb(pool).search('50%_\\', 20)).toEqual([{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null }]);
+    const pool = fakePool([{ id: 'I1', name: 'Ann Lee', birth_year: 1850, death_year: null, living: false }]);
+    expect(await createDb(pool).search('50%_\\', 20)).toEqual([{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null, living: false }]);
     const [sql, params] = pool.query.mock.calls[0];
     expect(sql).toMatch(/display_name ilike \$2::text escape '\\'/);
     expect(sql).toMatch(/display_name ilike \('% ' \|\| \$2::text\) escape '\\'/);
     expect(sql).toMatch(/\$1::text <% display_name/);
     expect(sql).toMatch(/gedcom_year\(birth_date\)/);
+    expect(sql).toMatch(/person_is_living\(id\) as living/);
     expect(params).toEqual(['50%_\\', '50\\%\\_\\\\%', 20]);
   });
 
@@ -1392,9 +1393,10 @@ describe('email masking', () => {
     notes: ['From: Jo <jo.smith@mail.example.test>\nSent: Monday'],
     deathNotes: ['mail a.b@example.org'],
     censusRecords: [{ date: '1851', notes: ['c@example.net and e@example.com'] }],
-    otherFacts: [{ tag: 'EVEN', value: 'v@example.com', notes: ['g@example.org'] }]
+    otherFacts: [{ tag: 'EVEN', value: 'v@example.com', notes: ['g@example.org'] }],
+    living: false
   };
-  const view = { person, family: [{ id: 'I2', name: 'n@example.com' }], relationships: { parents: [], spouses: [], children: [], siblings: [] } };
+  const view = { person, family: [{ id: 'I2', name: 'n@example.com', living: false }], relationships: { parents: [], spouses: [], children: [], siblings: [] } };
 
   it('masks addresses in note text only', async () => {
     const { request } = setup({ personView: async () => ({ view, version: VERSION }) });
@@ -1417,7 +1419,7 @@ describe('email masking', () => {
   it('masks addresses in photo captions, but not in file names', async () => {
     const photo = {
       id: 1, key: 'originals/a.jpg', fileName: 'from jo@example.org.jpg', caption: 'Sent by jo@example.org in 1923', date: null,
-      people: [{ id: 'I1', name: 'Ann Lee' }]
+      people: [{ id: 'I1', name: 'Ann Lee', living: false }]
     };
     const withPhotos = { ...view, person: { ...person, photos: [photo, { ...photo, id: 2, caption: null }] } };
     const { request } = setup({ personView: async () => ({ view: withPhotos, version: VERSION }) });
@@ -1457,5 +1459,146 @@ describe('email masking', () => {
     const copy = structuredClone(view);
     maskNoteEmails(view);
     expect(view).toEqual(copy);
+  });
+});
+
+describe('living people', () => {
+  const photo = (id, people) => ({ id, key: `originals/${id}.jpg`, caption: `Photo ${id}`, date: '1990', people });
+  const ann = {
+    id: 'I1', name: 'Ann Lee', givenName: 'Ann', surname: 'Lee', sex: 'F',
+    birthDate: '3 MAR 1990', birthPlace: 'Leeds', deathDate: null, deathPlace: null, baptismDate: '1990', baptismPlace: 'Leeds',
+    notes: ['Lives at 1 High St'], occupations: ['Nurse'], email: 'ann@example.org', phone: '0123', residences: [{ place: 'Leeds' }],
+    photos: [photo(1, [{ id: 'I1', name: 'Ann Lee', living: true }])],
+    parentIds: ['I2', 'I3'], spouseIds: ['I4'], childIds: ['I5'],
+    avatarKey: 'avatars/a.webp', avatarSource: { mediaId: 1 }, updatedAt: '2026-10-11T10:00:00.000000Z',
+    parentFamilies: [{ familyId: 'F1', partnerIds: ['I2', 'I3'], childIds: ['I1'] }],
+    marriages: [{ spouseId: 'I4', familyId: 'F2', childIds: ['I5'], marriageDate: '2015', marriagePlace: 'York' }],
+    living: true, livingEstimate: true, livingOverride: 'living'
+  };
+  const relative = (id, name, living) => ({ id, name, sex: 'U', birthDate: '1960', avatarKey: `avatars/${id}.webp`, parentIds: ['I9'], ...living });
+  const family = [
+    relative('I2', 'Bob Lee', { living: false }),
+    relative('I3', 'Cat Lee', { living: true }),
+    relative('I4', 'Dan Ray', { living: true }),
+    relative('I5', 'Eve Ray', {}) // no flag: counted as living
+  ];
+  const relationships = { parents: ['I2', 'I3'], spouses: ['I4'], children: ['I5'], siblings: [] };
+  const view = { person: ann, family, relationships };
+
+  it("shows a living person's name and relationships only, and marks them private", () => {
+    expect(redactLiving(view).person).toEqual({
+      id: 'I1', name: 'Ann Lee', givenName: 'Ann', surname: 'Lee', sex: 'F',
+      parentIds: ['I2', 'I3'], spouseIds: ['I4'], childIds: ['I5'],
+      parentFamilies: [{ familyId: 'F1', partnerIds: ['I2', 'I3'], childIds: ['I1'] }],
+      marriages: [{ spouseId: 'I4', familyId: 'F2', childIds: ['I5'] }],
+      photos: [], avatarKey: null, living: true, private: true
+    });
+    expect(redactLiving(view).relationships).toEqual(relationships);
+  });
+
+  it('counts a person or relative with no living flag as living', () => {
+    const { living: _ignored, ...unflagged } = ann;
+    expect(redactLiving({ ...view, person: unflagged }).person).toMatchObject({ private: true, photos: [] });
+    expect(redactLiving({ ...view, person: unflagged }).person).not.toHaveProperty('birthDate');
+    expect(redactLiving(view).family[3]).toEqual({ id: 'I5', name: 'Eve Ray', sex: 'U', parentIds: ['I9'], avatarKey: null, living: true, private: true });
+  });
+
+  it('drops living relatives’ birth dates and avatars, and leaves deceased ones as they are', () => {
+    const redacted = redactLiving(view).family;
+    expect(redacted[0]).toEqual(family[0]);
+    expect(redacted[1]).toEqual({ id: 'I3', name: 'Cat Lee', sex: 'U', parentIds: ['I9'], avatarKey: null, living: true, private: true });
+  });
+
+  describe('a deceased person', () => {
+    const bob = {
+      ...ann, id: 'I2', name: 'Bob Lee', birthDate: '1920', deathDate: '1990', living: false, livingEstimate: false,
+      photos: [
+        photo(1, [{ id: 'I2', name: 'Bob Lee', living: false }]),
+        photo(2, [{ id: 'I2', name: 'Bob Lee', living: false }, { id: 'I3', name: 'Cat Lee', living: true }]),
+        photo(3, [{ id: 'I2', name: 'Bob Lee', living: false }, { id: 'I7', name: 'Gil Lee' }]),
+        { ...photo(4, []), people: undefined }
+      ],
+      marriages: [
+        { spouseId: 'I3', familyId: 'F1', childIds: ['I1'], marriageDate: '1985', marriagePlace: 'Hull' },
+        { spouseId: 'I6', familyId: 'F3', childIds: [], marriageDate: '1950', divorceDate: '1960', divorcePlace: 'York' },
+        { spouseId: 'I8', familyId: 'F4', childIds: [], marriageDate: '1945', marriagePlace: 'Leeds' },
+        { spouseId: null, familyId: 'F5', childIds: [], marriageDate: '1940' }
+      ]
+    };
+    const bobFamily = [
+      relative('I3', 'Cat Lee', { living: true }),
+      relative('I6', 'Fay Fox', { living: false })
+    ];
+    const redacted = redactLiving({ person: bob, family: bobFamily, relationships }).person;
+
+    it('keeps their details, but not the editors’ living fields', () => {
+      const { photos: _p, marriages: _m, livingEstimate: _e, livingOverride: _o, ...details } = bob;
+      expect(redacted).toMatchObject(details);
+      expect(redacted).not.toHaveProperty('livingEstimate');
+      expect(redacted).not.toHaveProperty('livingOverride');
+      expect(redacted).not.toHaveProperty('private');
+    });
+
+    it('drops any photo showing a living person, or anyone not known to be deceased', () => {
+      expect(redacted.photos).toEqual([bob.photos[0]]);
+    });
+
+    it('keeps marriage dates and places only when the spouse is in the view and deceased, or there is no spouse', () => {
+      expect(redacted.marriages).toEqual([
+        { spouseId: 'I3', familyId: 'F1', childIds: ['I1'] },
+        bob.marriages[1],
+        { spouseId: 'I8', familyId: 'F4', childIds: [] },
+        bob.marriages[3]
+      ]);
+    });
+  });
+
+  it('returns a missing view as is', () => {
+    expect(redactLiving(null)).toBeNull();
+  });
+
+  it('serves the public a redacted, masked view, and editors the whole view', async () => {
+    const { request } = setup({ personView: async () => ({ view, version: VERSION }) });
+    for (const token of [undefined, 'viewer']) {
+      const body = await (await request('/person/I1', { token })).json();
+      expect(body).toEqual({ ...redactLiving(maskNoteEmails(view)), masked: true });
+      expect(body.person.private).toBe(true);
+    }
+    const body = await (await request('/person/I1', { token: 'editor' })).json();
+    expect(body).toEqual({ ...view, masked: false });
+  });
+
+  describe('search', () => {
+    const results = [
+      { id: 'I1', name: 'Ann Lee', birthYear: 1990, deathYear: null, living: true },
+      { id: 'I2', name: 'Bob Lee', birthYear: 1920, deathYear: 1990, living: false },
+      { id: 'I5', name: 'Eve Ray', birthYear: 2010, deathYear: null }
+    ];
+
+    it("hides living people's years from the public", async () => {
+      const { request } = setup({ search: async () => results });
+      for (const token of [undefined, 'viewer']) {
+        const res = await request('/search?q=Lee', { token });
+        expect(await res.json()).toEqual({
+          results: [
+            { id: 'I1', name: 'Ann Lee', birthYear: null, deathYear: null, living: true },
+            results[1],
+            { id: 'I5', name: 'Eve Ray', birthYear: null, deathYear: null, living: true }
+          ]
+        });
+        expect(res.headers.get('vary')).toBe('Authorization');
+      }
+    });
+
+    it('shows editors every year', async () => {
+      const { request, db } = setup({ search: vi.fn(async () => results) });
+      expect(await (await request('/search?q=Lee', { token: 'editor' })).json()).toEqual({ results });
+      expect(db.lookupEditor).toHaveBeenCalledWith('editor@example.test');
+    });
+
+    it('redacts one result at a time', () => {
+      expect(redactSearchResult(results[1])).toBe(results[1]);
+      expect(redactSearchResult(results[0])).toEqual({ id: 'I1', name: 'Ann Lee', birthYear: null, deathYear: null, living: true });
+    });
   });
 });

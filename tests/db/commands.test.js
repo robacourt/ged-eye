@@ -316,6 +316,22 @@ describe.skipIf(!url)('edit commands (database)', { timeout: 60000 }, () => {
       expect(await person(t.kit)).toMatchObject(fields);
     });
 
+    it('sets and clears living_override (living status); the view carries living, livingEstimate and livingOverride', async () => {
+      const t = await seed({ people: { rose: ['Rose', 'Smith', 'F'] } });
+      const { change, view } = await runUndoRedo('update_person', {
+        id: t.rose, expectedUpdatedAt: await stamp(t.rose), fields: { living_override: 'deceased' }
+      });
+      expect(change.summary).toBe('Edited Rose Smith (living status)');
+      expect((await person(t.rose)).living_override).toBe('deceased');
+      // Nothing to go on, so the estimate is living; the override wins.
+      expect(view.person).toMatchObject({ living: false, livingEstimate: true, livingOverride: 'deceased' });
+
+      const cleared = await run('update_person', { id: t.rose, expectedUpdatedAt: await stamp(t.rose), fields: { living_override: '' } });
+      expect((await person(t.rose)).living_override).toBeNull();
+      expect(cleared.view.person).toMatchObject({ living: true, livingEstimate: true });
+      expect(cleared.view.person).not.toHaveProperty('livingOverride');
+    });
+
     it('stores trimmed text, and empty optional fields as null', async () => {
       const t = await seed({ people: { rose: ['Rose', 'Smith', 'F', { birth_place: 'Leeds' }] } });
       await run('update_person', { id: t.rose, expectedUpdatedAt: await stamp(t.rose), fields: { birth_place: '', death_place: '  York ' } });

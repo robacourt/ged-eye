@@ -11,7 +11,7 @@ import { FIELD_LABELS, FACT_LABELS, capitalise } from './summary.js';
 
 /** The person columns update_person and add_relative may set, in summary order. */
 export const PERSON_FIELDS = ['given_name', 'surname', 'sex', 'birth_date', 'birth_place', 'death_date', 'death_place',
-  'baptism_date', 'baptism_place', 'burial_date', 'burial_place'];
+  'baptism_date', 'baptism_place', 'burial_date', 'burial_place', 'living_override'];
 
 /** The family columns update_family may set. */
 export const FAMILY_FIELDS = ['marriage_date', 'marriage_place', 'divorce_date', 'divorce_place'];
@@ -28,6 +28,7 @@ export const MAX_FACTS_BYTES = 500 * 1024;
 
 const NAME_FIELDS = new Set(['given_name', 'surname']); // never null in the table: '' when empty
 const SEXES = new Set(['M', 'F', 'U']);
+const LIVING_OVERRIDES = new Set(['living', 'deceased']);
 const ID = /^[A-Za-z0-9_-]{1,32}$/;
 const MAX_STAMP = 64;
 const LINE_BREAK = /[\r\n]/;
@@ -108,12 +109,19 @@ function sex(value) {
   return value;
 }
 
+/** An editor's say on whether a person is living: 'living', 'deceased', or null (empty) to work it out. */
+function livingOverride(value) {
+  if (value === undefined || value === null || value === '') return null;
+  if (!LIVING_OVERRIDES.has(value)) throw invalid('living_override', 'Living status must be living, deceased or empty.');
+  return value;
+}
+
 /** Any subset of PERSON_FIELDS, normalised. Empty given name and surname together are allowed. */
 export function validatePersonFields(fields, field = 'fields') {
   requireKeys(fields, PERSON_FIELDS, field);
   const clean = {};
   for (const [name, value] of Object.entries(fields)) {
-    clean[name] = name === 'sex' ? sex(value) : line(value, name);
+    clean[name] = name === 'sex' ? sex(value) : name === 'living_override' ? livingOverride(value) : line(value, name);
   }
   return clean;
 }

@@ -82,12 +82,14 @@ describe.skipIf(!url)('person_record marriages[].childIds (007)', () => {
     } finally {
       await client.query('rollback');
     }
+    // 010 also adds living, livingEstimate and livingOverride: set aside here, tested in livingPrivacy.test.js.
     const withoutChildIds = (rows) => rows.map(({ id, v }) => {
       const marriages = v.person.marriages?.map(({ childIds, ...marriage }) => {
         expect(Array.isArray(childIds)).toBe(true);
         return marriage;
       });
-      return { id, v: { ...v, person: { ...v.person, ...(marriages ? { marriages } : {}) } } };
+      const { living: _l, livingEstimate: _e, livingOverride: _o, ...person } = v.person;
+      return { id, v: { ...v, person: { ...person, ...(marriages ? { marriages } : {}) } } };
     });
     expect(before.some(({ v }) => v.person.marriages?.some(m => 'childIds' in m))).toBe(false);
     expect(withoutChildIds(now)).toEqual(before);

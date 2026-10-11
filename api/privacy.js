@@ -25,3 +25,63 @@ function mask(value, inNote = false) {
 export function maskNoteEmails(view) {
   return view ? mask(view) : view;
 }
+
+/*
+ * Living people (migration 010 puts a `living` flag on every record in a view) are shown to the public by name
+ * only. Redacted records are built from whitelists, so a field added later stays hidden until it is listed
+ * here. Anything not flagged `living: false` counts as living: a missing flag fails closed.
+ */
+const isLiving = (record) => record?.living !== false;
+
+/** What the public sees of a living person's own record, besides `private: true` and an empty photo row. */
+const LIVING_PERSON_KEYS = ['id', 'name', 'givenName', 'surname', 'sex', 'parentIds', 'spouseIds', 'childIds', 'parentFamilies'];
+/** What the public sees of a living relative in `view.family`. */
+const LIVING_RELATIVE_KEYS = ['id', 'name', 'sex', 'parentIds'];
+/** What the public sees of a marriage involving a living person: who, and the children, never when or where. */
+const PRIVATE_MARRIAGE_KEYS = ['spouseId', 'familyId', 'childIds'];
+/** Editors' own fields, never served to the public. */
+const EDITOR_ONLY_KEYS = ['livingEstimate', 'livingOverride'];
+
+const pick = (record, keys) => Object.fromEntries(keys.filter((key) => key in record).map((key) => [key, record[key]]));
+const omit = (record, keys) => Object.fromEntries(Object.entries(record).filter(([key]) => !keys.includes(key)));
+const privateMarriage = (marriage) => pick(marriage, PRIVATE_MARRIAGE_KEYS);
+// A photo with no people list can't be shown to be free of living people.
+const showsLiving = (photo) => !Array.isArray(photo?.people) || photo.people.some(isLiving);
+
+function redactPerson(person, family) {
+  if (!person) return person;
+  if (isLiving(person)) {
+    const record = { ...pick(person, LIVING_PERSON_KEYS), photos: [], avatarKey: null, living: true, private: true };
+    if (Array.isArray(person.marriages)) record.marriages = person.marriages.map(privateMarriage);
+    return record;
+  }
+  const record = omit(person, EDITOR_ONLY_KEYS);
+  if (Array.isArray(person.photos)) record.photos = person.photos.filter((photo) => !showsLiving(photo));
+  if (Array.isArray(person.marriages)) {
+    // A spouse not in the view can't be shown to be deceased.
+    const deceased = new Set(family.filter((relative) => !isLiving(relative)).map((relative) => relative.id));
+    record.marriages = person.marriages.map((marriage) =>
+      (marriage.spouseId == null || deceased.has(marriage.spouseId) ? marriage : privateMarriage(marriage)));
+  }
+  return record;
+}
+
+const redactRelative = (relative) => (isLiving(relative)
+  ? { ...pick(relative, LIVING_RELATIVE_KEYS), avatarKey: null, living: true, private: true }
+  : relative);
+
+/**
+ * A copy of a person_view() document for the public: living people keep their names and relationships, and lose
+ * everything else (dates, places, notes, facts, photos, avatars); photos showing a living person are dropped from
+ * every record; and a deceased person's marriage to a living (or unknown) spouse loses its dates and places.
+ */
+export function redactLiving(view) {
+  if (!view) return view;
+  const family = Array.isArray(view.family) ? view.family : [];
+  return { ...view, person: redactPerson(view.person, family), family: family.map(redactRelative) };
+}
+
+/** A search result ({ id, name, birthYear, deathYear, living }) for the public: a living person's years hidden. */
+export function redactSearchResult(result) {
+  return isLiving(result) ? { id: result.id, name: result.name, birthYear: null, deathYear: null, living: true } : result;
+}
