@@ -344,6 +344,22 @@ describe('editApi', () => {
       expect(call(1)).toMatchObject({ url: 'https://api.test/editors', method: 'POST', body: { email: 'ann@example.com', name: 'Ann', role: 'editor' } });
       expect(call(2)).toMatchObject({ url: 'https://api.test/editors/ann%2Bfamily%40example.com', method: 'DELETE', body: undefined });
     });
+
+    it('sends an invite message only when there is one', async () => {
+      fetchMock.mockResolvedValue(respond(201, { editor: { email: 'ann@example.com', role: 'admin' } }));
+      await api.addEditor({ email: 'ann@example.com', name: null, role: 'admin', message: 'Welcome!' });
+      await api.addEditor({ email: 'ann@example.com', name: null, role: 'admin', message: '' });
+      expect(call(0).body).toEqual({ email: 'ann@example.com', name: null, role: 'admin', message: 'Welcome!' });
+      expect(call(1).body).toEqual({ email: 'ann@example.com', name: null, role: 'admin' });
+    });
+
+    it("changes an editor's role", async () => {
+      fetchMock.mockResolvedValueOnce(respond(200, { editor: { email: 'ann+family@example.com', role: 'admin' } }));
+      expect(await api.changeEditorRole('ann+family@example.com', 'admin')).toEqual({ email: 'ann+family@example.com', role: 'admin' });
+      expect(call(0)).toMatchObject({
+        url: 'https://api.test/editors/ann%2Bfamily%40example.com/role', method: 'POST', body: { role: 'admin' }
+      });
+    });
   });
 
   describe('access requests', () => {

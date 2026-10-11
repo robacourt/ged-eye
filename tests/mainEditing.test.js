@@ -704,6 +704,49 @@ describe('initApp: the ?access-requests link', () => {
   });
 });
 
+describe('initApp: the ?invite link', () => {
+  const restores = (email) => auth.getState.mockReturnValue({ user: { email } });
+
+  it('removes only that parameter, in place, and opens sign-in for someone signed out', async () => {
+    const length = window.history.length;
+    await start('/?person=I8&invite');
+    expect(window.location.search).toBe('?person=I8');
+    expect(window.history.length).toBe(length);
+    expect(signIn.open).toHaveBeenCalledOnce();
+    expect(shownId()).toBe('I8');
+  });
+
+  it('waits for the session restore, then does nothing for someone signed in', async () => {
+    restores('ann@example.com');
+    let finishInit;
+    auth.init.mockImplementation(() => new Promise(resolve => { finishInit = resolve; }));
+    await start('/?invite');
+    expect(signIn.open).not.toHaveBeenCalled();
+    finishInit({ user: { email: 'ann@example.com' } });
+    await flush();
+    expect(signIn.open).not.toHaveBeenCalled();
+  });
+
+  it('opens sign-in only once with ?access-requests too', async () => {
+    signIn.isOpen.mockImplementation(() => signIn.open.mock.calls.length > 0);
+    await start('/?access-requests&invite');
+    expect(signIn.open).toHaveBeenCalledOnce();
+    expect(window.location.search).toBe('');
+  });
+
+  it('does nothing when sign-in is unavailable', async () => {
+    auth.init.mockRejectedValue(new Error('no auth'));
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    await start('/?invite');
+    expect(signIn.open).not.toHaveBeenCalled();
+  });
+
+  it('does nothing without the parameter', async () => {
+    await start('/?person=I7');
+    expect(signIn.open).not.toHaveBeenCalled();
+  });
+});
+
 describe('initApp: after a command', () => {
   let saved;
 

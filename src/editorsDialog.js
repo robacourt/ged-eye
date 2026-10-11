@@ -1,7 +1,8 @@
 /**
  * The Editors dialog, for admins: pending requests for edit access (Grant or Dismiss), who may edit the tree
- * (email, name, role), adding someone, and removing someone after a confirmation. The server's refusals (already
- * an editor, removing yourself, the last admin, not an admin, a request another admin already dealt with) are
+ * (email, name, and their access level, which can be changed for anyone but yourself), inviting someone (the
+ * server emails them), and removing someone after a confirmation. The server's refusals (already an editor,
+ * changing or removing yourself, the last admin, not an admin, a request another admin already dealt with) are
  * shown where they happened. Every data value is set with `value` or `textContent`.
  */
 import { showToast } from './toast.js';
@@ -9,7 +10,8 @@ import { el, openEditorDialog, uniqueId, setBusy, keepFocusInside, callSafely } 
 import { shortDate } from './accessRequestDialog.js';
 
 const ROLE_LABELS = { admin: 'Admin', editor: 'Editor' };
-const ROLE_OPTIONS = [['editor', 'Editor: can edit the tree'], ['admin', 'Admin: can also manage editors']];
+const ROLE_OPTIONS = [['editor', 'Editor: can edit the tree'], ['admin', 'Admin: can also invite people and change access']];
+const MAX_MESSAGE = 500;
 const NOT_AN_ADMIN = 'Only admins can change the editors list.';
 const GENERIC_ERROR = 'Something went wrong. Try again.';
 
@@ -20,11 +22,14 @@ export function editorsErrorMessage(error) {
     case 'network':
       return error.message || GENERIC_ERROR;
     case 'already_an_editor':
-      return `${error.body?.email ?? 'That address'} is already an editor.`;
+      return `${error.body?.email ?? 'That address'} already has access. You can change their access in the list.`;
     case 'cannot_remove_self':
       return "You can't remove yourself.";
+    case 'cannot_change_self':
+      return "You can't change your own access.";
     case 'last_admin':
-      return "The last admin can't be removed.";
+      // Removing them, or making them an editor: the server says which.
+      return error.body?.message || "The last admin can't be removed.";
     case 'not_an_admin':
     case 'not_an_editor':
       return NOT_AN_ADMIN;
@@ -58,8 +63,8 @@ function resolvedText({ status, resolvedBy, resolvedByName } = {}) {
 
 /**
  * Opens the dialog and loads both lists.
- * @param api           `{ listEditors, addEditor, removeEditor, listAccessRequests, grantAccessRequest,
- *                      dismissAccessRequest }` (editApi.js)
+ * @param api           `{ listEditors, addEditor, changeEditorRole, removeEditor, listAccessRequests,
+ *                      grantAccessRequest, dismissAccessRequest }` (editApi.js)
  * @param currentEmail  the signed-in admin's email, marked "(you)"
  * @param onChanged     () after the pending requests changed here (granted, dismissed, already resolved, or the
  *                      person added directly), so the account menu's count can be read again
@@ -101,14 +106,20 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
   const nameInput = el('input', { class: 'editor-input', name: 'name', type: 'text', autocomplete: 'off', maxlength: '500' });
   const roleSelect = el('select', { class: 'editor-input', name: 'role' },
     ...ROLE_OPTIONS.map(([value, label]) => el('option', { value, text: label })));
+  const messageInput = el('textarea', {
+    class: 'editor-input editor-textarea', name: 'message', rows: '3', maxlength: String(MAX_MESSAGE)
+  });
   const addError = el('p', { class: 'editor-error editors-add-error', role: 'alert', hidden: true });
-  const addButton = el('button', { type: 'submit', class: 'editor-btn editor-btn-primary', text: 'Add editor' });
+  const addButton = el('button', { type: 'submit', class: 'editor-btn editor-btn-primary', text: 'Send invite' });
   const form = el('form', { class: 'editor-form editors-add', novalidate: true },
-    el('h3', { class: 'editor-section-title', text: 'Add an editor' }),
+    el('h3', { class: 'editor-section-title', text: 'Invite someone' }),
+    el('p', { class: 'editor-hint', text: 'They get access straight away, and an email saying how to sign in.' }),
     fieldWithError('email', 'Email', emailInput),
     fieldWithError('name', 'Name (optional)', nameInput,
       el('span', { class: 'editor-hint', text: 'Shown in the history as who made each change.' })),
-    fieldWithError('role', 'Role', roleSelect),
+    fieldWithError('role', 'Access', roleSelect),
+    fieldWithError('message', 'Message (optional)', messageInput,
+      el('span', { class: 'editor-hint', text: 'Included in the email.' })),
     addError,
     el('div', { class: 'editor-actions' }, el('span', { class: 'editor-actions-spacer' }), addButton));
 
@@ -266,7 +277,13 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
       el('span', { class: 'editors-email', text: editor.email }),
       isYou ? el('span', { class: 'editors-you', text: '(you)' }) : null,
       editor.name ? el('span', { class: 'editors-name', text: editor.name }) : null);
-    const role = el('span', { class: 'editors-role', text: ROLE_LABELS[editor.role] ?? String(editor.role ?? '') });
+    // Your own access can't be changed here (the server refuses it too), so it's a label; anyone else's is a select.
+    const role = isYou || !(editor.role in ROLE_LABELS)
+      ? el('span', { class: 'editors-role', text: ROLE_LABELS[editor.role] ?? String(editor.role ?? '') })
+      : el('select', { class: 'editor-input editors-role-select', name: 'access', 'aria-label': `Access for ${editor.email}` },
+        ...Object.entries(ROLE_LABELS).map(([value, label]) => el('option', { value, text: label })));
+    let savedRole = editor.role;
+    if (role.tagName === 'SELECT') role.value = savedRole;
     const remove = el('button', {
       type: 'button', class: 'editor-btn editor-btn-danger editors-remove', text: 'Remove', 'aria-label': `Remove ${editor.email}`
     });
@@ -284,6 +301,47 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
       remove.hidden = show;
       (show ? cancel : remove).focus();
     }
+
+    function dropRow() {
+      const next = item.nextElementSibling ?? item.previousElementSibling;
+      item.remove();
+      keepFocusInside(dialog.dialog, next?.querySelector('.editors-remove') ?? emailInput);
+    }
+
+    role.addEventListener('change', async () => {
+      if (busy) {
+        role.value = savedRole;
+        return;
+      }
+      const wanted = role.value;
+      error.hidden = true;
+      busy = true;
+      setBusy(dialog.body, true);
+      let changed = null;
+      let failure = null;
+      try {
+        changed = await api.changeEditorRole(editor.email, wanted);
+      } catch (caught) {
+        failure = caught;
+      }
+      busy = false;
+      setBusy(dialog.body, false);
+      if (!dialog.isOpen()) return;
+      if (failure?.code === 'not_found') {
+        dropRow(); // removed by another admin meanwhile
+        return;
+      }
+      if (failure) {
+        role.value = savedRole;
+        error.textContent = editorsErrorMessage(failure);
+        error.hidden = false;
+        role.focus();
+        return;
+      }
+      savedRole = changed?.role ?? wanted;
+      role.value = savedRole;
+      showToast(`${editor.email} is now ${savedRole === 'admin' ? 'an admin' : 'an editor'}.`);
+    });
 
     remove.addEventListener('click', () => {
       if (busy) return;
@@ -306,10 +364,8 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
       busy = false;
       setBusy(dialog.body, false, confirmRemove);
       if (!failure || failure.code === 'not_found') {
-        const next = item.nextElementSibling ?? item.previousElementSibling;
-        item.remove();
         if (!failure) showToast(`Removed ${editor.email}.`);
-        keepFocusInside(dialog.dialog, next?.querySelector('.editors-remove') ?? emailInput);
+        dropRow();
         return;
       }
       confirm.hidden = true;
@@ -376,12 +432,17 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
       return;
     }
     const role = roleSelect.value;
+    const message = messageInput.value.trim();
+    if ([...message].length > MAX_MESSAGE) {
+      showFieldError('message', `Keep the message to ${MAX_MESSAGE} characters or fewer.`);
+      return;
+    }
     busy = true;
-    setBusy(dialog.body, true, addButton, 'Adding…');
+    setBusy(dialog.body, true, addButton, 'Sending…');
     let added = null;
     let failure = null;
     try {
-      added = await api.addEditor({ email, name: nameInput.value.trim() || null, role });
+      added = await api.addEditor({ email, name: nameInput.value.trim() || null, role, message });
     } catch (caught) {
       failure = caught;
     }
@@ -399,7 +460,7 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
     [...list.children].find(item => sameEmail(item.dataset.email, editor.email))?.remove();
     list.append(editorRow(editor));
     status.textContent = '';
-    showToast(`Added ${editor.email} as ${editor.role === 'admin' ? 'an admin' : 'an editor'}.`);
+    showToast(`Invited ${editor.email} as ${editor.role === 'admin' ? 'an admin' : 'an editor'}. They've been emailed.`);
     form.reset();
     emailInput.focus();
     // Adding someone grants their pending request too (on the server), so it leaves the list.

@@ -35,15 +35,17 @@ function setUrlPerson(personId, { replace = false } = {}) {
 
 /** The admins' email link, `<site>/?access-requests`: open the Editors dialog, where the requests are. */
 const ACCESS_REQUESTS_PARAM = 'access-requests';
+/** The invite email's link, `<site>/?invite`: sign in, if nobody is. */
+const INVITE_PARAM = 'invite';
 
 /**
- * Whether the URL has `?access-requests`. If so, removes it (only it: `person` and Google's
+ * Whether the URL has `?<name>`. If so, removes it (only it: `person` and Google's
  * `neon_auth_session_verifier` stay) from the current history entry, so it never sticks to later URLs.
  */
-function takeAccessRequestsParam() {
+function takeParam(name) {
   const url = new URL(window.location.href);
-  if (!url.searchParams.has(ACCESS_REQUESTS_PARAM)) return false;
-  url.searchParams.delete(ACCESS_REQUESTS_PARAM);
+  if (!url.searchParams.has(name)) return false;
+  url.searchParams.delete(name);
   window.history.replaceState(window.history.state, '', url);
   return true;
 }
@@ -62,8 +64,8 @@ const isNotAnEditor = (error) => error?.status === 403 && error.code === 'not_an
 
 /** The editApi.js calls whose refusals are watched: all but `me`, which reads the account itself. */
 export const WATCHED_API_CALLS = ['authedFetch', 'runChange', 'revert', 'restore', 'undo', 'redo', 'listChanges',
-  'search', 'listEditors', 'addEditor', 'removeEditor', 'requestAccess', 'listAccessRequests', 'grantAccessRequest',
-  'dismissAccessRequest'];
+  'search', 'listEditors', 'addEditor', 'changeEditorRole', 'removeEditor', 'requestAccess', 'listAccessRequests',
+  'grantAccessRequest', 'dismissAccessRequest'];
 
 /**
  * `api` with its calls watched: a rejection that is a 403 `not_an_editor` is reported to `onNotAnEditor`
@@ -142,7 +144,8 @@ export function initApp({
   // The admins' email link, read once and held here: null, or where following it has got to. 'starting' until
   // auth.init() resolves; then 'account' while /me is read for someone signed in, or 'signing-in' while the
   // sign-in it opened is open. It opens the Editors dialog only for an admin, and is dropped quietly otherwise.
-  let accessRequestsLink = takeAccessRequestsParam() ? 'starting' : null;
+  let accessRequestsLink = takeParam(ACCESS_REQUESTS_PARAM) ? 'starting' : null;
+  const inviteLink = takeParam(INVITE_PARAM);
 
   // Calls to the API from here and from the editing dialogs. An editor who has been removed since signing in
   // learns it from the first refusal: the account is read again, which takes the edit controls away.
@@ -539,6 +542,13 @@ export function initApp({
     }
   }
 
+  // --- The invite email's link (?invite) ------------------------------------------------------------------------
+
+  /** Once auth.init() has resolved: the sign-in dialog, unless someone is signed in (or it's already open). */
+  function startInviteLink() {
+    if (inviteLink && !auth.getState().user && !signIn.isOpen()) signIn.open();
+  }
+
   // --- Keyboard Undo and Redo ----------------------------------------------------------------------------------
 
   let keyQueue = Promise.resolve();
@@ -624,12 +634,15 @@ export function initApp({
   Promise.resolve()
     .then(() => auth.init())
     .then(
-      () => startAccessRequestsLink(),
+      () => {
+        startAccessRequestsLink();
+        startInviteLink();
+      },
       (error) => {
         accessRequestsLink = null;
         console.warn('Sign-in is unavailable', error);
       })
-    .catch(error => console.error('Could not follow the access requests link', error));
+    .catch(error => console.error('Could not follow the email link', error));
 
   return {
     showPerson,
