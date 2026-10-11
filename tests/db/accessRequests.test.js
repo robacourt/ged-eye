@@ -384,7 +384,7 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
     it('marks a pending request for that email granted, by the adding admin', async () => {
       const { request } = await db.createAccessRequest({ email: ASKER, name: null, note: null });
       await insertRequest(ASKER, { status: 'dismissed', age: '1 hour' });
-      expect(await db.addEditor({ email: ASKER, name: 'Asker', role: 'editor' }, ADMIN2)).toMatchObject({ email: ASKER, addedBy: ADMIN2 });
+      expect(await db.addEditor({ email: ASKER, name: 'Asker', role: 'editor' }, ADMIN2)).toMatchObject({ outcome: 'added', editor: { email: ASKER, addedBy: ADMIN2 } });
       expect(await statusOf(request.id)).toEqual({ status: 'granted', resolved_by: ADMIN2 });
       expect(await db.latestAccessRequest(ASKER)).toMatchObject({ id: request.id, resolvedBy: ADMIN2, resolvedByName: 'Admin Two' });
       expect(await count("select count(*)::int as n from access_request where status = 'dismissed'")).toBe(1);
@@ -392,13 +392,13 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
     });
 
     it('adds an editor with no request as before', async () => {
-      expect(await db.addEditor({ email: 'new@example.test', name: null, role: 'admin' }, OWNER)).toMatchObject({ email: 'new@example.test', role: 'admin' });
+      expect(await db.addEditor({ email: 'new@example.test', name: null, role: 'admin' }, OWNER)).toMatchObject({ outcome: 'added', editor: { email: 'new@example.test', role: 'admin' } });
       expect(await count('select count(*)::int as n from access_request')).toBe(0);
     });
 
     it('still leaves nothing pending when the email is already an editor', async () => {
       const { id } = await insertRequest(EDITOR);
-      expect(await db.addEditor({ email: EDITOR, name: null, role: 'editor' }, OWNER)).toBeNull();
+      expect(await db.addEditor({ email: EDITOR, name: null, role: 'editor' }, OWNER)).toEqual({ outcome: 'listed', editor: null });
       expect(await statusOf(id)).toEqual({ status: 'granted', resolved_by: OWNER });
     });
 
@@ -428,10 +428,10 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
       // Whichever got the request first added the editor and resolved it; the other found both done.
       if (grant.outcome === 'granted') {
         expect(grant.wasEditor).toBe(false);
-        expect(added).toBeNull();
+        expect(added).toEqual({ outcome: 'listed', editor: null });
       } else {
         expect(grant.outcome).toBe('already_resolved');
-        expect(added).toMatchObject({ email: ASKER, addedBy: OWNER });
+        expect(added).toMatchObject({ outcome: 'added', editor: { email: ASKER, addedBy: OWNER } });
       }
     });
 
@@ -446,7 +446,7 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
         expect(await db.lookupEditor(ASKER)).toBeNull();
         await holder.query('insert into access_request (email) values ($1)', [ASKER]);
         await holder.query('commit');
-        expect(await added).toMatchObject({ email: ASKER, addedBy: OWNER });
+        expect(await added).toMatchObject({ outcome: 'added', editor: { email: ASKER, addedBy: OWNER } });
       } finally {
         await holder.query('rollback').catch(() => {});
         holder.release();

@@ -61,7 +61,7 @@ function fakeDb(overrides = {}) {
     search: vi.fn(async () => [{ id: 'I1', name: 'Ann Lee', birthYear: 1850, deathYear: null, living: false }]),
     lookupEditor: vi.fn(async (email) => EDITORS[email] ?? null),
     listEditors: vi.fn(async () => Object.values(EDITORS)),
-    addEditor: vi.fn(async (editor, by) => ({ ...editor, addedBy: by, addedAt: '2026-10-09T10:00:00.000Z' })),
+    addEditor: vi.fn(async (editor, by) => ({ outcome: 'added', editor: { ...editor, addedBy: by, addedAt: '2026-10-09T10:00:00.000Z' } })),
     removeEditor: vi.fn(async () => 'removed'),
     changeEditorRole: vi.fn(async (email, role) => ({ outcome: 'changed', editor: { ...EDITORS[email], role } })),
     runChange: vi.fn(async () => ({ change: CHANGE, view: VIEW })),
@@ -271,7 +271,8 @@ describe('health, unknown routes and preflight', () => {
     for (const [path, method] of [['/nope', 'GET'], ['/person/I1', 'POST'], ['/me', 'DELETE'], ['/editors/', 'GET']]) {
       const res = await request(path, { method });
       expect(res.status).toBe(404);
-      expect(await res.json()).toEqual({ error: 'not_found' });
+      // Not not_found, which callers read as "no such person or editor".
+      expect(await res.json()).toEqual({ error: 'no_route' });
     }
   });
 
@@ -493,7 +494,7 @@ describe('editors routes', () => {
   });
 
   it('refuses to add someone who is already an editor, and emails nobody', async () => {
-    const { request, waitUntil } = setup({ addEditor: vi.fn().mockResolvedValue(null) });
+    const { request, waitUntil } = setup({ addEditor: vi.fn().mockResolvedValue({ outcome: 'listed', editor: null }) });
     const res = await request('/editors', { method: 'POST', token: 'admin', body: { email: 'editor@example.test' } });
     expect(res.status).toBe(409);
     expect(await res.json()).toEqual({ error: 'already_an_editor', email: 'editor@example.test' });
@@ -530,6 +531,40 @@ describe('editors routes', () => {
       expect(res.status).toBe(201);
       await scheduledMail(waitUntil);
       expect(log).toHaveBeenCalledWith('could not send the invite mail to', 'new@example.test', expect.any(Error));
+    });
+
+    it('refuses an inviter the database finds is no longer an admin, and emails nobody', async () => {
+      const { request, waitUntil } = setup({ addEditor: vi.fn().mockResolvedValue({ outcome: 'not_an_admin', editor: null }) });
+      const res = await request('/editors', { method: 'POST', token: 'admin', body: { email: 'new@example.test', role: 'admin' } });
+      expect(res.status).toBe(403);
+      expect(await res.json()).toEqual({ error: 'not_an_admin' });
+      expect(waitUntil).not.toHaveBeenCalled();
+    });
+
+    it('allows each admin 20 invites an hour, counting only invites made', async () => {
+      vi.useFakeTimers({ toFake: ['Date'] });
+      try {
+        const { request, db, waitUntil } = setup();
+        const invite = (n, token = 'admin') => request('/editors', { method: 'POST', token, body: { email: `new${n}@example.test` } });
+        db.addEditor.mockResolvedValueOnce({ outcome: 'listed', editor: null }); // already listed: not counted
+        expect((await invite(0)).status).toBe(409);
+        for (let n = 1; n <= 20; n++) expect((await invite(n)).status).toBe(201);
+        const limited = await invite(21);
+        expect(limited.status).toBe(429);
+        expect(await limited.json()).toEqual({ error: 'too_many_invites' });
+        expect(db.addEditor).toHaveBeenCalledTimes(21);
+        expect(waitUntil).toHaveBeenCalledTimes(20);
+        // Another admin has their own count; an hour later this one may invite again.
+        EDITORS['second-admin@example.test'] = { email: 'second-admin@example.test', name: null, role: 'admin' };
+        TOKENS.second = { email: 'second-admin@example.test', name: null, sub: 'u7' };
+        expect((await invite(22, 'second')).status).toBe(201);
+        vi.setSystemTime(Date.now() + 60 * 60 * 1000);
+        expect((await invite(23)).status).toBe(201);
+      } finally {
+        delete EDITORS['second-admin@example.test'];
+        delete TOKENS.second;
+        vi.useRealTimers();
+      }
     });
 
     it('validates the message, and refuses addresses the mailer would not send to', async () => {
@@ -1147,14 +1182,25 @@ describe('api/db.js', () => {
     expect(await createDb(fakePool([])).lookupEditor('nobody@example.test')).toBeNull();
   });
 
-  it('returns null when adding an editor who already exists, resolving any pending request first, in one transaction', async () => {
-    const client = { query: vi.fn(async () => ({ rows: [] })), release: vi.fn() };
+  it('answers listed when adding an editor who already exists, resolving any pending request first, in one transaction', async () => {
+    // Only the inviter's admin check finds a row; the insert finds the email already listed.
+    const client = {
+      query: vi.fn(async (sql) => ({ rows: /for share/.test(sql) ? [{ '?column?': 1 }] : [] })),
+      release: vi.fn()
+    };
     const pool = { query: vi.fn(), connect: vi.fn(async () => client) };
-    expect(await createDb(pool).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test')).toBeNull();
+    expect(await createDb(pool).addEditor({ email: 'editor@example.test', name: null, role: 'editor' }, 'admin@example.test'))
+      .toEqual({ outcome: 'listed', editor: null });
     const statements = client.query.mock.calls.map(([sql]) => sql);
     expect(statements[0]).toBe('begin');
     expect(statements.at(-1)).toBe('commit');
+    const adminCheck = statements.findIndex((sql) => /role = 'admin' for share/.test(sql));
+    // The inviter's own row first (after the transaction's setup), as resolveAccessRequest locks it.
+    expect(adminCheck).toBeGreaterThan(0);
+    expect(statements.slice(0, adminCheck).some((sql) => /editor|access_request|advisory/.test(sql))).toBe(false);
+    expect(client.query.mock.calls[adminCheck][1]).toEqual(['admin@example.test']);
     const lock = statements.findIndex((sql) => /pg_advisory_xact_lock/.test(sql));
+    expect(lock).toBeGreaterThan(adminCheck);
     const resolve = statements.findIndex((sql) => /update access_request/.test(sql));
     const insert = statements.findIndex((sql) => /insert into editor/.test(sql));
     expect(lock).toBeGreaterThan(0);
@@ -1163,6 +1209,15 @@ describe('api/db.js', () => {
     expect(insert).toBeGreaterThan(resolve); // the request row is locked first, as resolveAccessRequest does
     expect(client.query.mock.calls[resolve][1]).toEqual(['editor@example.test', 'admin@example.test']);
     expect(pool.query).not.toHaveBeenCalled();
+  });
+
+  it('answers not_an_admin, writing nothing, when the inviter is no longer an admin', async () => {
+    const client = { query: vi.fn(async () => ({ rows: [] })), release: vi.fn() };
+    const pool = { query: vi.fn(), connect: vi.fn(async () => client) };
+    expect(await createDb(pool).addEditor({ email: 'new@example.test', name: null, role: 'admin' }, 'demoted@example.test'))
+      .toEqual({ outcome: 'not_an_admin', editor: null });
+    const statements = client.query.mock.calls.map(([sql]) => sql);
+    expect(statements.some((sql) => /insert into editor|update access_request/.test(sql))).toBe(false);
   });
 
   it('passes its log and context (the upload checks\' headObject) to runChange', async () => {

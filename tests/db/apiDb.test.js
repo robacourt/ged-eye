@@ -107,11 +107,20 @@ describe.skipIf(!url)('api/db.js (database)', { timeout: 30000 }, () => {
     });
 
     it('adds an editor once; a duplicate returns null and changes nothing', async () => {
-      const added = await db.addEditor({ email: 'ed@example.test', name: 'Ed', role: 'editor' }, OWNER);
+      const { outcome, editor: added } = await db.addEditor({ email: 'ed@example.test', name: 'Ed', role: 'editor' }, OWNER);
+      expect(outcome).toBe('added');
       expect(added).toMatchObject({ email: 'ed@example.test', name: 'Ed', role: 'editor', addedBy: OWNER });
       expect(added.addedAt).toBeInstanceOf(Date);
-      expect(await db.addEditor({ email: 'ed@example.test', name: 'Other', role: 'admin' }, OWNER)).toBeNull();
+      expect(await db.addEditor({ email: 'ed@example.test', name: 'Other', role: 'admin' }, OWNER)).toEqual({ outcome: 'listed', editor: null });
       expect(await db.lookupEditor('ed@example.test')).toEqual({ email: 'ed@example.test', name: 'Ed', role: 'editor' });
+    });
+
+    it('refuses an invite from someone who is not an admin, adding no one', async () => {
+      expect(await db.addEditor({ email: 'sneak@example.test', name: null, role: 'admin' }, 'ed@example.test'))
+        .toEqual({ outcome: 'not_an_admin', editor: null });
+      expect(await db.addEditor({ email: 'sneak@example.test', name: null, role: 'admin' }, 'nobody@example.test'))
+        .toEqual({ outcome: 'not_an_admin', editor: null });
+      expect(await db.lookupEditor('sneak@example.test')).toBeNull();
     });
 
     it('lists admins first, then by email', async () => {

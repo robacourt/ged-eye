@@ -51,6 +51,14 @@ export function sanitizeName(name) {
   return limited === '' ? null : limited;
 }
 
+/**
+ * Text someone wrote for the body of a message (a note or an invite message): line breaks kept (as \n), other
+ * control characters turned into spaces, and direction overrides dropped, so it reads as what it is.
+ */
+export function sanitizeText(text) {
+  return String(text).replace(/\r\n?|[\u2028\u2029]/g, '\n').replace(/[^\P{Cc}\n\t]/gu, ' ').replace(DIRECTION_CONTROLS, '');
+}
+
 const pad = (n) => String(n).padStart(2, '0');
 
 /** "10 Oct 2026, 13:05 UTC", the same wherever it runs. */
@@ -77,7 +85,7 @@ export function requestEmail({ to, request, siteUrl = SITE_URL }) {
     `Asked: ${formatTime(request.createdAt)}`,
     ''
   ];
-  if (request.note) lines.push('Their note, as written by them:', request.note);
+  if (request.note) lines.push('Their note, as written by them:', sanitizeText(request.note));
   else lines.push('They did not leave a note.');
   lines.push('', 'Review requests:', new URL('?access-requests', siteUrl).href, '');
   return { to, subject: `Edit access request from ${request.email}`, text: lines.join('\n') };
@@ -118,7 +126,7 @@ export function inviteEmail({ to, role, inviter, message = null, siteUrl = SITE_
     level.allows,
     ''
   ];
-  if (message) lines.push('Their message, as written by them:', message, '');
+  if (message) lines.push('Their message, as written by them:', sanitizeText(message), '');
   lines.push(
     `To start, sign in as ${to}: with Google if it's a Google account, or with a code we email to that address.`,
     new URL('?invite', siteUrl).href,

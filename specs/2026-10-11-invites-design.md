@@ -52,6 +52,15 @@ The levels are the existing roles: **Editor** (can edit the tree) and **Admin** 
   - **On success**, a toast says "ann@example.com is now an admin."
   - **On failure**, the select goes back to the old value and the error is shown in the row.
 
+## Review changes
+
+- **The inviter is re-checked inside the invite's transaction.** `addEditor` takes a share lock on the inviter's own admin row first, as `resolveAccessRequest` does. It returns `{ outcome: 'added' | 'listed' | 'not_an_admin', editor }`, so an admin demoted mid-invite can't create an admin, and a 403 is sent.
+- **A demoted admin's account is re-read.** The front end re-reads the account quietly on a 403 `not_an_admin`, as it does on `not_an_editor`, so the admin menu items go away.
+- **Unknown routes have their own code.** They answer 404 `no_route`, not `not_found`, so an old Function instance (or a mangled path) can't look like "editor removed".
+- **Invites are capped.** Each admin may send 20 an hour, counted per Function instance, which is a brake rather than a quota. Above that the answer is 429 `too_many_invites`.
+- **Message text is cleaned.** Invite messages and access request notes go through `sanitizeText`: line breaks are kept, other control characters become spaces, and direction overrides are dropped.
+- **Hint for the wrong account.** When `?invite` is followed by someone signed in with an account that isn't on the list, a toast says to sign out and sign in with the address the invite went to.
+
 ## Testing
 
 - **Unit tests:** `inviteEmail`; the handler's invite mail, validation, and the role route's outcomes and admin check; `editApi`'s two calls; the dialog's invite form and Access select; and `?invite` in `main.js`.

@@ -95,6 +95,8 @@ describe('editorsErrorMessage', () => {
     expect(editorsErrorMessage(apiError(409, 'last_admin', { message: "The last admin can't be made an editor." })))
       .toBe("The last admin can't be made an editor.");
     expect(editorsErrorMessage(apiError(409, 'last_admin'))).toBe("The last admin can't be removed.");
+    expect(editorsErrorMessage(apiError(429, 'too_many_invites'))).toBe("You've sent a lot of invites in the last hour. Try again later.");
+    expect(editorsErrorMessage(apiError(404, 'no_route'))).toBe('The server had a problem (no_route). Try again.');
     expect(editorsErrorMessage(apiError(409, 'cannot_remove_self', { message: "You can't remove yourself." }))).toBe("You can't remove yourself.");
     expect(editorsErrorMessage(apiError(409, 'last_admin', { message: "The last admin can't be removed." }))).toBe("The last admin can't be removed.");
     expect(editorsErrorMessage(apiError(403, 'not_an_admin'))).toBe('Only admins can change the editors list.');

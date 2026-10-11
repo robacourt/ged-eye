@@ -471,6 +471,35 @@ describe('initApp: a removed editor', () => {
   });
 });
 
+describe('initApp: an admin made an editor', () => {
+  let editorsApi;
+
+  beforeEach(async () => {
+    api.changeEditorRole = vi.fn().mockRejectedValue(apiError(403, 'not_an_admin'));
+    await start();
+    await signInAs(ADMIN);
+    signInOptions.openEditors();
+    await flush();
+    editorsApi = dialogs.openEditorsDialog.mock.calls[0][0].api;
+    signIn.refreshAccount.mockClear();
+  });
+
+  it('reads the account again, quietly, when refused as no longer an admin', async () => {
+    await expect(editorsApi.changeEditorRole('ann@example.com', 'admin')).rejects.toMatchObject({ code: 'not_an_admin' });
+    await flush();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(signIn.refreshAccount).toHaveBeenCalledWith({ quiet: true });
+  });
+
+  it('leaves the account alone once it is known not to be an admin', async () => {
+    await signInAs(EDITOR);
+    signIn.refreshAccount.mockClear();
+    await expect(editorsApi.changeEditorRole('ann@example.com', 'admin')).rejects.toMatchObject({ code: 'not_an_admin' });
+    await flush();
+    expect(signIn.refreshAccount).not.toHaveBeenCalled();
+  });
+});
+
 describe('initApp: opening the editors', () => {
   beforeEach(async () => {
     await start();
@@ -732,6 +761,38 @@ describe('initApp: the ?invite link', () => {
     await start('/?access-requests&invite');
     expect(signIn.open).toHaveBeenCalledOnce();
     expect(window.location.search).toBe('');
+  });
+
+  const HINT = "You're signed in as tom@example.com, who hasn't been invited. Sign out, then sign in with the address your invite was sent to.";
+  const NOT_INVITED = { email: 'tom@example.com', name: null, role: null };
+  const hinted = () => showToast.mock.calls.filter(([text]) => text === HINT);
+
+  it('tells someone signed in with an account that is not on the list to switch, until dismissed', async () => {
+    restores('tom@example.com');
+    await start('/?invite');
+    await signInAs(NOT_INVITED);
+    expect(hinted()).toEqual([[HINT, { timeout: 0 }]]);
+    await signInAs(NOT_INVITED); // once only
+    expect(hinted()).toHaveLength(1);
+  });
+
+  it('says nothing to someone who is on the list', async () => {
+    restores('ann@example.com');
+    await start('/?invite');
+    await signInAs(EDITOR);
+    expect(showToast).not.toHaveBeenCalledWith(expect.stringContaining("hasn't been invited"), expect.anything());
+  });
+
+  it('gives the hint after the sign-in it opened, but not after a cancelled one', async () => {
+    await start('/?invite');
+    await signInAs(NOT_INVITED);
+    expect(hinted()).toHaveLength(1);
+
+    showToast.mockClear();
+    await start('/?invite');
+    signIn.open.mock.calls.at(-1)[0].onCancel();
+    await signInAs(NOT_INVITED);
+    expect(hinted()).toHaveLength(0);
   });
 
   it('does nothing when sign-in is unavailable', async () => {

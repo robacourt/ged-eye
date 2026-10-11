@@ -199,13 +199,20 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
     },
 
     /**
-     * → the new editor, or null when the email is already listed (an existing editor is never changed).
-     * Either way, a pending access request for the email is marked granted by `by`, in the same
-     * transaction, holding the request lock (as createAccessRequest does), so nothing is left pending.
+     * Adds someone to the editors list (an invite). → { outcome: 'added', editor } | { outcome: 'listed', editor:
+     * null } when the email is already listed (an existing editor is never changed) | { outcome: 'not_an_admin',
+     * editor: null } when `by` isn't, or is no longer, an admin. When added or listed, a pending access request for
+     * the email is marked granted by `by`, in the same transaction, holding the request lock (as
+     * createAccessRequest does), so nothing is left pending.
      */
     addEditor({ email, name, role }, by) {
       return inTransaction(pool, async (client) => {
-        // The request lock first: a request being made now either commits before this update (and is
+        // A share lock on the admin's own row first, as resolveAccessRequest takes: a demotion or removal of `by`
+        // (which locks admin rows for update) waits for this to commit, or this waits for it and finds no row.
+        const { rows: [stillAdmin] } = await client.query(
+          "select 1 from editor where email = $1 and role = 'admin' for share", [by]);
+        if (!stillAdmin) return { outcome: 'not_an_admin', editor: null };
+        // Then the request lock: a request being made now either commits before this update (and is
         // granted by it) or waits and finds the editor, never landing between the update and the insert.
         await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
         // The request row first, then the editor: the order resolveAccessRequest locks them in.
@@ -219,7 +226,7 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
            returning ${EDITOR_COLUMNS}`,
           [email, name, role, by]
         );
-        return row ? editorFromRow(row) : null;
+        return row ? { outcome: 'added', editor: editorFromRow(row) } : { outcome: 'listed', editor: null };
       });
     },
 

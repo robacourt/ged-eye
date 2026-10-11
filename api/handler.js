@@ -21,6 +21,9 @@ const MAX_TEXT = 500;
 const MAX_NOTE = 500;
 const MAX_EMAIL = 254;
 const MAX_KIND = 64;
+// Invites per admin per hour, counted per Function instance: a brake on mail sent in the site's name, not a quota.
+const INVITE_LIMIT = 20;
+const INVITE_WINDOW_MS = 60 * 60 * 1000;
 
 const PUBLIC_REVALIDATE = 'public, max-age=0, must-revalidate';
 const VARY_AUTH = { vary: 'Authorization' };
@@ -91,8 +94,8 @@ const validateNote = (body) => optionalNote(body.note ?? null, 'note');
  *   search(q, limit) → [{ id, name, birthYear, deathYear, living }]
  *   lookupEditor(email) → { email, name, role } | null
  *   listEditors() → [{ email, name, role, addedBy, addedAt }]
- *   addEditor({ email, name, role }, byEmail) → the new editor, or null if the email is already listed;
- *     either way, marks a pending access request for the email granted by byEmail
+ *   addEditor({ email, name, role }, byEmail) → { outcome: 'added' | 'listed' (already on the list) |
+ *     'not_an_admin', editor | null }; when added or listed, marks a pending access request for the email granted
  *   removeEditor(email, byEmail) → 'removed' | 'not_found' | 'last_admin' | 'not_an_admin'
  *   changeEditorRole(email, role, byEmail) → { outcome: 'changed' | 'unchanged' | 'not_found' | 'last_admin' |
  *     'not_an_admin', editor | null }
@@ -123,6 +126,15 @@ const validateNote = (body) => optionalNote(body.note ?? null, 'note');
  */
 export function createHandler({ db, authenticate, mailer = createMailer({}), waitUntil = () => {}, log = console.error }) {
   const lookupEditor = (email) => db.lookupEditor(email);
+  const invitesSent = new Map(); // admin email → times of their invites in the last hour, on this instance
+
+  /** The admin's invites still in the window (pruned). */
+  function recentInvites(email, now) {
+    const times = (invitesSent.get(email) ?? []).filter((time) => now - time < INVITE_WINDOW_MS);
+    if (times.length) invitesSent.set(email, times);
+    else invitesSent.delete(email);
+    return times;
+  }
   const editorOf = (request) => requireEditorOf(request, authenticate, lookupEditor);
 
   /**
@@ -261,8 +273,15 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
   async function addEditor({ request }) {
     const admin = await requireAdminOf(request);
     const { message, ...editor } = validateNewEditor(await readJson(request));
-    const added = await db.addEditor(editor, admin.email);
-    if (!added) throw new ApiError(409, 'already_an_editor', { email: editor.email });
+    if (recentInvites(admin.email, Date.now()).length >= INVITE_LIMIT) throw new ApiError(429, 'too_many_invites');
+    const { outcome, editor: added } = await db.addEditor(editor, admin.email);
+    switch (outcome) {
+      case 'added': break;
+      case 'listed': throw new ApiError(409, 'already_an_editor', { email: editor.email });
+      case 'not_an_admin': throw new ApiError(403, 'not_an_admin');
+      default: throw new Error(`addEditor returned ${outcome}`);
+    }
+    invitesSent.set(admin.email, [...recentInvites(admin.email, Date.now()), Date.now()]);
     sendLater('invite', async () => [added.email],
       (to) => inviteEmail({ to, role: added.role, inviter: { email: admin.email, name: admin.name }, message }));
     return json(201, { editor: added });
@@ -369,7 +388,8 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
         const match = pattern.exec(url.pathname);
         if (match) return await run({ request, url, params: match.slice(1) });
       }
-      return json(404, { error: 'not_found' });
+      // Not `not_found`, which callers read as "no such person or editor".
+      return json(404, { error: 'no_route' });
     } catch (error) {
       // ApiErrors and AuthErrors are deliberate responses, not logged here; whoever throws a 5xx
       // ApiError logs it. Anything else is unexpected: logged, and a 500.

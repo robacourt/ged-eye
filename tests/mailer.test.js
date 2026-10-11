@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, vi } from 'vitest';
 import nodemailer from 'nodemailer';
-import { SITE_URL, createMailer, grantedEmail, inviteEmail, isSafeAddress, requestEmail, sanitizeName } from '../api/mailer.js';
+import { SITE_URL, createMailer, grantedEmail, inviteEmail, isSafeAddress, requestEmail, sanitizeName, sanitizeText } from '../api/mailer.js';
 
 const REQUEST = {
   id: 5,
@@ -133,6 +133,21 @@ describe('grantedEmail', () => {
 
   it('refuses an unsafe recipient', () => {
     expect(() => grantedEmail({ to: 'a@example.test, b@example.test' })).toThrow(/address/);
+  });
+});
+
+describe('sanitizeText', () => {
+  it('keeps line breaks and tabs, turns other control characters into spaces, and drops direction overrides', () => {
+    expect(sanitizeText('a\r\nb\rc\u2028d\te\u0007f\u0000g')).toBe('a\nb\nc\nd\te f g');
+    expect(sanitizeText('see moc.elpmaxe\u202E//:sptth')).toBe('see moc.elpmaxe//:sptth');
+    expect(sanitizeText('Plain, with émoji 😀')).toBe('Plain, with émoji 😀');
+  });
+
+  it('is applied to invite messages and request notes', () => {
+    const inviter = { email: 'admin@example.test', name: null };
+    expect(inviteEmail({ to: 'ann@example.test', role: 'editor', inviter, message: 'Hi\u202E there' }).text).toContain('\nHi there\n');
+    const request = { email: 'tom@example.test', name: null, note: 'Tom\u2066 here\r\nthanks', createdAt: '2026-10-10T13:05:00.000Z' };
+    expect(requestEmail({ to: 'admin@example.test', request }).text).toContain('\nTom here\nthanks\n');
   });
 });
 

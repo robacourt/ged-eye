@@ -61,6 +61,8 @@ const isNotFound = (error) => error instanceof PersonNotFoundError || error?.nam
 
 /** Whether the server refused a call because the signed-in account is not (or no longer) on the editors list. */
 const isNotAnEditor = (error) => error?.status === 403 && error.code === 'not_an_editor';
+/** Whether the server refused an admin call because the account is not (or no longer) an admin. */
+const isNotAnAdmin = (error) => error?.status === 403 && error.code === 'not_an_admin';
 
 /** The editApi.js calls whose refusals are watched: all but `me`, which reads the account itself. */
 export const WATCHED_API_CALLS = ['authedFetch', 'runChange', 'revert', 'restore', 'undo', 'redo', 'listChanges',
@@ -68,10 +70,11 @@ export const WATCHED_API_CALLS = ['authedFetch', 'runChange', 'revert', 'restore
   'grantAccessRequest', 'dismissAccessRequest'];
 
 /**
- * `api` with its calls watched: a rejection that is a 403 `not_an_editor` is reported to `onNotAnEditor`
- * (the editor was removed since /me was read), and still thrown to the caller, who words it as usual.
+ * `api` with its calls watched: a rejection that is a 403 `not_an_editor` is reported to `onNotAnEditor` (the
+ * editor was removed since /me was read), and one that is a 403 `not_an_admin` to `onNotAnAdmin` (an admin made
+ * an editor since); either is still thrown to the caller, who words it as usual.
  */
-function watchNotAnEditor(api, onNotAnEditor) {
+function watchRefusals(api, { onNotAnEditor, onNotAnAdmin }) {
   const watched = { ...api };
   for (const name of WATCHED_API_CALLS) {
     const call = api[name];
@@ -81,6 +84,7 @@ function watchNotAnEditor(api, onNotAnEditor) {
         return await call(...args);
       } catch (error) {
         if (isNotAnEditor(error)) onNotAnEditor();
+        else if (isNotAnAdmin(error)) onNotAnAdmin();
         throw error;
       }
     };
@@ -145,12 +149,20 @@ export function initApp({
   // auth.init() resolves; then 'account' while /me is read for someone signed in, or 'signing-in' while the
   // sign-in it opened is open. It opens the Editors dialog only for an admin, and is dropped quietly otherwise.
   let accessRequestsLink = takeParam(ACCESS_REQUESTS_PARAM) ? 'starting' : null;
-  const inviteLink = takeParam(INVITE_PARAM);
+  // The invite email's link: 'starting' until the session is restored, then 'signing-in' (the dialog it
+  // opened) or 'account' (waiting for /me), then null once followed or dropped.
+  let inviteLink = takeParam(INVITE_PARAM) ? 'starting' : null;
 
   // Calls to the API from here and from the editing dialogs. An editor who has been removed since signing in
-  // learns it from the first refusal: the account is read again, which takes the edit controls away.
-  const api = watchNotAnEditor(apiModule, () => {
-    if (canEdit()) signIn.refreshAccount(); // never rejects: a failure shows in the account menu
+  // learns it from the first refusal: the account is read again, which takes the edit controls away. An admin
+  // made an editor since learns it the same way (quietly), which takes the admin menu items away.
+  const api = watchRefusals(apiModule, {
+    onNotAnEditor() {
+      if (canEdit()) signIn.refreshAccount(); // never rejects: a failure shows in the account menu
+    },
+    onNotAnAdmin() {
+      if (account?.role === 'admin') signIn.refreshAccount({ quiet: true });
+    }
   });
 
   const overlay = {
@@ -544,9 +556,32 @@ export function initApp({
 
   // --- The invite email's link (?invite) ------------------------------------------------------------------------
 
-  /** Once auth.init() has resolved: the sign-in dialog, unless someone is signed in (or it's already open). */
+  /** /me has answered for the link: a hint when the account signed in isn't on the editors list. */
+  function followInviteLink(me) {
+    inviteLink = null;
+    if (me && !me.role) {
+      showToast(`You're signed in as ${me.email ?? 'someone'}, who hasn't been invited. Sign out, then sign in with ` +
+        'the address your invite was sent to.', { timeout: 0 });
+    }
+  }
+
+  /** Once auth.init() has resolved: follow the link now, once /me answers, or after the sign-in it opens. */
   function startInviteLink() {
-    if (inviteLink && !auth.getState().user && !signIn.isOpen()) signIn.open();
+    if (inviteLink !== 'starting') return;
+    if (account) {
+      followInviteLink(account);
+    } else if (auth.getState().user) {
+      inviteLink = 'account';
+    } else {
+      inviteLink = 'signing-in';
+      if (!signIn.isOpen()) {
+        signIn.open({
+          onCancel: () => {
+            if (inviteLink === 'signing-in') inviteLink = null;
+          }
+        });
+      }
+    }
   }
 
   // --- Keyboard Undo and Redo ----------------------------------------------------------------------------------
@@ -586,7 +621,7 @@ export function initApp({
       account = me;
       syncTreeAddRelative();
       if (!canEdit()) {
-        // Signed in without editing access, or an editor who has been removed since (see watchNotAnEditor).
+        // Signed in without editing access, or an editor who has been removed since (see watchRefusals).
         dropQueuedKeys();
         historyPanel?.close();
         editorsDialog?.close();
@@ -595,10 +630,12 @@ export function initApp({
       showCurrentPerson();
       if (canEdit()) prepareEditing();
       if (accessRequestsLink === 'account' || accessRequestsLink === 'signing-in') followAccessRequestsLink(me);
+      if (inviteLink === 'account' || inviteLink === 'signing-in') followInviteLink(me);
     },
     onSignedOut() {
       account = null;
       if (accessRequestsLink === 'account') accessRequestsLink = null; // a sign-in it opened may still finish
+      if (inviteLink === 'account') inviteLink = null;
       syncTreeAddRelative();
       dropQueuedKeys();
       historyPanel?.close();
@@ -609,6 +646,7 @@ export function initApp({
     onAccountError() {
       // /me failed while the link waited for it: drop it, so a later Try again doesn't open Editors out of the blue.
       accessRequestsLink = null;
+      inviteLink = null;
     },
     openHistory: () => openHistory(),
     openEditors
@@ -640,6 +678,7 @@ export function initApp({
       },
       (error) => {
         accessRequestsLink = null;
+        inviteLink = null;
         console.warn('Sign-in is unavailable', error);
       })
     .catch(error => console.error('Could not follow the email link', error));

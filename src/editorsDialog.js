@@ -27,6 +27,8 @@ export function editorsErrorMessage(error) {
       return "You can't remove yourself.";
     case 'cannot_change_self':
       return "You can't change your own access.";
+    case 'too_many_invites':
+      return "You've sent a lot of invites in the last hour. Try again later.";
     case 'last_admin':
       // Removing them, or making them an editor: the server says which.
       return error.body?.message || "The last admin can't be removed.";
