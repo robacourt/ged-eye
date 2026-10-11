@@ -176,7 +176,7 @@ Viewing stays public. Family members on the invite list can also sign in and edi
   - removing a link (×), and deleting a person
   - a couple's marriage and divorce details
 
-  The Contact fields (email and phone) are shown to everyone who views the tree, not only to editors, so enter only what you're happy to make public.
+  The Contact fields (email and phone) of anyone not counted as living are shown to everyone who views the tree, not only to editors, so enter only what you're happy to make public.
 - **Photos:** uploading, captions, tagging and avatars are covered under [Photos](#photos).
 - **Living status:** the person editor's **Living status** is "Work it out" by default, which shows what the site has worked out; choose Living or Deceased to override it ([Living people](#living-people)).
 - **History:** every edit is kept forever, with who made it and when. **History** (in the account menu, or "History of this person" in the details panel) lists everyone's changes. **Revert** undoes any change and **Restore** puts it back; both are recorded too, so nothing is ever lost. If later edits depend on it (someone has since edited the same field, or added a child to a family it created), Revert is refused and links to the changes in the way.
