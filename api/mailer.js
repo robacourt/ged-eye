@@ -106,13 +106,14 @@ export function grantedEmail({ to, siteUrl = SITE_URL }) {
 
 /** What each access level allows, for the invite. */
 const LEVELS = {
+  viewer: { name: 'a viewer', allows: 'You can see everything in the tree, including details of living people, which are hidden from the public.' },
   editor: { name: 'an editor', allows: 'You can add and change people, relationships and photos. Every change is kept and can be undone.' },
   admin: { name: 'an admin', allows: 'You can add and change people, relationships and photos, and invite people and change their access too.' }
 };
 
 /**
  * The invite to someone just added to the editors list. `inviter` is the admin ({ email, name }), `role` the
- * invited person's ('editor' | 'admin'), `message` the admin's optional note. → { to, subject, text }; throws for
+ * invited person's ('viewer' | 'editor' | 'admin'), `message` the admin's optional note. → { to, subject, text }; throws for
  * an unsafe address or an unknown role.
  */
 export function inviteEmail({ to, role, inviter, message = null, siteUrl = SITE_URL }) {

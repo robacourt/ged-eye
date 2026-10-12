@@ -71,11 +71,12 @@ const requestFromRow = (row) => ({
   resolvedAt: row.resolved_at === null ? null : iso(row.resolved_at)
 });
 
-// Pending requests from people who aren't editors: the ones an admin still has to look at.
+// Pending requests from people who can't edit yet (not on the list, or viewers, 012): the ones an admin still
+// has to look at.
 const OPEN_REQUESTS = `
   from access_request r
   where r.status = 'pending'
-    and not exists (select 1 from editor e where e.email = r.email)`;
+    and not exists (select 1 from editor e where e.email = r.email and e.role in ('editor', 'admin'))`;
 
 const LATEST_REQUEST = `select ${REQUEST_COLUMNS} from access_request where email = $1 order by created_at desc, id desc limit 1`;
 
@@ -201,9 +202,10 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
     /**
      * Adds someone to the editors list (an invite). → { outcome: 'added', editor } | { outcome: 'listed', editor:
      * null } when the email is already listed (an existing editor is never changed) | { outcome: 'not_an_admin',
-     * editor: null } when `by` isn't, or is no longer, an admin. When added or listed, a pending access request for
-     * the email is marked granted by `by`, in the same transaction, holding the request lock (as
-     * createAccessRequest does), so nothing is left pending.
+     * editor: null } when `by` isn't, or is no longer, an admin. When the person ends up able to edit (added as an
+     * editor or admin, or already one), a pending access request for the email is marked granted by `by`, in the
+     * same transaction, holding the request lock (as createAccessRequest does), so nothing is left pending. A
+     * viewer's request for edit access stays pending, for an admin to grant.
      */
     addEditor({ email, name, role }, by) {
       return inTransaction(pool, async (client) => {
@@ -215,11 +217,13 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
         // Then the request lock: a request being made now either commits before this update (and is
         // granted by it) or waits and finds the editor, never landing between the update and the insert.
         await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
-        // The request row first, then the editor: the order resolveAccessRequest locks them in.
+        // The request row first, then the editor: the order resolveAccessRequest locks them in. Granted only if
+        // they will be able to edit: by the role they already have, else the one they are invited with.
         await client.query(
           `update access_request set status = 'granted', resolved_by = $2, resolved_at = now()
-           where email = $1 and status = 'pending'`,
-          [email, by]);
+           where email = $1 and status = 'pending'
+             and coalesce((select role from editor where email = $1), $3) in ('editor', 'admin')`,
+          [email, by, role]);
         const { rows: [row] } = await client.query(
           `insert into editor (email, name, role, added_by) values ($1, $2, $3, $4)
            on conflict (email) do nothing
@@ -232,7 +236,9 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
 
     /**
      * Sets an editor's role. → { outcome: 'changed' | 'unchanged' | 'not_found' | 'not_an_admin' (`by` isn't, or
-     * is no longer, an admin) | 'last_admin', editor: the editor after (changed or unchanged), else null }
+     * is no longer, an admin) | 'last_admin', editor: the editor after (changed or unchanged), else null }. Made
+     * an editor or admin, their pending request for edit access (a viewer's) is marked granted by `by`, so it
+     * can't linger hidden and come back if they are later made a viewer or removed.
      */
     changeEditorRole(email, role, by) {
       return inTransaction(pool, async (client) => {
@@ -243,8 +249,19 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
         if (!target) return { outcome: 'not_found', editor: null };
         if (target.role === role) return { outcome: 'unchanged', editor: editorFromRow(target) };
         if (target.role === 'admin' && admins.length <= 1) return { outcome: 'last_admin', editor: null };
+        const canEdit = role === 'editor' || role === 'admin';
+        // The request lock, after the editor rows (nothing that holds it waits on them): a request being made now
+        // either commits first (and is granted below) or waits and finds they can edit.
+        if (canEdit) await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
         const { rows: [row] } = await client.query(
           `update editor set role = $2 where email = $1 returning ${EDITOR_COLUMNS}`, [email, role]);
+        if (canEdit) {
+          // skip locked: a grant in progress (which locks the request row before the editor's) resolves it itself.
+          await client.query(
+            `update access_request set status = 'granted', resolved_by = $2, resolved_at = now()
+             where id in (select id from access_request where email = $1 and status = 'pending' for update skip locked)`,
+            [email, by]);
+        }
         return { outcome: 'changed', editor: editorFromRow(row) };
       });
     },
@@ -282,7 +299,8 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
     },
 
     /**
-     * Asks for edit access for `email`. Checks, in this order: already an editor ('editor'); a pending
+     * Asks for edit access for `email`. Checks, in this order: already an editor or admin ('editor'; a viewer
+     * may ask); a pending
      * request ('pending', with it); the rate limits ('limited'); then inserts ('created', with it). New
      * requests are serialised by an advisory lock, so the limits hold; if a pending request appears
      * anyway (the insert's `on conflict … do nothing`), that one is returned as 'pending'.
@@ -291,7 +309,8 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
     createAccessRequest({ email, name, note }) {
       return inTransaction(pool, async (client) => {
         await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
-        const { rows: [editor] } = await client.query('select 1 from editor where email = $1', [email]);
+        const { rows: [editor] } = await client.query(
+          "select 1 from editor where email = $1 and role in ('editor', 'admin')", [email]);
         if (editor) return { outcome: 'editor', request: null };
         const { rows: [pending] } = await client.query(
           `select ${REQUEST_COLUMNS} from access_request where email = $1 and status = 'pending'`, [email]);
@@ -351,8 +370,12 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
              on conflict (email) do nothing
              returning ${EDITOR_COLUMNS}`,
             [row.email, row.name, admin]);
-          if (added) {
-            editor = editorFromRow(added);
+          // Already listed: a viewer becomes an editor; an editor or admin is left as they are. An update locks
+          // only the row it changes, so an editor's or admin's row is never locked here (an upsert's would be).
+          const { rows: [upgraded] } = added ? { rows: [] } : await client.query(
+            `update editor set role = 'editor' where email = $1 and role = 'viewer' returning ${EDITOR_COLUMNS}`, [row.email]);
+          if (added || upgraded) {
+            editor = editorFromRow(added ?? upgraded);
           } else {
             const { rows: [existing] } = await client.query(`select ${EDITOR_COLUMNS} from editor where email = $1`, [row.email]);
             editor = editorFromRow(existing);

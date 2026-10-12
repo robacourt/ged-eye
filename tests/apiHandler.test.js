@@ -19,7 +19,8 @@ const ETAG = 'W/"4.006_editing.sql.42.I1"';
 const EDITORS = {
   'admin@example.test': { email: 'admin@example.test', name: 'Ada Admin', role: 'admin' },
   'editor@example.test': { email: 'editor@example.test', name: 'Ed Editor', role: 'editor' },
-  'noname@example.test': { email: 'noname@example.test', name: null, role: 'editor' }
+  'noname@example.test': { email: 'noname@example.test', name: null, role: 'editor' },
+  'reader@example.test': { email: 'reader@example.test', name: 'Rea Reader', role: 'viewer' }
 };
 const TOKENS = {
   admin: { email: 'admin@example.test', name: 'Ada', sub: 'u1' },
@@ -27,6 +28,7 @@ const TOKENS = {
   noname: { email: 'noname@example.test', name: 'Token Name', sub: 'u3' },
   viewer: { email: 'viewer@example.test', name: 'Vi', sub: 'u4' },
   anonymous: { email: 'anon@example.test', name: null, sub: 'u5' },
+  reader: { email: 'reader@example.test', name: 'Rea', sub: 'u7' }, // on the list as a viewer (012)
   unruly: { email: 'unruly@example.test', name: '\u202Eevil\r\nBcc: x@example.test ' + 'n'.repeat(200), sub: 'u6' }
 };
 const ADMIN = { email: 'admin@example.test', name: 'Ada Admin', role: 'admin' };
@@ -1207,7 +1209,9 @@ describe('api/db.js', () => {
     expect(client.query.mock.calls[lock][1]).toEqual([ACCESS_REQUEST_LOCK]);
     expect(resolve).toBeGreaterThan(lock);
     expect(insert).toBeGreaterThan(resolve); // the request row is locked first, as resolveAccessRequest does
-    expect(client.query.mock.calls[resolve][1]).toEqual(['editor@example.test', 'admin@example.test']);
+    // Granted only if they will be able to edit (by the role they have, else the invited one): 012's viewers.
+    expect(client.query.mock.calls[resolve][1]).toEqual(['editor@example.test', 'admin@example.test', 'editor']);
+    expect(statements[resolve]).toMatch(/coalesce\(\(select role from editor where email = \$1\), \$3\) in \('editor', 'admin'\)/);
     expect(pool.query).not.toHaveBeenCalled();
   });
 
@@ -1767,5 +1771,83 @@ describe('living people', () => {
       expect(redactSearchResult(results[1])).toBe(results[1]);
       expect(redactSearchResult(results[0])).toEqual({ id: 'I1', name: 'Ann Lee', birthYear: null, deathYear: null, living: true });
     });
+  });
+});
+
+describe('viewers', () => {
+  const READER = { email: 'reader@example.test', name: 'Rea Reader', role: 'viewer' };
+
+  it('/me: 200 with the role, and where a request for edit access stands', async () => {
+    const { request, db } = setup();
+    const res = await request('/me', { token: 'reader' });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ ...READER, accessRequest: null });
+    expect(db.latestAccessRequest).toHaveBeenCalledWith('reader@example.test');
+    expect(db.pendingRequestCount).not.toHaveBeenCalled();
+    const asked = setup({ latestAccessRequest: vi.fn().mockResolvedValue({ ...PENDING, email: READER.email }) });
+    expect(await (await asked.request('/me', { token: 'reader' })).json())
+      .toEqual({ ...READER, accessRequest: { status: 'pending', createdAt: CREATED_AT } });
+  });
+
+  it('see the whole person view, privately, as editors do', async () => {
+    const living = { ...VIEW, person: { ...VIEW.person, birthDate: '1990', living: true } };
+    const { request } = setup({ personView: async () => ({ view: living, version: VERSION }) });
+    const res = await request('/person/I1', { token: 'reader', headers: { 'if-none-match': ETAG } });
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ ...living, masked: false });
+    expect(res.headers.get('cache-control')).toBe('private, no-store');
+    expect(res.headers.get('etag')).toBeNull();
+  });
+
+  it("see living people's years in search", async () => {
+    const results = [{ id: 'I1', name: 'Ann Lee', birthYear: 1990, deathYear: null, living: true }];
+    const { request } = setup({ search: async () => results });
+    expect(await (await request('/search?q=Ann', { token: 'reader' })).json()).toEqual({ results });
+  });
+
+  it('may not edit, read the history, undo, or manage access', async () => {
+    const { request, db } = setup();
+    const routes = [
+      ['/changes', 'POST', { kind: 'update_person', params: {} }],
+      ['/changes', 'GET'],
+      ['/changes/7/revert', 'POST'],
+      ['/changes/7/restore', 'POST'],
+      ['/undo', 'POST'],
+      ['/redo', 'POST'],
+      ['/editors', 'GET'],
+      ['/editors', 'POST', { email: 'x@example.test' }],
+      ['/editors/editor%40example.test/role', 'POST', { role: 'viewer' }],
+      ['/editors/editor%40example.test', 'DELETE'],
+      ['/access-requests', 'GET'],
+      ['/access-requests/5/grant', 'POST'],
+      ['/access-requests/5/dismiss', 'POST']
+    ];
+    for (const [path, method, body] of routes) {
+      const res = await request(path, { method, body, token: 'reader' });
+      expect([path, method, res.status]).toEqual([path, method, 403]);
+      expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'reader@example.test' });
+    }
+    for (const name of ['runChange', 'listChanges', 'toggle', 'undoLast', 'redoLast', 'listEditors', 'addEditor', 'changeEditorRole',
+      'removeEditor', 'listAccessRequests', 'resolveAccessRequest']) {
+      expect([name, db[name].mock.calls.length]).toEqual([name, 0]);
+    }
+  });
+
+  it('may ask for edit access (the database decides who already can edit)', async () => {
+    const { request, db } = setup();
+    const res = await request('/access-requests', { method: 'POST', token: 'reader', body: { note: 'May I edit?' } });
+    expect(res.status).toBe(201);
+    expect(db.createAccessRequest).toHaveBeenCalledWith({ email: 'reader@example.test', name: 'Rea', note: 'May I edit?' });
+  });
+
+  it('can be invited, with an email describing the level, and set as a level', async () => {
+    const { request, db, mailer, waitUntil } = setup();
+    expect((await request('/editors', { method: 'POST', token: 'admin', body: { email: 'new@example.test', role: 'viewer' } })).status).toBe(201);
+    expect(db.addEditor).toHaveBeenCalledWith({ email: 'new@example.test', name: null, role: 'viewer' }, 'admin@example.test');
+    await scheduledMail(waitUntil);
+    expect(mailer.send.mock.calls[0][0].text).toContain("as a viewer.\nYou can see everything in the tree, including details of living people, which are hidden from the public.");
+    const res = await request(`/editors/${encodeURIComponent('editor@example.test')}/role`, { method: 'POST', token: 'admin', body: { role: 'viewer' } });
+    expect(res.status).toBe(200);
+    expect(db.changeEditorRole).toHaveBeenCalledWith('editor@example.test', 'viewer', 'admin@example.test');
   });
 });

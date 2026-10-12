@@ -80,7 +80,7 @@ const sameEmail = (a, b) => typeof a === 'string' && typeof b === 'string' && a.
  */
 export function createAuth({ client, dev = import.meta.env.DEV }) {
   let user = null; // { email, name }
-  let role = null; // 'admin' | 'editor' | null, from GET /me
+  let role = null; // 'admin' | 'editor' | 'viewer' | null, from GET /me
   let cookieBlocked = false;
   // Bumped whenever the signed-in user changes, so a session read that started before then is ignored.
   let epoch = 0;

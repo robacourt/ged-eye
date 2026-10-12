@@ -112,7 +112,7 @@ describe('openEditorsDialog: the list', () => {
     api.listEditors.mockResolvedValueOnce([ROB, { ...ANN, name: XSS }]);
     await open();
     expect(isEditorDialogOpen()).toBe(true);
-    expect(root().querySelector('.editor-dialog-title').textContent).toBe('Editors');
+    expect(root().querySelector('.editor-dialog-title').textContent).toBe('Editors and viewers');
     expect(rows()).toEqual([
       { email: 'rob@example.com', name: 'Rob', role: 'Admin' },
       { email: 'ann@example.com', name: XSS, role: 'Editor' }
@@ -158,6 +158,19 @@ describe('openEditorsDialog: inviting', () => {
     expect(field('email').value).toBe('');
     expect(field('name').value).toBe('');
     expect(field('message').value).toBe('');
+    expect(field('role').value).toBe('editor');
+  });
+
+  it('offers Viewer, Editor and Admin, with Editor chosen (and chosen again after an invite)', async () => {
+    await open();
+    expect([...field('role').options].map(option => option.value)).toEqual(['viewer', 'editor', 'admin']);
+    expect(field('role').value).toBe('editor');
+    type(field('email'), 'vi@example.com');
+    type(field('role'), 'viewer');
+    await submitAdd();
+    expect(api.addEditor).toHaveBeenCalledWith(expect.objectContaining({ email: 'vi@example.com', role: 'viewer' }));
+    expect(showToast).toHaveBeenCalledWith("Invited vi@example.com as a viewer. They've been emailed.");
+    expect(rows().at(-1)).toMatchObject({ email: 'vi@example.com', role: 'Viewer' });
     expect(field('role').value).toBe('editor');
   });
 
@@ -248,7 +261,17 @@ describe('openEditorsDialog: changing access', () => {
     expect(select('ann@example.com').value).toBe('editor');
     expect(select('ann@example.com').getAttribute('aria-label')).toBe('Access for ann@example.com');
     expect([...select('ann@example.com').options].map(option => [option.value, option.textContent]))
-      .toEqual([['admin', 'Admin'], ['editor', 'Editor']]);
+      .toEqual([['viewer', 'Viewer'], ['editor', 'Editor'], ['admin', 'Admin']]);
+  });
+
+  it('makes someone a viewer, and lists a viewer as one', async () => {
+    api.listEditors.mockResolvedValueOnce([ROB, ANN, { ...TOM, role: 'viewer' }]);
+    await open();
+    expect(select('tom@example.com').value).toBe('viewer');
+    type(select('ann@example.com'), 'viewer');
+    await flush();
+    expect(api.changeEditorRole).toHaveBeenCalledWith('ann@example.com', 'viewer');
+    expect(showToast).toHaveBeenCalledWith('ann@example.com is now a viewer.');
   });
 
   it('saves a change straight away, busy while it runs', async () => {

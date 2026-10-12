@@ -189,20 +189,23 @@ describe('dataLoader signed in', () => {
     vi.unstubAllGlobals();
   });
 
-  it('sends the bearer token when the cached role is editor or admin', async () => {
+  it('sends the bearer token when the cached role is viewer, editor or admin: everyone on the list gets whole views', async () => {
     const fetchMock = vi.fn(async (url) => ok(view(url.split('/').pop())));
     vi.stubGlobal('fetch', fetchMock);
+    getRole.mockReturnValue('viewer');
+    await loadPersonWithFamily('I3');
     getRole.mockReturnValue('editor');
     await loadPersonWithFamily('I1');
     getRole.mockReturnValue('admin');
     await loadPersonWithFamily('I2');
     expect(fetchMock.mock.calls.map(([, init]) => init.headers)).toEqual([
       { authorization: 'Bearer jwt-1' },
+      { authorization: 'Bearer jwt-1' },
       { authorization: 'Bearer jwt-1' }
     ]);
   });
 
-  it('sends no token, so the request stays simple (no CORS preflight), for viewers and non-editors', async () => {
+  it('sends no token, so the request stays simple (no CORS preflight), for the public and accounts not on the list', async () => {
     const fetchMock = vi.fn(async () => ok(view('I1')));
     vi.stubGlobal('fetch', fetchMock);
     await loadPersonWithFamily('I1');

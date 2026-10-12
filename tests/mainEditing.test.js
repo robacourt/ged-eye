@@ -201,6 +201,37 @@ describe('initApp: loading the editing UI', () => {
     expect(shownOptions()).toEqual(VIEWING);
   });
 
+  it('never loads it for someone on the list as a viewer (012): no edit controls, no "+", no History, no keys', async () => {
+    await start();
+    await signInAs({ email: 'vi@example.com', name: 'Vi', role: 'viewer' });
+    signInOptions.openHistory();
+    signInOptions.openEditors();
+    await flush();
+    expect(loadEditing).not.toHaveBeenCalled();
+    expect(shownOptions()).toEqual(VIEWING);
+    expect(treeView.setAddRelative).not.toHaveBeenCalledWith(expect.any(Function));
+    await press('z', { ctrlKey: true });
+    expect(api.undo).not.toHaveBeenCalled();
+  });
+
+  it('takes the edit controls away from an editor made a viewer, once a call is refused', async () => {
+    await start();
+    await signInAs(EDITOR);
+    shownOptions().onEdit(people.get('I7'));
+    await flush();
+    const dialogApi = dialogs.openPersonEditor.mock.calls[0][0].api;
+    signIn.refreshAccount.mockImplementation(async () => {
+      signInOptions.onSignedIn({ ...EDITOR, role: 'viewer' }, 'signed-in');
+      return null;
+    });
+    api.runChange.mockRejectedValueOnce(apiError(403, 'not_an_editor', { email: EDITOR.email }));
+    await expect(dialogApi.runChange({ kind: 'update_person' })).rejects.toMatchObject({ code: 'not_an_editor' });
+    await flush();
+    expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
+    expect(shownOptions()).toEqual(VIEWING);
+    expect(treeView.setAddRelative).toHaveBeenLastCalledWith(null);
+  });
+
   it('loads it once someone can edit, and only then shows the edit controls', async () => {
     let resolve;
     loadEditing.mockImplementationOnce(() => new Promise(r => { resolve = r; }));
