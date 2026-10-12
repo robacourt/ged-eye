@@ -25,7 +25,9 @@ const AUTH_MESSAGES = {
   INVALID_EMAIL_OR_PASSWORD: 'Wrong email or password.'
 };
 
-const ROLE_LABELS = { admin: 'Admin', editor: 'Editor' };
+const ROLE_LABELS = { admin: 'Admin', editor: 'Editor', viewer: 'Viewer' };
+/** Whether a role (from /me) may edit; viewers are on the list but may not, and may ask to. */
+const canEditRole = (role) => role === 'editor' || role === 'admin';
 
 /** Words an AuthClientError (from auth.js) or ApiError (from editApi.js) for a person. */
 export function friendlyError(error) {
@@ -130,7 +132,7 @@ function menuMarkup(menuId) {
         <button type="button" class="editor-btn editor-btn-primary account-request" hidden>Request edit access</button>
         <button type="button" class="editor-btn editor-btn-primary account-requests" hidden></button>
         <button type="button" class="editor-btn account-history" hidden>History</button>
-        <button type="button" class="editor-btn account-editors" hidden>Editors</button>
+        <button type="button" class="editor-btn account-editors" hidden>Editors and viewers</button>
         <button type="button" class="editor-btn account-signout">Sign out</button>
       </div>
     </div>`;
@@ -243,7 +245,7 @@ export function mountSignIn({
         return null;
       }
       if (accountRequest !== request) return null;
-      if (recheckGranted && !me?.role && me?.accessRequest?.status === 'granted') {
+      if (recheckGranted && !canEditRole(me?.role) && me?.accessRequest?.status === 'granted') {
         return loadAccount(reason, { recheckGranted: false, quiet: keep });
       }
       account = { status: 'ready', me };
@@ -259,7 +261,7 @@ export function mountSignIn({
 
   /** A request just sent (or already pending) for `email`: the menu says so, without reading `/me` again. */
   function showRequested(email, request) {
-    if (account.status !== 'ready' || account.me.role || account.me.email !== email) return;
+    if (account.status !== 'ready' || canEditRole(account.me.role) || account.me.email !== email) return;
     const accessRequest = { status: request?.status ?? 'pending', createdAt: request?.createdAt ?? new Date().toISOString() };
     account = { status: 'ready', me: { ...account.me, accessRequest } };
     render();
@@ -310,19 +312,22 @@ export function mountSignIn({
     editorsButton.hidden = true;
     if (account.status === 'ready') {
       menuRole.textContent = ROLE_LABELS[me.role] ?? 'Not an editor';
-      if (me.role) {
+      if (canEditRole(me.role)) {
         historyButton.hidden = false;
         editorsButton.hidden = me.role !== 'admin';
         const pending = me.role === 'admin' ? pendingRequests(me) : 0;
         requestsButton.textContent = `Access requests (${pending})`;
         requestsButton.hidden = pending === 0;
       } else if (me.accessRequest?.status === 'pending') {
-        // A dismissed request is never mentioned; a granted one with no role was read again (loadAccount).
+        // Someone not listed, or a viewer. A dismissed request is never mentioned; a granted one that left
+        // them unable to edit was read again (loadAccount).
         const date = shortDate(me.accessRequest.createdAt);
         menuNote.textContent = date ? `You asked for edit access on ${date}.` : 'You asked for edit access.';
         menuNote.hidden = false;
       } else {
-        menuNote.textContent = `You're signed in as ${email} but not on the editors list.`;
+        menuNote.textContent = me.role === 'viewer'
+          ? "You can see everything, including living people's details."
+          : `You're signed in as ${email} but not on the editors list.`;
         menuNote.hidden = false;
         requestButton.hidden = false;
       }
@@ -363,7 +368,7 @@ export function mountSignIn({
 
   requestButton.addEventListener('click', () => {
     const me = account.status === 'ready' ? account.me : null;
-    if (!me || me.role) return;
+    if (!me || canEditRole(me.role)) return;
     closeMenu();
     button.focus(); // where focus goes back when the dialog closes
     requestDialog?.close();

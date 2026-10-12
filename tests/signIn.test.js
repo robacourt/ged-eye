@@ -45,7 +45,8 @@ function fakeClient({ session = null, cookieBlocked = false } = {}) {
 const ACCOUNTS = {
   admin: { email: 'rob@example.com', name: 'Rob Acourt', role: 'admin' },
   editor: { email: 'rose@example.com', name: 'Rose Smith', role: 'editor' },
-  viewer: { email: 'tom@example.com', name: null, role: null }
+  viewer: { email: 'tom@example.com', name: null, role: null }, // signed in, not on the list
+  reader: { email: 'vi@example.com', name: 'Vi Reader', role: 'viewer', accessRequest: null } // a viewer (012)
 };
 
 /** Like editApi's me(), it caches the role in auth (which tells listeners 'role'). `setup` sets `auth`. */
@@ -519,7 +520,7 @@ describe('mountSignIn', () => {
       expect(headerButton().getAttribute('aria-expanded')).toBe('true');
       expect(menu().querySelector('.account-email').textContent).toBe('rob@example.com');
       expect(menu().querySelector('.account-role').textContent).toBe('Admin');
-      expect(menuButtons()).toEqual(['History', 'Editors', 'Sign out']);
+      expect(menuButtons()).toEqual(['History', 'Editors and viewers', 'Sign out']);
       expect(visibleText('.account-note')).toEqual([]);
 
       $('.account-history').click();
@@ -547,6 +548,24 @@ describe('mountSignIn', () => {
         "You're signed in as tom@example.com but not on the editors list."
       ]);
       expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+    });
+
+    it('for a viewer: Viewer, a note, Request edit access and Sign out (no History)', async () => {
+      await signedInAs(ACCOUNTS.reader);
+      headerButton().click();
+      expect(menu().querySelector('.account-role').textContent).toBe('Viewer');
+      expect(visibleText('.account-note')).toEqual(["You can see everything, including living people's details."]);
+      expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+      $('.account-request').click();
+      expect($('.access-request-dialog .access-request-intro').textContent).toContain('vi@example.com');
+    });
+
+    it('for a viewer who has asked: when they asked, and no button', async () => {
+      await signedInAs({ ...ACCOUNTS.reader, accessRequest: { status: 'pending', createdAt: '2026-10-10T12:00:00Z' } });
+      headerButton().click();
+      expect(menu().querySelector('.account-role').textContent).toBe('Viewer');
+      expect(visibleText('.account-note')[0]).toMatch(/^You asked for edit access/);
+      expect(menuButtons()).toEqual(['Sign out']);
     });
 
     it('shows names and emails as text', async () => {
@@ -750,7 +769,7 @@ describe('mountSignIn', () => {
       it('for an admin with pending requests: "Access requests (N)", which opens the Editors dialog', async () => {
         const { openEditors } = await signedInAs({ ...ACCOUNTS.admin, pendingRequests: 2 });
         headerButton().click();
-        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors', 'Sign out']);
+        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors and viewers', 'Sign out']);
         $('.account-requests').click();
         expect(openEditors).toHaveBeenCalledOnce();
         expect(menuOpen()).toBe(false);
@@ -759,7 +778,7 @@ describe('mountSignIn', () => {
       it('for an admin with none pending: no "Access requests"', async () => {
         await signedInAs({ ...ACCOUNTS.admin, pendingRequests: 0 });
         headerButton().click();
-        expect(menuButtons()).toEqual(['History', 'Editors', 'Sign out']);
+        expect(menuButtons()).toEqual(['History', 'Editors and viewers', 'Sign out']);
       });
 
       it('shows the new count after refreshAccount', async () => {
@@ -768,7 +787,7 @@ describe('mountSignIn', () => {
         api.me.mockImplementation(async () => ({ ...ACCOUNTS.admin, pendingRequests: 0 }));
         await c.refreshAccount();
         headerButton().click();
-        expect(menuButtons()).toEqual(['History', 'Editors', 'Sign out']);
+        expect(menuButtons()).toEqual(['History', 'Editors and viewers', 'Sign out']);
       });
 
       it('a quiet refresh updates the count in place, without reporting an unchanged account', async () => {
@@ -781,10 +800,10 @@ describe('mountSignIn', () => {
         const refreshed = c.refreshAccount({ quiet: true });
         // The menu keeps showing the account while /me is read again.
         expect(menu().querySelector('.account-role').textContent).toBe('Admin');
-        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors', 'Sign out']);
+        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors and viewers', 'Sign out']);
         pending.resolve({ ...ACCOUNTS.admin, pendingRequests: 1 });
         expect(await refreshed).toEqual({ ...ACCOUNTS.admin, pendingRequests: 1 });
-        expect(menuButtons()).toEqual(['Access requests (1)', 'History', 'Editors', 'Sign out']);
+        expect(menuButtons()).toEqual(['Access requests (1)', 'History', 'Editors and viewers', 'Sign out']);
         expect(c.getAccount()).toEqual({ ...ACCOUNTS.admin, pendingRequests: 1 });
         expect(onSignedIn).toHaveBeenCalledOnce();
       });
@@ -804,7 +823,7 @@ describe('mountSignIn', () => {
         api.me.mockRejectedValueOnce(new ApiError(500, 'internal', {}));
         expect(await c.refreshAccount({ quiet: true })).toBeNull();
         headerButton().click();
-        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors', 'Sign out']);
+        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors and viewers', 'Sign out']);
         expect(visibleText('.account-note')).toEqual([]);
         expect(onSignedIn).toHaveBeenCalledOnce();
         expect(onAccountError).not.toHaveBeenCalled();

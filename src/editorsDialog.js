@@ -1,6 +1,6 @@
 /**
- * The Editors dialog, for admins: pending requests for edit access (Grant or Dismiss), who may edit the tree
- * (email, name, and their access level, which can be changed for anyone but yourself), inviting someone (the
+ * The Editors and viewers dialog, for admins: pending requests for edit access (Grant or Dismiss), who has access
+ * (email, name, and their level: viewer, editor or admin, which can be changed for anyone but yourself), inviting someone (the
  * server emails them), and removing someone after a confirmation. The server's refusals (already an editor,
  * changing or removing yourself, the last admin, not an admin, a request another admin already dealt with) are
  * shown where they happened. Every data value is set with `value` or `textContent`.
@@ -9,8 +9,16 @@ import { showToast } from './toast.js';
 import { el, openEditorDialog, uniqueId, setBusy, keepFocusInside, callSafely } from './editorDialog.js';
 import { shortDate } from './accessRequestDialog.js';
 
-const ROLE_LABELS = { admin: 'Admin', editor: 'Editor' };
-const ROLE_OPTIONS = [['editor', 'Editor: can edit the tree'], ['admin', 'Admin: can also invite people and change access']];
+// Least access first. Viewers (012) see everything, including living people's details, but can't edit.
+const ROLE_LABELS = { viewer: 'Viewer', editor: 'Editor', admin: 'Admin' };
+const ROLE_OPTIONS = [
+  ['viewer', "Viewer: can see everything, including living people's details"],
+  ['editor', 'Editor: can also edit the tree'],
+  ['admin', 'Admin: can also invite people and change access']
+];
+const DEFAULT_ROLE = 'editor';
+/** "a viewer", "an editor", "an admin". */
+const withArticle = (role) => `${role === 'viewer' ? 'a' : 'an'} ${ROLE_LABELS[role]?.toLowerCase() ?? role}`;
 const MAX_MESSAGE = 500;
 const NOT_AN_ADMIN = 'Only admins can change the editors list.';
 const GENERIC_ERROR = 'Something went wrong. Try again.';
@@ -75,7 +83,7 @@ function resolvedText({ status, resolvedBy, resolvedByName } = {}) {
 export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
   let busy = false;
   const dialog = openEditorDialog({
-    title: 'Editors',
+    title: 'Editors and viewers',
     className: 'editors-dialog',
     onRequestClose: () => {
       if (!busy) dialog.close();
@@ -92,7 +100,11 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
   const requestsSection = el('section', { class: 'editors-requests', 'aria-labelledby': requestsTitle.id, hidden: true },
     requestsTitle, requestsStatus, requestsRetry, requestsList);
 
-  const intro = el('p', { class: 'editors-intro', text: 'People on this list can sign in and edit the tree.' });
+  const intro = el('p', {
+    class: 'editors-intro',
+    text: "People on this list can sign in. Viewers see everything, including living people's details; editors can " +
+      'also edit the tree; admins can also invite people and change access.'
+  });
   const status = el('p', { class: 'editors-status', role: 'status' });
   const retry = el('button', { type: 'button', class: 'editor-btn editors-retry', text: 'Try again', hidden: true });
   const list = el('ul', { class: 'editors-list', 'aria-label': 'Editors' });
@@ -107,7 +119,7 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
   const emailInput = el('input', { class: 'editor-input', name: 'email', type: 'email', autocomplete: 'off', required: true });
   const nameInput = el('input', { class: 'editor-input', name: 'name', type: 'text', autocomplete: 'off', maxlength: '500' });
   const roleSelect = el('select', { class: 'editor-input', name: 'role' },
-    ...ROLE_OPTIONS.map(([value, label]) => el('option', { value, text: label })));
+    ...ROLE_OPTIONS.map(([value, label]) => el('option', { value, text: label, selected: value === DEFAULT_ROLE })));
   const messageInput = el('textarea', {
     class: 'editor-input editor-textarea', name: 'message', rows: '3', maxlength: String(MAX_MESSAGE)
   });
@@ -342,7 +354,7 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
       }
       savedRole = changed?.role ?? wanted;
       role.value = savedRole;
-      showToast(`${editor.email} is now ${savedRole === 'admin' ? 'an admin' : 'an editor'}.`);
+      showToast(`${editor.email} is now ${withArticle(savedRole)}.`);
     });
 
     remove.addEventListener('click', () => {
@@ -462,7 +474,7 @@ export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
     [...list.children].find(item => sameEmail(item.dataset.email, editor.email))?.remove();
     list.append(editorRow(editor));
     status.textContent = '';
-    showToast(`Invited ${editor.email} as ${editor.role === 'admin' ? 'an admin' : 'an editor'}. They've been emailed.`);
+    showToast(`Invited ${editor.email} as ${withArticle(editor.role)}. They've been emailed.`);
     form.reset();
     emailInput.focus();
     // Adding someone grants their pending request too (on the server), so it leaves the list.

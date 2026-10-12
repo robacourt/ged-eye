@@ -10,7 +10,8 @@ import { apiUrl, timeoutSignal } from './editApi.js';
 const PREFETCH_CONCURRENCY = 4;
 const REQUEST_TIMEOUT_MS = 10_000;
 const VIEW_TTL_MS = 5 * 60_000;
-const EDITOR_ROLES = new Set(['editor', 'admin']);
+// Everyone on the list sees whole views, living people's details included: viewers (012) as well as editors.
+const LISTED_ROLES = new Set(['viewer', 'editor', 'admin']);
 
 const cache = new Map();      // personId -> { view, loadedAt }
 const inflight = new Map();   // personId -> { promise: Promise<view>, editor: whether it asked for the unmasked view }
@@ -29,8 +30,8 @@ export class PersonNotFoundError extends Error {
 
 const isFresh = (since, now = Date.now()) => now - since < VIEW_TTL_MS;
 
-/** Editors get unmasked views; everyone else (signed out, or signed in without editor access) masked ones. */
-const wantsUnmasked = () => EDITOR_ROLES.has(getRole());
+/** People on the list get unmasked views; everyone else (signed out, or signed in and not listed) masked ones. */
+const wantsUnmasked = () => LISTED_ROLES.has(getRole());
 
 /** Whether a view suits the current viewer. A view without `masked` (from an older API) suits anyone. */
 function suitsViewer(view, editor = wantsUnmasked()) {
