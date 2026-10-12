@@ -165,15 +165,23 @@ The site itself is plain static files on GitHub Pages. Neon is the master copy o
 
 ## Editing
 
-Viewing stays public. Family members on the invite list can also sign in and edit the tree from the website, and every edit can be undone.
+Viewing stays public, with living people's details hidden ([Living people](#living-people)). Family members on the list can also sign in, at one of three levels:
 
-- **Who can edit:** only people on the editors list. Admins manage it in the app (account menu → Editors):
-  - **Invite someone** by email as an editor or an admin, with an optional message. They get access straight away, and an email from the site's Gmail account saying who invited them, what they can do, and how to sign in (a `<site>/?invite` link, which opens sign-in).
+| Level | Sees living people's details | Edits the tree | Invites people and changes access |
+|---|---|---|---|
+| **Viewer** | yes | no | no |
+| **Editor** | yes | yes | no |
+| **Admin** | yes | yes | yes |
+
+Every edit can be undone.
+
+- **Who has access:** only people on the list. Admins manage it in the app (account menu → Editors and viewers):
+  - **Invite someone** by email as a viewer, an editor or an admin, with an optional message. They get access straight away, and an email from the site's Gmail account saying who invited them, what they can do, and how to sign in (a `<site>/?invite` link, which opens sign-in).
   - **Change someone's access** with the Access select on their row.
   - **Remove someone.**
 
   An admin can't change their own access or remove themselves, and the last admin can't be made an editor or removed. Anyone can sign in, but someone who isn't on the list just sees the tree.
-- **Asking for access:** someone signed in who isn't on the list can choose **Request edit access** in the account menu, with an optional note. Every admin gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Editors dialog, after sign-in if needed. Admins also see "Access requests (N)" in the account menu. The **Requests** section at the top of the Editors dialog has **Grant** and **Dismiss** for each request, and the requester is emailed when access is granted.
+- **Asking for access:** someone signed in who isn't on the list, or a viewer, can choose **Request edit access** in the account menu, with an optional note. Every admin gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Editors and viewers dialog, after sign-in if needed. Admins also see "Access requests (N)" in the account menu. The **Requests** section at the top of the dialog has **Grant** and **Dismiss** for each request. Grant makes the requester an editor (a viewer included), and they are emailed.
 - **Signing in:** **Sign in** in the header, then a one-time code sent by email, or Google (Neon Auth). Only verified email addresses are accepted.
 - **What can be edited:**
   - a person's details: names, sex, birth, baptism, death and burial (with their notes), cause of death, notes, occupations, residences, census records, other facts, email and phone
@@ -191,7 +199,7 @@ Viewing stays public. Family members on the invite list can also sign in and edi
 
 ### Living people
 
-Anyone who isn't an editor, signed in or not, sees a living person's name, sex and relationships, and "Details of living people are private." Dates, places, notes, facts, contact details, photos and avatar are hidden, and so are their birth date and avatar as someone else's relative, their years in search, any photo that shows them (on anyone's page), and the date and place of a marriage to them. Editors see everything. The `api` Function does this (`api/privacy.js`), from the `living` flags migration `010_living_privacy.sql` adds to each person view (spec: `specs/2026-10-10-living-privacy-design.md`).
+Anyone not on the list, signed in or not, sees a living person's name, sex and relationships, and "Details of living people are private." Dates, places, notes, facts, contact details, photos and avatar are hidden, and so are their birth date and avatar as someone else's relative, their years in search, any photo that shows them (on anyone's page), and the date and place of a marriage to them. Viewers, editors and admins see everything. The `api` Function does this (`api/privacy.js`), from the `living` flags migration `010_living_privacy.sql` adds to each person view (spec: `specs/2026-10-10-living-privacy-design.md`).
 
 Someone counts as living unless an editor has set their Living status, they have any death or burial record, or they were born (or baptised) more than 100 years ago. Without a year, it is estimated from the nearest relatives with one, up to 3 steps away (25 years a generation), and someone with nothing to go on counts as living. Two things it doesn't cover: names of living people mentioned in a deceased person's notes or captions, and the pre-Neon data in this repository's git history.
 
@@ -265,6 +273,7 @@ Editors can add photos to the tree from the website, on a phone or a computer. E
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeAccess.js   # an access request by dev-viewer, granted by dev-admin, with mail logged; then removes dev-viewer again
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokePrivacy.js  # a living person by name only for anonymous and dev-viewer, in full for dev-editor; search years; shared photos
   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeInvites.js  # dev-admin invites dev-viewer (mail logged), changes their access both ways, then removes them
+  node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeViewers.js  # dev-viewer as a viewer: whole views, edits and uploads refused, then asks to edit and is granted; then removed
   ```
 
   Each prints a PASS or FAIL line per check and exits non-zero on a failure. They leave their test objects in the branch's bucket, and `smokePhotos.js` leaves its changes in History.
