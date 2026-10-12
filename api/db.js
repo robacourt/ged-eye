@@ -71,8 +71,8 @@ const requestFromRow = (row) => ({
   resolvedAt: row.resolved_at === null ? null : iso(row.resolved_at)
 });
 
-// Pending requests from people who aren't editors: the ones an admin still has to look at.
-// Pending requests from people who can't edit yet: not on the list, or viewers (012).
+// Pending requests from people who can't edit yet (not on the list, or viewers, 012): the ones an admin still
+// has to look at.
 const OPEN_REQUESTS = `
   from access_request r
   where r.status = 'pending'
@@ -236,7 +236,9 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
 
     /**
      * Sets an editor's role. → { outcome: 'changed' | 'unchanged' | 'not_found' | 'not_an_admin' (`by` isn't, or
-     * is no longer, an admin) | 'last_admin', editor: the editor after (changed or unchanged), else null }
+     * is no longer, an admin) | 'last_admin', editor: the editor after (changed or unchanged), else null }. Made
+     * an editor or admin, their pending request for edit access (a viewer's) is marked granted by `by`, so it
+     * can't linger hidden and come back if they are later made a viewer or removed.
      */
     changeEditorRole(email, role, by) {
       return inTransaction(pool, async (client) => {
@@ -247,8 +249,19 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
         if (!target) return { outcome: 'not_found', editor: null };
         if (target.role === role) return { outcome: 'unchanged', editor: editorFromRow(target) };
         if (target.role === 'admin' && admins.length <= 1) return { outcome: 'last_admin', editor: null };
+        const canEdit = role === 'editor' || role === 'admin';
+        // The request lock, after the editor rows (nothing that holds it waits on them): a request being made now
+        // either commits first (and is granted below) or waits and finds they can edit.
+        if (canEdit) await client.query('select pg_advisory_xact_lock($1)', [ACCESS_REQUEST_LOCK]);
         const { rows: [row] } = await client.query(
           `update editor set role = $2 where email = $1 returning ${EDITOR_COLUMNS}`, [email, role]);
+        if (canEdit) {
+          // skip locked: a grant in progress (which locks the request row before the editor's) resolves it itself.
+          await client.query(
+            `update access_request set status = 'granted', resolved_by = $2, resolved_at = now()
+             where id in (select id from access_request where email = $1 and status = 'pending' for update skip locked)`,
+            [email, by]);
+        }
         return { outcome: 'changed', editor: editorFromRow(row) };
       });
     },
@@ -352,14 +365,17 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
         let editor = null;
         let wasEditor = false;
         if (action === 'grant') {
-          // A viewer asking to edit becomes an editor; an editor or admin already listed is left as they are.
           const { rows: [added] } = await client.query(
             `insert into editor (email, name, role, added_by) values ($1, $2, 'editor', $3)
-             on conflict (email) do update set role = 'editor' where editor.role = 'viewer'
+             on conflict (email) do nothing
              returning ${EDITOR_COLUMNS}`,
             [row.email, row.name, admin]);
-          if (added) {
-            editor = editorFromRow(added);
+          // Already listed: a viewer becomes an editor; an editor or admin is left as they are. An update locks
+          // only the row it changes, so an editor's or admin's row is never locked here (an upsert's would be).
+          const { rows: [upgraded] } = added ? { rows: [] } : await client.query(
+            `update editor set role = 'editor' where email = $1 and role = 'viewer' returning ${EDITOR_COLUMNS}`, [row.email]);
+          if (added || upgraded) {
+            editor = editorFromRow(added ?? upgraded);
           } else {
             const { rows: [existing] } = await client.query(`select ${EDITOR_COLUMNS} from editor where email = $1`, [row.email]);
             editor = editorFromRow(existing);

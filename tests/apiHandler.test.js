@@ -1811,19 +1811,24 @@ describe('viewers', () => {
       ['/changes', 'POST', { kind: 'update_person', params: {} }],
       ['/changes', 'GET'],
       ['/changes/7/revert', 'POST'],
+      ['/changes/7/restore', 'POST'],
       ['/undo', 'POST'],
       ['/redo', 'POST'],
       ['/editors', 'GET'],
       ['/editors', 'POST', { email: 'x@example.test' }],
       ['/editors/editor%40example.test/role', 'POST', { role: 'viewer' }],
-      ['/access-requests', 'GET']
+      ['/editors/editor%40example.test', 'DELETE'],
+      ['/access-requests', 'GET'],
+      ['/access-requests/5/grant', 'POST'],
+      ['/access-requests/5/dismiss', 'POST']
     ];
     for (const [path, method, body] of routes) {
       const res = await request(path, { method, body, token: 'reader' });
       expect([path, method, res.status]).toEqual([path, method, 403]);
       expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'reader@example.test' });
     }
-    for (const name of ['runChange', 'listChanges', 'toggle', 'undoLast', 'redoLast', 'listEditors', 'addEditor', 'changeEditorRole', 'listAccessRequests']) {
+    for (const name of ['runChange', 'listChanges', 'toggle', 'undoLast', 'redoLast', 'listEditors', 'addEditor', 'changeEditorRole',
+      'removeEditor', 'listAccessRequests', 'resolveAccessRequest']) {
       expect([name, db[name].mock.calls.length]).toEqual([name, 0]);
     }
   });

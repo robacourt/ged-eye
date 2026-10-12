@@ -76,6 +76,40 @@ describe.skipIf(!url)('viewers (database, migration 012)', { timeout: 30000 }, (
     expect(await roleOf(VIEWER)).toBe('viewer');
   });
 
+  it("grants a viewer's pending request when an admin makes them an editor, so it never comes back", async () => {
+    const { request } = await db.createAccessRequest({ email: VIEWER, name: 'Vi', note: null });
+    expect(await db.changeEditorRole(VIEWER, 'editor', OWNER)).toMatchObject({ outcome: 'changed', editor: { role: 'editor' } });
+    expect(await one('select status, resolved_by from access_request where id = $1', [request.id])).toEqual({ status: 'granted', resolved_by: OWNER });
+    // Made a viewer again, or removed: nothing pending reappears.
+    expect((await db.changeEditorRole(VIEWER, 'viewer', OWNER)).outcome).toBe('changed');
+    expect(await db.pendingRequestCount()).toBe(0);
+    expect(await db.removeEditor(VIEWER, OWNER)).toBe('removed');
+    expect(await db.pendingRequestCount()).toBe(0);
+  });
+
+  it("leaves a pending request alone when someone is made a viewer", async () => {
+    const { request } = await db.createAccessRequest({ email: VIEWER, name: 'Vi', note: null });
+    await client.query("update editor set role = 'editor' where email = $1", [VIEWER]);
+    expect((await db.changeEditorRole(VIEWER, 'viewer', OWNER)).outcome).toBe('changed');
+    expect((await one('select status from access_request where id = $1', [request.id])).status).toBe('pending');
+  });
+
+  it("grants without locking an existing editor's row", async () => {
+    const { id } = await one('insert into access_request (email) values ($1) returning id::int', [EDITOR]);
+    // Hold the editor's row, as changeEditorRole or removeEditor would: the grant must not wait on it.
+    const holder = await pool.connect();
+    try {
+      await holder.query('begin');
+      await holder.query('select 1 from editor where email = $1 for update', [EDITOR]);
+      await holder.query("set local lock_timeout = '5s'");
+      const granted = await db.resolveAccessRequest(id, 'grant', OWNER);
+      expect(granted).toMatchObject({ outcome: 'granted', wasEditor: true, editor: { role: 'editor' } });
+    } finally {
+      await holder.query('rollback').catch(() => {});
+      holder.release();
+    }
+  });
+
   it('changes someone to and from viewer; a viewer is not an admin', async () => {
     expect(await db.changeEditorRole(EDITOR, 'viewer', OWNER)).toMatchObject({ outcome: 'changed', editor: { role: 'viewer' } });
     expect(await db.changeEditorRole(EDITOR, 'editor', OWNER)).toMatchObject({ outcome: 'changed', editor: { role: 'editor' } });

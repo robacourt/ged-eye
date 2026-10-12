@@ -33,6 +33,13 @@ A third access level, **Viewer**, for relatives who should see everything, inclu
   - The email describes the level: "You can see everything in the tree, including details of living people, which are hidden from the public."
 - **Changing access:** `POST /editors/:email/role` accepts `viewer`. The rules for the last admin and for your own access are unchanged.
 
+## Review changes
+
+- **Making someone an editor or admin from the Access select** marks their pending request for edit access granted. Without this, a viewer promoted that way kept a hidden pending request, which came back if they were made a viewer again or removed.
+  - It takes the request lock after the editor rows, which nothing holding that lock waits on.
+  - It skips a request row that a grant in progress has locked; that grant resolves the request itself.
+- **A grant no longer upserts.** It inserts with `on conflict do nothing`, then updates a viewer to editor. An update locks only the row it changes, so a grant never locks an existing editor's or admin's row, which removes a rare deadlock with `changeEditorRole` and `removeEditor`.
+
 ## Front end
 
 - **Roles:** "can edit" (editor or admin) is now distinct from "is on the list" (any role).

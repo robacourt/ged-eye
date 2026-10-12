@@ -190,7 +190,7 @@ export function createEditApi(options) {
       return (await post('/editors', body)).editor;
     },
 
-    /** Admins only: sets an editor's role ('editor' | 'admin'). → the editor after. */
+    /** Admins only: sets someone's role ('viewer' | 'editor' | 'admin'). → the editor after. */
     changeEditorRole: async (email, role) => (await post(`/editors/${encodeURIComponent(email)}/role`, { role })).editor,
 
     /** Admins only. */

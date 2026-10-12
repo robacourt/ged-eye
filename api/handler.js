@@ -95,7 +95,7 @@ const validateNote = (body) => optionalNote(body.note ?? null, 'note');
  *   lookupEditor(email) → { email, name, role } | null
  *   listEditors() → [{ email, name, role, addedBy, addedAt }]
  *   addEditor({ email, name, role }, byEmail) → { outcome: 'added' | 'listed' (already on the list) |
- *     'not_an_admin', editor | null }; when added or listed, marks a pending access request for the email granted
+ *     'not_an_admin', editor | null }; when they end up able to edit, marks their pending access request granted
  *   removeEditor(email, byEmail) → 'removed' | 'not_found' | 'last_admin' | 'not_an_admin'
  *   changeEditorRole(email, role, byEmail) → { outcome: 'changed' | 'unchanged' | 'not_found' | 'last_admin' |
  *     'not_an_admin', editor | null }
