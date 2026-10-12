@@ -24,10 +24,14 @@ const GPS_SHA = sha256Hex(gpsJpeg);
 const PLAIN_SHA = sha256Hex(plainJpeg);
 const PDF_SHA = sha256Hex(pdf);
 
-const EDITORS = { 'editor@example.test': { email: 'editor@example.test', name: 'Ed Editor', role: 'editor' } };
+const EDITORS = {
+  'editor@example.test': { email: 'editor@example.test', name: 'Ed Editor', role: 'editor' },
+  'reader@example.test': { email: 'reader@example.test', name: 'Rea Reader', role: 'viewer' }
+};
 const TOKENS = {
   editor: { email: 'editor@example.test', name: 'Ed', sub: 'u2' },
-  viewer: { email: 'viewer@example.test', name: 'Vi', sub: 'u4' }
+  viewer: { email: 'viewer@example.test', name: 'Vi', sub: 'u4' },
+  reader: { email: 'reader@example.test', name: 'Rea', sub: 'u8' } // on the list, as a viewer (012)
 };
 
 // Stands in for api/auth.js, as in apiHandler.test.js: no header → null, a known token → its user, else AuthError(401).
@@ -129,6 +133,14 @@ describe('media handler: auth, health, preflight', () => {
     expect(res.status).toBe(403);
     expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'viewer@example.test' });
     expect(db.lookupEditor).toHaveBeenCalledWith('viewer@example.test');
+  });
+
+  it.each(EDITOR_ROUTES)('%s %s answers 403 not_an_editor to a viewer (on the list, but may not edit)', async (method, path, body) => {
+    const { request, storage } = setup();
+    const res = await request(path, { method, token: 'reader', body });
+    expect(res.status).toBe(403);
+    expect(await res.json()).toEqual({ error: 'not_an_editor', email: 'reader@example.test' });
+    expect(storage.presignPut).not.toHaveBeenCalled();
   });
 
   it('authenticates before validating the input', async () => {

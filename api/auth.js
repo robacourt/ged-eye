@@ -98,15 +98,19 @@ export function authenticatorFromEnv({ NEON_AUTH_JWKS_URL, NEON_AUTH_BASE_URL },
   };
 }
 
+/** The roles that may edit. Viewers (and any role not listed here) are on the list but may not. */
+export const EDITING_ROLES = new Set(['editor', 'admin']);
+
 /**
  * @param user          result of authenticate(), or null
  * @param lookupEditor  (email) => Promise<{ email, name, role } | null>
- * @returns { email, name, role } where name prefers the editor row over the token
+ * @returns { email, name, role } where name prefers the editor row over the token. Throws AuthError 403
+ *   not_an_editor for an account not on the list, or on it without an editing role (a viewer).
  */
 export async function requireEditor(user, lookupEditor) {
   if (!user) throw new AuthError(401, 'unauthenticated');
   const editor = await lookupEditor(user.email);
-  if (!editor) throw new AuthError(403, 'not_an_editor');
+  if (!editor || !EDITING_ROLES.has(editor.role)) throw new AuthError(403, 'not_an_editor');
   return { email: user.email, name: editor.name ?? user.name, role: editor.role };
 }
 
@@ -116,7 +120,8 @@ export async function requireEditor(user, lookupEditor) {
  * @param authenticate  (request) → { email, name } | null; throws AuthError(401) for a bad token
  * @param lookupEditor  (email) => Promise<{ email, name, role } | null>
  * @returns { email, name, role }, as requireEditor does. Throws AuthError 401 unauthenticated for no user, and
- *   ApiError 403 not_an_editor, carrying the account's `email`, for a signed-in account not on the editors list.
+ *   ApiError 403 not_an_editor, carrying the account's `email`, for a signed-in account that may not edit (not on
+ *   the list, or a viewer).
  */
 export async function requireEditorOf(request, authenticate, lookupEditor) {
   const user = await authenticate(request);

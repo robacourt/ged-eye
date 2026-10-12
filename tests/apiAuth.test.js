@@ -238,6 +238,14 @@ describe('requireEditor', () => {
     expect((await requireEditor(user, lookup)).name).toBe('Token Rob');
   });
 
+  it('throws 403 not_an_editor for a viewer, or any role that may not edit', async () => {
+    for (const role of ['viewer', 'owner', null]) {
+      const error = await rejection(requireEditor(user, async (email) => ({ email, name: 'Rob', role })));
+      expect(error).toBeInstanceOf(AuthError);
+      expect([role, error.status, error.code]).toEqual([role, 403, 'not_an_editor']);
+    }
+  });
+
   it('throws 403 not_an_editor for an unlisted user', async () => {
     const error = await rejection(requireEditor(user, async () => null));
     expect(error).toBeInstanceOf(AuthError);

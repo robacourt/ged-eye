@@ -11,7 +11,7 @@ const CHANGE_ID = /^[1-9][0-9]{0,14}$/;
 const REQUEST_ID = CHANGE_ID;
 const POSITIVE_INTEGER = /^[1-9][0-9]{0,5}$/;
 const EMAIL = /^[^\s@]+@[^\s@]+$/;
-const ROLES = new Set(['admin', 'editor']);
+const ROLES = new Set(['admin', 'editor', 'viewer']);
 const TOGGLE_VIAS = new Set(['history', 'keyboard']);
 const SEARCH_MIN_CHARS = 2;
 const SEARCH_MAX_CHARS = 100;
@@ -69,7 +69,7 @@ function validateNewEditor(body) {
   if (name !== null && typeof name !== 'string') throw invalid('name', 'name must be text.');
   const trimmedName = name?.trim() || null;
   if (trimmedName !== null && trimmedName.length > MAX_TEXT) throw invalid('name', `name must be at most ${MAX_TEXT} characters.`);
-  if (!ROLES.has(role)) throw invalid('role', 'role must be admin or editor.');
+  if (!ROLES.has(role)) throw invalid('role', 'role must be admin, editor or viewer.');
   return { email: address, name: trimmedName, role, message: optionalNote(body.message ?? null, 'message') };
 }
 
@@ -178,12 +178,13 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     const id = decode(raw, () => new ApiError(400, 'bad_id'));
     if (!PERSON_ID.test(id)) throw new ApiError(400, 'bad_id');
 
-    const [editor, { view, version }] = await Promise.all([
+    // Anyone on the list (viewers, editors and admins) sees the whole view.
+    const [listed, { view, version }] = await Promise.all([
       user ? db.lookupEditor(user.email) : null,
       db.personView(id)
     ]);
     if (!view) return json(404, { error: 'not_found' }, VARY_AUTH);
-    if (editor) return json(200, { ...view, masked: false }, { ...VARY_AUTH, 'cache-control': 'private, no-store' });
+    if (listed) return json(200, { ...view, masked: false }, { ...VARY_AUTH, 'cache-control': 'private, no-store' });
 
     const etag = `W/"${VIEW_VERSION}.${version.migration}.${version.changeId}.${id}"`;
     const headers = { ...VARY_AUTH, 'cache-control': PUBLIC_REVALIDATE, etag };
@@ -198,27 +199,30 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     if (chars < SEARCH_MIN_CHARS) throw invalid('q', `Type at least ${SEARCH_MIN_CHARS} characters.`);
     if (chars > SEARCH_MAX_CHARS) throw invalid('q', `Search text must be at most ${SEARCH_MAX_CHARS} characters.`);
     const limit = parseLimit(url, SEARCH_LIMIT);
-    const [editor, results] = await Promise.all([user ? db.lookupEditor(user.email) : null, db.search(q, limit)]);
-    // Only editors see living people's years.
-    return json(200, { results: editor ? results : results.map(redactSearchResult) }, VARY_AUTH);
+    const [listed, results] = await Promise.all([user ? db.lookupEditor(user.email) : null, db.search(q, limit)]);
+    // Only people on the list (viewers too) see living people's years.
+    return json(200, { results: listed ? results : results.map(redactSearchResult) }, VARY_AUTH);
+  }
+
+  /** A request for edit access as /me shows it: { status, createdAt } of the latest, or null. */
+  async function latestRequestOf(email) {
+    const latest = await db.latestAccessRequest(email);
+    return latest ? { status: latest.status, createdAt: latest.createdAt } : null;
   }
 
   async function me({ request }) {
-    let editor;
-    try {
-      editor = await editorOf(request);
-    } catch (error) {
-      // A signed-in non-editor also learns where their latest access request stands.
-      if (!(error instanceof ApiError && error.code === 'not_an_editor')) throw error;
-      const latest = await db.latestAccessRequest(error.extra.email);
-      throw new ApiError(403, 'not_an_editor', {
-        ...error.extra,
-        accessRequest: latest ? { status: latest.status, createdAt: latest.createdAt } : null
-      });
+    const user = await authenticate(request);
+    if (!user) throw new AuthError(401, 'unauthenticated');
+    const listed = await db.lookupEditor(user.email);
+    // A signed-in account not on the list also learns where their latest access request stands.
+    if (!listed) throw new ApiError(403, 'not_an_editor', { email: user.email, accessRequest: await latestRequestOf(user.email) });
+    const account = { email: user.email, name: listed.name ?? user.name, role: listed.role };
+    switch (listed.role) {
+      case 'admin': return json(200, { ...account, pendingRequests: await db.pendingRequestCount() });
+      // A viewer may ask for edit access, so they learn where that stands too.
+      case 'viewer': return json(200, { ...account, accessRequest: await latestRequestOf(user.email) });
+      default: return json(200, account);
     }
-    const { email, name, role } = editor;
-    if (role !== 'admin') return json(200, { email, name, role });
-    return json(200, { email, name, role, pendingRequests: await db.pendingRequestCount() });
   }
 
   async function requestAccess({ request }) {
@@ -291,7 +295,7 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     const admin = await requireAdminOf(request);
     const email = decode(raw, () => invalid('email', 'Malformed email address.')).trim().toLowerCase();
     const { role } = await readJson(request);
-    if (!ROLES.has(role)) throw invalid('role', 'role must be admin or editor.');
+    if (!ROLES.has(role)) throw invalid('role', 'role must be admin, editor or viewer.');
     if (email === admin.email) throw new ApiError(409, 'cannot_change_self', { message: "You can't change your own access." });
     // The database re-checks under a lock, as for removal, so two admins can't demote each other at once.
     const { outcome, editor } = await db.changeEditorRole(email, role, admin.email);
