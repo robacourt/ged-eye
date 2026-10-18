@@ -34,8 +34,6 @@
     "canvas": "^2.11.2",
     "cropperjs": "1.7.0",
     "cytoscape": "^3.30.0",
-    "cytoscape-dagre": "^2.5.0",
-    "dagre": "^0.8.5",
     "jose": "^6.2.12",
     "nodemailer": "^10.0.12",
     "parse-gedcom": "^2.0.0",

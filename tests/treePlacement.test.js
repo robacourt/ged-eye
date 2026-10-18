@@ -1,37 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { placeBeside, horizontalPan, chooseZoom } from '../src/treePlacement.js';
-
-describe('placeBeside', () => {
-  // Rose at 0, 186 wide with her border; the "+" 114 wide; a relative either side of her in her row.
-  const selected = { x: 0, y: 100, width: 186 };
-  const row = [{ id: 'L', x: -250 }, { id: 'R', x: 250 }];
-  const place = (spouseXs) => placeBeside({ selected, addWidth: 114, spouseXs, row });
-  // 93 + 40 + 57 from her centre; the row on that side moves out by 114 + 40.
-
-  it('puts the "+" on the right of someone without a spouse, moving the right of the row out', () => {
-    expect(place([])).toEqual({ add: { x: 190, y: 100 }, moves: [{ id: 'R', x: 404 }] });
-  });
-
-  it('puts it on the left when the spouses are all on the right, so it isn\'t between the couple', () => {
-    expect(place([250])).toEqual({ add: { x: -190, y: 100 }, moves: [{ id: 'L', x: -404 }] });
-  });
-
-  it('puts it on the right when a spouse is on the left', () => {
-    expect(place([-250])).toEqual({ add: { x: 190, y: 100 }, moves: [{ id: 'R', x: 404 }] });
-  });
-
-  it('puts it on the right when there are spouses on both sides', () => {
-    expect(place([-250, 250])).toEqual({ add: { x: 190, y: 100 }, moves: [{ id: 'R', x: 404 }] });
-  });
-
-  it('moves every node on that side of the row, and only those', () => {
-    const wide = [{ id: 'L2', x: -500 }, { id: 'L1', x: -250 }, { id: 'R1', x: 250 }, { id: 'R2', x: 600 }];
-    expect(placeBeside({ selected, addWidth: 114, spouseXs: [], row: wide }).moves)
-      .toEqual([{ id: 'R1', x: 404 }, { id: 'R2', x: 754 }]);
-    expect(placeBeside({ selected, addWidth: 114, spouseXs: [250], row: wide }).moves)
-      .toEqual([{ id: 'L2', x: -654 }, { id: 'L1', x: -404 }]);
-  });
-});
+import { horizontalPan, chooseZoom } from '../src/treePlacement.js';
 
 describe('horizontalPan', () => {
   const wide = { x1: 0, w: 2000 }; // 1000px wide at zoom 0.5: wider than a 375px phone

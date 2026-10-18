@@ -24,13 +24,7 @@ vi.mock('cytoscape', () => {
       add(added) { elements = added; },
       elements: () => ({
         remove() { elements = []; },
-        boundingBox: () => ({ x1: 0, y1: 0, w: 400, h: 400 }),
-        // Only what the tree uses: all but the elements of one type, to lay out (recorded as `laidOut`).
-        not(selector) {
-          const type = /^\[type="(\w+)"\]$/.exec(selector)[1];
-          const kept = elements.filter(element => element.data.type !== type);
-          return { layout: () => ({ run() { cy.laidOut = kept; } }) };
-        }
+        boundingBox: () => ({ x1: 0, y1: 0, w: 400, h: 400 })
       }),
       nodes: () => ({ length: 0, forEach() {} }),
       width: () => 800,
@@ -52,7 +46,6 @@ vi.mock('cytoscape', () => {
   cytoscape.use = () => {};
   return { default: cytoscape };
 });
-vi.mock('cytoscape-dagre', () => ({ default: () => {} }));
 vi.mock('../src/dataLoader.js', () => ({ loadPersonWithFamily: vi.fn(), prefetchFamily: vi.fn() }));
 
 const { FamilyTreeView } = await import('../src/familyTreeView.js');
@@ -101,7 +94,6 @@ describe('FamilyTreeView: the add node', () => {
   it('is not in the tree without a handler (viewers), and there is no button', async () => {
     await view.loadPerson('I7');
     expect(fake.cy.added().length).toBeGreaterThan(0);
-    expect(fake.cy.laidOut).toEqual(fake.cy.added()); // the whole tree is laid out, as before
     expect(addNode()).toBeUndefined();
     expect(addEdge()).toBeUndefined();
     expect(button()).toBeNull();
@@ -113,7 +105,7 @@ describe('FamilyTreeView: the add node', () => {
   it('is in the tree with a handler: a node, and an edge from the person to it', async () => {
     view.setAddRelative(vi.fn());
     await view.loadPerson('I7');
-    expect(addNode()).toEqual({ group: 'nodes', data: expect.objectContaining({ id: 'add-relative', type: 'add' }) });
+    expect(addNode()).toEqual({ group: 'nodes', position: expect.any(Object), data: expect.objectContaining({ id: 'add-relative', type: 'add' }) });
     expect(addEdge()).toEqual({ group: 'edges', data: expect.objectContaining({ source: 'I7', target: 'add-relative', type: 'add' }) });
   });
 
@@ -137,13 +129,13 @@ describe('FamilyTreeView: the add node', () => {
     expect(fake.cy.added().filter(element => element.data.id === 'add-relative')).toHaveLength(1);
   });
 
-  it('is laid out apart: dagre lays out the tree without the node and its edge', async () => {
+  it('is placed beside the person by the layout (treeLayout.js), like everyone else', async () => {
     view.setAddRelative(vi.fn());
     await view.loadPerson('I7');
-    expect(addNode()).toBeDefined();
-    expect(fake.cy.laidOut.some(element => element.data.type === 'add')).toBe(false);
-    expect(fake.cy.laidOut).toEqual(fake.cy.added().filter(element => element.data.type !== 'add'));
-    expect(fake.cy.laidOut.some(element => element.data.id === 'I7')).toBe(true);
+    const person = fake.cy.added().find(element => element.data.id === 'I7');
+    expect(person.position).toEqual({ x: 0, y: 0 });
+    expect(addNode().position.y).toBe(0);
+    expect(Math.abs(addNode().position.x)).toBeGreaterThan(0);
   });
 
   it('is never selected: taps on it do nothing, as on partnership nodes', async () => {

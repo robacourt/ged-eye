@@ -130,6 +130,7 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 │   ├── dataLoader.js       # Fetches, caches and prefetches person views
 │   ├── media.js            # Bucket URLs for photos and avatars
 │   ├── familyTreeView.js   # Cytoscape graph visualization
+│   ├── treeLayout.js       # where everyone in the tree goes, and the lines between them
 │   ├── personDetails.js    # Details panel
 │   ├── factLabels.js       # Labels for GEDCOM fact tags (_MILT → Military service)
 │   ├── html.js             # escapeHtml
@@ -159,7 +160,7 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 
 3. **Media from a bucket**: Photos (originals, 2000px display images and thumbnails) and avatars sit in the public `ged-eye-media` bucket and load straight into the browser. The `media` Function makes them from uploads ([Photos](#photos)).
 
-4. **Graph Visualization**: Cytoscape.js renders the family as a graph with the selected person in the center, parents above, children below, and spouses to the sides.
+4. **Graph Visualization**: Cytoscape.js draws the family, laid out by `src/treeLayout.js` in three rows: parents above the selected person, their brothers and sisters (half ones on the side of the parent they share) and partners beside them, and children below. Each couple sits side by side, joined by a line with a dot; their children hang from the dot by a bar, and every line is horizontal or vertical.
 
 The site itself is plain static files on GitHub Pages. Neon is the master copy of the data, and the original GEDCOM is archived byte for byte in the `gedcom_archive` table. Sources and citations, family-level facts (such as marriage notes) and photo titles are still only in that archive, ready to be parsed later.
 

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-// The real Cytoscape and dagre, headless (jsdom can't draw): the tree's own style, buildGraph, dagre layout and
-// placement of the "+" node, with real positions to check.
+// The real Cytoscape, headless (jsdom can't draw): the tree's own style and buildGraph, with real positions and
+// styles to check against treeLayout.js.
 vi.mock('cytoscape', async (importOriginal) => {
   const { default: cytoscape } = await importOriginal();
   const headless = (options) => cytoscape({ ...options, container: undefined, headless: true, styleEnabled: true });
@@ -11,28 +11,26 @@ vi.mock('cytoscape', async (importOriginal) => {
 vi.mock('../src/dataLoader.js', () => ({ loadPersonWithFamily: vi.fn(), prefetchFamily: vi.fn() }));
 
 const { FamilyTreeView } = await import('../src/familyTreeView.js');
+const { layoutFamily } = await import('../src/treeLayout.js');
 
-const person = (id, name, extra = {}) => ({ id, name, sex: 'M', parentIds: [], spouseIds: [], parentFamilies: [], marriages: [], ...extra });
-const RELS = { parents: [], spouses: [], children: [], siblings: [] };
+const relative = (id, name, extra = {}) => ({ id, name, sex: 'M', parentIds: [], ...extra });
+const parents = [relative('I1', 'Ada Smith', { sex: 'F' }), relative('I2', 'Bob Smith')];
+const rose = {
+  ...relative('I7', 'Rose Smith', { sex: 'F', parentIds: ['I1', 'I2'] }),
+  spouseIds: ['I9'],
+  parentFamilies: [{ familyId: 'F1', partnerIds: ['I1', 'I2'], childIds: ['I5', 'I7', 'I6'] }],
+  marriages: [{ spouseId: 'I9', familyId: 'F2', childIds: ['I10'] }]
+};
+const tom = relative('I9', 'Tom Brown');
+const siblings = [relative('I5', 'Amy Smith', { sex: 'F', parentIds: ['I1', 'I2'] }), relative('I6', 'Ben Smith', { parentIds: ['I1', 'I2'] })];
+const child = relative('I10', 'Kit Brown', { parentIds: ['I7', 'I9'] });
+const family = [...parents, tom, child, ...siblings];
+const relationships = { parents, spouses: [tom], children: [child], siblings };
 
 let view;
 
-/** Lays out `selected` with `family` as a viewer, then as an editor: each node's position both times. */
-function layOut(selected, family, relationships) {
-  const positions = () => Object.fromEntries(view.cy.nodes().map(node => [node.id(), { ...node.position() }]));
-  view.setAddRelative(null);
-  view.buildGraph(selected, family, relationships);
-  const viewer = positions();
-  view.setAddRelative(vi.fn());
-  const editor = positions();
-  const addWidth = view.cy.getElementById('add-relative').outerWidth();
-  const selectedWidth = view.cy.getElementById(selected.id).outerWidth();
-  return { viewer, editor, addWidth, selectedWidth };
-}
-
 beforeEach(() => {
-  vi.spyOn(console, 'log').mockImplementation(() => {}); // buildGraph logs the partnerships it makes
-  vi.spyOn(console, 'warn').mockImplementation(() => {}); // Cytoscape's style warnings (cursor, partnership avatars)
+  vi.spyOn(console, 'warn').mockImplementation(() => {}); // Cytoscape's style warnings (cursor)
   document.body.innerHTML = '<div id="cy"></div>';
   view = new FamilyTreeView(document.getElementById('cy'));
 });
@@ -41,46 +39,56 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe('FamilyTreeView layout: the "+" node beside the person', () => {
-  it('goes on the left of someone whose spouse is on the right, and nothing on the left moves', () => {
-    const rose = person('I7', 'Rose Smith', { sex: 'F', spouseIds: ['I9'] });
-    const tom = person('I9', 'Tom Brown', { spouseIds: ['I7'] });
-    const { viewer, editor, addWidth, selectedWidth } = layOut(rose, [tom], { ...RELS, spouses: [tom] });
-
-    expect(viewer.I9.x).toBeGreaterThan(viewer.I7.x); // dagre put her husband on her right
-    const add = editor['add-relative'];
-    expect(add.y).toBe(editor.I7.y);
-    expect(add.x).toBeCloseTo(editor.I7.x - (selectedWidth / 2 + 40 + addWidth / 2));
-    for (const [id, position] of Object.entries(viewer)) expect(editor[id], id).toEqual(position); // nothing moved
+describe('FamilyTreeView drawing (treeLayout.js)', () => {
+  it('puts everyone, every dot and every line end where the layout says', () => {
+    view.buildGraph(rose, family, relationships);
+    const layout = layoutFamily({ selected: rose, family, relationships });
+    for (const { id, x, y } of [...layout.people, ...layout.dots, ...layout.joints]) {
+      expect(view.cy.getElementById(id).position(), id).toEqual({ x, y });
+    }
+    expect(view.cy.edges().map(edge => [edge.source().id(), edge.target().id()]))
+      .toEqual(layout.lines.map(line => [line.source, line.target]));
   });
 
-  it('goes on the right of someone without a spouse, moving the siblings on that side out', () => {
-    const parents = [person('I1', 'Ada Smith', { sex: 'F' }), person('I2', 'Bob Smith')];
-    const family = { parentIds: ['I1', 'I2'] };
-    const rose = person('I7', 'Rose Smith', { sex: 'F', ...family });
-    const siblings = [person('I5', 'Amy Smith', { sex: 'F', ...family }), person('I6', 'Ben Smith', family),
-      person('I8', 'Cat Smith', { sex: 'F', ...family })];
-    const { viewer, editor, addWidth, selectedWidth } =
-      layOut(rose, [...parents, ...siblings], { ...RELS, parents, siblings });
-
-    const add = editor['add-relative'];
-    expect(add.y).toBe(editor.I7.y);
-    expect(add.x).toBeCloseTo(editor.I7.x + selectedWidth / 2 + 40 + addWidth / 2);
-    const right = siblings.filter(sibling => viewer[sibling.id].x > viewer.I7.x);
-    const left = siblings.filter(sibling => viewer[sibling.id].x < viewer.I7.x);
-    expect(right.length).toBeGreaterThan(0);
-    for (const { id } of right) expect(editor[id].x, id).toBeCloseTo(viewer[id].x + addWidth + 40);
-    for (const { id } of left) expect(editor[id], id).toEqual(viewer[id]);
-    for (const id of ['I1', 'I2', 'I7']) expect(editor[id], id).toEqual(viewer[id]); // other rows stay put
+  it('draws straight lines in their family\'s colour, without arrows, under the people; line ends are invisible', () => {
+    view.buildGraph(rose, family, relationships);
+    const edge = view.cy.edges()[0];
+    expect(edge.style('curve-style')).toBe('straight');
+    expect(edge.style('target-arrow-shape')).toBe('none');
+    expect(edge.style('line-color')).toMatch(/^rgb/);
+    const joint = view.cy.nodes('[type="joint"]')[0];
+    expect(Number(joint.style('opacity'))).toBe(0);
+    expect(joint.style('events')).toBe('no');
+    expect(view.cy.nodes('[type="partnership"]').length).toBe(2); // Rose's parents, and Rose and Tom
   });
 
-  it('goes on the left of someone whose two spouses are both on the right', () => {
-    const tom = person('I7', 'Tom Brown', { spouseIds: ['I8', 'I9'] });
-    const wives = [person('I8', 'Ann Brown', { sex: 'F', spouseIds: ['I7'] }), person('I9', 'Eve Brown', { sex: 'F', spouseIds: ['I7'] })];
-    const { viewer, editor, addWidth, selectedWidth } = layOut(tom, wives, { ...RELS, spouses: wives });
+  it('labels people with their name and birth year, and the highlighted person as selected', () => {
+    view.buildGraph({ ...rose, birthDate: '3 MAR 1901' }, family, relationships);
+    const node = view.cy.getElementById('I7');
+    expect(node.data('type')).toBe('selected');
+    expect(node.data('label')).toBe('Rose Smith\nb. 1901');
+    expect(view.cy.getElementById('I9').data('type')).toBe('family');
+  });
 
-    for (const { id } of wives) expect(viewer[id].x, id).toBeGreaterThan(viewer.I7.x);
-    expect(editor['add-relative'].x).toBeCloseTo(editor.I7.x - (selectedWidth / 2 + 40 + addWidth / 2));
-    for (const [id, position] of Object.entries(viewer)) expect(editor[id], id).toEqual(position);
+  describe('the "+" node', () => {
+    it('goes on the left of someone with a partner, with the brothers and sisters on its left', () => {
+      view.setAddRelative(vi.fn());
+      view.buildGraph(rose, family, relationships);
+      const add = view.cy.getElementById('add-relative').position();
+      const at = (id) => view.cy.getElementById(id).position();
+      expect(add.y).toBe(at('I7').y);
+      expect(add.x).toBeLessThan(at('I7').x);
+      expect(at('I9').x).toBeGreaterThan(at('I7').x);
+      for (const id of ['I5', 'I6']) expect(at(id).x, id).toBeLessThan(add.x);
+      const edge = view.cy.getElementById('add-relative-edge');
+      expect([edge.source().id(), edge.target().id()]).toEqual(['I7', 'add-relative']);
+    });
+
+    it('goes on the right of someone without a partner', () => {
+      const single = { ...rose, spouseIds: [], marriages: [] };
+      view.setAddRelative(vi.fn());
+      view.buildGraph(single, [...parents, ...siblings], { ...relationships, spouses: [], children: [] });
+      expect(view.cy.getElementById('add-relative').position().x).toBeGreaterThan(view.cy.getElementById('I7').position().x);
+    });
   });
 });
