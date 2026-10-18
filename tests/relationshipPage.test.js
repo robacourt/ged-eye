@@ -173,7 +173,6 @@ describe('openRelationshipPage', () => {
       api.relationship.mockRejectedValueOnce(Object.assign(new Error('gone'), { status }));
       open();
       await page.setPerson('I999');
-      expect(status === 404 || status === 409).toBe(true);
       expect($('.relationship-status').textContent).toBe('Couldn\u2019t find one of them in the tree. They may have been removed.');
       page.close();
       page = null;
