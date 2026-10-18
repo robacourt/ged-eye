@@ -159,6 +159,27 @@ describe('openRelationshipPage', () => {
     page = null;
   });
 
+  it('keeps focus on the page when a result is chosen, and focuses the search box when asked', async () => {
+    open();
+    page.focusSearch();
+    expect(document.activeElement).toBe($('.relationship-page input[type="search"]'));
+    await search('Clement');
+    document.querySelector('.relationship-result').click();
+    expect(document.activeElement).toBe($('.relationship-title'));
+  });
+
+  it('says one of them can\'t be found, rather than blaming the connection, for a 404 or 409', async () => {
+    for (const status of [404, 409]) {
+      api.relationship.mockRejectedValueOnce(Object.assign(new Error('gone'), { status }));
+      open();
+      await page.setPerson('I999');
+      expect(status === 404 || status === 409).toBe(true);
+      expect($('.relationship-status').textContent).toBe('Couldn\u2019t find one of them in the tree. They may have been removed.');
+      page.close();
+      page = null;
+    }
+  });
+
   it('shows names as text', () => {
     open({ id: 'I1', name: '<img src=x onerror="window.__xss = 1">' });
     expect($('.relationship-title').textContent).toContain('<img');

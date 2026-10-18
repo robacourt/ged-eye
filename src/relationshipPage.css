@@ -44,8 +44,24 @@
   line-height: 1.3;
 }
 
+/* The search box (personSearch.js), styled here too: its own styles come with the editing tools, which someone
+   who can't edit never loads. */
 .relationship-page .person-search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   max-width: 560px;
+}
+
+.relationship-page .editor-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.relationship-title:focus {
+  outline: none;
 }
 
 .relationship-results {

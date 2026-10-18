@@ -199,6 +199,12 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
       return { families: families.rows, children: children.rows };
     },
 
+    /** → the latest change's id, as text ('0' with none): every change to the tree adds one (006) */
+    async latestChangeId() {
+      const { rows: [row] } = await pool.query('select coalesce(max(id), 0)::text as id from change');
+      return row.id;
+    },
+
     /** → each id's relative_record (id, name, sex, birthDate, avatarKey, parentIds, living), in order; null if unknown */
     async relativeRecords(ids) {
       const { rows } = await pool.query(

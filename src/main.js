@@ -259,6 +259,7 @@ export function initApp({
   const showCurrentPerson = () => settle(showPerson(personIdFromUrl()));
 
   function navigateTo(personId) {
+    if (searchFromUrl()) return goToTree(personId); // from History over the search page: the tree, with them
     if (personId === personIdFromUrl()) return showCurrentPerson();
     setUrlPerson(personId);
     return settle(showPerson(personId));
@@ -477,7 +478,10 @@ export function initApp({
     const candidates = view?.person?.id ? [view.person.id] : [current, ...(change?.personIds ?? [])];
     const target = await firstLoadable([...new Set(candidates)]);
     if (personIdFromUrl() !== current) return; // they went elsewhere meanwhile, which loads afresh anyway
-    if (target !== current) setUrlPerson(target, { replace: true });
+    if (target !== current) {
+      setUrlPerson(target, { replace: true });
+      settle(syncSearchPage()); // an Undo over the search page that moves the tree on also leaves the page
+    }
     await showPerson(target);
   }
 
@@ -633,6 +637,7 @@ export function initApp({
     if (!wanted) {
       searchPage?.page.close();
       searchPage = null;
+      setTreeInert(false);
       return;
     }
     let module;
@@ -662,11 +667,23 @@ export function initApp({
           onBack: () => goToTree(searchFromUrl()?.relative ?? now.relative)
         })
       };
+      setTreeInert(true);
+      if (!now.person) searchPage.page.focusSearch();
     } else if (searchPage.relative !== now.relative) {
       searchPage.relative = now.relative;
       searchPage.page.setRelative(relative);
     }
     searchPage.page.setPerson(now.person);
+  }
+
+  /** While the search page covers them, the tree and the details panel take no focus or clicks. */
+  function setTreeInert(inert) {
+    for (const id of ['cy', 'details']) document.getElementById(id)?.toggleAttribute('inert', inert);
+  }
+
+  /** The search page's chain again, as the account changed (living people's details come or go with it). */
+  function refreshSearchPage() {
+    if (searchPage) searchPage.page.setPerson(searchFromUrl()?.person ?? null);
   }
 
   /** From the search page to the tree, with `personId` selected. */
@@ -726,6 +743,7 @@ export function initApp({
       }
       loader.invalidateAll();
       showCurrentPerson();
+      refreshSearchPage();
       if (canEdit()) prepareEditing();
       if (accessRequestsLink === 'account' || accessRequestsLink === 'signing-in') followAccessRequestsLink(me);
       if (inviteLink === 'account' || inviteLink === 'signing-in') followInviteLink(me);
@@ -740,6 +758,7 @@ export function initApp({
       editorsDialog?.close();
       loader.invalidateAll();
       showCurrentPerson();
+      refreshSearchPage(); // living people's details go from the chain too
     },
     onAccountError() {
       // /me failed while the link waited for it: drop it, so a later Try again doesn't open Editors out of the blue.
@@ -797,6 +816,7 @@ export function initApp({
       editorsDialog?.close();
       searchPage?.page.close();
       searchPage = null;
+      setTreeInert(false);
       signIn.destroy();
     }
   };

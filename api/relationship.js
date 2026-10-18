@@ -14,8 +14,8 @@ const WEIGHTS = { parent: 10, child: 10, sibling: 10, halfSibling: 13, spouse: 1
 /**
  * The family as a graph, from `family` rows (`{ id, partner1_id, partner2_id }`) and `family_child` rows
  * (`{ family_id, child_id }`). Links: a child to each parent ('parent') and back ('child'); partners to each
- * other ('spouse'); and anyone sharing a parent ('sibling' with the same parents, else 'halfSibling'), or a
- * family with no partners recorded ('sibling'). → Map id → [{ to, step }]
+ * other ('spouse'); children of the same family ('sibling'); and others sharing a parent ('halfSibling', or
+ * 'sibling' with the same parents). → Map id → [{ to, step }]
  */
 export function familyGraph(families, children) {
   const links = new Map();
@@ -53,21 +53,29 @@ export function familyGraph(families, children) {
     }
   }
 
+  // Brothers and sisters: children of the same family are full ones (even one also in another family, as an
+  // adopted child is); children of different families who share a parent are half ones, or full when they have
+  // the same parents (a couple recorded twice). Each pair is linked once, by the first of these that applies.
   const sameParents = (a, b) => {
     const pa = parentsOf.get(a) ?? new Set();
     const pb = parentsOf.get(b) ?? new Set();
     return pa.size === pb.size && [...pa].every(parent => pb.has(parent));
   };
-  const siblings = (group) => {
+  const paired = new Set();
+  const siblings = (group, stepFor) => {
     for (const a of group) {
       for (const b of group) {
-        if (a !== b) add(a, b, sameParents(a, b) ? 'sibling' : 'halfSibling');
+        const pair = a < b ? `${a} ${b}` : `${b} ${a}`;
+        if (a === b || paired.has(pair)) continue;
+        paired.add(pair);
+        const step = stepFor(a, b);
+        add(a, b, step);
+        add(b, a, step);
       }
     }
   };
-  for (const group of childrenOf.values()) siblings([...group]);
-  // Children of a family with no partners recorded are still brothers and sisters.
-  for (const [familyId, group] of inFamily) if (!(partnersOf.get(familyId) ?? []).length) siblings(group);
+  for (const group of inFamily.values()) siblings(group, () => 'sibling');
+  for (const group of childrenOf.values()) siblings([...group], (a, b) => (sameParents(a, b) ? 'sibling' : 'halfSibling'));
 
   return links;
 }

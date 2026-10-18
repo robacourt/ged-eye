@@ -15,6 +15,7 @@ import './relationshipPage.css';
 const FINDING = 'Finding how they’re related…';
 const FAILED = 'Couldn’t find how they’re related. Check your connection and try again.';
 const NOT_CONNECTED = 'No family connection found.';
+const NOT_FOUND = 'Couldn\u2019t find one of them in the tree. They may have been removed.';
 
 /**
  * Opens the page in `container`.
@@ -24,12 +25,12 @@ const NOT_CONNECTED = 'No family connection found.';
  *                      `setPerson`)
  * @param onOpenPerson  (id) when someone in the chain is tapped: the tree, with them selected
  * @param onBack        () for Back: the tree, with the relative selected
- * @returns `{ element, setRelative(relative), setPerson(id | null), close() }`
+ * @returns `{ element, setRelative(relative), setPerson(id | null), focusSearch(), close() }`
  */
 export function openRelationshipPage({ container, api, relative, onChoose, onOpenPerson, onBack }) {
   const titleId = uniqueId('relationship-title');
   const back = el('button', { type: 'button', class: 'relationship-back', text: '← Back to the tree' });
-  const title = el('h1', { class: 'relationship-title', id: titleId });
+  const title = el('h1', { class: 'relationship-title', id: titleId, tabindex: '-1' });
   const results = el('ul', { class: 'relationship-results', 'aria-label': 'People found' });
   const status = el('p', { class: 'relationship-status', role: 'status' });
   const chainBox = el('div', { class: 'relationship-chain' });
@@ -67,6 +68,8 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
         search.clear();
         search.input.value = nameOf(someone);
         search.status.textContent = '';
+        // The button pressed has gone: focus stays on the page, without bringing up a phone's keyboard.
+        title.focus({ preventScroll: true });
         onChoose?.(someone.id);
       });
       return el('li', {}, button);
@@ -88,8 +91,12 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
       path = await api.relationship(current.id, personId);
     } catch (error) {
       if (number !== loading || !page.isConnected) return;
-      console.error('Could not find the relationship', error);
       chain.clear();
+      if (error?.status === 404 || error?.status === 409) {
+        status.textContent = NOT_FOUND; // one of them isn't in the tree (any more)
+        return;
+      }
+      console.error('Could not find the relationship', error);
       status.textContent = FAILED;
       return;
     }
@@ -111,6 +118,8 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
     element: page,
     setRelative,
     setPerson,
+    /** Focus in the search box, for a page opened with nobody chosen yet. */
+    focusSearch: () => search.input.focus({ preventScroll: true }),
     close() {
       loading++;
       window.removeEventListener('resize', refit);

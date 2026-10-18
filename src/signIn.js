@@ -49,8 +49,6 @@ function validateEmail(email) {
   return null;
 }
 
-/** The first character (not UTF-16 unit) of `text`, upper-cased. */
-
 function callSafely(callback, ...args) {
   try {
     callback?.(...args);

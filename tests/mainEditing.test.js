@@ -130,7 +130,7 @@ beforeEach(() => {
     removePhotoParams
   };
   loadEditing = vi.fn(async () => dialogs);
-  searchPage = { setRelative: vi.fn(), setPerson: vi.fn(), close: vi.fn() };
+  searchPage = { setRelative: vi.fn(), setPerson: vi.fn(), close: vi.fn(), focusSearch: vi.fn() };
   loadSearchPage = vi.fn(async () => ({
     openRelationshipPage: vi.fn((options) => {
       searchOptions = options;
@@ -1555,5 +1555,40 @@ describe('initApp: the search page', () => {
     app.destroy();
     app = null;
     expect(searchPage.close).toHaveBeenCalledOnce();
+    expect(document.getElementById('cy')?.hasAttribute('inert') ?? false).toBe(false);
+  });
+
+  it('keeps focus and clicks off the tree while it covers it, and focuses the search for nobody chosen', async () => {
+    document.body.insertAdjacentHTML('beforeend', '<div id="cy"></div><div id="details"></div>');
+    searchPage.focusSearch = vi.fn();
+    await start('/?relative=I7');
+    expect(document.getElementById('cy').hasAttribute('inert')).toBe(true);
+    expect(document.getElementById('details').hasAttribute('inert')).toBe(true);
+    expect(searchPage.focusSearch).toHaveBeenCalledOnce();
+    searchOptions.onBack();
+    await flush();
+    expect(document.getElementById('cy').hasAttribute('inert')).toBe(false);
+  });
+
+  it('leaves for the tree when someone is opened from History over it', async () => {
+    await start('/?relative=I7&person=I8');
+    await signInAs(EDITOR);
+    signInOptions.openHistory();
+    await flush();
+    dialogs.openHistoryPanel.mock.calls[0][0].onOpenPerson('I7');
+    await flush();
+    expect(window.location.search).toBe('?person=I7');
+    expect(searchPage.close).toHaveBeenCalledOnce();
+  });
+
+  it('works the chain out again when someone signs in or out, as living people\'s details come or go', async () => {
+    await start('/?relative=I7&person=I8');
+    searchPage.setPerson.mockClear();
+    await signInAs(EDITOR);
+    expect(searchPage.setPerson).toHaveBeenLastCalledWith('I8');
+    searchPage.setPerson.mockClear();
+    signInOptions.onSignedOut('signed-out');
+    await flush();
+    expect(searchPage.setPerson).toHaveBeenCalledWith('I8');
   });
 });

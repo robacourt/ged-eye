@@ -1866,6 +1866,7 @@ describe('GET /relationship', () => {
   const record = (id, living = false) => ({ id, name: `Person ${id}`, sex: 'M', birthDate: '1900', avatarKey: `avatars/${id}.webp`, parentIds: [], living });
   const records = { I1: record('I1'), I2: record('I2'), I3: record('I3'), I4: record('I4', true), I9: record('I9') };
   const db = () => ({
+    latestChangeId: vi.fn(async () => '42'),
     familyLinks: vi.fn(async () => ({ families, children })),
     relativeRecords: vi.fn(async (ids) => ids.map((id) => records[id] ?? null))
   });
@@ -1909,5 +1910,33 @@ describe('GET /relationship', () => {
   it('authenticates first: a bad token is a 401', async () => {
     const { request } = setup(db());
     expect((await request('/relationship?from=I1&to=I2', { token: 'expired' })).status).toBe(401);
+  });
+
+  it('gives the one person for the same person at both ends', async () => {
+    const { request } = setup(db());
+    expect((await (await request('/relationship?from=I1&to=I1')).json()).path.map(({ id, step }) => [id, step])).toEqual([['I1', null]]);
+  });
+
+  it('reads the family again only after the tree has changed, and not at all for an unknown person', async () => {
+    const fake = db();
+    const { request } = setup(fake);
+    await request('/relationship?from=I4&to=I1');
+    await request('/relationship?from=I3&to=I2');
+    expect(fake.familyLinks).toHaveBeenCalledTimes(1);
+    fake.latestChangeId.mockResolvedValue('43');
+    await request('/relationship?from=I4&to=I1');
+    expect(fake.familyLinks).toHaveBeenCalledTimes(2);
+    expect((await request('/relationship?from=I404&to=I1')).status).toBe(404);
+    expect(fake.familyLinks).toHaveBeenCalledTimes(2);
+  });
+
+  it('answers 409 when someone on the path is removed while it is worked out', async () => {
+    const fake = db();
+    fake.relativeRecords.mockImplementationOnce(async (ids) => ids.map((id) => records[id]))
+      .mockImplementationOnce(async (ids) => ids.map((id) => (id === 'I3' ? null : records[id])));
+    const { request } = setup(fake);
+    const res = await request('/relationship?from=I4&to=I1');
+    expect(res.status).toBe(409);
+    expect(await res.json()).toEqual({ error: 'changed' });
   });
 });

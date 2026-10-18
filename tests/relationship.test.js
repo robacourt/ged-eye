@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { familyGraph, shortestPath } from '../api/relationship.js';
+import { relationTerm } from '../src/relationshipWords.js';
 
 /**
  * A family tree:
@@ -62,15 +63,54 @@ describe('shortestPath', () => {
     expect(path('SONW', 'GF')).toEqual(['SONW', 'spouse:SON', 'parent:ME', 'parent:F', 'parent:GF']);
   });
 
-  it('prefers blood to marriage between equally long paths', () => {
-    // ME → SON is one step either way of thinking; ME → SONW must use SON's marriage.
-    expect(path('ME', 'SON')).toEqual(['ME', 'child:SON']);
-    expect(path('ME', 'SONW')).toEqual(['ME', 'child:SON', 'spouse:SONW']);
+  it('prefers blood to marriage between paths of the same length', () => {
+    // A to C: through B (A's sister, then her son) or through A's wife W (her nephew): two steps either way.
+    const graph2 = familyGraph(
+      [{ id: 'FP', partner1_id: 'P1', partner2_id: 'P2' }, { id: 'FB', partner1_id: 'B', partner2_id: null },
+        { id: 'FA', partner1_id: 'A', partner2_id: 'W' }, { id: 'FW', partner1_id: 'W', partner2_id: null }],
+      [{ family_id: 'FP', child_id: 'A' }, { family_id: 'FP', child_id: 'B' }, { family_id: 'FB', child_id: 'C' },
+        { family_id: 'FW', child_id: 'C' }]);
+    expect(shortestPath(graph2, 'A', 'C').map(({ id, step }) => (step ? `${step}:${id}` : id))).toEqual(['A', 'sibling:B', 'child:C']);
+  });
+
+  it('counts the children of one family as full brothers and sisters, even one also in another family (adopted)', () => {
+    const graph2 = familyGraph(
+      [{ id: 'BIRTH', partner1_id: 'P1', partner2_id: 'P2' }, { id: 'ADOPT', partner1_id: 'A1', partner2_id: 'A2' }],
+      [{ family_id: 'BIRTH', child_id: 'X' }, { family_id: 'BIRTH', child_id: 'S' },
+        { family_id: 'ADOPT', child_id: 'X' }, { family_id: 'ADOPT', child_id: 'T' }]);
+    const steps = (from) => graph2.get(from).filter(link => link.step.endsWith('ibling')).map(({ to, step }) => `${step}:${to}`).sort();
+    expect(steps('X')).toEqual(['sibling:S', 'sibling:T']);
+    expect(steps('S')).toEqual(['sibling:X']);
   });
 
   it('answers the same person, and no path', () => {
     expect(path('ME', 'ME')).toEqual(['ME']);
     expect(path('ME', 'LONER')).toBeNull();
     expect(path('ORPH1', 'ME')).toBeNull();
+  });
+});
+
+describe('from the path to the words', () => {
+  // Everyone's sex, for the words: the people of the family tree above.
+  const SEXES = { F: 'M', M: 'F', GF: 'M', GGF: 'M', UNC: 'M', COUS: 'F', COUSKID: 'M', SIS: 'F', HALF: 'M', WIFE: 'F', SON: 'M',
+    SONW: 'F', WF: 'M', WB: 'M', STEP: 'M', ME: 'M' };
+  const words = (from, to) => relationTerm(shortestPath(graph, from, to).map(({ id, step }) => ({ name: id, sex: SEXES[id] ?? 'U', step })));
+
+  it('names what the path finder finds', () => {
+    expect(words('ME', 'GGF')).toBe('great-grandfather');
+    expect(words('GGF', 'ME')).toBe('great-grandson');
+    expect(words('ME', 'SIS')).toBe('sister');
+    expect(words('ME', 'HALF')).toBe('half-brother');
+    expect(words('ME', 'COUS')).toBe('first cousin');
+    expect(words('ME', 'COUSKID')).toBe('first cousin once removed');
+    expect(words('COUSKID', 'ME')).toBe('first cousin once removed');
+    expect(words('ME', 'UNC')).toBe('uncle');
+    expect(words('UNC', 'ME')).toBe('nephew');
+    expect(words('ME', 'WIFE')).toBe('wife');
+    expect(words('ME', 'WF')).toBe('father-in-law');
+    expect(words('ME', 'WB')).toBe('brother-in-law');
+    expect(words('ME', 'STEP')).toBe('stepson');
+    expect(words('ME', 'SONW')).toBe('daughter-in-law');
+    expect(words('SONW', 'GF')).toBe("husband's great-grandfather");
   });
 });
