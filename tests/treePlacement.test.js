@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { horizontalPan, chooseZoom } from '../src/treePlacement.js';
+import { horizontalPan, chooseZoom, verticalPan } from '../src/treePlacement.js';
 
 describe('horizontalPan', () => {
   const wide = { x1: 0, w: 2000 }; // 1000px wide at zoom 0.5: wider than a 375px phone
@@ -27,49 +27,30 @@ describe('horizontalPan', () => {
 });
 
 describe('chooseZoom', () => {
-  // A phone's tree: 375 by 541, 20px margins. A tree 1000 high fits the height at (541 - 40) / 1000 = 0.501.
-  const phone = { width: 375, height: 541, margin: 20, maxZoom: 1 };
-  const zoomFor = (w, hasAdd) => chooseZoom({ ...phone, bb: { w, h: 1000 }, hasAdd });
+  // A phone's tree: 541 high, 20px margins. A frame 1000 high fits at (541 - 40) / 1000 = 0.501.
+  const frame = { top: -400, bottom: 600 };
 
-  it('leaves a tree that fits the width at the height-fitting zoom', () => {
-    expect(zoomFor(300, true)).toBeCloseTo(0.501);
+  it('fits the frame (a full tree) to the height, whoever is shown', () => {
+    expect(chooseZoom({ frame, height: 541, margin: 20, maxZoom: 1 })).toBeCloseTo(0.501);
   });
 
-  it('zooms an editor\'s slightly wide tree out to fit the width, inside the margins', () => {
-    const zoom = zoomFor(800, true);
-    expect(zoom).toBeCloseTo((375 - 40) / 800); // 0.419, above the floor of 0.376
-    expect(800 * zoom).toBeLessThanOrEqual(375);
+  it('never zooms in past the maximum, on a tall screen', () => {
+    expect(chooseZoom({ frame, height: 2000, margin: 20, maxZoom: 1 })).toBe(1);
+  });
+});
+
+describe('verticalPan', () => {
+  const frame = { top: -400, bottom: 600 };
+
+  it('puts the top of the frame at the margin, so the person\'s row is always in the same place', () => {
+    const zoom = 0.501;
+    const pan = verticalPan({ frame, zoom, height: 541, margin: 20 });
+    expect(pan + frame.top * zoom).toBeCloseTo(20);
+    expect(pan).toBeCloseTo(20 + 400 * 0.501); // the person's row (y 0) is there
   });
 
-  it('measures "fits" inside the margins too, so the zoom changes smoothly at the boundary', () => {
-    // 335px is the room inside the margins: 668 fits at 0.501 (334.7px), 670 needs 0.5 (335px).
-    expect(zoomFor(668, true)).toBeCloseTo(0.501);
-    expect(zoomFor(670, true)).toBeCloseTo(0.5);
-    // A tree that would draw 370px wide no longer stays at 370 while one at 380 drops to 335.
-    expect(zoomFor(370 / 0.501, true) * (370 / 0.501)).toBeCloseTo(335);
-    let last = { zoom: Infinity, drawn: 0 };
-    for (let w = 600; w <= 1500; w += 5) {
-      const zoom = zoomFor(w, true);
-      expect(zoom).toBeLessThanOrEqual(last.zoom + 1e-12); // never zooms in as the tree widens
-      expect(w * zoom).toBeGreaterThanOrEqual(last.drawn - 1e-9); // and is never drawn narrower
-      last = { zoom, drawn: w * zoom };
-    }
-  });
-
-  it('stops at 75% of the height-fitting zoom for a very wide tree, which stays wider than the screen', () => {
-    const zoom = zoomFor(2000, true);
-    expect(zoom).toBeCloseTo(0.75 * 0.501);
-    expect(2000 * zoom).toBeGreaterThan(375);
-  });
-
-  it('never zooms in past the height-fitting zoom or the maximum', () => {
-    expect(chooseZoom({ ...phone, bb: { w: 500, h: 300 }, hasAdd: true })).toBeCloseTo(0.75); // 1 (capped), then 0.75
-    expect(chooseZoom({ ...phone, bb: { w: 200, h: 300 }, hasAdd: true })).toBe(1);
-  });
-
-  it('leaves viewers (no "+" node) at the height-fitting zoom, however wide', () => {
-    expect(zoomFor(800, false)).toBeCloseTo(0.501);
-    expect(zoomFor(2000, false)).toBeCloseTo(0.501);
-    expect(chooseZoom({ ...phone, bb: { w: 500, h: 300 }, hasAdd: false })).toBe(1);
+  it('centres the frame when it is shorter than the room', () => {
+    const pan = verticalPan({ frame, zoom: 1, height: 2000, margin: 20 });
+    expect(pan + frame.top).toBeCloseTo(500); // (2000 - 1000) / 2
   });
 });

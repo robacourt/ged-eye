@@ -69,3 +69,10 @@ Cytoscape stays, because touch, pan, tap and mobile already work well. dagre goe
 - **All 2,995 people in the `photos` copy of the tree,** with and without the "+", pass the same checks (a one-off script).
 - **`tests/familyTreeLayout.test.js`:** the real Cytoscape, headless, draws what the layout says, with straight lines, invisible joints and the "+" node on the right side.
 - **By eye:** screenshots on desktop and mobile of the people that looked wrong before, and of random people.
+
+## Follow-up: the same size of people every time (2026-10-18)
+
+The tree used to be zoomed to fit whoever was shown, at most to natural size, so a tree with fewer rows drew bigger people. On a phone, someone with only a partner was drawn at 139px against 81px for a three-row tree. For editors there was also a zoom-out of up to a quarter to fit a slightly wide tree, so the size changed with how many people were side by side too. The version before this change behaved the same way.
+
+Now the zoom always fits a full three-row tree (`FRAME` in `treeLayout.js`) to the height, whoever is shown, and the person's row is always in the same place. A tree with fewer rows leaves those rows empty, and a wide one scrolls sideways. The editors' zoom-out is gone: the "+" is always beside the person, and the existing horizontal pan keeps it in view.
+

@@ -9,20 +9,23 @@ export const MIN_TARGET_PX = 44;
 const SELECTED_LEFT_PX = 100;
 /** The least room left of a "+" button placed on the person's left, on a tree wider than the screen. */
 const ADD_LEFT_MIN_PX = 16;
-/** How far an editor's tree may zoom out to fit the width, as a share of the zoom that fits the height. */
-const ADD_MIN_ZOOM_SHARE = 0.75;
+/**
+ * The tree's zoom (fitToHeight): the zoom at which `frame` (a full, three-row tree: treeLayout.js FRAME) fits the
+ * height `height` inside `margin`, at most `maxZoom`. It depends only on the screen, never on who is shown, so
+ * people are always the same size and a wide tree is scrolled sideways rather than shrunk.
+ */
+export function chooseZoom({ frame, height, margin, maxZoom }) {
+  return Math.min((height - 2 * margin) / (frame.bottom - frame.top), maxZoom);
+}
 
 /**
- * The tree's zoom (fitToHeight): the zoom that fits the height `height` inside `margin`, at most `maxZoom`.
- * An editor's tree (`hasAdd`: with the "+" node, which widens the person's row) wider than `width` inside the
- * same margin at that zoom zooms out just enough to fit, but never below ADD_MIN_ZOOM_SHARE of it.
- * Viewers' trees are as they always were.
+ * The tree's vertical pan (fitToHeight): `frame` from `margin` below the top, so the person's row is always in
+ * the same place; centred instead when it is shorter than the room (a tall screen, at `maxZoom`).
  */
-export function chooseZoom({ bb, width, height, margin, maxZoom, hasAdd = false }) {
-  const heightZoom = Math.min((height - 2 * margin) / bb.h, maxZoom);
-  const fitWidth = width - 2 * margin; // the same room for "fits" as for the zoom, so the result changes smoothly
-  if (!hasAdd || bb.w * heightZoom <= fitWidth) return heightZoom;
-  return Math.min(heightZoom, Math.max(fitWidth / bb.w, ADD_MIN_ZOOM_SHARE * heightZoom));
+export function verticalPan({ frame, zoom, height, margin }) {
+  const drawn = (frame.bottom - frame.top) * zoom;
+  const top = Math.max(margin, (height - drawn) / 2);
+  return top - frame.top * zoom;
 }
 
 /**

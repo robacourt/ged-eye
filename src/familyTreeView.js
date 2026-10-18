@@ -2,8 +2,8 @@ import cytoscape from 'cytoscape';
 import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
 import { avatarUrl } from './media.js';
 import { nameOf } from './familyLinks.js';
-import { MIN_TARGET_PX, chooseZoom, horizontalPan } from './treePlacement.js';
-import { layoutFamily } from './treeLayout.js';
+import { MIN_TARGET_PX, chooseZoom, horizontalPan, verticalPan } from './treePlacement.js';
+import { FRAME, layoutFamily } from './treeLayout.js';
 
 /** The editors' "+" node, joined to the highlighted person, and the edge to it. */
 const ADD_NODE_ID = 'add-relative';
@@ -320,13 +320,13 @@ export class FamilyTreeView {
     // Calculate vertical margins (top and bottom)
     const verticalMargin = 20;
 
-    // Cap zoom to prevent nodes from being too large when there are fewer generations
-    // Maximum zoom of 1.0 keeps nodes at their natural size (135-180px)
+    // At most natural size (on a tall screen)
     const maxZoom = 1.0;
 
-    // Zoom to fit the height; an editor's tree, widened by the "+", may zoom out a little to fit the width
+    // Always the zoom that fits a full, three-row tree to the height, whoever is shown: the same size of people
+    // every time, and a wide tree scrolls sideways
     const addNode = cy.getElementById(ADD_NODE_ID);
-    const zoom = chooseZoom({ bb, width: w, height: h, margin: verticalMargin, maxZoom, hasAdd: !addNode.empty() });
+    const zoom = chooseZoom({ frame: FRAME, height: h, margin: verticalMargin, maxZoom });
 
     // Centred when the graph fits the width; else the selected person on the left with a margin, and an
     // editor's "+" on their left kept in view
@@ -337,9 +337,10 @@ export class FamilyTreeView {
       add: selectedNode.length > 0 && !addNode.empty() ? { x: addNode.position().x, width: addNode.outerWidth() } : null
     });
 
+    // The person's row always in the same place, as if all three rows were there
     const pan = {
       x: panX,
-      y: verticalMargin - bb.y1 * zoom
+      y: verticalPan({ frame: FRAME, zoom, height: h, margin: verticalMargin })
     };
 
     cy.viewport({
