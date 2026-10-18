@@ -22,6 +22,13 @@ const COUPLE_GAP = 90;   // between partners: room for the dot, and the line dow
 const ADD_GAP = 40;      // between the person and the "+" node
 const GROUP_GAP = 100;   // between families in a row
 const ROW = 330;         // between the rows' centres
+/** Room below a circle for its name and year (two or three lines). */
+const LABEL_ROOM = 60;
+/**
+ * The extent (graph units) of a full tree, three rows deep, with the person's row at 0: the tree is always fitted
+ * to this, not to who is shown, so people are the same size whoever they are and however many rows they have.
+ */
+export const FRAME = { top: -ROW - SIZES.person / 2, bottom: ROW + SIZES.person / 2 + LABEL_ROOM };
 // A family's bar, below the row above: under its labels, above the next row's circles.
 const BAR_BELOW_PARENTS = 190;
 const BAR_BELOW_PERSON = 215;
