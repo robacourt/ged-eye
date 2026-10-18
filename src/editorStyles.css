@@ -132,35 +132,43 @@ select.editor-input {
   z-index: 1100;
 }
 
+/* The menu button: a round button with three lines. */
 .signin-button {
-  min-width: 40px;
-  height: 40px;
-  padding: 0 16px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
+  border-radius: 50%;
   background: rgba(15, 15, 26, 0.85);
   color: #fff;
-  font: inherit;
-  font-size: 15px;
-  font-weight: 500;
   cursor: pointer;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
-.signin-button:hover {
+.signin-button:hover,
+.signin-button[aria-expanded="true"] {
   background: rgba(40, 40, 60, 0.95);
+  border-color: rgba(0, 212, 255, 0.6);
 }
 
-.signin-button-account {
-  width: 40px;
-  padding: 0;
-  border-color: #00d4ff;
-  border-radius: 50%;
-  background: rgba(0, 212, 255, 0.2);
-  color: #00d4ff;
-  font-size: 17px;
-  font-weight: 600;
+.signin-button .menu-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Line icons (signIn.js), drawn in the text colour. */
+.menu-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Account menu */
@@ -169,11 +177,21 @@ select.editor-input {
   top: calc(100% + 8px);
   right: 0;
   width: min(300px, calc(100vw - 24px));
-  padding: 16px;
+  padding: 8px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   background: #1e1e2e;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.account-info {
+  padding: 10px 10px 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.account-info .account-retry {
+  margin-top: 10px;
 }
 
 .account-email {
@@ -198,8 +216,50 @@ select.editor-input {
 .account-actions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 2px;
+}
+
+/* A menu item: icon and label, the width of the menu. */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-item .menu-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.menu-item:hover,
+.menu-item:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-item:hover .menu-icon,
+.menu-item:focus-visible .menu-icon {
+  color: #00d4ff;
+}
+
+/* Things waiting for the reader (pending requests) stand out. */
+.menu-item.account-requests,
+.menu-item.account-requests .menu-icon {
+  color: #00d4ff;
+}
+
+.menu-item:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 /* Dialogs: centred on wider screens, full screen below 768px */

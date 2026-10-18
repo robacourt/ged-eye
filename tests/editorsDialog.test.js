@@ -112,7 +112,7 @@ describe('openEditorsDialog: the list', () => {
     api.listEditors.mockResolvedValueOnce([ROB, { ...ANN, name: XSS }]);
     await open();
     expect(isEditorDialogOpen()).toBe(true);
-    expect(root().querySelector('.editor-dialog-title').textContent).toBe('Editors and viewers');
+    expect(root().querySelector('.editor-dialog-title').textContent).toBe('Manage access');
     expect(rows()).toEqual([
       { email: 'rob@example.com', name: 'Rob', role: 'Admin' },
       { email: 'ann@example.com', name: XSS, role: 'Editor' }

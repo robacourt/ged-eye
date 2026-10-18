@@ -20,17 +20,44 @@ const PHOTO_GONE = 'That photo is no longer shown for this person.';
 
 /** The editors' dialogs, History, Editors and the photo dialogs, with their stylesheet: loaded only once someone can edit. */
 const defaultLoadEditing = () => import('./editing.js');
+/** The search page (relationshipPage.js), with its stylesheet: loaded when it is first opened. */
+const defaultLoadSearchPage = () => import('./relationshipPage.js');
 
+/** The search page's parameter: whom it finds relationships to (spec: 2026-10-18-relationship-search-design.md). */
+const RELATIVE_PARAM = 'relative';
+
+/**
+ * Whom the tree shows: `person`, or on the search page the relative (the tree stays drawn under the page, so
+ * going back is instant).
+ */
 function personIdFromUrl() {
-  return new URLSearchParams(window.location.search).get('person') || DEFAULT_PERSON_ID;
+  const params = new URLSearchParams(window.location.search);
+  return params.get(RELATIVE_PARAM) || params.get('person') || DEFAULT_PERSON_ID;
 }
 
-/** Puts `personId` in the URL: a new history entry, or in place of the current one (`replace`). */
+/** The search page's `{ relative, person }` from the URL (person null until someone is chosen), or null. */
+function searchFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const relative = params.get(RELATIVE_PARAM);
+  return relative ? { relative, person: params.get('person') || null } : null;
+}
+
+/** Puts `personId` in the URL, on the tree (leaving the search page): a new history entry, or in place (`replace`). */
 function setUrlPerson(personId, { replace = false } = {}) {
   const url = new URL(window.location);
+  url.searchParams.delete(RELATIVE_PARAM);
   url.searchParams.set('person', personId);
   if (replace) window.history.replaceState({}, '', url);
   else window.history.pushState({}, '', url);
+}
+
+/** Opens the search page in the URL: relationships to `relative`, with `person` chosen (or none yet). */
+function setUrlSearch(relative, person = null) {
+  const url = new URL(window.location);
+  url.searchParams.set(RELATIVE_PARAM, relative);
+  if (person) url.searchParams.set('person', person);
+  else url.searchParams.delete('person');
+  window.history.pushState({}, '', url);
 }
 
 /** The admins' email link, `<site>/?access-requests`: open the Editors dialog, where the requests are. */
@@ -66,8 +93,8 @@ const isNotAnAdmin = (error) => error?.status === 403 && error.code === 'not_an_
 
 /** The editApi.js calls whose refusals are watched: all but `me`, which reads the account itself. */
 export const WATCHED_API_CALLS = ['authedFetch', 'runChange', 'revert', 'restore', 'undo', 'redo', 'listChanges',
-  'search', 'listEditors', 'addEditor', 'changeEditorRole', 'removeEditor', 'requestAccess', 'listAccessRequests',
-  'grantAccessRequest', 'dismissAccessRequest'];
+  'search', 'relationship', 'listEditors', 'addEditor', 'changeEditorRole', 'removeEditor', 'requestAccess',
+  'listAccessRequests', 'grantAccessRequest', 'dismissAccessRequest'];
 
 /**
  * `api` with its calls watched: a rejection that is a 403 `not_an_editor` is reported to `onNotAnEditor` (the
@@ -141,7 +168,8 @@ export function initApp({
   loader = dataLoader,
   showToast = defaultShowToast,
   mountSignIn = defaultMountSignIn,
-  loadEditing = defaultLoadEditing
+  loadEditing = defaultLoadEditing,
+  loadSearchPage = defaultLoadSearchPage
 } = {}) {
   const loadingEl = document.getElementById('loading');
 
@@ -584,6 +612,76 @@ export function initApp({
     }
   }
 
+  // --- The search page (?relative=<id>[&person=<id>]) ------------------------------------------------------------
+
+  let searchPage = null;     // { page (relationshipPage.js), relative (id) } while it is open
+  let searchPageLoad = null; // Promise of the module, once asked for
+
+  /** `{ id, name }` for the relative, from the views already loaded (the tree shows them); no name if it fails. */
+  async function relativeOf(id) {
+    try {
+      const { person } = await loader.loadPersonWithFamily(id);
+      return { id, name: person?.name ?? '' };
+    } catch {
+      return { id, name: '' };
+    }
+  }
+
+  /** Opens, updates or closes the search page to match the URL. */
+  async function syncSearchPage() {
+    const wanted = searchFromUrl();
+    if (!wanted) {
+      searchPage?.page.close();
+      searchPage = null;
+      return;
+    }
+    let module;
+    try {
+      module = await (searchPageLoad ??= loadSearchPage());
+    } catch (error) {
+      searchPageLoad = null;
+      console.error('Could not load the search page', error);
+      showToast("Couldn't open Search. Check your connection, then try again.", { kind: 'error' });
+      return;
+    }
+    const relative = await relativeOf(wanted.relative);
+    const now = searchFromUrl();
+    if (!now || now.relative !== wanted.relative) return; // moved on meanwhile: that call does it
+    if (!searchPage) {
+      searchPage = {
+        relative: now.relative,
+        page: module.openRelationshipPage({
+          container: document.getElementById('app') ?? document.body,
+          api,
+          relative,
+          onChoose: (id) => {
+            setUrlSearch(searchFromUrl()?.relative ?? now.relative, id);
+            settle(syncSearchPage());
+          },
+          onOpenPerson: (id) => goToTree(id),
+          onBack: () => goToTree(searchFromUrl()?.relative ?? now.relative)
+        })
+      };
+    } else if (searchPage.relative !== now.relative) {
+      searchPage.relative = now.relative;
+      searchPage.page.setRelative(relative);
+    }
+    searchPage.page.setPerson(now.person);
+  }
+
+  /** From the search page to the tree, with `personId` selected. */
+  function goToTree(personId) {
+    setUrlPerson(personId);
+    settle(syncSearchPage());
+    showPerson(personId);
+  }
+
+  /** The menu's Search: the search page for whoever the tree shows. */
+  function openSearch() {
+    setUrlSearch(requestedPersonId ?? personIdFromUrl());
+    settle(syncSearchPage());
+  }
+
   // --- Keyboard Undo and Redo ----------------------------------------------------------------------------------
 
   let keyQueue = Promise.resolve();
@@ -649,7 +747,8 @@ export function initApp({
       inviteLink = null;
     },
     openHistory: () => openHistory(),
-    openEditors
+    openEditors,
+    openSearch
   });
 
   // --- Start ---------------------------------------------------------------------------------------------------
@@ -660,13 +759,17 @@ export function initApp({
     showPerson(personId);
   });
 
-  const onPopState = () => showPerson(personIdFromUrl());
+  const onPopState = () => {
+    showPerson(personIdFromUrl());
+    settle(syncSearchPage());
+  };
   window.addEventListener('popstate', onPopState);
   document.addEventListener('keydown', onKeyDown);
 
   syncTreeAddRelative(); // none until an editor signs in
   overlay.loading('Loading family tree...');
   showPerson(personIdFromUrl());
+  settle(syncSearchPage());
 
   // Viewing doesn't wait for this: signed-in editors get their controls when /me answers (onSignedIn).
   Promise.resolve()
@@ -692,6 +795,8 @@ export function initApp({
       treeView.setAddRelative(null);
       historyPanel?.close();
       editorsDialog?.close();
+      searchPage?.page.close();
+      searchPage = null;
       signIn.destroy();
     }
   };

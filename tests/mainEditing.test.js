@@ -443,7 +443,7 @@ describe('initApp: a removed editor', () => {
     showToast.mockClear();
     await press('z', { ctrlKey: true });
     expect(signIn.refreshAccount).toHaveBeenCalledTimes(1);
-    expect(lastToast()).toEqual(["You're not on the editors list. Use \"Request edit access\" in your account menu.", { kind: 'error' }]);
+    expect(lastToast()).toEqual(["You're not on the editors list. Use \"Request edit access\" in the menu.", { kind: 'error' }]);
     expect(shownOptions()).toEqual(VIEWING);
     expect(history.close).toHaveBeenCalled();
     expect(editors.close).toHaveBeenCalled();
@@ -1193,7 +1193,7 @@ describe('initApp: photos', () => {
     api.runChange.mockRejectedValueOnce(apiError(403, 'not_an_editor'));
     options.onRemovePhoto(PHOTO, rose);
     await flush();
-    expect(lastToast()).toEqual(["You're not on the editors list. Use \"Request edit access\" in your account menu.", { kind: 'error' }]);
+    expect(lastToast()).toEqual(["You're not on the editors list. Use \"Request edit access\" in the menu.", { kind: 'error' }]);
     expect(shownOptions()).toEqual(VIEWING);
   });
 });

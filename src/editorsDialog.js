@@ -1,5 +1,5 @@
 /**
- * The Editors and viewers dialog, for admins: pending requests for edit access (Grant or Dismiss), who has access
+ * The Manage access dialog, for admins: pending requests for edit access (Grant or Dismiss), who has access
  * (email, name, and their level: viewer, editor or admin, which can be changed for anyone but yourself), inviting someone (the
  * server emails them), and removing someone after a confirmation. The server's refusals (already an editor,
  * changing or removing yourself, the last admin, not an admin, a request another admin already dealt with) are
@@ -83,7 +83,7 @@ function resolvedText({ status, resolvedBy, resolvedByName } = {}) {
 export function openEditorsDialog({ api, currentEmail = null, onChanged }) {
   let busy = false;
   const dialog = openEditorDialog({
-    title: 'Editors and viewers',
+    title: 'Manage access',
     className: 'editors-dialog',
     onRequestClose: () => {
       if (!busy) dialog.close();

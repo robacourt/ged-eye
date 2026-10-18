@@ -176,13 +176,13 @@ Viewing stays public, with living people's details hidden ([Living people](#livi
 
 Every edit can be undone.
 
-- **Who has access:** only people on the list. Admins manage it in the app (account menu → Editors and viewers):
+- **Who has access:** only people on the list. Admins manage it in the app (menu → Manage access):
   - **Invite someone** by email as a viewer, an editor or an admin, with an optional message. They get access straight away, and an email from the site's Gmail account saying who invited them, what they can do, and how to sign in (a `<site>/?invite` link, which opens sign-in).
   - **Change someone's access** with the Access select on their row.
   - **Remove someone.**
 
   An admin can't change their own access or remove themselves, and the last admin can't be made an editor or removed. Anyone can sign in, but someone who isn't on the list just sees the tree.
-- **Asking for access:** someone signed in who isn't on the list, or a viewer, can choose **Request edit access** in the account menu, with an optional note. Whoever is set to be told gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Editors and viewers dialog, after sign-in if needed. That is everyone on the list with `notify_access_requests` set (migration 013): on production, only the owner. There is no UI for it; set it with SQL, for example `update editor set notify_access_requests = true where email = '…';`. With nobody set, no email goes out and the `api` Function logs a line saying so. Admins also see "Access requests (N)" in the account menu. The **Requests** section at the top of the dialog has **Grant** and **Dismiss** for each request. Grant makes the requester an editor (a viewer included), and they are emailed.
+- **Asking for access:** someone signed in who isn't on the list, or a viewer, can choose **Request edit access** in the menu, with an optional note. Whoever is set to be told gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Manage access dialog, after sign-in if needed. That is everyone on the list with `notify_access_requests` set (migration 013): on production, only the owner. There is no UI for it; set it with SQL, for example `update editor set notify_access_requests = true where email = '…';`. With nobody set, no email goes out and the `api` Function logs a line saying so. Admins also see "Access requests (N)" in the menu. The **Requests** section at the top of the dialog has **Grant** and **Dismiss** for each request. Grant makes the requester an editor (a viewer included), and they are emailed.
 - **Signing in:** **Sign in** in the header, then a one-time code sent by email, or Google (Neon Auth). Only verified email addresses are accepted.
 - **What can be edited:**
   - a person's details: names, sex, birth, baptism, death and burial (with their notes), cause of death, notes, occupations, residences, census records, other facts, email and phone

@@ -1,7 +1,8 @@
 /**
- * The header's sign-in button, the sign-in dialog (email code, Google, and a password form in development),
- * and the account menu (email, role, History, Editors, Sign out; for admins, "Access requests (N)"; for a
- * non-editor, Request edit access, or when they asked).
+ * The header's menu button and its menu, and the sign-in dialog (email code, Google, and a password form in
+ * development). The menu has an icon for each item: Search for everyone; then, signed in, the account's email
+ * and role, History (editors), "Access requests (N)" and Manage access (admins), Request edit access (a
+ * non-editor, or when they asked), and Sign out; or, signed out, Sign in.
  *
  * It owns reading `/me` after every sign-in (including a restored session), and reports the result through
  * `onSignedIn(me, reason)`; every sign-out (including an expired session) is reported through `onSignedOut(reason)`.
@@ -49,7 +50,6 @@ function validateEmail(email) {
 }
 
 /** The first character (not UTF-16 unit) of `text`, upper-cased. */
-const initial = (text) => ([...String(text).trim()][0] ?? '?').toUpperCase();
 
 function callSafely(callback, ...args) {
   try {
@@ -121,19 +121,39 @@ function dialogMarkup(id, dev) {
     </div>`;
 }
 
+/** Line icons for the menu (24-unit box, drawn with the text colour), and the menu button's own. */
+const ICON_PATHS = {
+  menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+  history: '<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>',
+  requests: '<path d="M6 9a6 6 0 0 1 12 0c0 6 3 8 3 8H3s3-2 3-8"/><path d="M10 21a2.2 2.2 0 0 0 4 0"/>',
+  access: '<circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M19 15a6 6 0 0 1 3 5v1"/>',
+  request: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+  signIn: '<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/>',
+  signOut: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>'
+};
+const icon = (name) => `<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICON_PATHS[name]}</svg>`;
+/** A menu item: its icon and label, with no space between them (tests read the label as the text). */
+const item = (className, name, label) =>
+  `<button type="button" class="menu-item ${className}" hidden>${icon(name)}<span class="menu-item-label">${label}</span></button>`;
+
 function menuMarkup(menuId) {
   return `
     <div class="account-menu" id="${menuId}" hidden>
-      <p class="account-email"></p>
-      <p class="account-role"></p>
-      <p class="account-note" hidden></p>
-      <div class="account-actions">
+      <div class="account-info">
+        <p class="account-email"></p>
+        <p class="account-role"></p>
+        <p class="account-note" hidden></p>
         <button type="button" class="editor-btn account-retry" hidden>Try again</button>
-        <button type="button" class="editor-btn editor-btn-primary account-request" hidden>Request edit access</button>
-        <button type="button" class="editor-btn editor-btn-primary account-requests" hidden></button>
-        <button type="button" class="editor-btn account-history" hidden>History</button>
-        <button type="button" class="editor-btn account-editors" hidden>Editors and viewers</button>
-        <button type="button" class="editor-btn account-signout">Sign out</button>
+      </div>
+      <div class="account-actions">
+        ${item('account-search', 'search', 'Search')}
+        ${item('account-history', 'history', 'History')}
+        ${item('account-requests', 'requests', 'Access requests')}
+        ${item('account-editors', 'access', 'Manage access')}
+        ${item('account-request', 'request', 'Request edit access')}
+        ${item('account-signin', 'signIn', 'Sign in')}
+        ${item('account-signout', 'signOut', 'Sign out')}
       </div>
     </div>`;
 }
@@ -148,11 +168,12 @@ function menuMarkup(menuId) {
  * @param onSignedOut   (reason): 'signed-out' | 'expired' | 'cookie-blocked'
  * @param onAccountError (error) when `/me` fails (the menu then shows the failure, with Try again)
  * @param openHistory   () from the menu's History
- * @param openEditors   () from the menu's Editors and "Access requests (N)" (admins only)
+ * @param openEditors   () from the menu's Manage access and "Access requests (N)" (admins only)
+ * @param openSearch    () from the menu's Search (everyone, signed in or not)
  * @returns `{ open, close, isOpen, openMenu, closeMenu, refreshAccount, getAccount, destroy }`
  */
 export function mountSignIn({
-  container, auth, api, onSignedIn, onSignedOut, onAccountError, openHistory, openEditors
+  container, auth, api, onSignedIn, onSignedOut, onAccountError, openHistory, openEditors, openSearch
 }) {
   const id = `signin-${++nextId}`;
   const dev = typeof auth.signInWithPassword === 'function';
@@ -160,16 +181,21 @@ export function mountSignIn({
   // Header button and account menu.
   const wrapper = document.createElement('div');
   wrapper.className = 'signin';
-  wrapper.innerHTML = `<button type="button" class="signin-button"></button>${menuMarkup(`${id}-menu`)}`;
+  // The header's menu button: the menu for everyone, with Search, and Sign in or the account's items.
+  wrapper.innerHTML = `<button type="button" class="signin-button">${icon('menu')}</button>${menuMarkup(`${id}-menu`)}`;
   container.appendChild(wrapper);
   const button = wrapper.querySelector('.signin-button');
   const menu = wrapper.querySelector('.account-menu');
+  const menuInfo = menu.querySelector('.account-info');
   const menuEmail = menu.querySelector('.account-email');
   const menuRole = menu.querySelector('.account-role');
   const menuNote = menu.querySelector('.account-note');
   const retryButton = menu.querySelector('.account-retry');
   const requestButton = menu.querySelector('.account-request');
   const requestsButton = menu.querySelector('.account-requests');
+  const requestsLabel = requestsButton.querySelector('.menu-item-label');
+  const searchButton = menu.querySelector('.account-search');
+  const signInItem = menu.querySelector('.account-signin');
   const historyButton = menu.querySelector('.account-history');
   const editorsButton = menu.querySelector('.account-editors');
   const signOutButton = menu.querySelector('.account-signout');
@@ -282,26 +308,27 @@ export function mountSignIn({
     notice.textContent = COOKIE_BLOCKED_MESSAGE;
     notice.hidden = !(cookieBlocked && !user);
 
+    button.setAttribute('aria-controls', menu.id);
+    button.setAttribute('aria-expanded', String(menuIsOpen));
+    menu.hidden = !menuIsOpen;
+    searchButton.hidden = false;
+
     if (!user) {
-      menuIsOpen = false;
-      menu.hidden = true;
-      button.textContent = 'Sign in';
-      button.classList.remove('signin-button-account');
-      button.setAttribute('aria-haspopup', 'dialog');
-      for (const name of ['aria-label', 'aria-expanded', 'aria-controls', 'title']) button.removeAttribute(name);
+      button.setAttribute('aria-label', 'Menu');
+      button.title = 'Menu';
+      menuInfo.hidden = true;
+      for (const other of [retryButton, requestButton, requestsButton, historyButton, editorsButton, signOutButton]) other.hidden = true;
+      signInItem.hidden = false;
       return;
     }
 
     const me = account.status === 'ready' ? account.me : null;
     const email = me?.email || user.email;
-    button.textContent = initial(me?.name || user.name || email);
-    button.classList.add('signin-button-account');
-    button.removeAttribute('aria-haspopup');
-    button.setAttribute('aria-label', `Account: ${email}`);
+    button.setAttribute('aria-label', `Menu, signed in as ${email}`);
     button.title = email;
-    button.setAttribute('aria-controls', menu.id);
-    button.setAttribute('aria-expanded', String(menuIsOpen));
-    menu.hidden = !menuIsOpen;
+    menuInfo.hidden = false;
+    signInItem.hidden = true;
+    signOutButton.hidden = false;
 
     menuEmail.textContent = email;
     menuNote.hidden = true;
@@ -316,7 +343,7 @@ export function mountSignIn({
         historyButton.hidden = false;
         editorsButton.hidden = me.role !== 'admin';
         const pending = me.role === 'admin' ? pendingRequests(me) : 0;
-        requestsButton.textContent = `Access requests (${pending})`;
+        requestsLabel.textContent = `Access requests (${pending})`;
         requestsButton.hidden = pending === 0;
       } else if (me.accessRequest?.status === 'pending') {
         // Someone not listed, or a viewer. A dismissed request is never mentioned; a granted one that left
@@ -345,7 +372,6 @@ export function mountSignIn({
   // --- Account menu ----------------------------------------------------------------------------------------
 
   function openMenu() {
-    if (!auth.getState().user) return;
     menuIsOpen = true;
     render();
   }
@@ -359,9 +385,19 @@ export function mountSignIn({
   }
 
   button.addEventListener('click', () => {
-    if (!auth.getState().user) open();
-    else if (menuIsOpen) closeMenu();
+    if (menuIsOpen) closeMenu();
     else openMenu();
+  });
+
+  searchButton.addEventListener('click', () => {
+    closeMenu();
+    callSafely(openSearch);
+  });
+
+  signInItem.addEventListener('click', () => {
+    closeMenu();
+    button.focus(); // where focus goes back when the dialog closes
+    open();
   });
 
   retryButton.addEventListener('click', () => refreshAccount());

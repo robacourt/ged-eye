@@ -151,6 +151,14 @@ export function createEditApi(options) {
       (await authedFetch(`/changes${query({ before, limit, person })}`)).changes,
 
     /** `[{ id, name, birthYear, deathYear }]`; [] without asking for fewer than 2 characters. */
+    /**
+     * How `to` is related to `from` (GET /relationship, signed in or not). → the path from `from` to `to`,
+     * `[{ id, name, sex, birthDate, avatarKey, living, step }]`, or null when they have no family connection.
+     */
+    async relationship(from, to) {
+      return (await authedFetch(`/relationship${query({ from, to })}`, { auth: 'optional' })).path;
+    },
+
     async search(q, { limit } = {}) {
       const text = (q ?? '').trim();
       if ([...text].length < SEARCH_MIN_CHARS) return [];
@@ -245,6 +253,7 @@ export const {
   redo,
   listChanges,
   search,
+  relationship,
   me,
   listEditors,
   addEditor,

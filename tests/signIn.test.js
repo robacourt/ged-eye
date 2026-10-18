@@ -84,7 +84,8 @@ function setup({ client = fakeClient(), dev = false, api = fakeApi(), auth = cre
     onSignedOut: vi.fn(),
     onAccountError: vi.fn(),
     openHistory: vi.fn(),
-    openEditors: vi.fn()
+    openEditors: vi.fn(),
+    openSearch: vi.fn()
   };
   controller = mountSignIn({ container: document.getElementById('header'), auth, api, ...callbacks });
   return { client, auth, api, controller, ...callbacks };
@@ -120,8 +121,14 @@ function key(name, options = {}) {
   return event;
 }
 
-async function requestCode(email = 'rose@example.com') {
+/** Opens the sign-in dialog as someone signed out does: the menu button, then the menu's Sign in. */
+function openDialog() {
   headerButton().click();
+  $('.account-signin').click();
+}
+
+async function requestCode(email = 'rose@example.com') {
+  openDialog();
   type($('.signin-email-form input[name="email"]'), email);
   submit($('.signin-email-form'));
   await settle();
@@ -147,18 +154,33 @@ describe('mountSignIn', () => {
   });
 
   describe('signed out', () => {
-    it('shows a Sign in button in the container, and no dialog until it is clicked', () => {
+    it('shows a menu button in the container, with Search and Sign in, and no dialog until Sign in is chosen', () => {
       setup();
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
+      expect(headerButton().querySelector('svg.menu-icon')).not.toBeNull();
       expect($('#header').contains(headerButton())).toBe(true);
-      expect(headerButton().getAttribute('aria-haspopup')).toBe('dialog');
+      expect(headerButton().getAttribute('aria-expanded')).toBe('false');
       expect(dialogOpen()).toBe(false);
+      expect(menuOpen()).toBe(false);
+      headerButton().click();
+      expect(menuOpen()).toBe(true);
+      expect(headerButton().getAttribute('aria-expanded')).toBe('true');
+      expect(menuButtons()).toEqual(['Search', 'Sign in']);
+      expect(visibleText('.account-email')).toEqual([]);
+      expect(dialogOpen()).toBe(false);
+    });
+
+    it('opens Search from the menu', () => {
+      const { openSearch } = setup();
+      headerButton().click();
+      $('.account-search').click();
+      expect(openSearch).toHaveBeenCalledOnce();
       expect(menuOpen()).toBe(false);
     });
 
     it('opens a modal dialog on the email step, with focus in the email field', () => {
       setup();
-      headerButton().click();
+      openDialog();
       expect(dialogOpen()).toBe(true);
       expect(dialog().getAttribute('role')).toBe('dialog');
       expect(dialog().getAttribute('aria-modal')).toBe('true');
@@ -194,8 +216,7 @@ describe('mountSignIn', () => {
       expect(onSignedIn).toHaveBeenCalledOnce();
       expect(onSignedIn).toHaveBeenCalledWith(ACCOUNTS.editor, 'signed-in');
       expect(dialogOpen()).toBe(false);
-      expect(headerButton().textContent).toBe('R');
-      expect(headerButton().getAttribute('aria-label')).toBe('Account: rose@example.com');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu, signed in as rose@example.com');
       expect(document.activeElement).toBe(headerButton());
     });
 
@@ -204,7 +225,7 @@ describe('mountSignIn', () => {
       const pending = deferred();
       client.emailOtp.sendVerificationOtp.mockReturnValue(pending.promise);
       setup({ client });
-      headerButton().click();
+      openDialog();
       type($('.signin-email-form input[name="email"]'), 'rose@example.com');
       submit($('.signin-email-form'));
       await flush();
@@ -260,7 +281,7 @@ describe('mountSignIn', () => {
       expect(document.activeElement).toBe($('.signin-code-form input[name="code"]'));
       expect(api.me).not.toHaveBeenCalled();
       expect(onSignedIn).not.toHaveBeenCalled();
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
 
       // A corrected code clears the error and signs in.
       type($('.signin-code-form input[name="code"]'), GOOD_CODE);
@@ -323,7 +344,7 @@ describe('mountSignIn', () => {
       expect(step()).toBe('email');
       expect(visibleText('.signin-notice')).toEqual([COOKIE_BLOCKED_MESSAGE]);
       expect(COOKIE_BLOCKED_MESSAGE).toBe('Your browser blocked the sign-in cookie. Editing needs a recent Safari/iOS, Chrome, Edge or Firefox.');
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
       expect(api.me).not.toHaveBeenCalled();
       expect(onSignedIn).not.toHaveBeenCalled();
     });
@@ -332,7 +353,7 @@ describe('mountSignIn', () => {
   describe('Google', () => {
     it('starts the Google sign-in', async () => {
       const { client } = setup();
-      headerButton().click();
+      openDialog();
       $('.signin-google').click();
       await settle();
       expect(client.signIn.social).toHaveBeenCalledWith({
@@ -355,7 +376,7 @@ describe('mountSignIn', () => {
       const { client, controller: c } = setup();
       c.open({ googleCallbackURL: () => 'http://localhost:3000/?access-requests=' });
       c.close();
-      headerButton().click();
+      openDialog();
       $('.signin-google').click();
       await settle();
       expect(client.signIn.social).toHaveBeenCalledWith(expect.objectContaining({ callbackURL: window.location.href }));
@@ -365,7 +386,7 @@ describe('mountSignIn', () => {
       const client = fakeClient();
       client.signIn.social.mockRejectedValue(new TypeError('Failed to fetch'));
       setup({ client });
-      headerButton().click();
+      openDialog();
       $('.signin-google').click();
       await settle();
       expect(visibleText('.signin-step-email .editor-error')).toEqual(["Couldn't reach the sign-in service. Check your connection and try again."]);
@@ -387,13 +408,13 @@ describe('mountSignIn', () => {
   describe('dev password form', () => {
     it('is absent unless the auth client offers password sign-in', () => {
       setup({ dev: false });
-      headerButton().click();
+      openDialog();
       expect($('.signin-password-form')).toBeNull();
     });
 
     it('signs in with a password in development', async () => {
       const { client, api, onSignedIn } = setup({ dev: true });
-      headerButton().click();
+      openDialog();
       const form = $('.signin-password-form');
       expect(form).not.toBeNull();
       expect(form.querySelector('input[name="password"]').type).toBe('password');
@@ -417,7 +438,7 @@ describe('mountSignIn', () => {
     it('closes on Escape and returns focus to the header button', () => {
       setup();
       headerButton().focus();
-      headerButton().click();
+      openDialog();
       expect(document.activeElement).not.toBe(headerButton());
       const event = key('Escape');
       expect(event.defaultPrevented).toBe(true);
@@ -427,7 +448,7 @@ describe('mountSignIn', () => {
 
     it('closes with the close button', () => {
       setup();
-      headerButton().click();
+      openDialog();
       const close = $('.editor-dialog-close');
       expect(close.getAttribute('aria-label')).toBe('Close');
       close.click();
@@ -436,7 +457,7 @@ describe('mountSignIn', () => {
 
     it('keeps Tab inside the dialog', () => {
       setup();
-      headerButton().click();
+      openDialog();
       const focusable = [...dialog().querySelectorAll('button, input')].filter(el => visible(el) && !el.disabled);
       focusable.at(-1).focus();
       expect(key('Tab').defaultPrevented).toBe(true);
@@ -449,7 +470,7 @@ describe('mountSignIn', () => {
       setup();
       await signInByCode('rose@example.com', '000000');
       key('Escape');
-      headerButton().click();
+      openDialog();
       expect(step()).toBe('email');
       expect(errorText($('.signin-code-form'))).toBeNull();
     });
@@ -464,7 +485,7 @@ describe('mountSignIn', () => {
       pending.resolve(ok({ success: true }));
       await settle();
       expect(dialogOpen()).toBe(false);
-      headerButton().click();
+      openDialog();
       expect(step()).toBe('email');
       expect($('.signin-email-form button[type="submit"]').disabled).toBe(false);
     });
@@ -482,8 +503,7 @@ describe('mountSignIn', () => {
       const { api, onSignedIn } = await signedInAs(ACCOUNTS.editor);
       expect(api.me).toHaveBeenCalledOnce();
       expect(onSignedIn).toHaveBeenCalledWith(ACCOUNTS.editor, 'restored');
-      expect(headerButton().textContent).toBe('R');
-      expect(headerButton().getAttribute('aria-haspopup')).toBeNull();
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu, signed in as rose@example.com');
       expect(headerButton().getAttribute('aria-expanded')).toBe('false');
     });
 
@@ -520,7 +540,7 @@ describe('mountSignIn', () => {
       expect(headerButton().getAttribute('aria-expanded')).toBe('true');
       expect(menu().querySelector('.account-email').textContent).toBe('rob@example.com');
       expect(menu().querySelector('.account-role').textContent).toBe('Admin');
-      expect(menuButtons()).toEqual(['History', 'Editors and viewers', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'History', 'Manage access', 'Sign out']);
       expect(visibleText('.account-note')).toEqual([]);
 
       $('.account-history').click();
@@ -536,18 +556,18 @@ describe('mountSignIn', () => {
       await signedInAs(ACCOUNTS.editor);
       headerButton().click();
       expect(menu().querySelector('.account-role').textContent).toBe('Editor');
-      expect(menuButtons()).toEqual(['History', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'History', 'Sign out']);
     });
 
     it('for a signed-in non-editor: a note, Request edit access and Sign out', async () => {
       await signedInAs(ACCOUNTS.viewer);
-      expect(headerButton().textContent).toBe('T');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu, signed in as tom@example.com');
       headerButton().click();
       expect(menu().querySelector('.account-role').textContent).toBe('Not an editor');
       expect(visibleText('.account-note')).toEqual([
         "You're signed in as tom@example.com but not on the editors list."
       ]);
-      expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'Request edit access', 'Sign out']);
     });
 
     it('for a viewer: Viewer, a note, Request edit access and Sign out (no History)', async () => {
@@ -555,7 +575,7 @@ describe('mountSignIn', () => {
       headerButton().click();
       expect(menu().querySelector('.account-role').textContent).toBe('Viewer');
       expect(visibleText('.account-note')).toEqual(["You can see everything, including living people's details."]);
-      expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'Request edit access', 'Sign out']);
       $('.account-request').click();
       expect($('.access-request-dialog .access-request-intro').textContent).toContain('vi@example.com');
     });
@@ -565,7 +585,7 @@ describe('mountSignIn', () => {
       headerButton().click();
       expect(menu().querySelector('.account-role').textContent).toBe('Viewer');
       expect(visibleText('.account-note')[0]).toMatch(/^You asked for edit access/);
-      expect(menuButtons()).toEqual(['Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'Sign out']);
     });
 
     it('shows names and emails as text', async () => {
@@ -574,7 +594,7 @@ describe('mountSignIn', () => {
       headerButton().click();
       expect(menu().querySelector('.account-email').textContent).toBe(account.email);
       expect(visibleText('.account-note')[0]).toContain(account.email);
-      expect(headerButton().textContent).toBe('<');
+      expect(headerButton().getAttribute('aria-label')).toBe(`Menu, signed in as ${account.email}`);
       expect(document.querySelector('img')).toBeNull();
     });
 
@@ -585,10 +605,10 @@ describe('mountSignIn', () => {
       await signedInAs(ACCOUNTS.editor, { api });
       headerButton().click();
       expect(menu().querySelector('.account-role').textContent).toBe('Checking your access…');
-      expect(menuButtons()).toEqual(['Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'Sign out']);
       pending.resolve(ACCOUNTS.editor);
       await settle();
-      expect(menuButtons()).toEqual(['History', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'History', 'Sign out']);
     });
 
     it('shows a failed /me in the menu, with Try again', async () => {
@@ -600,13 +620,13 @@ describe('mountSignIn', () => {
       expect(visibleText('.account-note')).toEqual([
         "Couldn't check your editing access. Couldn't reach the server. Check your connection."
       ]);
-      expect(menuButtons()).toEqual(['Try again', 'Sign out']);
+      expect(menuButtons()).toEqual(['Try again', 'Search', 'Sign out']);
       $('.account-retry').click();
       await settle();
       expect(api.me).toHaveBeenCalledTimes(2);
       // The retry keeps the original reason.
       expect(onSignedIn).toHaveBeenCalledWith(ACCOUNTS.editor, 'restored');
-      expect(menuButtons()).toEqual(['History', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'History', 'Sign out']);
     });
 
     it('opens the menu to show a failed /me straight after signing in', async () => {
@@ -626,9 +646,9 @@ describe('mountSignIn', () => {
       await settle();
       expect(client.signOut).toHaveBeenCalledOnce();
       expect(onSignedOut).toHaveBeenCalledWith('signed-out');
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
       expect(menuOpen()).toBe(false);
-      expect(headerButton().getAttribute('aria-expanded')).toBeNull();
+      expect(headerButton().getAttribute('aria-expanded')).toBe('false');
     });
 
     it('says so when the sign-out call fails, though it signed out here', async () => {
@@ -639,7 +659,7 @@ describe('mountSignIn', () => {
       $('.account-signout').click();
       await settle();
       expect(onSignedOut).toHaveBeenCalledWith('signed-out');
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
       const toast = $('.toast-error .toast-message');
       expect(toast.textContent).toMatch(/^Couldn't reach the sign-in service/);
     });
@@ -663,7 +683,7 @@ describe('mountSignIn', () => {
       client.state.server = null; // signed out elsewhere
       expect(await auth.getToken({ force: true })).toBeNull();
       expect(onSignedOut).toHaveBeenCalledWith('expired');
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
       await settle();
       expect($('.toast-message').textContent).toBe('Signed out — sign in again.');
       $('.toast-action').click();
@@ -676,7 +696,7 @@ describe('mountSignIn', () => {
       await auth.getToken({ force: true });
       expect(document.querySelectorAll('.toast')).toHaveLength(1);
       await signInByCode();
-      expect(headerButton().textContent).toBe('R');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu, signed in as rose@example.com');
       expect(document.querySelectorAll('.toast')).toHaveLength(0);
     });
 
@@ -689,7 +709,7 @@ describe('mountSignIn', () => {
         await signedInAs(asked('dismissed'));
         headerButton().click();
         expect(visibleText('.account-note')).toEqual(["You're signed in as tom@example.com but not on the editors list."]);
-        expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'Request edit access', 'Sign out']);
       });
 
       it('says when a request is pending, with no button', async () => {
@@ -697,7 +717,7 @@ describe('mountSignIn', () => {
         headerButton().click();
         expect(menu().querySelector('.account-role').textContent).toBe('Not an editor');
         expect(visibleText('.account-note')).toEqual(['You asked for edit access on 10 Oct.']);
-        expect(menuButtons()).toEqual(['Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'Sign out']);
       });
 
       it('reads /me once more when a request was granted but the role is still null', async () => {
@@ -712,7 +732,7 @@ describe('mountSignIn', () => {
         expect(onSignedIn).toHaveBeenCalledOnce();
         expect(onSignedIn).toHaveBeenCalledWith({ ...ACCOUNTS.viewer, role: 'editor' }, 'restored');
         headerButton().click();
-        expect(menuButtons()).toEqual(['History', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Sign out']);
       });
 
       it('reads /me only once more, then offers the button', async () => {
@@ -721,7 +741,7 @@ describe('mountSignIn', () => {
         expect(api.me).toHaveBeenCalledTimes(2);
         expect(onSignedIn).toHaveBeenCalledOnce();
         headerButton().click();
-        expect(menuButtons()).toEqual(['Request edit access', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'Request edit access', 'Sign out']);
       });
 
       it('opens the request dialog from the menu, and shows the request once sent', async () => {
@@ -743,7 +763,7 @@ describe('mountSignIn', () => {
         expect(document.activeElement).toBe(headerButton());
         headerButton().click();
         expect(visibleText('.account-note')).toEqual(['You asked for edit access on 10 Oct.']);
-        expect(menuButtons()).toEqual(['Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'Sign out']);
         expect(api.me).toHaveBeenCalledOnce(); // the menu used the request it got back
         expect(onSignedIn).toHaveBeenCalledOnce();
       });
@@ -763,13 +783,13 @@ describe('mountSignIn', () => {
         expect(api.me).toHaveBeenCalledTimes(2);
         expect(onSignedIn).toHaveBeenLastCalledWith({ ...ACCOUNTS.viewer, role: 'editor' }, 'restored');
         headerButton().click();
-        expect(menuButtons()).toEqual(['History', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Sign out']);
       });
 
       it('for an admin with pending requests: "Access requests (N)", which opens the Editors dialog', async () => {
         const { openEditors } = await signedInAs({ ...ACCOUNTS.admin, pendingRequests: 2 });
         headerButton().click();
-        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors and viewers', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Access requests (2)', 'Manage access', 'Sign out']);
         $('.account-requests').click();
         expect(openEditors).toHaveBeenCalledOnce();
         expect(menuOpen()).toBe(false);
@@ -778,7 +798,7 @@ describe('mountSignIn', () => {
       it('for an admin with none pending: no "Access requests"', async () => {
         await signedInAs({ ...ACCOUNTS.admin, pendingRequests: 0 });
         headerButton().click();
-        expect(menuButtons()).toEqual(['History', 'Editors and viewers', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Manage access', 'Sign out']);
       });
 
       it('shows the new count after refreshAccount', async () => {
@@ -787,7 +807,7 @@ describe('mountSignIn', () => {
         api.me.mockImplementation(async () => ({ ...ACCOUNTS.admin, pendingRequests: 0 }));
         await c.refreshAccount();
         headerButton().click();
-        expect(menuButtons()).toEqual(['History', 'Editors and viewers', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Manage access', 'Sign out']);
       });
 
       it('a quiet refresh updates the count in place, without reporting an unchanged account', async () => {
@@ -800,10 +820,10 @@ describe('mountSignIn', () => {
         const refreshed = c.refreshAccount({ quiet: true });
         // The menu keeps showing the account while /me is read again.
         expect(menu().querySelector('.account-role').textContent).toBe('Admin');
-        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors and viewers', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Access requests (2)', 'Manage access', 'Sign out']);
         pending.resolve({ ...ACCOUNTS.admin, pendingRequests: 1 });
         expect(await refreshed).toEqual({ ...ACCOUNTS.admin, pendingRequests: 1 });
-        expect(menuButtons()).toEqual(['Access requests (1)', 'History', 'Editors and viewers', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Access requests (1)', 'Manage access', 'Sign out']);
         expect(c.getAccount()).toEqual({ ...ACCOUNTS.admin, pendingRequests: 1 });
         expect(onSignedIn).toHaveBeenCalledOnce();
       });
@@ -823,7 +843,7 @@ describe('mountSignIn', () => {
         api.me.mockRejectedValueOnce(new ApiError(500, 'internal', {}));
         expect(await c.refreshAccount({ quiet: true })).toBeNull();
         headerButton().click();
-        expect(menuButtons()).toEqual(['Access requests (2)', 'History', 'Editors and viewers', 'Sign out']);
+        expect(menuButtons()).toEqual(['Search', 'History', 'Access requests (2)', 'Manage access', 'Sign out']);
         expect(visibleText('.account-note')).toEqual([]);
         expect(onSignedIn).toHaveBeenCalledOnce();
         expect(onAccountError).not.toHaveBeenCalled();
@@ -849,7 +869,7 @@ describe('mountSignIn', () => {
       pending.resolve(ACCOUNTS.editor);
       await settle();
       expect(onSignedIn).not.toHaveBeenCalled();
-      expect(headerButton().textContent).toBe('Sign in');
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu');
     });
   });
 
@@ -857,7 +877,7 @@ describe('mountSignIn', () => {
     it('closes an idle dialog when a session is restored', async () => {
       const client = fakeClient({ session: sessionFor('rose@example.com') });
       const { auth, api, onSignedIn } = setup({ client });
-      headerButton().click();
+      openDialog();
       expect(dialogOpen()).toBe(true);
       await auth.init();
       await settle();
@@ -872,7 +892,7 @@ describe('mountSignIn', () => {
       api.me.mockReturnValue(pending.promise);
       const { onSignedIn } = setup({ api });
       await signInByCode();
-      expect(headerButton().textContent).toBe('R'); // auth already signed in
+      expect(headerButton().getAttribute('aria-label')).toBe('Menu, signed in as rose@example.com'); // auth already signed in
       expect(dialogOpen()).toBe(true);
       expect(dialog().getAttribute('aria-busy')).toBe('true');
       expect($('.signin-code-form button[type="submit"]').textContent).toBe('Signing in…');
@@ -899,7 +919,7 @@ describe('mountSignIn', () => {
       const below = vi.fn();
       document.addEventListener('keydown', below);
       try {
-        headerButton().click();
+        openDialog();
         expect(document.body.lastElementChild).toBe($('.signin-backdrop'));
         key('Escape');
         expect(dialogOpen()).toBe(false);
@@ -912,7 +932,7 @@ describe('mountSignIn', () => {
 
     it('leaves Escape and Tab to a dialog above it', () => {
       setup();
-      headerButton().click();
+      openDialog();
       const other = otherDialog();
       other.querySelector('button').focus();
       const escape = key('Escape');
