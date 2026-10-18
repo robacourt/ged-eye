@@ -5,7 +5,7 @@
  *
  * Every data value is set with `textContent`, never as HTML.
  */
-import { el, uniqueId } from './editorDialog.js';
+import { el } from './editorDialog.js';
 import { nameOf } from './familyLinks.js';
 import { createPersonSearch, lifeYears } from './personSearch.js';
 import { ChainView } from './chainView.js';
@@ -28,19 +28,19 @@ const NOT_FOUND = 'Couldn\u2019t find one of them in the tree. They may have bee
  * @returns `{ element, setRelative(relative), setPerson(id | null), focusSearch(), close() }`
  */
 export function openRelationshipPage({ container, api, relative, onChoose, onOpenPerson, onBack }) {
-  const titleId = uniqueId('relationship-title');
-  const back = el('button', { type: 'button', class: 'relationship-back', text: '← Back to the tree' });
-  const title = el('h1', { class: 'relationship-title', id: titleId, tabindex: '-1' });
+  // The search box, then Back, on one row at the top; the page is named for screen readers only.
+  const back = el('button', { type: 'button', class: 'relationship-back', text: 'Back' });
   const results = el('ul', { class: 'relationship-results', 'aria-label': 'People found' });
   const status = el('p', { class: 'relationship-status', role: 'status' });
   const chainBox = el('div', { class: 'relationship-chain' });
   const words = el('p', { class: 'relationship-words', 'aria-live': 'polite' });
-  const page = el('section', { class: 'relationship-page', 'aria-labelledby': titleId },
-    el('header', { class: 'relationship-header' }, back, title));
-  const search = createPersonSearch({
-    api, label: 'Search for someone by name', isActive: () => page.isConnected, onResults: showResults
-  });
-  page.append(search.element, results, status, chainBox, words);
+  const page = el('section', { class: 'relationship-page', tabindex: '-1' });
+  const search = createPersonSearch({ api, isActive: () => page.isConnected, onResults: showResults });
+  search.input.setAttribute('aria-label', 'Search for someone by name');
+  search.input.placeholder = 'Search for someone by name';
+  page.append(
+    el('div', { class: 'relationship-search-row' }, search.input, back),
+    search.status, results, status, chainBox, words);
   container.append(page);
 
   const chain = new ChainView(chainBox, { onPersonSelect: (id) => onOpenPerson?.(id) });
@@ -54,7 +54,7 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
 
   function setRelative(next) {
     current = next;
-    title.textContent = `How is someone related to ${nameOf(next)}?`;
+    page.setAttribute('aria-label', `How someone is related to ${nameOf(next)}`);
   }
 
   function showResults(found) {
@@ -69,7 +69,7 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
         search.input.value = nameOf(someone);
         search.status.textContent = '';
         // The button pressed has gone: focus stays on the page, without bringing up a phone's keyboard.
-        title.focus({ preventScroll: true });
+        page.focus({ preventScroll: true });
         onChoose?.(someone.id);
       });
       return el('li', {}, button);

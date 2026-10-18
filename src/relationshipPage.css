@@ -13,19 +13,30 @@
   overflow-y: auto;
 }
 
-.relationship-header {
+.relationship-page:focus {
+  outline: none;
+}
+
+/* The search box and Back, on one row, clear of the menu button (top right). */
+.relationship-search-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
-  padding-right: 56px; /* the menu button */
+  max-width: 616px;
+  padding-right: 56px;
+}
+
+.relationship-search-row .editor-input {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .relationship-back {
-  min-height: 40px;
-  padding: 0 14px;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 0 16px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
+  border-radius: 22px;
   background: rgba(30, 30, 46, 0.85);
   color: #fff;
   font: inherit;
@@ -33,26 +44,13 @@
   cursor: pointer;
 }
 
-.relationship-back:hover {
+.relationship-back:hover,
+.relationship-back:focus-visible {
   background: rgba(255, 255, 255, 0.12);
 }
 
-.relationship-title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-/* The search box (personSearch.js), styled here too: its own styles come with the editing tools, which someone
-   who can't edit never loads. */
-.relationship-page .person-search {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-width: 560px;
-}
-
+/* The search box's hint (personSearch.js), styled here too: its own styles come with the editing tools, which
+   someone who can't edit never loads. */
 .relationship-page .editor-hint {
   margin: 0;
   font-size: 13px;
@@ -60,9 +58,6 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-.relationship-title:focus {
-  outline: none;
-}
 
 .relationship-results {
   display: flex;

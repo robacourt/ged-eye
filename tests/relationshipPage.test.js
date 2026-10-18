@@ -66,11 +66,15 @@ afterEach(() => {
 });
 
 describe('openRelationshipPage', () => {
-  it('asks how someone is related to the relative, with Back, a search box and a chain', () => {
+  it('has a search box with Back after it, and a chain; the page is named for screen readers, with no heading', () => {
     open();
-    expect($('.relationship-title').textContent).toBe("How is someone related to Robert Michael A'Court?");
-    expect($('.relationship-page').getAttribute('aria-labelledby')).toBe($('.relationship-title').id);
-    $('.relationship-back').click();
+    expect($('.relationship-page').getAttribute('aria-label')).toBe("How someone is related to Robert Michael A'Court");
+    expect(document.querySelector('.relationship-page h1')).toBeNull();
+    const row = [...$('.relationship-search-row').children];
+    expect(row.map(element => element.tagName)).toEqual(['INPUT', 'BUTTON']);
+    expect(row[0].getAttribute('aria-label')).toBe('Search for someone by name');
+    expect(row[1].textContent).toBe('Back');
+    row[1].click();
     expect(handlers.onBack).toHaveBeenCalledOnce();
     expect(chain().container).toBe($('.relationship-chain'));
   });
@@ -140,7 +144,7 @@ describe('openRelationshipPage', () => {
   it('starts from a new relative', async () => {
     open();
     page.setRelative({ id: 'I7', name: 'Rose Smith' });
-    expect($('.relationship-title').textContent).toBe('How is someone related to Rose Smith?');
+    expect($('.relationship-page').getAttribute('aria-label')).toBe('How someone is related to Rose Smith');
     await page.setPerson('I119');
     expect(api.relationship).toHaveBeenLastCalledWith('I7', 'I119');
   });
@@ -165,7 +169,7 @@ describe('openRelationshipPage', () => {
     expect(document.activeElement).toBe($('.relationship-page input[type="search"]'));
     await search('Clement');
     document.querySelector('.relationship-result').click();
-    expect(document.activeElement).toBe($('.relationship-title'));
+    expect(document.activeElement).toBe($('.relationship-page'));
   });
 
   it('says one of them can\'t be found, rather than blaming the connection, for a 404 or 409', async () => {
@@ -181,7 +185,7 @@ describe('openRelationshipPage', () => {
 
   it('shows names as text', () => {
     open({ id: 'I1', name: '<img src=x onerror="window.__xss = 1">' });
-    expect($('.relationship-title').textContent).toContain('<img');
+    expect($('.relationship-page').getAttribute('aria-label')).toContain('<img');
     expect(document.querySelector('img')).toBeNull();
   });
 });

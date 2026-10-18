@@ -620,7 +620,7 @@ describe('mountSignIn', () => {
       expect(visibleText('.account-note')).toEqual([
         "Couldn't check your editing access. Couldn't reach the server. Check your connection."
       ]);
-      expect(menuButtons()).toEqual(['Try again', 'Search', 'Sign out']);
+      expect(menuButtons()).toEqual(['Search', 'Try again', 'Sign out']);
       $('.account-retry').click();
       await settle();
       expect(api.me).toHaveBeenCalledTimes(2);

@@ -1,8 +1,8 @@
 /**
  * The header's menu button and its menu, and the sign-in dialog (email code, Google, and a password form in
- * development). The menu has an icon for each item: Search for everyone; then, signed in, the account's email
- * and role, History (editors), "Access requests (N)" and Manage access (admins), Request edit access (a
- * non-editor, or when they asked), and Sign out; or, signed out, Sign in.
+ * development). The menu has an icon for each item: Search for everyone, History (editors), "Access requests (N)"
+ * and Manage access (admins); then, below a line, the account: signed in, its email and role, Request edit access
+ * (a non-editor, or when they asked) and Sign out; signed out, Sign in.
  *
  * It owns reading `/me` after every sign-in (including a restored session), and reports the result through
  * `onSignedIn(me, reason)`; every sign-out (including an expired session) is reported through `onSignedOut(reason)`.
@@ -138,17 +138,19 @@ const item = (className, name, label) =>
 function menuMarkup(menuId) {
   return `
     <div class="account-menu" id="${menuId}" hidden>
-      <div class="account-info">
-        <p class="account-email"></p>
-        <p class="account-role"></p>
-        <p class="account-note" hidden></p>
-        <button type="button" class="editor-btn account-retry" hidden>Try again</button>
-      </div>
       <div class="account-actions">
         ${item('account-search', 'search', 'Search')}
         ${item('account-history', 'history', 'History')}
         ${item('account-requests', 'requests', 'Access requests')}
         ${item('account-editors', 'access', 'Manage access')}
+      </div>
+      <div class="account-section">
+        <div class="account-info">
+          <p class="account-email"></p>
+          <p class="account-role"></p>
+          <p class="account-note" hidden></p>
+          <button type="button" class="editor-btn account-retry" hidden>Try again</button>
+        </div>
         ${item('account-request', 'request', 'Request edit access')}
         ${item('account-signin', 'signIn', 'Sign in')}
         ${item('account-signout', 'signOut', 'Sign out')}
