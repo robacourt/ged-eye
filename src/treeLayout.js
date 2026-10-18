@@ -26,8 +26,11 @@ const ROW = 330;         // between the rows' centres
 const BAR_BELOW_PARENTS = 190;
 const BAR_BELOW_PERSON = 215;
 const LEVEL = 14;        // between bars that would otherwise overlap
-const OFFSET = 22;       // how much higher each later partner's marriage line runs
+const OFFSET = 22;       // how much higher each later partner's marriage line runs, with few partners
+const MAX_OFFSET = 60;   // the highest a marriage line runs: inside every circle, below the bar over the row
 const DOT_MARGIN = 24;   // a dot's least distance from a partner's circle
+const LONE_SHIFT = 40;   // how far a lone parent's line down may start from their centre, still behind them
+const CLEAR = 24;        // the least distance between a family's line down and another family's lines down
 
 /**
  * @param selected       the person's record (person_record): id, parentFamilies, marriages
@@ -41,16 +44,19 @@ const DOT_MARGIN = 24;   // a dot's least distance from a partner's circle
 export function layoutFamily({ selected, family = [], relationships = {}, withAdd = false, sizes = SIZES }) {
   const records = new Map([[selected.id, selected], ...family.map(member => [member.id, member])]);
   const isHere = (id) => id !== null && id !== undefined && records.has(id);
+  // A relative is anyone here but the person (whom odd data can list as their own relative).
+  const isRelative = (id) => isHere(id) && id !== selected.id;
   const widthOf = (id) => (id === selected.id ? sizes.selected : sizes.person);
-  const idsOf = (list) => (list ?? []).map(entry => entry?.id).filter(isHere);
+  const idsOf = (list) => [...new Set((list ?? []).map(entry => entry?.id).filter(isRelative))];
   const siblingIds = idsOf(relationships.siblings);
-  const spouseIds = [...new Set(idsOf(relationships.spouses))];
+  const spouseIds = idsOf(relationships.spouses);
   const childIds = idsOf(relationships.children);
 
   const out = { people: [], add: null, dots: [], joints: [], lines: [] };
   const placed = new Map(); // id → { x, y }
+  // The first place wins: lines are drawn to people where they are, so nobody moves once placed.
   const place = (id, x, y) => {
-    placed.set(id, { x, y });
+    if (!placed.has(id)) placed.set(id, { x, y });
   };
   let nextId = 0;
   const joint = (x, y) => {
@@ -64,7 +70,7 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
 
   // The person's parents' families: the first is theirs; any other (two sets of parents) is drawn like a half one.
   const parentFamilies = (selected.parentFamilies ?? [])
-    .map(entry => ({ partners: (entry.partnerIds ?? []).filter(isHere), children: (entry.childIds ?? []).filter(isHere) }))
+    .map(entry => ({ partners: (entry.partnerIds ?? []).filter(isRelative), children: (entry.childIds ?? []).filter(isHere) }))
     .filter(entry => entry.partners.length > 0);
   const primary = parentFamilies[0] ?? null;
   const parents = primary ? [...primary.partners] : [];
@@ -82,13 +88,19 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
     }
     return halfFamilies.get(key);
   };
+  // The person's parents again (the same couple recorded twice): their children are full brothers and sisters.
+  const isParents = (partners) => parents.length > 0 && partners.length === parents.length && partners.every(id => parents.includes(id));
   for (const extra of parentFamilies.slice(1)) {
-    const entry = halfFamily(extra.partners);
-    for (const id of extra.children) if (!inRow.has(id)) { entry.children.push(id); inRow.add(id); }
+    const children = extra.children.filter(id => !inRow.has(id));
+    children.forEach(id => inRow.add(id));
+    if (isParents(extra.partners)) fullGroup.push(...children);
+    else halfFamily(extra.partners).children.push(...children);
   }
   for (const id of siblingIds) {
     if (inRow.has(id)) continue;
-    halfFamily((records.get(id).parentIds ?? []).filter(isHere)).children.push(id);
+    const partners = (records.get(id).parentIds ?? []).filter(isRelative);
+    if (isParents(partners)) fullGroup.push(id);
+    else halfFamily(partners).children.push(id);
     inRow.add(id);
   }
   // With one parent here, their other children with no other partner here hang from them with the person's
@@ -116,9 +128,13 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   // The person's own families: one per partner, in order, and one for children with no partner here.
   const childSet = new Set(childIds);
   const ofSpouse = new Map(spouseIds.map(id => [id, new Set()]));
+  const assigned = new Set(); // a child listed in two marriages hangs from the first
   for (const marriage of selected.marriages ?? []) {
     const set = ofSpouse.get(marriage.spouseId);
-    if (set) for (const id of marriage.childIds ?? []) if (childSet.has(id)) set.add(id);
+    if (!set) continue;
+    for (const id of marriage.childIds ?? []) {
+      if (childSet.has(id) && !assigned.has(id)) { set.add(id); assigned.add(id); }
+    }
   }
   const withSpouse = new Set([...ofSpouse.values()].flatMap(set => [...set]));
   const ownFamilies = spouseIds.map(id => ({ partner: id, children: childIds.filter(child => ofSpouse.get(id).has(child)) }));
@@ -127,7 +143,10 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   // --- The person's row ---------------------------------------------------------------------------------------
 
   const row = []; // { id, width, gap (before it) }
-  const push = (id, width, gap) => row.push({ id, width, gap: row.length === 0 ? 0 : gap });
+  const push = (id, width, gap) => {
+    if (row.some(entry => entry.id === id)) return; // listed twice (a brother who is also a partner, in odd data)
+    row.push({ id, width, gap: row.length === 0 ? 0 : gap });
+  };
   for (const entry of [...leftHalves].reverse()) {
     entry.children.forEach((id, i) => push(id, widthOf(id), i === 0 ? GROUP_GAP : GAP));
   }
@@ -158,13 +177,22 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   }
   const at = (id) => placed.get(id);
   const span = (ids) => {
+    if (!ids.length) return null;
     const xs = ids.map(id => at(id).x);
     return { min: Math.min(...xs), max: Math.max(...xs), centre: (Math.min(...xs) + Math.max(...xs)) / 2 };
   };
 
   // --- Couples ------------------------------------------------------------------------------------------------
 
-  const families = []; // { anchor (dot or joint id), x, y, children, color, bar: 'parents' | 'person' }
+  // Each family's line down starts at its couple's dot, anywhere in the gap between them, or at a lone parent,
+  // anywhere behind their circle: `x` is where it would like to be, `range` where it may go. Where exactly is
+  // chosen once everyone is placed, clear of the other families' lines (Lines down to the children).
+  // { partners, x, range: [lo, hi], y, children, color, bar: 'parents' | 'person' }
+  const families = [];
+  const lone = (parent, children, color, bar) => ({
+    partners: [parent], x: at(parent).x, range: [at(parent).x - LONE_SHIFT, at(parent).x + LONE_SHIFT], y: at(parent).y,
+    children, color, bar
+  });
 
   /**
    * A couple: a dot at (dotX, y), and a marriage line from each partner's centre to it, at that height.
@@ -176,19 +204,28 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
     for (const partner of partners) line(joint(at(partner).x, y), id, color);
     return id;
   }
+  /** A family with children waits for its line down to be placed; a couple without any is drawn now. */
+  const addFamily = (entry) => {
+    if (entry.children.length) families.push(entry);
+    else if (entry.partners.length === 2) couple(entry.partners, entry.x, entry.y, entry.color);
+  };
+
+  /** How much higher each later partner's line runs, when there are `count`: closer together for many. */
+  const stepFor = (count) => Math.min(OFFSET, MAX_OFFSET / Math.max(1, count - 1));
 
   // The person's partners, left to right: each later one's line a little higher, its dot in the gap before them.
+  const ownStep = stepFor(ownFamilies.length);
   ownFamilies.forEach((entry, k) => {
     const before = k === 0 ? selected.id : ownFamilies[k - 1].partner;
     const left = at(before).x + widthOf(before) / 2;
     const right = at(entry.partner).x - widthOf(entry.partner) / 2;
-    const y = k === 0 ? 0 : -OFFSET * k;
-    const anchor = couple([selected.id, entry.partner], (left + right) / 2, y, k);
-    if (entry.children.length) families.push({ anchor, x: (left + right) / 2, y, children: entry.children, color: k, bar: 'person' });
+    const y = k === 0 ? 0 : -ownStep * k;
+    addFamily({
+      partners: [selected.id, entry.partner], x: (left + right) / 2, range: [left + DOT_MARGIN, right - DOT_MARGIN], y,
+      children: entry.children, color: k, bar: 'person'
+    });
   });
-  if (alone.length) {
-    families.push({ anchor: joint(0, 0), x: 0, y: 0, children: alone, color: ownFamilies.length, bar: 'person' });
-  }
+  if (alone.length) families.push(lone(selected.id, alone, ownFamilies.length, 'person'));
 
   // --- The children's row -------------------------------------------------------------------------------------
 
@@ -208,11 +245,11 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
     if (parents.length === 2) {
       place(parents[0], centre - COUPLE_GAP / 2 - w / 2, parentY);
       place(parents[1], centre + COUPLE_GAP / 2 + w / 2, parentY);
-      const anchor = couple(parents, centre, parentY, 0);
-      families.push({ anchor, x: centre, y: parentY, children: fullGroup, color: 0, bar: 'parents' });
+      const range = [at(parents[0]).x + w / 2 + DOT_MARGIN, at(parents[1]).x - w / 2 - DOT_MARGIN];
+      addFamily({ partners: parents, x: centre, range, y: parentY, children: fullGroup, color: 0, bar: 'parents' });
     } else {
       place(parents[0], centre, parentY);
-      families.push({ anchor: joint(centre, parentY), x: centre, y: parentY, children: fullGroup, color: 0, bar: 'parents' });
+      families.push(lone(parents[0], fullGroup, 0, 'parents'));
     }
   }
 
@@ -222,24 +259,34 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
    */
   let color = 1;
   function otherFamilies(entries, parent, side) {
+    // An other partner already placed (with children by both parents) is drawn once: their children with this
+    // parent hang from the parent alone, as children with no other partner here do.
+    const otherOf = (entry) => entry.others.find(id => !placed.has(id)) ?? null;
+    const withOther = entries.filter(otherOf);
+    const step = stepFor(withOther.length);
     let previous = parent;
     let k = 0;
     for (const entry of entries) {
-      const desired = span(entry.children).centre;
-      if (!entry.others.length) {
-        families.push({ anchor: joint(at(parent).x, parentY), x: at(parent).x, y: parentY, children: entry.children, color: color++, bar: 'parents' });
+      const other = otherOf(entry);
+      if (!other) {
+        if (entry.children.length) families.push(lone(parent, entry.children, color++, 'parents'));
         continue;
       }
-      const other = entry.others[0];
+      // Over their children if there is room; a partner with no children here (a step-parent) beside the last.
+      const desired = span(entry.children)?.centre ?? null;
       const nearest = at(previous).x + side * (w + COUPLE_GAP);
-      const over = desired + side * (COUPLE_GAP / 2 + w / 2);
+      const over = desired === null ? nearest : desired + side * (COUPLE_GAP / 2 + w / 2);
       place(other, side < 0 ? Math.min(nearest, over) : Math.max(nearest, over), parentY);
       const inner = at(previous).x + side * (w / 2 + DOT_MARGIN);
       const outer = at(other).x - side * (w / 2 + DOT_MARGIN);
-      const dotX = Math.min(Math.max(desired, Math.min(inner, outer)), Math.max(inner, outer));
-      const y = parentY - OFFSET * k;
-      const anchor = couple([parent, other], dotX, y, color);
-      families.push({ anchor, x: dotX, y, children: entry.children, color: color++, bar: 'parents' });
+      const target = desired ?? (inner + outer) / 2;
+      const range = [Math.min(inner, outer), Math.max(inner, outer)];
+      const y = k === 0 ? parentY : parentY - step * k;
+      addFamily({
+        partners: [parent, other], x: Math.min(Math.max(target, range[0]), range[1]), range, y,
+        children: entry.children, color, bar: 'parents'
+      });
+      color++;
       previous = other;
       k++;
     }
@@ -250,16 +297,19 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   }
   // Half families sharing no parent here (unusual data): their parents at the right end, over their children.
   let parentEnd = Math.max(0, ...[...placed].filter(([, p]) => p.y === parentY).map(([, p]) => p.x));
-  for (const entry of rightHalves.filter(item => !item.shared)) {
+  for (const entry of rightHalves.filter(item => !item.shared && item.children.length)) {
     const desired = span(entry.children).centre;
     const partners = entry.partners.filter(id => !placed.has(id));
     if (!partners.length) continue;
     const first = Math.max(parentEnd + w + GROUP_GAP, desired - (partners.length - 1) * (w + COUPLE_GAP) / 2);
     partners.forEach((id, i) => place(id, first + i * (w + COUPLE_GAP), parentY));
     parentEnd = first + (partners.length - 1) * (w + COUPLE_GAP);
-    const dotX = partners.length === 2 ? first + (w + COUPLE_GAP) / 2 : first;
-    const anchor = partners.length === 2 ? couple(partners, dotX, parentY, color) : joint(dotX, parentY);
-    families.push({ anchor, x: dotX, y: parentY, children: entry.children, color: color++, bar: 'parents' });
+    if (partners.length === 2) {
+      const range = [first + w / 2 + DOT_MARGIN, first + w / 2 + COUPLE_GAP - DOT_MARGIN];
+      addFamily({ partners, x: first + (w + COUPLE_GAP) / 2, range, y: parentY, children: entry.children, color: color++, bar: 'parents' });
+    } else {
+      families.push(lone(partners[0], entry.children, color++, 'parents'));
+    }
   }
   // Anyone else (data that fits none of the above) at the end of the parents' row, without lines.
   for (const member of family) {
@@ -271,6 +321,17 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   for (const bar of ['parents', 'person']) {
     const hanging = families.filter(entry => entry.bar === bar && entry.children.length);
     const base = bar === 'parents' ? parentY + BAR_BELOW_PARENTS : BAR_BELOW_PERSON;
+    // Each line down where it would like to be, unless that is next to another family's lines down (to their
+    // children, or from their dot), which would read as one line: then the nearest place in its range clear of them.
+    const chosen = [];
+    for (const entry of hanging) {
+      const others = hanging.filter(other => other !== entry).flatMap(other => other.children.map(id => at(id).x));
+      entry.x = clearOf(entry.range, entry.x, [...others, ...chosen]);
+      chosen.push(entry.x);
+      entry.anchor = entry.partners.length === 2
+        ? couple(entry.partners, entry.x, entry.y, entry.color)
+        : joint(entry.x, entry.y);
+    }
     for (const entry of hanging) {
       entry.childXs = entry.children.map(id => at(id).x);
       entry.min = Math.min(entry.x, ...entry.childXs);
@@ -295,6 +356,20 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
 
   out.people = [...placed].map(([id, position]) => ({ id, ...position }));
   return out;
+}
+
+/**
+ * The x in `range` nearest `preferred` at least CLEAR from every x in `avoid`; if there is none, the one in range
+ * farthest from its nearest.
+ */
+function clearOf([lo, hi], preferred, avoid) {
+  const distance = (x) => Math.min(Infinity, ...avoid.map(other => Math.abs(other - x)));
+  const start = Math.min(Math.max(preferred, lo), hi);
+  if (distance(start) >= CLEAR) return start;
+  const candidates = [lo, hi, ...avoid.flatMap(other => [other - CLEAR, other + CLEAR])].filter(x => x >= lo && x <= hi);
+  const clear = candidates.filter(x => distance(x) >= CLEAR);
+  if (clear.length) return clear.reduce((best, x) => (Math.abs(x - start) < Math.abs(best - start) ? x : best));
+  return [start, ...candidates].reduce((best, x) => (distance(x) > distance(best) ? x : best));
 }
 
 /**

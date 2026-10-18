@@ -37,15 +37,29 @@ Cytoscape stays, because touch, pan, tap and mobile already work well. dagre goe
 
 **The "+" node** is part of the layout. It goes on the person's left when they have partners, and on their right otherwise, the same rule as before.
 
+## Review changes
+
+- **Placement is final.** The first place someone is given wins, so a line is never left pointing at where they used to be.
+- **Edge cases in the data:**
+  - The parents recorded twice count as one family.
+  - A child in two marriages hangs from the first.
+  - A partner who had children with both of the person's parents is drawn once; their children with the second parent hang from that parent alone.
+  - A second set of parents with no other children here doesn't break the layout: a step-parent sits beside the parent, joined, and a parent with no partner here is placed without lines.
+  - The person listed as their own relative is ignored.
+- **Each line down picks its exact position once everyone is placed.** A couple's dot can go anywhere in the gap between the partners, and a lone parent's line can start anywhere behind their circle. It takes the nearest position at least 24 units from other families' lines down, so two families' lines never run side by side as one.
+- **Many partners:** the marriage lines step closer together, staying within 60 units of the centre, inside every circle and below the bar over the row.
+
 ## Testing
 
-- **`tests/treeLayout.test.js`:** fixtures for the shapes that looked wrong (two marriages, four marriages, half brothers and sisters on both sides, lone parents), plus 500 random families. Each layout is checked for:
-  - everyone placed once;
+- **`tests/treeLayout.test.js`:** fixtures for the shapes that looked wrong (two marriages, four marriages, half brothers and sisters on both sides, lone parents) and for the unusual data above, plus 500 random families. The random families include extra parent families, shared partners, shared children and up to ten partners. Each layout is checked for:
+  - everyone placed once, at a real position;
   - every line horizontal or vertical;
-  - no lines crossing or lying on top of each other;
+  - no lines crossing, lying on top of each other, or running side by side from different families;
+  - no line ending in empty space;
   - no two people overlapping;
   - every child reachable from its couple's dot.
   
   A one-off run of 5,000 random families passed.
+- **All 2,995 people in the `photos` copy of the tree,** with and without the "+", pass the same checks (a one-off script).
 - **`tests/familyTreeLayout.test.js`:** the real Cytoscape, headless, draws what the layout says, with straight lines, invisible joints and the "+" node on the right side.
 - **By eye:** screenshots on desktop and mobile of the people that looked wrong before, and of random people.
