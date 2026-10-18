@@ -14,8 +14,6 @@ const VIEWPORT_EVENTS = 'pan zoom resize';
 const FAMILY_COLOURS = ['#f472b6', '#a78bfa', '#34d399', '#fbbf24', '#38bdf8', '#fb7185'];
 /** How rounded the bends in the lines down to the children are (graph units). */
 const BEND_RADIUS = 18;
-/** How long the lines take to fade in when someone is shown (none for those who prefer reduced motion). */
-const FADE_MS = 240;
 const colourOf = (index) => FAMILY_COLOURS[index % FAMILY_COLOURS.length];
 
 export class FamilyTreeView {
@@ -308,15 +306,6 @@ export class FamilyTreeView {
     // Fit to fill height and center horizontally
     this.fitToHeight();
     this.placeAddButton();
-    this.fadeInLines();
-  }
-
-  /** The family's lines fade in as someone is shown, unless the reader prefers reduced motion. */
-  fadeInLines() {
-    if (globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-    const lines = this.cy.edges('[type="line"], [type="link"]');
-    lines.style('opacity', 0);
-    lines.animate({ style: { opacity: 1 } }, { duration: FADE_MS, easing: 'ease-out-quad' });
   }
 
   /**

@@ -39,7 +39,7 @@ Cytoscape stays, because touch, pan, tap and mobile already work well. dagre goe
 - **Marriage lines** are straight.
 - **Dots:** a couple's dot is ringed in the background colour, so the lines meeting it stop just short of it.
 - **Colours:** each family has its own colour on its dot and every one of its lines, from a softer palette (pink, violet, green, amber, sky, rose). The colours are opaque, so the lines a family's children share don't brighten where they overlap.
-- **Motion:** the lines fade in over 240 ms when someone is shown, unless the reader prefers reduced motion.
+- **No fade-in.** A fade-in was tried and removed: the lines started invisible and relied on an animation, which browsers pause on a hidden page, so a page opened in the background could show only the dots.
 
 **The "+" node** is part of the layout. It goes on the person's left when they have partners, and on their right otherwise, the same rule as before.
 
