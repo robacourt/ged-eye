@@ -43,7 +43,10 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
   container.append(page);
 
   const chain = new ChainView(chainBox, { onPersonSelect: (id) => onOpenPerson?.(id) });
+  // The chain is fitted again whenever its room changes (the words below it appearing, a turned phone).
   const refit = () => chain.fit();
+  const resizes = typeof ResizeObserver === 'function' ? new ResizeObserver(refit) : null;
+  resizes?.observe(chainBox);
   window.addEventListener('resize', refit);
   let current = relative;
   let loading = 0; // bumped per chain asked for, so only the latest answer is shown
@@ -60,8 +63,10 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
         el('span', { class: 'relationship-result-name', text: nameOf(someone) }),
         years ? el('span', { class: 'relationship-result-years', text: years }) : null);
       button.addEventListener('click', () => {
-        results.replaceChildren();
+        // The box keeps their name; the results and their count go.
+        search.clear();
         search.input.value = nameOf(someone);
+        search.status.textContent = '';
         onChoose?.(someone.id);
       });
       return el('li', {}, button);
@@ -109,6 +114,7 @@ export function openRelationshipPage({ container, api, relative, onChoose, onOpe
     close() {
       loading++;
       window.removeEventListener('resize', refit);
+      resizes?.disconnect();
       search.destroy();
       chain.destroy();
       page.remove();

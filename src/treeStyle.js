@@ -164,11 +164,12 @@ export function treeStyle() {
       }
     },
     {
+      // From the bracket's middle across to over a brother or sister, then down to them (all the way across first).
       selector: 'edge[type="siblings"], edge[type="halfSiblings"]',
       style: {
         'curve-style': 'round-taxi',
-        'taxi-direction': 'downward',
-        'taxi-turn': 0,
+        'taxi-direction': 'horizontal',
+        'taxi-turn': '100%',
         'taxi-turn-min-distance': 0,
         'taxi-radius': BEND_RADIUS
       }

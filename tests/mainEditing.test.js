@@ -34,6 +34,9 @@ let signInOptions;
 let mountSignIn;
 let dialogs;     // the editing UI (editing.js) that loadEditing resolves to
 let loadEditing;
+let searchPage;     // what the search page module's openRelationshipPage returned
+let searchOptions;  // what it was opened with
+let loadSearchPage;
 let app;
 
 const flush = async (times = 5) => {
@@ -45,7 +48,7 @@ const handle = () => ({ close: vi.fn(), isOpen: vi.fn(() => true), refresh: vi.f
 
 function start(url = '/?person=I7') {
   window.history.replaceState({}, '', url);
-  app = initApp({ treeView, personDetails, auth, api, loader, showToast, mountSignIn, loadEditing });
+  app = initApp({ treeView, personDetails, auth, api, loader, showToast, mountSignIn, loadEditing, loadSearchPage });
   return flush();
 }
 
@@ -127,6 +130,13 @@ beforeEach(() => {
     removePhotoParams
   };
   loadEditing = vi.fn(async () => dialogs);
+  searchPage = { setRelative: vi.fn(), setPerson: vi.fn(), close: vi.fn() };
+  loadSearchPage = vi.fn(async () => ({
+    openRelationshipPage: vi.fn((options) => {
+      searchOptions = options;
+      return searchPage;
+    })
+  }));
 });
 
 afterEach(() => {
@@ -1450,5 +1460,100 @@ describe('initApp: keyboard undo and redo', () => {
     await press('z', { ctrlKey: true });
     expect(api.undo).not.toHaveBeenCalled();
     app = null;
+  });
+});
+
+describe('initApp: the search page', () => {
+  const urlParam = (name) => new URLSearchParams(window.location.search).get(name);
+
+  it('opens from a ?relative link over the tree, which shows the relative, for them by name', async () => {
+    await start('/?relative=I7');
+    expect(shownId()).toBe('I7');
+    expect(loadSearchPage).toHaveBeenCalledOnce();
+    expect(searchOptions.relative).toEqual({ id: 'I7', name: 'Rose Smith' });
+    expect(searchPage.setPerson).toHaveBeenLastCalledWith(null);
+  });
+
+  it('shows the person chosen in a ?relative&person link', async () => {
+    await start('/?relative=I7&person=I8');
+    expect(shownId()).toBe('I7');
+    expect(searchPage.setPerson).toHaveBeenLastCalledWith('I8');
+  });
+
+  it('is not loaded at all on the tree', async () => {
+    await start('/?person=I7');
+    expect(loadSearchPage).not.toHaveBeenCalled();
+  });
+
+  it('opens from the menu for whoever the tree shows', async () => {
+    await start('/?person=I8');
+    signInOptions.openSearch();
+    await flush();
+    expect(urlParam('relative')).toBe('I8');
+    expect(urlParam('person')).toBeNull();
+    expect(searchOptions.relative).toEqual({ id: 'I8', name: 'Jack Smith' });
+  });
+
+  it('puts the person chosen in the URL, as a new step in the history', async () => {
+    await start('/?relative=I7');
+    const length = window.history.length;
+    searchOptions.onChoose('I8');
+    await flush();
+    expect(urlParam('relative')).toBe('I7');
+    expect(urlParam('person')).toBe('I8');
+    expect(window.history.length).toBe(length + 1);
+    expect(searchPage.setPerson).toHaveBeenLastCalledWith('I8');
+  });
+
+  it('goes to the tree with someone tapped in the chain selected', async () => {
+    await start('/?relative=I7&person=I8');
+    searchOptions.onOpenPerson('I8');
+    await flush();
+    expect(window.location.search).toBe('?person=I8');
+    expect(searchPage.close).toHaveBeenCalledOnce();
+    expect(shownId()).toBe('I8');
+  });
+
+  it('goes back to the tree with the relative selected', async () => {
+    await start('/?relative=I7&person=I8');
+    searchOptions.onBack();
+    await flush();
+    expect(window.location.search).toBe('?person=I7');
+    expect(searchPage.close).toHaveBeenCalledOnce();
+    expect(shownId()).toBe('I7');
+  });
+
+  it('follows the browser\'s back and forward', async () => {
+    await start('/?person=I7');
+    signInOptions.openSearch();
+    await flush();
+    window.history.replaceState({}, '', '/?person=I7');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    await flush();
+    expect(searchPage.close).toHaveBeenCalledOnce();
+    window.history.replaceState({}, '', '/?relative=I7&person=I8');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    await flush();
+    expect(searchPage.setPerson).toHaveBeenLastCalledWith('I8');
+  });
+
+  it('says so when the page can\'t be loaded, and tries again next time', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    loadSearchPage.mockRejectedValueOnce(new Error('Failed to fetch dynamically imported module'));
+    await start('/?person=I7');
+    signInOptions.openSearch();
+    await flush();
+    expect(lastToast()).toEqual(["Couldn't open Search. Check your connection, then try again.", { kind: 'error' }]);
+    signInOptions.openSearch();
+    await flush();
+    expect(loadSearchPage).toHaveBeenCalledTimes(2);
+    expect(searchOptions.relative.id).toBe('I7');
+  });
+
+  it('closes when the app is torn down', async () => {
+    await start('/?relative=I7');
+    app.destroy();
+    app = null;
+    expect(searchPage.close).toHaveBeenCalledOnce();
   });
 });
