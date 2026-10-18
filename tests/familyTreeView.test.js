@@ -27,6 +27,7 @@ vi.mock('cytoscape', () => {
         boundingBox: () => ({ x1: 0, y1: 0, w: 400, h: 400 })
       }),
       nodes: () => ({ length: 0, forEach() {} }),
+      edges: () => ({ style() { return this; }, animate() { return this; } }),
       width: () => 800,
       height: () => 500,
       viewport() {},

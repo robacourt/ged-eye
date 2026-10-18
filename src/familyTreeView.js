@@ -11,7 +11,11 @@ const ADD_EDGE_ID = 'add-relative-edge';
 /** The cytoscape events after which the "+" node is drawn somewhere else. */
 const VIEWPORT_EVENTS = 'pan zoom resize';
 /** A colour for each couple (treeLayout.js gives each family an index): its dot and every line of its family. */
-const FAMILY_COLOURS = ['#ff6b9d', '#9d6bff', '#4fd1a5', '#ffb36b', '#6bb3ff', '#ff6b6b'];
+const FAMILY_COLOURS = ['#f472b6', '#a78bfa', '#34d399', '#fbbf24', '#38bdf8', '#fb7185'];
+/** How rounded the bends in the lines down to the children are (graph units). */
+const BEND_RADIUS = 18;
+/** How long the lines take to fade in when someone is shown (none for those who prefer reduced motion). */
+const FADE_MS = 240;
 const colourOf = (index) => FAMILY_COLOURS[index % FAMILY_COLOURS.length];
 
 export class FamilyTreeView {
@@ -91,17 +95,20 @@ export class FamilyTreeView {
             'background-color': '#c74a8f'
           }
         },
-        // A couple's dot, on their marriage line (treeLayout.js).
+        // A couple's dot, on their marriage line (treeLayout.js), ringed in the background colour so the lines
+        // meeting it stop just short.
         {
           selector: 'node[type="partnership"]',
           style: {
-            'width': 11,
-            'height': 11,
+            'width': 14,
+            'height': 14,
             'background-color': 'data(colour)',
             'background-image': 'none',
-            'border-width': 0,
+            'border-width': 3,
+            'border-color': 'rgb(17, 17, 28)',
             'label': '',
-            'events': 'no'
+            'events': 'no',
+            'z-index': 10
           }
         },
         // The invisible ends of the lines (treeLayout.js): every line runs straight from one to another.
@@ -138,7 +145,8 @@ export class FamilyTreeView {
             'text-background-opacity': 0
           }
         },
-        // Lines: horizontal or vertical, drawn under the people, in their family's colour.
+        // Lines, under the people, in their family's colour: a couple's marriage line is straight; each child hangs
+        // from their family's dot by one elbow, down to the family's bar, across and down, its bends rounded.
         {
           selector: 'edge',
           style: {
@@ -146,8 +154,18 @@ export class FamilyTreeView {
             'width': 3,
             'line-color': 'data(colour)',
             'line-cap': 'round',
-            'opacity': 0.9,
+            'opacity': 1,
             'events': 'no'
+          }
+        },
+        {
+          selector: 'edge[type="link"]',
+          style: {
+            'curve-style': 'round-taxi',
+            'taxi-direction': 'downward',
+            'taxi-turn': 'data(turn)',
+            'taxi-turn-min-distance': 0,
+            'taxi-radius': BEND_RADIUS
           }
         },
         {
@@ -256,11 +274,17 @@ export class FamilyTreeView {
     for (const { id, x, y, color } of layout.dots) {
       elements.push({ group: 'nodes', position: { x, y }, data: { id, type: 'partnership', colour: colourOf(color) } });
     }
-    for (const { id, x, y } of layout.joints) {
+    // Marriage lines are drawn straight between their joints; the lines down to the children as one elbow each.
+    const marriages = layout.lines.filter(line => line.kind === 'marriage');
+    const used = new Set([...marriages.flatMap(line => [line.source, line.target]), ...layout.links.map(link => link.source)]);
+    for (const { id, x, y } of layout.joints.filter(joint => used.has(joint.id))) {
       elements.push({ group: 'nodes', position: { x, y }, data: { id, type: 'joint' } });
     }
-    for (const { id, source, target, color } of layout.lines) {
+    for (const { id, source, target, color } of marriages) {
       elements.push({ group: 'edges', data: { id, source, target, type: 'line', colour: colourOf(color) } });
+    }
+    for (const { id, source, target, turn, color } of layout.links) {
+      elements.push({ group: 'edges', data: { id, source, target, type: 'link', turn, colour: colourOf(color) } });
     }
 
     // For editors, the "+" node, joined to the selected person
@@ -284,6 +308,15 @@ export class FamilyTreeView {
     // Fit to fill height and center horizontally
     this.fitToHeight();
     this.placeAddButton();
+    this.fadeInLines();
+  }
+
+  /** The family's lines fade in as someone is shown, unless the reader prefers reduced motion. */
+  fadeInLines() {
+    if (globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    const lines = this.cy.edges('[type="line"], [type="link"]');
+    lines.style('opacity', 0);
+    lines.animate({ style: { opacity: 1 } }, { duration: FADE_MS, easing: 'ease-out-quad' });
   }
 
   /**

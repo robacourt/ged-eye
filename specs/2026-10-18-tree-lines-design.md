@@ -33,7 +33,13 @@ Cytoscape stays, because touch, pan, tap and mobile already work well. dagre goe
 - Every line is horizontal or vertical. Lines run between invisible "joint" nodes, so they are straight Cytoscape edges drawn under the people, without arrows.
 - Bars that would overlap or cross go at different heights. A bar goes below another when it reaches across that family's line down, or when the other bar reaches across one of its children.
 
-**Colours:** each couple keeps its colour from the old palette, on its dot and every line of its family.
+**Look:**
+
+- **Children's lines:** each child's line is drawn as one elbow from their family's dot: down to the family's bar, across, and down to them. The bends are rounded (Cytoscape `round-taxi`, radius 18), so a family's lines fork smoothly where the line down reaches the bar.
+- **Marriage lines** are straight.
+- **Dots:** a couple's dot is ringed in the background colour, so the lines meeting it stop just short of it.
+- **Colours:** each family has its own colour on its dot and every one of its lines, from a softer palette (pink, violet, green, amber, sky, rose). The colours are opaque, so the lines a family's children share don't brighten where they overlap.
+- **Motion:** the lines fade in over 240 ms when someone is shown, unless the reader prefers reduced motion.
 
 **The "+" node** is part of the layout. It goes on the person's left when they have partners, and on their right otherwise, the same rule as before.
 

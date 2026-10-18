@@ -43,19 +43,32 @@ describe('FamilyTreeView drawing (treeLayout.js)', () => {
   it('puts everyone, every dot and every line end where the layout says', () => {
     view.buildGraph(rose, family, relationships);
     const layout = layoutFamily({ selected: rose, family, relationships });
-    for (const { id, x, y } of [...layout.people, ...layout.dots, ...layout.joints]) {
+    // Joints only where a drawn line ends (the marriage lines', and lone parents' lines down).
+    const drawnJoints = layout.joints.filter(joint => !view.cy.getElementById(joint.id).empty());
+    expect(drawnJoints.length).toBeGreaterThan(0);
+    for (const { id, x, y } of [...layout.people, ...layout.dots, ...drawnJoints]) {
       expect(view.cy.getElementById(id).position(), id).toEqual({ x, y });
     }
+    for (const node of view.cy.nodes('[type="joint"]')) expect(node.connectedEdges().length, node.id()).toBeGreaterThan(0);
+    const marriages = layout.lines.filter(line => line.kind === 'marriage');
     expect(view.cy.edges().map(edge => [edge.source().id(), edge.target().id()]))
-      .toEqual(layout.lines.map(line => [line.source, line.target]));
+      .toEqual([...marriages, ...layout.links].map(line => [line.source, line.target]));
   });
 
-  it('draws straight lines in their family\'s colour, without arrows, under the people; line ends are invisible', () => {
+  it('draws marriage lines straight, and each child\'s line as a rounded elbow turning at their family\'s bar', () => {
     view.buildGraph(rose, family, relationships);
-    const edge = view.cy.edges()[0];
-    expect(edge.style('curve-style')).toBe('straight');
-    expect(edge.style('target-arrow-shape')).toBe('none');
-    expect(edge.style('line-color')).toMatch(/^rgb/);
+    const marriage = view.cy.edges('[type="line"]')[0];
+    expect(marriage.style('curve-style')).toBe('straight');
+    expect(marriage.style('target-arrow-shape')).toBe('none');
+    expect(marriage.style('line-color')).toMatch(/^rgb/);
+    const layout = layoutFamily({ selected: rose, family, relationships });
+    for (const link of layout.links) {
+      const edge = view.cy.getElementById(link.id);
+      expect(edge.style('curve-style'), link.id).toBe('round-taxi');
+      expect(edge.style('taxi-direction')).toBe('downward');
+      expect(edge.pstyle('taxi-turn').pfValue, link.id).toBe(link.turn);
+      expect(edge.target().id()).toBe(link.target);
+    }
     const joint = view.cy.nodes('[type="joint"]')[0];
     expect(Number(joint.style('opacity'))).toBe(0);
     expect(joint.style('events')).toBe('no');

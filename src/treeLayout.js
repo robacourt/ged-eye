@@ -38,8 +38,11 @@ const CLEAR = 24;        // the least distance between a family's line down and 
  * @param relationships  `{ parents, spouses, children, siblings }`, each a list of relative records, in order
  * @param withAdd        whether to make room for an editor's "+" node beside the person
  * @returns `{ people: [{ id, x, y }], add: { x, y } | null, dots: [{ id, x, y, color }], joints: [{ id, x, y }],
- *   lines: [{ id, source, target, color }] }`: `color` is a palette index; a line's ends are dots or joints
- *   (invisible points), so every line is straight.
+ *   lines: [{ id, source, target, color, kind }], links: [{ id, source, target, turn, color }] }`. `color` is a
+ *   palette index. `lines` is every straight piece, between dots and joints (invisible points): marriage lines
+ *   (`kind` 'marriage') and the lines down to the children ('descent'). `links` are those lines down again, one per
+ *   child, from their family's dot (or joint, for a lone parent) to the child: down `turn` units to the bar, across
+ *   and down, which the tree draws as one rounded elbow per child.
  */
 export function layoutFamily({ selected, family = [], relationships = {}, withAdd = false, sizes = SIZES }) {
   const records = new Map([[selected.id, selected], ...family.map(member => [member.id, member])]);
@@ -52,7 +55,7 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   const spouseIds = idsOf(relationships.spouses);
   const childIds = idsOf(relationships.children);
 
-  const out = { people: [], add: null, dots: [], joints: [], lines: [] };
+  const out = { people: [], add: null, dots: [], joints: [], lines: [], links: [] };
   const placed = new Map(); // id → { x, y }
   // The first place wins: lines are drawn to people where they are, so nobody moves once placed.
   const place = (id, x, y) => {
@@ -64,7 +67,7 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
     out.joints.push({ id, x, y });
     return id;
   };
-  const line = (source, target, color) => out.lines.push({ id: `line-${nextId++}`, source, target, color });
+  const line = (source, target, color, kind = 'descent') => out.lines.push({ id: `line-${nextId++}`, source, target, color, kind });
 
   // --- Families -----------------------------------------------------------------------------------------------
 
@@ -201,7 +204,7 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
   function couple(partners, dotX, y, color) {
     const id = `dot-${nextId++}`;
     out.dots.push({ id, x: dotX, y, color });
-    for (const partner of partners) line(joint(at(partner).x, y), id, color);
+    for (const partner of partners) line(joint(at(partner).x, y), id, color, 'marriage');
     return id;
   }
   /** A family with children waits for its line down to be placed; a couple without any is drawn now. */
@@ -350,6 +353,7 @@ export function layoutFamily({ selected, family = [], relationships = {}, withAd
       for (const id of entry.children) {
         const point = points.find(item => item.x === at(id).x);
         line(point.id, joint(at(id).x, at(id).y), entry.color);
+        out.links.push({ id: `link-${nextId++}`, source: entry.anchor, target: id, turn: entry.barY - entry.y, color: entry.color });
       }
     }
   }

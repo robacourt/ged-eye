@@ -258,10 +258,30 @@ describe('layoutFamily', () => {
     }
   });
 
+  it('links each child to their family\'s dot, turning at the height of that family\'s bar', () => {
+    for (const data of [IAN, ELEANOR, ELIZABETH, BOTH_SIDES]) {
+      const layout = layoutFamily(data);
+      const points = new Map([...layout.dots, ...layout.joints].map(point => [point.id, point]));
+      const children = layout.lines.filter(item => item.kind === 'descent');
+      for (const link of layout.links) {
+        const from = points.get(link.source);
+        // The bar of the family: a horizontal descent line at from.y + turn, or the child straight below.
+        const barY = from.y + link.turn;
+        const at = positions(layout)[link.target];
+        expect(barY).toBeGreaterThan(from.y);
+        expect(barY).toBeLessThan(at.y);
+        expect(reaches(layout, link.source, link.target), link.id).toBe(true);
+        expect(children.some(item => item.color === link.color)).toBe(true);
+      }
+      // One link per child line in the layout.
+      expect(layout.links.length).toBe(new Set(layout.links.map(link => link.target)).size);
+    }
+  });
+
   it('draws someone with no family at all', () => {
     const data = view({ id: 'P' });
     const layout = layoutFamily(data);
-    expect(layout).toEqual({ people: [{ id: 'P', x: 0, y: 0 }], add: null, dots: [], joints: [], lines: [] });
+    expect(layout).toEqual({ people: [{ id: 'P', x: 0, y: 0 }], add: null, dots: [], joints: [], lines: [], links: [] });
   });
 
   it('hangs children with no partner here, and a lone parent\'s children, straight from that person', () => {
