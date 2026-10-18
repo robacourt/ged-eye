@@ -4,12 +4,13 @@
  * viewer (not an editor) and the dev admin, then checks: /health says mail is logged; the viewer's /me is a 403
  * with no pending request; the viewer asks (201) and asks again (200, the same request); /me shows it pending; the
  * admin's /me counts it and GET /access-requests lists it; Grant is 200 and a second Grant 409 already_resolved;
- * the viewer's /me is then 200 as an editor; and the branch's Function logs show one "mail (not sent)" line per
- * admin for the request (none for the repeat) and one to the viewer for the grant.
+ * the viewer's /me is then 200 as an editor; and the branch's Function logs show one "mail (not sent)" line for the
+ * request to each person set to be told (editor.notify_access_requests, read from the branch's database; none for
+ * the repeat) and one to the viewer for the grant. With nobody set to be told, it checks no request mail is logged.
  *
  *   node --env-file=.env.local --env-file=.env.dev-accounts.local scripts/neon/smokeAccess.js
  *
- * Env: NEON_BRANCH, NEON_AUTH_BASE_URL and NEON_FUNCTION_API_BASE_URL (from .env.local), DEV_VIEWER_PASSWORD and
+ * Env: NEON_BRANCH, NEON_AUTH_BASE_URL, NEON_FUNCTION_API_BASE_URL and DATABASE_URL (from .env.local), DEV_VIEWER_PASSWORD and
  * DEV_ADMIN_PASSWORD (from .env.dev-accounts.local). Refuses production and main. The log check needs the neon CLI.
  *
  * It leaves the viewer a viewer again: it removes them from the editors (DELETE /editors/…, as the admin) once
@@ -20,6 +21,7 @@
  * failure, or 2 when it can't start.
  */
 import { execFileSync } from 'node:child_process';
+import pg from 'pg';
 import { ROOT, isMain } from './cli.js';
 import { call, cannotStart, check, codeOf, describe, runSmoke, safeMessage, signIn, trimSlash } from './smokeMedia.js';
 
@@ -37,7 +39,7 @@ const meDetail = (result) => `${result.status} ${result.status === 200 ? `role $
 /** Checks the environment (see the header). → { env, api (no trailing slash), auth (Auth base URL) } */
 function branchApi() {
   const env = process.env;
-  const needed = ['NEON_BRANCH', 'NEON_AUTH_BASE_URL', 'NEON_FUNCTION_API_BASE_URL', 'DEV_VIEWER_PASSWORD', 'DEV_ADMIN_PASSWORD'];
+  const needed = ['NEON_BRANCH', 'NEON_AUTH_BASE_URL', 'NEON_FUNCTION_API_BASE_URL', 'DATABASE_URL', 'DEV_VIEWER_PASSWORD', 'DEV_ADMIN_PASSWORD'];
   const missing = needed.filter((name) => !env[name]);
   if (missing.length) cannotStart(`missing ${missing.join(', ')}; run with --env-file=.env.local --env-file=.env.dev-accounts.local`);
   if (['production', 'main'].includes(env.NEON_BRANCH)) cannotStart(`refusing to run against ${env.NEON_BRANCH}`);
@@ -63,11 +65,22 @@ function notSentLines(branch, since) {
 }
 
 /**
- * Waits for the Function logs to show a request line to each of `admins` and one grant line since `since`, then
+ * Waits for the Function logs to show a request line to each of `recipients` and one grant line since `since`, then
  * checks there are exactly those: the repeat request sent none.
  */
-async function checkMailLogs(branch, since, admins) {
-  const name = 'Function logs: one "mail (not sent)" line per admin for the request, one to the viewer for the grant';
+/** Who the branch tells about a new request (editor.notify_access_requests), read only. → [email] */
+async function requestRecipients(databaseUrl) {
+  const client = new pg.Client({ connectionString: databaseUrl });
+  await client.connect();
+  try {
+    return (await client.query('select email from editor where notify_access_requests order by email')).rows.map((row) => row.email);
+  } finally {
+    await client.end();
+  }
+}
+
+async function checkMailLogs(branch, since, recipients) {
+  const name = 'Function logs: one "mail (not sent)" line per recipient for the request, one to the viewer for the grant';
   const requestLine = (to) => `${NOT_SENT}${to}, Edit access request from ${VIEWER}`;
   const grantLine = `${NOT_SENT}${VIEWER}, You can now edit the A'Court family tree`;
   let counts = null;
@@ -77,7 +90,7 @@ async function checkMailLogs(branch, since, admins) {
       const lines = notSentLines(branch, since);
       counts = {
         request: lines.filter((line) => line.includes(`, Edit access request from ${VIEWER}`)).length,
-        unmailed: admins.filter((to) => !lines.some((line) => line.includes(requestLine(to)))).length,
+        unmailed: recipients.filter((to) => !lines.some((line) => line.includes(requestLine(to)))).length,
         grant: lines.filter((line) => line.includes(grantLine)).length
       };
       failure = null;
@@ -90,8 +103,8 @@ async function checkMailLogs(branch, since, admins) {
     await sleep(LOG_POLL_MS);
   }
   if (!counts) return check(name, false, failure ?? 'no logs');
-  return check(name, counts.request === admins.length && counts.unmailed === 0 && counts.grant === 1,
-    `${counts.request} request line(s) for ${admins.length} admin(s), ${counts.unmailed} admin(s) without one, ` +
+  return check(name, counts.request === recipients.length && counts.unmailed === 0 && counts.grant === 1,
+    `${counts.request} request line(s) for ${recipients.length} recipient(s), ${counts.unmailed} recipient(s) without one, ` +
     `${counts.grant} grant line(s)${failure ? `; last query: ${failure}` : ''}`);
 }
 
@@ -141,9 +154,8 @@ async function main() {
     check('admin GET /access-requests lists it', list.status === 200 && listed?.email === VIEWER && listed?.note === NOTE,
       `${list.status}, ${list.body?.requests?.length ?? 0} listed, ${listed ? 'ours included' : 'ours missing'}`);
 
-    const editors = await call('GET', `${api}/editors`, { token: admin });
-    const admins = (editors.body?.editors ?? []).filter((editor) => editor.role === 'admin').map((editor) => editor.email);
-    check('admin GET /editors (to count the admins mailed)', editors.status === 200 && admins.length > 0, `${editors.status}, ${admins.length} admin(s)`);
+    const recipients = await requestRecipients(env.DATABASE_URL); // those emailed about the request
+    console.log(`${recipients.length} recipient(s) set for request emails`);
 
     const grant = await call('POST', `${api}/access-requests/${requestId}/grant`, { token: admin });
     granted = grant.status === 200;
@@ -159,7 +171,7 @@ async function main() {
     const after = await call('GET', `${api}/me`, { token: viewer });
     check('viewer GET /me is now 200 as an editor', after.status === 200 && after.body?.role === 'editor', meDetail(after));
 
-    await checkMailLogs(env.NEON_BRANCH, since, admins);
+    await checkMailLogs(env.NEON_BRANCH, since, recipients);
   } finally {
     // Leave the viewer a viewer, with nothing pending.
     if (granted) {

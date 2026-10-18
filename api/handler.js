@@ -109,7 +109,7 @@ const validateNote = (body) => optionalNote(body.note ?? null, 'note');
  *   resolveAccessRequest(id, 'grant' | 'dismiss', adminEmail) → { outcome: 'granted' | 'dismissed' |
  *     'already_resolved' | 'not_found' | 'not_an_admin', request | null, editor | null, wasEditor }
  *     (one transaction; re-checks that adminEmail is an admin; a grant adds the requester as an editor)
- *   listAdminEmails() → [email]
+ *   listRequestRecipients() → [email]: who is emailed about a new access request (editor.notify_access_requests)
  *   runChange(editor, kind, params) → { change: { id, summary, personIds }, view | null }
  *   toggle(editor, changeId, 'undo' | 'redo', via) → { id, summary, personIds, baseChangeId, kind }
  *   undoLast(editor), redoLast(editor) → { id, summary, personIds, baseChangeId, kind } | null
@@ -164,6 +164,13 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     } catch (error) {
       log('waitUntil failed, so the mail may be cut short', error);
     }
+  }
+
+  /** Who to email about a new access request; with nobody set to be told, a log line says so. */
+  async function requestRecipients() {
+    const recipients = await db.listRequestRecipients();
+    if (!recipients.length) log('nobody is set to be emailed about access requests (editor.notify_access_requests)');
+    return recipients;
   }
 
   async function requireAdminOf(request) {
@@ -232,7 +239,7 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     const { outcome, request: saved } = await db.createAccessRequest({ email: user.email, name: sanitizeName(user.name), note });
     switch (outcome) {
       case 'created':
-        sendLater('access request', () => db.listAdminEmails(), (to) => requestEmail({ to, request: saved, siteUrl: SITE_URL }));
+        sendLater('access request', requestRecipients, (to) => requestEmail({ to, request: saved, siteUrl: SITE_URL }));
         return json(201, { request: saved });
       case 'pending': return json(200, { request: saved });
       case 'editor': throw new ApiError(409, 'already_an_editor', { email: user.email });
