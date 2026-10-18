@@ -233,8 +233,14 @@ describe.skipIf(!url)('access requests (database)', { timeout: 30000 }, () => {
       expect(await db.listAccessRequests()).toEqual([]);
     });
 
-    it('lists the admins\' emails', async () => {
-      expect(await db.listAdminEmails()).toEqual([ADMIN2, OWNER]);
+    it('lists only those set to be told about requests (013), whatever their role', async () => {
+      expect(await db.listRequestRecipients()).toEqual([]); // nobody, by default
+      await client.query('update editor set notify_access_requests = true where email = any($1)', [[OWNER, EDITOR]]);
+      try {
+        expect(await db.listRequestRecipients()).toEqual([EDITOR, OWNER].sort());
+      } finally {
+        await client.query('update editor set notify_access_requests = false');
+      }
     });
   });
 

@@ -391,9 +391,9 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
       });
     },
 
-    /** → the admins' emails, in order */
-    async listAdminEmails() {
-      const { rows } = await pool.query("select email from editor where role = 'admin' order by email");
+    /** → the emails of those to tell about a new access request (editor.notify_access_requests, 013), in order */
+    async listRequestRecipients() {
+      const { rows } = await pool.query('select email from editor where notify_access_requests order by email');
       return rows.map((row) => row.email);
     },
 

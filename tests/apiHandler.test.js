@@ -78,7 +78,7 @@ function fakeDb(overrides = {}) {
     resolveAccessRequest: vi.fn(async (id, action) => (action === 'grant'
       ? { outcome: 'granted', request: GRANTED, editor: NEW_EDITOR, wasEditor: false }
       : { outcome: 'dismissed', request: DISMISSED, editor: null, wasEditor: false })),
-    listAdminEmails: vi.fn(async () => ADMIN_EMAILS),
+    listRequestRecipients: vi.fn(async () => ADMIN_EMAILS),
     ...overrides
   };
 }
@@ -694,7 +694,7 @@ describe('POST /access-requests', () => {
     expect(waitUntil).not.toHaveBeenCalled();
   });
 
-  it('creates a request with the trimmed note and the token\'s name, and mails every admin, one message each', async () => {
+  it('creates a request with the trimmed note and the token\'s name, and mails each recipient (editor.notify_access_requests), one message each', async () => {
     const { request, db, mailer, waitUntil } = setup();
     const res = await request('/access-requests', { method: 'POST', token: 'viewer', body: { note: '  Please add me \n' } });
     expect(res.status).toBe(201);
@@ -702,7 +702,7 @@ describe('POST /access-requests', () => {
     expect(await res.json()).toEqual({ request: PENDING });
     expect(db.createAccessRequest).toHaveBeenCalledWith({ email: 'viewer@example.test', name: 'Vi', note: 'Please add me' });
     await scheduledMail(waitUntil);
-    expect(db.listAdminEmails).toHaveBeenCalledTimes(1);
+    expect(db.listRequestRecipients).toHaveBeenCalledTimes(1);
     expect(mailer.send.mock.calls).toEqual(ADMIN_EMAILS.map((to) => [requestEmail({ to, request: PENDING, siteUrl: SITE_URL })]));
   });
 
@@ -793,14 +793,22 @@ describe('POST /access-requests', () => {
     expect(log.mock.calls[0].join(' ')).toMatch(/admin@example\.test/);
   });
 
-  it('logs and swallows a failure to read the admins, or to build a message', async () => {
-    const failing = setup({ listAdminEmails: vi.fn().mockRejectedValue(new Error('boom')) });
+  it('mails nobody, and says so in the log, when nobody is set to be told', async () => {
+    const { request, mailer, waitUntil, log } = setup({ listRequestRecipients: vi.fn(async () => []) });
+    expect((await request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
+    await scheduledMail(waitUntil);
+    expect(mailer.send).not.toHaveBeenCalled();
+    expect(log).toHaveBeenCalledWith('nobody is set to be emailed about access requests (editor.notify_access_requests)');
+  });
+
+  it('logs and swallows a failure to read the recipients, or to build a message', async () => {
+    const failing = setup({ listRequestRecipients: vi.fn().mockRejectedValue(new Error('boom')) });
     expect((await failing.request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
     await scheduledMail(failing.waitUntil);
     expect(failing.mailer.send).not.toHaveBeenCalled();
     expect(failing.log).toHaveBeenCalledTimes(1);
 
-    const unsafe = setup({ listAdminEmails: vi.fn().mockResolvedValue(['bad address@example.test', 'admin@example.test']) });
+    const unsafe = setup({ listRequestRecipients: vi.fn().mockResolvedValue(['bad address@example.test', 'admin@example.test']) });
     expect((await unsafe.request('/access-requests', { method: 'POST', token: 'viewer' })).status).toBe(201);
     await scheduledMail(unsafe.waitUntil);
     expect(unsafe.mailer.send).toHaveBeenCalledTimes(1);
@@ -875,7 +883,7 @@ describe('admin access-request routes', () => {
     expect(db.resolveAccessRequest).toHaveBeenCalledWith(5, 'grant', 'admin@example.test');
     await scheduledMail(waitUntil);
     expect(mailer.send.mock.calls).toEqual([[grantedEmail({ to: 'viewer@example.test', siteUrl: SITE_URL })]]);
-    expect(db.listAdminEmails).not.toHaveBeenCalled();
+    expect(db.listRequestRecipients).not.toHaveBeenCalled();
   });
 
   it('sends no mail when the requester was already an editor', async () => {
