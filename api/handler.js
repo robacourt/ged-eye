@@ -1,4 +1,5 @@
-import { maskNoteEmails, redactLiving, redactSearchResult } from './privacy.js';
+import { maskNoteEmails, redactLiving, redactRelative, redactSearchResult } from './privacy.js';
+import { familyGraph, shortestPath } from './relationship.js';
 import { AuthError, requireEditorOf } from './auth.js';
 import { ApiError, errorJson, invalid, isObject, json, notModified, preflight, readJson } from './http.js';
 import { createMailer, grantedEmail, inviteEmail, isSafeAddress, requestEmail, sanitizeName, SITE_URL } from './mailer.js';
@@ -93,6 +94,9 @@ const validateNote = (body) => optionalNote(body.note ?? null, 'note');
  *   personView(id) → { view | null, version: { changeId, migration } }  (one statement, one snapshot)
  *   search(q, limit) → [{ id, name, birthYear, deathYear, living }]
  *   lookupEditor(email) → { email, name, role } | null
+ *   latestChangeId() → the latest change's id, as text
+ *   familyLinks() → { families: [{ id, partner1_id, partner2_id }], children: [{ family_id, child_id }] }
+ *   relativeRecords(ids) → [relative_record | null], in order
  *   listEditors() → [{ email, name, role, addedBy, addedAt }]
  *   addEditor({ email, name, role }, byEmail) → { outcome: 'added' | 'listed' (already on the list) |
  *     'not_an_admin', editor | null }; when they end up able to edit, marks their pending access request granted
@@ -127,6 +131,17 @@ const validateNote = (body) => optionalNote(body.note ?? null, 'note');
 export function createHandler({ db, authenticate, mailer = createMailer({}), waitUntil = () => {}, log = console.error }) {
   const lookupEditor = (email) => db.lookupEditor(email);
   const invitesSent = new Map(); // admin email → times of their invites in the last hour, on this instance
+  let graphCache = null; // { changeId, graph }: the family graph for /relationship, on this instance
+
+  /** The family graph (api/relationship.js), read again only after the tree has changed (a new change row). */
+  async function currentFamilyGraph() {
+    const changeId = await db.latestChangeId();
+    if (graphCache?.changeId !== changeId) {
+      const links = await db.familyLinks();
+      graphCache = { changeId, graph: familyGraph(links.families, links.children) };
+    }
+    return graphCache.graph;
+  }
 
   /** The admin's invites still in the window (pruned). */
   function recentInvites(email, now) {
@@ -215,6 +230,30 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
   async function latestRequestOf(email) {
     const latest = await db.latestAccessRequest(email);
     return latest ? { status: latest.status, createdAt: latest.createdAt } : null;
+  }
+
+  /**
+   * How `to` is related to `from` (spec: specs/2026-10-18-relationship-search-design.md): the people on the
+   * shortest family path between them, each with how they are related to the one before. Living people are by
+   * name only for anyone not on the list, as relatives are in a person view.
+   */
+  async function relationship({ request, url }) {
+    const user = await authenticate(request);
+    const ids = ['from', 'to'].map((name) => {
+      const id = queryParam(url, name);
+      if (id === null || !PERSON_ID.test(id)) throw invalid(name, `${name} must be a person id.`);
+      return id;
+    });
+    const [listed, ends] = await Promise.all([user ? db.lookupEditor(user.email) : null, db.relativeRecords(ids)]);
+    if (ends.some((record) => !record)) throw new ApiError(404, 'not_found');
+    const path = shortestPath(await currentFamilyGraph(), ids[0], ids[1]);
+    if (!path) return json(200, { path: null }, VARY_AUTH);
+    const records = await db.relativeRecords(path.map((entry) => entry.id));
+    // Someone on the path removed since the graph was read: the client says it couldn't find them.
+    if (records.some((record) => !record)) throw new ApiError(409, 'changed');
+    return json(200, {
+      path: records.map((record, i) => ({ ...(listed ? record : redactRelative(record)), step: path[i].step }))
+    }, VARY_AUTH);
   }
 
   async function me({ request }) {
@@ -375,6 +414,7 @@ export function createHandler({ db, authenticate, mailer = createMailer({}), wai
     ['GET', /^\/health$/, async () => json(200, { ok: true, mail: mailer.mode })],
     ['GET', /^\/person\/([^/]+)$/, getPerson],
     ['GET', /^\/search$/, search],
+    ['GET', /^\/relationship$/, relationship],
     ['GET', /^\/me$/, me],
     ['GET', /^\/editors$/, listEditors],
     ['POST', /^\/editors$/, addEditor],

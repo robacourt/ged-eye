@@ -6,7 +6,7 @@
 const GENERIC_ERROR = 'Something went wrong. Try again.';
 
 /** For a 403: the account is not (or no longer) on the editors list. Also used by editorDialog.js and uploadMessages.js. */
-export const NOT_AN_EDITOR_MESSAGE = `You're not on the editors list. Use "Request edit access" in your account menu.`;
+export const NOT_AN_EDITOR_MESSAGE = `You're not on the editors list. Use "Request edit access" in the menu.`;
 
 /**
  * Why a revert, restore, undo or redo was refused (a 409 `conflict`), by its `reason`.

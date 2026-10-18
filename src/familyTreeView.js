@@ -1,20 +1,15 @@
 import cytoscape from 'cytoscape';
 import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
-import { avatarUrl } from './media.js';
 import { nameOf } from './familyLinks.js';
 import { MIN_TARGET_PX, chooseZoom, horizontalPan, verticalPan } from './treePlacement.js';
 import { FRAME, layoutFamily } from './treeLayout.js';
+import { colourOf, personAvatar, personLabel, treeStyle } from './treeStyle.js';
 
 /** The editors' "+" node, joined to the highlighted person, and the edge to it. */
 const ADD_NODE_ID = 'add-relative';
 const ADD_EDGE_ID = 'add-relative-edge';
 /** The cytoscape events after which the "+" node is drawn somewhere else. */
 const VIEWPORT_EVENTS = 'pan zoom resize';
-/** A colour for each couple (treeLayout.js gives each family an index): its dot and every line of its family. */
-const FAMILY_COLOURS = ['#f472b6', '#a78bfa', '#34d399', '#fbbf24', '#38bdf8', '#fb7185'];
-/** How rounded the bends in the lines down to the children are (graph units). */
-const BEND_RADIUS = 18;
-const colourOf = (index) => FAMILY_COLOURS[index % FAMILY_COLOURS.length];
 
 export class FamilyTreeView {
   constructor(containerElement) {
@@ -37,154 +32,7 @@ export class FamilyTreeView {
     this.cy = cytoscape({
       container: this.container,
 
-      style: [
-        // Node styles
-        {
-          selector: 'node',
-          style: {
-            'width': 135,
-            'height': 135,
-            'background-color': '#3a3a4a',
-            'background-fit': 'cover',
-            'background-clip': 'node',
-            'background-image': 'data(avatar)',
-            'border-width': 4,
-            'border-color': '#555',
-            'shape': 'ellipse',
-            'label': 'data(label)',
-            'text-valign': 'bottom',
-            'text-halign': 'center',
-            'text-margin-y': 15,
-            'color': '#fff',
-            'font-size': '14px',
-            'font-weight': '500',
-            'text-wrap': 'wrap',
-            // Within the node and a little of the gap either side, clear of the lines down from a couple's dot.
-            'text-max-width': '160px',
-            // Nearly opaque, so a line down from a lone parent passes cleanly behind the label.
-            'text-background-color': 'rgb(17, 17, 28)',
-            'text-background-opacity': 0.9,
-            'text-background-padding': '5px',
-            'text-background-shape': 'roundrectangle',
-            'cursor': 'pointer'
-          }
-        },
-        {
-          selector: 'node[type="selected"]',
-          style: {
-            'width': 180,
-            'height': 180,
-            'border-color': '#00d4ff',
-            'border-width': 6,
-            'z-index': 100,
-            'font-size': '16px',
-            'font-weight': '600'
-          }
-        },
-        {
-          selector: 'node[sex="M"]',
-          style: {
-            'background-color': '#4a8fc7'
-          }
-        },
-        {
-          selector: 'node[sex="F"]',
-          style: {
-            'background-color': '#c74a8f'
-          }
-        },
-        // A couple's dot, on their marriage line (treeLayout.js), ringed in the background colour so the lines
-        // meeting it stop just short.
-        {
-          selector: 'node[type="partnership"]',
-          style: {
-            'width': 14,
-            'height': 14,
-            'background-color': 'data(colour)',
-            'background-image': 'none',
-            'border-width': 3,
-            'border-color': 'rgb(17, 17, 28)',
-            'label': '',
-            'events': 'no',
-            'z-index': 10
-          }
-        },
-        // The invisible ends of the lines (treeLayout.js): every line runs straight from one to another.
-        {
-          selector: 'node[type="joint"]',
-          style: {
-            'width': 1,
-            'height': 1,
-            'opacity': 0,
-            'background-image': 'none',
-            'border-width': 0,
-            'label': '',
-            'events': 'no'
-          }
-        },
-        // The editors' "+" node (setAddRelative): a dashed circle, a little smaller than a relative.
-        {
-          selector: 'node[type="add"]',
-          style: {
-            'width': 110,
-            'height': 110,
-            'background-color': '#1e1e2e',
-            'background-image': 'none',
-            'border-width': 4,
-            'border-style': 'dashed',
-            'border-color': '#00d4ff',
-            'label': '+',
-            'color': '#00d4ff',
-            'font-size': '72px',
-            'font-weight': '300',
-            'text-valign': 'center',
-            'text-halign': 'center',
-            'text-margin-y': 0,
-            'text-background-opacity': 0
-          }
-        },
-        // Lines, under the people, in their family's colour: a couple's marriage line is straight; each child hangs
-        // from their family's dot by one elbow, down to the family's bar, across and down, its bends rounded.
-        {
-          selector: 'edge',
-          style: {
-            'curve-style': 'straight',
-            'width': 3,
-            'line-color': 'data(colour)',
-            'line-cap': 'round',
-            'opacity': 1,
-            'events': 'no'
-          }
-        },
-        {
-          selector: 'edge[type="link"]',
-          style: {
-            'curve-style': 'round-taxi',
-            'taxi-direction': 'downward',
-            'taxi-turn': 'data(turn)',
-            'taxi-turn-min-distance': 0,
-            'taxi-radius': BEND_RADIUS
-          }
-        },
-        {
-          selector: 'edge[type="add"]',
-          style: {
-            'line-color': '#00d4ff',
-            'line-style': 'dashed',
-            'line-cap': 'butt',
-            'width': 2.5,
-            'opacity': 0.7
-          }
-        },
-        // Hover effects
-        {
-          selector: 'node:active',
-          style: {
-            'overlay-opacity': 0.2,
-            'overlay-color': '#fff'
-          }
-        }
-      ],
+      style: treeStyle(),
 
       layout: {
         name: 'preset'
@@ -353,20 +201,14 @@ export class FamilyTreeView {
    * Get avatar path for a person, with fallback to man.png or woman.png
    */
   getAvatarPath(person) {
-    return avatarUrl(person);
+    return personAvatar(person);
   }
 
   /**
    * Format a person's name and dates for display
    */
   formatLabel(person) {
-    const name = person.name || 'Unknown';
-    const birthYear = person.birthDate ? person.birthDate.match(/\d{4}/)?.[0] || '' : '';
-
-    if (birthYear) {
-      return `${name}\nb. ${birthYear}`;
-    }
-    return name;
+    return personLabel(person);
   }
 
   /**

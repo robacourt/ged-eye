@@ -1859,3 +1859,84 @@ describe('viewers', () => {
     expect(db.changeEditorRole).toHaveBeenCalledWith('editor@example.test', 'viewer', 'admin@example.test');
   });
 });
+
+describe('GET /relationship', () => {
+  const families = [{ id: 'F1', partner1_id: 'I1', partner2_id: 'I2' }, { id: 'F2', partner1_id: 'I3', partner2_id: null }];
+  const children = [{ family_id: 'F1', child_id: 'I3' }, { family_id: 'F2', child_id: 'I4' }];
+  const record = (id, living = false) => ({ id, name: `Person ${id}`, sex: 'M', birthDate: '1900', avatarKey: `avatars/${id}.webp`, parentIds: [], living });
+  const records = { I1: record('I1'), I2: record('I2'), I3: record('I3'), I4: record('I4', true), I9: record('I9') };
+  const db = () => ({
+    latestChangeId: vi.fn(async () => '42'),
+    familyLinks: vi.fn(async () => ({ families, children })),
+    relativeRecords: vi.fn(async (ids) => ids.map((id) => records[id] ?? null))
+  });
+
+  it('gives the people on the path from one person to another, each with their step', async () => {
+    const { request } = setup(db());
+    const res = await request('/relationship?from=I4&to=I1');
+    expect(res.status).toBe(200);
+    expect(res.headers.get('vary')).toBe('Authorization');
+    expect(res.headers.get('cache-control')).toBe('no-store');
+    const { path } = await res.json();
+    expect(path.map(({ id, step }) => [id, step])).toEqual([['I4', null], ['I3', 'parent'], ['I1', 'parent']]);
+  });
+
+  it('shows living people by name only to the public, and in full to people on the list', async () => {
+    const anonymous = setup(db());
+    const [living] = (await (await anonymous.request('/relationship?from=I4&to=I1')).json()).path;
+    expect(living).toEqual({ id: 'I4', name: 'Person I4', sex: 'M', parentIds: [], avatarKey: null, living: true, private: true, step: null });
+    const reader = setup(db());
+    const [full] = (await (await reader.request('/relationship?from=I4&to=I1', { token: 'reader' })).json()).path;
+    expect(full).toEqual({ ...records.I4, step: null });
+  });
+
+  it('answers a null path for people with no family connection', async () => {
+    const { request } = setup(db());
+    expect(await (await request('/relationship?from=I1&to=I9')).json()).toEqual({ path: null });
+  });
+
+  it('refuses a missing or malformed id, and answers 404 for an unknown one', async () => {
+    const { request } = setup(db());
+    for (const [query, field] of [['?to=I1', 'from'], ['?from=I1', 'to'], ['?from=I1&to=a%20b', 'to'], ['?from=&to=I1', 'from']]) {
+      const res = await request(`/relationship${query}`);
+      expect(res.status).toBe(400);
+      expect(await res.json()).toMatchObject({ error: 'invalid', field });
+    }
+    const unknown = await request('/relationship?from=I1&to=I404');
+    expect(unknown.status).toBe(404);
+    expect(await unknown.json()).toEqual({ error: 'not_found' });
+  });
+
+  it('authenticates first: a bad token is a 401', async () => {
+    const { request } = setup(db());
+    expect((await request('/relationship?from=I1&to=I2', { token: 'expired' })).status).toBe(401);
+  });
+
+  it('gives the one person for the same person at both ends', async () => {
+    const { request } = setup(db());
+    expect((await (await request('/relationship?from=I1&to=I1')).json()).path.map(({ id, step }) => [id, step])).toEqual([['I1', null]]);
+  });
+
+  it('reads the family again only after the tree has changed, and not at all for an unknown person', async () => {
+    const fake = db();
+    const { request } = setup(fake);
+    await request('/relationship?from=I4&to=I1');
+    await request('/relationship?from=I3&to=I2');
+    expect(fake.familyLinks).toHaveBeenCalledTimes(1);
+    fake.latestChangeId.mockResolvedValue('43');
+    await request('/relationship?from=I4&to=I1');
+    expect(fake.familyLinks).toHaveBeenCalledTimes(2);
+    expect((await request('/relationship?from=I404&to=I1')).status).toBe(404);
+    expect(fake.familyLinks).toHaveBeenCalledTimes(2);
+  });
+
+  it('answers 409 when someone on the path is removed while it is worked out', async () => {
+    const fake = db();
+    fake.relativeRecords.mockImplementationOnce(async (ids) => ids.map((id) => records[id]))
+      .mockImplementationOnce(async (ids) => ids.map((id) => (id === 'I3' ? null : records[id])));
+    const { request } = setup(fake);
+    const res = await request('/relationship?from=I4&to=I1');
+    expect(res.status).toBe(409);
+    expect(await res.json()).toEqual({ error: 'changed' });
+  });
+});

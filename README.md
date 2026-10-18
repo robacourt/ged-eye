@@ -18,6 +18,7 @@ GedEye takes GEDCOM genealogy files and turns them into a beautiful, interactive
 - 🚀 **One request per person** - A Neon Function returns a person and their whole immediate family in a single call, and relatives are prefetched while you look
 - 🖼️ **Photos and avatars** - Served straight from a public Neon Object Storage bucket. Editors can upload photos, caption and tag them, and crop avatars ([Photos](#photos))
 - 🔒 **Privacy for living people** - The public sees living people by name only ([Living people](#living-people))
+- 🔎 **How are we related?** - Search for anyone and see the chain of family between them and the person on screen, drawn like the tree and said in words ([Search](#search))
 - 🎨 **Modern UI** - Built with Cytoscape.js for smooth graph rendering
 - ⚡ **Fast** - Handles thousands of people without breaking a sweat
 - 🎭 **Gender color coding** - Blue for males, pink for females
@@ -131,6 +132,9 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 │   ├── media.js            # Bucket URLs for photos and avatars
 │   ├── familyTreeView.js   # Cytoscape graph visualization
 │   ├── treeLayout.js       # where everyone in the tree goes, and the lines between them
+│   ├── treeStyle.js        # how the tree looks (Cytoscape styles), shared with the search page
+│   ├── relationshipPage.js # the search page; chainLayout.js and chainView.js draw its chain
+│   ├── relationshipWords.js # the relationship in words
 │   ├── personDetails.js    # Details panel
 │   ├── factLabels.js       # Labels for GEDCOM fact tags (_MILT → Military service)
 │   ├── html.js             # escapeHtml
@@ -164,6 +168,27 @@ There's deliberately no plain `.env`: the Neon CLI writes secrets into `.env` wh
 
 The site itself is plain static files on GitHub Pages. Neon is the master copy of the data, and the original GEDCOM is archived byte for byte in the `gedcom_archive` table. Sources and citations, family-level facts (such as marriage notes) and photo titles are still only in that archive, ready to be parsed later.
 
+## Search
+
+The menu button (top right, ☰) has **Search** for everyone. It opens a page for the person on screen (`?relative=<id>`): search for someone by name, and choosing them (`&person=<id>`) shows how they're related. The page has:
+
+- **The chain,** drawn as the tree is: everyone on the shortest family path from the relative to them, and nobody else.
+  - Generations are rows: parents above, children below.
+  - Brothers and sisters are joined by a bracket over them, dashed for half ones.
+  - Partners are joined by a marriage line with a dot.
+  - The person found is drawn larger.
+  - Tapping anyone opens the tree with them selected.
+- **The relationship in words,** for example "Clement Bernard A'Court is Robert Michael A'Court's grandfather".
+
+  Cousins come with "once removed" and so on, along with half-relations, in-laws and step-relations. Anything else is a chain such as "wife's first cousin".
+
+Under the hood:
+
+- **The path** comes from `GET /relationship?from=&to=` (`api/relationship.js`), the cheapest path through parent, child, brother or sister, and partner links. Blood relations win over marriage when the lengths tie.
+- **Living people** are by name only for anyone not on the list, as in the tree.
+- **The words** come from `src/relationshipWords.js`.
+- **Design:** `specs/2026-10-18-relationship-search-design.md`.
+
 ## Editing
 
 Viewing stays public, with living people's details hidden ([Living people](#living-people)). Family members on the list can also sign in, at one of three levels:
@@ -176,13 +201,13 @@ Viewing stays public, with living people's details hidden ([Living people](#livi
 
 Every edit can be undone.
 
-- **Who has access:** only people on the list. Admins manage it in the app (account menu → Editors and viewers):
+- **Who has access:** only people on the list. Admins manage it in the app (menu → Manage access):
   - **Invite someone** by email as a viewer, an editor or an admin, with an optional message. They get access straight away, and an email from the site's Gmail account saying who invited them, what they can do, and how to sign in (a `<site>/?invite` link, which opens sign-in).
   - **Change someone's access** with the Access select on their row.
   - **Remove someone.**
 
   An admin can't change their own access or remove themselves, and the last admin can't be made an editor or removed. Anyone can sign in, but someone who isn't on the list just sees the tree.
-- **Asking for access:** someone signed in who isn't on the list, or a viewer, can choose **Request edit access** in the account menu, with an optional note. Whoever is set to be told gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Editors and viewers dialog, after sign-in if needed. That is everyone on the list with `notify_access_requests` set (migration 013): on production, only the owner. There is no UI for it; set it with SQL, for example `update editor set notify_access_requests = true where email = '…';`. With nobody set, no email goes out and the `api` Function logs a line saying so. Admins also see "Access requests (N)" in the account menu. The **Requests** section at the top of the dialog has **Grant** and **Dismiss** for each request. Grant makes the requester an editor (a viewer included), and they are emailed.
+- **Asking for access:** someone signed in who isn't on the list, or a viewer, can choose **Request edit access** in the menu, with an optional note. Whoever is set to be told gets an email whose **Review requests** link (`<site>/?access-requests`) opens the Manage access dialog, after sign-in if needed. That is everyone on the list with `notify_access_requests` set (migration 013): on production, only the owner. There is no UI for it; set it with SQL, for example `update editor set notify_access_requests = true where email = '…';`. With nobody set, no email goes out and the `api` Function logs a line saying so. Admins also see "Access requests (N)" in the menu. The **Requests** section at the top of the dialog has **Grant** and **Dismiss** for each request. Grant makes the requester an editor (a viewer included), and they are emailed.
 - **Signing in:** **Sign in** in the header, then a one-time code sent by email, or Google (Neon Auth). Only verified email addresses are accepted.
 - **What can be edited:**
   - a person's details: names, sex, birth, baptism, death and burial (with their notes), cause of death, notes, occupations, residences, census records, other facts, email and phone
