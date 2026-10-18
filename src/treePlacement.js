@@ -1,36 +1,16 @@
 /**
- * Where the tree puts an editor's "+" node, and how it fits the tree to the screen (familyTreeView.js): pure
- * functions of positions and sizes, so they can be tested without drawing.
+ * How the tree fits itself to the screen (familyTreeView.js): pure functions of positions and sizes, so they can
+ * be tested without drawing. Where everyone goes, the "+" node included, is treeLayout.js.
  */
 
 /** The smallest the button over the "+" node gets, at any zoom: a comfortable touch target. */
 export const MIN_TARGET_PX = 44;
-/** The space between the "+" node and the person beside it, and between it and the next node in their row. */
-const ADD_GAP = 40;
 /** On a tree wider than the screen, the selected person's distance from the left (fitToHeight). */
 const SELECTED_LEFT_PX = 100;
 /** The least room left of a "+" button placed on the person's left, on a tree wider than the screen. */
 const ADD_LEFT_MIN_PX = 16;
 /** How far an editor's tree may zoom out to fit the width, as a share of the zoom that fits the height. */
 const ADD_MIN_ZOOM_SHARE = 0.75;
-
-/**
- * Where the "+" node goes, beside the selected person in their row (graph units): on their left when they have
- * spouses and none is on their left, so it never sits between a couple; else on their right. The nodes of the
- * row on that side move outward to make room.
- * @param selected  `{ x, y, width }`: the selected person's centre and outer width
- * @param addWidth  the "+" node's outer width
- * @param spouseXs  the x of each spouse (the nodes sharing a partnership node with them)
- * @param row       `[{ id, x }]`: the other nodes in their row
- * @returns `{ add: { x, y }, moves: [{ id, x }] }`
- */
-export function placeBeside({ selected, addWidth, spouseXs = [], row = [] }) {
-  const side = spouseXs.length > 0 && !spouseXs.some(x => x < selected.x) ? -1 : 1;
-  const add = { x: selected.x + side * (selected.width / 2 + ADD_GAP + addWidth / 2), y: selected.y };
-  const shift = side * (addWidth + ADD_GAP);
-  const moves = row.filter(node => (node.x - selected.x) * side > 0).map(node => ({ id: node.id, x: node.x + shift }));
-  return { add, moves };
-}
 
 /**
  * The tree's zoom (fitToHeight): the zoom that fits the height `height` inside `margin`, at most `maxZoom`.

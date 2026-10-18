@@ -1,18 +1,20 @@
 import cytoscape from 'cytoscape';
-import dagre from 'cytoscape-dagre';
 import { loadPersonWithFamily, prefetchFamily } from './dataLoader.js';
 import { avatarUrl } from './media.js';
 import { nameOf } from './familyLinks.js';
-import { MIN_TARGET_PX, chooseZoom, horizontalPan, placeBeside } from './treePlacement.js';
-
-// Register the dagre layout
-cytoscape.use(dagre);
+import { MIN_TARGET_PX, chooseZoom, horizontalPan } from './treePlacement.js';
+import { layoutFamily } from './treeLayout.js';
 
 /** The editors' "+" node, joined to the highlighted person, and the edge to it. */
 const ADD_NODE_ID = 'add-relative';
 const ADD_EDGE_ID = 'add-relative-edge';
 /** The cytoscape events after which the "+" node is drawn somewhere else. */
 const VIEWPORT_EVENTS = 'pan zoom resize';
+/** A colour for each couple (treeLayout.js gives each family an index): its dot and every line of its family. */
+const FAMILY_COLOURS = ['#f472b6', '#a78bfa', '#34d399', '#fbbf24', '#38bdf8', '#fb7185'];
+/** How rounded the bends in the lines down to the children are (graph units). */
+const BEND_RADIUS = 18;
+const colourOf = (index) => FAMILY_COLOURS[index % FAMILY_COLOURS.length];
 
 export class FamilyTreeView {
   constructor(containerElement) {
@@ -57,9 +59,11 @@ export class FamilyTreeView {
             'font-size': '14px',
             'font-weight': '500',
             'text-wrap': 'wrap',
-            'text-max-width': '200px',
-            'text-background-color': 'rgba(0, 0, 0, 0.6)',
-            'text-background-opacity': 1,
+            // Within the node and a little of the gap either side, clear of the lines down from a couple's dot.
+            'text-max-width': '160px',
+            // Nearly opaque, so a line down from a lone parent passes cleanly behind the label.
+            'text-background-color': 'rgb(17, 17, 28)',
+            'text-background-opacity': 0.9,
             'text-background-padding': '5px',
             'text-background-shape': 'roundrectangle',
             'cursor': 'pointer'
@@ -89,21 +93,33 @@ export class FamilyTreeView {
             'background-color': '#c74a8f'
           }
         },
+        // A couple's dot, on their marriage line (treeLayout.js), ringed in the background colour so the lines
+        // meeting it stop just short.
         {
           selector: 'node[type="partnership"]',
           style: {
-            'width': 12,
-            'height': 12,
-            'background-color': 'data(partnershipColor)',
-            'border-width': 2,
-            'border-color': '#666',
-            'label': ''
+            'width': 14,
+            'height': 14,
+            'background-color': 'data(colour)',
+            'background-image': 'none',
+            'border-width': 3,
+            'border-color': 'rgb(17, 17, 28)',
+            'label': '',
+            'events': 'no',
+            'z-index': 10
           }
         },
+        // The invisible ends of the lines (treeLayout.js): every line runs straight from one to another.
         {
-          selector: 'node[type="partnership"][!partnershipColor]',
+          selector: 'node[type="joint"]',
           style: {
-            'background-color': '#aaa'
+            'width': 1,
+            'height': 1,
+            'opacity': 0,
+            'background-image': 'none',
+            'border-width': 0,
+            'label': '',
+            'events': 'no'
           }
         },
         // The editors' "+" node (setAddRelative): a dashed circle, a little smaller than a relative.
@@ -127,56 +143,27 @@ export class FamilyTreeView {
             'text-background-opacity': 0
           }
         },
-        // Edge styles
+        // Lines, under the people, in their family's colour: a couple's marriage line is straight; each child hangs
+        // from their family's dot by one elbow, down to the family's bar, across and down, its bends rounded.
         {
           selector: 'edge',
           style: {
+            'curve-style': 'straight',
             'width': 3,
-            'line-color': '#666',
-            'target-arrow-color': '#666',
-            'curve-style': 'unbundled-bezier',
-            'control-point-distances': [40, -40],
-            'control-point-weights': [0.25, 0.75],
-            'opacity': 0.8
+            'line-color': 'data(colour)',
+            'line-cap': 'round',
+            'opacity': 1,
+            'events': 'no'
           }
         },
         {
-          selector: 'edge[type="spouse"]',
+          selector: 'edge[type="link"]',
           style: {
-            'line-color': 'data(partnershipColor)',
-            'width': 3,
-            'opacity': 0.85,
             'curve-style': 'round-taxi',
-            'taxi-direction': 'horizontal',
-            'taxi-turn': 20,
-            'taxi-turn-min-distance': 5
-          }
-        },
-        {
-          selector: 'edge[type="spouse"][!partnershipColor]',
-          style: {
-            'line-color': '#ff6b9d'
-          }
-        },
-        {
-          selector: 'edge[type="parent"]',
-          style: {
-            'line-color': 'data(partnershipColor)',
-            'target-arrow-shape': 'triangle',
-            'target-arrow-color': 'data(partnershipColor)',
-            'width': 2.5,
-            'opacity': 0.85,
-            'curve-style': 'round-taxi',
-            'taxi-direction': 'vertical',
-            'taxi-turn': 20,
-            'taxi-turn-min-distance': 5
-          }
-        },
-        {
-          selector: 'edge[type="parent"][!partnershipColor]',
-          style: {
-            'line-color': '#8ab4f8',
-            'target-arrow-color': '#8ab4f8'
+            'taxi-direction': 'downward',
+            'taxi-turn': 'data(turn)',
+            'taxi-turn-min-distance': 0,
+            'taxi-radius': BEND_RADIUS
           }
         },
         {
@@ -184,20 +171,12 @@ export class FamilyTreeView {
           style: {
             'line-color': '#00d4ff',
             'line-style': 'dashed',
+            'line-cap': 'butt',
             'width': 2.5,
-            'opacity': 0.7,
-            'curve-style': 'straight'
+            'opacity': 0.7
           }
         },
         // Hover effects
-        {
-          selector: 'edge:active',
-          style: {
-            'opacity': 1,
-            'width': 4,
-            'z-index': 999
-          }
-        },
         {
           selector: 'node:active',
           style: {
@@ -222,9 +201,9 @@ export class FamilyTreeView {
       const node = event.target;
       const personId = node.data('id');
 
-      // Skip partnership nodes, and the "+" node (its button over it takes the taps)
+      // Skip dots and line ends, and the "+" node (its button over it takes the taps)
       const type = node.data('type');
-      if (type === 'partnership' || type === 'add') {
+      if (type === 'partnership' || type === 'joint' || type === 'add') {
         return;
       }
 
@@ -263,397 +242,58 @@ export class FamilyTreeView {
   }
 
   /**
-   * Build the Cytoscape graph from person and family data
+   * Draws the person and their family where treeLayout.js puts them: people, couples' dots, and the straight lines
+   * between them (from one invisible joint to another); for editors, the "+" node beside the person.
    */
   buildGraph(selectedPerson, familyMembers, relationships) {
     this.closeAddMenu();
     this.shownPerson = selectedPerson;
     this.graphData = [selectedPerson, familyMembers, relationships];
+    const layout = layoutFamily({
+      selected: selectedPerson, family: familyMembers, relationships, withAdd: Boolean(this.addRelativeHandler)
+    });
+    const records = new Map([[selectedPerson.id, selectedPerson], ...familyMembers.map(member => [member.id, member])]);
     const elements = [];
 
-    // Create a map of person IDs to names for debugging
-    const personNames = new Map();
-    personNames.set(selectedPerson.id, selectedPerson.name);
-    familyMembers.forEach(m => personNames.set(m.id, m.name));
-    relationships?.spouses?.forEach(s => personNames.set(s.id, s.name));
-    relationships?.children?.forEach(c => personNames.set(c.id, c.name));
-    relationships?.parents?.forEach(p => personNames.set(p.id, p.name));
-    relationships?.siblings?.forEach(s => personNames.set(s.id, s.name));
-
-    // Add selected person node
-    elements.push({
-      group: 'nodes',
-      data: {
-        id: selectedPerson.id,
-        label: this.formatLabel(selectedPerson),
-        type: 'selected',
-        sex: selectedPerson.sex,
-        avatar: this.getAvatarPath(selectedPerson)
-      }
-    });
-
-    // Add family member nodes
-    for (const member of familyMembers) {
+    for (const { id, x, y } of layout.people) {
+      const record = records.get(id);
       elements.push({
         group: 'nodes',
+        position: { x, y },
         data: {
-          id: member.id,
-          label: this.formatLabel(member),
-          type: 'family',
-          sex: member.sex,
-          avatar: this.getAvatarPath(member)
+          id,
+          label: this.formatLabel(record),
+          type: id === selectedPerson.id ? 'selected' : 'family',
+          sex: record.sex,
+          avatar: this.getAvatarPath(record)
         }
       });
     }
-
-    // Partnership colors for multiple relationships
-    const partnershipColors = [
-      '#ff6b9d', // Pink
-      '#9d6bff', // Purple
-      '#6bffa8', // Green
-      '#ffb36b', // Orange
-      '#6bb3ff', // Light blue
-      '#ff6b6b'  // Red
-    ];
-
-    // Get set of all node IDs that exist in the graph (for checking spouse existence)
-    const existingNodeIds = new Set([
-      selectedPerson.id,
-      ...familyMembers.map(m => m.id)
-    ]);
-
-    // Track which partnerships have been created to avoid duplicates
-    const createdPartnerships = new Set();
-    const partnershipIdMap = new Map(); // Map partnershipKey -> actual partnershipId
-
-    // Add partnership nodes and edges for spouses
-    selectedPerson.spouseIds.forEach((spouseId, index) => {
-      const partnershipKey = [selectedPerson.id, spouseId].sort().join('-');
-      const partnershipId = `partnership-${selectedPerson.id}-${spouseId}`;
-      const color = partnershipColors[index % partnershipColors.length];
-
-      // Check if spouse exists in graph
-      const spouseExists = existingNodeIds.has(spouseId);
-
-      // Check if this partnership has children that are visible in the graph
-      const hasVisibleChildren = relationships?.children?.some(child => {
-        if (child.parentIds && child.parentIds.length === 2) {
-          const childParentKey = [...child.parentIds].sort().join('-');
-          // Child must match this partnership AND be in the graph
-          return childParentKey === partnershipKey && existingNodeIds.has(child.id);
-        }
-        return false;
-      });
-
-      // Skip partnership node if spouse doesn't exist AND there are no visible children
-      if (!spouseExists && !hasVisibleChildren) {
-        console.log(`Skipping partnership: ${selectedPerson.name} + ${personNames.get(spouseId) || spouseId} (spouse not in graph, no visible children)`);
-        return;
-      }
-
-      if (spouseExists || hasVisibleChildren) {
-        console.log(`Creating partnership: ${selectedPerson.name} + ${personNames.get(spouseId) || spouseId} (spouse exists: ${spouseExists}, has visible children: ${hasVisibleChildren})`);
-      }
-
-      // Mark this partnership as created and store the ID
-      createdPartnerships.add(partnershipKey);
-      partnershipIdMap.set(partnershipKey, partnershipId);
-
-      // Add partnership node with color and index
-      elements.push({
-        group: 'nodes',
-        data: {
-          id: partnershipId,
-          type: 'partnership',
-          partnershipIndex: index,
-          partnershipColor: color
-        }
-      });
-
-      // Connect selected person to partnership
-      elements.push({
-        group: 'edges',
-        data: {
-          id: `${selectedPerson.id}-${partnershipId}`,
-          source: selectedPerson.id,
-          target: partnershipId,
-          type: 'spouse',
-          partnershipColor: color
-        }
-      });
-
-      // Connect spouse to partnership (only if spouse exists)
-      if (spouseExists) {
-        elements.push({
-          group: 'edges',
-          data: {
-            id: `${spouseId}-${partnershipId}`,
-            source: spouseId,
-            target: partnershipId,
-            type: 'spouse',
-            partnershipColor: color
-          }
-        });
-      }
-    });
-
-    // Create partnership nodes for all unique parent pairs (including half-siblings' parents)
-    const parentPartnerships = new Map(); // Map of "parentId1-parentId2" -> [children]
-
-    // Add selected person's parents partnership (when selected person is a child)
-    if (selectedPerson.parentIds.length === 2) {
-      const key = [...selectedPerson.parentIds].sort().join('-');
-      if (!parentPartnerships.has(key)) {
-        parentPartnerships.set(key, []);
-      }
-      parentPartnerships.get(key).push(selectedPerson);
+    for (const { id, x, y, color } of layout.dots) {
+      elements.push({ group: 'nodes', position: { x, y }, data: { id, type: 'partnership', colour: colourOf(color) } });
+    }
+    // Marriage lines are drawn straight between their joints; the lines down to the children as one elbow each.
+    const marriages = layout.lines.filter(line => line.kind === 'marriage');
+    const used = new Set([...marriages.flatMap(line => [line.source, line.target]), ...layout.links.map(link => link.source)]);
+    for (const { id, x, y } of layout.joints.filter(joint => used.has(joint.id))) {
+      elements.push({ group: 'nodes', position: { x, y }, data: { id, type: 'joint' } });
+    }
+    for (const { id, source, target, color } of marriages) {
+      elements.push({ group: 'edges', data: { id, source, target, type: 'line', colour: colourOf(color) } });
+    }
+    for (const { id, source, target, turn, color } of layout.links) {
+      elements.push({ group: 'edges', data: { id, source, target, type: 'link', turn, colour: colourOf(color) } });
     }
 
-    // Add siblings to their parent partnerships
-    if (relationships?.siblings) {
-      for (const sibling of relationships.siblings) {
-        if (sibling.parentIds && sibling.parentIds.length === 2) {
-          const key = [...sibling.parentIds].sort().join('-');
-          if (!parentPartnerships.has(key)) {
-            parentPartnerships.set(key, []);
-          }
-          parentPartnerships.get(key).push(sibling);
-        }
-      }
-    }
-
-    // Add selected person's children partnerships (when selected person is a parent)
-    if (relationships?.children) {
-      for (const child of relationships.children) {
-        if (child.parentIds && child.parentIds.length === 2) {
-          const key = [...child.parentIds].sort().join('-');
-          if (!parentPartnerships.has(key)) {
-            parentPartnerships.set(key, []);
-          }
-          parentPartnerships.get(key).push(child);
-        }
-      }
-    }
-
-
-    // Track children whose partnerships were skipped
-    const childrenWithSkippedPartnerships = [];
-
-    // Track partnership colors and indices
-    const partnershipColorMap = new Map();
-    const partnershipIndexMap = new Map();
-
-    // Group partnerships by each parent to assign indices
-    const partnershipsByParent = new Map(); // parent ID -> array of partnership keys
-
-    // Collect all partnerships and group by parent
-    for (const [parentKey] of parentPartnerships.entries()) {
-      const [parent1Id, parent2Id] = parentKey.split('-');
-
-      if (!partnershipsByParent.has(parent1Id)) {
-        partnershipsByParent.set(parent1Id, []);
-      }
-      partnershipsByParent.get(parent1Id).push(parentKey);
-
-      if (!partnershipsByParent.has(parent2Id)) {
-        partnershipsByParent.set(parent2Id, []);
-      }
-      partnershipsByParent.get(parent2Id).push(parentKey);
-    }
-
-    // Assign indices and colors for each person's partnerships
-    partnershipsByParent.forEach((partnerships, parentId) => {
-      partnerships.forEach((partnershipKey, index) => {
-        // Only set if not already set (avoid overwriting)
-        if (!partnershipIndexMap.has(partnershipKey)) {
-          partnershipIndexMap.set(partnershipKey, index);
-          const color = partnershipColors[index % partnershipColors.length];
-          partnershipColorMap.set(partnershipKey, color);
-        }
-      });
-    });
-
-    // Create partnership nodes and connections for each parent pair
-    for (const [parentKey, children] of parentPartnerships.entries()) {
-      const [parent1Id, parent2Id] = parentKey.split('-');
-
-      // If this partnership was already created in the spouse section, just add the child edges
-      if (createdPartnerships.has(parentKey)) {
-        console.log(`Partnership already exists: ${personNames.get(parent1Id) || parent1Id} + ${personNames.get(parent2Id) || parent2Id}, adding child connections`);
-
-        // The partnership node already exists, get the actual partnership ID that was created
-        const partnershipId = partnershipIdMap.get(parentKey);
-        const partnershipColor = partnershipColorMap.get(parentKey) || '#aaa';
-
-        for (const child of children) {
-          if (existingNodeIds.has(child.id)) {
-            elements.push({
-              group: 'edges',
-              data: {
-                id: `${partnershipId}-${child.id}`,
-                source: partnershipId,
-                target: child.id,
-                type: 'parent',
-                partnershipColor: partnershipColor
-              }
-            });
-          }
-        }
-        continue;
-      }
-
-      const parent1Exists = existingNodeIds.has(parent1Id);
-      const parent2Exists = existingNodeIds.has(parent2Id);
-
-      // Check if any children from this partnership are visible in the graph
-      const hasVisibleChildren = children.some(child => existingNodeIds.has(child.id));
-
-      // Skip partnership if both parents aren't in graph OR if there are no visible children
-      if (!parent1Exists || !parent2Exists || !hasVisibleChildren) {
-        console.log(`Skipping parent partnership: ${personNames.get(parent1Id) || parent1Id} + ${personNames.get(parent2Id) || parent2Id} (parent1 exists: ${parent1Exists}, parent2 exists: ${parent2Exists}, has visible children: ${hasVisibleChildren})`);
-        // Track these children for direct connection
-        for (const child of children) {
-          childrenWithSkippedPartnerships.push({
-            child,
-            parentIds: [parent1Id, parent2Id]
-          });
-        }
-        continue;
-      }
-
-      const partnershipId = `partnership-${parent1Id}-${parent2Id}`;
-      const partnershipColor = partnershipColorMap.get(parentKey) || '#aaa';
-      const partnershipIndex = partnershipIndexMap.get(parentKey) || 0;
-
-      // Add partnership node
-      elements.push({
-        group: 'nodes',
-        data: {
-          id: partnershipId,
-          type: 'partnership',
-          partnershipColor: partnershipColor,
-          partnershipIndex: partnershipIndex
-        }
-      });
-
-      // Connect parents to partnership
-      elements.push({
-        group: 'edges',
-        data: {
-          id: `${parent1Id}-${partnershipId}`,
-          source: parent1Id,
-          target: partnershipId,
-          type: 'spouse',
-          partnershipColor: partnershipColor
-        }
-      });
-
-      elements.push({
-        group: 'edges',
-        data: {
-          id: `${parent2Id}-${partnershipId}`,
-          source: parent2Id,
-          target: partnershipId,
-          type: 'spouse',
-          partnershipColor: partnershipColor
-        }
-      });
-
-      // Connect partnership to all children from this partnership
-      for (const child of children) {
-        elements.push({
-          group: 'edges',
-          data: {
-            id: `${partnershipId}-${child.id}`,
-            source: partnershipId,
-            target: child.id,
-            type: 'parent',
-            partnershipColor: partnershipColor
-          }
-        });
-      }
-    }
-
-    // Handle children whose partnerships were skipped (parent not in graph)
-    for (const { child, parentIds } of childrenWithSkippedPartnerships) {
-      // Connect to whichever parent IS in the graph
-      for (const parentId of parentIds) {
-        if (existingNodeIds.has(parentId)) {
-          elements.push({
-            group: 'edges',
-            data: {
-              id: `${parentId}-${child.id}-partial`,
-              source: parentId,
-              target: child.id,
-              type: 'parent'
-            }
-          });
-          break; // Only connect once
-        }
-      }
-    }
-
-    // Handle single parent cases (children who only have one parent listed)
-    if (selectedPerson.parentIds.length === 1) {
-      const parentId = selectedPerson.parentIds[0];
-      elements.push({
-        group: 'edges',
-        data: {
-          id: `${parentId}-${selectedPerson.id}`,
-          source: parentId,
-          target: selectedPerson.id,
-          type: 'parent'
-        }
-      });
-    }
-
-    // Handle siblings with single parents
-    if (relationships?.siblings) {
-      for (const sibling of relationships.siblings) {
-        if (sibling.parentIds && sibling.parentIds.length === 1) {
-          const parentId = sibling.parentIds[0];
-          elements.push({
-            group: 'edges',
-            data: {
-              id: `${parentId}-${sibling.id}-single`,
-              source: parentId,
-              target: sibling.id,
-              type: 'parent'
-            }
-          });
-        }
-      }
-    }
-
-
-    // Handle children with single parents (no partnership)
-    if (relationships?.children) {
-      for (const child of relationships.children) {
-        if (child.parentIds && child.parentIds.length === 1 && child.parentIds[0] === selectedPerson.id) {
-          elements.push({
-            group: 'edges',
-            data: {
-              id: `${selectedPerson.id}-${child.id}-single`,
-              source: selectedPerson.id,
-              target: child.id,
-              type: 'parent'
-            }
-          });
-        }
-      }
-    }
-
-
-    // For editors, the "+" node, joined to the selected person (placed beside them after the layout)
-    if (this.addRelativeHandler) {
-      elements.push({ group: 'nodes', data: { id: ADD_NODE_ID, type: 'add' } });
+    // For editors, the "+" node, joined to the selected person
+    if (layout.add) {
+      elements.push({ group: 'nodes', position: layout.add, data: { id: ADD_NODE_ID, type: 'add' } });
       elements.push({
         group: 'edges',
         data: { id: ADD_EDGE_ID, source: selectedPerson.id, target: ADD_NODE_ID, type: 'add' }
       });
     }
 
-    // Update graph without animation
     this.updateGraph(elements);
   }
 
@@ -661,61 +301,11 @@ export class FamilyTreeView {
    * Update the graph when switching between people (without animation)
    */
   updateGraph(elements) {
-    // Clear the existing graph
     this.cy.elements().remove();
-
-    // Add all new elements
     this.cy.add(elements);
-
-    // Run layout to calculate positions, without the "+" node and its edge (placeAddNode puts it beside the
-    // selected person afterwards)
-    const layout = this.cy.elements().not('[type="add"]').layout({
-      name: 'dagre',
-      rankDir: 'TB',
-      nodeSep: 40,
-      rankSep: 80,
-      padding: 30,
-      ranker: 'network-simplex',
-      animate: false
-    });
-
-    layout.run();
-
-    // Adjust partnership positions
-    this.cy.nodes('[type="partnership"]').forEach(node => {
-      const index = node.data('partnershipIndex');
-      if (index !== undefined && index > 0) {
-        const pos = node.position();
-        node.position({ x: pos.x, y: pos.y + index * 50 });
-      }
-    });
-
-    this.placeAddNode();
-
     // Fit to fill height and center horizontally
     this.fitToHeight();
     this.placeAddButton();
-  }
-
-  /** Puts the "+" node (laid out apart) beside the selected person, making room in their row (placeBeside). */
-  placeAddNode() {
-    const add = this.cy.getElementById(ADD_NODE_ID);
-    const selected = this.cy.nodes('[type="selected"]');
-    if (add.empty() || selected.length === 0) return;
-    const { x, y } = selected.position();
-    const spouses = selected.outgoers('node[type="partnership"]').incomers('node').not(selected);
-    const row = this.cy.nodes().not(add).not(selected).filter(node => Math.abs(node.position().y - y) < 1);
-    const placed = placeBeside({
-      selected: { x, y, width: selected.outerWidth() },
-      addWidth: add.outerWidth(),
-      spouseXs: spouses.map(node => node.position().x),
-      row: row.map(node => ({ id: node.id(), x: node.position().x }))
-    });
-    add.position(placed.add);
-    for (const move of placed.moves) {
-      const node = this.cy.getElementById(move.id);
-      node.position({ x: move.x, y: node.position().y });
-    }
   }
 
   /**
@@ -756,79 +346,6 @@ export class FamilyTreeView {
       zoom: zoom,
       pan: pan
     });
-  }
-
-  /**
-   * Calculate positions for all nodes in a family tree layout
-   */
-  calculatePositions(selectedPerson, familyMembers, relationships) {
-    const positions = {};
-    const centerX = 0;
-    const centerY = 0;
-    const spacing = 200;
-
-    // Get relationship groups
-    const siblings = relationships?.siblings || [];
-    const parents = relationships?.parents || [];
-    const spouses = relationships?.spouses || [];
-    const children = relationships?.children || [];
-
-    // Selected person and siblings on same row
-    const siblingRow = [selectedPerson, ...siblings];
-    siblingRow.forEach((person, index) => {
-      const offset = (index - (siblingRow.length - 1) / 2) * spacing;
-      positions[person.id] = { x: centerX + offset, y: centerY };
-    });
-
-    // Position parents above
-    parents.forEach((parent, index) => {
-      const offset = (index - (parents.length - 1) / 2) * spacing;
-      positions[parent.id] = {
-        x: centerX + offset,
-        y: centerY - spacing * 1.5
-      };
-    });
-
-    // Position parents' partnership node
-    if (parents.length === 2) {
-      const parent1Pos = positions[parents[0].id];
-      const parent2Pos = positions[parents[1].id];
-      const parentsPartnershipId = `partnership-${parents[0].id}-${parents[1].id}`;
-      positions[parentsPartnershipId] = {
-        x: (parent1Pos.x + parent2Pos.x) / 2,
-        y: (parent1Pos.y + parent2Pos.y) / 2
-      };
-    }
-
-
-    // Position spouses to the sides and create partnership nodes
-    spouses.forEach((spouse, index) => {
-      const side = index % 2 === 0 ? 1 : -1;
-      const row = Math.floor(index / 2);
-      const spouseX = centerX + side * spacing * 1.5;
-      const spouseY = centerY + row * spacing * 0.5;
-
-      positions[spouse.id] = { x: spouseX, y: spouseY };
-
-      // Position partnership node midway between selected person and spouse
-      const partnershipId = `partnership-${selectedPerson.id}-${spouse.id}`;
-      positions[partnershipId] = {
-        x: (centerX + spouseX) / 2,
-        y: (centerY + spouseY) / 2
-      };
-    });
-
-    // Position children below
-    children.forEach((child, index) => {
-      const offset = (index - (children.length - 1) / 2) * spacing;
-      positions[child.id] = {
-        x: centerX + offset,
-        y: centerY + spacing * 1.5
-      };
-    });
-
-
-    return positions;
   }
 
   /**
