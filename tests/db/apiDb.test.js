@@ -100,6 +100,19 @@ describe.skipIf(!url)('api/db.js (database)', { timeout: 30000 }, () => {
     });
   });
 
+  describe('relationship reads', () => {
+    it('reads every family and child row, and relatives\' records in the order asked, null for an unknown id', async () => {
+      await withChange(client, `insert into family (id, partner1_id, partner2_id) values ('FR1', 'I1', 'I3');
+        insert into family_child (family_id, child_id, position) values ('FR1', 'I4', 0)`);
+      const { families, children } = await db.familyLinks();
+      expect(families).toContainEqual({ id: 'FR1', partner1_id: 'I1', partner2_id: 'I3' });
+      expect(children).toContainEqual({ family_id: 'FR1', child_id: 'I4' });
+      const records = await db.relativeRecords(['I4', 'I404', 'I1']);
+      expect(records.map((record) => record?.id ?? null)).toEqual(['I4', null, 'I1']);
+      expect(records[0]).toMatchObject({ name: 'Ann Lee', parentIds: ['I1', 'I3'], living: expect.any(Boolean) });
+    });
+  });
+
   describe('editors', () => {
     it('looks up an editor, or null', async () => {
       expect(await db.lookupEditor(OWNER)).toEqual({ email: OWNER, name: "Rob A'Court", role: 'admin' });

@@ -187,6 +187,25 @@ export function createDb(pool, { log = console.error, context = {} } = {}) {
       return rows.map((row) => ({ id: row.id, name: row.name, birthYear: row.birth_year, deathYear: row.death_year, living: row.living }));
     },
 
+    /**
+     * The whole family as rows, for the relationship graph (api/relationship.js).
+     * → { families: [{ id, partner1_id, partner2_id }], children: [{ family_id, child_id }] }
+     */
+    async familyLinks() {
+      const [families, children] = await Promise.all([
+        pool.query('select id, partner1_id, partner2_id from family'),
+        pool.query('select family_id, child_id from family_child')
+      ]);
+      return { families: families.rows, children: children.rows };
+    },
+
+    /** → each id's relative_record (id, name, sex, birthDate, avatarKey, parentIds, living), in order; null if unknown */
+    async relativeRecords(ids) {
+      const { rows } = await pool.query(
+        'select relative_record(t.id) as record from unnest($1::text[]) with ordinality as t (id, n) order by t.n', [ids]);
+      return rows.map((row) => row.record);
+    },
+
     /** → { email, name, role } | null */
     async lookupEditor(email) {
       const { rows: [row] } = await pool.query('select email, name, role from editor where email = $1', [email]);

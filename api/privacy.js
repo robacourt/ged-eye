@@ -66,7 +66,8 @@ function redactPerson(person, family) {
   return record;
 }
 
-const redactRelative = (relative) => (isLiving(relative)
+/** A relative_record for the public: a living person's by name only (also the people on a relationship path). */
+export const redactRelative = (relative) => (isLiving(relative)
   ? { ...pick(relative, LIVING_RELATIVE_KEYS), avatarKey: null, living: true, private: true }
   : relative);
 
